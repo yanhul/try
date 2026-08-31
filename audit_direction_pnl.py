@@ -1,11 +1,11 @@
 from collections import defaultdict
 import csv
-from engine.events import MarketBar, EventType
+from engine.events import MarketBar
 from engine.strategy import ReferenceStrategy
 from engine.ledger import build_ledger
 from engine.execution import execute_trades
 from engine.risk_exit import FixedRiskRewardExit
-from engine.data_split import walk_forward_splits
+from engine.walk_forward import generate_walk_forward
 
 DATA='data/BTCUSDT_1h.csv'
 TRAIN=1100; TEST=500; STEP=500
@@ -30,7 +30,7 @@ def metrics(trades):
 
 def main():
     bars=load_bars(); events=ReferenceStrategy().process(bars); ledger=build_ledger(events); exit_policy=FixedRiskRewardExit(.01,2.)
-    windows=list(walk_forward_splits(len(bars),TRAIN,TEST,STEP))
+    windows=generate_walk_forward(len(bars),TRAIN,TEST,STEP)
     for n,w in enumerate(windows):
         test_ledger=[t for t in ledger if w.test_start<=t.entry_bar<w.test_end]
         executed, skipped=execute_trades(bars,test_ledger,exit_policy,max_concurrent=1)
