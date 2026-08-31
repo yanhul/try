@@ -1,12 +1,19 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "rules": {
     "oos_selection": false,
     "one_conceptual_change": true,
     "missing_decision_blocks": true,
-    "rejected_candidate_requires_failure_analysis": true
+    "rejected_candidate_requires_failure_analysis": true,
+    "no_automatic_hypothesis_invention": true
   },
   "candidates": [
     {"name": "BC5", "audit_script": "audit_bc5_fast_gate.py"}
-  ]
+  ],
+  "failure_analysis": {
+    "BC5": [
+      {"name": "BC5_FAILURE_DECOMPOSITION", "audit_script": "audit_bc4_1_failure_decomposition.py"},
+      {"name": "BC5_SIGNAL_QUALITY", "audit_script": "audit_bc4_2_signal_quality.py"}
+    ]
+  }
 }
