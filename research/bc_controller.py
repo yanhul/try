@@ -1,15 +1,12 @@
 from __future__ import annotations
-
 import json
 import os
-import shlex
 import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 from autonomous_hypothesis import load_candidate, write_candidate
-
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "research" / "bc_lifecycle_state.json"
 QUEUE = ROOT / "research" / "bc_queue.json"
@@ -20,8 +17,8 @@ REJECT = "REJECT_BC"
 DEFAULT_MAX_ITERATIONS = 8
 
 
-def run(cmd):
-    p = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True)
+def run(cmd, env=None):
+    p = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, env=env)
     out = p.stdout + p.stderr
     print(out, end="")
     return p.returncode, out
@@ -64,15 +61,6 @@ def next_bc(queue, state):
 
 
 def generate_candidate(parent_bc: int, state: dict):
-    """Ask an explicitly configured research agent to generate exactly one candidate.
-
-    The controller itself never invents a strategy. Without an agent command it
-    stops at HOLD rather than fabricating a hypothesis.
-    """
-    command = os.environ.get("RESEARCH_AGENT_COMMAND", "").strip()
-    if not command:
-        print("CONTROLLER_DECISION HOLD_NO_RESEARCH_AGENT")
-        return None
     failure = FAILURE_DIR / f"BC{parent_bc}.json"
     if not failure.exists():
         print(f"CONTROLLER_DECISION HOLD_NO_FAILURE_ANALYSIS BC{parent_bc}")
@@ -80,14 +68,14 @@ def generate_candidate(parent_bc: int, state: dict):
     bc = next_bc(load_queue(), state)
     output = CANDIDATE_DIR / f"BC{bc}.json"
     env = os.environ.copy()
-    env.update({"RESEARCH_PARENT_BC": str(parent_bc), "RESEARCH_NEXT_BC": str(bc),
-                "RESEARCH_FAILURE_ANALYSIS": str(failure), "RESEARCH_CANDIDATE_OUTPUT": str(output)})
-    print(f"CONTROLLER_AGENT BC{bc} parent=BC{parent_bc}")
-    p = subprocess.run(shlex.split(command), cwd=ROOT, text=True, capture_output=True, env=env)
-    print(p.stdout, end="")
-    print(p.stderr, end="")
-    if p.returncode:
-        print(f"CONTROLLER_DECISION HOLD_AGENT_FAILURE rc={p.returncode}")
+    env.update({"RESEARCH_PARENT_BC": str(parent_bc), "RESEARCH_NEXT_BC": str(bc), "RESEARCH_FAILURE_ANALYSIS": str(failure), "RESEARCH_CANDIDATE_OUTPUT": str(output)})
+    print(f"CONTROLLER_AGENT_ROUTER BC{bc} parent=BC{parent_bc}")
+    rc, _ = run([sys.executable, "research/provider_router.py"], env=env)
+    if rc:
+        print(f"CONTROLLER_DECISION HOLD_PROVIDER_ROUTER_FAILURE rc={rc}")
+        return None
+    if not output.exists():
+        print("CONTROLLER_DECISION HOLD_NO_PROVIDER_HYPOTHESIS")
         return None
     try:
         candidate = load_candidate(output, bc, parent_bc)
@@ -137,12 +125,10 @@ def main():
     if state.get("terminal"):
         print("CONTROLLER_DECISION TERMINAL_STATE")
         return 0
-
     rc, _ = run([sys.executable, "-m", "pytest"])
     if rc:
         print("CONTROLLER_DECISION BLOCKED_TEST_FAILURE")
         return rc
-
     for _ in range(max_iterations):
         queue = load_queue()
         if not queue:
@@ -166,21 +152,18 @@ def main():
             return run_oos(bc, state)
         if REJECT in out or "SPLIT_GATE False" in out:
             print(f"CONTROLLER_BC{bc} REJECT_OR_GATE_FAIL")
-            candidate = generate_candidate(bc, state)
-            if candidate is None:
+            if generate_candidate(bc, state) is None:
                 state["history"].append({"bc": bc, "decision": "REJECT", "next": "HOLD_OR_EXHAUSTED"})
                 save_state(state)
                 return 0
             continue
         print(f"CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED")
         return 5
-
     print(f"CONTROLLER_DECISION EXHAUSTED_MAX_ITERATIONS={max_iterations}")
     state["terminal"] = True
     state["terminal_reason"] = "max_iterations"
     save_state(state)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
