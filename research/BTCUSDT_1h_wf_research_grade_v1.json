@@ -1,0 +1,190 @@
+{
+  "schema_version": 2,
+  "dataset_bars": 3624,
+  "parameters": {
+    "train_size": 1100,
+    "test_size": 500,
+    "step": 500,
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "research_grade": true
+  },
+  "window_count": 5,
+  "windows": [
+    {
+      "window": 0,
+      "train": {
+        "bars": 1100,
+        "events": 944,
+        "trades": 14,
+        "skipped_overlap_trades": 7,
+        "metrics": {
+          "trade_count": 14,
+          "win_count": 6,
+          "loss_count": 8,
+          "win_rate": 0.42857142857142855,
+          "total_return": 0.03916039743996702,
+          "avg_return": 0.0028571428571428333,
+          "profit_factor": 1.4999999999999944,
+          "max_drawdown": 0.0772553055720799
+        }
+      },
+      "test": {
+        "bars": 500,
+        "events": 429,
+        "trades": 6,
+        "skipped_overlap_trades": 1,
+        "metrics": {
+          "trade_count": 6,
+          "win_count": 2,
+          "loss_count": 4,
+          "win_rate": 0.3333333333333333,
+          "total_return": -0.0005959111959998875,
+          "avg_return": -7.517135062566164e-18,
+          "profit_factor": 0.999999999999999,
+          "max_drawdown": 0.019899999999999963
+        }
+      }
+    },
+    {
+      "window": 1,
+      "train": {
+        "bars": 1100,
+        "events": 938,
+        "trades": 15,
+        "skipped_overlap_trades": 3,
+        "metrics": {
+          "trade_count": 15,
+          "win_count": 4,
+          "loss_count": 11,
+          "win_rate": 0.26666666666666666,
+          "total_return": -0.030857079512108476,
+          "avg_return": -0.0020000000000000256,
+          "profit_factor": 0.7272727272727243,
+          "max_drawdown": 0.0679346520930102
+        }
+      },
+      "test": {
+        "bars": 500,
+        "events": 438,
+        "trades": 8,
+        "skipped_overlap_trades": 1,
+        "metrics": {
+          "trade_count": 8,
+          "win_count": 5,
+          "loss_count": 3,
+          "win_rate": 0.625,
+          "total_return": 0.06039909242987207,
+          "avg_return": 0.007453991154273624,
+          "profit_factor": 2.987730974472974,
+          "max_drawdown": 0.019899999999999852
+        }
+      }
+    },
+    {
+      "window": 2,
+      "train": {
+        "bars": 1100,
+        "events": 970,
+        "trades": 15,
+        "skipped_overlap_trades": 2,
+        "metrics": {
+          "trade_count": 15,
+          "win_count": 8,
+          "loss_count": 7,
+          "win_rate": 0.5333333333333333,
+          "total_return": 0.08096253251323415,
+          "avg_return": 0.0053087952822792606,
+          "profit_factor": 2.1375989890598435,
+          "max_drawdown": 0.02048405256319953
+        }
+      },
+      "test": {
+        "bars": 500,
+        "events": 408,
+        "trades": 9,
+        "skipped_overlap_trades": 1,
+        "metrics": {
+          "trade_count": 9,
+          "win_count": 2,
+          "loss_count": 7,
+          "win_rate": 0.2222222222222222,
+          "total_return": -0.03027921203756756,
+          "avg_return": -0.003333333333333332,
+          "profit_factor": 0.5714285714285715,
+          "max_drawdown": 0.04929334513487016
+        }
+      }
+    },
+    {
+      "window": 3,
+      "train": {
+        "bars": 1100,
+        "events": 934,
+        "trades": 18,
+        "skipped_overlap_trades": 2,
+        "metrics": {
+          "trade_count": 18,
+          "win_count": 6,
+          "loss_count": 12,
+          "win_rate": 0.3333333333333333,
+          "total_return": -0.0017866684691533186,
+          "avg_return": 8.57724385344088e-18,
+          "profit_factor": 1.0000000000000013,
+          "max_drawdown": 0.058800411683521445
+        }
+      },
+      "test": {
+        "bars": 500,
+        "events": 417,
+        "trades": 6,
+        "skipped_overlap_trades": 1,
+        "metrics": {
+          "trade_count": 6,
+          "win_count": 2,
+          "loss_count": 4,
+          "win_rate": 0.3333333333333333,
+          "total_return": -0.0005959111959999985,
+          "avg_return": -2.977941967093519e-17,
+          "profit_factor": 0.9999999999999954,
+          "max_drawdown": 0.029700999999999915
+        }
+      }
+    },
+    {
+      "window": 4,
+      "train": {
+        "bars": 1100,
+        "events": 909,
+        "trades": 18,
+        "skipped_overlap_trades": 3,
+        "metrics": {
+          "trade_count": 18,
+          "win_count": 6,
+          "loss_count": 12,
+          "win_rate": 0.3333333333333333,
+          "total_return": -0.0017866684691537627,
+          "avg_return": -9.830099697201907e-18,
+          "profit_factor": 0.9999999999999984,
+          "max_drawdown": 0.05880041168352148
+        }
+      },
+      "test": {
+        "bars": 500,
+        "events": 426,
+        "trades": 7,
+        "skipped_overlap_trades": 3,
+        "metrics": {
+          "trade_count": 7,
+          "win_count": 2,
+          "loss_count": 5,
+          "win_rate": 0.2857142857142857,
+          "total_return": -0.0232498089596882,
+          "avg_return": -0.0032930380425559994,
+          "profit_factor": 0.5389746740421597,
+          "max_drawdown": 0.02999014910200004
+        }
+      }
+    }
+  ]
+}
