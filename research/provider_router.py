@@ -7,7 +7,6 @@ part of the prompt. The local controller remains the authority.
 from __future__ import annotations
 import json
 import os
-import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -17,7 +16,7 @@ SYSTEM = """You are a strict research hypothesis generator. Generate exactly ONE
 def config(name: str):
     n = name.upper()
     defaults = {
-        "GEMINI": ("https://generativelanguage.googleapis.com/v1beta/openai/", os.getenv("GEMINI_MODEL", "gemini-3.7-flash"), "GEMINI_API_KEY"),
+        "GEMINI": ("https://generativelanguage.googleapis.com/v1beta/openai/", os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite"), "GEMINI_API_KEY"),
         "DEEPSEEK": ("https://api.deepseek.com", os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash"), "DEEPSEEK_API_KEY"),
     }
     if n in defaults:
@@ -33,7 +32,7 @@ def call(name: str, prompt: str) -> str:
     base, model, key = config(name)
     if not base or not model or not key:
         raise RuntimeError(f"provider_not_configured:{name}")
-    body = {"model": model, "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}], "temperature": 0, "max_tokens": 1200, "response_format": {"type": "json_object"}}
+    body = {"model": model, "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}], "max_tokens": 1200, "response_format": {"type": "json_object"}}
     req = urllib.request.Request(base + "/chat/completions", data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"}, method="POST")
     with urllib.request.urlopen(req, timeout=90) as r:
         data = json.loads(r.read().decode())
