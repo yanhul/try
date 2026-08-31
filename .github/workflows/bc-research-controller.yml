@@ -22,6 +22,7 @@ jobs:
     timeout-minutes: 30
     env:
       RESEARCH_MAX_ITERATIONS: 8
+      RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini,deepseek
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
@@ -36,7 +37,7 @@ jobs:
           python-version: '3.12'
       - name: Install test runner
         run: python -m pip install --upgrade pytest
-      - name: Run strict autonomous BC controller
+      - name: Run strict autonomous trading research loop
         run: python research/bc_controller.py
       - name: Persist autonomous research state
         if: always()
