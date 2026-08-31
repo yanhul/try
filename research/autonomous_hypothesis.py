@@ -10,14 +10,8 @@ import json
 from pathlib import Path
 
 REQUIRED = {
-    "bc",
-    "parent_bc",
-    "hypothesis_id",
-    "conceptual_change",
-    "evidence_sources",
-    "rationale",
-    "is_testable",
-    "oos_selection_used",
+    "bc", "parent_bc", "hypothesis_id", "conceptual_change", "evidence_sources",
+    "rationale", "is_testable", "oos_selection_used",
 }
 
 
@@ -33,10 +27,9 @@ def validate_candidate(candidate: dict, expected_bc: int, expected_parent: int) 
         return False, f"missing_fields:{','.join(missing)}"
     if candidate["bc"] != expected_bc or candidate["parent_bc"] != expected_parent:
         return False, "bc_parent_mismatch"
-    if not isinstance(candidate["conceptual_change"], str) or not candidate["conceptual_change"].strip():
-        return False, "conceptual_change_empty"
-    if isinstance(candidate["conceptual_change"], list):
-        return False, "multiple_conceptual_changes"
+    change = candidate["conceptual_change"]
+    if isinstance(change, list) or not isinstance(change, str) or not change.strip():
+        return False, "exactly_one_conceptual_change_required"
     sources = candidate["evidence_sources"]
     if not isinstance(sources, list) or not sources or any(not isinstance(x, str) or not x.strip() for x in sources):
         return False, "evidence_sources_required"
