@@ -1,4 +1,4 @@
-﻿from dataclasses import dataclass
+from dataclasses import dataclass
 from typing import Optional
 
 from .events import Direction, Event, EventType, MarketBar
@@ -13,7 +13,8 @@ class FVGZone:
 
 
 class ReferenceStrategy:
-    def __init__(self):
+    def __init__(self, strict_sequence: bool = False):
+        self.strict_sequence = strict_sequence
         self.reset()
 
     def reset(self):
@@ -60,9 +61,11 @@ class ReferenceStrategy:
             # ------------------------------------------------
             if self._sweep is not None and i >= 1:
                 prev = bars[i - 1]
+                mss_allowed = (not self.strict_sequence) or (i > self._sweep.bar_index)
 
                 if (
-                    self._sweep.direction == Direction.BULLISH
+                    mss_allowed
+                    and self._sweep.direction == Direction.BULLISH
                     and bar.close > prev.high
                 ):
                     event = Event(
@@ -76,7 +79,8 @@ class ReferenceStrategy:
                     self._sweep = event
 
                 elif (
-                    self._sweep.direction == Direction.BEARISH
+                    mss_allowed
+                    and self._sweep.direction == Direction.BEARISH
                     and bar.close < prev.low
                 ):
                     event = Event(
