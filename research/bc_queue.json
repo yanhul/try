@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "rules": {
+    "oos_selection": false,
+    "one_conceptual_change": true,
+    "missing_decision_blocks": true,
+    "rejected_candidate_requires_failure_analysis": true
+  },
+  "candidates": [
+    {"name": "BC5", "audit_script": "audit_bc5_fast_gate.py"}
+  ]
+}
