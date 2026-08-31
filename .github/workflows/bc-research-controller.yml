@@ -22,7 +22,11 @@ jobs:
     timeout-minutes: 30
     env:
       RESEARCH_MAX_ITERATIONS: 8
-      RESEARCH_AGENT_COMMAND: ${{ vars.RESEARCH_AGENT_COMMAND }}
+      RESEARCH_PROVIDER_ORDER: gemini,deepseek
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: gemini-3.7-flash
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      DEEPSEEK_MODEL: deepseek-v4-flash
     steps:
       - name: Checkout
         uses: actions/checkout@v4
