@@ -1,0 +1,127 @@
+﻿//@version=6
+indicator("Trading Research V1.1 Reference", overlay=true, max_labels_count=500)
+
+// Exact reference state machine:
+// Liquidity Sweep -> MSS -> FVG -> Retest
+
+const int NONE = 0
+const int BULL = 1
+const int BEAR = -1
+
+var int state = NONE
+var int fvgDirection = NONE
+var int fvgCreatedBar = na
+var float fvgLower = na
+var float fvgUpper = na
+
+// ------------------------------------------------------------
+// Sweep
+// ------------------------------------------------------------
+
+if bar_index >= 1
+    if low < low[1] and close > low[1]
+        state := BULL
+
+        label.new(
+             bar_index,
+             low,
+             "LIQUIDITY_SWEEP\nBULLISH",
+             style=label.style_label_up)
+
+    else if high > high[1] and close < high[1]
+        state := BEAR
+
+        label.new(
+             bar_index,
+             high,
+             "LIQUIDITY_SWEEP\nBEARISH",
+             style=label.style_label_down)
+
+// ------------------------------------------------------------
+// MSS
+// ------------------------------------------------------------
+
+if bar_index >= 1
+    if state == BULL and close > high[1]
+        state := BULL
+
+        label.new(
+             bar_index,
+             high[1],
+             "MSS\nBULLISH",
+             style=label.style_label_up)
+
+    else if state == BEAR and close < low[1]
+        state := BEAR
+
+        label.new(
+             bar_index,
+             low[1],
+             "MSS\nBEARISH",
+             style=label.style_label_down)
+
+// ------------------------------------------------------------
+// FVG
+// ------------------------------------------------------------
+
+if bar_index >= 2
+    if state == BULL and low > high[2]
+        fvgDirection := BULL
+        fvgCreatedBar := bar_index
+        fvgLower := high[2]
+        fvgUpper := low
+
+        label.new(
+             bar_index,
+             fvgLower,
+             "FVG\nBULLISH",
+             style=label.style_label_up)
+
+    else if state == BEAR and high < low[2]
+        fvgDirection := BEAR
+        fvgCreatedBar := bar_index
+        fvgLower := high
+        fvgUpper := low[2]
+
+        label.new(
+             bar_index,
+             fvgUpper,
+             "FVG\nBEARISH",
+             style=label.style_label_down)
+
+// ------------------------------------------------------------
+// Retest
+// ------------------------------------------------------------
+
+if not na(fvgCreatedBar) and bar_index > fvgCreatedBar
+    if fvgDirection == BULL and
+       low <= fvgUpper and
+       high >= fvgLower and
+       close >= fvgLower
+
+        label.new(
+             bar_index,
+             close,
+             "RETEST\nBULLISH",
+             style=label.style_label_up)
+
+        fvgDirection := NONE
+        fvgCreatedBar := na
+        fvgLower := na
+        fvgUpper := na
+
+    else if fvgDirection == BEAR and
+            high >= fvgLower and
+            low <= fvgUpper and
+            close <= fvgUpper
+
+        label.new(
+             bar_index,
+             close,
+             "RETEST\nBEARISH",
+             style=label.style_label_down)
+
+        fvgDirection := NONE
+        fvgCreatedBar := na
+        fvgLower := na
+        fvgUpper := na

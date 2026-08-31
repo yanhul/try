@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "hypothesis_selection": "pre_registered_fixed_rules",
+    "parameter_selection": "none",
+    "execution": "shared_reference_execution",
+    "oos": "descriptive_only_after_is_validation_gate"
+  },
+  "dataset": {
+    "bars": 3624,
+    "sha256": "3bdceadce63575b351c83e867c7b69339ab7e034ba4f109a5cc8167d469209a5"
+  },
+  "execution": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "round_trip_cost": 0.0
+  },
+  "hypotheses": {
+    "baseline": {
+      "IS": {
+        "candidate_trades": 39,
+        "accepted_signals": 39,
+        "skipped_overlap_trades": 9,
+        "metrics": {
+          "trade_count": 30,
+          "win_count": 12,
+          "loss_count": 18,
+          "win_rate": 0.4,
+          "total_return": 0.058365230408599755,
+          "avg_return": 0.0019999999999999996,
+          "profit_factor": 1.3333333333333335,
+          "max_drawdown": 0.0772553055720799
+        }
+      },
+      "VALIDATION": {
+        "candidate_trades": 11,
+        "accepted_signals": 11,
+        "skipped_overlap_trades": 2,
+        "metrics": {
+          "trade_count": 9,
+          "win_count": 3,
+          "loss_count": 6,
+          "win_rate": 0.3333333333333333,
+          "total_return": -0.0008937336144638763,
+          "avg_return": -3.5465457731081387e-17,
+          "profit_factor": 0.9999999999999947,
+          "max_drawdown": 0.049009950100000275
+        }
+      },
+      "validation_passed": false,
+      "OOS": null
+    },
+    "sweep_confirmation": {
+      "IS": {
+        "candidate_trades": 39,
+        "accepted_signals": 5,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 5,
+          "win_count": 3,
+          "loss_count": 2,
+          "win_rate": 0.6,
+          "total_return": 0.040089960799999824,
+          "avg_return": 0.007999999999999978,
+          "profit_factor": 2.9999999999999836,
+          "max_drawdown": 0.019900000000000036
+        }
+      },
+      "VALIDATION": {
+        "candidate_trades": 11,
+        "accepted_signals": 1,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 1,
+          "win_count": 0,
+          "loss_count": 1,
+          "win_rate": 0.0,
+          "total_return": -0.010000000000000009,
+          "avg_return": -0.010000000000000061,
+          "profit_factor": 0.0,
+          "max_drawdown": 0.010000000000000009
+        }
+      },
+      "validation_passed": false,
+      "OOS": null
+    },
+    "sweep_wide_effort": {
+      "IS": {
+        "candidate_trades": 39,
+        "accepted_signals": 4,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 4,
+          "win_count": 3,
+          "loss_count": 1,
+          "win_rate": 0.75,
+          "total_return": 0.05059592000000013,
+          "avg_return": 0.012499999999999989,
+          "profit_factor": 5.999999999999973,
+          "max_drawdown": 0.009999999999999986
+        }
+      },
+      "VALIDATION": {
+        "candidate_trades": 11,
+        "accepted_signals": 1,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 1,
+          "win_count": 0,
+          "loss_count": 1,
+          "win_rate": 0.0,
+          "total_return": -0.010000000000000009,
+          "avg_return": -0.010000000000000061,
+          "profit_factor": 0.0,
+          "max_drawdown": 0.010000000000000009
+        }
+      },
+      "validation_passed": false,
+      "OOS": null
+    },
+    "quiet_retest": {
+      "IS": {
+        "candidate_trades": 39,
+        "accepted_signals": 20,
+        "skipped_overlap_trades": 4,
+        "metrics": {
+          "trade_count": 16,
+          "win_count": 5,
+          "loss_count": 11,
+          "win_rate": 0.3125,
+          "total_return": -0.011474221102349969,
+          "avg_return": -0.0006249999999999836,
+          "profit_factor": 0.9090909090909112,
+          "max_drawdown": 0.04985988187461549
+        }
+      },
+      "VALIDATION": {
+        "candidate_trades": 11,
+        "accepted_signals": 7,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 7,
+          "win_count": 3,
+          "loss_count": 4,
+          "win_rate": 0.42857142857142855,
+          "total_return": 0.019392170580079915,
+          "avg_return": 0.002857142857142833,
+          "profit_factor": 1.4999999999999947,
+          "max_drawdown": 0.02970100000000006
+        }
+      },
+      "validation_passed": true,
+      "OOS": {
+        "candidate_trades": 14,
+        "accepted_signals": 4,
+        "skipped_overlap_trades": 0,
+        "metrics": {
+          "trade_count": 4,
+          "win_count": 1,
+          "loss_count": 3,
+          "win_rate": 0.25,
+          "total_return": -0.00124058988147413,
+          "avg_return": -0.00023571771424736257,
+          "profit_factor": 0.9549789107984314,
+          "max_drawdown": 0.010933442148419648
+        }
+      }
+    }
+  }
+}

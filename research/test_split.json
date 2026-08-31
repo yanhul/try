@@ -1,0 +1,54 @@
+{
+  "dataset_bars": 3624,
+  "parameters": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0
+  },
+  "splits": {
+    "IS": {
+      "bars": 2174,
+      "events": 1870,
+      "trades": 41,
+      "metrics": {
+        "trade_count": 41,
+        "win_count": 20,
+        "loss_count": 21,
+        "win_rate": 0.4878048780487805,
+        "total_return": 0.34530418070866054,
+        "avg_return": 0.007496901574548486,
+        "profit_factor": 2.2067265574108226,
+        "max_drawdown": 0.09620513311615399
+      }
+    },
+    "VALIDATION": {
+      "bars": 725,
+      "events": 584,
+      "trades": 15,
+      "metrics": {
+        "trade_count": 15,
+        "win_count": 5,
+        "loss_count": 10,
+        "win_rate": 0.3333333333333333,
+        "total_return": -0.02600854273980735,
+        "avg_return": -0.0016609160818827325,
+        "profit_factor": 0.7678727233175764,
+        "max_drawdown": 0.0782276817832163
+      }
+    },
+    "OOS": {
+      "bars": 725,
+      "events": 623,
+      "trades": 14,
+      "metrics": {
+        "trade_count": 14,
+        "win_count": 5,
+        "loss_count": 9,
+        "win_rate": 0.35714285714285715,
+        "total_return": -0.0026055294921198957,
+        "avg_return": -0.0001273600489795055,
+        "profit_factor": 0.9722555673420326,
+        "max_drawdown": 0.040348497684482364
+      }
+    }
+  }
+}

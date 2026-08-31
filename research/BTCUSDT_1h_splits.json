@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "dataset": {
+    "bars": 3624,
+    "sha256": "3bdceadce63575b351c83e867c7b69339ab7e034ba4f109a5cc8167d469209a5"
+  },
+  "parameters": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0
+  },
+  "execution": {
+    "round_trip_cost": 0.0,
+    "max_concurrent": 1,
+    "overlap_policy": "skip_until_flat",
+    "split_warmup": "causal_history_before_split_end"
+  },
+  "dataset_bars": 3624,
+  "splits": {
+    "IS": {
+      "bars": 2174,
+      "events": 1870,
+      "trades": 30,
+      "skipped_overlap_trades": 9,
+      "metrics": {
+        "trade_count": 30,
+        "win_count": 12,
+        "loss_count": 18,
+        "win_rate": 0.4,
+        "total_return": 0.058365230408599755,
+        "avg_return": 0.0019999999999999996,
+        "profit_factor": 1.3333333333333335,
+        "max_drawdown": 0.0772553055720799
+      }
+    },
+    "VALIDATION": {
+      "bars": 725,
+      "events": 585,
+      "trades": 9,
+      "skipped_overlap_trades": 2,
+      "metrics": {
+        "trade_count": 9,
+        "win_count": 3,
+        "loss_count": 6,
+        "win_rate": 0.3333333333333333,
+        "total_return": -0.0008937336144638763,
+        "avg_return": -3.5465457731081387e-17,
+        "profit_factor": 0.9999999999999947,
+        "max_drawdown": 0.049009950100000275
+      }
+    },
+    "OOS": {
+      "bars": 725,
+      "events": 628,
+      "trades": 11,
+      "skipped_overlap_trades": 3,
+      "metrics": {
+        "trade_count": 11,
+        "win_count": 3,
+        "loss_count": 8,
+        "win_rate": 0.2727272727272727,
+        "total_return": -0.03605295614585258,
+        "avg_return": -0.003264832632264279,
+        "profit_factor": 0.551085513063661,
+        "max_drawdown": 0.05880041168352161
+      }
+    }
+  }
+}

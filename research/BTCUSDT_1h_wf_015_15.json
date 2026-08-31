@@ -1,0 +1,76 @@
+{
+  "dataset_bars": 3624,
+  "parameters": {
+    "stop_fraction": 0.015,
+    "reward_multiple": 1.5
+  },
+  "window_count": 2,
+  "windows": [
+    {
+      "window": 0,
+      "train": {
+        "bars": 2174,
+        "events": 1870,
+        "trades": 41,
+        "metrics": {
+          "trade_count": 41,
+          "win_count": 21,
+          "loss_count": 20,
+          "win_rate": 0.5121951219512195,
+          "total_return": 0.26326909820430733,
+          "avg_return": 0.006017860018010085,
+          "profit_factor": 1.6878201763270848,
+          "max_drawdown": 0.10127069688575502
+        }
+      },
+      "test": {
+        "bars": 725,
+        "events": 584,
+        "trades": 15,
+        "metrics": {
+          "trade_count": 15,
+          "win_count": 7,
+          "loss_count": 8,
+          "win_rate": 0.4666666666666667,
+          "total_return": 0.025181330115880973,
+          "avg_return": 0.0018254394211969268,
+          "profit_factor": 1.2304282046143427,
+          "max_drawdown": 0.06623768416462454
+        }
+      }
+    },
+    {
+      "window": 1,
+      "train": {
+        "bars": 2174,
+        "events": 1834,
+        "trades": 39,
+        "metrics": {
+          "trade_count": 39,
+          "win_count": 19,
+          "loss_count": 20,
+          "win_rate": 0.48717948717948717,
+          "total_return": 0.22732663671984077,
+          "avg_return": 0.005589451697215931,
+          "profit_factor": 1.5999372560971779,
+          "max_drawdown": 0.05766709068551861
+        }
+      },
+      "test": {
+        "bars": 725,
+        "events": 623,
+        "trades": 14,
+        "metrics": {
+          "trade_count": 14,
+          "win_count": 6,
+          "loss_count": 8,
+          "win_rate": 0.42857142857142855,
+          "total_return": -0.008318339100169214,
+          "avg_return": -0.00048508388835252596,
+          "profit_factor": 0.9297661747512271,
+          "max_drawdown": 0.06322398795415328
+        }
+      }
+    }
+  ]
+}
