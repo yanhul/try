@@ -24,8 +24,6 @@ def trade_return(t: Trade, round_trip_cost: float = 0.0) -> float:
     else:
         raise ValueError("invalid direction")
 
-    # Simple notional transaction-cost model. Slippage remains explicit in
-    # the fill model; this parameter is for fees/other proportional costs.
     return gross - round_trip_cost
 
 

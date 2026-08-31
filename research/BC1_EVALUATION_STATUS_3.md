@@ -1,0 +1,1 @@
+BC1 evaluation guard is implemented on the audit branch. The research-grade rerun is required before robustness claims.

@@ -1,4 +1,4 @@
-﻿from dataclasses import dataclass
+from dataclasses import dataclass
 from typing import Optional
 
 from .events import Direction, Event, EventType, MarketBar
@@ -13,13 +13,26 @@ class FVGZone:
 
 
 class ReferenceStrategy:
-    def __init__(self):
+    def __init__(
+        self,
+        strict_sequence: bool = False,
+        require_sweep_body_alignment: bool = False,
+    ):
+        self.strict_sequence = strict_sequence
+        self.require_sweep_body_alignment = require_sweep_body_alignment
         self.reset()
 
     def reset(self):
         self.events = []
         self._sweep: Optional[Event] = None
         self._fvg: Optional[FVGZone] = None
+
+    def _sweep_body_aligned(self, bar: MarketBar, direction: Direction) -> bool:
+        if not self.require_sweep_body_alignment:
+            return True
+        if direction == Direction.BULLISH:
+            return bar.close >= bar.open
+        return bar.close <= bar.open
 
     def process(self, bars: list[MarketBar]) -> list[Event]:
         self.reset()
@@ -33,7 +46,11 @@ class ReferenceStrategy:
             if i >= 1:
                 prev = bars[i - 1]
 
-                if bar.low < prev.low and bar.close > prev.low:
+                if (
+                    bar.low < prev.low
+                    and bar.close > prev.low
+                    and self._sweep_body_aligned(bar, Direction.BULLISH)
+                ):
                     event = Event(
                         timestamp=bar.timestamp,
                         bar_index=i,
@@ -44,7 +61,11 @@ class ReferenceStrategy:
                     self.events.append(event)
                     self._sweep = event
 
-                elif bar.high > prev.high and bar.close < prev.high:
+                elif (
+                    bar.high > prev.high
+                    and bar.close < prev.high
+                    and self._sweep_body_aligned(bar, Direction.BEARISH)
+                ):
                     event = Event(
                         timestamp=bar.timestamp,
                         bar_index=i,
@@ -60,9 +81,11 @@ class ReferenceStrategy:
             # ------------------------------------------------
             if self._sweep is not None and i >= 1:
                 prev = bars[i - 1]
+                mss_allowed = (not self.strict_sequence) or (i > self._sweep.bar_index)
 
                 if (
-                    self._sweep.direction == Direction.BULLISH
+                    mss_allowed
+                    and self._sweep.direction == Direction.BULLISH
                     and bar.close > prev.high
                 ):
                     event = Event(
@@ -76,7 +99,8 @@ class ReferenceStrategy:
                     self._sweep = event
 
                 elif (
-                    self._sweep.direction == Direction.BEARISH
+                    mss_allowed
+                    and self._sweep.direction == Direction.BEARISH
                     and bar.close < prev.low
                 ):
                     event = Event(

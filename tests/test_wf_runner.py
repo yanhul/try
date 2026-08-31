@@ -1,4 +1,4 @@
-﻿from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 from engine.wf_runner import run_walk_forward
 
@@ -25,7 +25,9 @@ def test_wf_runner(tmp_path):
         train_size=20,
         test_size=10,
         step=10,
+        research_grade=False,
     )
 
     assert result["dataset_bars"] == 40
     assert result["window_count"] == 2
+    assert result["parameters"]["research_grade"] is False
