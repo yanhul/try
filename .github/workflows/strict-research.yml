@@ -1,19 +1,15 @@
 name: strict-trading-research
-
 on:
   push:
     branches: [bc5-sweep-body-alignment]
   schedule:
     - cron: "17 */2 * * *"
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: strict-trading-research
   cancel-in-progress: false
-
 jobs:
   lifecycle:
     runs-on: ubuntu-latest
@@ -21,21 +17,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Install test dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install pytest
-
       - name: Run strict lifecycle
         run: python run_strict_lifecycle.py
-
       - name: Run frozen OOS only when a candidate was promoted
         if: success()
         run: |
@@ -44,10 +36,8 @@ jobs:
           else
             echo "OOS_STOP NO_FROZEN_CANDIDATE"
           fi
-
       - name: Full test suite
         run: python -m pytest
-
       - name: Upload lifecycle state
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,4 +47,5 @@ jobs:
             research/lifecycle_state.json
             research/bc_pending_candidate.json
             research/bc_queue.json
+            research/oos_result.json
           if-no-files-found: ignore
