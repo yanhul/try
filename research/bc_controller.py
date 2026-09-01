@@ -1,11 +1,13 @@
 from __future__ import annotations
-import hashlib, json, os, subprocess, sys
+import json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'
 FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8'))
+from contracts import validate_candidate, validate_evaluation, transition
+
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
@@ -41,7 +43,7 @@ def oos_once(bc,candidate):
   result=load(out,{})
   if result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True: print('OOS_HOLD_EXISTING_ARTIFACT_INVALID'); return None
   return result
- rc,outlog=run([sys.executable,'-m','engine.oos_runner','--candidate',str(freeze),'--data','data/BTCUSDT_1h.csv','--protocol','research/oos_protocol.json','--out',str(out)])
+ rc,_=run([sys.executable,'-m','engine.oos_runner','--candidate',str(freeze),'--data','data/BTCUSDT_1h.csv','--protocol','research/oos_protocol.json','--out',str(out)])
  if rc or not out.exists(): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR BC{bc}'); return None
  return load(out,{})
 def main():
@@ -54,7 +56,7 @@ def main():
   failure=FAILURE_DIR/f'BC{parent}.json'
   if not failure.exists(): print(f'CONTROLLER_DECISION HOLD_NO_FAILURE_ANALYSIS BC{parent}'); return 0
   if not regenerate(expected,parent,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{expected}'); return 0
-  candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]
+  candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); validate_candidate(candidate); write_queue([candidate]); q=[candidate]
  for _ in range(MAX):
   q=normalize_queue(s)
   if not q: print('CONTROLLER_DECISION HOLD_EMPTY_QUEUE'); return 0
@@ -62,15 +64,20 @@ def main():
   if not g: print(f'CONTROLLER_DECISION HOLD_NO_GATE BC{bc}'); return 0
   try:
    from autonomous_hypothesis import load_candidate
-   cand=load_candidate(candidate,bc,parent)
+   cand=load_candidate(candidate,bc,parent); validate_candidate(cand); c=cand; write_queue([c])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_REPAIR BC{bc}'); return 0
-   cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
+   cand=load_candidate(candidate,bc,parent); validate_candidate(cand); c=cand; write_queue([cand])
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; save(s); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'
-  rc_eval,out_eval=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
+  rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
   if rc_eval: print(f'CONTROLLER_DECISION HOLD_EVALUATOR BC{bc}'); return 0
+  try:
+   evaluation=load(evidence,{})
+   validate_evaluation(evaluation,c)
+  except Exception as exc:
+   print(f'CONTROLLER_DECISION HOLD_EVALUATION_CONTRACT BC{bc} reason={exc}'); return 0
   rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
   if rc:return rc
   if PROMOTE in out:
@@ -78,16 +85,16 @@ def main():
    if result is None:return 0
    passed=result.get('oos_passed') is True
    decision='OOS_PASS' if passed else 'OOS_FAIL'
-   s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
+   s=transition(s,PROMOTE,bc,c['candidate_hash']); s['history'][-1].update({'hypothesis_id':c['hypothesis_id'],'oos_verdict':decision})
    s['oos_consumed'].append(c['candidate_hash']) if c['candidate_hash'] not in s.get('oos_consumed',[]) else None
-   s['terminal']=True; s['terminal_reason']=decision; s['next_bc']=bc+1; write_queue([]); save(s)
+   s['terminal']=True; s['terminal_reason']=decision; write_queue([]); save(s)
    print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
   if REJECT not in out and 'SPLIT_GATE False' not in out: print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
-  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; save(s)
+  write_queue([]); s=transition(s,REJECT,bc,c['candidate_hash']); s['history'][-1].update({'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); save(s)
   failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): print(f'CONTROLLER_DECISION HOLD_NO_FAILURE_ANALYSIS BC{bc}'); return 0
   nxt=bc+1
   if not regenerate(nxt,bc,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{nxt}'); return 0
-  candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); print(f'CONTROLLER_NEXT BC{nxt}')
+  candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); validate_candidate(candidate); write_queue([candidate]); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); save(s); return 0
 if __name__=='__main__': raise SystemExit(main())
