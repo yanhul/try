@@ -167,14 +167,23 @@
       "decision": "REJECT",
       "hypothesis_id": "baseline",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 30,
+      "candidate_hash": "324b38c603df3f7d8a52b74ac49ddb2b5ed13ebebdb13b27c41eb1b02432581b",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "quiet_retest",
+      "oos_verdict": "OOS_FAIL"
     }
   ],
-  "iterations": 31,
+  "iterations": 32,
   "last_bc": 30,
-  "next_bc": 30,
-  "oos_consumed": [],
+  "next_bc": 31,
+  "oos_consumed": [
+    "324b38c603df3f7d8a52b74ac49ddb2b5ed13ebebdb13b27c41eb1b02432581b"
+  ],
   "state_reset_reason": "clean strict autonomous lifecycle reset; prior BC2-BC30 progress invalidated",
-  "terminal": false,
-  "terminal_reason": null,
-  "updated_at": "2026-09-01T04:42:41.914885+00:00"
+  "terminal": true,
+  "terminal_reason": "OOS_FAIL",
+  "updated_at": "2026-09-01T04:42:57.355210+00:00"
 }
