@@ -50,7 +50,11 @@ def main():
    if not failure.exists() or not regenerate(bc,parent,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_REPAIR BC{bc}'); return 0
    cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; save(s); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
-  rc,out=run([sys.executable,g.name]+([str(bc)] if g.name=='audit_bc_fast_gate.py' else []))
+  evidence=ROOT/'research'/f'bc{bc}_validation_result.json'
+  rc_eval,out_eval=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
+  if rc_eval:
+   print(f'CONTROLLER_DECISION HOLD_EVALUATOR BC{bc}'); return 0
+  rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
   if rc:return rc
   if PROMOTE in out: print(f'CONTROLLER_DECISION BC{bc}_PROMOTED'); return 0
   if REJECT not in out and 'SPLIT_GATE False' not in out: print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
