@@ -1,0 +1,13 @@
+{
+  "bc": 1,
+  "parent_bc": 0,
+  "hypothesis_id": "baseline_reference_v1",
+  "conceptual_change": "baseline reference strategy as the registered starting candidate",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
+    "research/BTCUSDT_1h_result_v2.json"
+  ],
+  "rationale": "Bootstrap the autonomous lifecycle from the existing pre-registered baseline so the first rejection and subsequent agent hypothesis generation are traceable.",
+  "is_testable": true,
+  "oos_selection_used": false
+}
