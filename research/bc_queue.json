@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "bc": 14,
+    "candidate_hash": "e3accd174b5a0975d3f45ade85520a41c350f2ebd3d35004e2839f2b06ec68b3",
+    "conceptual_change": "Shift from confirming sweep liquidity to measuring mean-reversion stability following low-volatility price retests.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+    ],
+    "hypothesis_id": "quiet_retest",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 13,
+    "rationale": "Previous failure analysis indicated missing validation evidence for broad sweep signals; this hypothesis pivots to a focused, quieter retest mechanism to ensure signal robustness before broader trend confirmation."
+  }
+]

@@ -1,13 +1,13 @@
 {
   "bc": 14,
-  "candidate_hash": "78bd06bc682e2131c964ba40e86e821f608566100e8d35523615fb20d6cc5ee4",
-  "conceptual_change": "Introduce a state-based execution class that enforces a 0.1% price deviation threshold relative to the SMA value before triggering order placement.",
+  "candidate_hash": "e3accd174b5a0975d3f45ade85520a41c350f2ebd3d35004e2839f2b06ec68b3",
+  "conceptual_change": "Shift from confirming sweep liquidity to measuring mean-reversion stability following low-volatility price retests.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v9",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 13,
-  "rationale": "The previous rejection indicated that the conceptual change required an explicit engine implementation; therefore, this hypothesis focuses on the architectural implementation of the threshold logic within the execution module."
+  "rationale": "Previous failure analysis indicated missing validation evidence for broad sweep signals; this hypothesis pivots to a focused, quieter retest mechanism to ensure signal robustness before broader trend confirmation."
 }

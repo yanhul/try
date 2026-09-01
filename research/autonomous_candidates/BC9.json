@@ -1,13 +1,13 @@
 {
   "bc": 9,
-  "candidate_hash": "275bf293f054ecbaa057c09b2d1badd1cb4ac172d64cca37a75298a81358582c",
-  "conceptual_change": "Implement a deterministic state-transition buffer class in the backtesting engine that requires a confirmation 1h candle signal to align with the trend direction before triggering the order placement logic.",
+  "candidate_hash": "1f3764bc7bcb3e003da9e9d1ae62d0340dbe1a5b81eb0ff672985f554e6bb274",
+  "conceptual_change": "Shift from aggressive sweep confirmation to a mean-reversion retest model to filter false breakouts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v4",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 8,
-  "rationale": "The previous rejection indicated that the conceptual change for a cooldown period could not be evaluated without an explicit implementation of the execution engine. This hypothesis addresses the requirement by formalizing the state-transition buffer logic into the engine implementation."
+  "rationale": "Previous failure indicated insufficient validation; by moving to quiet_retest, we prioritize price stabilization post-sweep, reducing exposure to failed momentum moves identified in the baseline."
 }

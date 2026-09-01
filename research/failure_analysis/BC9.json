@@ -2,12 +2,11 @@
   "bc": 9,
   "parent_bc": 8,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v4",
-  "conceptual_change": "Implement a deterministic state-transition buffer class in the backtesting engine that requires a confirmation 1h candle signal to align with the trend direction before triggering the order placement logic.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "quiet_retest",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

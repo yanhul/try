@@ -2,12 +2,11 @@
   "bc": 6,
   "parent_bc": 5,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl",
-  "conceptual_change": "Introduce a stateful execution engine that buffers the last two SMA values to detect cross-over points for triggering market orders exactly when the 50-period SMA transitions from below to above the 200-period SMA (and vice versa) on the 1h timeframe.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "baseline",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

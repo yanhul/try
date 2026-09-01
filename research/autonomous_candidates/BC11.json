@@ -1,13 +1,13 @@
 {
   "bc": 11,
-  "candidate_hash": "9d48cfab1010f773cf329282ae9dccca0086e6421f5860b93ee20bc62bc2c099",
-  "conceptual_change": "Implement a state-transition buffer class that gates SMA crossover order execution by requiring that the 1-hour candle close is currently trading above/below the long-term trend indicator value at the moment of crossover signal generation.",
+  "candidate_hash": "3fc8f2902446da3b203441fe6b62149852ee6cef6614fd893e65368bb3efb079",
+  "conceptual_change": "Shift from sweep-confirmation logic to a pure baseline implementation to establish an initial performance floor after validation failure.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v6",
+  "hypothesis_id": "baseline",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 10,
-  "rationale": "The previous rejection noted that the conceptual change required an explicit engine implementation; this hypothesis formalizes the logic into a testable state-transition condition that enforces the requested confirmation candle alignment."
+  "rationale": "The previous attempt at sweep_confirmation failed due to missing validation evidence. Reverting to the baseline allows for the collection of foundational metrics required for future iterative adjustments."
 }

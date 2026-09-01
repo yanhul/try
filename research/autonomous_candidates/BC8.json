@@ -1,13 +1,13 @@
 {
   "bc": 8,
-  "candidate_hash": "409a493254ed0dcf3034e1f8c3d7fac54a72b6f934a293d4262c35df308c406e",
-  "conceptual_change": "Introduce a state-transition buffer that enforces a 'cooldown' period of one 1h candle after a cross event to validate trend persistence before order execution, decoupling signal generation from order placement.",
+  "candidate_hash": "bd371e8a229b0388a5f4f36c42dec89ebe188facfb894db262b72f731c8b34e0",
+  "conceptual_change": "Incorporate a confirmation trigger based on liquidity sweep mechanics rather than relying on standard quiet retest validation.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v3",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 7,
-  "rationale": "To address the unexecutable nature of the previous state machine, this hypothesis adds a quantifiable delay parameter that enables the execution engine to distinguish between signal identification and trade validation, facilitating a deterministic implementation."
+  "rationale": "Previous failure at BC 7 was due to a lack of robust validation. Implementing a sweep confirmation adds a structural requirement for price action before entry, addressing the missing validation evidence issue identified in the prior iteration."
 }

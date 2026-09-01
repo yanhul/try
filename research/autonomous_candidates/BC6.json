@@ -1,0 +1,13 @@
+{
+  "bc": 6,
+  "candidate_hash": "f6579755b5bc18acc3c64ab17c3e8328f0ab8c77d6089df103c0bdab8e8bce86",
+  "conceptual_change": "Shift from high-volatility sweep identification to a simplified baseline trend-following signal to establish a stable reference point for validation.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "baseline",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 5,
+  "rationale": "The previous attempt at a wide-sweep strategy failed due to missing validation evidence; reverting to a baseline approach allows for the collection of necessary metrics to build a solid foundation before re-introducing complex sweep logic."
+}

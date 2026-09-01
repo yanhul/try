@@ -1,13 +1,13 @@
 {
   "bc": 7,
-  "candidate_hash": "6bc78e6eed89c45ae7b2512ce9b6d3839c021d9f3897b099ab1d86abbdd4d664",
-  "conceptual_change": "Implement a deterministic state machine within the execution engine that triggers buy/sell orders only upon the completion of a candle where the 50-period SMA transitions across the 200-period SMA on the 1h timeframe, ensuring the state transition logic is decoupled from the data fetcher.",
+  "candidate_hash": "c155aaf727d39ffe8d0e2e99f9e1568c052e64dc748e1fd07ea045c48414e854",
+  "conceptual_change": "Incorporate a low-volatility retest phase following the initial signal to confirm trend continuity before entry, addressing the lack of validation depth in the baseline model.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v2",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 6,
-  "rationale": "The previous rejection was based on the unexecutable nature of the hypothesis ID. This iteration provides a specific implementation strategy for the required state machine engine to ensure the logic can be formally tested and executed."
+  "rationale": "The failure analysis indicated that the baseline hypothesis was rejected due to missing validation evidence. By implementing a 'quiet_retest' strategy, we add an explicit validation step that filters out noise-driven signals, providing the necessary evidence for evaluation."
 }

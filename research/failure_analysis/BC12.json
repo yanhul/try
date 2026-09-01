@@ -2,12 +2,11 @@
   "bc": 12,
   "parent_bc": 11,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v7",
-  "conceptual_change": "Introduce a 1-hour candle close confirmation constraint to the SMA crossover signal logic, requiring that the price at the close of the signal candle must strictly exceed (for long) or be strictly below (for short) the long-term trend indicator value, as defined in research/BTCUSDT_1h_hypotheses_v1.json.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "quiet_retest",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

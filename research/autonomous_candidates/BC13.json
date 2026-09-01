@@ -1,13 +1,13 @@
 {
   "bc": 13,
-  "candidate_hash": "05544ecceeaa223a3b262b10c4c41215f9a53024077a75fa65d4169f11ebea05",
-  "conceptual_change": "Incorporate a conditional order execution module that restricts market entry to signals where the signal candle close price deviates by a minimum of 0.1% beyond the SMA trigger value to filter out noisy crossovers.",
+  "candidate_hash": "d4523b7bb34ab21e0f1cdc5670a8f2c8d305d27a0ef98a0b08c249a0d4e1e04b",
+  "conceptual_change": "Introduce a liquidity sweep confirmation trigger to filter out low-conviction price moves prior to retest execution.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v8",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 12,
-  "rationale": "Previous failure was due to a missing implementation of the signal confirmation logic. This hypothesis provides a concrete, engine-level constraint (0.1% price deviation) to operationalize the confirmation requirement defined in the baseline research."
+  "rationale": "The failure of 'quiet_retest' indicates that simple retest logic lacks sufficient structural context. By incorporating a sweep confirmation, the model shifts from passive monitoring to identifying intentional liquidity traps, addressing the lack of validation evidence for entry setups."
 }

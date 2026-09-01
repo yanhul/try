@@ -2,12 +2,11 @@
   "bc": 11,
   "parent_bc": 10,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v6",
-  "conceptual_change": "Implement a state-transition buffer class that gates SMA crossover order execution by requiring that the 1-hour candle close is currently trading above/below the long-term trend indicator value at the moment of crossover signal generation.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "baseline",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

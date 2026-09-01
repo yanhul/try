@@ -1,13 +1,13 @@
 {
   "bc": 12,
-  "candidate_hash": "12b89db19ab883c73a4da15c08c6c2a1550043f063561a3a5dfbde796a4c9584",
-  "conceptual_change": "Introduce a 1-hour candle close confirmation constraint to the SMA crossover signal logic, requiring that the price at the close of the signal candle must strictly exceed (for long) or be strictly below (for short) the long-term trend indicator value, as defined in research/BTCUSDT_1h_hypotheses_v1.json.",
+  "candidate_hash": "fc1202231013decb94e60d2bcce060a45549315a3d766ece01022c387ffd9b28",
+  "conceptual_change": "Introduce a latency-gated verification step post-signal to filter out high-volatility noise that triggers premature entries.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v7",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 11,
-  "rationale": "The previous implementation failed due to missing architectural support; this hypothesis focuses on the logic constraint requirement derived from the baseline research trend parameters, assuming the engine integration task is handled as a prerequisite."
+  "rationale": "The failure analysis indicates the baseline hypothesis was rejected due to lack of validation evidence; adding a quiet retest mechanism will generate the necessary transactional validation data while refining entry quality."
 }

@@ -1,13 +1,13 @@
 {
   "bc": 10,
-  "candidate_hash": "b4bcc4f643a84197585f6d943f84cef8c539c9524ae181a2e3377cffb5f60d38",
-  "conceptual_change": "Introduce a state-transition buffer class that enforces a 1-hour confirmation candle alignment with the long-term trend indicator prior to SMA crossover order execution.",
+  "candidate_hash": "ebbf22e7929c1ca358691b377a78628ae69e44fe7e56818a0a4ac35121a83dcb",
+  "conceptual_change": "Incorporate a liquidity sweep verification step before triggering entries to filter out false breakouts identified in the baseline evaluation.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v5",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 9,
-  "rationale": "The previous attempt was rejected as unexecutable due to the absence of a defined implementation mechanism. This hypothesis formalizes the creation of the required engine state-transition buffer to bridge the gap between signal generation and order placement."
+  "rationale": "Since the baseline evaluation lacked sufficient validation evidence, adding a sweep confirmation constraint introduces a structural filter that requires price to reclaim liquidity levels, thereby increasing the rigor of the entry logic."
 }
