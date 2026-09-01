@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "FROZEN",
+  "selection": "candidate is frozen only after IS/VALIDATION promotion",
+  "dataset_split": "chronological OOS split returned by engine.data_split.chronological_split",
+  "parameter_policy": "use the exact frozen candidate execution parameters; no tuning after OOS begins",
+  "execution": "shared_reference_execution",
+  "metrics": ["profit_factor", "total_return", "trade_count", "max_drawdown", "win_rate"],
+  "pass_rule": {
+    "profit_factor": ">= 1.0",
+    "total_return": ">= 0.0"
+  },
+  "fail_rule": "OOS execution completes but one or more pass-rule conditions is false",
+  "missing_evidence": "HOLD",
+  "repeat_policy": "OOS may be executed at most once per frozen candidate_hash",
+  "oos_selection_used": false
+}
