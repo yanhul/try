@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_012",
-  "conceptual_change": "Implement a volatility-adjusted exit threshold by substituting the static stop-loss with a trailing stop based on the 14-period ATR relative to its 20-period moving average to dynamically manage drawdown during high volatility expansion.",
+  "conceptual_change": "Incorporate a trailing stop mechanism using a 22-period Chandelier Exit with a 3.0x ATR multiplier, replacing the existing static exit logic, and implement it within the backtesting engine to verify performance against historical training data.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

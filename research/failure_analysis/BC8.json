@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_008",
-  "conceptual_change": "Implement the ATR-based filter logic where a buy signal is only valid if the 14-period ATR is greater than 1.05 times the 20-period moving average of the ATR, evaluated over a rolling 3-bar window prior to the signal.",
+  "conceptual_change": "Introduce a trailing stop-loss mechanism based on the 22-period Chandelier Exit with a 3.0x ATR multiplier for all BTCUSDT 1h long positions to replace the static stop-loss, maintaining existing entry triggers.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

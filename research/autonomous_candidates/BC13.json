@@ -1,7 +1,7 @@
 {
   "bc": 13,
-  "candidate_hash": "7a51d7904dfcfa97ac9bd78a234a7f468f587c28ea8ad005744626aa6a319ec6",
-  "conceptual_change": "Introduce a volatility-based entry filter requiring the 14-period ATR to be above its 20-period moving average to restrict trade execution to regimes of expanding volatility, as the baseline failure in BC 12 suggests current exits are insufficient to mitigate losses during low-volatility range-bound conditions.",
+  "candidate_hash": "df600f25aba818adacc2628880e8e1a9f53585288be8feeae3c9c1edfe96baab",
+  "conceptual_change": "Implement the Chandelier Exit logic as a dynamic stop-loss module within the existing strategy class, specifically using a 22-period lookback and 3.0x ATR multiplier to override static exit conditions during trade execution.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 12,
-  "rationale": "Since the engine implementation for dynamic exits (BC 12) is pending, testing a volatility filter on the entry side allows for risk mitigation by avoiding flat or low-volatility regimes where current static stop-losses are most likely to be triggered."
+  "rationale": "The previous hypothesis (BTC_1h_012) failed execution because the engine lacked the required dynamic trailing stop mechanism. This hypothesis focuses on the technical implementation of the logic within the backtester to allow for empirical evaluation."
 }

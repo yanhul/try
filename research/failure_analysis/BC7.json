@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_007",
-  "conceptual_change": "Introduce a lookback window for the ATR threshold: require the 14-period ATR to exceed the 20-period moving average of the ATR by at least 5% during the immediate 3-bar window prior to signal generation.",
+  "conceptual_change": "Incorporate the Chandelier Exit (22-period, 3.0x ATR multiplier) directly into the execution engine codebase to replace the static stop-loss for BTCUSDT 1h long positions while keeping entry triggers identical.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

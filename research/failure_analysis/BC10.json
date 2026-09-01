@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_010",
-  "conceptual_change": "Implement the specific volatility filter by requiring the current 14-period ATR to exceed the product of 1.05 and the 20-period moving average of the ATR as a hard gate for entry signal execution.",
+  "conceptual_change": "Implement the 22-period Chandelier Exit with a 3.0x ATR multiplier as the primary exit logic to replace the existing static stop-loss, ensuring the stop value updates dynamically at each 1h candle close.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

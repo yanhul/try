@@ -1,7 +1,7 @@
 {
   "bc": 8,
-  "candidate_hash": "e170a8a39f6f32096e9cde6d9e234e88d35b4be0e4e2e54d74e4bb83f26603c7",
-  "conceptual_change": "Implement the ATR-based filter logic where a buy signal is only valid if the 14-period ATR is greater than 1.05 times the 20-period moving average of the ATR, evaluated over a rolling 3-bar window prior to the signal.",
+  "candidate_hash": "85d183370963f73592df4c869687fe7342aeaddd0dad0d800593cd5b43d98512",
+  "conceptual_change": "Introduce a trailing stop-loss mechanism based on the 22-period Chandelier Exit with a 3.0x ATR multiplier for all BTCUSDT 1h long positions to replace the static stop-loss, maintaining existing entry triggers.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 7,
-  "rationale": "The previous attempt failed due to a lack of engine implementation for the volatility-based trigger; this hypothesis provides the explicit logical constraints required to build and execute the signal filter described in BC 7."
+  "rationale": "Following the rejection of BC 7 due to implementation requirements, BC 8 formalizes the logic for the Chandelier Exit trailing stop to be integrated into the execution framework to mitigate downside risk relative to volatility as established in the baseline validation data."
 }

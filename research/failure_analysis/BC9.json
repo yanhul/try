@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_009",
-  "conceptual_change": "Incorporate the ATR-based filter logic requiring a 14-period ATR exceeding 1.05 times its 20-period moving average into the execution engine to validate entry conditions.",
+  "conceptual_change": "Incorporate a programmatic trailing stop-loss function utilizing the 22-period Chandelier Exit with a 3.0x ATR multiplier, replacing the static stop-loss logic while retaining all entry parameters defined in research/BTCUSDT_1h_hypotheses_v1.json.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

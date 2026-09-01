@@ -1,7 +1,7 @@
 {
   "bc": 15,
-  "candidate_hash": "b6c439a58dd664259bc6a8c2a855006fe660874e3356d03f0298fbe4bf7b28c3",
-  "conceptual_change": "Implement a volatility-adjusted position sizing function within the execution engine where trade size = (Portfolio_Equity * Risk_Percentage) / (ATR_14 * Multiplier), replacing fixed lot sizing to mitigate drawdown severity during range-bound volatility spikes.",
+  "candidate_hash": "53d04e540a809c8ab81ab19fc1e722440f524baef67023d60a38da09bdf267a3",
+  "conceptual_change": "Implement a 22-period ATR-based Chandelier Exit as an explicit logic gate within the trade execution engine to serve as a trailing stop-loss mechanism during active long positions.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 14,
-  "rationale": "The previous rejection noted a lack of engine implementation for the volatility-adjusted sizing model. This hypothesis formalizes the specific mathematical implementation required to translate the conceptual change into an executable logic branch within the engine."
+  "rationale": "The previous rejection was due to the lack of an engine implementation for the proposed logic. This hypothesis mandates the integration of the Chandelier Exit logic into the engine to enable the testing of the previously identified strategy of minimizing premature profit capture using ATR-based thresholds."
 }

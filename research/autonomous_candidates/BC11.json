@@ -1,7 +1,7 @@
 {
   "bc": 11,
-  "candidate_hash": "0f2ef53240ed99be12d44b89b4619b559214bce2f01b814b3db66b5e07eed693",
-  "conceptual_change": "Introduce a trailing stop-loss mechanism that triggers when the 14-period ATR reaches 1.05 times its 20-period moving average, replacing the static exit logic to better adapt to identified volatility regimes.",
+  "candidate_hash": "fd696939269dff893a1fba9f17691574cb7c701a3445780601d489a74638a1bd",
+  "conceptual_change": "Introduce a 22-period Chandelier Exit with a 3.0x ATR multiplier as a dynamic stop-loss mechanism to replace static exit logic, evaluated exclusively on training data.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 10,
-  "rationale": "The failure analysis in BC 10 confirmed that the ATR-based volatility filter is a viable gate for entry; transitioning this logic to a dynamic trailing stop ensures that the strategy exits positions during high-volatility regime shifts identified in the baseline validation data."
+  "rationale": "The previous rejection was due to the absence of a concrete implementation of the dynamic exit logic. This hypothesis formalizes the technical requirement for the Chandelier Exit engine to replace the failing static stop-loss strategy."
 }

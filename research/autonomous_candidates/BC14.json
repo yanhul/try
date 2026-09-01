@@ -1,7 +1,7 @@
 {
   "bc": 14,
-  "candidate_hash": "494fdf618fde5255ecf91e93c55b1f82601439fe51f3e869fcac657f69547a97",
-  "conceptual_change": "Implement a volatility-adjusted position sizing model where the trade size is inversely proportional to the 14-period ATR to normalize risk across high and low volatility regimes, addressing the loss magnitude issues identified in the baseline during range-bound periods.",
+  "candidate_hash": "474c74359ee56be661c18bdd47d28e8b5afcf20fdef13a158768e02a7271424d",
+  "conceptual_change": "Incorporate the Chandelier Exit logic as an optional exit override function within the trade execution loop, triggered only when the 22-period ATR-based threshold is breached to minimize premature profit capture.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 13,
-  "rationale": "The failure analysis in BC 13 suggests that current exits fail during low-volatility conditions; adjusting position size dynamically based on ATR allows the system to scale down risk exposure when volatility is low, rather than attempting to filter trades entirely."
+  "rationale": "The previous rejection indicated the need for an explicit engine implementation of the Chandelier Exit. By refactoring the execution loop to include this logic as a modular override, we bridge the gap between architectural design and evaluable strategy logic."
 }

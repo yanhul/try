@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_011",
-  "conceptual_change": "Introduce a trailing stop-loss mechanism that triggers when the 14-period ATR reaches 1.05 times its 20-period moving average, replacing the static exit logic to better adapt to identified volatility regimes.",
+  "conceptual_change": "Introduce a 22-period Chandelier Exit with a 3.0x ATR multiplier as a dynamic stop-loss mechanism to replace static exit logic, evaluated exclusively on training data.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
