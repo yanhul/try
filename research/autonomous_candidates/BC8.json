@@ -1,14 +1,13 @@
 {
   "bc": 8,
-  "candidate_hash": "85d183370963f73592df4c869687fe7342aeaddd0dad0d800593cd5b43d98512",
-  "conceptual_change": "Introduce a trailing stop-loss mechanism based on the 22-period Chandelier Exit with a 3.0x ATR multiplier for all BTCUSDT 1h long positions to replace the static stop-loss, maintaining existing entry triggers.",
+  "candidate_hash": "409a493254ed0dcf3034e1f8c3d7fac54a72b6f934a293d4262c35df308c406e",
+  "conceptual_change": "Introduce a state-transition buffer that enforces a 'cooldown' period of one 1h candle after a cross event to validate trend persistence before order execution, decoupling signal generation from order placement.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_008",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v3",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 7,
-  "rationale": "Following the rejection of BC 7 due to implementation requirements, BC 8 formalizes the logic for the Chandelier Exit trailing stop to be integrated into the execution framework to mitigate downside risk relative to volatility as established in the baseline validation data."
+  "rationale": "To address the unexecutable nature of the previous state machine, this hypothesis adds a quantifiable delay parameter that enables the execution engine to distinguish between signal identification and trade validation, facilitating a deterministic implementation."
 }

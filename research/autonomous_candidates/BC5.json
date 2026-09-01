@@ -1,14 +1,13 @@
 {
   "bc": 5,
-  "candidate_hash": "e0da1c51bafe5ce6352a80a3a47cea3fb733dd5be92f13c0ff97d0ae8bf19079",
-  "conceptual_change": "Incorporate a Chandelier Exit trailing stop (22-period, 3.0x multiplier) to replace static stop-loss parameters, aiming to capture extended trend momentum while protecting against volatility spikes.",
+  "candidate_hash": "8a67c7ab2a5a52bc86d049ca6c4a766e0729f71f6c3a6af5e924ee7ae15752d9",
+  "conceptual_change": "Implement a deterministic order execution module that triggers a market buy order when the 50-period SMA crosses above the 200-period SMA and a market sell order when the 50-period SMA crosses below the 200-period SMA on the 1h timeframe.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_005",
+  "hypothesis_id": "sma_crossover_execution_engine_v1",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 4,
-  "rationale": "Since the engine infrastructure for volatility-based indicators like ATR was mandated in the previous BC, applying an ATR-based trailing exit mechanism is now executable and addresses the failure to sustain gains during prolonged trends."
+  "rationale": "The previous attempt was rejected due to a lack of an executable implementation. Defining the explicit signal-to-order mapping allows for the technical validation of the strategy within the execution engine as required by the failure analysis of BC 4."
 }

@@ -3,11 +3,10 @@
   "parent_bc": 8,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_009",
-  "conceptual_change": "Incorporate a programmatic trailing stop-loss function utilizing the 22-period Chandelier Exit with a 3.0x ATR multiplier, replacing the static stop-loss logic while retaining all entry parameters defined in research/BTCUSDT_1h_hypotheses_v1.json.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v4",
+  "conceptual_change": "Implement a deterministic state-transition buffer class in the backtesting engine that requires a confirmation 1h candle signal to align with the trend direction before triggering the order placement logic.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

@@ -3,11 +3,10 @@
   "parent_bc": 4,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_005",
-  "conceptual_change": "Incorporate a Chandelier Exit trailing stop (22-period, 3.0x multiplier) to replace static stop-loss parameters, aiming to capture extended trend momentum while protecting against volatility spikes.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1",
+  "conceptual_change": "Implement a deterministic order execution module that triggers a market buy order when the 50-period SMA crosses above the 200-period SMA and a market sell order when the 50-period SMA crosses below the 200-period SMA on the 1h timeframe.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

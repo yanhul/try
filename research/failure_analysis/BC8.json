@@ -3,11 +3,10 @@
   "parent_bc": 7,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_008",
-  "conceptual_change": "Introduce a trailing stop-loss mechanism based on the 22-period Chandelier Exit with a 3.0x ATR multiplier for all BTCUSDT 1h long positions to replace the static stop-loss, maintaining existing entry triggers.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v3",
+  "conceptual_change": "Introduce a state-transition buffer that enforces a 'cooldown' period of one 1h candle after a cross event to validate trend persistence before order execution, decoupling signal generation from order placement.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

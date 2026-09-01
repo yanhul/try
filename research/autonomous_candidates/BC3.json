@@ -1,14 +1,13 @@
 {
   "bc": 3,
-  "candidate_hash": "73aff94fe8c6800211af975b38cdf5ae69a2fb21e46287352097ff9bf26bb22a",
-  "conceptual_change": "Implement an ATR-based volatility filter set at 1.5x the 14-period average to restrict entry triggers exclusively to high-momentum candles, replacing the unfiltered signal execution.",
+  "candidate_hash": "fffe72c1be1f0db9c864bb5f75ad258d289f659f0e6ba2695d93ebb606d4f298",
+  "conceptual_change": "Incorporate a dual-SMA (short-term 50, long-term 200) crossover logic into the execution framework to trigger entry and exit signals.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_003",
+  "hypothesis_id": "moving_average_crossover_v1",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 2,
-  "rationale": "The 0.33 win rate in the baseline suggests high exposure to market noise; adding an explicit volatility threshold ensures trades are only taken when price action exceeds average noise levels, directly addressing the identified underperformance."
+  "rationale": "With the engine implementation requirements established in parent BC 2, this hypothesis shifts from infrastructure to testing a specific technical indicator strategy defined in the baseline research documentation."
 }

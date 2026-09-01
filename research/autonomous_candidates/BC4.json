@@ -1,14 +1,13 @@
 {
   "bc": 4,
-  "candidate_hash": "b0e3165702dda92afe6588e1fdfdc90caa8dd7e36cc4b3151eb861fd3fa4a65f",
-  "conceptual_change": "Introduce an ATR-based volatility filter (14-period, 1.5x multiplier) as a hard condition for all entry signals to mitigate noise-induced false breakouts.",
+  "candidate_hash": "058dc5098fc81db2351b0c52b01dd9714eabc6b712181d251baaa9b38ac564ec",
+  "conceptual_change": "Integrate the dual-SMA (50/200) crossover logic into the execution framework to enable automated signal generation and order entry based on the crossover events defined in BC 3.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_004",
+  "hypothesis_id": "moving_average_crossover_v2_implementation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 3,
-  "rationale": "The previous rejection noted that the volatility filter concept was unexecutable; this hypothesis formalizes the logic into a concrete signal filter to validate if restricting entries to high-momentum conditions improves baseline precision."
+  "rationale": "The previous hypothesis (BC 3) was rejected because it lacked an implemented engine to execute the SMA logic. This hypothesis addresses the infrastructure gap by requiring the integration of the crossover logic into the codebase to facilitate testing."
 }

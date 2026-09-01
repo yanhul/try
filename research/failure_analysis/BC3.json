@@ -3,11 +3,10 @@
   "parent_bc": 2,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_003",
-  "conceptual_change": "Implement an ATR-based volatility filter set at 1.5x the 14-period average to restrict entry triggers exclusively to high-momentum candles, replacing the unfiltered signal execution.",
+  "hypothesis_id": "moving_average_crossover_v1",
+  "conceptual_change": "Incorporate a dual-SMA (short-term 50, long-term 200) crossover logic into the execution framework to trigger entry and exit signals.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

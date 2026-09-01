@@ -3,11 +3,10 @@
   "parent_bc": 3,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_004",
-  "conceptual_change": "Introduce an ATR-based volatility filter (14-period, 1.5x multiplier) as a hard condition for all entry signals to mitigate noise-induced false breakouts.",
+  "hypothesis_id": "moving_average_crossover_v2_implementation",
+  "conceptual_change": "Integrate the dual-SMA (50/200) crossover logic into the execution framework to enable automated signal generation and order entry based on the crossover events defined in BC 3.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

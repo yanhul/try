@@ -1,14 +1,13 @@
 {
   "bc": 7,
-  "candidate_hash": "b5ea30b18ebe5b926226f9daba9f98d1814b71c54daf207c742857de00918844",
-  "conceptual_change": "Incorporate the Chandelier Exit (22-period, 3.0x ATR multiplier) directly into the execution engine codebase to replace the static stop-loss for BTCUSDT 1h long positions while keeping entry triggers identical.",
+  "candidate_hash": "6bc78e6eed89c45ae7b2512ce9b6d3839c021d9f3897b099ab1d86abbdd4d664",
+  "conceptual_change": "Implement a deterministic state machine within the execution engine that triggers buy/sell orders only upon the completion of a candle where the 50-period SMA transitions across the 200-period SMA on the 1h timeframe, ensuring the state transition logic is decoupled from the data fetcher.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_007",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v2",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 6,
-  "rationale": "The previous hypothesis was rejected because the engine lacked the implementation for Chandelier Exit; this hypothesis mandates the technical integration required to make the strategy testable."
+  "rationale": "The previous rejection was based on the unexecutable nature of the hypothesis ID. This iteration provides a specific implementation strategy for the required state machine engine to ensure the logic can be formally tested and executed."
 }
