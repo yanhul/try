@@ -1,13 +1,13 @@
 {
   "bc": 26,
-  "candidate_hash": "1a90419d336ffd08bad5fefefedbf6f9734b2b8c52e8b7cd47349ecebf9ea3e3",
-  "conceptual_change": "Introduce a 0.5% price-buffer threshold for SMA crossover execution, requiring the asset price to deviate by at least 0.5% from the moving average intersection point to confirm trend strength before entry.",
+  "candidate_hash": "26f23fa9d78abe9add814372bb3fd492a5b5299ad22d3f1c6ad1d3d8683f80ab",
+  "conceptual_change": "Introduce a confirmation filter on liquidity sweeps to distinguish between momentum breakouts and false reversals, rather than purely relying on quiet retest price action.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_buffer_implementation_v5",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 25,
-  "rationale": "The previous attempt at a trailing stop-loss failed due to implementation complexity; by shifting the conceptual change to an entry-buffer threshold, we maintain the goal of reducing noise-driven signals without requiring new order-type execution logic."
+  "rationale": "Previous failure indicated a lack of validation evidence. By implementing a sweep_confirmation strategy, we move beyond simple retest monitoring toward a structural requirement for trend continuity post-liquidity sweep."
 }

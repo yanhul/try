@@ -1,13 +1,13 @@
 {
   "bc": 29,
-  "candidate_hash": "831d920b515e303be529f10923581601c4222a5ae31ced58fce848664ba5817f",
-  "conceptual_change": "Introduce a confirmation mechanism after a liquidity sweep to reduce false breakouts, instead of relying on simple price-action signatures.",
+  "candidate_hash": "1d78f19463179d432e3ddf907a57dfaa9f53b5a3afd167c8e9327626c2bdb8c0",
+  "conceptual_change": "Shift from high-sensitivity sweep confirmation to foundational trend-following baseline parameters to establish a clean performance floor prior to secondary signal refinement.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sweep_confirmation",
+  "hypothesis_id": "baseline",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 28,
-  "rationale": "The failure in BC 28 was due to missing validation evidence. By implementing a sweep_confirmation, we enforce a requirement for price to validate the liquidity grab before entering, addressing the lack of substantive signal confirmation."
+  "rationale": "The failure analysis indicates the previous hypothesis was rejected due to missing validation evidence. By reverting to the baseline, we establish a robust benchmark to verify system stability before applying more complex sweep-based filters."
 }

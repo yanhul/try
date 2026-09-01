@@ -1,13 +1,13 @@
 {
   "bc": 27,
-  "candidate_hash": "b0d89dbad932145bec74c00b1cec93a53735f9705b4cd6283ade8cdb5a0a895f",
-  "conceptual_change": "Revert to original SMA crossover logic without price-buffer constraints to establish a clean performance benchmark before introducing complex execution filters.",
+  "candidate_hash": "9ea2048a2ec19df4094ff6a99154d09437d2867f7c41945b082ff7222c2032ed",
+  "conceptual_change": "Shift from aggressive sweep validation to localized liquidity retest detection to filter out false breakouts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "baseline",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 26,
-  "rationale": "The previous attempt (BC 26) failed due to an unexecutable custom implementation. Reverting to the registered baseline provides a stable foundation to evaluate performance metrics before attempting further structural modifications."
+  "rationale": "The failure of 'sweep_confirmation' suggests that premature entry on sweep signals lacks sufficient price stability; a quiet retest approach prioritizes entry during low-volatility consolidation following a sweep to confirm structural integrity."
 }

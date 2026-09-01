@@ -2,12 +2,11 @@
   "bc": 22,
   "parent_bc": 21,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_buffer_implementation_v1",
-  "conceptual_change": "Introduce a stateful buffer variable in the execution engine to track the 0.1% price deviation threshold over a 3-candle rolling window prior to trade entry.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "baseline",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

@@ -1,13 +1,13 @@
 {
   "bc": 28,
-  "candidate_hash": "de54bc241dded2e369f0af54773585d5a467afb3f4c191b959f2d6d4f161dc41",
-  "conceptual_change": "Introduce a requirement for a low-volume retest of the liquidity sweep level to validate rejection strength.",
+  "candidate_hash": "6ec878b4d7a777398d47b9c0c9c29cd547c3202a3a62b3418caf3851a37222f9",
+  "conceptual_change": "Incorporate a liquidity sweep verification step before triggering the baseline entry mechanism to filter out low-conviction breakout signals.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "quiet_retest",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 27,
-  "rationale": "The previous baseline failed due to a lack of validation evidence; requiring a quiet retest provides the necessary structural confirmation to reduce false breakout signals."
+  "rationale": "The previous quiet_retest failed due to missing validation; adding a liquidity sweep confirmation provides a structural requirement that filters noise and ensures the trade aligns with institutional stop-run dynamics."
 }

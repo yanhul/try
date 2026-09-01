@@ -2,12 +2,11 @@
   "bc": 25,
   "parent_bc": 24,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_buffer_implementation_v4",
-  "conceptual_change": "Incorporate a fixed 0.5% trailing stop-loss relative to the entry price to limit drawdown duration, triggered immediately upon the confirmation of the SMA crossover signal.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "quiet_retest",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

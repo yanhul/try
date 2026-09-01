@@ -1,15 +1,15 @@
 [
   {
-    "bc": 22,
-    "candidate_hash": "42acd0b99ad9c899817ba187dd7a697d20d53633b511db6881e3418477e6d3b9",
-    "conceptual_change": "Reset to the core baseline model to re-establish a stable performance floor prior to introducing complex sweep-based filters.",
+    "bc": 30,
+    "candidate_hash": "324b38c603df3f7d8a52b74ac49ddb2b5ed13ebebdb13b27c41eb1b02432581b",
+    "conceptual_change": "Incorporate a low-volatility retest phase following the initial signal to filter out false breakouts identified in the baseline testing.",
     "evidence_sources": [
       "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
     ],
-    "hypothesis_id": "baseline",
+    "hypothesis_id": "quiet_retest",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 21,
-    "rationale": "The rejection of BC 21 due to missing validation evidence suggests that the current integration of 'sweep_confirmation' was not properly benchmarked against the foundational logic. Reverting to the baseline allows for a clean audit of IS/Validation metrics."
+    "parent_bc": 29,
+    "rationale": "The failure analysis indicates the baseline hypothesis was rejected due to missing validation; adding a quiet retest phase introduces a specific validation layer to verify signal strength before execution."
   }
 ]

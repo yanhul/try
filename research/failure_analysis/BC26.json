@@ -2,12 +2,11 @@
   "bc": 26,
   "parent_bc": 25,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_buffer_implementation_v5",
-  "conceptual_change": "Introduce a 0.5% price-buffer threshold for SMA crossover execution, requiring the asset price to deviate by at least 0.5% from the moving average intersection point to confirm trend strength before entry.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "sweep_confirmation",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

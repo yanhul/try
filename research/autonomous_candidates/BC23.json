@@ -1,13 +1,13 @@
 {
   "bc": 23,
-  "candidate_hash": "d2412bf56e3c431518545aefadbf5884818a77b22e3d06bf9afec8574077bdcd",
-  "conceptual_change": "Incorporate a hard-coded execution delay logic within the trade engine that mandates price stability within a 0.1% range for 3 consecutive candles before triggering the SMA crossover entry.",
+  "candidate_hash": "ed5bd3fd88d2615691640fbf6a3a1cda0a87afc71312f5e55064584e0c67ae84",
+  "conceptual_change": "Shift from a blind baseline trend-following signal to a secondary confirmation model that requires a localized price retest following a liquidity sweep.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_buffer_implementation_v2",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 22,
-  "rationale": "The previous hypothesis was rejected due to lack of an explicit implementation path. This revision defines the required engine logic as a conditional trade-entry constraint, enabling the developer to implement the stateful buffer requirement as a mandatory pre-condition to the existing SMA crossover strategy."
+  "rationale": "The rejection of the baseline hypothesis due to validation failure suggests that the signal lacks sufficient filtering for noise, necessitating the addition of a retest condition to improve entry precision."
 }

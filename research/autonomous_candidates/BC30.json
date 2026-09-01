@@ -1,13 +1,13 @@
 {
   "bc": 30,
-  "candidate_hash": "ec946fe32a1ae4b5fef5ac1bc14cb16ff964667ebcf5fc249c8364aaeb43a908",
-  "conceptual_change": "Expand the price range criteria to capture liquidity sweeps beyond the immediate baseline support levels.",
+  "candidate_hash": "324b38c603df3f7d8a52b74ac49ddb2b5ed13ebebdb13b27c41eb1b02432581b",
+  "conceptual_change": "Incorporate a low-volatility retest phase following the initial signal to filter out false breakouts identified in the baseline testing.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sweep_wide_effort",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 29,
-  "rationale": "The failure in BC 29 was due to missing validation evidence for the baseline model; sweep_wide_effort introduces a broader liquidity condition to improve robustness and validation metrics."
+  "rationale": "The failure analysis indicates the baseline hypothesis was rejected due to missing validation; adding a quiet retest phase introduces a specific validation layer to verify signal strength before execution."
 }

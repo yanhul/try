@@ -119,14 +119,62 @@
       "decision": "REJECT",
       "hypothesis_id": "sweep_confirmation",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 22,
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 23,
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 24,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 25,
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 26,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 27,
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 28,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 29,
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 20,
-  "last_bc": 21,
-  "next_bc": 22,
+  "iterations": 28,
+  "last_bc": 29,
+  "next_bc": 30,
   "oos_consumed": [],
   "state_reset_reason": "clean strict autonomous lifecycle reset; prior BC2-BC30 progress invalidated",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-01T04:23:55.574513+00:00"
+  "updated_at": "2026-09-01T04:27:13.841317+00:00"
 }
