@@ -1,7 +1,7 @@
 {
   "bc": 5,
-  "candidate_hash": "470de235fb4af708a052d28df01a55ab8443d7f4b4e6b412c02d0a685c5b86c7",
-  "conceptual_change": "Introduce a logical gate requiring the 14-period ATR to exceed a 1.5x rolling 20-period mean ATR before triggering any directional entry signals.",
+  "candidate_hash": "e0da1c51bafe5ce6352a80a3a47cea3fb733dd5be92f13c0ff97d0ae8bf19079",
+  "conceptual_change": "Incorporate a Chandelier Exit trailing stop (22-period, 3.0x multiplier) to replace static stop-loss parameters, aiming to capture extended trend momentum while protecting against volatility spikes.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 4,
-  "rationale": "The failure in BC 4 resulted from an unexecutable implementation instruction regarding a static volatility multiplier. By reframing the volatility filter as a relative comparison against the rolling mean ATR, the hypothesis becomes programmatically verifiable within the existing engine framework."
+  "rationale": "Since the engine infrastructure for volatility-based indicators like ATR was mandated in the previous BC, applying an ATR-based trailing exit mechanism is now executable and addresses the failure to sustain gains during prolonged trends."
 }

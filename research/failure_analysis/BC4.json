@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_004",
-  "conceptual_change": "Incorporate a 14-period ATR volatility multiplier of 1.5x as a mandatory threshold for trade execution, replacing the current binary trigger logic with a conditional volatility filter.",
+  "conceptual_change": "Introduce an ATR-based volatility filter (14-period, 1.5x multiplier) as a hard condition for all entry signals to mitigate noise-induced false breakouts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

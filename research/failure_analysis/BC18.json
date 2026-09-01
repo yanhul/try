@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_018",
-  "conceptual_change": "Implement a threshold filter requiring ATR(14) > 1.5 * SMA(ATR(14), 20) as a prerequisite for entry signal validation.",
+  "conceptual_change": "Introduce a conditional volatility filter into the execution engine that restricts trade entry when ATR_14 exceeds the 1.5 standard deviation threshold of its 20-period moving average.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

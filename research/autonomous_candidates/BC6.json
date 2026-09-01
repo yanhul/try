@@ -1,7 +1,7 @@
 {
   "bc": 6,
-  "candidate_hash": "d0ff04e944c235e762149b146c221dabbfde42fb52666aa635a9edc1728e3724",
-  "conceptual_change": "Incorporate a volatility threshold filter requiring the 14-period ATR to be greater than 1.5 times the 20-period moving average of the ATR prior to evaluating entry signals.",
+  "candidate_hash": "29793ef2253d998867ada3c45619888dabfb025ecf5c6339b08883f2b1e0df96",
+  "conceptual_change": "Implement the Chandelier Exit trailing stop (22-period, 3.0x ATR multiplier) as the primary exit logic for long positions to replace the previously defined static stop-loss, maintaining the same entry signal triggers.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 5,
-  "rationale": "The previous attempt (BC 5) was rejected due to lack of engine implementation for the volatility gate. Formulating this as a functional filter allows for testing the hypothesis that volatility-based gating improves directional trade entry efficiency."
+  "rationale": "The previous attempt (BTC_1h_005) was rejected solely due to an unexecutable identifier. By formalizing the implementation of the Chandelier Exit as the exit strategy, the model can now be tested against the established baseline dataset to determine if dynamic volatility-based stops improve trend capture compared to static parameters."
 }

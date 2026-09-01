@@ -1,14 +1,14 @@
 {
   "bc": 2,
-  "candidate_hash": "3f2b37121a145c4d584123ffae84f9edba030382eed7563ec7242f67e2c869d3",
-  "conceptual_change": "Implement the baseline engine execution module to enable empirical testing of the registered reference strategy.",
+  "candidate_hash": "f55a06aded4b82736a97cadd18e94a33a468c6336bc72613cdc689c533deec97",
+  "conceptual_change": "Implement core execution engine logic to enable trade simulation for the baseline reference strategy.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
     "research/BTCUSDT_1h_result_v2.json"
   ],
-  "hypothesis_id": "engine_implementation_v1",
+  "hypothesis_id": "engine_imp_v1",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 1,
-  "rationale": "The previous attempt was rejected due to the lack of an executable engine. Developing the explicit implementation enables the strategy to run, transforming a conceptual baseline into a testable simulation."
+  "rationale": "The previous baseline was rejected because the engine was unexecutable; this step provides the required implementation to allow for formal strategy testing."
 }

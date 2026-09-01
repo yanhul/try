@@ -1,10 +1,10 @@
 {
-  "bc": 19,
-  "parent_bc": 18,
+  "bc": 20,
+  "parent_bc": 19,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_019",
-  "conceptual_change": "Implement the ATR-based conditional volatility filter by hard-coding the entry restriction logic into the execution engine to prevent order submission when ATR_14 is greater than 1.5 standard deviations above its 20-period moving average.",
+  "hypothesis_id": "BTC_1h_020",
+  "conceptual_change": "Introduce a volatility-adjusted position sizing multiplier that scales down exposure linearly as the current ATR_14 value exceeds the 20-period moving average of ATR_14 by more than 1.5 standard deviations, rather than using a hard binary entry filter.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

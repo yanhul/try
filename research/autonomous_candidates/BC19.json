@@ -1,7 +1,7 @@
 {
   "bc": 19,
-  "candidate_hash": "65b0c5399476c325c5e83ca64475a66c37e29b21fa2776c1dfe1d2574a2ab01b",
-  "conceptual_change": "Introduce a volatility regime filter by requiring the current 14-period ATR to exceed 1.5 times its 20-period simple moving average prior to evaluating entry signals.",
+  "candidate_hash": "2e049926f7102ac1bfb3471a12f71a87a311e57ed71297c6e6d206e332f828fe",
+  "conceptual_change": "Implement the ATR-based conditional volatility filter by hard-coding the entry restriction logic into the execution engine to prevent order submission when ATR_14 is greater than 1.5 standard deviations above its 20-period moving average.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 18,
-  "rationale": "The previous rejection was based on missing implementation. This hypothesis formalizes the requirement for a high-volatility environment filter to potentially reduce false breakouts in low-liquidity, low-volatility periods identified in the baseline performance data."
+  "rationale": "The previous attempt (BTC_1h_018) was rejected because it proposed a logical constraint without providing the required engine implementation to execute that constraint. This hypothesis satisfies the requirement by explicitly defining the implementation step for the volatility filter."
 }

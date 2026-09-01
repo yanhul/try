@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_005",
-  "conceptual_change": "Introduce a logical gate requiring the 14-period ATR to exceed a 1.5x rolling 20-period mean ATR before triggering any directional entry signals.",
+  "conceptual_change": "Incorporate a Chandelier Exit trailing stop (22-period, 3.0x multiplier) to replace static stop-loss parameters, aiming to capture extended trend momentum while protecting against volatility spikes.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
