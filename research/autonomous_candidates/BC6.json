@@ -1,0 +1,14 @@
+{
+  "bc": 6,
+  "candidate_hash": "5952292277735a99a61de8fd8f33f448aac5bb29d6089996498beed0de972d70",
+  "conceptual_change": "Incorporate a programmatic volatility gate that calculates a 14-period ATR and restricts trade entries to intervals where current ATR is > 1.5 * 20-period moving average of ATR.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_006",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 5,
+  "rationale": "The previous attempt was rejected due to an unexecutable hypothesis identifier. This hypothesis translates the previously proposed conceptual logic into a standard, testable implementation requirement for the trading engine to filter entries based on relative volatility expansion."
+}

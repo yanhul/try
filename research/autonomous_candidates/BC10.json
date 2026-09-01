@@ -1,0 +1,14 @@
+{
+  "bc": 10,
+  "candidate_hash": "bd83ed6bf0be8a668bd82e3fb8dbce28b82f1cf7a40e8641979fad871c40d733",
+  "conceptual_change": "Incorporate a volatility-gate mechanism by requiring the 14-period ATR to exceed 1.5 times the 20-period moving average of the ATR as a mandatory filter for trade entry signals.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_010",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 9,
+  "rationale": "The previous hypothesis was rejected due to a lack of engine implementation; this hypothesis formalizes the volatility gate as a primary filter to improve signal reliability during high-volatility trending regimes as originally conceptualized."
+}

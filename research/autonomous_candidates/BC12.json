@@ -1,0 +1,14 @@
+{
+  "bc": 12,
+  "candidate_hash": "91f6123e80ba78e3edf4a891bf866556a55cb94bb192b579559ff512e8fb3c27",
+  "conceptual_change": "Introduce a volatility-gate filter to the execution engine where entry is restricted to periods where the 14-period ATR is greater than 1.5 times the 20-period moving average of ATR.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_012",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 11,
+  "rationale": "The previous hypothesis (BTC_1h_011) was rejected due to lack of an explicit engine implementation. This hypothesis operationalizes the volatility-gate requirement within the engine architecture to enable empirical testing."
+}

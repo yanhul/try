@@ -1,0 +1,14 @@
+{
+  "bc": 8,
+  "candidate_hash": "46ebb2ea50150f5d08da2344dd30f383f99367a8ca0c417962362c641506b628",
+  "conceptual_change": "Implement a deterministic volatility-gate mechanism that restricts entry signal execution to market conditions where the 14-period ATR exceeds 1.5 times the 20-period moving average of the ATR.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_008",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 7,
+  "rationale": "The previous hypothesis (BTC_1h_007) was rejected due to lack of an explicit engine implementation. This hypothesis formalizes the requirement into a deterministic logic gate to be executed by the engine to filter low-volatility regimes."
+}

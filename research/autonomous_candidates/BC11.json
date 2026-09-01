@@ -1,0 +1,14 @@
+{
+  "bc": 11,
+  "candidate_hash": "9467231f5fbfa53c6a4074b93f75b0dcd4dc6f27eda005ab3603cf6949183c81",
+  "conceptual_change": "Implement the volatility-gate mechanism by hardcoding the entry condition where 14-period ATR must exceed 1.5 times the 20-period moving average of ATR, utilizing the existing trade execution engine architecture.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_011",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 10,
+  "rationale": "The previous attempt was rejected due to lack of implementation; this hypothesis explicitly formalizes the engine integration of the previously defined volatility-gate filter to enable performance validation."
+}

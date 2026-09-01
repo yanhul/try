@@ -1,0 +1,14 @@
+{
+  "bc": 7,
+  "candidate_hash": "30ea18c18d091b7b7c8ca2d37550d2c10ad18b91add1f1672887c3651b5243eb",
+  "conceptual_change": "Introduce an engine-level volatility filter that disables entry signals whenever the 14-period ATR is less than or equal to 1.5 times the 20-period moving average of the ATR.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_007",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 6,
+  "rationale": "The previous hypothesis was rejected due to lack of an explicit engine implementation. This hypothesis formalizes the volatility gate as an engine-level execution rule to ensure testability within the existing simulation environment."
+}
