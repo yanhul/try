@@ -46,7 +46,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates || true
+          found=0
+          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates; do
+            if [ -e "$path" ]; then
+              git add "$path"
+              found=1
+            fi
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No autonomous research state artifacts to persist."
+            exit 0
+          fi
           git diff --cached --quiet && exit 0
           git commit -m "research: persist autonomous controller state [skip ci]"
           git push
