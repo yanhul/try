@@ -1,0 +1,13 @@
+{
+  "bc": 34,
+  "candidate_hash": "791c3331c016144afc81fbd368fc21d83e56caec0150594257d5d8fbb4f438d5",
+  "conceptual_change": "Introduce a filter that ignores high-volatility breakout signals in favor of lower-volatility retracement retests to confirm structural support levels.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "quiet_retest",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 33,
+  "rationale": "The baseline hypothesis failed to provide validation evidence; transitioning to a quiet_retest model focuses on signal quality over volume, allowing for more robust validation of entry conditions during low-volatility consolidation phases."
+}

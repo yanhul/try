@@ -1,0 +1,13 @@
+{
+  "bc": 36,
+  "candidate_hash": "33a03343dfb29f2fefc9d84b297fe2d80f9c6916d1b54f2f45be56abd34af69c",
+  "conceptual_change": "Shift from high-sensitivity sweep confirmation to core baseline structure to minimize noise-induced false triggers during early validation.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "baseline",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 35,
+  "rationale": "The failure in BC 35 was due to a lack of validation evidence; reverting to the core baseline strategy provides a clean, validated benchmark to establish a robust performance floor before re-introducing complex confirmation logic."
+}

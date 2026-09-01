@@ -1,0 +1,13 @@
+{
+  "bc": 38,
+  "candidate_hash": "92061ff0c3a25bc62114233c9c651d0c6f48558eb2d29465c5f8b7e8ef7818cd",
+  "conceptual_change": "Incorporate a liquidity sweep confirmation filter to distinguish between valid trend reversals and range-bound noise during the retest phase.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sweep_confirmation",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 37,
+  "rationale": "The failure of the 'quiet_retest' due to missing validation suggests the retest logic was insufficient to distinguish between legitimate support holds and low-conviction noise. Introducing a sweep confirmation criteria adds a structural requirement for price to aggressively reject a liquidity level before signal execution."
+}

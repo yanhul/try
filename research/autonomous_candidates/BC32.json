@@ -1,0 +1,13 @@
+{
+  "bc": 32,
+  "candidate_hash": "4de0e1b7e9ced44edbb1014d9bad47e8be7e064cd08a5d404bebef6c32453482",
+  "conceptual_change": "Expand the liquidity sweep window and volume threshold parameters to capture broader market volatility clusters that were missed by the narrow sweep_confirmation approach.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sweep_wide_effort",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 31,
+  "rationale": "The previous attempt (sweep_confirmation) failed due to missing validation evidence, suggesting that the initial confirmation logic was too restrictive. Expanding the sweep parameters (sweep_wide_effort) allows for a higher sensitivity to liquidity events, increasing the likelihood of generating statistically significant validation data."
+}
