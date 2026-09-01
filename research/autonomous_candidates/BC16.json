@@ -1,13 +1,13 @@
 {
   "bc": 16,
-  "candidate_hash": "765a93dba577c6ce4b1e6c73b6c11c54fba328e86fc0e205681d009cf8d2172e",
-  "conceptual_change": "Introduce a state-based SMA crossover execution engine that enforces a mandatory 0.1% price deviation buffer relative to the calculated SMA before triggering market orders.",
+  "candidate_hash": "16be9be6a757d1a0b3d887ab9bf44bb7b37a0ab4f047f3dac6a08a0a07007f9f",
+  "conceptual_change": "Shift from aggressive sweep-confirmation momentum-chasing to a mean-reversion retest model that filters out low-volatility liquidity sweeps.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v11",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 15,
-  "rationale": "The previous iteration was rejected for lacking an implementation. This hypothesis explicitly defines the execution engine architecture required to validate the crossover strategy's entry mechanics."
+  "rationale": "The failure of sweep_confirmation suggests that validating liquidity sweeps in high-volatility regimes without checking for price exhaustion leads to false entries. Applying a quiet_retest logic ensures the entry only occurs after a liquidity sweep is followed by a localized volatility compression, preventing premature validation."
 }

@@ -2,12 +2,11 @@
   "bc": 16,
   "parent_bc": 15,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v11",
-  "conceptual_change": "Introduce a state-based SMA crossover execution engine that enforces a mandatory 0.1% price deviation buffer relative to the calculated SMA before triggering market orders.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "quiet_retest",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

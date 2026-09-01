@@ -1,13 +1,13 @@
 {
   "bc": 22,
-  "candidate_hash": "e9a654eaa65fa2e56c68219f8a9a914fd1bc8f494b9e3eceb6f1d994bc4a80b4",
-  "conceptual_change": "Introduce a stateful buffer variable in the execution engine to track the 0.1% price deviation threshold over a 3-candle rolling window prior to trade entry.",
+  "candidate_hash": "42acd0b99ad9c899817ba187dd7a697d20d53633b511db6881e3418477e6d3b9",
+  "conceptual_change": "Reset to the core baseline model to re-establish a stable performance floor prior to introducing complex sweep-based filters.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_buffer_implementation_v1",
+  "hypothesis_id": "baseline",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 21,
-  "rationale": "The previous hypothesis was rejected due to lack of an explicit engine implementation. This hypothesis focuses on the architectural requirement to store state for the 3-candle rolling buffer constraint identified in the previous failure analysis."
+  "rationale": "The rejection of BC 21 due to missing validation evidence suggests that the current integration of 'sweep_confirmation' was not properly benchmarked against the foundational logic. Reverting to the baseline allows for a clean audit of IS/Validation metrics."
 }

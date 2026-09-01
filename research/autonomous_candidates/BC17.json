@@ -1,13 +1,13 @@
 {
   "bc": 17,
-  "candidate_hash": "158568ab43097393397b2ab9c5e22b0a2c7f8471fc147d03c08e56333afd4e7c",
-  "conceptual_change": "Implement a state machine within the trading engine that requires a 0.1% price deviation from the SMA value as a pre-condition for market order execution, replacing the naive instantaneous trigger.",
+  "candidate_hash": "b00067ee5892edd1aacd15294d393f29aa077bd0cb85a7a6c6682300e6358df2",
+  "conceptual_change": "Introduce a confirmation filter on sweep events rather than relying on quiet retest patterns, specifically filtering for volume spikes during the sweep phase.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v12",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 16,
-  "rationale": "The previous hypothesis was rejected because the execution engine lacked the infrastructure to handle the proposed price deviation buffer; this hypothesis formally introduces the required logic to evaluate the impact of that buffer."
+  "rationale": "The failure analysis suggests the prior quiet_retest strategy suffered from a lack of validation evidence. By adding a confirmation filter during the sweep, we increase the signal-to-noise ratio in the entry logic before moving to out-of-sample testing."
 }

@@ -2,12 +2,11 @@
   "bc": 18,
   "parent_bc": 17,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v13",
-  "conceptual_change": "Introduce a look-back buffer in the trading engine to enforce the 0.1% price deviation threshold over a 3-candle moving window before triggering execution, rather than evaluating the threshold on the latest candle alone.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "quiet_retest",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

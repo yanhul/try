@@ -2,12 +2,11 @@
   "bc": 19,
   "parent_bc": 18,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v2_buffer_logic",
-  "conceptual_change": "Implement a rolling 3-candle buffer to validate the 0.1% price deviation threshold for signal execution instead of single-candle evaluation.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "sweep_confirmation",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

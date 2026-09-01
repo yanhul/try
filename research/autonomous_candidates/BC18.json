@@ -1,13 +1,13 @@
 {
   "bc": 18,
-  "candidate_hash": "1d849790802326136336e41194a922bcd142c0e5b6fddd27efdc3450ca56bcc9",
-  "conceptual_change": "Introduce a look-back buffer in the trading engine to enforce the 0.1% price deviation threshold over a 3-candle moving window before triggering execution, rather than evaluating the threshold on the latest candle alone.",
+  "candidate_hash": "8f44d4ee4560c9dd04cea08ade4b0e45a1dd97fec96839f466b3d3a8a6679146",
+  "conceptual_change": "Shift from confirming liquidity sweeps to prioritizing mean-reversion during low-volatility retests of established support levels.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v13",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 17,
-  "rationale": "The parent BC identified that a state machine is required to handle execution logic; this hypothesis refines the state machine logic by adding a temporal buffer to confirm the 0.1% deviation, reducing false signals from momentary volatility."
+  "rationale": "The failure analysis indicates the previous hypothesis suffered from missing validation evidence. By narrowing the scope to quiet retests, we create a more distinct, filterable test condition that avoids the noise of broad sweep confirmations."
 }

@@ -2,12 +2,11 @@
   "bc": 17,
   "parent_bc": 16,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v12",
-  "conceptual_change": "Implement a state machine within the trading engine that requires a 0.1% price deviation from the SMA value as a pre-condition for market order execution, replacing the naive instantaneous trigger.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "sweep_confirmation",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

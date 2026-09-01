@@ -1,13 +1,13 @@
 {
   "bc": 19,
-  "candidate_hash": "689f651974496488c0bb9d3dc128fb36674116494b61af66bfa1ec3a6feeb801",
-  "conceptual_change": "Implement a rolling 3-candle buffer to validate the 0.1% price deviation threshold for signal execution instead of single-candle evaluation.",
+  "candidate_hash": "6c604e7411db159c8244d81a443ea1201e12d1d1ed9f438eb4699abef5f42186",
+  "conceptual_change": "Incorporate a liquidity sweep verification step prior to entry to filter out low-conviction trend breakouts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v2_buffer_logic",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 18,
-  "rationale": "The parent BC identified that the previous hypothesis was unexecutable; this hypothesis specifies the logic for the required look-back buffer engine implementation to enable quantitative testing of the threshold validation."
+  "rationale": "Since the baseline evaluation lacked sufficient validation and the quiet_retest attempt was rejected for missing evidence, shifting to a sweep_confirmation strategy allows for a more rigorous entry filter by ensuring price interacts with liquidity zones before executing the trade."
 }

@@ -1,15 +1,15 @@
 [
   {
-    "bc": 14,
-    "candidate_hash": "e3accd174b5a0975d3f45ade85520a41c350f2ebd3d35004e2839f2b06ec68b3",
-    "conceptual_change": "Shift from confirming sweep liquidity to measuring mean-reversion stability following low-volatility price retests.",
+    "bc": 22,
+    "candidate_hash": "42acd0b99ad9c899817ba187dd7a697d20d53633b511db6881e3418477e6d3b9",
+    "conceptual_change": "Reset to the core baseline model to re-establish a stable performance floor prior to introducing complex sweep-based filters.",
     "evidence_sources": [
       "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
     ],
-    "hypothesis_id": "quiet_retest",
+    "hypothesis_id": "baseline",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 13,
-    "rationale": "Previous failure analysis indicated missing validation evidence for broad sweep signals; this hypothesis pivots to a focused, quieter retest mechanism to ensure signal robustness before broader trend confirmation."
+    "parent_bc": 21,
+    "rationale": "The rejection of BC 21 due to missing validation evidence suggests that the current integration of 'sweep_confirmation' was not properly benchmarked against the foundational logic. Reverting to the baseline allows for a clean audit of IS/Validation metrics."
   }
 ]

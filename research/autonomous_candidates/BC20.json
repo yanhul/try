@@ -1,13 +1,13 @@
 {
   "bc": 20,
-  "candidate_hash": "04adb79de0d9ad3309cabce224b5a5e2fa6d66ac4e334f19bfb97af3dea6d666",
-  "conceptual_change": "Introduce a 3-candle rolling window validation logic for the 0.1% price deviation threshold to mitigate execution slippage.",
+  "candidate_hash": "f1fe809d774ac366da3bb13dee8e672ef943d17003c22e3e0caac723186ef0d8",
+  "conceptual_change": "Shift from active sweep confirmation to a passive retest entry to avoid liquidity-trap false positives observed in recent momentum rejections.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v2_buffer_logic_implemented",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 19,
-  "rationale": "The previous attempt was rejected as unexecutable due to missing engine logic. By formally implementing the 3-candle rolling buffer within the engine, we can test if price deviation stability improves signal execution quality."
+  "rationale": "The rejection of sweep_confirmation suggests the market lacks sufficient follow-through on immediate sweep setups; a quiet_retest focus prioritizes entry after price settles into support/resistance levels rather than chasing the initial sweep momentum."
 }

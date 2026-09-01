@@ -1,13 +1,13 @@
 {
   "bc": 21,
-  "candidate_hash": "6caa0e6cf361e9d4543aefeaaf5904e0ecb63a568e1d0781681d60b8e954a179",
-  "conceptual_change": "Implement a 3-candle rolling buffer constraint that triggers order execution only when the price deviation remains within a 0.1% threshold relative to the SMA signal for three consecutive periods.",
+  "candidate_hash": "e1d88f325c0a0ccd54729da205d2b7e880f90550e1b08e4d6dfcfa08458d62f3",
+  "conceptual_change": "Introduce a confirmation filter on liquidity sweep events to avoid false breakouts identified in the baseline validation failure.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_buffer_logic_execution_v2",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 20,
-  "rationale": "The parent BC identified that the logic for price deviation threshold mitigation requires explicit implementation; this hypothesis introduces the specific algorithmic constraint needed to stabilize execution slippage as previously identified."
+  "rationale": "The prior quiet_retest attempt failed due to lack of validation evidence; shifting to sweep_confirmation adds a structural filter to validate market liquidity sweeps before execution, addressing the missing validation mechanism identified in the baseline."
 }
