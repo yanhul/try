@@ -1,14 +1,13 @@
 {
   "bc": 17,
-  "candidate_hash": "99355244b7471ce2631b9b3c9c5ab1858f4622cd373305ba5506ca5f167e7bc0",
-  "conceptual_change": "Implement a hard-coded gatekeeper function that disables signal execution when ATR_14 > (SMA(ATR_14, 20) + 1.5 * STDEV(ATR_14, 20)), intended to prevent entry during high-volatility regime shifts.",
+  "candidate_hash": "158568ab43097393397b2ab9c5e22b0a2c7f8471fc147d03c08e56333afd4e7c",
+  "conceptual_change": "Implement a state machine within the trading engine that requires a 0.1% price deviation from the SMA value as a pre-condition for market order execution, replacing the naive instantaneous trigger.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_017",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v12",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 16,
-  "rationale": "The previous hypothesis was rejected due to lack of engine implementation. By explicitly defining the volatility filter as a hard-coded gatekeeper function rather than a generic dynamic sizing rule, the logic becomes executable within the existing trading engine framework to mitigate high-volatility regime risks."
+  "rationale": "The previous hypothesis was rejected because the execution engine lacked the infrastructure to handle the proposed price deviation buffer; this hypothesis formally introduces the required logic to evaluate the impact of that buffer."
 }

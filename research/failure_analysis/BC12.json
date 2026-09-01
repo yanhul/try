@@ -3,11 +3,10 @@
   "parent_bc": 11,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_012",
-  "conceptual_change": "Incorporate a trailing stop mechanism using a 22-period Chandelier Exit with a 3.0x ATR multiplier, replacing the existing static exit logic, and implement it within the backtesting engine to verify performance against historical training data.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v7",
+  "conceptual_change": "Introduce a 1-hour candle close confirmation constraint to the SMA crossover signal logic, requiring that the price at the close of the signal candle must strictly exceed (for long) or be strictly below (for short) the long-term trend indicator value, as defined in research/BTCUSDT_1h_hypotheses_v1.json.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

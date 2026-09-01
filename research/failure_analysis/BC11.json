@@ -3,11 +3,10 @@
   "parent_bc": 10,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_011",
-  "conceptual_change": "Introduce a 22-period Chandelier Exit with a 3.0x ATR multiplier as a dynamic stop-loss mechanism to replace static exit logic, evaluated exclusively on training data.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v6",
+  "conceptual_change": "Implement a state-transition buffer class that gates SMA crossover order execution by requiring that the 1-hour candle close is currently trading above/below the long-term trend indicator value at the moment of crossover signal generation.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

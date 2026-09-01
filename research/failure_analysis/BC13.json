@@ -3,11 +3,10 @@
   "parent_bc": 12,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_013",
-  "conceptual_change": "Implement the Chandelier Exit logic as a dynamic stop-loss module within the existing strategy class, specifically using a 22-period lookback and 3.0x ATR multiplier to override static exit conditions during trade execution.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v8",
+  "conceptual_change": "Incorporate a conditional order execution module that restricts market entry to signals where the signal candle close price deviates by a minimum of 0.1% beyond the SMA trigger value to filter out noisy crossovers.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

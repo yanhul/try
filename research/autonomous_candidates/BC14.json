@@ -1,14 +1,13 @@
 {
   "bc": 14,
-  "candidate_hash": "474c74359ee56be661c18bdd47d28e8b5afcf20fdef13a158768e02a7271424d",
-  "conceptual_change": "Incorporate the Chandelier Exit logic as an optional exit override function within the trade execution loop, triggered only when the 22-period ATR-based threshold is breached to minimize premature profit capture.",
+  "candidate_hash": "78bd06bc682e2131c964ba40e86e821f608566100e8d35523615fb20d6cc5ee4",
+  "conceptual_change": "Introduce a state-based execution class that enforces a 0.1% price deviation threshold relative to the SMA value before triggering order placement.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_014",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v9",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 13,
-  "rationale": "The previous rejection indicated the need for an explicit engine implementation of the Chandelier Exit. By refactoring the execution loop to include this logic as a modular override, we bridge the gap between architectural design and evaluable strategy logic."
+  "rationale": "The previous rejection indicated that the conceptual change required an explicit engine implementation; therefore, this hypothesis focuses on the architectural implementation of the threshold logic within the execution module."
 }

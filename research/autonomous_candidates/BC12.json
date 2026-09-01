@@ -1,14 +1,13 @@
 {
   "bc": 12,
-  "candidate_hash": "349cb2d98b6ba02980325003fdd48dd23be893c5b8c19963f1e341039506edf6",
-  "conceptual_change": "Incorporate a trailing stop mechanism using a 22-period Chandelier Exit with a 3.0x ATR multiplier, replacing the existing static exit logic, and implement it within the backtesting engine to verify performance against historical training data.",
+  "candidate_hash": "12b89db19ab883c73a4da15c08c6c2a1550043f063561a3a5dfbde796a4c9584",
+  "conceptual_change": "Introduce a 1-hour candle close confirmation constraint to the SMA crossover signal logic, requiring that the price at the close of the signal candle must strictly exceed (for long) or be strictly below (for short) the long-term trend indicator value, as defined in research/BTCUSDT_1h_hypotheses_v1.json.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_012",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v7",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 11,
-  "rationale": "The previous hypothesis was rejected due to lack of engine implementation. This hypothesis formalizes the integration of the dynamic stop-loss logic into the engine to allow for empirical testing on training data."
+  "rationale": "The previous implementation failed due to missing architectural support; this hypothesis focuses on the logic constraint requirement derived from the baseline research trend parameters, assuming the engine integration task is handled as a prerequisite."
 }

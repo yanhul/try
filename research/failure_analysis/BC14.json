@@ -3,11 +3,10 @@
   "parent_bc": 13,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_014",
-  "conceptual_change": "Incorporate the Chandelier Exit logic as an optional exit override function within the trade execution loop, triggered only when the 22-period ATR-based threshold is breached to minimize premature profit capture.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v9",
+  "conceptual_change": "Introduce a state-based execution class that enforces a 0.1% price deviation threshold relative to the SMA value before triggering order placement.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

@@ -1,14 +1,13 @@
 {
   "bc": 15,
-  "candidate_hash": "53d04e540a809c8ab81ab19fc1e722440f524baef67023d60a38da09bdf267a3",
-  "conceptual_change": "Implement a 22-period ATR-based Chandelier Exit as an explicit logic gate within the trade execution engine to serve as a trailing stop-loss mechanism during active long positions.",
+  "candidate_hash": "eec5da3b894d2e59e8cd9bbc3dba5837abb56c8b1c76601cef05d1d61e5f3e93",
+  "conceptual_change": "Implement the SMA crossover execution engine by coding the state-based class to check the 0.1% price deviation threshold against the current SMA value prior to order submission.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_015",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v10",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 14,
-  "rationale": "The previous rejection was due to the lack of an engine implementation for the proposed logic. This hypothesis mandates the integration of the Chandelier Exit logic into the engine to enable the testing of the previously identified strategy of minimizing premature profit capture using ATR-based thresholds."
+  "rationale": "The previous hypothesis was rejected due to lack of an explicit engine implementation. This hypothesis proposes the creation of the required state-based execution class to make the threshold logic functional."
 }

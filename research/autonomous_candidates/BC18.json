@@ -1,14 +1,13 @@
 {
   "bc": 18,
-  "candidate_hash": "a1ce946ddf699a741a6935833fa7e3a574b1296c3e0a13d158616a819b447308",
-  "conceptual_change": "Introduce a conditional volatility filter into the execution engine that restricts trade entry when ATR_14 exceeds the 1.5 standard deviation threshold of its 20-period moving average.",
+  "candidate_hash": "1d849790802326136336e41194a922bcd142c0e5b6fddd27efdc3450ca56bcc9",
+  "conceptual_change": "Introduce a look-back buffer in the trading engine to enforce the 0.1% price deviation threshold over a 3-candle moving window before triggering execution, rather than evaluating the threshold on the latest candle alone.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_018",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v13",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 17,
-  "rationale": "The failure in BC 17 was due to a lack of engine implementation for the volatility gatekeeper. BC 18 addresses this by formalizing the gatekeeper into the execution logic to test if curbing high-volatility entries improves signal reliability."
+  "rationale": "The parent BC identified that a state machine is required to handle execution logic; this hypothesis refines the state machine logic by adding a temporal buffer to confirm the 0.1% deviation, reducing false signals from momentary volatility."
 }

@@ -1,14 +1,13 @@
 {
   "bc": 13,
-  "candidate_hash": "df600f25aba818adacc2628880e8e1a9f53585288be8feeae3c9c1edfe96baab",
-  "conceptual_change": "Implement the Chandelier Exit logic as a dynamic stop-loss module within the existing strategy class, specifically using a 22-period lookback and 3.0x ATR multiplier to override static exit conditions during trade execution.",
+  "candidate_hash": "05544ecceeaa223a3b262b10c4c41215f9a53024077a75fa65d4169f11ebea05",
+  "conceptual_change": "Incorporate a conditional order execution module that restricts market entry to signals where the signal candle close price deviates by a minimum of 0.1% beyond the SMA trigger value to filter out noisy crossovers.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_013",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v8",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 12,
-  "rationale": "The previous hypothesis (BTC_1h_012) failed execution because the engine lacked the required dynamic trailing stop mechanism. This hypothesis focuses on the technical implementation of the logic within the backtester to allow for empirical evaluation."
+  "rationale": "Previous failure was due to a missing implementation of the signal confirmation logic. This hypothesis provides a concrete, engine-level constraint (0.1% price deviation) to operationalize the confirmation requirement defined in the baseline research."
 }

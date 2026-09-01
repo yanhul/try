@@ -3,11 +3,10 @@
   "parent_bc": 15,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_016",
-  "conceptual_change": "Incorporate a time-based volatility filter that pauses trade execution if the ATR_14 value exceeds the 20-period moving average of ATR by more than 1.5 standard deviations, replacing the previous proposed dynamic position sizing to prevent entry during high-volatility regime shifts.",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v11",
+  "conceptual_change": "Introduce a state-based SMA crossover execution engine that enforces a mandatory 0.1% price deviation buffer relative to the calculated SMA before triggering market orders.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
   "action": "candidate requires explicit engine implementation before evaluation"

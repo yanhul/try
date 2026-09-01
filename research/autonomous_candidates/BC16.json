@@ -1,14 +1,13 @@
 {
   "bc": 16,
-  "candidate_hash": "b354436007d5813de0083b5ad09d824d1fc26ea8c7ed0619de3fa8a8e077cd0f",
-  "conceptual_change": "Incorporate a time-based volatility filter that pauses trade execution if the ATR_14 value exceeds the 20-period moving average of ATR by more than 1.5 standard deviations, replacing the previous proposed dynamic position sizing to prevent entry during high-volatility regime shifts.",
+  "candidate_hash": "765a93dba577c6ce4b1e6c73b6c11c54fba328e86fc0e205681d009cf8d2172e",
+  "conceptual_change": "Introduce a state-based SMA crossover execution engine that enforces a mandatory 0.1% price deviation buffer relative to the calculated SMA before triggering market orders.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_016",
+  "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v11",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 15,
-  "rationale": "The previous attempt at dynamic position sizing was rejected due to implementation complexity in the engine. Shifting the strategy to an execution filter based on existing ATR parameters avoids engine-level architectural changes while addressing the drawdown severity caused by volatility spikes."
+  "rationale": "The previous iteration was rejected for lacking an implementation. This hypothesis explicitly defines the execution engine architecture required to validate the crossover strategy's entry mechanics."
 }
