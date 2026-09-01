@@ -1,0 +1,14 @@
+{
+  "bc": 3,
+  "candidate_hash": "73aff94fe8c6800211af975b38cdf5ae69a2fb21e46287352097ff9bf26bb22a",
+  "conceptual_change": "Implement an ATR-based volatility filter set at 1.5x the 14-period average to restrict entry triggers exclusively to high-momentum candles, replacing the unfiltered signal execution.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_003",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 2,
+  "rationale": "The 0.33 win rate in the baseline suggests high exposure to market noise; adding an explicit volatility threshold ensures trades are only taken when price action exceeds average noise levels, directly addressing the identified underperformance."
+}
