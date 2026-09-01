@@ -1,7 +1,7 @@
 {
   "bc": 3,
-  "candidate_hash": "235159ef765deff36f872182038f3d1fb91a0dd20dcb594fc0dc8b74403e7cf5",
-  "conceptual_change": "Incorporate a low-volatility retest phase following the initial trigger to confirm price stabilization before entry.",
+  "candidate_hash": "82a2b65ba70ea0ecce121c17c771b81ebf8b058b4bd6e889ab56e37fdfcb8e6d",
+  "conceptual_change": "Introduce a requirement for a low-volume retest following the primary signal to confirm exhaustion before entry.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
@@ -9,5 +9,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 2,
-  "rationale": "The baseline strategy lacked specific validation criteria for entries, leading to rejection. A quiet retest mechanism introduces a structured validation gate to ensure price confirms a level before execution."
+  "rationale": "The baseline strategy failed due to missing validation evidence, suggesting that direct signals without secondary confirmation are insufficient for reliable execution."
 }

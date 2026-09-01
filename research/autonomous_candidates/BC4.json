@@ -1,7 +1,7 @@
 {
   "bc": 4,
-  "candidate_hash": "df3bb102c08d64c0838b36488e6d9465217c57a599e0bd733c4124b27ff2b421",
-  "conceptual_change": "Introduce a confirmation trigger post-liquidity sweep to replace the prior baseline assumption of immediate reversal.",
+  "candidate_hash": "c165f253797bdc6ef73111fe677045fbe98f20aaff361f8dbec85dc7d786fdbf",
+  "conceptual_change": "Introduce a liquidity sweep requirement followed by a confirmation trigger to mitigate false breakouts identified in the previous failure.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
@@ -9,5 +9,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 3,
-  "rationale": "The failure in BC 3 was due to missing validation evidence. Adding a confirmation requirement ensures the liquidity sweep is structurally verified before entry."
+  "rationale": "The previous failure occurred due to missing validation evidence. Adding a confirmation step ensures price action respects the liquidity sweep before entry, addressing the lack of validation."
 }

@@ -1,7 +1,7 @@
 {
   "bc": 5,
-  "candidate_hash": "ac3076d2ee5d081fe71492f7c9e4cfcb952e714b856709369010cbcc2a373ab0",
-  "conceptual_change": "Expand the stop-loss sweep threshold to capture a wider liquidity range, compensating for the validation failure observed in the previous cycle.",
+  "candidate_hash": "d5a92935dd7acdc6b84361d5600f041e8480347a3df85e947e2d18c0af6e438d",
+  "conceptual_change": "Expand the stop-loss sweep zone to account for higher volatility liquidity traps identified in baseline research.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
@@ -9,5 +9,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 4,
-  "rationale": "The previous attempt failed due to insufficient validation; applying a wider sweep effort addresses potential signal noise identified in the baseline hypothesis data."
+  "rationale": "The previous attempt was rejected due to missing validation evidence for the specific sweep parameters; broadening the sweep effort allows for a more robust capture of liquidity before trend confirmation."
 }

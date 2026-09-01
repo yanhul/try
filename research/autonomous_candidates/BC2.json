@@ -1,7 +1,7 @@
 {
   "bc": 2,
-  "candidate_hash": "f7c1214950ba417aee72580b93a25a108a147f94915b38efb75eefdd64ddb496",
-  "conceptual_change": "initialize standard baseline execution parameters as the initial operational reference",
+  "candidate_hash": "7f2c7f02361d9fefa4d5c285670c91a707c28ad7cbf0ff057da4c057d9d6e07d",
+  "conceptual_change": "initialize trading engine using the standard baseline strategy configuration",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
@@ -9,5 +9,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 1,
-  "rationale": "The previous attempt failed due to an unexecutable reference; initializing the baseline registered hypothesis will establish the necessary operational framework."
+  "rationale": "The previous attempt failed because 'baseline_reference_v1' was not a registered hypothesis. Initiating the system with the validated 'baseline' hypothesis will fulfill the engine implementation requirement."
 }
