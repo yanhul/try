@@ -1,0 +1,14 @@
+{
+  "bc": 4,
+  "candidate_hash": "d954f478a877da3ec51a338b86f772b546c44c1f2b6b03205fa98b2bcf3613de",
+  "conceptual_change": "Introduce a 14-period Average True Range (ATR) multiplier filter set at 1.5x to gate trade entries, ensuring trades only trigger when market volatility exceeds the defined threshold relative to the recent baseline.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_004",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 3,
+  "rationale": "Previous failure (BC 3) stemmed from an unexecutable hypothesis due to missing engine logic. This hypothesis formalizes the ATR-based momentum gate as a testable implementation requirement to restrict entries during low-volatility, range-bound price action."
+}
