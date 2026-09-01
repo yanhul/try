@@ -12,16 +12,16 @@ def gate(bc):
  if p.exists(): return p
  p=ROOT/f'audit_bc{bc}_fast_gate.py'; return p if p.exists() else None
 def write_queue(q): QUEUE.write_text(json.dumps(q,indent=2,sort_keys=True)+'\n',encoding='utf-8')
-def regenerate(bc,parent,failure):
+def used_ids(s): return sorted({str(x['hypothesis_id']) for x in s.get('history',[]) if x.get('hypothesis_id')})
+def regenerate(bc,parent,failure,s):
  output=CANDIDATE_DIR/f'BC{bc}.json'
  if output.exists(): output.unlink()
- env=os.environ.copy(); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output))
+ env=os.environ.copy(); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=','.join(used_ids(s)))
  rc,out=run([sys.executable,'research/provider_router.py'],env=env)
  if 'PROVIDER_ROUTER_HOLD' in out or ('PROVIDER_FAIL' in out and 'PROVIDER_SELECTED' not in out): return False
  return rc==0 and output.exists()
 def normalize_queue(s):
- q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1))
- active=[x for x in q if isinstance(x,dict) and int(x.get('bc',-1))==expected and int(x.get('parent_bc',expected-1))==expected-1]
+ q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); active=[x for x in q if isinstance(x,dict) and int(x.get('bc',-1))==expected and int(x.get('parent_bc',expected-1))==expected-1]
  if len(active)>1: active=active[:1]
  if q != active: write_queue(active)
  return active
@@ -35,7 +35,7 @@ def main():
   if parent==0: print('CONTROLLER_DECISION HOLD_NO_REGISTERED_BASELINE'); return 0
   failure=FAILURE_DIR/f'BC{parent}.json'
   if not failure.exists(): print(f'CONTROLLER_DECISION HOLD_NO_FAILURE_ANALYSIS BC{parent}'); return 0
-  if not regenerate(expected,parent,failure): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{expected}'); return 0
+  if not regenerate(expected,parent,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{expected}'); return 0
   candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]
  for _ in range(MAX):
   q=normalize_queue(s)
@@ -44,22 +44,21 @@ def main():
   if not g: print(f'CONTROLLER_DECISION HOLD_NO_GATE BC{bc}'); return 0
   try:
    from autonomous_hypothesis import load_candidate
-   load_candidate(candidate,bc,parent)
+   cand=load_candidate(candidate,bc,parent)
   except Exception as exc:
-   print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}')
-   failure=FAILURE_DIR/f'BC{parent}.json'
-   if not failure.exists() or not regenerate(bc,parent,failure): print(f'CONTROLLER_DECISION HOLD_PROVIDER_REPAIR BC{bc}'); return 0
-   load_candidate(candidate,bc,parent); c=json.loads(candidate.read_text(encoding='utf-8')); write_queue([c])
-  s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; save(s); print(f'CONTROLLER_CANDIDATE BC{bc} GATE {g.name}')
+   print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
+   if not failure.exists() or not regenerate(bc,parent,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_REPAIR BC{bc}'); return 0
+   cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
+  s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; save(s); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
   rc,out=run([sys.executable,g.name]+([str(bc)] if g.name=='audit_bc_fast_gate.py' else []))
   if rc:return rc
   if PROMOTE in out: print(f'CONTROLLER_DECISION BC{bc}_PROMOTED'); return 0
   if REJECT not in out and 'SPLIT_GATE False' not in out: print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
-  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS'}); s['next_bc']=bc+1; save(s)
+  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; save(s)
   failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): print(f'CONTROLLER_DECISION HOLD_NO_FAILURE_ANALYSIS BC{bc}'); return 0
   nxt=bc+1
-  if not regenerate(nxt,bc,failure): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{nxt}'); return 0
+  if not regenerate(nxt,bc,failure,s): print(f'CONTROLLER_DECISION HOLD_PROVIDER_ROUTER BC{nxt}'); return 0
   candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); save(s); return 0
 if __name__=='__main__': raise SystemExit(main())
