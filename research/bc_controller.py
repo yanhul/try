@@ -91,8 +91,11 @@ def generate_candidate(parent_bc: int, state: dict):
 
 
 def gate_for(bc: int):
-    gate = ROOT / f"audit_bc{bc}_fast_gate.py"
-    return gate if gate.exists() else None
+    generic = ROOT / "audit_bc_fast_gate.py"
+    if generic.exists():
+        return generic
+    legacy = ROOT / f"audit_bc{bc}_fast_gate.py"
+    return legacy if legacy.exists() else None
 
 
 def run_oos(bc, state):
@@ -144,7 +147,10 @@ def main():
         state["iterations"] = int(state.get("iterations", 0)) + 1
         save_state(state)
         print(f"CONTROLLER_CANDIDATE BC{bc} GATE {gate.name}")
-        rc, out = run([sys.executable, gate.name])
+        command = [sys.executable, gate.name]
+        if gate.name == "audit_bc_fast_gate.py":
+            command.append(str(bc))
+        rc, out = run(command)
         if rc:
             print(f"CONTROLLER_DECISION BC{bc}_SCRIPT_FAILURE")
             return rc
