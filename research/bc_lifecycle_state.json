@@ -14,12 +14,17 @@
       "bc": 2,
       "decision": "REJECT",
       "next": "HOLD_OR_EXHAUSTED"
+    },
+    {
+      "bc": 1,
+      "decision": "REJECT",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 22,
-  "last_bc": 19,
+  "iterations": 24,
+  "last_bc": 2,
   "oos_consumed": [],
-  "terminal": true,
-  "terminal_reason": "max_iterations",
-  "updated_at": "2026-09-01T03:39:34.127108+00:00"
+  "terminal": false,
+  "terminal_reason": null,
+  "updated_at": "2026-09-01T03:42:26.689741+00:00"
 }

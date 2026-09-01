@@ -1,22 +1,14 @@
 {
-  "schema_version": 1,
   "bc": 1,
-  "source": "research/BTCUSDT_1h_hypotheses_v1.json",
-  "dataset_sha256": "3bdceadce63575b351c83e867c7b69339ab7e034ba4f109a5cc8167d469209a5",
-  "failure": {
-    "decision": "REJECT_BC",
-    "reason": "baseline validation gate failed",
-    "validation_passed": false,
-    "validation_trade_count": 9,
-    "validation_win_rate": 0.3333333333333333,
-    "validation_profit_factor": 0.9999999999999947,
-    "validation_total_return": -0.0008937336144638763,
-    "validation_max_drawdown": 0.049009950100000275
-  },
+  "parent_bc": 0,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "baseline_reference_v1",
+  "conceptual_change": "baseline reference strategy as the registered starting candidate",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
+    "research/BTCUSDT_1h_result_v2.json"
   ],
-  "oos_used": false,
-  "note": "Bootstrap artifact derived only from pre-existing IS/VALIDATION evidence. No OOS result or OOS criterion was used."
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
 }

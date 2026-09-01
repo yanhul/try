@@ -1,14 +1,13 @@
 {
   "bc": 2,
-  "candidate_hash": "6151b4f756cd1e2b1a8941c0e7fccab749bc456cb7523dd716b513b2a6ddf5e8",
-  "conceptual_change": "Introduce a minimum volatility threshold (ATR filter) to filter out noise-driven trades that contributed to the sub-optimal 0.33 win rate.",
+  "conceptual_change": "Implement the core engine logic for the baseline reference strategy to enable executable validation of the strategy parameters.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
+    "research/BTCUSDT_1h_result_v2.json"
   ],
-  "hypothesis_id": "BTC_1h_002",
+  "hypothesis_id": "engine_implementation_v1",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 1,
-  "rationale": "The baseline validation resulted in a win rate of 0.33 and a negative total return, indicating the entry logic is likely triggered by low-volatility market noise. Implementing an ATR-based filter will constrain entries to high-volatility regimes where directional momentum is more statistically significant."
+  "rationale": "The previous attempt was rejected due to lack of an explicit engine implementation. This hypothesis focuses on translating the baseline configuration into an executable code structure to allow for performance evaluation."
 }
