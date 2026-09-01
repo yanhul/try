@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Strict multi-provider hypothesis router.
-
-Providers propose; local validation is authoritative. No OOS data enters the
-prompt, and malformed provider output is never registered as a candidate.
-"""
+"""Strict provider router: Gemini proposes; local registry/evidence rules decide."""
 from __future__ import annotations
 import json, os, urllib.request
 from pathlib import Path
 from autonomous_hypothesis import load_candidate, write_candidate
+from engine.hypotheses import HYPOTHESES
 
-SYSTEM = """You are a strict research hypothesis generator. Generate exactly ONE testable next hypothesis from the supplied FAILURE ANALYSIS. Exactly one conceptual change. Cite concrete evidence_sources from the artifact. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence. Return JSON only with keys: bc,parent_bc,hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used. If evidence is insufficient, return {\"status\":\"HOLD\"}."""
+SYSTEM = """You are a strict trading-research hypothesis generator. Generate exactly ONE next hypothesis from FAILURE ANALYSIS.
+You may ONLY choose hypothesis_id values from the supplied REGISTERED_HYPOTHESES list. Never invent a new hypothesis_id.
+Exactly one conceptual change. Cite only concrete evidence_sources present in the supplied artifact. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence.
+If no unused registered hypothesis can address the failure, return {\"status\":\"HOLD\"}.
+Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used.
+"""
 
 def config(name: str):
     n=name.upper(); defaults={
@@ -29,14 +31,19 @@ def call(name,prompt):
 def main():
     failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"])
     bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
-    prompt=f"Parent BC: {parent}\nNext BC: {bc}\nUse ONLY this failure-analysis artifact:\n\n{failure.read_text(encoding='utf-8')}"
+    used={x.strip() for x in os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","").split(",") if x.strip()}
+    available=sorted(set(HYPOTHESES)-used)
+    if not available:
+        print("PROVIDER_ROUTER_HOLD no_unused_registered_hypotheses"); return 0
+    prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(available)}\n"
+            "Use ONLY this failure-analysis artifact:\n\n"+failure.read_text(encoding="utf-8"))
     order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]
     for name in order:
         try:
             candidate=json.loads(call(name,prompt))
             if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
+            if candidate.get("hypothesis_id") not in available: raise ValueError("unregistered_or_already_used_hypothesis_id")
             candidate["bc"],candidate["parent_bc"]=bc,parent
-            # Compute and inject the authoritative hash before persistence.
             candidate=load_candidate_from_dict(candidate,bc,parent)
             write_candidate(output,candidate)
             print(f"PROVIDER_SELECTED {name} model={config(name)[1]} hash={candidate['candidate_hash']}")
