@@ -2,7 +2,7 @@ from __future__ import annotations
 import json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research/bc_lifecycle_state.json'; QUEUE=ROOT/'research/bc_queue.json'; FAILURE_DIR=ROOT/'research/failure_analysis'; CANDIDATE_DIR=ROOT/'research/autonomous_candidates'; PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8'))
+ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8'))
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
