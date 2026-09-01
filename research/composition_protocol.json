@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "composition": {
+    "enabled": true,
+    "max_components": 3,
+    "deduplicate_components": true,
+    "ranking_data": ["IS", "VALIDATION"],
+    "oos_used_for_selection": false
+  },
+  "search_space": [
+    "baseline", "sweep_confirmation", "sweep_wide_effort", "quiet_retest",
+    "wyckoff_spring_upthrust", "vsa_no_demand_supply", "vpa_effort_result",
+    "gann_range_time_confluence", "hank_pruden_effort_confirmation",
+    "master_the_trade_trend_pullback"
+  ],
+  "policy": "bounded_composition_only; no OOS tuning; freeze before OOS"
+}
