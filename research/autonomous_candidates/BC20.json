@@ -1,14 +1,13 @@
 {
   "bc": 20,
-  "candidate_hash": "570c9e94eaa121ca8a6dc46be50c42807c9e41d18e79202be0992eb23450894f",
-  "conceptual_change": "Introduce a volatility-adjusted position sizing multiplier that scales down exposure linearly as the current ATR_14 value exceeds the 20-period moving average of ATR_14 by more than 1.5 standard deviations, rather than using a hard binary entry filter.",
+  "candidate_hash": "04adb79de0d9ad3309cabce224b5a5e2fa6d66ac4e334f19bfb97af3dea6d666",
+  "conceptual_change": "Introduce a 3-candle rolling window validation logic for the 0.1% price deviation threshold to mitigate execution slippage.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_020",
+  "hypothesis_id": "sma_crossover_execution_engine_v2_buffer_logic_implemented",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 19,
-  "rationale": "The previous attempt (BC 19) failed due to unexecutable hard-coded entry logic; replacing this with a dynamic sizing mechanism allows the execution engine to handle volatility-adjusted exposure without requiring new engine state triggers, while still testing the underlying thesis that high-volatility environments negatively impact strategy performance."
+  "rationale": "The previous attempt was rejected as unexecutable due to missing engine logic. By formally implementing the 3-candle rolling buffer within the engine, we can test if price deviation stability improves signal execution quality."
 }

@@ -1,0 +1,13 @@
+{
+  "bc": 21,
+  "parent_bc": 20,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "sma_crossover_buffer_logic_execution_v2",
+  "conceptual_change": "Implement a 3-candle rolling buffer constraint that triggers order execution only when the price deviation remains within a 0.1% threshold relative to the SMA signal for three consecutive periods.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

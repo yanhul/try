@@ -1,0 +1,13 @@
+{
+  "bc": 23,
+  "candidate_hash": "d2412bf56e3c431518545aefadbf5884818a77b22e3d06bf9afec8574077bdcd",
+  "conceptual_change": "Incorporate a hard-coded execution delay logic within the trade engine that mandates price stability within a 0.1% range for 3 consecutive candles before triggering the SMA crossover entry.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sma_crossover_buffer_implementation_v2",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 22,
+  "rationale": "The previous hypothesis was rejected due to lack of an explicit implementation path. This revision defines the required engine logic as a conditional trade-entry constraint, enabling the developer to implement the stateful buffer requirement as a mandatory pre-condition to the existing SMA crossover strategy."
+}

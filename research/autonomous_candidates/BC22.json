@@ -1,0 +1,13 @@
+{
+  "bc": 22,
+  "candidate_hash": "e9a654eaa65fa2e56c68219f8a9a914fd1bc8f494b9e3eceb6f1d994bc4a80b4",
+  "conceptual_change": "Introduce a stateful buffer variable in the execution engine to track the 0.1% price deviation threshold over a 3-candle rolling window prior to trade entry.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sma_crossover_buffer_implementation_v1",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 21,
+  "rationale": "The previous hypothesis was rejected due to lack of an explicit engine implementation. This hypothesis focuses on the architectural requirement to store state for the 3-candle rolling buffer constraint identified in the previous failure analysis."
+}

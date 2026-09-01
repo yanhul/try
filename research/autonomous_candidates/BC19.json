@@ -1,14 +1,13 @@
 {
   "bc": 19,
-  "candidate_hash": "2e049926f7102ac1bfb3471a12f71a87a311e57ed71297c6e6d206e332f828fe",
-  "conceptual_change": "Implement the ATR-based conditional volatility filter by hard-coding the entry restriction logic into the execution engine to prevent order submission when ATR_14 is greater than 1.5 standard deviations above its 20-period moving average.",
+  "candidate_hash": "689f651974496488c0bb9d3dc128fb36674116494b61af66bfa1ec3a6feeb801",
+  "conceptual_change": "Implement a rolling 3-candle buffer to validate the 0.1% price deviation threshold for signal execution instead of single-candle evaluation.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_019",
+  "hypothesis_id": "sma_crossover_execution_engine_v2_buffer_logic",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 18,
-  "rationale": "The previous attempt (BTC_1h_018) was rejected because it proposed a logical constraint without providing the required engine implementation to execute that constraint. This hypothesis satisfies the requirement by explicitly defining the implementation step for the volatility filter."
+  "rationale": "The parent BC identified that the previous hypothesis was unexecutable; this hypothesis specifies the logic for the required look-back buffer engine implementation to enable quantitative testing of the threshold validation."
 }

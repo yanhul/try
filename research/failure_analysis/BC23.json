@@ -1,0 +1,13 @@
+{
+  "bc": 23,
+  "parent_bc": 22,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "sma_crossover_buffer_implementation_v2",
+  "conceptual_change": "Incorporate a hard-coded execution delay logic within the trade engine that mandates price stability within a 0.1% range for 3 consecutive candles before triggering the SMA crossover entry.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

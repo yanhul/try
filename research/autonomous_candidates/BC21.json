@@ -1,14 +1,13 @@
 {
   "bc": 21,
-  "candidate_hash": "28b6029999f7907db58f66288c2c424679d971c45fcbf473ac0282ce5b249ce4",
-  "conceptual_change": "Implement a volatility-scaling function that calculates a dynamic position size multiplier as '1 - (ATR_14 - MA20_ATR_14) / (1.5 * STDEV_ATR_14)' capped between 0.1 and 1.0 when ATR_14 exceeds its 20-period moving average by more than 1.5 standard deviations.",
+  "candidate_hash": "6caa0e6cf361e9d4543aefeaaf5904e0ecb63a568e1d0781681d60b8e954a179",
+  "conceptual_change": "Implement a 3-candle rolling buffer constraint that triggers order execution only when the price deviation remains within a 0.1% threshold relative to the SMA signal for three consecutive periods.",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "BTC_1h_021",
+  "hypothesis_id": "sma_crossover_buffer_logic_execution_v2",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 20,
-  "rationale": "The previous hypothesis was rejected due to being unexecutable. Defining the explicit mathematical transformation for the position sizing multiplier allows the engine to calculate and apply the scaling factor dynamically, addressing the risk of high-volatility exposure observed in the baseline data."
+  "rationale": "The parent BC identified that the logic for price deviation threshold mitigation requires explicit implementation; this hypothesis introduces the specific algorithmic constraint needed to stabilize execution slippage as previously identified."
 }

@@ -1,0 +1,13 @@
+{
+  "bc": 24,
+  "candidate_hash": "935873422d0f6006be696eb18d46889ce9f9b9c4f0d0ed687473f28a80ba6f0d",
+  "conceptual_change": "Introduce a trailing stop-loss mechanism at 0.5% below entry price to mitigate the volatility risks identified in the baseline strategy during the entry trigger phase.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sma_crossover_buffer_implementation_v3",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 23,
+  "rationale": "Since the engine-level delay logic from BC 23 was rejected as unexecutable for the current framework, shifting to a risk management parameter (trailing stop-loss) allows for testing entry stability without requiring modifications to the engine's core trade triggering logic."
+}

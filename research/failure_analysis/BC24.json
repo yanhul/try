@@ -1,0 +1,13 @@
+{
+  "bc": 24,
+  "parent_bc": 23,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "sma_crossover_buffer_implementation_v3",
+  "conceptual_change": "Introduce a trailing stop-loss mechanism at 0.5% below entry price to mitigate the volatility risks identified in the baseline strategy during the entry trigger phase.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

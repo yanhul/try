@@ -1,0 +1,13 @@
+{
+  "bc": 25,
+  "candidate_hash": "b4b815d51e8308a943b3a7f590f6294dd72ddc06b860e724a5f07b76379f3843",
+  "conceptual_change": "Incorporate a fixed 0.5% trailing stop-loss relative to the entry price to limit drawdown duration, triggered immediately upon the confirmation of the SMA crossover signal.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sma_crossover_buffer_implementation_v4",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 24,
+  "rationale": "The baseline strategy lacks exit control during high volatility periods identified in previous testing; adding a trailing stop-loss provides a mechanistic boundary to validate performance improvements against the raw SMA crossover trigger."
+}

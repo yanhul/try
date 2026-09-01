@@ -1,15 +1,15 @@
 [
   {
-    "bc": 18,
-    "candidate_hash": "1d849790802326136336e41194a922bcd142c0e5b6fddd27efdc3450ca56bcc9",
-    "conceptual_change": "Introduce a look-back buffer in the trading engine to enforce the 0.1% price deviation threshold over a 3-candle moving window before triggering execution, rather than evaluating the threshold on the latest candle alone.",
+    "bc": 26,
+    "candidate_hash": "1a90419d336ffd08bad5fefefedbf6f9734b2b8c52e8b7cd47349ecebf9ea3e3",
+    "conceptual_change": "Introduce a 0.5% price-buffer threshold for SMA crossover execution, requiring the asset price to deviate by at least 0.5% from the moving average intersection point to confirm trend strength before entry.",
     "evidence_sources": [
       "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
     ],
-    "hypothesis_id": "sma_crossover_execution_engine_v1_impl_v13",
+    "hypothesis_id": "sma_crossover_buffer_implementation_v5",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 17,
-    "rationale": "The parent BC identified that a state machine is required to handle execution logic; this hypothesis refines the state machine logic by adding a temporal buffer to confirm the 0.1% deviation, reducing false signals from momentary volatility."
+    "parent_bc": 25,
+    "rationale": "The previous attempt at a trailing stop-loss failed due to implementation complexity; by shifting the conceptual change to an entry-buffer threshold, we maintain the goal of reducing noise-driven signals without requiring new order-type execution logic."
   }
 ]
