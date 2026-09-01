@@ -1,14 +1,14 @@
 {
   "bc": 7,
-  "candidate_hash": "e15d3701e032462ffb61e31f7aec9f19c573cfcd7a8060a5f38d0d9e3a422391",
+  "parent_bc": 6,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_007",
   "conceptual_change": "Introduce a lookback window for the ATR threshold: require the 14-period ATR to exceed the 20-period moving average of the ATR by at least 5% during the immediate 3-bar window prior to signal generation.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
   ],
-  "hypothesis_id": "BTC_1h_007",
-  "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 6,
-  "rationale": "The original requirement for a static 1.5x multiplier in BC 6 was rejected due to lack of implementation parameters; shifting to a relative percentage threshold over a defined lookback window provides a concrete, engine-compatible logic for testing volatility regimes."
+  "action": "candidate requires explicit engine implementation before evaluation"
 }

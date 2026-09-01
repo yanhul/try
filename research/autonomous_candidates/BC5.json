@@ -1,7 +1,7 @@
 {
   "bc": 5,
-  "candidate_hash": "e810b2c251fc36f289af6520ca807e35d74a7a74aeb0118b69c788651528463b",
-  "conceptual_change": "Implement a volatility gate using a 14-period Average True Range (ATR) with a 1.5x multiplier to restrict entry execution to periods where the current ATR exceeds the 1.5x threshold relative to the 20-period moving average of the ATR.",
+  "candidate_hash": "470de235fb4af708a052d28df01a55ab8443d7f4b4e6b412c02d0a685c5b86c7",
+  "conceptual_change": "Introduce a logical gate requiring the 14-period ATR to exceed a 1.5x rolling 20-period mean ATR before triggering any directional entry signals.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 4,
-  "rationale": "The previous attempt was rejected due to the absence of a concrete engine implementation for the volatility filter; this hypothesis defines the specific trigger mechanism required for programmatic execution."
+  "rationale": "The failure in BC 4 resulted from an unexecutable implementation instruction regarding a static volatility multiplier. By reframing the volatility filter as a relative comparison against the rolling mean ATR, the hypothesis becomes programmatically verifiable within the existing engine framework."
 }

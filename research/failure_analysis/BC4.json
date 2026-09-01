@@ -1,14 +1,14 @@
 {
   "bc": 4,
-  "candidate_hash": "750a22325c0886ebb0ac2344844d570a957cf1762d2612a02a2aafd0dfa90828",
+  "parent_bc": 3,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_004",
   "conceptual_change": "Incorporate a 14-period ATR volatility multiplier of 1.5x as a mandatory threshold for trade execution, replacing the current binary trigger logic with a conditional volatility filter.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
   ],
-  "hypothesis_id": "BTC_1h_004",
-  "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 3,
-  "rationale": "The failure analysis for BC 3 identified that the volatility filter was not yet implemented in the engine; this hypothesis formalizes the implementation requirement as a conditional gate to ensure entries only occur during high-momentum periods."
+  "action": "candidate requires explicit engine implementation before evaluation"
 }

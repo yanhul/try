@@ -1,0 +1,14 @@
+{
+  "bc": 2,
+  "parent_bc": 1,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "engine_implementation_v1",
+  "conceptual_change": "Implement the baseline engine execution module to enable empirical testing of the registered reference strategy.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
+    "research/BTCUSDT_1h_result_v2.json"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

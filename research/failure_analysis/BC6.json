@@ -1,14 +1,14 @@
 {
   "bc": 6,
-  "candidate_hash": "d0ff04e944c235e762149b146c221dabbfde42fb52666aa635a9edc1728e3724",
+  "parent_bc": 5,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_006",
   "conceptual_change": "Incorporate a volatility threshold filter requiring the 14-period ATR to be greater than 1.5 times the 20-period moving average of the ATR prior to evaluating entry signals.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
   ],
-  "hypothesis_id": "BTC_1h_006",
-  "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 5,
-  "rationale": "The previous attempt (BC 5) was rejected due to lack of engine implementation for the volatility gate. Formulating this as a functional filter allows for testing the hypothesis that volatility-based gating improves directional trade entry efficiency."
+  "action": "candidate requires explicit engine implementation before evaluation"
 }
