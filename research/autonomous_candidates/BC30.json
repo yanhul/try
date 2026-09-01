@@ -1,0 +1,13 @@
+{
+  "bc": 30,
+  "candidate_hash": "ec946fe32a1ae4b5fef5ac1bc14cb16ff964667ebcf5fc249c8364aaeb43a908",
+  "conceptual_change": "Expand the price range criteria to capture liquidity sweeps beyond the immediate baseline support levels.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "sweep_wide_effort",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 29,
+  "rationale": "The failure in BC 29 was due to missing validation evidence for the baseline model; sweep_wide_effort introduces a broader liquidity condition to improve robustness and validation metrics."
+}

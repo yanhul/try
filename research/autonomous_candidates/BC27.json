@@ -1,0 +1,13 @@
+{
+  "bc": 27,
+  "candidate_hash": "b0d89dbad932145bec74c00b1cec93a53735f9705b4cd6283ade8cdb5a0a895f",
+  "conceptual_change": "Revert to original SMA crossover logic without price-buffer constraints to establish a clean performance benchmark before introducing complex execution filters.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "baseline",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 26,
+  "rationale": "The previous attempt (BC 26) failed due to an unexecutable custom implementation. Reverting to the registered baseline provides a stable foundation to evaluate performance metrics before attempting further structural modifications."
+}

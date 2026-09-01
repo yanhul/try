@@ -124,14 +124,38 @@
       "bc": 26,
       "decision": "REJECT",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 27,
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 28,
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 29,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 30,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_wide_effort",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 25,
-  "last_bc": 26,
-  "next_bc": 27,
+  "iterations": 29,
+  "last_bc": 30,
+  "next_bc": 31,
   "oos_consumed": [],
   "state_reset_reason": "discarded invalid autonomous progress; no OOS verdict exists",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-01T04:05:29.279969+00:00"
+  "updated_at": "2026-09-01T04:11:19.041894+00:00"
 }

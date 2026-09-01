@@ -1,0 +1,13 @@
+{
+  "bc": 28,
+  "candidate_hash": "de54bc241dded2e369f0af54773585d5a467afb3f4c191b959f2d6d4f161dc41",
+  "conceptual_change": "Introduce a requirement for a low-volume retest of the liquidity sweep level to validate rejection strength.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
+  ],
+  "hypothesis_id": "quiet_retest",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 27,
+  "rationale": "The previous baseline failed due to a lack of validation evidence; requiring a quiet retest provides the necessary structural confirmation to reduce false breakout signals."
+}
