@@ -264,5 +264,19 @@
     "oos_selection_used": false,
     "parent_bc": 19,
     "rationale": "The previous attempt was rejected due to lack of engine implementation for the volatility filter. This hypothesis formalizes the requirement into the execution logic to filter out low-volatility, range-bound periods that contribute to false breakout signals."
+  },
+  {
+    "bc": 1,
+    "candidate_hash": "64631971950b29e37d9ad7e3b325bb12f5b6162fb686579197f5b858c1a1e884",
+    "conceptual_change": "baseline reference strategy as the registered starting candidate",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
+      "research/BTCUSDT_1h_result_v2.json"
+    ],
+    "hypothesis_id": "baseline_reference_v1",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 0,
+    "rationale": "Bootstrap the autonomous lifecycle from the existing pre-registered baseline so the first rejection and subsequent agent hypothesis generation are traceable."
   }
 ]
