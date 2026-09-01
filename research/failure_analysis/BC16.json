@@ -1,0 +1,14 @@
+{
+  "bc": 16,
+  "parent_bc": 15,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_016",
+  "conceptual_change": "Incorporate the ATR-based volatility-gate filter directly into the signal execution logic by requiring the current ATR(14) to be > 1.5 * SMA(ATR(14), 20) as a prerequisite for long/short entry triggers.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

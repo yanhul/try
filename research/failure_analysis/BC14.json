@@ -1,0 +1,14 @@
+{
+  "bc": 14,
+  "parent_bc": 13,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_014",
+  "conceptual_change": "Introduce a conditional execution block that validates the volatility-gate (ATR(14) > 1.5 * SMA(ATR(14), 20)) prior to signal generation to filter out low-volatility noise.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

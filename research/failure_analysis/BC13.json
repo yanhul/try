@@ -1,0 +1,14 @@
+{
+  "bc": 13,
+  "parent_bc": 12,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_013",
+  "conceptual_change": "Implement a volatility-gate execution wrapper that requires the 14-period ATR to exceed the 20-period moving average of ATR by a factor of 1.5 as a precondition for entering any trade signals.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

@@ -1,0 +1,14 @@
+{
+  "bc": 15,
+  "candidate_hash": "4cc424bcdd1e04ff9fc157cfa1010ce8c50409b13f6e9a71d3654036ac3b0365",
+  "conceptual_change": "Implement a volatility-gate filter that restricts order execution to periods where the current ATR(14) exceeds 150% of the 20-period SMA of the ATR(14) to mitigate noise-driven false breakouts.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_015",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 14,
+  "rationale": "The previous failure was due to an unexecutable hypothesis; this revision formalizes the implementation requirement as an explicit conditional execution rule to filter signal generation based on historical volatility metrics."
+}

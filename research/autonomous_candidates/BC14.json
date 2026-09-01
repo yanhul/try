@@ -1,0 +1,14 @@
+{
+  "bc": 14,
+  "candidate_hash": "554cba06defc958496f29587d6463dc58d7f319c3e4a5fdee7f1a187278eaf5d",
+  "conceptual_change": "Introduce a conditional execution block that validates the volatility-gate (ATR(14) > 1.5 * SMA(ATR(14), 20)) prior to signal generation to filter out low-volatility noise.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_014",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 13,
+  "rationale": "The failure analysis for BC 13 indicated the strategy was unexecutable due to a lack of an engine-level volatility-gate implementation. By formalizing this logic into the hypothesis, we enable a testable constraint on the entry criteria to improve signal quality."
+}

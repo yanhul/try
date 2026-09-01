@@ -1,0 +1,14 @@
+{
+  "bc": 19,
+  "candidate_hash": "65b0c5399476c325c5e83ca64475a66c37e29b21fa2776c1dfe1d2574a2ab01b",
+  "conceptual_change": "Introduce a volatility regime filter by requiring the current 14-period ATR to exceed 1.5 times its 20-period simple moving average prior to evaluating entry signals.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_019",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 18,
+  "rationale": "The previous rejection was based on missing implementation. This hypothesis formalizes the requirement for a high-volatility environment filter to potentially reduce false breakouts in low-liquidity, low-volatility periods identified in the baseline performance data."
+}

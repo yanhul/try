@@ -1,0 +1,14 @@
+{
+  "bc": 17,
+  "candidate_hash": "b5dac95ee237cb9157665512f0fb9003de53a6adefc1b853b45c3f791658667a",
+  "conceptual_change": "Modify the entry logic to strictly require that the current ATR(14) value exceeds 1.5 times the 20-period SMA of the ATR(14) as a necessary condition for trade signal execution.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_017",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 16,
+  "rationale": "The previous hypothesis (BTC_1h_016) was rejected for being unexecutable due to missing engine integration; this hypothesis formalizes the logic into a direct conditional filter to be implemented in the signal generation step to test if volatility-gating reduces false positive entries."
+}

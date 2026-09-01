@@ -1,0 +1,14 @@
+{
+  "bc": 12,
+  "parent_bc": 11,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_012",
+  "conceptual_change": "Introduce a volatility-gate filter to the execution engine where entry is restricted to periods where the 14-period ATR is greater than 1.5 times the 20-period moving average of ATR.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

@@ -1,0 +1,14 @@
+{
+  "bc": 18,
+  "parent_bc": 17,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_018",
+  "conceptual_change": "Implement a threshold filter requiring ATR(14) > 1.5 * SMA(ATR(14), 20) as a prerequisite for entry signal validation.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

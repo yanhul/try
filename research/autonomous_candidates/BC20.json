@@ -1,0 +1,14 @@
+{
+  "bc": 20,
+  "candidate_hash": "358151b18b17ca7e6f6277929d4f7177ca6209c280c9a99a08601e0b84cb7468",
+  "conceptual_change": "Implement a volatility regime filter by requiring the current 14-period Average True Range (ATR) to be greater than 1.5 times its 20-period simple moving average as a prerequisite for entry signals.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_020",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 19,
+  "rationale": "The previous attempt was rejected due to lack of engine implementation for the volatility filter. This hypothesis formalizes the requirement into the execution logic to filter out low-volatility, range-bound periods that contribute to false breakout signals."
+}

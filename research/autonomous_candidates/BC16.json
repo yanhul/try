@@ -1,0 +1,14 @@
+{
+  "bc": 16,
+  "candidate_hash": "d09d19d229c84108777346cc82210a35cf0cb5eeb6e9b5e4bbac04611c81e7ba",
+  "conceptual_change": "Incorporate the ATR-based volatility-gate filter directly into the signal execution logic by requiring the current ATR(14) to be > 1.5 * SMA(ATR(14), 20) as a prerequisite for long/short entry triggers.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "hypothesis_id": "BTC_1h_016",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 15,
+  "rationale": "The previous attempt (BC 15) identified a strategy for filtering noise-driven false breakouts but failed due to lack of an explicit implementation. This hypothesis formalizes the condition as an actionable signal gate to test if volatility-based entry filtering improves precision."
+}

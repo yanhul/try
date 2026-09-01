@@ -1,0 +1,14 @@
+{
+  "bc": 19,
+  "parent_bc": 18,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_019",
+  "conceptual_change": "Introduce a volatility regime filter by requiring the current 14-period ATR to exceed 1.5 times its 20-period simple moving average prior to evaluating entry signals.",
+  "evidence_sources": [
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+    "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}
