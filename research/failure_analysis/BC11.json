@@ -1,14 +1,14 @@
 {
   "bc": 11,
-  "candidate_hash": "0f2ef53240ed99be12d44b89b4619b559214bce2f01b814b3db66b5e07eed693",
+  "parent_bc": 10,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "BTC_1h_011",
   "conceptual_change": "Introduce a trailing stop-loss mechanism that triggers when the 14-period ATR reaches 1.05 times its 20-period moving average, replacing the static exit logic to better adapt to identified volatility regimes.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
   ],
-  "hypothesis_id": "BTC_1h_011",
-  "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 10,
-  "rationale": "The failure analysis in BC 10 confirmed that the ATR-based volatility filter is a viable gate for entry; transitioning this logic to a dynamic trailing stop ensures that the strategy exits positions during high-volatility regime shifts identified in the baseline validation data."
+  "action": "candidate requires explicit engine implementation before evaluation"
 }

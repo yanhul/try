@@ -1,7 +1,7 @@
 {
   "bc": 14,
-  "candidate_hash": "554cba06defc958496f29587d6463dc58d7f319c3e4a5fdee7f1a187278eaf5d",
-  "conceptual_change": "Introduce a conditional execution block that validates the volatility-gate (ATR(14) > 1.5 * SMA(ATR(14), 20)) prior to signal generation to filter out low-volatility noise.",
+  "candidate_hash": "494fdf618fde5255ecf91e93c55b1f82601439fe51f3e869fcac657f69547a97",
+  "conceptual_change": "Implement a volatility-adjusted position sizing model where the trade size is inversely proportional to the 14-period ATR to normalize risk across high and low volatility regimes, addressing the loss magnitude issues identified in the baseline during range-bound periods.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 13,
-  "rationale": "The failure analysis for BC 13 indicated the strategy was unexecutable due to a lack of an engine-level volatility-gate implementation. By formalizing this logic into the hypothesis, we enable a testable constraint on the entry criteria to improve signal quality."
+  "rationale": "The failure analysis in BC 13 suggests that current exits fail during low-volatility conditions; adjusting position size dynamically based on ATR allows the system to scale down risk exposure when volatility is low, rather than attempting to filter trades entirely."
 }

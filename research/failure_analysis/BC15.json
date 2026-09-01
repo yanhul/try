@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_015",
-  "conceptual_change": "Implement a volatility-gate filter that restricts order execution to periods where the current ATR(14) exceeds 150% of the 20-period SMA of the ATR(14) to mitigate noise-driven false breakouts.",
+  "conceptual_change": "Implement a volatility-adjusted position sizing function within the execution engine where trade size = (Portfolio_Equity * Risk_Percentage) / (ATR_14 * Multiplier), replacing fixed lot sizing to mitigate drawdown severity during range-bound volatility spikes.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

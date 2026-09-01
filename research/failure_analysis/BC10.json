@@ -1,10 +1,10 @@
 {
-  "bc": 17,
-  "parent_bc": 16,
+  "bc": 10,
+  "parent_bc": 9,
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "BTC_1h_017",
-  "conceptual_change": "Implement a hard-coded gatekeeper function that disables signal execution when ATR_14 > (SMA(ATR_14, 20) + 1.5 * STDEV(ATR_14, 20)), intended to prevent entry during high-volatility regime shifts.",
+  "hypothesis_id": "BTC_1h_010",
+  "conceptual_change": "Implement the specific volatility filter by requiring the current 14-period ATR to exceed the product of 1.05 and the 20-period moving average of the ATR as a hard gate for entry signal execution.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"

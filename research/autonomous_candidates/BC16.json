@@ -1,7 +1,7 @@
 {
   "bc": 16,
-  "candidate_hash": "d09d19d229c84108777346cc82210a35cf0cb5eeb6e9b5e4bbac04611c81e7ba",
-  "conceptual_change": "Incorporate the ATR-based volatility-gate filter directly into the signal execution logic by requiring the current ATR(14) to be > 1.5 * SMA(ATR(14), 20) as a prerequisite for long/short entry triggers.",
+  "candidate_hash": "b354436007d5813de0083b5ad09d824d1fc26ea8c7ed0619de3fa8a8e077cd0f",
+  "conceptual_change": "Incorporate a time-based volatility filter that pauses trade execution if the ATR_14 value exceeds the 20-period moving average of ATR by more than 1.5 standard deviations, replacing the previous proposed dynamic position sizing to prevent entry during high-volatility regime shifts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 15,
-  "rationale": "The previous attempt (BC 15) identified a strategy for filtering noise-driven false breakouts but failed due to lack of an explicit implementation. This hypothesis formalizes the condition as an actionable signal gate to test if volatility-based entry filtering improves precision."
+  "rationale": "The previous attempt at dynamic position sizing was rejected due to implementation complexity in the engine. Shifting the strategy to an execution filter based on existing ATR parameters avoids engine-level architectural changes while addressing the drawdown severity caused by volatility spikes."
 }

@@ -1,117 +1,5 @@
 [
   {
-    "bc": 10,
-    "candidate_hash": "bd83ed6bf0be8a668bd82e3fb8dbce28b82f1cf7a40e8641979fad871c40d733",
-    "conceptual_change": "Incorporate a volatility-gate mechanism by requiring the 14-period ATR to exceed 1.5 times the 20-period moving average of the ATR as a mandatory filter for trade entry signals.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_010",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 9,
-    "rationale": "The previous hypothesis was rejected due to a lack of engine implementation; this hypothesis formalizes the volatility gate as a primary filter to improve signal reliability during high-volatility trending regimes as originally conceptualized."
-  },
-  {
-    "bc": 11,
-    "candidate_hash": "9467231f5fbfa53c6a4074b93f75b0dcd4dc6f27eda005ab3603cf6949183c81",
-    "conceptual_change": "Implement the volatility-gate mechanism by hardcoding the entry condition where 14-period ATR must exceed 1.5 times the 20-period moving average of ATR, utilizing the existing trade execution engine architecture.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_011",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 10,
-    "rationale": "The previous attempt was rejected due to lack of implementation; this hypothesis explicitly formalizes the engine integration of the previously defined volatility-gate filter to enable performance validation."
-  },
-  {
-    "bc": 12,
-    "candidate_hash": "91f6123e80ba78e3edf4a891bf866556a55cb94bb192b579559ff512e8fb3c27",
-    "conceptual_change": "Introduce a volatility-gate filter to the execution engine where entry is restricted to periods where the 14-period ATR is greater than 1.5 times the 20-period moving average of ATR.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_012",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 11,
-    "rationale": "The previous hypothesis (BTC_1h_011) was rejected due to lack of an explicit engine implementation. This hypothesis operationalizes the volatility-gate requirement within the engine architecture to enable empirical testing."
-  },
-  {
-    "bc": 13,
-    "candidate_hash": "529668c47a6419aca130f1a4d37733f4093dbde7e11f2846ff09fc1227507968",
-    "conceptual_change": "Implement a volatility-gate execution wrapper that requires the 14-period ATR to exceed the 20-period moving average of ATR by a factor of 1.5 as a precondition for entering any trade signals.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_013",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 12,
-    "rationale": "The previous attempt (BTC_1h_012) was rejected due to lack of an explicit engine implementation. By formalizing this volatility-gate as a distinct precondition in the execution engine, the hypothesis becomes testable against the baseline performance."
-  },
-  {
-    "bc": 14,
-    "candidate_hash": "554cba06defc958496f29587d6463dc58d7f319c3e4a5fdee7f1a187278eaf5d",
-    "conceptual_change": "Introduce a conditional execution block that validates the volatility-gate (ATR(14) > 1.5 * SMA(ATR(14), 20)) prior to signal generation to filter out low-volatility noise.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_014",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 13,
-    "rationale": "The failure analysis for BC 13 indicated the strategy was unexecutable due to a lack of an engine-level volatility-gate implementation. By formalizing this logic into the hypothesis, we enable a testable constraint on the entry criteria to improve signal quality."
-  },
-  {
-    "bc": 15,
-    "candidate_hash": "4cc424bcdd1e04ff9fc157cfa1010ce8c50409b13f6e9a71d3654036ac3b0365",
-    "conceptual_change": "Implement a volatility-gate filter that restricts order execution to periods where the current ATR(14) exceeds 150% of the 20-period SMA of the ATR(14) to mitigate noise-driven false breakouts.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_015",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 14,
-    "rationale": "The previous failure was due to an unexecutable hypothesis; this revision formalizes the implementation requirement as an explicit conditional execution rule to filter signal generation based on historical volatility metrics."
-  },
-  {
-    "bc": 16,
-    "candidate_hash": "d09d19d229c84108777346cc82210a35cf0cb5eeb6e9b5e4bbac04611c81e7ba",
-    "conceptual_change": "Incorporate the ATR-based volatility-gate filter directly into the signal execution logic by requiring the current ATR(14) to be > 1.5 * SMA(ATR(14), 20) as a prerequisite for long/short entry triggers.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_016",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 15,
-    "rationale": "The previous attempt (BC 15) identified a strategy for filtering noise-driven false breakouts but failed due to lack of an explicit implementation. This hypothesis formalizes the condition as an actionable signal gate to test if volatility-based entry filtering improves precision."
-  },
-  {
-    "bc": 17,
-    "candidate_hash": "b5dac95ee237cb9157665512f0fb9003de53a6adefc1b853b45c3f791658667a",
-    "conceptual_change": "Modify the entry logic to strictly require that the current ATR(14) value exceeds 1.5 times the 20-period SMA of the ATR(14) as a necessary condition for trade signal execution.",
-    "evidence_sources": [
-      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
-      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
-    ],
-    "hypothesis_id": "BTC_1h_017",
-    "is_testable": true,
-    "oos_selection_used": false,
-    "parent_bc": 16,
-    "rationale": "The previous hypothesis (BTC_1h_016) was rejected for being unexecutable due to missing engine integration; this hypothesis formalizes the logic into a direct conditional filter to be implemented in the signal generation step to test if volatility-gating reduces false positive entries."
-  },
-  {
     "bc": 18,
     "candidate_hash": "b052189e4729331bebedb9dbebd65510c28061a1eb4922f487b0c7bf9888bdfa",
     "conceptual_change": "Implement a threshold filter requiring ATR(14) > 1.5 * SMA(ATR(14), 20) as a prerequisite for entry signal validation.",
@@ -278,5 +166,117 @@
     "oos_selection_used": false,
     "parent_bc": 9,
     "rationale": "Previous rejection was due to the lack of explicit engine implementation of the filter logic; this hypothesis proposes the technical integration of the identified volatility gate to verify if it reduces noise-induced entries."
+  },
+  {
+    "bc": 11,
+    "candidate_hash": "0f2ef53240ed99be12d44b89b4619b559214bce2f01b814b3db66b5e07eed693",
+    "conceptual_change": "Introduce a trailing stop-loss mechanism that triggers when the 14-period ATR reaches 1.05 times its 20-period moving average, replacing the static exit logic to better adapt to identified volatility regimes.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_011",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 10,
+    "rationale": "The failure analysis in BC 10 confirmed that the ATR-based volatility filter is a viable gate for entry; transitioning this logic to a dynamic trailing stop ensures that the strategy exits positions during high-volatility regime shifts identified in the baseline validation data."
+  },
+  {
+    "bc": 12,
+    "candidate_hash": "1eb7cd57d06d81897e3a66ac1cec7d162e77965cf0a7a70393b2ee27409f79c7",
+    "conceptual_change": "Implement a volatility-adjusted exit threshold by substituting the static stop-loss with a trailing stop based on the 14-period ATR relative to its 20-period moving average to dynamically manage drawdown during high volatility expansion.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_012",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 11,
+    "rationale": "The failure in BC 11 was procedural due to unexecutable logic; implementing the ATR-based trailing stop as defined in the previous design allows for the systematic testing of volatility-adaptive exit criteria against the baseline results."
+  },
+  {
+    "bc": 13,
+    "candidate_hash": "7a51d7904dfcfa97ac9bd78a234a7f468f587c28ea8ad005744626aa6a319ec6",
+    "conceptual_change": "Introduce a volatility-based entry filter requiring the 14-period ATR to be above its 20-period moving average to restrict trade execution to regimes of expanding volatility, as the baseline failure in BC 12 suggests current exits are insufficient to mitigate losses during low-volatility range-bound conditions.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_013",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 12,
+    "rationale": "Since the engine implementation for dynamic exits (BC 12) is pending, testing a volatility filter on the entry side allows for risk mitigation by avoiding flat or low-volatility regimes where current static stop-losses are most likely to be triggered."
+  },
+  {
+    "bc": 14,
+    "candidate_hash": "494fdf618fde5255ecf91e93c55b1f82601439fe51f3e869fcac657f69547a97",
+    "conceptual_change": "Implement a volatility-adjusted position sizing model where the trade size is inversely proportional to the 14-period ATR to normalize risk across high and low volatility regimes, addressing the loss magnitude issues identified in the baseline during range-bound periods.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_014",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 13,
+    "rationale": "The failure analysis in BC 13 suggests that current exits fail during low-volatility conditions; adjusting position size dynamically based on ATR allows the system to scale down risk exposure when volatility is low, rather than attempting to filter trades entirely."
+  },
+  {
+    "bc": 15,
+    "candidate_hash": "b6c439a58dd664259bc6a8c2a855006fe660874e3356d03f0298fbe4bf7b28c3",
+    "conceptual_change": "Implement a volatility-adjusted position sizing function within the execution engine where trade size = (Portfolio_Equity * Risk_Percentage) / (ATR_14 * Multiplier), replacing fixed lot sizing to mitigate drawdown severity during range-bound volatility spikes.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_015",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 14,
+    "rationale": "The previous rejection noted a lack of engine implementation for the volatility-adjusted sizing model. This hypothesis formalizes the specific mathematical implementation required to translate the conceptual change into an executable logic branch within the engine."
+  },
+  {
+    "bc": 16,
+    "candidate_hash": "b354436007d5813de0083b5ad09d824d1fc26ea8c7ed0619de3fa8a8e077cd0f",
+    "conceptual_change": "Incorporate a time-based volatility filter that pauses trade execution if the ATR_14 value exceeds the 20-period moving average of ATR by more than 1.5 standard deviations, replacing the previous proposed dynamic position sizing to prevent entry during high-volatility regime shifts.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_016",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 15,
+    "rationale": "The previous attempt at dynamic position sizing was rejected due to implementation complexity in the engine. Shifting the strategy to an execution filter based on existing ATR parameters avoids engine-level architectural changes while addressing the drawdown severity caused by volatility spikes."
+  },
+  {
+    "bc": 17,
+    "candidate_hash": "99355244b7471ce2631b9b3c9c5ab1858f4622cd373305ba5506ca5f167e7bc0",
+    "conceptual_change": "Implement a hard-coded gatekeeper function that disables signal execution when ATR_14 > (SMA(ATR_14, 20) + 1.5 * STDEV(ATR_14, 20)), intended to prevent entry during high-volatility regime shifts.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_017",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 16,
+    "rationale": "The previous hypothesis was rejected due to lack of engine implementation. By explicitly defining the volatility filter as a hard-coded gatekeeper function rather than a generic dynamic sizing rule, the logic becomes executable within the existing trading engine framework to mitigate high-volatility regime risks."
+  },
+  {
+    "bc": 18,
+    "candidate_hash": "a1ce946ddf699a741a6935833fa7e3a574b1296c3e0a13d158616a819b447308",
+    "conceptual_change": "Introduce a conditional volatility filter into the execution engine that restricts trade entry when ATR_14 exceeds the 1.5 standard deviation threshold of its 20-period moving average.",
+    "evidence_sources": [
+      "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
+      "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
+    ],
+    "hypothesis_id": "BTC_1h_018",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 17,
+    "rationale": "The failure in BC 17 was due to a lack of engine implementation for the volatility gatekeeper. BC 18 addresses this by formalizing the gatekeeper into the execution logic to test if curbing high-volatility entries improves signal reliability."
   }
 ]

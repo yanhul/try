@@ -1,7 +1,7 @@
 {
   "bc": 17,
-  "candidate_hash": "b5dac95ee237cb9157665512f0fb9003de53a6adefc1b853b45c3f791658667a",
-  "conceptual_change": "Modify the entry logic to strictly require that the current ATR(14) value exceeds 1.5 times the 20-period SMA of the ATR(14) as a necessary condition for trade signal execution.",
+  "candidate_hash": "99355244b7471ce2631b9b3c9c5ab1858f4622cd373305ba5506ca5f167e7bc0",
+  "conceptual_change": "Implement a hard-coded gatekeeper function that disables signal execution when ATR_14 > (SMA(ATR_14, 20) + 1.5 * STDEV(ATR_14, 20)), intended to prevent entry during high-volatility regime shifts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 16,
-  "rationale": "The previous hypothesis (BTC_1h_016) was rejected for being unexecutable due to missing engine integration; this hypothesis formalizes the logic into a direct conditional filter to be implemented in the signal generation step to test if volatility-gating reduces false positive entries."
+  "rationale": "The previous hypothesis was rejected due to lack of engine implementation. By explicitly defining the volatility filter as a hard-coded gatekeeper function rather than a generic dynamic sizing rule, the logic becomes executable within the existing trading engine framework to mitigate high-volatility regime risks."
 }

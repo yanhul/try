@@ -1,7 +1,7 @@
 {
   "bc": 15,
-  "candidate_hash": "4cc424bcdd1e04ff9fc157cfa1010ce8c50409b13f6e9a71d3654036ac3b0365",
-  "conceptual_change": "Implement a volatility-gate filter that restricts order execution to periods where the current ATR(14) exceeds 150% of the 20-period SMA of the ATR(14) to mitigate noise-driven false breakouts.",
+  "candidate_hash": "b6c439a58dd664259bc6a8c2a855006fe660874e3356d03f0298fbe4bf7b28c3",
+  "conceptual_change": "Implement a volatility-adjusted position sizing function within the execution engine where trade size = (Portfolio_Equity * Risk_Percentage) / (ATR_14 * Multiplier), replacing fixed lot sizing to mitigate drawdown severity during range-bound volatility spikes.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 14,
-  "rationale": "The previous failure was due to an unexecutable hypothesis; this revision formalizes the implementation requirement as an explicit conditional execution rule to filter signal generation based on historical volatility metrics."
+  "rationale": "The previous rejection noted a lack of engine implementation for the volatility-adjusted sizing model. This hypothesis formalizes the specific mathematical implementation required to translate the conceptual change into an executable logic branch within the engine."
 }

@@ -1,7 +1,7 @@
 {
   "bc": 13,
-  "candidate_hash": "529668c47a6419aca130f1a4d37733f4093dbde7e11f2846ff09fc1227507968",
-  "conceptual_change": "Implement a volatility-gate execution wrapper that requires the 14-period ATR to exceed the 20-period moving average of ATR by a factor of 1.5 as a precondition for entering any trade signals.",
+  "candidate_hash": "7a51d7904dfcfa97ac9bd78a234a7f468f587c28ea8ad005744626aa6a319ec6",
+  "conceptual_change": "Introduce a volatility-based entry filter requiring the 14-period ATR to be above its 20-period moving average to restrict trade execution to regimes of expanding volatility, as the baseline failure in BC 12 suggests current exits are insufficient to mitigate losses during low-volatility range-bound conditions.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 12,
-  "rationale": "The previous attempt (BTC_1h_012) was rejected due to lack of an explicit engine implementation. By formalizing this volatility-gate as a distinct precondition in the execution engine, the hypothesis becomes testable against the baseline performance."
+  "rationale": "Since the engine implementation for dynamic exits (BC 12) is pending, testing a volatility filter on the entry side allows for risk mitigation by avoiding flat or low-volatility regimes where current static stop-losses are most likely to be triggered."
 }

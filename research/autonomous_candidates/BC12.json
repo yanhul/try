@@ -1,7 +1,7 @@
 {
   "bc": 12,
-  "candidate_hash": "91f6123e80ba78e3edf4a891bf866556a55cb94bb192b579559ff512e8fb3c27",
-  "conceptual_change": "Introduce a volatility-gate filter to the execution engine where entry is restricted to periods where the 14-period ATR is greater than 1.5 times the 20-period moving average of ATR.",
+  "candidate_hash": "1eb7cd57d06d81897e3a66ac1cec7d162e77965cf0a7a70393b2ee27409f79c7",
+  "conceptual_change": "Implement a volatility-adjusted exit threshold by substituting the static stop-loss with a trailing stop based on the 14-period ATR relative to its 20-period moving average to dynamically manage drawdown during high volatility expansion.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
@@ -10,5 +10,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 11,
-  "rationale": "The previous hypothesis (BTC_1h_011) was rejected due to lack of an explicit engine implementation. This hypothesis operationalizes the volatility-gate requirement within the engine architecture to enable empirical testing."
+  "rationale": "The failure in BC 11 was procedural due to unexecutable logic; implementing the ATR-based trailing stop as defined in the previous design allows for the systematic testing of volatility-adaptive exit criteria against the baseline results."
 }

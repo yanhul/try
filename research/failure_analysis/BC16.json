@@ -4,7 +4,7 @@
   "decision": "REJECT",
   "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
   "hypothesis_id": "BTC_1h_016",
-  "conceptual_change": "Incorporate the ATR-based volatility-gate filter directly into the signal execution logic by requiring the current ATR(14) to be > 1.5 * SMA(ATR(14), 20) as a prerequisite for long/short entry triggers.",
+  "conceptual_change": "Incorporate a time-based volatility filter that pauses trade execution if the ATR_14 value exceeds the 20-period moving average of ATR by more than 1.5 standard deviations, replacing the previous proposed dynamic position sizing to prevent entry during high-volatility regime shifts.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline.VALIDATION",
     "research/BTCUSDT_1h_result_v2.json: dataset and baseline execution provenance"
