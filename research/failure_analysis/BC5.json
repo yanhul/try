@@ -2,12 +2,11 @@
   "bc": 5,
   "parent_bc": 4,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "sma_crossover_execution_engine_v1",
-  "conceptual_change": "Implement a deterministic order execution module that triggers a market buy order when the 50-period SMA crosses above the 200-period SMA and a market sell order when the 50-period SMA crosses below the 200-period SMA on the 1h timeframe.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "sweep_wide_effort",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

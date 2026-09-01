@@ -1,13 +1,13 @@
 {
   "bc": 3,
-  "candidate_hash": "fffe72c1be1f0db9c864bb5f75ad258d289f659f0e6ba2695d93ebb606d4f298",
-  "conceptual_change": "Incorporate a dual-SMA (short-term 50, long-term 200) crossover logic into the execution framework to trigger entry and exit signals.",
+  "candidate_hash": "235159ef765deff36f872182038f3d1fb91a0dd20dcb594fc0dc8b74403e7cf5",
+  "conceptual_change": "Incorporate a low-volatility retest phase following the initial trigger to confirm price stabilization before entry.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "moving_average_crossover_v1",
+  "hypothesis_id": "quiet_retest",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 2,
-  "rationale": "With the engine implementation requirements established in parent BC 2, this hypothesis shifts from infrastructure to testing a specific technical indicator strategy defined in the baseline research documentation."
+  "rationale": "The baseline strategy lacked specific validation criteria for entries, leading to rejection. A quiet retest mechanism introduces a structured validation gate to ensure price confirms a level before execution."
 }

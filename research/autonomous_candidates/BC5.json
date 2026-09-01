@@ -1,13 +1,13 @@
 {
   "bc": 5,
-  "candidate_hash": "8a67c7ab2a5a52bc86d049ca6c4a766e0729f71f6c3a6af5e924ee7ae15752d9",
-  "conceptual_change": "Implement a deterministic order execution module that triggers a market buy order when the 50-period SMA crosses above the 200-period SMA and a market sell order when the 50-period SMA crosses below the 200-period SMA on the 1h timeframe.",
+  "candidate_hash": "ac3076d2ee5d081fe71492f7c9e4cfcb952e714b856709369010cbcc2a373ab0",
+  "conceptual_change": "Expand the stop-loss sweep threshold to capture a wider liquidity range, compensating for the validation failure observed in the previous cycle.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "sma_crossover_execution_engine_v1",
+  "hypothesis_id": "sweep_wide_effort",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 4,
-  "rationale": "The previous attempt was rejected due to a lack of an executable implementation. Defining the explicit signal-to-order mapping allows for the technical validation of the strategy within the execution engine as required by the failure analysis of BC 4."
+  "rationale": "The previous attempt failed due to insufficient validation; applying a wider sweep effort addresses potential signal noise identified in the baseline hypothesis data."
 }

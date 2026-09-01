@@ -1,13 +1,13 @@
 {
   "bc": 4,
-  "candidate_hash": "058dc5098fc81db2351b0c52b01dd9714eabc6b712181d251baaa9b38ac564ec",
-  "conceptual_change": "Integrate the dual-SMA (50/200) crossover logic into the execution framework to enable automated signal generation and order entry based on the crossover events defined in BC 3.",
+  "candidate_hash": "df3bb102c08d64c0838b36488e6d9465217c57a599e0bd733c4124b27ff2b421",
+  "conceptual_change": "Introduce a confirmation trigger post-liquidity sweep to replace the prior baseline assumption of immediate reversal.",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "moving_average_crossover_v2_implementation",
+  "hypothesis_id": "sweep_confirmation",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 3,
-  "rationale": "The previous hypothesis (BC 3) was rejected because it lacked an implemented engine to execute the SMA logic. This hypothesis addresses the infrastructure gap by requiring the integration of the crossover logic into the codebase to facilitate testing."
+  "rationale": "The failure in BC 3 was due to missing validation evidence. Adding a confirmation requirement ensures the liquidity sweep is structurally verified before entry."
 }

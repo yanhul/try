@@ -2,13 +2,11 @@
   "bc": 2,
   "parent_bc": 1,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "engine_implementation_v1",
-  "conceptual_change": "Implement the core engine logic to support the baseline execution framework described in research/BTCUSDT_1h_hypotheses_v1.json",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "baseline",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
-    "research/BTCUSDT_1h_result_v2.json"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }

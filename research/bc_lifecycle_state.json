@@ -1,10 +1,36 @@
 {
-  "history": [],
-  "iterations": 0,
-  "last_bc": 1,
-  "next_bc": 2,
+  "history": [
+    {
+      "bc": 2,
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 3,
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 4,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 5,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_wide_effort",
+      "next": "AGENT_HYPOTHESIS"
+    }
+  ],
+  "iterations": 4,
+  "last_bc": 5,
+  "next_bc": 6,
   "oos_consumed": [],
   "state_reset_reason": "clean strict autonomous lifecycle reset; prior BC2-BC30 progress invalidated",
   "terminal": false,
-  "terminal_reason": null
+  "terminal_reason": null,
+  "updated_at": "2026-09-01T04:15:10.907590+00:00"
 }

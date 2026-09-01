@@ -1,14 +1,13 @@
 {
   "bc": 2,
-  "candidate_hash": "ef70591d55f488e682b978f3e4867c70f33c4d8c86f14d55208b4173a46b9498",
-  "conceptual_change": "Implement the core engine logic to support the baseline execution framework described in research/BTCUSDT_1h_hypotheses_v1.json",
+  "candidate_hash": "f7c1214950ba417aee72580b93a25a108a147f94915b38efb75eefdd64ddb496",
+  "conceptual_change": "initialize standard baseline execution parameters as the initial operational reference",
   "evidence_sources": [
-    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline",
-    "research/BTCUSDT_1h_result_v2.json"
+    "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
-  "hypothesis_id": "engine_implementation_v1",
+  "hypothesis_id": "baseline",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 1,
-  "rationale": "The previous attempt was rejected due to lack of engine implementation; this hypothesis introduces the necessary infrastructure to execute the baseline strategy."
+  "rationale": "The previous attempt failed due to an unexecutable reference; initializing the baseline registered hypothesis will establish the necessary operational framework."
 }

@@ -2,12 +2,11 @@
   "bc": 4,
   "parent_bc": 3,
   "decision": "REJECT",
-  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
-  "hypothesis_id": "moving_average_crossover_v2_implementation",
-  "conceptual_change": "Integrate the dual-SMA (50/200) crossover logic into the execution framework to enable automated signal generation and order entry based on the crossover events defined in BC 3.",
+  "reason": "VALIDATION_EVIDENCE_MISSING",
+  "hypothesis_id": "sweep_confirmation",
   "evidence_sources": [
     "research/BTCUSDT_1h_hypotheses_v1.json: hypotheses.baseline"
   ],
   "oos_selection_used": false,
-  "action": "candidate requires explicit engine implementation before evaluation"
+  "action": "run registered IS/Validation evaluation before promotion"
 }
