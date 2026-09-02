@@ -99,6 +99,8 @@ def main():
   try:
    from autonomous_hypothesis import load_candidate
    cand=load_candidate(candidate,bc,parent)
+   c=cand
+   write_queue([cand])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
