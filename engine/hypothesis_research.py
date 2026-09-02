@@ -9,7 +9,15 @@ from .backtest import load_bars
 from .data_split import chronological_split, validate_splits
 from .features import extract_features
 from .specific_features import extract_specific_features
-from .context_features import gann_reference, point_figure_columns, PnFConfig, rolling_volatility, vwap
+from .context_features import (
+    gann_reference,
+    multi_timeframe_context,
+    point_figure_columns,
+    PnFConfig,
+    rolling_volatility,
+    rolling_volume_profile_poc,
+    vwap,
+)
 from .execution import execute_trades
 from .ledger import build_ledger
 from .metrics import Trade, calculate_metrics
@@ -44,6 +52,8 @@ def evaluate_split(bars, start, end, predicate, stop=0.01, rr=2.0, cost=0.0):
     vol = rolling_volatility(history)
     vw = vwap(history)
     gann = gann_reference(history)
+    mtf = multi_timeframe_context(history)
+    vp_poc = rolling_volume_profile_poc(history)
     pnf_direction: list[str | None] = []
     box = max(1e-9, (max(b.high for b in history) - min(b.low for b in history)) / 100.0) if history else 1.0
     for i in range(len(history)):
@@ -54,9 +64,12 @@ def evaluate_split(bars, start, end, predicate, stop=0.01, rr=2.0, cost=0.0):
         def row(index):
             base = dict(features[index])
             base.update(specific[index])
+            base["close"] = history[index].close
             base["volatility"] = vol[index]
             base["vwap"] = vw[index]
             base["vwap_distance"] = ((history[index].close - vw[index]) / vw[index]) if vw[index] else None
+            base["volume_profile_poc"] = vp_poc[index]
+            base.update(mtf[index])
             base["gann_slope"] = gann[index]["slope"]
             base["pnf_direction"] = pnf_direction[index]
             return base
