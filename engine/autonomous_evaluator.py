@@ -33,8 +33,9 @@ def main() -> int:
     data=(root/a.data).resolve()
     bars=load_bars(data)
     splits=chronological_split(len(bars)); validate_splits(splits,len(bars))
-    is_result=evaluate_split(bars,splits[0].start,splits[0].end,hid,a.stop,a.rr,a.cost)
-    val_result=evaluate_split(bars,splits[1].start,splits[1].end,hid,a.stop,a.rr,a.cost)
+    predicate=HYPOTHESES[hid]
+    is_result=evaluate_split(bars,splits[0].start,splits[0].end,predicate,a.stop,a.rr,a.cost)
+    val_result=evaluate_split(bars,splits[1].start,splits[1].end,predicate,a.stop,a.rr,a.cost)
     vm=val_result['metrics']
     passed=(vm.get('profit_factor') is not None and vm['profit_factor']>=1.0 and vm['total_return']>=0.0)
     result={
