@@ -1,5 +1,7 @@
 name: BC Research Controller
 
+# Durable controller: push/schedule/manual wake-ups resume persisted lifecycle state.
+# Controller state is authoritative; the agent never owns policy, evidence, promotion, or terminal rules.
 on:
   workflow_dispatch:
   push:
