@@ -141,6 +141,36 @@ def point_figure_columns(bars: list[MarketBar], config: PnFConfig) -> list[dict[
     return columns
 
 
+def point_figure_directions(bars: list[MarketBar], config: PnFConfig) -> list[str | None]:
+    """Return the current P&F direction at every bar in one causal streaming pass."""
+    if config.box_size <= 0 or config.reversal < 1:
+        raise ValueError("box_size must be positive and reversal >= 1")
+    if not bars:
+        return []
+    out: list[str | None] = [None]
+    direction: str | None = None
+    extreme = bars[0].close
+    for bar in bars[1:]:
+        price = bar.close
+        if direction is None:
+            if price >= extreme + config.box_size:
+                direction, extreme = "X", price
+            elif price <= extreme - config.box_size:
+                direction, extreme = "O", price
+        elif direction == "X":
+            if price >= extreme + config.box_size:
+                extreme = price
+            elif price <= extreme - config.reversal * config.box_size:
+                direction, extreme = "O", price
+        else:
+            if price <= extreme - config.box_size:
+                extreme = price
+            elif price >= extreme + config.reversal * config.box_size:
+                direction, extreme = "X", price
+        out.append(direction)
+    return out
+
+
 def gann_reference(bars: list[MarketBar], lookback: int = 20) -> list[dict[str, float | None]]:
     """Expose normalized time/price slope from a rolling anchor; no fixed Gann claim."""
     if lookback <= 0:
