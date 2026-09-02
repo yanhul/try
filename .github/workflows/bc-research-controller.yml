@@ -7,10 +7,11 @@ on:
       - main
       - 'bc[0-9]*'
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '*/15 * * * *'
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: bc-research-controller
@@ -22,6 +23,7 @@ jobs:
     timeout-minutes: 30
     env:
       RESEARCH_MAX_ITERATIONS: 8
+      RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini,deepseek
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -37,6 +39,8 @@ jobs:
           python-version: '3.12'
       - name: Install test runner
         run: python -m pip install --upgrade pytest
+      - name: Run harness contract tests
+        run: python -m pytest -q tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py
       - name: Verify Gemini API
         run: python research/gemini_smoke_test.py
       - name: Bootstrap strict research lifecycle
@@ -48,7 +52,7 @@ jobs:
           set -o pipefail
           python research/bc_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -q 'CONTROLLER_NEXT BC' controller.log; then
+          if grep -Eq 'CONTROLLER_(NEXT BC|AUTO_RESUME)' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
@@ -63,51 +67,45 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Snapshot only files produced by this run. Never merge generated
-          # lifecycle state with a concurrently advanced main branch.
           mkdir -p /tmp/try-state
-          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis; do
+          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos; do
             if [ -e "$path" ]; then
               cp -a "$path" "/tmp/try-state/$(basename "$path")"
             fi
           done
-
-          # Rebase is intentionally avoided here: generated JSON is an
-          # authoritative state transition and must not be conflict-merged.
-          # Refresh main, reset to it, then overlay this run's generated state.
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
-
             for item in /tmp/try-state/*; do
               [ -e "$item" ] || continue
-              case "$(basename "$item")" in
-                bc_lifecycle_state.json) cp -a "$item" research/bc_lifecycle_state.json ;;
-                bc_queue.json) cp -a "$item" research/bc_queue.json ;;
-                autonomous_candidates) rm -rf research/autonomous_candidates && cp -a "$item" research/autonomous_candidates ;;
-                failure_analysis) rm -rf research/failure_analysis && cp -a "$item" research/failure_analysis ;;
+              base="$(basename "$item")"
+              case "$base" in
+                bc_lifecycle_state.json|bc_queue.json) cp -a "$item" "research/$base" ;;
+                autonomous_candidates|failure_analysis|frozen_candidates|oos) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
-
-            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis 2>/dev/null || true
+            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "No autonomous research state changes to persist."
-              exit 0
+              break
             fi
-
             if [ "$CONTINUE" = "true" ]; then
-              git commit -m "research: continue Gemini autonomous lifecycle"
+              git commit -m "research: continue autonomous lifecycle [skip ci]"
             else
               git commit -m "research: persist autonomous research state [skip ci]"
             fi
-
             if git push origin HEAD:main; then
               echo "STATE_PERSISTED"
-              exit 0
+              break
             fi
             git reset --hard origin/main
             sleep $((attempt * 2))
           done
-          echo "Unable to persist state after retries" >&2
-          exit 1
+      - name: Auto-resume non-terminal loop
+        if: ${{ steps.controller.outputs.continue == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          sleep 10
+          gh workflow run bc-research-controller.yml --ref main
