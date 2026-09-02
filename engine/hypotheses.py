@@ -51,7 +51,10 @@ def vsa_absorption(ctx: dict, direction: str) -> bool:
 
 
 def vsa_expansion(ctx: dict, direction: str) -> bool:
-    return bool(ctx["entry"].get("vsa_volume_expansion") and ctx["entry"].get("vsa_wide_spread"))
+    return bool(
+        (ctx["entry"].get("vsa_volume_expansion") or 0) >= 1.5
+        and (ctx["entry"].get("vsa_wide_spread") or 0) >= 1.2
+    )
 
 
 def vpa_expansion(ctx: dict, direction: str) -> bool:
@@ -73,6 +76,21 @@ def gann_alignment(ctx: dict, direction: str) -> bool:
     return slope is not None and ((direction == "bullish" and slope > 0) or (direction == "bearish" and slope < 0))
 
 
+def mtf_alignment(ctx: dict, direction: str) -> bool:
+    row = ctx["entry"]
+    aligned = bool(row.get("mtf_aligned"))
+    return aligned and ((direction == "bullish" and row.get("mtf_fast_bullish")) or
+                        (direction == "bearish" and not row.get("mtf_fast_bullish")))
+
+
+def volume_profile_alignment(ctx: dict, direction: str) -> bool:
+    row = ctx["entry"]
+    poc = row.get("volume_profile_poc")
+    close = row.get("close")
+    return poc is not None and close is not None and ((direction == "bullish" and close >= poc) or
+                                                      (direction == "bearish" and close <= poc))
+
+
 HYPOTHESES: dict[str, Callable[[dict, str], bool]] = {
     "baseline": lambda ctx, direction: True,
     "sweep_confirmation": sweep_confirmation,
@@ -86,5 +104,7 @@ HYPOTHESES: dict[str, Callable[[dict, str], bool]] = {
     "vwap_alignment": vwap_alignment,
     "pnf_alignment": pnf_alignment,
     "gann_alignment": gann_alignment,
+    "mtf_alignment": mtf_alignment,
+    "volume_profile_alignment": volume_profile_alignment,
     **RESEARCH_RULES,
 }
