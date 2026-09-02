@@ -9,7 +9,7 @@ from .backtest import load_bars
 from .data_split import chronological_split, validate_splits
 from .features import extract_features
 from .specific_features import extract_specific_features
-from .context_features import gann_reference, point_figure_columns, rolling_volatility, volume_profile, vwap
+from .context_features import gann_reference, point_figure_columns, PnFConfig, rolling_volatility, vwap
 from .execution import execute_trades
 from .ledger import build_ledger
 from .metrics import Trade, calculate_metrics
@@ -22,8 +22,7 @@ from .composition import generate_composites
 def _sha256(path):
     h = hashlib.sha256()
     with Path(path).open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
+        for chunk in iter(lambda: f.read(1024 * 1024), b""): h.update(chunk)
     return h.hexdigest()
 
 
@@ -44,8 +43,12 @@ def evaluate_split(bars, start, end, predicate, stop=0.01, rr=2.0, cost=0.0):
     specific = extract_specific_features(history)
     vol = rolling_volatility(history)
     vw = vwap(history)
-    pnf = point_figure_columns(history, __import__("engine.context_features", fromlist=["PnFConfig"]).PnFConfig(box_size=max(1e-9, (max(b.high for b in history) - min(b.low for b in history)) / 100.0))) if history else []
-    pnf_by_bar = pnf[-1] if pnf else {}
+    gann = gann_reference(history)
+    pnf_direction: list[str | None] = []
+    box = max(1e-9, (max(b.high for b in history) - min(b.low for b in history)) / 100.0) if history else 1.0
+    for i in range(len(history)):
+        cols = point_figure_columns(history[:i + 1], PnFConfig(box_size=box))
+        pnf_direction.append(cols[-1]["direction"] if cols else None)
     filtered = []
     for t in ledger:
         def row(index):
@@ -54,7 +57,8 @@ def evaluate_split(bars, start, end, predicate, stop=0.01, rr=2.0, cost=0.0):
             base["volatility"] = vol[index]
             base["vwap"] = vw[index]
             base["vwap_distance"] = ((history[index].close - vw[index]) / vw[index]) if vw[index] else None
-            base["pnf_direction"] = pnf_by_bar.get("direction")
+            base["gann_slope"] = gann[index]["slope"]
+            base["pnf_direction"] = pnf_direction[index]
             return base
         ctx = {"sweep": row(t.sweep_bar), "mss": row(t.mss_bar),
                "fvg": row(t.fvg_bar), "entry": row(t.entry_bar)}
