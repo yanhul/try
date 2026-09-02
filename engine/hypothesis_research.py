@@ -8,6 +8,8 @@ from pathlib import Path
 from .backtest import load_bars
 from .data_split import chronological_split, validate_splits
 from .features import extract_features
+from .specific_features import extract_specific_features
+from .context_features import gann_reference, point_figure_columns, rolling_volatility, volume_profile, vwap
 from .execution import execute_trades
 from .ledger import build_ledger
 from .metrics import Trade, calculate_metrics
@@ -39,10 +41,23 @@ def evaluate_split(bars, start, end, predicate, stop=0.01, rr=2.0, cost=0.0):
     events = ReferenceStrategy().process(history)
     ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
     features = extract_features(history)
+    specific = extract_specific_features(history)
+    vol = rolling_volatility(history)
+    vw = vwap(history)
+    pnf = point_figure_columns(history, __import__("engine.context_features", fromlist=["PnFConfig"]).PnFConfig(box_size=max(1e-9, (max(b.high for b in history) - min(b.low for b in history)) / 100.0))) if history else []
+    pnf_by_bar = pnf[-1] if pnf else {}
     filtered = []
     for t in ledger:
-        ctx = {"sweep": features[t.sweep_bar], "mss": features[t.mss_bar],
-               "fvg": features[t.fvg_bar], "entry": features[t.entry_bar]}
+        def row(index):
+            base = dict(features[index])
+            base.update(specific[index])
+            base["volatility"] = vol[index]
+            base["vwap"] = vw[index]
+            base["vwap_distance"] = ((history[index].close - vw[index]) / vw[index]) if vw[index] else None
+            base["pnf_direction"] = pnf_by_bar.get("direction")
+            return base
+        ctx = {"sweep": row(t.sweep_bar), "mss": row(t.mss_bar),
+               "fvg": row(t.fvg_bar), "entry": row(t.entry_bar)}
         if predicate(ctx, t.direction.value):
             filtered.append(t)
     metrics, skipped = _trade_metrics(history, filtered, stop, rr, cost)
