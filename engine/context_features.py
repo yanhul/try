@@ -66,6 +66,47 @@ def volume_profile(bars: list[MarketBar], bins: int = 20) -> dict[str, object]:
     return {"bins": levels, "poc": poc}
 
 
+def rolling_volume_profile_poc(bars: list[MarketBar], window: int = 20, bins: int = 20) -> list[float | None]:
+    """Compute POC from each historical prefix window; never uses future bars."""
+    if window <= 0 or bins <= 0:
+        raise ValueError("window and bins must be positive")
+    out: list[float | None] = []
+    for i in range(len(bars)):
+        sample = bars[max(0, i - window + 1): i + 1]
+        out.append(volume_profile(sample, bins=bins)["poc"])
+    return out
+
+
+def multi_timeframe_context(bars: list[MarketBar], fast_window: int = 5, slow_window: int = 20) -> list[dict[str, float | bool | None]]:
+    """Causal multi-horizon proxy using fast/slow rolling closes on one bar stream.
+
+    This is intentionally a multi-horizon context feature, not a claim to recreate
+    exchange-native higher-timeframe candles when only one timeframe is available.
+    """
+    if fast_window <= 0 or slow_window <= 0:
+        raise ValueError("windows must be positive")
+    closes = [b.close for b in bars]
+    out = []
+    for i, close in enumerate(closes):
+        fast_start = max(0, i - fast_window + 1)
+        slow_start = max(0, i - slow_window + 1)
+        fast_anchor = closes[fast_start]
+        slow_anchor = closes[slow_start]
+        fast_change = (close / fast_anchor - 1.0) if fast_anchor else None
+        slow_change = (close / slow_anchor - 1.0) if slow_anchor else None
+        out.append({
+            "mtf_fast_return": fast_change,
+            "mtf_slow_return": slow_change,
+            "mtf_fast_bullish": fast_change is not None and fast_change > 0,
+            "mtf_slow_bullish": slow_change is not None and slow_change > 0,
+            "mtf_aligned": (
+                fast_change is not None and slow_change is not None
+                and ((fast_change > 0 and slow_change > 0) or (fast_change < 0 and slow_change < 0))
+            ),
+        })
+    return out
+
+
 def point_figure_columns(bars: list[MarketBar], config: PnFConfig) -> list[dict[str, object]]:
     """Build a minimal close-based P&F column sequence."""
     if config.box_size <= 0 or config.reversal < 1:
