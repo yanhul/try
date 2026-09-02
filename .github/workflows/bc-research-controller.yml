@@ -61,6 +61,9 @@ jobs:
             echo "continue=false" >> "$GITHUB_OUTPUT"
           fi
           exit "$rc"
+      - name: Persist durable lineage
+        if: always()
+        run: python research/persist_lineage.py
       - name: Persist autonomous research state
         if: always()
         env:
@@ -71,7 +74,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p /tmp/try-state
-          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos; do
+          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl; do
             if [ -e "$path" ]; then
               cp -a "$path" "/tmp/try-state/$(basename "$path")"
             fi
@@ -84,11 +87,11 @@ jobs:
               [ -e "$item" ] || continue
               base="$(basename "$item")"
               case "$base" in
-                bc_lifecycle_state.json|bc_queue.json) cp -a "$item" "research/$base" ;;
+                bc_lifecycle_state.json|bc_queue.json|lineage.jsonl) cp -a "$item" "research/$base" ;;
                 autonomous_candidates|failure_analysis|frozen_candidates|oos) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
-            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos 2>/dev/null || true
+            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "No autonomous research state changes to persist."
               pushed=true
