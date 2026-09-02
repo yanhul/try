@@ -14,6 +14,25 @@ class CompositeHypothesis:
     predicate: Callable[[dict, str], bool]
 
 
+# Explicitly bounded search space: the research loop may compose these fixed
+# context atoms, but it cannot expand the candidate universe autonomously.
+COMPOSABLE_HYPOTHESES = (
+    "sweep_confirmation",
+    "sweep_wide_effort",
+    "quiet_retest",
+    "wyckoff_spring",
+    "wyckoff_upthrust",
+    "vsa_absorption",
+    "vsa_expansion",
+    "vpa_expansion",
+    "vwap_alignment",
+    "pnf_alignment",
+    "gann_alignment",
+    "mtf_alignment",
+    "volume_profile_alignment",
+)
+
+
 def compose(name: str, components: list[str]) -> CompositeHypothesis:
     if not components:
         raise ValueError("composite hypothesis requires at least one component")
@@ -28,14 +47,20 @@ def compose(name: str, components: list[str]) -> CompositeHypothesis:
     return CompositeHypothesis(name=name, components=frozen, predicate=predicate)
 
 
-def generate_composites(*, max_components: int = 3) -> list[CompositeHypothesis]:
-    """Generate bounded combinations; no OOS-dependent ranking or tuning."""
+def generate_composites(*, max_components: int = 3, max_results: int = 120) -> list[CompositeHypothesis]:
+    """Generate a fixed, hard-capped composition space without OOS ranking."""
     import itertools
 
-    names = sorted(HYPOTHESES)
+    if max_components < 2:
+        return []
+    if max_results <= 0:
+        raise ValueError("max_results must be positive")
+
     result: list[CompositeHypothesis] = []
+    names = COMPOSABLE_HYPOTHESES
     for size in range(2, max_components + 1):
         for combo in itertools.combinations(names, size):
-            name = "combo__" + "__".join(combo)
-            result.append(compose(name, list(combo)))
+            result.append(compose("combo__" + "__".join(combo), list(combo)))
+            if len(result) >= max_results:
+                return result
     return result
