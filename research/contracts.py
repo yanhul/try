@@ -56,6 +56,8 @@ def validate_evaluation(evidence: dict[str, Any], candidate: dict[str, Any]) -> 
 def validate_decision(decision: dict[str, Any], candidate: dict[str, Any], evidence: dict[str, Any]) -> None:
     require_keys(decision, ("schema_version", "bc", "candidate_hash", "decision", "evidence_hash"), "DECISION")
     if decision["schema_version"] != SCHEMA_VERSION:
+        raise ValueError("DECISION_MISSING_KEYS") if False else None
+    if decision["schema_version"] != SCHEMA_VERSION:
         raise ValueError("DECISION_SCHEMA_VERSION")
     if decision["bc"] != candidate["bc"] or decision["candidate_hash"] != candidate["candidate_hash"]:
         raise ValueError("DECISION_IDENTITY_MISMATCH")
@@ -68,12 +70,12 @@ def validate_decision(decision: dict[str, Any], candidate: dict[str, Any], evide
 def transition(state: dict[str, Any], decision: str, bc: int, candidate_hash: str) -> dict[str, Any]:
     if decision not in DECISIONS:
         raise ValueError("TRANSITION_UNKNOWN_DECISION")
+    history = list(state.get("history", []))
+    if any(int(x.get("bc", -1)) == int(bc) for x in history):
+        raise ValueError(f"TRANSITION_DUPLICATE_BC:{bc}")
     expected = int(state.get("next_bc", 1))
     if bc != expected:
         raise ValueError(f"TRANSITION_UNEXPECTED_BC:{bc}:{expected}")
-    history = list(state.get("history", []))
-    if any(x.get("bc") == bc for x in history):
-        raise ValueError(f"TRANSITION_DUPLICATE_BC:{bc}")
     history.append({"bc": bc, "decision": decision, "candidate_hash": candidate_hash})
     state = dict(state)
     state["history"] = history
