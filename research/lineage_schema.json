@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Durable solution lineage for autonomous research",
+  "entities": ["generation", "candidate", "experiment", "artifact", "evidence", "finding", "constraint", "claim"],
+  "invariants": {
+    "contract_immutable": true,
+    "evidence_append_only": true,
+    "oos_single_evaluation": true,
+    "agent_cannot_change_policy": true,
+    "agent_cannot_change_evaluator": true,
+    "agent_cannot_change_terminal_conditions": true
+  },
+  "required_experiment_fields": [
+    "experiment_id", "generation", "parent_artifacts", "hypothesis", "change", "code_revision", "config_hash", "data_hash", "evaluator", "result", "verdict", "evidence", "findings", "constraints", "claims"
+  ]
+}
