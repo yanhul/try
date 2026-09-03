@@ -1,7 +1,7 @@
 name: BC Research Controller
 
-# Durable controller: push/schedule/manual wake-ups resume persisted lifecycle state.
-# Controller state is authoritative; the agent never owns policy, evidence, promotion, or terminal rules.
+# Durable bounded campaign: fixed policy + durable controller resume.
+# Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
 on:
   workflow_dispatch:
   push:
@@ -52,14 +52,14 @@ jobs:
         run: python research/gemini_smoke_test.py
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
-      - name: Run strict autonomous trading research loop
+      - name: Run bounded autonomous research campaign
         id: controller
         shell: bash
         run: |
           set -o pipefail
-          python research/bc_controller.py 2>&1 | tee controller.log
+          python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CONTROLLER_(NEXT BC|AUTO_RESUME)' controller.log; then
+          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_(NEXT BC|AUTO_RESUME)' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
@@ -79,9 +79,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p /tmp/try-state
           for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl; do
-            if [ -e "$path" ]; then
-              cp -a "$path" "/tmp/try-state/$(basename "$path")"
-            fi
+            if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
           pushed=false
           for attempt in 1 2 3 4 5; do
@@ -96,29 +94,13 @@ jobs:
               esac
             done
             git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl 2>/dev/null || true
-            if git diff --cached --quiet; then
-              echo "No autonomous research state changes to persist."
-              pushed=true
-              break
-            fi
-            if [ "$CONTINUE" = "true" ]; then
-              git commit -m "research: continue autonomous lifecycle [skip ci]"
-            else
-              git commit -m "research: persist autonomous research state [skip ci]"
-            fi
-            if git push origin HEAD:main; then
-              echo "STATE_PERSISTED"
-              pushed=true
-              break
-            fi
-            git reset --hard origin/main
-            sleep $((attempt * 2))
+            if git diff --cached --quiet; then echo "No autonomous research state changes to persist."; pushed=true; break; fi
+            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+            if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
+            git reset --hard origin/main; sleep $((attempt * 2))
           done
-          if [ "$pushed" != "true" ]; then
-            echo "Unable to persist state after retries" >&2
-            exit 1
-          fi
-      - name: Auto-resume non-terminal loop
+          if [ "$pushed" != "true" ]; then echo "Unable to persist state after retries" >&2; exit 1; fi
+      - name: Auto-resume non-terminal campaign
         if: ${{ steps.controller.outputs.continue == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
