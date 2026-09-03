@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "campaign_id": "BTCUSDT-1H-AUTONOMOUS-001",
+  "max_screening_candidates": 100,
+  "controller_batch_size": 8,
+  "terminal_outcomes": ["EDGE_FOUND", "NO_EDGE_FOUND", "INCONCLUSIVE"],
+  "promotion_requires": "existing_fixed_IS_VALIDATION_gate_and_external_OOS_authority",
+  "oos_selection_used": false,
+  "agent_may_not_modify": [
+    "max_screening_candidates",
+    "controller_batch_size",
+    "terminal_outcomes",
+    "promotion_requires"
+  ]
+}
