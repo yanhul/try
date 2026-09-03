@@ -74,11 +74,9 @@ def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
  if s.get('terminal'):
-  try:
-   from harness_terminal_authority import authorized_terminal
-   if authorized_terminal(s): print('CONTROLLER_DECISION TERMINAL_STATE_AUTHORIZED'); return 0
-  except Exception: pass
-  checkpoint(s,'HOLD',error='persisted terminal state lacks valid external authority attestation'); return 3
+  bc=int(s.get('current_bc') or s.get('last_bc') or 0)
+  if bc and verify_external_authority(bc): print('CONTROLLER_DECISION TERMINAL_STATE_AUTHORIZED'); return 0
+  checkpoint(s,'HOLD',bc,error='persisted terminal state lacks valid external authority attestation'); return 3
  checkpoint(s,'OBSERVE',s.get('current_bc')); q=normalize_queue(s)
  if not q:
   expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); parent=expected-1
