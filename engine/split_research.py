@@ -9,6 +9,8 @@ from .ledger import build_ledger
 from .metrics import Trade, calculate_metrics
 from .risk_exit import FixedRiskRewardExit
 from .strategy import ReferenceStrategy
+from .strategy_spec import canonicalize, provenance, strategy_hash
+from .feature_library import evaluate_filters
 
 
 def _sha256(path):
@@ -19,19 +21,31 @@ def _sha256(path):
     return h.hexdigest()
 
 
-def run_split(bars, start, end, stop_fraction=0.01, reward_multiple=2.0, round_trip_cost=0.0):
+def run_split(
+    bars,
+    start,
+    end,
+    stop_fraction=0.01,
+    reward_multiple=2.0,
+    round_trip_cost=0.0,
+    strategy_spec=None,
+):
     if end <= start:
         return {"bars": 0, "events": 0, "trades": 0, "metrics": {}}
+
+    spec = canonicalize(strategy_spec or {"strategy_id": "ReferenceStrategy"})
+    filters = spec.get("features", {}).get("filters", {})
 
     # Warm-up is causal: strategy sees only bars before `end`. We filter
     # executions by entry timestamp so split boundaries do not reset state.
     history = bars[:end]
     events = ReferenceStrategy().process(history)
     ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
+    if filters:
+        ledger = [t for t in ledger if evaluate_filters(history, t.entry_bar, filters)]
     exit_policy = FixedRiskRewardExit(stop_fraction, reward_multiple)
     executed, skipped_overlap = execute_trades(history, ledger, exit_policy)
 
-    # Never allow an OOS/VAL trade to consume bars past the split boundary.
     executed = [x for x in executed if x.exit.bar_index < end]
     trades = [
         Trade(
@@ -51,17 +65,20 @@ def run_split(bars, start, end, stop_fraction=0.01, reward_multiple=2.0, round_t
         "trades": len(trades),
         "skipped_overlap_trades": skipped_overlap,
         "metrics": calculate_metrics(trades, round_trip_cost),
+        "strategy_hash": strategy_hash(spec),
     }
 
 
-def run_split_research(csv_path, output_path, stop_fraction=0.01, reward_multiple=2.0, round_trip_cost=0.0):
+def run_split_research(csv_path, output_path, stop_fraction=0.01, reward_multiple=2.0, round_trip_cost=0.0, strategy_spec=None):
     bars = load_bars(csv_path)
     splits = chronological_split(len(bars))
     validate_splits(splits, len(bars))
+    spec = canonicalize(strategy_spec or {"strategy_id": "ReferenceStrategy"})
 
     result = {
-        "schema_version": 2,
+        "schema_version": 3,
         "dataset": {"bars": len(bars), "sha256": _sha256(csv_path)},
+        "strategy": provenance(spec),
         "parameters": {
             "stop_fraction": stop_fraction,
             "reward_multiple": reward_multiple,
@@ -74,7 +91,7 @@ def run_split_research(csv_path, output_path, stop_fraction=0.01, reward_multipl
         },
         "dataset_bars": len(bars),
         "splits": {
-            s.name: run_split(bars, s.start, s.end, stop_fraction, reward_multiple, round_trip_cost)
+            s.name: run_split(bars, s.start, s.end, stop_fraction, reward_multiple, round_trip_cost, spec)
             for s in splits
         },
     }
