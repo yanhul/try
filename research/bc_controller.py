@@ -7,8 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'
 FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'
-MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8'))
-MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
+MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
 
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
@@ -21,20 +20,15 @@ def save(s):
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
- if error is None:
-  s['last_error']=None; s['retry_count']=0
- else:
-  s['last_error']=str(error); s['retry_count']=int(s.get('retry_count',0))+1
+ if error is None: s['last_error']=None; s['retry_count']=0
+ else: s['last_error']=str(error); s['retry_count']=int(s.get('retry_count',0))+1
  save(s)
 
 def hold(s,reason,bc=None,retryable=True):
- checkpoint(s,'WAIT_RETRY' if retryable else 'HOLD',bc,error=reason)
- suffix=f' BC{bc}' if bc is not None else ''
+ checkpoint(s,'WAIT_RETRY' if retryable else 'HOLD',bc,error=reason); suffix=f' BC{bc}' if bc is not None else ''
  print(f'CONTROLLER_DECISION {reason}{suffix}')
- if retryable and int(s.get('retry_count',0))<=MAX_RETRIES:
-  print(f'CONTROLLER_AUTO_RESUME retry={s["retry_count"]}/{MAX_RETRIES}')
- else:
-  print(f'CONTROLLER_MANUAL_HOLD retry={s.get("retry_count",0)}/{MAX_RETRIES}')
+ if retryable and int(s.get('retry_count',0))<=MAX_RETRIES: print(f'CONTROLLER_AUTO_RESUME retry={s["retry_count"]}/{MAX_RETRIES}')
+ else: print(f'CONTROLLER_MANUAL_HOLD retry={s.get("retry_count",0)}/{MAX_RETRIES}')
  return 0
 
 def gate(bc):
@@ -59,11 +53,29 @@ def normalize_queue(s):
  if q!=active: write_queue(active)
  return active
 
+def verify_external_authority(bc,candidate):
+ contract=os.environ.get('AIOS_CONTRACT_PATH'); permit=os.environ.get('AIOS_PERMIT_PATH')
+ if not contract or not permit:
+  print(f'AIOS_AUTHORITY_HOLD BC{bc} missing external contract/permit')
+  return False
+ try:
+  from engine.aios_boundary import verify_authority
+  attestation=verify_authority(contract,permit)
+  expected_task=f'RESEARCH_BC{bc}'
+  if attestation.get('task_id') != expected_task:
+   print(f'AIOS_AUTHORITY_HOLD BC{bc} task_id_mismatch expected={expected_task}')
+   return False
+  print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={attestation["contract_id"]} issuer={attestation["issuer"]}')
+  return True
+ except Exception as exc:
+  print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}')
+  return False
+
 def oos_once(bc,candidate):
+ if not verify_external_authority(bc,candidate): return None
  protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
  if not protocol.exists(): print('OOS_HOLD_PROTOCOL_MISSING'); return None
- FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True)
- candidate_hash=candidate['candidate_hash']
+ FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True); candidate_hash=candidate['candidate_hash']
  if freeze.exists():
   frozen=load(freeze,{})
   if frozen.get('candidate_hash')!=candidate_hash: print('OOS_HOLD_FROZEN_HASH_MISMATCH'); return None
@@ -79,8 +91,7 @@ def oos_once(bc,candidate):
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
  if s.get('terminal'): print('CONTROLLER_DECISION TERMINAL_STATE'); return 0
- checkpoint(s,'OBSERVE',s.get('current_bc'))
- q=normalize_queue(s)
+ checkpoint(s,'OBSERVE',s.get('current_bc')); q=normalize_queue(s)
  if not q:
   expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); parent=expected-1
   if parent==0: return hold(s,'HOLD_NO_REGISTERED_BASELINE',expected,retryable=False)
@@ -88,8 +99,7 @@ def main():
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',expected)
-  candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]
-  checkpoint(s,'PERSISTED',expected)
+  candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]; checkpoint(s,'PERSISTED',expected)
  for _ in range(MAX):
   q=normalize_queue(s)
   if not q: return hold(s,'HOLD_EMPTY_QUEUE',s.get('next_bc'))
@@ -98,9 +108,7 @@ def main():
   checkpoint(s,'OBSERVE',bc)
   try:
    from autonomous_hypothesis import load_candidate
-   cand=load_candidate(candidate,bc,parent)
-   c=cand
-   write_queue([cand])
+   cand=load_candidate(candidate,bc,parent); c=cand; write_queue([cand])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
@@ -110,13 +118,11 @@ def main():
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'
   rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
   if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
-  checkpoint(s,'VERIFY',bc)
-  rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
+  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
   if rc: return rc
   if PROMOTE in out:
-   checkpoint(s,'FREEZE_OOS',bc)
-   result=oos_once(bc,c)
-   if result is None: return hold(s,'HOLD_OOS_EXECUTOR',bc)
+   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
+   if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
    passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'
    s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
    if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
