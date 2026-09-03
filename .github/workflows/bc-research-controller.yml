@@ -15,9 +15,10 @@ permissions:
   contents: write
   actions: write
 
+# Never cancel an in-flight research batch: state is durable and resume is explicit.
 concurrency:
   group: bc-research-controller
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   research:
