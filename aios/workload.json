@@ -1,0 +1,12 @@
+{
+  "protocol_version": 1,
+  "capability": "try.research@1",
+  "owner": "yanhul/try",
+  "aios_authority": "yanhul/AIOS",
+  "role": "capability_workload",
+  "terminal_states": ["EDGE_FOUND", "NO_EDGE_FOUND", "INCONCLUSIVE"],
+  "verification_classes": ["regression_tests", "locked_validation", "locked_oos", "provenance"],
+  "durable_loop": ["OBSERVE", "DECIDE", "ACT", "VERIFY", "PERSIST", "RESUME"],
+  "agent_may_modify_policy": false,
+  "agent_may_modify_terminal_conditions": false
+}
