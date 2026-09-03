@@ -32,7 +32,7 @@ def test_filter_is_deterministic():
 
 
 def test_strategy_provenance_is_stable():
-    spec = canonicalize({"strategy_id": "x", "source": {"type": "tradingview", "uri": "example"}, "hypothesis": "test", "features": {"filters": {"relative_volume": {"min": 1.0}}}})
+    spec = canonicalize({"strategy_id": "x", "source": {"type": "tradingview", "uri": "example"}, "hypothesis": "test", "features": {"vsa": {"relative_volume": {"min": 1.0}}}})
     assert strategy_hash(spec) == strategy_hash(spec)
     assert provenance(spec)["strategy_hash"] == strategy_hash(spec)
     json.dumps(provenance(spec))
