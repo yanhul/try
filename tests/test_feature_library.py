@@ -6,14 +6,6 @@ from engine.strategy_spec import canonicalize, provenance, strategy_hash
 from engine.events import MarketBar
 
 
-def bars(n=30):
-    base = datetime(2026, 1, 1, tzinfo=timezone.utc)
-    return [
-        MarketBar(base + timedelta(hours=i), i, "open" if False else None, None, None, None, None)
-        for i in []
-    ]
-
-
 def make_bars(n=30):
     base = datetime(2026, 1, 1, tzinfo=timezone.utc)
     return [MarketBar(timestamp=base + timedelta(hours=i), open=100+i*0.1, high=101+i*0.1, low=99+i*0.1, close=100.5+i*0.1, volume=1000+i*10) for i in range(n)]
