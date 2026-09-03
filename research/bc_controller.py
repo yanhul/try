@@ -7,7 +7,7 @@ PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
-def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
@@ -49,6 +49,11 @@ def verify_external_authority(bc):
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc:
   print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+def authorized_state(s):
+ caps=s.get('capabilities',[])
+ if not isinstance(caps,list) or any(str(x)!='research' for x in caps):
+  print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
+ return True
 def oos_once(bc,candidate):
  if not verify_external_authority(bc): return None
  protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
@@ -67,7 +72,13 @@ def oos_once(bc,candidate):
  return load(out,{})
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
- if s.get('terminal'): print('CONTROLLER_DECISION TERMINAL_STATE'); return 0
+ if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
+ if s.get('terminal'):
+  try:
+   from harness_terminal_authority import authorized_terminal
+   if authorized_terminal(s): print('CONTROLLER_DECISION TERMINAL_STATE_AUTHORIZED'); return 0
+  except Exception: pass
+  checkpoint(s,'HOLD',error='persisted terminal state lacks valid external authority attestation'); return 3
  checkpoint(s,'OBSERVE',s.get('current_bc')); q=normalize_queue(s)
  if not q:
   expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); parent=expected-1
