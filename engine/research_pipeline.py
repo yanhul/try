@@ -9,6 +9,7 @@ from typing import Iterable
 from .backtest import load_bars
 from .data_split import chronological_split, validate_splits
 from .split_research import run_split
+from .strategy_spec import canonicalize, provenance, strategy_hash
 
 
 def _sha256(path: str | Path) -> str:
@@ -45,41 +46,40 @@ def run_is_validation_oos(
     validation_min_profit_factor: float = 1.0,
     validation_min_total_return: float = 0.0,
 ) -> dict:
-    """Select on IS, gate on validation, then evaluate the selected config once on OOS.
+    """Select on IS, gate on validation, then evaluate selected config once on OOS.
 
-    OOS is never used to rank, filter, or select candidates.
+    Candidate strategy definitions are canonicalized and hashed. OOS is never used
+    to rank, filter, or select candidates.
     """
     bars = load_bars(csv_path)
     splits = chronological_split(len(bars), is_ratio, validation_ratio)
     validate_splits(splits, len(bars))
-    candidates = list(candidates)
+    candidates = [canonicalize(c) | {"stop_fraction": c["stop_fraction"], "reward_multiple": c["reward_multiple"]} for c in candidates]
     if not candidates:
         raise ValueError("no candidates")
 
     is_results = []
     for config in candidates:
         stop, rr = _validate_config(config)
-        result = run_split(bars, splits[0].start, splits[0].end, stop, rr)
+        result = run_split(bars, splits[0].start, splits[0].end, stop, rr, config.get("execution", {}).get("round_trip_cost", 0.0), config)
         is_results.append({
-            "config": {"stop_fraction": stop, "reward_multiple": rr},
+            "config": config,
+            "strategy_hash": strategy_hash(config),
             "result": result,
             "score": _score(result["metrics"], objective),
         })
 
-    # Deterministic ranking: objective first, then lower stop, then RR.
     is_results.sort(
-        key=lambda x: (
-            x["score"],
-            -x["config"]["stop_fraction"],
-            x["config"]["reward_multiple"],
-        ),
+        key=lambda x: (x["score"], -x["config"]["stop_fraction"], x["config"]["reward_multiple"]),
         reverse=True,
     )
     selected = is_results[0]
     stop, rr = _validate_config(selected["config"])
+    selected_spec = selected["config"]
 
     validation = run_split(
-        bars, splits[1].start, splits[1].end, stop, rr
+        bars, splits[1].start, splits[1].end, stop, rr,
+        selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec
     )
     vm = validation["metrics"]
     validation_pass = (
@@ -88,18 +88,16 @@ def run_is_validation_oos(
         and vm["total_return"] >= validation_min_total_return
     )
 
-    # OOS is deliberately evaluated only after the validation gate and is never
-    # consulted by the selection logic.
     oos = None
     if validation_pass:
-        oos = run_split(bars, splits[2].start, splits[2].end, stop, rr)
+        oos = run_split(
+            bars, splits[2].start, splits[2].end, stop, rr,
+            selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec
+        )
 
     result = {
-        "schema_version": 1,
-        "dataset": {
-            "bars": len(bars),
-            "sha256": _sha256(csv_path),
-        },
+        "schema_version": 2,
+        "dataset": {"bars": len(bars), "sha256": _sha256(csv_path)},
         "protocol": {
             "selection": "IS_only",
             "validation": "gate_only",
@@ -107,15 +105,14 @@ def run_is_validation_oos(
             "objective": objective,
             "validation_min_profit_factor": validation_min_profit_factor,
             "validation_min_total_return": validation_min_total_return,
+            "feature_policy": "features_are_hypotheses; no predictive claim without OOS evidence",
         },
         "splits": {s.name: {"start": s.start, "end": s.end} for s in splits},
         "candidate_count": len(is_results),
         "is_ranking": is_results,
-        "selected_config": selected["config"],
-        "validation": {
-            "result": validation,
-            "passed": validation_pass,
-        },
+        "selected_config": selected_spec,
+        "selected_provenance": provenance(selected_spec),
+        "validation": {"result": validation, "passed": validation_pass},
         "oos": oos,
     }
 
