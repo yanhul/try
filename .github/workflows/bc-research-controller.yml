@@ -15,7 +15,6 @@ permissions:
   contents: write
   actions: write
 
-# Never cancel an in-flight research batch: state is durable and resume is explicit.
 concurrency:
   group: bc-research-controller
   cancel-in-progress: false
@@ -42,8 +41,8 @@ jobs:
           python-version: '3.12'
       - name: Install test runner
         run: python -m pip install --upgrade pytest
-      - name: Run harness contract tests
-        run: python -m pytest -q tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py
+      - name: Run research feature and harness tests
+        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py
       - name: Run AIOS static conformance
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
