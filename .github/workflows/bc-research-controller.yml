@@ -27,11 +27,9 @@ jobs:
       RESEARCH_MAX_ITERATIONS: 8
       RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
-      RESEARCH_PROVIDER_ORDER: gemini,deepseek
+      RESEARCH_PROVIDER_ORDER: gemini
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
-      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-      DEEPSEEK_MODEL: deepseek-v4-flash
     steps:
       - name: Checkout
         uses: actions/checkout@v4
