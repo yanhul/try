@@ -47,9 +47,6 @@ jobs:
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
         run: python research/adversarial_conformance.py
-      - name: Probe Gemini API
-        continue-on-error: true
-        run: python research/gemini_smoke_test.py
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
       - name: Run bounded autonomous research campaign
@@ -106,5 +103,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          sleep 10
+          sleep 60
           gh workflow run bc-research-controller.yml --ref main
