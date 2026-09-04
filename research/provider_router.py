@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict provider router: Gemini drives hypotheses; local registry/evidence rules constrain execution."""
 from __future__ import annotations
-import json, os, sys, urllib.request
+import json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -18,7 +18,16 @@ def call(name,prompt):
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1200,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
+ for attempt in range(3):
+  try:
+   with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
+  except urllib.error.HTTPError as exc:
+   if exc.code != 429 or attempt == 2: raise
+   retry_after=exc.headers.get("Retry-After") if exc.headers else None
+   try: delay=max(1,int(float(retry_after))) if retry_after else 65*(attempt+1)
+   except ValueError: delay=65*(attempt+1)
+   print(f"PROVIDER_RATE_LIMIT {name} retry={attempt+1}/2 delay={delay}s", flush=True)
+   time.sleep(delay)
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","")
