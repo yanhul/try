@@ -30,7 +30,8 @@ def call(name,prompt):
    time.sleep(delay)
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
- prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","")
+ # Accept both names so the controller/router contract remains backward-compatible.
+ prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
  prompt=f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS (avoid repeating the same conceptual change): {prior}\nUse ONLY this failure-analysis artifact:\n\n"+failure.read_text(encoding="utf-8")
  for name in [x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]:
   try:
