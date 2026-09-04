@@ -28,7 +28,7 @@ def used_ids(s): return sorted({str(x['hypothesis_id']) for x in s.get('history'
 def regenerate(bc,parent,failure,s):
  output=CANDIDATE_DIR/f'BC{bc}.json'; output.parent.mkdir(parents=True,exist_ok=True)
  if output.exists(): output.unlink()
- env=os.environ.copy(); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=','.join(used_ids(s)))
+ env=os.environ.copy(); used=','.join(used_ids(s)); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=used,RESEARCH_PRIOR_HYPOTHESES=used)
  rc,out=run([sys.executable,'research/provider_router.py'],env=env)
  if 'PROVIDER_ROUTER_HOLD' in out or ('PROVIDER_FAIL' in out and 'PROVIDER_SELECTED' not in out): return False
  return rc==0 and output.exists()
