@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 from autonomous_hypothesis import write_candidate
 from engine.hypotheses import HYPOTHESES
+from evidence_calibration import verify_with_openai_compatible
 SYSTEM="""You are the autonomous trading-research hypothesis generator. Generate exactly ONE next hypothesis from the supplied FAILURE ANALYSIS. You may ONLY use hypothesis_id values from REGISTERED_HYPOTHESES; never invent an engine strategy. Reusing a registered hypothesis_id is allowed when the new candidate makes a materially different, evidence-driven conceptual change. Do NOT repeat a prior candidate or merely rename/version it. Exactly one conceptual change. Cite only concrete evidence_sources present in the supplied artifact. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence. If no materially different executable change is justified, return {\"status\":\"HOLD\"}. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used."""
 def config(name):
  n=name.upper(); defaults={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
@@ -30,9 +31,9 @@ def call(name,prompt):
    time.sleep(delay)
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
- # Accept both names so the controller/router contract remains backward-compatible.
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
- prompt=f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS (avoid repeating the same conceptual change): {prior}\nUse ONLY this failure-analysis artifact:\n\n"+failure.read_text(encoding="utf-8")
+ evidence_text=failure.read_text(encoding="utf-8")
+ prompt=f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS (avoid repeating the same conceptual change): {prior}\nUse ONLY this failure-analysis artifact:\n\n"+evidence_text
  for name in [x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]:
   try:
    candidate=json.loads(call(name,prompt))
@@ -42,7 +43,16 @@ def main():
    from autonomous_hypothesis import validate_candidate
    ok,reason=validate_candidate(candidate,bc,parent)
    if not ok: raise ValueError(reason)
-   write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={config(name)[1]} hash={candidate['candidate_hash']}"); return 0
+
+   # Second, fail-closed evidence-calibration boundary. The verifier receives the
+   # exact artifact used for generation and cannot change policy or evidence.
+   base,model,key=config(name)
+   calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
+   if not calibrated:
+    print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}", flush=True)
+    continue
+   print(f"PROVIDER_CALIBRATION_PASS {name}", flush=True)
+   write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']}"); return 0
   except Exception as exc: print(f"PROVIDER_FAIL {name}: {exc}")
  print("PROVIDER_ROUTER_HOLD"); return 0
 if __name__=="__main__":raise SystemExit(main())
