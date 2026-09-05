@@ -1,7 +1,7 @@
 name: CI Event Receiver
 
 # Event-driven notification ingress. This workflow does not decide or repair
-# workloads; it records an immutable-ish notification envelope for the user.
+# workloads; it records a durable, idempotent notification envelope for the user.
 on:
   repository_dispatch:
     types: [ci_failure]
@@ -33,26 +33,47 @@ jobs:
           import json, os
           from datetime import datetime, timezone
           from pathlib import Path
+
           payload = json.loads(os.environ["PAYLOAD"] or "{}")
-          event = {
-              "received_at": datetime.now(timezone.utc).isoformat(),
-              "event": "ci_failure",
-              "source_repo": payload.get("repo", "unknown"),
-              "workflow": payload.get("workflow", "unknown"),
-              "run_id": payload.get("run_id"),
-              "run_url": payload.get("run_url"),
-              "sha": payload.get("sha"),
-              "branch": payload.get("branch"),
-              "conclusion": payload.get("conclusion", "failure"),
-              "message": payload.get("message", "CI failure"),
-          }
+          run_id = str(payload.get("run_id") or "").strip()
+          if not run_id:
+              raise SystemExit("ci_failure event requires a non-empty run_id")
+
           p = Path("notifications/ci_events.jsonl")
-          with p.open("a", encoding="utf-8") as f:
-              f.write(json.dumps(event, sort_keys=True) + "\n")
+          existing = []
+          if p.exists():
+              for line in p.read_text(encoding="utf-8").splitlines():
+                  if line.strip():
+                      existing.append(json.loads(line))
+
+          prior = next(
+              (item for item in existing if str(item.get("run_id") or "") == run_id),
+              None,
+          )
+
+          if prior is not None:
+              event = prior
+              print(json.dumps({"deduplicated": True, "run_id": run_id}, sort_keys=True))
+          else:
+              event = {
+                  "received_at": datetime.now(timezone.utc).isoformat(),
+                  "event": "ci_failure",
+                  "source_repo": payload.get("repo", "unknown"),
+                  "workflow": payload.get("workflow", "unknown"),
+                  "run_id": run_id,
+                  "run_url": payload.get("run_url"),
+                  "sha": payload.get("sha"),
+                  "branch": payload.get("branch"),
+                  "conclusion": payload.get("conclusion", "failure"),
+                  "message": payload.get("message", "CI failure"),
+              }
+              with p.open("a", encoding="utf-8") as f:
+                  f.write(json.dumps(event, sort_keys=True) + "\n")
+              print(json.dumps(event, sort_keys=True))
+
           Path("notifications/latest_ci_failure.json").write_text(
               json.dumps(event, indent=2, sort_keys=True) + "\n", encoding="utf-8"
           )
-          print(json.dumps(event, sort_keys=True))
           PY
 
       - name: Persist notification event
@@ -62,5 +83,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add notifications/ci_events.jsonl notifications/latest_ci_failure.json
+          if git diff --cached --quiet; then
+            echo "Replay detected; no duplicate notification commit required."
+            exit 0
+          fi
           git commit -m "notify: record CI failure event [skip ci]"
           git push origin HEAD:main
