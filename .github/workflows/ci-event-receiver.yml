@@ -1,0 +1,66 @@
+name: CI Event Receiver
+
+# Event-driven notification ingress. This workflow does not decide or repair
+# workloads; it records an immutable-ish notification envelope for the user.
+on:
+  repository_dispatch:
+    types: [ci_failure]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-event-receiver
+  cancel-in-progress: false
+
+jobs:
+  receive:
+    if: ${{ github.event_name == 'repository_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Record failure event
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p notifications
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          payload = json.loads(os.environ["PAYLOAD"] or "{}")
+          event = {
+              "received_at": datetime.now(timezone.utc).isoformat(),
+              "event": "ci_failure",
+              "source_repo": payload.get("repo", "unknown"),
+              "workflow": payload.get("workflow", "unknown"),
+              "run_id": payload.get("run_id"),
+              "run_url": payload.get("run_url"),
+              "sha": payload.get("sha"),
+              "branch": payload.get("branch"),
+              "conclusion": payload.get("conclusion", "failure"),
+              "message": payload.get("message", "CI failure"),
+          }
+          p = Path("notifications/ci_events.jsonl")
+          with p.open("a", encoding="utf-8") as f:
+              f.write(json.dumps(event, sort_keys=True) + "\n")
+          Path("notifications/latest_ci_failure.json").write_text(
+              json.dumps(event, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          print(json.dumps(event, sort_keys=True))
+          PY
+
+      - name: Persist notification event
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add notifications/ci_events.jsonl notifications/latest_ci_failure.json
+          git commit -m "notify: record CI failure event [skip ci]"
+          git push origin HEAD:main
