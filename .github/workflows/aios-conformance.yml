@@ -1,0 +1,24 @@
+name: AIOS Workload Conformance
+
+on:
+  push:
+    paths:
+      - 'aios/**'
+      - 'engine/**'
+      - '.github/workflows/aios-conformance.yml'
+  pull_request:
+    paths:
+      - 'aios/**'
+      - 'engine/**'
+      - '.github/workflows/aios-conformance.yml'
+
+jobs:
+  workload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded AIOS workload adapter
+        run: python -m aios.adapter
