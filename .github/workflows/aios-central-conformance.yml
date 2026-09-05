@@ -1,0 +1,52 @@
+name: AIOS Central Workload Conformance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'aios/**'
+      - 'research/AIOS_RESEARCH_CONTRACT.md'
+      - 'research/aios_conformance.py'
+      - '.github/workflows/aios-central-conformance.yml'
+  pull_request:
+    paths:
+      - 'aios/**'
+      - 'research/AIOS_RESEARCH_CONTRACT.md'
+      - 'research/aios_conformance.py'
+      - '.github/workflows/aios-central-conformance.yml'
+
+permissions:
+  contents: read
+
+env:
+  AIOS_REF: fa7cc7fac4a650456f0f275198e4fcf8121b1788
+
+jobs:
+  central-workload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout pinned AIOS core
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          ref: ${{ env.AIOS_REF }}
+          path: .aios-core
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run research workload through central AIOS runner
+        env:
+          PYTHONPATH: .aios-core
+        run: |
+          python .aios-core/scripts/run_workload_adapter.py \
+            --workload-id try-research \
+            --execution-id "try-${GITHUB_SHA}" \
+            --cwd . \
+            --problem "Evaluate the bounded research harness contract and expose its governed result." \
+            --timeout-seconds 300 \
+            -- bash ./aios/adapter.sh
