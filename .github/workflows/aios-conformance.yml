@@ -17,6 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Controlled E2E CI feedback probe
+        if: startsWith(github.ref, 'refs/heads/e2e-ci-feedback-probe-')
+        run: |
+          echo "CONTROLLED E2E PROBE: intentional failure for CI -> try receiver verification"
+          exit 1
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
