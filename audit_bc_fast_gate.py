@@ -30,8 +30,9 @@ if not isinstance(data["evidence_sources"], list) or not data["evidence_sources"
 
 try:
     from engine.hypotheses import HYPOTHESES
+    from engine.autonomous_evaluator import EVALUATION_SPEC
 except Exception as exc:
-    raise SystemExit(f"BLOCKED: cannot load hypothesis registry: {exc}")
+    raise SystemExit(f"BLOCKED: cannot load governing evaluation modules: {exc}")
 
 if data["hypothesis_id"] not in HYPOTHESES:
     failure_path.parent.mkdir(parents=True, exist_ok=True)
@@ -53,6 +54,8 @@ if not evidence.exists():
 result = json.loads(evidence.read_text(encoding="utf-8"))
 if result.get("oos_selection_used") is True:
     raise SystemExit(f"BLOCKED: BC{bc} validation selected using OOS")
+if result.get("evaluation_spec") != EVALUATION_SPEC:
+    raise SystemExit(f"BLOCKED: BC{bc} evaluation spec mismatch")
 if result.get("validation_passed") is True:
     print(f"BC{bc}_VALIDATION_PASS", result.get("metrics", {}))
     print("PROMOTE_TO_FUTURE_OOS_TEST")
