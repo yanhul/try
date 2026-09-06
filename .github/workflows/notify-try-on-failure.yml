@@ -6,7 +6,7 @@ on:
     types: [completed]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   dispatch:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Dispatch failure event
         env:
-          GH_TOKEN: ${{ secrets.TRY_DISPATCH_TOKEN }}
+          GH_TOKEN: ${{ github.repository == 'yanhul/try' && github.token || secrets.TRY_DISPATCH_TOKEN }}
           REPO: ${{ github.repository }}
           WORKFLOW: ${{ github.event.workflow_run.name }}
           RUN_ID: ${{ github.event.workflow_run.id }}
@@ -26,7 +26,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${GH_TOKEN:-}" ]; then
-            echo "TRY_DISPATCH_TOKEN is not configured; notification delivery is BLOCKED." >&2
+            echo "No dispatch credential is configured; notification delivery is BLOCKED." >&2
             exit 1
           fi
           gh api repos/yanhul/try/dispatches \
