@@ -30,14 +30,48 @@ jobs:
           set -euo pipefail
           mkdir -p notifications
           python - <<'PY'
-          import json, os
+          import json, os, re
           from datetime import datetime, timezone
           from pathlib import Path
 
           payload = json.loads(os.environ["PAYLOAD"] or "{}")
-          run_id = str(payload.get("run_id") or "").strip()
-          if not run_id:
-              raise SystemExit("ci_failure event requires a non-empty run_id")
+
+          required = ("repo", "workflow", "run_id", "run_url", "sha", "branch", "conclusion", "message")
+          missing = [key for key in required if not str(payload.get(key) or "").strip()]
+          if missing:
+              raise SystemExit(f"ci_failure event missing required fields: {', '.join(missing)}")
+
+          repo = str(payload["repo"]).strip()
+          workflow = str(payload["workflow"]).strip()
+          allowed_sources = {
+              ("yanhul/AIOS", "CI"),
+              ("yanhul/try", "AIOS Workload Conformance"),
+              ("yanhul/try", "BC Research Controller"),
+              ("yanhul/android-ai-assistant", "Android CI"),
+              ("yanhul/RX50", "RX50 Autonomous Evidence Loop"),
+          }
+          if (repo, workflow) not in allowed_sources:
+              raise SystemExit(f"ci_failure event has untrusted source: {repo}/{workflow}")
+
+          run_id = str(payload["run_id"]).strip()
+          if not run_id.isdigit() or int(run_id) <= 0:
+              raise SystemExit("ci_failure event requires a positive numeric run_id")
+
+          run_url = str(payload["run_url"]).strip()
+          expected_url = f"https://github.com/{repo}/actions/runs/{run_id}"
+          if run_url != expected_url:
+              raise SystemExit("ci_failure event run_url does not match repo/run_id")
+
+          sha = str(payload["sha"]).strip()
+          if not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+              raise SystemExit("ci_failure event requires a 40-character commit sha")
+
+          branch = str(payload["branch"]).strip()
+          conclusion = str(payload["conclusion"]).strip().lower()
+          if conclusion in {"success", "cancelled"}:
+              raise SystemExit(f"ci_failure event cannot record conclusion={conclusion}")
+
+          message = str(payload["message"]).strip()
 
           p = Path("notifications/ci_events.jsonl")
           existing = []
@@ -58,14 +92,14 @@ jobs:
               event = {
                   "received_at": datetime.now(timezone.utc).isoformat(),
                   "event": "ci_failure",
-                  "source_repo": payload.get("repo", "unknown"),
-                  "workflow": payload.get("workflow", "unknown"),
+                  "source_repo": repo,
+                  "workflow": workflow,
                   "run_id": run_id,
-                  "run_url": payload.get("run_url"),
-                  "sha": payload.get("sha"),
-                  "branch": payload.get("branch"),
-                  "conclusion": payload.get("conclusion", "failure"),
-                  "message": payload.get("message", "CI failure"),
+                  "run_url": run_url,
+                  "sha": sha,
+                  "branch": branch,
+                  "conclusion": conclusion,
+                  "message": message,
               }
               with p.open("a", encoding="utf-8") as f:
                   f.write(json.dumps(event, sort_keys=True) + "\n")
