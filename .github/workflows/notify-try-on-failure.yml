@@ -2,15 +2,15 @@ name: Notify Try on CI Failure
 
 on:
   workflow_run:
-    workflows: ["AIOS Workload Conformance", "BC Research Controller"]
+    workflows: ["CI", "AIOS Workload Conformance", "BC Research Controller"]
     types: [completed]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   dispatch:
-    if: ${{ github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'cancelled' }}
+    if: ${{ github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'cancelled' && github.event.workflow_run.name != 'Notify Try on CI Failure' && github.event.workflow_run.name != 'CI Event Receiver' }}
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch failure event
