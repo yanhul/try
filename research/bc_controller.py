@@ -2,6 +2,7 @@ from __future__ import annotations
 import json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from contracts import validate_candidate, validate_evaluation, transition
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
 def run(cmd,env=None):
@@ -85,7 +86,11 @@ def main():
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',expected)
-  candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]; checkpoint(s,'PERSISTED',expected)
+  try:
+   candidate=validate_candidate(json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')))
+  except Exception as exc:
+   return hold(s,f'HOLD_CANDIDATE_CONTRACT:{exc}',expected,retryable=False)
+  write_queue([candidate]); q=[candidate]; checkpoint(s,'PERSISTED',expected)
  for _ in range(MAX):
   q=normalize_queue(s)
   if not q: return hold(s,'HOLD_EMPTY_QUEUE',s.get('next_bc'))
@@ -94,27 +99,34 @@ def main():
   checkpoint(s,'OBSERVE',bc)
   try:
    from autonomous_hypothesis import load_candidate
-   cand=load_candidate(candidate,bc,parent); c=cand; write_queue([cand])
+   cand=load_candidate(candidate,bc,parent); cand=validate_candidate(cand); c=cand; write_queue([cand])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
-   cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
+   try: cand=validate_candidate(load(candidate,{})); c=cand; write_queue([cand])
+   except Exception as contract_exc: return hold(s,f'HOLD_CANDIDATE_CONTRACT:{contract_exc}',bc,retryable=False)
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; checkpoint(s,'ACT',bc); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
   if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
+  try:
+   evaluation=validate_evaluation(load(evidence,{}),c)
+  except Exception as exc:
+   return hold(s,f'HOLD_EVALUATION_CONTRACT:{exc}',bc,retryable=False)
   checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
   if rc: return rc
   if PROMOTE in out:
-   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
+   s=transition(s,PROMOTE,bc,c['candidate_hash']); result=oos_once(bc,c)
    if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
-   passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
+   passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'][-1].update({'hypothesis_id':c['hypothesis_id'],'oos_verdict':decision})
    if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
-   s['terminal']=True; s['terminal_reason']=decision; s['next_bc']=bc+1; write_queue([]); checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
+   s['terminal']=True; s['terminal_reason']=decision; write_queue([]); checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
   if REJECT not in out and 'SPLIT_GATE False' not in out: checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
-  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
+  write_queue([]); s=transition(s,REJECT,bc,c['candidate_hash']); s['history'][-1].update({'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); save(s); failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
   nxt=bc+1; checkpoint(s,'DECIDE',nxt)
   if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
-  candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
+  try: candidate=validate_candidate(json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')))
+  except Exception as exc: return hold(s,f'HOLD_CANDIDATE_CONTRACT:{exc}',nxt,retryable=False)
+  write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); checkpoint(s,'YIELD',s.get('next_bc')); print('CONTROLLER_AUTO_RESUME scheduler_yield'); return 0
 if __name__=='__main__': raise SystemExit(main())
