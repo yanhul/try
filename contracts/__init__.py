@@ -1,53 +1,21 @@
-"""Deterministic lifecycle contracts for the autonomous research controller.
-
-These contracts are normative runtime checks. They do not choose hypotheses,
-change evaluation criteria, or grant promotion authority.
-"""
+"""Deterministic lifecycle contracts for the autonomous research controller."""
 from __future__ import annotations
 
 import hashlib
 import json
 from copy import deepcopy
 
-
-_REQUIRED_CANDIDATE = {
-    "bc",
-    "parent_bc",
-    "hypothesis_id",
-    "conceptual_change",
-    "evidence_sources",
-    "rationale",
-    "is_testable",
-    "oos_selection_used",
-    "candidate_hash",
-}
-_REQUIRED_EVALUATION = {
-    "schema_version",
-    "bc",
-    "parent_bc",
-    "hypothesis_id",
-    "candidate_hash",
-    "oos_selection_used",
-    "oos_executed",
-    "dataset",
-    "evaluation_spec",
-    "IS",
-    "VALIDATION",
-    "validation_passed",
-}
-_TERMINAL_DECISIONS = {"PROMOTE_TO_FUTURE_OOS_TEST"}
-_REJECT_DECISION = "REJECT_BC"
+_REQUIRED_CANDIDATE = {"bc", "parent_bc", "hypothesis_id", "conceptual_change", "evidence_sources", "rationale", "is_testable", "oos_selection_used", "candidate_hash"}
+_REQUIRED_EVALUATION = {"schema_version", "bc", "parent_bc", "hypothesis_id", "candidate_hash", "oos_selection_used", "oos_executed", "dataset", "evaluation_spec", "IS", "VALIDATION", "validation_passed"}
+_DECISIONS = {"PROMOTE_TO_FUTURE_OOS_TEST", "REJECT_BC"}
 
 
 def _canonical_candidate_hash(candidate: dict) -> str:
     payload = {k: candidate[k] for k in sorted(candidate) if k != "candidate_hash"}
-    return hashlib.sha256(
-        json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    ).hexdigest()
+    return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
 def validate_candidate(candidate: dict) -> dict:
-    """Validate an already materialized candidate and return a defensive copy."""
     if not isinstance(candidate, dict):
         raise ValueError("candidate must be an object")
     missing = sorted(_REQUIRED_CANDIDATE - candidate.keys())
@@ -57,12 +25,9 @@ def validate_candidate(candidate: dict) -> dict:
         raise ValueError("candidate bc fields must be integers")
     if candidate["bc"] != candidate["parent_bc"] + 1:
         raise ValueError("candidate bc_parent_sequence_invalid")
-    if not isinstance(candidate["hypothesis_id"], str) or not candidate["hypothesis_id"].strip():
-        raise ValueError("candidate hypothesis_id required")
-    if not isinstance(candidate["conceptual_change"], str) or not candidate["conceptual_change"].strip():
-        raise ValueError("candidate conceptual_change required")
-    if not isinstance(candidate["rationale"], str) or not candidate["rationale"].strip():
-        raise ValueError("candidate rationale required")
+    for field in ("hypothesis_id", "conceptual_change", "rationale"):
+        if not isinstance(candidate[field], str) or not candidate[field].strip():
+            raise ValueError(f"candidate {field} required")
     if not isinstance(candidate["evidence_sources"], list) or not candidate["evidence_sources"]:
         raise ValueError("candidate evidence_sources required")
     if any(not isinstance(x, str) or not x.strip() for x in candidate["evidence_sources"]):
@@ -71,8 +36,7 @@ def validate_candidate(candidate: dict) -> dict:
         raise ValueError("candidate must be testable")
     if candidate["oos_selection_used"] is not False:
         raise ValueError("candidate oos selection forbidden")
-    expected_hash = _canonical_candidate_hash(candidate)
-    if candidate["candidate_hash"] != expected_hash:
+    if candidate["candidate_hash"] != _canonical_candidate_hash(candidate):
         raise ValueError("candidate_hash_mismatch")
     return deepcopy(candidate)
 
@@ -83,7 +47,6 @@ def _require_metrics(result: object, label: str) -> None:
 
 
 def validate_evaluation(evaluation: dict, candidate: dict) -> dict:
-    """Validate evaluator output against the exact candidate identity and split contract."""
     candidate = validate_candidate(candidate)
     if not isinstance(evaluation, dict):
         raise ValueError("evaluation must be an object")
@@ -114,47 +77,25 @@ def validate_evaluation(evaluation: dict, candidate: dict) -> dict:
 
 
 def transition(state: dict, decision: str, bc: int, candidate_hash: str) -> dict:
-    """Apply one deterministic BC lifecycle transition to a defensive state copy."""
-    if not isinstance(state, dict):
-        raise ValueError("state must be an object")
-    if decision not in _TERMINAL_DECISIONS | {_REJECT_DECISION}:
-        raise ValueError("unsupported lifecycle decision")
+    if not isinstance(state, dict) or decision not in _DECISIONS:
+        raise ValueError("invalid lifecycle transition request")
     if not isinstance(bc, int) or not isinstance(candidate_hash, str) or not candidate_hash.strip():
         raise ValueError("transition identity invalid")
-    current = state.get("current_bc")
-    last_bc = state.get("last_bc")
-    next_bc = state.get("next_bc")
-    if current is not None and not isinstance(current, int):
-        raise ValueError("state current_bc invalid")
-    if last_bc is not None and not isinstance(last_bc, int):
-        raise ValueError("state last_bc invalid")
-    if not isinstance(next_bc, int):
-        raise ValueError("state next_bc invalid")
-    if next_bc != bc:
-        raise ValueError("transition out_of_sequence")
-    if last_bc is not None and bc != last_bc + 1:
-        raise ValueError("transition duplicate_or_out_of_sequence")
-    if current is not None and current not in (last_bc, bc):
-        raise ValueError("transition current_bc mismatch")
+    next_bc, last_bc, current_bc = state.get("next_bc"), state.get("last_bc"), state.get("current_bc")
     history = state.get("history", [])
-    if not isinstance(history, list):
-        raise ValueError("state history invalid")
+    if not isinstance(next_bc, int) or not isinstance(history, list):
+        raise ValueError("state lifecycle fields invalid")
     if any(isinstance(x, dict) and x.get("bc") == bc for x in history):
         raise ValueError("transition duplicate_bc")
-
+    in_progress = last_bc == bc and current_bc == bc and next_bc == bc
+    fresh = next_bc == bc and (last_bc is None or bc == last_bc + 1)
+    if not (in_progress or fresh):
+        raise ValueError("transition out_of_sequence")
     out = deepcopy(state)
-    out["last_bc"] = bc
-    out["current_bc"] = bc
-    out["next_bc"] = bc + 1
-    out.setdefault("history", []).append(
-        {"bc": bc, "candidate_hash": candidate_hash, "decision": decision}
-    )
-    if decision == "PROMOTE_TO_FUTURE_OOS_TEST":
-        out["terminal"] = False
-        out["phase"] = "FREEZE_OOS"
-    else:
-        out["terminal"] = False
-        out["phase"] = "PERSISTED"
+    out["last_bc"], out["current_bc"], out["next_bc"] = bc, bc, bc + 1
+    out.setdefault("history", []).append({"bc": bc, "candidate_hash": candidate_hash, "decision": decision})
+    out["terminal"] = False
+    out["phase"] = "FREEZE_OOS" if decision == "PROMOTE_TO_FUTURE_OOS_TEST" else "PERSISTED"
     return out
 
 
