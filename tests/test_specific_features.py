@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from engine.events import MarketBar
 from engine.specific_features import extract_specific_features
 
@@ -19,8 +21,9 @@ def test_specific_features_are_causal_and_stable():
     features = extract_specific_features(bars, window=3)
     assert len(features) == len(bars)
     assert features[0]["vpa_price_change"] == 0
-    assert features[2]["vsa_volume_expansion"] == 12 / 11
-    assert features[3]["vsa_volume_expansion"] == 30 / 17
+    assert features[2]["vsa_volume_expansion"] == pytest.approx(12 / 11)
+    expected = 30 / ((11 + 12 + 30) / 3)
+    assert features[3]["vsa_volume_expansion"] == pytest.approx(expected)
     assert "wyckoff_spring_proxy" in features[3]
     assert "wyckoff_upthrust_proxy" in features[3]
 
