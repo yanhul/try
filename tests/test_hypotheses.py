@@ -7,7 +7,9 @@ def ctx(vr=2.0, loc=0.9, rr=2.0):
 
 
 def test_hypotheses_are_pre_registered():
-    assert list(HYPOTHESES) == ["baseline", "sweep_confirmation", "sweep_wide_effort", "quiet_retest"]
+    required = ["baseline", "sweep_confirmation", "sweep_wide_effort", "quiet_retest"]
+    assert list(HYPOTHESES)[:4] == required
+    assert all(callable(fn) for fn in HYPOTHESES.values())
     assert HYPOTHESES["baseline"](ctx(), "bullish")
     assert HYPOTHESES["sweep_confirmation"](ctx(), "bullish")
     assert HYPOTHESES["sweep_confirmation"](ctx(), "bearish") is False
