@@ -65,7 +65,7 @@ def test_transition_requires_expected_next_bc_and_is_immutable():
     assert state["next_bc"] == 2
     assert out["next_bc"] == 3
     assert out["history"][-1]["bc"] == 2
-    with pytest.raises(ValueError, match="out_of_sequence"):
+    with pytest.raises(ValueError, match="duplicate_bc"):
         transition(out, "REJECT_BC", 2, candidate()["candidate_hash"])
 
 
