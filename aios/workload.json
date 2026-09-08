@@ -7,7 +7,7 @@
   "adapter": "aios/adapter.py",
   "entrypoint": "execute",
   "terminal_states": ["PASS", "EDGE_FOUND", "NO_EDGE_FOUND", "INCONCLUSIVE", "BLOCKED"],
-  "verification_classes": ["regression_tests", "locked_validation", "locked_oos", "provenance"],
+  "verification_classes": ["regression_tests", "locked_validation", "locked_oos", "provenance", "locked_dataset", "research_pipeline", "IS", "validation_gate", "OOS"],
   "durable_loop": ["OBSERVE", "DECIDE", "ACT", "VERIFY", "PERSIST", "RESUME"],
   "agent_may_modify_policy": false,
   "agent_may_modify_terminal_conditions": false
