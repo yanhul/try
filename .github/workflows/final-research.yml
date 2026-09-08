@@ -15,24 +15,26 @@ jobs:
           python-version: '3.11'
       - name: Install test dependencies
         run: python -m pip install --upgrade pip pytest PyYAML
-      - name: Download locked dataset
-        run: python engine/binance_downloader.py --symbol BTCUSDT --interval 1h --start 2026-01-01T00:00:00Z --end 2026-06-01T00:00:00Z --out data/BTCUSDT_1h.csv
+      - name: Verify locked dataset
+        run: |
+          test -s data/BTCUSDT_1h.csv
+          echo '9fe3fbebd49532591ddbb117670919b0ed7c1c60  data/BTCUSDT_1h.csv' | sha256sum -c -
       - name: Run tests
         run: pytest -q
       - name: Run locked IS-validation-OOS pipeline
         run: python run_research_pipeline.py --data data/BTCUSDT_1h.csv --candidates research/final_candidates.json --out research/final_strategy_result.json --objective profit_factor --validation-min-pf 1.0 --validation-min-return 0.0
       - name: Require OOS result
-        run: python - <<'PY'
-import json
-p=json.load(open('research/final_strategy_result.json'))
-assert p['validation']['passed'], p['validation']
-assert p['oos'] is not None, 'OOS was not evaluated'
-print(json.dumps({'selected_config':p['selected_config'],'validation':p['validation']['result']['metrics'],'oos':p['oos']['metrics']},indent=2))
-PY
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('research/final_strategy_result.json'))
+          assert p['validation']['passed'], p['validation']
+          assert p['oos'] is not None, 'OOS was not evaluated'
+          print(json.dumps({'selected_config':p['selected_config'],'validation':p['validation']['result']['metrics'],'oos':p['oos']['metrics']},indent=2))
+          PY
       - name: Upload research results
         uses: actions/upload-artifact@v4
         with:
           name: final-strategy-research
           path: research/*.json
           if-no-files-found: error
-# force-run marker
