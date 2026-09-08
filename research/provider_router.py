@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict provider router: Gemini drives hypotheses; local registry/evidence rules constrain execution."""
+"""Strict multi-provider router: provider fallback is fail-closed and policy-bound."""
 from __future__ import annotations
 import json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
@@ -19,22 +19,25 @@ def call(name,prompt):
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1200,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- for attempt in range(3):
+ for attempt in range(2):
   try:
    with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
   except urllib.error.HTTPError as exc:
-   if exc.code != 429 or attempt == 2: raise
+   if exc.code != 429 or attempt == 1: raise
    retry_after=exc.headers.get("Retry-After") if exc.headers else None
-   try: delay=max(1,int(float(retry_after))) if retry_after else 65*(attempt+1)
-   except ValueError: delay=65*(attempt+1)
-   print(f"PROVIDER_RATE_LIMIT {name} retry={attempt+1}/2 delay={delay}s", flush=True)
+   try: delay=max(1,int(float(retry_after))) if retry_after else 10
+   except ValueError: delay=10
+   # Do not burn the bounded campaign budget waiting on a throttled provider.
+   if delay > 15: raise RuntimeError(f"provider_rate_limited:{name}:retry_after={delay}")
+   print(f"PROVIDER_RATE_LIMIT {name} retry=1/1 delay={delay}s; falling back if still throttled", flush=True)
    time.sleep(delay)
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
  evidence_text=failure.read_text(encoding="utf-8")
  prompt=f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS (avoid repeating the same conceptual change): {prior}\nUse ONLY this failure-analysis artifact:\n\n"+evidence_text
- for name in [x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]:
+ order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]
+ for name in order:
   try:
    candidate=json.loads(call(name,prompt))
    if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
@@ -43,9 +46,6 @@ def main():
    from autonomous_hypothesis import validate_candidate
    ok,reason=validate_candidate(candidate,bc,parent)
    if not ok: raise ValueError(reason)
-
-   # Second, fail-closed evidence-calibration boundary. The verifier receives the
-   # exact artifact used for generation and cannot change policy or evidence.
    base,model,key=config(name)
    calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
    if not calibrated:
