@@ -1,38 +1,71 @@
-"""AIOS workload adapter for the deterministic research workload."""
+"""AIOS workload adapter for the deterministic final research workload."""
 from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
-from engine.backtest import run_backtest
+PROVENANCE = {"producer": "yanhul/try", "adapter": "try.research@1"}
+DATASET = Path("data/BTCUSDT_1h.csv")
+RESULT = Path("research/final_strategy_result.json")
+CANDIDATES = Path("research/final_candidates.json")
+
+
+def _digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
     if not isinstance(problem, str) or not problem.strip():
         raise ValueError("problem must be non-empty")
     root = Path(workdir)
-    data = root / "data" / "BTCUSDT_1h.csv"
-    provenance = {"producer": "yanhul/try", "adapter": "try.research@1"}
+    data = root / DATASET
+    result_path = root / RESULT
+    candidates = root / CANDIDATES
+    if not candidates.exists():
+        return {"status": "BLOCKED", "reason": "final candidate set missing", "artifact_refs": (),
+                "evidence_refs": (), "verification_refs": (), "provenance": PROVENANCE}
+
     if not data.exists():
-        return {"status": "BLOCKED", "reason": "required research dataset missing",
-                "evidence_refs": (), "verification_refs": (), "artifact_refs": (), "provenance": provenance}
-    result = run_backtest(data)
-    payload = json.dumps(result, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
-    dataset_digest = hashlib.sha256(data.read_bytes()).hexdigest()
-    result_digest = hashlib.sha256(payload.encode()).hexdigest()
-    return {
-        "status": "PASS", "problem": problem,
-        "artifact_refs": ("research/backtest.json",),
-        "evidence_refs": (f"dataset-sha256:{dataset_digest}", f"result-sha256:{result_digest}"),
-        "verification_refs": ("regression_tests", "locked_validation", "provenance"),
-        "provenance": provenance,
-        "evidence": {"dataset_sha256": dataset_digest, "result_sha256": result_digest,
-                     "bars": result["data"]["bars"], "events": len(result["events"])},
-        "result": result,
-    }
+        cmd = [sys.executable, "engine/binance_downloader.py", "--symbol", "BTCUSDT",
+               "--interval", "1h", "--start", "2026-01-01T00:00:00Z",
+               "--end", "2026-06-01T00:00:00Z", "--out", str(DATASET)]
+        proc = subprocess.run(cmd, cwd=root, text=True, capture_output=True, timeout=300, check=False)
+        if proc.returncode != 0 or not data.exists():
+            return {"status": "BLOCKED", "reason": "locked dataset download failed",
+                    "evidence_refs": ("dataset-download-failed",), "verification_refs": ("locked_dataset",),
+                    "artifact_refs": (), "provenance": PROVENANCE}
+
+    cmd = [sys.executable, "run_research_pipeline.py", "--data", str(DATASET),
+           "--candidates", str(CANDIDATES), "--out", str(RESULT), "--objective", "profit_factor",
+           "--validation-min-pf", "1.0", "--validation-min-return", "0.0"]
+    proc = subprocess.run(cmd, cwd=root, text=True, capture_output=True, timeout=600, check=False)
+    if proc.returncode != 0 or not result_path.exists():
+        return {"status": "BLOCKED", "reason": "final IS-validation-OOS pipeline failed",
+                "evidence_refs": ("pipeline-failed",), "verification_refs": ("research_pipeline",),
+                "artifact_refs": (), "provenance": PROVENANCE}
+
+    payload = json.loads(result_path.read_text(encoding="utf-8"))
+    validation = payload.get("validation") or {}
+    oos = payload.get("oos")
+    if not validation.get("passed") or oos is None:
+        return {"status": "BLOCKED", "reason": "validation gate did not pass or OOS missing",
+                "artifact_refs": (str(RESULT),),
+                "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
+                "verification_refs": ("IS", "validation_gate", "OOS"), "provenance": PROVENANCE}
+
+    metrics = oos.get("metrics", {})
+    return {"status": "PASS", "problem": problem,
+            "artifact_refs": (str(RESULT),),
+            "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
+            "verification_refs": ("regression_tests", "locked_validation", "OOS", "provenance"),
+            "provenance": PROVENANCE,
+            "metrics": {k: metrics.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
+            "selected_config": payload.get("selected_config")}
 
 
 if __name__ == "__main__":
-    print(json.dumps(execute(problem="AIOS conformance research workload"), indent=2))
+    print(json.dumps(execute(problem="AIOS final research workload"), indent=2))
