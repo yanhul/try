@@ -1,0 +1,27 @@
+name: Final Strategy Research
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: pytest -q
+      - name: Run locked research pipeline
+        run: python run_research_pipeline.py
+      - name: Upload research results
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-strategy-research
+          path: research/*.json
+          if-no-files-found: error
