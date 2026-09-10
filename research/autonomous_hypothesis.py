@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib,json
 from pathlib import Path
 REQUIRED={"bc","parent_bc","hypothesis_id","conceptual_change","evidence_sources","rationale","is_testable","oos_selection_used"}
+OPS={"identity","difference","ratio"}
+COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"}
 def canonical_hash(candidate:dict)->str:
  payload={k:candidate[k] for k in sorted(candidate) if k!="candidate_hash"}
  return hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
@@ -14,6 +16,12 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
  if not isinstance(candidate["evidence_sources"],list) or not candidate["evidence_sources"] or any(not isinstance(x,str) or not x.strip() for x in candidate["evidence_sources"]):return False,"evidence_sources_required"
  if candidate["oos_selection_used"] is not False:return False,"oos_selection_forbidden"
  if candidate["is_testable"] is not True:return False,"not_testable"
+ spec=candidate.get("discovery_spec")
+ if spec is not None:
+  if not isinstance(spec,dict) or spec.get("operator") not in OPS:return False,"invalid_discovery_operator"
+  if spec.get("left") not in COLS:return False,"invalid_discovery_left_column"
+  if spec.get("operator") in {"difference","ratio"} and spec.get("right") not in COLS:return False,"invalid_discovery_right_column"
+  if not isinstance(spec.get("threshold"),(int,float)) or not isinstance(spec.get("direction"),str) or spec["direction"] not in {"above","below"}: return False,"invalid_discovery_threshold"
  expected=canonical_hash(candidate); supplied=candidate.get("candidate_hash")
  if supplied is not None and supplied!=expected:return False,"candidate_hash_mismatch"
  candidate["candidate_hash"]=expected
