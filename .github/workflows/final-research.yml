@@ -18,7 +18,7 @@ jobs:
       - name: Verify locked dataset
         run: |
           test -s data/BTCUSDT_1h.csv
-          echo '9fe3fbebd49532591ddbb117670919b0ed7c1c60  data/BTCUSDT_1h.csv' | sha256sum -c -
+          test "$(git hash-object data/BTCUSDT_1h.csv)" = "9fe3fbebd49532591ddbb117670919b0ed7c1c60"
       - name: Run tests
         run: pytest -q
       - name: Run locked IS-validation-OOS pipeline
