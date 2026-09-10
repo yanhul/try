@@ -35,13 +35,13 @@ def test_research_parameters_are_applied(tmp_path):
     rows = ["timestamp,open,high,low,close,volume"]
     for i in range(80):
         price = 100 + (i % 10) * 2
+        timestamp = (datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(hours=i)).isoformat().replace("+00:00", "Z")
         rows.append(
-            f"{(datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(hours=i)).isoformat().replace("+00:00", "Z")},"
+            f"{timestamp},"
             f"{price},{price+3},{price-3},{price},10"
         )
     csv.write_text("\n".join(rows), encoding="utf-8")
 
-    from engine.research_run import run_research
     result = run_research(csv, tmp_path / "result.json", 0.02, 1.0)
 
     assert result["parameters"] == {
