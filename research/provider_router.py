@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict provider router with broad public-source discovery input."""
+"""Strict provider router with broad discovery and constrained executable candidates."""
 from __future__ import annotations
 import json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
@@ -8,7 +8,7 @@ if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 from autonomous_hypothesis import write_candidate
 from engine.hypotheses import HYPOTHESES
 from evidence_calibration import verify_with_openai_compatible
-SYSTEM="""You are the autonomous trading-research hypothesis generator. Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY. Discovery may come from multiple public research domains, but it is evidence to inspect, not proof. You may ONLY use hypothesis_id values from REGISTERED_HYPOTHESES; never invent an engine strategy. Map a discovered idea to an existing executable proxy only when the mapping is explicit and testable; otherwise return HOLD rather than pretending it is implemented. Do NOT repeat a prior conceptual change. Exactly one conceptual change. Cite only concrete evidence_sources present in the supplied artifacts. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used. For every source, preserve source identity and distinguish CLAIM from VERIFIED/RECONSTRUCTABLE evidence."""
+SYSTEM="""You are an autonomous trading-research hypothesis generator. Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY. You may either use a registered hypothesis_id OR create a discovery_spec using ONLY these operators: identity, difference, ratio; columns: open, high, low, close, volume, volume_ratio, range_ratio, close_location, vwap_distance. A discovery_spec must contain operator,left, optional right, numeric threshold, direction (above/below). It is a deterministic entry filter over causal entry-bar features. Discovery is evidence, not proof. Do NOT use OOS to select/tune. Do NOT alter OOS criteria. Never invent evidence. Exactly one conceptual change. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec. For registered candidates discovery_spec may be null. For generated candidates use hypothesis_id='discovered_primitive'."""
 def config(name):
  n=name.upper(); defaults={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
  if n in defaults: base,model,keyvar=defaults[n]
@@ -17,7 +17,7 @@ def config(name):
 def call(name,prompt):
  base,model,key=config(name)
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
- body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1200,"response_format":{"type":"json_object"}}
+ body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1400,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
  for attempt in range(2):
   try:
@@ -33,24 +33,20 @@ def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
  evidence_text=failure.read_text(encoding="utf-8")
- discovery=ROOT/'research'/'discovery'/'latest.json'
- discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\n"
-         f"PRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:60000]}")
+ discovery=ROOT/'research'/'discovery'/'latest.json'; discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:60000]}")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]
  for name in order:
   try:
    candidate=json.loads(call(name,prompt))
    if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
-   if candidate.get("hypothesis_id") not in HYPOTHESES: raise ValueError("unregistered_hypothesis_id")
+   if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive": raise ValueError("unregistered_hypothesis_id")
    candidate["bc"],candidate["parent_bc"]=bc,parent
    from autonomous_hypothesis import validate_candidate
    ok,reason=validate_candidate(candidate,bc,parent)
    if not ok: raise ValueError(reason)
-   base,model,key=config(name)
-   calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
+   base,model,key=config(name); calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
    if not calibrated: print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}",flush=True); continue
-   print(f"PROVIDER_CALIBRATION_PASS {name}",flush=True)
    write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']}"); return 0
   except Exception as exc: print(f"PROVIDER_FAIL {name}: {exc}")
  print("PROVIDER_ROUTER_HOLD"); return 0
