@@ -40,7 +40,7 @@ jobs:
       - name: Install test runner
         run: python -m pip install --upgrade pytest
       - name: Run research feature and harness tests
-        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py
+        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_resume_budget.py
       - name: Run AIOS static conformance
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
@@ -88,8 +88,14 @@ jobs:
                 autonomous_candidates|failure_analysis|frozen_candidates|oos) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
-            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl 2>/dev/null || true
-            if git diff --cached --quiet; then echo "No autonomous research state changes to persist."; pushed=true; break; fi
+            git add -f research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl
+            if git diff --cached --quiet; then
+              if [ "$CONTINUE" = "true" ]; then
+                echo "CONTINUE requested but no durable research state changed; refusing blind redispatch." >&2
+                exit 1
+              fi
+              echo "No autonomous research state changes to persist."; pushed=true; break
+            fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
             if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
             git reset --hard origin/main; sleep $((attempt * 2))
