@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "operators": ["identity", "ratio", "difference", "zscore", "rolling_mean", "rolling_std", "lag", "delta", "rank"],
+  "columns": ["open", "high", "low", "close", "volume", "volume_ratio", "range_ratio", "close_location", "vwap_distance"],
+  "windows": [3, 5, 10, 20, 50, 100]
+}
