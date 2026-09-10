@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict multi-provider router: provider fallback is fail-closed and policy-bound."""
+"""Strict provider router with broad public-source discovery input."""
 from __future__ import annotations
 import json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
@@ -8,7 +8,7 @@ if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 from autonomous_hypothesis import write_candidate
 from engine.hypotheses import HYPOTHESES
 from evidence_calibration import verify_with_openai_compatible
-SYSTEM="""You are the autonomous trading-research hypothesis generator. Generate exactly ONE next hypothesis from the supplied FAILURE ANALYSIS. You may ONLY use hypothesis_id values from REGISTERED_HYPOTHESES; never invent an engine strategy. Reusing a registered hypothesis_id is allowed when the new candidate makes a materially different, evidence-driven conceptual change. Do NOT repeat a prior candidate or merely rename/version it. Exactly one conceptual change. Cite only concrete evidence_sources present in the supplied artifact. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence. If no materially different executable change is justified, return {\"status\":\"HOLD\"}. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used."""
+SYSTEM="""You are the autonomous trading-research hypothesis generator. Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY. Discovery may come from multiple public research domains, but it is evidence to inspect, not proof. You may ONLY use hypothesis_id values from REGISTERED_HYPOTHESES; never invent an engine strategy. Map a discovered idea to an existing executable proxy only when the mapping is explicit and testable; otherwise return HOLD rather than pretending it is implemented. Do NOT repeat a prior conceptual change. Exactly one conceptual change. Cite only concrete evidence_sources present in the supplied artifacts. Never use OOS results to select or tune. Never alter OOS criteria. Never invent missing evidence. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used. For every source, preserve source identity and distinguish CLAIM from VERIFIED/RECONSTRUCTABLE evidence."""
 def config(name):
  n=name.upper(); defaults={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
  if n in defaults: base,model,keyvar=defaults[n]
@@ -27,15 +27,16 @@ def call(name,prompt):
    retry_after=exc.headers.get("Retry-After") if exc.headers else None
    try: delay=max(1,int(float(retry_after))) if retry_after else 10
    except ValueError: delay=10
-   # Do not burn the bounded campaign budget waiting on a throttled provider.
    if delay > 15: raise RuntimeError(f"provider_rate_limited:{name}:retry_after={delay}")
-   print(f"PROVIDER_RATE_LIMIT {name} retry=1/1 delay={delay}s; falling back if still throttled", flush=True)
    time.sleep(delay)
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
  evidence_text=failure.read_text(encoding="utf-8")
- prompt=f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS (avoid repeating the same conceptual change): {prior}\nUse ONLY this failure-analysis artifact:\n\n"+evidence_text
+ discovery=ROOT/'research'/'discovery'/'latest.json'
+ discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\n"
+         f"PRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:60000]}")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]
  for name in order:
   try:
@@ -48,10 +49,8 @@ def main():
    if not ok: raise ValueError(reason)
    base,model,key=config(name)
    calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
-   if not calibrated:
-    print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}", flush=True)
-    continue
-   print(f"PROVIDER_CALIBRATION_PASS {name}", flush=True)
+   if not calibrated: print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}",flush=True); continue
+   print(f"PROVIDER_CALIBRATION_PASS {name}",flush=True)
    write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']}"); return 0
   except Exception as exc: print(f"PROVIDER_FAIL {name}: {exc}")
  print("PROVIDER_ROUTER_HOLD"); return 0
