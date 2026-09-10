@@ -8,15 +8,12 @@ on:
     branches:
       - main
       - 'bc[0-9]*'
-
 permissions:
   contents: write
   actions: write
-
 concurrency:
   group: bc-research-controller
   cancel-in-progress: false
-
 jobs:
   research:
     runs-on: ubuntu-latest
@@ -25,8 +22,6 @@ jobs:
       RESEARCH_MAX_ITERATIONS: 8
       RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
-      # Gemini is the only configured provider. 429 is handled fail-fast by the router;
-      # the durable controller persists state and resumes later instead of wasting quota.
       RESEARCH_PROVIDER_ORDER: gemini
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
@@ -47,6 +42,8 @@ jobs:
         run: python research/adversarial_conformance.py
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
+      - name: Broad public-source discovery
+        run: python research/discovery_scout.py
       - name: Run bounded autonomous research campaign
         id: controller
         shell: bash
@@ -73,7 +70,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p /tmp/try-state
-          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl; do
+          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
           pushed=false
@@ -85,10 +82,10 @@ jobs:
               base="$(basename "$item")"
               case "$base" in
                 bc_lifecycle_state.json|bc_queue.json|lineage.jsonl) cp -a "$item" "research/$base" ;;
-                autonomous_candidates|failure_analysis|frozen_candidates|oos) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
+                autonomous_candidates|failure_analysis|frozen_candidates|oos|discovery) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
-            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl 2>/dev/null || true
+            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery 2>/dev/null || true
             if git diff --cached --quiet; then echo "No autonomous research state changes to persist."; pushed=true; break; fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
             if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
