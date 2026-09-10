@@ -1,0 +1,1 @@
+H2 lifecycle contract wiring is intentionally isolated from strategy logic. The controller now validates candidate and evaluation artifacts before gate interpretation and applies BC decisions through a deterministic transition function. OOS execution remains behind the existing external AIOS authority verification.
