@@ -45,23 +45,20 @@ def extract_specific_features(
         cumulative_volume += b.volume
         vwap = cumulative_pv / cumulative_volume if cumulative_volume else None
 
-        # VSA-style measurable proxies.
         volume_expansion = (b.volume / volume_sma) if volume_sma else None
-        wide_spread = (spread / range_sma) if range_sma else None
+        # A zero-range bar is explicitly non-wide rather than undefined.
+        wide_spread = (spread / range_sma) if range_sma else 0.0
         effort_result = (b.volume / spread) if spread > 0 else None
         close_strength = close_location
         up_bar = b.close > b.open
         down_bar = b.close < b.open
         volume_up = b.volume > prev_volume
-        # High effort with little result: a deliberately simple absorption proxy.
         absorption_proxy = bool(
             volume_expansion is not None
             and volume_expansion >= 1.5
-            and wide_spread is not None
             and wide_spread <= 0.8
         )
 
-        # VPA-style measurable relationships.
         price_change = b.close - prev.close
         price_change_pct = (price_change / prev.close) if prev.close else None
         volume_change_pct = (
@@ -75,11 +72,9 @@ def extract_specific_features(
         volume_price_expansion = bool(
             volume_expansion is not None
             and volume_expansion >= 1.5
-            and wide_spread is not None
             and wide_spread >= 1.2
         )
 
-        # Wyckoff-style proxies based only on observable OHLCV context.
         prior_high = max((x.high for x in bars[max(0, i - window):i]), default=b.high)
         prior_low = min((x.low for x in bars[max(0, i - window):i]), default=b.low)
         spring_proxy = bool(i > 0 and b.low < prior_low and close_location >= 0.7)
@@ -87,14 +82,12 @@ def extract_specific_features(
         sos_proxy = bool(
             volume_expansion is not None
             and volume_expansion >= 1.5
-            and wide_spread is not None
             and wide_spread >= 1.2
             and close_location >= 0.7
         )
         sow_proxy = bool(
             volume_expansion is not None
             and volume_expansion >= 1.5
-            and wide_spread is not None
             and wide_spread >= 1.2
             and close_location <= 0.3
         )
