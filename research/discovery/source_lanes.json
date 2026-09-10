@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "purpose": "Astra-style source/data lane manifest. Availability is evidence-gated; missing lanes remain UNKNOWN/UNAVAILABLE and never become synthetic data.",
+  "lanes": [
+    {"id":"pm_twap","family":"prediction_market","required_artifacts":["twap observations","market resolution metadata"],"feature_classes":["realized_twap_fraction","remaining_twap_uncertainty","distance_to_strike"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"pm_clob","family":"prediction_market","required_artifacts":["point-in-time orderbook snapshots/deltas","tick_size","min_order_size","fees"],"feature_classes":["spread","depth","imbalance","microprice","queue_state"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"cex","family":"centralized_exchange","required_artifacts":["trades","book events","fees","execution timestamps"],"feature_classes":["signed_flow","lob_imbalance","markout","latency"],"status":"AVAILABLE_IF_DATA_PRESENT"},
+    {"id":"solana_dex","family":"solana","required_artifacts":["on-chain fills","pool state","slot/block time","liquidity state"],"feature_classes":["buyer_acceleration","liquidity_transition","rug_risk","mev_regime"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"onchain","family":"onchain","required_artifacts":["transaction/fill truth","wallet/entity graph","point-in-time timestamps"],"feature_classes":["actor_role","cluster_flow","persistent_flow"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"news_social","family":"information","required_artifacts":["source event","source timestamp","receive timestamp","entity mapping"],"feature_classes":["attention_shock","information_latency","dislocation"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"options_basis_funding","family":"derivatives","required_artifacts":["options quotes","funding","basis","fees","timestamps"],"feature_classes":["carry","implied_distribution","basis_dislocation"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"execution_mev","family":"execution","required_artifacts":["full depth","fill outcomes","latency","fees","impact"],"feature_classes":["fill_probability","adverse_selection","capacity","latency_decay"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"research_mining","family":"public_research","required_artifacts":["source URL","source timestamp","extractable claim/evidence"],"feature_classes":["strategy_claim","mechanism","falsification_test"],"status":"AVAILABLE"}
+  ]
+}
