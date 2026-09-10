@@ -15,5 +15,10 @@ def test_resume_retry_budget_is_durable(tmp_path):
         bc_controller.hold(reloaded, "HOLD_PROVIDER_ROUTER", 31)
         assert reloaded["resume_retry_count"] == 2
         assert reloaded["retry_count"] == 1
+
+        # The fixed retry budget must terminate repeated unchanged holds.
+        reloaded["resume_retry_count"] = bc_controller.MAX_RETRIES
+        bc_controller.hold(reloaded, "HOLD_PROVIDER_ROUTER", 31)
+        assert reloaded["resume_retry_count"] == bc_controller.MAX_RETRIES + 1
     finally:
         bc_controller.STATE = original
