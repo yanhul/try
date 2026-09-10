@@ -15,9 +15,15 @@ def checkpoint(s,phase,bc=None,error=None):
  else: s['last_error']=str(error); s['retry_count']=int(s.get('retry_count',0))+1
  save(s)
 def hold(s,reason,bc=None,retryable=True):
- checkpoint(s,'WAIT_RETRY' if retryable else 'HOLD',bc,error=reason); suffix=f' BC{bc}' if bc is not None else ''; print(f'CONTROLLER_DECISION {reason}{suffix}')
- if retryable and int(s.get('retry_count',0))<=MAX_RETRIES: print(f'CONTROLLER_AUTO_RESUME retry={s["retry_count"]}/{MAX_RETRIES}')
- else: print(f'CONTROLLER_MANUAL_HOLD retry={s.get("retry_count",0)}/{MAX_RETRIES}')
+ # retry_count is a per-process diagnostic counter and is reset by successful
+ # checkpoints. resume_retry_count is the durable bounded-resume budget and
+ # therefore MUST survive a fresh workflow run.
+ attempt=int(s.get('resume_retry_count',0))+1 if retryable else int(s.get('resume_retry_count',0))
+ if retryable: s['resume_retry_count']=attempt
+ checkpoint(s,'WAIT_RETRY' if retryable else 'HOLD',bc,error=reason)
+ suffix=f' BC{bc}' if bc is not None else ''; print(f'CONTROLLER_DECISION {reason}{suffix}')
+ if retryable and attempt<=MAX_RETRIES: print(f'CONTROLLER_AUTO_RESUME retry={attempt}/{MAX_RETRIES}')
+ else: print(f'CONTROLLER_MANUAL_HOLD retry={attempt}/{MAX_RETRIES}')
  return 0
 def gate(bc):
  p=ROOT/'audit_bc_fast_gate.py'
@@ -71,7 +77,7 @@ def oos_once(bc,candidate):
  if rc or not out.exists(): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR BC{bc}'); return None
  return load(out,{})
 def main():
- s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
+ s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0,'resume_retry_count':0})
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
  if s.get('terminal'):
   bc=int(s.get('current_bc') or s.get('last_bc') or 0)
@@ -85,6 +91,7 @@ def main():
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',expected)
+  s['resume_retry_count']=0
   candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]; checkpoint(s,'PERSISTED',expected)
  for _ in range(MAX):
   q=normalize_queue(s)
@@ -98,6 +105,7 @@ def main():
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
+   s['resume_retry_count']=0
    cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; checkpoint(s,'ACT',bc); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
@@ -109,12 +117,13 @@ def main():
    if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
    passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
    if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
-   s['terminal']=True; s['terminal_reason']=decision; s['next_bc']=bc+1; write_queue([]); checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
+   s['terminal']=True; s['terminal_reason']=decision; s['next_bc']=bc+1; write_queue([]); s['resume_retry_count']=0; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
   if REJECT not in out and 'SPLIT_GATE False' not in out: checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
-  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
+  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; s['resume_retry_count']=0; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
   nxt=bc+1; checkpoint(s,'DECIDE',nxt)
   if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
+  s['resume_retry_count']=0
   candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); checkpoint(s,'YIELD',s.get('next_bc')); print('CONTROLLER_AUTO_RESUME scheduler_yield'); return 0
 if __name__=='__main__': raise SystemExit(main())
