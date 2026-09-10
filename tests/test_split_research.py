@@ -32,8 +32,9 @@ def test_split_research_parameters_are_applied(tmp_path):
     rows = ["timestamp,open,high,low,close,volume"]
     for i in range(60):
         price = 100 + (i % 12) * 2
+        timestamp = (datetime(2026, 2, 1, tzinfo=timezone.utc) + timedelta(hours=i)).isoformat().replace("+00:00", "Z")
         rows.append(
-            f"{(datetime(2026, 2, 1, tzinfo=timezone.utc) + timedelta(hours=i)).isoformat().replace("+00:00", "Z")},"
+            f"{timestamp},"
             f"{price},{price+3},{price-3},{price},10"
         )
     csv.write_text("\n".join(rows), encoding="utf-8")
