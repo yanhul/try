@@ -44,6 +44,10 @@ jobs:
         run: python research/bootstrap_lifecycle.py
       - name: Broad public-source discovery
         run: python research/discovery_scout.py
+      - name: Audit executable source lanes
+        run: python research/discovery/source_audit.py
+      - name: Compile constrained discovery primitives
+        run: python research/discovery_compiler.py
       - name: Run bounded autonomous research campaign
         id: controller
         shell: bash
