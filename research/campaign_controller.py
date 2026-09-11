@@ -18,15 +18,15 @@ def terminal(state, outcome, reason, screened, budget):
     state["campaign_terminal"] = True; state["campaign_outcome"] = outcome; state["campaign_terminal_reason"] = reason; save(state)
     print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={screened}/{budget}"); return 0
 
-def continuation_allowed(*, before_screened: int, screened: int, phase: str | None, last_error: object, terminal_state: bool) -> bool:
-    """Return true only when this invocation produced progress and remains runnable.
+def qualifying_bcs(history):
+    """Return BC ids that count as screened, preserving the governing policy."""
+    return {int(x["bc"]) for x in history if isinstance(x, dict) and str(x.get("decision")) in {"REJECT", "PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc", "")).isdigit()}
 
-    Durable counters from an older invocation are never sufficient to authorize a
-    new wake-up. HOLD/WAIT_RETRY/error/terminal states are fail-closed.
-    """
+def continuation_allowed(*, new_screened: int, phase: str | None, last_error: object, terminal_state: bool) -> bool:
+    """Authorize wake-up only when this invocation produced new screened BCs."""
     if terminal_state or phase in {"WAIT_RETRY", "HOLD"} or last_error:
         return False
-    return screened > before_screened
+    return new_screened > 0
 
 def main():
     policy = load(POLICY, None)
@@ -43,6 +43,8 @@ def main():
     screened = int(state.get("campaign_screened", 0))
     if screened >= budget: return terminal(state, "NO_EDGE_FOUND", "FIXED_SCREENING_BUDGET_EXHAUSTED", screened, budget)
     env = dict(os.environ); env["RESEARCH_MAX_ITERATIONS"] = str(min(batch, budget - screened)); before_screened = screened
+    before_history = load(STATE, {}).get("history", [])
+    before_bcs = qualifying_bcs(before_history)
     print(f"CAMPAIGN_START screened={screened}/{budget} batch={env['RESEARCH_MAX_ITERATIONS']}")
     proc = subprocess.run([sys.executable, "research/bc_controller.py"], cwd=ROOT, env=env)
     if proc.returncode != 0: return proc.returncode
@@ -51,8 +53,10 @@ def main():
         state["campaign_budget"] = budget; state["campaign_id"] = policy["campaign_id"]; save(state)
         reason = state.get("last_error") or state.get("phase"); print(f"CAMPAIGN_HOLD reason={reason} screened={before_screened}/{budget}"); return 0
     history = state.get("history", [])
-    seen = {int(x["bc"]) for x in history if isinstance(x, dict) and str(x.get("decision")) in {"REJECT", "PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc", "")).isdigit()}
-    screened = max(int(state.get("campaign_screened", 0)), len(seen)); state["campaign_screened"] = screened; state["campaign_budget"] = budget; state["campaign_id"] = policy["campaign_id"]
+    after_bcs = qualifying_bcs(history)
+    new_bcs = after_bcs - before_bcs
+    screened = min(budget, before_screened + len(new_bcs))
+    state["campaign_screened"] = screened; state["campaign_budget"] = budget; state["campaign_id"] = policy["campaign_id"]
     if state.get("terminal"):
         raw = state.get("terminal_reason")
         if raw == "OOS_PASS": outcome = "EDGE_FOUND"
@@ -62,7 +66,7 @@ def main():
         state["campaign_terminal"] = True; state["campaign_outcome"] = outcome; state["campaign_terminal_reason"] = raw; save(state)
         print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={screened}/{budget}"); return 0
     if screened >= budget: return terminal(state, "NO_EDGE_FOUND", "FIXED_SCREENING_BUDGET_EXHAUSTED", screened, budget)
-    if not continuation_allowed(before_screened=before_screened, screened=screened, phase=state.get("phase"), last_error=state.get("last_error"), terminal_state=bool(state.get("terminal"))):
+    if not continuation_allowed(new_screened=len(new_bcs), phase=state.get("phase"), last_error=state.get("last_error"), terminal_state=bool(state.get("terminal"))):
         save(state); print(f"CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={screened}/{budget}"); return 0
     save(state); print(f"CAMPAIGN_CONTINUE screened={screened}/{budget}"); return 0
 if __name__ == "__main__": raise SystemExit(main())
