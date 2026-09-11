@@ -81,8 +81,12 @@ def main():
 
     if state.get("terminal"):
         raw = state.get("terminal_reason")
-        # Controller-level OOS verdicts must map into the governing campaign vocabulary.
-        outcome = "EDGE_FOUND" if raw == "OOS_PASS" else "INCONCLUSIVE" if raw in {"OOS_FAIL", "HOLD"} else raw
+        if raw == "OOS_PASS":
+            outcome = "EDGE_FOUND"
+        elif raw == "OOS_FAIL":
+            outcome = "NO_EDGE_FOUND"
+        else:
+            outcome = "INCONCLUSIVE" if raw in {"HOLD", "UNKNOWN"} else raw
         if outcome not in outcomes:
             print(f"CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}")
             save(state)
