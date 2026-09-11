@@ -2,8 +2,9 @@
 """Fail-closed epistemic calibration gate for model-generated research claims.
 
 This gate does not decide the research policy or promotion criteria. It only checks
-whether a model-generated candidate/rationale is supported by the supplied failure
-analysis and whether quantitative claims are warranted by the supplied evidence.
+whether factual claims in a candidate/rationale are supported by the supplied
+failure analysis. A proposed test is not itself a factual claim and must not be
+rejected merely because its proposed mechanism has not yet been proven.
 """
 from __future__ import annotations
 
@@ -14,7 +15,16 @@ from typing import Any
 SYSTEM = """You are a strict evidence-calibration verifier.
 You verify a model-generated research candidate against ONE supplied evidence artifact.
 Do not add facts from outside the artifact. Do not repair the candidate yourself.
-Classify unsupported or overstated reasoning as FAIL.
+
+IMPORTANT DISTINCTION:
+- A hypothesis/proposed test, conceptual change, threshold, direction, or discovery
+  parameter is a PROPOSAL to be tested. It is not evidence and is not a factual claim.
+- A rationale may explain why the proposed test is worth running, but it must not
+  assert an unproven mechanism, effect, causal explanation, or quantitative result.
+- Accept wording such as "test whether", "evaluate whether", or "this addresses the
+  missing validation" when that is what the supplied artifact supports.
+- FAIL only substantive factual overclaims, unsupported quantitative claims, invented
+  evidence, or claims presented as established findings.
 
 Rules:
 - An observation/association does not establish causation.
@@ -27,7 +37,7 @@ Rules:
 - Retracted evidence cannot be treated as current positive evidence.
 - Do not invent effect sizes, confidence intervals, mechanisms, populations, methods,
   or explanatory heterogeneity not present in the supplied artifact.
-- Every substantive rationale claim must be traceable to supplied evidence.
+- Every SUBSTANTIVE FACTUAL rationale claim must be traceable to supplied evidence.
 
 Return JSON only:
 {"status":"PASS"|"FAIL","issues":[{"code":"...","claim":"...","reason":"..."}]}
@@ -42,7 +52,7 @@ def verification_prompt(candidate: dict[str, Any], evidence_text: str) -> str:
         + json.dumps(candidate, sort_keys=True, ensure_ascii=False)
         + "\n\nSUPPLIED EVIDENCE ARTIFACT:\n"
         + evidence_text
-        + "\n\nVerify the candidate against only this artifact."
+        + "\n\nVerify factual claims against only this artifact. Treat the candidate's proposed\nexperiment as a proposal, not as an asserted result."
     )
 
 
