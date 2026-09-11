@@ -1,19 +1,33 @@
 #!/usr/bin/env python3
-"""Strict provider router with broad discovery and constrained executable candidates."""
+"""Strict provider router: discovery informs proposals; validation remains authoritative."""
 from __future__ import annotations
 import json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
-from autonomous_hypothesis import write_candidate
+from autonomous_hypothesis import write_candidate, validate_candidate
 from engine.hypotheses import HYPOTHESES
 from evidence_calibration import verify_with_openai_compatible
-SYSTEM="""You are an autonomous trading-research hypothesis generator. Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY. You may either use a registered hypothesis_id OR create a discovery_spec using ONLY these operators: identity, difference, ratio; columns: open, high, low, close, volume, volume_ratio, range_ratio, close_location, vwap_distance. A discovery_spec must contain operator,left, optional right, numeric threshold, direction (above/below). It is a deterministic entry filter over causal entry-bar features. Discovery is evidence, not proof. Do NOT use OOS to select/tune. Do NOT alter OOS criteria. Never invent evidence. Exactly one conceptual change. Return JSON only with keys: hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec. For registered candidates discovery_spec may be null. For generated candidates use hypothesis_id='discovered_primitive'."""
+
+OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
+COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
+WINDOWS=[3,5,10,20,50,100]
+SYSTEM=f"""You are an autonomous trading-research hypothesis generator.
+Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY.
+Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
+For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
+A discovery_spec MUST contain operator,left, numeric threshold, direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
+Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
+Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
+hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
+"""
+
 def config(name):
  n=name.upper(); defaults={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
  if n in defaults: base,model,keyvar=defaults[n]
  else: base=os.getenv(f"RESEARCH_PROVIDER_{n}_BASE_URL",""); model=os.getenv(f"RESEARCH_PROVIDER_{n}_MODEL",""); keyvar=f"RESEARCH_PROVIDER_{n}_API_KEY"
  return base.rstrip("/"),model,os.getenv(keyvar,"")
+
 def call(name,prompt):
  base,model,key=config(name)
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
@@ -29,12 +43,14 @@ def call(name,prompt):
    except ValueError: delay=10
    if delay > 15: raise RuntimeError(f"provider_rate_limited:{name}:retry_after={delay}")
    time.sleep(delay)
+
 def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
  evidence_text=failure.read_text(encoding="utf-8")
  discovery=ROOT/'research'/'discovery'/'latest.json'; discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:60000]}")
+ compiled=ROOT/'research'/'discovery'/'compiled_candidates.json'; compiled_text=compiled.read_text(encoding='utf-8') if compiled.exists() else '{"status":"NO_COMPILED_CANDIDATES"}'
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:30000]}\n\nCOMPILED PRIMITIVES (templates only; choose/propose parameters, never treat them as evidence):\n{compiled_text[:30000]}")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini,deepseek").split(",") if x.strip()]
  for name in order:
   try:
@@ -42,7 +58,6 @@ def main():
    if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
    if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive": raise ValueError("unregistered_hypothesis_id")
    candidate["bc"],candidate["parent_bc"]=bc,parent
-   from autonomous_hypothesis import validate_candidate
    ok,reason=validate_candidate(candidate,bc,parent)
    if not ok: raise ValueError(reason)
    base,model,key=config(name); calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
