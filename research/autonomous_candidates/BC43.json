@@ -1,0 +1,20 @@
+{
+  "bc": 43,
+  "candidate_hash": "ffc447e5f793f0e796577c2d1f6da10a362deefada1cdbd8fffb206c6178b261",
+  "conceptual_change": "Implement a regime filter using zscore-normalized volatility (std) to restrict mean-reversion entries in high-volatility, non-stationary market conditions.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 42,
+  "rationale": "Mean reversion signals derived from cointegration or z-score residuals often break down during trending, high-volatility expansion phases. Restricting entries when recent price dispersion (volatility) is statistically elevated improves signal quality."
+}

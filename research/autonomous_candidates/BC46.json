@@ -1,0 +1,21 @@
+{
+  "bc": 46,
+  "candidate_hash": "35befa5c1bc23e4b0a62109278bb6fbd2e05e70c95db4a4499c406f1fb3d88fd",
+  "conceptual_change": "Incorporate a volatility-adjusted momentum filter by utilizing the 20-period rolling standard deviation of the close location to detect rapid shifts in price positioning, subsequently triggering a mean-reversion signal only when volatility is elevated.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/aakash-ramesh/crypto-stat-arb",
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 45,
+  "rationale": "The failure in previous cycles was attributed to lack of execution context regarding liquidity. By using the 20-period rolling standard deviation of close_location, we establish a volatility filter that acts as a regime-check for mean reversion, ensuring signals are only captured during high-volatility, liquidity-sweeping events."
+}

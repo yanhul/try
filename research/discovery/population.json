@@ -4,10 +4,10 @@
   "policy_authority": "research/campaign_policy.json",
   "counts": {
     "raw": 67,
-    "normalized": 47,
-    "round1": 47,
+    "normalized": 46,
+    "round1": 46,
     "deferred": 13,
-    "survivors": 34
+    "survivors": 33
   },
   "population": [
     {
@@ -221,34 +221,6 @@
             "round": 2,
             "decision": "DEFER_DATA_LANE",
             "family": "onchain"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "d736912fc36f1eaf",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "cross sectional crypto factors momentum reversal",
-      "description": null,
-      "family": "cross_sectional",
-      "query": "cross sectional crypto factors momentum reversal",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "d736912fc36f1eaf",
-        "family": "cross_sectional",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
           }
         ]
       }

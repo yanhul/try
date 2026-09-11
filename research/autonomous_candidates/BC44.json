@@ -1,0 +1,21 @@
+{
+  "bc": 44,
+  "candidate_hash": "d7882736bb72782ddcb406f3b5cb88b35d137f8429aa543fa3e54ee2f1f30eaa",
+  "conceptual_change": "Introduce a liquidity sweep detection filter by identifying when the rolling standard deviation of the close location exceeds a threshold, signaling excessive volatility before initiating mean-reversion entries.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "operator": "rolling_std",
+    "threshold": 0.3,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot",
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 43,
+  "rationale": "High volatility measured by the rolling standard deviation of the close location (price relative to high-low range) can act as a regime filter to avoid 'trap' signals in non-mean-reverting, trend-heavy liquidity sweeps common in crypto markets."
+}

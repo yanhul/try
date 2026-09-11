@@ -1,0 +1,14 @@
+{
+  "bc": 44,
+  "parent_bc": 43,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "discovered_primitive",
+  "conceptual_change": "Introduce a liquidity sweep detection filter by identifying when the rolling standard deviation of the close location exceeds a threshold, signaling excessive volatility before initiating mean-reversion entries.",
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot",
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

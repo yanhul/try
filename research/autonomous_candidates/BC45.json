@@ -1,0 +1,21 @@
+{
+  "bc": 45,
+  "candidate_hash": "a3b7079bf408c39a55ada63e3e1fd23a3b3d2aad8ba15602fc9995da712438b8",
+  "conceptual_change": "Introduce a volatility filter by monitoring the 50-period rolling standard deviation of the close location to detect liquidity sweeps, acting as a precondition for mean-reversion signals.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "operator": "rolling_std",
+    "threshold": 0.25,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot",
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 44,
+  "rationale": "Liquidity sweeps are often preceded or followed by local volatility expansions. By thresholding the rolling standard deviation of the close_location, we can identify regime changes in market structure where order flow is likely to trap participants, facilitating more robust mean-reversion entries."
+}

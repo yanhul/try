@@ -1,0 +1,14 @@
+{
+  "bc": 47,
+  "parent_bc": 46,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "discovered_primitive",
+  "conceptual_change": "Incorporate a volatility-adjusted momentum filter by utilizing the 20-period rolling standard deviation of the close location to detect rapid shifts in price positioning, triggering a signal only when volatility is elevated.",
+  "evidence_sources": [
+    "https://github.com/aakash-ramesh/crypto-stat-arb",
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}
