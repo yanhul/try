@@ -17,6 +17,7 @@ Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
 A discovery_spec MUST contain operator,left, numeric threshold, direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
+The JSON type of threshold MUST be a number (integer or decimal), never a quoted string, and direction MUST be exactly 'above' or 'below'.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
 Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
 hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
@@ -47,27 +48,44 @@ def call(name,prompt):
  if last: raise last
  raise RuntimeError(f"provider_request_failed:{name}")
 
+def normalize_structural_types(candidate):
+ """Normalize lossless JSON typing only; never invent a missing research value."""
+ spec=candidate.get("discovery_spec")
+ if not isinstance(spec,dict): return
+ if "threshold" in spec and isinstance(spec["threshold"],str):
+  text=spec["threshold"].strip()
+  try:
+   value=float(text)
+  except ValueError:
+   return
+  spec["threshold"]=int(value) if value.is_integer() else value
+ if "window" in spec and isinstance(spec["window"],str) and spec["window"].strip().isdigit():
+  spec["window"]=int(spec["window"].strip())
+
 def request_candidate(name,prompt):
  """Bounded structural repair: ask the same provider to regenerate, never inventing fields locally."""
  feedback=""
+ last_reason="unknown"
  for attempt in range(3):
   raw=call(name,prompt + feedback)
   try:
    candidate=json.loads(raw)
-  except Exception as exc:
+  except Exception:
+   last_reason="invalid_json"
    feedback=("\n\nVALIDATOR_FEEDBACK: response was not valid JSON. Regenerate exactly one JSON object using the required keys; do not add prose.\n")
    continue
   if candidate.get("status")=="HOLD": return candidate
+  normalize_structural_types(candidate)
   if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive":
    reason="unregistered_hypothesis_id"
   else:
-   reason=None
    candidate["bc"],candidate["parent_bc"]=bc,parent
    ok,reason=validate_candidate(candidate,bc,parent)
    if ok:return candidate
+  last_reason=reason
   feedback=(f"\n\nVALIDATOR_FEEDBACK: {reason}. Regenerate the candidate with that contract error corrected. "
             "Do not invent missing evidence or silently change the research policy. Threshold must be a JSON number and direction exactly 'above' or 'below'.\n")
- raise ValueError(f"provider_candidate_contract_failed:{reason}")
+ raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 
 def main():
  global bc,parent
