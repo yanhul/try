@@ -77,19 +77,38 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p /tmp/try-state
-          for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; do
+          durable_paths=(
+            research/bc_lifecycle_state.json
+            research/bc_queue.json
+            research/autonomous_candidates
+            research/failure_analysis
+            research/frozen_candidates
+            research/oos
+            research/lineage.jsonl
+            research/discovery
+          )
+          for path in "${durable_paths[@]}"; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
           # Detect tracked and untracked durable changes before any rebase/reset.
           controller_state_changed=false
-          if [ -n "$(git status --porcelain --untracked-files=all -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery)" ]; then
+          status_args=()
+          for path in "${durable_paths[@]}"; do
+            if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+              status_args+=("$path")
+            fi
+          done
+          if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then
             controller_state_changed=true
           fi
           pushed=false
           for attempt in 1 2 3 4 5; do
-            # First try to persist directly from the current checkout. This avoids
-            # destroying the controller's working tree before the first push.
-            git add -A -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery
+            # Stage only paths that exist (or are tracked) on this checkout.
+            for path in "${durable_paths[@]}"; do
+              if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+                git add -A -- "$path"
+              fi
+            done
             if git diff --cached --quiet; then
               if [ "$controller_state_changed" = "true" ]; then
                 echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2
