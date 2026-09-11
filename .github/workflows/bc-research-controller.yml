@@ -84,6 +84,7 @@ jobs:
             research/failure_analysis
             research/frozen_candidates
             research/oos
+            research/*_validation_result.json
             research/lineage.jsonl
             research/discovery
           )
@@ -127,7 +128,7 @@ jobs:
               [ -e "$item" ] || continue
               base="$(basename "$item")"
               case "$base" in
-                bc_lifecycle_state.json|bc_queue.json|lineage.jsonl) cp -a "$item" "research/$base" ;;
+                bc_lifecycle_state.json|bc_queue.json|lineage.jsonl|bc*_validation_result.json) cp -a "$item" "research/$base" ;;
                 autonomous_candidates|failure_analysis|frozen_candidates|oos|discovery) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
