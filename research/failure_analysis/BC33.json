@@ -1,0 +1,15 @@
+{
+  "bc": 33,
+  "parent_bc": 32,
+  "decision": "REJECT",
+  "reason": "UNEXECUTABLE_HYPOTHESIS_ID",
+  "hypothesis_id": "discovered_primitive",
+  "conceptual_change": "Introduce a mean-reversion signal using a 50-period Z-Score of the range_ratio, targeting deviations above 2.0 to capture intraday volatility exhaustion.",
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9",
+    "github/a4829c41963e2ea4",
+    "arxiv/2308.00016v2"
+  ],
+  "oos_selection_used": false,
+  "action": "candidate requires explicit engine implementation before evaluation"
+}

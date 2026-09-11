@@ -1,0 +1,20 @@
+{
+  "bc": 35,
+  "candidate_hash": "1ba2219f2fa5d8c9ae245a2598419e0fb7eaeba9b724859cc1a93e437a2da1c4",
+  "conceptual_change": "Introduce a liquidity-aware entry signal using a 50-period Z-Score of the range_ratio to identify volatility expansion/exhaustion potential.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 34,
+  "rationale": "Using a 50-period Z-score on range_ratio identifies periods where current volatility significantly deviates from the historical mean, signaling either a breakout (if high) or exhaustion (if low) for statistical arbitrage entry."
+}

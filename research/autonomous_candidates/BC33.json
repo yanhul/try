@@ -1,0 +1,22 @@
+{
+  "bc": 33,
+  "candidate_hash": "0bfa6a4107ec5dd44215ecac504e5241370b955281fec20d8068a25da4da4a8b",
+  "conceptual_change": "Introduce a mean-reversion signal using a 50-period Z-Score of the range_ratio, targeting deviations above 2.0 to capture intraday volatility exhaustion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9",
+    "github/a4829c41963e2ea4",
+    "arxiv/2308.00016v2"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 32,
+  "rationale": "High-volatility expansion often precedes mean reversion; a Z-Score on range_ratio identifies statistical extremes where price movement is detached from recent volatility patterns."
+}

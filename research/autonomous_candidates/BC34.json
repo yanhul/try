@@ -1,0 +1,20 @@
+{
+  "bc": 34,
+  "candidate_hash": "4ebf24713520e8fa62a1e8d28adac5541a03887078aaeff60dc0c916787e6952",
+  "conceptual_change": "Introduce a liquidity-aware entry signal using a 50-period Z-Score of the range_ratio to identify volatility expansion/exhaustion potential.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 33,
+  "rationale": "High Z-Score values of range_ratio (volatility) often precede mean-reversion in crypto pairs; a 50-period lookback provides sufficient stabilization against short-term noise."
+}

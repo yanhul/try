@@ -1,0 +1,22 @@
+{
+  "bc": 32,
+  "candidate_hash": "f94882ea3b5c657f414499ee9cbd0d88bd50072bca5d0f83efe194c52c427ac3",
+  "conceptual_change": "Introduce a mean-reversion signal using a 50-period Z-Score of the close price, targeting deviations above 2.0 standard deviations to capture potential overextension reversals.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9",
+    "github/a4829c41963e2ea4",
+    "arxiv/2308.00016v2"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 31,
+  "rationale": "Large deviations in the 50-period Z-score of the closing price suggest a statistical overextension that historically precedes a mean-reverting move, consistent with statistical arbitrage principles for crypto assets."
+}

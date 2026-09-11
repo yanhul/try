@@ -1,0 +1,22 @@
+{
+  "bc": 31,
+  "candidate_hash": "ad72ff5cf74b9dc82c2cc213e6f9bb9a740958b44cf1894a773e54285c2aa857",
+  "conceptual_change": "Introduce a mean-reversion signal using a 50-period Z-Score of the close price, targeting deviations above 2.0 standard deviations to capture potential overextension reversals.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9",
+    "github/a4829c41963e2ea4",
+    "arxiv/2308.00016v2"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 30,
+  "rationale": "Statistical arbitrage models for crypto frequently rely on Z-Score thresholds to define entry zones for mean reversion. Given the volatility of BTC, a 50-period window provides sufficient historical context to establish a baseline mean, while a threshold of 2.0 defines statistically significant extremes suitable for reversal signals."
+}
