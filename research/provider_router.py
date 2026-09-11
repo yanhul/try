@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict provider router: discovery informs proposals; validation remains authoritative."""
+"""Strict provider router: deterministic discovery population narrows; Gemini translates survivors."""
 from __future__ import annotations
 import json, math, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
@@ -12,12 +12,13 @@ from research.evidence_calibration import verify_with_openai_compatible
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f"""You are an autonomous trading-research hypothesis generator.
-Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD DISCOVERY.
+SYSTEM=f"""You are an autonomous trading-research translator.
+The deterministic population engine has already screened a large public-source universe.
+Generate exactly ONE executable hypothesis by translating ONE SCREEN SURVIVOR into the existing TRY contract.
+Do not select survivors by expected performance, stars, OOS, or intuition. The queue order/registry is authoritative.
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
-A discovery_spec MUST contain operator,left, numeric threshold, direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
-The JSON type of threshold MUST be a finite number (integer or decimal), never a quoted string, and direction MUST be exactly 'above' or 'below'.
+A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
 Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
 hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
@@ -49,7 +50,6 @@ def call(name,prompt):
  raise RuntimeError(f"provider_request_failed:{name}")
 
 def normalize_structural_types(candidate):
- """Normalize lossless JSON typing only; never invent a missing research value."""
  spec=candidate.get("discovery_spec")
  if not isinstance(spec,dict): return
  if "threshold" in spec and isinstance(spec["threshold"],str):
@@ -62,13 +62,12 @@ def normalize_structural_types(candidate):
   spec["window"]=int(spec["window"].strip())
 
 def request_candidate(name,prompt):
- """Bounded structural repair: ask the same provider to regenerate, never inventing fields locally."""
  feedback=""; last_reason="unknown"
- for attempt in range(3):
+ for _ in range(3):
   raw=call(name,prompt + feedback)
   try: candidate=json.loads(raw)
   except Exception:
-   last_reason="invalid_json"; feedback=("\n\nVALIDATOR_FEEDBACK: response was not valid JSON. Regenerate exactly one JSON object using the required keys; do not add prose.\n"); continue
+   last_reason="invalid_json"; feedback="\nVALIDATOR_FEEDBACK: invalid JSON; regenerate one JSON object only.\n"; continue
   if candidate.get("status")=="HOLD": return candidate
   normalize_structural_types(candidate)
   if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive":
@@ -76,7 +75,7 @@ def request_candidate(name,prompt):
   else:
    candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
    if ok:return candidate
-  last_reason=reason; feedback=(f"\n\nVALIDATOR_FEEDBACK: {reason}. Regenerate the candidate with that contract error corrected. Do not invent missing evidence or silently change the research policy. Threshold must be a finite JSON number and direction exactly 'above' or 'below'.\n")
+  last_reason=reason; feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 
 def main():
@@ -84,8 +83,10 @@ def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=failure.read_text(encoding="utf-8")
  discovery=ROOT/'research'/'discovery'/'latest.json'; discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
+ survivors=ROOT/'research'/'discovery'/'survivors.json'; survivor_text=survivors.read_text(encoding='utf-8') if survivors.exists() else '{"status":"NO_SURVIVOR_REGISTRY"}'
+ queue=ROOT/'research'/'discovery'/'research_queue.json'; queue_text=queue.read_text(encoding='utf-8') if queue.exists() else '{"status":"NO_RESEARCH_QUEUE"}'
  compiled=ROOT/'research'/'discovery'/'compiled_candidates.json'; compiled_text=compiled.read_text(encoding='utf-8') if compiled.exists() else '{"status":"NO_COMPILED_CANDIDATES"}'
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:30000]}\n\nCOMPILED PRIMITIVES (templates only; choose/propose parameters, never treat them as evidence):\n{compiled_text[:30000]}")
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSCREEN SURVIVOR REGISTRY (selection already deterministic):\n{survivor_text[:30000]}\n\nEXECUTABLE RESEARCH QUEUE:\n{queue_text[:30000]}\n\nBROAD DISCOVERY (context/lineage only):\n{discovery_text[:15000]}\n\nCOMPILED PRIMITIVES (fallback templates only):\n{compiled_text[:10000]}")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]
  for name in order:
   try:
