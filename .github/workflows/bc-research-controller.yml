@@ -80,17 +80,28 @@ jobs:
           for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
-          # Snapshot whether the controller actually changed durable state before
-          # resetting onto the latest main. A successful controller invocation
-          # must never silently degrade to a no-op persistence commit.
+          # Detect tracked and untracked durable changes before any rebase/reset.
           controller_state_changed=false
-          if git diff --quiet -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; then
-            controller_state_changed=false
-          else
+          if [ -n "$(git status --porcelain --untracked-files=all -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery)" ]; then
             controller_state_changed=true
           fi
           pushed=false
           for attempt in 1 2 3 4 5; do
+            # First try to persist directly from the current checkout. This avoids
+            # destroying the controller's working tree before the first push.
+            git add -A -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery
+            if git diff --cached --quiet; then
+              if [ "$controller_state_changed" = "true" ]; then
+                echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2
+                exit 1
+              fi
+              echo "No autonomous research state changes to persist."; pushed=true; break
+            fi
+            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+            if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
+
+            # A concurrent writer won the race. Rebase by restoring the exact
+            # durable snapshot produced above, then retry. Never discard it.
             git fetch origin main
             git reset --hard origin/main
             for item in /tmp/try-state/*; do
@@ -101,17 +112,7 @@ jobs:
                 autonomous_candidates|failure_analysis|frozen_candidates|oos|discovery) rm -rf "research/$base" && cp -a "$item" "research/$base" ;;
               esac
             done
-            git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery 2>/dev/null || true
-            if git diff --cached --quiet; then
-              if [ "$controller_state_changed" = "true" ]; then
-                echo "STATE_PERSISTENCE_LOST controller produced durable changes but reset produced no diff" >&2
-                exit 1
-              fi
-              echo "No autonomous research state changes to persist."; pushed=true; break
-            fi
-            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
-            if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
-            git reset --hard origin/main; sleep $((attempt * 2))
+            sleep $((attempt * 2))
           done
           if [ "$pushed" != "true" ]; then echo "Unable to persist state after retries" >&2; exit 1; fi
       - name: Auto-resume non-terminal campaign
