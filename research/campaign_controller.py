@@ -17,6 +17,17 @@ def save(state):
 def terminal(state, outcome, reason, screened, budget):
     state["campaign_terminal"] = True; state["campaign_outcome"] = outcome; state["campaign_terminal_reason"] = reason; save(state)
     print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={screened}/{budget}"); return 0
+
+def continuation_allowed(*, before_screened: int, screened: int, phase: str | None, last_error: object, terminal_state: bool) -> bool:
+    """Return true only when this invocation produced progress and remains runnable.
+
+    Durable counters from an older invocation are never sufficient to authorize a
+    new wake-up. HOLD/WAIT_RETRY/error/terminal states are fail-closed.
+    """
+    if terminal_state or phase in {"WAIT_RETRY", "HOLD"} or last_error:
+        return False
+    return screened > before_screened
+
 def main():
     policy = load(POLICY, None)
     if not isinstance(policy, dict): print("CAMPAIGN_BLOCKED missing_policy"); return 2
@@ -51,7 +62,7 @@ def main():
         state["campaign_terminal"] = True; state["campaign_outcome"] = outcome; state["campaign_terminal_reason"] = raw; save(state)
         print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={screened}/{budget}"); return 0
     if screened >= budget: return terminal(state, "NO_EDGE_FOUND", "FIXED_SCREENING_BUDGET_EXHAUSTED", screened, budget)
-    if screened <= before_screened:
+    if not continuation_allowed(before_screened=before_screened, screened=screened, phase=state.get("phase"), last_error=state.get("last_error"), terminal_state=bool(state.get("terminal"))):
         save(state); print(f"CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={screened}/{budget}"); return 0
     save(state); print(f"CAMPAIGN_CONTINUE screened={screened}/{budget}"); return 0
 if __name__ == "__main__": raise SystemExit(main())
