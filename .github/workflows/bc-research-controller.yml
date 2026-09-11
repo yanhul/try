@@ -80,6 +80,15 @@ jobs:
           for path in research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
+          # Snapshot whether the controller actually changed durable state before
+          # resetting onto the latest main. A successful controller invocation
+          # must never silently degrade to a no-op persistence commit.
+          controller_state_changed=false
+          if git diff --quiet -- research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery; then
+            controller_state_changed=false
+          else
+            controller_state_changed=true
+          fi
           pushed=false
           for attempt in 1 2 3 4 5; do
             git fetch origin main
@@ -93,7 +102,13 @@ jobs:
               esac
             done
             git add research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery 2>/dev/null || true
-            if git diff --cached --quiet; then echo "No autonomous research state changes to persist."; pushed=true; break; fi
+            if git diff --cached --quiet; then
+              if [ "$controller_state_changed" = "true" ]; then
+                echo "STATE_PERSISTENCE_LOST controller produced durable changes but reset produced no diff" >&2
+                exit 1
+              fi
+              echo "No autonomous research state changes to persist."; pushed=true; break
+            fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
             if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
             git reset --hard origin/main; sleep $((attempt * 2))
