@@ -19,6 +19,7 @@ Do not select survivors by expected performance, stars, OOS, or intuition. The q
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
 A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
+For threshold, output a plain finite JSON number such as 0, 0.5, 1, 1.5, or -0.5. NEVER output ranges, percentages, expressions, null, strings, or prose as threshold.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
 Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
 hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
@@ -75,7 +76,15 @@ def request_candidate(name,prompt):
   else:
    candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
    if ok:return candidate
-  last_reason=reason; feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
+  last_reason=reason
+  if reason == "invalid_discovery_threshold":
+   feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Regenerate now. "
+             "discovery_spec.threshold MUST be a finite JSON NUMBER, not a string or range. "
+             "Valid examples are: 0, 0.5, 1, 1.5, -0.5. "
+             "Example: {\"operator\":\"zscore\",\"left\":\"close\",\"window\":20,\"threshold\":1.0,\"direction\":\"above\"}. "
+             "Do not write '1%', '1-2', 'dynamic', null, or an expression.\n")
+  else:
+   feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 
 def main():
