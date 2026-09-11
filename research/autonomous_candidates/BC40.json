@@ -1,0 +1,20 @@
+{
+  "bc": 40,
+  "candidate_hash": "a2d13dc715be15816b4487587db7c4b1ca47b5ff7fbb6cadce6565f832b2161b",
+  "conceptual_change": "Introduce a regime-aware volatility filter to refine mean reversion entries by penalizing signals during high-volatility expansion periods.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "operator": "zscore",
+    "threshold": -0.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 39,
+  "rationale": "The failure analysis suggests the prior attempt at a z-score volatility filter was unexecutable due to implementation constraints. By framing the filter using existing primitives\u2014specifically a rolling_std of close location to identify relative volatility regimes\u2014we can create a robust, testable logic gate for mean-reversion signals."
+}

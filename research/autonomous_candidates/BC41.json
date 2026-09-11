@@ -1,0 +1,20 @@
+{
+  "bc": 41,
+  "candidate_hash": "2f0718be4f98877daa3a0f9cbf6987a3ed7589649c290411a43fd7e2b27f404a",
+  "conceptual_change": "Incorporate a regime-aware filter using close_location z-score to suppress mean-reversion entries during high-volatility liquidity expansion scenarios.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 40,
+  "rationale": "Mean reversion signals derived from cointegration often fail during regime transitions where price breaks key liquidity levels; filtering by recent close_location volatility helps avoid 'catching falling knives' or selling into 'blow-off tops'."
+}

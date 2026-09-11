@@ -1,0 +1,20 @@
+{
+  "bc": 42,
+  "candidate_hash": "cb5e5e1cbcf72798361937f536001b81b3a39d5a3a99d57162d825de6962dfa9",
+  "conceptual_change": "Implement a volatility-regime threshold on the relative price position (close_location) to restrict mean-reversion entries in extreme trend environments.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 41,
+  "rationale": "Mean-reversion strategies suffer in high-volatility, one-directional regimes. By filtering for low-volatility price action, we increase the probability of a successful reversion to the mean."
+}
