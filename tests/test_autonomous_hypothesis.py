@@ -43,3 +43,19 @@ def test_rejects_missing_evidence():
     ok, reason = validate_candidate(c, 6, 5)
     assert not ok
     assert reason == "evidence_sources_required"
+
+
+def test_rejects_nonfinite_threshold():
+    c = base()
+    c["discovery_spec"] = {"operator": "identity", "left": "close", "threshold": float("nan"), "direction": "above"}
+    ok, reason = validate_candidate(c, 6, 5)
+    assert not ok
+    assert reason == "invalid_discovery_threshold"
+
+
+def test_rejects_boolean_threshold():
+    c = base()
+    c["discovery_spec"] = {"operator": "identity", "left": "close", "threshold": True, "direction": "above"}
+    ok, reason = validate_candidate(c, 6, 5)
+    assert not ok
+    assert reason == "invalid_discovery_threshold"
