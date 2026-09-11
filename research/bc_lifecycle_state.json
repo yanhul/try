@@ -1,16 +1,229 @@
 {
-  "checkpoint_seq": 3,
-  "current_bc": 1,
-  "history": [],
+  "campaign_budget": 100,
+  "campaign_id": "BTCUSDT-1H-AUTONOMOUS-001",
+  "checkpoint_seq": 6,
+  "current_bc": 31,
+  "history": [
+    {
+      "bc": 1,
+      "candidate_hash": "42f7cefd4a2cf427bc94f977a0e79d6db0b34434541016daed46f0eec966e0bf",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "UNEXECUTABLE_HYPOTHESIS_ID"
+    },
+    {
+      "bc": 2,
+      "candidate_hash": "7f2c7f02361d9fefa4d5c285670c91a707c28ad7cbf0ff057da4c057d9d6e07d",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 3,
+      "candidate_hash": "82a2b65ba70ea0ecce121c17c771b81ebf8b058b4bd6e889ab56e37fdfcb8e6d",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 4,
+      "candidate_hash": "c165f253797bdc6ef73111fe677045fbe98f20aaff361f8dbec85dc7d786fdbf",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 5,
+      "candidate_hash": "d5a92935dd7acdc6b84361d5600f041e8480347a3df85e947e2d18c0af6e438d",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_wide_effort",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 6,
+      "candidate_hash": "f6579755b5bc18acc3c64ab17c3e8328f0ab8c77d6089df103c0bdab8e8bce86",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 7,
+      "candidate_hash": "c155aaf727d39ffe8d0e2e99f9e1568c052e64dc748e1fd07ea045c48414e854",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 8,
+      "candidate_hash": "bd371e8a229b0388a5f4f36c42dec89ebe188facfb894db262b72f731c8b34e0",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 9,
+      "candidate_hash": "1f3764bc7bcb3e003da9e9d1ae62d0340dbe1a5b81eb0ff672985f554e6bb274",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 10,
+      "candidate_hash": "ebbf22e7929c1ca358691b377a78628ae69e44fe7e56818a0a4ac35121a83dcb",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 11,
+      "candidate_hash": "3fc8f2902446da3b203441fe6b62149852ee6cef6614fd893e65368bb3efb079",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 12,
+      "candidate_hash": "fc1202231013decb94e60d2bcce060a45549315a3d766ece01022c387ffd9b28",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 13,
+      "candidate_hash": "d4523b7bb34ab21e0f1cdc5670a8f2c8d305d27a0ef98a0b08c249a0d4e1e04b",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 14,
+      "candidate_hash": "e3accd174b5a0975d3f45ade85520a41c350f2ebd3d35004e2839f2b06ec68b3",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 15,
+      "candidate_hash": "2c6ea867033a16e3e50451e0c676699aa4e68daf1805e2ef8b059f631a83f542",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 16,
+      "candidate_hash": "16be9be6a757d1a0b3d887ab9bf44bb7b37a0ab4f047f3dac6a08a0a07007f9f",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 17,
+      "candidate_hash": "b00067ee5892edd1aacd15294d393f29aa077bd0cb85a7a6c6682300e6358df2",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 18,
+      "candidate_hash": "8f44d4ee4560c9dd04cea08ade4b0e45a1dd97fec96839f466b3d3a8a6679146",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 19,
+      "candidate_hash": "6c604e7411db159c8244d81a443ea1201e12d1d1ed9f438eb4699abef5f42186",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 20,
+      "candidate_hash": "f1fe809d774ac366da3bb13dee8e672ef943d17003c22e3e0caac723186ef0d8",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 21,
+      "candidate_hash": "e1d88f325c0a0ccd54729da205d2b7e880f90550e1b08e4d6dfcfa08458d62f3",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 22,
+      "candidate_hash": "42acd0b99ad9c899817ba187dd7a697d20d53633b511db6881e3418477e6d3b9",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 23,
+      "candidate_hash": "ed5bd3fd88d2615691640fbf6a3a1cda0a87afc71312f5e55064584e0c67ae84",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 24,
+      "candidate_hash": "3d2336c3cc03cfbb482d77c51ad2d43a4b9a59adffa4a311b3e03828409627a3",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 25,
+      "candidate_hash": "c3904ceda9e09320c65a5e5fc887cc280f6bebd089946ba4dfa048ec307f5f7e",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 26,
+      "candidate_hash": "26f23fa9d78abe9add814372bb3fd492a5b5299ad22d3f1c6ad1d3d8683f80ab",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 27,
+      "candidate_hash": "9ea2048a2ec19df4094ff6a99154d09437d2867f7c41945b082ff7222c2032ed",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 28,
+      "candidate_hash": "6ec878b4d7a777398d47b9c0c9c29cd547c3202a3a62b3418caf3851a37222f9",
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 29,
+      "candidate_hash": "1d78f19463179d432e3ddf907a57dfaa9f53b5a3afd167c8e9327626c2bdb8c0",
+      "decision": "REJECT",
+      "hypothesis_id": "baseline",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "bc": 30,
+      "candidate_hash": "324b38c603df3f7d8a52b74ac49ddb2b5ed13ebebdb13b27c41eb1b02432581b",
+      "decision": "REJECT",
+      "hypothesis_id": "quiet_retest",
+      "reason": "VALIDATION_EVIDENCE_MISSING"
+    }
+  ],
   "iterations": 5,
-  "last_bc": 1,
-  "last_error": null,
-  "next_bc": 1,
+  "last_bc": 30,
+  "last_error": "HOLD_PROVIDER_ROUTER",
+  "next_bc": 31,
   "oos_consumed": [],
-  "phase": "ACT",
-  "retry_count": 0,
-  "state_reset_reason": "restart autonomous research after prior OOS failure; full feature-space search enabled",
+  "phase": "WAIT_RETRY",
+  "retry_count": 1,
+  "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-02T01:23:47.571865+00:00"
+  "updated_at": "2026-09-11T15:35:15.554955+00:00"
 }

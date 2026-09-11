@@ -1,0 +1,2103 @@
+{
+  "schema_version": 1,
+  "source": "constrained_registry",
+  "candidates": [
+    {
+      "operator": "identity",
+      "column": "close",
+      "candidate_id": "DISC-94e1f8ff4f1e2eb6"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 3,
+      "candidate_id": "DISC-87c41bd9774c8ea2"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 5,
+      "candidate_id": "DISC-011ec452a058f358"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 10,
+      "candidate_id": "DISC-44fca00c62d1ab77"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 20,
+      "candidate_id": "DISC-fe38855007146678"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 50,
+      "candidate_id": "DISC-1f1f53e638339890"
+    },
+    {
+      "operator": "zscore",
+      "column": "close",
+      "window": 100,
+      "candidate_id": "DISC-0f0393952fb870fb"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 3,
+      "candidate_id": "DISC-fdc25e4ef4cb89a2"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 5,
+      "candidate_id": "DISC-1057de92fcf5f6c1"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 10,
+      "candidate_id": "DISC-c71ba4f02806d9df"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 20,
+      "candidate_id": "DISC-78d5b190253655e1"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 50,
+      "candidate_id": "DISC-4d740379cc582766"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close",
+      "window": 100,
+      "candidate_id": "DISC-f3eaefb24abec5fd"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 3,
+      "candidate_id": "DISC-7f51d152e5dad9cb"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 5,
+      "candidate_id": "DISC-3c087fc170385c30"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 10,
+      "candidate_id": "DISC-6534bd3993b707f0"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 20,
+      "candidate_id": "DISC-a6e95b1359f0a2c8"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 50,
+      "candidate_id": "DISC-c7c45d24377015d9"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close",
+      "window": 100,
+      "candidate_id": "DISC-57cccf9c6bae8b4e"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 3,
+      "candidate_id": "DISC-0dbba2ed902e7bef"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 5,
+      "candidate_id": "DISC-a2be8591a04226df"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 10,
+      "candidate_id": "DISC-00f415717685d525"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 20,
+      "candidate_id": "DISC-ecd7556ad6bd4414"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 50,
+      "candidate_id": "DISC-97cfc0da8bc36f95"
+    },
+    {
+      "operator": "delta",
+      "column": "close",
+      "window": 100,
+      "candidate_id": "DISC-dd51e47109c4c261"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 3,
+      "candidate_id": "DISC-fa4d10cb9233a99d"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 5,
+      "candidate_id": "DISC-650c03ff56b5d0ba"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 10,
+      "candidate_id": "DISC-974ddd591b9dbf83"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 20,
+      "candidate_id": "DISC-65c763cd6fc9970d"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 50,
+      "candidate_id": "DISC-19f68f59cf413e52"
+    },
+    {
+      "operator": "rank",
+      "column": "close",
+      "window": 100,
+      "candidate_id": "DISC-43251b0ea0ebe5ec"
+    },
+    {
+      "operator": "identity",
+      "column": "close_location",
+      "candidate_id": "DISC-28759868c40e7a96"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 3,
+      "candidate_id": "DISC-36813abe8dc90fdb"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 5,
+      "candidate_id": "DISC-d62ee9defc1065f2"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 10,
+      "candidate_id": "DISC-c088e523fbaa6660"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 20,
+      "candidate_id": "DISC-f265596cc28b424c"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 50,
+      "candidate_id": "DISC-16f9001eddf1d111"
+    },
+    {
+      "operator": "zscore",
+      "column": "close_location",
+      "window": 100,
+      "candidate_id": "DISC-c1c4f977d5fe8d29"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 3,
+      "candidate_id": "DISC-9c3c57468038cef1"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 5,
+      "candidate_id": "DISC-846ae8071ccb8530"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 10,
+      "candidate_id": "DISC-fec7bf6d57ae3ec4"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 20,
+      "candidate_id": "DISC-64506e899e396134"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 50,
+      "candidate_id": "DISC-4be77d8fd941046d"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "close_location",
+      "window": 100,
+      "candidate_id": "DISC-ab1af8666d80fd81"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 3,
+      "candidate_id": "DISC-f15e12acfae308c5"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 5,
+      "candidate_id": "DISC-f885a13b7a728667"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 10,
+      "candidate_id": "DISC-1034ce802a8bbafa"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 20,
+      "candidate_id": "DISC-36b0b22ffe181364"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 50,
+      "candidate_id": "DISC-acce81e7fe7a1066"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "close_location",
+      "window": 100,
+      "candidate_id": "DISC-61f7b6eb28d4db21"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 3,
+      "candidate_id": "DISC-e41926a07458d7b5"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 5,
+      "candidate_id": "DISC-29fb24a72d05616d"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 10,
+      "candidate_id": "DISC-03ce8f8e85648bf5"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 20,
+      "candidate_id": "DISC-d0fe0d0a0261ae4f"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 50,
+      "candidate_id": "DISC-87f3bbff6886ed52"
+    },
+    {
+      "operator": "delta",
+      "column": "close_location",
+      "window": 100,
+      "candidate_id": "DISC-23165b298f7e1dd4"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 3,
+      "candidate_id": "DISC-b27c382d28594870"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 5,
+      "candidate_id": "DISC-c952676f5f5c408d"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 10,
+      "candidate_id": "DISC-8e9141cebe835706"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 20,
+      "candidate_id": "DISC-0c23b76e80980764"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 50,
+      "candidate_id": "DISC-fad985acc5d32389"
+    },
+    {
+      "operator": "rank",
+      "column": "close_location",
+      "window": 100,
+      "candidate_id": "DISC-3a1288e640fb88e9"
+    },
+    {
+      "operator": "identity",
+      "column": "high",
+      "candidate_id": "DISC-0e2239d569973590"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 3,
+      "candidate_id": "DISC-2606847b5f25fb07"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 5,
+      "candidate_id": "DISC-2976c38f8e098482"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 10,
+      "candidate_id": "DISC-0743a2a9d86e6cb4"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 20,
+      "candidate_id": "DISC-397e632209d53004"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 50,
+      "candidate_id": "DISC-33032d443009b773"
+    },
+    {
+      "operator": "zscore",
+      "column": "high",
+      "window": 100,
+      "candidate_id": "DISC-1ba831b31f37810b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 3,
+      "candidate_id": "DISC-97b5771d30553d3b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 5,
+      "candidate_id": "DISC-ee38de8eaa995901"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 10,
+      "candidate_id": "DISC-7e41a1d3539a3bdb"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 20,
+      "candidate_id": "DISC-40f1960556c66984"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 50,
+      "candidate_id": "DISC-987d16cf26943557"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "high",
+      "window": 100,
+      "candidate_id": "DISC-ba52767aaef45539"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 3,
+      "candidate_id": "DISC-8c44a7742f2a27e7"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 5,
+      "candidate_id": "DISC-17b27d7ffb3bc5eb"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 10,
+      "candidate_id": "DISC-1a86492fb950d012"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 20,
+      "candidate_id": "DISC-1376afe6c4f8528e"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 50,
+      "candidate_id": "DISC-716babd6d28cd960"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "high",
+      "window": 100,
+      "candidate_id": "DISC-72ba92c534f17887"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 3,
+      "candidate_id": "DISC-6e9a0c5347beaea2"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 5,
+      "candidate_id": "DISC-fb5d882d3ba0d2a8"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 10,
+      "candidate_id": "DISC-80984bbc9b4f7d46"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 20,
+      "candidate_id": "DISC-f4b3fff0643aae67"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 50,
+      "candidate_id": "DISC-c69ca91ea7b642cb"
+    },
+    {
+      "operator": "delta",
+      "column": "high",
+      "window": 100,
+      "candidate_id": "DISC-2abc53a71c0405a7"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 3,
+      "candidate_id": "DISC-8d338cda1494cf7d"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 5,
+      "candidate_id": "DISC-f4b3f002ce1bba27"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 10,
+      "candidate_id": "DISC-9c9b6d8be9cc736b"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 20,
+      "candidate_id": "DISC-77cf74467605b643"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 50,
+      "candidate_id": "DISC-cee85f6987cbdf8b"
+    },
+    {
+      "operator": "rank",
+      "column": "high",
+      "window": 100,
+      "candidate_id": "DISC-5f593466dc2d3958"
+    },
+    {
+      "operator": "identity",
+      "column": "low",
+      "candidate_id": "DISC-59817df5437444d2"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 3,
+      "candidate_id": "DISC-b8a15a1957488d1b"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 5,
+      "candidate_id": "DISC-fd9f269f6c342e38"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 10,
+      "candidate_id": "DISC-6db0e6cec1855964"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 20,
+      "candidate_id": "DISC-7dc9cc9ee2417d0a"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 50,
+      "candidate_id": "DISC-25c1b7ccb9d516a9"
+    },
+    {
+      "operator": "zscore",
+      "column": "low",
+      "window": 100,
+      "candidate_id": "DISC-0ce0f2a348a95e14"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 3,
+      "candidate_id": "DISC-48c723dec851dd62"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 5,
+      "candidate_id": "DISC-6c45c0dbb8d6dea5"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 10,
+      "candidate_id": "DISC-86d27beb3bc75aef"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 20,
+      "candidate_id": "DISC-0a8666afe1d1aa55"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 50,
+      "candidate_id": "DISC-f281f8bfdc52afe0"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "low",
+      "window": 100,
+      "candidate_id": "DISC-051fa970ddfe8ee1"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 3,
+      "candidate_id": "DISC-e2787cf1b2c3a3c3"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 5,
+      "candidate_id": "DISC-cf79cfb7d175cee5"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 10,
+      "candidate_id": "DISC-362312d640f8a9b6"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 20,
+      "candidate_id": "DISC-e61262ef688fee09"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 50,
+      "candidate_id": "DISC-40c3dba0903741e6"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "low",
+      "window": 100,
+      "candidate_id": "DISC-51d8d6e1fe440a94"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 3,
+      "candidate_id": "DISC-9802f7b0caa3efb5"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 5,
+      "candidate_id": "DISC-4859ae39253bd6e8"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 10,
+      "candidate_id": "DISC-45cca79d8a4f57ef"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 20,
+      "candidate_id": "DISC-3d74df5d6a2e1f63"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 50,
+      "candidate_id": "DISC-0c9e8c1940d9f6d9"
+    },
+    {
+      "operator": "delta",
+      "column": "low",
+      "window": 100,
+      "candidate_id": "DISC-f4c4fba52e62ceb9"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 3,
+      "candidate_id": "DISC-430a66f18736ec6b"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 5,
+      "candidate_id": "DISC-ea6288342d5c9926"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 10,
+      "candidate_id": "DISC-84864caf11359512"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 20,
+      "candidate_id": "DISC-55fc9d8609ddd033"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 50,
+      "candidate_id": "DISC-34ac9112e8c0150b"
+    },
+    {
+      "operator": "rank",
+      "column": "low",
+      "window": 100,
+      "candidate_id": "DISC-a813c4c8d4e318f6"
+    },
+    {
+      "operator": "identity",
+      "column": "open",
+      "candidate_id": "DISC-69d3bc92331de774"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 3,
+      "candidate_id": "DISC-eed78e330005632e"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 5,
+      "candidate_id": "DISC-114589cec554c819"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 10,
+      "candidate_id": "DISC-6cf1f8d60eb74811"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 20,
+      "candidate_id": "DISC-75ec1e74e5e38dfb"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 50,
+      "candidate_id": "DISC-3083c179073b5b9c"
+    },
+    {
+      "operator": "zscore",
+      "column": "open",
+      "window": 100,
+      "candidate_id": "DISC-c4a2d8b45a5c6bc3"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 3,
+      "candidate_id": "DISC-31b88ea2a4fb5195"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 5,
+      "candidate_id": "DISC-a0d35e501518bb61"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 10,
+      "candidate_id": "DISC-4336076fe11b0e81"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 20,
+      "candidate_id": "DISC-2cc7b226a081ca84"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 50,
+      "candidate_id": "DISC-81f03dab2b27b8d5"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "open",
+      "window": 100,
+      "candidate_id": "DISC-13e36f9fe747a2d9"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 3,
+      "candidate_id": "DISC-b533b35059ea16fe"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 5,
+      "candidate_id": "DISC-f1cbea2d1e7abf8f"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 10,
+      "candidate_id": "DISC-1ebecb2897d1bd32"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 20,
+      "candidate_id": "DISC-2519e7a5d906944d"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 50,
+      "candidate_id": "DISC-8013408b526b52d1"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "open",
+      "window": 100,
+      "candidate_id": "DISC-ab61756a23cd98a2"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 3,
+      "candidate_id": "DISC-2e8223ef5a7cba55"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 5,
+      "candidate_id": "DISC-436601b14e88c79d"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 10,
+      "candidate_id": "DISC-caa53b578787a1ed"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 20,
+      "candidate_id": "DISC-1a2797cc87c54c63"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 50,
+      "candidate_id": "DISC-637c2a36acfb323d"
+    },
+    {
+      "operator": "delta",
+      "column": "open",
+      "window": 100,
+      "candidate_id": "DISC-348a12df9c70dbef"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 3,
+      "candidate_id": "DISC-b54a58f823110761"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 5,
+      "candidate_id": "DISC-9e72a98dc8566b5b"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 10,
+      "candidate_id": "DISC-6482fdbea40b00d1"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 20,
+      "candidate_id": "DISC-2ee7b3c73658c7e8"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 50,
+      "candidate_id": "DISC-6ff48b127f30c388"
+    },
+    {
+      "operator": "rank",
+      "column": "open",
+      "window": 100,
+      "candidate_id": "DISC-561bbf02cd2998c5"
+    },
+    {
+      "operator": "identity",
+      "column": "range_ratio",
+      "candidate_id": "DISC-2718a902f61d88f2"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 3,
+      "candidate_id": "DISC-c89fce16573558dc"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 5,
+      "candidate_id": "DISC-5a54a60bcb8a0177"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 10,
+      "candidate_id": "DISC-4b1427ac8447abdf"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 20,
+      "candidate_id": "DISC-b82c8362b8d6acdf"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 50,
+      "candidate_id": "DISC-54472a45734bc8d6"
+    },
+    {
+      "operator": "zscore",
+      "column": "range_ratio",
+      "window": 100,
+      "candidate_id": "DISC-4e46a3f9ed07e5ed"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 3,
+      "candidate_id": "DISC-d68bc977ce094018"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 5,
+      "candidate_id": "DISC-40d3ac637ec327db"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 10,
+      "candidate_id": "DISC-c2fd56b5d3fd6fb6"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 20,
+      "candidate_id": "DISC-36c7f4c364893e82"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 50,
+      "candidate_id": "DISC-4b26b59fef7d6868"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "range_ratio",
+      "window": 100,
+      "candidate_id": "DISC-729e5d0ea3b2b6f2"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 3,
+      "candidate_id": "DISC-cab2beed8c8db38b"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 5,
+      "candidate_id": "DISC-10e4e2ceca27c53a"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 10,
+      "candidate_id": "DISC-c32ec6ed2e8cfd45"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 20,
+      "candidate_id": "DISC-9d344306202ab205"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 50,
+      "candidate_id": "DISC-cc16e5d355b14bdc"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "range_ratio",
+      "window": 100,
+      "candidate_id": "DISC-c293b952af602cba"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 3,
+      "candidate_id": "DISC-a0bf8c262aff10f1"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 5,
+      "candidate_id": "DISC-ef766aa4a5b2db5a"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 10,
+      "candidate_id": "DISC-146e97bc555f7fa2"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 20,
+      "candidate_id": "DISC-292dee69df630db7"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 50,
+      "candidate_id": "DISC-85a94c4882574556"
+    },
+    {
+      "operator": "delta",
+      "column": "range_ratio",
+      "window": 100,
+      "candidate_id": "DISC-9aede8d7e750bf15"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 3,
+      "candidate_id": "DISC-8e7d8e22b60fd951"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 5,
+      "candidate_id": "DISC-3b11a20a3b31d2cc"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 10,
+      "candidate_id": "DISC-56dcd65a33fa577e"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 20,
+      "candidate_id": "DISC-7e58ec43c59a28ff"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 50,
+      "candidate_id": "DISC-357736652637756d"
+    },
+    {
+      "operator": "rank",
+      "column": "range_ratio",
+      "window": 100,
+      "candidate_id": "DISC-9f2c0e03020641a8"
+    },
+    {
+      "operator": "identity",
+      "column": "volume",
+      "candidate_id": "DISC-2d0989a1ba2378c5"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 3,
+      "candidate_id": "DISC-8f2afbc5767fe108"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 5,
+      "candidate_id": "DISC-909f7ca39880f9f3"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 10,
+      "candidate_id": "DISC-664e91ab88c76a81"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 20,
+      "candidate_id": "DISC-8544a482abb62afd"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 50,
+      "candidate_id": "DISC-031116615a5110f6"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume",
+      "window": 100,
+      "candidate_id": "DISC-0c9a43faa34aaaae"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 3,
+      "candidate_id": "DISC-8b8aae416500d8f9"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 5,
+      "candidate_id": "DISC-a5e443e770c02acd"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 10,
+      "candidate_id": "DISC-c6c5b298c44284c9"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 20,
+      "candidate_id": "DISC-46aa832d2e7bab1b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 50,
+      "candidate_id": "DISC-f21e51ccb44a9edb"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume",
+      "window": 100,
+      "candidate_id": "DISC-75c20d7f63a88d38"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 3,
+      "candidate_id": "DISC-7d856a471aebae1c"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 5,
+      "candidate_id": "DISC-7488e296c0b62c7f"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 10,
+      "candidate_id": "DISC-1ca1d1f17bc26ebe"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 20,
+      "candidate_id": "DISC-d56534512ce582f4"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 50,
+      "candidate_id": "DISC-239d1d30f7a82c62"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume",
+      "window": 100,
+      "candidate_id": "DISC-b3d105c12ade8d93"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 3,
+      "candidate_id": "DISC-67b3d4767a0b89d5"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 5,
+      "candidate_id": "DISC-70e3371d3fd1ea9b"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 10,
+      "candidate_id": "DISC-ad910f2d887f26ad"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 20,
+      "candidate_id": "DISC-21cbf2860f16737a"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 50,
+      "candidate_id": "DISC-9bf139226b46006b"
+    },
+    {
+      "operator": "delta",
+      "column": "volume",
+      "window": 100,
+      "candidate_id": "DISC-35e9e35fded981ad"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 3,
+      "candidate_id": "DISC-110e3e93ff0fe60f"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 5,
+      "candidate_id": "DISC-64d5f8add3535288"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 10,
+      "candidate_id": "DISC-271a68038f888c84"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 20,
+      "candidate_id": "DISC-feaf5a3ba42fb047"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 50,
+      "candidate_id": "DISC-3bc7d06b9c6a9039"
+    },
+    {
+      "operator": "rank",
+      "column": "volume",
+      "window": 100,
+      "candidate_id": "DISC-a3acfd1ee9425d99"
+    },
+    {
+      "operator": "identity",
+      "column": "volume_ratio",
+      "candidate_id": "DISC-350d88fc88fc22e5"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 3,
+      "candidate_id": "DISC-ca431d4c26aba2eb"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 5,
+      "candidate_id": "DISC-4c9ee26686359897"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 10,
+      "candidate_id": "DISC-d64a07027ed714a8"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 20,
+      "candidate_id": "DISC-b95a487ab3fca418"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 50,
+      "candidate_id": "DISC-37d7f4f8ccf86296"
+    },
+    {
+      "operator": "zscore",
+      "column": "volume_ratio",
+      "window": 100,
+      "candidate_id": "DISC-7e969868d18cfb75"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 3,
+      "candidate_id": "DISC-515c04ca519a8a29"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 5,
+      "candidate_id": "DISC-23ad33f3762370c4"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 10,
+      "candidate_id": "DISC-c385d76165c2f8a3"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 20,
+      "candidate_id": "DISC-ba6411927dc15eb0"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 50,
+      "candidate_id": "DISC-9929ebf49cf94c9b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "volume_ratio",
+      "window": 100,
+      "candidate_id": "DISC-27af9ccebb5f8b79"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 3,
+      "candidate_id": "DISC-9d6e869ec7c7a21f"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 5,
+      "candidate_id": "DISC-e2a87a7700dcf2ae"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 10,
+      "candidate_id": "DISC-013306491911ad26"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 20,
+      "candidate_id": "DISC-2539a848c7e77cf0"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 50,
+      "candidate_id": "DISC-4f75e82ec6b64b16"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "volume_ratio",
+      "window": 100,
+      "candidate_id": "DISC-6ba0c8fe7c05800f"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 3,
+      "candidate_id": "DISC-3896a87633b278de"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 5,
+      "candidate_id": "DISC-0c5210c649a1aef4"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 10,
+      "candidate_id": "DISC-96aeb8046180bf70"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 20,
+      "candidate_id": "DISC-3f217c98b2c8dab6"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 50,
+      "candidate_id": "DISC-27c52661d9e2bb52"
+    },
+    {
+      "operator": "delta",
+      "column": "volume_ratio",
+      "window": 100,
+      "candidate_id": "DISC-5b7f0a40333edca3"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 3,
+      "candidate_id": "DISC-e599137c29bfb788"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 5,
+      "candidate_id": "DISC-2cd793d13cb44fcf"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 10,
+      "candidate_id": "DISC-9b50c6d7a67fb14c"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 20,
+      "candidate_id": "DISC-8bfbda6aabb9e8f4"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 50,
+      "candidate_id": "DISC-d97bdae2de41262a"
+    },
+    {
+      "operator": "rank",
+      "column": "volume_ratio",
+      "window": 100,
+      "candidate_id": "DISC-6c99468591a1899c"
+    },
+    {
+      "operator": "identity",
+      "column": "vwap_distance",
+      "candidate_id": "DISC-d6c619469f330c93"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 3,
+      "candidate_id": "DISC-7ba11f64fd099a15"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 5,
+      "candidate_id": "DISC-c33a36bedb2f4723"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 10,
+      "candidate_id": "DISC-09cd86f550825d2f"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 20,
+      "candidate_id": "DISC-3a42900d573bf59b"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 50,
+      "candidate_id": "DISC-ad0f8a638a9a6a3c"
+    },
+    {
+      "operator": "zscore",
+      "column": "vwap_distance",
+      "window": 100,
+      "candidate_id": "DISC-262337c903c2021b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 3,
+      "candidate_id": "DISC-110fe25111057ab9"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 5,
+      "candidate_id": "DISC-509480db80ba35db"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 10,
+      "candidate_id": "DISC-04366905e03e123b"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 20,
+      "candidate_id": "DISC-8428b9d759540de5"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 50,
+      "candidate_id": "DISC-c06cfecf7944c1f0"
+    },
+    {
+      "operator": "rolling_mean",
+      "column": "vwap_distance",
+      "window": 100,
+      "candidate_id": "DISC-39b5479201665418"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 3,
+      "candidate_id": "DISC-13944e67448e5e1f"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 5,
+      "candidate_id": "DISC-f6d3486b4f06fc2a"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 10,
+      "candidate_id": "DISC-8fe5f9cfd1b4096b"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 20,
+      "candidate_id": "DISC-49a45557347fb895"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 50,
+      "candidate_id": "DISC-eab7539d7786b959"
+    },
+    {
+      "operator": "rolling_std",
+      "column": "vwap_distance",
+      "window": 100,
+      "candidate_id": "DISC-bf9b5078a0a85ef2"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 3,
+      "candidate_id": "DISC-e3b77fc4649daeec"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 5,
+      "candidate_id": "DISC-0bdc544ce735174c"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 10,
+      "candidate_id": "DISC-7b34d2c552a890e5"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 20,
+      "candidate_id": "DISC-2bd0af06a446f088"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 50,
+      "candidate_id": "DISC-48c4b57c11eba667"
+    },
+    {
+      "operator": "delta",
+      "column": "vwap_distance",
+      "window": 100,
+      "candidate_id": "DISC-f0d9bf279e8cd6d8"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 3,
+      "candidate_id": "DISC-f3ef0affe60c6164"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 5,
+      "candidate_id": "DISC-31d0f2d993a0ae1f"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 10,
+      "candidate_id": "DISC-d799c51fb1e3d836"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 20,
+      "candidate_id": "DISC-b4e07acf3d871714"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 50,
+      "candidate_id": "DISC-2a70a45853027ed9"
+    },
+    {
+      "operator": "rank",
+      "column": "vwap_distance",
+      "window": 100,
+      "candidate_id": "DISC-dafe4364189a65f5"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "close_location",
+      "candidate_id": "DISC-e2be7695078afc59"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "close_location",
+      "candidate_id": "DISC-90364a235db18d35"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "high",
+      "candidate_id": "DISC-9ed8d732cc72108b"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "high",
+      "candidate_id": "DISC-7e6e692e3a167d9c"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "low",
+      "candidate_id": "DISC-4f3a5efd66e054b0"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "low",
+      "candidate_id": "DISC-3c628e22ea812fcb"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "open",
+      "candidate_id": "DISC-2b1738731c0a3e8e"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "open",
+      "candidate_id": "DISC-871ec6a6fa6f4f62"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "range_ratio",
+      "candidate_id": "DISC-4a06a8f9a9c484f7"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "range_ratio",
+      "candidate_id": "DISC-1c712c99267997e3"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "volume",
+      "candidate_id": "DISC-4630cfdc9ef4094a"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "volume",
+      "candidate_id": "DISC-a17206a64a6da118"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-e9b988c12299177a"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-bc5b3693dc770a47"
+    },
+    {
+      "operator": "ratio",
+      "left": "close",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-17782b614f28cb0e"
+    },
+    {
+      "operator": "difference",
+      "left": "close",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-a6d004d42d199cfc"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "high",
+      "candidate_id": "DISC-8be65cc513baf0fc"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "high",
+      "candidate_id": "DISC-a4d91947cca63277"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "low",
+      "candidate_id": "DISC-b1009e87dbf795c9"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "low",
+      "candidate_id": "DISC-d6d87c1891b06b3e"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "open",
+      "candidate_id": "DISC-e060ae2a3ee48f53"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "open",
+      "candidate_id": "DISC-3655a30c9cc68b30"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "range_ratio",
+      "candidate_id": "DISC-68f0af8941a4ff57"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "range_ratio",
+      "candidate_id": "DISC-7920f80993ec4b4d"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "volume",
+      "candidate_id": "DISC-d1168868d7165d45"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "volume",
+      "candidate_id": "DISC-98824661ed4b4116"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-094b6c0a0fee760d"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-820e9a0920bfcf9d"
+    },
+    {
+      "operator": "ratio",
+      "left": "close_location",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-f09435ffc2abeb81"
+    },
+    {
+      "operator": "difference",
+      "left": "close_location",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-ff0355f4f628824e"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "low",
+      "candidate_id": "DISC-7097ab82eedfc6e9"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "low",
+      "candidate_id": "DISC-ca7873f76a5afab9"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "open",
+      "candidate_id": "DISC-fe40719690df12e4"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "open",
+      "candidate_id": "DISC-1a9241476117c3d7"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "range_ratio",
+      "candidate_id": "DISC-c1f92595cc8549c5"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "range_ratio",
+      "candidate_id": "DISC-c7db9acf7b42dbb5"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "volume",
+      "candidate_id": "DISC-c157e4b3f40dc2ae"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "volume",
+      "candidate_id": "DISC-18595955b8d22644"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-581d395d17c87a8d"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-1574efe892b62f1d"
+    },
+    {
+      "operator": "ratio",
+      "left": "high",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-82835a68bfde7d5f"
+    },
+    {
+      "operator": "difference",
+      "left": "high",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-9ea296a5e294d6d1"
+    },
+    {
+      "operator": "ratio",
+      "left": "low",
+      "right": "open",
+      "candidate_id": "DISC-4ea69b8baa129052"
+    },
+    {
+      "operator": "difference",
+      "left": "low",
+      "right": "open",
+      "candidate_id": "DISC-e91d82375051bfb6"
+    },
+    {
+      "operator": "ratio",
+      "left": "low",
+      "right": "range_ratio",
+      "candidate_id": "DISC-983c9a65704be303"
+    },
+    {
+      "operator": "difference",
+      "left": "low",
+      "right": "range_ratio",
+      "candidate_id": "DISC-8d9cb95dab749f97"
+    },
+    {
+      "operator": "ratio",
+      "left": "low",
+      "right": "volume",
+      "candidate_id": "DISC-d17f429f2d09431f"
+    },
+    {
+      "operator": "difference",
+      "left": "low",
+      "right": "volume",
+      "candidate_id": "DISC-68380c0d0c2a8765"
+    },
+    {
+      "operator": "ratio",
+      "left": "low",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-0e438a18f2d95b85"
+    },
+    {
+      "operator": "difference",
+      "left": "low",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-0e91c57aa15970e1"
+    },
+    {
+      "operator": "ratio",
+      "left": "low",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-d44ed7755a690caa"
+    },
+    {
+      "operator": "difference",
+      "left": "low",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-016ca98fd8df4992"
+    },
+    {
+      "operator": "ratio",
+      "left": "open",
+      "right": "range_ratio",
+      "candidate_id": "DISC-4e94d8b33bec3772"
+    },
+    {
+      "operator": "difference",
+      "left": "open",
+      "right": "range_ratio",
+      "candidate_id": "DISC-d6359185e21c6ab5"
+    },
+    {
+      "operator": "ratio",
+      "left": "open",
+      "right": "volume",
+      "candidate_id": "DISC-bcdd0ffbf0426c23"
+    },
+    {
+      "operator": "difference",
+      "left": "open",
+      "right": "volume",
+      "candidate_id": "DISC-f6dac58900888be9"
+    },
+    {
+      "operator": "ratio",
+      "left": "open",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-6d222a636e58540d"
+    },
+    {
+      "operator": "difference",
+      "left": "open",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-0a2a3b61badbae3a"
+    },
+    {
+      "operator": "ratio",
+      "left": "open",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-90ff19b9e86d9c0d"
+    },
+    {
+      "operator": "difference",
+      "left": "open",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-96e8e21afbde2fa3"
+    },
+    {
+      "operator": "ratio",
+      "left": "range_ratio",
+      "right": "volume",
+      "candidate_id": "DISC-cbe5c7fb5ff2c839"
+    },
+    {
+      "operator": "difference",
+      "left": "range_ratio",
+      "right": "volume",
+      "candidate_id": "DISC-ba69b255d7e83dcc"
+    },
+    {
+      "operator": "ratio",
+      "left": "range_ratio",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-1fae76ec7edf4c86"
+    },
+    {
+      "operator": "difference",
+      "left": "range_ratio",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-4dbe7d104fb3fb8f"
+    },
+    {
+      "operator": "ratio",
+      "left": "range_ratio",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-46e6c85f969ddff9"
+    },
+    {
+      "operator": "difference",
+      "left": "range_ratio",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-2d2c721a5948212a"
+    },
+    {
+      "operator": "ratio",
+      "left": "volume",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-f274773325d1ec4f"
+    },
+    {
+      "operator": "difference",
+      "left": "volume",
+      "right": "volume_ratio",
+      "candidate_id": "DISC-e3d33b123474fbdd"
+    },
+    {
+      "operator": "ratio",
+      "left": "volume",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-752e2c6b1988bbe8"
+    },
+    {
+      "operator": "difference",
+      "left": "volume",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-5f0c503556f26443"
+    },
+    {
+      "operator": "ratio",
+      "left": "volume_ratio",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-5b548fa4eb805a76"
+    },
+    {
+      "operator": "difference",
+      "left": "volume_ratio",
+      "right": "vwap_distance",
+      "candidate_id": "DISC-6987dafca2b39dae"
+    }
+  ]
+}
