@@ -66,12 +66,23 @@ def main():
 
     env = dict(os.environ)
     env["RESEARCH_MAX_ITERATIONS"] = str(min(batch, budget - screened))
+    before_screened = screened
     print(f"CAMPAIGN_START screened={screened}/{budget} batch={env['RESEARCH_MAX_ITERATIONS']}")
     proc = subprocess.run([sys.executable, "research/bc_controller.py"], cwd=ROOT, env=env)
     if proc.returncode != 0:
         return proc.returncode
 
     state = load(STATE, {})
+    # A provider/evaluator/authority HOLD is terminal for this invocation.
+    # Never turn historical campaign progress into a fresh CONTINUE signal.
+    if state.get("phase") in {"WAIT_RETRY", "HOLD"} or state.get("last_error"):
+        state["campaign_budget"] = budget
+        state["campaign_id"] = policy["campaign_id"]
+        save(state)
+        reason = state.get("last_error") or state.get("phase")
+        print(f"CAMPAIGN_HOLD reason={reason} screened={before_screened}/{budget}")
+        return 0
+
     history = state.get("history", [])
     seen = {int(x["bc"]) for x in history if isinstance(x, dict) and str(x.get("decision")) in {"REJECT", "PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc", "")).isdigit()}
     screened = max(int(state.get("campaign_screened", 0)), len(seen))
@@ -100,6 +111,13 @@ def main():
 
     if screened >= budget:
         return terminal(state, "NO_EDGE_FOUND", "FIXED_SCREENING_BUDGET_EXHAUSTED", screened, budget)
+
+    # Explicit forward progress is required; queued work without a new screened
+    # BC is not enough to wake another campaign run.
+    if screened <= before_screened:
+        save(state)
+        print(f"CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={screened}/{budget}")
+        return 0
 
     save(state)
     print(f"CAMPAIGN_CONTINUE screened={screened}/{budget}")
