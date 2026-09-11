@@ -1,27 +1,62 @@
 #!/usr/bin/env python3
-"""Broad public-source scout. Discovery is advisory; it cannot promote or execute a strategy."""
+"""Broad public-source scout feeding a deterministic multi-round population engine.
+
+Discovery expands the candidate universe; it never promotes or executes a strategy.
+"""
 from __future__ import annotations
 import json, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+import subprocess, sys
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'research'/'discovery'/'latest.json'
-QUERIES=['crypto market microstructure trading strategy','prediction market trading strategy order book','Solana on-chain trading alpha liquidity','crypto execution adverse selection maker','funding basis options prediction market arbitrage']
+QUERIES=[
+ 'crypto momentum trend following strategy bitcoin',
+ 'crypto mean reversion statistical arbitrage strategy',
+ 'crypto volatility breakout strategy',
+ 'smart money concepts ICT liquidity sweep trading strategy crypto',
+ 'fair value gap imbalance FVG crypto trading',
+ 'Wyckoff VSA VPA volume price analysis crypto',
+ 'VWAP volume profile crypto trading strategy',
+ 'funding rate basis carry crypto trading',
+ 'crypto order flow order book imbalance microprice',
+ 'cross sectional crypto factors momentum reversal',
+ 'crypto regime switching hidden Markov trading',
+ 'bitcoin seasonality calendar effect trading',
+ 'Solana on chain alpha liquidity trading',
+ 'crypto options volatility skew gamma trading',
+ 'prediction market order book trading strategy',
+ 'maker adverse selection execution crypto',
+ 'MEV execution alpha crypto',
+ 'systematic crypto trading machine learning alpha',
+ 'symbolic regression alpha mining trading',
+ 'evolutionary alpha discovery trading strategy',
+ 'LLM alpha mining quantitative trading',
+ 'autonomous trading strategy research backtest',
+ '多因子 加密货币 量化 交易 策略',
+ '因子挖掘 加密货币 量化 交易',
+ '量化 交易 alpha 挖掘 遗传 算法',
+ '强化学习 加密货币 交易 策略',
+ '订单流 加密货币 交易 策略',
+ '资金费率 基差 套利 加密货币',
+ 'SMC ICT 流动性 扫损 加密货币',
+ '威科夫 VSA VPA 量价 加密货币',
+]
 
 def get(url):
- req=urllib.request.Request(url,headers={'User-Agent':'try-research-scout/1.0','Accept':'application/json'})
+ req=urllib.request.Request(url,headers={'User-Agent':'try-research-scout/2.0','Accept':'application/json'})
  with urllib.request.urlopen(req,timeout=20) as r:return json.loads(r.read().decode())
 
 def github(q):
  try:
-  u='https://api.github.com/search/repositories?'+urllib.parse.urlencode({'q':q,'per_page':10,'sort':'updated'})
+  u='https://api.github.com/search/repositories?'+urllib.parse.urlencode({'q':q,'per_page':20,'sort':'updated'})
   return [{'source':'github','query':q,'title':x.get('full_name'),'url':x.get('html_url'),'description':x.get('description'),'updated_at':x.get('updated_at'),'stars':x.get('stargazers_count')} for x in get(u).get('items',[])]
  except Exception as e:return [{'source':'github','query':q,'error':str(e)}]
 
 def arxiv(q):
  try:
-  u='http://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':'all:'+q,'start':0,'max_results':10})
-  req=urllib.request.Request(u,headers={'User-Agent':'try-research-scout/1.0'})
+  u='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':'all:'+q,'start':0,'max_results':20})
+  req=urllib.request.Request(u,headers={'User-Agent':'try-research-scout/2.0'})
   with urllib.request.urlopen(req,timeout=20) as r: raw=r.read().decode(errors='replace')
   return [{'source':'arxiv','query':q,'raw':raw[:30000]}]
  except Exception as e:return [{'source':'arxiv','query':q,'error':str(e)}]
@@ -29,11 +64,18 @@ def arxiv(q):
 def main():
  results=[]
  jobs=[]
- with ThreadPoolExecutor(max_workers=min(10,len(QUERIES)*2)) as pool:
+ with ThreadPoolExecutor(max_workers=16) as pool:
   for q in QUERIES: jobs += [pool.submit(github,q),pool.submit(arxiv,q)]
   for f in as_completed(jobs): results.extend(f.result())
  results.sort(key=lambda x:(x.get('source',''),x.get('query',''),x.get('title',''),x.get('url','')))
  OUT.parent.mkdir(parents=True,exist_ok=True)
- OUT.write_text(json.dumps({'schema_version':2,'fanout':'github+arxiv_parallel','queries':QUERIES,'results':results},indent=2),encoding='utf-8')
+ OUT.write_text(json.dumps({'schema_version':3,'fanout':'github+arxiv_parallel','query_families':len(QUERIES),'queries':QUERIES,'results':results},indent=2),encoding='utf-8')
  print(f'DISCOVERY_SCOUT_DONE results={len(results)} output={OUT}')
+ engine=ROOT/'research'/'discovery'/'population_engine.py'
+ proc=subprocess.run([sys.executable,str(engine)],cwd=str(ROOT),text=True,capture_output=True)
+ print(proc.stdout, end='')
+ if proc.returncode:
+  print(proc.stderr, end='')
+  raise SystemExit(proc.returncode)
+ print('DISCOVERY_POPULATION_READY')
 if __name__=='__main__':main()
