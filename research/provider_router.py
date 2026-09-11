@@ -71,7 +71,13 @@ def request_candidate(name,prompt):
    last_reason="invalid_json"; feedback="\nVALIDATOR_FEEDBACK: invalid JSON; regenerate one JSON object only.\n"; continue
   if candidate.get("status")=="HOLD": return candidate
   normalize_structural_types(candidate)
-  if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive":
+  hypothesis_id=candidate.get("hypothesis_id")
+  # Fail closed on malformed provider output before dictionary/set membership.
+  # A JSON object/list here previously raised `unhashable type: 'dict'`, masking
+  # the provider contract failure and forcing an unnecessary router HOLD.
+  if not isinstance(hypothesis_id,str):
+   reason="invalid_hypothesis_id_type"
+  elif hypothesis_id not in HYPOTHESES and hypothesis_id!="discovered_primitive":
    reason="unregistered_hypothesis_id"
   else:
    candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
