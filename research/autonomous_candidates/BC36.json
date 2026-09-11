@@ -1,0 +1,20 @@
+{
+  "bc": 36,
+  "candidate_hash": "a0710c57b9b9005df0e9e449e73ddd24852c47cd3e757a15f801aa37c49bbcae",
+  "conceptual_change": "Introduce a mean-reversion signal based on the 50-period Z-Score of the range_ratio to identify potential exhaustion points in volatility, serving as a contrarian filter for existing trend-following entries.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 35,
+  "rationale": "The original failure was due to an unexecutable engine reference. By utilizing a primitive, we isolate the volatility exhaustion signal from the complex statistical arbitrage framework, enabling direct integration into the existing TRY test infrastructure."
+}

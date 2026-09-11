@@ -1,0 +1,20 @@
+{
+  "bc": 38,
+  "candidate_hash": "b95e740e718888ae158183eb84a9a9c58dd298a29406e4ac97b20bbac20d441b",
+  "conceptual_change": "Incorporate a high-frequency volatility regime filter based on the 20-period z-score of the close_location to identify breakout potential within mean-reversion frameworks.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 37,
+  "rationale": "High close_location values relative to their 20-period window indicate strong momentum or exhaustion, allowing for a volatility-aware trigger to pause mean-reversion signals during directional runs."
+}

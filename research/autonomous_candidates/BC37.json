@@ -1,0 +1,20 @@
+{
+  "bc": 37,
+  "candidate_hash": "18fec7168238f40cc8743ef666b61d6d735ecd561256b715cc72f54e8eab17c5",
+  "conceptual_change": "Incorporate a range-based volatility filter to refine statistical arbitrage by identifying regimes of anomalous volatility expansion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "github/9bf4fe323577bdf9"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 36,
+  "rationale": "Statistical arbitrage signals are prone to failure during extreme volatility. A Z-score threshold applied to the range_ratio (High-Low/Close) filters out entries when market volatility is significantly above the historical mean."
+}
