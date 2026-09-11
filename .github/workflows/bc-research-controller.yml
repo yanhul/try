@@ -4,6 +4,8 @@ name: BC Research Controller
 # Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
   push:
     branches:
       - main
@@ -55,7 +57,10 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_(NEXT BC|AUTO_RESUME)' controller.log; then
+          # Only successful campaign progress may trigger an immediate resume.
+          # Provider 429/HOLD must not create a tight retry loop; the fixed
+          # external schedule above provides the next durable wake-up.
+          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
