@@ -1,0 +1,56 @@
+name: Research Watchdog
+
+# Independent operational monitor. It does not run or alter research policy.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check durable research health
+        id: health
+        continue-on-error: true
+        run: python research/watchdog.py | tee watchdog.log
+
+      - name: Open durable incident if stale
+        if: steps.health.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! gh issue list --state open --search '"Research watchdog: stale non-terminal state" in:title' --json number --jq 'length == 0' | grep -q true; then
+            echo "An existing watchdog incident is already open; no duplicate created."
+            exit 0
+          fi
+          {
+            echo "## Research watchdog alert"
+            echo
+            echo "The independent watchdog detected a non-terminal research state older than two controller wake windows."
+            echo
+            echo '```text'
+            cat watchdog.log
+            echo '```'
+            echo
+            echo "This alert is operational only. It does not modify campaign policy, budget, evidence requirements, promotion criteria, or terminal conditions."
+            echo
+            echo "Workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } > /tmp/watchdog-issue.md
+          gh issue create \
+            --title "Research watchdog: stale non-terminal state" \
+            --body-file /tmp/watchdog-issue.md
+
+      - name: Fail watchdog on stale state
+        if: steps.health.outcome == 'failure'
+        run: exit 1
