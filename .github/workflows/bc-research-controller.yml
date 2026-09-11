@@ -57,10 +57,10 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          # Only successful campaign progress may trigger an immediate resume.
-          # Provider 429/HOLD must not create a tight retry loop; the fixed
-          # external schedule above provides the next durable wake-up.
-          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log; then
+          # Resume only on explicit forward progress. Any HOLD is fail-closed,
+          # even when campaign_screened contains progress from an older run.
+          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log \
+             && ! grep -Eq 'CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD|HOLD_' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
