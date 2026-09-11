@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict provider router: discovery informs proposals; validation remains authoritative."""
 from __future__ import annotations
-import json, os, sys, time, urllib.error, urllib.request
+import json, math, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -17,7 +17,7 @@ Generate exactly ONE next executable hypothesis from FAILURE ANALYSIS plus BROAD
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
 A discovery_spec MUST contain operator,left, numeric threshold, direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
-The JSON type of threshold MUST be a number (integer or decimal), never a quoted string, and direction MUST be exactly 'above' or 'below'.
+The JSON type of threshold MUST be a finite number (integer or decimal), never a quoted string, and direction MUST be exactly 'above' or 'below'.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
 Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
 hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
@@ -54,44 +54,35 @@ def normalize_structural_types(candidate):
  if not isinstance(spec,dict): return
  if "threshold" in spec and isinstance(spec["threshold"],str):
   text=spec["threshold"].strip()
-  try:
-   value=float(text)
-  except ValueError:
-   return
+  try: value=float(text)
+  except ValueError: return
+  if not math.isfinite(value): return
   spec["threshold"]=int(value) if value.is_integer() else value
  if "window" in spec and isinstance(spec["window"],str) and spec["window"].strip().isdigit():
   spec["window"]=int(spec["window"].strip())
 
 def request_candidate(name,prompt):
  """Bounded structural repair: ask the same provider to regenerate, never inventing fields locally."""
- feedback=""
- last_reason="unknown"
+ feedback=""; last_reason="unknown"
  for attempt in range(3):
   raw=call(name,prompt + feedback)
-  try:
-   candidate=json.loads(raw)
+  try: candidate=json.loads(raw)
   except Exception:
-   last_reason="invalid_json"
-   feedback=("\n\nVALIDATOR_FEEDBACK: response was not valid JSON. Regenerate exactly one JSON object using the required keys; do not add prose.\n")
-   continue
+   last_reason="invalid_json"; feedback=("\n\nVALIDATOR_FEEDBACK: response was not valid JSON. Regenerate exactly one JSON object using the required keys; do not add prose.\n"); continue
   if candidate.get("status")=="HOLD": return candidate
   normalize_structural_types(candidate)
   if candidate.get("hypothesis_id") not in HYPOTHESES and candidate.get("hypothesis_id")!="discovered_primitive":
    reason="unregistered_hypothesis_id"
   else:
-   candidate["bc"],candidate["parent_bc"]=bc,parent
-   ok,reason=validate_candidate(candidate,bc,parent)
+   candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
    if ok:return candidate
-  last_reason=reason
-  feedback=(f"\n\nVALIDATOR_FEEDBACK: {reason}. Regenerate the candidate with that contract error corrected. "
-            "Do not invent missing evidence or silently change the research policy. Threshold must be a JSON number and direction exactly 'above' or 'below'.\n")
+  last_reason=reason; feedback=(f"\n\nVALIDATOR_FEEDBACK: {reason}. Regenerate the candidate with that contract error corrected. Do not invent missing evidence or silently change the research policy. Threshold must be a finite JSON number and direction exactly 'above' or 'below'.\n")
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 
 def main():
  global bc,parent
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
- prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS","")
- evidence_text=failure.read_text(encoding="utf-8")
+ prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=failure.read_text(encoding="utf-8")
  discovery=ROOT/'research'/'discovery'/'latest.json'; discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
  compiled=ROOT/'research'/'discovery'/'compiled_candidates.json'; compiled_text=compiled.read_text(encoding='utf-8') if compiled.exists() else '{"status":"NO_COMPILED_CANDIDATES"}'
  prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nBROAD DISCOVERY ARTIFACT:\n{discovery_text[:30000]}\n\nCOMPILED PRIMITIVES (templates only; choose/propose parameters, never treat them as evidence):\n{compiled_text[:30000]}")
