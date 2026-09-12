@@ -1,0 +1,21 @@
+{
+  "bc": 57,
+  "candidate_hash": "93f8e0ec0b446362814cecf85e9d6da2a02eba834df18087672aa2730bd1a6f1",
+  "conceptual_change": "Introduce a liquidity filter using volume relative to its short-term rolling mean to isolate high-participation trades in the China A-share market, compensating for T+1 constraints.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.5,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/codfish-zz/cn-trader"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 56,
+  "rationale": "In a T+1 market environment, liquidity is critical for executing exit strategies. Using a volume ratio relative to a rolling mean helps identify periods of heightened market activity, potentially signaling institutional participation that aligns with the T+1 constraint."
+}

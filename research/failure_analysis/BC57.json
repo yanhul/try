@@ -1,0 +1,31 @@
+{
+  "bc": 57,
+  "parent_bc": 56,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "93f8e0ec0b446362814cecf85e9d6da2a02eba834df18087672aa2730bd1a6f1",
+  "conceptual_change": "Introduce a liquidity filter using volume relative to its short-term rolling mean to isolate high-participation trades in the China A-share market, compensating for T+1 constraints.",
+  "evidence_sources": [
+    "https://github.com/codfish-zz/cn-trader"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
