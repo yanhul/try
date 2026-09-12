@@ -1,187 +1,130 @@
 #!/usr/bin/env python3
-"""Strict provider router: deterministic discovery population narrows; Gemini translates one selected survivor."""
+"""Strict Gemini translation boundary for one deterministic screen survivor."""
 from __future__ import annotations
-import json, math, os, random, sys, time, urllib.error, urllib.request
+import json,math,os,random,sys,time,urllib.error,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
-from research.autonomous_hypothesis import write_candidate, validate_candidate
+if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
+from research.autonomous_hypothesis import write_candidate,validate_candidate
 from engine.hypotheses import HYPOTHESES
 from research.evidence_calibration import verify_with_openai_compatible
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-ALLOWED_THRESHOLDS=[-0.5,0,0.5,1,1.5]
-SYSTEM=f"""You are an autonomous trading-research translator.
-A deterministic population engine has already screened a public-source universe.
-You MUST translate the single SELECTED SCREEN SURVIVOR supplied by the controller. You are not a survivor selector.
-Do not select by expected performance, stars, OOS, or intuition. Do not replace the selected survivor with another source.
-Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
-For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
-A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right.
-For difference/ratio, right MUST be exactly one of the allowed columns {COLUMNS}. Do not use aliases such as price, return, pct_change, typical_price, or other invented column names. left and right are schema column identifiers, not natural-language labels.
-For threshold, output a plain finite JSON number. Prefer one of {ALLOWED_THRESHOLDS}. NEVER output ranges, percentages, expressions, null, objects, arrays, strings, or prose as threshold.
-If the selected survivor does not itself determine a numeric threshold, use threshold 0; threshold is a test parameter, not evidence.
-Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
-Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
-hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
-"""
-def config(name):
- n=name.upper(); defaults={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
- if n in defaults: base,model,keyvar=defaults[n]
- else: base=os.getenv(f"RESEARCH_PROVIDER_{n}_BASE_URL",""); model=os.getenv(f"RESEARCH_PROVIDER_{n}_MODEL",""); keyvar=f"RESEARCH_PROVIDER_{n}_API_KEY"
- return base.rstrip("/"),model,os.getenv(keyvar,"")
-
+SYSTEM=f'''You translate ONLY the SELECTED SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Do not use OOS, expected performance, stars or intuition. Registered hypothesis_ids are allowed; otherwise use hypothesis_id="discovered_primitive". For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Do not invent evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
 _PROVIDER_LAST_CALL=0.0
-
-def _min_interval():
- try: return max(4.5,float(os.getenv("RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS","4.5")))
- except ValueError: return 4.5
-
-def _sleep_for_rate_limit(seconds):
- delay=max(0.0,float(seconds))
- if delay: time.sleep(min(delay,float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120"))))
-
-def _retry_after(exc,attempt):
- headers=exc.headers or {}
- value=headers.get("Retry-After") or headers.get("retry-after")
- if value:
-  try: return max(1.0,float(value))
-  except ValueError: pass
- for key in ("X-RateLimit-Reset","x-ratelimit-reset","X-RateLimit-Reset-Requests","x-ratelimit-reset-requests"):
-  value=headers.get(key)
-  if value:
-   try:
-    reset=float(value)
-    if reset > time.time(): return max(1.0,reset-time.time())
-   except ValueError: pass
- return min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0 ** attempt + random.uniform(0,1))
-
-def _rate_error_detail(exc):
- try:
-  raw=exc.read().decode("utf-8","replace")
-  try: text=json.dumps(json.loads(raw),sort_keys=True)
-  except Exception: text=raw
-  return text[:1000]
- except Exception: return ""
-
-def _compact_text(text,limit=None):
- limit=limit or max(4000,int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT","12000")))
- text=text or ""
- if len(text)<=limit:return text
- head=limit//2; tail=limit-head
- return text[:head]+f"\n...[context compacted: {len(text)-limit} chars omitted]...\n"+text[-tail:]
-
-def _compact_fingerprints(fingerprints):
- limit=max(20,int(os.getenv("RESEARCH_PROVIDER_MAX_FORBIDDEN_FINGERPRINTS","80")))
- ordered=sorted(fingerprints,key=str)
- if len(ordered)<=limit:return [list(x) for x in ordered]
- return [list(x) for x in ordered[-limit:]]
-
+def config(name):
+ n=name.upper(); d={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
+ if n in d:b,m,k=d[n]
+ else:b=os.getenv(f"RESEARCH_PROVIDER_{n}_BASE_URL","");m=os.getenv(f"RESEARCH_PROVIDER_{n}_MODEL","");k=f"RESEARCH_PROVIDER_{n}_API_KEY"
+ return b.rstrip("/"),m,os.getenv(k,"")
+def interval():
+ try:return max(4.5,float(os.getenv("RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS","4.5")))
+ except ValueError:return 4.5
+def compact(s,limit=None):
+ limit=limit or max(4000,int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT","12000")));s=s or ""
+ if len(s)<=limit:return s
+ h=limit//2;return s[:h]+f"\n...[compacted {len(s)-limit} chars]...\n"+s[-(limit-h):]
 def call(name,prompt):
  global _PROVIDER_LAST_CALL
  base,model,key=config(name)
- if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
+ if not base or not model or not key:raise RuntimeError(f"provider_not_configured:{name}")
+ gap=interval()-(time.monotonic()-_PROVIDER_LAST_CALL)
+ if gap>0:time.sleep(gap)
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":700,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- interval=_min_interval(); gap=interval-(time.monotonic()-_PROVIDER_LAST_CALL)
- if gap>0: time.sleep(gap)
- _PROVIDER_LAST_CALL=time.monotonic()
- max_rate_retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
- for attempt in range(max_rate_retries+1):
+ _PROVIDER_LAST_CALL=time.monotonic(); retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
+ for attempt in range(retries+1):
   try:
    with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
-  except urllib.error.HTTPError as exc:
-   if exc.code in {429,500,502,503,504}:
-    detail=_rate_error_detail(exc)
-    if attempt < max_rate_retries:
-     delay=_retry_after(exc,attempt)
-     print(f"PROVIDER_RATE_LIMIT name={name} code={exc.code} attempt={attempt+1}/{max_rate_retries+1} backoff={delay:.1f}s detail={detail}",flush=True)
-     _sleep_for_rate_limit(delay); _PROVIDER_LAST_CALL=time.monotonic(); continue
-    if exc.code==429: raise RuntimeError(f"provider_rate_limited:{name}:retry_exhausted:{detail}") from exc
-    raise RuntimeError(f"provider_http_{exc.code}:{name}:{detail}") from exc
-   raise
+  except urllib.error.HTTPError as e:
+   if e.code not in {429,500,502,503,504}:raise
+   detail=""
+   try:detail=e.read().decode("utf-8","replace")[:1000]
+   except Exception:pass
+   if attempt>=retries:
+    raise RuntimeError(f"provider_{'rate_limited' if e.code==429 else 'http_'+str(e.code)}:{name}:{detail}") from e
+   delay=min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0**attempt+random.uniform(0,1))
+   print(f"PROVIDER_RATE_LIMIT name={name} code={e.code} attempt={attempt+1}/{retries+1} backoff={delay:.1f}s detail={detail}",flush=True);time.sleep(delay);_PROVIDER_LAST_CALL=time.monotonic()
  raise RuntimeError(f"provider_request_failed:{name}")
-
-def normalize_structural_types(candidate):
- spec=candidate.get("discovery_spec")
- if not isinstance(spec,dict): return
- if "threshold" in spec and isinstance(spec["threshold"],str):
-  text=spec["threshold"].strip()
-  try: value=float(text)
-  except ValueError: return
-  if not math.isfinite(value): return
-  spec["threshold"]=int(value) if value.is_integer() else value
- if "window" in spec and isinstance(spec["window"],str) and spec["window"].strip().isdigit(): spec["window"]=int(spec["window"].strip())
-def discovery_fingerprint(candidate):
- spec=candidate.get("discovery_spec") or {}
- if not isinstance(spec,dict): return None
- return tuple(spec.get(k) for k in ("operator","left","right","window","threshold","direction"))
-def prior_discovery_fingerprints():
- fingerprints=set(); directory=ROOT/'research'/'autonomous_candidates'
- if not directory.exists(): return fingerprints
- for path in sorted(directory.glob('BC*.json')):
+def normalize_structural_types(c):
+ s=c.get("discovery_spec")
+ if not isinstance(s,dict):return
+ if isinstance(s.get("threshold"),str):
+  try:v=float(s["threshold"])
+  except ValueError:return
+  if math.isfinite(v):s["threshold"]=int(v) if v.is_integer() else v
+ if isinstance(s.get("window"),str) and s["window"].strip().isdigit():s["window"]=int(s["window"].strip())
+def fingerprint(c):
+ s=c.get("discovery_spec") or {};return tuple(s.get(k) for k in ("operator","left","right","window","threshold","direction")) if isinstance(s,dict) else None
+def prior_fingerprints():
+ out=set();d=ROOT/"research/autonomous_candidates"
+ for p in sorted(d.glob("BC*.json")) if d.exists() else []:
   try:
-   candidate=json.loads(path.read_text(encoding='utf-8')); fp=discovery_fingerprint(candidate)
-   if fp is not None: fingerprints.add(fp)
-  except (OSError,ValueError,TypeError): continue
- return fingerprints
-def request_candidate(name,prompt,forbidden_fingerprints):
- feedback=""; last_reason="unknown"
- for attempt in range(3):
+   f=fingerprint(json.loads(p.read_text(encoding="utf-8")))
+   if f is not None:out.add(f)
+  except Exception:pass
+ return out
+def request_candidate(name,prompt,forbidden):
+ feedback="";last="unknown"
+ for _ in range(3):
   raw=call(name,prompt+feedback)
-  try: candidate=json.loads(raw)
-  except Exception:
-   last_reason="invalid_json"; feedback="\nVALIDATOR_FEEDBACK: invalid JSON; regenerate one JSON object only.\n"; continue
-  if candidate.get("status")=="HOLD": return candidate
-  normalize_structural_types(candidate); hypothesis_id=candidate.get("hypothesis_id")
-  if not isinstance(hypothesis_id,str): reason="invalid_hypothesis_id_type"
-  elif hypothesis_id not in HYPOTHESES and hypothesis_id!="discovered_primitive": reason="unregistered_hypothesis_id"
+  try:c=json.loads(raw)
+  except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
+  if c.get("status")=="HOLD":return c
+  normalize_structural_types(c);hid=c.get("hypothesis_id")
+  if not isinstance(hid,str):reason="invalid_hypothesis_id_type"
+  elif hid not in HYPOTHESES and hid!="discovered_primitive":reason="unregistered_hypothesis_id"
   else:
-   candidate["bc"],candidate["parent_bc"]=bc,parent; fp=discovery_fingerprint(candidate)
-   if fp is not None and fp in forbidden_fingerprints: reason="duplicate_discovery_fingerprint"
+   c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
+   if f is not None and f in forbidden:reason="duplicate_discovery_fingerprint"
    else:
-    ok,reason=validate_candidate(candidate,bc,parent)
-    if ok:return candidate
-  last_reason=reason
-  if reason=="duplicate_discovery_fingerprint": feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec.\n"
-  elif reason=="invalid_discovery_threshold":
-   bad_spec=candidate.get("discovery_spec"); feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Rejected spec: "+json.dumps(bad_spec,sort_keys=True)+". Use a plain finite JSON NUMBER for threshold, preferably 0; direction must be above/below.\n")
-  elif reason=="invalid_discovery_right_column":
-   bad_spec=candidate.get("discovery_spec"); bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None; feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. right was "+json.dumps(bad_right)+". For difference/ratio use exactly one schema column from "+json.dumps(COLUMNS)+".\n")
-  else: feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
- raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
-def calibration_feedback(issues):
- return "\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise without bypassing calibration. Verifier diagnostics: "+_compact_text(json.dumps(issues,sort_keys=True),4000)+"\n"
+    ok,reason=validate_candidate(c,bc,parent)
+    if ok:return c
+  last=reason;feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only the executable proposal; do not invent evidence.\n"
+ raise ValueError(f"provider_candidate_contract_failed:{last}")
+def ground_candidate(c,selected):
+ url=str(selected.get("source_url") or "").strip()
+ if not url:raise ValueError("selected_survivor_missing_source_url")
+ s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None
+ expr=f"{op}({s.get('left')}"+(f",{s.get('right')})" if s.get("right") is not None else ")") if op else str(c.get("hypothesis_id"))
+ c["evidence_sources"]=[url]
+ c["conceptual_change"]=f"Test {expr} with the supplied discovery parameters as the executable translation of the selected screen survivor."
+ c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance."
+ c["is_testable"]=True;c["oos_selection_used"]=False
+ return c
+def survivor_evidence(s):
+ return compact(json.dumps({k:s.get(k) for k in ("candidate_id","source","source_url","title","description","family","market","query","source_timestamp","lineage")},sort_keys=True,ensure_ascii=False,separators=(",",":")))
 def main():
  global bc,parent
- failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
- prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=_compact_text(failure.read_text(encoding="utf-8")); queue=ROOT/'research'/'discovery'/'research_queue.json'
- if not queue.exists(): print("PROVIDER_ROUTER_HOLD missing_screen_queue"); return 0
+ failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]);out=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]);bc=int(os.environ["RESEARCH_NEXT_BC"]);parent=int(os.environ["RESEARCH_PARENT_BC"])
+ queue=ROOT/"research/discovery/research_queue.json"
+ if not queue.exists():print("PROVIDER_ROUTER_HOLD missing_screen_queue");return 0
  try:
-  q=json.loads(queue.read_text(encoding='utf-8')); survivors=q.get('candidates',[]) if isinstance(q,dict) else q
-  if not isinstance(survivors,list) or not survivors: print("PROVIDER_ROUTER_HOLD empty_screen_queue"); return 0
+  q=json.loads(queue.read_text(encoding="utf-8"));survivors=q.get("candidates",[]) if isinstance(q,dict) else q
+  if not isinstance(survivors,list) or not survivors:print("PROVIDER_ROUTER_HOLD empty_screen_queue");return 0
   selected=survivors[(parent-1)%len(survivors)]
- except Exception as exc: print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{exc}"); return 0
- forbidden=prior_discovery_fingerprints()
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {_compact_text(prior,4000)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps(_compact_fingerprints(forbidden),separators=(',',':'))}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\n\nDo not select a different survivor. Preserve source lineage. The executable discovery_spec must be novel relative to prior campaign candidates.")
- order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]
- for name in order:
+ except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
+ forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {compact(os.getenv('RESEARCH_PRIOR_HYPOTHESES','') or os.getenv('RESEARCH_USED_HYPOTHESIS_IDS',''),4000)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-80:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nDo not add empirical claims to rationale; provenance and policy fields are grounded deterministically after translation.")
+ for name in [x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]:
   try:
-   candidate=request_candidate(name,prompt,forbidden)
-   if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
+   c=request_candidate(name,prompt,forbidden)
+   if c.get("status")=="HOLD":print(f"PROVIDER_{name.upper()}_HOLD");continue
    base,model,key=config(name)
-   for calibration_attempt in range(3):
-    calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
-    if calibrated:
-     write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']} calibration_attempt={calibration_attempt+1}"); return 0
-    print(f"PROVIDER_CALIBRATION_FAIL {name} attempt={calibration_attempt+1} issues={json.dumps(issues,sort_keys=True)}",flush=True)
-    if calibration_attempt==2: break
-    revision_prompt=prompt+"\n\nPREVIOUS CANDIDATE REJECTED BY STRICT CALIBRATION:\n"+json.dumps(candidate,sort_keys=True,separators=(',',':'))+calibration_feedback(issues)
-    revision_forbidden=set(forbidden); fp=discovery_fingerprint(candidate)
-    if fp is not None: revision_forbidden.add(fp)
-    candidate=request_candidate(name,revision_prompt,revision_forbidden)
-    if candidate.get("status")=="HOLD": break
-  except Exception as exc: print(f"PROVIDER_FAIL {name}: {exc}")
- print("PROVIDER_ROUTER_HOLD"); return 0
+   for attempt in range(3):
+    ground_candidate(c,selected);ok,reason=validate_candidate(c,bc,parent)
+    if not ok:raise ValueError(f"grounded_candidate_contract_failed:{reason}")
+    time.sleep(interval())
+    calibrated,issues=verify_with_openai_compatible(base,model,key,c,evidence)
+    if calibrated:write_candidate(out,c);print(f"PROVIDER_SELECTED {name} model={model} hash={c['candidate_hash']} calibration_attempt={attempt+1}");return 0
+    print(f"PROVIDER_CALIBRATION_FAIL {name} attempt={attempt+1} issues={json.dumps(issues,sort_keys=True)}",flush=True)
+    if attempt==2:break
+    revision=prompt+"\nCALIBRATION REJECTED; revise executable parameters only:\n"+json.dumps(issues,sort_keys=True)
+    rf=set(forbidden);f=fingerprint(c)
+    if f is not None:rf.add(f)
+    c=request_candidate(name,revision,rf)
+    if c.get("status")=="HOLD":break
+  except Exception as e:print(f"PROVIDER_FAIL {name}: {e}")
+ print("PROVIDER_ROUTER_HOLD");return 0
 if __name__=="__main__":raise SystemExit(main())
