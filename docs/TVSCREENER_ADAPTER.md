@@ -1,44 +1,36 @@
 # TradingView Screener adapter
 
-`engine/tv_screener_adapter.py` adds an optional adapter around `deepentropy/tvscreener`.
+`engine/tv_screener_adapter.py` is the external discovery adapter. It is connected to `engine/universe_discovery.py`, which creates a timestamped and SHA-256 fingerprinted candidate-universe snapshot.
 
-## Boundary
-
-TradingView Screener is **universe discovery only**. Its snapshot is not authoritative
-historical market data and must not be used directly as backtest truth, IS/OOS evidence,
-or promotion evidence.
-
-Pipeline:
+## Flow
 
 ```text
-TradingView Screener
-        |
-        v
-raw external snapshot
-        |
-        v
-provenance + integrity validation
-        |
-        v
-canonical dataset / Parquet
-        |
-        v
-Reference Engine -> experiments -> IS -> validation -> OOS LOCKED
+TradingView / tvscreener
+        -> tv_screener_adapter
+        -> universe_discovery
+        -> raw JSON snapshot + provenance + hash
+        -> resolve candidates against authoritative OHLCV source
+        -> data integrity validation
+        -> canonical dataset
+        -> backtest / IS / validation / OOS
 ```
 
-The adapter deliberately keeps the dependency optional. Install only when the discovery
-stage is enabled:
+The TradingView snapshot is **not** historical truth and must not be passed directly to the backtest engine. `verify_snapshot()` fails closed if the persisted payload has changed.
+
+## Run
+
+Install the optional external dependency:
 
 ```bash
 pip install tvscreener pandas
 ```
 
-The adapter exposes:
+Then:
 
-- `screen_crypto(...)` for bounded crypto universe discovery.
-- `snapshot_metadata(...)` for fetch-time/provenance metadata.
-- `symbols_from_snapshot(...)` for candidate extraction with stable de-duplication.
+```bash
+python tools/discover_crypto_universe.py --limit 100 --out data/universe/tradingview_crypto.json
+```
 
-Do not import TradingView data into the authoritative backtest path without a separate
-integrity/provenance step. The upstream project itself describes the library as an
-unofficial third-party TradingView interface.
+The output contains the raw screener rows, provenance, candidate symbols, and a SHA-256 payload fingerprint.
+
+The authoritative price path remains the existing downloader/data validator. The existing validator enforces timestamp, OHLCV, ordering, and optional cadence checks; TradingView discovery does not bypass those checks.
