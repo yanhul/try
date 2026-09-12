@@ -4,8 +4,8 @@
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "93f8e0ec0b446362814cecf85e9d6da2a02eba834df18087672aa2730bd1a6f1",
-  "conceptual_change": "Introduce a liquidity filter using volume relative to its short-term rolling mean to isolate high-participation trades in the China A-share market, compensating for T+1 constraints.",
+  "candidate_hash": "b745a716137e6ed3f46a8510efe72c9352a0074d46330520de27eb736ed4c27e",
+  "conceptual_change": "Incorporate a price-range volatility filter to account for T+1 market liquidity constraints, ensuring trades occur when relative range is sufficiently wide to justify potential holding period risks.",
   "evidence_sources": [
     "https://github.com/codfish-zz/cn-trader"
   ],

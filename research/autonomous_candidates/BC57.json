@@ -1,14 +1,14 @@
 {
   "bc": 57,
-  "candidate_hash": "93f8e0ec0b446362814cecf85e9d6da2a02eba834df18087672aa2730bd1a6f1",
-  "conceptual_change": "Introduce a liquidity filter using volume relative to its short-term rolling mean to isolate high-participation trades in the China A-share market, compensating for T+1 constraints.",
+  "candidate_hash": "b745a716137e6ed3f46a8510efe72c9352a0074d46330520de27eb736ed4c27e",
+  "conceptual_change": "Incorporate a price-range volatility filter to account for T+1 market liquidity constraints, ensuring trades occur when relative range is sufficiently wide to justify potential holding period risks.",
   "discovery_spec": {
     "direction": "above",
-    "left": "volume",
+    "left": "range_ratio",
     "operator": "ratio",
-    "right": "volume",
-    "threshold": 1.5,
-    "window": 5
+    "right": "range_ratio",
+    "threshold": 1.2,
+    "window": 20
   },
   "evidence_sources": [
     "https://github.com/codfish-zz/cn-trader"
@@ -17,5 +17,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 56,
-  "rationale": "In a T+1 market environment, liquidity is critical for executing exit strategies. Using a volume ratio relative to a rolling mean helps identify periods of heightened market activity, potentially signaling institutional participation that aligns with the T+1 constraint."
+  "rationale": "In T+1 environments, position liquidity is locked overnight; filtering for periods of higher range relative to historical averages targets movement that can potentially compensate for the added risk of delayed exit capability."
 }
