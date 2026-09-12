@@ -4,10 +4,10 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 1248,
-    "expanded": 1127,
-    "normalized": 1127,
-    "round1": 66,
+    "raw": 1322,
+    "expanded": 1181,
+    "normalized": 1181,
+    "round1": 68,
     "deferred": 28,
     "survivors": 37,
     "china_a_share_survivors": 16
@@ -143,6 +143,22 @@
       }
     },
     {
+      "candidate_id": "6c0804b28496792c",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "6c0804b28496792c",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "19fa1908d59ce3b9",
       "source": "arxiv",
       "source_url": null,
@@ -320,6 +336,56 @@
         "source": "28e816e82272def1",
         "family": "unknown",
         "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7046c08c415d9d2b",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "7046c08c415d9d2b",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9bf42168d6f01ce2",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "9bf42168d6f01ce2",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          }
+        ]
       }
     },
     {
@@ -346,6 +412,22 @@
             "family": "unknown"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "b244b3899b99d22e",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "b244b3899b99d22e",
+        "family": "unknown",
+        "rounds": []
       }
     },
     {
@@ -436,6 +518,22 @@
             "family": "unknown"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "ea372beda0129978",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "ea372beda0129978",
+        "family": "unknown",
+        "rounds": []
       }
     },
     {
@@ -2983,22 +3081,6 @@
       }
     },
     {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e5f150f5419b5c60",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118524046.ch4",
@@ -4147,6 +4229,166 @@
       "lineage": {
         "source": "8cff760fec3848bf",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fa3802bad8c7ce67",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4148717",
+      "title": "A 2022 Primer for Crypto-Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fa3802bad8c7ce67",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8496c508b119468",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.709342",
+      "title": "Fair Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2005",
+      "lineage": {
+        "source": "d8496c508b119468",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6a4f0f792d903901",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.7061858",
+      "title": "Fair Value Accounting for Crypto Assets under FASB ASU 2023-08: Automation Challenges and AI-powered Solutions for Enterprise ERP Integration",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "6a4f0f792d903901",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "19fb492aad4aed34",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119204367.ch4",
+      "title": "Fair\u2010Value Regressions",
+      "description": "Crossref work type=other",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "19fb492aad4aed34",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b4afae033b8c2438",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4460695",
+      "title": "How Fair Value Measurement and Graphical Disclosure Help Investors Assess the Performance and Risk of Crypto-Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "b4afae033b8c2438",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cd3ffa1ab5c766b7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6725880",
+      "title": "Multi-Asset A/A+ Momentum Fair Value Gap Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "cd3ffa1ab5c766b7",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1a14e7ad0e0555c3",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3466919",
+      "title": "Sind Krypto-W\u00e4hrungsm\u00e4rkte Fair? (Are Crypto-Currency Markets Fair?)",
+      "description": "Crossref work type=journal-article",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "1a14e7ad0e0555c3",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9be294632885f83d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3390/land14102012",
+      "title": "Valuation of Public Urban Space: From Social Value to Fair Value\u2014Mind the Gap",
+      "description": "Crossref work type=journal-article",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "9be294632885f83d",
+        "family": "fvg_imbalance",
         "rounds": []
       }
     },
@@ -6231,6 +6473,70 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -6263,6 +6569,22 @@
       }
     },
     {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4df47a29f00cecb3",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2735.26.06.115",
@@ -6274,6 +6596,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "4df47a29f00cecb3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
         "family": "china_a_share",
         "rounds": []
       }
@@ -6439,22 +6777,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -6498,22 +6820,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
         "family": "unknown",
         "rounds": []
       }
@@ -6695,22 +7001,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -6771,22 +7061,6 @@
       "lineage": {
         "source": "044a1342910e3a12",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -7079,22 +7353,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -7170,22 +7428,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1d029873c0942566",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -8887,6 +9129,22 @@
       }
     },
     {
+      "candidate_id": "2711365a582263a4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Chbaikiyoussef/spaces-xcode",
+      "title": "Chbaikiyoussef/spaces-xcode",
+      "description": "Config files for my GitHub profile.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:50:27.495Z",
+      "lineage": {
+        "source": "2711365a582263a4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c2e61599db68c2e",
       "source": "gitlab",
       "source_url": "https://gitlab.com/CuriousNom/android_vendor_gms",
@@ -8919,6 +9177,22 @@
       }
     },
     {
+      "candidate_id": "09c2c11f13abcb7a",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Freetz-NG/freetz-ng",
+      "title": "Freetz-NG/freetz-ng",
+      "description": "Freetz-NG firmware modification for \u200bAVM devices like FRITZ!Box - https://freetz-ng.github.io/",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:44:32.648Z",
+      "lineage": {
+        "source": "09c2c11f13abcb7a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "bcd35e3d0e9e43e0",
       "source": "gitlab",
       "source_url": "https://gitlab.com/abcestc_madara/geph-mirror",
@@ -8930,6 +9204,22 @@
       "source_timestamp": "2026-09-12T11:01:43.026Z",
       "lineage": {
         "source": "bcd35e3d0e9e43e0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4e6050e2cd02ca39",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/awxkee/zaft",
+      "title": "awxkee/zaft",
+      "description": "Fast fourier transform in Rust mirror of https://github.com/awxkee/zaft",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:51:32.546Z",
+      "lineage": {
+        "source": "4e6050e2cd02ca39",
         "family": "china_a_share",
         "rounds": []
       }
@@ -8951,6 +9241,22 @@
       }
     },
     {
+      "candidate_id": "99703f9cad271d6d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cet-software/openjdk",
+      "title": "cet-software/openjdk",
+      "description": "Mirror of https://github.com/openjdk/jdk with CET support.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:46:03.375Z",
+      "lineage": {
+        "source": "99703f9cad271d6d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f116da4410aeeb02",
       "source": "gitlab",
       "source_url": "https://gitlab.com/deguest/Web-Authn",
@@ -8967,6 +9273,54 @@
       }
     },
     {
+      "candidate_id": "e6662d42d790daba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/dpolivaev/spec-loop",
+      "title": "dpolivaev/spec-loop",
+      "description": "This repo is a mirror of https://github.com/dpolivaev/spec-loop",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:28:19.888Z",
+      "lineage": {
+        "source": "e6662d42d790daba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dc3fc4c7b516fffb",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/erdnussflips-firefly-iii/firefly-iii",
+      "title": "erdnussflips-firefly-iii/firefly-iii",
+      "description": "Mirror of https://github.com/firefly-iii/firefly-iii\r\n\r\nOfficial website: https://firefly-iii.org",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:44:34.666Z",
+      "lineage": {
+        "source": "dc3fc4c7b516fffb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "377d6db064ab1421",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/apache/buildstream",
+      "title": "freedesktop-sdk/mirrors/github/apache/buildstream",
+      "description": "github.com: apache/buildstream.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:42:08.598Z",
+      "lineage": {
+        "source": "377d6db064ab1421",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0e86ecc9306a1357",
       "source": "gitlab",
       "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/flatpak/flatpak-builder",
@@ -8978,6 +9332,22 @@
       "source_timestamp": "2026-09-12T11:02:30.966Z",
       "lineage": {
         "source": "0e86ecc9306a1357",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "393d2bf0af1cb350",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-org/frontend/renovate-fork",
+      "title": "gitlab-org/frontend/renovate-fork",
+      "description": "Fork of https://github.com/renovatebot/renovate.git in order to work with forks.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:45:46.611Z",
+      "lineage": {
+        "source": "393d2bf0af1cb350",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9015,6 +9385,70 @@
       }
     },
     {
+      "candidate_id": "eb8fe1a9ce89b3a3",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/rjrodger/aontu",
+      "title": "ricebridge/rjrodger/aontu",
+      "description": "Pull mirror of https://github.com/rjrodger/aontu.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:30:15.659Z",
+      "lineage": {
+        "source": "eb8fe1a9ce89b3a3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e726932b5ea4fcea",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/abnf",
+      "title": "ricebridge/tabnas/abnf",
+      "description": "Pull mirror of https://github.com/tabnas/abnf.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:49:35.393Z",
+      "lineage": {
+        "source": "e726932b5ea4fcea",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6793ec93d64dd1d9",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/c",
+      "title": "ricebridge/tabnas/c",
+      "description": "Pull mirror of https://github.com/tabnas/c.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:31:27.745Z",
+      "lineage": {
+        "source": "6793ec93d64dd1d9",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843fa2c2fc0f3140",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/chess",
+      "title": "ricebridge/tabnas/chess",
+      "description": "Pull mirror of https://github.com/tabnas/chess.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:33:00.146Z",
+      "lineage": {
+        "source": "843fa2c2fc0f3140",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "998c898a30325a6f",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/csv",
@@ -9026,6 +9460,70 @@
       "source_timestamp": "2026-09-12T11:11:38.252Z",
       "lineage": {
         "source": "998c898a30325a6f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ea06d8e07e5186c",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/directive",
+      "title": "ricebridge/tabnas/directive",
+      "description": "Pull mirror of https://github.com/tabnas/directive.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:31:18.059Z",
+      "lineage": {
+        "source": "2ea06d8e07e5186c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ac0b91ac7926b703",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/expr",
+      "title": "ricebridge/tabnas/expr",
+      "description": "Pull mirror of https://github.com/tabnas/expr.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:37:01.004Z",
+      "lineage": {
+        "source": "ac0b91ac7926b703",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ab20e1d0050ff26b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/feed",
+      "title": "ricebridge/tabnas/feed",
+      "description": "Pull mirror of https://github.com/tabnas/feed.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:30:10.097Z",
+      "lineage": {
+        "source": "ab20e1d0050ff26b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f5d742a0545eceba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/ini",
+      "title": "ricebridge/tabnas/ini",
+      "description": "Pull mirror of https://github.com/tabnas/ini.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:35:30.183Z",
+      "lineage": {
+        "source": "f5d742a0545eceba",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9079,6 +9577,22 @@
       }
     },
     {
+      "candidate_id": "0aa3472769cfcbb1",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/railroad",
+      "title": "ricebridge/tabnas/railroad",
+      "description": "Pull mirror of https://github.com/tabnas/railroad.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:31:03.452Z",
+      "lineage": {
+        "source": "0aa3472769cfcbb1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "06153740aceb9d14",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/xml",
@@ -9095,6 +9609,22 @@
       }
     },
     {
+      "candidate_id": "805fddec68292ab8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/yaml",
+      "title": "ricebridge/tabnas/yaml",
+      "description": "Pull mirror of https://github.com/tabnas/yaml.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:30:37.632Z",
+      "lineage": {
+        "source": "805fddec68292ab8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7c87cc8674b88d43",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/zon",
@@ -9106,6 +9636,38 @@
       "source_timestamp": "2026-09-12T11:13:51.636Z",
       "lineage": {
         "source": "7c87cc8674b88d43",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ada72fa59ed0cb7d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/voxgig/create-sdkgen",
+      "title": "ricebridge/voxgig/create-sdkgen",
+      "description": "Pull mirror of https://github.com/voxgig/create-sdkgen.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:45:54.500Z",
+      "lineage": {
+        "source": "ada72fa59ed0cb7d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a970415e6896292d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/voxgig/sdkgen",
+      "title": "ricebridge/voxgig/sdkgen",
+      "description": "Pull mirror of https://github.com/voxgig/sdkgen.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-12T11:30:54.809Z",
+      "lineage": {
+        "source": "a970415e6896292d",
         "family": "china_a_share",
         "rounds": []
       }
@@ -18087,6 +18649,166 @@
       }
     },
     {
+      "candidate_id": "a518efbb3aeb8416",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d000c62be8f469edb727a2275bdc5492f138c803",
+      "title": "A quantitative fusion strategy of stock picking and timing based on Particle Swarm Optimized-Back Propagation Neural Network and Multivariate Gaussian-Hidden Markov Model",
+      "description": "In recent years, machine learning (ML) has brought effective approaches and novel techniques to economic decision, investment forecasting, and risk management, etc., coping the variable and intricate nature of economic and financial environments. For the investment in stock market, this research introduces a pioneering quantitative fusion model combining stock timing and picking strategy by leveraging the Multivariate Gaussian-Hidden Markov Model (MGHMM) and Back Propagation Neural Network optimized by Particle Swarm (PSO-BPNN). After the information coefficients (IC) between fifty-two factors that have been winsorized, neutralized and standardized and the return of CSI 300 index are calculated, a given amount of factors that rank ahead are choose to be candidate factors heading for the input of PSO-BPNN after dimension reduction by Principal Component Analysis (PCA), followed by a certain amount of constituent stocks outputted. Subsequently, we conduct the prediction and trading on the basis of the screening stocks and stock market state outputted by MGHMM trained using inputting CSI 300 index data after Box-Cox transformation, bespeaking eximious performance during the period of past four years. Ultimately, some conventional forecast and trading methods are compared with our strategy in Chinese stock market. Our fusion strategy incorporating stock picking and timing presented in this article provide a innovative technique for financial analysis.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "a518efbb3aeb8416",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b4f72acef38657e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
+      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
+      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China\u2019s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "3b4f72acef38657e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1495664259bec21c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/8856654148efce404f2350035d7138363d74faf5",
+      "title": "Intraday and Post-Market Investor Sentiment for Stock Price Prediction: A Deep Learning Framework with Explainability and Quantitative Trading Strategy",
+      "description": "The inherent uncertainty and information asymmetry in financial markets create significant challenges for accurate price forecasting. Although investor sentiment analysis has gained traction in recent research, the temporal dimension of sentiment dynamics remains underexplored. This study develops a novel framework that enhances stock price prediction by integrating time-partitioned investor sentiment, while improving model interpretability via Shapley additive explanations (SHAP) analysis. Employing the ERNIE (enhanced representation through knowledge integration) 3.0 model for sentiment extraction from China\u2019s Eastmoney Guba stock forum, we quantitatively distinguish intraday and post-market investor sentiment then integrate these temporal components with technical indicators through neural network architecture. Our results indicate that temporal sentiment partitioning effectively reduces uncertainty. Empirical evidence demonstrates that our long short-term memory (LSTM) model integrating intraday and post-market sentiment indicators achieves better prediction accuracy, and SHAP analysis reveals the importance of intraday and post-market investor sentiment to stock price prediction models. Implementing quantitative trading strategies based on these insights generates significantly more annualized returns for representative stocks with controlled risk, outperforming sentiment-agnostic and non-temporal sentiment models. This research provides methodological innovations for processing temporal unstructured data in finance, while the SHAP framework offers regulators and investors actionable insights into sentiment-driven market dynamics.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "1495664259bec21c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5a1db7bb12b93a3e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/cd56ec04c4d2a41bf3359d0684d48ce79f4206ec",
+      "title": "Multi-factor Selection and Stock Picking Strategy Based on Random Forest and LightGBM Algorithms",
+      "description": "This study employs Random Forest (RF) and Light Gradient Boosting Machine (LightGBM) algorithms to construct a multi-factor stock selection strategy. Focusing on China Securities Index 300 (CSI 300) constituent stocks, it integrates fundamental and technical factors to conduct factor validity testing and weight optimization through machine learning methods. The study first constructs and preprocesses the factor system. Subsequently, a Random Forest model is employed for binary classification prediction of stock returns, achieving an accuracy of 81.7% and an Area Under the Receiver Operating Characteristic Curve (AUC) value of 0.88 on the test set, demonstrating strong classification capability. Further, a Light Gradient Boosting Machine regression model is used to predict stock market capitalization, yielding a goodness-of-fit of 0.91, which is then utilized to screen for undervalued stock portfolios. During strategy backtesting, four highimportance factors were weighted and synthesized. Over the backtesting period from August 2022 to August 2025, the strategy achieved a total return of 28.68% and an annualized return of 9.07%, generating an excess return of 29.65% relative to the benchmark index. The maximum drawdown was 18.39%, with a Sharpe Ratio of 0.310. The results demonstrate that quantitative strategies integrating multi-factor and machine learning approaches exhibit certain effectiveness and practicality in the A-share market.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5a1db7bb12b93a3e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2e9655f64f7d3688",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f0dc3c047c92ca77474824f6f475b4586f7e586a",
+      "title": "Quantitative Multi-factor Stock Selection Strategy Based on Internet Service Industry",
+      "description": "As a matter of fact, with regard to stock investment practice, quantitative strategies have become popular with the rapid development of China's capital market. Plenty of quantitative strategies have been proposed and implemented into the Chinese markets, where multi-factor stock selection is one of them. Based on the multi-factor model commonly used in quantitative investment, this article selects relevant data of the Internet service industry in the A-share market from 2018 to 2022, conducts an industry-level empirical test on 15 factors in 5 categories that are widely used, and constructs investments accordingly combination. According to the analysis, the research found that the stock portfolio constructed based on the above method can outperform the market, far exceeding the performance of the CSI 300 during the same period, indicating that the multi-factor model is still effective in the Internet service industry, and this industry has high investment value. Overall, these results shed light on guiding further exploration of quantitative analysis of stock market.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "2e9655f64f7d3688",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "41258f3414aa6d68",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/cd381f02f3ad38b61f05d5638852b3cf552c2908",
+      "title": "Research on China's Stock Index Futures Pair Trading Strategy Based on High-Frequency Data",
+      "description": "The efficiency and accuracy of high-frequency trading strategies are increasingly emphasized in modern financial markets, especially in China's stock index futures market. Bayesian theory and probabilistic neural network algorithms have become important tools for constructing high-frequency trading models because of their powerful predictive ability and adaptivity. By studying the minimum error rate and minimum risk Bayesian decision in Bayesian theory, as well as the structure and training methods of probabilistic neural networks, this thesis aims to develop a pair trading strategy for stock index futures based on high-frequency data. The division of dataset and the classification method of classically unbalanced dataset are the key steps of the research, through which the performance of the model is optimized and the effectiveness of the strategy is verified through back-testing experiments. This study not only improves the accuracy and stability of the high-frequency trading strategy, but also provides a new idea and method for quantitative trading in China's financial market.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "41258f3414aa6d68",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fa988fc75bb726c5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a12b13a14a6a3fe87c100def54505a640d03cef8",
+      "title": "Research on Quantitative Investment Strategy of Stock Index Futures Based on XGBoost Model",
+      "description": ": In the past two decades, China\u2019s economy has been developing continuously. The emergence of various emerging industries has continuously introduced more value choices to the financial market, which has also made the stock market more volatile. People have been studying and predicting the stock market for a long time, hoping to find the rule of stock price fluctuations. It is believed that similar stock price fluctuations will occur in the previous performance of stock price fluctuations at a certain time in the future, therefore improving the accuracy of stock forecasts. In this paper, the prediction of the CSI 300 Index Futures is studied based on the XGBoost model. It designs a quantitative investment strategy to trade the CSI 300 Index Futures based on the prediction, to study the accuracy of the XGBoost model applied to financial market forecasts.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fa988fc75bb726c5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "297e58f5cb65f60c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/381ae6425dfb50931bda13751e62d93d3eb6b7c5",
+      "title": "Research on stock quantitative investment strategy based on ARIMA-GARCH-MLP Model",
+      "description": "Quantitative investment and trading are key considerations for investors. Among them, quantitative investment and trading of stocks are particularly important. In order to quantitatively invest in stocks, this paper builds a stock prediction model based on ARIMA-GARCH-MLP (summation autoregressive moving average model-summation autoregressive moving average model-multilayer perceptron), which has been used as a quantitative investment transaction. Taking the data of 2020 as the research object, three control groups are set up for analysis, and optimized weighted predictions are made. The results show that the combined prediction model has excellent prediction accuracy and robustness, with the R2 and MAE being 0.988 and 0.146, respectively. The weighted machine learning model constructed in this paper can better predict stocks, so as to provide quantitative suggestions for investors' decision-making.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "297e58f5cb65f60c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "35a2b967ea45ab86",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/2894bc055d1de208e9fe6d94685853a5ec6a35bc",
+      "title": "Research on strategy optimization of weekly momentum based on trading volume: Empirical results from the U.S. - China stock market",
+      "description": "In this paper, we construct the traditional weekly momentum portfolio and add the trading volume to it in order to study the optimization of the trading volume on the weekly momentum investment strategy. The study of NYSE and AMEX stocks from 1965 to 2012 shows that adding trading volume will continue to optimize stock returns for at least four years. At the same time, the study of Shanghai and Shenzhen A shares from 1993 to 2014 shows that the stock returns will continue to be optimized for up to 5 years after trading volume is added. The regression analysis between the weekly momentum strategy and market State based on trading volume finds the reverse relationship between strategic remuneration and market volatility and market illiquidity.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "35a2b967ea45ab86",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5dbe5b1be7662010",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3b9380014135867ee3c55cf14040a5c1a3903a4a",
+      "title": "Stock Price Prediction of China Merchants Bank Based on GWO-BP Neural \nNetwork Modeling",
+      "description": "With the continuous development of the financial market, stock price forecasting has become an important research field in both academic and practical circles. Accurate stock price forecasting is important for investors to formulate reasonable investment strategies. However, since stock prices are affected by a variety of factors and are highly volatile, it is often difficult for traditional forecasting methods to capture their complex nonlinear characteristics. In recent years, artificial intelligence techniques, especially neural network models, have been widely used in the field of financial forecasting, and BP neural networks have been widely utilized in predicting stock market prices due to their excellent nonlinear mapping function. However, the network model often faces the dilemma of falling into the local optimal solution, coupled with the slow training speed, all these factors limit its further improvement in prediction accuracy. In order to improve the prediction effect of BP neural network, GWO-BP neural network model based on Gray Wolf Optimization algorithm is used to predict the stock price of China Merchants Bank. By combining GWO algorithm with BP neural network, GWO-BP model can optimize the initial weights and bias of the BP neural network globally to avoid falling into the local optimum, and to increase the convergence speed of the model and prediction accuracy. Exploring the future trend of China Merchants Bank\u2019s stock price to predict is conducive to reducing the probability of financial risk in the banking system. This paper takes the daily stock price data of China Merchants Bank from January 4, 2022 to August 31, 2024 as the research object, and researches the future trend of China Merchants Bank\u2019s stock price based on the GWO-BP neural network model. The article explains in detail how to integrate the Gray Wolf optimization algorithm into the BP neural network to optimize its weights, so as to enhance its learning speed and prediction accur",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5dbe5b1be7662010",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "662b35d58f66eb7c",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/319cd43ebb1c6d55800709552149f4194ebd2163",
@@ -18243,6 +18965,166 @@
       "lineage": {
         "source": "49907d2f67f821ee",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bfecab9b13000c63",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/8fb8cc293a768eb9003130706b785221f84d6a4d",
+      "title": "Community perceptions of the health equity navigators program: a cross-sectional study in rural and medically underserved areas of Georgia, USA",
+      "description": "Health navigation programs are increasingly gaining attention as a promising strategy to promote healthcare access and reduce disparities, particularly in underserved and rural communities. This study explores community perceptions of the Health Equity Navigators Program, identifies socio-demographic factors associated with perceived helpfulness in improving healthcare access and navigation, and highlights practical implications for tailoring and implementing similar programs in underserved settings. A cross-sectional survey was conducted among 269 adults residing in rural and urban medically underserved areas. Participants completed items assessing demographic characteristics, healthcare access, and perceived benefits of the \"Health Equity Navigators\" Program using a Likert scale. Descriptive statistics were used to summarize perceptions, and ordinal logistic regression models were applied to examine demographic predictors of agreement with the program's ability to improve healthcare-seeking efficiency. The Majority of participants (69.1%) live in rural areas, with females (79.6%) and Black/African Americans (59.6%) being the most prevalent groups. Most participants agreed or strongly agreed that the program improved their knowledge (Mean\u2009=\u20094.0, SD\u2009=\u20090.8), awareness (Mean\u2009=\u20094.1, SD\u2009=\u20090.9), and ability to navigate healthcare services (Mean\u2009=\u20094.0, SD\u2009=\u20090.8). Perceptions were significantly more favorable when neutral responses were excluded (p\u2009<\u20090.0001). In adjusted models, males (OR\u2009=\u20092.07, 95% CI: 1.08\u20133.96) and unemployed individuals (OR\u2009=\u20092.00, 95% CI: 1.06\u20133.75) were significantly more likely to report high agreement, while African American/Black participants had lower odds of strong agreement compared to Non-Hispanic White participants (OR\u2009=\u20090.56, 95% CI: 0.34\u20130.92). The Health Equity Navigators Program was positively perceived by community members in rural and underserved areas. Key insights suggest that tailoring outreach by gender and employment status, ensur",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "bfecab9b13000c63",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9bbf0f1c369474a7",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/41fe176a9af37ffc8ffd32413447afc90748407e",
+      "title": "Cross-Market Alpha: Testing Short-Term Trading Factors in the U.S. Market via Double-Selection LASSO",
+      "description": "While traditional equity factor investing relies heavily on slow-moving fundamental accounting metrics, these models frequently suffer from factor crowding and miss real-time, sentiment-driven market dislocations. This study explores how institutional investors can leverage a high-dimensional library of 191 short-term, trading-based signals, originally developed for the retail-heavy Chinese A-share market, to enhance alpha generation within the highly institutionalized U.S. S&P 500 universe from 2002 to 2022. Utilizing a robust double-selection LASSO framework to control for 151 established fundamental factors, we isolate 17 distinct price-volume and microstructural signals that capture significant, non-redundant risk premiums. Our empirical evidence demonstrates that these fast trading signals capture universal behavioral dynamics that do not dilute over a monthly rebalancing horizon. Integrating these short-term behavioral footprints with slow fundamental data offers a powerful dual-horizon framework to mitigate model misspecification risk and enhance large-cap portfolio diversification.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "9bbf0f1c369474a7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8bfae25b5603bf74",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c86a9ac750dd3086e92f56779064338cadbe1f61",
+      "title": "Cross-Sectional Equity Correlations and the Value of Active Management",
+      "description": "This article examines the cross-sectional correlations among equities and relates them to the performance of actively managed mutual funds. When the average correlation between equities\u2019 returns is higher, there is less opportunity for active management to outperform. Consistent with this, the authors find that actively managed mutual funds generate lower abnormal returns when the average cross-sectional correlation is high. This result holds for both small and large funds, within various subperiods, and when controlling for fund fixed effects. The authors\u2019 results have implications for investor portfolio allocation during periods such as the 2020 COVID-19 panic. TOPICS: Factors, risk premia, factor-based models, mutual funds/passive investing/indexing, mutual fund performance Key Findings \u2022 The average correlation between the returns of each individual stock and the market varies over time and influences the opportunities for active management. \u2022 We find evidence of stronger average equity mutual fund performance when the average correlation across publicly traded equities is low. \u2022 The impact of return correlation on fund performance is greatest among funds with low total net assets, which are less impacted by liquidity effects.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "8bfae25b5603bf74",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "78a11b136309160b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fa9afa49c2493c258bb91a13b6c0d62f318729ab",
+      "title": "Factor Investing in Credit",
+      "description": "This article investigates the application of factor investing in corporate bonds. The authors analyze five different long-only factor investment strategies (Value, Equity Momentum, Carry, Quality, Size) within the USD investment grade and high yield market. These factors can explain a significant part of the cross-sectional variation in corporate bond excess returns. Combinations of the single factors turn out to be superior in risk-adjusted terms. Because the correlations between the single factors are low, a combined multi-factor signal benefits from diversification among the factors. A signal blending strategy is particularly suitable for active approaches targeting high alpha. This strategy leads to alphas up to 1.27% within investment grade and 5.90% within high yield. In contrast, a portfolio blending strategy is better aligned with more passive approaches, targeting low turnover and low tracking error. TOPICS: Factor-based models, style investing, performance measurement Key Findings \u2022 The authors find a strong positive relationship between Value, Equity Momentum, Size, Carry, and Quality and future returns for USD denominated corporate bonds. \u2022 Due to the attractive correlation structure of the single factors, a multifactor strategy enhances the risk return profile even further. \u2022 The authors\u2019 multifactor strategy leads to alphas up to 1.27% (5.90%) in IG (HY) even after transactions costs are taken into account.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "78a11b136309160b",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "54174f2486134b85",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d0a95844d76868c62fa4231c910d072302661fd0",
+      "title": "Figure 1 : Cross-Sectional Alpha : Unconditional Model Figure 2 : Cross-Sectional Alpha : Conditional-Beta Model Figure 3 : Cross-Sectional Alpha : Conditional Alpha-Beta Model",
+      "description": "",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "54174f2486134b85",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e76606538ea79bd7",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d2ee6c2eaf96ff229958f6c99c6b4fcf465099f7",
+      "title": "Hubble: An LLM-Driven Agentic Framework for Safe, Diverse, and Reproducible Alpha Factor Discovery",
+      "description": "Automated alpha discovery is difficult because the search space of formulaic factors is combinatorial, the signal-to-noise ratio in daily equity data is low, and unconstrained program generation is operationally unsafe. We present Hubble, an agentic factor mining framework that combines large language models (LLMs) with a domain-specific operator language, an abstract syntax tree (AST) execution sandbox, a dual-channel retrieval-augmented generation (RAG) module, and a family-aware selection mechanism. Instead of treating the LLM as an unconstrained code generator, Hubble restricts generation to interpretable operator trees, evaluates every candidate through a deterministic cross-sectional pipeline, and feeds back both top formulas and structured family-level diagnostics to subsequent rounds. The current system additionally introduces positive/negative RAG, formula-similarity penalties, standardized multi-metric scoring, dual reporting of RankIC and Pearson IC, and persistent diagnostics artifacts for post-hoc research analysis. On a U.S. equity universe of roughly 500 stocks, our main run evaluates 104 valid candidates across three rounds with zero runtime crashes and discovers a top set dominated by range, volatility, and trend families rather than crowded volume-only motifs. We then fix the resulting top-5 factors and validate them on a held-out period from 2025-06-01 to 2026-03-13. In this out-of-sample window, the two range factors and two volatility factors remain positive and several achieve HAC-significant Pearson IC and long-short evidence, whereas the weakest in-sample trend factor decays materially. These results suggest that safe LLM-guided search can be upgraded from a syntax-compliant generator into a reproducible alpha-research workflow that jointly optimizes validity, diversity, interpretability, and family-level generalization.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e76606538ea79bd7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cded4cae4deee833",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/2953584d7b70b5200b43cfd3fe592bec45587b66",
+      "title": "Inflammatory and Neurodegenerative Biomarkers in Bipolar I Disorder: A Cross-Sectional Study",
+      "description": "Objective: Bipolar disorder (BD) is increasingly recognized as a systemic illness involving chronic inflammation, glial dysfunction, and neuronal dysregulation in addition to mood instability. Recent studieshave suggested that biomarkers such as interleukin-6 (IL-6), tumor necrosis factor-alpha (TNF-\u03b1), interleukin-1 receptor antagonist (IL-1RA), S100B, and neuron-specific enolase (NSE) may reflect underlying pathophysiological processes in BD. However, findings remain inconsistent, particularly across mood states. Thisstudy aimed to investigate serum levels of IL-6, TNF-\u03b1, IL-1RA, S100B, and NSE in patients with bipolar Idisorder (BD-I) across euthymic, manic, and depressive phases, and to compare them with healthy controls. Additionally, correlations between biomarker levels and clinical symptom severity were examined.Methods: Serum levels were measured in 77 patients with BD-I (50 euthymic, 20 manic, and 7 depressed)and 50 healthy controls. Correlations were assessed between these levels and the Young Mania RatingScale (YMRS), the Montgomery\u2013\u00c5sberg Depression Rating Scale, the Clinical Global Impressions-SeverityScale (CGI-S), and the Positive and Negative Syndrome Scale (PANSS)\u2013positive symptoms subscale, as wellas other clinical variables.Results: Indicating a trait-like inflammatory profile, IL-6 levels were considerably higher in the BD groupand had a positive correlation with YMRS, PANSS, and CGI scores. Conversely, levels of IL-1RA, TNF-\u03b1, S100B,and NSE were markedly decreased in patients. NSE levels exhibited an inverse connection with clinicalseverity, potentially signifying neuroprogressive alterations.Conclusion: The findings support the role of IL-6 as a state-independent inflammatory marker in BD, whilereductions in NSE may reflect chronic neurobiological dysregulation. These findings may have implications for biomarker-guided monitoring or treatment stratification in BD. Further research is warranted todetermine whether these biomarkers can serve as ",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cded4cae4deee833",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f0d9933e63e70152",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0c19cda936092723076791560e61a90286ab9534",
+      "title": "Market Investment Strategy: Cross-Sectional Momentum with Dynamic Filtering",
+      "description": "Momentum investing, while historically profitable, is prone to severe crashes during market reversals. This paper addresses the challenge of improving a momentum strategys riskreturn profile by incorporating fundamental filters and dynamic weighting through machine learning, a question of great importance in quantitative finance given momentums popularity and risks. This paper compared three momentum-based equity strategies on S&P 500 stocks from 20102024: (1) a baseline cross-sectional price momentum strategy with no filters, (2) a momentum strategy with a static Return-on-Equity (ROE) profitability filter, and (3) a dynamic multi-factor momentum strategy using a LightGBM machine learning model for adaptive signal weighting. The baseline momentum approach delivers strong average returns but suffers large drawdowns during recessions (momentum crashes). Adding a static ROE filter improves downside risk by avoiding low-quality stocks, at the cost of significantly lower returns and Sharpe ratio. In contrast, the dynamic ML-based strategy achieves the highest risk-adjusted performance: it maintains high momentum-driven returns while substantially reducing drawdowns by emphasizing high-quality fundamentals during downturns. Notably, the dynamic strategys Sharpe ratio is about 30% higher than the baselines, and its maximum drawdown is less than half, indicating much greater robustness in the 2020 COVID-19 crash. These findings demonstrate that blending momentum signals with fundamental indicators via machine learning can significantly enhance Sharpe ratios and reduce crash risk. The studys results suggest a viable approach for building more resilient momentum portfolios and advancing the integration of machine learning into factor investing strategies.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "f0d9933e63e70152",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0fd1a6b34bcfd39d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/28c8f2f8c8679fbfc132522a73f046d3d246a2e6",
+      "title": "Theory-Based Antecedents of Stopping Texting While Driving Among College Students for Injury Prevention: A Cross-Sectional Study",
+      "description": "Highlights Public health relevance\u2014How does this work relate to a public health issue? Texting while driving is a major preventable cause of road traffic injuries and deaths; in the U.S. alone, distracted driving killed 3142 people in 2022, making it a leading behavioral risk factor comparable to alcohol-impaired driving in younger age groups. It meets classic public health criteria for priority action: high burden of disease (morbidity and mortality), clear preventability through behavior change and policy, and large equity implications, as young drivers (15\u201329 years), a vulnerable population, are disproportionately affected. Public health significance\u2014Why is this work of significance to public health? Successful interventions could prevent thousands of deaths and hundreds of thousands of injuries annually worldwide; the WHO estimates that eliminating phone use while driving could reduce road traffic deaths by up to 10\u201315% in high-income countries. It represents a high-impact opportunity for primary prevention using multi-level approaches (education, enforcement, engineering, and environmental design), serving as a model for addressing other modern behavioral risks (e.g., social media addiction, sedentary behavior). Public health implications\u2014What are the key implications or messages for practitioners, policy makers and/or researchers in public health? Policy makers should prioritize comprehensive legislation (hands-free laws, graduated licensing restrictions for novices, and primary enforcement) combined with high-visibility enforcement campaigns; evidence shows states with strong texting bans and enforcement see 8\u201316% reductions in crashes. Practitioners and researchers should shift from awareness-only education (low effectiveness) toward evidence-based strategies: parental management apps and monitoring for teens, workplace fleet policies, integration of phone-blocking technology in vehicles, and rigorous evaluation of emerging driver-monitoring systems using pu",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "0fd1a6b34bcfd39d",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "133543eab61c725e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/467524c2d9fa46b9eabea3e8b4cbb8abccf09079",
+      "title": "Understanding Cross-Sectional Variability in Equity Returns Using a Conditional Asset Pricing Model",
+      "description": "A common practice in the literature examining Turkish equity premia involves the application of time-invariant models that assume the constancy of parameters across time. The present study examines whether the cross-sectional variability among equity returns can be explained by market, size, value and momentum factors and whether the parameters are time varying, utilizing a conditional asset pricing model formulated by Ferson and Harvey (1999). The study yields four main findings. Firstly, I find that the market dividend yield has a positive and significant effect on portfolio returns over the period from July 1989 to May 2021. Secondly, I reject the time-invariance in betas, while not rejecting it for alpha. Thirdly, none of the factors I examined have been priced, indicating that the four-asset pricing model is not sufficient to explain time-varying premia. Finally, the results are sensitive to the methodology employed for portfolio construction.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "133543eab61c725e",
+        "family": "cross_sectional",
         "rounds": []
       }
     },
