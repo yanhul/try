@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict provider router: deterministic discovery population narrows; Gemini translates one selected survivor."""
 from __future__ import annotations
-import json, math, os, sys, time, urllib.error, urllib.request
+import json, math, os, random, sys, time, urllib.error, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -31,24 +31,78 @@ def config(name):
  if n in defaults: base,model,keyvar=defaults[n]
  else: base=os.getenv(f"RESEARCH_PROVIDER_{n}_BASE_URL",""); model=os.getenv(f"RESEARCH_PROVIDER_{n}_MODEL",""); keyvar=f"RESEARCH_PROVIDER_{n}_API_KEY"
  return base.rstrip("/"),model,os.getenv(keyvar,"")
+
+_PROVIDER_LAST_CALL=0.0
+
+def _min_interval():
+ try: return max(0.0,float(os.getenv("RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS","3")))
+ except ValueError: return 3.0
+
+def _sleep_for_rate_limit(seconds):
+ delay=max(0.0,float(seconds))
+ if delay: time.sleep(min(delay,float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120"))))
+
+def _retry_after(exc,attempt):
+ headers=exc.headers or {}
+ value=headers.get("Retry-After") or headers.get("retry-after")
+ if value:
+  try: return max(1.0,float(value))
+  except ValueError: pass
+ # Some OpenAI-compatible gateways expose a reset epoch instead of Retry-After.
+ for key in ("X-RateLimit-Reset","x-ratelimit-reset","X-RateLimit-Reset-Requests","x-ratelimit-reset-requests"):
+  value=headers.get(key)
+  if value:
+   try:
+    reset=float(value)
+    if reset > time.time(): return max(1.0,reset-time.time())
+   except ValueError: pass
+ # Last resort: bounded exponential backoff with small jitter.
+ return min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0 ** attempt + random.uniform(0,1))
+
+def _rate_error_detail(exc):
+ try:
+  raw=exc.read().decode("utf-8","replace")
+  try:
+   payload=json.loads(raw)
+   text=json.dumps(payload,sort_keys=True)
+  except Exception: text=raw
+  return text[:1000]
+ except Exception: return ""
+
 def call(name,prompt):
+ global _PROVIDER_LAST_CALL
  base,model,key=config(name)
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1400,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- last=None
- for attempt in range(3):
+ # Rate-limit protection is deliberately outside the agent's policy: it only slows calls.
+ interval=_min_interval()
+ gap=interval-(time.monotonic()-_PROVIDER_LAST_CALL)
+ if gap>0: time.sleep(gap)
+ _PROVIDER_LAST_CALL=time.monotonic()
+ max_rate_retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
+ for attempt in range(max_rate_retries+1):
   try:
    with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
   except urllib.error.HTTPError as exc:
-   last=exc
-   if exc.code not in {429,500,502,503,504} or attempt == 2: raise
-   retry_after=exc.headers.get("Retry-After") if exc.headers else None
-   try: delay=max(1,int(float(retry_after))) if retry_after else 2 ** attempt
-   except ValueError: delay=2 ** attempt
-   time.sleep(min(delay,15))
- if last: raise last
+   if exc.code in {429,500,502,503,504}:
+    detail=_rate_error_detail(exc)
+    if exc.code==429 and attempt < max_rate_retries:
+     delay=_retry_after(exc,attempt)
+     print(f"PROVIDER_RATE_LIMIT name={name} attempt={attempt+1}/{max_rate_retries+1} backoff={delay:.1f}s detail={detail}",flush=True)
+     _sleep_for_rate_limit(delay)
+     _PROVIDER_LAST_CALL=time.monotonic()
+     continue
+    if exc.code==429:
+     raise RuntimeError(f"provider_rate_limited:{name}:retry_exhausted:{detail}") from exc
+    if attempt < max_rate_retries:
+     delay=_retry_after(exc,attempt)
+     _sleep_for_rate_limit(delay)
+     _PROVIDER_LAST_CALL=time.monotonic()
+     continue
+   raise
  raise RuntimeError(f"provider_request_failed:{name}")
+
 def normalize_structural_types(candidate):
  spec=candidate.get("discovery_spec")
  if not isinstance(spec,dict): return
@@ -90,31 +144,15 @@ def request_candidate(name,prompt,forbidden_fingerprints):
     ok,reason=validate_candidate(candidate,bc,parent)
     if ok:return candidate
   last_reason=reason
-  if reason=="duplicate_discovery_fingerprint":
-   feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n"
+  if reason=="duplicate_discovery_fingerprint": feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n"
   elif reason=="invalid_discovery_threshold":
-   bad_spec=candidate.get("discovery_spec")
-   feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. "
-             "The exact rejected discovery_spec was: "+json.dumps(bad_spec,sort_keys=True)+". "
-             "Replace discovery_spec.threshold with a plain finite JSON NUMBER, preferably exactly 0. "
-             "Do not emit a string, range, percentage, expression, null, object, or array. "
-             "Also ensure direction is exactly 'above' or 'below'. If the source does not determine a threshold, use 0.\n")
+   bad_spec=candidate.get("discovery_spec"); feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. The exact rejected discovery_spec was: "+json.dumps(bad_spec,sort_keys=True)+". Replace discovery_spec.threshold with a plain finite JSON NUMBER, preferably exactly 0. Do not emit a string, range, percentage, expression, null, object, or array. Also ensure direction is exactly 'above' or 'below'. If the source does not determine a threshold, use 0.\n")
   elif reason=="invalid_discovery_right_column":
-   bad_spec=candidate.get("discovery_spec")
-   bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None
-   feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. "
-             "The rejected discovery_spec.right was "+json.dumps(bad_right)+". "
-             "For difference/ratio, right MUST be exactly one of these schema columns: "+json.dumps(COLUMNS)+". "
-             "Do not use aliases or natural-language names. Regenerate the same selected-survivor lineage with a schema-valid right column, or choose a non-binary operator only if that is the faithful executable translation of the selected survivor. "
-             "Do not invent evidence or change policy.\n")
-  else:
-   feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
+   bad_spec=candidate.get("discovery_spec"); bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None; feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. The rejected discovery_spec.right was "+json.dumps(bad_right)+". For difference/ratio, right MUST be exactly one of these schema columns: "+json.dumps(COLUMNS)+". Do not use aliases or natural-language names. Regenerate the same selected-survivor lineage with a schema-valid right column, or choose a non-binary operator only if that is the faithful executable translation of the selected survivor. Do not invent evidence or change policy.\n")
+  else: feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 def calibration_feedback(issues):
- return ("\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise and try again. "
- "Do NOT bypass, reinterpret, or weaken calibration. Evidence sources are provenance, not proof; rationale claims must be directly grounded in the supplied failure analysis. "
- "Hypothesis parameters are proposals to test, not factual claims. Keep the same selected screen-survivor lineage, one conceptual change, executable discovery_spec, and no OOS tuning. "
- f"Verifier diagnostics: {json.dumps(issues,sort_keys=True)}\n")
+ return ("\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise and try again. Do NOT bypass, reinterpret, or weaken calibration. Evidence sources are provenance, not proof; rationale claims must be directly grounded in the supplied failure analysis. Hypothesis parameters are proposals to test, not factual claims. Keep the same selected screen-survivor lineage, one conceptual change, executable discovery_spec, and no OOS tuning. " f"Verifier diagnostics: {json.dumps(issues,sort_keys=True)}\n")
 def main():
  global bc,parent
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
