@@ -35,9 +35,6 @@ except Exception as exc:
     raise SystemExit(f"BLOCKED: cannot load governing evaluation modules: {exc}")
 
 hid = data["hypothesis_id"]
-# The evaluator has a first-class deterministic execution path for compiled
-# discovery primitives. Do not reject those candidates merely because they are
-# not entries in the legacy static hypothesis registry.
 if hid not in HYPOTHESES and hid != "discovered_primitive":
     failure_path.parent.mkdir(parents=True, exist_ok=True)
     failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"UNEXECUTABLE_HYPOTHESIS_ID","hypothesis_id":hid,"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"oos_selection_used":False,"action":"candidate requires explicit engine implementation before evaluation"}, indent=2) + "\n", encoding="utf-8")
@@ -68,10 +65,19 @@ if result.get("oos_selection_used") is True:
     raise SystemExit(f"BLOCKED: BC{bc} validation selected using OOS")
 if result.get("evaluation_spec") != EVALUATION_SPEC:
     raise SystemExit(f"BLOCKED: BC{bc} evaluation spec mismatch")
+if result.get("validation_passed") is True and EVALUATION_SPEC.get("cost_model_status") != "AVAILABLE":
+    failure_path.parent.mkdir(parents=True, exist_ok=True)
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"COST_MODEL_REQUIRED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":result.get("VALIDATION",{}),"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"do not promote until an authoritative cost model is available"}, indent=2) + "\n", encoding="utf-8")
+    print(f"BC{bc}_REJECT_COST_MODEL_REQUIRED")
+    print("SPLIT_GATE False")
+    print("REJECT_BC")
+    raise SystemExit(0)
 if result.get("validation_passed") is True:
     print(f"BC{bc}_VALIDATION_PASS", result.get("VALIDATION", {}).get("metrics", {}))
     print("PROMOTE_TO_FUTURE_OOS_TEST")
 else:
+    failure_path.parent.mkdir(parents=True, exist_ok=True)
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"VALIDATION_FAILED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":result.get("VALIDATION",{}),"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"reject candidate and require a distinct next hypothesis"}, indent=2) + "\n", encoding="utf-8")
     print(f"BC{bc}_VALIDATION_FAIL", result.get("VALIDATION", {}).get("metrics", {}))
     print("SPLIT_GATE False")
     print("REJECT_BC")
