@@ -1,0 +1,21 @@
+{
+  "bc": 73,
+  "candidate_hash": "ad59c40f7cc389ada4b7ea44a4990553e5a154d6e455143a29c0d66ff9c72d1d",
+  "conceptual_change": "Test rolling_mean(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "numeric_threshold": 1.0,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/fkchaos/a-share-quant-sim"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 72,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
