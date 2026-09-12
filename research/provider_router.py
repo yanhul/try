@@ -101,7 +101,7 @@ def request_candidate(name,prompt,forbidden_fingerprints):
    if fp is not None and fp in forbidden_fingerprints:
     reason="duplicate_discovery_fingerprint"
    else:
-    candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
+    ok,reason=validate_candidate(candidate,bc,parent)
     if ok:return candidate
   last_reason=reason
   if reason == "duplicate_discovery_fingerprint":
@@ -115,6 +115,15 @@ def request_candidate(name,prompt,forbidden_fingerprints):
   else:
    feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
+
+def calibration_feedback(issues):
+ """Turn strict verifier diagnostics into revision instructions; never weaken the verifier."""
+ return ("\nCALIBRATION_FEEDBACK: the strict evidence calibration verifier rejected the candidate. "
+         "Revise the candidate and try again. Do NOT bypass, reinterpret, or weaken calibration. "
+         "Evidence sources are provenance, not proof; rationale claims must be directly grounded in the supplied failure analysis. "
+         "Hypothesis parameters are proposals to test, not factual claims. Keep the same selected screen-survivor lineage, "
+         "one conceptual change, executable discovery_spec, and no OOS tuning. "
+         f"Verifier diagnostics: {json.dumps(issues,sort_keys=True)}\n")
 
 def main():
  global bc,parent
@@ -135,9 +144,20 @@ def main():
   try:
    candidate=request_candidate(name,prompt,forbidden)
    if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
-   base,model,key=config(name); calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
-   if not calibrated: print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}",flush=True); continue
-   write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']}"); return 0
+   base,model,key=config(name)
+   for calibration_attempt in range(3):
+    calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
+    if calibrated:
+     write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']} calibration_attempt={calibration_attempt+1}"); return 0
+    print(f"PROVIDER_CALIBRATION_FAIL {name} attempt={calibration_attempt+1} issues={json.dumps(issues,sort_keys=True)}",flush=True)
+    if calibration_attempt == 2: break
+    revision_prompt=(prompt + "\n\nPREVIOUS CANDIDATE REJECTED BY STRICT CALIBRATION:\n" + json.dumps(candidate,sort_keys=True) + calibration_feedback(issues))
+    revision_forbidden=set(forbidden)
+    fp=discovery_fingerprint(candidate)
+    if fp is not None: revision_forbidden.add(fp)
+    candidate=request_candidate(name,revision_prompt,revision_forbidden)
+    if candidate.get("status")=="HOLD": break
+  continue
   except Exception as exc: print(f"PROVIDER_FAIL {name}: {exc}")
  print("PROVIDER_ROUTER_HOLD"); return 0
 if __name__=="__main__":raise SystemExit(main())
