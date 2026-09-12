@@ -21,7 +21,10 @@ def _compact(text: str, limit: int | None = None) -> str:
     return text[:head]+f"\n...[evidence compacted: {len(text)-limit} chars omitted]...\n"+text[-tail:]
 
 def verification_prompt(candidate: dict[str, Any], evidence_text: str) -> str:
-    return ("CANDIDATE:\n" + json.dumps(candidate,sort_keys=True,ensure_ascii=False,indent=2) +
+    # Compact JSON keeps the exact scalar/list representation required by the
+    # contract test while also reducing verifier prompt tokens versus indent=2.
+    candidate_json = json.dumps(candidate,sort_keys=True,ensure_ascii=False)
+    return ("CANDIDATE:\n" + candidate_json +
             "\n\nSUPPLIED EVIDENCE ARTIFACT:\n" + _compact(evidence_text) +
             "\n\nVerify factual claims against only this artifact. Treat the proposed experiment as a proposal, not an asserted result.")
 
