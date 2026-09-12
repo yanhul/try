@@ -1,6 +1,7 @@
 {
-  "schema_version": 2,
-  "architecture": "source_population -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+  "schema_version": 3,
+  "architecture": "durable_source_archive -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+  "source_store": "archive",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
     "raw": 78,
