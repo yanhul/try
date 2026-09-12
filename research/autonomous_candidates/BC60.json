@@ -1,0 +1,21 @@
+{
+  "bc": 60,
+  "candidate_hash": "cc535812b2d27ce1e5cfdd0fac4275325622d0c6ab197548bc419d0c174967cc",
+  "conceptual_change": "Introduce a liquidity-flow normalization step by measuring the short-term volume-to-range ratio, acting as a proxy for localized price responsiveness within the order-book depth environment.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 0.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/vcorp-dev/depthfeed-strategy-builder"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 59,
+  "rationale": "By calculating the ratio of volume to range, we can identify price segments where liquidity is being absorbed effectively. Normalizing this activity via a windowed operator helps isolate periods of high-impact movement against typical volatility, consistent with order-book depth analysis."
+}

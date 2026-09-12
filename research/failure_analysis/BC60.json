@@ -1,0 +1,31 @@
+{
+  "bc": 60,
+  "parent_bc": 59,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "cc535812b2d27ce1e5cfdd0fac4275325622d0c6ab197548bc419d0c174967cc",
+  "conceptual_change": "Introduce a liquidity-flow normalization step by measuring the short-term volume-to-range ratio, acting as a proxy for localized price responsiveness within the order-book depth environment.",
+  "evidence_sources": [
+    "https://github.com/vcorp-dev/depthfeed-strategy-builder"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 11,
+    "skipped_overlap_trades": 2,
+    "metrics": {
+      "trade_count": 9,
+      "win_count": 3,
+      "loss_count": 6,
+      "win_rate": 0.3333333333333333,
+      "total_return": -0.0008937336144638763,
+      "avg_return": -3.5465457731081387e-17,
+      "profit_factor": 0.9999999999999947,
+      "max_drawdown": 0.049009950100000275
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

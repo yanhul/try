@@ -1,0 +1,31 @@
+{
+  "bc": 57,
+  "parent_bc": 56,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "d398087b92dda407387b51fd1d1efd5e9892a859e2ec8e8486d51c345b29655b",
+  "conceptual_change": "Introduce a trend-following confirmation using the zscore of price relative to the 50-period rolling mean to validate structural trend direction before entry.",
+  "evidence_sources": [
+    "https://github.com/kunnaaalll/ApeXQuanT-ShowCase"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 6,
+    "skipped_overlap_trades": 1,
+    "metrics": {
+      "trade_count": 5,
+      "win_count": 2,
+      "loss_count": 3,
+      "win_rate": 0.4,
+      "total_return": 0.009499079600000071,
+      "avg_return": 0.002000000000000004,
+      "profit_factor": 1.3333333333333344,
+      "max_drawdown": 0.02970100000000006
+    }
+  },
+  "gross_validation_passed": true,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

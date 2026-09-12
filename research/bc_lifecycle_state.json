@@ -1,8 +1,8 @@
 {
   "campaign_budget": 100,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-001",
-  "checkpoint_seq": 220,
-  "current_bc": 57,
+  "checkpoint_seq": 253,
+  "current_bc": 62,
   "history": [
     {
       "bc": 1,
@@ -369,17 +369,47 @@
       "decision": "REJECT",
       "hypothesis_id": "discovered_primitive",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 57,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 58,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 59,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 60,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 61,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 31,
-  "last_bc": 56,
+  "iterations": 36,
+  "last_bc": 61,
   "last_error": "HOLD_PROVIDER_ROUTER",
-  "next_bc": 57,
+  "next_bc": 62,
   "oos_consumed": [],
   "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-12T09:24:55.775892+00:00"
+  "updated_at": "2026-09-12T10:07:18.331787+00:00"
 }

@@ -1,0 +1,20 @@
+{
+  "bc": 57,
+  "candidate_hash": "d398087b92dda407387b51fd1d1efd5e9892a859e2ec8e8486d51c345b29655b",
+  "conceptual_change": "Introduce a trend-following confirmation using the zscore of price relative to the 50-period rolling mean to validate structural trend direction before entry.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 0.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/kunnaaalll/ApeXQuanT-ShowCase"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 56,
+  "rationale": "By utilizing the zscore of the close price over a 50-period window, we identify deviations from the long-term mean to confirm the prevailing market momentum, ensuring entries align with the structural trend identified in the ApeXQuanT framework."
+}

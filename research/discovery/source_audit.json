@@ -134,6 +134,19 @@
       ]
     },
     {
+      "id": "china_a_share",
+      "family": "china_a_share",
+      "status": "UNAVAILABLE",
+      "evidence": "required artifacts not present in local data directory",
+      "required_artifacts": [
+        "A-share point-in-time prices",
+        "corporate/factor data where used",
+        "market calendar",
+        "venue rules",
+        "transaction costs"
+      ]
+    },
+    {
       "id": "research_mining",
       "family": "public_research",
       "status": "AVAILABLE",

@@ -1,0 +1,20 @@
+{
+  "bc": 61,
+  "candidate_hash": "7577b47fdedfa928e5c0955808525a43633b883f1d8d89d392e6a8b11fd05dfc",
+  "conceptual_change": "Incorporate a normalized volatility filter by identifying instances where the current 20-period rolling standard deviation of the close price exceeds a baseline threshold relative to price, capturing potential breakout momentum.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/oureffort/Rks-coin_exchange"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 60,
+  "rationale": "Volatility breakouts require a threshold to confirm that the expansion in price movement is significant relative to recent history. Using a rolling standard deviation metric helps isolate periods where price activity escapes previous consolidation zones, fulfilling the volatility breakout premise of the selected survivor."
+}
