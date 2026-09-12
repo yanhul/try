@@ -1,0 +1,21 @@
+{
+  "bc": 86,
+  "candidate_hash": "2d419414eded2ee18b0945d9dfd6ce967065af311a5b71dd43d9226cd575a31b",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "numeric_finite_threshold": 0.3,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/joonhsong/AutoTradeCrypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 85,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

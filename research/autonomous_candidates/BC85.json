@@ -1,0 +1,21 @@
+{
+  "bc": 85,
+  "candidate_hash": "67ad9b2a0a791bcfb9c0c22de507604e01b308d97b54f7214d32714c2e79cc8d",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "numeric": 0.2,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/kunnaaalll/ApeXQuanT-ShowCase"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 84,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

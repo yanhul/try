@@ -1,0 +1,31 @@
+{
+  "bc": 88,
+  "parent_bc": 87,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "23434468a68608120432df4afbfe7a86232280b18905768c55972297d69bd26a",
+  "conceptual_change": "Test rolling_mean(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "evidence_sources": [
+    "https://github.com/NIU1751879/Trading_Strategies"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 7,
+    "skipped_overlap_trades": 1,
+    "metrics": {
+      "trade_count": 6,
+      "win_count": 1,
+      "loss_count": 5,
+      "win_rate": 0.16666666666666666,
+      "total_return": -0.029990149102000263,
+      "avg_return": -0.005000000000000025,
+      "profit_factor": 0.3999999999999987,
+      "max_drawdown": 0.049009950100000275
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

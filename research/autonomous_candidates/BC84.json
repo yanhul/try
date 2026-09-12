@@ -1,0 +1,20 @@
+{
+  "bc": 84,
+  "candidate_hash": "22c51e51d9bcd265b737f1ce5eba491bf1206d08f7047722c098cd79ff3a37e8",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/Manashwy/Crypto_Arbitrage"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 83,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

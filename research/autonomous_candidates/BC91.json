@@ -1,0 +1,20 @@
+{
+  "bc": 91,
+  "candidate_hash": "da6cadb396fee6af62eb56a1b388e44e9bf93657b0cd52816669468d544b2b5b",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.35,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/NekolovePepper/Quant-Strategy-for-Consecutive-Limit-Up-Stocks"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 90,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

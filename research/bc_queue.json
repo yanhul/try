@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "bc": 92,
+    "candidate_hash": "2e3a254d342276ff0128dd5cee11b9c7cb44e92f86f9cee90d9bc362f3f6f2b3",
+    "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "range_ratio",
+      "numeric": 0.25,
+      "operator": "rolling_std",
+      "threshold": 0,
+      "window": 20
+    },
+    "evidence_sources": [
+      "https://github.com/aakash-ramesh/crypto-stat-arb"
+    ],
+    "hypothesis_id": "discovered_primitive",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 91,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]

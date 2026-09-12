@@ -1,0 +1,21 @@
+{
+  "bc": 88,
+  "candidate_hash": "23434468a68608120432df4afbfe7a86232280b18905768c55972297d69bd26a",
+  "conceptual_change": "Test rolling_mean(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "numeric_finite_threshold": 0.1,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/NIU1751879/Trading_Strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 87,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
