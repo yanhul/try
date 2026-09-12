@@ -1,0 +1,20 @@
+{
+  "bc": 70,
+  "candidate_hash": "d944faa6c6d36357ee54f4b33649c46b8541a8521a378cae51b30242d9c1b8db",
+  "conceptual_change": "Introduce a T+1 execution constraint-aware liquidity filter based on volume volatility.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "operator": "rolling_std",
+    "threshold": 1.5,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/codfish-zz/cn-trader"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 69,
+  "rationale": "The candidate survivor focuses on A-share T+1 constraints; this primitive uses the rolling standard deviation of volume to identify regime shifts in trade frequency that may affect T+1 liquidity requirements."
+}

@@ -1,0 +1,31 @@
+{
+  "bc": 70,
+  "parent_bc": 69,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "d944faa6c6d36357ee54f4b33649c46b8541a8521a378cae51b30242d9c1b8db",
+  "conceptual_change": "Introduce a T+1 execution constraint-aware liquidity filter based on volume volatility.",
+  "evidence_sources": [
+    "https://github.com/codfish-zz/cn-trader"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 11,
+    "skipped_overlap_trades": 2,
+    "metrics": {
+      "trade_count": 9,
+      "win_count": 3,
+      "loss_count": 6,
+      "win_rate": 0.3333333333333333,
+      "total_return": -0.0008937336144638763,
+      "avg_return": -3.5465457731081387e-17,
+      "profit_factor": 0.9999999999999947,
+      "max_drawdown": 0.049009950100000275
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

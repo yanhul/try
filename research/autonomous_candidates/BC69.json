@@ -1,0 +1,20 @@
+{
+  "bc": 69,
+  "candidate_hash": "6571eecdf1c9393613e620d154204811cf1ae61f42ec2b6f106843f60abacaa0",
+  "conceptual_change": "Incorporate a rolling standard deviation of vwap_distance to measure institutional mean reversion intensity.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/cn-vhql/FactorHub"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 68,
+  "rationale": "Applying a rolling standard deviation to the vwap_distance captures the stability of the price distribution around the volume-weighted average, which serves as a proxy for the range of institutional execution bands."
+}
