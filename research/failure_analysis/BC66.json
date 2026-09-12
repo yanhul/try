@@ -1,13 +1,13 @@
 {
-  "bc": 65,
-  "parent_bc": 64,
+  "bc": 66,
+  "parent_bc": 65,
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "815a6575b20d585fcd45ae27060cc012c87b30b6891f2c70e3e940f38802286d",
-  "conceptual_change": "Evaluate price momentum persistence following a high-volatility event by checking the 3-period rolling mean of the range ratio against the 10-period rolling mean of the range ratio.",
+  "candidate_hash": "2ed96eae70af0239951114ab2c8d09a3c08a7102cf4ce3e5d9186a2bbd9cfe1a",
+  "conceptual_change": "Introduce a regime-neutralizing filter for cointegration-based mean reversion by comparing the current 3-period rolling mean of vwap_distance against the 20-period rolling mean, effectively measuring local deviation from the price-weighted mean.",
   "evidence_sources": [
-    "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern"
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
   ],
   "validation_summary": {
     "candidate_trades": 11,

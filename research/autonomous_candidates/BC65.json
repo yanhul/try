@@ -1,13 +1,13 @@
 {
   "bc": 65,
-  "candidate_hash": "774610c7b96d92f2ea35b8363daa9653ca7dece23f52c4b4140830a718869048",
-  "conceptual_change": "Introduce a reversal-confluence filter by checking the distance from VWAP relative to the previous day's close for potential N-shape breakout candidates.",
+  "candidate_hash": "815a6575b20d585fcd45ae27060cc012c87b30b6891f2c70e3e940f38802286d",
+  "conceptual_change": "Evaluate price momentum persistence following a high-volatility event by checking the 3-period rolling mean of the range ratio against the 10-period rolling mean of the range ratio.",
   "discovery_spec": {
     "direction": "above",
-    "left": "vwap_distance",
-    "operator": "difference",
-    "right": "close",
-    "threshold": 0
+    "left": "range_ratio",
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 1.0
   },
   "evidence_sources": [
     "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern"
@@ -16,5 +16,5 @@
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 64,
-  "rationale": "The strategy identifies stocks experiencing limit-up volatility. An N-shape pattern implies a retracement followed by a breakout. Using vwap_distance helps filter for mean-reversion pullbacks prior to the second leg of the breakout, ensuring the price is recovering toward the value area."
+  "rationale": "The strategy attempts to isolate N-shaped recovery patterns in equity markets. We propose testing if current relative range expansion is significantly larger than its recent 10-period context, serving as a proxy for the intensity of the second leg of the pattern."
 }

@@ -3,13 +3,13 @@
   "bc": 67,
   "parent_bc": 66,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "e615cc30b799c49f11dddf0e2cf273ce026fbdff09d6d8aebca0f616b88b6a93",
+  "candidate_hash": "964a8f3658ff42de4480f1d1d5d78eef8f703f8e58151d54c7c20e03e472eed0",
   "discovery_spec": {
     "direction": "above",
-    "left": "volume_ratio",
+    "left": "close_location",
     "operator": "rolling_mean",
-    "threshold": 0,
-    "window": 20
+    "threshold": 0.5,
+    "window": 10
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -27,35 +27,35 @@
   },
   "IS": {
     "candidate_trades": 39,
-    "accepted_signals": 0,
-    "skipped_overlap_trades": 0,
+    "accepted_signals": 21,
+    "skipped_overlap_trades": 3,
     "metrics": {
-      "trade_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate": 0.0,
-      "total_return": 0.0,
-      "avg_return": 0.0,
-      "profit_factor": null,
-      "max_drawdown": 0.0
+      "trade_count": 18,
+      "win_count": 7,
+      "loss_count": 11,
+      "win_rate": 0.3888888888888889,
+      "total_return": 0.02846222036511481,
+      "avg_return": 0.0016666666666666653,
+      "profit_factor": 1.2727272727272723,
+      "max_drawdown": 0.06821240756668621
     }
   },
   "VALIDATION": {
     "candidate_trades": 11,
-    "accepted_signals": 0,
+    "accepted_signals": 7,
     "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate": 0.0,
-      "total_return": 0.0,
-      "avg_return": 0.0,
-      "profit_factor": null,
-      "max_drawdown": 0.0
+      "trade_count": 7,
+      "win_count": 3,
+      "loss_count": 4,
+      "win_rate": 0.42857142857142855,
+      "total_return": 0.019392170580079693,
+      "avg_return": 0.002857142857142826,
+      "profit_factor": 1.4999999999999927,
+      "max_drawdown": 0.03940399000000022
     }
   },
-  "gross_validation_passed": false,
+  "gross_validation_passed": true,
   "net_validation_gate": "COST_MODEL_REQUIRED",
   "validation_passed": false,
   "validation_basis": "NET_REQUIRED_FOR_PROMOTION"

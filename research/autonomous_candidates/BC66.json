@@ -1,0 +1,20 @@
+{
+  "bc": 66,
+  "candidate_hash": "2ed96eae70af0239951114ab2c8d09a3c08a7102cf4ce3e5d9186a2bbd9cfe1a",
+  "conceptual_change": "Introduce a regime-neutralizing filter for cointegration-based mean reversion by comparing the current 3-period rolling mean of vwap_distance against the 20-period rolling mean, effectively measuring local deviation from the price-weighted mean.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "difference",
+    "right": "vwap_distance",
+    "threshold": 0
+  },
+  "evidence_sources": [
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 65,
+  "rationale": "Statistical arbitrage based on cointegration requires a filter to ensure that mean reversion occurs from a point of statistical extremity. Comparing short-term to medium-term vwap_distance provides a local signal of transient displacement that is decoupled from long-term cointegration drift."
+}

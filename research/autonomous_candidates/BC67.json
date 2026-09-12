@@ -1,0 +1,20 @@
+{
+  "bc": 67,
+  "candidate_hash": "964a8f3658ff42de4480f1d1d5d78eef8f703f8e58151d54c7c20e03e472eed0",
+  "conceptual_change": "Incorporate a lag-based volatility regime filter by identifying when the current close_location relative to the recent 3-period range is elevated above its 10-period rolling mean, suggesting bullish momentum exhaustion rather than breakout expansion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "operator": "rolling_mean",
+    "threshold": 0.5,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/whiteblackparang/crypto-vbo-statistical-eval"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 66,
+  "rationale": "The failure analysis suggests prior attempts to use absolute volatility ratios were too noisy. By shifting to a close_location analysis relative to its own trend, we filter for meaningful breakouts that sustain position within the range against a short-term trend expectation."
+}

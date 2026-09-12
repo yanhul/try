@@ -1,0 +1,31 @@
+{
+  "bc": 67,
+  "parent_bc": 66,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "964a8f3658ff42de4480f1d1d5d78eef8f703f8e58151d54c7c20e03e472eed0",
+  "conceptual_change": "Incorporate a lag-based volatility regime filter by identifying when the current close_location relative to the recent 3-period range is elevated above its 10-period rolling mean, suggesting bullish momentum exhaustion rather than breakout expansion.",
+  "evidence_sources": [
+    "https://github.com/whiteblackparang/crypto-vbo-statistical-eval"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 7,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 7,
+      "win_count": 3,
+      "loss_count": 4,
+      "win_rate": 0.42857142857142855,
+      "total_return": 0.019392170580079693,
+      "avg_return": 0.002857142857142826,
+      "profit_factor": 1.4999999999999927,
+      "max_drawdown": 0.03940399000000022
+    }
+  },
+  "gross_validation_passed": true,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
