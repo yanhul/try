@@ -10,6 +10,14 @@ on:
     branches:
       - main
       - 'bc[0-9]*'
+
+# One durable controller at a time. Without this, scheduled/auto-resume/manual
+# invocations can concurrently read/write bc_lifecycle_state and campaign files,
+# causing a newer run to overwrite or reconcile state produced by another run.
+concurrency:
+  group: try-bc-research-controller-main
+  cancel-in-progress: false
+
 permissions:
   contents: write
   actions: write
@@ -88,7 +96,6 @@ jobs:
           for path in "${durable_paths[@]}"; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
-          # Validation result files are optional and must be handled by an explicit glob.
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           for path in "${validation_files[@]}"; do cp -a "$path" "/tmp/try-state/$(basename "$path")"; done
