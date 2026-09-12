@@ -11,6 +11,7 @@ from research.evidence_calibration import verify_with_openai_compatible
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
+ALLOWED_THRESHOLDS=[-0.5,0,0.5,1,1.5]
 SYSTEM=f"""You are an autonomous trading-research translator.
 A deterministic population engine has already screened a public-source universe.
 You MUST translate the single SELECTED SCREEN SURVIVOR supplied by the controller. You are not a survivor selector.
@@ -18,7 +19,8 @@ Do not select by expected performance, stars, OOS, or intuition. Do not replace 
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
 A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
-For threshold, output a plain finite JSON number such as 0, 0.5, 1, 1.5, or -0.5. NEVER output ranges, percentages, expressions, null, strings, or prose as threshold.
+For threshold, output a plain finite JSON number. Prefer one of {ALLOWED_THRESHOLDS}. NEVER output ranges, percentages, expressions, null, objects, arrays, strings, or prose as threshold.
+If the selected survivor does not itself determine a numeric threshold, use threshold 0; threshold is a test parameter, not evidence.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
 Do not invent evidence. Exactly one conceptual change. Return JSON only with keys:
 hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.
@@ -71,7 +73,7 @@ def prior_discovery_fingerprints():
  return fingerprints
 def request_candidate(name,prompt,forbidden_fingerprints):
  feedback=""; last_reason="unknown"
- for _ in range(3):
+ for attempt in range(3):
   raw=call(name,prompt+feedback)
   try: candidate=json.loads(raw)
   except Exception:
@@ -87,9 +89,17 @@ def request_candidate(name,prompt,forbidden_fingerprints):
     ok,reason=validate_candidate(candidate,bc,parent)
     if ok:return candidate
   last_reason=reason
-  if reason=="duplicate_discovery_fingerprint": feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n"
-  elif reason=="invalid_discovery_threshold": feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. discovery_spec.threshold MUST be a finite JSON NUMBER, not a string or range. Valid examples: 0, 0.5, 1, 1.5, -0.5.\n"
-  else: feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
+  if reason=="duplicate_discovery_fingerprint":
+   feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n"
+  elif reason=="invalid_discovery_threshold":
+   bad_spec=candidate.get("discovery_spec")
+   feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. "
+             "The exact rejected discovery_spec was: "+json.dumps(bad_spec,sort_keys=True)+". "
+             "Replace discovery_spec.threshold with a plain finite JSON NUMBER, preferably exactly 0. "
+             "Do not emit a string, range, percentage, expression, null, object, or array. "
+             "Also ensure direction is exactly 'above' or 'below'. If the source does not determine a threshold, use 0.\n")
+  else:
+   feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 def calibration_feedback(issues):
  return ("\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise and try again. "
