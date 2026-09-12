@@ -18,7 +18,8 @@ You MUST translate the single SELECTED SCREEN SURVIVOR supplied by the controlle
 Do not select by expected performance, stars, OOS, or intuition. Do not replace the selected survivor with another source.
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
-A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
+A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right.
+For difference/ratio, right MUST be exactly one of the allowed columns {COLUMNS}. Do not use aliases such as price, return, pct_change, typical_price, or other invented column names. left and right are schema column identifiers, not natural-language labels.
 For threshold, output a plain finite JSON number. Prefer one of {ALLOWED_THRESHOLDS}. NEVER output ranges, percentages, expressions, null, objects, arrays, strings, or prose as threshold.
 If the selected survivor does not itself determine a numeric threshold, use threshold 0; threshold is a test parameter, not evidence.
 Threshold and direction are a proposal to be tested, NOT evidence and NOT proof. Do not use OOS to select or tune.
@@ -98,6 +99,14 @@ def request_candidate(name,prompt,forbidden_fingerprints):
              "Replace discovery_spec.threshold with a plain finite JSON NUMBER, preferably exactly 0. "
              "Do not emit a string, range, percentage, expression, null, object, or array. "
              "Also ensure direction is exactly 'above' or 'below'. If the source does not determine a threshold, use 0.\n")
+  elif reason=="invalid_discovery_right_column":
+   bad_spec=candidate.get("discovery_spec")
+   bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None
+   feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. "
+             "The rejected discovery_spec.right was "+json.dumps(bad_right)+". "
+             "For difference/ratio, right MUST be exactly one of these schema columns: "+json.dumps(COLUMNS)+". "
+             "Do not use aliases or natural-language names. Regenerate the same selected-survivor lineage with a schema-valid right column, or choose a non-binary operator only if that is the faithful executable translation of the selected survivor. "
+             "Do not invent evidence or change policy.\n")
   else:
    feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
