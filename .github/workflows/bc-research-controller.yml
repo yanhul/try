@@ -82,22 +82,25 @@ jobs:
             research/failure_analysis
             research/frozen_candidates
             research/oos
-            research/*_validation_result.json
             research/lineage.jsonl
             research/discovery
           )
           for path in "${durable_paths[@]}"; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
+          # Validation result files are optional and must be handled by an explicit glob.
+          shopt -s nullglob
+          validation_files=(research/bc*_validation_result.json)
+          for path in "${validation_files[@]}"; do cp -a "$path" "/tmp/try-state/$(basename "$path")"; done
           controller_state_changed=false
           status_args=()
-          for path in "${durable_paths[@]}"; do
+          for path in "${durable_paths[@]}" "${validation_files[@]}"; do
             if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then status_args+=("$path"); fi
           done
           if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then controller_state_changed=true; fi
           pushed=false
           for attempt in 1 2 3 4 5; do
-            for path in "${durable_paths[@]}"; do
+            for path in "${durable_paths[@]}" "${validation_files[@]}"; do
               if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi
             done
             if git diff --cached --quiet; then
@@ -117,6 +120,7 @@ jobs:
               esac
             done
             sleep $((attempt * 2))
+            validation_files=(research/bc*_validation_result.json)
           done
           if [ "$pushed" != "true" ]; then echo "Unable to persist state after retries" >&2; exit 1; fi
       - name: Auto-resume non-terminal campaign
