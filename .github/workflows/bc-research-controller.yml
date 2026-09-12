@@ -50,13 +50,58 @@ jobs:
         run: python research/adversarial_conformance.py
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
+      - name: Check strict fast-resume eligibility
+        id: resume_gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state_path = Path('research/bc_lifecycle_state.json')
+          state = json.loads(state_path.read_text()) if state_path.exists() else {}
+          phase = state.get('phase')
+          error = str(state.get('last_error') or '')
+          retry = int(state.get('retry_count', 0))
+          max_retry = 3
+          current_bc = state.get('current_bc')
+          required = [
+              Path('research/bc_queue.json'),
+              Path('research/autonomous_candidates'),
+              Path('research/failure_analysis'),
+              Path('research/discovery'),
+          ]
+          retryable_error = error.startswith(('PROVIDER_FAIL ', 'HOLD_PROVIDER_ROUTER'))
+          eligible = (
+              not state.get('campaign_terminal')
+              and phase == 'WAIT_RETRY'
+              and retryable_error
+              and 0 <= retry < max_retry
+              and isinstance(current_bc, int)
+              and all(p.exists() for p in required)
+          )
+          if eligible:
+              print(f'FAST_RESUME_ELIGIBLE bc={current_bc} retry={retry}/{max_retry} error={error}')
+              print('fast=true')
+              with open('${GITHUB_OUTPUT}', 'a') as out:
+                  out.write('fast=true\n')
+          else:
+              print(f'FAST_RESUME_INELIGIBLE phase={phase} bc={current_bc} retry={retry} error={error}')
+              print('fast=false')
+              with open('${GITHUB_OUTPUT}', 'a') as out:
+                  out.write('fast=false\n')
+          PY
       - name: Broad public-source discovery
+        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
         run: python research/discovery_scout.py
       - name: Ingest every discovered system
+        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
         run: python research/discovery/system_ingestion.py
       - name: Audit executable source lanes
+        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
         run: python research/discovery/source_audit.py
       - name: Compile constrained discovery primitives
+        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
         run: python research/discovery_compiler.py
       - name: Run bounded autonomous research campaign
         id: controller
