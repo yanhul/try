@@ -14,7 +14,7 @@ WINDOWS=[3,5,10,20,50,100]
 SYSTEM=f'''You translate ONLY the SELECTED SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Do not use OOS, expected performance, stars or intuition. Registered hypothesis_ids are allowed; otherwise use hypothesis_id="discovered_primitive". For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Do not invent evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
 _PROVIDER_LAST_CALL=0.0
 def config(name):
- n=name.upper(); d={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
+ n=name.upper();d={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
  if n in d:b,m,k=d[n]
  else:b=os.getenv(f"RESEARCH_PROVIDER_{n}_BASE_URL","");m=os.getenv(f"RESEARCH_PROVIDER_{n}_MODEL","");k=f"RESEARCH_PROVIDER_{n}_API_KEY"
  return b.rstrip("/"),m,os.getenv(k,"")
@@ -33,7 +33,7 @@ def call(name,prompt):
  if gap>0:time.sleep(gap)
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":700,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- _PROVIDER_LAST_CALL=time.monotonic(); retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
+ _PROVIDER_LAST_CALL=time.monotonic();retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
  for attempt in range(retries+1):
   try:
    with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
@@ -96,8 +96,7 @@ def request_candidate(name,prompt,forbidden):
 def ground_candidate(c,selected):
  url=str(selected.get("source_url") or "").strip()
  if not url:raise ValueError("selected_survivor_missing_source_url")
- c.pop("candidate_hash",None)
- s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None
+ c.pop("candidate_hash",None);s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None
  expr=f"{op}({s.get('left')}"+(f",{s.get('right')})" if s.get("right") is not None else ")") if op else str(c.get("hypothesis_id"))
  c["evidence_sources"]=[url];c["conceptual_change"]=f"Test {expr} with the supplied discovery parameters as the executable translation of the selected screen survivor.";c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False
  return c
@@ -108,8 +107,9 @@ def main():
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]);out=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]);bc=int(os.environ["RESEARCH_NEXT_BC"]);parent=int(os.environ["RESEARCH_PARENT_BC"]);queue=ROOT/"research/discovery/research_queue.json"
  if not queue.exists():print("PROVIDER_ROUTER_HOLD missing_screen_queue");return 0
  try:
-  q=json.loads(queue.read_text(encoding="utf-8"));survivors=q.get("candidates",[]) if isinstance(q,dict) else q
-  if not isinstance(survivors,list) or not survivors:print("PROVIDER_ROUTER_HOLD empty_screen_queue");return 0
+  q=json.loads(queue.read_text(encoding="utf-8"));raw_survivors=q.get("candidates",[]) if isinstance(q,dict) else q
+  survivors=[s for s in raw_survivors if isinstance(s,dict) and str(s.get("source_url") or "").strip()]
+  if not survivors:print("PROVIDER_ROUTER_HOLD no_screen_survivor_with_provenance");return 0
   selected=survivors[(parent-1)%len(survivors)]
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
