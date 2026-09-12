@@ -1,0 +1,20 @@
+{
+  "bc": 67,
+  "candidate_hash": "e615cc30b799c49f11dddf0e2cf273ce026fbdff09d6d8aebca0f616b88b6a93",
+  "conceptual_change": "Incorporate a momentum filter using the rolling mean of the volume ratio to validate volatility breakouts, ensuring entries occur when volume expansion supports the price range breakout.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/whiteblackparang/crypto-vbo-statistical-eval"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 66,
+  "rationale": "By monitoring the rolling mean of volume_ratio, we aim to confirm that a volatility-based range expansion is accompanied by increased participation, distinguishing genuine breakout moves from low-volume noise."
+}

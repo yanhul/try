@@ -1,0 +1,20 @@
+{
+  "bc": 65,
+  "candidate_hash": "64134df74d977036eeec765ab19b565b5e7c672a345c0f2a647f6a240526f9bf",
+  "conceptual_change": "Introduce a trend-continuation filter based on the price divergence from the short-term volume-weighted average price (VWAP) to capture the second leg of the N-shaped breakout pattern.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "zscore",
+    "threshold": 0,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 64,
+  "rationale": "The N-shaped reversal pattern suggests that following an initial limit-up, the subsequent pullback maintains a structural trend higher. Filtering for a specific distance from the VWAP helps confirm that the price remains in a controlled momentum state rather than a full reversal during the re-accumulation phase."
+}
