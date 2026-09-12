@@ -1,0 +1,21 @@
+{
+  "bc": 93,
+  "candidate_hash": "b0f8722585d2250061730f8dc7f63a216431b60efd2ca96b5474ab3d1fbeadff",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "numeric_finite_threshold": 0.25,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/oureffort/Rks-coin_exchange"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 92,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

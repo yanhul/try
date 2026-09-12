@@ -1,0 +1,20 @@
+{
+  "bc": 97,
+  "candidate_hash": "32dbcc808e93b9649b2d024ceb621c18866cfeee19f3f08aede14cc6a524bec3",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.15,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/Rhymer-Lcy/hermes-quant"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 96,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

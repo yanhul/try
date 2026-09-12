@@ -1,0 +1,20 @@
+{
+  "bc": 96,
+  "candidate_hash": "e4d3467b6a7b2e132987fc1a17aaa9b5312f1402efca380043a6e8e6b8f10fb5",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.25,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/procyon-yim/crypto-exchanger"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 95,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,21 @@
+{
+  "bc": 95,
+  "candidate_hash": "b8dd7a819ec1d3d619e8305a23d387053fdec4887b6b9067514e95949d6686cf",
+  "conceptual_change": "Test rolling_std(close_location) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "numeric_finite_threshold": 0.2,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/kshoop28/crypto-statistical-arbitrage"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 94,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

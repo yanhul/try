@@ -1,0 +1,21 @@
+{
+  "bc": 99,
+  "candidate_hash": "d0f7a37c120bfb7842c415cd78dff4c98a5618405d6e027bf4586ac398f971c8",
+  "conceptual_change": "Test zscore(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "numeric_finite_threshold": 1.5,
+    "operator": "zscore",
+    "threshold": 0,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/sohan-shingade/flintstrats"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 98,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
