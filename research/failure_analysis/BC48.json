@@ -1,0 +1,28 @@
+{
+  "bc": 48,
+  "parent_bc": 47,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "conceptual_change": "Evaluate a z-score threshold condition on close using a 50-period rolling window.",
+  "evidence_sources": [
+    "https://github.com/Manan-Rawat/Crypto_pairs"
+  ],
+  "candidate_hash": "2a74b060f1f9849e4c1ef17a46c83590ce353ec482001c71d27d859578e97414",
+  "validation": {
+    "candidate_trades": 11,
+    "accepted_signals": 1,
+    "trade_count": 1,
+    "win_count": 0,
+    "loss_count": 1,
+    "total_return": -0.009999999999999898,
+    "profit_factor": 0.0,
+    "gross_validation_passed": false,
+    "validation_passed": false,
+    "net_validation_gate": "COST_MODEL_REQUIRED",
+    "validation_basis": "GROSS_ONLY"
+  },
+  "oos_selection_used": false,
+  "oos_executed": false,
+  "action": "reject candidate; require a new candidate and do not select or promote this candidate"
+}
