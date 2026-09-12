@@ -1,0 +1,20 @@
+{
+  "bc": 71,
+  "candidate_hash": "87e6ce66cc49366f816ffc97ed36fe928cbee9d42c1cd6703c5ce49b4162a733",
+  "conceptual_change": "Incorporate a short-term liquidity constraint using the Z-score of volume distribution to isolate liquidity-driven price expansion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/coo-moon/quanti"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 70,
+  "rationale": "By filtering for abnormal volume distributions using zscore on volume within a 10-period window, we attempt to capture high-conviction liquidity moves while ignoring noise in smaller volume periods."
+}

@@ -3,12 +3,12 @@
   "bc": 71,
   "parent_bc": 70,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "e3b67de63ac107913a65dc24511d6f569c9a6020a8960cc62692982c41c92f75",
+  "candidate_hash": "87e6ce66cc49366f816ffc97ed36fe928cbee9d42c1cd6703c5ce49b4162a733",
   "discovery_spec": {
-    "direction": "below",
-    "left": "close_location",
+    "direction": "above",
+    "left": "volume",
     "operator": "zscore",
-    "threshold": -0.5,
+    "threshold": 1.5,
     "window": 10
   },
   "oos_selection_used": false,
@@ -27,32 +27,32 @@
   },
   "IS": {
     "candidate_trades": 39,
-    "accepted_signals": 15,
-    "skipped_overlap_trades": 3,
-    "metrics": {
-      "trade_count": 12,
-      "win_count": 4,
-      "loss_count": 8,
-      "win_rate": 0.3333333333333333,
-      "total_return": -0.0011914672818461591,
-      "avg_return": 1.0263780566196109e-17,
-      "profit_factor": 1.0000000000000016,
-      "max_drawdown": 0.03997641991719161
-    }
-  },
-  "VALIDATION": {
-    "candidate_trades": 11,
     "accepted_signals": 3,
     "skipped_overlap_trades": 0,
     "metrics": {
       "trade_count": 3,
-      "win_count": 1,
-      "loss_count": 2,
-      "win_rate": 0.3333333333333333,
-      "total_return": -0.00029799999999990945,
-      "avg_return": -1.214306433183765e-17,
-      "profit_factor": 0.9999999999999982,
-      "max_drawdown": 0.019899999999999918
+      "win_count": 2,
+      "loss_count": 1,
+      "win_rate": 0.6666666666666666,
+      "total_return": 0.029996000000000134,
+      "avg_return": 0.009999999999999972,
+      "profit_factor": 3.9999999999999942,
+      "max_drawdown": 0.010000000000000009
+    }
+  },
+  "VALIDATION": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
     }
   },
   "gross_validation_passed": false,
