@@ -59,3 +59,26 @@ def test_rejects_boolean_threshold():
     ok, reason = validate_candidate(c, 6, 5)
     assert not ok
     assert reason == "invalid_discovery_threshold"
+
+
+def test_discovered_primitive_requires_executable_spec():
+    c = base()
+    c["hypothesis_id"] = "discovered_primitive"
+    ok, reason = validate_candidate(c, 6, 5)
+    assert not ok
+    assert reason == "discovery_spec_required"
+
+
+def test_discovered_primitive_accepts_valid_spec():
+    c = base()
+    c["hypothesis_id"] = "discovered_primitive"
+    c["discovery_spec"] = {
+        "operator": "zscore",
+        "left": "close",
+        "window": 20,
+        "threshold": 1.0,
+        "direction": "above",
+    }
+    ok, digest = validate_candidate(c, 6, 5)
+    assert ok
+    assert c["candidate_hash"] == digest
