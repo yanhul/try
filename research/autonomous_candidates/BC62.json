@@ -1,0 +1,20 @@
+{
+  "bc": 62,
+  "candidate_hash": "875e96c9e12a86be604aa20d4d2cc02869d90f71fd1906571d197234d2d330f3",
+  "conceptual_change": "Introduce a condition based on the rolling mean of the volume ratio to filter for periods of relative volume exhaustion before mean reversion signals.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "operator": "rolling_mean",
+    "threshold": 1,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/pranay123-stack/crypto-trading-strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 61,
+  "rationale": "Mean reversion strategies in crypto often fail during high-volatility breakouts; by using a rolling mean filter on volume_ratio, we aim to exclude high-volume spikes that typically precede trend continuation rather than reversal."
+}

@@ -1,0 +1,31 @@
+{
+  "bc": 61,
+  "parent_bc": 60,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "b1e27d25dcb26aa070e96877d243c97428672a5ea03f56b833cd474247646de7",
+  "conceptual_change": "Evaluate short-term price exhaustion by identifying when the relative position of the close within the high-low range exceeds a specific threshold, focusing on intraday mean-reversion characteristics.",
+  "evidence_sources": [
+    "https://github.com/Rhymer-Lcy/hermes-quant"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 1,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 1,
+      "win_count": 1,
+      "loss_count": 0,
+      "win_rate": 1.0,
+      "total_return": 0.020000000000000018,
+      "avg_return": 0.01999999999999999,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

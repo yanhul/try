@@ -1,0 +1,31 @@
+{
+  "bc": 62,
+  "parent_bc": 61,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "875e96c9e12a86be604aa20d4d2cc02869d90f71fd1906571d197234d2d330f3",
+  "conceptual_change": "Introduce a condition based on the rolling mean of the volume ratio to filter for periods of relative volume exhaustion before mean reversion signals.",
+  "evidence_sources": [
+    "https://github.com/pranay123-stack/crypto-trading-strategies"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

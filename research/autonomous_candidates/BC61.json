@@ -1,0 +1,20 @@
+{
+  "bc": 61,
+  "candidate_hash": "b1e27d25dcb26aa070e96877d243c97428672a5ea03f56b833cd474247646de7",
+  "conceptual_change": "Evaluate short-term price exhaustion by identifying when the relative position of the close within the high-low range exceeds a specific threshold, focusing on intraday mean-reversion characteristics.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "operator": "delta",
+    "threshold": 0.5,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/Rhymer-Lcy/hermes-quant"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 60,
+  "rationale": "Using the close_location metric provides a measure of where the final price sits within the range; a high value indicates buying pressure exhaustion, which can be tested as a potential reversal signal."
+}
