@@ -2,6 +2,7 @@ name: BC Research Controller
 
 # Durable bounded campaign: fixed policy + durable controller resume.
 # Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
+# Trigger note: provider contract fixes are validated through the normal push path.
 on:
   workflow_dispatch:
   schedule:
