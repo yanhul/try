@@ -79,30 +79,24 @@ def request_candidate(name,prompt,forbidden):
    else:
     ok,reason=validate_candidate(c,bc,parent)
     if ok:return c
-  last=reason
-  spec=c.get("discovery_spec") if isinstance(c,dict) else None
+  last=reason;spec=c.get("discovery_spec") if isinstance(c,dict) else None
   if reason=="invalid_discovery_threshold":
    if isinstance(spec,dict) and "threshold" not in spec:
-    spec["threshold"]=0
-    ok,again=validate_candidate(c,bc,parent)
+    spec["threshold"]=0;ok,again=validate_candidate(c,bc,parent)
     if ok:return c
    feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Output a plain finite JSON NUMBER threshold and direction exactly 'above' or 'below'. If no threshold is determined by the survivor, use threshold 0.\n"
   elif reason=="invalid_discovery_right_column":
-   bad=spec.get("right") if isinstance(spec,dict) else None
-   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. For difference/ratio, right must be exactly one of "+json.dumps(COLUMNS)+"; aliases and prose are forbidden. Received "+json.dumps(bad)+".\n"
-  elif reason=="invalid_discovery_window":
-   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_window. Use exactly one integer window from "+json.dumps(WINDOWS)+".\n"
-  elif reason=="invalid_discovery_operator":
-   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_operator. Use exactly one operator from "+json.dumps(OPERATORS)+".\n"
-  elif reason=="invalid_discovery_left_column":
-   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_left_column. Use exactly one schema column from "+json.dumps(COLUMNS)+".\n"
-  elif reason=="duplicate_discovery_fingerprint":
-   feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec.\n"
+   bad=spec.get("right") if isinstance(spec,dict) else None;feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. For difference/ratio, right must be exactly one of "+json.dumps(COLUMNS)+"; aliases and prose are forbidden. Received "+json.dumps(bad)+".\n"
+  elif reason=="invalid_discovery_window":feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_window. Use exactly one integer window from "+json.dumps(WINDOWS)+".\n"
+  elif reason=="invalid_discovery_operator":feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_operator. Use exactly one operator from "+json.dumps(OPERATORS)+".\n"
+  elif reason=="invalid_discovery_left_column":feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_left_column. Use exactly one schema column from "+json.dumps(COLUMNS)+".\n"
+  elif reason=="duplicate_discovery_fingerprint":feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec.\n"
   else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only the executable proposal; do not invent evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
 def ground_candidate(c,selected):
  url=str(selected.get("source_url") or "").strip()
  if not url:raise ValueError("selected_survivor_missing_source_url")
+ c.pop("candidate_hash",None)
  s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None
  expr=f"{op}({s.get('left')}"+(f",{s.get('right')})" if s.get("right") is not None else ")") if op else str(c.get("hypothesis_id"))
  c["evidence_sources"]=[url];c["conceptual_change"]=f"Test {expr} with the supplied discovery parameters as the executable translation of the selected screen survivor.";c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False
