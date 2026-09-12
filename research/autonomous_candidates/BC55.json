@@ -1,0 +1,20 @@
+{
+  "bc": 55,
+  "candidate_hash": "e046829db78107d9aefb3d2e2b8e844f0b4ea50ba78e49f557b8b53e9c40d229",
+  "conceptual_change": "Introduce a liquidity sweep confirmation mechanism that monitors for price retracement intensity following a rolling 50-period volume-weighted price deviation to validate structural liquidity grabs.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "sweep_confirmation",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 54,
+  "rationale": "By utilizing the distance between the current close and the 50-period VWAP as a volatility filter, we can differentiate between standard range noise and authentic ICT-style liquidity sweeps (springs/upthrusts). This focuses on high-conviction zones."
+}
