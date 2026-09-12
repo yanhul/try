@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "purpose": "Astra-style source/data lane manifest. Availability is evidence-gated; missing lanes remain UNKNOWN/UNAVAILABLE and never become synthetic data.",
   "lanes": [
     {"id":"pm_twap","family":"prediction_market","required_artifacts":["twap observations","market resolution metadata"],"feature_classes":["realized_twap_fraction","remaining_twap_uncertainty","distance_to_strike"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
@@ -10,6 +10,7 @@
     {"id":"news_social","family":"information","required_artifacts":["source event","source timestamp","receive timestamp","entity mapping"],"feature_classes":["attention_shock","information_latency","dislocation"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
     {"id":"options_basis_funding","family":"derivatives","required_artifacts":["options quotes","funding","basis","fees","timestamps"],"feature_classes":["carry","implied_distribution","basis_dislocation"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
     {"id":"execution_mev","family":"execution","required_artifacts":["full depth","fill outcomes","latency","fees","impact"],"feature_classes":["fill_probability","adverse_selection","capacity","latency_decay"],"status":"UNAVAILABLE_UNLESS_DATA_PRESENT"},
+    {"id":"china_a_share","family":"china_a_share","required_artifacts":["A-share point-in-time prices","corporate/factor data where used","market calendar","venue rules","transaction costs"],"feature_classes":["limit_up_down","t_plus_one","lot_rounding","cross_sectional_factor","order_flow","limit_up_continuation"],"market_constraints":["T+1","limit_up_down","100_share_lot","venue_specific_fees","shorting_constraints"],"status":"AVAILABLE_IF_DATA_PRESENT"},
     {"id":"research_mining","family":"public_research","required_artifacts":["source URL","source timestamp","extractable claim/evidence"],"feature_classes":["strategy_claim","mechanism","falsification_test"],"status":"AVAILABLE"}
   ]
 }
