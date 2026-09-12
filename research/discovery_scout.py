@@ -40,7 +40,9 @@ def github(q):
 def gitlab(q):
     try:
         u='https://gitlab.com/api/v4/projects?'+urllib.parse.urlencode({'search':q,'simple':True,'per_page':20,'order_by':'last_activity_at','sort':'desc'})
-        return [{'source':'gitlab','query':q,'title':x.get('path_with_namespace'),'url':x.get('web_url'),'description':x.get('description'),'updated_at':x.get('last_activity_at'),'stars':x.get('star_count')} for x in get_json(u).get('items',get_json(u).get('results',[]))]
+        data=get_json(u)
+        rows=data if isinstance(data,list) else data.get('items',data.get('results',[]))
+        return [{'source':'gitlab','query':q,'title':x.get('path_with_namespace'),'url':x.get('web_url'),'description':x.get('description'),'updated_at':x.get('last_activity_at'),'stars':x.get('star_count')} for x in rows]
     except Exception as e:return [{'source':'gitlab','query':q,'error':str(e)}]
 
 def arxiv(q):
@@ -55,8 +57,7 @@ def openalex(q):
     try:
         u='https://api.openalex.org/works?'+urllib.parse.urlencode({'search':q,'per-page':10,'select':'id,title,doi,publication_year,primary_location,type'})
         data=get_json(u); out=[]
-        for x in data.get('results',[]):
-            out.append({'source':'openalex','query':q,'title':x.get('title') or '','url':x.get('doi') or x.get('id'),'description':f"OpenAlex work type={x.get('type')} year={x.get('publication_year')}",'updated_at':str(x.get('publication_year') or '')})
+        for x in data.get('results',[]): out.append({'source':'openalex','query':q,'title':x.get('title') or '','url':x.get('doi') or x.get('id'),'description':f"OpenAlex work type={x.get('type')} year={x.get('publication_year')}",'updated_at':str(x.get('publication_year') or '')})
         return out
     except Exception as e:return [{'source':'openalex','query':q,'error':str(e)}]
 
@@ -74,8 +75,7 @@ def semantic_scholar(q):
     try:
         u='https://api.semanticscholar.org/graph/v1/paper/search?'+urllib.parse.urlencode({'query':q,'limit':10,'fields':'title,url,abstract,year,externalIds'})
         data=get_json(u); out=[]
-        for x in data.get('data',[]):
-            out.append({'source':'semantic_scholar','query':q,'title':x.get('title'),'url':x.get('url'),'description':(x.get('abstract') or '')[:2000],'updated_at':str(x.get('year') or '')})
+        for x in data.get('data',[]): out.append({'source':'semantic_scholar','query':q,'title':x.get('title'),'url':x.get('url'),'description':(x.get('abstract') or '')[:2000],'updated_at':str(x.get('year') or '')})
         return out
     except Exception as e:return [{'source':'semantic_scholar','query':q,'error':str(e)}]
 
