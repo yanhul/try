@@ -1,7 +1,37 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION",
   "survivors": [
+    {
+      "candidate_id": "c594c2a977f01ae4",
+      "source": "github",
+      "source_url": "https://github.com/Cindy-Zhang-Potter/a-share-quant-research",
+      "title": "Cindy-Zhang-Potter/a-share-quant-research",
+      "description": "China A-share quant research framework emphasizing bug auditing, compliance filtering and factor decay analysis.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share quant research factor decay compliance",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "c594c2a977f01ae4",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
     {
       "candidate_id": "eeda2d8bb7226345",
       "source": "github",
@@ -9,6 +39,7 @@
       "title": "ChampionKerr/sigma-quant-stream",
       "description": "Autonomous strategy research factory \u2014 your own hedge fund research team. Claude Code agent swarm discovers, backtests, and validates trading strategies.",
       "family": "cross_sectional",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-19T15:36:00Z",
       "lineage": {
@@ -38,6 +69,7 @@
       "title": "KASHAPP10/statistical-arbitrage-crypto",
       "description": "Mean-reversion statistical arbitrage strategy on crypto assets (BTC, ETH, SOL, DOGE) with z-score signals, grid search optimization, and full performance analytics",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-08-08T01:38:44Z",
       "lineage": {
@@ -67,6 +99,7 @@
       "title": "3yther/quant-bot",
       "description": "24/7 paper-trading crypto bot running an ICT/Smart Money Concepts strategy (liquidity sweeps, MSS, FVG) on BTC/ETH with regime-aware DCA sizing. Flask + PostgreSQL.",
       "family": "smc_ict",
+      "market": null,
       "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
       "source_timestamp": "2026-06-18T15:18:07Z",
       "lineage": {
@@ -96,11 +129,42 @@
       "title": "Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-",
       "description": "A Quantitative Volatility Breakout Strategy That Beat Crypto Buy-and-Hold",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2025-11-17T23:44:52Z",
       "lineage": {
         "source": "687a87bdfb47c947",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "d7eb84a030ce1e76",
+      "source": "github",
+      "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
+      "title": "Jcstack/ashare-ai-analyst",
+      "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-08-29T14:58:22Z",
+      "lineage": {
+        "source": "d7eb84a030ce1e76",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -125,6 +189,7 @@
       "title": "Manan-Rawat/Crypto_pairs",
       "description": "This script is a quantitative trading strategy that focuses on statistical arbitrage, particularly mean reversion and copula-based dependency modeling for pairs trading.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-02-14T19:15:18Z",
       "lineage": {
@@ -154,6 +219,7 @@
       "title": "Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
       "description": "This project models **Level-2 order book dynamics** to forecast short-term market movements and evaluate the profitability of high-frequency trading (HFT) strategies.   It combines machine learning (Scikit-learn) with backtesting to analyze market microstructure, transaction costs, and execution risks.",
       "family": "smc_ict",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-03-17T06:57:53Z",
       "lineage": {
@@ -183,11 +249,42 @@
       "title": "Zzzx4Young/okx-quant-trader",
       "description": "OKX \u91cf\u5316\u4ea4\u6613\u7cfb\u7edf.Multi-strategy crypto quant trading system on OKX V5 with Constitution-based risk framework. Features 4 strategies (EMA20 / BB reversion / volatility breakout / funding-rate reversal), dual-mode credentials, portfolio\u2194OKX auto-reconcile, and Telegram runtime notifications.",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-08-27T15:47:35Z",
       "lineage": {
         "source": "15cb6fe63630fa54",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "44ea51887c412177",
+      "source": "github",
+      "source_url": "https://github.com/QSshuyunmu/A-share-quant",
+      "title": "QSshuyunmu/A-share-quant",
+      "description": "Multi-factor China A-share research toolkit combining OHLCV, fundamentals, analyst reports, news sentiment, macro indicators and factor neutralisation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share multi factor fundamental sentiment",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "44ea51887c412177",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -212,97 +309,11 @@
       "title": "Manashwy/Crypto_Arbitrage",
       "description": "A Python-based framework for detecting and backtesting statistical arbitrage opportunities across cryptocurrencies. Supports real-time data ingestion (WebSocket & REST), multiple arbitrage strategies (cointegration, mean reversion, PCA, ML), and modular execution/backtest engine.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2025-08-24T10:00:16Z",
       "lineage": {
         "source": "57153ba98d52110f",
-        "family": "mean_reversion",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP",
-            "family_order": "round_robin"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "d7eb84a030ce1e76",
-      "source": "github",
-      "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
-      "title": "Jcstack/ashare-ai-analyst",
-      "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
-      "family": "smc_ict",
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-08-29T14:58:22Z",
-      "lineage": {
-        "source": "d7eb84a030ce1e76",
-        "family": "smc_ict",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP",
-            "family_order": "round_robin"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "9cb4cf2b0b7ca9c8",
-      "source": "github",
-      "source_url": "https://github.com/joonhsong/AutoTradeCrypto",
-      "title": "joonhsong/AutoTradeCrypto",
-      "description": "This repository focuses on exploring multiple algorithms and strategies that can be used in trading crypto currency. Right now, the main focus is on using volatility breakout strategy and using Long Short Term Memory model.",
-      "family": "volatility",
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2023-06-27T13:03:00Z",
-      "lineage": {
-        "source": "9cb4cf2b0b7ca9c8",
-        "family": "volatility",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP",
-            "family_order": "round_robin"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "5b62d4d05b56a2bc",
-      "source": "github",
-      "source_url": "https://github.com/NIU1751879/Trading_Strategies",
-      "title": "NIU1751879/Trading_Strategies",
-      "description": "Collection of statistical arbitrage and mean reversion strategies (Johansen, Kalman Filter) on ETFs, crypto, and currencies \u2014 featuring complete backtesting, transaction costs, and comparison against Buy & Hold.",
-      "family": "mean_reversion",
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-08-20T00:11:07Z",
-      "lineage": {
-        "source": "5b62d4d05b56a2bc",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -328,6 +339,7 @@
       "title": "kunnaaalll/ApeXQuanT-ShowCase",
       "description": "ApeXQuanT - Autonomous Market Intelligence & Systematic Trading Research Platform. Research-driven FX trading infrastructure featuring SMC/MTF analysis, deterministic risk controls, historical backtesting, structural strategy research, walk-forward validation, and ML-based shadow learning.",
       "family": "smc_ict",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-31T10:15:48Z",
       "lineage": {
@@ -351,16 +363,17 @@
       }
     },
     {
-      "candidate_id": "153d553a2fc74030",
+      "candidate_id": "9cb4cf2b0b7ca9c8",
       "source": "github",
-      "source_url": "https://github.com/kukuhtw/dma_bot_rust",
-      "title": "kukuhtw/dma_bot_rust",
-      "description": "fast, async trading engine in Rust for crypto. It streams multi-symbol market data (mock or Binance), runs pluggable strategies (mean-reversion, MA crossover, volatility breakout), applies risk limits, routes orders across venues, and exposes Prometheus metrics, plus JSONL event recording for audits. Built for low-latency testing.",
+      "source_url": "https://github.com/joonhsong/AutoTradeCrypto",
+      "title": "joonhsong/AutoTradeCrypto",
+      "description": "This repository focuses on exploring multiple algorithms and strategies that can be used in trading crypto currency. Right now, the main focus is on using volatility breakout strategy and using Long Short Term Memory model.",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025-10-02T19:10:45Z",
+      "source_timestamp": "2023-06-27T13:03:00Z",
       "lineage": {
-        "source": "153d553a2fc74030",
+        "source": "9cb4cf2b0b7ca9c8",
         "family": "volatility",
         "rounds": [
           {
@@ -380,16 +393,47 @@
       }
     },
     {
-      "candidate_id": "03a82185c3402c00",
+      "candidate_id": "e12b4832a7206c4b",
       "source": "github",
-      "source_url": "https://github.com/aakash-ramesh/crypto-stat-arb",
-      "title": "aakash-ramesh/crypto-stat-arb",
-      "description": "PCA factor-neutral statistical arbitrage strategy inspired by Avellaneda\u2013Lee for large-cap cryptocurrencies, using OU residual mean reversion and s-score trading signals on hourly market data.",
-      "family": "mean_reversion",
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-05-15T22:10:39Z",
+      "source_url": "https://github.com/Rhymer-Lcy/hermes-quant",
+      "title": "Rhymer-Lcy/hermes-quant",
+      "description": "A-share research and backtesting framework with point-in-time and survivorship-aware research, walk-forward ML and paper trading.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share point in time survivorship walk forward",
+      "source_timestamp": null,
       "lineage": {
-        "source": "03a82185c3402c00",
+        "source": "e12b4832a7206c4b",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5b62d4d05b56a2bc",
+      "source": "github",
+      "source_url": "https://github.com/NIU1751879/Trading_Strategies",
+      "title": "NIU1751879/Trading_Strategies",
+      "description": "Collection of statistical arbitrage and mean reversion strategies (Johansen, Kalman Filter) on ETFs, crypto, and currencies \u2014 featuring complete backtesting, transaction costs, and comparison against Buy & Hold.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-08-20T00:11:07Z",
+      "lineage": {
+        "source": "5b62d4d05b56a2bc",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -415,11 +459,102 @@
       "title": "vcorp-dev/depthfeed-strategy-builder",
       "description": "Node-based, multi-asset backtester \u2014 prediction markets, shares and crypto in one strategy, on recorded order-book depth.",
       "family": "smc_ict",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-22T12:32:41Z",
       "lineage": {
         "source": "1a3809b88494a50e",
         "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "153d553a2fc74030",
+      "source": "github",
+      "source_url": "https://github.com/kukuhtw/dma_bot_rust",
+      "title": "kukuhtw/dma_bot_rust",
+      "description": "fast, async trading engine in Rust for crypto. It streams multi-symbol market data (mock or Binance), runs pluggable strategies (mean-reversion, MA crossover, volatility breakout), applies risk limits, routes orders across venues, and exposes Prometheus metrics, plus JSONL event recording for audits. Built for low-latency testing.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025-10-02T19:10:45Z",
+      "lineage": {
+        "source": "153d553a2fc74030",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "184a65fa45278b53",
+      "source": "github",
+      "source_url": "https://github.com/YichuanAlex/high_frequency_order_trade_factors",
+      "title": "YichuanAlex/high_frequency_order_trade_factors",
+      "description": "Chinese A-share high-frequency order/trade factors using tick-level order flow, queue position, aggressive buy/sell, spread and order-book imbalance.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share high frequency order flow factors",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "184a65fa45278b53",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "03a82185c3402c00",
+      "source": "github",
+      "source_url": "https://github.com/aakash-ramesh/crypto-stat-arb",
+      "title": "aakash-ramesh/crypto-stat-arb",
+      "description": "PCA factor-neutral statistical arbitrage strategy inspired by Avellaneda\u2013Lee for large-cap cryptocurrencies, using OU residual mean reversion and s-score trading signals on hourly market data.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-05-15T22:10:39Z",
+      "lineage": {
+        "source": "03a82185c3402c00",
+        "family": "mean_reversion",
         "rounds": [
           {
             "round": 1,
@@ -444,11 +579,42 @@
       "title": "oureffort/Rks-coin_exchange",
       "description": "Do you want to automate your crypto-exchange? Here is a trading bot that runs 24/7 based on a renowned quant strategy - Volatility Breakout Strategy!",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2024-03-16T23:32:13Z",
       "lineage": {
         "source": "b0803c05b49065c5",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a2cf72f6cf4c9cc5",
+      "source": "github",
+      "source_url": "https://github.com/cn-vhql/FactorHub",
+      "title": "cn-vhql/FactorHub",
+      "description": "A-share factor research platform covering factor lifecycle, IC/IR, monotonicity, turnover and factor mining.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share factor mining IC IR",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "a2cf72f6cf4c9cc5",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -473,6 +639,7 @@
       "title": "kshoop28/crypto-statistical-arbitrage",
       "description": "Backtesting momentum and mean-reversion strategies across cryptocurrencies using Python.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-07-18T01:57:58Z",
       "lineage": {
@@ -502,11 +669,42 @@
       "title": "procyon-yim/crypto-exchanger",
       "description": "Do you want to automate your crypto-exchange? Here is a trading bot that runs 24/7 based on a renowned quant strategy - Volatility Breakout Strategy!",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2023-08-12T23:08:46Z",
       "lineage": {
         "source": "0fe1d9de30247924",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3205bef798fdcbca",
+      "source": "github",
+      "source_url": "https://github.com/codfish-zz/cn-trader",
+      "title": "codfish-zz/cn-trader",
+      "description": "China-market backtesting with A-share execution rules including commission, stamp duty, transfer fee, 100-share lot rounding and T+1 constraints.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "3205bef798fdcbca",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -531,6 +729,7 @@
       "title": "pranay123-stack/crypto-trading-strategies",
       "description": "Crypto trading strategies \u2014 statistical arbitrage, ICT smart-money, mean reversion and market-making bots across Binance, Phemex and HyperLiquid.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-08-26T12:09:12Z",
       "lineage": {
@@ -560,11 +759,42 @@
       "title": "sohan-shingade/flintstrats",
       "description": "Quantitative crypto trading strategies for perpetual futures -- beta-hedged stat-arb, momentum cascade, volatility breakout, and inflection detection built on the Flint backtesting engine",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-07-22T11:15:49Z",
       "lineage": {
         "source": "9fc5003ecd83b993",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "ddfa8dcc621645da",
+      "source": "github",
+      "source_url": "https://github.com/coo-moon/quanti",
+      "title": "coo-moon/quanti",
+      "description": "A-share quantitative trading system covering data ingestion, factor calculation, strategy and backtesting.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share quantitative trading backtest factor",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "ddfa8dcc621645da",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -589,6 +819,7 @@
       "title": "sujith-kamme/statistical-arbitrage-crypto",
       "description": "Designed a cointegration-based mean-reversion strategy on 18 crypto assets; used Johansen basket discovery, OU signal generation, regime filtering, and risk-parity sizing across walk-forward folds  achieving Net Sharpe 1.76 and Max Drawdown -1.38% out-of-sample at 20bps transaction costs.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-04-09T02:26:35Z",
       "lineage": {
@@ -618,11 +849,102 @@
       "title": "whiteblackparang/crypto-vbo-statistical-eval",
       "description": "Statistical evaluation of volatility breakout strategy as a risk-timing tool (BTC & ETH 2-year analysis)",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-07-27T02:04:25Z",
       "lineage": {
         "source": "68568d883f9110e0",
         "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a15489fec6d559b3",
+      "source": "github",
+      "source_url": "https://github.com/feng653/quant-lab",
+      "title": "feng653/quant-lab",
+      "description": "Multi-strategy quantitative verification pipeline for Chinese A-share datasets, including technical, factor, pairs and ML strategies with walk-forward evaluation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share multi strategy verification walk-forward",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "a15489fec6d559b3",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "92944febc6d41bf1",
+      "source": "github",
+      "source_url": "https://github.com/fkchaos/a-share-quant-sim",
+      "title": "fkchaos/a-share-quant-sim",
+      "description": "A-share multi-factor quantitative research and paper-trading pipeline from data and factor computation through cross-sectional scoring, backtest and walk-forward.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share cross-sectional factor walk-forward",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "92944febc6d41bf1",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "2ba7b1b0bb92c83f",
+      "source": "github",
+      "source_url": "https://github.com/mfzhang/20260104-Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "title": "mfzhang/20260104-Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "description": "China A-share consecutive limit-up research pipeline: first-touch limit-up signals, factor statistics, factor screening, rank-to-Z cross-sectional standardisation, composite scoring, rolling backtest and optional XGBoost branch.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share limit-up continuation factor strategy",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "2ba7b1b0bb92c83f",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,

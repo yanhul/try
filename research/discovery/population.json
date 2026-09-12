@@ -1,15 +1,16 @@
 {
-  "schema_version": 3,
-  "architecture": "durable_source_archive -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
-  "source_store": "archive",
+  "schema_version": 4,
+  "architecture": "durable_source_archive + market_seed -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+  "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 173,
-    "expanded": 66,
-    "normalized": 66,
-    "round1": 50,
+    "raw": 183,
+    "expanded": 76,
+    "normalized": 76,
+    "round1": 60,
     "deferred": 28,
-    "survivors": 22
+    "survivors": 32,
+    "china_a_share_survivors": 11
   },
   "population": [
     {
@@ -19,6 +20,7 @@
       "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "source_timestamp": null,
       "lineage": {
@@ -44,6 +46,7 @@
       "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "source_timestamp": null,
       "lineage": {
@@ -59,6 +62,7 @@
       "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "source_timestamp": null,
       "lineage": {
@@ -74,6 +78,7 @@
       "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "source_timestamp": null,
       "lineage": {
@@ -89,6 +94,7 @@
       "title": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -114,6 +120,7 @@
       "title": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -129,6 +136,7 @@
       "title": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -144,6 +152,7 @@
       "title": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -159,6 +168,7 @@
       "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -184,6 +194,7 @@
       "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -199,6 +210,7 @@
       "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -214,6 +226,7 @@
       "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -229,6 +242,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -254,6 +268,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -269,6 +284,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -284,6 +300,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -299,6 +316,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -314,6 +332,7 @@
       "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "source_timestamp": null,
       "lineage": {
@@ -339,6 +358,7 @@
       "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "source_timestamp": null,
       "lineage": {
@@ -354,6 +374,7 @@
       "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "source_timestamp": null,
       "lineage": {
@@ -369,6 +390,7 @@
       "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "source_timestamp": null,
       "lineage": {
@@ -384,6 +406,7 @@
       "title": "AashishUOBD/Self_Aware_AI_Trading_Agent",
       "description": "An Autonomous, User-Aligned, Risk-Aware Multi-Agent AI Platform for Systematic Trading Research. A privacy-preserving, local-first agentic system for strategy research, backtesting, and paper-trading simulation using local LLMs (Ollama), Model Context Protocol (MCP) tool servers, FastAPI, and React",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-01T21:58:00Z",
       "lineage": {
@@ -409,6 +432,7 @@
       "title": "ChampionKerr/sigma-quant-stream",
       "description": "Autonomous strategy research factory \u2014 your own hedge fund research team. Claude Code agent swarm discovers, backtests, and validates trading strategies.",
       "family": "cross_sectional",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-19T15:36:00Z",
       "lineage": {
@@ -438,6 +462,7 @@
       "title": "CodingEye/Advanced_AI_ML_Trading_Framework",
       "description": "An autonomous Python trading framework powered by an AI Strategist (LLM). It uses walk-forward backtesting. forecasting to dynamically select strategies, manage risk, and adapt to market conditions, providing a complete end-to-end solution for algorithmic trading research.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-06-15T12:16:16Z",
       "lineage": {
@@ -462,12 +487,13 @@
       "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
       "title": "Jcstack/ashare-ai-analyst",
       "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
-      "family": "smc_ict",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-29T14:58:22Z",
       "lineage": {
         "source": "d7eb84a030ce1e76",
-        "family": "smc_ict",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -492,6 +518,7 @@
       "title": "Vishesh90/Stocks",
       "description": "Autonomous AI trading agent \u2014 backtesting, strategy research, live execution",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-04-15T23:49:12Z",
       "lineage": {
@@ -517,6 +544,7 @@
       "title": "XxAlonexX/AI-Agent",
       "description": "This repository hosts an AI agent that autonomously researches quantitative trading strategies using machine learning. The agent analyzes datasets, experiments with models, and commits updates to enhance trading algorithms. Its tasks include data preprocessing, feature engineering, model training, backtesting, and generating insightful reports.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-05-05T07:55:56Z",
       "lineage": {
@@ -542,6 +570,7 @@
       "title": "amrav69/agentic-quant-sandbox",
       "description": "AI-powered autonomous trading sandbox \u2014 multi-agent system with Research, CodeGen, and Critic agents that analyze markets, write backtests, and validate strategies automatically.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-09-06T00:55:33Z",
       "lineage": {
@@ -567,6 +596,7 @@
       "title": "danalytits-dev/MarketMan",
       "description": "MarketMan exists to build local IT infrastructure that can analyse market data, generate and test hypotheses, backtest and develop profitable trading strategies, and eventually be operated by a Jarvis-like autonomous system that can take high-level instructions and run development/research loops.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-04-08T13:12:38Z",
       "lineage": {
@@ -592,6 +622,7 @@
       "title": "haexhub/fwbg-agents",
       "description": "Autonomous agents for fwbg strategy research, backtesting, paper trading, and live trading",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-04T21:37:17Z",
       "lineage": {
@@ -617,6 +648,7 @@
       "title": "hshintree/hackathon",
       "description": "An autonomous trading research & execution agent that can ingest and reason over massive, uncompressed financial contexts \u2014 far beyond any single LLM context window \u2014 and adapt strategies in near-real-time. It uses Modal to handle:  Large-scale data ingestion & transformation  Parallelized backtesting and simulation  among other things",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-10-04T15:51:31Z",
       "lineage": {
@@ -642,6 +674,7 @@
       "title": "kunnaaalll/ApeXQuanT-ShowCase",
       "description": "ApeXQuanT - Autonomous Market Intelligence & Systematic Trading Research Platform. Research-driven FX trading infrastructure featuring SMC/MTF analysis, deterministic risk controls, historical backtesting, structural strategy research, walk-forward validation, and ML-based shadow learning.",
       "family": "smc_ict",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-31T10:15:48Z",
       "lineage": {
@@ -671,6 +704,7 @@
       "title": "nl-kaidzen/polymarket-research",
       "description": "Autonomous strategy research for Polymarket prediction markets. AI agent iteratively backtests trading strategies against Q1 2026 data.",
       "family": "prediction_market",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-03-28T15:48:23Z",
       "lineage": {
@@ -696,6 +730,7 @@
       "title": "piperojasjaimes/quantlab",
       "description": "Autonomous Quantitative Research Laboratory for MT5 \u2014 multi-agent system that generates, backtests, optimizes, validates, and evolves trading strategies 24/7",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-06T08:39:56Z",
       "lineage": {
@@ -721,6 +756,7 @@
       "title": "sam-minns/AxiomEdge-PRO",
       "description": "An autonomous Python trading framework powered by an AI Strategist (LLM). It uses walk-forward backtesting and \"chess player\" forecasting to dynamically select strategies, manage risk, and adapt to market conditions, providing a complete end-to-end solution for algorithmic trading research.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-02-09T16:15:20Z",
       "lineage": {
@@ -746,6 +782,7 @@
       "title": "sinatooor/openqnt",
       "description": "OpenQnt \u2014 autonomous agentic quant platform: visual strategy builder, canonical backtesting, AI research agents, and paper/live execution. Source-available (OQCL).",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-07T00:15:08Z",
       "lineage": {
@@ -771,6 +808,7 @@
       "title": "sohan-shingade/kubera",
       "description": "Autonomous multi-agent quant research firm powered by Claude Code \u2014 researchers generate signals, reviewers filter, Flint backtests, strategies auto-promote through paper trading to live",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-05-06T20:20:45Z",
       "lineage": {
@@ -796,6 +834,7 @@
       "title": "subramanya1997/autoresearch-trading",
       "description": "AI agents autonomously researching a swing-trading strategy on 2x single-stock ETFs \u2014 the karpathy/autoresearch pattern applied to backtesting",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-09-04T04:15:49Z",
       "lineage": {
@@ -821,6 +860,7 @@
       "title": "umi008/autoresearch-trading",
       "description": "A fork of karpathy/autoresearch focused on algorithmic trading.  An autonomous research system that uses an LLM agent to iteratively improve a trading strategy through backtesting with Walk-Forward Validation.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-29T11:45:26Z",
       "lineage": {
@@ -846,6 +886,7 @@
       "title": "KASHAPP10/statistical-arbitrage-crypto",
       "description": "Mean-reversion statistical arbitrage strategy on crypto assets (BTC, ETH, SOL, DOGE) with z-score signals, grid search optimization, and full performance analytics",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-08-08T01:38:44Z",
       "lineage": {
@@ -875,6 +916,7 @@
       "title": "Manan-Rawat/Crypto_pairs",
       "description": "This script is a quantitative trading strategy that focuses on statistical arbitrage, particularly mean reversion and copula-based dependency modeling for pairs trading.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-02-14T19:15:18Z",
       "lineage": {
@@ -904,6 +946,7 @@
       "title": "Manashwy/Crypto_Arbitrage",
       "description": "A Python-based framework for detecting and backtesting statistical arbitrage opportunities across cryptocurrencies. Supports real-time data ingestion (WebSocket & REST), multiple arbitrage strategies (cointegration, mean reversion, PCA, ML), and modular execution/backtest engine.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2025-08-24T10:00:16Z",
       "lineage": {
@@ -933,6 +976,7 @@
       "title": "NIU1751879/Trading_Strategies",
       "description": "Collection of statistical arbitrage and mean reversion strategies (Johansen, Kalman Filter) on ETFs, crypto, and currencies \u2014 featuring complete backtesting, transaction costs, and comparison against Buy & Hold.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-08-20T00:11:07Z",
       "lineage": {
@@ -962,6 +1006,7 @@
       "title": "aakash-ramesh/crypto-stat-arb",
       "description": "PCA factor-neutral statistical arbitrage strategy inspired by Avellaneda\u2013Lee for large-cap cryptocurrencies, using OU residual mean reversion and s-score trading signals on hourly market data.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-05-15T22:10:39Z",
       "lineage": {
@@ -991,6 +1036,7 @@
       "title": "kshoop28/crypto-statistical-arbitrage",
       "description": "Backtesting momentum and mean-reversion strategies across cryptocurrencies using Python.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-07-18T01:57:58Z",
       "lineage": {
@@ -1020,6 +1066,7 @@
       "title": "pranay123-stack/crypto-trading-strategies",
       "description": "Crypto trading strategies \u2014 statistical arbitrage, ICT smart-money, mean reversion and market-making bots across Binance, Phemex and HyperLiquid.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-08-26T12:09:12Z",
       "lineage": {
@@ -1049,6 +1096,7 @@
       "title": "sujith-kamme/statistical-arbitrage-crypto",
       "description": "Designed a cointegration-based mean-reversion strategy on 18 crypto assets; used Johansen basket discovery, OU signal generation, regime filtering, and risk-parity sizing across walk-forward folds  achieving Net Sharpe 1.76 and Max Drawdown -1.38% out-of-sample at 20bps transaction costs.",
       "family": "mean_reversion",
+      "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2026-04-09T02:26:35Z",
       "lineage": {
@@ -1078,6 +1126,7 @@
       "title": "Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-",
       "description": "A Quantitative Volatility Breakout Strategy That Beat Crypto Buy-and-Hold",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2025-11-17T23:44:52Z",
       "lineage": {
@@ -1107,6 +1156,7 @@
       "title": "Zzzx4Young/okx-quant-trader",
       "description": "OKX \u91cf\u5316\u4ea4\u6613\u7cfb\u7edf.Multi-strategy crypto quant trading system on OKX V5 with Constitution-based risk framework. Features 4 strategies (EMA20 / BB reversion / volatility breakout / funding-rate reversal), dual-mode credentials, portfolio\u2194OKX auto-reconcile, and Telegram runtime notifications.",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-08-27T15:47:35Z",
       "lineage": {
@@ -1136,6 +1186,7 @@
       "title": "joonhsong/AutoTradeCrypto",
       "description": "This repository focuses on exploring multiple algorithms and strategies that can be used in trading crypto currency. Right now, the main focus is on using volatility breakout strategy and using Long Short Term Memory model.",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2023-06-27T13:03:00Z",
       "lineage": {
@@ -1165,6 +1216,7 @@
       "title": "kukuhtw/dma_bot_rust",
       "description": "fast, async trading engine in Rust for crypto. It streams multi-symbol market data (mock or Binance), runs pluggable strategies (mean-reversion, MA crossover, volatility breakout), applies risk limits, routes orders across venues, and exposes Prometheus metrics, plus JSONL event recording for audits. Built for low-latency testing.",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2025-10-02T19:10:45Z",
       "lineage": {
@@ -1194,6 +1246,7 @@
       "title": "oureffort/Rks-coin_exchange",
       "description": "Do you want to automate your crypto-exchange? Here is a trading bot that runs 24/7 based on a renowned quant strategy - Volatility Breakout Strategy!",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2024-03-16T23:32:13Z",
       "lineage": {
@@ -1223,6 +1276,7 @@
       "title": "procyon-yim/crypto-exchanger",
       "description": "Do you want to automate your crypto-exchange? Here is a trading bot that runs 24/7 based on a renowned quant strategy - Volatility Breakout Strategy!",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2023-08-12T23:08:46Z",
       "lineage": {
@@ -1252,6 +1306,7 @@
       "title": "sohan-shingade/flintstrats",
       "description": "Quantitative crypto trading strategies for perpetual futures -- beta-hedged stat-arb, momentum cascade, volatility breakout, and inflection detection built on the Flint backtesting engine",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-07-22T11:15:49Z",
       "lineage": {
@@ -1281,6 +1336,7 @@
       "title": "whiteblackparang/crypto-vbo-statistical-eval",
       "description": "Statistical evaluation of volatility breakout strategy as a risk-timing tool (BTC & ETH 2-year analysis)",
       "family": "volatility",
+      "market": null,
       "query": "crypto volatility breakout strategy",
       "source_timestamp": "2026-07-27T02:04:25Z",
       "lineage": {
@@ -1310,6 +1366,7 @@
       "title": "Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
       "description": "This project models **Level-2 order book dynamics** to forecast short-term market movements and evaluate the profitability of high-frequency trading (HFT) strategies.   It combines machine learning (Scikit-learn) with backtesting to analyze market microstructure, transaction costs, and execution risks.",
       "family": "smc_ict",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-03-17T06:57:53Z",
       "lineage": {
@@ -1339,6 +1396,7 @@
       "title": "alibnsz/polymarket-backtest",
       "description": "Polymarket Backtest is here to power your prediction market trading strategies. By providing high-resolution tick-by-tick order book snapshots and historical crypto Up/Down market data, it gives quants and algorithmic traders the exact tape they need to simulate realistic fills and prove their edge.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-20T15:06:10Z",
       "lineage": {
@@ -1364,6 +1422,7 @@
       "title": "crimsonfox2000/polymarket-prediction-bot",
       "description": "Polymarket trading bot for prediction markets \u2014 browse CLOB markets, watch the order book in the terminal, run edge detection, liquidity provision and cross-market arbitrage strategies with paper trading and risk limits. Educational open-source toolkit \u2014 not financial advice. Unofficial community project, not affiliated with Polymarket.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-09-05T08:20:01Z",
       "lineage": {
@@ -1389,6 +1448,7 @@
       "title": "else24/kalshi-market-bot",
       "description": "Kalshi trading bot for prediction markets \u2014 browse event contracts and watch the order book in real time, run market making and momentum/reversion strategies with paper trading, risk limits and position sizing. Educational toolkit \u2014 not financial advice. Unofficial community project, not affiliated with Kalshi.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-28T18:04:23Z",
       "lineage": {
@@ -1414,6 +1474,7 @@
       "title": "ps4vs/botash-public",
       "description": "Low-latency C++ trading engine for Polymarket crypto prediction markets: Boost.Asio/Beast order-book streaming, strategies, and a backtester.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-07-03T09:17:30Z",
       "lineage": {
@@ -1439,6 +1500,7 @@
       "title": "rmgoktas/PolymarketBacktest",
       "description": "Polymarket Backtest is here to power your prediction market trading strategies. By providing high-resolution tick-by-tick order book snapshots and historical crypto Up/Down market data, it gives quants and algorithmic traders the exact tape they need to simulate realistic fills and prove their edge.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-18T10:41:30Z",
       "lineage": {
@@ -1464,6 +1526,7 @@
       "title": "vcorp-dev/depthfeed-strategy-builder",
       "description": "Node-based, multi-asset backtester \u2014 prediction markets, shares and crypto in one strategy, on recorded order-book depth.",
       "family": "smc_ict",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-22T12:32:41Z",
       "lineage": {
@@ -1493,6 +1556,7 @@
       "title": "3yther/quant-bot",
       "description": "24/7 paper-trading crypto bot running an ICT/Smart Money Concepts strategy (liquidity sweeps, MSS, FVG) on BTC/ETH with regime-aware DCA sizing. Flask + PostgreSQL.",
       "family": "smc_ict",
+      "market": null,
       "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
       "source_timestamp": "2026-06-18T15:18:07Z",
       "lineage": {
@@ -1522,6 +1586,7 @@
       "title": "oficcejo/okx-py-quant",
       "description": "\u591a\u56e0\u5b50\u7ec4\u5408btc\u6bd4\u7279\u5e01\u52a0\u5bc6\u8d27\u5e01\u91cf\u5316\u4ea4\u6613\uff0c\u652f\u6301btc\u3001eth\u3001sol\u3001bnb\u7b49\u591a\u5e01\u79cd\u4ea4\u6613\uff0c\u652f\u6301\u591a\u56e0\u5b50\u7ec4\u5408\uff0c\u652f\u6301\u7b56\u7565\u56de\u6d4b\uff0c\u652f\u6301\u4e0a\u5343\u79cd\u56e0\u5b50\u7ec4\u5408\uff0c\u652f\u6301ai\u751f\u6210\u7b56\u7565\uff0c\u652f\u6301okx\u4ea4\u6613\u6240\uff0c\u652f\u6301\u7f8e\u80a1\u3001\u9ec4\u91d1\u3001\u767d\u94f6\u3001\u94dc\u3001\u539f\u6cb9\u7b49\u3002\u4e0b\u65b9\u7f51\u7ad9\u53ef\u6ce8\u518c\u5e76\u514d\u8d39\u4f7f\u7528\u6d4b\u8bd5",
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2026-09-03T07:36:51Z",
       "lineage": {
@@ -1547,6 +1612,7 @@
       "title": "phuktoley/crypto-quant-trading",
       "description": "CryptoQuant Pro - \u4e13\u4e1a\u7684\u52a0\u5bc6\u8d27\u5e01\u91cf\u5316\u4ea4\u6613\u5206\u6790\u5e73\u53f0\uff0c\u96c6\u6210\u7b56\u7565\u56de\u6d4b\u3001\u5b9e\u65f6\u4ea4\u6613\u4fe1\u53f7\u3001\u591a\u56e0\u5b50\u5206\u6790\u6a21\u578b",
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2026-01-22T11:33:08Z",
       "lineage": {
@@ -1572,6 +1638,7 @@
       "title": "comedian8848/BlackOil-OmniAlpha",
       "description": "OmniAlpha: \u5168\u573a\u666f\u667a\u80fd\u91cf\u5316\u7814\u7a76\u4e0e\u4ea4\u6613\u5f15\u64ce OmniAlpha \u662f\u4e00\u4e2a\u4e13\u4e3a A \u80a1\u5e02\u573a\u8bbe\u8ba1\u7684\u6a21\u5757\u5316\u91cf\u5316\u4ea4\u6613\u5e73\u53f0\u3002\u5b83\u4e0d\u4ec5\u96c6\u6210\u4e86\u5b9e\u65f6\u884c\u60c5\u83b7\u53d6\u3001\u5386\u53f2\u56de\u6d4b\u548c\u6a21\u62df\u76d8\u6267\u884c\uff0c\u66f4\u6838\u5fc3\u7684\u7a81\u7834\u5728\u4e8e\u5176\u53cc\u5faa\u73af\u67b6\u6784\uff1a\u5185\u7f6e\u57fa\u4e8e\u9057\u4f20\u7b97\u6cd5\u4e0e\u5f3a\u5316\u5b66\u4e60\u7684 AlphaGen \u56e0\u5b50\u6316\u6398\u5de5\u5382\uff0c\u5e76\u9884\u7559\u4e86 LLM\uff08\u5927\u8bed\u8a00\u6a21\u578b\uff09 \u63a5\u53e3\uff0c\u7528\u4e8e\u8bed\u4e49\u60c5\u611f\u5206\u6790\u4e0e\u7b56\u7565\u81ea\u52a8\u5316\u751f\u6210\u3002",
       "family": "unknown",
+      "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
       "source_timestamp": "2026-08-14T14:43:15Z",
       "lineage": {
@@ -1589,6 +1656,306 @@
           }
         ]
       }
+    },
+    {
+      "candidate_id": "2ba7b1b0bb92c83f",
+      "source": "github",
+      "source_url": "https://github.com/mfzhang/20260104-Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "title": "mfzhang/20260104-Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "description": "China A-share consecutive limit-up research pipeline: first-touch limit-up signals, factor statistics, factor screening, rank-to-Z cross-sectional standardisation, composite scoring, rolling backtest and optional XGBoost branch.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share limit-up continuation factor strategy",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "2ba7b1b0bb92c83f",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "ddfa8dcc621645da",
+      "source": "github",
+      "source_url": "https://github.com/coo-moon/quanti",
+      "title": "coo-moon/quanti",
+      "description": "A-share quantitative trading system covering data ingestion, factor calculation, strategy and backtesting.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share quantitative trading backtest factor",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "ddfa8dcc621645da",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a2cf72f6cf4c9cc5",
+      "source": "github",
+      "source_url": "https://github.com/cn-vhql/FactorHub",
+      "title": "cn-vhql/FactorHub",
+      "description": "A-share factor research platform covering factor lifecycle, IC/IR, monotonicity, turnover and factor mining.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share factor mining IC IR",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "a2cf72f6cf4c9cc5",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3205bef798fdcbca",
+      "source": "github",
+      "source_url": "https://github.com/codfish-zz/cn-trader",
+      "title": "codfish-zz/cn-trader",
+      "description": "China-market backtesting with A-share execution rules including commission, stamp duty, transfer fee, 100-share lot rounding and T+1 constraints.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "3205bef798fdcbca",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "44ea51887c412177",
+      "source": "github",
+      "source_url": "https://github.com/QSshuyunmu/A-share-quant",
+      "title": "QSshuyunmu/A-share-quant",
+      "description": "Multi-factor China A-share research toolkit combining OHLCV, fundamentals, analyst reports, news sentiment, macro indicators and factor neutralisation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share multi factor fundamental sentiment",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "44ea51887c412177",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "92944febc6d41bf1",
+      "source": "github",
+      "source_url": "https://github.com/fkchaos/a-share-quant-sim",
+      "title": "fkchaos/a-share-quant-sim",
+      "description": "A-share multi-factor quantitative research and paper-trading pipeline from data and factor computation through cross-sectional scoring, backtest and walk-forward.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share cross-sectional factor walk-forward",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "92944febc6d41bf1",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "184a65fa45278b53",
+      "source": "github",
+      "source_url": "https://github.com/YichuanAlex/high_frequency_order_trade_factors",
+      "title": "YichuanAlex/high_frequency_order_trade_factors",
+      "description": "Chinese A-share high-frequency order/trade factors using tick-level order flow, queue position, aggressive buy/sell, spread and order-book imbalance.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share high frequency order flow factors",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "184a65fa45278b53",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a15489fec6d559b3",
+      "source": "github",
+      "source_url": "https://github.com/feng653/quant-lab",
+      "title": "feng653/quant-lab",
+      "description": "Multi-strategy quantitative verification pipeline for Chinese A-share datasets, including technical, factor, pairs and ML strategies with walk-forward evaluation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share multi strategy verification walk-forward",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "a15489fec6d559b3",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c594c2a977f01ae4",
+      "source": "github",
+      "source_url": "https://github.com/Cindy-Zhang-Potter/a-share-quant-research",
+      "title": "Cindy-Zhang-Potter/a-share-quant-research",
+      "description": "China A-share quant research framework emphasizing bug auditing, compliance filtering and factor decay analysis.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share quant research factor decay compliance",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "c594c2a977f01ae4",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "e12b4832a7206c4b",
+      "source": "github",
+      "source_url": "https://github.com/Rhymer-Lcy/hermes-quant",
+      "title": "Rhymer-Lcy/hermes-quant",
+      "description": "A-share research and backtesting framework with point-in-time and survivorship-aware research, walk-forward ML and paper trading.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share point in time survivorship walk forward",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "e12b4832a7206c4b",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
     }
   ],
   "deferred": [
@@ -1599,6 +1966,7 @@
       "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
       "source_timestamp": null,
       "lineage": {
@@ -1624,6 +1992,7 @@
       "title": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -1649,6 +2018,7 @@
       "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -1674,6 +2044,7 @@
       "title": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": null,
       "lineage": {
@@ -1699,6 +2070,7 @@
       "title": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "description": null,
       "family": "unknown",
+      "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
       "source_timestamp": null,
       "lineage": {
@@ -1724,6 +2096,7 @@
       "title": "AashishUOBD/Self_Aware_AI_Trading_Agent",
       "description": "An Autonomous, User-Aligned, Risk-Aware Multi-Agent AI Platform for Systematic Trading Research. A privacy-preserving, local-first agentic system for strategy research, backtesting, and paper-trading simulation using local LLMs (Ollama), Model Context Protocol (MCP) tool servers, FastAPI, and React",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-01T21:58:00Z",
       "lineage": {
@@ -1749,6 +2122,7 @@
       "title": "CodingEye/Advanced_AI_ML_Trading_Framework",
       "description": "An autonomous Python trading framework powered by an AI Strategist (LLM). It uses walk-forward backtesting. forecasting to dynamically select strategies, manage risk, and adapt to market conditions, providing a complete end-to-end solution for algorithmic trading research.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-06-15T12:16:16Z",
       "lineage": {
@@ -1774,6 +2148,7 @@
       "title": "Vishesh90/Stocks",
       "description": "Autonomous AI trading agent \u2014 backtesting, strategy research, live execution",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-04-15T23:49:12Z",
       "lineage": {
@@ -1799,6 +2174,7 @@
       "title": "XxAlonexX/AI-Agent",
       "description": "This repository hosts an AI agent that autonomously researches quantitative trading strategies using machine learning. The agent analyzes datasets, experiments with models, and commits updates to enhance trading algorithms. Its tasks include data preprocessing, feature engineering, model training, backtesting, and generating insightful reports.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-05-05T07:55:56Z",
       "lineage": {
@@ -1824,6 +2200,7 @@
       "title": "amrav69/agentic-quant-sandbox",
       "description": "AI-powered autonomous trading sandbox \u2014 multi-agent system with Research, CodeGen, and Critic agents that analyze markets, write backtests, and validate strategies automatically.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-09-06T00:55:33Z",
       "lineage": {
@@ -1849,6 +2226,7 @@
       "title": "danalytits-dev/MarketMan",
       "description": "MarketMan exists to build local IT infrastructure that can analyse market data, generate and test hypotheses, backtest and develop profitable trading strategies, and eventually be operated by a Jarvis-like autonomous system that can take high-level instructions and run development/research loops.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-04-08T13:12:38Z",
       "lineage": {
@@ -1874,6 +2252,7 @@
       "title": "haexhub/fwbg-agents",
       "description": "Autonomous agents for fwbg strategy research, backtesting, paper trading, and live trading",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-08-04T21:37:17Z",
       "lineage": {
@@ -1899,6 +2278,7 @@
       "title": "hshintree/hackathon",
       "description": "An autonomous trading research & execution agent that can ingest and reason over massive, uncompressed financial contexts \u2014 far beyond any single LLM context window \u2014 and adapt strategies in near-real-time. It uses Modal to handle:  Large-scale data ingestion & transformation  Parallelized backtesting and simulation  among other things",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2025-10-04T15:51:31Z",
       "lineage": {
@@ -1924,6 +2304,7 @@
       "title": "nl-kaidzen/polymarket-research",
       "description": "Autonomous strategy research for Polymarket prediction markets. AI agent iteratively backtests trading strategies against Q1 2026 data.",
       "family": "prediction_market",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-03-28T15:48:23Z",
       "lineage": {
@@ -1949,6 +2330,7 @@
       "title": "piperojasjaimes/quantlab",
       "description": "Autonomous Quantitative Research Laboratory for MT5 \u2014 multi-agent system that generates, backtests, optimizes, validates, and evolves trading strategies 24/7",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-06T08:39:56Z",
       "lineage": {
@@ -1974,6 +2356,7 @@
       "title": "sam-minns/AxiomEdge-PRO",
       "description": "An autonomous Python trading framework powered by an AI Strategist (LLM). It uses walk-forward backtesting and \"chess player\" forecasting to dynamically select strategies, manage risk, and adapt to market conditions, providing a complete end-to-end solution for algorithmic trading research.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-02-09T16:15:20Z",
       "lineage": {
@@ -1999,6 +2382,7 @@
       "title": "sinatooor/openqnt",
       "description": "OpenQnt \u2014 autonomous agentic quant platform: visual strategy builder, canonical backtesting, AI research agents, and paper/live execution. Source-available (OQCL).",
       "family": "execution_mev",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-07T00:15:08Z",
       "lineage": {
@@ -2024,6 +2408,7 @@
       "title": "sohan-shingade/kubera",
       "description": "Autonomous multi-agent quant research firm powered by Claude Code \u2014 researchers generate signals, reviewers filter, Flint backtests, strategies auto-promote through paper trading to live",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-05-06T20:20:45Z",
       "lineage": {
@@ -2049,6 +2434,7 @@
       "title": "subramanya1997/autoresearch-trading",
       "description": "AI agents autonomously researching a swing-trading strategy on 2x single-stock ETFs \u2014 the karpathy/autoresearch pattern applied to backtesting",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-09-04T04:15:49Z",
       "lineage": {
@@ -2074,6 +2460,7 @@
       "title": "umi008/autoresearch-trading",
       "description": "A fork of karpathy/autoresearch focused on algorithmic trading.  An autonomous research system that uses an LLM agent to iteratively improve a trading strategy through backtesting with Walk-Forward Validation.",
       "family": "unknown",
+      "market": null,
       "query": "autonomous trading strategy research backtest",
       "source_timestamp": "2026-07-29T11:45:26Z",
       "lineage": {
@@ -2099,6 +2486,7 @@
       "title": "alibnsz/polymarket-backtest",
       "description": "Polymarket Backtest is here to power your prediction market trading strategies. By providing high-resolution tick-by-tick order book snapshots and historical crypto Up/Down market data, it gives quants and algorithmic traders the exact tape they need to simulate realistic fills and prove their edge.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-20T15:06:10Z",
       "lineage": {
@@ -2124,6 +2512,7 @@
       "title": "crimsonfox2000/polymarket-prediction-bot",
       "description": "Polymarket trading bot for prediction markets \u2014 browse CLOB markets, watch the order book in the terminal, run edge detection, liquidity provision and cross-market arbitrage strategies with paper trading and risk limits. Educational open-source toolkit \u2014 not financial advice. Unofficial community project, not affiliated with Polymarket.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-09-05T08:20:01Z",
       "lineage": {
@@ -2149,6 +2538,7 @@
       "title": "else24/kalshi-market-bot",
       "description": "Kalshi trading bot for prediction markets \u2014 browse event contracts and watch the order book in real time, run market making and momentum/reversion strategies with paper trading, risk limits and position sizing. Educational toolkit \u2014 not financial advice. Unofficial community project, not affiliated with Kalshi.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-28T18:04:23Z",
       "lineage": {
@@ -2174,6 +2564,7 @@
       "title": "ps4vs/botash-public",
       "description": "Low-latency C++ trading engine for Polymarket crypto prediction markets: Boost.Asio/Beast order-book streaming, strategies, and a backtester.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-07-03T09:17:30Z",
       "lineage": {
@@ -2199,6 +2590,7 @@
       "title": "rmgoktas/PolymarketBacktest",
       "description": "Polymarket Backtest is here to power your prediction market trading strategies. By providing high-resolution tick-by-tick order book snapshots and historical crypto Up/Down market data, it gives quants and algorithmic traders the exact tape they need to simulate realistic fills and prove their edge.",
       "family": "prediction_market",
+      "market": null,
       "query": "prediction market order book trading strategy",
       "source_timestamp": "2026-08-18T10:41:30Z",
       "lineage": {
@@ -2224,6 +2616,7 @@
       "title": "oficcejo/okx-py-quant",
       "description": "\u591a\u56e0\u5b50\u7ec4\u5408btc\u6bd4\u7279\u5e01\u52a0\u5bc6\u8d27\u5e01\u91cf\u5316\u4ea4\u6613\uff0c\u652f\u6301btc\u3001eth\u3001sol\u3001bnb\u7b49\u591a\u5e01\u79cd\u4ea4\u6613\uff0c\u652f\u6301\u591a\u56e0\u5b50\u7ec4\u5408\uff0c\u652f\u6301\u7b56\u7565\u56de\u6d4b\uff0c\u652f\u6301\u4e0a\u5343\u79cd\u56e0\u5b50\u7ec4\u5408\uff0c\u652f\u6301ai\u751f\u6210\u7b56\u7565\uff0c\u652f\u6301okx\u4ea4\u6613\u6240\uff0c\u652f\u6301\u7f8e\u80a1\u3001\u9ec4\u91d1\u3001\u767d\u94f6\u3001\u94dc\u3001\u539f\u6cb9\u7b49\u3002\u4e0b\u65b9\u7f51\u7ad9\u53ef\u6ce8\u518c\u5e76\u514d\u8d39\u4f7f\u7528\u6d4b\u8bd5",
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2026-09-03T07:36:51Z",
       "lineage": {
@@ -2249,6 +2642,7 @@
       "title": "phuktoley/crypto-quant-trading",
       "description": "CryptoQuant Pro - \u4e13\u4e1a\u7684\u52a0\u5bc6\u8d27\u5e01\u91cf\u5316\u4ea4\u6613\u5206\u6790\u5e73\u53f0\uff0c\u96c6\u6210\u7b56\u7565\u56de\u6d4b\u3001\u5b9e\u65f6\u4ea4\u6613\u4fe1\u53f7\u3001\u591a\u56e0\u5b50\u5206\u6790\u6a21\u578b",
       "family": "unknown",
+      "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2026-01-22T11:33:08Z",
       "lineage": {
@@ -2274,6 +2668,7 @@
       "title": "comedian8848/BlackOil-OmniAlpha",
       "description": "OmniAlpha: \u5168\u573a\u666f\u667a\u80fd\u91cf\u5316\u7814\u7a76\u4e0e\u4ea4\u6613\u5f15\u64ce OmniAlpha \u662f\u4e00\u4e2a\u4e13\u4e3a A \u80a1\u5e02\u573a\u8bbe\u8ba1\u7684\u6a21\u5757\u5316\u91cf\u5316\u4ea4\u6613\u5e73\u53f0\u3002\u5b83\u4e0d\u4ec5\u96c6\u6210\u4e86\u5b9e\u65f6\u884c\u60c5\u83b7\u53d6\u3001\u5386\u53f2\u56de\u6d4b\u548c\u6a21\u62df\u76d8\u6267\u884c\uff0c\u66f4\u6838\u5fc3\u7684\u7a81\u7834\u5728\u4e8e\u5176\u53cc\u5faa\u73af\u67b6\u6784\uff1a\u5185\u7f6e\u57fa\u4e8e\u9057\u4f20\u7b97\u6cd5\u4e0e\u5f3a\u5316\u5b66\u4e60\u7684 AlphaGen \u56e0\u5b50\u6316\u6398\u5de5\u5382\uff0c\u5e76\u9884\u7559\u4e86 LLM\uff08\u5927\u8bed\u8a00\u6a21\u578b\uff09 \u63a5\u53e3\uff0c\u7528\u4e8e\u8bed\u4e49\u60c5\u611f\u5206\u6790\u4e0e\u7b56\u7565\u81ea\u52a8\u5316\u751f\u6210\u3002",
       "family": "unknown",
+      "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
       "source_timestamp": "2026-08-14T14:43:15Z",
       "lineage": {
