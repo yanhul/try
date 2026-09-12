@@ -1,0 +1,21 @@
+{
+  "bc": 77,
+  "candidate_hash": "a5708ea336de046f514bf4610879592ee3ad74d448469b381b70526f8783ffa9",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "numeric": 0.2,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 76,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

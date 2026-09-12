@@ -1,0 +1,21 @@
+{
+  "bc": 78,
+  "candidate_hash": "63d685554e28e1fadb15c7ce6e2a2c9bbf28dac5665d091e235d6f04e12c205a",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "numeric_finite_threshold": 0.1,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 77,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

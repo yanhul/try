@@ -1,0 +1,21 @@
+{
+  "bc": 79,
+  "candidate_hash": "a919d8c17ce99b16faa60eb6ef263b470bc96efe57c05eea2a61302a8c89167f",
+  "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "numeric": 0.4,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Cindy-Zhang-Potter/a-share-quant-research"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 78,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

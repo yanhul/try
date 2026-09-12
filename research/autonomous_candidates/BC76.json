@@ -1,0 +1,21 @@
+{
+  "bc": 76,
+  "candidate_hash": "0345281e4df425119d126af1b796422e8ab0f85b34964e2ea1cf8cd0372d4d12",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "numeric": 0.25,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 75,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

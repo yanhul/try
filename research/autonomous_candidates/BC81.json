@@ -1,0 +1,21 @@
+{
+  "bc": 81,
+  "candidate_hash": "68744d3fb2e48c5fc03ac8e6ad18ebf6968de4af807340766138b4c52277c668",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "numeric_finite_threshold": 0.2,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 80,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

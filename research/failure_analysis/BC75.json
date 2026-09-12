@@ -1,0 +1,31 @@
+{
+  "bc": 75,
+  "parent_bc": 74,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "e0a6412a4c8735110a5d65945bcf9fc239243b4795324af91a54c0fb507a9a66",
+  "conceptual_change": "Test rolling_mean(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "evidence_sources": [
+    "https://github.com/ChampionKerr/sigma-quant-stream"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

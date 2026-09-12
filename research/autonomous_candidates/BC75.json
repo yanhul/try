@@ -1,0 +1,21 @@
+{
+  "bc": 75,
+  "candidate_hash": "e0a6412a4c8735110a5d65945bcf9fc239243b4795324af91a54c0fb507a9a66",
+  "conceptual_change": "Test rolling_mean(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "numeric_finite_threshold": 1.2,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/ChampionKerr/sigma-quant-stream"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 74,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
