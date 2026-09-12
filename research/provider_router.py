@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict provider router: deterministic discovery population narrows; Gemini translates survivors."""
+"""Strict provider router: deterministic discovery population narrows; Gemini translates one selected survivor."""
 from __future__ import annotations
 import json, math, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
@@ -13,9 +13,9 @@ OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std"
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
 SYSTEM=f"""You are an autonomous trading-research translator.
-The deterministic population engine has already screened a large public-source universe.
-Generate exactly ONE executable hypothesis by translating ONE SCREEN SURVIVOR into the existing TRY contract.
-Do not select survivors by expected performance, stars, OOS, or intuition. The queue order/registry is authoritative.
+A deterministic population engine has already screened a public-source universe.
+You MUST translate the single SELECTED SCREEN SURVIVOR supplied by the controller. You are not a survivor selector.
+Do not select by expected performance, stars, OOS, or intuition. Do not replace the selected survivor with another source.
 Registered hypothesis_ids are allowed; otherwise use hypothesis_id='discovered_primitive'.
 For discovered_primitive, use ONLY operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}.
 A discovery_spec MUST contain operator,left,numeric threshold,direction ('above'/'below'); difference/ratio also require right; windowed operators require window.
@@ -72,9 +72,6 @@ def request_candidate(name,prompt):
   if candidate.get("status")=="HOLD": return candidate
   normalize_structural_types(candidate)
   hypothesis_id=candidate.get("hypothesis_id")
-  # Fail closed on malformed provider output before dictionary/set membership.
-  # A JSON object/list here previously raised `unhashable type: 'dict'`, masking
-  # the provider contract failure and forcing an unnecessary router HOLD.
   if not isinstance(hypothesis_id,str):
    reason="invalid_hypothesis_id_type"
   elif hypothesis_id not in HYPOTHESES and hypothesis_id!="discovered_primitive":
@@ -87,8 +84,7 @@ def request_candidate(name,prompt):
    feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Regenerate now. "
              "discovery_spec.threshold MUST be a finite JSON NUMBER, not a string or range. "
              "Valid examples are: 0, 0.5, 1, 1.5, -0.5. "
-             "Example: {\"operator\":\"zscore\",\"left\":\"close\",\"window\":20,\"threshold\":1.0,\"direction\":\"above\"}. "
-             "Do not write '1%', '1-2', 'dynamic', null, or an expression.\n")
+             "Example: {\"operator\":\"zscore\",\"left\":\"close\",\"window\":20,\"threshold\":1.0,\"direction\":\"above\"}.\n")
   else:
    feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
@@ -97,11 +93,18 @@ def main():
  global bc,parent
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
  prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=failure.read_text(encoding="utf-8")
- discovery=ROOT/'research'/'discovery'/'latest.json'; discovery_text=discovery.read_text(encoding='utf-8') if discovery.exists() else '{"status":"NO_DISCOVERY_ARTIFACT"}'
- survivors=ROOT/'research'/'discovery'/'survivors.json'; survivor_text=survivors.read_text(encoding='utf-8') if survivors.exists() else '{"status":"NO_SURVIVOR_REGISTRY"}'
- queue=ROOT/'research'/'discovery'/'research_queue.json'; queue_text=queue.read_text(encoding='utf-8') if queue.exists() else '{"status":"NO_RESEARCH_QUEUE"}'
- compiled=ROOT/'research'/'discovery'/'compiled_candidates.json'; compiled_text=compiled.read_text(encoding='utf-8') if compiled.exists() else '{"status":"NO_COMPILED_CANDIDATES"}'
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSCREEN SURVIVOR REGISTRY (selection already deterministic):\n{survivor_text[:30000]}\n\nEXECUTABLE RESEARCH QUEUE:\n{queue_text[:30000]}\n\nBROAD DISCOVERY (context/lineage only):\n{discovery_text[:15000]}\n\nCOMPILED PRIMITIVES (fallback templates only):\n{compiled_text[:10000]}")
+ queue=ROOT/'research'/'discovery'/'research_queue.json'
+ if not queue.exists(): print("PROVIDER_ROUTER_HOLD missing_screen_queue"); return 0
+ try:
+  q=json.loads(queue.read_text(encoding='utf-8'))
+  survivors=q.get('candidates',[]) if isinstance(q,dict) else q
+  if not isinstance(survivors,list) or not survivors: print("PROVIDER_ROUTER_HOLD empty_screen_queue"); return 0
+  # Selection is deterministic and outside Gemini: one survivor per BC, stable
+  # under retries and independent of model judgment.
+  selected=survivors[(parent-1) % len(survivors)]
+ except Exception as exc:
+  print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{exc}"); return 0
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True)}\n\nDo not select a different survivor. Preserve the source lineage in evidence_sources and translate only what this survivor supports.")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]
  for name in order:
   try:
