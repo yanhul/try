@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
@@ -40,8 +41,6 @@ FAMILY_TERMS = {
     "execution_mev": ("execution", "adverse selection", "maker", "taker", "mev", "slippage"),
 }
 
-# Current BTCUSDT-1H execution lane. Other families remain archived/deferred
-# until their required data lane is actually present.
 EXECUTABLE_FAMILIES = {
     "momentum_trend", "mean_reversion", "volatility", "smc_ict",
     "fvg_imbalance", "wyckoff_vsa_vpa", "vwap_volume_profile",
@@ -63,6 +62,40 @@ def classify(item: dict[str, Any]) -> str:
 def source_id(item: dict[str, Any]) -> str:
     canonical = str(item.get("url") or item.get("title") or item.get("raw") or item.get("query"))
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
+
+
+def _xml_text(node: ET.Element | None) -> str:
+    if node is None:
+        return ""
+    return " ".join("".join(node.itertext()).split())
+
+
+def expand_source(item: dict[str, Any]) -> list[dict[str, Any]]:
+    """Expand an arXiv feed into one candidate per paper; never treat a feed as one paper."""
+    if item.get("source") != "arxiv" or not item.get("raw"):
+        return [item]
+    try:
+        root = ET.fromstring(item["raw"])
+        ns = {"a": "http://www.w3.org/2005/Atom"}
+        entries = root.findall("a:entry", ns)
+        expanded = []
+        for entry in entries:
+            paper_id = _xml_text(entry.find("a:id", ns))
+            title = _xml_text(entry.find("a:title", ns)) or item.get("query")
+            summary = _xml_text(entry.find("a:summary", ns))
+            published = _xml_text(entry.find("a:published", ns))
+            link = next((x.attrib.get("href") for x in entry.findall("a:link", ns) if x.attrib.get("href")), paper_id)
+            expanded.append({
+                "source": "arxiv",
+                "query": item.get("query"),
+                "title": title,
+                "url": link or paper_id,
+                "description": summary,
+                "updated_at": published,
+            })
+        return expanded or [{k: v for k, v in item.items() if k != "raw"}]
+    except ET.ParseError:
+        return []
 
 
 def normalize(raw: dict[str, Any]) -> dict[str, Any]:
@@ -108,7 +141,6 @@ def round2_feasibility(items: list[dict[str, Any]]) -> tuple[list[dict[str, Any]
 
 
 def round3_diversity(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    # Keep breadth by family and one canonical source per identical title.
     seen = set()
     out = []
     for item in sorted(items, key=lambda x: (x["family"], x["title"] or "")):
@@ -123,22 +155,26 @@ def round3_diversity(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def build() -> dict[str, Any]:
     data = json.loads(LATEST.read_text(encoding="utf-8")) if LATEST.exists() else {"results": []}
-    normalized = [normalize(x) for x in data.get("results", []) if isinstance(x, dict) and not x.get("error")]
+    expanded = []
+    for raw in data.get("results", []):
+        if isinstance(raw, dict) and not raw.get("error"):
+            expanded.extend(expand_source(raw))
+    normalized = [normalize(x) for x in expanded]
     r1 = round1_source_quality(normalized)
     executable, deferred = round2_feasibility(r1)
     survivors = round3_diversity(executable)
     payload = {
-        "schema_version": 1,
-        "architecture": "source_population -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+        "schema_version": 2,
+        "architecture": "source_population -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
         "policy_authority": "research/campaign_policy.json",
-        "counts": {"raw": len(data.get("results", [])), "normalized": len(normalized), "round1": len(r1), "deferred": len(deferred), "survivors": len(survivors)},
+        "counts": {"raw": len(data.get("results", [])), "expanded": len(expanded), "normalized": len(normalized), "round1": len(r1), "deferred": len(deferred), "survivors": len(survivors)},
         "population": normalized,
         "deferred": deferred,
     }
     POPULATION.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    survivor_payload = {"schema_version": 1, "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION", "survivors": survivors}
+    survivor_payload = {"schema_version": 2, "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION", "survivors": survivors}
     SURVIVORS.write_text(json.dumps(survivor_payload, indent=2), encoding="utf-8")
-    queue = {"schema_version": 1, "status": "READY_FOR_EXECUTABLE_TRANSLATION", "candidates": survivors}
+    queue = {"schema_version": 2, "status": "READY_FOR_EXECUTABLE_TRANSLATION", "candidates": survivors}
     QUEUE.write_text(json.dumps(queue, indent=2), encoding="utf-8")
     return payload
 
