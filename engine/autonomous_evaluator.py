@@ -14,23 +14,46 @@ from .hypotheses import HYPOTHESES
 EVALUATION_SPEC={"stop_fraction":0.01,"reward_multiple":2.0,"round_trip_cost":0.0,"cost_model_status":"UNAVAILABLE","validation_basis":"GROSS_ONLY"}
 WINDOWS={3,5,10,20,50,100}
 
+
 def sha256(path:Path)->str:
  h=hashlib.sha256()
  with path.open('rb') as f:
   for chunk in iter(lambda:f.read(1024*1024),b''): h.update(chunk)
  return h.hexdigest()
 
-def series_value(ctx,key): return float(ctx['entry'].get(key) or 0.0)
+
+def series_value(ctx,key):
+ value=ctx.get('entry',{}).get(key)
+ if value is None: return None
+ try: value=float(value)
+ except (TypeError,ValueError): return None
+ return value if math.isfinite(value) else None
+
 
 def discovered_predicate(spec):
  op=spec['operator']; left=spec['left']; right=spec.get('right'); w=spec.get('window')
+ try: threshold=float(spec['threshold'])
+ except (TypeError,ValueError): raise ValueError('invalid_discovery_threshold')
+ if not math.isfinite(threshold): raise ValueError('invalid_discovery_threshold')
+ if spec.get('direction') not in {'above','below'}: raise ValueError('invalid_discovery_direction')
  def pred(ctx,direction):
-  a=series_value(ctx,left); b=series_value(ctx,right) if right else 0.0
+  a=series_value(ctx,left)
+  if a is None: return False
+  b=series_value(ctx,right) if right else None
+  if right and b is None: return False
   history=ctx.get('history',[]) or []
-  vals=[float(x.get(left) or 0.0) for x in history]
+  vals=[]
+  for x in history:
+   v=x.get(left)
+   try: v=float(v)
+   except (TypeError,ValueError): return False
+   if not math.isfinite(v): return False
+   vals.append(v)
   if op=='identity': value=a
   elif op=='difference': value=a-b
-  elif op=='ratio': value=a/b if b else 0.0
+  elif op=='ratio':
+   if b == 0: return False
+   value=a/b
   elif op in {'rolling_mean','rolling_std','zscore','lag','delta','rank'}:
    if not isinstance(w,int) or w not in WINDOWS or len(vals)<w: return False
    window=vals[-w:]
@@ -43,9 +66,10 @@ def discovered_predicate(spec):
    elif op=='delta': value=a-vals[-w]
    else: value=sum(x<=a for x in window)/w
   else: raise ValueError('unsupported_discovery_operator')
-  threshold=float(spec.get('threshold',0.0))
+  if not math.isfinite(value): return False
   return value>threshold if spec.get('direction')=='above' else value<threshold
  return pred
+
 
 def main()->int:
  ap=argparse.ArgumentParser(); ap.add_argument('--candidate',required=True); ap.add_argument('--data',default='data/BTCUSDT_1h.csv'); ap.add_argument('--out',required=True); a=ap.parse_args()
