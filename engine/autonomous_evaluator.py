@@ -8,9 +8,9 @@ from .data_split import chronological_split, validate_splits
 from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 
-# The current reference execution has no authoritative fee/slippage model.
-# Therefore validation_passed is explicitly a GROSS validation result only;
-# net_validation_gate remains blocked until a real cost model is supplied.
+# No authoritative fee/slippage model is currently configured. A gross-positive
+# result is evidence worth recording, but it is NOT promotion-eligible until
+# the fixed execution model includes authoritative costs.
 EVALUATION_SPEC={"stop_fraction":0.01,"reward_multiple":2.0,"round_trip_cost":0.0,"cost_model_status":"UNAVAILABLE","validation_basis":"GROSS_ONLY"}
 WINDOWS={3,5,10,20,50,100}
 
@@ -83,7 +83,11 @@ def main()->int:
  is_result=evaluate_split(bars,splits[0].start,splits[0].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'])
  val_result=evaluate_split(bars,splits[1].start,splits[1].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'])
  vm=val_result['metrics']; gross_passed=vm.get('profit_factor') is not None and vm['profit_factor']>=1.0 and vm['total_return']>=0.0
- net_gate='PASS' if EVALUATION_SPEC['cost_model_status']=='AVAILABLE' and gross_passed else ('COST_MODEL_REQUIRED' if EVALUATION_SPEC['cost_model_status']!='AVAILABLE' else 'GROSS_VALIDATION_FAILED')
- result={'schema_version':5,'bc':candidate['bc'],'parent_bc':candidate['parent_bc'],'hypothesis_id':hid,'candidate_hash':candidate['candidate_hash'],'discovery_spec':candidate.get('discovery_spec'),'oos_selection_used':False,'oos_executed':False,'dataset':{'path':str(data),'sha256':sha256(data),'bars':len(bars)},'evaluation_spec':dict(EVALUATION_SPEC),'IS':is_result,'VALIDATION':val_result,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':gross_passed,'validation_basis':'GROSS_ONLY'}
- out=root/a.out; out.parent.mkdir(parents=True,exist_ok=True); out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8'); print(json.dumps({'bc':candidate['bc'],'hypothesis_id':hid,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':gross_passed,'validation_basis':'GROSS_ONLY'},indent=2)); return 0
+ cost_available=EVALUATION_SPEC.get('cost_model_status')=='AVAILABLE'
+ net_gate='PASS' if cost_available and gross_passed else ('COST_MODEL_REQUIRED' if not cost_available else 'GROSS_VALIDATION_FAILED')
+ # Promotion eligibility is deliberately stricter than gross screening:
+ # validation_passed means the complete fixed IS/Validation gate passed.
+ validation_passed=bool(cost_available and gross_passed)
+ result={'schema_version':5,'bc':candidate['bc'],'parent_bc':candidate['parent_bc'],'hypothesis_id':hid,'candidate_hash':candidate['candidate_hash'],'discovery_spec':candidate.get('discovery_spec'),'oos_selection_used':False,'oos_executed':False,'dataset':{'path':str(data),'sha256':sha256(data),'bars':len(bars)},'evaluation_spec':dict(EVALUATION_SPEC),'IS':is_result,'VALIDATION':val_result,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION'}
+ out=root/a.out; out.parent.mkdir(parents=True,exist_ok=True); out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8'); print(json.dumps({'bc':candidate['bc'],'hypothesis_id':hid,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION'},indent=2)); return 0
 if __name__=='__main__':raise SystemExit(main())
