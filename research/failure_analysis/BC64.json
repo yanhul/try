@@ -1,13 +1,13 @@
 {
-  "bc": 61,
-  "parent_bc": 60,
+  "bc": 64,
+  "parent_bc": 63,
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "827bad5efb3ba32ec03db70e620037ceacab3d26adcf3bd7ba7586da004279fe",
-  "conceptual_change": "Shift from volatility breakout magnitude to relative range compression, identifying periods of low volatility expansion potential using the 20-period rolling mean of range_ratio.",
+  "candidate_hash": "0db42e859ddb428183554cdecf4abb860bd6036941fc0b5e30da08d34b493458",
+  "conceptual_change": "Introduce momentum detection via relative volatility assessment by analyzing the difference between the current range ratio and its 10-period rolling mean.",
   "evidence_sources": [
-    "https://github.com/procyon-yim/crypto-exchanger"
+    "https://github.com/sohan-shingade/flintstrats"
   ],
   "validation_summary": {
     "candidate_trades": 11,

@@ -1,13 +1,13 @@
 {
-  "bc": 61,
-  "parent_bc": 60,
+  "bc": 63,
+  "parent_bc": 62,
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "827bad5efb3ba32ec03db70e620037ceacab3d26adcf3bd7ba7586da004279fe",
-  "conceptual_change": "Shift from volatility breakout magnitude to relative range compression, identifying periods of low volatility expansion potential using the 20-period rolling mean of range_ratio.",
+  "candidate_hash": "664970c54e39d6b8d0bd38aef7cbbe74465c04ae307b5255a5bc4d9ecdb231ee",
+  "conceptual_change": "Incorporate mean reversion logic by identifying extreme price deviations from the short-term rolling mean using a z-score threshold.",
   "evidence_sources": [
-    "https://github.com/procyon-yim/crypto-exchanger"
+    "https://github.com/pranay123-stack/crypto-trading-strategies"
   ],
   "validation_summary": {
     "candidate_trades": 11,

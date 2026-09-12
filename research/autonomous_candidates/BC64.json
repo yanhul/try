@@ -1,0 +1,21 @@
+{
+  "bc": 64,
+  "candidate_hash": "0db42e859ddb428183554cdecf4abb860bd6036941fc0b5e30da08d34b493458",
+  "conceptual_change": "Introduce momentum detection via relative volatility assessment by analyzing the difference between the current range ratio and its 10-period rolling mean.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "difference",
+    "right": "range_ratio",
+    "threshold": 0.2,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/sohan-shingade/flintstrats"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 63,
+  "rationale": "The strategy shifts from statistical anomaly detection to trend identification by evaluating how current price range activity deviates from the recent 10-day central tendency."
+}

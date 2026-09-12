@@ -4,10 +4,10 @@
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "875e96c9e12a86be604aa20d4d2cc02869d90f71fd1906571d197234d2d330f3",
-  "conceptual_change": "Introduce a condition based on the rolling mean of the volume ratio to filter for periods of relative volume exhaustion before mean reversion signals.",
+  "candidate_hash": "33bc4015a2b642e7fc7496f052bccb51eea0fed3e1f7f408a0ab4b081f3e96af",
+  "conceptual_change": "Evaluate local liquidity depth by comparing the 5-period volume_ratio against a fixed threshold to identify normalized volume spikes.",
   "evidence_sources": [
-    "https://github.com/pranay123-stack/crypto-trading-strategies"
+    "https://github.com/Rhymer-Lcy/hermes-quant"
   ],
   "validation_summary": {
     "candidate_trades": 11,

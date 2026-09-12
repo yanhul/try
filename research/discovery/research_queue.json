@@ -1081,6 +1081,36 @@
           }
         ]
       }
+    },
+    {
+      "candidate_id": "d83c7dfaafbac82c",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "d83c7dfaafbac82c",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
     }
   ]
 }

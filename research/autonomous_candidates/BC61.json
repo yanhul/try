@@ -1,20 +1,20 @@
 {
   "bc": 61,
-  "candidate_hash": "b1e27d25dcb26aa070e96877d243c97428672a5ea03f56b833cd474247646de7",
-  "conceptual_change": "Evaluate short-term price exhaustion by identifying when the relative position of the close within the high-low range exceeds a specific threshold, focusing on intraday mean-reversion characteristics.",
+  "candidate_hash": "827bad5efb3ba32ec03db70e620037ceacab3d26adcf3bd7ba7586da004279fe",
+  "conceptual_change": "Shift from volatility breakout magnitude to relative range compression, identifying periods of low volatility expansion potential using the 20-period rolling mean of range_ratio.",
   "discovery_spec": {
-    "direction": "above",
-    "left": "close_location",
-    "operator": "delta",
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "rolling_mean",
     "threshold": 0.5,
-    "window": 5
+    "window": 20
   },
   "evidence_sources": [
-    "https://github.com/Rhymer-Lcy/hermes-quant"
+    "https://github.com/procyon-yim/crypto-exchanger"
   ],
   "hypothesis_id": "discovered_primitive",
   "is_testable": true,
   "oos_selection_used": false,
   "parent_bc": 60,
-  "rationale": "Using the close_location metric provides a measure of where the final price sits within the range; a high value indicates buying pressure exhaustion, which can be tested as a potential reversal signal."
+  "rationale": "The original volatility breakout concept is adapted into a mean-reversion filter by monitoring the average range ratio over a 20-period window to identify periods where volatility has compressed below a threshold, priming for potential expansion."
 }

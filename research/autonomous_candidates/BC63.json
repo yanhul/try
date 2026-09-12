@@ -1,0 +1,20 @@
+{
+  "bc": 63,
+  "candidate_hash": "664970c54e39d6b8d0bd38aef7cbbe74465c04ae307b5255a5bc4d9ecdb231ee",
+  "conceptual_change": "Incorporate mean reversion logic by identifying extreme price deviations from the short-term rolling mean using a z-score threshold.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/pranay123-stack/crypto-trading-strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 62,
+  "rationale": "Mean reversion strategies in crypto assets rely on identifying temporary overextensions. A z-score of the close relative to a 5-period rolling mean provides a normalized measure of price extremity, suitable for triggering reversion trades."
+}

@@ -1,14 +1,14 @@
 {
   "schema_version": 5,
-  "bc": 62,
-  "parent_bc": 61,
+  "bc": 63,
+  "parent_bc": 62,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "33bc4015a2b642e7fc7496f052bccb51eea0fed3e1f7f408a0ab4b081f3e96af",
+  "candidate_hash": "664970c54e39d6b8d0bd38aef7cbbe74465c04ae307b5255a5bc4d9ecdb231ee",
   "discovery_spec": {
     "direction": "above",
-    "left": "volume_ratio",
-    "operator": "rolling_mean",
-    "threshold": 1.5,
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
     "window": 5
   },
   "oos_selection_used": false,

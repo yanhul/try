@@ -1,8 +1,8 @@
 {
   "campaign_budget": 100,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-001",
-  "checkpoint_seq": 271,
-  "current_bc": 63,
+  "checkpoint_seq": 283,
+  "current_bc": 65,
   "history": [
     {
       "bc": 1,
@@ -405,17 +405,29 @@
       "decision": "REJECT",
       "hypothesis_id": "discovered_primitive",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 63,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 64,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 37,
-  "last_bc": 62,
+  "iterations": 39,
+  "last_bc": 64,
   "last_error": "HOLD_PROVIDER_ROUTER",
-  "next_bc": 63,
+  "next_bc": 65,
   "oos_consumed": [],
   "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-12T11:14:56.914249+00:00"
+  "updated_at": "2026-09-12T11:16:41.298131+00:00"
 }
