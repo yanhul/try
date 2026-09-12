@@ -3,13 +3,13 @@
   "bc": 65,
   "parent_bc": 64,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "64134df74d977036eeec765ab19b565b5e7c672a345c0f2a647f6a240526f9bf",
+  "candidate_hash": "774610c7b96d92f2ea35b8363daa9653ca7dece23f52c4b4140830a718869048",
   "discovery_spec": {
     "direction": "above",
     "left": "vwap_distance",
-    "operator": "zscore",
-    "threshold": 0,
-    "window": 5
+    "operator": "difference",
+    "right": "close",
+    "threshold": 0
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -27,32 +27,32 @@
   },
   "IS": {
     "candidate_trades": 39,
-    "accepted_signals": 17,
-    "skipped_overlap_trades": 4,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 13,
-      "win_count": 4,
-      "loss_count": 9,
-      "win_rate": 0.3076923076923077,
-      "total_return": -0.01117955260902792,
-      "avg_return": -0.0007692307692307534,
-      "profit_factor": 0.888888888888891,
-      "max_drawdown": 0.058519850599000126
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
     }
   },
   "VALIDATION": {
     "candidate_trades": 11,
-    "accepted_signals": 6,
+    "accepted_signals": 0,
     "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 6,
-      "win_count": 2,
-      "loss_count": 4,
-      "win_rate": 0.3333333333333333,
-      "total_return": -0.0005959111960001096,
-      "avg_return": -1.3010426069826053e-17,
-      "profit_factor": 0.9999999999999981,
-      "max_drawdown": 0.03940399000000012
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
     }
   },
   "gross_validation_passed": false,
