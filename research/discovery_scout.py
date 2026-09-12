@@ -5,9 +5,9 @@ Discovery expands the candidate universe; it never promotes or executes a strate
 Successful observations are retained across runs so rate-limit/provider failures
 cannot erase previously discovered research sources.
 
-Source coverage is intentionally bounded and explicit: GitHub, arXiv, OpenAlex and
-Crossref public APIs. This is broad public-source coverage, not an exhaustive
-crawl of the Internet.
+Coverage is explicit and bounded: GitHub, GitLab, arXiv, OpenAlex, Crossref,
+Semantic Scholar and Papers With Code public endpoints. This is broad public-source
+coverage, not an exhaustive crawl of the Internet.
 """
 from __future__ import annotations
 import json, os, urllib.parse, urllib.request
@@ -21,10 +21,11 @@ ARCHIVE=ROOT/'research'/'discovery'/'source_archive.json'
 QUERIES=[
  'crypto momentum trend following strategy bitcoin','crypto mean reversion statistical arbitrage strategy','crypto volatility breakout strategy','smart money concepts ICT liquidity sweep trading strategy crypto','fair value gap imbalance FVG crypto trading','Wyckoff VSA VPA volume price analysis crypto','VWAP volume profile crypto trading strategy','funding rate basis carry crypto trading','crypto order flow order book imbalance microprice','cross sectional crypto factors momentum reversal','crypto regime switching hidden Markov trading','bitcoin seasonality calendar effect trading','Solana on chain alpha liquidity trading','crypto options volatility skew gamma trading','prediction market order book trading strategy','maker adverse selection execution crypto','MEV execution alpha crypto','systematic crypto trading machine learning alpha','symbolic regression alpha mining trading','evolutionary alpha discovery trading strategy','LLM alpha mining quantitative trading','autonomous trading strategy research backtest','A-share quantitative trading factor strategy China','China stock limit-up quantitative strategy','China A-share order flow high frequency factors','China A-share T+1 transaction cost backtest','China A-share cross-sectional factor mining','China A-share point-in-time survivorship backtest','China A-share pairs statistical arbitrage','China A-share machine learning alpha','中国 A股 量化 交易 策略 因子','因子挖掘 A股 量化 交易','涨停 连板 A股 量化 策略','订单流 A股 高频 因子','T+1 涨跌停 交易成本 回测','多因子 加密货币 量化 交易 策略','因子挖掘 加密货币 量化 交易','量化 交易 alpha 挖掘 遗传 算法','强化学习 加密货币 交易 策略','订单流 加密货币 交易 策略','资金费率 基差 套利 加密货币','SMC ICT 流动性 扫损 加密货币','威科夫 VSA VPA 量价 加密货币',
  'equity factor investing cross sectional alpha backtest','statistical arbitrage pairs trading equities','futures trend following systematic strategy','options volatility trading systematic strategy','market microstructure order book strategy','alternative data quantitative alpha research','reinforcement learning trading systematic review','genetic programming symbolic regression trading alpha','portfolio optimization risk parity systematic trading','event driven quantitative trading earnings news','prediction markets automated trading research','decentralized exchange arbitrage MEV research','on chain wallet flow trading signal research',
+ 'systematic trading strategy repository','quantitative trading strategy backtest github','algorithmic trading research code','crypto trading bot strategy backtest','market making strategy code','order flow trading research code','factor alpha research code','China quant trading github','A股 量化 github','加密货币 量化 github',
 ]
 
-def get_json(url, *, github=False):
-    headers={'User-Agent':'try-research-scout/5.0','Accept':'application/json'}
+def get_json(url, *, github=False, user_agent='try-research-scout/6.0'):
+    headers={'User-Agent':user_agent,'Accept':'application/json'}
     token=os.getenv('GITHUB_TOKEN')
     if github and token: headers['Authorization']=f'Bearer {token}'
     req=urllib.request.Request(url,headers=headers)
@@ -36,10 +37,16 @@ def github(q):
         return [{'source':'github','query':q,'title':x.get('full_name'),'url':x.get('html_url'),'description':x.get('description'),'updated_at':x.get('updated_at'),'stars':x.get('stargazers_count')} for x in get_json(u,github=True).get('items',[])]
     except Exception as e:return [{'source':'github','query':q,'error':str(e)}]
 
+def gitlab(q):
+    try:
+        u='https://gitlab.com/api/v4/projects?'+urllib.parse.urlencode({'search':q,'simple':True,'per_page':20,'order_by':'last_activity_at','sort':'desc'})
+        return [{'source':'gitlab','query':q,'title':x.get('path_with_namespace'),'url':x.get('web_url'),'description':x.get('description'),'updated_at':x.get('last_activity_at'),'stars':x.get('star_count')} for x in get_json(u).get('items',get_json(u).get('results',[]))]
+    except Exception as e:return [{'source':'gitlab','query':q,'error':str(e)}]
+
 def arxiv(q):
     try:
         u='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':'all:'+q,'start':0,'max_results':20})
-        req=urllib.request.Request(u,headers={'User-Agent':'try-research-scout/5.0'})
+        req=urllib.request.Request(u,headers={'User-Agent':'try-research-scout/6.0'})
         with urllib.request.urlopen(req,timeout=20) as r: raw=r.read().decode(errors='replace')
         return [{'source':'arxiv','query':q,'raw':raw[:30000]}]
     except Exception as e:return [{'source':'arxiv','query':q,'error':str(e)}]
@@ -47,35 +54,44 @@ def arxiv(q):
 def openalex(q):
     try:
         u='https://api.openalex.org/works?'+urllib.parse.urlencode({'search':q,'per-page':10,'select':'id,title,doi,publication_year,primary_location,type'})
-        data=get_json(u)
-        out=[]
+        data=get_json(u); out=[]
         for x in data.get('results',[]):
-            title=x.get('title') or ''
-            url=x.get('doi') or x.get('id')
-            out.append({'source':'openalex','query':q,'title':title,'url':url,'description':f"OpenAlex work type={x.get('type')} year={x.get('publication_year')}",'updated_at':str(x.get('publication_year') or '')})
+            out.append({'source':'openalex','query':q,'title':x.get('title') or '','url':x.get('doi') or x.get('id'),'description':f"OpenAlex work type={x.get('type')} year={x.get('publication_year')}",'updated_at':str(x.get('publication_year') or '')})
         return out
     except Exception as e:return [{'source':'openalex','query':q,'error':str(e)}]
 
 def crossref(q):
     try:
         u='https://api.crossref.org/works?'+urllib.parse.urlencode({'query.bibliographic':q,'rows':10,'select':'DOI,title,published,URL,type'})
-        data=get_json(u)
-        out=[]
+        data=get_json(u); out=[]
         for x in data.get('message',{}).get('items',[]):
-            titles=x.get('title') or []
-            title=titles[0] if titles else ''
+            titles=x.get('title') or []; title=titles[0] if titles else ''
             out.append({'source':'crossref','query':q,'title':title,'url':x.get('URL') or (('https://doi.org/'+x['DOI']) if x.get('DOI') else None),'description':f"Crossref work type={x.get('type')}",'updated_at':str((x.get('published') or {}).get('date-parts',[['']])[0][0])})
         return out
     except Exception as e:return [{'source':'crossref','query':q,'error':str(e)}]
 
+def semantic_scholar(q):
+    try:
+        u='https://api.semanticscholar.org/graph/v1/paper/search?'+urllib.parse.urlencode({'query':q,'limit':10,'fields':'title,url,abstract,year,externalIds'})
+        data=get_json(u); out=[]
+        for x in data.get('data',[]):
+            out.append({'source':'semantic_scholar','query':q,'title':x.get('title'),'url':x.get('url'),'description':(x.get('abstract') or '')[:2000],'updated_at':str(x.get('year') or '')})
+        return out
+    except Exception as e:return [{'source':'semantic_scholar','query':q,'error':str(e)}]
+
+def papers_with_code(q):
+    try:
+        u='https://paperswithcode.com/api/v1/papers/?'+urllib.parse.urlencode({'page':1,'items_per_page':20,'q':q})
+        data=get_json(u); rows=data.get('results',[]) if isinstance(data,dict) else []
+        return [{'source':'paperswithcode','query':q,'title':x.get('title'),'url':x.get('url') or x.get('paper_url'),'description':x.get('abstract') or x.get('summary'),'updated_at':str(x.get('published') or '')} for x in rows]
+    except Exception as e:return [{'source':'paperswithcode','query':q,'error':str(e)}]
+
 def load_success(path, key_name):
     if not path.exists(): return []
     try:
-        data=json.loads(path.read_text(encoding='utf-8'))
-        items=data.get(key_name,[]) if isinstance(data,dict) else []
+        data=json.loads(path.read_text(encoding='utf-8')); items=data.get(key_name,[]) if isinstance(data,dict) else []
         return [x for x in items if isinstance(x,dict) and not x.get('error')]
-    except Exception:
-        return []
+    except Exception:return []
 
 def merge_success(previous,fresh):
     by_key={}
@@ -89,15 +105,16 @@ def main():
     previous=load_success(ARCHIVE,'sources')
     if not previous: previous=load_success(OUT,'results')
     results=[]; jobs=[]
-    with ThreadPoolExecutor(max_workers=8) as pool:
+    funcs=[github,gitlab,arxiv,openalex,crossref,semantic_scholar,papers_with_code]
+    with ThreadPoolExecutor(max_workers=12) as pool:
         for q in QUERIES:
-            jobs += [pool.submit(github,q),pool.submit(arxiv,q),pool.submit(openalex,q),pool.submit(crossref,q)]
+            for fn in funcs: jobs.append(pool.submit(fn,q))
         for f in as_completed(jobs): results.extend(f.result())
     merged=merge_success(previous,results)
-    payload={'schema_version':6,'fanout':'github+arxiv+openalex+crossref_parallel_bounded','query_families':len(QUERIES),'queries':QUERIES,'fresh_results':results,'results':merged}
+    payload={'schema_version':7,'fanout':'github+gitlab+arxiv+openalex+crossref+semantic_scholar+paperswithcode_parallel_bounded','query_families':len(QUERIES),'queries':QUERIES,'fresh_results':results,'results':merged}
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(payload,indent=2,ensure_ascii=False),encoding='utf-8')
-    ARCHIVE.write_text(json.dumps({'schema_version':3,'sources':merged},indent=2,ensure_ascii=False),encoding='utf-8')
+    ARCHIVE.write_text(json.dumps({'schema_version':4,'sources':merged},indent=2,ensure_ascii=False),encoding='utf-8')
     print(f'DISCOVERY_SCOUT_DONE fresh={len(results)} retained_success={len(merged)} output={OUT}')
     engine=ROOT/'research'/'discovery'/'population_engine.py'
     proc=subprocess.run([sys.executable,str(engine)],cwd=str(ROOT),text=True,capture_output=True)
