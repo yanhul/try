@@ -1,14 +1,20 @@
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "research/discovery/system_ingestion.py"
 REGISTRY = ROOT / "research/discovery/system_registry.json"
 
 
+def generate():
+    subprocess.run([sys.executable, str(SCRIPT)], cwd=ROOT, check=True)
+    return json.loads(REGISTRY.read_text(encoding="utf-8"))
+
+
 def test_system_ingestion_contract():
-    # The generated registry is committed so CI can prove the ingestion contract
-    # without relying on a live network response.
-    data = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    data = generate()
     records = data["records"]
     assert data["total_records"] == len(records)
     assert data["system_records"] == sum(1 for r in records if r["is_system"])
@@ -19,5 +25,5 @@ def test_system_ingestion_contract():
 
 
 def test_china_lane_is_represented():
-    data = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    data = generate()
     assert any(r["family"] == "china_a_share" for r in data["records"])
