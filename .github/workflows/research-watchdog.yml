@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: write
 
 jobs:
   watchdog:
@@ -22,6 +23,34 @@ jobs:
         id: health
         continue-on-error: true
         run: python research/watchdog.py | tee watchdog.log
+
+      - name: Auto-resume stale retryable controller
+        if: steps.health.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state = json.loads(Path('research/bc_lifecycle_state.json').read_text())
+          retry = int(state.get('retry_count', 0))
+          error = str(state.get('last_error') or '')
+          eligible = (
+              not state.get('terminal')
+              and not state.get('campaign_terminal')
+              and state.get('phase') == 'WAIT_RETRY'
+              and error.startswith(('PROVIDER_FAIL ', 'HOLD_PROVIDER_ROUTER'))
+              and 0 <= retry < 3
+          )
+          print(f'AUTO_RESUME_CHECK eligible={eligible} retry={retry}/3 error={error}')
+          if not eligible:
+              raise SystemExit(0)
+          PY
+          sleep 5
+          gh workflow run bc-research-controller.yml --ref main
+          echo "AUTO_RESUME_DISPATCHED"
 
       - name: Open durable incident if stale
         if: steps.health.outcome == 'failure'
