@@ -1,1 +1,0 @@
-Recovery audit marker only. The authoritative BC55 candidate is intentionally absent; the controller must regenerate it from the persisted campaign state. This file is not executable candidate input.
