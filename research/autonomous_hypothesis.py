@@ -18,6 +18,7 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
  if candidate["oos_selection_used"] is not False:return False,"oos_selection_forbidden"
  if candidate["is_testable"] is not True:return False,"not_testable"
  spec=candidate.get("discovery_spec")
+ if candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
  if spec is not None:
   if not isinstance(spec,dict) or spec.get("operator") not in OPS:return False,"invalid_discovery_operator"
   if spec.get("left") not in COLS:return False,"invalid_discovery_left_column"
