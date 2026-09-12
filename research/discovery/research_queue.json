@@ -3,6 +3,34 @@
   "status": "READY_FOR_EXECUTABLE_TRANSLATION",
   "candidates": [
     {
+      "candidate_id": "eeda2d8bb7226345",
+      "source": "github",
+      "source_url": "https://github.com/ChampionKerr/sigma-quant-stream",
+      "title": "ChampionKerr/sigma-quant-stream",
+      "description": "Autonomous strategy research factory \u2014 your own hedge fund research team. Claude Code agent swarm discovers, backtests, and validates trading strategies.",
+      "family": "cross_sectional",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-08-19T15:36:00Z",
+      "lineage": {
+        "source": "eeda2d8bb7226345",
+        "family": "cross_sectional",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "9bf4fe323577bdf9",
       "source": "github",
       "source_url": "https://github.com/KASHAPP10/statistical-arbitrage-crypto",
@@ -265,6 +293,118 @@
       "source_timestamp": "2026-06-18T15:18:07Z",
       "lineage": {
         "source": "a39cba1d84033150",
+        "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "8fc33fa8e45109c1",
+      "source": "github",
+      "source_url": "https://github.com/Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
+      "title": "Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
+      "description": "This project models **Level-2 order book dynamics** to forecast short-term market movements and evaluate the profitability of high-frequency trading (HFT) strategies.   It combines machine learning (Scikit-learn) with backtesting to analyze market microstructure, transaction costs, and execution risks.",
+      "family": "smc_ict",
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2026-03-17T06:57:53Z",
+      "lineage": {
+        "source": "8fc33fa8e45109c1",
+        "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "d7eb84a030ce1e76",
+      "source": "github",
+      "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
+      "title": "Jcstack/ashare-ai-analyst",
+      "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
+      "family": "smc_ict",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-08-29T14:58:22Z",
+      "lineage": {
+        "source": "d7eb84a030ce1e76",
+        "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "2d81756ed90dbb60",
+      "source": "github",
+      "source_url": "https://github.com/kunnaaalll/ApeXQuanT-ShowCase",
+      "title": "kunnaaalll/ApeXQuanT-ShowCase",
+      "description": "ApeXQuanT - Autonomous Market Intelligence & Systematic Trading Research Platform. Research-driven FX trading infrastructure featuring SMC/MTF analysis, deterministic risk controls, historical backtesting, structural strategy research, walk-forward validation, and ML-based shadow learning.",
+      "family": "smc_ict",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-08-31T10:15:48Z",
+      "lineage": {
+        "source": "2d81756ed90dbb60",
+        "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "1a3809b88494a50e",
+      "source": "github",
+      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
+      "title": "vcorp-dev/depthfeed-strategy-builder",
+      "description": "Node-based, multi-asset backtester \u2014 prediction markets, shares and crypto in one strategy, on recorded order-book depth.",
+      "family": "smc_ict",
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2026-08-22T12:32:41Z",
+      "lineage": {
+        "source": "1a3809b88494a50e",
         "family": "smc_ict",
         "rounds": [
           {
