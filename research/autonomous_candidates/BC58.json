@@ -1,0 +1,20 @@
+{
+  "bc": 58,
+  "candidate_hash": "d59afc97884d0ad53db036ee53ef0088d4977b170cdd0bd18d82d39d7aa66f08",
+  "conceptual_change": "Introduce a price-action compression filter using rolling_std of range_ratio to identify potential breakout preparation in A-share stocks.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.2,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/QSshuyunmu/A-share-quant"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 57,
+  "rationale": "High-volatility regimes are often preceded by periods of compressed price range in A-share markets. By filtering for lower-than-average volatility using a rolling standard deviation of the range_ratio, we aim to isolate potential explosive moves while minimizing false signals from high-noise environments."
+}

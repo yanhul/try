@@ -3,13 +3,13 @@
   "bc": 58,
   "parent_bc": 57,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "5f6c5cfa49768b1cdee84ca42683e5c1603a4c33979a7917bc74c74a697988a8",
+  "candidate_hash": "d59afc97884d0ad53db036ee53ef0088d4977b170cdd0bd18d82d39d7aa66f08",
   "discovery_spec": {
-    "direction": "above",
+    "direction": "below",
     "left": "range_ratio",
-    "operator": "zscore",
-    "threshold": 1.5,
-    "window": 100
+    "operator": "rolling_std",
+    "threshold": 0.2,
+    "window": 20
   },
   "oos_selection_used": false,
   "oos_executed": false,

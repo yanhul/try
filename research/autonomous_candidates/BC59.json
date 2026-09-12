@@ -1,0 +1,20 @@
+{
+  "bc": 59,
+  "candidate_hash": "06f3f240a70dcdae070ea2c0a133de7936fc66b1741eb81f3cb416d906839c3b",
+  "conceptual_change": "Introduce a liquidity-adjusted mean-reversion trigger by evaluating the rank of range_ratio within a short lookback window to identify periods of localized price compression.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "rank",
+    "threshold": 0.2,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/kshoop28/crypto-statistical-arbitrage"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 58,
+  "rationale": "The strategy targets crypto assets exhibiting low relative volatility (range compression) as a prerequisite for mean-reversion entries, assuming that periods of range contraction precede reversion to the moving average."
+}

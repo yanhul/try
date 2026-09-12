@@ -568,6 +568,11 @@
     },
     {
       "source": "arxiv",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/PuAOueE9QrTvLK3b8h+Xtrq+9bc</id>\n  <title>arXiv Query: search_query=all:威科夫 OR all:VSA OR all:VPA OR all:量价 OR all:加密货币&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T11:05:21Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:%E5%A8%81%E7%A7%91%E5%A4%AB+OR+(all:VSA+OR+(all:VPA+OR+(all:%E9%87%8F%E4%BB%B7+OR+all:%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>240</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0406394v1</id>\n    <title>Probing the primordial power spectrum with the VSA (and other CMB experiments)</title>\n    <updated>2004-06-17T09:49:07Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0406394v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0406394v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We present estimates of parameters which model the primordial density fluctuations using CMB data from the VSA, 1st year WMAP, CBI and ACBAR along with external priors from 2dF and the HST. Taken at face value there is significant evidence for a running spectral index when only scalar fluctuations are considered. The significance of this result is increased by the inclusion of tensors and, although the result is weakened by the inclusion of `running of the running', the basic trend toward significantly negative running remains. We discuss the implications of this result and how it might be strengthened by future observations.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2004-06-17T09:49:07Z</published>\n    <arxiv:comment>to appear in `Exploring the Universe', proceedings of Rencontres de Moriond 2004</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <author>\n      <name>Richard A. Battye</name>\n    </author>\n    <author>\n      <name>the VSA Collaboration</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2309.15251v1</id>\n    <title>VPA: Fully Test-Time Visual Prompt Adaptation</title>\n    <updated>2023-09-26T20:25:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2309.15251v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2309.15251v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Textual prompt tuning has demonstrated significant performance improvements in adapting natural language processing models to a variety of downstream tasks by treating hand-engineered prompts as trainable parameters. Inspired by the success of textual prompting, several studies have investigated the efficacy of visual prompt tuning. In this work, we present Visual Prompt Adaptation (VPA), the first framework that generalizes visual prompting with test-time adaptation. VPA introduces a small number of learnable tokens, enabling fully test-time and storage-efficient adaptation without necessitating source-domain information. We examine our VPA design under diverse adaptation settings, encompassing single-image, batched-image, and pseudo-label adaptation. We evaluate VPA on multiple tasks, including out-of-distribution (OOD) generalization, corruption robustness, and domain adaptation. Experimental results reveal that VPA effectively enhances OOD generalization by 3.3% across various models, surpassing previous test-time approaches. Furthermore, we show that VPA improves corruption robustness by 6.5% compared to strong baselines. Finally, we demonstrate that VPA also boosts domain adaptation performance by relatively 5.2%. Our VPA also exhibits marked effectiveness in improving the robustness of zero-shot recognition for vision-language models.</summary>\n    <category term=\"cs.CV\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-09-26T20:25:51Z</published>\n    <arxiv:primary_category term=\"cs.CV\"/>\n    <author>\n      <name>Jiachen Sun</name>\n    </author>\n    <author>\n      <name>Mark Ibrahim</name>\n    </author>\n    <author>\n      <name>Melissa Hall</name>\n    </author>\n    <author>\n      <name>Ivan Evtimov</name>\n    </author>\n    <author>\n      <name>Z. Morley Mao</name>\n    </author>\n    <author>\n      <name>Cristian Canton Ferrer</name>\n    </author>\n    <author>\n      <name>Caner Hazirbas</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2211.08891v2</id>\n    <title>Validating Streaming JSON Documents with Learned VPAs</title>\n    <updated>2023-03-08T15:09:04Z</updated>\n    <link href=\"https://arxiv.org/abs/2211.08891v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2211.08891v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We present a new streaming algorithm to validate JSON documents against a set of constraints given as a JSON schema. Among the possible values a JSON document can hold, objects are unordered collections of key-value pairs while arrays are ordered collections of values. We prove that there always exists a visibly pushdown automaton (VPA) that accepts the same set of JSON documents as a JSON schema. Leveraging this result, our approach relies on learning a VPA for the provided schema. As the learned VPA assumes a fixed order on the key-value pairs of the objects, we abstract its transitions in a special kind of graph, and propose an efficient streaming algorithm using the VPA and its graph to decide whether a JSON document is valid for the schema. We evaluate the implementation of our algorithm on a number of random JSON documents, and compare it to the classical validation algorithm.</summary>\n    <category term=\"cs.FL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-11-16T12:55:32Z</published>\n    <arxiv:comment>46 pages, 10 figures, published at TACAS 2023</arxiv:comment>\n    <arxiv:primary_category term=\"cs.FL\"/>\n    <arxiv:journal_ref>Tools and Algorithms for the Construction and Analysis of Systems (TACAS) 2023, pp. 271-289</arxiv:journal_ref>\n    <author>\n      <name>Véronique Bruyère</name>\n    </author>\n    <author>\n      <name>Guillermo A. Perez</name>\n    </author>\n    <author>\n      <name>Gaëtan Staquet</name>\n    </author>\n    <arxiv:doi>10.1007/978-3-031-30823-9_14</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/978-3-031-30823-9_14\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2407.02791v1</id>\n    <title>Model-Enhanced LLM-Driven VUI Testing of VPA Apps</title>\n    <updated>2024-07-03T03:36:05Z</updated>\n    <link href=\"https://arxiv.org/abs/2407.02791v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2407.02791v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The flourishing ecosystem centered around voice personal assistants (VPA), such as Amazon Alexa, has led to the booming of VPA apps. The largest app market Amazon skills store, for example, hosts over 200,000 apps. Despite their popularity, the open nature of app release and the easy accessibility of apps also raise significant concerns regarding security, privacy and quality. Consequently, various testing approaches have been proposed to systematically examine VPA app behaviors. To tackle the inherent lack of a visible user interface in the VPA app, two strategies are employed during testing, i.e., chatbot-style testing and model-based testing. The former often lacks effective guidance for expanding its search space, while the latter falls short in interpreting the semantics of conversations to construct precise and comprehensive behavior models for apps. In this work, we introduce Elevate, a model-enhanced large language model (LLM)-driven VUI testing framework. Elevate leverages LLMs' strong capability in natural language processing to compensate for semantic information loss during model-based VUI testing. It operates by prompting LLMs to extract states from VPA apps' outputs and generate context-related inputs. During the automatic interactions with the app, it incrementally constructs the behavior model, which facilitates the LLM in generating inputs that are highly likely to discover new states. Elevate bridges the LLM and the behavior model with innovative techniques such as encoding behavior model into prompts and selecting LLM-generated inputs based on the context relevance. Elevate is benchmarked on 4,000 real-world Alexa skills, against the state-of-the-art tester Vitas. It achieves 15% higher state space coverage compared to Vitas on all types of apps, and exhibits significant advancement in efficiency.</summary>\n    <category term=\"cs.SE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-07-03T03:36:05Z</published>\n    <arxiv:comment>13 pages, 11 figures</arxiv:comment>\n    <arxiv:primary_category term=\"cs.SE\"/>\n    <author>\n      <name>Suwan Li</name>\n    </author>\n    <author>\n      <name>Lei Bu</name>\n    </author>\n    <author>\n      <name>Guangdong Bai</name>\n    </author>\n    <author>\n      <name>Fuman Xie</name>\n    </author>\n    <author>\n      <name>Kai Chen</name>\n    </author>\n    <author>\n      <name>Chang Yue</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2601.12203v1</id>\n    <title>Embryonic Exposure to VPA Influences Chick Vocalisations: A Computational Study</title>\n    <updated>2026-01-18T00:43:17Z</updated>\n    <link href=\"https://arxiv.org/abs/2601.12203v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2601.12203v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In young animals like poultry chicks (Gallus gallus), vocalisations convey information about affective and behavioural states. Traditional approaches to vocalisation analysis, relying on manual annotation and predefined categories, introduce biases, limit scalability, and fail to capture the full complexity of vocal repertoires. We introduce a computational framework for the automated detection, acoustic feature extraction, and unsupervised learning of chick vocalisations. Applying this framework to a dataset of newly hatched chicks, we identified two primary vocal clusters. We then tested our computational framework on an independent dataset of chicks exposed during embryonic development to vehicle or Valproic Acid (VPA), a compound that disrupts neural development and is linked to autistic-like symptoms. Clustering analysis on the experimental dataset confirmed two primary vocal clusters and revealed systematic differences between groups. VPA-exposed chicks showed an altered repertoire, with a relative increase in softer calls. VPA differentially affected call clusters, modulating temporal, frequency, and energy domain features. Overall, VPA-exposed chicks produced vocalisations with shorter duration, reduced pitch variability, and modified energy profiles, with the strongest alterations observed in louder calls. This study provides a computational framework for analysing animal vocalisations, advancing knowledge of early-life communication in typical and atypical vocal development.</summary>\n    <category term=\"cs.SD\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-01-18T00:43:17Z</published>\n    <arxiv:comment>Main text (approx. 23 pages including references) with extensive Supplementary Material ( 20 pages) and multiple figures</arxiv:comment>\n    <arxiv:primary_category term=\"cs.SD\"/>\n    <author>\n      <name>Antonella M. C. Torrisi</name>\n    </author>\n    <author>\n      <name>Inês Nolasco</name>\n    </author>\n    <author>\n      <name>Paola Sgadò</name>\n    </author>\n    <author>\n      <name>Elisabetta Versace</name>\n    </author>\n    <author>\n      <name>Emmanouil Benetos</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2202.04771v1</id>\n    <title>Orthogonal Matrices for MBAT Vector Symbolic Architectures, and a \"Soft\" VSA Representation for JSON</title>\n    <updated>2022-02-08T18:41:32Z</updated>\n    <link href=\"https://arxiv.org/abs/2202.04771v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2202.04771v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Vector Symbolic Architectures (VSAs) give a way to represent a complex object as a single fixed-length vector, so that similar objects have similar vector representations. These vector representations then become easy to use for machine learning or nearest-neighbor search. We review a previously proposed VSA method, MBAT (Matrix Binding of Additive Terms), which uses multiplication by random matrices for binding related terms. However, multiplying by such matrices introduces instabilities which can harm performance. Making the random matrices be orthogonal matrices provably fixes this problem. With respect to larger scale applications, we see how to apply MBAT vector representations for any data expressed in JSON. JSON is used in numerous programming languages to express complex data, but its native format appears highly unsuited for machine learning. Expressing JSON as a fixed-length vector makes it readily usable for machine learning and nearest-neighbor search. Creating such JSON vectors also shows that a VSA needs to employ binding operations that are non-commutative.\n  VSAs are now ready to try with full-scale practical applications, including healthcare, pharmaceuticals, and genomics.\n  Keywords: MBAT (Matrix Binding of Additive Terms), VSA (Vector Symbolic Architecture), HDC (Hyperdimensional Computing), Distributed Representations, Binding, Orthogonal Matrices, Recurrent Connections, Machine Learning, Search, JSON, VSA Applications</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.NE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-02-08T18:41:32Z</published>\n    <arxiv:comment>8 pages</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Stephen I. Gallant</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2204.08446v2</id>\n    <title>VSA: Learning Varied-Size Window Attention in Vision Transformers</title>\n    <updated>2023-07-03T07:49:59Z</updated>\n    <link href=\"https://arxiv.org/abs/2204.08446v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2204.08446v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Attention within windows has been widely explored in vision transformers to balance the performance, computation complexity, and memory footprint. However, current models adopt a hand-crafted fixed-size window design, which restricts their capacity of modeling long-term dependencies and adapting to objects of different sizes. To address this drawback, we propose \\textbf{V}aried-\\textbf{S}ize Window \\textbf{A}ttention (VSA) to learn adaptive window configurations from data. Specifically, based on the tokens within each default window, VSA employs a window regression module to predict the size and location of the target window, i.e., the attention area where the key and value tokens are sampled. By adopting VSA independently for each attention head, it can model long-term dependencies, capture rich context from diverse windows, and promote information exchange among overlapped windows. VSA is an easy-to-implement module that can replace the window attention in state-of-the-art representative models with minor modifications and negligible extra computational cost while improving their performance by a large margin, e.g., 1.1\\% for Swin-T on ImageNet classification. In addition, the performance gain increases when using larger images for training and test. Experimental results on more downstream tasks, including object detection, instance segmentation, and semantic segmentation, further demonstrate the superiority of VSA over the vanilla window attention in dealing with objects of different sizes. The code will be released https://github.com/ViTAE-Transformer/ViTAE-VSA.</summary>\n    <category term=\"cs.CV\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-04-18T17:56:07Z</published>\n    <arxiv:comment>23 pages, 13 tables, and 5 figures; ECCV 2022 version</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CV\"/>\n    <author>\n      <name>Qiming Zhang</name>\n    </author>\n    <author>\n      <name>Yufei Xu</name>\n    </author>\n    <author>\n      <name>Jing Zhang</name>\n    </author>\n    <author>\n      <name>Dacheng Tao</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0305485v1</id>\n    <title>Observing the CMB at High-l using the VSA and AMI</title>\n    <updated>2003-05-26T00:10:16Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0305485v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0305485v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We discuss two experiments - the Very Small Array (VSA) and the Arcminute MicroKelvin Imager (AMI) - and their prospects for observing the CMB at high angular multipoles. Whilst the VSA is primarily designed to observe primary anisotropies in the CMB, AMI is designed to image secondary anisotropies via the Sunyaev-Zel'dovich effect. The combined l-range of these two instruments is between l = 150 and ~10000.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2003-05-26T00:10:16Z</published>\n    <arxiv:comment>8 pages, 13 figures. To be published in the proceedings of \"The Cosmic Microwave Background and its Polarization\", New Astronomy Reviews, (eds. S. Hanany and K.A. Olive)</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <author>\n      <name>Angela C. Taylor</name>\n    </author>\n    <arxiv:doi>10.1016/j.newar.2003.09.019</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.newar.2003.09.019\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2403.04747v1</id>\n    <title>GNN-VPA: A Variance-Preserving Aggregation Strategy for Graph Neural Networks</title>\n    <updated>2024-03-07T18:52:27Z</updated>\n    <link href=\"https://arxiv.org/abs/2403.04747v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2403.04747v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Graph neural networks (GNNs), and especially message-passing neural networks, excel in various domains such as physics, drug discovery, and molecular modeling. The expressivity of GNNs with respect to their ability to discriminate non-isomorphic graphs critically depends on the functions employed for message aggregation and graph-level readout. By applying signal propagation theory, we propose a variance-preserving aggregation function (VPA) that maintains expressivity, but yields improved forward and backward dynamics. Experiments demonstrate that VPA leads to increased predictive performance for popular GNN architectures as well as improved learning dynamics. Our results could pave the way towards normalizer-free or self-normalizing GNNs.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-03-07T18:52:27Z</published>\n    <arxiv:comment>Accepted at ICLR 2024 (Tiny Papers Track)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Lisa Schneckenreiter</name>\n    </author>\n    <author>\n      <name>Richard Freinschlag</name>\n    </author>\n    <author>\n      <name>Florian Sestak</name>\n    </author>\n    <author>\n      <name>Johannes Brandstetter</name>\n    </author>\n    <author>\n      <name>Günter Klambauer</name>\n    </author>\n    <author>\n      <name>Andreas Mayr</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2505.13389v5</id>\n    <title>VSA: Faster Video Diffusion with Trainable Sparse Attention</title>\n    <updated>2025-10-28T04:13:18Z</updated>\n    <link href=\"https://arxiv.org/abs/2505.13389v5\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2505.13389v5\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Scaling video diffusion transformers (DiTs) is limited by their quadratic 3D attention, even though most of the attention mass concentrates on a small subset of positions. We turn this observation into VSA, a trainable, hardware-efficient sparse attention that replaces full attention at \\emph{both} training and inference. In VSA, a lightweight coarse stage pools tokens into tiles and identifies high-weight \\emph{critical tokens}; a fine stage computes token-level attention only inside those tiles subjecting to block computing layout to ensure hard efficiency. This leads to a single differentiable kernel that trains end-to-end, requires no post-hoc profiling, and sustains 85\\% of FlashAttention3 MFU. We perform a large sweep of ablation studies and scaling-law experiments by pretraining DiTs from 60M to 1.4B parameters. VSA reaches a Pareto point that cuts training FLOPS by 2.53$\\times$ with no drop in diffusion loss. Retrofitting the open-source Wan-2.1 model speeds up attention time by 6$\\times$ and lowers end-to-end generation time from 31s to 18s with comparable quality. These results establish trainable sparse attention as a practical alternative to full attention and a key enabler for further scaling of video diffusion models. Code will be available at https://github.com/hao-ai-lab/FastVideo.</summary>\n    <category term=\"cs.CV\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-05-19T17:30:13Z</published>\n    <arxiv:comment>Accepted by Neurips 2025</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CV\"/>\n    <author>\n      <name>Peiyuan Zhang</name>\n    </author>\n    <author>\n      <name>Yongqi Chen</name>\n    </author>\n    <author>\n      <name>Haofeng Huang</name>\n    </author>\n    <author>\n      <name>Will Lin</name>\n    </author>\n    <author>\n      <name>Zhengzhong Liu</name>\n    </author>\n    <author>\n      <name>Ion Stoica</name>\n    </author>\n    <author>\n      <name>Eric Xing</name>\n    </author>\n    <author>\n      <name>Hao Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0502330v2</id>\n    <title>CMB observations from the CBI and VSA: A comparison of coincident maps and parameter estimation methods</title>\n    <updated>2005-11-04T17:23:41Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0502330v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0502330v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We present coincident observations of the Cosmic Microwave Background (CMB) from the Very Small Array (VSA) and Cosmic Background Imager (CBI) telescopes. The consistency of the full datasets is tested in the map plane and the Fourier plane, prior to the usual compression of CMB data into flat bandpowers. Of the three mosaics observed by each group, two are found to be in excellent agreement. In the third mosaic, there is a 2 sigma discrepancy between the correlation of the data and the level expected from Monte Carlo simulations. This is shown to be consistent with increased phase calibration errors on VSA data during summer observations. We also consider the parameter estimation method of each group. The key difference is the use of the variance window function in place of the bandpower window function, an approximation used by the VSA group. A re-evaluation of the VSA parameter estimates, using bandpower windows, shows that the two methods yield consistent results.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2005-02-16T22:40:26Z</published>\n    <arxiv:comment>10 pages, 6 figures. Final version. Accepted for publication in MNRAS</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Mon.Not.Roy.Astron.Soc. 363 (2005) 1125-1135</arxiv:journal_ref>\n    <author>\n      <name>N. Rajguru</name>\n    </author>\n    <author>\n      <name>S. T. Myers</name>\n    </author>\n    <author>\n      <name>R. A. Battye</name>\n    </author>\n    <author>\n      <name>J. Richard Bond</name>\n    </author>\n    <author>\n      <name>K. Cleary</name>\n    </author>\n    <author>\n      <name>C. R. Contaldi</name>\n    </author>\n    <author>\n      <name>R. D. Davies</name>\n    </author>\n    <author>\n      <name>R. J. Davis</name>\n    </author>\n    <author>\n      <name>C. Dickinson</name>\n    </author>\n    <author>\n      <name>R. Genova-Santos</name>\n    </author>\n    <author>\n      <name>K. Grainge</name>\n    </author>\n    <author>\n      <name>Y. A. Hafez</name>\n    </author>\n    <author>\n      <name>M. P. Hobson</name>\n    </author>\n    <author>\n      <name>M. E. Jones</name>\n    </author>\n    <author>\n      <name>R. Kneissl</name>\n    </author>\n    <author>\n      <name>K. Lancaster</name>\n    </author>\n    <author>\n      <name>A. Lasenby</name>\n    </author>\n    <author>\n      <name>B. S. Mason</name>\n    </author>\n    <author>\n      <name>T. J. Pearson</name>\n    </author>\n    <author>\n      <name>G. G. Pooley</name>\n    </author>\n    <author>\n      <name>A. C. S. Readhead</name>\n    </author>\n    <author>\n      <name>R. Rebolo</name>\n    </author>\n    <author>\n      <name>G. Rocha</name>\n    </author>\n    <author>\n      <name>J. A. Rubino-Martin</name>\n    </author>\n    <author>\n      <name>R. D. E. Saunders</name>\n    </author>\n    <author>\n      <name>R. S. Savage</name>\n    </author>\n    <author>\n      <name>A. Scaife</name>\n    </author>\n    <author>\n      <name>P. F. Scott</name>\n    </author>\n    <author>\n      <name>J. L. Sievers</name>\n    </author>\n    <author>\n      <name>A. Slosar</name>\n    </author>\n    <author>\n      <name>A. C. Taylor</name>\n    </author>\n    <author>\n      <name>D. Titterington</name>\n    </author>\n    <author>\n      <name>E. Waldram</name>\n    </author>\n    <author>\n      <name>R. A. Watson</name>\n    </author>\n    <author>\n      <name>A. Wilkinson</name>\n    </author>\n    <arxiv:doi>10.1111/j.1365-2966.2005.09519.x</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1111/j.1365-2966.2005.09519.x\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1006.2770v1</id>\n    <title>A 33 GHz VSA survey of the Galactic plane from 27 to 46 degrees</title>\n    <updated>2010-06-14T16:58:40Z</updated>\n    <link href=\"https://arxiv.org/abs/1006.2770v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1006.2770v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Very Small Array (VSA) has been used to survey the l = 27 to 46 deg, |b|&lt;4 deg region of the Galactic plane at a resolution of 13 arcmin. The survey consists of 44 pointings of the VSA, each with a r.m.s. sensitivity of ~90 mJy/beam. These data are combined in a mosaic to produce a map of the area. The majority of the sources within the map are HII regions. We investigated anomalous radio emission from the warm dust in 9 HII regions of the survey by making spectra extending from GHz frequencies to the FIR IRAS frequencies. Acillary radio data at 1.4, 2.7, 4.85, 8.35, 10.55, 14.35 and 94 GHz in addition to the 100, 60, 25 and 12 micron IRAS bands were used to construct the spectra. From each spectrum the free-free, thermal dust and anomalous dust emission were determined for each HII region. The mean ratio of 33 GHz anomalous flux density to FIR 100 micron flux density for the 9 selected HII regions was 1.10 +/-0.21x10^(-4). When combined with 6 HII regions previously observed with the VSA and the CBI, the anomalous emission from warm dust in HII regions is detected with a 33 GHz emissivity of 4.65 +/- 0.4 micro K/ (MJy/sr) at 11.5σ. The anomalous radio emission in HII regions is on average 41+/-10 per cent of the radio continuum at 33 GHz.</summary>\n    <category term=\"astro-ph.GA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2010-06-14T16:58:40Z</published>\n    <arxiv:comment>18 pages, 11 figures, accepted for publication in MNRAS</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.GA\"/>\n    <author>\n      <name>M. Todorović</name>\n    </author>\n    <author>\n      <name>R. D. Davies</name>\n    </author>\n    <author>\n      <name>C. Dickinson</name>\n    </author>\n    <author>\n      <name>R. J. Davis</name>\n    </author>\n    <author>\n      <name>K. A. Cleary</name>\n    </author>\n    <author>\n      <name>R. Genova-Santos</name>\n    </author>\n    <author>\n      <name>K. J. B. Grainge</name>\n    </author>\n    <author>\n      <name>Y. A. Hafez</name>\n    </author>\n    <author>\n      <name>M. P. Hobson</name>\n    </author>\n    <author>\n      <name>M. E. Jones</name>\n    </author>\n    <author>\n      <name>K. Lancaster</name>\n    </author>\n    <author>\n      <name>R. Rebolo</name>\n    </author>\n    <author>\n      <name>W. Reich</name>\n    </author>\n    <author>\n      <name>J. A. Rubiño-Martin</name>\n    </author>\n    <author>\n      <name>R. D. E. Saunders</name>\n    </author>\n    <author>\n      <name>R. S. Savage</name>\n    </author>\n    <author>\n      <name>P. F. Scott</name>\n    </author>\n    <author>\n      <name>A. Slosar</name>\n    </author>\n    <author>\n      <name>A. C. Taylor</name>\n    </author>\n    <author>\n      <name>R. A. Watson</name>\n    </author>\n    <arxiv:doi>10.1111/j.1365-2966.2010.16809.x</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1111/j.1365-2966.2010.16809.x\" title=\"doi\"/>\n  </e"
+    },
+    {
+      "source": "arxiv",
       "query": "强化学习 加密货币 交易 策略",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/BshiKioyUWR2/fZV/tr62vL0wP4</id>\n  <title>arXiv Query: search_query=all:强化学习 OR all:加密货币 OR all:交易 OR all:策略&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T04:24:08Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0+OR+(all:%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81+OR+(all:%E4%BA%A4%E6%98%93+OR+all:%E7%AD%96%E7%95%A5))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>0</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n</feed>\n"
     },
@@ -585,6 +590,11 @@
       "source": "arxiv",
       "query": "强化学习 加密货币 交易 策略",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/BshiKioyUWR2/fZV/tr62vL0wP4</id>\n  <title>arXiv Query: search_query=all:强化学习 OR all:加密货币 OR all:交易 OR all:策略&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T09:11:26Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0+OR+(all:%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81+OR+(all:%E4%BA%A4%E6%98%93+OR+all:%E7%AD%96%E7%95%A5))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>0</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n</feed>\n"
+    },
+    {
+      "source": "arxiv",
+      "query": "强化学习 加密货币 交易 策略",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/BshiKioyUWR2/fZV/tr62vL0wP4</id>\n  <title>arXiv Query: search_query=all:强化学习 OR all:加密货币 OR all:交易 OR all:策略&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T11:05:12Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0+OR+(all:%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81+OR+(all:%E4%BA%A4%E6%98%93+OR+all:%E7%AD%96%E7%95%A5))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>0</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n</feed>\n"
     },
     {
       "source": "arxiv",
@@ -1054,14 +1064,6 @@
     {
       "source": "crossref",
       "query": "China A-share pairs statistical arbitrage",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "url": "https://doi.org/10.21275/sr231123060916",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
       "title": "Comprehensive Review of Pairs Trading in Statistical Arbitrage",
       "url": "https://doi.org/10.54254/2754-1169/2026.35956",
       "description": "Crossref work type=journal-article",
@@ -1106,14 +1108,6 @@
       "url": "https://doi.org/10.1111/irfi.12074",
       "description": "Crossref work type=journal-article",
       "updated_at": "2016"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "url": "https://doi.org/10.2139/ssrn.2610064",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -2045,6 +2039,166 @@
     },
     {
       "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "An Empirical Evaluation of Cross-Sectional Equity Signals Under Backtest Overfitting Diagnostics",
+      "url": "https://doi.org/10.2139/ssrn.6078546",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Equity Factor Investing: Momentum",
+      "url": "https://doi.org/10.1007/978-3-030-19400-0_7",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Equity Factor Investing: Quality",
+      "url": "https://doi.org/10.1007/978-3-030-19400-0_5",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Equity Multi-Factor Investing",
+      "url": "https://doi.org/10.1007/978-3-030-19400-0_9",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Factor Investing in the Turkish Equity Market",
+      "url": "https://doi.org/10.2139/ssrn.4588551",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Factor Models",
+      "url": "https://doi.org/10.1142/9789811239502_0010",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Lookahead Bias in Alpha Factor Models: A Systematic Audit Framework and Its Implications for Backtest Reliability",
+      "url": "https://doi.org/10.2139/ssrn.6591063",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Statistical Overfitting and Backtest Performance",
+      "url": "https://doi.org/10.1016/b978-1-78548-008-9.50020-4",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "The Alpha and Beta of Equity Hedge UCITS Funds: Implications for Momentum Investing",
+      "url": "https://doi.org/10.1016/b978-1-78548-201-4.50016-7",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "equity factor investing cross sectional alpha backtest",
+      "title": "Value investing and the fama-french three-factor model : a cross-sectional and time-series analysis",
+      "url": "https://doi.org/10.14264/222941",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Does Insider Trading Predict Earnings News around the World?",
+      "url": "https://doi.org/10.26226/morressier.5f0c7d3058e581e69b05d0ed",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2020"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Earnings News and Institutional Trading",
+      "url": "https://doi.org/10.2139/ssrn.355380",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2002"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Event-Driven Trading and the “New News”",
+      "url": "https://doi.org/10.3905/jpm.2011.38.1.110",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Event‐Driven Investing",
+      "url": "https://doi.org/10.1002/9781119571278.ch25",
+      "description": "Crossref work type=other",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Event‐Driven Trends",
+      "url": "https://doi.org/10.1002/9781119202561.ch5",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Fundamental Trading Strategy: Macro Event Driven Trade",
+      "url": "https://doi.org/10.1002/9781119212997.ch19",
+      "description": "Crossref work type=other",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "LLM-Trader: An Event-Driven Automated Quantitative Trading Agent via Multi-Modal Large Language Models",
+      "url": "https://doi.org/10.1109/icce-taiwan71481.2026.11652699",
+      "description": "Crossref work type=proceedings-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Modeling Multifactor Event Driven Trading Strategy",
+      "url": "https://doi.org/10.2139/ssrn.3683454",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2020"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Price Revelation from Insider Trading: Evidence from Hacked Earnings News",
+      "url": "https://doi.org/10.31235/osf.io/qe6tu",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "event driven quantitative trading earnings news",
+      "title": "Trade the Event: Corporate Events Detection for News-Based Event-Driven Trading",
+      "url": "https://doi.org/10.18653/v1/2021.findings-acl.186",
+      "description": "Crossref work type=proceedings-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
       "query": "evolutionary alpha discovery trading strategy",
       "title": "Absolute Alpha with Moving Averages: A Consistent Trading Strategy",
       "url": "https://doi.org/10.2139/ssrn.2765845",
@@ -2125,6 +2279,166 @@
     },
     {
       "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Analysis of a Global Futures Trend-Following Strategy",
+      "url": "https://doi.org/10.20944/preprints201906.0081.v1",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Analysis of a Global Futures Trend-Following Strategy",
+      "url": "https://doi.org/10.3390/jrfm12030111",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Cross‐Asset Trend Following with Futures",
+      "url": "https://doi.org/10.1002/9781394320516.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Does Trend Following Work on Stocks?",
+      "url": "https://doi.org/10.1002/9781394320516.ch12",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Futures Data",
+      "url": "https://doi.org/10.1002/9781394320516.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "In‐Depth Analysis of Trend‐Following Performance",
+      "url": "https://doi.org/10.1002/9781394320516.ch5",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Properties of Trend Following Returns",
+      "url": "https://doi.org/10.1002/9781118891018.ch7",
+      "description": "Crossref work type=other",
+      "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Systematic Trading Without Time Series",
+      "url": "https://doi.org/10.1002/9781394320516.ch8",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Systematic Trend Following Basics",
+      "url": "https://doi.org/10.1002/9781118891018.ch3",
+      "description": "Crossref work type=other",
+      "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "futures trend following systematic strategy",
+      "title": "Two Basic Trend‐Following Strategies",
+      "url": "https://doi.org/10.1002/9781394320516.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "An Improved Single Node Genetic Programming for Symbolic Regression",
+      "url": "https://doi.org/10.5220/0005598902440251",
+      "description": "Crossref work type=proceedings-article",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Evolving Transparent Credit Risk Models: A Symbolic Regression Approach Using Genetic Programming",
+      "url": "https://doi.org/10.2139/ssrn.4976336",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Genetic Programming for Evolutionary Feature Construction in Symbolic Regression",
+      "url": "https://doi.org/10.26686/wfg1-pqds",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Genetic Programming for Symbolic Regression on Incomplete Data",
+      "url": "https://doi.org/10.26686/wgtn.17150609",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Improving the Generalisation of Genetic Programming for Symbolic Regression",
+      "url": "https://doi.org/10.26686/wgtn.17068166",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Pareto-Front Exploitation in Symbolic Regression",
+      "url": "https://doi.org/10.1007/0-387-23254-0_17",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Semantic Valued Schema Theory of Genetic Programming in Symbolic Regression",
+      "url": "https://doi.org/10.21203/rs.3.rs-8316711/v1",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Symbolic Regression via Genetic Programming; Philippines Population Prediction: 2010-2020",
+      "url": "https://doi.org/10.21275/art2019289",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Symbolic Regression with Genetic Programming in Forecasting Population Growth of the Philippines",
+      "url": "https://doi.org/10.21275/art2019288",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
       "query": "maker adverse selection execution crypto",
       "title": "Adverse Selection",
       "url": "https://doi.org/10.4135/9781529731460",
@@ -2194,6 +2508,86 @@
       "url": "https://doi.org/10.2139/ssrn.965979",
       "description": "Crossref work type=posted-content",
       "updated_at": "2008"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "A Dynamic Market Microstructure Model with Insider Information and Order Book",
+      "url": "https://doi.org/10.2139/ssrn.676028",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2005"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "A Dynamic Market Microstructure Model with Market Orders and Random Order Book Depth",
+      "url": "https://doi.org/10.2139/ssrn.2984315",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Instantaneous Order Impact and High-Frequency Strategy Optimization in Limit Order Books",
+      "url": "https://doi.org/10.1142/s2382626618500016",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Limit Order Book (LOB) Shape Modeling in Presence of Heterogeneously Informed Market Participants",
+      "url": "https://doi.org/10.1142/s2382626620500070",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "url": "https://doi.org/10.1142/s2382626619500114",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2018"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Optimal Hedge Tracking Portfolios in a Limit Order Book",
+      "url": "https://doi.org/10.1142/s238262661850003x",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Order Flows and Limit Order Book Resiliency on the Meso-Scale",
+      "url": "https://doi.org/10.1142/s2382626618500065",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Order-Book Modeling and Market Making Strategies",
+      "url": "https://doi.org/10.1142/s2382626619500035",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2018"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Price Impact in a Latent Order Book",
+      "url": "https://doi.org/10.1142/s2382626620500045",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "The Anatomy of a Decentralized Prediction Market: Microstructure Evidence from the Polymarket Order Book",
+      "url": "https://doi.org/10.2139/ssrn.6658364",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
     },
     {
       "source": "crossref",
@@ -2277,6 +2671,86 @@
     },
     {
       "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "A Semidefinite Programming Approach to Risk Parity Portfolio Optimization",
+      "url": "https://doi.org/10.2139/ssrn.5097869",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "An Analysis of Machine Learning Risk Factors and Risk Parity Portfolio Optimization",
+      "url": "https://doi.org/10.2139/ssrn.3973798",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Data-Driven Distributionally Robust Risk Parity Portfolio Optimization",
+      "url": "https://doi.org/10.2139/ssrn.3709680",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2020"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Dynamic Risk Parity Portfolio Optimization: A Comparative Study with Markowitz and Static Risk Parity",
+      "url": "https://doi.org/10.3390/jrfm19020135",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Generalized Risk Parity Portfolio Optimization: An ADMM Approach",
+      "url": "https://doi.org/10.2139/ssrn.3609374",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2020"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Intelligent Probabilistic Risk Forecasting With Applications to Algorithmic Trading and Portfolio Optimization",
+      "url": "https://doi.org/10.32920/24625158",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Intelligent Probabilistic Risk Forecasting With Applications to Algorithmic Trading and Portfolio Optimization",
+      "url": "https://doi.org/10.32920/24625158.v1",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Portfolio Trading, Uniform Portfolio Constraints, and Systematic Risk *",
+      "url": "https://doi.org/10.2139/ssrn.3833120",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Risk Parity Optimization",
+      "url": "https://doi.org/10.1007/978-3-031-84304-4_10",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "portfolio optimization risk parity systematic trading",
+      "title": "Risk Parity Portfolios",
+      "url": "https://doi.org/10.1017/9781009428095.014",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
       "query": "prediction market order book trading strategy",
       "title": "An Agent Strategy for Automated Stock Market Trading Combining Price and Order Book Information",
       "url": "https://doi.org/10.1109/cima.2005.1662356",
@@ -2357,6 +2831,246 @@
     },
     {
       "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Advanced Deep Learning for Financial Markets: Predictive Modeling, Risk Management, and Automated Trading",
+      "url": "https://doi.org/10.62311/nesx/rb4",
+      "description": "Crossref work type=reference-book",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Automated Internet Trading Based on Optimized Physics Models of Markets",
+      "url": "https://doi.org/10.2139/ssrn.283076",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2001"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Automated Trading in Prediction Markets",
+      "url": "https://doi.org/10.1007/978-3-642-37210-0_13",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Birth of High Frequency Trading: Equity Markets Go Electronic",
+      "url": "https://doi.org/10.1002/9781119200574.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Detecting Informed Trading in Prediction Markets: An Orthogonality Test",
+      "url": "https://doi.org/10.2139/ssrn.6567238",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Do Informed Traders Prefer Automated Electronic Markets?",
+      "url": "https://doi.org/10.3905/jot.2011.2011.1.012",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Expansion in High Frequency Trading",
+      "url": "https://doi.org/10.1002/9781119200574.ch6",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Regulating automated trading",
+      "url": "https://doi.org/10.4337/9781800379305.00021",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Trading Infrastructure",
+      "url": "https://doi.org/10.1002/9781119200574.ch3",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "prediction markets automated trading research",
+      "title": "Trading Strategies",
+      "url": "https://doi.org/10.1002/9781119200574.ch5",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Algorithmic trading on financial time series using Deep Reinforcement Learning",
+      "url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Deep Learning vs. Reinforcement Learning in Automated Stock Trading: A PRISMA-Oriented Systematic Review",
+      "url": "https://doi.org/10.71097/ijsat.v17.i1.10402",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Stock Option Trading",
+      "url": "https://doi.org/10.63227/566.706.52",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.1109/access.2021.3139510",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.36227/techrxiv.16778932",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.36227/techrxiv.16778932.v1",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.36227/techrxiv.16778932.v2",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.36227/techrxiv.16778932.v3",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "url": "https://doi.org/10.36227/techrxiv.16778932.v4",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement learning and online learning for dynamic trading strategies:",
+      "url": "https://doi.org/10.17760/d20705211",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Arbitrage Factors",
+      "url": "https://doi.org/10.1002/9781119201526.ch5",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Arbitrage and Pairs Trading",
+      "url": "https://doi.org/10.1002/9781119201526.ch6",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "url": "https://doi.org/10.21275/sr231123060916",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Market Neutrality and Pairs Trading",
+      "url": "https://doi.org/10.1002/9781119201526.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "url": "https://doi.org/10.2139/ssrn.2610064",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical arbitrage in multi-pair trading strategy based on graph clustering algorithms in US equities market",
+      "url": "https://doi.org/10.2139/ssrn.4849095",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical arbitrage in multi-pair trading strategy based on graph clustering algorithms in US equities market",
+      "url": "https://doi.org/10.33138/2957-0506.2024.9.445",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "The Technicals of Pairs Trading",
+      "url": "https://doi.org/10.1002/9781119201526.ch8",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "The Unified Pairs Trading Theory",
+      "url": "https://doi.org/10.1002/9781119201526.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Trading Pairs Fundamentally",
+      "url": "https://doi.org/10.1002/9781119201526.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
       "query": "symbolic regression alpha mining trading",
       "title": "Causally Constrained Symbolic Regression for Mining Interpretable Functions from Observational Data",
       "url": "https://doi.org/10.2139/ssrn.6879831",
@@ -2426,14 +3140,6 @@
       "url": "https://doi.org/10.1007/978-1-4899-7687-1_100458",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2017"
-    },
-    {
-      "source": "crossref",
-      "query": "symbolic regression alpha mining trading",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -2526,6 +3232,22 @@
     {
       "source": "crossref",
       "query": "中国 A股 量化 交易 策略 因子",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "中国 A股 量化 交易 策略 因子",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "url": "https://doi.org/10.12677/fin.2024.143090",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "中国 A股 量化 交易 策略 因子",
       "title": "中国旅游企业海外参展产品展示与促进策略研究——以ITB柏林国际旅游交易会为例",
       "url": "https://doi.org/10.64216/3104-9672.25.07.010",
       "description": "Crossref work type=journal-article",
@@ -2549,27 +3271,19 @@
     },
     {
       "source": "crossref",
+      "query": "中国 A股 量化 交易 策略 因子",
+      "title": "高频量化交易的犯罪风险及防控策略研究",
+      "url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
       "query": "因子挖掘 A股 量化 交易",
       "title": "",
       "url": "https://doi.org/10.52926/jpmjpr1761",
       "description": "Crossref work type=grant",
       "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "url": "https://doi.org/10.12677/fin.2024.143090",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -2606,14 +3320,6 @@
     {
       "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
       "title": "Quantitative Trading Timing Strategy Based on Investor Sentiment Index",
       "url": "https://doi.org/10.12677/ecl.2024.133898",
       "description": "Crossref work type=journal-article",
@@ -2630,32 +3336,8 @@
     {
       "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
-      "url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
       "title": "基于 CANSLIM 法则的多因子量化策略研究",
       "url": "https://doi.org/10.69979/3029-2700.25.03.078",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -2669,11 +3351,155 @@
     },
     {
       "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "高频量化交易的犯罪风险及防控策略研究",
-      "url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "url": "https://doi.org/10.12677/fin.2021.113022",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "url": "https://doi.org/10.12677/orf.2021.114043",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
+      "url": "https://doi.org/10.12677/etw.2012.23012",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
+      "url": "https://doi.org/10.32629/ej.v9i4.3403",
       "description": "Crossref work type=journal-article",
       "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
+      "url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "对马克思货币理论及其价值的现代性认识[作者简介：]",
+      "url": "https://doi.org/10.70693/rwsk.v2i4.383",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "廉价货币时代捍卫消费者主权的货币制度&lt;br&gt;The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
+      "url": "https://doi.org/10.4236/etw.2012.23012",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "香港期货交易所人民币期货价格发现功能研究——基于VECM模型",
+      "url": "https://doi.org/10.70693/rwsk.v2i1.182",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "Deep Reinforcement Learning Stock Trading Strategies Combining Trends",
+      "url": "https://doi.org/10.12677/csa.2022.123068",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
+      "url": "https://doi.org/10.12677/mos.2024.131014",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "加强建筑工程造价成本管理的优化策略",
+      "url": "https://doi.org/10.32629/ej.v2i3.152",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "强化学习的优化控制策略提升智慧建筑节能",
+      "url": "https://doi.org/10.70693/cjst.v2i2.1935",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "深度学习视角下日语专业学生跨文化交际能力提升策略研究",
+      "url": "https://doi.org/10.61369/edtr.8823",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -2786,14 +3612,6 @@
       "url": "https://doi.org/10.12677/orf.2024.146534",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
     },
     {
       "source": "crossref",

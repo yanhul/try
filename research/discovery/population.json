@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 901,
-    "expanded": 792,
-    "normalized": 792,
+    "raw": 1004,
+    "expanded": 894,
+    "normalized": 894,
     "round1": 64,
     "deferred": 28,
     "survivors": 36,
@@ -185,6 +185,22 @@
             "family": "unknown"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "28e816e82272def1",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "28e816e82272def1",
+        "family": "unknown",
+        "rounds": []
       }
     },
     {
@@ -1200,22 +1216,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -1307,22 +1307,6 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3184,6 +3168,326 @@
       }
     },
     {
+      "candidate_id": "c5f04e72b3acf477",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6078546",
+      "title": "An Empirical Evaluation of Cross-Sectional Equity Signals Under Backtest Overfitting Diagnostics",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c5f04e72b3acf477",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "06651caf1105c814",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-030-19400-0_7",
+      "title": "Equity Factor Investing: Momentum",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "06651caf1105c814",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e1b4f6002ab01641",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-030-19400-0_5",
+      "title": "Equity Factor Investing: Quality",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "e1b4f6002ab01641",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a2efd311222e8038",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-030-19400-0_9",
+      "title": "Equity Multi-Factor Investing",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "a2efd311222e8038",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e6ba2fbefa480a43",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4588551",
+      "title": "Factor Investing in the Turkish Equity Market",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "e6ba2fbefa480a43",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1b87ef1c8da91d87",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/9789811239502_0010",
+      "title": "Factor Models",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "1b87ef1c8da91d87",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ef8e51b68b2429b0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6591063",
+      "title": "Lookahead Bias in Alpha Factor Models: A Systematic Audit Framework and Its Implications for Backtest Reliability",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "ef8e51b68b2429b0",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b82c673d2ecd8d15",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1016/b978-1-78548-008-9.50020-4",
+      "title": "Statistical Overfitting and Backtest Performance",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b82c673d2ecd8d15",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "eb5cab25128bad23",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1016/b978-1-78548-201-4.50016-7",
+      "title": "The Alpha and Beta of Equity Hedge UCITS Funds: Implications for Momentum Investing",
+      "description": "Crossref work type=book-chapter",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "eb5cab25128bad23",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ee50bedd8379e18c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.14264/222941",
+      "title": "Value investing and the fama-french three-factor model : a cross-sectional and time-series analysis",
+      "description": "Crossref work type=dissertation",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "equity factor investing cross sectional alpha backtest",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "ee50bedd8379e18c",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b7d1c82830235055",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26226/morressier.5f0c7d3058e581e69b05d0ed",
+      "title": "Does Insider Trading Predict Earnings News around the World?",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "b7d1c82830235055",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8a14862b3256dd26",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.355380",
+      "title": "Earnings News and Institutional Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2002",
+      "lineage": {
+        "source": "8a14862b3256dd26",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e084a163e349a373",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3905/jpm.2011.38.1.110",
+      "title": "Event-Driven Trading and the \u201cNew News\u201d",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "e084a163e349a373",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f5e01771a0c81059",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119571278.ch25",
+      "title": "Event\u2010Driven Investing",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "f5e01771a0c81059",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9f62a6726c9ff213",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119202561.ch5",
+      "title": "Event\u2010Driven Trends",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "9f62a6726c9ff213",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "313caf3af3c4b049",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119212997.ch19",
+      "title": "Fundamental Trading Strategy: Macro Event Driven Trade",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "313caf3af3c4b049",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0ebd80cd5849d794",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1109/icce-taiwan71481.2026.11652699",
+      "title": "LLM-Trader: An Event-Driven Automated Quantitative Trading Agent via Multi-Modal Large Language Models",
+      "description": "Crossref work type=proceedings-article",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "0ebd80cd5849d794",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e0c6ec16dad81038",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3683454",
+      "title": "Modeling Multifactor Event Driven Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "e0c6ec16dad81038",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8a7f8a070f58154e",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.31235/osf.io/qe6tu",
+      "title": "Price Revelation from Insider Trading: Evidence from Hacked Earnings News",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "8a7f8a070f58154e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8b66ca6d68a2e78a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.18653/v1/2021.findings-acl.186",
+      "title": "Trade the Event: Corporate Events Detection for News-Based Event-Driven Trading",
+      "description": "Crossref work type=proceedings-article",
+      "family": "unknown",
+      "market": null,
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "8b66ca6d68a2e78a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "53dfe5f1f9999a87",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2765845",
@@ -3344,6 +3648,326 @@
       }
     },
     {
+      "candidate_id": "1e90ee9f4b210b0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.20944/preprints201906.0081.v1",
+      "title": "Analysis of a Global Futures Trend-Following Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "1e90ee9f4b210b0d",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3da2a942f9a0f281",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3390/jrfm12030111",
+      "title": "Analysis of a Global Futures Trend-Following Strategy",
+      "description": "Crossref work type=journal-article",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "3da2a942f9a0f281",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "82d95ea608a22514",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch1",
+      "title": "Cross\u2010Asset Trend Following with Futures",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "82d95ea608a22514",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "58696794a0a3ab22",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch12",
+      "title": "Does Trend Following Work on Stocks?",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "58696794a0a3ab22",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21d3f63635f9ca14",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch2",
+      "title": "Futures Data",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "21d3f63635f9ca14",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "42c91ef32245b682",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch5",
+      "title": "In\u2010Depth Analysis of Trend\u2010Following Performance",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "42c91ef32245b682",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "62497a98de8c6a45",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118891018.ch7",
+      "title": "Properties of Trend Following Returns",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "62497a98de8c6a45",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21106485e248d6f0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch8",
+      "title": "Systematic Trading Without Time Series",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "21106485e248d6f0",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dcbeb6e36205c876",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118891018.ch3",
+      "title": "Systematic Trend Following Basics",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "dcbeb6e36205c876",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86817cecd4a565fd",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781394320516.ch4",
+      "title": "Two Basic Trend\u2010Following Strategies",
+      "description": "Crossref work type=other",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "86817cecd4a565fd",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2119673574f6e595",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.5220/0005598902440251",
+      "title": "An Improved Single Node Genetic Programming for Symbolic Regression",
+      "description": "Crossref work type=proceedings-article",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "2119673574f6e595",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "475833cb3f9e82eb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4976336",
+      "title": "Evolving Transparent Credit Risk Models: A Symbolic Regression Approach Using Genetic Programming",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "475833cb3f9e82eb",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "36f60729434694c4",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26686/wfg1-pqds",
+      "title": "Genetic Programming for Evolutionary Feature Construction in Symbolic Regression",
+      "description": "Crossref work type=dissertation",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "36f60729434694c4",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "393bdd9592692b9b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26686/wgtn.17150609",
+      "title": "Genetic Programming for Symbolic Regression on Incomplete Data",
+      "description": "Crossref work type=dissertation",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "393bdd9592692b9b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ffb541b0344f134f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26686/wgtn.17068166",
+      "title": "Improving the Generalisation of Genetic Programming for Symbolic Regression",
+      "description": "Crossref work type=dissertation",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "ffb541b0344f134f",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "639efa0bdd9e444c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/0-387-23254-0_17",
+      "title": "Pareto-Front Exploitation in Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "639efa0bdd9e444c",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ee2a3819f9f4ec3e",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-8316711/v1",
+      "title": "Semantic Valued Schema Theory of Genetic Programming in Symbolic Regression",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ee2a3819f9f4ec3e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "29f744f0bb057b1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/art2019289",
+      "title": "Symbolic Regression via Genetic Programming; Philippines Population Prediction: 2010-2020",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "29f744f0bb057b1d",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "53f18a556609aabb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/art2019288",
+      "title": "Symbolic Regression with Genetic Programming in Forecasting Population Growth of the Philippines",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "53f18a556609aabb",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2a84d886a1d3a525",
       "source": "crossref",
       "source_url": "https://doi.org/10.4135/9781529731460",
@@ -3484,6 +4108,166 @@
       "lineage": {
         "source": "b217d554a1ab6d45",
         "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "eed54d4f3d510a2a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.676028",
+      "title": "A Dynamic Market Microstructure Model with Insider Information and Order Book",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2005",
+      "lineage": {
+        "source": "eed54d4f3d510a2a",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ca0b5fb237c22d36",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2984315",
+      "title": "A Dynamic Market Microstructure Model with Market Orders and Random Order Book Depth",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "ca0b5fb237c22d36",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "eb7820f82b46b23f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626618500016",
+      "title": "Instantaneous Order Impact and High-Frequency Strategy Optimization in Limit Order Books",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "eb7820f82b46b23f",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61b0e7edd87ecd17",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626620500070",
+      "title": "Limit Order Book (LOB) Shape Modeling in Presence of Heterogeneously Informed Market Participants",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "61b0e7edd87ecd17",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a2dc9d847fb016e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626619500114",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "a2dc9d847fb016e9",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "41c39d6ac16f05ba",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s238262661850003x",
+      "title": "Optimal Hedge Tracking Portfolios in a Limit Order Book",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "41c39d6ac16f05ba",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c3911b6261f785b3",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626618500065",
+      "title": "Order Flows and Limit Order Book Resiliency on the Meso-Scale",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "c3911b6261f785b3",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "31e57740527fc5f3",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626619500035",
+      "title": "Order-Book Modeling and Market Making Strategies",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "31e57740527fc5f3",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0b0ea98cd15a56e8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626620500045",
+      "title": "Price Impact in a Latent Order Book",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "0b0ea98cd15a56e8",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "40f7a078bf7e3e73",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6658364",
+      "title": "The Anatomy of a Decentralized Prediction Market: Microstructure Evidence from the Polymarket Order Book",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "40f7a078bf7e3e73",
+        "family": "order_flow",
         "rounds": []
       }
     },
@@ -3648,6 +4432,166 @@
       }
     },
     {
+      "candidate_id": "58e53dc6c99e503e",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5097869",
+      "title": "A Semidefinite Programming Approach to Risk Parity Portfolio Optimization",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "58e53dc6c99e503e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fdc0ce04bc8e0ba5",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3973798",
+      "title": "An Analysis of Machine Learning Risk Factors and Risk Parity Portfolio Optimization",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "fdc0ce04bc8e0ba5",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "55c7db7aaa2a7227",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3709680",
+      "title": "Data-Driven Distributionally Robust Risk Parity Portfolio Optimization",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "55c7db7aaa2a7227",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c9817853b468cae9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3390/jrfm19020135",
+      "title": "Dynamic Risk Parity Portfolio Optimization: A Comparative Study with Markowitz and Static Risk Parity",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c9817853b468cae9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6414731fce489e3e",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3609374",
+      "title": "Generalized Risk Parity Portfolio Optimization: An ADMM Approach",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "6414731fce489e3e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4ddf057cedc62b9f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32920/24625158",
+      "title": "Intelligent Probabilistic Risk Forecasting With Applications to Algorithmic Trading and Portfolio Optimization",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "4ddf057cedc62b9f",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3cffb845e07ef79b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32920/24625158.v1",
+      "title": "Intelligent Probabilistic Risk Forecasting With Applications to Algorithmic Trading and Portfolio Optimization",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "3cffb845e07ef79b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f0c01887752585f3",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.3833120",
+      "title": "Portfolio Trading, Uniform Portfolio Constraints, and Systematic Risk *",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "f0c01887752585f3",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d5b9ed7f15109d48",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-031-84304-4_10",
+      "title": "Risk Parity Optimization",
+      "description": "Crossref work type=book-chapter",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "d5b9ed7f15109d48",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e74d293e68e2e2bf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1017/9781009428095.014",
+      "title": "Risk Parity Portfolios",
+      "description": "Crossref work type=book-chapter",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "e74d293e68e2e2bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "76218269476a6f09",
       "source": "crossref",
       "source_url": "https://doi.org/10.1109/cima.2005.1662356",
@@ -3808,6 +4752,486 @@
       }
     },
     {
+      "candidate_id": "5b4e403cd364302c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.62311/nesx/rb4",
+      "title": "Advanced Deep Learning for Financial Markets: Predictive Modeling, Risk Management, and Automated Trading",
+      "description": "Crossref work type=reference-book",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5b4e403cd364302c",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a89faefdd84531df",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.283076",
+      "title": "Automated Internet Trading Based on Optimized Physics Models of Markets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2001",
+      "lineage": {
+        "source": "a89faefdd84531df",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "029a8bbbacc7c5e1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-642-37210-0_13",
+      "title": "Automated Trading in Prediction Markets",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "029a8bbbacc7c5e1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2eb36dea839dd4bf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119200574.ch1",
+      "title": "Birth of High Frequency Trading: Equity Markets Go Electronic",
+      "description": "Crossref work type=other",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2eb36dea839dd4bf",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "435bee6f27fa52fc",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6567238",
+      "title": "Detecting Informed Trading in Prediction Markets: An Orthogonality Test",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "435bee6f27fa52fc",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a386b11bff274112",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3905/jot.2011.2011.1.012",
+      "title": "Do Informed Traders Prefer Automated Electronic Markets?",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "a386b11bff274112",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "68cc8055e8781e96",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119200574.ch6",
+      "title": "Expansion in High Frequency Trading",
+      "description": "Crossref work type=other",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "68cc8055e8781e96",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e410533595712f97",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.4337/9781800379305.00021",
+      "title": "Regulating automated trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "e410533595712f97",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "866674f0f51e6486",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119200574.ch3",
+      "title": "Trading Infrastructure",
+      "description": "Crossref work type=other",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "866674f0f51e6486",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "520257e582899388",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119200574.ch5",
+      "title": "Trading Strategies",
+      "description": "Crossref work type=other",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "520257e582899388",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd835d2cc63269a4",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
+      "title": "Algorithmic trading on financial time series using Deep Reinforcement Learning",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "dd835d2cc63269a4",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9f99418ad0a90456",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.71097/ijsat.v17.i1.10402",
+      "title": "Deep Learning vs. Reinforcement Learning in Automated Stock Trading: A PRISMA-Oriented Systematic Review",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "9f99418ad0a90456",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "92b8c42242ac6719",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63227/566.706.52",
+      "title": "Reinforcement Learning for Stock Option Trading",
+      "description": "Crossref work type=dissertation",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "92b8c42242ac6719",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "033c1e03864f8207",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1109/access.2021.3139510",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "033c1e03864f8207",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5e9b94572b1d8227",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36227/techrxiv.16778932",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "5e9b94572b1d8227",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a74b56d9cf331c7f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36227/techrxiv.16778932.v1",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "a74b56d9cf331c7f",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e0f3f05f0e6a24cc",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36227/techrxiv.16778932.v2",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e0f3f05f0e6a24cc",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fd8a1416b934dd4b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36227/techrxiv.16778932.v3",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "fd8a1416b934dd4b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "42c79b5c38a99e33",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36227/techrxiv.16778932.v4",
+      "title": "Reinforcement Learning for Systematic FX Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "42c79b5c38a99e33",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "daa2ba053b0c8ecd",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.17760/d20705211",
+      "title": "Reinforcement learning and online learning for dynamic trading strategies:",
+      "description": "Crossref work type=dissertation",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "daa2ba053b0c8ecd",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2385d9b1db324621",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch5",
+      "title": "Arbitrage Factors",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2385d9b1db324621",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ef7fcce817ba9bab",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch6",
+      "title": "Arbitrage and Pairs Trading",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "ef7fcce817ba9bab",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6dcfeefb260e7e03",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch4",
+      "title": "Market Neutrality and Pairs Trading",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "6dcfeefb260e7e03",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1f13de6fb4939234",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4849095",
+      "title": "Statistical arbitrage in multi-pair trading strategy based on graph clustering algorithms in US equities market",
+      "description": "Crossref work type=posted-content",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "1f13de6fb4939234",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f645de1cc827b90d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.33138/2957-0506.2024.9.445",
+      "title": "Statistical arbitrage in multi-pair trading strategy based on graph clustering algorithms in US equities market",
+      "description": "Crossref work type=journal-article",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "f645de1cc827b90d",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61d475c4cdaf70b2",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch8",
+      "title": "The Technicals of Pairs Trading",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "61d475c4cdaf70b2",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6e095950eeae02ae",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch13",
+      "title": "The Unified Pairs Trading Theory",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "6e095950eeae02ae",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "503712b4cd091128",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781119201526.ch10",
+      "title": "Trading Pairs Fundamentally",
+      "description": "Crossref work type=other",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "503712b4cd091128",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9ad53ffd3ca1d594",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6879831",
@@ -3948,22 +5372,6 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -4144,6 +5552,38 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -4192,6 +5632,22 @@
       }
     },
     {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "bf4a623110ac6de2",
       "source": "crossref",
       "source_url": "https://doi.org/10.52926/jpmjpr1761",
@@ -4203,38 +5659,6 @@
       "source_timestamp": "",
       "lineage": {
         "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -4304,22 +5728,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -4352,38 +5760,6 @@
       }
     },
     {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8cdd8cefab46dde7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "8cdd8cefab46dde7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4d447b63c1b957f9",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.25.03.078",
@@ -4395,22 +5771,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -4432,17 +5792,305 @@
       }
     },
     {
-      "candidate_id": "c18863b050721775",
+      "candidate_id": "b917583fb1e919c8",
       "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fdc75585f2a46736",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/etw.2012.23012",
+      "title": "The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "fdc75585f2a46736",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e98ef9709ad0d2f0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e98ef9709ad0d2f0",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8cdd8cefab46dde7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8cdd8cefab46dde7",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "aeb5a4534c04857d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.70693/rwsk.v2i4.383",
+      "title": "\u5bf9\u9a6c\u514b\u601d\u8d27\u5e01\u7406\u8bba\u53ca\u5176\u4ef7\u503c\u7684\u73b0\u4ee3\u6027\u8ba4\u8bc6[\u4f5c\u8005\u7b80\u4ecb\uff1a]",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "aeb5a4534c04857d",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dc46a6d00ee3dc49",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.4236/etw.2012.23012",
+      "title": "\u5ec9\u4ef7\u8d27\u5e01\u65f6\u4ee3\u634d\u536b\u6d88\u8d39\u8005\u4e3b\u6743\u7684\u8d27\u5e01\u5236\u5ea6&lt;br&gt;The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "dc46a6d00ee3dc49",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "121bac795618c506",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.70693/rwsk.v2i1.182",
+      "title": "\u9999\u6e2f\u671f\u8d27\u4ea4\u6613\u6240\u4eba\u6c11\u5e01\u671f\u8d27\u4ef7\u683c\u53d1\u73b0\u529f\u80fd\u7814\u7a76\u2014\u2014\u57fa\u4e8eVECM\u6a21\u578b",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "121bac795618c506",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "267fc5e965ffcee1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/csa.2022.123068",
+      "title": "Deep Reinforcement Learning Stock Trading Strategies Combining Trends",
+      "description": "Crossref work type=journal-article",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "267fc5e965ffcee1",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
       "description": "Crossref work type=journal-article",
       "family": "unknown",
       "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "741fe7d415cc1ed9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/mos.2024.131014",
+      "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "741fe7d415cc1ed9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5408e190776d03be",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ej.v2i3.152",
+      "title": "\u52a0\u5f3a\u5efa\u7b51\u5de5\u7a0b\u9020\u4ef7\u6210\u672c\u7ba1\u7406\u7684\u4f18\u5316\u7b56\u7565",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "5408e190776d03be",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2026",
       "lineage": {
-        "source": "c18863b050721775",
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "634c42888d8e48ae",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.70693/cjst.v2i2.1935",
+      "title": "\u5f3a\u5316\u5b66\u4e60\u7684\u4f18\u5316\u63a7\u5236\u7b56\u7565\u63d0\u5347\u667a\u6167\u5efa\u7b51\u8282\u80fd",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "634c42888d8e48ae",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "044a1342910e3a12",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.61369/edtr.8823",
+      "title": "\u6df1\u5ea6\u5b66\u4e60\u89c6\u89d2\u4e0b\u65e5\u8bed\u4e13\u4e1a\u5b66\u751f\u8de8\u6587\u5316\u4ea4\u9645\u80fd\u529b\u63d0\u5347\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "044a1342910e3a12",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -4667,22 +6315,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }

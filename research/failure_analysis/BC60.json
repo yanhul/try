@@ -1,0 +1,31 @@
+{
+  "bc": 60,
+  "parent_bc": 59,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "5ab45bc03afcfcc99669da2a8075ae30a129ee4eb117d4cbbf12caa5d5506d9b",
+  "conceptual_change": "Incorporate a volatility breakout detection mechanism by monitoring the standard deviation of range_ratio over a medium-term window to identify significant expansion in price movement.",
+  "evidence_sources": [
+    "https://github.com/procyon-yim/crypto-exchanger"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

@@ -3,13 +3,13 @@
   "bc": 59,
   "parent_bc": 58,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "fbfe722d009a57275aec5ad656bda6d8891895a1fa58158301694a2ea7441b10",
+  "candidate_hash": "06f3f240a70dcdae070ea2c0a133de7936fc66b1741eb81f3cb416d906839c3b",
   "discovery_spec": {
     "direction": "below",
-    "left": "vwap_distance",
-    "operator": "zscore",
-    "threshold": 1.5,
-    "window": 20
+    "left": "range_ratio",
+    "operator": "rank",
+    "threshold": 0.2,
+    "window": 5
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -27,35 +27,35 @@
   },
   "IS": {
     "candidate_trades": 39,
-    "accepted_signals": 36,
-    "skipped_overlap_trades": 9,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 27,
-      "win_count": 10,
-      "loss_count": 17,
-      "win_rate": 0.37037037037037035,
-      "total_return": 0.02754304910756833,
-      "avg_return": 0.0011111111111111063,
-      "profit_factor": 1.1764705882352933,
-      "max_drawdown": 0.06793465209301021
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
     }
   },
   "VALIDATION": {
     "candidate_trades": 11,
-    "accepted_signals": 10,
-    "skipped_overlap_trades": 2,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 8,
-      "win_count": 3,
-      "loss_count": 5,
-      "win_rate": 0.375,
-      "total_return": 0.00919824887427878,
-      "avg_return": 0.00124999999999995,
-      "profit_factor": 1.1999999999999906,
-      "max_drawdown": 0.03940399000000033
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
     }
   },
-  "gross_validation_passed": true,
+  "gross_validation_passed": false,
   "net_validation_gate": "COST_MODEL_REQUIRED",
   "validation_passed": false,
   "validation_basis": "NET_REQUIRED_FOR_PROMOTION"

@@ -1,0 +1,31 @@
+{
+  "bc": 59,
+  "parent_bc": 58,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "06f3f240a70dcdae070ea2c0a133de7936fc66b1741eb81f3cb416d906839c3b",
+  "conceptual_change": "Introduce a liquidity-adjusted mean-reversion trigger by evaluating the rank of range_ratio within a short lookback window to identify periods of localized price compression.",
+  "evidence_sources": [
+    "https://github.com/kshoop28/crypto-statistical-arbitrage"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
