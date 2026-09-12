@@ -1,15 +1,15 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "bc": 48,
   "parent_bc": 47,
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "722be313b4231756a5be274160ee9bcd64393d0d8e53435a8c84b2a01c5c6dd3",
+  "candidate_hash": "2a74b060f1f9849e4c1ef17a46c83590ce353ec482001c71d27d859578e97414",
   "discovery_spec": {
     "direction": "above",
-    "left": "close_location",
-    "operator": "rolling_std",
-    "threshold": 0.5,
-    "window": 20
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -22,7 +22,8 @@
     "stop_fraction": 0.01,
     "reward_multiple": 2.0,
     "round_trip_cost": 0.0,
-    "cost_model_status": "UNAVAILABLE"
+    "cost_model_status": "UNAVAILABLE",
+    "validation_basis": "GROSS_ONLY"
   },
   "IS": {
     "candidate_trades": 39,
@@ -41,20 +42,21 @@
   },
   "VALIDATION": {
     "candidate_trades": 11,
-    "accepted_signals": 0,
+    "accepted_signals": 1,
     "skipped_overlap_trades": 0,
     "metrics": {
-      "trade_count": 0,
+      "trade_count": 1,
       "win_count": 0,
-      "loss_count": 0,
+      "loss_count": 1,
       "win_rate": 0.0,
-      "total_return": 0.0,
-      "avg_return": 0.0,
-      "profit_factor": null,
-      "max_drawdown": 0.0
+      "total_return": -0.009999999999999898,
+      "avg_return": -0.009999999999999919,
+      "profit_factor": 0.0,
+      "max_drawdown": 0.009999999999999898
     }
   },
   "gross_validation_passed": false,
   "net_validation_gate": "COST_MODEL_REQUIRED",
-  "validation_passed": false
+  "validation_passed": false,
+  "validation_basis": "GROSS_ONLY"
 }

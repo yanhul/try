@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "READY_FOR_EXECUTABLE_TRANSLATION",
   "candidates": [
     {
@@ -14,90 +14,6 @@
       "lineage": {
         "source": "eeda2d8bb7226345",
         "family": "cross_sectional",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "ec0d2d45957211a1",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "LLM alpha mining quantitative trading",
-      "description": null,
-      "family": "cross_sectional",
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "ec0d2d45957211a1",
-        "family": "cross_sectional",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "824eaf960c0e540e",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "cross sectional crypto factors momentum reversal",
-      "description": null,
-      "family": "cross_sectional",
-      "query": "cross sectional crypto factors momentum reversal",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "824eaf960c0e540e",
-        "family": "cross_sectional",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "7654a4b4f94b3a32",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "fair value gap imbalance FVG crypto trading",
-      "description": null,
-      "family": "fvg_imbalance",
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "7654a4b4f94b3a32",
-        "family": "fvg_imbalance",
         "rounds": [
           {
             "round": 1,
@@ -255,34 +171,6 @@
       }
     },
     {
-      "candidate_id": "1e52e20f303874ed",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "crypto mean reversion statistical arbitrage strategy",
-      "description": null,
-      "family": "mean_reversion",
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "1e52e20f303874ed",
-        "family": "mean_reversion",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
       "candidate_id": "5e7ba63f08629bc2",
       "source": "github",
       "source_url": "https://github.com/kshoop28/crypto-statistical-arbitrage",
@@ -350,90 +238,6 @@
       "lineage": {
         "source": "74ccb2cbd543bf16",
         "family": "mean_reversion",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "9f5489230d1d7295",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "crypto momentum trend following strategy bitcoin",
-      "description": null,
-      "family": "momentum_trend",
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "9f5489230d1d7295",
-        "family": "momentum_trend",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "cb1fdd90860d5f72",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "evolutionary alpha discovery trading strategy",
-      "description": null,
-      "family": "momentum_trend",
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "cb1fdd90860d5f72",
-        "family": "momentum_trend",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "9e514e1363687585",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "crypto regime switching hidden Markov trading",
-      "description": null,
-      "family": "regime",
-      "query": "crypto regime switching hidden Markov trading",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "9e514e1363687585",
-        "family": "regime",
         "rounds": [
           {
             "round": 1,
@@ -563,90 +367,6 @@
       }
     },
     {
-      "candidate_id": "7329a3c4faf6c195",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "description": null,
-      "family": "smc_ict",
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "7329a3c4faf6c195",
-        "family": "smc_ict",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "4f106d02e461529f",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "symbolic regression alpha mining trading",
-      "description": null,
-      "family": "smc_ict",
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "4f106d02e461529f",
-        "family": "smc_ict",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "97b0fe6baf6b650f",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "systematic crypto trading machine learning alpha",
-      "description": null,
-      "family": "smc_ict",
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "97b0fe6baf6b650f",
-        "family": "smc_ict",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
       "candidate_id": "1a3809b88494a50e",
       "source": "github",
       "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
@@ -713,62 +433,6 @@
       "source_timestamp": "2026-08-27T15:47:35Z",
       "lineage": {
         "source": "15cb6fe63630fa54",
-        "family": "volatility",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "8b50bef820dd6cec",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "autonomous trading strategy research backtest",
-      "description": null,
-      "family": "volatility",
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "8b50bef820dd6cec",
-        "family": "volatility",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "3980284fe7f6f6bf",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "crypto volatility breakout strategy",
-      "description": null,
-      "family": "volatility",
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "3980284fe7f6f6bf",
         "family": "volatility",
         "rounds": [
           {
@@ -938,90 +602,6 @@
       "lineage": {
         "source": "68568d883f9110e0",
         "family": "volatility",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "4656c9d41b57c1f8",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "description": null,
-      "family": "volatility",
-      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "4656c9d41b57c1f8",
-        "family": "volatility",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "39fdf88241243f93",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "VWAP volume profile crypto trading strategy",
-      "description": null,
-      "family": "vwap_volume_profile",
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "39fdf88241243f93",
-        "family": "vwap_volume_profile",
-        "rounds": [
-          {
-            "round": 1,
-            "decision": "PASS_SOURCE"
-          },
-          {
-            "round": 2,
-            "decision": "PASS_EXECUTABLE_DATA_LANE"
-          },
-          {
-            "round": 3,
-            "decision": "PASS_DIVERSITY_DEDUP"
-          }
-        ]
-      }
-    },
-    {
-      "candidate_id": "d40df3579237795f",
-      "source": "arxiv",
-      "source_url": null,
-      "title": "Wyckoff VSA VPA volume price analysis crypto",
-      "description": null,
-      "family": "wyckoff_vsa_vpa",
-      "query": "Wyckoff VSA VPA volume price analysis crypto",
-      "source_timestamp": null,
-      "lineage": {
-        "source": "d40df3579237795f",
-        "family": "wyckoff_vsa_vpa",
         "rounds": [
           {
             "round": 1,

@@ -1,0 +1,20 @@
+{
+  "bc": 48,
+  "candidate_hash": "2a74b060f1f9849e4c1ef17a46c83590ce353ec482001c71d27d859578e97414",
+  "conceptual_change": "Introduce a mean-reversion filter by assessing the deviation of the current close from the 50-period rolling mean, normalized as a z-score to isolate extreme price displacements suitable for statistical arbitrage.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Manan-Rawat/Crypto_pairs"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 47,
+  "rationale": "Statistical arbitrage relies on detecting temporary dislocations from a long-term average. By using a z-score of the price relative to its rolling mean, we can quantify the 'stretched' state of an asset, identifying conditions where mean reversion is statistically more probable."
+}
