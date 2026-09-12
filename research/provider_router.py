@@ -35,8 +35,8 @@ def config(name):
 _PROVIDER_LAST_CALL=0.0
 
 def _min_interval():
- try: return max(0.0,float(os.getenv("RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS","3")))
- except ValueError: return 3.0
+ try: return max(4.5,float(os.getenv("RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS","4.5")))
+ except ValueError: return 4.5
 
 def _sleep_for_rate_limit(seconds):
  delay=max(0.0,float(seconds))
@@ -48,7 +48,6 @@ def _retry_after(exc,attempt):
  if value:
   try: return max(1.0,float(value))
   except ValueError: pass
- # Some OpenAI-compatible gateways expose a reset epoch instead of Retry-After.
  for key in ("X-RateLimit-Reset","x-ratelimit-reset","X-RateLimit-Reset-Requests","x-ratelimit-reset-requests"):
   value=headers.get(key)
   if value:
@@ -56,28 +55,36 @@ def _retry_after(exc,attempt):
     reset=float(value)
     if reset > time.time(): return max(1.0,reset-time.time())
    except ValueError: pass
- # Last resort: bounded exponential backoff with small jitter.
  return min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0 ** attempt + random.uniform(0,1))
 
 def _rate_error_detail(exc):
  try:
   raw=exc.read().decode("utf-8","replace")
-  try:
-   payload=json.loads(raw)
-   text=json.dumps(payload,sort_keys=True)
+  try: text=json.dumps(json.loads(raw),sort_keys=True)
   except Exception: text=raw
   return text[:1000]
  except Exception: return ""
+
+def _compact_text(text,limit=None):
+ limit=limit or max(4000,int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT","12000")))
+ text=text or ""
+ if len(text)<=limit:return text
+ head=limit//2; tail=limit-head
+ return text[:head]+f"\n...[context compacted: {len(text)-limit} chars omitted]...\n"+text[-tail:]
+
+def _compact_fingerprints(fingerprints):
+ limit=max(20,int(os.getenv("RESEARCH_PROVIDER_MAX_FORBIDDEN_FINGERPRINTS","80")))
+ ordered=sorted(fingerprints,key=str)
+ if len(ordered)<=limit:return [list(x) for x in ordered]
+ return [list(x) for x in ordered[-limit:]]
 
 def call(name,prompt):
  global _PROVIDER_LAST_CALL
  base,model,key=config(name)
  if not base or not model or not key: raise RuntimeError(f"provider_not_configured:{name}")
- body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":1400,"response_format":{"type":"json_object"}}
+ body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":700,"response_format":{"type":"json_object"}}
  req=urllib.request.Request(base+"/chat/completions",data=json.dumps(body).encode(),headers={"Content-Type":"application/json","Authorization":f"Bearer {key}"},method="POST")
- # Rate-limit protection is deliberately outside the agent's policy: it only slows calls.
- interval=_min_interval()
- gap=interval-(time.monotonic()-_PROVIDER_LAST_CALL)
+ interval=_min_interval(); gap=interval-(time.monotonic()-_PROVIDER_LAST_CALL)
  if gap>0: time.sleep(gap)
  _PROVIDER_LAST_CALL=time.monotonic()
  max_rate_retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","1")))
@@ -87,19 +94,12 @@ def call(name,prompt):
   except urllib.error.HTTPError as exc:
    if exc.code in {429,500,502,503,504}:
     detail=_rate_error_detail(exc)
-    if exc.code==429 and attempt < max_rate_retries:
-     delay=_retry_after(exc,attempt)
-     print(f"PROVIDER_RATE_LIMIT name={name} attempt={attempt+1}/{max_rate_retries+1} backoff={delay:.1f}s detail={detail}",flush=True)
-     _sleep_for_rate_limit(delay)
-     _PROVIDER_LAST_CALL=time.monotonic()
-     continue
-    if exc.code==429:
-     raise RuntimeError(f"provider_rate_limited:{name}:retry_exhausted:{detail}") from exc
     if attempt < max_rate_retries:
      delay=_retry_after(exc,attempt)
-     _sleep_for_rate_limit(delay)
-     _PROVIDER_LAST_CALL=time.monotonic()
-     continue
+     print(f"PROVIDER_RATE_LIMIT name={name} code={exc.code} attempt={attempt+1}/{max_rate_retries+1} backoff={delay:.1f}s detail={detail}",flush=True)
+     _sleep_for_rate_limit(delay); _PROVIDER_LAST_CALL=time.monotonic(); continue
+    if exc.code==429: raise RuntimeError(f"provider_rate_limited:{name}:retry_exhausted:{detail}") from exc
+    raise RuntimeError(f"provider_http_{exc.code}:{name}:{detail}") from exc
    raise
  raise RuntimeError(f"provider_request_failed:{name}")
 
@@ -144,19 +144,19 @@ def request_candidate(name,prompt,forbidden_fingerprints):
     ok,reason=validate_candidate(candidate,bc,parent)
     if ok:return candidate
   last_reason=reason
-  if reason=="duplicate_discovery_fingerprint": feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n"
+  if reason=="duplicate_discovery_fingerprint": feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec.\n"
   elif reason=="invalid_discovery_threshold":
-   bad_spec=candidate.get("discovery_spec"); feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. The exact rejected discovery_spec was: "+json.dumps(bad_spec,sort_keys=True)+". Replace discovery_spec.threshold with a plain finite JSON NUMBER, preferably exactly 0. Do not emit a string, range, percentage, expression, null, object, or array. Also ensure direction is exactly 'above' or 'below'. If the source does not determine a threshold, use 0.\n")
+   bad_spec=candidate.get("discovery_spec"); feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Rejected spec: "+json.dumps(bad_spec,sort_keys=True)+". Use a plain finite JSON NUMBER for threshold, preferably 0; direction must be above/below.\n")
   elif reason=="invalid_discovery_right_column":
-   bad_spec=candidate.get("discovery_spec"); bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None; feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. The rejected discovery_spec.right was "+json.dumps(bad_right)+". For difference/ratio, right MUST be exactly one of these schema columns: "+json.dumps(COLUMNS)+". Do not use aliases or natural-language names. Regenerate the same selected-survivor lineage with a schema-valid right column, or choose a non-binary operator only if that is the faithful executable translation of the selected survivor. Do not invent evidence or change policy.\n")
+   bad_spec=candidate.get("discovery_spec"); bad_right=bad_spec.get("right") if isinstance(bad_spec,dict) else None; feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. right was "+json.dumps(bad_right)+". For difference/ratio use exactly one schema column from "+json.dumps(COLUMNS)+".\n")
   else: feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate without changing policy or inventing evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last_reason}")
 def calibration_feedback(issues):
- return ("\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise and try again. Do NOT bypass, reinterpret, or weaken calibration. Evidence sources are provenance, not proof; rationale claims must be directly grounded in the supplied failure analysis. Hypothesis parameters are proposals to test, not factual claims. Keep the same selected screen-survivor lineage, one conceptual change, executable discovery_spec, and no OOS tuning. " f"Verifier diagnostics: {json.dumps(issues,sort_keys=True)}\n")
+ return "\nCALIBRATION_FEEDBACK: strict evidence calibration rejected the candidate. Revise without bypassing calibration. Verifier diagnostics: "+_compact_text(json.dumps(issues,sort_keys=True),4000)+"\n"
 def main():
  global bc,parent
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]); output=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]); bc=int(os.environ["RESEARCH_NEXT_BC"]); parent=int(os.environ["RESEARCH_PARENT_BC"])
- prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=failure.read_text(encoding="utf-8"); queue=ROOT/'research'/'discovery'/'research_queue.json'
+ prior=os.getenv("RESEARCH_PRIOR_HYPOTHESES","") or os.getenv("RESEARCH_USED_HYPOTHESIS_IDS",""); evidence_text=_compact_text(failure.read_text(encoding="utf-8")); queue=ROOT/'research'/'discovery'/'research_queue.json'
  if not queue.exists(): print("PROVIDER_ROUTER_HOLD missing_screen_queue"); return 0
  try:
   q=json.loads(queue.read_text(encoding='utf-8')); survivors=q.get('candidates',[]) if isinstance(q,dict) else q
@@ -164,7 +164,7 @@ def main():
   selected=survivors[(parent-1)%len(survivors)]
  except Exception as exc: print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{exc}"); return 0
  forbidden=prior_discovery_fingerprints()
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)])}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True)}\n\nDo not select a different survivor. Preserve the source lineage in evidence_sources and translate only what this survivor supports. The executable discovery_spec must be novel relative to prior campaign candidates.")
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {_compact_text(prior,4000)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps(_compact_fingerprints(forbidden),separators=(',',':'))}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\n\nDo not select a different survivor. Preserve source lineage. The executable discovery_spec must be novel relative to prior campaign candidates.")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]
  for name in order:
   try:
@@ -177,7 +177,7 @@ def main():
      write_candidate(output,candidate); print(f"PROVIDER_SELECTED {name} model={model} hash={candidate['candidate_hash']} calibration_attempt={calibration_attempt+1}"); return 0
     print(f"PROVIDER_CALIBRATION_FAIL {name} attempt={calibration_attempt+1} issues={json.dumps(issues,sort_keys=True)}",flush=True)
     if calibration_attempt==2: break
-    revision_prompt=prompt+"\n\nPREVIOUS CANDIDATE REJECTED BY STRICT CALIBRATION:\n"+json.dumps(candidate,sort_keys=True)+calibration_feedback(issues)
+    revision_prompt=prompt+"\n\nPREVIOUS CANDIDATE REJECTED BY STRICT CALIBRATION:\n"+json.dumps(candidate,sort_keys=True,separators=(',',':'))+calibration_feedback(issues)
     revision_forbidden=set(forbidden); fp=discovery_fingerprint(candidate)
     if fp is not None: revision_forbidden.add(fp)
     candidate=request_candidate(name,revision_prompt,revision_forbidden)
