@@ -42,10 +42,8 @@ def call(name,prompt):
    detail=""
    try:detail=e.read().decode("utf-8","replace")[:1000]
    except Exception:pass
-   if attempt>=retries:
-    raise RuntimeError(f"provider_{'rate_limited' if e.code==429 else 'http_'+str(e.code)}:{name}:{detail}") from e
-   delay=min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0**attempt+random.uniform(0,1))
-   print(f"PROVIDER_RATE_LIMIT name={name} code={e.code} attempt={attempt+1}/{retries+1} backoff={delay:.1f}s detail={detail}",flush=True);time.sleep(delay);_PROVIDER_LAST_CALL=time.monotonic()
+   if attempt>=retries:raise RuntimeError(f"provider_{'rate_limited' if e.code==429 else 'http_'+str(e.code)}:{name}:{detail}") from e
+   delay=min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),2.0**attempt+random.uniform(0,1));print(f"PROVIDER_RATE_LIMIT name={name} code={e.code} attempt={attempt+1}/{retries+1} backoff={delay:.1f}s detail={detail}",flush=True);time.sleep(delay);_PROVIDER_LAST_CALL=time.monotonic()
  raise RuntimeError(f"provider_request_failed:{name}")
 def normalize_structural_types(c):
  s=c.get("discovery_spec")
@@ -81,24 +79,39 @@ def request_candidate(name,prompt,forbidden):
    else:
     ok,reason=validate_candidate(c,bc,parent)
     if ok:return c
-  last=reason;feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only the executable proposal; do not invent evidence.\n"
+  last=reason
+  spec=c.get("discovery_spec") if isinstance(c,dict) else None
+  if reason=="invalid_discovery_threshold":
+   if isinstance(spec,dict) and "threshold" not in spec:
+    spec["threshold"]=0
+    ok,again=validate_candidate(c,bc,parent)
+    if ok:return c
+   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Output a plain finite JSON NUMBER threshold and direction exactly 'above' or 'below'. If no threshold is determined by the survivor, use threshold 0.\n"
+  elif reason=="invalid_discovery_right_column":
+   bad=spec.get("right") if isinstance(spec,dict) else None
+   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_right_column. For difference/ratio, right must be exactly one of "+json.dumps(COLUMNS)+"; aliases and prose are forbidden. Received "+json.dumps(bad)+".\n"
+  elif reason=="invalid_discovery_window":
+   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_window. Use exactly one integer window from "+json.dumps(WINDOWS)+".\n"
+  elif reason=="invalid_discovery_operator":
+   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_operator. Use exactly one operator from "+json.dumps(OPERATORS)+".\n"
+  elif reason=="invalid_discovery_left_column":
+   feedback="\nVALIDATOR_FEEDBACK: invalid_discovery_left_column. Use exactly one schema column from "+json.dumps(COLUMNS)+".\n"
+  elif reason=="duplicate_discovery_fingerprint":
+   feedback="\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec.\n"
+  else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only the executable proposal; do not invent evidence.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
 def ground_candidate(c,selected):
  url=str(selected.get("source_url") or "").strip()
  if not url:raise ValueError("selected_survivor_missing_source_url")
  s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None
  expr=f"{op}({s.get('left')}"+(f",{s.get('right')})" if s.get("right") is not None else ")") if op else str(c.get("hypothesis_id"))
- c["evidence_sources"]=[url]
- c["conceptual_change"]=f"Test {expr} with the supplied discovery parameters as the executable translation of the selected screen survivor."
- c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance."
- c["is_testable"]=True;c["oos_selection_used"]=False
+ c["evidence_sources"]=[url];c["conceptual_change"]=f"Test {expr} with the supplied discovery parameters as the executable translation of the selected screen survivor.";c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False
  return c
 def survivor_evidence(s):
  return compact(json.dumps({k:s.get(k) for k in ("candidate_id","source","source_url","title","description","family","market","query","source_timestamp","lineage")},sort_keys=True,ensure_ascii=False,separators=(",",":")))
 def main():
  global bc,parent
- failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]);out=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]);bc=int(os.environ["RESEARCH_NEXT_BC"]);parent=int(os.environ["RESEARCH_PARENT_BC"])
- queue=ROOT/"research/discovery/research_queue.json"
+ failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]);out=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]);bc=int(os.environ["RESEARCH_NEXT_BC"]);parent=int(os.environ["RESEARCH_PARENT_BC"]);queue=ROOT/"research/discovery/research_queue.json"
  if not queue.exists():print("PROVIDER_ROUTER_HOLD missing_screen_queue");return 0
  try:
   q=json.loads(queue.read_text(encoding="utf-8"));survivors=q.get("candidates",[]) if isinstance(q,dict) else q
@@ -115,13 +128,11 @@ def main():
    for attempt in range(3):
     ground_candidate(c,selected);ok,reason=validate_candidate(c,bc,parent)
     if not ok:raise ValueError(f"grounded_candidate_contract_failed:{reason}")
-    time.sleep(interval())
-    calibrated,issues=verify_with_openai_compatible(base,model,key,c,evidence)
+    time.sleep(interval());calibrated,issues=verify_with_openai_compatible(base,model,key,c,evidence)
     if calibrated:write_candidate(out,c);print(f"PROVIDER_SELECTED {name} model={model} hash={c['candidate_hash']} calibration_attempt={attempt+1}");return 0
     print(f"PROVIDER_CALIBRATION_FAIL {name} attempt={attempt+1} issues={json.dumps(issues,sort_keys=True)}",flush=True)
     if attempt==2:break
-    revision=prompt+"\nCALIBRATION REJECTED; revise executable parameters only:\n"+json.dumps(issues,sort_keys=True)
-    rf=set(forbidden);f=fingerprint(c)
+    revision=prompt+"\nCALIBRATION REJECTED; revise executable parameters only:\n"+json.dumps(issues,sort_keys=True);rf=set(forbidden);f=fingerprint(c)
     if f is not None:rf.add(f)
     c=request_candidate(name,revision,rf)
     if c.get("status")=="HOLD":break
