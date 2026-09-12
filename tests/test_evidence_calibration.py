@@ -1,6 +1,6 @@
 import pytest
 
-from research.evidence_calibration import parse_verdict, verification_prompt
+from research.evidence_calibration import ground_proposal, parse_verdict, verification_prompt
 
 
 def test_pass_requires_empty_issues():
@@ -30,3 +30,11 @@ def test_verification_prompt_contains_exact_candidate_and_artifact():
     assert '"rationale": "test"' in prompt
     assert '"evidence_sources": ["C"]' in prompt
     assert "artifact-C" in prompt
+
+
+def test_ground_proposal_removes_empirical_rationale_claims():
+    candidate = {"rationale": "A-share volume exhaustion predicts breakouts", "evidence_sources": ["C"]}
+    ground_proposal(candidate)
+    assert "predicts" not in candidate["rationale"]
+    assert "proposed executable test" in candidate["rationale"]
+    assert candidate["evidence_sources"] == ["C"]
