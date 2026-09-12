@@ -1,0 +1,31 @@
+{
+  "bc": 49,
+  "parent_bc": 48,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "27f45911f831458b5301bd731c75a897d0a36e4ee5a76d1c71a049b6cf100493",
+  "conceptual_change": "Introduce a mean-reversion filter using the distance of the price from its rolling 20-period VWAP as a signal for statistical arbitrage entry.",
+  "evidence_sources": [
+    "https://github.com/Manashwy/Crypto_Arbitrage"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

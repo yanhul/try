@@ -1,0 +1,20 @@
+{
+  "bc": 53,
+  "candidate_hash": "ca4ff71f74310e94ad84d21206cec02c1bd2233bec7819feddb9838046b8e2d5",
+  "conceptual_change": "Incorporate a mean-reversion filter identifying price divergence from the 20-period volume-weighted average price (VWAP) using a z-score of the distance from vwap to trigger mean-reversion entries.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "zscore",
+    "threshold": -2,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/pranay123-stack/crypto-trading-strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 52,
+  "rationale": "The strategy utilizes the z-score of the distance from the vwap to identify periods where the price is statistically extended from the volume-weighted average, serving as a signal for mean reversion in crypto markets."
+}

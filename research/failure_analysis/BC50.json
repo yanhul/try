@@ -1,0 +1,31 @@
+{
+  "bc": 50,
+  "parent_bc": 49,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "92dff155f6458c1df186054e7b433432bb2a71c23732c3990c5436e01fc574db",
+  "conceptual_change": "Introduce a mean-reversion filter using the zscore of price relative to a short-term rolling mean as a signal for entering long positions when price deviates below the mean.",
+  "evidence_sources": [
+    "https://github.com/NIU1751879/Trading_Strategies"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

@@ -1,0 +1,20 @@
+{
+  "bc": 50,
+  "candidate_hash": "92dff155f6458c1df186054e7b433432bb2a71c23732c3990c5436e01fc574db",
+  "conceptual_change": "Introduce a mean-reversion filter using the zscore of price relative to a short-term rolling mean as a signal for entering long positions when price deviates below the mean.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": -2,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/NIU1751879/Trading_Strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 49,
+  "rationale": "Statistical arbitrage often relies on price reverting to a local mean after an extreme deviation. By using a zscore of the closing price, we identify entry points when price is statistically oversold relative to its recent volatility."
+}

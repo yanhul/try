@@ -1,0 +1,20 @@
+{
+  "bc": 54,
+  "candidate_hash": "c5bd3be289dd1fbb15a6a5b72b6c97c9c6cc9287d582cd14c5cc24132a4a4a0a",
+  "conceptual_change": "Introduce a mean-reversion filter identifying price divergence from the 50-period rolling mean price using a z-score of the distance from the mean to signal potential exhaustion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": 2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 53,
+  "rationale": "Statistical arbitrage relies on mean reversion between correlated assets. By using a z-score of the price relative to its rolling mean, we can identify when a specific asset has deviated significantly from its recent local equilibrium, suggesting a statistical correction."
+}

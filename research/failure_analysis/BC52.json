@@ -1,0 +1,31 @@
+{
+  "bc": 52,
+  "parent_bc": 51,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "cba314558b4f9a769d3b5cec443184bd1126ddb406ff7cc8f550de295a8eb6c5",
+  "conceptual_change": "Introduce a mean-reversion filter identifying price divergence from the 50-period moving average using z-score normalization to trigger entries when the price is statistically oversold.",
+  "evidence_sources": [
+    "https://github.com/kshoop28/crypto-statistical-arbitrage"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

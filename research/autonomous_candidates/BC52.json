@@ -1,0 +1,20 @@
+{
+  "bc": 52,
+  "candidate_hash": "cba314558b4f9a769d3b5cec443184bd1126ddb406ff7cc8f550de295a8eb6c5",
+  "conceptual_change": "Introduce a mean-reversion filter identifying price divergence from the 50-period moving average using z-score normalization to trigger entries when the price is statistically oversold.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": -2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/kshoop28/crypto-statistical-arbitrage"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 51,
+  "rationale": "The strategy utilizes statistical arbitrage concepts to find instances where the price z-score deviates significantly below the mean, suggesting a potential mean-reversion opportunity consistent with the selected survivor's focus."
+}

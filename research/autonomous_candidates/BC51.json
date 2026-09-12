@@ -1,0 +1,20 @@
+{
+  "bc": 51,
+  "candidate_hash": "a8ef6b41d43c8099d973e5776a400af2b9e9f72cabab8d4e6b3c63396b6ca079",
+  "conceptual_change": "Introduce a mean-reversion filter utilizing the zscore of price relative to a 50-period rolling mean to identify oversold conditions for mean-reverting entry triggers.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": -2,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/aakash-ramesh/crypto-stat-arb"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 50,
+  "rationale": "The original PCA/OU strategy relies on residual stationarity. By approximating this with a zscore of the close price, we isolate short-term deviations from the long-term trend, facilitating mean-reversion signals consistent with statistical arbitrage principles."
+}
