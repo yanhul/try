@@ -3,7 +3,6 @@
 from __future__ import annotations
 import json, os, time, urllib.request
 from typing import Any
-
 SYSTEM = """You are a strict evidence-calibration verifier.
 Verify one candidate against ONE supplied evidence artifact. Do not add facts or repair the candidate.
 A hypothesis/proposed test, conceptual change, threshold, direction, or discovery parameter is a PROPOSAL, not evidence.
@@ -12,35 +11,21 @@ FAIL only substantive factual overclaims, unsupported quantitative claims, inven
 Observations do not establish causation; null results do not prove zero effect or effect-size bounds; sample size alone does not resolve conflicting studies; conflicting evidence must remain visible; do not invent effect sizes, mechanisms, populations, methods, or heterogeneity.
 Every substantive factual rationale claim must be traceable to supplied evidence. Evidence-source identifiers are provenance metadata, not factual claims by themselves.
 Return JSON only: {"status":"PASS"|"FAIL","issues":[{"code":"...","claim":"...","reason":"..."}]}. PASS requires empty issues."""
-
 _LAST_VERIFIER_CALL=0.0
-
 def _compact(text: str, limit: int | None = None) -> str:
     limit = limit or max(4000, int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT", "12000")))
     if len(text) <= limit: return text
     head=limit//2; tail=limit-head
     return text[:head]+f"\n...[evidence compacted: {len(text)-limit} chars omitted]...\n"+text[-tail:]
-
 def ground_proposal(candidate: dict[str, Any]) -> None:
-    """Make the free-form model rationale proposal-only before epistemic verification.
-
-    The provider is not authoritative over evidence or policy.  Keep executable
-    fields from the model, but prevent free-form empirical prose from becoming a
-    hidden evidence channel.  The verifier then checks the candidate that can
-    actually be persisted.
-    """
-    candidate["rationale"]=(
-        "This candidate is a proposed executable test derived from the selected "
-        "screen survivor. It does not assert efficacy, causality, market behavior, "
-        "or any performance result."
-    )
-
+    """Replace free-form empirical prose with deterministic proposal-only text."""
+    candidate.pop("candidate_hash",None)
+    candidate["rationale"]=("This candidate is a proposed executable test derived from the selected "
+        "screen survivor. It does not assert efficacy, causality, market behavior, or any performance result.")
 def verification_prompt(candidate: dict[str, Any], evidence_text: str) -> str:
     candidate_json = json.dumps(candidate,sort_keys=True,ensure_ascii=False)
-    return ("CANDIDATE:\n" + candidate_json +
-            "\n\nSUPPLIED EVIDENCE ARTIFACT:\n" + _compact(evidence_text) +
+    return ("CANDIDATE:\n" + candidate_json + "\n\nSUPPLIED EVIDENCE ARTIFACT:\n" + _compact(evidence_text) +
             "\n\nVerify factual claims against only this artifact. Treat the hypothesis and executable parameters as a proposal, not an asserted result. The rationale is intentionally proposal-only; do not invent factual claims that are not present.")
-
 def parse_verdict(text: str) -> tuple[bool,list[dict[str,str]]]:
     data=json.loads(text)
     if not isinstance(data,dict) or data.get("status") not in {"PASS","FAIL"}: raise ValueError("invalid_calibration_verdict")
@@ -52,7 +37,6 @@ def parse_verdict(text: str) -> tuple[bool,list[dict[str,str]]]:
         normalized.append({"code":str(item.get("code","")),"claim":str(item.get("claim","")),"reason":str(item.get("reason",""))})
     if data["status"]=="PASS" and normalized: raise ValueError("pass_with_issues")
     return data["status"]=="PASS",normalized
-
 def verify_with_openai_compatible(base_url:str,model:str,api_key:str,candidate:dict[str,Any],evidence_text:str)->tuple[bool,list[dict[str,str]]]:
     global _LAST_VERIFIER_CALL
     if not base_url or not model or not api_key: raise RuntimeError("verifier_not_configured")
