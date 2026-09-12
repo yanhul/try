@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DISCOVERY = ROOT / "research" / "discovery"
 LANES = DISCOVERY / "source_lanes.json"
 LATEST = DISCOVERY / "latest.json"
+ARCHIVE = DISCOVERY / "source_archive.json"
 POPULATION = DISCOVERY / "population.json"
 SURVIVORS = DISCOVERY / "survivors.json"
 QUEUE = DISCOVERY / "research_queue.json"
@@ -153,28 +154,49 @@ def round3_diversity(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return out
 
 
+def _load_discovery_sources() -> tuple[list[dict[str, Any]], str]:
+    """Prefer the durable archive; latest.json is only the current-run telemetry fallback."""
+    if ARCHIVE.exists():
+        try:
+            payload = json.loads(ARCHIVE.read_text(encoding="utf-8"))
+            sources = payload.get("sources", [])
+            if isinstance(sources, list):
+                return [x for x in sources if isinstance(x, dict) and not x.get("error")], "archive"
+        except (OSError, json.JSONDecodeError, TypeError):
+            pass
+    if LATEST.exists():
+        try:
+            payload = json.loads(LATEST.read_text(encoding="utf-8"))
+            sources = payload.get("results", [])
+            if isinstance(sources, list):
+                return [x for x in sources if isinstance(x, dict) and not x.get("error")], "latest_fallback"
+        except (OSError, json.JSONDecodeError, TypeError):
+            pass
+    return [], "empty"
+
+
 def build() -> dict[str, Any]:
-    data = json.loads(LATEST.read_text(encoding="utf-8")) if LATEST.exists() else {"results": []}
+    raw_sources, source_store = _load_discovery_sources()
     expanded = []
-    for raw in data.get("results", []):
-        if isinstance(raw, dict) and not raw.get("error"):
-            expanded.extend(expand_source(raw))
+    for raw in raw_sources:
+        expanded.extend(expand_source(raw))
     normalized = [normalize(x) for x in expanded]
     r1 = round1_source_quality(normalized)
     executable, deferred = round2_feasibility(r1)
     survivors = round3_diversity(executable)
     payload = {
-        "schema_version": 2,
-        "architecture": "source_population -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+        "schema_version": 3,
+        "architecture": "durable_source_archive -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation",
+        "source_store": source_store,
         "policy_authority": "research/campaign_policy.json",
-        "counts": {"raw": len(data.get("results", [])), "expanded": len(expanded), "normalized": len(normalized), "round1": len(r1), "deferred": len(deferred), "survivors": len(survivors)},
+        "counts": {"raw": len(raw_sources), "expanded": len(expanded), "normalized": len(normalized), "round1": len(r1), "deferred": len(deferred), "survivors": len(survivors)},
         "population": normalized,
         "deferred": deferred,
     }
     POPULATION.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    survivor_payload = {"schema_version": 2, "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION", "survivors": survivors}
+    survivor_payload = {"schema_version": 3, "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION", "survivors": survivors}
     SURVIVORS.write_text(json.dumps(survivor_payload, indent=2), encoding="utf-8")
-    queue = {"schema_version": 2, "status": "READY_FOR_EXECUTABLE_TRANSLATION", "candidates": survivors}
+    queue = {"schema_version": 3, "status": "READY_FOR_EXECUTABLE_TRANSLATION", "candidates": survivors}
     QUEUE.write_text(json.dumps(queue, indent=2), encoding="utf-8")
     return payload
 
