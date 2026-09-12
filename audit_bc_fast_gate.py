@@ -27,6 +27,8 @@ if data["oos_selection_used"] is not False or data["is_testable"] is not True:
     raise SystemExit(f"BLOCKED: BC{bc} provenance/testability violation")
 if not isinstance(data["evidence_sources"], list) or not data["evidence_sources"]:
     raise SystemExit(f"BLOCKED: BC{bc} evidence_sources missing")
+if not isinstance(data["candidate_hash"], str) or not data["candidate_hash"]:
+    raise SystemExit(f"BLOCKED: BC{bc} candidate_hash missing")
 
 try:
     from engine.hypotheses import HYPOTHESES
@@ -61,23 +63,43 @@ if not evidence.exists():
     raise SystemExit(0)
 
 result = json.loads(evidence.read_text(encoding="utf-8"))
-if result.get("oos_selection_used") is True:
-    raise SystemExit(f"BLOCKED: BC{bc} validation selected using OOS")
+# Evidence is authoritative only when it is for this exact candidate and lineage.
+try:
+    evidence_bc = int(result["bc"])
+    evidence_parent = int(result["parent_bc"])
+except (KeyError, TypeError, ValueError):
+    raise SystemExit(f"BLOCKED: BC{bc} malformed validation lineage")
+if evidence_bc != bc or (bc > 1 and evidence_parent != bc - 1):
+    raise SystemExit(f"BLOCKED: BC{bc} validation lineage mismatch")
+if result.get("candidate_hash") != data["candidate_hash"]:
+    raise SystemExit(f"BLOCKED: BC{bc} candidate/evidence hash mismatch")
+if result.get("hypothesis_id") != hid:
+    raise SystemExit(f"BLOCKED: BC{bc} hypothesis/evidence mismatch")
+if result.get("oos_selection_used") is not False or result.get("oos_executed") is True:
+    raise SystemExit(f"BLOCKED: BC{bc} OOS contamination")
+if result.get("discovery_spec") != data.get("discovery_spec"):
+    raise SystemExit(f"BLOCKED: BC{bc} discovery spec/evidence mismatch")
 if result.get("evaluation_spec") != EVALUATION_SPEC:
     raise SystemExit(f"BLOCKED: BC{bc} evaluation spec mismatch")
+
+validation = result.get("VALIDATION")
+if not isinstance(validation, dict) or not isinstance(validation.get("metrics"), dict):
+    raise SystemExit(f"BLOCKED: BC{bc} malformed validation metrics")
 if result.get("validation_passed") is True and EVALUATION_SPEC.get("cost_model_status") != "AVAILABLE":
     failure_path.parent.mkdir(parents=True, exist_ok=True)
-    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"COST_MODEL_REQUIRED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":result.get("VALIDATION",{}),"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"do not promote until an authoritative cost model is available"}, indent=2) + "\n", encoding="utf-8")
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"COST_MODEL_REQUIRED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":validation,"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"do not promote until an authoritative cost model is available"}, indent=2) + "\n", encoding="utf-8")
     print(f"BC{bc}_REJECT_COST_MODEL_REQUIRED")
     print("SPLIT_GATE False")
     print("REJECT_BC")
     raise SystemExit(0)
 if result.get("validation_passed") is True:
-    print(f"BC{bc}_VALIDATION_PASS", result.get("VALIDATION", {}).get("metrics", {}))
+    if result.get("gross_validation_passed") is not True or result.get("net_validation_gate") != "PASS":
+        raise SystemExit(f"BLOCKED: BC{bc} inconsistent promotion evidence")
+    print(f"BC{bc}_VALIDATION_PASS", validation.get("metrics", {}))
     print("PROMOTE_TO_FUTURE_OOS_TEST")
 else:
     failure_path.parent.mkdir(parents=True, exist_ok=True)
-    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"VALIDATION_FAILED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":result.get("VALIDATION",{}),"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"reject candidate and require a distinct next hypothesis"}, indent=2) + "\n", encoding="utf-8")
-    print(f"BC{bc}_VALIDATION_FAIL", result.get("VALIDATION", {}).get("metrics", {}))
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"VALIDATION_FAILED","hypothesis_id":hid,"candidate_hash":data["candidate_hash"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"validation_summary":validation,"gross_validation_passed":result.get("gross_validation_passed"),"net_validation_gate":result.get("net_validation_gate"),"oos_selection_used":False,"action":"reject candidate and require a distinct next hypothesis"}, indent=2) + "\n", encoding="utf-8")
+    print(f"BC{bc}_VALIDATION_FAIL", validation.get("metrics", {}))
     print("SPLIT_GATE False")
     print("REJECT_BC")
