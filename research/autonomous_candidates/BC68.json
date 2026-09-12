@@ -1,0 +1,20 @@
+{
+  "bc": 68,
+  "candidate_hash": "c70908bc3e065a9a8c2dff67ed7dc926b32a6c546b4be89f09bfcaaa57b0922c",
+  "conceptual_change": "Evaluate the persistence of short-term price movement relative to volume by applying a delta operator on the volume_ratio to capture acceleration in order flow activity.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "operator": "delta",
+    "threshold": 0,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/YichuanAlex/high_frequency_order_trade_factors"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 67,
+  "rationale": "High-frequency trade signals in A-shares are influenced by sudden shifts in order book participation. Measuring the change in volume_ratio helps identify rapid adjustments in trading intensity that may indicate impending price breakouts or liquidity exhaustion."
+}

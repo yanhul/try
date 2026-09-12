@@ -1,0 +1,31 @@
+{
+  "bc": 68,
+  "parent_bc": 67,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "c70908bc3e065a9a8c2dff67ed7dc926b32a6c546b4be89f09bfcaaa57b0922c",
+  "conceptual_change": "Evaluate the persistence of short-term price movement relative to volume by applying a delta operator on the volume_ratio to capture acceleration in order flow activity.",
+  "evidence_sources": [
+    "https://github.com/YichuanAlex/high_frequency_order_trade_factors"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
