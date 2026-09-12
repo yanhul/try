@@ -62,7 +62,26 @@ def normalize_structural_types(candidate):
  if "window" in spec and isinstance(spec["window"],str) and spec["window"].strip().isdigit():
   spec["window"]=int(spec["window"].strip())
 
-def request_candidate(name,prompt):
+def discovery_fingerprint(candidate):
+ spec=candidate.get("discovery_spec") or {}
+ if not isinstance(spec,dict): return None
+ keys=("operator","left","right","window","threshold","direction")
+ return tuple(spec.get(k) for k in keys)
+
+def prior_discovery_fingerprints():
+ fingerprints=set()
+ directory=ROOT/'research'/'autonomous_candidates'
+ if not directory.exists(): return fingerprints
+ for path in sorted(directory.glob('BC*.json')):
+  try:
+   candidate=json.loads(path.read_text(encoding='utf-8'))
+   fp=discovery_fingerprint(candidate)
+   if fp is not None: fingerprints.add(fp)
+  except (OSError,ValueError,TypeError):
+   continue
+ return fingerprints
+
+def request_candidate(name,prompt,forbidden_fingerprints):
  feedback=""; last_reason="unknown"
  for _ in range(3):
   raw=call(name,prompt + feedback)
@@ -77,10 +96,18 @@ def request_candidate(name,prompt):
   elif hypothesis_id not in HYPOTHESES and hypothesis_id!="discovered_primitive":
    reason="unregistered_hypothesis_id"
   else:
-   candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
-   if ok:return candidate
+   candidate["bc"],candidate["parent_bc"]=bc,parent
+   fp=discovery_fingerprint(candidate)
+   if fp is not None and fp in forbidden_fingerprints:
+    reason="duplicate_discovery_fingerprint"
+   else:
+    candidate["bc"],candidate["parent_bc"]=bc,parent; ok,reason=validate_candidate(candidate,bc,parent)
+    if ok:return candidate
   last_reason=reason
-  if reason == "invalid_discovery_threshold":
+  if reason == "duplicate_discovery_fingerprint":
+   feedback=("\nVALIDATOR_FEEDBACK: duplicate_discovery_fingerprint. Regenerate a genuinely distinct executable discovery_spec. "
+             "Do not reuse any prior operator/left/right/window/threshold/direction tuple. Preserve the selected source lineage.\n")
+  elif reason == "invalid_discovery_threshold":
    feedback=("\nVALIDATOR_FEEDBACK: invalid_discovery_threshold. Regenerate now. "
              "discovery_spec.threshold MUST be a finite JSON NUMBER, not a string or range. "
              "Valid examples are: 0, 0.5, 1, 1.5, -0.5. "
@@ -96,19 +123,17 @@ def main():
  queue=ROOT/'research'/'discovery'/'research_queue.json'
  if not queue.exists(): print("PROVIDER_ROUTER_HOLD missing_screen_queue"); return 0
  try:
-  q=json.loads(queue.read_text(encoding='utf-8'))
-  survivors=q.get('candidates',[]) if isinstance(q,dict) else q
+  q=json.loads(queue.read_text(encoding='utf-8')); survivors=q.get('candidates',[]) if isinstance(q,dict) else q
   if not isinstance(survivors,list) or not survivors: print("PROVIDER_ROUTER_HOLD empty_screen_queue"); return 0
-  # Selection is deterministic and outside Gemini: one survivor per BC, stable
-  # under retries and independent of model judgment.
   selected=survivors[(parent-1) % len(survivors)]
  except Exception as exc:
   print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{exc}"); return 0
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True)}\n\nDo not select a different survivor. Preserve the source lineage in evidence_sources and translate only what this survivor supports.")
+ forbidden=prior_discovery_fingerprints()
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {prior}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)])}\n\nFAILURE ANALYSIS:\n{evidence_text}\n\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True)}\n\nDo not select a different survivor. Preserve the source lineage in evidence_sources and translate only what this survivor supports. The executable discovery_spec must be novel relative to prior campaign candidates.")
  order=[x.strip().lower() for x in os.getenv("RESEARCH_PROVIDER_ORDER","gemini").split(",") if x.strip()]
  for name in order:
   try:
-   candidate=request_candidate(name,prompt)
+   candidate=request_candidate(name,prompt,forbidden)
    if candidate.get("status")=="HOLD": print(f"PROVIDER_{name.upper()}_HOLD"); continue
    base,model,key=config(name); calibrated,issues=verify_with_openai_compatible(base,model,key,candidate,evidence_text)
    if not calibrated: print(f"PROVIDER_CALIBRATION_FAIL {name} issues={json.dumps(issues,sort_keys=True)}",flush=True); continue
