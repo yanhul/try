@@ -13,9 +13,6 @@ on:
 permissions:
   contents: write
   actions: write
-concurrency:
-  group: bc-research-controller
-  cancel-in-progress: false
 jobs:
   research:
     runs-on: ubuntu-latest
@@ -27,6 +24,7 @@ jobs:
       RESEARCH_PROVIDER_ORDER: gemini
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -91,37 +89,23 @@ jobs:
           for path in "${durable_paths[@]}"; do
             if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi
           done
-          # Detect tracked and untracked durable changes before any rebase/reset.
           controller_state_changed=false
           status_args=()
           for path in "${durable_paths[@]}"; do
-            if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
-              status_args+=("$path")
-            fi
+            if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then status_args+=("$path"); fi
           done
-          if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then
-            controller_state_changed=true
-          fi
+          if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then controller_state_changed=true; fi
           pushed=false
           for attempt in 1 2 3 4 5; do
-            # Stage only paths that exist (or are tracked) on this checkout.
             for path in "${durable_paths[@]}"; do
-              if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
-                git add -A -- "$path"
-              fi
+              if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi
             done
             if git diff --cached --quiet; then
-              if [ "$controller_state_changed" = "true" ]; then
-                echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2
-                exit 1
-              fi
+              if [ "$controller_state_changed" = "true" ]; then echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2; exit 1; fi
               echo "No autonomous research state changes to persist."; pushed=true; break
             fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
             if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
-
-            # A concurrent writer won the race. Rebase by restoring the exact
-            # durable snapshot produced above, then retry. Never discard it.
             git fetch origin main
             git reset --hard origin/main
             for item in /tmp/try-state/*; do
