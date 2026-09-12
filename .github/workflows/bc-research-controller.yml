@@ -2,7 +2,6 @@ name: BC Research Controller
 
 # Durable bounded campaign: fixed policy + durable controller resume.
 # Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
-# Trigger note: provider contract and provider-throttling fixes are validated through the normal push path.
 on:
   workflow_dispatch:
   schedule:
@@ -28,10 +27,12 @@ jobs:
       RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini
-      # Keep requests below provider RPM and do not hammer a 429/TPM window.
-      RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS: 3
+      # Gemini Flash is currently 15 RPM / 250k TPM. Keep substantial headroom.
+      RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS: 5
       RESEARCH_PROVIDER_RATE_RETRIES: 1
       RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS: 120
+      RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT: 12000
+      RESEARCH_PROVIDER_MAX_FORBIDDEN_FINGERPRINTS: 80
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
       GITHUB_TOKEN: ${{ github.token }}
@@ -59,26 +60,17 @@ jobs:
           set -euo pipefail
           export GITHUB_OUTPUT_PATH="$GITHUB_OUTPUT"
           python - <<'PY'
-          import json
-          import os
+          import json, os
           from pathlib import Path
-          state_path = Path('research/bc_lifecycle_state.json')
-          state = json.loads(state_path.read_text()) if state_path.exists() else {}
-          phase = state.get('phase')
-          error = str(state.get('last_error') or '')
-          retry = int(state.get('retry_count', 0))
-          max_retry = 3
-          current_bc = state.get('current_bc')
-          required = [Path('research/bc_queue.json'),Path('research/autonomous_candidates'),Path('research/failure_analysis'),Path('research/discovery')]
-          retryable_error = error.startswith(('PROVIDER_FAIL ', 'HOLD_PROVIDER_ROUTER'))
-          eligible = (not state.get('campaign_terminal') and phase == 'WAIT_RETRY' and retryable_error and 0 <= retry < max_retry and isinstance(current_bc, int) and all(p.exists() for p in required))
-          output = Path(os.environ['GITHUB_OUTPUT_PATH'])
-          if eligible:
-              print(f'FAST_RESUME_ELIGIBLE bc={current_bc} retry={retry}/{max_retry} error={error}')
-              with output.open('a') as out: out.write('fast=true\n')
-          else:
-              print(f'FAST_RESUME_INELIGIBLE phase={phase} bc={current_bc} retry={retry} error={error}')
-              with output.open('a') as out: out.write('fast=false\n')
+          state_path=Path('research/bc_lifecycle_state.json')
+          state=json.loads(state_path.read_text()) if state_path.exists() else {}
+          phase=state.get('phase'); error=str(state.get('last_error') or '')
+          retry=int(state.get('retry_count',0)); current_bc=state.get('current_bc')
+          required=[Path('research/bc_queue.json'),Path('research/autonomous_candidates'),Path('research/failure_analysis'),Path('research/discovery')]
+          retryable_error=error.startswith(('PROVIDER_FAIL ','HOLD_PROVIDER_ROUTER'))
+          eligible=(not state.get('campaign_terminal') and phase=='WAIT_RETRY' and retryable_error and 0<=retry<3 and isinstance(current_bc,int) and all(p.exists() for p in required))
+          with Path(os.environ['GITHUB_OUTPUT_PATH']).open('a') as out: out.write(f"fast={'true' if eligible else 'false'}\n")
+          print(f"FAST_RESUME_{'ELIGIBLE' if eligible else 'INELIGIBLE'} bc={current_bc} retry={retry} error={error}")
           PY
       - name: Broad public-source discovery
         if: ${{ steps.resume_gate.outputs.fast != 'true' }}
@@ -99,12 +91,7 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log \
-             && ! grep -Eq 'CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD|HOLD_' controller.log; then
-            echo "continue=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "continue=false" >> "$GITHUB_OUTPUT"
-          fi
+          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log && ! grep -Eq 'CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD|HOLD_' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
           exit "$rc"
       - name: Persist durable lineage
         if: always()
@@ -124,24 +111,18 @@ jobs:
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           for path in "${validation_files[@]}"; do cp -a "$path" "/tmp/try-state/$(basename "$path")"; done
-          controller_state_changed=false
-          status_args=()
+          controller_state_changed=false; status_args=()
           for path in "${durable_paths[@]}" "${validation_files[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then status_args+=("$path"); fi; done
           if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then controller_state_changed=true; fi
           pushed=false
           for attempt in 1 2 3 4 5; do
             for path in "${durable_paths[@]}" "${validation_files[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
-            if git diff --cached --quiet; then
-              if [ "$controller_state_changed" = "true" ]; then echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2; exit 1; fi
-              echo "No autonomous research state changes to persist."; pushed=true; break
-            fi
+            if git diff --cached --quiet; then if [ "$controller_state_changed" = "true" ]; then echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2; exit 1; fi; echo "No autonomous research state changes to persist."; pushed=true; break; fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
             if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
-            git fetch origin main
-            git reset --hard origin/main
+            git fetch origin main; git reset --hard origin/main
             for item in /tmp/try-state/*; do [ -e "$item" ] || continue; base="$(basename "$item")"; case "$base" in bc_lifecycle_state.json|bc_queue.json|lineage.jsonl|bc*_validation_result.json) cp -a "$item" "research/$base" ;; autonomous_candidates|failure_analysis|frozen_candidates|oos|discovery) rm -rf "research/$base" && cp -a "$item" "research/$base" ;; esac; done
-            sleep $((attempt * 2))
-            validation_files=(research/bc*_validation_result.json)
+            sleep $((attempt * 2)); validation_files=(research/bc*_validation_result.json)
           done
           if [ "$pushed" != "true" ]; then echo "Unable to persist state after retries" >&2; exit 1; fi
       - name: Auto-resume non-terminal campaign
