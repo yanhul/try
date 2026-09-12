@@ -34,10 +34,22 @@ try:
 except Exception as exc:
     raise SystemExit(f"BLOCKED: cannot load governing evaluation modules: {exc}")
 
-if data["hypothesis_id"] not in HYPOTHESES:
+hid = data["hypothesis_id"]
+# The evaluator has a first-class deterministic execution path for compiled
+# discovery primitives. Do not reject those candidates merely because they are
+# not entries in the legacy static hypothesis registry.
+if hid not in HYPOTHESES and hid != "discovered_primitive":
     failure_path.parent.mkdir(parents=True, exist_ok=True)
-    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"UNEXECUTABLE_HYPOTHESIS_ID","hypothesis_id":data["hypothesis_id"],"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"oos_selection_used":False,"action":"candidate requires explicit engine implementation before evaluation"}, indent=2) + "\n", encoding="utf-8")
-    print(f"BC{bc}_REJECT_UNEXECUTABLE hypothesis_id={data['hypothesis_id']}")
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"UNEXECUTABLE_HYPOTHESIS_ID","hypothesis_id":hid,"conceptual_change":data["conceptual_change"],"evidence_sources":data["evidence_sources"],"oos_selection_used":False,"action":"candidate requires explicit engine implementation before evaluation"}, indent=2) + "\n", encoding="utf-8")
+    print(f"BC{bc}_REJECT_UNEXECUTABLE hypothesis_id={hid}")
+    print("SPLIT_GATE False")
+    print("REJECT_BC")
+    raise SystemExit(0)
+
+if hid == "discovered_primitive" and not isinstance(data.get("discovery_spec"), dict):
+    failure_path.parent.mkdir(parents=True, exist_ok=True)
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"UNEXECUTABLE_DISCOVERY_SPEC","hypothesis_id":hid,"evidence_sources":data["evidence_sources"],"oos_selection_used":False}, indent=2) + "\n", encoding="utf-8")
+    print(f"BC{bc}_REJECT_UNEXECUTABLE discovery_spec_missing")
     print("SPLIT_GATE False")
     print("REJECT_BC")
     raise SystemExit(0)
@@ -45,7 +57,7 @@ if data["hypothesis_id"] not in HYPOTHESES:
 evidence = ROOT / "research" / f"bc{bc}_validation_result.json"
 if not evidence.exists():
     failure_path.parent.mkdir(parents=True, exist_ok=True)
-    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"VALIDATION_EVIDENCE_MISSING","hypothesis_id":data["hypothesis_id"],"evidence_sources":data["evidence_sources"],"oos_selection_used":False,"action":"run registered IS/Validation evaluation before promotion"}, indent=2) + "\n", encoding="utf-8")
+    failure_path.write_text(json.dumps({"bc":bc,"parent_bc":data["parent_bc"],"decision":"REJECT","reason":"VALIDATION_EVIDENCE_MISSING","hypothesis_id":hid,"evidence_sources":data["evidence_sources"],"oos_selection_used":False,"action":"run registered IS/Validation evaluation before promotion"}, indent=2) + "\n", encoding="utf-8")
     print(f"BC{bc}_VALIDATION_EVIDENCE_MISSING")
     print("SPLIT_GATE False")
     print("REJECT_BC")
@@ -57,9 +69,9 @@ if result.get("oos_selection_used") is True:
 if result.get("evaluation_spec") != EVALUATION_SPEC:
     raise SystemExit(f"BLOCKED: BC{bc} evaluation spec mismatch")
 if result.get("validation_passed") is True:
-    print(f"BC{bc}_VALIDATION_PASS", result.get("metrics", {}))
+    print(f"BC{bc}_VALIDATION_PASS", result.get("VALIDATION", {}).get("metrics", {}))
     print("PROMOTE_TO_FUTURE_OOS_TEST")
 else:
-    print(f"BC{bc}_VALIDATION_FAIL", result.get("metrics", {}))
+    print(f"BC{bc}_VALIDATION_FAIL", result.get("VALIDATION", {}).get("metrics", {}))
     print("SPLIT_GATE False")
     print("REJECT_BC")
