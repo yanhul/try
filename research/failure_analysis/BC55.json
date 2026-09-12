@@ -1,0 +1,31 @@
+{
+  "bc": 55,
+  "parent_bc": 54,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "c508298cd87dd3ea59264cd4213d8ae960a161700ed47c233e17fe18f5637c3d",
+  "conceptual_change": "Introduce a momentum-based entry condition that filters for breakouts where the current price relative to the 10-period vwap distance exceeds the recent historical variance.",
+  "evidence_sources": [
+    "https://github.com/joonhsong/AutoTradeCrypto"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 1,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 1,
+      "win_count": 0,
+      "loss_count": 1,
+      "win_rate": 0.0,
+      "total_return": -0.009999999999999898,
+      "avg_return": -0.009999999999999919,
+      "profit_factor": 0.0,
+      "max_drawdown": 0.009999999999999898
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

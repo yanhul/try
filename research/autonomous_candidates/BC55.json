@@ -1,0 +1,20 @@
+{
+  "bc": 55,
+  "candidate_hash": "c508298cd87dd3ea59264cd4213d8ae960a161700ed47c233e17fe18f5637c3d",
+  "conceptual_change": "Introduce a momentum-based entry condition that filters for breakouts where the current price relative to the 10-period vwap distance exceeds the recent historical variance.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "zscore",
+    "threshold": 1,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/joonhsong/AutoTradeCrypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 54,
+  "rationale": "Volatility breakout strategies identify momentum entry points. By measuring the z-score of the vwap distance over a short-term window, we identify price excursions that represent a significant divergence from the average price action, potentially signaling a volatility breakout."
+}

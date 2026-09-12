@@ -1,0 +1,20 @@
+{
+  "bc": 56,
+  "candidate_hash": "81ecc9ddcd1686c6cec3290afb59927e4d9aab04f21c90e383ddb9cddee85b49",
+  "conceptual_change": "Introduce a mean reversion filter based on the zscore of price relative to its rolling mean, specifically targeting local extremes to trigger potential reversion entries.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "zscore",
+    "threshold": -2,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/NIU1751879/Trading_Strategies"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 55,
+  "rationale": "Statistical arbitrage strategies often rely on identifying mean reversion opportunities when asset prices deviate significantly from their moving average. Using a zscore of price allows for normalized comparison across different regimes."
+}
