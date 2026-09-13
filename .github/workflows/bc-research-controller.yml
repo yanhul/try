@@ -23,6 +23,10 @@ concurrency:
   group: try-bc-research-controller-main
   cancel-in-progress: false
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   research:
     runs-on: ubuntu-latest
