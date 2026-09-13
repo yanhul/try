@@ -1,0 +1,21 @@
+{
+  "bc": 167,
+  "candidate_hash": "efe97e8987ecbcf147fb4877adeba6cba4d2e2907c2aef54f2398b809f571074",
+  "conceptual_change": "Map ICT liquidity sweep heuristics to BTCUSDT 1H price action patterns involving localized high/low breaks followed by rapid mean reversion or trend continuation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "high",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 166,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
