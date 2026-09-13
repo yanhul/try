@@ -1,4 +1,4 @@
-﻿from dataclasses import dataclass
+from dataclasses import dataclass
 
 from .events import Direction, EventType, Event
 
@@ -24,16 +24,21 @@ def build_ledger(events: list[Event]) -> list[LedgerTrade]:
             state[d] = {"sweep": event}
 
         elif event.event_type == EventType.MSS:
-            if d in state:
-                # A new MSS invalidates any FVG belonging
-                # to the previous MSS sequence.
+            if (
+                d in state
+                and event.bar_index > state[d]["sweep"].bar_index
+            ):
                 state[d] = {
                     "sweep": state[d]["sweep"],
                     "mss": event,
                 }
 
         elif event.event_type == EventType.FVG:
-            if d in state and "mss" in state[d]:
+            if (
+                d in state
+                and "mss" in state[d]
+                and event.bar_index > state[d]["mss"].bar_index
+            ):
                 state[d]["fvg"] = event
 
         elif event.event_type == EventType.RETEST:
@@ -43,14 +48,24 @@ def build_ledger(events: list[Event]) -> list[LedgerTrade]:
                 and "fvg" in state[d]
             ):
                 s = state[d]
+                sweep_bar = s["sweep"].bar_index
+                mss_bar = s["mss"].bar_index
+                fvg_bar = s["fvg"].bar_index
+                entry_bar = event.bar_index
+
+                # Defensive lineage gate: malformed externally supplied
+                # events must never become executable ledger trades.
+                if not (sweep_bar < mss_bar < fvg_bar < entry_bar):
+                    state.pop(d, None)
+                    continue
 
                 trades.append(
                     LedgerTrade(
                         direction=d,
-                        sweep_bar=s["sweep"].bar_index,
-                        mss_bar=s["mss"].bar_index,
-                        fvg_bar=s["fvg"].bar_index,
-                        entry_bar=event.bar_index,
+                        sweep_bar=sweep_bar,
+                        mss_bar=mss_bar,
+                        fvg_bar=fvg_bar,
+                        entry_bar=entry_bar,
                         entry_price=event.price,
                     )
                 )
