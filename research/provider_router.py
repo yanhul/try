@@ -8,11 +8,12 @@ if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 from research.autonomous_hypothesis import write_candidate,validate_candidate,MECHANISM_FAMILIES,EXECUTABLE_MECHANISM_FAMILIES
 from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
+from research.hypothesis_novelty import structural_key,novelty_metadata
 
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f'''You translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Use only BTCUSDT 1H OHLCV data. Never use OOS, expected performance, stars or intuition as evidence. The only valid mechanism_family labels are {sorted(MECHANISM_FAMILIES)}. If hypothesis_id="mechanism_family", discovery_spec.mechanism_family MUST be exactly SELECTED_SURVIVOR_FAMILY; never invent, rename, generalize, or substitute a family label. If the selected family is not faithfully executable as a mechanism family, output hypothesis_id="discovered_primitive" only when an executable OHLCV translation is genuinely supported; NEVER convert an incompatible source into a generic primitive. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec uses the key threshold (not numeric_finite_threshold), and requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
+SYSTEM=f'''You translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Use only BTCUSDT 1H OHLCV data. Never use OOS, expected performance, stars or intuition as evidence. The only valid mechanism_family labels are {sorted(MECHANISM_FAMILIES)}. If hypothesis_id="mechanism_family", discovery_spec.mechanism_family MUST be exactly SELECTED_SURVIVOR_FAMILY; never invent, rename, generalize, or substitute a family label. If the selected family is not faithfully executable as a mechanism family, output hypothesis_id="discovered_primitive" only when an executable OHLCV translation is genuinely supported; NEVER convert an incompatible source into a generic primitive. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec uses the key threshold (not numeric_finite_threshold), and requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold and window are parameters, NOT novelty. A new hypothesis MUST change the structural mechanism: family/operator/left/right/direction. Do not create a new hypothesis by changing only threshold or window. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
 _PROVIDER_LAST_CALL=0.0
 bc=0;parent=0;selected_family=""
 
@@ -68,8 +69,7 @@ def normalize_hypothesis_id(c):
  spec["mechanism_family"]=selected_family
 
 def fingerprint(c):
- s=c.get("discovery_spec") or {}
- return tuple(s.get(k) for k in ("mechanism_family","operator","left","right","window","threshold","direction")) if isinstance(s,dict) else None
+ return structural_key(c)
 
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
@@ -92,13 +92,13 @@ def request_candidate(prompt,forbidden):
   elif hid=="mechanism_family" and (not isinstance(spec,dict) or spec.get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
   else:
    c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
-   if f is not None and f in forbidden:reason="duplicate_discovery_fingerprint"
+   if f in forbidden:reason="duplicate_structural_mechanism"
    else:
     ok,reason=validate_candidate(c,bc,parent)
     if ok:return c
   last=reason
   if reason=="selected_family_mismatch":feedback=f"\nVALIDATOR_FEEDBACK: mechanism_family is INVALID unless it exactly equals {selected_family!r}. Use hypothesis_id=mechanism_family with discovery_spec.mechanism_family={selected_family!r}, OR use discovered_primitive with a valid executable OHLCV spec. Do not invent any other family label.\n"
-  elif reason=="duplicate_discovery_fingerprint":feedback="\nVALIDATOR_FEEDBACK: duplicate structural fingerprint. Regenerate a genuinely distinct executable proposal.\n"
+  elif reason=="duplicate_structural_mechanism":feedback="\nVALIDATOR_FEEDBACK: this mechanism was already tested. Changing only threshold/window is NOT novelty. Produce a genuinely different family/operator/left/right/direction mechanism, or HOLD if the selected source cannot support one.\n"
   elif reason=="invalid_mechanism_family":feedback=f"\nVALIDATOR_FEEDBACK: invalid mechanism family. The ONLY allowed family for this request is {selected_family!r}; set discovery_spec.mechanism_family to that exact value if using mechanism_family.\n"
   else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only an executable BTC OHLCV translation.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
@@ -113,7 +113,7 @@ def ground_candidate(c,selected):
  elif c.get("hypothesis_id")=="discovered_primitive":
   if not isinstance(c.get("discovery_spec"),dict):raise ValueError("discovery_spec_required")
  else:raise ValueError("translation_hypothesis_id_forbidden")
- c.pop("candidate_hash",None);c["evidence_sources"]=[url];c["rationale"]="Executable BTC translation of the selected portable mechanism; this is a proposed test and does not assert efficacy, causality, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False
+ c.pop("candidate_hash",None);c["evidence_sources"]=[url];c["rationale"]="Executable BTC translation of the selected portable mechanism; this is a proposed test and does not assert efficacy, causality, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False;c.update(novelty_metadata(c))
  return c
 
 def survivor_evidence(s):
@@ -140,7 +140,7 @@ def main():
   selected=next(s for s in eligible if str(s.get("family") or "").strip()==family);selected_family=family
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-80:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. If you use hypothesis_id=mechanism_family, discovery_spec.mechanism_family MUST equal the exact selected family above.")
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-200:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. A threshold/window change alone is forbidden as novelty. If the selected mechanism has already been structurally tested and no genuinely different OHLCV expression is supported, return HOLD rather than fabricate novelty.")
  try:
   c=request_candidate(prompt,forbidden)
   if c.get("status")=="HOLD":print("PROVIDER_GEMINI_HOLD");return 0
@@ -148,7 +148,7 @@ def main():
   if not ok:raise ValueError(f"grounded_candidate_contract_failed:{reason}")
   base,model,key=config();calibrated,issues=verify_with_openai_compatible(base,model,key,c,evidence)
   if not calibrated:raise ValueError("PROVIDER_CALIBRATION_FAIL "+json.dumps(issues,sort_keys=True))
-  write_candidate(out,c);print(f"PROVIDER_SELECTED GEMINI model={model} family={selected_family} hash={c['candidate_hash']}");return 0
+  write_candidate(out,c);print(f"PROVIDER_SELECTED GEMINI model={model} family={selected_family} novelty={c['novelty_key']} hash={c['candidate_hash']}");return 0
  except Exception as e:print(f"PROVIDER_FAIL GEMINI: {e}")
  print("PROVIDER_ROUTER_HOLD");return 0
 
