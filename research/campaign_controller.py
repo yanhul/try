@@ -76,7 +76,7 @@ def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
     if p.exists(): return None
     if parent==start-1:
-        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/.epoch_seed_failure.json
+        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'
         q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
     return None
 
