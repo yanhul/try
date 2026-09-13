@@ -1,0 +1,40 @@
+{
+  "bc": 155,
+  "parent_bc": 154,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "845c473167543f74469c4ea56bca6ca0d777294b2c1d0a82526c5be5683b5aff",
+  "conceptual_change": "Test zscore(close_location) as the executable translation of the selected screen survivor.",
+  "evidence_sources": [
+    "https://github.com/Jcstack/ashare-ai-analyst"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 4,
+    "skipped_overlap_trades": 1,
+    "metrics": {
+      "trade_count": 3,
+      "win_count": 0,
+      "loss_count": 3,
+      "win_rate": 0.0,
+      "total_return": -0.03675256729282639,
+      "avg_return": -0.012404080816163216,
+      "profit_factor": 0.0,
+      "max_drawdown": 0.03675256729282639,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
