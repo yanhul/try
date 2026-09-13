@@ -1,9 +1,9 @@
 {
   "campaign_budget": 100,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-001",
-  "campaign_screened": 24,
-  "checkpoint_seq": 606,
-  "current_bc": 108,
+  "campaign_screened": 32,
+  "checkpoint_seq": 656,
+  "current_bc": 116,
   "history": [
     {
       "bc": 1,
@@ -676,17 +676,65 @@
       "decision": "REJECT",
       "hypothesis_id": "discovered_primitive",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 108,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 109,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 110,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 111,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 112,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 113,
+      "decision": "REJECT",
+      "hypothesis_id": "sweep_confirmation",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 114,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 115,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 82,
-  "last_bc": 107,
+  "iterations": 90,
+  "last_bc": 115,
   "last_error": null,
-  "next_bc": 108,
+  "next_bc": 116,
   "oos_consumed": [],
   "phase": "YIELD",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T00:09:15.968394+00:00"
+  "updated_at": "2026-09-13T00:12:29.401681+00:00"
 }

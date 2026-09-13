@@ -1,0 +1,20 @@
+{
+  "bc": 116,
+  "candidate_hash": "659002fdb80a9570ed47668540370c697799b4514e183d49ed1917feff10f72a",
+  "conceptual_change": "Test zscore(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/Manan-Rawat/Crypto_pairs"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 115,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 5,
+  "bc": 115,
+  "parent_bc": 114,
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "c05601f0655b8b579785ea4fcb795a03fb435c07762c11a385742e1740c2f2b7",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.15,
+    "window": 50
+  },
+  "oos_selection_used": false,
+  "oos_executed": false,
+  "dataset": {
+    "path": "/home/runner/work/try/try/data/BTCUSDT_1h.csv",
+    "sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+    "bars": 3624
+  },
+  "evaluation_spec": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "round_trip_cost": 0.0,
+    "cost_model_status": "UNAVAILABLE",
+    "validation_basis": "GROSS_ONLY"
+  },
+  "IS": {
+    "candidate_trades": 39,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "VALIDATION": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "COST_MODEL_REQUIRED",
+  "validation_passed": false,
+  "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
+}

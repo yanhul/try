@@ -1,0 +1,21 @@
+{
+  "bc": 110,
+  "candidate_hash": "62a8cb2deed8d6a9862527b10227b1eb826f22044eac10a5cf5837f9a59830c9",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "numeric_threshold": 0.15,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 109,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

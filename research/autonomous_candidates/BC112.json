@@ -1,0 +1,20 @@
+{
+  "bc": 112,
+  "candidate_hash": "b1bd69b4a9917c4879ca205ac34681cf7db4f87e553e801cb6082defc6afd745",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.15,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 111,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
