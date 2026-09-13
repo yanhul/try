@@ -1,0 +1,20 @@
+{
+  "bc": 144,
+  "candidate_hash": "65b1d72769258c92be54f4e97ec5af3781479c77d0e79a51aecfe7514d6397a8",
+  "conceptual_change": "Test identity(range_ratio) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "volatility",
+    "numeric finite threshold": 0,
+    "operator": "identity"
+  },
+  "evidence_sources": [
+    "https://github.com/fkchaos/a-share-quant-sim"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 143,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

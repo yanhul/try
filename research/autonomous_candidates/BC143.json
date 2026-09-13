@@ -1,0 +1,20 @@
+{
+  "bc": 143,
+  "candidate_hash": "54e646615ecc5e440ba7bf2d954d25b41d0c39c29aa472b0b5529d67ab086bbb",
+  "conceptual_change": "Test above(volatility) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volatility",
+    "mechanism_family": "volatility",
+    "numeric finite threshold": 0.15,
+    "operator": "above"
+  },
+  "evidence_sources": [
+    "https://github.com/feng653/quant-lab"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 142,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

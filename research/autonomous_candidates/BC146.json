@@ -1,0 +1,21 @@
+{
+  "bc": 146,
+  "candidate_hash": "e0d675eca7ee798d4d643b4cf67757bb0d6606fe2f871ef485f1b33a835674a5",
+  "conceptual_change": "Test rolling_mean(volume_ratio) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "numeric_finite_threshold": 1.25,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 145,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

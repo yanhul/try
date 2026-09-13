@@ -1,0 +1,40 @@
+{
+  "bc": 142,
+  "parent_bc": 141,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "8e3b1226e69e99dbaa22d0ec4421d38948b4f9b7d909e3e533571ac9c73611c5",
+  "conceptual_change": "Test identity(close) as the executable translation of the selected screen survivor.",
+  "evidence_sources": [
+    "https://github.com/coo-moon/quanti"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 11,
+    "skipped_overlap_trades": 2,
+    "metrics": {
+      "trade_count": 9,
+      "win_count": 3,
+      "loss_count": 6,
+      "win_rate": 0.3333333333333333,
+      "total_return": -0.022296374821920373,
+      "avg_return": -0.0024026933494410737,
+      "profit_factor": 0.7094153712239795,
+      "max_drawdown": 0.060492996267272656,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

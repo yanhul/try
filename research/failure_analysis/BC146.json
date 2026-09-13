@@ -1,0 +1,40 @@
+{
+  "bc": 146,
+  "parent_bc": 145,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "e0d675eca7ee798d4d643b4cf67757bb0d6606fe2f871ef485f1b33a835674a5",
+  "conceptual_change": "Test rolling_mean(volume_ratio) as the executable translation of the selected screen survivor.",
+  "evidence_sources": [
+    "https://github.com/Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning"
+  ],
+  "validation_summary": {
+    "candidate_trades": 11,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
