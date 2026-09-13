@@ -1,22 +1,23 @@
 [
   {
-    "bc": 132,
-    "candidate_hash": "093c47e95f5ac651f0c72905c8ec4eaa8f5221746c7d7a501f06a329f0fa3e73",
-    "conceptual_change": "Test rolling_std(close_location) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+    "bc": 140,
+    "candidate_hash": "dedab4548c5ddd37a6e49846361dc75b7b4c665796d48e328e689e9d7f160ee5",
+    "conceptual_change": "Test rolling_std(vwap_distance) as the executable translation of the selected screen survivor.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close_location",
+      "direction": "below",
+      "left": "vwap_distance",
+      "numeric_finite_threshold": 0.25,
       "operator": "rolling_std",
-      "threshold": 0.35,
-      "window": 5
+      "threshold": 0,
+      "window": 10
     },
     "evidence_sources": [
-      "https://github.com/procyon-yim/crypto-exchanger"
+      "https://github.com/cn-vhql/FactorHub"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 131,
+    "parent_bc": 139,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

@@ -1,0 +1,20 @@
+{
+  "bc": 139,
+  "candidate_hash": "b25edd0cde00c280717d87e45bcaf97b82c95aa984f7b357da28ed6f4fff3e33",
+  "conceptual_change": "Test rolling_std(vwap_distance) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "volatility",
+    "numeric finite threshold": 0.1,
+    "operator": "rolling_std"
+  },
+  "evidence_sources": [
+    "https://github.com/YichuanAlex/high_frequency_order_trade_factors"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 138,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
