@@ -146,6 +146,29 @@ def _direction_for_row(row, family):
     raise ValueError(f"unsupported_candidate_family:{family}")
 
 
+def _event_context(rows, trade):
+    sweep = rows[trade.sweep_bar]
+    mss = rows[trade.mss_bar]
+    fvg = rows[trade.fvg_bar]
+    entry = rows[trade.entry_bar].copy()
+    fvg_context = dict(fvg)
+    if trade.fvg_bar >= 2:
+        left = rows[trade.fvg_bar - 2]
+        if trade.direction == Direction.BULLISH:
+            fvg_context["lower"] = left["high"]
+            fvg_context["upper"] = fvg["low"]
+        else:
+            fvg_context["lower"] = fvg["high"]
+            fvg_context["upper"] = left["low"]
+    return {
+        "sweep": sweep,
+        "mss": mss,
+        "fvg": fvg_context,
+        "entry": entry,
+        "history": rows[: trade.entry_bar + 1],
+    }
+
+
 def prepare_split(
     bars,
     start,
@@ -158,9 +181,6 @@ def prepare_split(
 ):
     if pnf_box_fraction <= 0:
         raise ValueError("pnf_box_fraction must be positive")
-    history = bars[:end]
-    rows = _feature_rows(history, pnf_box_fraction)
-
     if candidate_universe == "all_bars":
         family = str(candidate_family or "")
         if family != "discovered_primitive" and family not in {
@@ -175,6 +195,12 @@ def prepare_split(
             "gann_reference",
         }:
             raise ValueError(f"unsupported_all_bars_family:{family}")
+    elif candidate_universe != "reference_event_ledger":
+        raise ValueError(f"unsupported_candidate_universe:{candidate_universe}")
+
+    history = bars[:end]
+    rows = _feature_rows(history, pnf_box_fraction)
+    if candidate_universe == "all_bars":
         ledger = []
         contexts = []
         for i in range(max(1, start), end):
@@ -192,20 +218,9 @@ def prepare_split(
             contexts.append({"entry": row, "history": rows[: i + 1]})
         return PreparedSplit(history=history, ledger=ledger, contexts=contexts, candidate_universe="all_bars")
 
-    if candidate_universe != "reference_event_ledger":
-        raise ValueError(f"unsupported_candidate_universe:{candidate_universe}")
     events = ReferenceStrategy().process(history)
     ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
-    contexts = []
-    for t in ledger:
-        entry = rows[t.entry_bar].copy()
-        contexts.append({
-            "sweep": rows[t.sweep_bar],
-            "mss": rows[t.mss_bar],
-            "fvg": rows[t.fvg_bar],
-            "entry": entry,
-            "history": rows[: t.entry_bar + 1],
-        })
+    contexts = [_event_context(rows, t) for t in ledger]
     return PreparedSplit(history=history, ledger=ledger, contexts=contexts, candidate_universe="reference_event_ledger")
 
 
