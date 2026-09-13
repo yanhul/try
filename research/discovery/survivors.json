@@ -3,17 +3,17 @@
   "status": "SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION",
   "survivors": [
     {
-      "candidate_id": "a12229995235d47c",
+      "candidate_id": "ec0937f7d3498824",
       "source": "github",
-      "source_url": "https://github.com/Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning",
-      "title": "Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning",
-      "description": "Collected data on 158 alpha factors and daily returns of China A-shared companies. Applied 10 machine learning and deep learning models to contruct optimal portfolios",
+      "source_url": "https://github.com/1634594707/QuantHub",
+      "title": "1634594707/QuantHub",
+      "description": "\u672c\u5730\u4f18\u5148\u7684\u591a\u5e02\u573a\u91cf\u5316\u7814\u7a76\u4e0e\u6a21\u62df\u4ea4\u6613\u5de5\u4f5c\u53f0\uff0c\u652f\u6301 A \u80a1\u3001\u52a0\u5bc6\u8d44\u4ea7\u4e0e MT5\uff0c\u96c6\u6210 AI \u56e0\u5b50\u6316\u6398\u3001\u6eda\u52a8\u9a8c\u8bc1\u3001\u4fe1\u53f7\u5ba1\u6838\u3001\u7ec4\u5408\u8d26\u672c\u548c OKX Demo\u3002",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China A-share machine learning alpha",
-      "source_timestamp": "2025-01-02T15:50:17Z",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-01T09:09:41Z",
       "lineage": {
-        "source": "a12229995235d47c",
+        "source": "ec0937f7d3498824",
         "family": "china_a_share",
         "rounds": [
           {
@@ -63,18 +63,48 @@
       }
     },
     {
-      "candidate_id": "9bf4fe323577bdf9",
+      "candidate_id": "fea9e4150834cf35",
       "source": "github",
-      "source_url": "https://github.com/KASHAPP10/statistical-arbitrage-crypto",
-      "title": "KASHAPP10/statistical-arbitrage-crypto",
-      "description": "Mean-reversion statistical arbitrage strategy on crypto assets (BTC, ETH, SOL, DOGE) with z-score signals, grid search optimization, and full performance analytics",
+      "source_url": "https://github.com/Adi-111111/Pairs-Trading",
+      "title": "Adi-111111/Pairs-Trading",
+      "description": "Statistical arbitrage pipeline for Shanghai Stock Exchange equities - pair discovery, backtesting, and parameter optimisation.",
       "family": "mean_reversion",
       "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-08-08T01:38:44Z",
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-20T12:34:08Z",
       "lineage": {
-        "source": "9bf4fe323577bdf9",
+        "source": "fea9e4150834cf35",
         "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "f2450405b952aeed",
+      "source": "github",
+      "source_url": "https://github.com/Dr-EEEEE/FuturesBacktestingEngine",
+      "title": "Dr-EEEEE/FuturesBacktestingEngine",
+      "description": "Professional Futures Backtesting Engine. Institutional-grade Python framework for systematic strategy development. Built by a former Hedge Fund Quant and National Lab R&D Engineer. Features modular trend-following signals, vectorized performance, and high-speed data processing for robust strategy research.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-02-21T23:48:27Z",
+      "lineage": {
+        "source": "f2450405b952aeed",
+        "family": "momentum_trend",
         "rounds": [
           {
             "round": 1,
@@ -153,17 +183,17 @@
       }
     },
     {
-      "candidate_id": "c594c2a977f01ae4",
+      "candidate_id": "a12229995235d47c",
       "source": "github",
-      "source_url": "https://github.com/Cindy-Zhang-Potter/a-share-quant-research",
-      "title": "Cindy-Zhang-Potter/a-share-quant-research",
-      "description": "China A-share quant research framework emphasizing bug auditing, compliance filtering and factor decay analysis.",
+      "source_url": "https://github.com/Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning",
+      "title": "Celeste-Zheng/Stock-Price-Prediction-by-Machine-Learning-and-Deep-Learning",
+      "description": "Collected data on 158 alpha factors and daily returns of China A-shared companies. Applied 10 machine learning and deep learning models to contruct optimal portfolios",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China A-share quant research factor decay compliance",
-      "source_timestamp": null,
+      "query": "China A-share machine learning alpha",
+      "source_timestamp": "2025-01-02T15:50:17Z",
       "lineage": {
-        "source": "c594c2a977f01ae4",
+        "source": "a12229995235d47c",
         "family": "china_a_share",
         "rounds": [
           {
@@ -183,18 +213,48 @@
       }
     },
     {
-      "candidate_id": "a4829c41963e2ea4",
+      "candidate_id": "8d44c9f052cd3e8a",
       "source": "github",
-      "source_url": "https://github.com/Manan-Rawat/Crypto_pairs",
-      "title": "Manan-Rawat/Crypto_pairs",
-      "description": "This script is a quantitative trading strategy that focuses on statistical arbitrage, particularly mean reversion and copula-based dependency modeling for pairs trading.",
+      "source_url": "https://github.com/Aditya-kumar-13/market-neutral-statistical-arbitrage",
+      "title": "Aditya-kumar-13/market-neutral-statistical-arbitrage",
+      "description": "A reproducible pairs-trading research platform for Indian equities using sector-level cointegration screening, online Kalman hedge ratios, delayed execution, and explicit trading and borrow costs.",
       "family": "mean_reversion",
       "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-02-14T19:15:18Z",
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-29T17:40:23Z",
       "lineage": {
-        "source": "a4829c41963e2ea4",
+        "source": "8d44c9f052cd3e8a",
         "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "bb14d01145235a7d",
+      "source": "github",
+      "source_url": "https://github.com/Jack-Close/commodities-trend-following-research",
+      "title": "Jack-Close/commodities-trend-following-research",
+      "description": "Systematic trend-following research on 23 commodity futures: EDA, momentum strategy, enhancements, and an ML metamodel overlay",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-07-08T16:00:04Z",
+      "lineage": {
+        "source": "bb14d01145235a7d",
+        "family": "momentum_trend",
         "rounds": [
           {
             "round": 1,
@@ -273,17 +333,17 @@
       }
     },
     {
-      "candidate_id": "d7eb84a030ce1e76",
+      "candidate_id": "c594c2a977f01ae4",
       "source": "github",
-      "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
-      "title": "Jcstack/ashare-ai-analyst",
-      "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
+      "source_url": "https://github.com/Cindy-Zhang-Potter/a-share-quant-research",
+      "title": "Cindy-Zhang-Potter/a-share-quant-research",
+      "description": "China A-share quant research framework emphasizing bug auditing, compliance filtering and factor decay analysis.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-08-29T14:58:22Z",
+      "query": "China A-share quant research factor decay compliance",
+      "source_timestamp": null,
       "lineage": {
-        "source": "d7eb84a030ce1e76",
+        "source": "c594c2a977f01ae4",
         "family": "china_a_share",
         "rounds": [
           {
@@ -303,18 +363,48 @@
       }
     },
     {
-      "candidate_id": "57153ba98d52110f",
+      "candidate_id": "fbadfff17dfcd877",
       "source": "github",
-      "source_url": "https://github.com/Manashwy/Crypto_Arbitrage",
-      "title": "Manashwy/Crypto_Arbitrage",
-      "description": "A Python-based framework for detecting and backtesting statistical arbitrage opportunities across cryptocurrencies. Supports real-time data ingestion (WebSocket & REST), multiple arbitrage strategies (cointegration, mean reversion, PCA, ML), and modular execution/backtest engine.",
+      "source_url": "https://github.com/BhavyaSatija54/Statistical-Arbitrage-Strategy",
+      "title": "BhavyaSatija54/Statistical-Arbitrage-Strategy",
+      "description": "Built a cointegration-based pairs trading pipeline (Johansen tests, OU modeling, Kalman-filtered hedge ratios) on 128 equities over 20 years, achieving 0.68 Sharpe net of costs (0.34\u20130.47 bias-adjusted) with -5.5% max drawdown; derived a capacity frontier showing viable AUM of ~$10\u201330M via a walk-forward, ADV-constrained execution engine",
       "family": "mean_reversion",
       "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2025-08-24T10:00:16Z",
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-02T08:25:59Z",
       "lineage": {
-        "source": "57153ba98d52110f",
+        "source": "fbadfff17dfcd877",
         "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9221e70410f97fc9",
+      "source": "github",
+      "source_url": "https://github.com/nirajneupane17/Futures-Trend-Following-Risk-Management-CTA-Style-",
+      "title": "nirajneupane17/Futures-Trend-Following-Risk-Management-CTA-Style-",
+      "description": "Developed a systematic trend-following strategy using time-series momentum and volatility targeting across liquid futures proxies. The framework applies dynamic position sizing, leverage constraints, and drawdown controls to evaluate risk-adjusted performance in a CTA-style trading setup.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-01-08T03:17:39Z",
+      "lineage": {
+        "source": "9221e70410f97fc9",
+        "family": "momentum_trend",
         "rounds": [
           {
             "round": 1,
@@ -393,17 +483,17 @@
       }
     },
     {
-      "candidate_id": "75c200f32ea4f2de",
+      "candidate_id": "d7eb84a030ce1e76",
       "source": "github",
-      "source_url": "https://github.com/Jerome-Zhao99/Empirical-analysis-of-multi-factor-model-in-Shanghai-A-shares-market-of-China",
-      "title": "Jerome-Zhao99/Empirical-analysis-of-multi-factor-model-in-Shanghai-A-shares-market-of-China",
-      "description": "Based on the financial data and market data of the stock in Shanghai Stock market from January 2020 to June 2020, a multi-factor stock selection model under Alpha strategy was established. The strategy was written in Python and then tested back on the quantitative trading platform.The yield curve of the strategy is very stable, which basically hedges the market risks brought by COVID-19 and achieves the purpose of preventing major risks.",
+      "source_url": "https://github.com/Jcstack/ashare-ai-analyst",
+      "title": "Jcstack/ashare-ai-analyst",
+      "description": "LLM-powered A-share (Chinese stock) market analysis platform \u2014 technical analysis, prediction, strategy backtesting, and an autonomous research/decision agent. Personal toy project for learning; not investment advice.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2024-02-26T08:07:11Z",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-08-29T14:58:22Z",
       "lineage": {
-        "source": "75c200f32ea4f2de",
+        "source": "d7eb84a030ce1e76",
         "family": "china_a_share",
         "rounds": [
           {
@@ -423,17 +513,17 @@
       }
     },
     {
-      "candidate_id": "5b62d4d05b56a2bc",
+      "candidate_id": "b04bb57eea4ffe9e",
       "source": "github",
-      "source_url": "https://github.com/NIU1751879/Trading_Strategies",
-      "title": "NIU1751879/Trading_Strategies",
-      "description": "Collection of statistical arbitrage and mean reversion strategies (Johansen, Kalman Filter) on ETFs, crypto, and currencies \u2014 featuring complete backtesting, transaction costs, and comparison against Buy & Hold.",
+      "source_url": "https://github.com/CttQuantLab/Kalman-Filter-Based-Statistical-Arbitrage-A-Dynamic-Pairs-Trading-Strategy",
+      "title": "CttQuantLab/Kalman-Filter-Based-Statistical-Arbitrage-A-Dynamic-Pairs-Trading-Strategy",
+      "description": "Kalman filter statistical arbitrage and dynamic pairs trading on cointegrated equities. HKUST IEDA3180 research codebase.",
       "family": "mean_reversion",
       "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-08-20T00:11:07Z",
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-27T05:57:07Z",
       "lineage": {
-        "source": "5b62d4d05b56a2bc",
+        "source": "b04bb57eea4ffe9e",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -513,17 +603,17 @@
       }
     },
     {
-      "candidate_id": "4169d72178dcd3f3",
+      "candidate_id": "75c200f32ea4f2de",
       "source": "github",
-      "source_url": "https://github.com/NekolovePepper/Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
-      "title": "NekolovePepper/Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
-      "description": "Built a quantitative 'limit\u2011up chasing' strategy targeting consecutive limit\u2011up stocks in the China A\u2011share market, with the objective of achieving persistent alpha through daily-frequency timing trades.",
+      "source_url": "https://github.com/Jerome-Zhao99/Empirical-analysis-of-multi-factor-model-in-Shanghai-A-shares-market-of-China",
+      "title": "Jerome-Zhao99/Empirical-analysis-of-multi-factor-model-in-Shanghai-A-shares-market-of-China",
+      "description": "Based on the financial data and market data of the stock in Shanghai Stock market from January 2020 to June 2020, a multi-factor stock selection model under Alpha strategy was established. The strategy was written in Python and then tested back on the quantitative trading platform.The yield curve of the strategy is very stable, which basically hedges the market risks brought by COVID-19 and achieves the purpose of preventing major risks.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China stock limit-up quantitative strategy",
-      "source_timestamp": "2026-09-12T14:05:33Z",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2024-02-26T08:07:11Z",
       "lineage": {
-        "source": "4169d72178dcd3f3",
+        "source": "75c200f32ea4f2de",
         "family": "china_a_share",
         "rounds": [
           {
@@ -543,17 +633,17 @@
       }
     },
     {
-      "candidate_id": "03a82185c3402c00",
+      "candidate_id": "c5290bb15b21b27d",
       "source": "github",
-      "source_url": "https://github.com/aakash-ramesh/crypto-stat-arb",
-      "title": "aakash-ramesh/crypto-stat-arb",
-      "description": "PCA factor-neutral statistical arbitrage strategy inspired by Avellaneda\u2013Lee for large-cap cryptocurrencies, using OU residual mean reversion and s-score trading signals on hourly market data.",
+      "source_url": "https://github.com/JISOC-2511/AlgorithmicTrading",
+      "title": "JISOC-2511/AlgorithmicTrading",
+      "description": "Python backtesting framework implementing multiple moving average strategies \u2014 SMA, EWMA, LWMA \u2014 and statistical arbitrage pair trading, with walk-forward optimisation, ATR-based position sizing, RSI signal filtering, and a full performance reporting suite across equities, commodities, and FX pairs.",
       "family": "mean_reversion",
       "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-05-15T22:10:39Z",
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-28T03:49:50Z",
       "lineage": {
-        "source": "03a82185c3402c00",
+        "source": "c5290bb15b21b27d",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -603,17 +693,17 @@
       }
     },
     {
-      "candidate_id": "44ea51887c412177",
+      "candidate_id": "4169d72178dcd3f3",
       "source": "github",
-      "source_url": "https://github.com/QSshuyunmu/A-share-quant",
-      "title": "QSshuyunmu/A-share-quant",
-      "description": "Multi-factor China A-share research toolkit combining OHLCV, fundamentals, analyst reports, news sentiment, macro indicators and factor neutralisation.",
+      "source_url": "https://github.com/NekolovePepper/Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "title": "NekolovePepper/Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
+      "description": "Built a quantitative 'limit\u2011up chasing' strategy targeting consecutive limit\u2011up stocks in the China A\u2011share market, with the objective of achieving persistent alpha through daily-frequency timing trades.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China A-share multi factor fundamental sentiment",
-      "source_timestamp": null,
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2026-09-12T14:05:33Z",
       "lineage": {
-        "source": "44ea51887c412177",
+        "source": "4169d72178dcd3f3",
         "family": "china_a_share",
         "rounds": [
           {
@@ -633,17 +723,17 @@
       }
     },
     {
-      "candidate_id": "5e7ba63f08629bc2",
+      "candidate_id": "9bf4fe323577bdf9",
       "source": "github",
-      "source_url": "https://github.com/kshoop28/crypto-statistical-arbitrage",
-      "title": "kshoop28/crypto-statistical-arbitrage",
-      "description": "Backtesting momentum and mean-reversion strategies across cryptocurrencies using Python.",
+      "source_url": "https://github.com/KASHAPP10/statistical-arbitrage-crypto",
+      "title": "KASHAPP10/statistical-arbitrage-crypto",
+      "description": "Mean-reversion statistical arbitrage strategy on crypto assets (BTC, ETH, SOL, DOGE) with z-score signals, grid search optimization, and full performance analytics",
       "family": "mean_reversion",
       "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-07-18T01:57:58Z",
+      "source_timestamp": "2026-08-08T01:38:44Z",
       "lineage": {
-        "source": "5e7ba63f08629bc2",
+        "source": "9bf4fe323577bdf9",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -693,17 +783,17 @@
       }
     },
     {
-      "candidate_id": "e12b4832a7206c4b",
+      "candidate_id": "44ea51887c412177",
       "source": "github",
-      "source_url": "https://github.com/Rhymer-Lcy/hermes-quant",
-      "title": "Rhymer-Lcy/hermes-quant",
-      "description": "A-share research and backtesting framework with point-in-time and survivorship-aware research, walk-forward ML and paper trading.",
+      "source_url": "https://github.com/QSshuyunmu/A-share-quant",
+      "title": "QSshuyunmu/A-share-quant",
+      "description": "Multi-factor China A-share research toolkit combining OHLCV, fundamentals, analyst reports, news sentiment, macro indicators and factor neutralisation.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China A-share point in time survivorship walk forward",
+      "query": "China A-share multi factor fundamental sentiment",
       "source_timestamp": null,
       "lineage": {
-        "source": "e12b4832a7206c4b",
+        "source": "44ea51887c412177",
         "family": "china_a_share",
         "rounds": [
           {
@@ -723,17 +813,17 @@
       }
     },
     {
-      "candidate_id": "0e953b3e5a6bdbcd",
+      "candidate_id": "a4829c41963e2ea4",
       "source": "github",
-      "source_url": "https://github.com/pranay123-stack/crypto-trading-strategies",
-      "title": "pranay123-stack/crypto-trading-strategies",
-      "description": "Crypto trading strategies \u2014 statistical arbitrage, ICT smart-money, mean reversion and market-making bots across Binance, Phemex and HyperLiquid.",
+      "source_url": "https://github.com/Manan-Rawat/Crypto_pairs",
+      "title": "Manan-Rawat/Crypto_pairs",
+      "description": "This script is a quantitative trading strategy that focuses on statistical arbitrage, particularly mean reversion and copula-based dependency modeling for pairs trading.",
       "family": "mean_reversion",
       "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-08-26T12:09:12Z",
+      "source_timestamp": "2026-02-14T19:15:18Z",
       "lineage": {
-        "source": "0e953b3e5a6bdbcd",
+        "source": "a4829c41963e2ea4",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -783,17 +873,17 @@
       }
     },
     {
-      "candidate_id": "a7285f2f02cc35c2",
+      "candidate_id": "e12b4832a7206c4b",
       "source": "github",
-      "source_url": "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern",
-      "title": "Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern",
-      "description": "In Chinese Stock Market, we may find some unusual stock when hit limit-up, and the next day will open lower than day before. Then, this stock may hit the limit up again and shape like 'N'.So this project is aimed at creating a quant investment method to earn this alpha.",
+      "source_url": "https://github.com/Rhymer-Lcy/hermes-quant",
+      "title": "Rhymer-Lcy/hermes-quant",
+      "description": "A-share research and backtesting framework with point-in-time and survivorship-aware research, walk-forward ML and paper trading.",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
-      "query": "China stock limit-up quantitative strategy",
-      "source_timestamp": "2025-11-04T07:06:58Z",
+      "query": "China A-share point in time survivorship walk forward",
+      "source_timestamp": null,
       "lineage": {
-        "source": "a7285f2f02cc35c2",
+        "source": "e12b4832a7206c4b",
         "family": "china_a_share",
         "rounds": [
           {
@@ -813,17 +903,17 @@
       }
     },
     {
-      "candidate_id": "74ccb2cbd543bf16",
+      "candidate_id": "57153ba98d52110f",
       "source": "github",
-      "source_url": "https://github.com/sujith-kamme/statistical-arbitrage-crypto",
-      "title": "sujith-kamme/statistical-arbitrage-crypto",
-      "description": "Designed a cointegration-based mean-reversion strategy on 18 crypto assets; used Johansen basket discovery, OU signal generation, regime filtering, and risk-parity sizing across walk-forward folds  achieving Net Sharpe 1.76 and Max Drawdown -1.38% out-of-sample at 20bps transaction costs.",
+      "source_url": "https://github.com/Manashwy/Crypto_Arbitrage",
+      "title": "Manashwy/Crypto_Arbitrage",
+      "description": "A Python-based framework for detecting and backtesting statistical arbitrage opportunities across cryptocurrencies. Supports real-time data ingestion (WebSocket & REST), multiple arbitrage strategies (cointegration, mean reversion, PCA, ML), and modular execution/backtest engine.",
       "family": "mean_reversion",
       "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2026-04-09T02:26:35Z",
+      "source_timestamp": "2025-08-24T10:00:16Z",
       "lineage": {
-        "source": "74ccb2cbd543bf16",
+        "source": "57153ba98d52110f",
         "family": "mean_reversion",
         "rounds": [
           {
@@ -873,6 +963,66 @@
       }
     },
     {
+      "candidate_id": "a7285f2f02cc35c2",
+      "source": "github",
+      "source_url": "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern",
+      "title": "Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern",
+      "description": "In Chinese Stock Market, we may find some unusual stock when hit limit-up, and the next day will open lower than day before. Then, this stock may hit the limit up again and shape like 'N'.So this project is aimed at creating a quant investment method to earn this alpha.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025-11-04T07:06:58Z",
+      "lineage": {
+        "source": "a7285f2f02cc35c2",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5b62d4d05b56a2bc",
+      "source": "github",
+      "source_url": "https://github.com/NIU1751879/Trading_Strategies",
+      "title": "NIU1751879/Trading_Strategies",
+      "description": "Collection of statistical arbitrage and mean reversion strategies (Johansen, Kalman Filter) on ETFs, crypto, and currencies \u2014 featuring complete backtesting, transaction costs, and comparison against Buy & Hold.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-08-20T00:11:07Z",
+      "lineage": {
+        "source": "5b62d4d05b56a2bc",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "184a65fa45278b53",
       "source": "github",
       "source_url": "https://github.com/YichuanAlex/high_frequency_order_trade_factors",
@@ -885,6 +1035,156 @@
       "lineage": {
         "source": "184a65fa45278b53",
         "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "7d412ac2683513ba",
+      "source": "github",
+      "source_url": "https://github.com/Nithyadodda07/pairs-trading-strategy",
+      "title": "Nithyadodda07/pairs-trading-strategy",
+      "description": "Market-neutral pairs trading strategy using cointegration and statistical arbitrage on Indian equities (RELIANCE & ONGC)",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-05T10:54:46Z",
+      "lineage": {
+        "source": "7d412ac2683513ba",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "e0fc0ec424e17059",
+      "source": "github",
+      "source_url": "https://github.com/Zhou-Jie-0604/---",
+      "title": "Zhou-Jie-0604/---",
+      "description": "\u9488\u5bf9\u4f20\u7edf\u6295\u8d44\u7b56\u7565\u7684\u5c40\u9650\u6027\uff0c\u7814\u7a76\u4e86\u591a\u56e0\u5b50\u9009\u80a1\u6a21\u578b\u7684\u6784\u5efa\u53ca\u5176\u5728\u91cf\u5316 \u6295\u8d44\u4e2d\u7684\u5e94\u7528\u3002\u6211\u4eec\u4ee5\u4e2d\u56fdA\u80a1\u5e02\u573a\u4e3a\u4f8b\uff0c\u6536\u96c6\u6574\u7406\u4e86\u6db5\u76d6\u5e02\u573a\u3001\u6280\u672f\u9762\u3001\u60c5\u7eea \u6d41\u52a8\u3001\u57fa\u672c\u9762\u4e0e\u5b8f\u89c2\u7b49\u591a\u7c7b\u56e0\u5b50\u7684\u65e5\u5ea6\u6570\u636e\uff0c\u5e76\u8fdb\u884c\u4e86\u7cfb\u7edf\u7684\u6570\u636e\u6e05\u6d17\u4e0e\u6807\u51c6\u5316 \u5904\u7406\u3002\u5728\u5355\u56e0\u5b50\u68c0\u9a8c\u4e2d\uff0c\u901a\u8fc7\u4fe1\u606f\u7cfb\u6570\uff08IC\uff09\u4e0e\u5206\u5c42\u56de\u6d4b\u8bc4\u4f30\u4e86\u5404\u56e0\u5b50\u7684\u6709\u6548\u6027\uff0c \u5e76\u7ed3\u5408\u6362\u624b\u7387\u6c34\u5e73\u4e0e\u7ecf\u6d4e\u6027\u8d28\uff0c\u5c06\u56e0\u5b50\u5206\u4e3a\u91cf\u4ef7\u56e0\u5b50\u4e0e\u8d22\u52a1\u56e0\u5b50\uff0c\u5206\u522b\u7528\u4e8e\u77ed\u671f \u4ea4\u6613\u9884\u6d4b\u4e0e\u957f\u671f\u4ea4\u6613\u9884\u6d4b\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026-06-23T08:26:51Z",
+      "lineage": {
+        "source": "e0fc0ec424e17059",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3b9ef2e79da1df07",
+      "source": "github",
+      "source_url": "https://github.com/PG2362/Statistical_arbitrage",
+      "title": "PG2362/Statistical_arbitrage",
+      "description": "This project implements and evaluates a pairs trading strategy on liquid US large-cap equities. The strategy was tested across multiple pairs, multiple sample windows, and at the single-pair and portfolio level.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-11T17:46:32Z",
+      "lineage": {
+        "source": "3b9ef2e79da1df07",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9a180b347fe712e0",
+      "source": "github",
+      "source_url": "https://github.com/ai-yang/AlphaPilot",
+      "title": "ai-yang/AlphaPilot",
+      "description": "NEW [\ud83d\udd25 updating...]LLM \u9a71\u52a8\u7684\u80a1\u7968\u91cf\u5316\u56e0\u5b50\u6316\u6398\u4e0e\u4ea4\u6613\u5e73\u53f0\uff0c\u652f\u6301A\u80a1:\u591a Agent + \u516c\u5f0f\u5316\u6316\u6398\u3001Qlib \u56de\u6d4b\u3001Web \u95e8\u6237\u3001\u65e5\u9891\u4fe1\u53f7\u3001Telegram/\u98de\u4e66 \u901a\u77e5\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-13T01:06:23Z",
+      "lineage": {
+        "source": "9a180b347fe712e0",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "03a82185c3402c00",
+      "source": "github",
+      "source_url": "https://github.com/aakash-ramesh/crypto-stat-arb",
+      "title": "aakash-ramesh/crypto-stat-arb",
+      "description": "PCA factor-neutral statistical arbitrage strategy inspired by Avellaneda\u2013Lee for large-cap cryptocurrencies, using OU residual mean reversion and s-score trading signals on hourly market data.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-05-15T22:10:39Z",
+      "lineage": {
+        "source": "03a82185c3402c00",
+        "family": "mean_reversion",
         "rounds": [
           {
             "round": 1,
@@ -933,6 +1233,36 @@
       }
     },
     {
+      "candidate_id": "d34b0dd2a8e58c3a",
+      "source": "github",
+      "source_url": "https://github.com/brennoln/project1-pairs-trading-statarb",
+      "title": "brennoln/project1-pairs-trading-statarb",
+      "description": "Statistical Arbitrage & Pairs Trading backtest engine on B3 equities using Engle-Granger cointegration, dynamic z-score, and risk management.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-08T19:24:12Z",
+      "lineage": {
+        "source": "d34b0dd2a8e58c3a",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "3205bef798fdcbca",
       "source": "github",
       "source_url": "https://github.com/codfish-zz/cn-trader",
@@ -945,6 +1275,36 @@
       "lineage": {
         "source": "3205bef798fdcbca",
         "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "d5a53cb2eec3ba6d",
+      "source": "github",
+      "source_url": "https://github.com/devikajonjale/Statistical-Arbitrage-on-Indian-Banking-Equities-Pair-Trading-",
+      "title": "devikajonjale/Statistical-Arbitrage-on-Indian-Banking-Equities-Pair-Trading-",
+      "description": "Pair trading strategy on HDFC Bank and Kotak Mahindra Bank using cointegration, GARCH, Kalman filters, and XGBoost/LSTM signal models.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-27T20:27:26Z",
+      "lineage": {
+        "source": "d5a53cb2eec3ba6d",
+        "family": "mean_reversion",
         "rounds": [
           {
             "round": 1,
@@ -993,6 +1353,36 @@
       }
     },
     {
+      "candidate_id": "5a3cf1545ea8cb46",
+      "source": "github",
+      "source_url": "https://github.com/hk2978/pairs-trading",
+      "title": "hk2978/pairs-trading",
+      "description": "Statistical arbitrage on S&P 500 equities: Engle-Granger cointegration testing, z-score signals, transaction-cost modeling, and out-of-sample validation.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-01T12:11:40Z",
+      "lineage": {
+        "source": "5a3cf1545ea8cb46",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "a15489fec6d559b3",
       "source": "github",
       "source_url": "https://github.com/feng653/quant-lab",
@@ -1005,6 +1395,36 @@
       "lineage": {
         "source": "a15489fec6d559b3",
         "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "416c15633d97ea44",
+      "source": "github",
+      "source_url": "https://github.com/hkbuttar/pairtrade-lab",
+      "title": "hkbuttar/pairtrade-lab",
+      "description": "Statistical arbitrage backtester for pairs and basket trading. Cointegration testing, Kalman-filter dynamic hedge ratios, and mean-reversion spread trading on real equities/crypto data, with walk-forward validation and honest reporting of what actually holds out-of-sample. CPU-only.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-07T01:41:32Z",
+      "lineage": {
+        "source": "416c15633d97ea44",
+        "family": "mean_reversion",
         "rounds": [
           {
             "round": 1,
@@ -1053,6 +1473,216 @@
       }
     },
     {
+      "candidate_id": "a391f680590b8977",
+      "source": "github",
+      "source_url": "https://github.com/jorgedurbaan/ibex35-statistical-arbitrage",
+      "title": "jorgedurbaan/ibex35-statistical-arbitrage",
+      "description": "Automated pairs trading strategy on Spanish equities using cointegration analysis, rolling OLS and Z-score signals. Built in Python.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-28T15:28:55Z",
+      "lineage": {
+        "source": "a391f680590b8977",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c8e33fa9a81e6cfc",
+      "source": "github",
+      "source_url": "https://github.com/guge199205-byte/QuantMind-oss",
+      "title": "guge199205-byte/QuantMind-oss",
+      "description": "Qlib \u6df1\u5ea6\u96c6\u6210 \u2014 \u96c6\u6210\u5fae\u8f6f Qlib \u91cf\u5316\u6846\u67b6\uff0c\u5b9e\u73b0 Alpha158 \u56e0\u5b50\u96c6 + LightGBM \u6a21\u578b\u8bad\u7ec3 RD-Agent \u56e0\u5b50\u6316\u6398 \u2014 \u6574\u5408\u5fae\u8f6f RD-Agent\uff0c\u5b9e\u73b0 AI \u81ea\u52a8\u56e0\u5b50\u8fdb\u5316 TradingAgents \u6295\u7814 \u2014 \u6574\u5408 TradingAgents-Astock \u591a Agent A \u80a1\u6295\u7814\u6846\u67b6 \u6570\u636e\u5e73\u53f0 \u2014 \u7edf\u4e00\u591a\u5e02\u573a\u591a\u6570\u636e\u6e90\u63a5\u5165\uff08A/HK/US\uff09\uff0c151 \u7ef4\u7279\u5f81\u5de5\u7a0b \u6a21\u578b\u5168\u751f\u547d\u5468\u671f \u2014 \u8bad\u7ec3 \u2192 \u7248\u672c\u7ba1\u7406 \u2192 \u63a8\u7406 \u2192 \u4fe1\u53f7\u751f\u6210\u5b8c\u6574\u95ed\u73af \u5b9e\u76d8\u4ea4\u6613 \u2014 QMT \u5238\u5546\u5bf9\u63a5\u3001\u6a21\u62df\u76d8\u9a8c\u8bc1\u3001\u98ce\u63a7\u7cfb\u7edf QuantBot \u667a\u80fd\u52a9\u624b \u2014 \u81ea\u7136\u8bed\u8a00\u4ea4\u4e92\uff0c\u610f\u56fe\u8bc6\u522b\u9a71\u52a8\u64cd\u4f5c",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-11T16:49:23Z",
+      "lineage": {
+        "source": "c8e33fa9a81e6cfc",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0351e2c13cf483fa",
+      "source": "github",
+      "source_url": "https://github.com/kshitijbhandari/Statistical-Arbitrage-Market-Neutral-Spread-Trading-on-S-P-500-Cointegrated-Equities",
+      "title": "kshitijbhandari/Statistical-Arbitrage-Market-Neutral-Spread-Trading-on-S-P-500-Cointegrated-Equities",
+      "description": "Statistical arbitrage engine that screens S&P 500 pairs using Engle-Granger and Johansen cointegration tests, fits Ornstein-Uhlenbeck dynamics via MLE, and trades spreads with a Kalman filter hedge ratio. Includes a walk-forward backtest with monthly pair re-screening, continuous position carry-over, and a full performance dashboard.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-20T17:11:42Z",
+      "lineage": {
+        "source": "0351e2c13cf483fa",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c8518e581d5f5da7",
+      "source": "github",
+      "source_url": "https://github.com/ilovemiku520/VCStockRank",
+      "title": "ilovemiku520/VCStockRank",
+      "description": "\u57fa\u4e8e VCformer + TPA \u591a\u4efb\u52a1\u6df1\u5ea6\u5b66\u4e60\u7684 A \u80a1\u6a2a\u622a\u9762\u80a1\u7968\u6392\u5e8f\u4e0e\u91cf\u5316\u56de\u6d4b\u7cfb\u7edf\u3002  \u9879\u76ee\u5c06\u9009\u80a1\u95ee\u9898\u8f6c\u5316\u4e3a\u6392\u5e8f\u5b66\u4e60\u95ee\u9898\u2014\u2014\u4e0d\u9884\u6d4b\u5177\u4f53\u6536\u76ca\u7387\uff0c\u800c\u662f\u9884\u6d4b\u540c\u4e00\u4ea4\u6613\u65e5\u80a1\u7968\u95f4\u7684\u76f8\u5bf9\u5f3a\u5f31\u6b21\u5e8f\uff0c\u89c4\u907f\u91d1\u878d\u65f6\u5e8f\u9ad8\u566a\u58f0\u573a\u666f\u4e0b\u76f4\u63a5\u56de\u5f52\u9884\u6d4b\u7684\u56fa\u6709\u56f0\u96be\u3002\u6a21\u578b\u878d\u5408 VCformer\uff08\u53d8\u91cf\u7ef4\u5ea6\u6ce8\u610f\u529b\uff09\u4e0e TPA\uff08\u591a\u5c3a\u5ea6\u65f6\u5e8f\u5377\u79ef\u6ce8\u610f\u529b\uff09\uff0c\u91c7\u7528 Pairwise Hinge Loss \u4f5c\u4e3a\u6392\u5e8f\u635f\u5931\uff0c\u6784\u5efa\u591a\u4efb\u52a1\u5b66\u4e60\u6846\u67b6\u540c\u6b65\u4f18\u5316\u6392\u5e8f\u80fd\u529b\u4e0e\u6ce2\u52a8\u7387\u9884\u6d4b\u7cbe\u5ea6\u3002   \u9002\u7528\u573a\u666f\uff1a\u91cf\u5316\u7814\u7a76\u3001\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u56de\u6d4b\u3001\u91d1\u878d\u65f6\u5e8f\u6df1\u5ea6\u5b66\u4e60\u3001\u6392\u5e8f\u5b66\u4e60\u9009\u80a1\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-08-25T12:24:04Z",
+      "lineage": {
+        "source": "c8518e581d5f5da7",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5e7ba63f08629bc2",
+      "source": "github",
+      "source_url": "https://github.com/kshoop28/crypto-statistical-arbitrage",
+      "title": "kshoop28/crypto-statistical-arbitrage",
+      "description": "Backtesting momentum and mean-reversion strategies across cryptocurrencies using Python.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-07-18T01:57:58Z",
+      "lineage": {
+        "source": "5e7ba63f08629bc2",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "696566bc9f2e3e89",
+      "source": "github",
+      "source_url": "https://github.com/junagent/a-share-quant-trading",
+      "title": "junagent/a-share-quant-trading",
+      "description": "A\u80a1\u91cf\u5316\u4ea4\u6613\u7cfb\u7edf\u5f00\u53d1\u6846\u67b6\uff08\u516c\u5f00\u7248\uff09\uff1a\u6570\u636e\u6e90/\u56e0\u5b50\u6316\u6398/\u56e0\u5b50\u5e93\u79fb\u690d/\u56de\u6d4b\u6846\u67b6\u3002\u4e0d\u542b\u5b9e\u76d8\u53c2\u6570\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-08-15T00:38:05Z",
+      "lineage": {
+        "source": "696566bc9f2e3e89",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a94085f447c12add",
+      "source": "github",
+      "source_url": "https://github.com/mengrenman/dynamic-hedge-pairs-trading",
+      "title": "mengrenman/dynamic-hedge-pairs-trading",
+      "description": "A quantitative pairs trading strategy using dynamic hedge ratios estimated via Kalman filtering and cointegration techniques. Designed for statistical arbitrage and mean reversion in equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-25T16:40:10Z",
+      "lineage": {
+        "source": "a94085f447c12add",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "2ba7b1b0bb92c83f",
       "source": "github",
       "source_url": "https://github.com/mfzhang/20260104-Quant-Strategy-for-Consecutive-Limit-Up-Stocks",
@@ -1083,6 +1713,216 @@
       }
     },
     {
+      "candidate_id": "0e953b3e5a6bdbcd",
+      "source": "github",
+      "source_url": "https://github.com/pranay123-stack/crypto-trading-strategies",
+      "title": "pranay123-stack/crypto-trading-strategies",
+      "description": "Crypto trading strategies \u2014 statistical arbitrage, ICT smart-money, mean reversion and market-making bots across Binance, Phemex and HyperLiquid.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-08-26T12:09:12Z",
+      "lineage": {
+        "source": "0e953b3e5a6bdbcd",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "922c81d0fe717d24",
+      "source": "github",
+      "source_url": "https://github.com/mxmore/QianYuanLab",
+      "title": "mxmore/QianYuanLab",
+      "description": "\u57fa\u4e8e\u591a\u6a21\u6001\u5927\u6a21\u578b\u4e0e\u5f3a\u5316\u5b66\u4e60\u7684\u81ea\u9002\u5e94A\u80a1\u91cf\u5316\u7cfb\u7edf\u3002\u4e13\u6ce8\u4e8e\u9ad8\u9891\u56e0\u5b50\u6316\u6398\u4e0e\u52a8\u6001\u98ce\u63a7\uff0c\u5229\u7528AI Agent\u5b9e\u73b0\u4ece\u6570\u636e\u5206\u6790\u5230\u4ea4\u6613\u6267\u884c\u7684\u7aef\u5230\u7aef\u81ea\u52a8\u5316\u51b3\u7b56\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-04-28T02:57:36Z",
+      "lineage": {
+        "source": "922c81d0fe717d24",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3e9c6f131ee4109f",
+      "source": "github",
+      "source_url": "https://github.com/r-t-culbreath/stat-arb-pairs-research",
+      "title": "r-t-culbreath/stat-arb-pairs-research",
+      "description": "Kalman-filter statistical arbitrage including an average trading range research. Pairs trading with rigorous out-of-sample validation. This process incorporated walk-forward, holdouts, cost-aware screening and an honest negative result on liquid US equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-12T20:13:48Z",
+      "lineage": {
+        "source": "3e9c6f131ee4109f",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "255c76c82be01055",
+      "source": "github",
+      "source_url": "https://github.com/qusong0627/QuantMind",
+      "title": "qusong0627/QuantMind",
+      "description": " QuantMind\uff08\u91cf\u5316\u5927\u8111\uff09\u5f00\u6e90\u7248\u662f\u4e00\u6b3e\u9762\u5411\u4e2a\u4eba\u5f00\u53d1\u8005\u4e0e\u6295\u7814\u56e2\u961f\u7684 AI \u539f\u751f\u591a\u5e02\u573a\u91cf\u5316\u4ea4\u6613\u5e73\u53f0\u3002\u6df1\u5ea6\u96c6\u6210\u5fae\u8f6f Qlib\u3001RD-Agent \u56e0\u5b50\u6f14\u5316\u4e0e TradingAgents \u591a\u667a\u80fd\u4f53\u6295\u7814\uff0c\u63d0\u4f9b\u4ece 300+ \u7ef4\u56e0\u5b50\u6316\u6398\u300113 \u79cd\u673a\u5668\u5b66\u4e60\u4e0e\u6df1\u5ea6\u5b66\u4e60\u6a21\u578b\u5de5\u573a\u3001Optuna \u81ea\u52a8\u8c03\u53c2\u3001Qlib \u9ad8\u6027\u80fd\u56de\u6d4b\u3001\u622a\u9762\u6279\u91cf\u63a8\u7406\u30017x24 \u5b9e\u65f6\u8206\u60c5\u60c5\u7eea\u5206\u6790\uff0c\u5230\u901a\u8fbe\u4fe1\u6df1\u5ea6\u8054\u52a8\uff08\u677f\u5757\u63a8\u9001/\u9884\u8b66\u96f7\u8fbe/\u95ea\u7535\u4e0b\u5355\uff09\u4e0e\u5b9e\u76d8\u6a21\u62df\u4ea4\u6613\u7684\u5b8c\u6574\u95ed\u73af\u3002\u5168\u9762\u652f\u6301 A\u80a1\u3001\u6e2f\u80a1\u3001\u7f8e\u80a1\u3001\u671f\u8d27\u53ca\u533a\u5757\u94fe\u3002\u7cfb\u7edf\u91c7\u7528 Docker Compose \u4e00\u952e\u79c1\u6709\u5316\u90e8\u7f72\uff0c\u6570\u636e\u4e0e\u6a21\u578b\u5b8c\u5168\u672c\u5730\u5316\uff0c\u4fdd\u969c\u7b56\u7565\u9690\u79c1\uff0c\u529f\u80fd\u96f6\u95e8\u69db\u65e0\u9650\u5236\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-13T05:21:34Z",
+      "lineage": {
+        "source": "255c76c82be01055",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "f45174e57f0c9795",
+      "source": "github",
+      "source_url": "https://github.com/saaachis/statistical-arbitrage-indian-bank-equities",
+      "title": "saaachis/statistical-arbitrage-indian-bank-equities",
+      "description": "Statistical arbitrage pipeline using Cointegration, GARCH, ARIMA, and XGBoost for spread prediction and pairs trading on Indian banking equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-25T18:04:28Z",
+      "lineage": {
+        "source": "f45174e57f0c9795",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "7bf6c5c943a335e4",
+      "source": "github",
+      "source_url": "https://github.com/sonhany/AlphaCouncil2-AI",
+      "title": "sonhany/AlphaCouncil2-AI",
+      "description": "AlphaCouncil2-AI \u00b7 \u4e2d\u56fd A \u80a1\u91cf\u5316\u4ea4\u6613\u7cfb\u7edf | \u6570\u636e\u91c7\u96c6 \u2192 58 \u56e0\u5b50 \u2192 4 \u7b56\u7565 \u2192 \u4e8b\u4ef6\u9a71\u52a8\u56de\u6d4b \u2192 \u6a21\u62df\u6267\u884c \u2192 \u98ce\u63a7",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026-07-19T08:40:15Z",
+      "lineage": {
+        "source": "7bf6c5c943a335e4",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "bb8ea9997698f54c",
+      "source": "github",
+      "source_url": "https://github.com/saeedmohseni97/statarb-research",
+      "title": "saeedmohseni97/statarb-research",
+      "description": "A reproducible statistical-arbitrage research study: cointegration pairs trading on US equities/ETFs",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-20T19:51:16Z",
+      "lineage": {
+        "source": "bb8ea9997698f54c",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "d83c7dfaafbac82c",
       "source": "arxiv",
       "source_url": null,
@@ -1095,6 +1935,126 @@
       "lineage": {
         "source": "d83c7dfaafbac82c",
         "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "cd27cff8421ec31c",
+      "source": "github",
+      "source_url": "https://github.com/sahilchauhxn/pair-trading",
+      "title": "sahilchauhxn/pair-trading",
+      "description": "Statistical arbitrage strategy using mean-reversion pair trading, Z-score signals, and Python-based backtesting on Indian equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-13T15:20:56Z",
+      "lineage": {
+        "source": "cd27cff8421ec31c",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "8ab2eabb2b797f59",
+      "source": "github",
+      "source_url": "https://github.com/samspeir14/statistical_arbitrage_system",
+      "title": "samspeir14/statistical_arbitrage_system",
+      "description": "Pairs-trading system that models correlation between related equities and trades divergences as mean-reversion opportunities",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-23T03:08:40Z",
+      "lineage": {
+        "source": "8ab2eabb2b797f59",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "74ccb2cbd543bf16",
+      "source": "github",
+      "source_url": "https://github.com/sujith-kamme/statistical-arbitrage-crypto",
+      "title": "sujith-kamme/statistical-arbitrage-crypto",
+      "description": "Designed a cointegration-based mean-reversion strategy on 18 crypto assets; used Johansen basket discovery, OU signal generation, regime filtering, and risk-parity sizing across walk-forward folds  achieving Net Sharpe 1.76 and Max Drawdown -1.38% out-of-sample at 20bps transaction costs.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2026-04-09T02:26:35Z",
+      "lineage": {
+        "source": "74ccb2cbd543bf16",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "e6a6653bbab0d0fd",
+      "source": "github",
+      "source_url": "https://github.com/tanwiraasif/statistical-arbitrage-research",
+      "title": "tanwiraasif/statistical-arbitrage-research",
+      "description": "Statistical Arbitrage Research Systematic pairs trading strategy using cointegration analysis, Z-score signal generation, and machine learning-enhanced backtesting on S&P 500 equities. Includes full backtest engine, risk metrics (Sharpe, max drawdown), and walk-forward validation.Tech: Python, pandas, statsmodels, scikit-learn, yfinance",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-09T08:59:27Z",
+      "lineage": {
+        "source": "e6a6653bbab0d0fd",
+        "family": "mean_reversion",
         "rounds": [
           {
             "round": 1,

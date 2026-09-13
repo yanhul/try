@@ -4,13 +4,13 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 1900,
-    "expanded": 1746,
-    "normalized": 1746,
-    "round1": 68,
+    "raw": 1940,
+    "expanded": 1786,
+    "normalized": 1786,
+    "round1": 100,
     "deferred": 28,
-    "survivors": 37,
-    "china_a_share_survivors": 16
+    "survivors": 69,
+    "china_a_share_survivors": 25
   },
   "population": [
     {
@@ -612,6 +612,22 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "rounds": []
       }
@@ -1465,6 +1481,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -1556,6 +1588,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2425,6 +2473,70 @@
       }
     },
     {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c1a1adbbb4a75fdf",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
@@ -2500,6 +2612,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "0602d6bc79f08cde",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5267b52c5a5f160e",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
+      "title": "\u8d27\u5e01\u672c\u8d28\u662f\u52b3\u52a8\u529b\uff0c\u4e3b\u6743\u5c5e\u4e8e\u4eba\u6c11\u2014\u2014\u201c\u56fd\u5bb6\u7ecf\u6d4e\u5b66\u201d\u7684\u8d27\u5e01\u7406\u8bba",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5267b52c5a5f160e",
         "family": "smc_ict",
         "rounds": []
       }
@@ -3225,22 +3353,6 @@
       }
     },
     {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "unknown",
-      "market": null,
-      "query": "algorithmic trading research code",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -3604,22 +3716,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4052,6 +4148,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -4569,6 +4681,22 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -4581,6 +4709,118 @@
       "lineage": {
         "source": "0bc7fc89046bdb2c",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -6153,22 +6393,6 @@
       }
     },
     {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "genetic programming symbolic regression trading alpha",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2a84d886a1d3a525",
       "source": "crossref",
       "source_url": "https://doi.org/10.4135/9781529731460",
@@ -7513,134 +7737,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "dd835d2cc63269a4",
       "source": "crossref",
       "source_url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
@@ -7945,22 +8041,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -7972,22 +8052,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "6dcfeefb260e7e03",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -8213,6 +8277,22 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -8521,6 +8601,38 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -8569,6 +8681,22 @@
       }
     },
     {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "21fd48f83a5554a3",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ojls.2024.121012",
@@ -8581,70 +8709,6 @@
       "lineage": {
         "source": "21fd48f83a5554a3",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "100a54218862e1f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
-      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "100a54218862e1f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -8697,22 +8761,6 @@
       }
     },
     {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "af5eda9b0df688b6",
       "source": "crossref",
       "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
@@ -8729,22 +8777,6 @@
       }
     },
     {
-      "candidate_id": "5267b52c5a5f160e",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
-      "title": "\u8d27\u5e01\u672c\u8d28\u662f\u52b3\u52a8\u529b\uff0c\u4e3b\u6743\u5c5e\u4e8e\u4eba\u6c11\u2014\u2014\u201c\u56fd\u5bb6\u7ecf\u6d4e\u5b66\u201d\u7684\u8d27\u5e01\u7406\u8bba",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "5267b52c5a5f160e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bf4a623110ac6de2",
       "source": "crossref",
       "source_url": "https://doi.org/10.52926/jpmjpr1761",
@@ -8756,22 +8788,6 @@
       "source_timestamp": "",
       "lineage": {
         "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -8841,22 +8857,6 @@
       }
     },
     {
-      "candidate_id": "49001aab7ce1f1f4",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "49001aab7ce1f1f4",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8e734bb4e77ed879",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2023.135115",
@@ -8869,6 +8869,22 @@
       "lineage": {
         "source": "8e734bb4e77ed879",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "100a54218862e1f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
+      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "100a54218862e1f9",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -8901,22 +8917,6 @@
       "lineage": {
         "source": "bcb5ccbcca7e1462",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
         "rounds": []
       }
     },
@@ -8980,22 +8980,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
         "family": "unknown",
         "rounds": []
       }
@@ -9205,22 +9189,6 @@
       "lineage": {
         "source": "26b59f7794cb279a",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -9769,6 +9737,22 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0238ec767d096d15",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2020.98155",
@@ -9812,6 +9796,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a6cf61700f8ffbea",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "49001aab7ce1f1f4",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
+      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "49001aab7ce1f1f4",
         "family": "unknown",
         "rounds": []
       }
@@ -10943,6 +10943,96 @@
       }
     },
     {
+      "candidate_id": "f2450405b952aeed",
+      "source": "github",
+      "source_url": "https://github.com/Dr-EEEEE/FuturesBacktestingEngine",
+      "title": "Dr-EEEEE/FuturesBacktestingEngine",
+      "description": "Professional Futures Backtesting Engine. Institutional-grade Python framework for systematic strategy development. Built by a former Hedge Fund Quant and National Lab R&D Engineer. Features modular trend-following signals, vectorized performance, and high-speed data processing for robust strategy research.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-02-21T23:48:27Z",
+      "lineage": {
+        "source": "f2450405b952aeed",
+        "family": "momentum_trend",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "bb14d01145235a7d",
+      "source": "github",
+      "source_url": "https://github.com/Jack-Close/commodities-trend-following-research",
+      "title": "Jack-Close/commodities-trend-following-research",
+      "description": "Systematic trend-following research on 23 commodity futures: EDA, momentum strategy, enhancements, and an ML metamodel overlay",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-07-08T16:00:04Z",
+      "lineage": {
+        "source": "bb14d01145235a7d",
+        "family": "momentum_trend",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9221e70410f97fc9",
+      "source": "github",
+      "source_url": "https://github.com/nirajneupane17/Futures-Trend-Following-Risk-Management-CTA-Style-",
+      "title": "nirajneupane17/Futures-Trend-Following-Risk-Management-CTA-Style-",
+      "description": "Developed a systematic trend-following strategy using time-series momentum and volatility targeting across liquid futures proxies. The framework applies dynamic position sizing, leverage constraints, and drawdown controls to evaluate risk-adjusted performance in a CTA-style trading setup.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2026-01-08T03:17:39Z",
+      "lineage": {
+        "source": "9221e70410f97fc9",
+        "family": "momentum_trend",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "8fc33fa8e45109c1",
       "source": "github",
       "source_url": "https://github.com/Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
@@ -11145,6 +11235,876 @@
       "lineage": {
         "source": "a39cba1d84033150",
         "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "fea9e4150834cf35",
+      "source": "github",
+      "source_url": "https://github.com/Adi-111111/Pairs-Trading",
+      "title": "Adi-111111/Pairs-Trading",
+      "description": "Statistical arbitrage pipeline for Shanghai Stock Exchange equities - pair discovery, backtesting, and parameter optimisation.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-20T12:34:08Z",
+      "lineage": {
+        "source": "fea9e4150834cf35",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "8d44c9f052cd3e8a",
+      "source": "github",
+      "source_url": "https://github.com/Aditya-kumar-13/market-neutral-statistical-arbitrage",
+      "title": "Aditya-kumar-13/market-neutral-statistical-arbitrage",
+      "description": "A reproducible pairs-trading research platform for Indian equities using sector-level cointegration screening, online Kalman hedge ratios, delayed execution, and explicit trading and borrow costs.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-29T17:40:23Z",
+      "lineage": {
+        "source": "8d44c9f052cd3e8a",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "fbadfff17dfcd877",
+      "source": "github",
+      "source_url": "https://github.com/BhavyaSatija54/Statistical-Arbitrage-Strategy",
+      "title": "BhavyaSatija54/Statistical-Arbitrage-Strategy",
+      "description": "Built a cointegration-based pairs trading pipeline (Johansen tests, OU modeling, Kalman-filtered hedge ratios) on 128 equities over 20 years, achieving 0.68 Sharpe net of costs (0.34\u20130.47 bias-adjusted) with -5.5% max drawdown; derived a capacity frontier showing viable AUM of ~$10\u201330M via a walk-forward, ADV-constrained execution engine",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-02T08:25:59Z",
+      "lineage": {
+        "source": "fbadfff17dfcd877",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "b04bb57eea4ffe9e",
+      "source": "github",
+      "source_url": "https://github.com/CttQuantLab/Kalman-Filter-Based-Statistical-Arbitrage-A-Dynamic-Pairs-Trading-Strategy",
+      "title": "CttQuantLab/Kalman-Filter-Based-Statistical-Arbitrage-A-Dynamic-Pairs-Trading-Strategy",
+      "description": "Kalman filter statistical arbitrage and dynamic pairs trading on cointegrated equities. HKUST IEDA3180 research codebase.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-27T05:57:07Z",
+      "lineage": {
+        "source": "b04bb57eea4ffe9e",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c5290bb15b21b27d",
+      "source": "github",
+      "source_url": "https://github.com/JISOC-2511/AlgorithmicTrading",
+      "title": "JISOC-2511/AlgorithmicTrading",
+      "description": "Python backtesting framework implementing multiple moving average strategies \u2014 SMA, EWMA, LWMA \u2014 and statistical arbitrage pair trading, with walk-forward optimisation, ATR-based position sizing, RSI signal filtering, and a full performance reporting suite across equities, commodities, and FX pairs.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-28T03:49:50Z",
+      "lineage": {
+        "source": "c5290bb15b21b27d",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "7d412ac2683513ba",
+      "source": "github",
+      "source_url": "https://github.com/Nithyadodda07/pairs-trading-strategy",
+      "title": "Nithyadodda07/pairs-trading-strategy",
+      "description": "Market-neutral pairs trading strategy using cointegration and statistical arbitrage on Indian equities (RELIANCE & ONGC)",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-05T10:54:46Z",
+      "lineage": {
+        "source": "7d412ac2683513ba",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3b9ef2e79da1df07",
+      "source": "github",
+      "source_url": "https://github.com/PG2362/Statistical_arbitrage",
+      "title": "PG2362/Statistical_arbitrage",
+      "description": "This project implements and evaluates a pairs trading strategy on liquid US large-cap equities. The strategy was tested across multiple pairs, multiple sample windows, and at the single-pair and portfolio level.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-11T17:46:32Z",
+      "lineage": {
+        "source": "3b9ef2e79da1df07",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "d34b0dd2a8e58c3a",
+      "source": "github",
+      "source_url": "https://github.com/brennoln/project1-pairs-trading-statarb",
+      "title": "brennoln/project1-pairs-trading-statarb",
+      "description": "Statistical Arbitrage & Pairs Trading backtest engine on B3 equities using Engle-Granger cointegration, dynamic z-score, and risk management.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-08T19:24:12Z",
+      "lineage": {
+        "source": "d34b0dd2a8e58c3a",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "d5a53cb2eec3ba6d",
+      "source": "github",
+      "source_url": "https://github.com/devikajonjale/Statistical-Arbitrage-on-Indian-Banking-Equities-Pair-Trading-",
+      "title": "devikajonjale/Statistical-Arbitrage-on-Indian-Banking-Equities-Pair-Trading-",
+      "description": "Pair trading strategy on HDFC Bank and Kotak Mahindra Bank using cointegration, GARCH, Kalman filters, and XGBoost/LSTM signal models.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-27T20:27:26Z",
+      "lineage": {
+        "source": "d5a53cb2eec3ba6d",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5a3cf1545ea8cb46",
+      "source": "github",
+      "source_url": "https://github.com/hk2978/pairs-trading",
+      "title": "hk2978/pairs-trading",
+      "description": "Statistical arbitrage on S&P 500 equities: Engle-Granger cointegration testing, z-score signals, transaction-cost modeling, and out-of-sample validation.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-01T12:11:40Z",
+      "lineage": {
+        "source": "5a3cf1545ea8cb46",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "416c15633d97ea44",
+      "source": "github",
+      "source_url": "https://github.com/hkbuttar/pairtrade-lab",
+      "title": "hkbuttar/pairtrade-lab",
+      "description": "Statistical arbitrage backtester for pairs and basket trading. Cointegration testing, Kalman-filter dynamic hedge ratios, and mean-reversion spread trading on real equities/crypto data, with walk-forward validation and honest reporting of what actually holds out-of-sample. CPU-only.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-07T01:41:32Z",
+      "lineage": {
+        "source": "416c15633d97ea44",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a391f680590b8977",
+      "source": "github",
+      "source_url": "https://github.com/jorgedurbaan/ibex35-statistical-arbitrage",
+      "title": "jorgedurbaan/ibex35-statistical-arbitrage",
+      "description": "Automated pairs trading strategy on Spanish equities using cointegration analysis, rolling OLS and Z-score signals. Built in Python.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-28T15:28:55Z",
+      "lineage": {
+        "source": "a391f680590b8977",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0351e2c13cf483fa",
+      "source": "github",
+      "source_url": "https://github.com/kshitijbhandari/Statistical-Arbitrage-Market-Neutral-Spread-Trading-on-S-P-500-Cointegrated-Equities",
+      "title": "kshitijbhandari/Statistical-Arbitrage-Market-Neutral-Spread-Trading-on-S-P-500-Cointegrated-Equities",
+      "description": "Statistical arbitrage engine that screens S&P 500 pairs using Engle-Granger and Johansen cointegration tests, fits Ornstein-Uhlenbeck dynamics via MLE, and trades spreads with a Kalman filter hedge ratio. Includes a walk-forward backtest with monthly pair re-screening, continuous position carry-over, and a full performance dashboard.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-20T17:11:42Z",
+      "lineage": {
+        "source": "0351e2c13cf483fa",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a94085f447c12add",
+      "source": "github",
+      "source_url": "https://github.com/mengrenman/dynamic-hedge-pairs-trading",
+      "title": "mengrenman/dynamic-hedge-pairs-trading",
+      "description": "A quantitative pairs trading strategy using dynamic hedge ratios estimated via Kalman filtering and cointegration techniques. Designed for statistical arbitrage and mean reversion in equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-06-25T16:40:10Z",
+      "lineage": {
+        "source": "a94085f447c12add",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3e9c6f131ee4109f",
+      "source": "github",
+      "source_url": "https://github.com/r-t-culbreath/stat-arb-pairs-research",
+      "title": "r-t-culbreath/stat-arb-pairs-research",
+      "description": "Kalman-filter statistical arbitrage including an average trading range research. Pairs trading with rigorous out-of-sample validation. This process incorporated walk-forward, holdouts, cost-aware screening and an honest negative result on liquid US equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-12T20:13:48Z",
+      "lineage": {
+        "source": "3e9c6f131ee4109f",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "f45174e57f0c9795",
+      "source": "github",
+      "source_url": "https://github.com/saaachis/statistical-arbitrage-indian-bank-equities",
+      "title": "saaachis/statistical-arbitrage-indian-bank-equities",
+      "description": "Statistical arbitrage pipeline using Cointegration, GARCH, ARIMA, and XGBoost for spread prediction and pairs trading on Indian banking equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-25T18:04:28Z",
+      "lineage": {
+        "source": "f45174e57f0c9795",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "bb8ea9997698f54c",
+      "source": "github",
+      "source_url": "https://github.com/saeedmohseni97/statarb-research",
+      "title": "saeedmohseni97/statarb-research",
+      "description": "A reproducible statistical-arbitrage research study: cointegration pairs trading on US equities/ETFs",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-08-20T19:51:16Z",
+      "lineage": {
+        "source": "bb8ea9997698f54c",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "cd27cff8421ec31c",
+      "source": "github",
+      "source_url": "https://github.com/sahilchauhxn/pair-trading",
+      "title": "sahilchauhxn/pair-trading",
+      "description": "Statistical arbitrage strategy using mean-reversion pair trading, Z-score signals, and Python-based backtesting on Indian equities.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-13T15:20:56Z",
+      "lineage": {
+        "source": "cd27cff8421ec31c",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "8ab2eabb2b797f59",
+      "source": "github",
+      "source_url": "https://github.com/samspeir14/statistical_arbitrage_system",
+      "title": "samspeir14/statistical_arbitrage_system",
+      "description": "Pairs-trading system that models correlation between related equities and trades divergences as mean-reversion opportunities",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-23T03:08:40Z",
+      "lineage": {
+        "source": "8ab2eabb2b797f59",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "e6a6653bbab0d0fd",
+      "source": "github",
+      "source_url": "https://github.com/tanwiraasif/statistical-arbitrage-research",
+      "title": "tanwiraasif/statistical-arbitrage-research",
+      "description": "Statistical Arbitrage Research Systematic pairs trading strategy using cointegration analysis, Z-score signal generation, and machine learning-enhanced backtesting on S&P 500 equities. Includes full backtest engine, risk metrics (Sharpe, max drawdown), and walk-forward validation.Tech: Python, pandas, statsmodels, scikit-learn, yfinance",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-07-09T08:59:27Z",
+      "lineage": {
+        "source": "e6a6653bbab0d0fd",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "e0fc0ec424e17059",
+      "source": "github",
+      "source_url": "https://github.com/Zhou-Jie-0604/---",
+      "title": "Zhou-Jie-0604/---",
+      "description": "\u9488\u5bf9\u4f20\u7edf\u6295\u8d44\u7b56\u7565\u7684\u5c40\u9650\u6027\uff0c\u7814\u7a76\u4e86\u591a\u56e0\u5b50\u9009\u80a1\u6a21\u578b\u7684\u6784\u5efa\u53ca\u5176\u5728\u91cf\u5316 \u6295\u8d44\u4e2d\u7684\u5e94\u7528\u3002\u6211\u4eec\u4ee5\u4e2d\u56fdA\u80a1\u5e02\u573a\u4e3a\u4f8b\uff0c\u6536\u96c6\u6574\u7406\u4e86\u6db5\u76d6\u5e02\u573a\u3001\u6280\u672f\u9762\u3001\u60c5\u7eea \u6d41\u52a8\u3001\u57fa\u672c\u9762\u4e0e\u5b8f\u89c2\u7b49\u591a\u7c7b\u56e0\u5b50\u7684\u65e5\u5ea6\u6570\u636e\uff0c\u5e76\u8fdb\u884c\u4e86\u7cfb\u7edf\u7684\u6570\u636e\u6e05\u6d17\u4e0e\u6807\u51c6\u5316 \u5904\u7406\u3002\u5728\u5355\u56e0\u5b50\u68c0\u9a8c\u4e2d\uff0c\u901a\u8fc7\u4fe1\u606f\u7cfb\u6570\uff08IC\uff09\u4e0e\u5206\u5c42\u56de\u6d4b\u8bc4\u4f30\u4e86\u5404\u56e0\u5b50\u7684\u6709\u6548\u6027\uff0c \u5e76\u7ed3\u5408\u6362\u624b\u7387\u6c34\u5e73\u4e0e\u7ecf\u6d4e\u6027\u8d28\uff0c\u5c06\u56e0\u5b50\u5206\u4e3a\u91cf\u4ef7\u56e0\u5b50\u4e0e\u8d22\u52a1\u56e0\u5b50\uff0c\u5206\u522b\u7528\u4e8e\u77ed\u671f \u4ea4\u6613\u9884\u6d4b\u4e0e\u957f\u671f\u4ea4\u6613\u9884\u6d4b\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026-06-23T08:26:51Z",
+      "lineage": {
+        "source": "e0fc0ec424e17059",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "7bf6c5c943a335e4",
+      "source": "github",
+      "source_url": "https://github.com/sonhany/AlphaCouncil2-AI",
+      "title": "sonhany/AlphaCouncil2-AI",
+      "description": "AlphaCouncil2-AI \u00b7 \u4e2d\u56fd A \u80a1\u91cf\u5316\u4ea4\u6613\u7cfb\u7edf | \u6570\u636e\u91c7\u96c6 \u2192 58 \u56e0\u5b50 \u2192 4 \u7b56\u7565 \u2192 \u4e8b\u4ef6\u9a71\u52a8\u56de\u6d4b \u2192 \u6a21\u62df\u6267\u884c \u2192 \u98ce\u63a7",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026-07-19T08:40:15Z",
+      "lineage": {
+        "source": "7bf6c5c943a335e4",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "ec0937f7d3498824",
+      "source": "github",
+      "source_url": "https://github.com/1634594707/QuantHub",
+      "title": "1634594707/QuantHub",
+      "description": "\u672c\u5730\u4f18\u5148\u7684\u591a\u5e02\u573a\u91cf\u5316\u7814\u7a76\u4e0e\u6a21\u62df\u4ea4\u6613\u5de5\u4f5c\u53f0\uff0c\u652f\u6301 A \u80a1\u3001\u52a0\u5bc6\u8d44\u4ea7\u4e0e MT5\uff0c\u96c6\u6210 AI \u56e0\u5b50\u6316\u6398\u3001\u6eda\u52a8\u9a8c\u8bc1\u3001\u4fe1\u53f7\u5ba1\u6838\u3001\u7ec4\u5408\u8d26\u672c\u548c OKX Demo\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-01T09:09:41Z",
+      "lineage": {
+        "source": "ec0937f7d3498824",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9a180b347fe712e0",
+      "source": "github",
+      "source_url": "https://github.com/ai-yang/AlphaPilot",
+      "title": "ai-yang/AlphaPilot",
+      "description": "NEW [\ud83d\udd25 updating...]LLM \u9a71\u52a8\u7684\u80a1\u7968\u91cf\u5316\u56e0\u5b50\u6316\u6398\u4e0e\u4ea4\u6613\u5e73\u53f0\uff0c\u652f\u6301A\u80a1:\u591a Agent + \u516c\u5f0f\u5316\u6316\u6398\u3001Qlib \u56de\u6d4b\u3001Web \u95e8\u6237\u3001\u65e5\u9891\u4fe1\u53f7\u3001Telegram/\u98de\u4e66 \u901a\u77e5\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-13T01:06:23Z",
+      "lineage": {
+        "source": "9a180b347fe712e0",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c8e33fa9a81e6cfc",
+      "source": "github",
+      "source_url": "https://github.com/guge199205-byte/QuantMind-oss",
+      "title": "guge199205-byte/QuantMind-oss",
+      "description": "Qlib \u6df1\u5ea6\u96c6\u6210 \u2014 \u96c6\u6210\u5fae\u8f6f Qlib \u91cf\u5316\u6846\u67b6\uff0c\u5b9e\u73b0 Alpha158 \u56e0\u5b50\u96c6 + LightGBM \u6a21\u578b\u8bad\u7ec3 RD-Agent \u56e0\u5b50\u6316\u6398 \u2014 \u6574\u5408\u5fae\u8f6f RD-Agent\uff0c\u5b9e\u73b0 AI \u81ea\u52a8\u56e0\u5b50\u8fdb\u5316 TradingAgents \u6295\u7814 \u2014 \u6574\u5408 TradingAgents-Astock \u591a Agent A \u80a1\u6295\u7814\u6846\u67b6 \u6570\u636e\u5e73\u53f0 \u2014 \u7edf\u4e00\u591a\u5e02\u573a\u591a\u6570\u636e\u6e90\u63a5\u5165\uff08A/HK/US\uff09\uff0c151 \u7ef4\u7279\u5f81\u5de5\u7a0b \u6a21\u578b\u5168\u751f\u547d\u5468\u671f \u2014 \u8bad\u7ec3 \u2192 \u7248\u672c\u7ba1\u7406 \u2192 \u63a8\u7406 \u2192 \u4fe1\u53f7\u751f\u6210\u5b8c\u6574\u95ed\u73af \u5b9e\u76d8\u4ea4\u6613 \u2014 QMT \u5238\u5546\u5bf9\u63a5\u3001\u6a21\u62df\u76d8\u9a8c\u8bc1\u3001\u98ce\u63a7\u7cfb\u7edf QuantBot \u667a\u80fd\u52a9\u624b \u2014 \u81ea\u7136\u8bed\u8a00\u4ea4\u4e92\uff0c\u610f\u56fe\u8bc6\u522b\u9a71\u52a8\u64cd\u4f5c",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-11T16:49:23Z",
+      "lineage": {
+        "source": "c8e33fa9a81e6cfc",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c8518e581d5f5da7",
+      "source": "github",
+      "source_url": "https://github.com/ilovemiku520/VCStockRank",
+      "title": "ilovemiku520/VCStockRank",
+      "description": "\u57fa\u4e8e VCformer + TPA \u591a\u4efb\u52a1\u6df1\u5ea6\u5b66\u4e60\u7684 A \u80a1\u6a2a\u622a\u9762\u80a1\u7968\u6392\u5e8f\u4e0e\u91cf\u5316\u56de\u6d4b\u7cfb\u7edf\u3002  \u9879\u76ee\u5c06\u9009\u80a1\u95ee\u9898\u8f6c\u5316\u4e3a\u6392\u5e8f\u5b66\u4e60\u95ee\u9898\u2014\u2014\u4e0d\u9884\u6d4b\u5177\u4f53\u6536\u76ca\u7387\uff0c\u800c\u662f\u9884\u6d4b\u540c\u4e00\u4ea4\u6613\u65e5\u80a1\u7968\u95f4\u7684\u76f8\u5bf9\u5f3a\u5f31\u6b21\u5e8f\uff0c\u89c4\u907f\u91d1\u878d\u65f6\u5e8f\u9ad8\u566a\u58f0\u573a\u666f\u4e0b\u76f4\u63a5\u56de\u5f52\u9884\u6d4b\u7684\u56fa\u6709\u56f0\u96be\u3002\u6a21\u578b\u878d\u5408 VCformer\uff08\u53d8\u91cf\u7ef4\u5ea6\u6ce8\u610f\u529b\uff09\u4e0e TPA\uff08\u591a\u5c3a\u5ea6\u65f6\u5e8f\u5377\u79ef\u6ce8\u610f\u529b\uff09\uff0c\u91c7\u7528 Pairwise Hinge Loss \u4f5c\u4e3a\u6392\u5e8f\u635f\u5931\uff0c\u6784\u5efa\u591a\u4efb\u52a1\u5b66\u4e60\u6846\u67b6\u540c\u6b65\u4f18\u5316\u6392\u5e8f\u80fd\u529b\u4e0e\u6ce2\u52a8\u7387\u9884\u6d4b\u7cbe\u5ea6\u3002   \u9002\u7528\u573a\u666f\uff1a\u91cf\u5316\u7814\u7a76\u3001\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u56de\u6d4b\u3001\u91d1\u878d\u65f6\u5e8f\u6df1\u5ea6\u5b66\u4e60\u3001\u6392\u5e8f\u5b66\u4e60\u9009\u80a1\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-08-25T12:24:04Z",
+      "lineage": {
+        "source": "c8518e581d5f5da7",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "696566bc9f2e3e89",
+      "source": "github",
+      "source_url": "https://github.com/junagent/a-share-quant-trading",
+      "title": "junagent/a-share-quant-trading",
+      "description": "A\u80a1\u91cf\u5316\u4ea4\u6613\u7cfb\u7edf\u5f00\u53d1\u6846\u67b6\uff08\u516c\u5f00\u7248\uff09\uff1a\u6570\u636e\u6e90/\u56e0\u5b50\u6316\u6398/\u56e0\u5b50\u5e93\u79fb\u690d/\u56de\u6d4b\u6846\u67b6\u3002\u4e0d\u542b\u5b9e\u76d8\u53c2\u6570\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-08-15T00:38:05Z",
+      "lineage": {
+        "source": "696566bc9f2e3e89",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "922c81d0fe717d24",
+      "source": "github",
+      "source_url": "https://github.com/mxmore/QianYuanLab",
+      "title": "mxmore/QianYuanLab",
+      "description": "\u57fa\u4e8e\u591a\u6a21\u6001\u5927\u6a21\u578b\u4e0e\u5f3a\u5316\u5b66\u4e60\u7684\u81ea\u9002\u5e94A\u80a1\u91cf\u5316\u7cfb\u7edf\u3002\u4e13\u6ce8\u4e8e\u9ad8\u9891\u56e0\u5b50\u6316\u6398\u4e0e\u52a8\u6001\u98ce\u63a7\uff0c\u5229\u7528AI Agent\u5b9e\u73b0\u4ece\u6570\u636e\u5206\u6790\u5230\u4ea4\u6613\u6267\u884c\u7684\u7aef\u5230\u7aef\u81ea\u52a8\u5316\u51b3\u7b56\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-04-28T02:57:36Z",
+      "lineage": {
+        "source": "922c81d0fe717d24",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "255c76c82be01055",
+      "source": "github",
+      "source_url": "https://github.com/qusong0627/QuantMind",
+      "title": "qusong0627/QuantMind",
+      "description": " QuantMind\uff08\u91cf\u5316\u5927\u8111\uff09\u5f00\u6e90\u7248\u662f\u4e00\u6b3e\u9762\u5411\u4e2a\u4eba\u5f00\u53d1\u8005\u4e0e\u6295\u7814\u56e2\u961f\u7684 AI \u539f\u751f\u591a\u5e02\u573a\u91cf\u5316\u4ea4\u6613\u5e73\u53f0\u3002\u6df1\u5ea6\u96c6\u6210\u5fae\u8f6f Qlib\u3001RD-Agent \u56e0\u5b50\u6f14\u5316\u4e0e TradingAgents \u591a\u667a\u80fd\u4f53\u6295\u7814\uff0c\u63d0\u4f9b\u4ece 300+ \u7ef4\u56e0\u5b50\u6316\u6398\u300113 \u79cd\u673a\u5668\u5b66\u4e60\u4e0e\u6df1\u5ea6\u5b66\u4e60\u6a21\u578b\u5de5\u573a\u3001Optuna \u81ea\u52a8\u8c03\u53c2\u3001Qlib \u9ad8\u6027\u80fd\u56de\u6d4b\u3001\u622a\u9762\u6279\u91cf\u63a8\u7406\u30017x24 \u5b9e\u65f6\u8206\u60c5\u60c5\u7eea\u5206\u6790\uff0c\u5230\u901a\u8fbe\u4fe1\u6df1\u5ea6\u8054\u52a8\uff08\u677f\u5757\u63a8\u9001/\u9884\u8b66\u96f7\u8fbe/\u95ea\u7535\u4e0b\u5355\uff09\u4e0e\u5b9e\u76d8\u6a21\u62df\u4ea4\u6613\u7684\u5b8c\u6574\u95ed\u73af\u3002\u5168\u9762\u652f\u6301 A\u80a1\u3001\u6e2f\u80a1\u3001\u7f8e\u80a1\u3001\u671f\u8d27\u53ca\u533a\u5757\u94fe\u3002\u7cfb\u7edf\u91c7\u7528 Docker Compose \u4e00\u952e\u79c1\u6709\u5316\u90e8\u7f72\uff0c\u6570\u636e\u4e0e\u6a21\u578b\u5b8c\u5168\u672c\u5730\u5316\uff0c\u4fdd\u969c\u7b56\u7565\u9690\u79c1\uff0c\u529f\u80fd\u96f6\u95e8\u69db\u65e0\u9650\u5236\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2026-09-13T05:21:34Z",
+      "lineage": {
+        "source": "255c76c82be01055",
+        "family": "china_a_share",
         "rounds": [
           {
             "round": 1,
@@ -13433,6 +14393,22 @@
       }
     },
     {
+      "candidate_id": "3ad045093ed51c1e",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/rjrodger/ostro",
+      "title": "ricebridge/rjrodger/ostro",
+      "description": "Pull mirror of https://github.com/rjrodger/ostro.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T06:16:12.301Z",
+      "lineage": {
+        "source": "3ad045093ed51c1e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e726932b5ea4fcea",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/abnf",
@@ -14729,6 +15705,22 @@
       }
     },
     {
+      "candidate_id": "bbc97eef253b08aa",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1257/jep.21.3.131",
+      "title": "Transportation Costs and International Trade in the Second Era of Globalization",
+      "description": "OpenAlex work type=article year=2007",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2007",
+      "lineage": {
+        "source": "bbc97eef253b08aa",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d679668c6e9acd45",
       "source": "openalex",
       "source_url": "https://doi.org/10.18653/v1/2023.acl-long.891",
@@ -14932,22 +15924,6 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "b82753e248ea2e11",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "670afeaa28dbc276",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/ijfs7020026",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "670afeaa28dbc276",
         "family": "china_a_share",
         "rounds": []
       }
@@ -16276,6 +17252,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "ce6e7ea75ba252ca",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1efebf2229628e4c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1145/3576915.3616590",
+      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
+      "description": "OpenAlex work type=conference-paper year=2023",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "1efebf2229628e4c",
         "family": "execution_mev",
         "rounds": []
       }
@@ -18388,22 +19380,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "59c13afe068bee62",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1efebf2229628e4c",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1145/3576915.3616590",
-      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
-      "description": "OpenAlex work type=conference-paper year=2023",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "1efebf2229628e4c",
         "family": "execution_mev",
         "rounds": []
       }
@@ -20601,22 +21577,6 @@
       }
     },
     {
-      "candidate_id": "bbc97eef253b08aa",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1257/jep.21.3.131",
-      "title": "Transportation Costs and International Trade in the Second Era of Globalization",
-      "description": "OpenAlex work type=article year=2007",
-      "family": "unknown",
-      "market": null,
-      "query": "portfolio optimization risk parity systematic trading",
-      "source_timestamp": "2007",
-      "lineage": {
-        "source": "bbc97eef253b08aa",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "57f8632d7ce9f43b",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/0022-1082.00077",
@@ -20756,6 +21716,22 @@
       "source_timestamp": "1991",
       "lineage": {
         "source": "606beccd7c7e6688",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "670afeaa28dbc276",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/ijfs7020026",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "670afeaa28dbc276",
         "family": "smc_ict",
         "rounds": []
       }
@@ -21977,22 +22953,6 @@
       }
     },
     {
-      "candidate_id": "04eb306f29464b1d",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.55375/jssc.2021.4.1",
-      "title": "\u56db\u5341\u5e74\uff081980-2020\uff09\u6765\u4e2a\u4eba\u501f\u6b3e\u9886\u57df\u7684\u7814\u7a76\u4e3b\u9898\u53d8\u8fc1 -\u57fa\u4e8e\u6587\u672c\u6316\u6398LDA\u7b97\u6cd5\u7684\u4e3b\u9898\u53d1\u73b0\u548c\u53ef\u89c6\u5316",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "04eb306f29464b1d",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "dc3373ed06ec9873",
       "source": "openalex",
       "source_url": "https://doi.org/10.33142/mem.v5i1.11182",
@@ -22089,6 +23049,22 @@
       }
     },
     {
+      "candidate_id": "7794ee980d9b0a5b",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
+      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7794ee980d9b0a5b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cc0b2dcd4b769e08",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/n972018-01149",
@@ -22121,6 +23097,38 @@
       }
     },
     {
+      "candidate_id": "04eb306f29464b1d",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.55375/jssc.2021.4.1",
+      "title": "\u56db\u5341\u5e74\uff081980-2020\uff09\u6765\u4e2a\u4eba\u501f\u6b3e\u9886\u57df\u7684\u7814\u7a76\u4e3b\u9898\u53d8\u8fc1 -\u57fa\u4e8e\u6587\u672c\u6316\u6398LDA\u7b97\u6cd5\u7684\u4e3b\u9898\u53d1\u73b0\u548c\u53ef\u89c6\u5316",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "04eb306f29464b1d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -22148,22 +23156,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
@@ -22308,22 +23300,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e4c7ad87aaa81708",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7794ee980d9b0a5b",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
-      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7794ee980d9b0a5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -24169,22 +25145,6 @@
       }
     },
     {
-      "candidate_id": "ad9399b71f887dc2",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
-      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
-      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "ad9399b71f887dc2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9a8d05aed9044c3a",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/080e17f4448caf26d447f530d2f3d054ed1fe916",
@@ -24681,22 +25641,6 @@
       }
     },
     {
-      "candidate_id": "2e5f5b4821040351",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
-      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
-      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2e5f5b4821040351",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c66cb6d754328358",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c3f90711e2a5509edba8cd8a89f6296a195e992a",
@@ -24757,38 +25701,6 @@
       "lineage": {
         "source": "814c5f83fa80d9cd",
         "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c2dd84158993e060",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4639c1109a00b56c81de92b6cbb4a9d8241cfb81",
-      "title": "Research on dynamic multi-strategy integration of quantitative trading based on deep reinforcement learning",
-      "description": "In this article, we introduce a framework called Financial Strategy Reinforcement Learning (FSRL) to address the challenges posed by dynamic and complex financial markets, which relies on modeling multi-strategy choices as Markov decision processes (MDP) to dynamically adapt to a wide variety of market conditions and optimize risk and return. This study combines a finite state machine (FSM) with a standardized backtest environment, which has the benefit of ensuring that the robustness and repeatability of the strategy can be evaluated. We conducted validation experiments using major market indexes in China and the United States, and the results of the experiments show that the FSRL framework has advantages over traditional methods. It achieves a higher Sharpe ratio, a higher return, and a better risk control effect. This research provides a scalable and innovative solution for promoting quantitative trading and dynamic strategy integration.",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "c2dd84158993e060",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1c82a4041c11b16c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b03b76e5d1da4cc2e07becba2ef4922f9da4fc39",
-      "title": "Research on the Quantitative Trading Strategy Based on Bollinger Band Strategy and Polynomial Regression Model",
-      "description": "First, this paper made time-price line charts for gold and bitcoin and analyzed their primary trend of flat-rising. Subsequently, we established the Bollinger Bands strategy and a regression polynomial combinatorial model in Python to make the trade points precise. We import gold and bitcoin data into the model, respectively, and let it automatically perform graphing and data processing to obtain the fitting images, optimal fitting times, model coefficient list, and model intercept of the gold and bitcoin PR models. Afterward, we determined the trading conditions, stop-loss levels, and commissions and used the Bollinger Bands strategy to backtest the five-year trading to obtain the trading results of a single strategy. Based on the conservative principle of risk hedging and split-position trading, we reset the position distribution combined the Bollinger Bands strategy and the regression polynomial combination model into a comprehensive model. This paper plotted the fluctuations of gold and bitcoin in the time dimension. The comprehensive model shows the characteristics of high total return, low total transaction cost, and small maximum drawdown, which proves that the comprehensive model provides the best strategy.",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "1c82a4041c11b16c",
-        "family": "momentum_trend",
         "rounds": []
       }
     },
@@ -25273,162 +26185,162 @@
       }
     },
     {
-      "candidate_id": "0b333fdb3f64e0b0",
+      "candidate_id": "f2ac08ce6e202700",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/6ad4fbfb83105b8c27d0c4ed3d2c4d681502eccb",
-      "title": "A Cryptocurrency Multiple Trading Strategy with Kalman Filter Innovation Volatility Interval Forecasts",
-      "description": "Pairs trading and multiple trading strategies are types of market-neutral strategies to use a pair or a combination of stocks and other financial instruments with co-integration or co-movements to generate potential profits, which may not be affected by the direction of the overall market. Commonly used pairs and multiple trading strategies are constructed using the Kalman Filter (KF) to utilize mean reversion in nonstationary but co-integrated asset prices. In this paper, we propose novel resilient pairs trading and multiple trading strategies using the combination of the KF algorithm and the KF innovation volatility interval forecasts using neural networks. The proposed trading strategies are implemented and investigated using the hourly prices of Bitcoin, Ethereum and Bitcoin Cash in the bear market. Those crypto assets are selected because they move in the same direction in the long term and have high trading volumes. The experimental results reveal performance for the proposed trading strategies with the upper and lower trading intervals using KF innovation volatility interval forecasts superior to that of the trading strategies with upper and lower trading bands using KF innovation volatility point forecasts. The performance and robustness of the proposed trading strategies using a proper assumption of transaction costs have also been examined. The strategies using innovation volatility interval forecasts consistently generate higher profits and a more robust number of transactions with or without transaction costs than those using innovation volatility point forecasts.",
-      "family": "volatility",
+      "source_url": "https://www.semanticscholar.org/paper/5ae329d9e84205ed7088c0abf8af9b14feccb655",
+      "title": "AN ENHANCED REGIME-SWITCHING MIDAS MODEL WITH AN AUTOREGRESSIVE COMPONENT, HIDDEN MARKOV MODELS, AND SELF-ORGANIZING MAPS FOR FORECASTING MIXED-FREQUENCY TIME SERIES",
+      "description": "This study proposes an enhanced regime-switching Mixed Data Sampling (MIDAS) model, denoted as MIDAS-AR-HMM-SOM, by integrating an autoregressive (AR) component, Hidden Markov Models (HMMs), and Self-Organizing Maps (SOMs) to improve forecasting accuracy for mixed-frequency time series under changing market conditions. The forecasting performance of the proposed MIDAS-AR-HMM-SOM model is compared with three benchmark models, namely, MIDAS, MIDAS-AR, and MIDAS-AR-HMM, using monthly gold prices as the target variable and weekly crude oil prices together with the U.S. Dollar Index (DXY) as high-frequency explanatory variables over the period from 2001 to 2025. Model performance is evaluated using the Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and Root Mean Square Error (RMSE) under three training-to-testing ratios of 70:30, 75:25, and 80:20. The results demonstrate that the proposed MIDAS-AR-HMM-SOM model consistently outperforms the benchmark models across all evaluation settings. Under the 70:30 training-to-testing ratio, it achieves the best forecasting performance with an MAE of 43.973, a MAPE of 2.133%, and an RMSE of 61.899. Furthermore, pairwise Diebold-Mariano (DM) tests indicate that the improvements over all benchmark models are statistically significant, confirming the robustness of the proposed forecasting framework. These findings demonstrate that integrating HMM-based regime identification with SOM-based nonlinear pattern learning effectively enhances the predictive capability of the MIDAS framework for mixed-frequency time series forecasting.",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2024",
+      "query": "crypto regime switching hidden Markov trading",
+      "source_timestamp": "2026",
       "lineage": {
-        "source": "0b333fdb3f64e0b0",
-        "family": "volatility",
+        "source": "f2ac08ce6e202700",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "4f113f530677ecef",
+      "candidate_id": "7129ac7a72fa510c",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/57c3483bcd575e9b5fb164f50725966d3bf49f2a",
-      "title": "A Low-Volatility Strategy based on Hedging a Quanto Perpetual Swap on BitMEX",
-      "description": "In 2016, BitMEX introduced a novel type of crypto derivates \u2013 Perpetual Swaps, i.e., futures with an infinite term. Perpetual swaps provide a new strategic risk management tool for cryptocurrencies due to their custody-free nature, high leverage, and funding mechanism, but there has been little quantitative analysis on the their benefits. In this paper, we introduce a trading strategy that combines a Quanto Perpetual Swap with a spot position to benefit from the funding mechanism. We compare our strategy with a long-only investment in the underlying cryptocurrency and a similar strategy based on Linear Perpetual Swaps to evaluate their performances in a large-scale backtest covering the years 2021 and 2022. Our analysis shows that our strategy generates positive returns in bullish market phases of the underlying with lower volatility.",
-      "family": "funding_basis_carry",
+      "source_url": "https://www.semanticscholar.org/paper/8d4a45c1df00561f16ffd3e3f4ac5a0b4acf48c2",
+      "title": "Asset allocation for a DC pension plan with minimum guarantee constraint and hidden Markov regime-switching",
+      "description": "This paper is devoted to the study of the asset allocation problem for a DC pension plan with minimum guarantee constraint in a hidden Markov regime-switching economy. Suppose that four types of assets are available in the financial market: a risk-free asset, a zero-coupon bond, an inflation-indexed bond and a stock. The expected return rate of the stock depends on unobservable economic states, and the change of states is described by a hidden Markov chain. In addition, the CIR process is used to describe the evolution of the nominal interest rate. The contribution rate is also assumed to be stochastic. The goal of investment management is to minimize the convex risk measure of the terminal wealth in excess of the minimum guarantee constraint. First, we transform the partially observable optimization problem into the one with complete information using the Wonham filtering technique and deal with the minimum guarantee constraint by constructing auxiliary processes. Furthermore, we derive the optimal investment strategy by the BSDE approach. Finally, some numerical results are presented to illustrate the impacts of some important parameters on investment behaviors.",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "4f113f530677ecef",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd50faba8d460d36",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/ff04b35ff13283e61c75af50a6adb4e65b381c16",
-      "title": "A Study on Stock Trading Method based on Volatility Breakout Strategy using a Deep Neural Network",
-      "description": "",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2022",
       "lineage": {
-        "source": "bd50faba8d460d36",
-        "family": "volatility",
+        "source": "7129ac7a72fa510c",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "32d57cde827e100d",
+      "candidate_id": "b5fee4ad0e3f9d9a",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
-      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
-      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
-      "family": "volatility",
+      "source_url": "https://www.semanticscholar.org/paper/2a1d143d62fc3d514ecfd99d8c220196d20dabb0",
+      "title": "Bitcoin Price Regime Shifts: A Bayesian MCMC and Hidden Markov Model Analysis of Macroeconomic Influence",
+      "description": "Bitcoin\u2019s role in global finance has rapidly expanded with increasing institutional participation, prompting new questions about its linkage to macroeconomic variables. This study thoughtfully integrates a Bayesian Markov Chain Monte Carlo (MCMC) covariate selection process within homogeneous and non-homogeneous Hidden Markov Models (HMMs) to analyze 16 macroeconomic and Bitcoin-specific factors from 2016 to 2024. The proposed method integrates likelihood penalties to refine variable selection and employs a rolling-window bootstrap procedure for 1-, 5-, and 30-step-ahead forecasting. Results indicate a fundamental shift: while early Bitcoin pricing was primarily driven by technical and supply-side factors (e.g., halving cycles, trading volume), later periods exhibit stronger ties to macroeconomic indicators such as exchange rates and major stock indices. Heightened volatility aligns with significant events\u2014including regulatory changes and institutional announcements\u2014underscoring Bitcoin\u2019s evolving market structure. These findings demonstrate that integrating Bayesian MCMC within a regime-switching model provides robust insights into Bitcoin\u2019s deepening connection with traditional financial forces.",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2025",
       "lineage": {
-        "source": "32d57cde827e100d",
-        "family": "volatility",
+        "source": "b5fee4ad0e3f9d9a",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "6fa56e72564c67b5",
+      "candidate_id": "7e159a147d4e76b7",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
-      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
-      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
-      "family": "volatility",
+      "source_url": "https://www.semanticscholar.org/paper/3264d59964038341ea70b053895bc7ed8f91dae2",
+      "title": "Data Driven Investment Strategies Using Bayesian Inference in Regime\u2010Switching Models",
+      "description": "\n This article presents the benefits of using Bayesian algorithms to fit regime\u2010switching models to daily financial returns data in order to design trading strategies. Our study focuses on a Gaussian hidden Markov model (HMM). We show how the application of a simple smoothing technique preserves the hidden Markov structure and facilitates regime detection even in instances of highly volatile data. The effectiveness of a trading strategy, based on regime detection, may be hindered by a high rate of false signals, leading to numerous trades and, consequently, an escalation in transaction costs. By reducing variance through data smoothing, we enhance the persistence of regimes over time. We validate our statistical learning procedures using synthetic data prior to their application to real\u2010world financial data.",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2025",
       "lineage": {
-        "source": "6fa56e72564c67b5",
-        "family": "volatility",
+        "source": "7e159a147d4e76b7",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "f609682f5a89dcc5",
+      "candidate_id": "1cc7f591c282fa01",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/57ebb18873641f9ddc84504520360928a0fc73e1",
-      "title": "Climate risks and cryptocurrency volatility: evidence from crypto market crisis",
-      "description": "PurposeThis study aims to examine the impact of climate-related risks on cryptocurrency volatility during crisis periods, focusing on the physical risk index (PRI) and transition risk index (TRI). It investigates how acute and chronic climate events, alongside regulatory and technological changes, influence market dynamics in major cryptocurrencies, including Bitcoin, Ethereum, Litecoin and Ripple.Design/methodology/approachA fuzzy logic model is employed to evaluate the effects of PRI and TRI on cryptocurrency volatility. The model\u2019s accuracy is validated using root mean square error (RMSE) metrics to ensure reliability.FindingsThe results reveal that acute events (e.g. hurricanes and wildfires) and chronic risks (e.g. long-term environmental disruptions) significantly heighten cryptocurrency volatility. Transition risks, including regulatory and technological shifts, also play a pivotal role. Bitcoin and Ethereum exhibit the highest sensitivities, reflecting the critical influence of climate risks on market stability.Research limitations/implicationsThis study enriches the literature by integrating climate risk factors into cryptocurrency market analysis and advancing fuzzy logic models to assess non-linear interactions in financial markets. It provides a novel framework for evaluating external shocks\u2019 impact on digital assets.Practical implicationsInvestors and market participants can use these findings to incorporate climate risks into their investment strategies, diversify portfolios and anticipate periods of instability. The insights also guide policymakers in developing resilient frameworks that align cryptocurrency regulations with environmental goals.Social implicationsBy linking climate risks to cryptocurrency market behavior, this research emphasizes the need for sustainable investment practices and collaborative policy efforts. It advocates for integrating environmental sustainability into financial systems to mitigate systemic risks and promote economic",
-      "family": "volatility",
+      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
+      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
+      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "f609682f5a89dcc5",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "0b7e8e48263c5d84",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/3c14b7a0036f99e616e92f9b2eee400156962510",
-      "title": "Comparative Study of Automatic Trading and Buy-and-Hold in the S&P 500 Index Using a Volatility Breakout Strategy",
-      "description": "",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "0b7e8e48263c5d84",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4b0ee1965797ef34",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/521d76a9668628a32f4fbeb2da7a0eb1ec3e0356",
-      "title": "Crypto Volatility Forecasting: Mounting a HAR, Sentiment, and Machine Learning Horserace",
-      "description": "The relationship between investor sentiment and cryptocurrency market volatility remains an area of growing interest in empirical finance. In this study, we present an innovative forecasting approach by utilizing a unique dataset of AI-generated sentiment from a comprehensive database of crypto market news. In a horserace fashion, we first evaluate the Heterogeneous Autoregressive (HAR) model and then compare its forecasting performance to five advanced machine learning (ML) methods. ML performs reasonably well and improves the accuracy of the benchmark HAR model. Interestingly, including sentiment does not improve the forecasting accuracy of the HAR model. However, our findings highlight that investor sentiment seems to influence crypto market volatility in a nonlinear fashion that can (only) be captured by ML methods. In other words, LightGBM, XGBoost, and LSTM models show enhanced predictive accuracy when sentiment data is incorporated, improving no-sentiment forecasts in 54.17% of the cases studied. Overall, our results emphasize the significant potential of integrating machine learning and sentiment analysis as a promising avenue for improved forecasting, offering potential benefits for risk management strategies and provide valuable insights for researchers and practitioners.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2024",
       "lineage": {
-        "source": "4b0ee1965797ef34",
-        "family": "volatility",
+        "source": "1cc7f591c282fa01",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "cf6cbb16cb1eb537",
+      "candidate_id": "7c560fda9c9ee657",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "family": "volatility",
+      "source_url": "https://www.semanticscholar.org/paper/ab28e11db7fe9608f490ecd5159c567f167c0855",
+      "title": "From Crypto to Stocks: A Hidden Markov Analysis of Trading App Gateway Effects",
+      "description": "",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "7c560fda9c9ee657",
+        "family": "regime",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0eae0e803b8a8020",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fd4622626a7819c86ae6d9ab91cf211291ba4474",
+      "title": "Markov Regime-Switching Intelligent Driver Model for Interpretable Car-Following Behavior",
+      "description": "Accurate and interpretable car-following models are essential for traffic simulation and autonomous vehicle development. However, classical models like the Intelligent Driver Model (IDM) are fundamentally limited by their parsimonious and single-regime structure. They fail to capture the multi-modal nature of human driving, where a single driving state (e.g., speed, relative speed, and gap) can elicit many different driver actions. This forces the model to average across distinct behaviors, reducing its fidelity and making its parameters difficult to interpret. To overcome this, we introduce a regime-switching framework that allows driving behavior to be governed by different IDM parameter sets, each corresponding to an interpretable behavioral mode. This design enables the model to dynamically switch between interpretable behavioral modes, rather than averaging across diverse driving contexts. We instantiate the framework using a Factorial Hidden Markov Model with IDM dynamics (FHMM-IDM), which explicitly separates intrinsic driving regimes (e.g., aggressive acceleration, steady-state following) from external traffic scenarios (e.g., free-flow, congestion, stop-and-go) through two independent latent Markov processes. Bayesian inference via Markov chain Monte Carlo (MCMC) is used to jointly estimate the regime-specific parameters, transition dynamics, and latent state trajectories. Experiments on the HighD dataset demonstrate that FHMM-IDM uncovers interpretable structure in human driving, effectively disentangling internal driver actions from contextual traffic conditions and revealing dynamic regime-switching patterns. This framework provides a tractable and principled solution to modeling context-dependent driving behavior under uncertainty, offering improvements in the fidelity of traffic simulations, the efficacy of safety analyses, and the development of more human-centric ADAS.",
+      "family": "regime",
+      "market": null,
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2025",
       "lineage": {
-        "source": "cf6cbb16cb1eb537",
-        "family": "volatility",
+        "source": "0eae0e803b8a8020",
+        "family": "regime",
         "rounds": []
       }
     },
     {
-      "candidate_id": "b78e6c722d78454e",
+      "candidate_id": "cb78aa1cdcacc351",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c40c802b1fb478ecfad6f4ce5044870631327173",
-      "title": "The Implementation and Refinement of Range Breakout Strategy in Chinese Commodity Market",
-      "description": "The range breakout strategy is a momentum strategy that involves taking a long position in a security when its price exceeds a predetermined range and a short position when the price falls below the range. Previous research has indicated that this strategy is well-suited to the price volatility patterns observed in commodity markets. Considering the significant expansion and di-versification of China's commodity market in recent years, we decided to apply the range breakout strategy to China's commodity futures market and assess its feasibility and profitability. Our research utilized historical performance data from the Zhengzhou Commodity Exchange and Shanghai Future Exchange between September 1, 2012, and July 31, 2022, obtained from CSMR as our database. We focused on the top 27 most liquid commodity futures categories to construct our back-testing portfolio. Our approach centered around using volatility as the basis for entry signals in the range breakout strategy and signal weighting as a portfolio construction method. The results demonstrate that the range breakout strategy, based on volatility, is highly effective in China's commodity futures market. This research con-tributes to the enrichment of optimization strategies in China's Future Market. Furthermore, we explored the use of cross-commodity hedging and the Average True Range (ATR) indicator to further enhance the strategy. Although no practical improvements were discovered beyond the original strategy, this exploration offers valuable insights for future research.",
-      "family": "momentum_trend",
+      "source_url": "https://www.semanticscholar.org/paper/abdab89a09f03c09a5361a7e89cb3c71b6d707b3",
+      "title": "On robust estimation of hidden semi-Markov regime-switching models",
+      "description": "",
+      "family": "regime",
       "market": null,
-      "query": "crypto volatility breakout strategy",
+      "query": "crypto regime switching hidden Markov trading",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "cb78aa1cdcacc351",
+        "family": "regime",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ea2f83a0f6917151",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4c6b7ce28d4f0b5392a772245eba1a81cfd1910f",
+      "title": "Regime-switching in bitcoin volatility under global uncertainty: Markov-switching GARCH and hidden Markov Copula approaches",
+      "description": "",
+      "family": "regime",
+      "market": null,
+      "query": "crypto regime switching hidden Markov trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "ea2f83a0f6917151",
+        "family": "regime",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ee32d8530a2d65b8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fb41baf577bdf4e33739727683d9074faaf4f520",
+      "title": "Time-consistent investment strategy for a DC pension plan with hidden Markov regime switching",
+      "description": "",
+      "family": "regime",
+      "market": null,
+      "query": "crypto regime switching hidden Markov trading",
       "source_timestamp": "2023",
       "lineage": {
-        "source": "b78e6c722d78454e",
-        "family": "momentum_trend",
+        "source": "ee32d8530a2d65b8",
+        "family": "regime",
         "rounds": []
       }
     },
@@ -27657,6 +28569,166 @@
       }
     },
     {
+      "candidate_id": "051a6d6de8bca0cc",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/9106059acb0cde3c4dc5d528577307c2a77fd067",
+      "title": "A Futures Quantitative Trading Strategy Based on a Deep Reinforcement Learning Algorithm",
+      "description": "Deep reinforcement learning (DRL) is a type of machine learning algorithm that has gained a lot of attention for its application in the financial field. Based on the proximal policy optimization algorithm (PPO) in deep reinforcement learning, this paper designs a trading strategy for the Chinese futures market, and realizes the end-to-end decision-making process from futures data to trading actions. Afterwards, using domestic rebar futures data, multiple historical data were selected for backtesting, and compared with traditional trading strategies. The results show that in the 12 selected test periods, 83.3% of the test periods are profitable, which is better than 33.3% of mean reversion (MR) and 25% of trend following (TF). It shows that the strategy proposed by us shows good adaptability when the futures market rises or falls compared with traditional methods, and can reduce losses through trading even when the market price changes significantly, thus increasing the return on investment.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "051a6d6de8bca0cc",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ec2ba65cac4e9f8b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f06ebb214c8f4851482885bad93ccf22946407c5",
+      "title": "A Quantitative Trading Strategy Study Based on Unsupervised Clustering and Deep Time-Series Classification",
+      "description": "Using daily A-share data, this study proposes an end-to-end framework linking unsupervised pattern discovery, weakly supervised classification, and rolling backtesting. Standardised sliding-window price series are clustered using K-means, which shows clearer pattern separation than a Gaussian Mixture Model (GMM) under the internal clustering metrics considered. A representative target pattern is then selected to generate weak labels for training an InceptionTime classifier, mapping pattern recognition directly into trading signals. In a rigorous 2025 out-of-sample backtest\u2014incorporating 0.15% round-trip costs and strict execution rules to prevent look-ahead bias\u2014the 15-day rebalancing strategy achieves a 33.19% annualised return, a 1.47 Sharpe ratio, and a 15.93% maximum drawdown. The strategy also exhibits strong resilience under leverage stress tests. Overall, this closed-loop pipeline offers a robust, reusable implementation path for pattern-based quantitative strategies.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "ec2ba65cac4e9f8b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e80450e4a510bca7",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/322cc5ce3c72095dd598a9ad7fc2a2b5c044474e",
+      "title": "Deep Learning-Based Financial Time Series Forecasting and Quantitative Trading Strategy Optimization",
+      "description": "Financial time series (e.g., stock prices, index returns) exhibit inherent characteristics such as non-stationarity, volatility clustering, and nonlinearity, which pose significant challenges to traditional forecasting models. This study proposes a comprehensive framework integrating deep learning (DL) models for time series forecasting and quantitative trading strategy design to address these challenges. First, we compare the forecasting performance of three state-of-the-art DL architectures\u2014Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU), and Temporal Fusion Transformer (TFT)\u2014against classical models (ARIMA, GARCH) using the S&P 500 index (2010\u20132023) as the experimental dataset. Second, we design a rule-based quantitative trading strategy based on the DL model's price predictions, incorporating stop-loss, take-profit, and position management rules. Experimental results show that the TFT model outperforms other models in forecasting accuracy: it achieves a Mean Absolute Percentage Error (MAPE) of 1.23%, which is 42.1% and 28.5% lower than ARIMA (2.12%) and LSTM (1.72%), respectively. In the trading backtest (2022\u20132023), the TFT-based strategy delivers an annualized return of 15.2%, a maximum drawdown of 12.3%, and a Sharpe ratio of 1.8\u2014outperforming the buy-and-hold strategy (8.7% annualized return, 25.6% maximum drawdown, 0.9 Sharpe ratio). This framework provides both theoretical insights for DL applications in financial forecasting and practical guidance for quantitative trading.",
+      "family": "volatility",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "e80450e4a510bca7",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2e5f5b4821040351",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
+      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
+      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2e5f5b4821040351",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af0f7de51c154b70",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c0e91ab5b88755c9d786bd2c5769daaa2f05a04b",
+      "title": "FinRL-X: An AI-Native Modular Infrastructure for Quantitative Trading",
+      "description": "We present FinRL-X, a modular and deployment-consistent trading architecture that unifies data processing, strategy construction, backtesting, and broker execution under a weight-centric interface. While existing open-source platforms are often backtesting- or model-centric, they rarely provide system-level consistency between research evaluation and live deployment. FinRL-X addresses this gap through a composable strategy pipeline that integrates stock selection, portfolio allocation, timing, and portfolio-level risk overlays within a unified protocol. The framework supports both rule-based and AI-driven components, including reinforcement learning allocators and LLM-based sentiment signals, without altering downstream execution semantics. FinRL-X provides an extensible foundation for reproducible, end-to-end quantitative trading research and deployment. The official FinRL-X implementation is available at https://github.com/AI4Finance-Foundation/FinRL-Trading.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "af0f7de51c154b70",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fa54921d0aa678f8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f32cf29229250e758057c7c1b325df1973c0c42e",
+      "title": "Market-Bench: Evaluating Large Language Models on Introductory Quantitative Trading and Market Dynamics",
+      "description": "We introduce MARKET-BENCH, a benchmark that evaluates large language models (LLMs) on introductory quantitative trading tasks by asking them to construct executable backtesters from natural language strategy descriptions and market assumptions. Each instance specifies one of three canonical strategies: scheduled trading on Microsoft (NASDAQ: MSFT), pairs trading on Coca-Cola (NASDAQ: KO) and Pepsi (NASDAQ: PEP), or delta hedging on MSFT. Models must produce code whose profit and loss (P and L), drawdown, and position paths match a verifiable reference implementation. We assess thirteen state-of-the-art models using a multi-round evaluation that separates structural reliability (whether the backtest runs) from numerical accuracy (mean absolute error of the backtest metrics), assigning failed outputs a duplicated-metrics baseline MAE. While most models reliably execute the simplest strategy (average executable passes of 4.08 out of 5 rounds), errors vary by orders of magnitude across models and tasks. Gemini 3 Pro and Claude 4.5 Sonnet combine strong reliability with low error on simpler strategies. GPT-5.2 achieves strong overall performance with perfect executability. GPT-5.1 Codex-Max achieves the lowest best-run error on the easiest task. Qwen3 Max attains perfect executability yet sometimes produces inaccurate profit and loss paths. These results show that current LLMs can scaffold basic trading infrastructure but still struggle to reason robustly about prices, inventory, and risk. We release MARKET-BENCH and a public leaderboard at https://marketbench.ai.",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "fa54921d0aa678f8",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1da095c3c7165647",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/8020d3010804588bbb9f2de3dd7166f8960dd160",
+      "title": "Quantitative Trading Strategy, Backtesting, and Performance Analysis Using Python: A Data-Driven Analysis",
+      "description": "Background: The Nepal Stock Exchange (NEPSE) remains dominated by traditional trading behaviors, often driven by intuition and Fear of Missing Out (FOMO), rather than data or models. Despite global progress in algorithmic strategies, quantitative methods remain underutilized in Nepal\u2019s equity market \nObjectives: This study aims to design, implement, and evaluate a rule-based, long-only quantitative trading strategy tailored for NEPSE, comparing its performance to the standard Buy & Hold approach. The goal is to assess whether systematic models can improve capital protection and risk-adjusted performance in inefficient market settings. \nDesign/methodology/approach: A Python-based backtesting framework is developed, combining momentum and mean-reversion indicators such as the Z-score, Relative Strength Index (RSI), and a 240-day moving average to generate buy signals. Realistic trading constraints are incorporated, including dynamic position sizing based on risk, trade limits, and cool down periods. Performance is benchmarked against Buy & Hold using financial metrics such as CAGR, Sharpe Ratio, Sortino Ratio, Maximum Drawdown, Win Rate, Profit Factor, and Recovery Factor. Monte Carlo simulations, return distribution analysis, and sensitivity checks are applied to ensure robustness. \nResults: While the strategy does not significantly outperform Buy & Hold in terms of raw daily returns, it shows superior performance on risk-adjusted metrics. It achieves a higher Sharpe and Sortino ratio and significantly lower drawdowns, confirming better risk control and capital preservation. \nConclusions: The findings suggest that even simple, rule-based quantitative systems can offer tangible benefits in emerging markets, such asNEPSE by reducing behavioral noise and enhancing portfolio discipline. The study supports the broader adoption of systematic methods in local trading environments. \nKeywords: Quantitative Trading, NEPSE, Risk Management, Algorithmic Strategy, Backtesting.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "1da095c3c7165647",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c2dd84158993e060",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4639c1109a00b56c81de92b6cbb4a9d8241cfb81",
+      "title": "Research on dynamic multi-strategy integration of quantitative trading based on deep reinforcement learning",
+      "description": "In this article, we introduce a framework called Financial Strategy Reinforcement Learning (FSRL) to address the challenges posed by dynamic and complex financial markets, which relies on modeling multi-strategy choices as Markov decision processes (MDP) to dynamically adapt to a wide variety of market conditions and optimize risk and return. This study combines a finite state machine (FSM) with a standardized backtest environment, which has the benefit of ensuring that the robustness and repeatability of the strategy can be evaluated. We conducted validation experiments using major market indexes in China and the United States, and the results of the experiments show that the FSRL framework has advantages over traditional methods. It achieves a higher Sharpe ratio, a higher return, and a better risk control effect. This research provides a scalable and innovative solution for promoting quantitative trading and dynamic strategy integration.",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "c2dd84158993e060",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1c82a4041c11b16c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b03b76e5d1da4cc2e07becba2ef4922f9da4fc39",
+      "title": "Research on the Quantitative Trading Strategy Based on Bollinger Band Strategy and Polynomial Regression Model",
+      "description": "First, this paper made time-price line charts for gold and bitcoin and analyzed their primary trend of flat-rising. Subsequently, we established the Bollinger Bands strategy and a regression polynomial combinatorial model in Python to make the trade points precise. We import gold and bitcoin data into the model, respectively, and let it automatically perform graphing and data processing to obtain the fitting images, optimal fitting times, model coefficient list, and model intercept of the gold and bitcoin PR models. Afterward, we determined the trading conditions, stop-loss levels, and commissions and used the Bollinger Bands strategy to backtest the five-year trading to obtain the trading results of a single strategy. Based on the conservative principle of risk hedging and split-position trading, we reset the position distribution combined the Bollinger Bands strategy and the regression polynomial combination model into a comprehensive model. This paper plotted the fluctuations of gold and bitcoin in the time dimension. The comprehensive model shows the characteristics of high total return, low total transaction cost, and small maximum drawdown, which proves that the comprehensive model provides the best strategy.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "1c82a4041c11b16c",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "27b920e4342e941b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5f27251d79cd4816c900f898914f90e35477f29a",
+      "title": "The Driving Engine of Quantitative Trading Strategy Based on Event Processing",
+      "description": "The event-based quantitative trading system can avoid human subjective judgment errors in the stock and futures trading markets, and the development of quantitative trading strategies based on \"high probability\" events in history can obtain ideal returns. It is essentially a discrete event processing system. It uses a computer to simulate and process random events with high probability. The core of the quantitative trading system is its engine part driven by transaction data. These transaction data can be regarded as a series of discrete events. This article summarizes and introduces the strategy-driven engine part of the quantitative trading system based on the open source quantitative trading framework VNPY as an example. It mainly includes a real trading operation engine module and a strategy backtesting module. The real trading engine links the trading market to obtain real-time data and uses quantitative strategies for trading; the backtest module runs to test trading strategies and optimizes the strategy parameters.",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "27b920e4342e941b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6211abb831812068",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/e75aa08e17b304c22256e2faaf6215fb05f531cc",
@@ -28105,6 +29177,22 @@
       }
     },
     {
+      "candidate_id": "ad9399b71f887dc2",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
+      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
+      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ad9399b71f887dc2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "8899c0159fa02af3",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/7e80a1d3be3f6edd3c9323ec2661905f59ae9124",
@@ -28132,22 +29220,6 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "4c4f92efe5f1e3da",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "85412db3f2f10d5b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
-      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
-      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "85412db3f2f10d5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -28389,6 +29461,22 @@
       "lineage": {
         "source": "df63befed808f2f5",
         "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "85412db3f2f10d5b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
+      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
+      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "85412db3f2f10d5b",
+        "family": "unknown",
         "rounds": []
       }
     },
