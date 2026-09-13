@@ -1,21 +1,23 @@
 [
   {
-    "bc": 167,
-    "candidate_hash": "b377d7799ec73c842d50d07f164ec484e04b0f093ea7a5aa1b5bed6d9cb8b0fb",
-    "conceptual_change": "Integration of liquidity sweep detection and Fair Value Gap (FVG) identification as the primary mechanism for BTCUSDT 1H trend reversal entries.",
+    "bc": 168,
+    "candidate_hash": "53827b3feea3213487e50fa250bc05034c27a317145e8f798f72ed6e3452ee45",
+    "conceptual_change": "Transitioning from stochastic convergence to a pure rolling volatility breakout mechanic for 1H BTCUSDT to identify expansion regimes.",
     "discovery_spec": {
       "direction": "above",
-      "mechanism_family": "smc_ict",
-      "operator": "delta",
-      "threshold": 0.05
+      "left": "range_ratio",
+      "mechanism_family": "volatility",
+      "operator": "rolling_std",
+      "threshold": 0.25,
+      "window": 5
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 166,
+    "parent_bc": 167,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

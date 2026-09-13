@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 0,
+  "campaign_screened": 1,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 1025,
-  "current_bc": 167,
+  "checkpoint_seq": 1035,
+  "current_bc": 168,
   "history": [
     {
       "bc": 1,
@@ -1029,17 +1029,23 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 167,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 143,
-  "last_bc": 166,
-  "last_error": "HOLD_PROVIDER_REPAIR",
-  "next_bc": 167,
+  "iterations": 145,
+  "last_bc": 168,
+  "last_error": "HOLD_EVALUATOR",
+  "next_bc": 168,
   "oos_consumed": [],
   "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T06:58:40.411794+00:00"
+  "updated_at": "2026-09-13T07:10:23.291514+00:00"
 }
