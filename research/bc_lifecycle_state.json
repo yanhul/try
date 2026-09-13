@@ -7,8 +7,8 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 1016,
-  "current_bc": 166,
+  "checkpoint_seq": 1017,
+  "current_bc": 167,
   "history": [
     {
       "bc": 1,
@@ -1033,13 +1033,13 @@
   ],
   "iterations": 143,
   "last_bc": 166,
-  "last_error": "HOLD_NO_FAILURE_ANALYSIS",
+  "last_error": "HOLD_PROVIDER_ROUTER",
   "next_bc": 167,
   "oos_consumed": [],
-  "phase": "HOLD",
+  "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T06:38:38.320849+00:00"
+  "updated_at": "2026-09-13T06:39:44.041505+00:00"
 }
