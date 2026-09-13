@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 41,
+  "campaign_screened": 35,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 1294,
-  "current_bc": 208,
+  "checkpoint_seq": 1258,
+  "current_bc": 202,
   "history": [
     {
       "bc": 1,
@@ -1239,53 +1239,17 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 202,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 203,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 204,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 205,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 206,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
-    },
-    {
-      "bc": 207,
-      "decision": "REJECT",
-      "hypothesis_id": "mechanism_family",
-      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 187,
-  "last_bc": 208,
+  "iterations": 181,
+  "last_bc": 202,
   "last_error": "HOLD_OOS_EXECUTOR_OR_AUTHORITY",
-  "next_bc": 208,
+  "next_bc": 202,
   "oos_consumed": [],
   "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T08:28:27.660832+00:00"
+  "updated_at": "2026-09-13T08:28:49.815062+00:00"
 }
