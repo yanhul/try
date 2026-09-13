@@ -55,7 +55,9 @@ def test_new_campaign_epoch_ignores_prior_history_for_budget(monkeypatch, tmp_pa
     assert state["campaign_screened"] == 0
 
 
-def test_new_campaign_epoch_counts_only_post_boundary_history():
+def test_new_campaign_epoch_counts_only_post_boundary_history(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
     state = {
         "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
         "campaign_epoch_initialized": True,
