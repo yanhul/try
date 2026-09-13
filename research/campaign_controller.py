@@ -48,7 +48,7 @@ def reconcile_campaign_state(state,budget):
     for bc in range(start,completed+1):
         if bc in known: continue
         c=load(CANDIDATE_DIR/f'BC{bc}.json',{}); f=load(FAILURE_DIR/f'BC{bc}.json',{}); d=f.get('decision')
-        if d not in {'PROMOTE_TO_FUTURE_OOS_TEST','REJECT'}: continue
+        if d not in QUALIFY: continue
         history.append({'bc':bc,'decision':d,'hypothesis_id':c.get('hypothesis_id') or f.get('hypothesis_id'),'candidate_hash':c.get('candidate_hash') or f.get('candidate_hash'),'reason':f.get('reason')}); repaired+=1
     state['campaign_start_bc']=start; state['history']=sorted(history,key=lambda x:int(x.get('bc',0)) if isinstance(x,dict) and str(x.get('bc','')).isdigit() else 0)
     screened=len(qualifying_bcs(history,start)); state['campaign_screened']=min(screened,int(budget))
@@ -72,12 +72,13 @@ def _start_new_campaign_epoch(state,policy):
     state.update(campaign_id=pid,campaign_epoch_initialized=True,campaign_start_bc=start,next_bc=start,campaign_screened=0,campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason=None,phase='OBSERVE',last_error=None,retry_count=0,terminal=False)
     print(f'CAMPAIGN_NEW_EPOCH id={pid} start_bc={start} prior_id={old or "none"}'); save(state)
 
-def _seed_failure(parent,start):
+def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
-    if p.exists(): return p
+    if p.exists(): return None
     if parent==start-1:
-        q=ROOT/'research'/'.epoch_seed_failure.json'; q.write_text(json.dumps({'decision':'SEED_EPOCH','parent_bc':parent,'reason':'Epoch seed only; no prior failure evidence. Do not treat as research evidence.'})+'\n',encoding='utf-8'); return q
-    return p
+        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'
+        q.write_text(json.dumps({'decision':'SEED_EPOCH','parent_bc':parent,'reason':'Epoch seed only; no prior failure evidence. This artifact is repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
+    return None
 
 def main():
     policy=load(POLICY,None)
@@ -90,14 +91,16 @@ def main():
     _start_new_campaign_epoch(state,policy)
     _,start,screened=reconcile_campaign_state(state,budget)
     if state.get('campaign_terminal'):
-        o=state.get('campaign_outcome');
+        o=state.get('campaign_outcome')
         if o not in outcomes: print(f'CAMPAIGN_BLOCKED persisted_invalid_terminal_outcome={o}'); return 3
         print(f"CAMPAIGN_TERMINAL outcome={o} screened={state.get('campaign_screened',0)}/{budget}"); return 0
     if screened>=budget: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',screened,budget)
-    env=dict(os.environ); env['RESEARCH_MAX_ITERATIONS']=str(min(batch,budget-screened))
-    before=qualifying_bcs(state.get('history',[]),start)
+    env=dict(os.environ); env['RESEARCH_MAX_ITERATIONS']=str(min(batch,budget-screened)); before=qualifying_bcs(state.get('history',[]),start)
     print(f'CAMPAIGN_START screened={screened}/{budget} batch={env["RESEARCH_MAX_ITERATIONS"]} start_bc={start}')
-    rc=subprocess.run([sys.executable,'research/bc_controller.py'],cwd=ROOT,env=env).returncode
+    expected=int(state.get('next_bc',start)); seed=_epoch_seed_failure(expected-1,start)
+    try: rc=subprocess.run([sys.executable,'research/bc_controller.py'],cwd=ROOT,env=env).returncode
+    finally:
+        if seed is not None and seed.exists(): seed.unlink()
     if rc: return rc
     state=load(STATE,{}); _,start,after=reconcile_campaign_state(state,budget)
     if state.get('phase') in {'WAIT_RETRY','HOLD'} or state.get('last_error'):
