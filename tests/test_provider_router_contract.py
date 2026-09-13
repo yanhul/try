@@ -40,12 +40,21 @@ def test_non_executable_survivor_cannot_be_grounded():
         ground_candidate(candidate, selected)
 
 
-def test_executable_survivor_family_is_canonicalized_deterministically():
-    candidate = {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "identity", "left": "close", "threshold": 0, "direction": "above"}}
-    selected = {"family": "smc_ict", "source_url": "https://example.test/source"}
+def test_executable_survivor_translation_is_preserved():
+    candidate = {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "zscore", "left": "close", "window": 20, "threshold": 1.5, "direction": "above"}}
+    selected = {"family": "mean_reversion", "source_url": "https://example.test/source"}
     grounded = ground_candidate(candidate, selected)
-    assert grounded["hypothesis_id"] == "mechanism_family"
-    assert grounded["discovery_spec"] == {"mechanism_family": "smc_ict", "threshold": 0, "direction": "above"}
+    assert grounded["hypothesis_id"] == "discovered_primitive"
+    assert grounded["discovery_spec"]["operator"] == "zscore"
+    assert grounded["discovery_spec"]["threshold"] == 1.5
+    assert grounded["evidence_sources"] == ["https://example.test/source"]
+
+
+def test_mechanism_family_must_match_selected_survivor():
+    candidate = {"hypothesis_id": "mechanism_family", "discovery_spec": {"mechanism_family": "smc_ict", "threshold": 0, "direction": "above"}}
+    selected = {"family": "mean_reversion", "source_url": "https://example.test/source"}
+    with pytest.raises(ValueError, match="selected_family_mismatch"):
+        ground_candidate(candidate, selected)
 
 
 def test_cross_sectional_source_is_not_btc_translatable():
