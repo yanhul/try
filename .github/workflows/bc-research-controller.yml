@@ -27,7 +27,6 @@ jobs:
       RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini
-      # Gemini Flash is currently 15 RPM / 250k TPM. Keep substantial headroom.
       RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS: 5
       RESEARCH_PROVIDER_RATE_RETRIES: 1
       RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS: 120
@@ -82,11 +81,12 @@ jobs:
           import os
           import json
           from pathlib import Path
-          from research.campaign_controller import reconcile_campaign_state
+          from research.campaign_controller import _start_new_campaign_epoch, reconcile_campaign_state
           policy=json.loads(Path('research/campaign_policy.json').read_text())
           state_path=Path('research/bc_lifecycle_state.json')
           state=json.loads(state_path.read_text()) if state_path.exists() else {}
           budget=int(policy['max_screening_candidates'])
+          _start_new_campaign_epoch(state, policy)
           _, start, screened=reconcile_campaign_state(state, budget)
           exhausted=bool(state.get('campaign_terminal')) or screened >= budget
           Path(os.environ['GITHUB_OUTPUT_PATH']).open('a').write(f"exhausted={'true' if exhausted else 'false'}\n")
