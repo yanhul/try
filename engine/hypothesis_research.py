@@ -15,6 +15,7 @@ from .risk_exit import FixedRiskRewardExit
 from .strategy import ReferenceStrategy
 from .hypotheses import HYPOTHESES
 from .composition import generate_composites
+from .trading_features import momentum_trend,mean_reversion_zscore,volume_spread
 
 @dataclass(frozen=True)
 class PreparedSplit:
@@ -39,8 +40,9 @@ def prepare_split(bars,start,end,*,pnf_box_fraction=0.01):
  ledger=[t for t in build_ledger(events) if start<=t.entry_bar<end]
  features=extract_features(history); specific=extract_specific_features(history); vol=rolling_volatility(history); vw=vwap(history); gann=gann_reference(history); mtf=multi_timeframe_context(history); vp_poc=rolling_volume_profile_poc(history)
  first_close=abs(history[0].close) if history else 1.0; box=max(1e-9,first_close*pnf_box_fraction); pnf_direction=point_figure_directions(history,PnFConfig(box_size=box))
+ mom=momentum_trend(history); mr=mean_reversion_zscore(history); vsa=volume_spread(history)
  def row(index):
-  base=dict(features[index]); base.update(specific[index]); base["close"]=history[index].close; base["open"]=history[index].open; base["high"]=history[index].high; base["low"]=history[index].low; base["volume"]=history[index].volume; base["volatility"]=vol[index]; base["vwap"]=vw[index]; base["vwap_distance"]=((history[index].close-vw[index])/vw[index]) if vw[index] else None; base["volume_ratio"]=(history[index].volume/history[index-1].volume) if index>0 and history[index-1].volume else None; base["range_ratio"]=((history[index].high-history[index].low)/(history[index-1].high-history[index-1].low)) if index>0 and history[index-1].high!=history[index-1].low else None; base["close_location"]=((history[index].close-history[index].low)/(history[index].high-history[index].low)) if history[index].high!=history[index].low else None; base["volume_profile_poc"]=vp_poc[index]; base.update(mtf[index]); base["gann_slope"]=gann[index]["slope"]; base["pnf_direction"]=pnf_direction[index]; return base
+  base=dict(features[index]); base.update(specific[index]); base["close"]=history[index].close; base["open"]=history[index].open; base["high"]=history[index].high; base["low"]=history[index].low; base["volume"]=history[index].volume; base["volatility"]=vol[index]; base["vwap"]=vw[index]; base["vwap_distance"]=((history[index].close-vw[index])/vw[index]) if vw[index] else None; base["volume_ratio"]=(history[index].volume/history[index-1].volume) if index>0 and history[index-1].volume else None; base["range_ratio"]=((history[index].high-history[index].low)/(history[index-1].high-history[index-1].low)) if index>0 and history[index-1].high!=history[index-1].low else None; base["close_location"]=((history[index].close-history[index].low)/(history[index].high-history[index].low)) if history[index].high!=history[index].low else None; base["volume_profile_poc"]=vp_poc[index]; base.update(mtf[index]); base["gann_slope"]=gann[index]["slope"]; base["pnf_direction"]=pnf_direction[index]; base["momentum_trend"]=mom[index]; base["mean_reversion"]=mr[index]; base["wyckoff_vsa_vpa"]=vsa[index]["close_location"]; base["regime"]=mtf[index].get("regime",0); base["seasonality"]=history[index].timestamp.weekday(); base["point_figure"]=pnf_direction[index]; base["gann_reference"]=gann[index]["slope"]; base["vwap_volume_profile"]=((history[index].close-vw[index])/vw[index]) if vw[index] else None; return base
  rows=[row(i) for i in range(len(history))]
  contexts=[{"sweep":row(t.sweep_bar),"mss":row(t.mss_bar),"fvg":row(t.fvg_bar),"entry":row(t.entry_bar),"history":rows[:t.entry_bar+1]} for t in ledger]
  return PreparedSplit(history=history,ledger=ledger,contexts=contexts)
