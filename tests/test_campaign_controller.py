@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
+import sys
 
-from research.campaign_controller import continuation_allowed, qualifying_bcs, reconcile_campaign_state
+from research.campaign_controller import controller_command, continuation_allowed, qualifying_bcs, reconcile_campaign_state
 from research.bc_controller import epoch_seed_failure
 
 
@@ -102,3 +103,7 @@ def test_epoch_seed_contract_is_consumed_only_from_controller_path(monkeypatch):
         assert epoch_seed_failure(165, 167) is None
     finally:
         seed.unlink(missing_ok=True)
+
+
+def test_controller_is_invoked_as_package_module():
+    assert controller_command() == [sys.executable, "-m", "research.bc_controller"]
