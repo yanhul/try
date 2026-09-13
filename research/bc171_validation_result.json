@@ -1,15 +1,15 @@
 {
   "schema_version": 9,
-  "bc": 170,
-  "parent_bc": 169,
+  "bc": 171,
+  "parent_bc": 170,
   "hypothesis_id": "mechanism_family",
-  "candidate_hash": "f9a6910c4a8f2011e39675fc966b3e5202f4d2269235efc6411058369a1fffbc",
+  "candidate_hash": "f8dfa654224be9b1357325e4d2452a76225af6b27bbb8a8be89b550b054ee4b9",
   "discovery_spec": {
     "direction": "above",
     "left": "close",
-    "mechanism_family": "momentum_trend",
+    "mechanism_family": "smc_ict",
     "operator": "zscore",
-    "threshold": 1.5
+    "threshold": 2.0
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -24,7 +24,7 @@
     "cost_model_status": "AVAILABLE",
     "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
   },
-  "candidate_universe": "all_bars",
+  "candidate_universe": "reference_event_ledger",
   "cost_model": {
     "status": "AVAILABLE",
     "label": "generic_spot_preregistered",
@@ -35,10 +35,10 @@
     "assumption_scope": "research_assumption_not_venue_specific"
   },
   "IS": {
-    "candidate_trades": 2173,
+    "candidate_trades": 12,
     "accepted_signals": 0,
     "skipped_overlap_trades": 0,
-    "candidate_universe": "all_bars",
+    "candidate_universe": "reference_event_ledger",
     "metrics": {
       "trade_count": 0,
       "win_count": 0,
@@ -60,10 +60,10 @@
     }
   },
   "VALIDATION": {
-    "candidate_trades": 725,
+    "candidate_trades": 2,
     "accepted_signals": 0,
     "skipped_overlap_trades": 0,
-    "candidate_universe": "all_bars",
+    "candidate_universe": "reference_event_ledger",
     "metrics": {
       "trade_count": 0,
       "win_count": 0,

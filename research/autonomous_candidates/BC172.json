@@ -1,0 +1,21 @@
+{
+  "bc": 172,
+  "candidate_hash": "a2175e8f4cd6db1cc199f8a7b6325da5ae455fe0932a4415da3b6bd6b35b1ce9",
+  "conceptual_change": "Implement a mean-reversion statistical arbitrage logic by identifying extreme price departures from the moving average, specifically tracking normalized deviations in the BTCUSDT 1H close price to capture localized overextensions.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 171,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

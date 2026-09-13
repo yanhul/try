@@ -1,13 +1,14 @@
 {
-  "bc": 170,
-  "candidate_hash": "f9a6910c4a8f2011e39675fc966b3e5202f4d2269235efc6411058369a1fffbc",
-  "conceptual_change": "Implement a trend-following logic by measuring the z-score of the rolling mean of the price relative to the 100-period mean, identifying persistent momentum states.",
+  "bc": 173,
+  "candidate_hash": "1579eae580823004114335e7722328056865f4417e8de80a818cd9dfc4820c56",
+  "conceptual_change": "Incorporate a systematic momentum trend-following approach by utilizing rolling Z-score distributions of 1H close prices to isolate high-conviction trend breakouts, avoiding mean-reversion artifacts.",
   "discovery_spec": {
     "direction": "above",
     "left": "close",
     "mechanism_family": "momentum_trend",
     "operator": "zscore",
-    "threshold": 1.5
+    "threshold": 2.5,
+    "window": 50
   },
   "evidence_sources": [
     "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
@@ -15,6 +16,6 @@
   "hypothesis_id": "mechanism_family",
   "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 169,
+  "parent_bc": 172,
   "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
 }

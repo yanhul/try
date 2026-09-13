@@ -1,0 +1,21 @@
+{
+  "bc": 174,
+  "candidate_hash": "a2023c8e19b4067f283cd4de7315dc69afffca259bffaa0da382d84b76397530",
+  "conceptual_change": "Implement ICT Liquidity Sweep identification via price action relative to short-term rolling highs and lows, specifically looking for breakout patterns followed by rapid reversals (sweeps) relative to the 20-period range.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "low",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 173,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

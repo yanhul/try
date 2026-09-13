@@ -1,15 +1,16 @@
 {
   "schema_version": 9,
-  "bc": 170,
-  "parent_bc": 169,
+  "bc": 173,
+  "parent_bc": 172,
   "hypothesis_id": "mechanism_family",
-  "candidate_hash": "f9a6910c4a8f2011e39675fc966b3e5202f4d2269235efc6411058369a1fffbc",
+  "candidate_hash": "1579eae580823004114335e7722328056865f4417e8de80a818cd9dfc4820c56",
   "discovery_spec": {
     "direction": "above",
     "left": "close",
     "mechanism_family": "momentum_trend",
     "operator": "zscore",
-    "threshold": 1.5
+    "threshold": 2.5,
+    "window": 50
   },
   "oos_selection_used": false,
   "oos_executed": false,

@@ -1,0 +1,21 @@
+{
+  "bc": 177,
+  "candidate_hash": "0b4436e8c7450d4316201168288cc5aada0d510578e598523b6e575304d44ab4",
+  "conceptual_change": "Implement a liquidity sweep detection mechanism using BTCUSDT 1H OHLCV data, identifying price action that probes institutional liquidity zones (highs/lows) followed by a structural displacement, aligning with the ICT/SMC methodology of capturing order flow reversals.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "high",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 176,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

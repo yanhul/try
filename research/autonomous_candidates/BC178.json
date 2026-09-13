@@ -1,0 +1,21 @@
+{
+  "bc": 178,
+  "candidate_hash": "7722703b13645ee568d8c4552116250cfa3a09ab731c096f20e9d02b2e6f0a99",
+  "conceptual_change": "Implement a mean-reversion statistical arbitrage logic on BTCUSDT 1H OHLCV using a z-score of the rolling 50-period vwap_distance. This measures price deviation from the institutional average, triggering entry when the z-score exceeds statistical thresholds to capitalize on localized price reversion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 177,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

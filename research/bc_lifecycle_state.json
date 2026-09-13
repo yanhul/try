@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 1,
+  "campaign_screened": 11,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 1051,
-  "current_bc": 170,
+  "checkpoint_seq": 1101,
+  "current_bc": 178,
   "history": [
     {
       "bc": 1,
@@ -1047,17 +1047,65 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 170,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 171,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 172,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 173,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 174,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 175,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 176,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 177,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 148,
-  "last_bc": 170,
+  "iterations": 156,
+  "last_bc": 177,
   "last_error": null,
-  "next_bc": 170,
+  "next_bc": 178,
   "oos_consumed": [],
-  "phase": "VERIFY",
+  "phase": "YIELD",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T07:20:05.771907+00:00"
+  "updated_at": "2026-09-13T08:16:10.852136+00:00"
 }

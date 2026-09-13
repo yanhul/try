@@ -1,0 +1,20 @@
+{
+  "bc": 175,
+  "candidate_hash": "026334f4d77cbff0bc8a83ee7a1b7a8833ff40243ef5ef90522d1ad8d09fdd6d",
+  "conceptual_change": "Implement a mean-reversion framework utilizing the z-score of the close location relative to its 100-period rolling distribution to identify extreme pricing anomalies on a 1-hour BTCUSDT timeframe.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.0
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 174,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

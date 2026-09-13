@@ -1,13 +1,14 @@
 {
-  "bc": 170,
-  "candidate_hash": "f9a6910c4a8f2011e39675fc966b3e5202f4d2269235efc6411058369a1fffbc",
-  "conceptual_change": "Implement a trend-following logic by measuring the z-score of the rolling mean of the price relative to the 100-period mean, identifying persistent momentum states.",
+  "bc": 176,
+  "candidate_hash": "ff643aad4512b60a2bf089b2c3776a4b375b37574bcb1ba38f35b20c5fc694d5",
+  "conceptual_change": "Implement a trend-following momentum strategy on BTCUSDT 1H data by utilizing the Z-Score of the closing price over a 100-period rolling window to identify breakouts, aligning with institutional-grade systematic trend-following logic.",
   "discovery_spec": {
     "direction": "above",
     "left": "close",
     "mechanism_family": "momentum_trend",
     "operator": "zscore",
-    "threshold": 1.5
+    "threshold": 1.5,
+    "window": 100
   },
   "evidence_sources": [
     "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
@@ -15,6 +16,6 @@
   "hypothesis_id": "mechanism_family",
   "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 169,
+  "parent_bc": 175,
   "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
 }
