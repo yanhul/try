@@ -12,7 +12,7 @@ from research.btc_translation_policy import eligible_survivors
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f'''You translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Use only BTCUSDT 1H OHLCV data. Never use OOS, expected performance, stars or intuition as evidence. Output hypothesis_id="mechanism_family" only when discovery_spec.mechanism_family is exactly the selected family; otherwise use hypothesis_id="discovered_primitive" with an executable OHLCV primitive. NEVER convert an incompatible source into a generic primitive. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
+SYSTEM=f'''You translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Use only BTCUSDT 1H OHLCV data. Never use OOS, expected performance, stars or intuition as evidence. The only valid mechanism_family labels are {sorted(MECHANISM_FAMILIES)}. If hypothesis_id="mechanism_family", discovery_spec.mechanism_family MUST be exactly SELECTED_SURVIVOR_FAMILY; never invent, rename, generalize, or substitute a family label. If the selected family is not faithfully executable as a mechanism family, output hypothesis_id="discovered_primitive" only when an executable OHLCV translation is genuinely supported; NEVER convert an incompatible source into a generic primitive. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec uses the key threshold (not numeric_finite_threshold), and requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
 _PROVIDER_LAST_CALL=0.0
 bc=0;parent=0;selected_family=""
 
@@ -79,9 +79,9 @@ def request_candidate(prompt,forbidden):
   try:c=json.loads(raw)
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
   if c.get("status")=="HOLD":return c
-  normalize_structural_types(c);hid=c.get("hypothesis_id")
+  normalize_structural_types(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
   if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
-  elif hid=="mechanism_family" and (not isinstance(c.get("discovery_spec"),dict) or c["discovery_spec"].get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
+  elif hid=="mechanism_family" and (not isinstance(spec,dict) or spec.get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
   else:
    c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
    if f is not None and f in forbidden:reason="duplicate_discovery_fingerprint"
@@ -89,8 +89,9 @@ def request_candidate(prompt,forbidden):
     ok,reason=validate_candidate(c,bc,parent)
     if ok:return c
   last=reason
-  if reason=="selected_family_mismatch":feedback="\nVALIDATOR_FEEDBACK: mechanism_family must exactly equal the selected survivor family. Otherwise output a valid discovered_primitive.\n"
+  if reason=="selected_family_mismatch":feedback=f"\nVALIDATOR_FEEDBACK: mechanism_family is INVALID unless it exactly equals {selected_family!r}. Use hypothesis_id=mechanism_family with discovery_spec.mechanism_family={selected_family!r}, OR use discovered_primitive with a valid executable OHLCV spec. Do not invent any other family label.\n"
   elif reason=="duplicate_discovery_fingerprint":feedback="\nVALIDATOR_FEEDBACK: duplicate structural fingerprint. Regenerate a genuinely distinct executable proposal.\n"
+  elif reason=="invalid_mechanism_family":feedback=f"\nVALIDATOR_FEEDBACK: invalid mechanism family. The ONLY allowed family for this request is {selected_family!r}; set discovery_spec.mechanism_family to that exact value if using mechanism_family.\n"
   else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only an executable BTC OHLCV translation.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
 
@@ -126,7 +127,6 @@ def main():
   ]
   if rejected:print("BTC_TRANSLATION_FILTER_REJECTED "+json.dumps({"count":len(rejected),"reasons":sorted({r.get("btc_translation_reason") for r in rejected})},sort_keys=True),flush=True)
   if not eligible:print("PROVIDER_ROUTER_HOLD no_executable_btc_compatible_screen_survivor");return 0
-  # Deterministic family rotation avoids repeatedly selecting duplicate sources of one family.
   families=[]
   for s in eligible:
    f=str(s.get("family") or "").strip()
@@ -135,7 +135,7 @@ def main():
   selected=next(s for s in eligible if str(s.get("family") or "").strip()==family);selected_family=family
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-80:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family.")
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-80:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. If you use hypothesis_id=mechanism_family, discovery_spec.mechanism_family MUST equal the exact selected family above.")
  try:
   c=request_candidate(prompt,forbidden)
   if c.get("status")=="HOLD":print("PROVIDER_GEMINI_HOLD");return 0
