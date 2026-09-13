@@ -7,8 +7,8 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 992,
-  "current_bc": 166,
+  "checkpoint_seq": 999,
+  "current_bc": 167,
   "history": [
     {
       "bc": 1,
@@ -1029,17 +1029,23 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 166,
+      "decision": "REJECT",
+      "hypothesis_id": "discovered_primitive",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 143,
+  "iterations": 144,
   "last_bc": 166,
-  "last_error": null,
-  "next_bc": 166,
+  "last_error": "HOLD_PROVIDER_ROUTER",
+  "next_bc": 167,
   "oos_consumed": [],
-  "phase": "VERIFY",
-  "retry_count": 0,
+  "phase": "WAIT_RETRY",
+  "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T03:12:46.315036+00:00"
+  "updated_at": "2026-09-13T03:30:57.736652+00:00"
 }

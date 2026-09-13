@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 1684,
-    "expanded": 1537,
-    "normalized": 1537,
+    "raw": 1723,
+    "expanded": 1576,
+    "normalized": 1576,
     "round1": 68,
     "deferred": 28,
     "survivors": 37,
@@ -601,22 +601,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "27fed6aba5fea5e8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.cjar.2015.06.002",
@@ -804,38 +788,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "2a2e407ac3c92931",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6aca210ab0bd2e2f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2022.111033",
-      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "6aca210ab0bd2e2f",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5676d6ef4cb0a00b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2025.1482826",
-      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "5676d6ef4cb0a00b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2345,6 +2297,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3577,86 +3545,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "667acb5e3216c827",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118656617.ch5",
@@ -3668,54 +3556,6 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "667acb5e3216c827",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -4596,22 +4436,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "65c37f9bb4e2fec8",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a2dc9d847fb016e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1142/s2382626619500114",
-      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
-      "description": "Crossref work type=journal-article",
-      "family": "order_flow",
-      "market": null,
-      "query": "crypto order flow order book imbalance microprice",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "a2dc9d847fb016e9",
         "family": "order_flow",
         "rounds": []
       }
@@ -6505,22 +6329,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -6788,6 +6596,22 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "61b0e7edd87ecd17",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a2dc9d847fb016e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626619500114",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "a2dc9d847fb016e9",
         "family": "order_flow",
         "rounds": []
       }
@@ -7753,6 +7577,134 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dd835d2cc63269a4",
       "source": "crossref",
       "source_url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
@@ -8489,6 +8441,22 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "a9c1b3a81274e963",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
@@ -8729,54 +8697,6 @@
       }
     },
     {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "04682721e80adf6f",
       "source": "crossref",
       "source_url": "https://doi.org/10.37155/2717-5316-0508-27",
@@ -8836,22 +8756,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "3bf6b9b63fee6b7c",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "49001aab7ce1f1f4",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "49001aab7ce1f1f4",
         "family": "china_a_share",
         "rounds": []
       }
@@ -8996,6 +8900,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -9189,6 +9109,70 @@
       "lineage": {
         "source": "044a1342910e3a12",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6aca210ab0bd2e2f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2022.111033",
+      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "6aca210ab0bd2e2f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5676d6ef4cb0a00b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2025.1482826",
+      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5676d6ef4cb0a00b",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -9465,22 +9449,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -9556,22 +9524,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1d029873c0942566",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -9753,6 +9705,38 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0238ec767d096d15",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2020.98155",
@@ -9796,6 +9780,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a6cf61700f8ffbea",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "49001aab7ce1f1f4",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
+      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "49001aab7ce1f1f4",
         "family": "unknown",
         "rounds": []
       }
@@ -11401,6 +11401,38 @@
       }
     },
     {
+      "candidate_id": "3106839f75f1db28",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/GUI-Anything",
+      "title": "aa22396584/GUI-Anything",
+      "description": "Mirror of https://github.com/aa22396584/GUI-Anything - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:42.077Z",
+      "lineage": {
+        "source": "3106839f75f1db28",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3f8ef6ba25e104d4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/JD",
+      "title": "aa22396584/JD",
+      "description": "Mirror of https://github.com/aa22396584/JD - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:30:01.391Z",
+      "lineage": {
+        "source": "3f8ef6ba25e104d4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "58380c35341261e8",
       "source": "gitlab",
       "source_url": "https://gitlab.com/aa22396584/TodoListDemo",
@@ -11417,6 +11449,278 @@
       }
     },
     {
+      "candidate_id": "21d61e563402f5c2",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/dogneo",
+      "title": "aa22396584/dogneo",
+      "description": "Mirror of https://github.com/aa22396584/dogneo - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:28:32.018Z",
+      "lineage": {
+        "source": "21d61e563402f5c2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cfb62688c44c0ddc",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/ffmpeg_cube",
+      "title": "aa22396584/ffmpeg_cube",
+      "description": "Mirror of https://github.com/aa22396584/ffmpeg_cube - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:28:37.578Z",
+      "lineage": {
+        "source": "cfb62688c44c0ddc",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dc5d8417b2938aa8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/flutter-claude-skills",
+      "title": "aa22396584/flutter-claude-skills",
+      "description": "Mirror of https://github.com/aa22396584/flutter-claude-skills - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:28:43.776Z",
+      "lineage": {
+        "source": "dc5d8417b2938aa8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "02d0e3d090c1cebb",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/flutter_agent",
+      "title": "aa22396584/flutter_agent",
+      "description": "Mirror of https://github.com/aa22396584/flutter_agent - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:28:50.139Z",
+      "lineage": {
+        "source": "02d0e3d090c1cebb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d52eb48a73808307",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/flutter_bloc_todolist",
+      "title": "aa22396584/flutter_bloc_todolist",
+      "description": "Mirror of https://github.com/aa22396584/flutter_bloc_todolist - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:28:58.174Z",
+      "lineage": {
+        "source": "d52eb48a73808307",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d6a2f909ca63a72",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/flutter_motion_components",
+      "title": "aa22396584/flutter_motion_components",
+      "description": "Mirror of https://github.com/aa22396584/flutter_motion_components - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:02.892Z",
+      "lineage": {
+        "source": "5d6a2f909ca63a72",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4d4c739cc45ef6cd",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/flux",
+      "title": "aa22396584/flux",
+      "description": "Mirror of https://github.com/aa22396584/flux - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:09.116Z",
+      "lineage": {
+        "source": "4d4c739cc45ef6cd",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a04ccae24ee369e9",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/gb_emulator",
+      "title": "aa22396584/gb_emulator",
+      "description": "Mirror of https://github.com/aa22396584/gb_emulator - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:16.700Z",
+      "lineage": {
+        "source": "a04ccae24ee369e9",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f485d63cab532541",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/git-author-guard",
+      "title": "aa22396584/git-author-guard",
+      "description": "Mirror of https://github.com/aa22396584/git-author-guard - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:22.755Z",
+      "lineage": {
+        "source": "f485d63cab532541",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cd6feaf76a8b2071",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/grok-bot-control",
+      "title": "aa22396584/grok-bot-control",
+      "description": "Mirror of https://github.com/aa22396584/grok-bot-control - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:29.290Z",
+      "lineage": {
+        "source": "cd6feaf76a8b2071",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f2080c745b229648",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/grok-build-termux",
+      "title": "aa22396584/grok-build-termux",
+      "description": "Mirror of https://github.com/aa22396584/grok-build-termux - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:35.761Z",
+      "lineage": {
+        "source": "f2080c745b229648",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bc947df1824052ee",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/hsr-window-tools",
+      "title": "aa22396584/hsr-window-tools",
+      "description": "Mirror of https://github.com/aa22396584/hsr-window-tools - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:48.775Z",
+      "lineage": {
+        "source": "bc947df1824052ee",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ece2b3f1bac77ee0",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/java_ee_spring",
+      "title": "aa22396584/java_ee_spring",
+      "description": "Mirror of https://github.com/aa22396584/java_ee_spring - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:29:55.253Z",
+      "lineage": {
+        "source": "ece2b3f1bac77ee0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d140c6952e263ba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/kotlin-caip-standards",
+      "title": "aa22396584/kotlin-caip-standards",
+      "description": "Mirror of https://github.com/aa22396584/kotlin-caip-standards - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:30:10.099Z",
+      "lineage": {
+        "source": "5d140c6952e263ba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b32321c577284ed",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/kotlin-secure-storage",
+      "title": "aa22396584/kotlin-secure-storage",
+      "description": "Mirror of https://github.com/aa22396584/kotlin-secure-storage - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:30:16.918Z",
+      "lineage": {
+        "source": "3b32321c577284ed",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "06b06b776d17aeab",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/learn-react",
+      "title": "aa22396584/learn-react",
+      "description": "Mirror of https://github.com/aa22396584/learn-react - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:30:23.917Z",
+      "lineage": {
+        "source": "06b06b776d17aeab",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "11833bf63935351d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/linux-learn",
+      "title": "aa22396584/linux-learn",
+      "description": "Mirror of https://github.com/aa22396584/linux-learn - development & issues on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T03:30:30.244Z",
+      "lineage": {
+        "source": "11833bf63935351d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "181d1ede66f9fa81",
       "source": "gitlab",
       "source_url": "https://gitlab.com/aa22396584/linux-learnLinux",
@@ -11425,7 +11729,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T01:24:13.111Z",
+      "source_timestamp": "2026-09-13T03:30:36.834Z",
       "lineage": {
         "source": "181d1ede66f9fa81",
         "family": "china_a_share",
@@ -13329,7 +13633,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-11T12:21:26.235Z",
+      "source_timestamp": "2026-09-13T03:09:55.643Z",
       "lineage": {
         "source": "c7e0cc91a02b5ca4",
         "family": "unknown",
@@ -21369,6 +21673,38 @@
       }
     },
     {
+      "candidate_id": "dd02d29c19991af2",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484383391.069",
+      "title": "Government Finance Statistics Manual 2014",
+      "description": "OpenAlex work type=book year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "dd02d29c19991af2",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1a3ee48b93042c98",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781616359409.002",
+      "title": "People's Republic of China: 2013 Article IV Consultation",
+      "description": "OpenAlex work type=article year=2013",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "1a3ee48b93042c98",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "604b151bc704fc76",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
@@ -21397,6 +21733,22 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "794181e2ea96b546",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484352588.081",
+      "title": "World Economic Outlook, April 2018",
+      "description": "OpenAlex work type=book year=2018",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "794181e2ea96b546",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -21460,54 +21812,6 @@
       "source_timestamp": "2017",
       "lineage": {
         "source": "e5bcd170034fb329",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd02d29c19991af2",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484383391.069",
-      "title": "Government Finance Statistics Manual 2014",
-      "description": "OpenAlex work type=book year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "dd02d29c19991af2",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1a3ee48b93042c98",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781616359409.002",
-      "title": "People's Republic of China: 2013 Article IV Consultation",
-      "description": "OpenAlex work type=article year=2013",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "1a3ee48b93042c98",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "794181e2ea96b546",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484352588.081",
-      "title": "World Economic Outlook, April 2018",
-      "description": "OpenAlex work type=book year=2018",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "794181e2ea96b546",
         "family": "unknown",
         "rounds": []
       }
@@ -21765,6 +22069,166 @@
       "lineage": {
         "source": "71aa931e888cb731",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a02506668a16dc2c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1b98e364526f0aea3dd50bb5f2c4dad787ef83b3",
+      "title": "Advances in Web-Age Information Management, 6th International Conference, WAIM 2005, Hangzhou, China, October 11-13, 2005, Proceedings",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2005",
+      "lineage": {
+        "source": "a02506668a16dc2c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "aa15e9a6afd6b748",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/2417a23530b7411b2ecb9aca862bb8eab088a67f",
+      "title": "Advances in Web-Age Information Management, 6th International Conference, WAIM 2005, Hangzhou, China, October 11-13, 2005, Proceedings",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2005",
+      "lineage": {
+        "source": "aa15e9a6afd6b748",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8ac34e39adbd3fd8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d103fbee48f18b342dd0b7e55703841c22cabff6",
+      "title": "Current Directions in Postal Reform",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2000",
+      "lineage": {
+        "source": "8ac34e39adbd3fd8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "324a9f890d3f6443",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/2ed2902f62da90b6110816a8b16fbf0554871827",
+      "title": "Economic Studies Department of Economics School of Economics and Commercial Law G\u00f6teborg University 111 _______________________ Essays on Insurance Economics I Have Also Received Support, Encouragement, Inspiration, and Invaluable Comments on My Manuscripts and Papers from Many Other Professors. I T",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "324a9f890d3f6443",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "df15e127dc4b5c73",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/ac238718ca85c4b23e7089cdcf4cb2cd741b75b2",
+      "title": "Effects of empagliflozin on quality of life and healthcare use and costs in chronic kidney disease: a health economic analysis of the EMPA-KIDNEY trial",
+      "description": "Summary Background Sodium-glucose co-transporter 2 inhibitors (SGLT2i) slow progression of chronic kidney disease (CKD) but there is no randomised evidence of their effects on health-related quality of life (QoL) and healthcare use. We explored the effects of empagliflozin on health-related QoL, healthcare use and UK healthcare costs in the EMPA-KIDNEY trial. Methods EMPA-KIDNEY, a randomised, double blind, placebo-controlled, phase 3 trial, was conducted at 241 centres in eight countries (Canada, China, Germany, Italy, Japan, Malaysia, the UK, and the USA), and included participants aged 18 years or older with an estimated glomerular filtration rate (eGFR) of 20 to <45 mL/min/1.73 m2, or with an eGFR of 45 to <90 mL/min/1.73 m2 and a urinary albumin-to-creatinine ratio (uACR) of \u2265200 mg/g at screening. They were randomly assigned (1:1) to receive empagliflozin 10 mg once daily or matching placebo. We estimated the effect of empagliflozin (UK\u00a31.31/day) on exploratory outcomes (unless otherwise specified) of quality-adjusted life years (QALYs), UK costs (2023 UK\u00a3) of hospital admissions (a prespecified secondary outcome), concomitant medications and end-stage kidney disease (ESKD; a prespecified tertiary outcome) management over 2 years on study treatment (median active-trial follow-up) and on ESKD costs over 2 further years off study treatment (median post-trial follow-up) using shared parameter models analysing outcomes together with time to death or negative binomial models. The trial is registered with ClinicalTrials.gov, NCT03594110. Findings Between May 15, 2019 and April 16, 2021, 6609 participants were randomly assigned to empagliflozin (3304 participants) or matching placebo (3305 participants) in the active-trial which lasted for a median of 2.0 years. Among them, 4891 (74%) were enrolled in the post-trial follow-up. Per participant allocated to empagliflozin over 2 years, total empagliflozin cost was \u00a3826 (95% confidence interval: 818 to 835), QALYs were 0",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "df15e127dc4b5c73",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1b893ca1da9aeeba",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/45cbdace972359f0ae71b35b3714a6f4ec4a1816",
+      "title": "IEEE INFOCOM 2019 Workshops: IEEE INFOCOM 2019 - IEEE Conference on Computer Communications Workshops (INFOCOM WKSHPS) - Program",
+      "description": "In the past decade, applications of Internet of Things (IoT) such as Smart Home, Smart Cities, Smart Healthcare etc. have been deployed where the devices in our surroundings are interconnected to provide better services and comfort to humans. More recently, we witness the emerging applications in industrial internet, supply chains and other areas where the scale of the systems, the number of devices and data being generated continuously increases. It will be at very high cost to send all the data to a centralized server, as done in cloud computing, for processing and decision-making. Therefore, recent trend is to move the computation tasks from centralized cloud to edge devices which are closer to data sources. In this talk, I will describe Edge, an infrastructure for collaborative edge computing, where the intelligence and decision-making are pushed to the edge of and within the network closer to the sources of data, EdgeMesh lets the edge devices share the data and collaborate on the computation tasks. It also facilitates higher scalability and reliability with flexible and dynamic system reconfiguration. Short Bio: Dr. Cao is currently a Chair Professor of Department of Computing at The Hong Kong Polytechnic University, Hong Kong. He is also the director of the Internet and Mobile Computing Lab in the department and the director of University's Research Facility in Big Data Analytics. His research interests include parallel and distributed computing, wireless sensing and networks, pervasive and mobile computing, and big data and cloud computing. He has co-authored 5 books, co-edited 9 books, and published over 600 papers in major international journals and conference proceedings. He received Best Paper Awards from conferences including IEEE DSAA 2017, IEEE SMARTCOMP 2016, IEEE ISPA 2013, IEEE WCNC 2011, etc. Dr. Cao served the Chair of the Technical Committee on Distributed Processing of IEEE Computer Society from 2012 to 2014, a member of IEEE Fellows Evaluation",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "1b893ca1da9aeeba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf554ea5bc4ced56",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/53f06149b51a961e951299c8163ae0a3185549fb",
+      "title": "LJUBLJANA, DECEMBER 1997 Vol. 5, No. 2:109-112 AG NETI NA KRYZHANO VSKII, A NEW STONEFLY FROM YUNNAN, CHINA (PLECOPTERA: PERLIDAE)",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "cf554ea5bc4ced56",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ab1495bee88c058d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/346afd2d1624678442f93cc518d26364872fc9fc",
+      "title": "The Impact of Supply Chain Cooperative Relationship on Performance: A Knowledge Management Perspective",
+      "description": "There have been several studies focusing on the impact of supply chain cooperative relationship on performance, which is mainly based on transaction cost theory and the resource-based view theory. Our study deeply analyzes the inner mechanism between supply chain cooperative relationship and its performance from a perspective of knowledge management. We totally collected 136 valid samples in the questionnaire survey. Through the empirical study, we find: 1) Supply chain cooperative relationship has an obviously positive impact on performance; 2) Knowledge sharing is a partial mediator variable between supply chain cooperative relationship and performance; 3) Environmental uncertainty takes a positive regulating effect for supply chain cooperative relationship to promote knowledge sharing between enterprises, but has no obvious effect for the influence of knowledge sharing to performance. According to findings above, our study is aimed to provide some suggestions to Chinese enterprises on a knowledge management perspective.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "ab1495bee88c058d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8a83c2afef61ba61",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c444555fa7268ec6934aaa6e2b48b4e6679fb5c8",
+      "title": "U.S. elite forces ill-equipped for cold war with China Abdullah praises Zarif\u2019s support for political accord in Afghanistan",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "8a83c2afef61ba61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1813690b45d86ef4",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/9d5646c82bb01d79b8725055bbe95ccf9fef7ba0",
+      "title": "\u201c Voice \u201d and \u201c exit \u201d in Japanese firms during the Second World War : Sanpo revisited",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2003",
+      "lineage": {
+        "source": "1813690b45d86ef4",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -22245,6 +22709,166 @@
       "lineage": {
         "source": "62dbdac024c88dbc",
         "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "053975b5f9379407",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/85fb0a70ec2cb0fb3a5f24af3353206296f53d60",
+      "title": "AlgoWave-A Rule Based Code Generator for Automatic Trading System",
+      "description": "Algorithmic trading, also known as automated trading, has transformed financial markets by enabling computers to\nautomatically analyze market conditions and execute trades independently. Traditional methods typically require advanced\nprogramming expertise, which excludes many retail traders and novices without such technical skills. The AlgoWave platform\naddresses this gap through an intuitive web interface that allows users to create and deploy trading strategies without writing any\ncode.\nVia an accessible dashboard featuring dropdown menus and input forms, traders can define strategies using candlestick\npatterns, entry/exit signals, and preferred timeframes. AlgoWave automatically converts these specifications into complete,\nexecutable scripts compatible with international platforms like MetaTrader5 or domestic Indian markets via Python APIs. This\napproach makes advanced automation available to non-programmers who previously lacked access to such capabilities.\nThis paper presents AlgoWave's complete system design from user interface to backend code synthesis and secure deployment\nworkflows\u2014supported by empirical performance evaluations demonstrating both reliability and efficiency. Testing confirms over\n80% reduction in strategy deployment time versus traditional manual coding, with consistent accuracy during simulations across\nhighly volatile market conditions.",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "053975b5f9379407",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "56a01f38aa848e4e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/92e09323ef31d811e03a6819c3938c8cf8d25dd8",
+      "title": "Algorithmic Finance, Its Regulation, and Deleuzean Jurisprudence: A Few Remarks on a Necessary Paradigm Shift",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "56a01f38aa848e4e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a524bb566c0f9a7a",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b9cf5792066e0412da9457cc6270b9efba64d87c",
+      "title": "Algorithmic Finance, Its Regulation, and Deleuzean Jurisprudence: A Few Remarks on a Necessary Paradigm Shift",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "a524bb566c0f9a7a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3c119d62320ac87f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fba2b4e1b7b30f453cb54898322c1af421db5c12",
+      "title": "Backtesting of Algorithmic Cryptocurrency Trading Strategies",
+      "description": "This thesis presents a tool for backtesting algorithmic trading strategies for cryptocurrencies. The tool, called quantbacktest, provides a convenient way to automatically run comparisons of multi-dimensional parameter spaces for algorithmic trading strategies. The tool supports any algorithmic strategy to be simulated and any parameter spaces to be tested and optimized with minimal adjustments. Also, arbitrary trading frequencies can be tested, from intraday to long-term strategies. \n \nMany standard return metrics, risk metrics, and robustness test functionalities come out-of-the-box in CSV format and as diagrams. Users can provide signals and price data via CSV or Excel files. Signal processing does not require a technical (code-level) understanding of the backtesting tool on behalf of the user.",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "3c119d62320ac87f",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "266957ba064ddd58",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5dea206e2a36e672f197252bdd27d156d058f48c",
+      "title": "FinGPT: Open-Source Financial Large Language Models",
+      "description": "Large language models (LLMs) have shown the potential of revolutionizing natural language processing tasks in diverse domains, sparking great interest in finance. Accessing high-quality financial data is the first challenge for financial LLMs (FinLLMs). While proprietary models like BloombergGPT have taken advantage of their unique data accumulation, such privileged access calls for an open-source alternative to democratize Internet-scale financial data. In this paper, we present an open-source large language model, FinGPT, for the finance sector. Unlike proprietary models, FinGPT takes a data-centric approach, providing researchers and practitioners with accessible and transparent resources to develop their FinLLMs. We highlight the importance of an automatic data curation pipeline and the lightweight low-rank adaptation technique in building FinGPT. Furthermore, we showcase several potential applications as stepping stones for users, such as robo-advising, algorithmic trading, and low-code development. Through collaborative efforts within the open-source AI4Finance community, FinGPT aims to stimulate innovation, democratize FinLLMs, and unlock new opportunities in open finance. Two associated code repos are https://github.com/AI4Finance-Foundation/FinGPT and https://github.com/AI4Finance-Foundation/FinNLP",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "266957ba064ddd58",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ab53ec766109f762",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/03924c04896371a24366d1b317bf7d3dc15dea8e",
+      "title": "Performance Optimization Techniques for High-Frequency Trading and Financial Platforms",
+      "description": "High-frequency trading (HFT) has revolutionized financial markets by enabling rapid trade execution and high transaction volumes. This transformation is driven by the need to respond quickly to market fluctuations and execute trades within microseconds. However, the performance of HFT systems is heavily influenced by computational efficiency, network latency, and algorithmic optimization. Ensuring optimal performance minimizes delays, maximizes throughput, and maintains system reliability. This research paper explores the primary performance bottlenecks that obstruct HFT efficiency and explores various optimization strategies. Key focus areas include hardware acceleration techniques such as FPGA and GPU integration, software enhancements for improved code execution speed, and network solutions like direct market access and colocation. The paper also investigates machine learning applications that can predict market movements and refine trading strategies. The paper looks at a lot of existing research and points out the significant technological steps and the hurdles that still need to be tackled to improve high-frequency trading systems. The impact of these improvements is substantial, managing greater efficiency in financial trading platforms and fostering market stability. This study offers valuable information for banks, investors, and tech companies looking to improve their trading results and stay ahead in today\u2019s fast-paced markets.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "ab53ec766109f762",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8471170ef2490f59",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/464a3e0d336d5f892360046122042270045b287e",
+      "title": "Research on Classification-Based Financial Market Prediction Algorithms Using Deep Learning",
+      "description": "",
+      "family": "smc_ict",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "8471170ef2490f59",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "baf72f1128a37534",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1676eec7e3793436b501d28ea00feb54a84212c8",
+      "title": "Research on the influence factors and improvement path of rural e-commerce development based on neural network",
+      "description": "Abstract This paper uses big data evaluation models to predict market trends with the goal of promoting rural e-commerce development. A closely integrated algorithmic trading framework is constructed, and strategic evaluation indicators are proposed in traditional indicators. By analyzing the current situation and problems of online marketing of agricultural products, a series of development strategies and safeguards are formulated, and suggestions are made to establish QR code traceability and highlight personalized product development. The results show that age has a greater influence on the development of agribusiness. 65.73% of the 20-35 year olds choose to be willing to buy and do so through the Internet, which is 53.40% higher than the average, and 59.09% of the under-20 year olds choose to be unclear but willing to know, which is 28.64% higher than the average. The data studied and analyzed in this paper are useful for predicting the sales trend of the rural e-commerce market and promoting the development of rural e-commerce development.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "baf72f1128a37534",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fa565fb9ae43520a",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/cceacc334011cb7f3d462d31df86bcdf89cd208e",
+      "title": "Scale-Up Strategies for Processing High-Rate Data Streams in System S",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2009",
+      "lineage": {
+        "source": "fa565fb9ae43520a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "52fe5ab3dab3e914",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1921c25f06120d0b5b54ed01e07a9838d79aa33d",
+      "title": "THE POTENTIAL FOR REAL-TIME TESTING OF HIGH-FREQUENCY TRADING STRATEGIES THROUGH A DEVELOPED TOOL DURING VOLATILE MARKET CONDITIONS",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "52fe5ab3dab3e914",
+        "family": "unknown",
         "rounds": []
       }
     },
