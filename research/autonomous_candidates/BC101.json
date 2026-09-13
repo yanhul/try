@@ -1,15 +1,14 @@
 {
   "bc": 101,
-  "candidate_hash": "59885b6a66ac53e736d82bb7dfa6b3d87fbb52703a90aa3be3ffba8521a564ac",
-  "conceptual_change": "Test ratio(range_ratio,range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "candidate_hash": "ad4c2d517913b5246e34775fa50e1bc77405d0483ee2780385f05a03bed58a17",
+  "conceptual_change": "Test rolling_mean(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
   "discovery_spec": {
-    "direction": "above",
-    "left": "range_ratio",
-    "numeric_finite_threshold": 1.1,
-    "operator": "ratio",
-    "right": "range_ratio",
+    "direction": "below",
+    "left": "vwap_distance",
+    "numeric_finite_threshold": 0.2,
+    "operator": "rolling_mean",
     "threshold": 0,
-    "window": 3
+    "window": 10
   },
   "evidence_sources": [
     "https://github.com/sujith-kamme/statistical-arbitrage-crypto"

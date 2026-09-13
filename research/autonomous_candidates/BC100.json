@@ -1,14 +1,14 @@
 {
   "bc": 100,
-  "candidate_hash": "ea52f793df3cb4ab560004511191c551186ed3a4311428e12a372dfdfeea7f34",
+  "candidate_hash": "c3be07d2304b0c3468dc001d954c54c38b636c73141b8a189c9ed0cbc0f7a06a",
   "conceptual_change": "Test ratio(range_ratio,range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
   "discovery_spec": {
-    "direction": "below",
+    "direction": "above",
     "left": "range_ratio",
-    "numeric": 0.9,
     "operator": "ratio",
     "right": "range_ratio",
-    "threshold": 0
+    "threshold": 0.8,
+    "window": 5
   },
   "evidence_sources": [
     "https://github.com/Topps-2025/Quantitative-Reversal-Breakout-Strategy-Based-on-Multi-Bar-N-Shaped-Pattern"

@@ -1,20 +1,21 @@
 {
-  "bc": 102,
-  "candidate_hash": "599149e1edd374e41cc975cf6e500949d31d61cb90a6e053995dbe51ba193da1",
+  "bc": 108,
+  "candidate_hash": "b190c2f2ce5ab539e6e540807e6f2f5f5e773c4756576427508331874a641e77",
   "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
   "discovery_spec": {
     "direction": "above",
     "left": "range_ratio",
+    "numeric_finite_threshold": 0.25,
     "operator": "rolling_std",
-    "threshold": 0.3,
-    "window": 20
+    "threshold": 0,
+    "window": 50
   },
   "evidence_sources": [
-    "https://github.com/whiteblackparang/crypto-vbo-statistical-eval"
+    "https://github.com/fkchaos/a-share-quant-sim"
   ],
   "hypothesis_id": "discovered_primitive",
   "is_testable": true,
   "oos_selection_used": false,
-  "parent_bc": 101,
+  "parent_bc": 107,
   "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
 }

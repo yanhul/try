@@ -4,24 +4,24 @@
   "decision": "REJECT",
   "reason": "VALIDATION_FAILED",
   "hypothesis_id": "discovered_primitive",
-  "candidate_hash": "59885b6a66ac53e736d82bb7dfa6b3d87fbb52703a90aa3be3ffba8521a564ac",
-  "conceptual_change": "Test ratio(range_ratio,range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "candidate_hash": "ad4c2d517913b5246e34775fa50e1bc77405d0483ee2780385f05a03bed58a17",
+  "conceptual_change": "Test rolling_mean(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
   "evidence_sources": [
     "https://github.com/sujith-kamme/statistical-arbitrage-crypto"
   ],
   "validation_summary": {
     "candidate_trades": 11,
-    "accepted_signals": 0,
-    "skipped_overlap_trades": 0,
+    "accepted_signals": 7,
+    "skipped_overlap_trades": 1,
     "metrics": {
-      "trade_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate": 0.0,
-      "total_return": 0.0,
-      "avg_return": 0.0,
-      "profit_factor": null,
-      "max_drawdown": 0.0
+      "trade_count": 6,
+      "win_count": 1,
+      "loss_count": 5,
+      "win_rate": 0.16666666666666666,
+      "total_return": -0.029990149102000263,
+      "avg_return": -0.005000000000000025,
+      "profit_factor": 0.3999999999999987,
+      "max_drawdown": 0.049009950100000275
     }
   },
   "gross_validation_passed": false,
