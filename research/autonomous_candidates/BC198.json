@@ -1,0 +1,21 @@
+{
+  "bc": 198,
+  "candidate_hash": "eef3fbe5cd2d46d51cddbad7fa4d6773edcbd1d646af0380d19636c869427e07",
+  "conceptual_change": "Implement an ICT liquidity sweep mechanism by identifying price action that deviates from the rolling mean to target stop-loss zones (liquidity pools) followed by a market structure shift (MSS) in the 1H BTCUSDT timeframe.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "vwap_distance",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 197,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

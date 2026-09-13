@@ -1,0 +1,21 @@
+{
+  "bc": 200,
+  "candidate_hash": "46d22ab26b6131d9d7645dbbd858b557538732ee5275aac9875f37ff35aef4ff",
+  "conceptual_change": "Implement a trend-following logic using the volume-weighted average price (VWAP) as a dynamic baseline, specifically tracking the distance of the price from the 100-period VWAP as a momentum trigger for BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 1.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 199,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

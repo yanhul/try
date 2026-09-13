@@ -1,0 +1,21 @@
+{
+  "bc": 195,
+  "candidate_hash": "ee7e9698bd13d5010b5e64dd669023d2535b5aa21608b33294e3a0469b09d33f",
+  "conceptual_change": "Utilize ICT liquidity sweep patterns by identifying local volatility expansion (range_ratio) relative to the 20-period rolling mean, signaling institutional participation in price discovery during market structure shifts.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_mean",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 194,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

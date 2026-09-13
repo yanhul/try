@@ -1,0 +1,20 @@
+{
+  "bc": 196,
+  "candidate_hash": "677ee4c49a99e04f53868107ddefbb05f4811d08e8d97d4ead5f8750a33dedbc",
+  "conceptual_change": "Implement mean-reversion using the z-score of the vwap_distance, identifying price exhaustion when the asset deviates significantly from its 1H VWAP across a 50-period window.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.0
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 195,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

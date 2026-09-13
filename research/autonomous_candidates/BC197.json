@@ -1,0 +1,20 @@
+{
+  "bc": 197,
+  "candidate_hash": "49de07f169cca862ac9e15ea5621f88e742851c694f28adfbea07e54e28de284",
+  "conceptual_change": "Incorporate a trend-following momentum mechanism using the rolling mean of the 1H BTCUSDT close price to determine market bias, filtering for continued momentum when the current close price remains above its 100-period simple moving average.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 100
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 196,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

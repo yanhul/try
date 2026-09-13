@@ -1,0 +1,21 @@
+{
+  "bc": 201,
+  "candidate_hash": "4c000b5231811254b839be9415592489e5a18b72afffc761e948acaa561293fe",
+  "conceptual_change": "Incorporate Smart Money Concepts by filtering market entries based on the presence of Fair Value Gaps (FVG) and liquidity sweeps identified via price action relative to local range extremes.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.001
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 200,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
