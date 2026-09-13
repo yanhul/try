@@ -748,6 +748,11 @@
     },
     {
       "source": "arxiv",
+      "query": "systematic crypto trading machine learning alpha",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/dQzRIBNaSDswCmMRZSPIgIyPmTM</id>\n  <title>arXiv Query: search_query=all:systematic OR all:crypto OR all:trading OR all:machine OR all:learning OR all:alpha&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T17:38:00Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:systematic+OR+(all:crypto+OR+(all:trading+OR+(all:machine+OR+(all:learning+OR+all:alpha))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>663700</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2306.04338v1</id>\n    <title>Changing Data Sources in the Age of Machine Learning for Official Statistics</title>\n    <updated>2023-06-07T11:08:12Z</updated>\n    <link href=\"https://arxiv.org/abs/2306.04338v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2306.04338v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Data science has become increasingly essential for the production of official statistics, as it enables the automated collection, processing, and analysis of large amounts of data. With such data science practices in place, it enables more timely, more insightful and more flexible reporting. However, the quality and integrity of data-science-driven statistics rely on the accuracy and reliability of the data sources and the machine learning techniques that support them. In particular, changes in data sources are inevitable to occur and pose significant risks that are crucial to address in the context of machine learning for official statistics.\n  This paper gives an overview of the main risks, liabilities, and uncertainties associated with changing data sources in the context of machine learning for official statistics. We provide a checklist of the most prevalent origins and causes of changing data sources; not only on a technical level but also regarding ownership, ethics, regulation, and public perception. Next, we highlight the repercussions of changing data sources on statistical reporting. These include technical effects such as concept drift, bias, availability, validity, accuracy and completeness, but also the neutrality and potential discontinuation of the statistical offering. We offer a few important precautionary measures, such as enhancing robustness in both data sourcing and statistical techniques, and thorough monitoring. In doing so, machine learning-based official statistics can maintain integrity, reliability, consistency, and relevance in policy-making, decision-making, and public discourse.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-06-07T11:08:12Z</published>\n    <arxiv:comment>Presented at UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:journal_ref>\n    <author>\n      <name>Cedric De Boom</name>\n    </author>\n    <author>\n      <name>Michael Reusens</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.16189v4</id>\n    <title>DOME: Recommendations for supervised machine learning validation in biology</title>\n    <updated>2021-01-07T07:29:24Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.16189v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.16189v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Modern biology frequently relies on machine learning to provide predictions and improve decision processes. There have been recent calls for more scrutiny on machine learning performance and possible limitations. Here we present a set of community-wide recommendations aiming to help establish standards of supervised machine learning validation in biology. Adopting a structured methods description for machine learning based on data, optimization, model, evaluation (DOME) will aim to help both reviewers and readers to better understand and assess the performance and limitations of a method or outcome. The recommendations are formulated as questions to anyone wishing to pursue implementation of a machine learning algorithm. Answers to these questions can be easily included in the supplementary material of published papers.</summary>\n    <category term=\"q-bio.OT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-25T12:01:39Z</published>\n    <arxiv:primary_category term=\"q-bio.OT\"/>\n    <author>\n      <name>Ian Walsh</name>\n    </author>\n    <author>\n      <name>Dmytro Fishman</name>\n    </author>\n    <author>\n      <name>Dario Garcia-Gasulla</name>\n    </author>\n    <author>\n      <name>Tiina Titma</name>\n    </author>\n    <author>\n      <name>Gianluca Pollastri</name>\n    </author>\n    <author>\n      <name>The ELIXIR Machine Learning focus group</name>\n    </author>\n    <author>\n      <name>Jen Harrow</name>\n    </author>\n    <author>\n      <name>Fotis E. Psomopoulos</name>\n    </author>\n    <author>\n      <name>Silvio C. E. Tosatto</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2201.12150v2</id>\n    <title>Learning Curves for Decision Making in Supervised Machine Learning: A Survey</title>\n    <updated>2025-01-28T14:39:26Z</updated>\n    <link href=\"https://arxiv.org/abs/2201.12150v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2201.12150v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Learning curves are a concept from social sciences that has been adopted in the context of machine learning to assess the performance of a learning algorithm with respect to a certain resource, e.g., the number of training examples or the number of training iterations. Learning curves have important applications in several machine learning contexts, most notably in data acquisition, early stopping of model training, and model selection. For instance, learning curves can be used to model the performance of the combination of an algorithm and its hyperparameter configuration, providing insights into their potential suitability at an early stage and often expediting the algorithm selection process. Various learning curve models have been proposed to use learning curves for decision making. Some of these models answer the binary decision question of whether a given algorithm at a certain budget will outperform a certain reference performance, whereas more complex models predict the entire learning curve of an algorithm. We contribute a framework that categorises learning curve approaches using three criteria: the decision-making situation they address, the intrinsic learning curve question they answer and the type of resources they use. We survey papers from the literature and classify them into this framework.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-01-28T14:34:32Z</published>\n    <arxiv:comment>Accepted in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning, Volume 113, pages 8371-8425 (2024)</arxiv:journal_ref>\n    <author>\n      <name>Felix Mohr</name>\n    </author>\n    <author>\n      <name>Jan N. van Rijn</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-024-06619-7</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-024-06619-7\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2111.07508v1</id>\n    <title>Public Policymaking for International Agricultural Trade using Association Rules and Ensemble Machine Learning</title>\n    <updated>2021-11-15T02:58:03Z</updated>\n    <link href=\"https://arxiv.org/abs/2111.07508v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2111.07508v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>International economics has a long history of improving our understanding of factors causing trade, and the consequences of free flow of goods and services across countries. The recent shocks to the free trade regime, especially trade disputes among major economies, as well as black swan events, such as trade wars and pandemics, raise the need for improved predictions to inform policy decisions. AI methods are allowing economists to solve such prediction problems in new ways. In this manuscript, we present novel methods that predict and associate food and agricultural commodities traded internationally. Association Rules (AR) analysis has been deployed successfully for economic scenarios at the consumer or store level, such as for market basket analysis. In our work however, we present analysis of imports and exports associations and their effects on commodity trade flows. Moreover, Ensemble Machine Learning methods are developed to provide improved agricultural trade predictions, outlier events' implications, and quantitative pointers to policy makers.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-11-15T02:58:03Z</published>\n    <arxiv:comment>Paper published at Elsevier's Journal of Machine Learning with Applications https://www.sciencedirect.com/science/article/pii/S2666827021000232</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning with Applications, Volume 5, 2021, 100046, ISSN 2666-8270</arxiv:journal_ref>\n    <author>\n      <name>Feras A. Batarseh</name>\n    </author>\n    <author>\n      <name>Munisamy Gopinath</name>\n    </author>\n    <author>\n      <name>Anderson Monken</name>\n    </author>\n    <author>\n      <name>Zhengrong Gu</name>\n    </author>\n    <arxiv:doi>10.1016/j.mlwa.2021.100046</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.mlwa.2021.100046\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2302.08893v4</id>\n    <title>Active learning for data streams: a survey</title>\n    <updated>2023-11-29T21:07:15Z</updated>\n    <link href=\"https://arxiv.org/abs/2302.08893v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2302.08893v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Online active learning is a paradigm in machine learning that aims to select the most informative data points to label from a data stream. The problem of minimizing the cost associated with collecting labeled observations has gained a lot of attention in recent years, particularly in real-world applications where data is only available in an unlabeled form. Annotating each observation can be time-consuming and costly, making it difficult to obtain large amounts of labeled data. To overcome this issue, many active learning strategies have been proposed in the last decades, aiming to select the most informative observations for labeling in order to improve the performance of machine learning models. These approaches can be broadly divided into two categories: static pool-based and stream-based active learning. Pool-based active learning involves selecting a subset of observations from a closed pool of unlabeled data, and it has been the focus of many surveys and literature reviews. However, the growing availability of data streams has led to an increase in the number of approaches that focus on online active learning, which involves continuously selecting and labeling observations as they arrive in a stream. This work aims to provide an overview of the most recently proposed approaches for selecting the most informative observations from data streams in real time. We review the various techniques that have been proposed and discuss their strengths and limitations, as well as the challenges and opportunities that exist in this area of research.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ME\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-02-17T14:24:13Z</published>\n    <arxiv:comment>Published in Machine Learning (2023)</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>Machine Learning (2023): 1-55</arxiv:journal_ref>\n    <author>\n      <name>Davide Cacciarelli</name>\n    </author>\n    <author>\n      <name>Murat Kulahci</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-023-06454-2</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-023-06454-2\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2602.11092v2</id>\n    <title>MerLin: A Discovery Engine for Photonic and Hybrid Quantum Machine Learning</title>\n    <updated>2026-04-17T23:13:30Z</updated>\n    <link href=\"https://arxiv.org/abs/2602.11092v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2602.11092v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Identifying where quantum models may offer practical benefits in near term quantum machine learning (QML) requires moving beyond isolated algorithmic proposals toward systematic and empirical exploration across models, datasets, and hardware constraints. We introduce MerLin, an open-source framework designed as a discovery engine for photonic and hybrid quantum machine learning. MerLin integrates optimized strong simulation of linear optical circuits into standard PyTorch and scikit learn workflows, enabling end-to-end differentiable training of quantum layers.\n  MerLin is designed around systematic benchmarking and reproducibility. As an initial contribution, we reproduce eighteen state-of-the-art photonic and hybrid QML works spanning kernel methods, reservoir computing, convolutional and recurrent architectures, generative models, and modern training paradigms. These reproductions are released as reusable, modular experiments that can be directly extended and adapted, establishing a shared experimental baseline consistent with empirical benchmarking methodologies widely adopted in modern artificial intelligence.\n  By embedding photonic quantum models within established machine learning ecosystems, MerLin allows practitioners to leverage existing tooling for ablation studies, cross-modality comparisons, and hybrid classical-quantum workflows. The framework already implements hardware-aware features, allowing tests on available quantum hardware while enabling exploration beyond its current capabilities, positioning MerLin as a forward-looking co-design tool linking algorithms, benchmarks, and hardware.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.PL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"quant-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-02-11T18:00:01Z</published>\n    <arxiv:comment>Accepted to IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEE WCCI 2026</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEEE WCCI 2026</arxiv:journal_ref>\n    <author>\n      <name>Cassandre Notton</name>\n    </author>\n    <author>\n      <name>Benjamin Stott</name>\n    </author>\n    <author>\n      <name>Philippe Schoeb</name>\n    </author>\n    <author>\n      <name>Anthony Walsh</name>\n    </author>\n    <author>\n      <name>Grégoire Leboucher</name>\n    </author>\n    <author>\n      <name>Vincent Espitalier</name>\n    </author>\n    <author>\n      <name>Vassilis Apostolou</name>\n    </author>\n    <author>\n      <name>Louis-Félix Vigneux</name>\n    </author>\n    <author>\n      <name>Alexia Salavrakos</name>\n    </author>\n    <author>\n      <name>Jean Senellart</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.02381v2</id>\n    <title>Physics-Inspired Interpretability Of Machine Learning Models</title>\n    <updated>2024-12-15T17:17:01Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.02381v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.02381v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The ability to explain decisions made by machine learning models remains one of the most significant hurdles towards widespread adoption of AI in highly sensitive areas such as medicine, cybersecurity or autonomous driving. Great interest exists in understanding which features of the input data prompt model decision making. In this contribution, we propose a novel approach to identify relevant features of the input data, inspired by methods from the energy landscapes field, developed in the physical sciences. By identifying conserved weights within groups of minima of the loss landscapes, we can identify the drivers of model decision making. Analogues to this idea exist in the molecular sciences, where coordinate invariants or order parameters are employed to identify critical features of a molecule. However, no such approach exists for machine learning loss landscapes. We will demonstrate the applicability of energy landscape methods to machine learning models and give examples, both synthetic and from the real world, for how these methods can help to make models more interpretable.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-05T11:35:17Z</published>\n    <arxiv:comment>6 pages, 2 figures, ICLR 2023 Workshop on Physics for Machine Learning</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICLR 2023 Workshop on Physics for Machine Learning</arxiv:journal_ref>\n    <author>\n      <name>Maximilian P Niroomand</name>\n    </author>\n    <author>\n      <name>David J Wales</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.07435v1</id>\n    <title>Alpha MAML: Adaptive Model-Agnostic Meta-Learning</title>\n    <updated>2019-05-17T18:45:25Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.07435v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.07435v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Model-agnostic meta-learning (MAML) is a meta-learning technique to train a model on a multitude of learning tasks in a way that primes the model for few-shot learning of new tasks. The MAML algorithm performs well on few-shot learning problems in classification, regression, and fine-tuning of policy gradients in reinforcement learning, but comes with the need for costly hyperparameter tuning for training stability. We address this shortcoming by introducing an extension to MAML, called Alpha MAML, to incorporate an online hyperparameter adaptation scheme that eliminates the need to tune meta-learning and learning rates. Our results with the Omniglot database demonstrate a substantial reduction in the need to tune MAML training hyperparameters and improvement to training stability with less sensitivity to hyperparameter choice.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-17T18:45:25Z</published>\n    <arxiv:comment>6th ICML Workshop on Automated Machine Learning (2019)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICML Workshop on Automated Machine Learning (2019)</arxiv:journal_ref>\n    <author>\n      <name>Harkirat Singh Behl</name>\n    </author>\n    <author>\n      <name>Atılım Güneş Baydin</name>\n    </author>\n    <author>\n      <name>Philip H. S. Torr</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.05172v1</id>\n    <title>Emotion in Reinforcement Learning Agents and Robots: A Survey</title>\n    <updated>2017-05-15T11:49:56Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.05172v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.05172v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article provides the first survey of computational models of emotion in reinforcement learning (RL) agents. The survey focuses on agent/robot emotions, and mostly ignores human user emotions. Emotions are recognized as functional in decision-making by influencing motivation and action selection. Therefore, computational emotion models are usually grounded in the agent's decision making architecture, of which RL is an important subclass. Studying emotions in RL-based agents is useful for three research fields. For machine learning (ML) researchers, emotion models may improve learning efficiency. For the interactive ML and human-robot interaction (HRI) community, emotions can communicate state and enhance user investment. Lastly, it allows affective modelling (AM) researchers to investigate their emotion theories in a successful AI agent class. This survey provides background on emotion theory and RL. It systematically addresses 1) from what underlying dimensions (e.g., homeostasis, appraisal) emotions can be derived and how these can be modelled in RL-agents, 2) what types of emotions have been derived from these dimensions, and 3) how these emotions may either influence the learning efficiency of the agent or be useful as social signals. We also systematically compare evaluation criteria, and draw connections to important RL sub-domains like (intrinsic) motivation and model-based RL. In short, this survey provides both a practical overview for engineers wanting to implement emotions in their RL agents, and identifies challenges and directions for future emotion-RL research.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.HC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.RO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-05-15T11:49:56Z</published>\n    <arxiv:comment>To be published in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning 2017</arxiv:journal_ref>\n    <author>\n      <name>Thomas M. Moerland</name>\n    </author>\n    <author>\n      <name>Joost Broekens</name>\n    </author>\n    <author>\n      <name>Catholijn M. Jonker</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-017-5666-0</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-017-5666-0\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2303.15563v1</id>\n    <title>Privacy-preserving machine learning for healthcare: open challenges and future perspectives</title>\n    <updated>2023-03-27T19:20:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2303.15563v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2303.15563v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Machine Learning (ML) has recently shown tremendous success in modeling various healthcare prediction tasks, ranging from disease diagnosis and prognosis to patient treatment. Due to the sensitive nature of medical data, privacy must be considered along the entire ML pipeline, from model training to inference. In this paper, we conduct a review of recent literature concerning Privacy-Preserving Machine Learning (PPML) for healthcare. We primarily focus on privacy-preserving training and inference-as-a-service, and perform a comprehensive review of existing trends, identify challenges, and discuss opportunities for future research directions. The aim of this review is to guide the development of private and efficient ML models in healthcare, with the prospects of translating research efforts into real-world settings.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-27T19:20:51Z</published>\n    <arxiv:comment>ICLR 2023 Workshop on Trustworthy Machine Learning for Healthcare (TML4H)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Trustworthy Machine Learning for Healthcare. TML4H 2023. Lecture Notes in Computer Science, vol 13932</arxiv:journal_ref>\n    <author>\n      <name>Alejandro Guerra-Manzanares</name>\n    </author>\n    <author>\n      <name>L. Julian Lechuga Lopez</name>\n    </author>\n    <author>\n      <name>Michail Maniatakos</name>\n    </author>\n    <author>\n      <name>Farah E. Shamout</name>\n    </author>\n    <arxiv:doi>10.1007/978-3-031-39539-0_3</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/978-3-031-39539-0_3\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.04749v2</id>\n    <title>A Benchmark Study of Machine Learning Models for Online Fake News Detection</title>\n    <updated>2021-03-26T05:30:08Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.04749v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.04749v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The proliferation of fake news and its propagation on social media has become a major concern due to its ability to create devastating impacts. Different machine learning approaches have been suggested to detect fake news. However, most of those focused on a specific type of news (such as political) which leads us to the question of dataset-bias of the models used. In this research, we conducted a benchmark study to assess the performance of different applicable machine learning approaches on three different datasets where we accumulated the largest and most diversified one. We explored a number of advanced pre-trained language models for fake news detection along with the traditional and deep learning ones and compared their performances from different aspects for the first time to the best of our knowledge. We find that BERT and similar pre-trained models perform the best for fake news detection, especially with very small dataset. Hence, these models are significantly better option for languages with limited electronic contents, i.e., training data. We also carried out several analysis based on the models' performance, article's topic, article's length, and discussed different lessons learned from them. We believe that this benchmark study will help the research community to explore further and news sites/blogs to select the most appropriate fake news detection method.</summary>\n    <category term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.IR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-12T17:15:11Z</published>\n    <arxiv:comment>22 pages, 5 figures, to be published in Machine Learning with Applications journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CL\"/>\n    <arxiv:journal_ref>Machine Learning with Applications: 4(2021).100032</arxiv:journal_ref>\n    <author>\n      <name>Junaed Younus Khan</name>\n    </author>\n    <author>\n      <name>Md. Tawkat Islam Khondaker</name>\n    </author>\n    <author>\n      <name>Sadia Afroz</name>\n    </author>\n    <author>\n      <name>Gias Uddin</name>\n    </author>\n    <author>\n      <name>Anindya Iqbal</name>\n    </author>\n    <arxiv:doi>10.1016/j.mlwa.2021.100032</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.mlwa.2021.100032\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2509.08759v3</id>\n    <title>Fourier Learning Machines: Nonharmonic Fourier-Based Neural Networks for Scientific Machine Learning</title>\n    <updated>2026-03-18T23:01:08Z</updated>\n    <link href=\"https://arxiv.org/abs/2509.08759v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2509.08759v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We introduce the Fourier Learning Machine (FLM), a neural network (NN) architecture designed to represent a multidimensional nonharmonic Fourier series. The FLM uses a simple feedforward structure with cosine activation functions to learn the frequencies, amplitudes, and phase shifts of the series as trainable parameters. This design allows the model to create a problem-specific spectral basis adaptable to both periodic and nonperiodic functions. Unlike previous Fourier-inspired NN models, the FLM is the first architecture able to represent a multidimensional Fourier series with a complete set of basis functions in separable form, doing so by using a standard Multilayer Perceptron-like architecture. A one-to-one correspondence between the Fourier coefficients and amplitudes and phase-shifts is demonstrated, allowing for the translation between a full, separable basis form and the cosine phase-shifted one. Additionally, we evaluate the performance of FLMs on several scientific computing problems, including benchmark Partial Differential Equations (PDEs) and a family of Optimal Control Problems (OCPs). Computational experiments show that the performance of FLMs is comparable, and often superior, to that of established architectures like SIREN and vanilla feedforward NNs.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category"
+    },
+    {
+      "source": "arxiv",
       "query": "中国 A股 量化 交易 策略 因子",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/rYcE8cnb+rEq6ez7XurdbkC6AaI</id>\n  <title>arXiv Query: search_query=all:中国 OR all:A股 OR all:量化 OR all:交易 OR all:策略 OR all:因子&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T11:15:56Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:%E4%B8%AD%E5%9B%BD+OR+(all:A%E8%82%A1+OR+(all:%E9%87%8F%E5%8C%96+OR+(all:%E4%BA%A4%E6%98%93+OR+(all:%E7%AD%96%E7%95%A5+OR+all:%E5%9B%A0%E5%AD%90))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>0</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n</feed>\n"
     },
@@ -1013,6 +1018,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "",
+      "url": "https://doi.org/10.52926/jpmjpr1761",
+      "description": "Crossref work type=grant",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Activity of Hip Muscle in Change of Load on One Side of the Lower Limbs",
       "url": "https://doi.org/10.1589/rika.23.671",
       "description": "Crossref work type=journal-article",
@@ -1037,6 +1050,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Quantitative Stock Picking Model Based on Conditional Random Fields",
       "url": "https://doi.org/10.12677/sa.2019.82034",
       "description": "Crossref work type=journal-article",
@@ -1049,6 +1070,30 @@
       "url": "https://doi.org/10.12677/ecl.2025.1451633",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
+      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
+      "url": "https://doi.org/10.12677/ecl.2025.1482826",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
+      "url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2020"
     },
     {
       "source": "crossref",
@@ -1837,14 +1882,6 @@
     {
       "source": "crossref",
       "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
-      "url": "https://doi.org/10.12677/sa.2021.103054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
       "title": "国家经济学宣言：货币本质是劳动力，主权属于人民——银行货币垄断是国家经济困难的根源",
       "url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
       "description": "Crossref work type=posted-content",
@@ -1917,34 +1954,10 @@
     {
       "source": "crossref",
       "query": "Solana on chain alpha liquidity trading",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "url": "https://doi.org/10.2139/ssrn.4770775",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "Solana on chain alpha liquidity trading",
       "title": "Liquidity and Trading Dynamics",
       "url": "https://doi.org/10.3386/w13204",
       "description": "Crossref work type=report",
       "updated_at": "2007"
-    },
-    {
-      "source": "crossref",
-      "query": "Solana on chain alpha liquidity trading",
-      "title": "Liquidity and Trading Frictions",
-      "url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2011"
-    },
-    {
-      "source": "crossref",
-      "query": "Solana on chain alpha liquidity trading",
-      "title": "Liquidity and Trading Frictions",
-      "url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2011"
     },
     {
       "source": "crossref",
@@ -2365,8 +2378,72 @@
     {
       "source": "crossref",
       "query": "autonomous trading strategy research backtest",
+      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
+      "url": "https://doi.org/10.1002/9781118656617.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "url": "https://doi.org/10.2139/ssrn.6683818",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "url": "https://doi.org/10.2139/ssrn.4601806",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Trading Lore",
+      "url": "https://doi.org/10.1002/9781118656617.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Trading System Elements: Entries",
+      "url": "https://doi.org/10.1002/9781118656617.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
       "title": "Trading System Elements: Exits",
       "url": "https://doi.org/10.1002/9781118656617.ch5",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "url": "https://doi.org/10.2139/ssrn.6876580",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "url": "https://doi.org/10.1002/9781118656617.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "autonomous trading strategy research backtest",
+      "title": "What Is a Tradeable Strategy?",
+      "url": "https://doi.org/10.1002/9781118656617.ch1",
       "description": "Crossref work type=other",
       "updated_at": "2013"
     },
@@ -3652,14 +3729,6 @@
     },
     {
       "source": "crossref",
-      "query": "genetic programming symbolic regression trading alpha",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2015"
-    },
-    {
-      "source": "crossref",
       "query": "maker adverse selection execution crypto",
       "title": "Adverse Selection",
       "url": "https://doi.org/10.4135/9781529731460",
@@ -4396,70 +4465,6 @@
     },
     {
       "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
-      "url": "https://doi.org/10.1002/9781118656617.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "url": "https://doi.org/10.2139/ssrn.6683818",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "url": "https://doi.org/10.2139/ssrn.4601806",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Trading Lore",
-      "url": "https://doi.org/10.1002/9781118656617.ch10",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Trading System Elements: Entries",
-      "url": "https://doi.org/10.1002/9781118656617.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "url": "https://doi.org/10.2139/ssrn.6876580",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "url": "https://doi.org/10.1002/9781118656617.ch13",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "quantitative trading strategy backtest github",
-      "title": "What Is a Tradeable Strategy?",
-      "url": "https://doi.org/10.1002/9781118656617.ch1",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
       "query": "reinforcement learning trading systematic review",
       "title": "Algorithmic trading on financial time series using Deep Reinforcement Learning",
       "url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
@@ -4553,6 +4558,30 @@
       "url": "https://doi.org/10.2139/ssrn.5001541",
       "description": "Crossref work type=posted-content",
       "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "url": "https://doi.org/10.2139/ssrn.4770775",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "title": "Liquidity and Trading Frictions",
+      "url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "title": "Liquidity and Trading Frictions",
+      "url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2011"
     },
     {
       "source": "crossref",
@@ -4745,6 +4774,14 @@
       "url": "https://doi.org/10.1007/978-1-4899-7687-1_100458",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "symbolic regression alpha mining trading",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4949,38 +4986,6 @@
     {
       "source": "crossref",
       "query": "加密货币 量化 github",
-      "title": "IPG增加LD存货量",
-      "url": "https://doi.org/10.3788/lop20084507.0008c",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2008"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "url": "https://doi.org/10.12677/fin.2021.113022",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "url": "https://doi.org/10.12677/ds.2023.96381",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "url": "https://doi.org/10.12677/orf.2021.114043",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
       "title": "Two Paths to the Intermediate Target of Monetary Policy Based on the Money Supply in China",
       "url": "https://doi.org/10.12677/fin.2012.21002",
       "description": "Crossref work type=journal-article",
@@ -4989,74 +4994,10 @@
     {
       "source": "crossref",
       "query": "加密货币 量化 github",
-      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
-      "url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
-      "url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2020"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
-      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
       "title": "货币本质是劳动力，主权属于人民——“国家经济学”的货币理论",
       "url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
       "description": "Crossref work type=posted-content",
       "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "",
-      "url": "https://doi.org/10.52926/jpmjpr1761",
-      "description": "Crossref work type=grant",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "url": "https://doi.org/10.12677/fin.2024.143090",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5092,11 +5033,35 @@
     },
     {
       "source": "crossref",
+      "query": "因子挖掘 A股 量化 交易",
+      "title": "证券交易平台高频交易算法的性能优化研究",
+      "url": "https://doi.org/10.37155/2717-5170-0607-73",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
+      "url": "https://doi.org/10.12677/sa.2021.103054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
       "query": "因子挖掘 加密货币 量化 交易",
       "title": "An Empirical Analysis of the Factors Affecting the Level of Currency Internationalization—From the Perspective of the Stage of Currency Internationalization",
       "url": "https://doi.org/10.12677/fin.2023.135115",
       "description": "Crossref work type=journal-article",
       "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "IPG增加LD存货量",
+      "url": "https://doi.org/10.3788/lop20084507.0008c",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2008"
     },
     {
       "source": "crossref",
@@ -5109,10 +5074,26 @@
     {
       "source": "crossref",
       "query": "因子挖掘 加密货币 量化 交易",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "url": "https://doi.org/10.12677/orf.2024.146534",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 加密货币 量化 交易",
       "title": "Research on Tax Issues in the Context of Dig-ital Economy—Take the Mining Mechanism of Bitcoin as an Example",
       "url": "https://doi.org/10.12677/wer.2021.101001",
       "description": "Crossref work type=journal-article",
       "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
+      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5149,10 +5130,50 @@
     {
       "source": "crossref",
       "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "url": "https://doi.org/10.12677/fin.2021.113022",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "url": "https://doi.org/10.12677/orf.2021.114043",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
       "title": "The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
       "url": "https://doi.org/10.12677/etw.2012.23012",
       "description": "Crossref work type=journal-article",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
+      "url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
     },
     {
       "source": "crossref",
@@ -5193,6 +5214,22 @@
       "url": "https://doi.org/10.12677/csa.2022.123068",
       "description": "Crossref work type=journal-article",
       "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -5245,18 +5282,10 @@
     {
       "source": "crossref",
       "query": "涨停 连板 A股 量化 策略",
-      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
-      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "url": "https://doi.org/10.12677/fin.2024.143090",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
-      "url": "https://doi.org/10.12677/ecl.2025.1482826",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5517,22 +5546,6 @@
     {
       "source": "crossref",
       "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "url": "https://doi.org/10.12677/orf.2024.146534",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
       "title": "Traffic Flow Prediction Model of BP Neural Network Based on Adaptive Genetic Algorithm Optimization",
       "url": "https://doi.org/10.12677/aam.2020.98155",
       "description": "Crossref work type=journal-article",
@@ -5553,14 +5566,6 @@
       "url": "https://doi.org/10.33142/sca.v8i9.17954",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "证券交易平台高频交易算法的性能优化研究",
-      "url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -6287,8 +6292,8 @@
       "title": "qusong0627/QuantMind",
       "url": "https://github.com/qusong0627/QuantMind",
       "description": " QuantMind（量化大脑）开源版是一款面向个人开发者与投研团队的 AI 原生多市场量化交易平台。深度集成微软 Qlib、RD-Agent 因子演化与 TradingAgents 多智能体投研，提供从 300+ 维因子挖掘、13 种机器学习与深度学习模型工场、Optuna 自动调参、Qlib 高性能回测、截面批量推理、7x24 实时舆情情绪分析，到通达信深度联动（板块推送/预警雷达/闪电下单）与实盘模拟交易的完整闭环。全面支持 A股、港股、美股、期货及区块链。系统采用 Docker Compose 一键私有化部署，数据与模型完全本地化，保障策略隐私，功能零门槛无限制。",
-      "updated_at": "2026-09-13T05:21:34Z",
-      "stars": 1449
+      "updated_at": "2026-09-13T16:58:29Z",
+      "stars": 1452
     },
     {
       "source": "github",
@@ -8888,22 +8893,6 @@
       "query": "A股 量化 github",
       "title": "Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca",
       "url": "https://doi.org/10.48550/arxiv.2304.08177",
-      "description": "OpenAlex work type=preprint year=2023",
-      "updated_at": "2023"
-    },
-    {
-      "source": "openalex",
-      "query": "A股 量化 github",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
-      "description": "OpenAlex work type=conference-paper year=2025",
-      "updated_at": "2025"
-    },
-    {
-      "source": "openalex",
-      "query": "A股 量化 github",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "url": "https://doi.org/10.48550/arxiv.2308.09975",
       "description": "OpenAlex work type=preprint year=2023",
       "updated_at": "2023"
     },
@@ -12478,6 +12467,22 @@
     {
       "source": "openalex",
       "query": "加密货币 量化 github",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
+      "description": "OpenAlex work type=conference-paper year=2025",
+      "updated_at": "2025"
+    },
+    {
+      "source": "openalex",
+      "query": "加密货币 量化 github",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "url": "https://doi.org/10.48550/arxiv.2308.09975",
+      "description": "OpenAlex work type=preprint year=2023",
+      "updated_at": "2023"
+    },
+    {
+      "source": "openalex",
+      "query": "加密货币 量化 github",
       "title": "UCL-Bench: A Chinese User-Centric Legal Benchmark for Large Language Models",
       "url": "https://doi.org/10.18653/v1/2025.findings-naacl.444",
       "description": "OpenAlex work type=conference-paper year=2025",
@@ -13734,14 +13739,6 @@
     {
       "source": "semantic_scholar",
       "query": "MEV execution alpha crypto",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "updated_at": "2026"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "MEV execution alpha crypto",
       "title": "Constrained Policy Optimization for Provably Fair Order Matching",
       "url": "https://www.semanticscholar.org/paper/cab65db26eec716c7fab6d45de00923fcbab30db",
       "description": "Automated matching engines execute millions of orders per session, yet systematic asymmetries in latency, order size, and market access compound into persistent execution disparities that erode participant trust. We formulate provably fair order matching as a Constrained Markov Decision Process and propose CPO-FOAM (Constrained Policy Optimization with Feedback-Optimized Adaptive Margins). An inner loop computes an analytic trust-region step on the Fisher information manifold; a PID-controlled outer loop dynamically tightens safety margins, suppressing the sawtooth oscillations endemic to Lagrangian methods under non-stationary dynamics. Group fairness (demographic parity, equalized odds) enters the CMDP cost vector while individual Lipschitz fairness is enforced deterministically via spectral normalization. We prove BIBO stability and that the integral term drives steady-state violations to zero. On LOBSTER NASDAQ data across six market regimes, CPO-FOAM recovers 95.9% of unconstrained throughput at 2.5% constraint violation frequency; on crypto-asset LOB data under MEV injection it captures 98.4% of the reward envelope at 3.2% CVF. The method scales sub-linearly to M=8 constraints, settles on-chain within one Ethereum block, and yields a 2.1X reward improvement on Safety-Gymnasium, confirming domain-agnostic generalization.",
@@ -14594,14 +14591,6 @@
       "url": "https://www.semanticscholar.org/paper/521d76a9668628a32f4fbeb2da7a0eb1ec3e0356",
       "description": "The relationship between investor sentiment and cryptocurrency market volatility remains an area of growing interest in empirical finance. In this study, we present an innovative forecasting approach by utilizing a unique dataset of AI-generated sentiment from a comprehensive database of crypto market news. In a horserace fashion, we first evaluate the Heterogeneous Autoregressive (HAR) model and then compare its forecasting performance to five advanced machine learning (ML) methods. ML performs reasonably well and improves the accuracy of the benchmark HAR model. Interestingly, including sentiment does not improve the forecasting accuracy of the HAR model. However, our findings highlight that investor sentiment seems to influence crypto market volatility in a nonlinear fashion that can (only) be captured by ML methods. In other words, LightGBM, XGBoost, and LSTM models show enhanced predictive accuracy when sentiment data is incorporated, improving no-sentiment forecasts in 54.17% of the cases studied. Overall, our results emphasize the significant potential of integrating machine learning and sentiment analysis as a promising avenue for improved forecasting, offering potential benefits for risk management strategies and provide valuable insights for researchers and practitioners.",
       "updated_at": "2024"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "crypto volatility breakout strategy",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features—such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index—with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies—BTC, ETH, USDT, XRP, and BNB—serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
@@ -15474,6 +15463,86 @@
       "url": "https://www.semanticscholar.org/paper/7ea6ca63e01688f5ef062568d20f9ac0dc504304",
       "description": "",
       "updated_at": "2014"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Development of a highly sensitive lateral flow strip device for nucleic acid detection using molecular beacons",
+      "url": "https://www.semanticscholar.org/paper/ab1fb0d047856a6951575b875bff1c9356aa543e",
+      "description": "Extensive research is focused on the development of highly sensitive, rapid on-site diagnostic devices. The lateral flow strip (LFS) is a paper-based point-of-care diagnostic device, which is highly promising because of its ease of use and low cost. Despite these advantages, LFS device is still less popular than other methods such as enzyme-linked immunosorbent assay (ELISA) or real-time polymerase chain reaction (qPCR) due to its low sensitivity. Here, we have developed a fluorescence-based lateral flow strip (f-LFS) device for DNA detection using a molecular beacon (MB), a short hairpin-forming DNA strand tagged with a fluorophore-quencher pair. Each paper and membrane component of f-LFS device was carefully selected based on their physicochemical properties including porosity, surface functionality, and autofluorescence. The limit of detection (LOD) of this device was substantially improved to 2.1 fg/mL by adding MgCl2 to the reaction buffer and narrowing the test membrane dimension. Also, a portable fluorescence detection system for f-LFS was developed using a multi-pixel photon counter (MPPC), a sensitive detector detecting the signal on site. We anticipate that this highly sensitive paper-based diagnostic device can be utilized for on-site diagnosis of various diseases.",
+      "updated_at": "2022"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Does green innovation facilitate buyer firms’ attainment of trade credit from suppliers? A signalling theory perspective",
+      "url": "https://www.semanticscholar.org/paper/745eae31e7432b19d5d1c4e614a15a267b1abd16",
+      "description": "\n\nAs a crucial supply chain financing instrument, trade credit has become increasingly important for firms to enhance financial flows in supply chains. Yet, scant research has examined how firms’ green innovation affects the attainment of trade credit from their suppliers. To bridge this gap, this study aims to draw on signalling theory to investigate the impacts of incremental green innovation (IGI) and radical green innovation (RGI) on trade credit and the contingent roles of supplier concentration and industry dynamism.\n\n\n\nUsing a data set of 3,302 Chinese listed manufacturing companies from 2007 to 2021, our research adopts fixed-effect regression models to test the proposed hypotheses.\n\n\n\nThe authors find that both IGI and RGI exert a positive effect on trade credit. Interestingly, supplier concentration weakens the association between RGI and trade credit, whereas it does not significantly influence the association between IGI and trade credit. Moreover, industry dynamism attenuates the relationship between IGI and trade credit, whereas it does not significantly alter the relationship between RGI and trade credit.\n\n\n\nThe paper extends the supply chain finance literature by applying signalling theory to uncover the effects of IGI and RGI on trade credit and the distinct contingency roles of supplier concentration and industry dynamism. It also provides supply chain managers with important implications regarding how to tailor the strategies of implementing different types of green innovation to acquire more trade credit in different situations.\n",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Exploring illicit personal information trading behind telecom fraud in China",
+      "url": "https://www.semanticscholar.org/paper/da611c257412035f94ecafc9fdaf30b4cbee29e0",
+      "description": "Illicit personal information trading, a hallmark of internet dark and gray industries, has deeply infiltrated the global criminal economic system, serving as a critical driver and “raw material factory” for numerous offenses. This study focuses on its role as the core enabler of China’s telecom fraud criminal ecosystem, revealing its systemic characteristics and multi-dimensional evolutionary patterns, with significant theoretical and practical implications. Utilizing telecom fraud case data and anonymous network transaction data, this research employs analytical description and Event Logic Graph (ELG) to systematically uncover the operational mechanisms and evolutionary rules of illicit personal information trading. The findings demonstrate a pronounced “data capitalization” feature within this trade, empirically validating the cybercrime economics law of “data-as-criminal-capital”. The constructed “communication-fund flow-transaction” evolution model reveals a paradigm shift from traditional tool reliance to technology-driven operations: communication modes migrated from traditional channels to hybrid Telegram API and Tor+Signal architectures; fund flow evolved from fiat cash to USDT mixing and money laundering via “Pao Fen” platforms; transaction models upgraded from bulk sales to “customized subscription” services. This illicit trade has matured into an industrialized division of labor: upstream actors steal full-lifecycle data via automated scripts; midstream processes and packages standardized data products; downstream legitimizes criminal proceeds through diverse money laundering methods. This research not only deepens the understanding of cybercrime economics but also, by uncovering the evolutionary pathways of the criminal ecosystem and its industrial chain structure, provides crucial theoretical foundations and practical targets for formulating targeted governance strategies and building a global collaborative regulatory framework.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "From Pixels to Provenance: Empirical Study of How NFT Valuation Evolves from Traits to Reputation",
+      "url": "https://www.semanticscholar.org/paper/08990e751584017ceaea8b7c81a2536ebde60726",
+      "description": "Why do some NFTs sell at multi-fold premiums while otherwise similar tokens trade at discounts? Existing research on NFT pricing has documented average effects of intrinsic traits and wallet histories, but evidence on heterogeneous pricing mechanisms and on trading patterns associated with the observed premiums remains scarce. We address this gap using transaction-level data on 48,319 sales of the Bored Ape Yacht Club collection (2021–2025) and applying causal forests with honest splitting and orthogonalization. First, we observe that pricing follows a temporal valuation hierarchy: traits dominate first-sale prices, while wallet-level signals explain treatment-effect heterogeneity in secondary markets, with observed covariates accounting for 59–88% across wallet-characteristic specifications. Second, lagged wallet effects dominate contemporaneous ones: in intermediary-mediated transfers, high prior-seller wallet value is associated with a 42% reduction in next-sale price growth, while high prior-seller gas expenditure is associated with an 85% premium. Third, joint treatments combining low-value buyer-seller wallets with high gas-fee activity are associated with premiums of 240–726% in narrow subsets of intermediary-mediated transfers (largest estimate based on n=105); these magnitudes are consistent with reputation signaling and coordinated activity rather than independent trading, but should be interpreted cautiously given the small samples. These findings extend singular-goods theory to on-chain markets, document pricing patterns consistent with coordinated trading, and inform marketplace design and oversight of digital-asset markets.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Integrating digital twins and AI-augmented predictive analytics for resilient, demand-driven global supply chain orchestration under volatility",
+      "url": "https://www.semanticscholar.org/paper/fc9e6fffc4a606936d3a66d91ea3b89aa28c6888",
+      "description": "Global supply chains are increasingly exposed to volatility arising from geopolitical tensions, climate disruptions, fluctuating consumer demand, and pandemic-induced shocks. Conventional supply chain planning frameworks, reliant on static forecasting and linear optimization, are inadequate for capturing the complexities of real-time disruptions and dynamic market uncertainties. In response, the convergence of digital twin technologies and artificial intelligence (AI)-augmented predictive analytics has emerged as a transformative strategy for achieving resilience and demand-driven orchestration. Digital twins virtual replicas of physical supply networks enable continuous synchronization between operational processes and market realities, while predictive analytics powered by machine learning provides foresight into demand fluctuations, supplier reliability, and transportation risks. This research examines how integrating digital twins with AI-augmented analytics enhances proactive decision-making by simulating multiple disruption scenarios, optimizing inventory buffers, and reallocating resources dynamically. Advanced methods such as reinforcement learning for adaptive logistics routing, graph neural networks for supplier interdependency analysis, and probabilistic forecasting models are incorporated to anticipate and mitigate volatility. The framework emphasizes demand-driven orchestration, ensuring responsiveness not only to historical data patterns but also to real-time signals from IoT sensors, trade flows, and customer behaviors. Key contributions of this study include a roadmap for scalable implementation across global enterprises, guidelines for integrating heterogeneous data sources, and resilience metrics that balance cost efficiency with operational continuity. Despite challenges such as computational complexity, interoperability issues, and governance of cross-border data, the fusion of digital twins and AI offers an intelligent, adaptive infrastructure f",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Market integratıon and liquidity dynamics: evidence from multinational stablecoin adoption",
+      "url": "https://www.semanticscholar.org/paper/231e97cd55bee2c1cbf0b8c5022f23a9e667d611",
+      "description": "Purpose- This study investigates how multinational stablecoin adoption reshapes market liquidity and cross-border financial integration across advanced and emerging economies, with particular attention to financially constrained and high-volatility jurisdictions. It examines whether stablecoins constitute a structural layer of global liquidity provision and market linkage or primarily reinforce speculative and cyclical dynamics in digital asset markets, and identifies regulatory and macro-financial conditions under which stablecoin-driven integration enhances resilience versus amplifying vulnerabilities.\nMethodology- The analysis uses a balanced monthly panel of 156 countries from January 2024 to July 2025, combining high-frequency on-chain transaction data for major stablecoins with market microstructure indicators and macroeconomic controls. Country- and time-fixed effects regressions and dynamic panel estimators are complemented by network analysis of cross-border flows and event studies around key regulatory and macroeconomic shocks. Liquidity is measured via bid-ask spreads, depth, turnover, and realized volatility, while financial integration is proxied by cross-border flow ratios and co-movement between local and global prices.\nFindings- Higher stablecoin usage—through greater transaction volumes and wallet adoption—is linked to narrower spreads, deeper order books, and higher turnover, signaling improved liquidity in emerging markets with currency or capital constraints. Network analysis highlights new digital liquidity hubs and denser cross-border ties, while event studies show regulatory or macro shocks cause brief fragmentation before flows re-route and partially reintegrate. Effects are strongest in open or moderately regulated economies with high demand for synthetic hard-currency assets.\nConclusion- The evidence indicates that stablecoins have become a durable component of the global financial architecture, enhancing liquidity and integration while con",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Measurement uncertainty analysis of field-programmable gate-array-based, real-time signal processing for ultrasound flow imaging",
+      "url": "https://www.semanticscholar.org/paper/569d272be107501e667a17f79e8712a8f0b9e98e",
+      "description": "Abstract. Research in magnetohydrodynamics (MHD) aims to understand the complex interactions of electrically conductive fluids and magnetic fields.\nA promising approach for investigating complex instationary flow phenomena are lab-scale experiments with low-melting alloys.\nThey require a noninvasive flow instrumentation for opaque liquids with a high spatiotemporal resolution, a low velocity uncertainty and a long measurement duration.\nUltrasound Doppler velocimetry can achieve multiplane, multicomponential flow imaging with multiple linear ultrasound arrays.\nHowever the average raw data output amounts to 1.2 GBs−1 at a frame rate of 33 Hz in a typical configuration for 200 transducers.\nThis usually prevents long-duration measurements when offline signal processing is used. In this paper, we propose an online signal-processing chain for pulsed-wave Doppler velocimetry that is tailored to the specific requirements of flow imaging for lab-scale experiments.\nThe trade-off between measurement uncertainty and computational complexity is evaluated for different algorithmic variants in relation to the Cramer–Rao bound.\nBy utilizing selected approximations and parameter choices, a prepossessing could be efficiently implemented on a field-programmable gate array (FPGA), enabling a typical reduction of the data bandwidth of 6.5:1 and online flow visualization.\nWe validated the performance of the signal processing on a test rig, yielding a velocity standard deviation that is a factor of 3 above the theoretical limit despite a low computational complexity. Potential applications for this signal processing include multihour flow measurements during a crystal-growth process and closed-loop velocity feedback for model experiments.",
+      "updated_at": "2020"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Structure, conservation and health implications of urban wild meat value chains: A case study of Lagos, Nigeria",
+      "url": "https://www.semanticscholar.org/paper/0e58df36a0fb1d2770496856fe4f68bb6c4eb3b9",
+      "description": "Urban wild meat value chains represent a vital source of protein and livelihood intertwined with culture and complex market systems. Against the backdrop of escalating zoonotic disease concerns linked to wild meat, this research aimed to unravel the structure, governance, species composition and actor characteristics of the wild meat value chain in Lagos, Africa's most populated city. We employed a cross-sectional study design incorporating qualitative and quantitative approaches. Interviews (n = 22) were conducted and structured questionnaires were administered to participants (n = 257) across 15 sites in Lagos. Participants' activities were also observed, and field notes were taken. Descriptive statistics and inductive thematic approach were used for data analysis. Findings revealed five main value chain nodes: hunter, processor, wholesale, retail and consumer; and five major geographical areas from which wild meat flowed into the city. Governance structures showed a blend of informal and formal mechanisms sustained through trust, cultural beliefs and informal regulations. The main motivation was income (88.1 %), and period of optimum activity was at night times (53 %) during the dry season (≥ 62 %). Women (62.2 %) dominated the value chain, prevalent at the wholesaler (61.7 %), processor (89.7 %) and retailer (83 %) nodes. Hunters (40 %) were able to supply wild meat directly to consumers, and the large-scale retailers (26 %) were responsible for exportation of wild meat. A total of 35 species were traded in the value chain, and the most commonly traded species were: grasscutters, duikers, porcupines, and giant-pouched rats (≥90.7 % participants). Pottos, buffalos, tortoises and house snakes were the least traded (≤ 7.0 % participants). This study provides an understanding of Lagos wildlife trade from a value chain perspective, paving the way for interventions to address wildlife conservation challenges and spillover risks. Species traded in the value chain have ",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features—such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index—with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies—BTC, ETH, USDT, XRP, and BNB—serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
