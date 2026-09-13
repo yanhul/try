@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from research.cost_model import CostModel, DEFAULT_COST_MODEL
+
 
 @dataclass(frozen=True)
 class Trade:
@@ -11,11 +13,21 @@ class Trade:
     exit_reason: str | None = None
 
 
-def trade_return(t: Trade, round_trip_cost: float = 0.0) -> float:
+def trade_return(
+    t: Trade,
+    round_trip_cost: float = 0.0,
+    *,
+    cost_model: CostModel | None = None,
+) -> float:
     if t.entry <= 0:
         raise ValueError("entry must be positive")
     if round_trip_cost < 0 or round_trip_cost >= 1:
         raise ValueError("round_trip_cost must be in [0, 1)")
+
+    if cost_model is not None:
+        if round_trip_cost != 0.0:
+            raise ValueError("use either round_trip_cost or cost_model, not both")
+        return cost_model.net_return(t.entry, t.exit, t.direction)
 
     if t.direction == "bullish":
         gross = (t.exit - t.entry) / t.entry
@@ -24,16 +36,19 @@ def trade_return(t: Trade, round_trip_cost: float = 0.0) -> float:
     else:
         raise ValueError("invalid direction")
 
-    # Simple notional transaction-cost model. Slippage remains explicit in
-    # the fill model; this parameter is for fees/other proportional costs.
     return gross - round_trip_cost
 
 
-def calculate_metrics(trades: list[Trade], round_trip_cost: float = 0.0) -> dict:
-    returns = [trade_return(t, round_trip_cost) for t in trades]
+def calculate_metrics(
+    trades: list[Trade],
+    round_trip_cost: float = 0.0,
+    *,
+    cost_model: CostModel | None = None,
+) -> dict:
+    returns = [trade_return(t, round_trip_cost, cost_model=cost_model) for t in trades]
 
     if not returns:
-        return {
+        result = {
             "trade_count": 0,
             "win_count": 0,
             "loss_count": 0,
@@ -43,6 +58,9 @@ def calculate_metrics(trades: list[Trade], round_trip_cost: float = 0.0) -> dict
             "profit_factor": None,
             "max_drawdown": 0.0,
         }
+        if cost_model is not None:
+            result["cost_model"] = cost_model.metadata()
+        return result
 
     wins = [r for r in returns if r > 0]
     losses = [r for r in returns if r < 0]
@@ -60,7 +78,7 @@ def calculate_metrics(trades: list[Trade], round_trip_cost: float = 0.0) -> dict
     gross_profit = sum(wins)
     gross_loss = abs(sum(losses))
 
-    return {
+    result = {
         "trade_count": len(returns),
         "win_count": len(wins),
         "loss_count": len(losses),
@@ -70,3 +88,6 @@ def calculate_metrics(trades: list[Trade], round_trip_cost: float = 0.0) -> dict
         "profit_factor": gross_profit / gross_loss if gross_loss > 0 else None,
         "max_drawdown": max_drawdown,
     }
+    if cost_model is not None:
+        result["cost_model"] = cost_model.metadata()
+    return result
