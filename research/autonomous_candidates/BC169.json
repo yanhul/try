@@ -1,0 +1,20 @@
+{
+  "bc": 169,
+  "candidate_hash": "73cfd8650d495ad706c1c22b6daef7af19f803778a04fe2d6054bc14b4e20e40",
+  "conceptual_change": "Transformation of multi-asset statistical arbitrage signal into a univariate mean-reversion signal for BTCUSDT using Z-score of close price distance from a rolling mean to trigger mean-reversion events.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 168,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

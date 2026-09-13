@@ -1,17 +1,17 @@
 {
   "bc": 168,
-  "candidate_hash": "53827b3feea3213487e50fa250bc05034c27a317145e8f798f72ed6e3452ee45",
-  "conceptual_change": "Transitioning from stochastic convergence to a pure rolling volatility breakout mechanic for 1H BTCUSDT to identify expansion regimes.",
+  "candidate_hash": "30cef1a0e165308f9d9dc947b695e669849fdfcbdcd84911801539ae85a27925",
+  "conceptual_change": "Implementation of 1H BTCUSDT structural liquidity sweep detection utilizing consecutive high/low violation with subsequent FVG (Fair Value Gap) expansion as the entry trigger.",
   "discovery_spec": {
     "direction": "above",
-    "left": "range_ratio",
-    "mechanism_family": "volatility",
-    "operator": "rolling_std",
-    "threshold": 0.25,
-    "window": 5
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.005
   },
   "evidence_sources": [
-    "https://github.com/Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-"
+    "https://github.com/3yther/quant-bot"
   ],
   "hypothesis_id": "mechanism_family",
   "is_testable": true,

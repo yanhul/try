@@ -1,23 +1,24 @@
 [
   {
-    "bc": 168,
-    "candidate_hash": "53827b3feea3213487e50fa250bc05034c27a317145e8f798f72ed6e3452ee45",
-    "conceptual_change": "Transitioning from stochastic convergence to a pure rolling volatility breakout mechanic for 1H BTCUSDT to identify expansion regimes.",
+    "bc": 170,
+    "candidate_hash": "ce3374bc90805522f2469f3fd90f1d5d243fbc142cbec6553b63a5f18a80acf3",
+    "conceptual_change": "Implementation of a trend-following signal based on the price divergence relative to a long-term rolling mean, specifically targeting momentum acceleration to filter for strong directional regimes.",
     "discovery_spec": {
       "direction": "above",
-      "left": "range_ratio",
-      "mechanism_family": "volatility",
-      "operator": "rolling_std",
-      "threshold": 0.25,
-      "window": 5
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "numeric_finite_threshold": 1.05,
+      "operator": "ratio",
+      "right": "rolling_mean",
+      "window": 100
     },
     "evidence_sources": [
-      "https://github.com/Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 167,
+    "parent_bc": 169,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
