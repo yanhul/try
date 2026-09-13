@@ -23,6 +23,11 @@
     },
     {
       "source": "arxiv",
+      "query": "China A-share machine learning alpha",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/vFC0MaCRMOLXz6H6XVQL5cMkSbI</id>\n  <title>arXiv Query: search_query=all:China OR all:A-share OR all:machine OR all:learning OR all:alpha&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T04:28:52Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:China+OR+(all:A-share+OR+(all:machine+OR+(all:learning+OR+all:alpha)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>604587</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2306.04338v1</id>\n    <title>Changing Data Sources in the Age of Machine Learning for Official Statistics</title>\n    <updated>2023-06-07T11:08:12Z</updated>\n    <link href=\"https://arxiv.org/abs/2306.04338v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2306.04338v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Data science has become increasingly essential for the production of official statistics, as it enables the automated collection, processing, and analysis of large amounts of data. With such data science practices in place, it enables more timely, more insightful and more flexible reporting. However, the quality and integrity of data-science-driven statistics rely on the accuracy and reliability of the data sources and the machine learning techniques that support them. In particular, changes in data sources are inevitable to occur and pose significant risks that are crucial to address in the context of machine learning for official statistics.\n  This paper gives an overview of the main risks, liabilities, and uncertainties associated with changing data sources in the context of machine learning for official statistics. We provide a checklist of the most prevalent origins and causes of changing data sources; not only on a technical level but also regarding ownership, ethics, regulation, and public perception. Next, we highlight the repercussions of changing data sources on statistical reporting. These include technical effects such as concept drift, bias, availability, validity, accuracy and completeness, but also the neutrality and potential discontinuation of the statistical offering. We offer a few important precautionary measures, such as enhancing robustness in both data sourcing and statistical techniques, and thorough monitoring. In doing so, machine learning-based official statistics can maintain integrity, reliability, consistency, and relevance in policy-making, decision-making, and public discourse.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-06-07T11:08:12Z</published>\n    <arxiv:comment>Presented at UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:journal_ref>\n    <author>\n      <name>Cedric De Boom</name>\n    </author>\n    <author>\n      <name>Michael Reusens</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.16189v4</id>\n    <title>DOME: Recommendations for supervised machine learning validation in biology</title>\n    <updated>2021-01-07T07:29:24Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.16189v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.16189v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Modern biology frequently relies on machine learning to provide predictions and improve decision processes. There have been recent calls for more scrutiny on machine learning performance and possible limitations. Here we present a set of community-wide recommendations aiming to help establish standards of supervised machine learning validation in biology. Adopting a structured methods description for machine learning based on data, optimization, model, evaluation (DOME) will aim to help both reviewers and readers to better understand and assess the performance and limitations of a method or outcome. The recommendations are formulated as questions to anyone wishing to pursue implementation of a machine learning algorithm. Answers to these questions can be easily included in the supplementary material of published papers.</summary>\n    <category term=\"q-bio.OT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-25T12:01:39Z</published>\n    <arxiv:primary_category term=\"q-bio.OT\"/>\n    <author>\n      <name>Ian Walsh</name>\n    </author>\n    <author>\n      <name>Dmytro Fishman</name>\n    </author>\n    <author>\n      <name>Dario Garcia-Gasulla</name>\n    </author>\n    <author>\n      <name>Tiina Titma</name>\n    </author>\n    <author>\n      <name>Gianluca Pollastri</name>\n    </author>\n    <author>\n      <name>The ELIXIR Machine Learning focus group</name>\n    </author>\n    <author>\n      <name>Jen Harrow</name>\n    </author>\n    <author>\n      <name>Fotis E. Psomopoulos</name>\n    </author>\n    <author>\n      <name>Silvio C. E. Tosatto</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2201.12150v2</id>\n    <title>Learning Curves for Decision Making in Supervised Machine Learning: A Survey</title>\n    <updated>2025-01-28T14:39:26Z</updated>\n    <link href=\"https://arxiv.org/abs/2201.12150v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2201.12150v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Learning curves are a concept from social sciences that has been adopted in the context of machine learning to assess the performance of a learning algorithm with respect to a certain resource, e.g., the number of training examples or the number of training iterations. Learning curves have important applications in several machine learning contexts, most notably in data acquisition, early stopping of model training, and model selection. For instance, learning curves can be used to model the performance of the combination of an algorithm and its hyperparameter configuration, providing insights into their potential suitability at an early stage and often expediting the algorithm selection process. Various learning curve models have been proposed to use learning curves for decision making. Some of these models answer the binary decision question of whether a given algorithm at a certain budget will outperform a certain reference performance, whereas more complex models predict the entire learning curve of an algorithm. We contribute a framework that categorises learning curve approaches using three criteria: the decision-making situation they address, the intrinsic learning curve question they answer and the type of resources they use. We survey papers from the literature and classify them into this framework.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-01-28T14:34:32Z</published>\n    <arxiv:comment>Accepted in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning, Volume 113, pages 8371-8425 (2024)</arxiv:journal_ref>\n    <author>\n      <name>Felix Mohr</name>\n    </author>\n    <author>\n      <name>Jan N. van Rijn</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-024-06619-7</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-024-06619-7\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2302.08893v4</id>\n    <title>Active learning for data streams: a survey</title>\n    <updated>2023-11-29T21:07:15Z</updated>\n    <link href=\"https://arxiv.org/abs/2302.08893v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2302.08893v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Online active learning is a paradigm in machine learning that aims to select the most informative data points to label from a data stream. The problem of minimizing the cost associated with collecting labeled observations has gained a lot of attention in recent years, particularly in real-world applications where data is only available in an unlabeled form. Annotating each observation can be time-consuming and costly, making it difficult to obtain large amounts of labeled data. To overcome this issue, many active learning strategies have been proposed in the last decades, aiming to select the most informative observations for labeling in order to improve the performance of machine learning models. These approaches can be broadly divided into two categories: static pool-based and stream-based active learning. Pool-based active learning involves selecting a subset of observations from a closed pool of unlabeled data, and it has been the focus of many surveys and literature reviews. However, the growing availability of data streams has led to an increase in the number of approaches that focus on online active learning, which involves continuously selecting and labeling observations as they arrive in a stream. This work aims to provide an overview of the most recently proposed approaches for selecting the most informative observations from data streams in real time. We review the various techniques that have been proposed and discuss their strengths and limitations, as well as the challenges and opportunities that exist in this area of research.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ME\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-02-17T14:24:13Z</published>\n    <arxiv:comment>Published in Machine Learning (2023)</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>Machine Learning (2023): 1-55</arxiv:journal_ref>\n    <author>\n      <name>Davide Cacciarelli</name>\n    </author>\n    <author>\n      <name>Murat Kulahci</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-023-06454-2</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-023-06454-2\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.02381v2</id>\n    <title>Physics-Inspired Interpretability Of Machine Learning Models</title>\n    <updated>2024-12-15T17:17:01Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.02381v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.02381v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The ability to explain decisions made by machine learning models remains one of the most significant hurdles towards widespread adoption of AI in highly sensitive areas such as medicine, cybersecurity or autonomous driving. Great interest exists in understanding which features of the input data prompt model decision making. In this contribution, we propose a novel approach to identify relevant features of the input data, inspired by methods from the energy landscapes field, developed in the physical sciences. By identifying conserved weights within groups of minima of the loss landscapes, we can identify the drivers of model decision making. Analogues to this idea exist in the molecular sciences, where coordinate invariants or order parameters are employed to identify critical features of a molecule. However, no such approach exists for machine learning loss landscapes. We will demonstrate the applicability of energy landscape methods to machine learning models and give examples, both synthetic and from the real world, for how these methods can help to make models more interpretable.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-05T11:35:17Z</published>\n    <arxiv:comment>6 pages, 2 figures, ICLR 2023 Workshop on Physics for Machine Learning</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICLR 2023 Workshop on Physics for Machine Learning</arxiv:journal_ref>\n    <author>\n      <name>Maximilian P Niroomand</name>\n    </author>\n    <author>\n      <name>David J Wales</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.07435v1</id>\n    <title>Alpha MAML: Adaptive Model-Agnostic Meta-Learning</title>\n    <updated>2019-05-17T18:45:25Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.07435v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.07435v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Model-agnostic meta-learning (MAML) is a meta-learning technique to train a model on a multitude of learning tasks in a way that primes the model for few-shot learning of new tasks. The MAML algorithm performs well on few-shot learning problems in classification, regression, and fine-tuning of policy gradients in reinforcement learning, but comes with the need for costly hyperparameter tuning for training stability. We address this shortcoming by introducing an extension to MAML, called Alpha MAML, to incorporate an online hyperparameter adaptation scheme that eliminates the need to tune meta-learning and learning rates. Our results with the Omniglot database demonstrate a substantial reduction in the need to tune MAML training hyperparameters and improvement to training stability with less sensitivity to hyperparameter choice.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-17T18:45:25Z</published>\n    <arxiv:comment>6th ICML Workshop on Automated Machine Learning (2019)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICML Workshop on Automated Machine Learning (2019)</arxiv:journal_ref>\n    <author>\n      <name>Harkirat Singh Behl</name>\n    </author>\n    <author>\n      <name>Atılım Güneş Baydin</name>\n    </author>\n    <author>\n      <name>Philip H. S. Torr</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2602.11092v2</id>\n    <title>MerLin: A Discovery Engine for Photonic and Hybrid Quantum Machine Learning</title>\n    <updated>2026-04-17T23:13:30Z</updated>\n    <link href=\"https://arxiv.org/abs/2602.11092v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2602.11092v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Identifying where quantum models may offer practical benefits in near term quantum machine learning (QML) requires moving beyond isolated algorithmic proposals toward systematic and empirical exploration across models, datasets, and hardware constraints. We introduce MerLin, an open-source framework designed as a discovery engine for photonic and hybrid quantum machine learning. MerLin integrates optimized strong simulation of linear optical circuits into standard PyTorch and scikit learn workflows, enabling end-to-end differentiable training of quantum layers.\n  MerLin is designed around systematic benchmarking and reproducibility. As an initial contribution, we reproduce eighteen state-of-the-art photonic and hybrid QML works spanning kernel methods, reservoir computing, convolutional and recurrent architectures, generative models, and modern training paradigms. These reproductions are released as reusable, modular experiments that can be directly extended and adapted, establishing a shared experimental baseline consistent with empirical benchmarking methodologies widely adopted in modern artificial intelligence.\n  By embedding photonic quantum models within established machine learning ecosystems, MerLin allows practitioners to leverage existing tooling for ablation studies, cross-modality comparisons, and hybrid classical-quantum workflows. The framework already implements hardware-aware features, allowing tests on available quantum hardware while enabling exploration beyond its current capabilities, positioning MerLin as a forward-looking co-design tool linking algorithms, benchmarks, and hardware.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.PL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"quant-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-02-11T18:00:01Z</published>\n    <arxiv:comment>Accepted to IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEE WCCI 2026</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEEE WCCI 2026</arxiv:journal_ref>\n    <author>\n      <name>Cassandre Notton</name>\n    </author>\n    <author>\n      <name>Benjamin Stott</name>\n    </author>\n    <author>\n      <name>Philippe Schoeb</name>\n    </author>\n    <author>\n      <name>Anthony Walsh</name>\n    </author>\n    <author>\n      <name>Grégoire Leboucher</name>\n    </author>\n    <author>\n      <name>Vincent Espitalier</name>\n    </author>\n    <author>\n      <name>Vassilis Apostolou</name>\n    </author>\n    <author>\n      <name>Louis-Félix Vigneux</name>\n    </author>\n    <author>\n      <name>Alexia Salavrakos</name>\n    </author>\n    <author>\n      <name>Jean Senellart</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2303.15563v1</id>\n    <title>Privacy-preserving machine learning for healthcare: open challenges and future perspectives</title>\n    <updated>2023-03-27T19:20:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2303.15563v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2303.15563v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Machine Learning (ML) has recently shown tremendous success in modeling various healthcare prediction tasks, ranging from disease diagnosis and prognosis to patient treatment. Due to the sensitive nature of medical data, privacy must be considered along the entire ML pipeline, from model training to inference. In this paper, we conduct a review of recent literature concerning Privacy-Preserving Machine Learning (PPML) for healthcare. We primarily focus on privacy-preserving training and inference-as-a-service, and perform a comprehensive review of existing trends, identify challenges, and discuss opportunities for future research directions. The aim of this review is to guide the development of private and efficient ML models in healthcare, with the prospects of translating research efforts into real-world settings.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-27T19:20:51Z</published>\n    <arxiv:comment>ICLR 2023 Workshop on Trustworthy Machine Learning for Healthcare (TML4H)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Trustworthy Machine Learning for Healthcare. TML4H 2023. Lecture Notes in Computer Science, vol 13932</arxiv:journal_ref>\n    <author>\n      <name>Alejandro Guerra-Manzanares</name>\n    </author>\n    <author>\n      <name>L. Julian Lechuga Lopez</name>\n    </author>\n    <author>\n      <name>Michail Maniatakos</name>\n    </author>\n    <author>\n      <name>Farah E. Shamout</name>\n    </author>\n    <arxiv:doi>10.1007/978-3-031-39539-0_3</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/978-3-031-39539-0_3\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.04749v2</id>\n    <title>A Benchmark Study of Machine Learning Models for Online Fake News Detection</title>\n    <updated>2021-03-26T05:30:08Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.04749v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.04749v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The proliferation of fake news and its propagation on social media has become a major concern due to its ability to create devastating impacts. Different machine learning approaches have been suggested to detect fake news. However, most of those focused on a specific type of news (such as political) which leads us to the question of dataset-bias of the models used. In this research, we conducted a benchmark study to assess the performance of different applicable machine learning approaches on three different datasets where we accumulated the largest and most diversified one. We explored a number of advanced pre-trained language models for fake news detection along with the traditional and deep learning ones and compared their performances from different aspects for the first time to the best of our knowledge. We find that BERT and similar pre-trained models perform the best for fake news detection, especially with very small dataset. Hence, these models are significantly better option for languages with limited electronic contents, i.e., training data. We also carried out several analysis based on the models' performance, article's topic, article's length, and discussed different lessons learned from them. We believe that this benchmark study will help the research community to explore further and news sites/blogs to select the most appropriate fake news detection method.</summary>\n    <category term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.IR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-12T17:15:11Z</published>\n    <arxiv:comment>22 pages, 5 figures, to be published in Machine Learning with Applications journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CL\"/>\n    <arxiv:journal_ref>Machine Learning with Applications: 4(2021).100032</arxiv:journal_ref>\n    <author>\n      <name>Junaed Younus Khan</name>\n    </author>\n    <author>\n      <name>Md. Tawkat Islam Khondaker</name>\n    </author>\n    <author>\n      <name>Sadia Afroz</name>\n    </author>\n    <author>\n      <name>Gias Uddin</name>\n    </author>\n    <author>\n      <name>Anindya Iqbal</name>\n    </author>\n    <arxiv:doi>10.1016/j.mlwa.2021.100032</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.mlwa.2021.100032\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.05172v1</id>\n    <title>Emotion in Reinforcement Learning Agents and Robots: A Survey</title>\n    <updated>2017-05-15T11:49:56Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.05172v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.05172v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article provides the first survey of computational models of emotion in reinforcement learning (RL) agents. The survey focuses on agent/robot emotions, and mostly ignores human user emotions. Emotions are recognized as functional in decision-making by influencing motivation and action selection. Therefore, computational emotion models are usually grounded in the agent's decision making architecture, of which RL is an important subclass. Studying emotions in RL-based agents is useful for three research fields. For machine learning (ML) researchers, emotion models may improve learning efficiency. For the interactive ML and human-robot interaction (HRI) community, emotions can communicate state and enhance user investment. Lastly, it allows affective modelling (AM) researchers to investigate their emotion theories in a successful AI agent class. This survey provides background on emotion theory and RL. It systematically addresses 1) from what underlying dimensions (e.g., homeostasis, appraisal) emotions can be derived and how these can be modelled in RL-agents, 2) what types of emotions have been derived from these dimensions, and 3) how these emotions may either influence the learning efficiency of the agent or be useful as social signals. We also systematically compare evaluation criteria, and draw connections to important RL sub-domains like (intrinsic) motivation and model-based RL. In short, this survey provides both a practical overview for engineers wanting to implement emotions in their RL agents, and identifies challenges and directions for future emotion-RL research.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.HC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.RO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-05-15T11:49:56Z</published>\n    <arxiv:comment>To be published in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning 2017</arxiv:journal_ref>\n    <author>\n      <name>Thomas M. Moerland</name>\n    </author>\n    <author>\n      <name>Joost Broekens</name>\n    </author>\n    <author>\n      <name>Catholijn M. Jonker</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-017-5666-0</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-017-5666-0\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2509.08759v3</id>\n    <title>Fourier Learning Machines: Nonharmonic Fourier-Based Neural Networks for Scientific Machine Learning</title>\n    <updated>2026-03-18T23:01:08Z</updated>\n    <link href=\"https://arxiv.org/abs/2509.08759v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2509.08759v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We introduce the Fourier Learning Machine (FLM), a neural network (NN) architecture designed to represent a multidimensional nonharmonic Fourier series. The FLM uses a simple feedforward structure with cosine activation functions to learn the frequencies, amplitudes, and phase shifts of the series as trainable parameters. This design allows the model to create a problem-specific spectral basis adaptable to both periodic and nonperiodic functions. Unlike previous Fourier-inspired NN models, the FLM is the first architecture able to represent a multidimensional Fourier series with a complete set of basis functions in separable form, doing so by using a standard Multilayer Perceptron-like architecture. A one-to-one correspondence between the Fourier coefficients and amplitudes and phase-shifts is demonstrated, allowing for the translation between a full, separable basis form and the cosine phase-shifted one. Additionally, we evaluate the performance of FLMs on several scientific computing problems, including benchmark Partial Differential Equations (PDEs) and a family of Optimal Control Problems (OCPs). Computational experiments show that the performance of FLMs is comparable, and often superior, to that of established architectures like SIREN and vanilla feedforward NNs.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.OC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-09-10T16:49:20Z</published>\n    <arxiv:comment>Please cite the peer-reviewed, published version available on Transactions on Machine Learning Research at https://openreview.net/forum?id=LPKt5vd7yz</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Transactions on Machine Learning Research, December 2025</arxiv:journal_ref>\n    <author>\n      <name>Mominul Rubel</name>\n    </author>\n    <author>\n      <name>Adam Meyers</name>\n    </author>\n    <author>\n      <name>Gabriel Nicolosi</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1906.01101v1</id>\n    <title>MEMe: An Accurate Maximum Entropy Method for Efficient Approximations in Large-Scale Machine Learning</title>\n    <updated>2019-06-03T22:10:52Z</updated>\n    <link href=\"https://arxiv.org/abs/1906.01101v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1906.01101v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Efficient approximation lies at the heart of large-scale machine learning problems. In this paper, we propose a novel, robust maximum entropy algorithm, which is capable of dealing with hundreds of moments and allows for computationally efficient approximations. We showcase the usefulness of the proposed method, its equivalence to constrained Bayesian variational inference and demonstrate its superiority over existing approaches in two applications, namely, fast log determinant estimation and information-theoretic Bayesian optimisation.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-06-03T22:10:52Z</published>\n    <arxiv:comment>18 pages, 3 figures, Published at Entropy 2019: Special Issue Entropy Based Inference and Optimization in Machine Learning</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>MEMe: An Accurate Maximum Entropy Method for Efficient Approximations in Large-Scale Machine Learning. Entropy, 21(6), 551 (2019)</arxiv:journal_ref>\n    <author>\n      <name>Diego Granziol</name>\n    </author>\n    <author>\n      <name>Binxin Ru</name>\n    </author>\n    <author>\n      <name>Stefan Zohren</name>\n    </author>\n    <author>\n      <name>Xiaowen Doing</name>\n    </author>\n    <author>\n      <name>Michael Osborne</name>\n    </author>\n    <author>\n      <name>Stephen Roberts</name>\n    </author>\n    <arxiv:doi>10.3390/e"
+    },
+    {
+      "source": "arxiv",
       "query": "China A-share order flow high frequency factors",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/TEOFtJGSMVSAMad+SpIlkXys/5Y</id>\n  <title>arXiv Query: search_query=all:China OR all:A-share OR all:order OR all:flow OR all:high OR all:frequency OR all:factors&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T11:58:07Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:China+OR+(all:A-share+OR+(all:order+OR+(all:flow+OR+(all:high+OR+(all:frequency+OR+all:factors)))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>1506461</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2304.04676v2</id>\n    <title>Adjust factor with volatility model using MAXFLAT low-pass filter and construct portfolio in China A share market</title>\n    <updated>2023-04-24T09:47:42Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.04676v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.04676v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In the field of quantitative finance, volatility models, such as ARCH, GARCH, FIGARCH, SV, EWMA, play the key role in risk and portfolio management. Meanwhile, factor investing is more and more famous since mid of 20 century. CAPM, Fama French three factor model, Fama French five-factor model, MSCI Barra factor model are mentioned and developed during this period. In this paper, we will show why we need adjust group of factors by our MAXFLAT low-pass volatility model. All of our experiments are under China's CSI 300 and CSI 500 universe which represent China's large cap stocks and mid-small cap stocks. Our result shows adjust factors by MAXFLAT volatility model have better performance in both large cap and small cap universe than original factors or other risk adjust factors in China A share. Also the portfolio constructed by MAXFLAT risk adjust factors have continuous excess return and lower beta compare with benchmark index.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-29T09:46:12Z</published>\n    <arxiv:comment>Volatility model, Multi-factors model, Portfolio construction, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2305.01642v1</id>\n    <title>Construct sparse portfolio with mutual fund's favourite stocks in China A share market</title>\n    <updated>2023-04-24T09:40:44Z</updated>\n    <link href=\"https://arxiv.org/abs/2305.01642v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2305.01642v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Unlike developed market, some emerging markets are dominated by retail and unprofessional trading. China A share market is a good and fitting example in last 20 years. Meanwhile, lots of research show professional investor in China A share market continuously generate excess return compare with total market index. Specifically, this excess return mostly come from stock selectivity ability instead of market timing. However for some reason such as fund capacity limit, fund manager change or market regional switch, it is very hard to find a fund could continuously beat market. Therefore, in order to get excess return from mutual fund industry, we use quantitative way to build the sparse portfolio that take advantage of favorite stocks by mutual fund in China A market. Firstly we do the analysis about favourite stocks by mutual fund and compare the different method to construct our portfolio. Then we build a sparse stock portfolio with constraint on both individual stock and industry exposure using portfolio optimizer to closely track the partial equity funds index 930950.CSI with median 0.985 correlation. This problem is much more difficult than tracking full information index or traditional ETF as higher turnover of mutual fund, just first 10 holding of mutual fund available and fund report updated quarterly with 15 days delay. Finally we build another low risk and balanced sparse portfolio that consistently outperform benchmark 930950.CSI.</summary>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-24T09:40:44Z</published>\n    <arxiv:comment>Portfolio construction, Sparsity, Index tracking, Mutual fund, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.PM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2103.00264v1</id>\n    <title>Forecasting high-frequency financial time series: an adaptive learning approach with the order book data</title>\n    <updated>2021-02-27T16:42:02Z</updated>\n    <link href=\"https://arxiv.org/abs/2103.00264v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2103.00264v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper proposes a forecast-centric adaptive learning model that engages with the past studies on the order book and high-frequency data, with applications to hypothesis testing. In line with the past literature, we produce brackets of summaries of statistics from the high-frequency bid and ask data in the CSI 300 Index Futures market and aim to forecast the one-step-ahead prices. Traditional time series issues, e.g. ARIMA order selection, stationarity, together with potential financial applications are covered in the exploratory data analysis, which pave paths to the adaptive learning model. By designing and running the learning model, we found it to perform well compared to the top fixed models, and some could improve the forecasting accuracy by being more stable and resilient to non-stationarity. Applications to hypothesis testing are shown with a rolling window, and further potential applications to finance and statistics are outlined.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.EM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.AP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-02-27T16:42:02Z</published>\n    <arxiv:comment>Key words: forecasting methods, statistical learning, high-frequency order book</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <author>\n      <name>Parley Ruogu Yang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1604.05076v1</id>\n    <title>On temporal correlations in high-resolution frequency counting</title>\n    <updated>2016-04-18T10:39:16Z</updated>\n    <link href=\"https://arxiv.org/abs/1604.05076v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1604.05076v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We analyze noise properties of time series of frequency data from different counting modes of a Keysight 53230A frequency counter. We use a 10 MHz reference signal from a passive hydrogen maser connected via phase-stable Huber+Suhner Sucoflex 104 cables to the reference and input connectors of the counter. We find that the high resolution gap-free (CONT) frequency counting process imposes long-term correlations in the output data, resulting in a modified Allan deviation that is characteristic of random walk phase noise. Equally important, the CONT mode results in a frequency bias. In contrast, the counter's undocumented raw continuous mode (RCON) yields unbiased frequency stability estimates with white phase noise characteristics, and of a magnitude consistent with the counter's 20 ps single-shot resolution. Furthermore, we demonstrate that a 100-point running average filter in conjunction with the RCON mode yields resolution enhanced frequency estimates with flicker phase noise characteristics. For instance, the counter's built-in moving-average function can be used. The improved noise characteristics of the averaged RCON mode versus the CONT mode imply that the former mode yields frequency estimates with improved confidence for a given measurement time.</summary>\n    <category term=\"physics.ins-det\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2016-04-18T10:39:16Z</published>\n    <arxiv:comment>Submitted to the proceedings of the 30th European Frequency and Time Forum, held at the University of York, UK, 4 April to 7 April 2016</arxiv:comment>\n    <arxiv:primary_category term=\"physics.ins-det\"/>\n    <arxiv:journal_ref>European Frequency and Time Forum (EFTF), 2016</arxiv:journal_ref>\n    <author>\n      <name>Tim Dunker</name>\n    </author>\n    <author>\n      <name>Harald Hauglin</name>\n    </author>\n    <author>\n      <name>Ole Petter Rønningen</name>\n    </author>\n    <arxiv:doi>10.1109/EFTF.2016.7477833</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1109/EFTF.2016.7477833\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2110.02266v1</id>\n    <title>Time-averaged velocity and scalar fields of the flow surrounding a group of cylinders</title>\n    <updated>2021-10-05T18:14:53Z</updated>\n    <link href=\"https://arxiv.org/abs/2110.02266v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2110.02266v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We examine the characteristics of mean flow and scalar concentration characteristics of a turbulent boundary layer flow impinging on a cluster of tall obstacles (which can also be interpreted as a porous obstruction). The cluster is created with a group of cylinders of diameter $d$ and height $h$ arranged in a circular patch of diameter $D$.The solidity of the patch/obstruction is defined by $φ$ (the total planar area covered by cylinders), which is systematically varied ($0.098 \\leq φ\\leq 1$) by increasing the number of cylinders in a patch ($N_c$). A point source is placed at ground level upstream of the patch and its transport around the patch is examined. Time-averaged velocity and scalar fields, obtained from simultaneous planar PIV-PLIF (particle image velocimetry-planar laser-induced fluorescence) measurements, reveal that the characteristics of wake and flow above porous patches are heavily influenced by $φ$. In particular, we observe that the horizontal and vertical extent of the wake and scalar concentration downstream of the patches decreases and increases with $φ$, respectively. Here, the recirculation bubble is shifted closer to the trailing edge of the patches as $φ$ increases, limiting the flow from convecting downstream, decreasing the scalar concentration and virtually `extending' the patch in streamwise direction. As the bubble forms in the trailing edge, vertical bleeding increases and hence the concentration increases above patch where the cylinders appear to be `extend' vertically towards the freestream.</summary>\n    <category term=\"physics.flu-dyn\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-10-05T18:14:53Z</published>\n    <arxiv:comment>Under review for publication in Flow</arxiv:comment>\n    <arxiv:primary_category term=\"physics.flu-dyn\"/>\n    <arxiv:journal_ref>Flow 2 (2022), E9</arxiv:journal_ref>\n    <author>\n      <name>Dea Daniella Wangsawijaya</name>\n    </author>\n    <author>\n      <name>Claudia Nicolai</name>\n    </author>\n    <author>\n      <name>Bharathram Ganapathisubramani</name>\n    </author>\n    <arxiv:doi>10.1017/flo.2022.2</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1017/flo.2022.2\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2202.03012v2</id>\n    <title>EDCHO: High Order Exact Dynamic Consensus</title>\n    <updated>2022-05-25T09:37:05Z</updated>\n    <link href=\"https://arxiv.org/abs/2202.03012v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2202.03012v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the problem of average consensus in a multi-agent system when the desired consensus quantity is a time varying signal. Although this problem has been addressed in existing literature by linear schemes, only bounded steady-state errors have been achieved. Other approaches have used first order sliding modes to achieve zero steady-state error, but suffer from the chattering effect. In this work, we propose a new exact dynamic consensus algorithm which leverages high order sliding modes, in the form of a distributed differentiator to achieve zero steady-state error of the average of time varying reference signals in a group of agents. Moreover, our proposal is also able to achieve consensus to high order derivatives of the average signal, if desired. An in depth formal study on the stability and convergence for EDCHO is provided for undirected connected graphs. Finally, the effectiveness and advantages of our proposal are shown with concrete simulation scenarios.</summary>\n    <category term=\"eess.SY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.MA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.OC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-02-07T09:09:42Z</published>\n    <arxiv:comment>This is the preprint version of the accepted Manuscript: Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, EDCHO: High order exact dynamic consensus, Automatica, Volume 131, 2021, ISSN 0005-1098. Please cite the publisher's version</arxiv:comment>\n    <arxiv:primary_category term=\"eess.SY\"/>\n    <arxiv:journal_ref>Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, EDCHO: High order exact dynamic consensus, Automatica, Volume 131, 2021, ISSN 0005-1098</arxiv:journal_ref>\n    <author>\n      <name>Rodrigo Aldana-López</name>\n    </author>\n    <author>\n      <name>Rosario Aragüés</name>\n    </author>\n    <author>\n      <name>Carlos Sagüés</name>\n    </author>\n    <arxiv:doi>10.1016/j.automatica.2021.109750</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.automatica.2021.109750\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2603.20456v1</id>\n    <title>Neural Hidden Markov Model with Adaptive Granularity Attention for High-Frequency Order Flow Modeling</title>\n    <updated>2026-03-20T19:36:00Z</updated>\n    <link href=\"https://arxiv.org/abs/2603.20456v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2603.20456v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We propose a Neural Hidden Markov Model (HMM) with Adaptive Granularity Attention (AGA) for high-frequency order flow modeling. The model addresses the challenge of capturing multi-scale temporal dynamics in financial markets, where fine-grained microstructure signals and coarse-grained liquidity trends coexist.\n  The proposed framework integrates parallel multi-resolution encoders, including a dilated convolutional network for tick-level patterns and a wavelet-LSTM module for low-frequency dynamics. A gating mechanism conditioned on local volatility and transaction intensity adaptively fuses multi-scale representations, while a multi-head attention layer further enhances temporal dependency modeling. Within this architecture, a Neural HMM with conditional normalizing flow emissions is employed to jointly model latent market regimes and complex observation distributions.\n  Empirical results on high-frequency limit order book data demonstrate that the proposed model outperforms fixed-resolution baselines in predicting short-term price movements and liquidity shocks. The adaptive granularity mechanism enables the model to dynamically adjust its focus across time scales, providing improved performance particularly during volatile market conditions.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-03-20T19:36:00Z</published>\n    <arxiv:comment>23 pages, 3 figures. Empirical study of multi-scale sequence modeling and latent regime dynamics in high-frequency financial data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <author>\n      <name>Tianzuo Hu</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1902.07351v2</id>\n    <title>Phase-field simulation of core-annular pipe flow</title>\n    <updated>2019-05-01T19:56:44Z</updated>\n    <link href=\"https://arxiv.org/abs/1902.07351v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1902.07351v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Phase-field methods have long been used to model the flow of immiscible fluids. Their ability to naturally capture interface topological changes is widely recognized, but their accuracy in simulating flows of real fluids in practical geometries is not established. We here quantitatively investigate the convergence of the phase-field method to the sharp-interface limit with simulations of two-phase pipe flow. We focus on core-annular flows, in which a highly viscous fluid is lubricated by a less viscous fluid, and validate our simulations with an analytic laminar solution, a formal linear stability analysis and also in the fully nonlinear regime. We demonstrate the ability of the phase-field method to accurately deal with non-rectangular geometry, strong advection, unsteady fluctuations and large viscosity contrast. We argue that phase-field methods are very promising for quantitatively studying moderately turbulent flows, especially at high concentrations of the disperse phase.</summary>\n    <category term=\"physics.flu-dyn\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-02-19T23:51:33Z</published>\n    <arxiv:comment>Paper accepted for publication in International Journal of Multiphase Flow</arxiv:comment>\n    <arxiv:primary_category term=\"physics.flu-dyn\"/>\n    <arxiv:journal_ref>Int. J. Multiph. Flow, 117:14-24, 2019</arxiv:journal_ref>\n    <author>\n      <name>Baofang Song</name>\n    </author>\n    <author>\n      <name>Carlos Plana</name>\n    </author>\n    <author>\n      <name>Jose M. Lopez</name>\n    </author>\n    <author>\n      <name>Marc Avila</name>\n    </author>\n    <arxiv:doi>10.1016/j.ijmultiphaseflow.2019.04.027</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.ijmultiphaseflow.2019.04.027\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2204.12344v2</id>\n    <title>REDCHO: Robust Exact Dynamic Consensus of High Order</title>\n    <updated>2022-05-25T09:33:33Z</updated>\n    <link href=\"https://arxiv.org/abs/2204.12344v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2204.12344v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the problem of average consensus in a multi-agent system when the desired consensus quantity is a time varying signal. Recently, the EDCHO protocol leveraged high order sliding modes to achieve exact consensus under a constrained set of initial conditions, limiting its applicability to static networks. In this work, we propose REDCHO, an extension of the previous protocol which is robust to mismatch in the initial conditions, making it suitable to use cases in which connection and disconnection of agents is possible. The convergence properties of the protocol are formally explored. Finally, the effectiveness and advantages of our proposal are shown with concrete simulation examples showing the benefits of REDCHO against other methods in the literature.</summary>\n    <category term=\"eess.SY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.MA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.OC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-04-26T14:34:43Z</published>\n    <arxiv:comment>This is the preprint version of the accepted Manuscript: Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, REDCHO: Robust Exact Dynamic Consensus of High Order, Automatica, Volume 141, 2022, ISSN 0005-1098</arxiv:comment>\n    <arxiv:primary_category term=\"eess.SY\"/>\n    <arxiv:journal_ref>Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, REDCHO: Robust Exact Dynamic Consensus of High Order, Automatica, Volume 141, 2022, ISSN 0005-1098</arxiv:journal_ref>\n    <author>\n      <name>Rodrigo Aldana-López</name>\n    </author>\n    <author>\n      <name>Rosario Aragüés</name>\n    </author>\n    <author>\n      <name>Carlos Sagüés</name>\n    </author>\n    <arxiv:doi>10.1016/j.automatica.2022.110320</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.automatica.2022.110320\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1908.03540v2</id>\n    <title>Enriching MRI mean flow data of inclined jets in crossflow with Large Eddy Simulations</title>\n    <updated>2019-10-01T18:01:02Z</updated>\n    <link href=\"https://arxiv.org/abs/1908.03540v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1908.03540v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Measurement techniques such as Magnetic Resonance Velocimety (MRV) and Magnetic Resonance Concentration (MRC) are useful for obtaining 3D time-averaged flow quantities in complex turbulent flows, but cannot measure turbulent correlations or near-wall data. In this work, we use highly resolved Large Eddy Simulations (LES) to complement the experiments and bypass those limitations. Coupling LES and magnetic resonance experimental techniques is especially advantageous in complex non-homogeneous flows because the 3D data allow for extensive validation, creating confidence that the simulation results portray a physically realistic flow. As such we can treat the simulation as data, which \"enrich\" the original MRI mean flow results. This approach is demonstrated using a cylindrical and inclined jet in crossflow with three distinct velocity ratios, $r=1$, $r=1.5$, and $r=2$. The numerical mesh is highly refined in order for the subgrid scale models to have negligible contribution, and a systematic, iterative procedure is described to set inlet conditions. The validation of the mean flow data shows excellent agreement between simulation and experiments, which creates confidence that the LES data can be used to enrich the experiments with near-wall results and turbulent statistics. We also discuss some mean flow features and how they vary with velocity ratio, including wall concentration, the counter rotating vortex pair, and the in-hole velocity.</summary>\n    <category term=\"physics.flu-dyn\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-08-09T17:04:24Z</published>\n    <arxiv:comment>Accepted manuscript to the International Journal of Heat and Fluid Flow</arxiv:comment>\n    <arxiv:primary_category term=\"physics.flu-dyn\"/>\n    <arxiv:journal_ref>Int. J. Heat Fluid Flow 80 (2019) 108472</arxiv:journal_ref>\n    <author>\n      <name>Pedro M. Milani</name>\n    </author>\n    <author>\n      <name>Ian E. Gunady</name>\n    </author>\n    <author>\n      <name>David S. Ching</name>\n    </author>\n    <author>\n      <name>Andrew J. Banko</name>\n    </author>\n    <author>\n      <name>Christopher J. Elkins</name>\n    </author>\n    <author>\n      <name>John K. Eaton</name>\n    </author>\n    <arxiv:doi>10.1016/j.ijheatfluidflow.2019.108472</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.ijheatfluidflow.2019.108472\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2206.13022v3</id>\n    <title>Status and progress of China SKA Regional Centre prototype</title>\n    <updated>2022-09-30T02:16:14Z</updated>\n    <link href=\"https://arxiv.org/abs/2206.13022v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2206.13022v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Square Kilometre Array (SKA) project consists of delivering two largest radio telescope arrays being built by the SKA Observatory (SKAO), which is an intergovernmental organization bringing together nations from around the world with China being one of the major member countries. The computing resources needed to process, distribute, curate and use the vast amount of data that will be generated by the SKA telescopes are too large for the SKAO to manage on its own. To address this challenge, the SKAO is working with the international community to create a shared, distributed data, computing and networking capability called the SKA Regional Centre Alliance. In this model, the SKAO will be supported by a global network of SKA Regional Centres (SRCs) distributed around the world in its member countries to build an end-to-end science data system that will provide astronomers with high-quality science products. SRCs undertake deep processing, scientific analysis, and long-term storage of the SKA data, as well as user support. China has been actively participating in and promoting the construction of SRCs. This paper introduces the international cooperation and ongoing prototyping of the global SRC network, the construction plan of the China SRC and describes in detail the China SRC prototype. The paper also presents examples of scientific applications of SKA precursor and pathfinder telescopes completed using resources from the China SRC prototype. Finally, the future prospects of the China SRC are presented.</summary>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-06-27T02:41:06Z</published>\n    <arxiv:comment>T. An, et al. Status and progress of China SKA Regional Centre prototype. Sci. China-Phys. Mech. Astron. 65: 129501 (2022)</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.IM\"/>\n    <author>\n      <name>Tao An</name>\n    </author>\n    <author>\n      <name>Xiaocong Wu</name>\n    </author>\n    <author>\n      <name>Baoqiang Lao</name>\n    </author>\n    <author>\n      <name>Shaoguang Guo</name>\n    </author>\n    <author>\n      <name>Zhijun Xu</name>\n    </author>\n    <author>\n      <name>Weijia Lv</name>\n    </author>\n    <author>\n      <name>Yingkang Zhang</name>\n    </author>\n    <author>\n      <name>Zhongli Zhang</name>\n    </author>\n    <arxiv:doi>10.1007/s11433-022-1981-8</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s11433-022-1981-8\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2207.02679v1</id>\n    <title>Experimental study of cavitating flow influenced by heat transfer from heated hydrofoil</title>\n    <updated>2022-07-01T13:38:07Z</updated>\n    <link href=\"https://arxiv.org/abs/2207.02679v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2207.02679v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This study experimentally investigated the influence of heat transfer from a heated hydrofoil on cavitating flow to understand the evaporation phenomenon under high-heat-flux and high-speed conditions. A temperature difference was generated between the hydrofoil and mainstream by installing an aluminum nitride heater in a NACA0015 hydrofoil fabricated from copper. A cavitation experiment was performed in a high-temperature water cavitation tunnel at the Institute of Fluid Science, Tohoku University. The effect of heating on cavitating flow was evaluated by changing the mainstream velocity and pressure, namely the cavitation number, at a fixed heater power of 860 W. Results showed that the heat transfer from the hydrofoil affected cavitating flow in terms of the cavity length, cavity aspect, and periodicity. The effect on the cavity length became stronger at a lower velocity owing to a higher hydrofoil temperature. The variation in periodicity implied that the heating effect reduced the unsteadiness of cavitation. A modified cavitation number was proposed by considering the heat transfer from the heated wall. A thermal correction term was derived by considering that the fluid temperature close to the heated hydrofoil was affected by the turbulent convective heat transfer between the mainstream and hydrofoil. The corrected cavitation number can be considered as a parameter that describes the cavity length in the isothermal and heated cases in a unified expression.</summary>\n    <category term=\"physics.flu-dyn\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-07-01T13:38:07Z</published>\n    <arxiv:comment>Accepted Manuscript in International Journal of Multiphase Flow</arxiv:comment>\n    <arxiv:primary_category term=\"physics.flu-dyn\"/>\n    <arxiv:journal_ref>Int. J. Multiphas. Flow 155 (2022) 104168</arxiv:journal_ref>\n    <author>\n      <name>Junnosuke Okajima</name>\n    </author>\n    <author>\n      <name>Masaki Ito</name>\n    </author>\n    <author>\n      <name>Yuka Iga</name>\n    </author>\n    <arxiv:doi>10.1016/j.ijmultiphaseflow.2022.104168</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.ijmultiphaseflow.2022.104168\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1205.3624v1</id>\n    <title>DNS of vertical plane channel flow with finite-size particles: Voronoi analysis, acceleration statistics and particle-conditioned averaging</title>\n    <updated>2012-05-16T10:39:43Z</updated>\n    <link href=\"https://arxiv.org/abs/1205.3624v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1205.3624v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We have performed a direct numerical simulation of dilute turbulent particulate flow in a vertical plane channel, fully resolving the phase interfaces. The flow conditions are the same as those in the main case of \"Uhlma"
     },
@@ -917,14 +922,6 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "url": "https://doi.org/10.2139/ssrn.2419243",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2014"
-    },
-    {
-      "source": "crossref",
-      "query": "A-share quantitative trading factor strategy China",
       "title": "Figure 2.4. Algorithmic trading as share of total trading",
       "url": "https://doi.org/10.1787/888933433273",
       "description": "Crossref work type=component",
@@ -989,14 +986,6 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
-      "title": "",
-      "url": "https://doi.org/10.52926/jpmjpr1761",
-      "description": "Crossref work type=grant",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "A股 量化 github",
       "title": "Activity of Hip Muscle in Change of Load on One Side of the Lower Limbs",
       "url": "https://doi.org/10.1589/rika.23.671",
       "description": "Crossref work type=journal-article",
@@ -1021,14 +1010,6 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "A股 量化 github",
       "title": "Quantitative Stock Picking Model Based on Conditional Random Fields",
       "url": "https://doi.org/10.12677/sa.2019.82034",
       "description": "Crossref work type=journal-article",
@@ -1039,22 +1020,6 @@
       "query": "A股 量化 github",
       "title": "Quantitative Stock Selection Model Based on Text Analysis-LSTM",
       "url": "https://doi.org/10.12677/ecl.2025.1451633",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "A股 量化 github",
-      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
-      "url": "https://doi.org/10.12677/aam.2022.111033",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "A股 量化 github",
-      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
-      "url": "https://doi.org/10.12677/ecl.2025.1482826",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -1317,14 +1282,6 @@
     {
       "source": "crossref",
       "query": "China A-share order flow high frequency factors",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "url": "https://doi.org/10.2139/ssrn.5806502",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share order flow high frequency factors",
       "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow and High Frequency Liquidity Provision",
       "url": "https://doi.org/10.2139/ssrn.2616992",
       "description": "Crossref work type=journal-article",
@@ -1397,14 +1354,6 @@
     {
       "source": "crossref",
       "query": "China A-share pairs statistical arbitrage",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "url": "https://doi.org/10.21275/sr231123060916",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
       "title": "Comprehensive Review of Pairs Trading in Statistical Arbitrage",
       "url": "https://doi.org/10.54254/2754-1169/2026.35956",
       "description": "Crossref work type=journal-article",
@@ -1449,14 +1398,6 @@
       "url": "https://doi.org/10.1111/irfi.12074",
       "description": "Crossref work type=journal-article",
       "updated_at": "2016"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "url": "https://doi.org/10.2139/ssrn.2610064",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -1887,38 +1828,6 @@
       "query": "SMC ICT 流动性 扫损 加密货币",
       "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
       "url": "https://doi.org/10.12677/sa.2021.103054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "url": "https://doi.org/10.12677/fin.2021.113022",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "url": "https://doi.org/10.12677/ds.2023.96381",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "url": "https://doi.org/10.12677/orf.2021.114043",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
       "description": "Crossref work type=journal-article",
       "updated_at": "2021"
     },
@@ -2461,14 +2370,6 @@
     {
       "source": "crossref",
       "query": "bitcoin seasonality calendar effect trading",
-      "title": "Bitcoin Trading",
-      "url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "description": "Crossref work type=dataset",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "bitcoin seasonality calendar effect trading",
       "title": "Bitcoin Trading with Quantum Belief Networks",
       "url": "https://doi.org/10.2139/ssrn.5281675",
       "description": "Crossref work type=posted-content",
@@ -2513,14 +2414,6 @@
       "url": "https://doi.org/10.1002/9781119202561.ch10",
       "description": "Crossref work type=other",
       "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "bitcoin seasonality calendar effect trading",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "url": "https://doi.org/10.2139/ssrn.4081000",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2022"
     },
     {
       "source": "crossref",
@@ -2741,6 +2634,14 @@
     {
       "source": "crossref",
       "query": "crypto momentum trend following strategy bitcoin",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "url": "https://doi.org/10.2139/ssrn.4081000",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto momentum trend following strategy bitcoin",
       "title": "The Effective Combination of Risk-Based Strategies with Momentum and Trend Following",
       "url": "https://doi.org/10.2139/ssrn.2556747",
       "description": "Crossref work type=posted-content",
@@ -2765,50 +2666,10 @@
     {
       "source": "crossref",
       "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 1 Trading in Options",
-      "url": "https://doi.org/10.1515/9783110697865-002",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 15 Trading Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-016",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 4 Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-005",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
       "title": "Distribution based Trading Strategies  for Crypto Options",
       "url": "https://doi.org/10.24818/ida-cl/2023.128",
       "description": "Crossref work type=posted-content",
       "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118524046.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118531990.ch2",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2012"
     },
     {
       "source": "crossref",
@@ -2829,18 +2690,18 @@
     {
       "source": "crossref",
       "query": "crypto options volatility skew gamma trading",
-      "title": "Volatility Trading Explained",
-      "url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility, Skew and Term Structure",
+      "url": "https://doi.org/10.1002/9781119206965.ch4",
       "description": "Crossref work type=other",
       "updated_at": "2012"
     },
     {
       "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Volatility, Skew and Term Structure",
-      "url": "https://doi.org/10.1002/9781119206965.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
+      "query": "crypto order flow order book imbalance microprice",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "url": "https://doi.org/10.2139/ssrn.5806502",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
     },
     {
       "source": "crossref",
@@ -2997,74 +2858,10 @@
     {
       "source": "crossref",
       "query": "crypto trading bot strategy backtest",
-      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
-      "url": "https://doi.org/10.1002/9781118656617.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
       "title": "How Much Sharpe is Illusory? Quantifying Backtest Overfitting in Crypto Factor Strategies",
       "url": "https://doi.org/10.2139/ssrn.7350238",
       "description": "Crossref work type=posted-content",
       "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "url": "https://doi.org/10.2139/ssrn.6683818",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "url": "https://doi.org/10.2139/ssrn.4601806",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Trading Lore",
-      "url": "https://doi.org/10.1002/9781118656617.ch10",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Trading System Elements: Entries",
-      "url": "https://doi.org/10.1002/9781118656617.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "url": "https://doi.org/10.2139/ssrn.6876580",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "url": "https://doi.org/10.1002/9781118656617.ch13",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto trading bot strategy backtest",
-      "title": "What Is a Tradeable Strategy?",
-      "url": "https://doi.org/10.1002/9781118656617.ch1",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
     },
     {
       "source": "crossref",
@@ -4189,6 +3986,30 @@
     {
       "source": "crossref",
       "query": "options volatility trading systematic strategy",
+      "title": "Chapter 1 Trading in Options",
+      "url": "https://doi.org/10.1515/9783110697865-002",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Chapter 15 Trading Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-016",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Chapter 4 Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-005",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
       "title": "Creating Your Binary Options Strategy",
       "url": "https://doi.org/10.1002/9781118528693.part5",
       "description": "Crossref work type=other",
@@ -4197,8 +4018,32 @@
     {
       "source": "crossref",
       "query": "options volatility trading systematic strategy",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118524046.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118531990.ch2",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
       "title": "Trading Binary Options",
       "url": "https://doi.org/10.1002/9781118528693.part3",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Volatility Trading Explained",
+      "url": "https://doi.org/10.1002/9781118528693.ch8",
       "description": "Crossref work type=other",
       "updated_at": "2012"
     },
@@ -4532,6 +4377,70 @@
     },
     {
       "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
+      "url": "https://doi.org/10.1002/9781118656617.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "url": "https://doi.org/10.2139/ssrn.6683818",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "url": "https://doi.org/10.2139/ssrn.4601806",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading Lore",
+      "url": "https://doi.org/10.1002/9781118656617.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading System Elements: Entries",
+      "url": "https://doi.org/10.1002/9781118656617.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "url": "https://doi.org/10.2139/ssrn.6876580",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "url": "https://doi.org/10.1002/9781118656617.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "What Is a Tradeable Strategy?",
+      "url": "https://doi.org/10.1002/9781118656617.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
       "query": "reinforcement learning trading systematic review",
       "title": "Algorithmic trading on financial time series using Deep Reinforcement Learning",
       "url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
@@ -4685,10 +4594,26 @@
     {
       "source": "crossref",
       "query": "statistical arbitrage pairs trading equities",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "url": "https://doi.org/10.21275/sr231123060916",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
       "title": "Market Neutrality and Pairs Trading",
       "url": "https://doi.org/10.1002/9781119201526.ch4",
       "description": "Crossref work type=other",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "url": "https://doi.org/10.2139/ssrn.2610064",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4885,6 +4810,22 @@
     {
       "source": "crossref",
       "query": "systematic trading strategy repository",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "url": "https://doi.org/10.2139/ssrn.2419243",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "systematic trading strategy repository",
+      "title": "Bitcoin Trading",
+      "url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "description": "Crossref work type=dataset",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "systematic trading strategy repository",
       "title": "Energy trading using blockchain: Smart contracts functionalities – A systematic review",
       "url": "https://doi.org/10.1016/j.esr.2025.101825",
       "description": "Crossref work type=journal-article",
@@ -4988,11 +4929,11 @@
     },
     {
       "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
-      "url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
+      "query": "因子挖掘 A股 量化 交易",
+      "title": "",
+      "url": "https://doi.org/10.52926/jpmjpr1761",
+      "description": "Crossref work type=grant",
+      "updated_at": ""
     },
     {
       "source": "crossref",
@@ -5060,11 +5001,11 @@
     },
     {
       "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
-      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5085,16 +5026,16 @@
     {
       "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
-      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
-      "url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "title": "基于 CANSLIM 法则的多因子量化策略研究",
+      "url": "https://doi.org/10.69979/3029-2700.25.03.078",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
-      "title": "基于 CANSLIM 法则的多因子量化策略研究",
-      "url": "https://doi.org/10.69979/3029-2700.25.03.078",
+      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
+      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -5109,10 +5050,58 @@
     {
       "source": "crossref",
       "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "url": "https://doi.org/10.12677/fin.2021.113022",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "url": "https://doi.org/10.12677/orf.2021.114043",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
       "title": "The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
       "url": "https://doi.org/10.12677/etw.2012.23012",
       "description": "Crossref work type=journal-article",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
+      "url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
+      "url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5157,14 +5146,6 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -5177,14 +5158,6 @@
       "url": "https://doi.org/10.32629/ej.v2i3.152",
       "description": "Crossref work type=journal-article",
       "updated_at": "2019"
-    },
-    {
-      "source": "crossref",
-      "query": "强化学习 加密货币 交易 策略",
-      "title": "广东电力现货市场主体交易策略与博弈行为分析",
-      "url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
     },
     {
       "source": "crossref",
@@ -5204,19 +5177,27 @@
     },
     {
       "source": "crossref",
-      "query": "强化学习 加密货币 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
       "query": "涨停 连板 A股 量化 策略",
       "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
       "url": "https://doi.org/10.12677/fin.2024.143090",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "涨停 连板 A股 量化 策略",
+      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
+      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "涨停 连板 A股 量化 策略",
+      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
+      "url": "https://doi.org/10.12677/ecl.2025.1482826",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5357,6 +5338,14 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "订单流 加密货币 交易 策略",
       "title": "城市轨道交通客流预测与调度优化策略研究",
       "url": "https://doi.org/10.67328/bt4095",
       "description": "Crossref work type=journal-article",
@@ -5381,8 +5370,24 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "订单流 加密货币 交易 策略",
       "title": "数据跨境流动中的安全风险与加密防护策略研究",
       "url": "https://doi.org/10.62989/jemr2025.2.2.10",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "订单流 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -6122,7 +6127,7 @@
       "title": "KSP-CKAN/CKAN-meta",
       "url": "https://gitlab.com/KSP-CKAN/CKAN-meta",
       "description": "Metadata files for the CKAN\r\n\r\nThis is a read-only mirror, please create issues and pull requests at https://github.com/KSP-CKAN/CKAN-meta",
-      "updated_at": "2026-09-13T01:34:11.364Z",
+      "updated_at": "2026-09-13T04:35:36.714Z",
       "stars": 3
     },
     {
@@ -6563,7 +6568,7 @@
       "title": "freedesktop-sdk/mirrors/github/curl/curl",
       "url": "https://gitlab.com/freedesktop-sdk/mirrors/github/curl/curl",
       "description": "github.com: curl/curl.git",
-      "updated_at": "2026-09-12T23:11:33.672Z",
+      "updated_at": "2026-09-13T04:31:39.107Z",
       "stars": 1
     },
     {
@@ -6590,7 +6595,7 @@
       "title": "freedesktop-sdk/mirrors/github/nghttp2/nghttp2",
       "url": "https://gitlab.com/freedesktop-sdk/mirrors/github/nghttp2/nghttp2",
       "description": "github.com: nghttp2/nghttp2.git",
-      "updated_at": "2026-09-12T12:11:22.725Z",
+      "updated_at": "2026-09-13T04:31:18.524Z",
       "stars": 0
     },
     {
@@ -6644,7 +6649,7 @@
       "title": "gitlab-org/build/omnibus-mirror/curl",
       "url": "https://gitlab.com/gitlab-org/build/omnibus-mirror/curl",
       "description": "Mirror of https://github.com/curl/curl",
-      "updated_at": "2026-09-12T23:10:31.389Z",
+      "updated_at": "2026-09-13T04:29:30.806Z",
       "stars": 0
     },
     {
@@ -6794,6 +6799,15 @@
     {
       "source": "gitlab",
       "query": "A股 量化 github",
+      "title": "paranoidaosp/device/qcom/kernelscripts",
+      "url": "https://gitlab.com/paranoidaosp/device/qcom/kernelscripts",
+      "description": "upstream: https://github.com/AOSPA/android_kernel_build",
+      "updated_at": "2026-09-13T04:37:52.148Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
       "title": "paranoidaosp/device/qcom/wlan",
       "url": "https://gitlab.com/paranoidaosp/device/qcom/wlan",
       "description": "upstream: https://github.com/AOSPA/android_device_qcom_wlan",
@@ -6807,6 +6821,96 @@
       "url": "https://gitlab.com/paranoidaosp/frameworks/av",
       "description": "upstream: https://github.com/AOSPA/android_frameworks_av",
       "updated_at": "2026-09-13T04:13:20.973Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/frameworks/native",
+      "url": "https://gitlab.com/paranoidaosp/frameworks/native",
+      "description": "upstream: https://github.com/AOSPA/android_frameworks_native",
+      "updated_at": "2026-09-13T04:36:48.951Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/hardware/interfaces",
+      "url": "https://gitlab.com/paranoidaosp/hardware/interfaces",
+      "description": "upstream: https://github.com/AOSPA/android_hardware_interfaces",
+      "updated_at": "2026-09-13T04:37:16.902Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/hardware/qcom/wlan",
+      "url": "https://gitlab.com/paranoidaosp/hardware/qcom/wlan",
+      "description": "upstream: https://github.com/AOSPA/android_hardware_qcom_wlan",
+      "updated_at": "2026-09-13T04:37:41.163Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/kernel/configs",
+      "url": "https://gitlab.com/paranoidaosp/kernel/configs",
+      "description": "upstream: https://github.com/AOSPA/android_kernel_configs",
+      "updated_at": "2026-09-13T04:37:57.045Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/packages/apps/Settings",
+      "url": "https://gitlab.com/paranoidaosp/packages/apps/Settings",
+      "description": "upstream: https://github.com/AOSPA/android_packages_apps_Settings",
+      "updated_at": "2026-09-13T04:46:16.188Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/packages/modules/Bluetooth",
+      "url": "https://gitlab.com/paranoidaosp/packages/modules/Bluetooth",
+      "description": "upstream: https://github.com/AOSPA/android_packages_modules_Bluetooth",
+      "updated_at": "2026-09-13T04:47:05.968Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/packages/services/Telecomm",
+      "url": "https://gitlab.com/paranoidaosp/packages/services/Telecomm",
+      "description": "upstream: https://github.com/AOSPA/android_packages_services_Telecomm",
+      "updated_at": "2026-09-13T04:48:49.395Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/system/memory/lmkd",
+      "url": "https://gitlab.com/paranoidaosp/system/memory/lmkd",
+      "description": "upstream: https://github.com/AOSPA/android_system_memory_lmkd",
+      "updated_at": "2026-09-13T04:49:31.205Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/vendor/qcom/opensource/commonsys-intf/display",
+      "url": "https://gitlab.com/paranoidaosp/vendor/qcom/opensource/commonsys-intf/display",
+      "description": "upstream: https://github.com/AOSPA/android_vendor_qcom_opensource_commonsys-intf_display",
+      "updated_at": "2026-09-13T04:50:28.373Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "paranoidaosp/vendor/qcom/opensource/commonsys/bluetooth",
+      "url": "https://gitlab.com/paranoidaosp/vendor/qcom/opensource/commonsys/bluetooth",
+      "description": "upstream: https://github.com/AOSPA/android_vendor_qcom-opensource_bluetooth-commonsys",
+      "updated_at": "2026-09-13T04:50:02.894Z",
       "stars": 0
     },
     {
@@ -11915,14 +12019,6 @@
     {
       "source": "semantic_scholar",
       "query": "China A-share cross-sectional factor mining",
-      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
-      "url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
-      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
-      "updated_at": "2026"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "China A-share cross-sectional factor mining",
       "title": "Knowledge, attitudes, and practices (KAP) of animal health staff and farmers towards brucellosis control in sheep and goat in China: A cross-sectional study",
       "url": "https://www.semanticscholar.org/paper/612d769f6cf18d9356b6d8e7fd53cfb2788e9a78",
       "description": "Background In China, brucellosis has resurfaced recently with a discernible spatial distribution, particularly affecting dairy herds and small ruminant populations. However, limited dissemination of knowledge, attitudes, and practices (KAP) for brucellosis control exists among farmers and animal health staff. This study aimed to assess the KAP of brucellosis control and prevention in animal health staff and farmers, with the goal of educating the public regarding the application of efficient brucellosis control and prevention strategies. Methods We conducted a cross-sectional survey involving 1,468 participants, comprising farmers (n = 1,067) and animal health staff (n = 401) based on their significant density of sheep and goat population. They completed a questionnaire targeting a specific group of farmers and animal health staff through face-to-face interviews. The KAP scores were then categorized as either satisfactory or unsatisfactory based on a cutoff set at ≥80% of the total score for satisfactory. Binary logistic regression was used to identify the association between KAP and geographical information. Results The results indicated satisfaction with KAP among farmers (57.7%, 75.8% and 87.0%) and animal health staff (80.5%, 84.5%, and 78.3%) at ≥ 80% cut-off point of total score. The primary concern of farmers is involved in the understanding of the route of transmission and handwashing practices after contacting animals. Predictors of higher knowledge and positive attitude included province of residence and age. The factors linked to satisfactory practice levels consist of province of residence, educational level, and a history of family members’ infections (p < 0.05). Among animal health staff, the primary factor associated with KAP was province of residence, sex, level of education, and history of family members infection (p < 0.05). Additionally, brucellosis information primarily originated from traditional promotional materials and veterinarians. Conclusi",
@@ -11999,6 +12095,14 @@
       "url": "https://www.semanticscholar.org/paper/06ac8258aa7276483dd5037dc400bb8047771926",
       "description": "The persistence of per- and polyfluoroalkyl substances (PFAS) in surface water can pose risks to ecosystems, while due to data limitations, the occurrence, risks, and future trends of PFAS at large scales remain unknown. This study investigated the ecological risks of PFAS in surface water in China under different Shared Socioeconomic Pathways (SSPs) using machine learning modeling, based on concentration data collected from 167 published papers. The results indicated that long-chain PFAS currently dominated in most basins and posed significant risks, especially PFOA. Population density and temperature were key factors influencing risks of long-chain PFAS, while secondary industry and precipitation affected the risks of PFBS and PFHxS significantly, respectively. In the future, the ecological risks of long-chain PFAS would overall decrease, with risk probabilities of PFOA and PFOS decreasing significantly in SSP5 (8.15 % and 14.95 % reduction compared to 2020, respectively). The risks of short-chain PFAS were expected to increase, but stabilize in the late stage of SSP1. Nevertheless, the risks of long-chain PFAS would remain higher than those of short-chain PFAS, with high-risk areas concentrated in Southeast China. This study suggests changes in ecological risks of PFAS driven by future climate and human activities, providing new insights for risk management.",
       "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share machine learning alpha",
+      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
+      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
+      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
