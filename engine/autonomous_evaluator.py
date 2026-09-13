@@ -9,8 +9,9 @@ from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 from .trading_features import momentum_trend, mean_reversion_zscore, volume_spread
 from .context_features import gann_reference, multi_timeframe_context, point_figure_directions, PnFConfig, rolling_volatility, rolling_volume_profile_poc, vwap
+from research.cost_model import DEFAULT_COST_MODEL
 
-EVALUATION_SPEC={"stop_fraction":0.01,"reward_multiple":2.0,"round_trip_cost":0.0,"cost_model_status":"UNAVAILABLE","validation_basis":"GROSS_ONLY"}
+EVALUATION_SPEC={"stop_fraction":0.01,"reward_multiple":2.0,"round_trip_cost":0.0,"cost_model_status":"AVAILABLE","validation_basis":"NET_REQUIRED_FOR_PROMOTION"}
 WINDOWS={3,5,10,20,50,100}
 MECHANISMS={"momentum_trend","mean_reversion","volatility","smc_ict","fvg_imbalance","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
 
@@ -84,9 +85,9 @@ def main()->int:
  elif hid in HYPOTHESES:predicate=HYPOTHESES[hid]
  else:raise SystemExit(f'UNEXECUTABLE_HYPOTHESIS_ID:{hid}')
  data=(root/a.data).resolve();bars=load_bars(data);splits=chronological_split(len(bars));validate_splits(splits,len(bars))
- is_result=evaluate_split(bars,splits[0].start,splits[0].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'])
- val_result=evaluate_split(bars,splits[1].start,splits[1].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'])
+ is_result=evaluate_split(bars,splits[0].start,splits[0].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'],cost_model=DEFAULT_COST_MODEL)
+ val_result=evaluate_split(bars,splits[1].start,splits[1].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'],cost_model=DEFAULT_COST_MODEL)
  vm=val_result['metrics'];gross_passed=vm.get('profit_factor') is not None and vm['profit_factor']>=1.0 and vm['total_return']>=0.0;cost_available=EVALUATION_SPEC.get('cost_model_status')=='AVAILABLE';net_gate='PASS' if cost_available and gross_passed else ('COST_MODEL_REQUIRED' if not cost_available else 'GROSS_VALIDATION_FAILED');validation_passed=bool(cost_available and gross_passed)
- result={'schema_version':6,'bc':candidate['bc'],'parent_bc':candidate['parent_bc'],'hypothesis_id':hid,'candidate_hash':candidate['candidate_hash'],'discovery_spec':candidate.get('discovery_spec'),'oos_selection_used':False,'oos_executed':False,'dataset':{'path':str(data),'sha256':sha256(data),'bars':len(bars)},'evaluation_spec':dict(EVALUATION_SPEC),'IS':is_result,'VALIDATION':val_result,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION'}
- out=root/a.out;out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'bc':candidate['bc'],'hypothesis_id':hid,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION'},indent=2));return 0
+ result={'schema_version':7,'bc':candidate['bc'],'parent_bc':candidate['parent_bc'],'hypothesis_id':hid,'candidate_hash':candidate['candidate_hash'],'discovery_spec':candidate.get('discovery_spec'),'oos_selection_used':False,'oos_executed':False,'dataset':{'path':str(data),'sha256':sha256(data),'bars':len(bars)},'evaluation_spec':dict(EVALUATION_SPEC),'cost_model':DEFAULT_COST_MODEL.metadata(),'IS':is_result,'VALIDATION':val_result,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION'}
+ out=root/a.out;out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'bc':candidate['bc'],'hypothesis_id':hid,'gross_validation_passed':gross_passed,'net_validation_gate':net_gate,'validation_passed':validation_passed,'validation_basis':'NET_REQUIRED_FOR_PROMOTION','cost_model_status':'AVAILABLE'},indent=2));return 0
 if __name__=='__main__':raise SystemExit(main())
