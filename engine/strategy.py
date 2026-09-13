@@ -42,6 +42,7 @@ class ReferenceStrategy:
                     self.events.append(event)
                     self._sweep = event
                     self._mss = None
+                    self._fvg = None
 
                 elif bar.high > prev.high and bar.close < prev.high:
                     event = Event(
@@ -54,6 +55,7 @@ class ReferenceStrategy:
                     self.events.append(event)
                     self._sweep = event
                     self._mss = None
+                    self._fvg = None
 
             if (
                 self._sweep is not None
@@ -75,6 +77,7 @@ class ReferenceStrategy:
                     )
                     self.events.append(event)
                     self._mss = event
+                    self._fvg = None
 
                 elif (
                     self._sweep.direction == Direction.BEARISH
@@ -89,6 +92,7 @@ class ReferenceStrategy:
                     )
                     self.events.append(event)
                     self._mss = event
+                    self._fvg = None
 
             if (
                 i >= 2
