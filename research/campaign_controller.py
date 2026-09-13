@@ -23,7 +23,14 @@ def terminal(state,outcome,reason,screened,budget):
  state["campaign_terminal"]=True; state["campaign_outcome"]=outcome; state["campaign_terminal_reason"]=reason; state["campaign_screened"]=min(int(screened),int(budget)); save(state); print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={state['campaign_screened']}/{budget}"); return 0
 
 def qualifying_bcs(history, start=1):
- return {int(x["bc"]) for x in history if isinstance(x,dict) and int(x.get("bc",-1)) >= int(start) and str(x.get("decision")) in {"REJECT","PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc"," ")).strip().isdigit()}
+ result=set()
+ for x in history:
+  if not isinstance(x,dict): continue
+  raw_bc=str(x.get("bc","")).strip()
+  if not raw_bc.isdigit(): continue
+  bc=int(raw_bc)
+  if bc >= int(start) and str(x.get("decision")) in {"REJECT","PROMOTE_TO_FUTURE_OOS_TEST"}: result.add(bc)
+ return result
 
 def _epoch_start(state, history):
  if state.get("campaign_epoch_initialized") and isinstance(state.get("campaign_start_bc"),int):
