@@ -1,0 +1,21 @@
+{
+  "bc": 125,
+  "candidate_hash": "8be029d3b1f69cd659d5683d160820c1f97f8f59098eca6bd6d8f765f41c8519",
+  "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "numeric_finite_threshold": 0.45,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/vcorp-dev/depthfeed-strategy-builder"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 124,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

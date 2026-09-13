@@ -1,0 +1,21 @@
+{
+  "bc": 126,
+  "candidate_hash": "3a0050d77c7fb96cfe09d2b1c1e981e8e683a32214a4ef10beb6fa730f8c21e1",
+  "conceptual_change": "Test rolling_std(close) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "numeric_finite_threshold": 0.5,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/kukuhtw/dma_bot_rust"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 125,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

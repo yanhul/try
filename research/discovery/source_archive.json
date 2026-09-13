@@ -268,6 +268,11 @@
     },
     {
       "source": "arxiv",
+      "query": "bitcoin seasonality calendar effect trading",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/GDntiHVBIWagTzQdxbkIfLSo+3Q</id>\n  <title>arXiv Query: search_query=all:bitcoin OR all:seasonality OR all:calendar OR all:effect OR all:trading&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T00:17:27Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:bitcoin+OR+(all:seasonality+OR+(all:calendar+OR+(all:effect+OR+all:trading)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>731657</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/1702.01024v2</id>\n    <title>An analysis of Bitcoin OP_RETURN metadata</title>\n    <updated>2017-03-01T08:20:17Z</updated>\n    <link href=\"https://arxiv.org/abs/1702.01024v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1702.01024v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Bitcoin protocol allows to save arbitrary data on the blockchain through a special instruction of the scripting language, called OP_RETURN. A growing number of protocols exploit this feature to extend the range of applications of the Bitcoin blockchain beyond transfer of currency. A point of debate in the Bitcoin community is whether loading data through OP_RETURN can negatively affect the performance of the Bitcoin network with respect to its primary goal. This paper is an empirical study of the usage of OP_RETURN over the years. We identify several protocols based on OP_RETURN, which we classify by their application domain. We measure the evolution in time of the usage of each protocol, the distribution of OP_RETURN transactions by application domain, and their space consumption.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-02-03T14:30:27Z</published>\n    <arxiv:comment>BITCOIN 2017</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Massimo Bartoletti</name>\n    </author>\n    <author>\n      <name>Livio Pompianu</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1810.10194v1</id>\n    <title>Niji: Bitcoin Bridge Utilizing Payment Channels</title>\n    <updated>2018-10-24T05:43:16Z</updated>\n    <link href=\"https://arxiv.org/abs/1810.10194v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1810.10194v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Bitcoin's enormous success has inspired the development of alternative blockchains, such as consortium chains. Several cross-chain protocols have been proposed as ways of connecting these universes of individual blockchains in a distributed and secure manner. In this paper, we present Niji, a new cross-chain protocol that allows parties to perform virtual Bitcoin payment securely on a consortium chain, without any trusted third-party or mediators. Our work focuses on the issue that it is difficult for a consortium chain's token to hold a stable market value, and Niji makes it possible for smart contract services to acquire means of payment in the consortium chain. With the Bitcoin payment channel built on the consortium chain, the process from payment to service provision runs autonomously without any interaction between parties. Niji introduces the concept of a transaction template to validate Bitcoin payments efficiently on different blockchains, and it allows a service provider to delegate all of its tasks for verifying state updates to a smart contract on the consortium chain. We also propose a novel bi-directional payment channel adapted for design of the Niji protocol, which can update payments non-interactively between parties. We implemented a prototype of the Niji protocol and conducted an experiment measuring the computational cost and latency that demonstrates the protocol's feasibility on practical platforms.</summary>\n    <category term=\"cs.DC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2018-10-24T05:43:16Z</published>\n    <arxiv:comment>Presented at Scaling Bitcoin 2018</arxiv:comment>\n    <arxiv:primary_category term=\"cs.DC\"/>\n    <author>\n      <name>Hiroki Watanabe</name>\n    </author>\n    <author>\n      <name>Shigenori Ohashi</name>\n    </author>\n    <author>\n      <name>Shigeru Fujimura</name>\n    </author>\n    <author>\n      <name>Atsushi Nakadaira</name>\n    </author>\n    <author>\n      <name>Kota Hidaka</name>\n    </author>\n    <author>\n      <name>Jay Kishigami</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1405.4498v1</id>\n    <title>The Economics of BitCoin Price Formation</title>\n    <updated>2014-05-18T12:59:05Z</updated>\n    <link href=\"https://arxiv.org/abs/1405.4498v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1405.4498v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper analyses the relationship between BitCoin price and supply-demand fundamentals of BitCoin, global macro-financial indicators and BitCoin attractiveness for investors. Using daily data for the period 2009-2014 and applying time-series analytical mechanisms, we find that BitCoin market fundamentals and BitCoin attractiveness for investors have a significant impact on BitCoin price. Our estimates do not support previous findings that the macro-financial developments are driving BitCoin price.</summary>\n    <category term=\"econ.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-05-18T12:59:05Z</published>\n    <arxiv:comment>Key words: BitCoin, exchange rate, supply-demand fundamentals, financial indicators, attractiveness JEL classification: E31; E42; G12</arxiv:comment>\n    <arxiv:primary_category term=\"econ.GN\"/>\n    <author>\n      <name>Pavel Ciaian</name>\n    </author>\n    <author>\n      <name>Miroslava Rajcaniova</name>\n    </author>\n    <author>\n      <name>d'Artis Kancs</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1506.01513v2</id>\n    <title>Social signals and algorithmic trading of Bitcoin</title>\n    <updated>2015-09-24T10:41:41Z</updated>\n    <link href=\"https://arxiv.org/abs/1506.01513v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1506.01513v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The availability of data on digital traces is growing to unprecedented sizes, but inferring actionable knowledge from large-scale data is far from being trivial. This is especially important for computational finance, where digital traces of human behavior offer a great potential to drive trading strategies. We contribute to this by providing a consistent approach that integrates various datasources in the design of algorithmic traders. This allows us to derive insights into the principles behind the profitability of our trading strategies. We illustrate our approach through the analysis of Bitcoin, a cryptocurrency known for its large price fluctuations. In our analysis, we include economic signals of volume and price of exchange for USD, adoption of the Bitcoin technology, and transaction volume of Bitcoin. We add social signals related to information search, word of mouth volume, emotional valence, and opinion polarization as expressed in tweets related to Bitcoin for more than 3 years. Our analysis reveals that increases in opinion polarization and exchange volume precede rising Bitcoin prices, and that emotional valence precedes opinion polarization and rising exchange volumes. We apply these insights to design algorithmic trading strategies for Bitcoin, reaching very high profits in less than a year. We verify this high profitability with robust statistical methods that take into account risk and trading costs, confirming the long-standing hypothesis that trading based social media sentiment has the potential to yield positive returns on investment.</summary>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2015-06-04T09:01:55Z</published>\n    <arxiv:comment>http://rsos.royalsocietypublishing.org/content/2/9/150288</arxiv:comment>\n    <arxiv:primary_category term=\"cs.SI\"/>\n    <arxiv:journal_ref>Royal Society Open Science, 2:150288, 2015</arxiv:journal_ref>\n    <author>\n      <name>David Garcia</name>\n    </author>\n    <author>\n      <name>Frank Schweitzer</name>\n    </author>\n    <arxiv:doi>10.1098/rsos.150288</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1098/rsos.150288\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2509.04432v3</id>\n    <title>Can Language Models Handle a Non-Gregorian Calendar? The Case of the Japanese wareki</title>\n    <updated>2025-11-12T08:25:27Z</updated>\n    <link href=\"https://arxiv.org/abs/2509.04432v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2509.04432v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Temporal reasoning and knowledge are essential capabilities for language models (LMs). While much prior work has analyzed and improved temporal reasoning in LMs, most studies have focused solely on the Gregorian calendar. However, many non-Gregorian systems, such as the Japanese, Hijri, and Hebrew calendars, are in active use and reflect culturally grounded conceptions of time. If and how well current LMs can accurately handle such non-Gregorian calendars has not been evaluated so far. Here, we present a systematic evaluation of how well language models handle one such non-Gregorian system: the Japanese wareki. We create datasets that require temporal knowledge and reasoning in using wareki dates. Evaluating open and closed LMs, we find that some models can perform calendar conversions, but GPT-4o, Deepseek V3, and even Japanese-centric models struggle with Japanese calendar arithmetic and knowledge involving wareki dates. Error analysis suggests corpus frequency of Japanese calendar expressions and a Gregorian bias in the model's knowledge as possible explanations. Our results show the importance of developing LMs that are better equipped for culture-specific tasks such as calendar understanding.</summary>\n    <category term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-09-04T17:52:00Z</published>\n    <arxiv:comment>Accepted to IJCNLP-AACL 2025 (Main). Code available at https://github.com/cl-tohoku/Non-Gregorian-Calendar</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CL\"/>\n    <author>\n      <name>Mutsumi Sasaki</name>\n    </author>\n    <author>\n      <name>Go Kamoda</name>\n    </author>\n    <author>\n      <name>Ryosuke Takahashi</name>\n    </author>\n    <author>\n      <name>Kosuke Sato</name>\n    </author>\n    <author>\n      <name>Kentaro Inui</name>\n    </author>\n    <author>\n      <name>Keisuke Sakaguchi</name>\n    </author>\n    <author>\n      <name>Benjamin Heinzerling</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2506.11921v1</id>\n    <title>Dynamic Grid Trading Strategy: From Zero Expectation to Market Outperformance</title>\n    <updated>2025-06-13T16:11:44Z</updated>\n    <link href=\"https://arxiv.org/abs/2506.11921v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2506.11921v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We propose a profitable trading strategy for the cryptocurrency market based on grid trading. Starting with an analysis of the expected value of the traditional grid strategy, we show that under simple assumptions, its expected return is essentially zero. We then introduce a novel Dynamic Grid-based Trading (DGT) strategy that adapts to market conditions by dynamically resetting grid positions. Our backtesting results using minute-level data from Bitcoin and Ethereum between January 2021 and July 2024 demonstrate that the DGT strategy significantly outperforms both the traditional grid and buy-and-hold strategies in terms of internal rate of return and risk control.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-06-13T16:11:44Z</published>\n    <arxiv:comment>7 pages, 8 figures. Code available at https://github.com/colachenkc/Dynamic-Grid-Trading</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Kai-Yuan Chen</name>\n    </author>\n    <author>\n      <name>Kai-Hsin Chen</name>\n    </author>\n    <author>\n      <name>Jyh-Shing Roger Jang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1812.09452v1</id>\n    <title>The Price of BitCoin: GARCH Evidence from High Frequency Data</title>\n    <updated>2018-12-22T05:25:15Z</updated>\n    <link href=\"https://arxiv.org/abs/1812.09452v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1812.09452v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This is the first paper that estimates the price determinants of BitCoin in a Generalised Autoregressive Conditional Heteroscedasticity framework using high frequency data. Derived from a theoretical model, we estimate BitCoin transaction demand and speculative demand equations in a GARCH framework using hourly data for the period 2013-2018. In line with the theoretical model, our empirical results confirm that both the BitCoin transaction demand and speculative demand have a statistically significant impact on the BitCoin price formation. The BitCoin price responds negatively to the BitCoin velocity, whereas positive shocks to the BitCoin stock, interest rate and the size of the BitCoin economy exercise an upward pressure on the BitCoin price.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2018-12-22T05:25:15Z</published>\n    <arxiv:comment>Pavel Ciaian and d'Artis Kancs and Miroslava Rajcaniova The Price of BitCoin: GARCH Evidence from High Frequency Data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <author>\n      <name>Pavel Ciaian</name>\n    </author>\n    <author>\n      <name>d'Artis Kancs</name>\n    </author>\n    <author>\n      <name>Miroslava Rajcaniova</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1712.10287v2</id>\n    <title>Bitcoin Average Dormancy: A Measure of Turnover and Trading Activity</title>\n    <updated>2018-02-08T01:40:47Z</updated>\n    <link href=\"https://arxiv.org/abs/1712.10287v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1712.10287v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Attempts to accurately measure the monetary velocity or related properties of bitcoin used in transactions have often attempted to either directly apply definitions from traditional macroeconomic theory or to use specialized metrics relative to the properties of the Blockchain like bitcoin days destroyed. In this paper, it is demonstrated that beyond being a useful metric, bitcoin days destroyed has mathematical properties that allow you to calculate the average dormancy (time since last use in a transaction) of the bitcoins used in transactions over a given time period. In addition, bitcoin days destroyed is shown to have another unexpected significance as the average size of the pool of traded bitcoins by virtue of the expression Little's Law, though only under limited conditions.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-12-20T15:16:59Z</published>\n    <arxiv:comment>12 pages, 5 figures; accepted and to appear in Ledger</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <arxiv:journal_ref>Ledger, 3, 91-99 (2018)</arxiv:journal_ref>\n    <author>\n      <name>Reginald D. Smith</name>\n    </author>\n    <arxiv:doi>10.5195/ledger.2018.99</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.5195/ledger.2018.99\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1412.4042v1</id>\n    <title>Inferring the interplay of network structure and market effects in Bitcoin</title>\n    <updated>2014-12-12T16:31:24Z</updated>\n    <link href=\"https://arxiv.org/abs/1412.4042v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1412.4042v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>A main focus in economics research is understanding the time series of prices of goods and assets. While statistical models using only the properties of the time series itself have been successful in many aspects, we expect to gain a better understanding of the phenomena involved if we can model the underlying system of interacting agents. In this article, we consider the history of Bitcoin, a novel digital currency system, for which the complete list of transactions is available for analysis. Using this dataset, we reconstruct the transaction network between users and analyze changes in the structure of the subgraph induced by the most active users. Our approach is based on the unsupervised identification of important features of the time variation of the network. Applying the widely used method of Principal Component Analysis to the matrix constructed from snapshots of the network at different times, we are able to show how structural changes in the network accompany significant changes in the exchange price of bitcoins.</summary>\n    <category term=\"physics.soc-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-12-12T16:31:24Z</published>\n    <arxiv:comment>project website: http://www.vo.elte.hu/bitcoin</arxiv:comment>\n    <arxiv:primary_category term=\"physics.soc-ph\"/>\n    <arxiv:journal_ref>New J. Phys. 16 (2014) 125003</arxiv:journal_ref>\n    <author>\n      <name>Dániel Kondor</name>\n    </author>\n    <author>\n      <name>István Csabai</name>\n    </author>\n    <author>\n      <name>János Szüle</name>\n    </author>\n    <author>\n      <name>Márton Pósfai</name>\n    </author>\n    <author>\n      <name>Gábor Vattay</name>\n    </author>\n    <arxiv:doi>10.1088/1367-2630/16/12/125003</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1088/1367-2630/16/12/125003\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1912.04492v1</id>\n    <title>151 Estrategias de Trading (151 Trading Strategies)</title>\n    <updated>2019-11-14T14:58:13Z</updated>\n    <link href=\"https://arxiv.org/abs/1912.04492v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1912.04492v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This book, which is in Spanish, provides detailed descriptions, including over 550 mathematical formulas, for over 150 trading strategies across a host of asset classes (and trading styles). This includes stocks, options, fixed income, futures, ETFs, indexes, commodities, foreign exchange, convertibles, structured assets, volatility (as an asset class), real estate, distressed assets, cash, cryptocurrencies, miscellany (such as weather, energy, inflation), global macro, infrastructure, and tax arbitrage. Some strategies are based on machine learning algorithms (such as artificial neural networks, Bayes, k-nearest neighbors). We also give: source code for illustrating out-of-sample backtesting with explanatory notes; around 2,000 bibliographic references; and over 900 glossary, acronym and math definitions. The presentation is intended to be descriptive and pedagogical.\n  -----\n  Este libro proporciona descripciones detalladas, que incluyen más de 550 fórmulas matemáticas, para más de 150 estrategias de trading para una gran cantidad de clases de activos y estilos de trading. Esto incluye acciones, opciones, bonos (renta fija), futuros, ETFs, índices, commodities, divisas, bonos convertibles, activos estructurados, volatilidad (como clase de activos), bienes inmuebles, activos en distress, efectivo, criptomonedas, misceláneos (como clima, energía, inflación), macro global, infraestructura y arbitraje impositivo. Algunas estrategias se basan en algoritmos de aprendizaje automático (como redes neuronales artificiales, Bayes, k vecinos más cercanos). El libro también incluye código para backtesting fuera de la muestra con notas explicativas; cerca de 2,000 referencias bibliográficas; más de 900 términos que comprenden el glosario, acrónimos y definiciones matemáticas. La presentación pretende ser descriptiva y pedagógica.</summary>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.MF\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-11-14T14:58:13Z</published>\n    <arxiv:comment>398 pages; in Spanish; complete English version is freely downloadable from https://ssrn.com/abstract=3247865; English edition: Z. Kakushadze and J.A. Serur. 151 Trading Strategies. Cham, Switzerland: Palgrave Macmillan, an imprint of Springer Nature, 1st Edition (2018), XX, 480 pp; ISBN 978-3-030-02791-9</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.GN\"/>\n    <arxiv:journal_ref>151 Estrategias de Trading (Spanish Edition, 2019), 398 pp; ISBN 978-1071261873</arxiv:journal_ref>\n    <author>\n      <name>Zura Kakushadze</name>\n    </author>\n    <author>\n      <name>Juan Andrés Serur</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2202.12019v3</id>\n    <title>Functional Classification of Bitcoin Addresses</title>\n    <updated>2022-07-18T00:30:38Z</updated>\n    <link href=\"https://arxiv.org/abs/2202.12019v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2202.12019v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper proposes a classification model for predicting the main activity of bitcoin addresses based on their balances. Since the balances are functions of time, we apply methods from functional data analysis; more specifically, the features of the proposed classification model are the functional principal components of the data. Classifying bitcoin addresses is a relevant problem for two main reasons: to understand the composition of the bitcoin market, and to identify addresses used for illicit activities. Although other bitcoin classifiers have been proposed, they focus primarily on network analysis rather than curve behavior. Our approach, on the other hand, does not require any network information for prediction. Furthermore, functional features have the advantage of being straightforward to build, unlike expert-built features. Results show improvement when combining functional features with scalar features, and similar accuracy for the models using those features separately, which points to the functional model being a good alternative when domain-specific knowledge is not available.</summary>\n    <category term=\"stat.AP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-02-24T11:03:51Z</published>\n    <arxiv:comment>Keywords: Bitcoin market, Darknet market, Functional Data Analysis, Functional Classification, Functional Principal Components</arxiv:comment>\n    <arxiv:primary_category term=\"stat.AP\"/>\n    <author>\n      <name>Manuel Febrero-Bande</name>\n    </author>\n    <author>\n      <name>Wenceslao González-Manteiga</name>\n    </author>\n    <author>\n      <name>Brenda Prallon</name>\n    </author>\n    <author>\n      <name>Yuri F. Saporito</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2208.07168v1</id>\n    <title>AI for trading strategies</title>\n    <updated>2022-06-26T15:31:58Z</updated>\n    <link href=\"https://arxiv.org/abs/2208.07168v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2208.07168v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this bachelor thesis, we show how four different machine learning methods (Long Short-Term Memory, Random Forest, Support Vector Machine Regression, and k-Nearest Neighbor) perform compared to already successfully applied trading strategies such as Cross Signal Trading and a conventional statistical time series model ARMA-GARCH. The aim is to show that machine learning methods perform better than conventional methods in the crude oil market when used correctly. A more detailed performance analysis was made, showing the performance of the different models in different market phases so that the robustness of individual models in high and low volatility phases could be examined more closely. For further investigation, these models would also have to be analyzed in other markets.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-06-26T15:31:58Z</published>\n    <arxiv:comment>Keywords: Machine Learning, Trading strategies, Financial time-series, Time-series analysis, Financial data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Danijel Jevtic</name>\n    </author>\n    <author>\n      <name>Romain Deleze</name>\n    </author>\n    <author>\n      <name>Joerg Osterrieder</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1202.2447v2</id>\n    <title>Ensemble properties of high frequency data and intraday trading rules</title>\n    <updated>2013-07-15T09:40:16Z</updated>\n    <link href=\"https://arxiv.org/abs/1202.2447v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1202.2447v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Regarding the intraday sequence of high frequency returns of the S&amp;P index as daily realizations of a given stochastic process, we first demonstrate that the scaling properties of the aggregated return distribution can be employed to define a martingale stochastic model which consistently replicates conditioned expectations of the S&amp;P 500 high frequency data in the morning of each trading day. Then, a more general formulation of the above scaling properties allows to extend the model to the afternoon trading session. We finally outline an application in which conditioned forecasting is used to implement a trend-following trading strategy capable of exploiting linear correlations present in the S&amp;P dataset and absent in the model. Trading signals are model-based and not derived from chartist criteria. In-sample and out-of-sample tests indicate that the model-based trading strategy performs better than a benchmark one established on an asymmetric GARCH process, and show the existence of small arbitrage opportunities. We remark that in the absence of linear correlations the trading profit would vanish and discuss why the trading strategy is potentially interesting to hedge volatility risk for S&amp;P index-based products.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cond-mat.stat-mech\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2012-02-11T14:38:01Z</published>\n    <arxiv:comment>21 pages, 10 figures. Throughout revision and correction of the first version. Extension of the trading strategy to the whole day</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Fulvio Baldovin</name>\n    </author>\n    <author>\n      <name>Francesco Camana</name>\n    </author>\n    <author>\n      <name>Massimiliano Caporin</name>\n    </author>\n    <author>\n      <name>Michele Caraglio</name>\n    </author>\n    <author>\n      <name>Attilio L. Stella</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1712.10222v2</id>\n    <title>How to Charge Lightning: The Economics of Bitcoin Transaction Channels</title>\n    <updated>2022-07-13T21:07:52Z</updated>\n    <link href=\"https://arxiv.org/abs/1712.10222v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1712.10222v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Off-chain transaction channels represent one of the leading techniques to scale the transaction throughput in cryptocurrencies. However, the economic effect of transaction channels on the system has not been explored much until now.\n  We study the economics of Bitcoin transaction channels, and present a framework for an economic analysis of the lightning network and its effect on transaction fees on the blockchain. Our framework allows us to reason about different patterns of demand for transactions and different topologies of the lightning network, and to derive the resulting fees for transacting both on and off the blockchain.\n  Our initial results indicate that while the lightning network does allow for a substantially higher number of transactions to pass through the system, it does not necessarily provide higher fees to miners, and as a result may in fact lead to lower participation in mining within the system.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.DC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.GT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-12-29T13:33:46Z</published>\n    <arxiv:comment>An earlier version of the paper was presented at Scaling Bitcoin 2017</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Simina Brânzei</name>\n    </author>\n    <author>\n      <name>Erel Segal-Halevi</name>\n    </author>\n    <author>\n      <name>Aviv Zohar</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1412.5558v1<"
+    },
+    {
+      "source": "arxiv",
       "query": "cross sectional crypto factors momentum reversal",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/r4csUmiisIkUc0zIFFLJSp7g+3M</id>\n  <title>arXiv Query: search_query=all:cross OR all:sectional OR all:crypto OR all:factors OR all:momentum OR all:reversal&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T04:24:12Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:cross+OR+(all:sectional+OR+(all:crypto+OR+(all:factors+OR+(all:momentum+OR+all:reversal))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>453547</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2311.01461v1</id>\n    <title>The Property Law of Crypto Tokens</title>\n    <updated>2023-11-02T17:59:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2311.01461v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2311.01461v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the lack of comprehensive studies on Web3 technologies, primarily due to lawyers' reluctance to explore technical intricacies. Understanding the underlying technological foundations is crucial to enhance the credibility of legal opinions. This article aims to illuminate these foundations, debunk myths, and concentrate on determining the legal status of crypto-assets in the context of property rights within the distributed economy. In addition, this article notes that the intangible nature of crypto-assets that derive value from distributed registries, and their resistance to deletion, makes crypto-assets more akin to the autonomy of intellectual property than physical media. The article presents illustrative examples from common law (United States, United Kingdom, New Zealand) and civil law (Germany, Austria, Poland) systems. Proposing a universal solution, it advocates a comprehensive framework safeguarding digital property - data ownership - extending beyond the confines of Web3.\n  This article presents a comprehensive, multi-layered approach to the analysis of tokens as digital content and virtual goods. The approach, universally applicable to various of such goods, scrutinizes property on three distinct layers: first, the rights to the virtual good itself; second, the rights to the assets linked to the virtual good; and third, the rights to the intellectual property intricately associated with the token. Additionally, the paper provides concise analysis of the conflict of laws rules applicable to virtual goods. It also delves into issues concerning formal requirements for the transfer of intellectual property rights, licensing, the first sale (exhaustion) doctrine, the concept of the lawful acquirer, and other crucial aspects of intellectual property in the realm of virtual goods, particularly within the emerging metaverse.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-11-02T17:59:51Z</published>\n    <arxiv:comment>Legal Status of Crypto Tokens (FT, NFT, etc.)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Jakub Wyczik</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2601.07664v3</id>\n    <title>Crypto Pricing with Hidden Factors</title>\n    <updated>2026-07-16T18:28:18Z</updated>\n    <link href=\"https://arxiv.org/abs/2601.07664v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2601.07664v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We estimate risk premia in the cross-section of cryptocurrency returns using the Giglio-Xiu (2021) three-pass approach, allowing for omitted latent factors alongside observed stock-market and crypto-market factors. Using weekly data on a broad universe of large cryptocurrencies, we find that crypto expected returns load on both crypto-specific factors and selected equity-industry factors associated with technology and profitability, consistent with increased integration between crypto and traditional markets. In addition, we study non-tradable state variables capturing investor sentiment (Fear and Greed), speculative rotation (Altcoin Season Index), and security shocks (hacked value scaled by market capitalization), which are new to the literature. Relative to conventional Fama-MacBeth estimates, the latent-factor approach yields materially different premia for key factors, highlighting the importance of controlling for unobserved risks in crypto asset pricing.</summary>\n    <category term=\"q-fin.PR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.EM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-01-12T15:43:30Z</published>\n    <arxiv:primary_category term=\"q-fin.PR\"/>\n    <author>\n      <name>Matthew Brigida</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2104.08597v2</id>\n    <title>XLEnt: Mining a Large Cross-lingual Entity Dataset with Lexical-Semantic-Phonetic Word Alignment</title>\n    <updated>2021-09-10T16:21:22Z</updated>\n    <link href=\"https://arxiv.org/abs/2104.08597v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2104.08597v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Cross-lingual named-entity lexica are an important resource to multilingual NLP tasks such as machine translation and cross-lingual wikification. While knowledge bases contain a large number of entities in high-resource languages such as English and French, corresponding entities for lower-resource languages are often missing. To address this, we propose Lexical-Semantic-Phonetic Align (LSP-Align), a technique to automatically mine cross-lingual entity lexica from mined web data. We demonstrate LSP-Align outperforms baselines at extracting cross-lingual entity pairs and mine 164 million entity pairs from 120 different languages aligned with English. We release these cross-lingual entity pairs along with the massively multilingual tagged named entity corpus as a resource to the NLP community.</summary>\n    <category term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-04-17T16:58:05Z</published>\n    <arxiv:primary_category term=\"cs.CL\"/>\n    <author>\n      <name>Ahmed El-Kishky</name>\n    </author>\n    <author>\n      <name>Adithya Renduchintala</name>\n    </author>\n    <author>\n      <name>James Cross</name>\n    </author>\n    <author>\n      <name>Francisco Guzmán</name>\n    </author>\n    <author>\n      <name>Philipp Koehn</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2609.08065v1</id>\n    <title>Investigating the Light Curves of 5 Long Period Variable Stars: A Study Cross-Harmonics using VStar, MESA, and GYRE</title>\n    <updated>2026-09-08T00:16:16Z</updated>\n    <link href=\"https://arxiv.org/abs/2609.08065v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2609.08065v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Long Period Variables (LPVs) are Asymptotic Giant Branch stars with periods &gt;100 days. Around one third to half of LPVs display a Long Secondary Period (LSP) that is 5-10 times the length of the main periods. The exact cause of LSPs are unknown, with one potential explanation lying in cross-harmonics caused by the interaction of two simultaneously occurring periods. In this paper, we use the Fourier analysis software VStar to examine the visual range photometric light curves obtained through the American Association of Variable Star Observers of a sample of 5 stars. We find that one star, V CVn, displays a secondary period over 20 times the length of its main period, inconsistent with traditional LSPs. To test if cross-harmonics can result in an LSP or VCVn's extra-long secondary period, we then construct evolutionary tracks and pulsation models of LPVs using Modules for Evolution in Stellar Astrophysics (MESA) and GYRE. After examining the interactions of the fundamental pulsation mode and the first 4 overtones with each other, we do not find evidence that LSPs or V CVn's extra-long secondary period could be caused by cross-harmonics.</summary>\n    <category term=\"astro-ph.SR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-09-08T00:16:16Z</published>\n    <arxiv:comment>12 pages, 19 figures; Submitted to AAS; Comments welcome</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.SR\"/>\n    <author>\n      <name>G. M. Sherren</name>\n    </author>\n    <author>\n      <name>A. Cross</name>\n    </author>\n    <author>\n      <name>N. Steenken</name>\n    </author>\n    <author>\n      <name>R. Ignace</name>\n    </author>\n    <author>\n      <name>H. R. Neilson</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/hep-ph/0107309v1</id>\n    <title>QCD Factorized Drell-Yan Cross Section at Large Transverse Momentum</title>\n    <updated>2001-07-30T20:08:00Z</updated>\n    <link href=\"https://arxiv.org/abs/hep-ph/0107309v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/hep-ph/0107309v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We derive a new factorization formula in perturbative quantum chromodynamics for the Drell-Yan massive lepton-pair cross section as a function of the transverse momentum $Q_T$ of the pair. When $Q_T$ is much larger than the pair's invariant mass $Q$, this factorization formula systematically resums the logarithmic contributions of the type $α_s^m \\ln^m(Q_T^2/Q^2)$ to all orders in the strong coupling $α_s$. When $Q_T\\sim Q$, our formula yields the same Drell-Yan cross section as conventional fixed order QCD perturbation theory. We show that resummation is important when the collision energy $\\sqrt{S}$ is large enough and $Q_T\\gg Q$, and we argue that perturbative expansions are more stable and reliable in terms of the modified factorization formula.</summary>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"nucl-th\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2001-07-30T20:08:00Z</published>\n    <arxiv:comment>36 pages, latex, including 16 figures</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ph\"/>\n    <arxiv:journal_ref>Phys.Rev. D65 (2002) 034006</arxiv:journal_ref>\n    <author>\n      <name>Edmond L. Berger</name>\n      <arxiv:affiliation>Argonne</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Jianwei Qiu</name>\n      <arxiv:affiliation>Iowa State</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Xiaofei Zhang</name>\n      <arxiv:affiliation>Iowa State</arxiv:affiliation>\n    </author>\n    <arxiv:doi>10.1103/PhysRevD.65.034006</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1103/PhysRevD.65.034006\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2411.03280v2</id>\n    <title>Data-driven model validation for neutrino-nucleus cross section measurements</title>\n    <updated>2025-04-30T17:15:45Z</updated>\n    <link href=\"https://arxiv.org/abs/2411.03280v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2411.03280v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Neutrino-nucleus cross section measurements are needed to improve interaction modeling to meet the precision needs of neutrino experiments in efforts to measure oscillation parameters and search for physics beyond the Standard Model. We review the difficulties associated with modeling neutrino-nucleus interactions that lead to a dependence on event generators in oscillation analyses and cross section measurements alike. We then describe data-driven model validation techniques intended to address this model dependence. The method relies on utilizing various goodness-of-fit tests and the correlations between different observables and channels to probe the model for defects in the phase space relevant for the desired analysis. These techniques shed light on relevant mis-modeling, allowing it to be detected before it begins to bias the cross section results. We compare more commonly used model validation methods which directly validate the model against alternative ones to these data-driven techniques and show their efficacy with fake data studies. These studies demonstrate that employing data-driven model validation in cross section measurements represents a reliable strategy to produce robust results that will stimulate the desired improvements to interaction modeling.</summary>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-11-05T17:20:58Z</published>\n    <arxiv:primary_category term=\"hep-ex\"/>\n    <arxiv:journal_ref>Phys. Rev. D 111, 092010 (2025)</arxiv:journal_ref>\n    <author>\n      <name> MicroBooNE collaboration</name>\n    </author>\n    <author>\n      <name>P. Abratenko</name>\n    </author>\n    <author>\n      <name>O. Alterkait</name>\n    </author>\n    <author>\n      <name>D. Andrade Aldana</name>\n    </author>\n    <author>\n      <name>L. Arellano</name>\n    </author>\n    <author>\n      <name>J. Asaadi</name>\n    </author>\n    <author>\n      <name>A. Ashkenazi</name>\n    </author>\n    <author>\n      <name>S. Balasubramanian</name>\n    </author>\n    <author>\n      <name>B. Baller</name>\n    </author>\n    <author>\n      <name>A. Barnard</name>\n    </author>\n    <author>\n      <name>G. Barr</name>\n    </author>\n    <author>\n      <name>D. Barrow</name>\n    </author>\n    <author>\n      <name>J. Barrow</name>\n    </author>\n    <author>\n      <name>V. Basque</name>\n    </author>\n    <author>\n      <name>J. Bateman</name>\n    </author>\n    <author>\n      <name>O. Benevides Rodrigues</name>\n    </author>\n    <author>\n      <name>S. Berkman</name>\n    </author>\n    <author>\n      <name>A. Bhanderi</name>\n    </author>\n    <author>\n      <name>A. Bhat</name>\n    </author>\n    <author>\n      <name>M. Bhattacharya</name>\n    </author>\n    <author>\n      <name>M. Bishai</name>\n    </author>\n    <author>\n      <name>A. Blake</name>\n    </author>\n    <author>\n      <name>B. Bogart</name>\n    </author>\n    <author>\n      <name>T. Bolton</name>\n    </author>\n    <author>\n      <name>M. B. Brunetti</name>\n    </author>\n    <author>\n      <name>L. Camilleri</name>\n    </author>\n    <author>\n      <name>Y. Cao</name>\n    </author>\n    <author>\n      <name>D. Caratelli</name>\n    </author>\n    <author>\n      <name>F. Cavanna</name>\n    </author>\n    <author>\n      <name>G. Cerati</name>\n    </author>\n    <author>\n      <name>A. Chappell</name>\n    </author>\n    <author>\n      <name>Y. Chen</name>\n    </author>\n    <author>\n      <name>J. M. Conrad</name>\n    </author>\n    <author>\n      <name>M. Convery</name>\n    </author>\n    <author>\n      <name>L. Cooper-Troendle</name>\n    </author>\n    <author>\n      <name>J. I. Crespo-Anadon</name>\n    </author>\n    <author>\n      <name>R. Cross</name>\n    </author>\n    <author>\n      <name>M. Del Tutto</name>\n    </author>\n    <author>\n      <name>S. R. Dennis</name>\n    </author>\n    <author>\n      <name>P. Detje</name>\n    </author>\n    <author>\n      <name>R. Diurba</name>\n    </author>\n    <author>\n      <name>Z. Djurcic</name>\n    </author>\n    <author>\n      <name>K. Duffy</name>\n    </author>\n    <author>\n      <name>S. Dytman</name>\n    </author>\n    <author>\n      <name>B. Eberly</name>\n    </author>\n    <author>\n      <name>P. Englezos</name>\n    </author>\n    <author>\n      <name>A. Ereditato</name>\n    </author>\n    <author>\n      <name>J. J. Evans</name>\n    </author>\n    <author>\n      <name>C. Fang</name>\n    </author>\n    <author>\n      <name>B. T. Fleming</name>\n    </author>\n    <author>\n      <name>W. Foreman</name>\n    </author>\n    <author>\n      <name>D. Franco</name>\n    </author>\n    <author>\n      <name>A. P. Furmanski</name>\n    </author>\n    <author>\n      <name>F. Gao</name>\n    </author>\n    <author>\n      <name>D. Garcia-Gamez</name>\n    </author>\n    <author>\n      <name>S. Gardiner</name>\n    </author>\n    <author>\n      <name>G. Ge</name>\n    </author>\n    <author>\n      <name>S. Gollapinni</name>\n    </author>\n    <author>\n      <name>E. Gramellini</name>\n    </author>\n    <author>\n      <name>P. Green</name>\n    </author>\n    <author>\n      <name>H. Greenlee</name>\n    </author>\n    <author>\n      <name>L. Gu</name>\n    </author>\n    <author>\n      <name>W. Gu</name>\n    </author>\n    <author>\n      <name>R. Guenette</name>\n    </author>\n    <author>\n      <name>P. Guzowski</name>\n    </author>\n    <author>\n      <name>L. Hagaman</name>\n    </author>\n    <author>\n      <name>M. D. Handley</name>\n    </author>\n    <author>\n      <name>O. Hen</name>\n    </author>\n    <author>\n      <name>C. Hilgenberg</name>\n    </author>\n    <author>\n      <name>G. A. Horton-Smith</name>\n    </author>\n    <author>\n      <name>Z. Imani</name>\n    </author>\n    <author>\n      <name>B. Irwin</name>\n    </author>\n    <author>\n      <name>M. S. Ismail</name>\n    </author>\n    <author>\n      <name>C. James</name>\n    </author>\n    <author>\n      <name>X. Ji</name>\n    </author>\n    <author>\n      <name>J. H. Jo</name>\n    </author>\n    <author>\n      <name>R. A. Johnson</name>\n    </author>\n    <author>\n      <name>Y. J. Jwa</name>\n    </author>\n    <author>\n      <name>D. Kalra</name>\n    </author>\n    <author>\n      <name>G. Karagiorgi</name>\n    </author>\n    <author>\n      <name>W. Ketchum</name>\n    </author>\n    <author>\n      <name>M. Kirby</name>\n    </author>\n    <author>\n      <name>T. Kobilarcik</name>\n    </author>\n    <author>\n      <name>N. Lane</name>\n    </author>\n    <author>\n      <name>J. -Y. Li</name>\n    </author>\n    <author>\n      <name>Y. Li</name>\n    </author>\n    <author>\n      <name>K. Lin</name>\n    </author>\n    <author>\n      <name>B. R. Littlejohn</name>\n    </author>\n    <author>\n      <name>L. Liu</name>\n    </author>\n    <author>\n      <name>W. C. Louis</name>\n    </author>\n    <author>\n      <name>X. Luo</name>\n    </author>\n    <author>\n      <name>T. Mahmud</name>\n    </author>\n    <author>\n      <name>C. Mariani</name>\n    </author>\n    <author>\n      <name>D. Marsden</name>\n    </author>\n    <author>\n      <name>J. Marshall</name>\n    </author>\n    <author>\n      <name>N. Martinez</name>\n    </author>\n    <author>\n      <name>D. A. Martinez Caicedo</name>\n    </author>\n    <author>\n      <name>S. Martynenko</name>\n    </author>\n    <author>\n      <name>A. Mastbaum</name>\n    </author>\n    <author>\n      <name>I. Mawby</name>\n    </author>\n    <author>\n      <name>N. McConkey</name>\n    </author>\n    <author>\n      <name>V. Meddage</name>\n    </author>\n    <author>\n      <name>L. Mellet</name>\n    </author>\n    <author>\n      <name>J. Mendez</name>\n    </author>\n    <author>\n      <name>J. Micallef</name>\n    </author>\n    <author>\n      <name>K. Miller</name>\n    </author>\n    <author>\n      <name>K. Mistry</name>\n    </author>\n    <author>\n      <name>T. Mohayai</name>\n    </author>\n    <author>\n      <name>A. Mogan</name>\n    </author>\n    <author>\n      <name>M. Mooney</name>\n    </author>\n    <author>\n      <name>A. F. Moor</name>\n    </author>\n    <author>\n      <name>C. D. Moore</name>\n    </author>\n    <author>\n      <name>L. Mora Lepin</name>\n    </author>\n    <author>\n      <name>M. M. Moudgalya</name>\n    </author>\n    <author>\n      <name>S. Mulleria Babu</name>\n    </author>\n    <author>\n      <name>D. Naples</name>\n    </author>\n    <author>\n      <name>A. Navrer-Agasson</name>\n    </author>\n    <author>\n      <name>N. Nayak</name>\n    </author>\n    <author>\n      <name>M. Nebot-Guinot</name>\n    </author>\n    <author>\n      <name>C. Nguyen</name>\n    </author>\n    <author>\n      <name>J. Nowak</name>\n    </author>\n    <author>\n      <name>N. Oza</name>\n    </author>\n    <author>\n      <name>O. Palamara</name>\n    </author>\n    <author>\n      <name>N. Pallat</name>\n    </author>\n    <author>\n      <name>V. Paolone</name>\n    </author>\n    <author>\n      <name>A. Papadopoulou</name>\n    </author>\n    <author>\n      <name>V. Papavassiliou</name>\n    </author>\n    <author>\n      <name>H. Parkinson</name>\n    </author>\n    <author>\n      <name>S. F. Pate</name>\n    </author>\n    <author>\n      <name>N. Patel</name>\n    </author>\n    <author>\n      <name>Z. Pavlovic</name>\n    </author>\n    <author>\n      <name>E. Piasetzky</name>\n    </author>\n    <author>\n      <name>K. Pletcher</name>\n    </author>\n    <author>\n      <name>I. Pophale</name>\n    </author>\n    <author>\n      <name>X. Qian</name>\n    </author>\n    <author>\n      <name>J. L. Raaf</name>\n    </author>\n    <author>\n      <name>V. Radeka</name>\n    </author>\n    <author>\n      <name>A. Rafique</name>\n    </author>\n    <author>\n      <name>M. Reggiani-Guzzo</name>\n    </author>\n    <author>\n      <name>L. Ren</name>\n    </author>\n    <author>\n      <name>L. Rochester</name>\n    </author>\n    <author>\n      <name>J. Rodriguez Rondon</name>\n    </author>\n    <author>\n      <name>M. Rosenberg</name>\n    </author>\n    <author>\n      <name>M. Ross-Lonergan</name>\n    </author>\n    <author>\n      <name>I. Safa</name>\n    </author>\n    <author>\n      <name>D. W. Schmitz</name>\n    </author>\n    <author>\n      <name>A. Schukraft</name>\n    </author>\n    <author>\n      <name>W. Seligman</name>\n    </author>\n    <author>\n      <name>M. H. Shaevitz</name>\n    </author>\n    <author>\n      <name>R. Sharankova</name>\n    </author>\n    <author>\n      <name>J. Shi</name>\n    </author>\n    <author>\n      <name>E. L. Snider</name>\n    </author>\n    <author>\n      <name>M. Soderberg</name>\n    </author>\n    <author>\n      <name>S. Soldner-Rembold</name>\n    </author>\n    <author>\n      <name>J. Spitz</name>\n    </author>\n    <author>\n      <name>M. Stancari</name>\n    </author>\n    <author>\n      <name>J. St. John</name>\n    </author>\n    <author>\n      <name>T. Strauss</name>\n    </author>\n    <author>\n      <name>A. M. Szelc</name>\n    </author>\n    <author>\n      <name>N. Taniuchi</name>\n    </author>\n    <author>\n      <name>K. Terao</name>\n    </author>\n    <author>\n      <name>C. Thorpe</name>\n    </author>\n    <author>\n      <name>D. Torbunov</name>\n    </author>\n    <author>\n      <name>D. Totani</name>\n    </author>\n    <author>\n      <name>M. Toups</name>\n    </author>\n    <author>\n      <name>A. Trettin</name>\n    </author>\n    <author>\n      <name>Y. -T. Tsai</name>\n    </author>\n    <author>\n      <name>J. Tyler</name>\n    </author>\n    <author>\n      <name>M. A. Uchida</name>\n    </author>\n    <author>\n      <name>T. Usher</name>\n    </author>\n    <author>\n      <name>B. Viren</name>\n    </author>\n    <author>\n      <name>J. Wang</name>\n    </author>\n    <author>\n      <name>M. Weber</name>\n    </author>\n    <author>\n      <name>H. Wei</name>\n    </author>\n    <author>\n      <name>A. J. White</name>\n    </author>\n    <author>\n      <name>S. Wolbers</name>\n    </author>\n    <author>\n      <name>T. Wongjirad</name>\n    </author>\n    <author>\n      <name>M. Wospakrik</name>\n    </author>\n    <author>\n      <name>K. Wresilo</name>\n    </author>\n    <author>\n      <name>W. Wu</name>\n    </author>\n    <author>\n      <name>E. Yandel</name>\n    </author>\n    <author>\n      <name>T. Yang</name>\n    </author>\n    <author>\n      <name>L. E. Yates</name>\n    </author>\n    <author>\n      <name>H. W. Yu</name>\n    </author>\n    <author>\n      <name>G. P. Zeller</name>\n    </author>\n    <author>\n      <name>J. Zennamo</name>\n    </author>\n    <author>\n      <name>C. Zhang</name>\n    </author>\n    <arxiv:doi>10.1103/PhysRevD.111.092010</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1103/PhysRevD.111.092010\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.09948v1</id>\n    <title>Cross-Frequency Coupling During Thermoacoustic Oscillations in a Pressurized Aeronautical Gas Turbine Model Combustor</title>\n    <updated>2020-06-17T15:52:36Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.09948v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.09948v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper demonstrates cross-frequency coupling between pressure, heat release rate, fuel spray and velocity oscillations in a model aeronautical gas turbine combustor operating at a pressure of approximately 10 atm. Heat release rate was characterized by 10 kHz chemiluminescence (CL) imaging of several species. Stereoscopic particle image velocimetry and laser Mie scattering from the fuel droplets were used to measure the gas velocity and spray dynamics, respectively, at 5 kHz. The pressure fluctuations were dominated by oscillations at a frequency $f_0$, whereas the spray, CL and velocity oscillated at approximately $2f_0$. All of these oscillations were nonstationary, exhibiting changes in frequency and amplitude. Comparing the time evolution of the dominant frequencies and amplitudes indicates a behavior consistent with mutually coupled self-oscillators; the observed dynamics of the 1:2 super-harmonic coupling is consistent synchronization via oscillation death. Furthermore, increases in the frequency of the ca. $f_0$ velocity oscillations away from the harmonic ratio (increased frequency detuning) were correlated with decreases in the power of the $f_0$ pressure oscillations. The corresponding nonreacting flow had a natural hydrodynamic mode at a frequency slightly greater than $2f_0$. Hence, the data are consistent with the $f_0$ acoustic mode \"pulling\" the hydrodynamic frequency towards the super-harmonic ratio.</summary>\n    <category term=\"physics.flu-dyn\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-17T15:52:36Z</published>\n    <arxiv:comment>Preprint submitted to Proceedings of the Combustion Institute</arxiv:comment>\n    <arxiv:primary_category term=\"physics.flu-dyn\"/>\n    <author>\n      <name>Mitchell L. Passarelli</name>\n    </author>\n    <author>\n      <name>Timothy M. Wabel</name>\n    </author>\n    <author>\n      <name>Arin Cross</name>\n    </author>\n    <author>\n      <name>Krishna Venkatesan</name>\n    </author>\n    <author>\n      <name>Adam M. Steinberg</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/hep-ph/0609206v2</id>\n    <title>Gluonic Pole Cross Sections and Single Spin Asymmetries in Hadron-Hadron Scattering</title>\n    <updated>2007-02-05T11:10:54Z</updated>\n    <link href=\"https://arxiv.org/abs/hep-ph/0609206v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/hep-ph/0609206v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  The gauge-links connecting the parton field operators in the hadronic matrix elements appearing in the transverse momentum dependent distribution functions give rise to T-odd effects. Due to the process-dependence of the gauge-links the T-odd distribution functions appear with different pre-factors. A consequence is that in the description of single spin asymmetries the parton distribution and fragmentation functions are convoluted with gluonic pole cross sections rather than the basic partonic cross sections. In this paper we calculate the gluonic pole cross sections encountered in single spin asymmetries in hadron-hadron scattering. The case of back-to-back pion production in polarized proton-proton scattering is worked out explicitly. It is shown how T-odd gluon distribution functions originating from gluonic pole matrix elements appear in twofold.</summary>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2006-09-20T11:52:51Z</published>\n    <arxiv:comment>v2: includes explicit definitions of polarized cross sections + minor corrections; to appear in JHEP</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ph\"/>\n    <arxiv:journal_ref>JHEP 0702:029,2007</arxiv:journal_ref>\n    <author>\n      <name>C. J. Bomhof</name>\n    </author>\n    <author>\n      <name>P. J. Mulders</name>\n    </author>\n    <arxiv:doi>10.1088/1126-6708/2007/02/029</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1088/1126-6708/2007/02/029\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/hep-ph/0405085v2</id>\n    <title>QCD Factorization for Spin-Dependent Cross Sections in DIS and Drell-Yan Processes at Low Transverse Momentum</title>\n    <updated>2004-06-28T02:22:06Z</updated>\n    <link href=\"https://arxiv.org/abs/hep-ph/0405085v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/hep-ph/0405085v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  Based on a recent work on the quantum chromodynamic (QCD) factorization for semi-inclusive deep-inelastic scattering (DIS), we present a set of factorization formulas for the spin-dependent DIS and Drell-Yan cross sections at low transverse momentum.</summary>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2004-05-10T21:33:39Z</published>\n    <arxiv:comment>12 pages, two figures included</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ph\"/>\n    <arxiv:journal_ref>Phys.Lett. B597 (2004) 299-308</arxiv:journal_ref>\n    <author>\n      <name>Xiangdong Ji</name>\n    </author>\n    <author>\n      <name>Jian-Ping Ma</name>\n    </author>\n    <author>\n      <name>Feng Yuan</name>\n    </author>\n    <arxiv:doi>10.1016/j.physletb.2004.07.026</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.physletb.2004.07.026\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2511.17342v2</id>\n    <title>Measurements of differential charged-current cross sections on argon for electron neutrinos with fin"
     },
@@ -892,6 +897,14 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "url": "https://doi.org/10.2139/ssrn.2419243",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "A-share quantitative trading factor strategy China",
       "title": "Figure 2.4. Algorithmic trading as share of total trading",
       "url": "https://doi.org/10.1787/888933433273",
       "description": "Crossref work type=component",
@@ -1204,9 +1217,25 @@
     {
       "source": "crossref",
       "query": "China A-share order flow high frequency factors",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "url": "https://doi.org/10.2139/ssrn.5806502",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "China A-share order flow high frequency factors",
       "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow and High Frequency Liquidity Provision",
       "url": "https://doi.org/10.2139/ssrn.2616992",
       "description": "Crossref work type=journal-article",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "China A-share order flow high frequency factors",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "url": "https://doi.org/10.3386/w21286",
+      "description": "Crossref work type=report",
       "updated_at": "2015"
     },
     {
@@ -1684,6 +1713,14 @@
     {
       "source": "crossref",
       "query": "MEV execution alpha crypto",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "url": "https://doi.org/10.2139/ssrn.5150912",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "MEV execution alpha crypto",
       "title": "ELASTIC ALPHA-ALPHA SCATTERING NEAR 40 Mev",
       "url": "https://doi.org/10.2172/4042824",
       "description": "Crossref work type=report",
@@ -1979,6 +2016,78 @@
     },
     {
       "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "About the Authors",
+      "url": "https://doi.org/10.1002/9781118531877.about",
+      "description": "Crossref work type=other",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Index",
+      "url": "https://doi.org/10.1002/9781118531877.index",
+      "description": "Crossref work type=other",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "MIDAS and its Core Constituents: The Volume Weighted Average Price (VWAP) and Fractal Market Analysis",
+      "url": "https://doi.org/10.1002/9781118531877.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Machine Learning-based Intraday Trading Strategy using Simple Moving Average Crossovers, Traded Volume and VWAP Confirmations",
+      "url": "https://doi.org/10.71097/ijsat.v17.i1.10390",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Mean Variance Optimal VWAP Trading",
+      "url": "https://doi.org/10.2139/ssrn.1803858",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Nominal–On Balance Volume Curves (N‐OBVs) and Volume–On Balance Curves (V‐OBVs)",
+      "url": "https://doi.org/10.1002/9781118531877.ch16",
+      "description": "Crossref work type=other",
+      "updated_at": "2011"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Optimal VWAP Execution: A Synthesis of Stochastic Control, Forecasting, and Adaptive Trading",
+      "url": "https://doi.org/10.2139/ssrn.6091906",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "VWAP and Volume Profiles",
+      "url": "https://doi.org/10.3905/jot.2006.628193",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2006"
+    },
+    {
+      "source": "crossref",
+      "query": "VWAP volume profile crypto trading strategy",
+      "title": "Volume Weighted Average Price (VWAP) The Holy Grail for Day Trading Systems",
+      "url": "https://doi.org/10.2139/ssrn.4631351",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
       "query": "alternative data quantitative alpha research",
       "title": "Alternative Data",
       "url": "https://doi.org/10.1002/9781394329830.ch4",
@@ -2068,72 +2177,8 @@
     {
       "source": "crossref",
       "query": "autonomous trading strategy research backtest",
-      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
-      "url": "https://doi.org/10.1002/9781118656617.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "url": "https://doi.org/10.2139/ssrn.6683818",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "url": "https://doi.org/10.2139/ssrn.4601806",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading Lore",
-      "url": "https://doi.org/10.1002/9781118656617.ch10",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading System Elements: Entries",
-      "url": "https://doi.org/10.1002/9781118656617.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
       "title": "Trading System Elements: Exits",
       "url": "https://doi.org/10.1002/9781118656617.ch5",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "url": "https://doi.org/10.2139/ssrn.6876580",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "url": "https://doi.org/10.1002/9781118656617.ch13",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "What Is a Tradeable Strategy?",
-      "url": "https://doi.org/10.1002/9781118656617.ch1",
       "description": "Crossref work type=other",
       "updated_at": "2013"
     },
@@ -2143,6 +2188,14 @@
       "title": "An Adaptive Multi-Agent Bitcoin Trading System",
       "url": "https://doi.org/10.2139/ssrn.5580590",
       "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "bitcoin seasonality calendar effect trading",
+      "title": "Bitcoin Trading",
+      "url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "description": "Crossref work type=dataset",
       "updated_at": "2025"
     },
     {
@@ -2206,6 +2259,86 @@
       "query": "bitcoin seasonality calendar effect trading",
       "title": "The Seasonality of Bitcoin",
       "url": "https://doi.org/10.2139/ssrn.4581124",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Beyond a Universal Momentum-reversal Threshold Horizon-Dependent Spectral Geometry and Independent Cross-Market Confirmation of a Robust Reversal Tail",
+      "url": "https://doi.org/10.2139/ssrn.7280979",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Cross-Sectional Dispersion and the State Dependence of Cryptocurrency Momentum",
+      "url": "https://doi.org/10.2139/ssrn.6648058",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Cross-Sectional Factor Dynamics and Momentum Returns",
+      "url": "https://doi.org/10.2139/ssrn.2654900",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Cross-Sectional Factor Dynamics and Momentum Returns",
+      "url": "https://doi.org/10.2139/ssrn.2679656",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Cross-sectional Momentum in Cryptocurrency Markets",
+      "url": "https://doi.org/10.2139/ssrn.4322637",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Cross-sectional currency momentum and order flow *",
+      "url": "https://doi.org/10.2139/ssrn.6618279",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Echo Effect in Cross-Sectional Momentum: Empirical Tests",
+      "url": "https://doi.org/10.2139/ssrn.4559807",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Improving time series and cross-sectional momentum trading strategies using stochastic programming",
+      "url": "https://doi.org/10.31274/td-20240329-417",
+      "description": "Crossref work type=dissertation",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Interday Cross-Sectional Momentum: Global Evidence and Determinants",
+      "url": "https://doi.org/10.2139/ssrn.4934543",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "cross sectional crypto factors momentum reversal",
+      "title": "Short-Term Idiosyncratic Momentum in Cross-Sectional Stock Returns: Empirical Evidence",
+      "url": "https://doi.org/10.2139/ssrn.4370153",
       "description": "Crossref work type=posted-content",
       "updated_at": "2023"
     },
@@ -3100,14 +3233,6 @@
     {
       "source": "crossref",
       "query": "fair value gap imbalance FVG crypto trading",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "url": "https://doi.org/10.2139/ssrn.4405361",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "fair value gap imbalance FVG crypto trading",
       "title": "Fair Trading",
       "url": "https://doi.org/10.2139/ssrn.709342",
       "description": "Crossref work type=posted-content",
@@ -3200,6 +3325,14 @@
       "url": "https://doi.org/10.2139/ssrn.4268371",
       "description": "Crossref work type=posted-content",
       "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "funding rate basis carry crypto trading",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "url": "https://doi.org/10.2139/ssrn.4405361",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -3432,14 +3565,6 @@
       "url": "https://doi.org/10.1016/s0378-4266(00)00101-1",
       "description": "Crossref work type=journal-article",
       "updated_at": "2001"
-    },
-    {
-      "source": "crossref",
-      "query": "maker adverse selection execution crypto",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "url": "https://doi.org/10.2139/ssrn.5150912",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -3740,26 +3865,10 @@
     {
       "source": "crossref",
       "query": "order flow trading research code",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "url": "https://doi.org/10.2139/ssrn.5806502",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "order flow trading research code",
       "title": "Automating Trade and Order Flow",
       "url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2007"
-    },
-    {
-      "source": "crossref",
-      "query": "order flow trading research code",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "url": "https://doi.org/10.3386/w21286",
-      "description": "Crossref work type=report",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4064,6 +4173,86 @@
       "url": "https://doi.org/10.1002/9781119200574.ch5",
       "description": "Crossref work type=other",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Backtest – Signal or Overfitting",
+      "url": "https://doi.org/10.1002/9781119057871.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Backtest – Signal or Overfitting?",
+      "url": "https://doi.org/10.1002/9781119571278.ch9",
+      "description": "Crossref work type=other",
+      "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
+      "url": "https://doi.org/10.1002/9781118656617.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "url": "https://doi.org/10.2139/ssrn.6683818",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "url": "https://doi.org/10.2139/ssrn.4601806",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading Lore",
+      "url": "https://doi.org/10.1002/9781118656617.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading System Elements: Entries",
+      "url": "https://doi.org/10.1002/9781118656617.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "url": "https://doi.org/10.2139/ssrn.6876580",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "url": "https://doi.org/10.1002/9781118656617.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "quantitative trading strategy backtest github",
+      "title": "What Is a Tradeable Strategy?",
+      "url": "https://doi.org/10.1002/9781118656617.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
     },
     {
       "source": "crossref",
@@ -4436,22 +4625,6 @@
     {
       "source": "crossref",
       "query": "systematic trading strategy repository",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "url": "https://doi.org/10.2139/ssrn.2419243",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2014"
-    },
-    {
-      "source": "crossref",
-      "query": "systematic trading strategy repository",
-      "title": "Bitcoin Trading",
-      "url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "description": "Crossref work type=dataset",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "systematic trading strategy repository",
       "title": "Energy trading using blockchain: Smart contracts functionalities – A systematic review",
       "url": "https://doi.org/10.1016/j.esr.2025.101825",
       "description": "Crossref work type=journal-article",
@@ -4740,6 +4913,22 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -4752,6 +4941,14 @@
       "url": "https://doi.org/10.32629/ej.v2i3.152",
       "description": "Crossref work type=journal-article",
       "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
     },
     {
       "source": "crossref",
@@ -4771,6 +4968,14 @@
     },
     {
       "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
       "query": "涨停 连板 A股 量化 策略",
       "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
       "url": "https://doi.org/10.12677/fin.2024.143090",
@@ -4784,14 +4989,6 @@
       "url": "https://doi.org/10.12677/aam.2022.111033",
       "description": "Crossref work type=journal-article",
       "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -4940,14 +5137,6 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "城市轨道交通客流预测与调度优化策略研究",
       "url": "https://doi.org/10.67328/bt4095",
       "description": "Crossref work type=journal-article",
@@ -4972,24 +5161,8 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "广东电力现货市场主体交易策略与博弈行为分析",
-      "url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "数据跨境流动中的安全风险与加密防护策略研究",
       "url": "https://doi.org/10.62989/jemr2025.2.2.10",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -5883,6 +6056,15 @@
       "url": "https://gitlab.com/freedesktop-sdk/mirrors/github/python-pillow/Pillow",
       "description": "github.com: python-pillow/Pillow.git",
       "updated_at": "2026-09-12T23:06:40.467Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "freedesktop-sdk/mirrors/github/python/cpython",
+      "url": "https://gitlab.com/freedesktop-sdk/mirrors/github/python/cpython",
+      "description": "github.com: python/cpython.git",
+      "updated_at": "2026-09-13T00:17:59.382Z",
       "stars": 0
     },
     {
@@ -7101,14 +7283,6 @@
     {
       "source": "openalex",
       "query": "China A-share order flow high frequency factors",
-      "title": "The China Syndrome: Local Labor Market Effects of Import Competition in the United States",
-      "url": "https://doi.org/10.1257/aer.103.6.2121",
-      "description": "OpenAlex work type=article year=2013",
-      "updated_at": "2013"
-    },
-    {
-      "source": "openalex",
-      "query": "China A-share order flow high frequency factors",
       "title": "The PRISMA Statement for Reporting Systematic Reviews and Meta-Analyses of Studies That Evaluate Health Care Interventions: Explanation and Elaboration",
       "url": "https://doi.org/10.1371/journal.pmed.1000100",
       "description": "OpenAlex work type=review year=2009",
@@ -7293,6 +7467,14 @@
     {
       "source": "openalex",
       "query": "China quant trading github",
+      "title": "Cryptocurrency trading: a comprehensive survey",
+      "url": "https://doi.org/10.1186/s40854-021-00321-6",
+      "description": "OpenAlex work type=article year=2022",
+      "updated_at": "2022"
+    },
+    {
+      "source": "openalex",
+      "query": "China quant trading github",
       "title": "Demystifying the Dark Web Opioid Trade: Content Analysis on Anonymous Market Listings and Forum Posts",
       "url": "https://doi.org/10.2196/24486",
       "description": "OpenAlex work type=article year=2021",
@@ -7445,6 +7627,14 @@
     {
       "source": "openalex",
       "query": "LLM alpha mining quantitative trading",
+      "title": "Alpha-GPT: Human-AI Interactive Alpha Mining for Quantitative Investment",
+      "url": "https://doi.org/10.48550/arxiv.2308.00016",
+      "description": "OpenAlex work type=preprint year=2023",
+      "updated_at": "2023"
+    },
+    {
+      "source": "openalex",
+      "query": "LLM alpha mining quantitative trading",
       "title": "AlphaAgent: LLM-Driven Alpha Mining with Regularized Exploration to Counteract Alpha Decay",
       "url": "https://doi.org/10.1145/3711896.3736838",
       "description": "OpenAlex work type=conference-paper year=2025",
@@ -7529,14 +7719,6 @@
       "url": "https://doi.org/10.1016/j.nds.2021.04.007",
       "description": "OpenAlex work type=article year=2021",
       "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "MEV execution alpha crypto",
-      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
-      "url": "https://doi.org/10.1145/3576915.3616590",
-      "description": "OpenAlex work type=conference-paper year=2023",
-      "updated_at": "2023"
     },
     {
       "source": "openalex",
@@ -7965,6 +8147,14 @@
     {
       "source": "openalex",
       "query": "autonomous trading strategy research backtest",
+      "title": "Cryptocurrency Trading: A Comprehensive Survey",
+      "url": "https://doi.org/10.48550/arxiv.2003.11352",
+      "description": "OpenAlex work type=preprint year=2020",
+      "updated_at": "2020"
+    },
+    {
+      "source": "openalex",
+      "query": "autonomous trading strategy research backtest",
       "title": "Mean Reversion and Beta-Zero Targeting: A Long-Short Equity Trading Strategy",
       "url": "https://doi.org/10.2139/ssrn.3124271",
       "description": "OpenAlex work type=preprint year=2018",
@@ -8101,14 +8291,6 @@
     {
       "source": "openalex",
       "query": "cross sectional crypto factors momentum reversal",
-      "title": "Bitcoin intraday time series momentum",
-      "url": "https://doi.org/10.1111/fire.12290",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "cross sectional crypto factors momentum reversal",
       "title": "Do You Even Crypto, Bro? Cryptocurrencies in Household Finance",
       "url": "https://doi.org/10.3386/w31284",
       "description": "OpenAlex work type=report year=2023",
@@ -8215,6 +8397,14 @@
       "query": "crypto momentum trend following strategy bitcoin",
       "title": "A great disturbance in the crypto: Understanding cryptocurrency returns under attacks",
       "url": "https://doi.org/10.1016/j.bcra.2021.100021",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "crypto momentum trend following strategy bitcoin",
+      "title": "Bitcoin intraday time series momentum",
+      "url": "https://doi.org/10.1111/fire.12290",
       "description": "OpenAlex work type=article year=2021",
       "updated_at": "2021"
     },
@@ -8413,6 +8603,14 @@
     {
       "source": "openalex",
       "query": "crypto regime switching hidden Markov trading",
+      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
+      "url": "https://doi.org/10.1016/j.irfa.2018.09.003",
+      "description": "OpenAlex work type=article year=2018",
+      "updated_at": "2018"
+    },
+    {
+      "source": "openalex",
+      "query": "crypto regime switching hidden Markov trading",
       "title": "Regime switching forecasting for cryptocurrencies",
       "url": "https://doi.org/10.1007/s42521-024-00123-2",
       "description": "OpenAlex work type=article year=2025",
@@ -8473,22 +8671,6 @@
       "url": "https://doi.org/10.1007/978-981-96-6839-7_4",
       "description": "OpenAlex work type=book-chapter year=2025",
       "updated_at": "2025"
-    },
-    {
-      "source": "openalex",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Cryptocurrency Trading: A Comprehensive Survey",
-      "url": "https://doi.org/10.48550/arxiv.2003.11352",
-      "description": "OpenAlex work type=preprint year=2020",
-      "updated_at": "2020"
-    },
-    {
-      "source": "openalex",
-      "query": "crypto trading bot strategy backtest",
-      "title": "Cryptocurrency trading: a comprehensive survey",
-      "url": "https://doi.org/10.1186/s40854-021-00321-6",
-      "description": "OpenAlex work type=article year=2022",
-      "updated_at": "2022"
     },
     {
       "source": "openalex",
@@ -8608,6 +8790,14 @@
       "title": "Deciphering DeFi: A Comprehensive Analysis and Visualization of Risks in Decentralized Finance",
       "url": "https://doi.org/10.3390/jrfm16100454",
       "description": "OpenAlex work type=article year=2023",
+      "updated_at": "2023"
+    },
+    {
+      "source": "openalex",
+      "query": "decentralized exchange arbitrage MEV research",
+      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
+      "url": "https://doi.org/10.1145/3576915.3616590",
+      "description": "OpenAlex work type=conference-paper year=2023",
       "updated_at": "2023"
     },
     {
@@ -9093,14 +9283,6 @@
     {
       "source": "openalex",
       "query": "futures trend following systematic strategy",
-      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
-      "url": "https://doi.org/10.1016/j.irfa.2018.09.003",
-      "description": "OpenAlex work type=article year=2018",
-      "updated_at": "2018"
-    },
-    {
-      "source": "openalex",
-      "query": "futures trend following systematic strategy",
       "title": "The Futures of Europe: Society 5.0 and Industry 5.0 as Driving Forces of Future Universities",
       "url": "https://doi.org/10.1007/s13132-021-00854-2",
       "description": "OpenAlex work type=article year=2022",
@@ -9161,6 +9343,22 @@
       "url": "https://doi.org/10.1007/s40747-017-0036-x",
       "description": "OpenAlex work type=article year=2017",
       "updated_at": "2017"
+    },
+    {
+      "source": "openalex",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Interpretability in symbolic regression: a benchmark of explanatory methods using the Feynman data set",
+      "url": "https://doi.org/10.1007/s10710-022-09435-x",
+      "description": "OpenAlex work type=article year=2022",
+      "updated_at": "2022"
+    },
+    {
+      "source": "openalex",
+      "query": "genetic programming symbolic regression trading alpha",
+      "title": "Robust technical trading strategies using GP for algorithmic portfolio selection",
+      "url": "https://doi.org/10.1016/j.eswa.2015.10.040",
+      "description": "OpenAlex work type=article year=2015",
+      "updated_at": "2015"
     },
     {
       "source": "openalex",
@@ -9301,10 +9499,34 @@
     {
       "source": "openalex",
       "query": "market making strategy code",
+      "title": "The China Syndrome: Local Labor Market Effects of Import Competition in the United States",
+      "url": "https://doi.org/10.1257/aer.103.6.2121",
+      "description": "OpenAlex work type=article year=2013",
+      "updated_at": "2013"
+    },
+    {
+      "source": "openalex",
+      "query": "market making strategy code",
+      "title": "The Effect of Credit Market Competition on Lending Relationships",
+      "url": "https://doi.org/10.2307/2118445",
+      "description": "OpenAlex work type=article year=1995",
+      "updated_at": "1995"
+    },
+    {
+      "source": "openalex",
+      "query": "market making strategy code",
       "title": "The Rise of Market Power and the Macroeconomic Implications*",
       "url": "https://doi.org/10.1093/qje/qjz041",
       "description": "OpenAlex work type=article year=2020",
       "updated_at": "2020"
+    },
+    {
+      "source": "openalex",
+      "query": "market making strategy code",
+      "title": "The fit between product market strategy and business model: implications for firm performance",
+      "url": "https://doi.org/10.1002/smj.642",
+      "description": "OpenAlex work type=article year=2007",
+      "updated_at": "2007"
     },
     {
       "source": "openalex",
@@ -9333,6 +9555,14 @@
     {
       "source": "openalex",
       "query": "market microstructure order book strategy",
+      "title": "How Markets Slowly Digest Changes in Supply and Demand",
+      "url": "https://doi.org/10.1016/b978-012374258-2.50006-3",
+      "description": "OpenAlex work type=book-chapter year=2009",
+      "updated_at": "2009"
+    },
+    {
+      "source": "openalex",
+      "query": "market microstructure order book strategy",
       "title": "Informed and Strategic Order Flow in the Bond Markets",
       "url": "https://doi.org/10.1093/rfs/hhm034",
       "description": "OpenAlex work type=article year=2007",
@@ -9353,6 +9583,14 @@
       "url": "https://doi.org/10.1111/j.1540-6261.1996.tb05202.x",
       "description": "OpenAlex work type=article year=1996",
       "updated_at": "1996"
+    },
+    {
+      "source": "openalex",
+      "query": "market microstructure order book strategy",
+      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
+      "url": "https://doi.org/10.1093/qje/qjv027",
+      "description": "OpenAlex work type=article year=2015",
+      "updated_at": "2015"
     },
     {
       "source": "openalex",
@@ -9661,14 +9899,6 @@
     {
       "source": "openalex",
       "query": "prediction market order book trading strategy",
-      "title": "How Markets Slowly Digest Changes in Supply and Demand",
-      "url": "https://doi.org/10.1016/b978-012374258-2.50006-3",
-      "description": "OpenAlex work type=book-chapter year=2009",
-      "updated_at": "2009"
-    },
-    {
-      "source": "openalex",
-      "query": "prediction market order book trading strategy",
       "title": "Investor Psychology and Security Market Under‐ and Overreactions",
       "url": "https://doi.org/10.1111/0022-1082.00077",
       "description": "OpenAlex work type=article year=1998",
@@ -9693,22 +9923,6 @@
     {
       "source": "openalex",
       "query": "prediction market order book trading strategy",
-      "title": "The Effect of Credit Market Competition on Lending Relationships",
-      "url": "https://doi.org/10.2307/2118445",
-      "description": "OpenAlex work type=article year=1995",
-      "updated_at": "1995"
-    },
-    {
-      "source": "openalex",
-      "query": "prediction market order book trading strategy",
-      "title": "The fit between product market strategy and business model: implications for firm performance",
-      "url": "https://doi.org/10.1002/smj.642",
-      "description": "OpenAlex work type=article year=2007",
-      "updated_at": "2007"
-    },
-    {
-      "source": "openalex",
-      "query": "prediction market order book trading strategy",
       "title": "Trade, Growth, and the Environment",
       "url": "https://doi.org/10.1257/.42.1.7",
       "description": "OpenAlex work type=article year=2004",
@@ -9721,14 +9935,6 @@
       "url": "https://doi.org/10.1111/0022-1082.00226",
       "description": "OpenAlex work type=article year=2000",
       "updated_at": "2000"
-    },
-    {
-      "source": "openalex",
-      "query": "prediction market order book trading strategy",
-      "title": "Trading and arbitrage in cryptocurrency markets",
-      "url": "https://doi.org/10.1016/j.jfineco.2019.07.001",
-      "description": "OpenAlex work type=article year=2019",
-      "updated_at": "2019"
     },
     {
       "source": "openalex",
@@ -10053,18 +10259,18 @@
     {
       "source": "openalex",
       "query": "statistical arbitrage pairs trading equities",
-      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
-      "url": "https://doi.org/10.1093/qje/qjv027",
-      "description": "OpenAlex work type=article year=2015",
-      "updated_at": "2015"
-    },
-    {
-      "source": "openalex",
-      "query": "statistical arbitrage pairs trading equities",
       "title": "Time series regression-based pairs trading in the Korean equities market",
       "url": "https://doi.org/10.1080/0952813x.2016.1259265",
       "description": "OpenAlex work type=article year=2016",
       "updated_at": "2016"
+    },
+    {
+      "source": "openalex",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Trading and arbitrage in cryptocurrency markets",
+      "url": "https://doi.org/10.1016/j.jfineco.2019.07.001",
+      "description": "OpenAlex work type=article year=2019",
+      "updated_at": "2019"
     },
     {
       "source": "openalex",
@@ -10073,14 +10279,6 @@
       "url": "https://doi.org/10.1002/widm.1391",
       "description": "OpenAlex work type=article year=2020",
       "updated_at": "2020"
-    },
-    {
-      "source": "openalex",
-      "query": "symbolic regression alpha mining trading",
-      "title": "Alpha-GPT: Human-AI Interactive Alpha Mining for Quantitative Investment",
-      "url": "https://doi.org/10.48550/arxiv.2308.00016",
-      "description": "OpenAlex work type=preprint year=2023",
-      "updated_at": "2023"
     },
     {
       "source": "openalex",
@@ -10121,22 +10319,6 @@
       "url": "https://doi.org/10.1117/1.jrs.11.015020",
       "description": "OpenAlex work type=article year=2017",
       "updated_at": "2017"
-    },
-    {
-      "source": "openalex",
-      "query": "symbolic regression alpha mining trading",
-      "title": "Interpretability in symbolic regression: a benchmark of explanatory methods using the Feynman data set",
-      "url": "https://doi.org/10.1007/s10710-022-09435-x",
-      "description": "OpenAlex work type=article year=2022",
-      "updated_at": "2022"
-    },
-    {
-      "source": "openalex",
-      "query": "symbolic regression alpha mining trading",
-      "title": "Robust technical trading strategies using GP for algorithmic portfolio selection",
-      "url": "https://doi.org/10.1016/j.eswa.2015.10.040",
-      "description": "OpenAlex work type=article year=2015",
-      "updated_at": "2015"
     },
     {
       "source": "openalex",
@@ -10405,14 +10587,6 @@
     {
       "source": "openalex",
       "query": "因子挖掘 A股 量化 交易",
-      "title": "四十年（1980-2020）来个人借款领域的研究主题变迁 -基于文本挖掘LDA算法的主题发现和可视化",
-      "url": "https://doi.org/10.55375/jssc.2021.4.1",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "因子挖掘 A股 量化 交易",
       "title": "数字化转型下商业银行支持小微企业融资的创新路径研究",
       "url": "https://doi.org/10.33142/mem.v5i1.11182",
       "description": "OpenAlex work type=article year=2024",
@@ -10436,19 +10610,19 @@
     },
     {
       "source": "openalex",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "福建省出口跨境电子商务的现状及发展研究 —以“一带一路”背景下在泰国的发展策略为例",
-      "url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "description": "OpenAlex work type=article year=2019",
-      "updated_at": "2019"
-    },
-    {
-      "source": "openalex",
       "query": "因子挖掘 加密货币 量化 交易",
       "title": "Chinese trade and investment and the forests of the Congo Basin: Synthesis of scoping studies in Cameroon, Democratic Republic of Congo and Gabon [Chinese]",
       "url": "https://doi.org/10.17528/cifor/004721",
       "description": "OpenAlex work type=report year=2014",
       "updated_at": "2014"
+    },
+    {
+      "source": "openalex",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "Development status and prospects of the Energy Internet}{Development status and prospects of the Energy Internet",
+      "url": "https://doi.org/10.1360/n112016-00135",
+      "description": "OpenAlex work type=article year=2017",
+      "updated_at": "2017"
     },
     {
       "source": "openalex",
@@ -10492,6 +10666,22 @@
     },
     {
       "source": "openalex",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "四十年（1980-2020）来个人借款领域的研究主题变迁 -基于文本挖掘LDA算法的主题发现和可视化",
+      "url": "https://doi.org/10.55375/jssc.2021.4.1",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "基于区块链的旅游交易系统设计",
+      "url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
       "query": "多因子 加密货币 量化 交易 策略",
       "title": "中国第三方跨境支付发展现状、问题及对策",
       "url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
@@ -10521,14 +10711,6 @@
       "url": "https://doi.org/10.26549/cjygl.v4i8.4930",
       "description": "OpenAlex work type=article year=2020",
       "updated_at": "2020"
-    },
-    {
-      "source": "openalex",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "基于区块链的旅游交易系统设计",
-      "url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
     },
     {
       "source": "openalex",
@@ -10661,6 +10843,22 @@
     {
       "source": "openalex",
       "query": "订单流 加密货币 交易 策略",
+      "title": "Government Finance Statistics Manual 2014",
+      "url": "https://doi.org/10.5089/9781484383391.069",
+      "description": "OpenAlex work type=book year=2019",
+      "updated_at": "2019"
+    },
+    {
+      "source": "openalex",
+      "query": "订单流 加密货币 交易 策略",
+      "title": "People's Republic of China: 2013 Article IV Consultation",
+      "url": "https://doi.org/10.5089/9781616359409.002",
+      "description": "OpenAlex work type=article year=2013",
+      "updated_at": "2013"
+    },
+    {
+      "source": "openalex",
+      "query": "订单流 加密货币 交易 策略",
       "title": "RCEP背景下中日农产品贸易发展的机遇与挑战",
       "url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
       "description": "OpenAlex work type=article year=2022",
@@ -10673,6 +10871,14 @@
       "url": "https://doi.org/10.5846/stxb201201310130",
       "description": "OpenAlex work type=article year=2012",
       "updated_at": "2012"
+    },
+    {
+      "source": "openalex",
+      "query": "订单流 加密货币 交易 策略",
+      "title": "World Economic Outlook, April 2018",
+      "url": "https://doi.org/10.5089/9781484352588.081",
+      "description": "OpenAlex work type=book year=2018",
+      "updated_at": "2018"
     },
     {
       "source": "openalex",
@@ -10692,35 +10898,11 @@
     },
     {
       "source": "openalex",
-      "query": "资金费率 基差 套利 加密货币",
-      "title": "Development status and prospects of the Energy Internet}{Development status and prospects of the Energy Internet",
-      "url": "https://doi.org/10.1360/n112016-00135",
-      "description": "OpenAlex work type=article year=2017",
-      "updated_at": "2017"
-    },
-    {
-      "source": "openalex",
-      "query": "资金费率 基差 套利 加密货币",
-      "title": "Government Finance Statistics Manual 2014",
-      "url": "https://doi.org/10.5089/9781484383391.069",
-      "description": "OpenAlex work type=book year=2019",
+      "query": "订单流 加密货币 交易 策略",
+      "title": "福建省出口跨境电子商务的现状及发展研究 —以“一带一路”背景下在泰国的发展策略为例",
+      "url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "description": "OpenAlex work type=article year=2019",
       "updated_at": "2019"
-    },
-    {
-      "source": "openalex",
-      "query": "资金费率 基差 套利 加密货币",
-      "title": "People's Republic of China: 2013 Article IV Consultation",
-      "url": "https://doi.org/10.5089/9781616359409.002",
-      "description": "OpenAlex work type=article year=2013",
-      "updated_at": "2013"
-    },
-    {
-      "source": "openalex",
-      "query": "资金费率 基差 套利 加密货币",
-      "title": "World Economic Outlook, April 2018",
-      "url": "https://doi.org/10.5089/9781484352588.081",
-      "description": "OpenAlex work type=book year=2018",
-      "updated_at": "2018"
     },
     {
       "source": "openalex",
@@ -11252,6 +11434,86 @@
     },
     {
       "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Application of Bilateral Gamma Distribution in Carbon Trading",
+      "url": "https://www.semanticscholar.org/paper/ec5ec5ff16168703ee591a69831b013ba383badd",
+      "description": "Abstract: Introducing carbon financial derivatives and improving the carbon trading system are indispensable means for promoting carbon emission reductions. However, the reasonable pricing of carbon financial derivatives is crucial for launching related financial products. Here, the bilateral gamma distribution was used to fit the carbon quota yield series for the first time and compute the volatility of the carbon quota price, based on which the carbon option price was calculated by optimizing the option pricing model. The experimental results show that the carbon quota yield sequence approximately follows the bilateral gamma distribution and the model is reasonable for carbon option pricing. Subsequently, considering the relationship between continuous rise and fall rate in yield and the influence of trading volume on price, the formula of conditional probability of price rise and fall is derived by using bilateral gamma distribution, and numerical verification is carried out. Therefore, bilateral gamma distribution can be used for option pricing and price probability inference in carbon trading.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Equity option implied volatility skew as a substitute credit risk signal: Evidence from negative rating announcements in India, 2024–2025",
+      "url": "https://www.semanticscholar.org/paper/d301362cae2e984b42be2e6f5a1ae56d61963670",
+      "description": "Type of the article: Research ArticleAbstractIndia’s equity derivative market ranks among the most liquid globally, yet its corporate credit derivative segment remains structurally underdeveloped, leaving the pricing of credit risk largely dependent on periodic assessments by rating agencies. This structural incompleteness raises a fundamental question about where credit-sensitive information is incorporated when formal credit derivative instruments are absent. This study examines whether informed traders utilize equity option implied volatility skew as a substitute channel for pricing credit risk prior to formal rating agency announcements in India. Using a high-frequency cross-sectional event study, we analyze the 25-delta put-call implied volatility (IV) skew across 42 negative credit rating actions – comprising outright downgrades, outlook revisions, and watch-negative placements – for Nifty 500 constituents listed in the NSE Futures and Options segment from January 2024 to November 2025. Cumulative abnormal returns (CARs) are computed using the standard market model with a 250-trading-day estimation window, and a cross-sectional OLS regression with heteroscedasticity-robust (HC3) standard errors is employed to test predictive relationships. The pre-event IV skew widened significantly in the three to five trading days preceding each public announcement, with a mean pre-event skew of 4.20%, markedly above the historical baseline of approximately 2.1%. Cross-sectional regression confirms that the pre-event skew is a robust negative predictor of post-announcement CARs (β = −0.315, t = −3.84, p &lt; 0.001; Adj. R² = 0.389), with each percentage-point increase in pre-event skew corresponding to a 0.315% deeper post-announcement stock decline.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Implied volatility and options term structure: comparative analysis of time skew and implied volatility surface for building trading strategies",
+      "url": "https://www.semanticscholar.org/paper/3fe223487a2317f4286704421198d2386058d8ba",
+      "description": "This paper investigates the dynamics of the implied volatility surface (IVS) and its term structure as a foundation for constructing profitable trading strategies in the options market. Contrary to the classical assumption of constant volatility in the Black–Scholes model, empirical evidence demonstrates that implied volatility systematically varies with strike price and time to expiration, thereby forming a three-dimensional surface. The study provides a comparative analysis of two key dimensions of the IVS – the term structure and the strike structure (skew) – with a particular focus on the phenomenon of volatility time shift. Based on econometric modelling employing the Nelson–Siegel factorization and principal component analysis, we propose a system of trading signals for calendar spreads, skew arbitrage, and dynamic hedging. The empirical dataset comprises options on the 500 index (SPX) over the period 2020–2025. The results indicate that incorporating the temporal dynamics of the IVS improves the risk-adjusted returns of trading strategies by 15–22% relative to strategies that rely solely on level information.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "On the implied volatility skew outside the at-the-money point",
+      "url": "https://www.semanticscholar.org/paper/cb06c39e72773b4c5a825c1f13e146de59f4bf10",
+      "description": "The small-maturity implied volatility of an asset pricing model is fully determined by the asymptotics of traded option prices, and thus model-free expressions are available. We show how by sharpening one such expression it is possible to derive a novel general formula for the leading order of the in-the-money and out-of-the money (ITM/OTM) implied volatility skew. We apply this formula to find expressions of the small maturity limiting skew of the Heston stochastic volatility model, of exponential Lévy models and their time changes, as well as that of some recently proposed pricing models with independent log returns.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Pricing volatility options under stochastic skew with application to the VIX index",
+      "url": "https://www.semanticscholar.org/paper/cc83d5c45a4ad4f06e45bf21f81aa5475cb724a1",
+      "description": "",
+      "updated_at": "2017"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Reconstructing Smooth Local Volatility Surfaces for Cryptocurrency Options",
+      "url": "https://www.semanticscholar.org/paper/d9e69c8ea20c6186ca59de5c6c97dddc1dd4c3b3",
+      "description": "",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "The Dynamics of Option Volatility Smirk and Option Returns Predictability: Evidence From Chinese SSE50 ETF Options",
+      "url": "https://www.semanticscholar.org/paper/122ecb723c86caa3cc159d190317a29b1b76fcf7",
+      "description": "We examine the predictive ability of risk‐neutral moments extracted from option volatility smirks for the option delta‐neutral returns using the SSE50 ETF stock index option. We find risk‐neutral skewness changes over market conditions. The risk‐neutral skewness significantly predicts 1‐day, 2‐day, and 1–4 weeks ahead call option returns with negative signs in both in‐sample and out‐of‐sample tests. The results are robust in including other control variables and different constant maturity risk‐neutral skewnesses. Trading strategies based on the predictive model yield a potential maximum annual return of 293%.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "The Information Content of Implied Volatility Skew : Evidence on Taiwan Stock Index Options",
+      "url": "https://www.semanticscholar.org/paper/e2508310e64512e88104e4d78451f59b52048c8b",
+      "description": "",
+      "updated_at": "2017"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
+      "url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
+      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Valuation of carbon emission allowance options under an open trading phase",
+      "url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
+      "description": "This paper presents valuation models of emission allowance options under an emission trading scheme, operating in an open trading phase, where unused allowances are banked to subsequent phases without any limit. Empirical studies are carried out to show that allowance option prices exhibit similar volatility smiles to those of the stock market. Three reduced-form econometrics models, namely a Lognormal allowance price model, a Skewness–Kurtosis-Modified Lognormal allowance price model, and a Mixture Lognormal allowance price model are introduced, with each being accorded with a rich interpretation of its own. Numerical illustration of the models is performed through calibration to the European-Union Emission-Trading-Scheme’s allowance futures option prices collected for EU ETS Phase 3 and Phase 4 respectively, where statistical fitness of the models is assessed comparatively within each sample and across the two samples collected to ensure robustness of the conclusions.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
       "query": "equity factor investing cross sectional alpha backtest",
       "title": "Community perceptions of the health equity navigators program: a cross-sectional study in rural and medically underserved areas of Georgia, USA",
       "url": "https://www.semanticscholar.org/paper/8fb8cc293a768eb9003130706b785221f84d6a4d",
@@ -11644,6 +11906,86 @@
     },
     {
       "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Artificial Intelligence in Economic Applications: Stock Trading, Market Analysis, and Risk Management",
+      "url": "https://www.semanticscholar.org/paper/e75aa08e17b304c22256e2faaf6215fb05f531cc",
+      "description": "Artificial Intelligence has become a fundamental driver of innovation in economic systems. This article provides an overview of its applications in stock trading, market analysis, and risk management. A systematic review of recent studies identifies the most widely used methods such as neural networks, deep learning, reinforcement learning, and hybrid approaches. This paper examines AI applications in economics, including stock trading, market analysis, \nand risk assessment. A comprehensive taxonomy is proposed to investigate AI applications in various scopes of the proposed categories. Furthermore, real-world cases illustrate the practical deployment of artificial intelligence in financial institutions and enterprises. The findings suggest that artificial intelligence is a transformative force in the economy but challenges such as data quality, transparency, and regulatory adaptation remain open for future research.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Deep Learning vs. Reinforcement Learning in Automated Stock Trading: A PRISMA-Oriented Systematic Review",
+      "url": "https://www.semanticscholar.org/paper/f7613e6493fcdaa0da777e3582500917d28be2a8",
+      "description": "The rapid development of artificial intelligence has significantly changed stock trading systems, mainly through its two major systems Deep Learning and Reinforcement Learning, which are the leading technologies in this area. This paper systematically reviews the literature on the basis of PRISMA guidelines to assess and compare the effectiveness of DL and RL automation systems in stock market trading. The authors retrieved journal articles from Scopus and Web of Science that they published between 2015 and 2025 according to their pre-designed inclusion and exclusion criteria. The team employed strict selection techniques to pick a few studies whose data were then subjected to qualitative and quantitative analyses. The review article essentially judges the models by the performance metrics profitability, risk, adjusted returns, drawdown control, transaction cost sensitivity, and the ability to cope with various market conditions. The research shows DL models which contain recurrent and convolutional architectures can predict market outcomes accurately during periods of market stability and trends, while RL-based systems can adapt to changing conditions and make dynamic choices and function effectively during periods of market instability. Systems that combine DL for feature extraction with RL for policy optimization achieve better results than systems that operate independently, which shows that adaptive learning systems are gaining more importance. The field has gone far in its development, but it still struggles with issues such as biased data and overfitting, along with very high computational requirements and problems in replicating results. This review first looks at the current state of research and, at the same time, points out the gaps in the research that exist in the AI, based trading systems that are suggested to run at scale without sacrificing risk management and transparency. The paper is a great resource for both researchers and practitioners engaged ",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Economic Theory and Machine Learning Integration in Asset Pricing and Portfolio Optimization: A Bibliometric Analysis and Conceptual Framework",
+      "url": "https://www.semanticscholar.org/paper/3e91abe56997996f432af5688c0c5b1907e3e3bc",
+      "description": ": The integration of Machine Learning (ML) with economic theory has transformed financial market analysis, particularly in asset pricing and portfolio optimization. This study synthesizes existing research, identifies gaps and elucidates ML's impact on enhancing economic models and strategies through a Systematic Literature Review (SLR) of 401 relevant documents using bibliometric methodology and VOS viewer. Results show an increasing trend in publications, with the United States and China leading and institutions like the Shanghai University of Finance and Economics and Massachusetts Institute of Technology playing crucial roles. Cluster analysis reveals five main themes: Asset pricing and predictive analysis, algorithmic trading, data-driven portfolio management and optimization, reinforcement learning and adaptive strategies in financial markets and cryptocurrency market predictions. The proposed conceptual framework encompasses data acquisition and management, preprocessing and feature engineering, model selection and training, constraint formulation, theory-driven validation and real-time adaptation and monitoring, highlighting the potential synergy between ML and economic theory. This study provides insights into ML and economic theory integration, offering a structured pathway for enhancing asset pricing models and portfolio optimization techniques. Future research should refine this integration, focusing on practical application and adaptability to new financial instruments and market conditions.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Editorial to the “Evolutionary Reinforcement Learning” Special Issue",
+      "url": "https://www.semanticscholar.org/paper/09012bd84ddd1cd72ce373d56e9183e00193aa4b",
+      "description": "Evolutionary Reinforcement Learning combines the strengths of evolutionary algorithms with reinforcement learning techniques. This special issue offers readers a diverse range of contributions that illuminate different aspects of this hybrid approach. In “Combining Evolution and Deep Reinforcement Learning for Policy Search: A Survey,” Olivier Sigaud presents a comprehensive review of the burgeoning field that merges evolution and deep reinforcement learning. A systematic categorization of 45 algorithms published after 2017 provides a framework for understanding the sprawling diversity of approaches based on the mechanistic integration of the two techniques and hints at the potential for designing new hybrid mechanisms. In “P2P Energy Trading through Prospect Theory, Differential Evolution, and Reinforcement Learning,” Ashutosh Timilsina and Simone Silvestri present a decentralized energy-trading framework that integrates behavioral economics, reinforcement learning, and differential evolution— demonstrating the usefulness of this hybrid approach on a practical problem. They tackle computational complexity with their Differential Evolution-based Algorithm for Trading Energy and introduce two reinforcement learning pricing mechanisms, achieving marked improvements in both buyers’ and sellers’ outcomes when validated with real-world data, creating more efficient and personalized peer-to-peer energy markets. In “Curiosity Creates Diversity in Policy Search” by Paul-Antoine Le Tolguenec, Emmanuel Rachelson, Yann Besse, and Dennis G. Wilson, the authors delve into the challenge of optimal policy exploration in reward-sparse environments. They introduce Curiosity-ES, an evolutionary strategy that employs Curiosity as an intrinsic fitness metric to guide policy search. The article showcases how Curiosity-ES surpasses existing Quality-Diversity methods like MAP-Elites in tasks such as maze navigation and robotic control, and it posits that Curiosity encourages a natural div",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Interpretable Automated Machine Learning for Asset Pricing in U.S. Capital Markets",
+      "url": "https://www.semanticscholar.org/paper/2dbc567520ecff8a012eb478a61ff8b993329fa5",
+      "description": "Artificial Intelligence has become a fundamental driver of innovation in economic systems. Traditional asset pricing model face significant limitations in predictive accuracy, interpretability, and robustness under extreme market conditions. Although recent advances in Automated AutoML have improved forecasting performance, their “black-box” nature and fragility during crises limit their practical use in regulatory and policy contexts. This article provides an overview of its applications in stock trading, market analysis, and risk management. A systematic review of recent studies identifies the most widely used methods such as neural networks, deep learning, reinforcement learning, and hybrid approaches. This paper examines AI applications in economics, including stock trading, market analysis, and risk assessment. A comprehensive taxonomy is proposed to investigate AI applications in various scopes of the proposed categories. Furthermore, real-world cases illustrate the practical deployment of artificial intelligence in financial institutions and enterprises. The findings suggest that artificial intelligence is a transformative force in the economy but challenges such as data quality, transparency, and regulatory adaptation remain open for future research.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
+      "url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
+      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Machine learning integration in cryptocurrency trading and its fintech implications",
+      "url": "https://www.semanticscholar.org/paper/3cc99d0ee028971ddaea011625061b3d913c7af2",
+      "description": "\n This review synthesises research on fintech implications of integrating machine learning algorithms into cryptocurrency trading strategies to address the fragmented understanding of their impact on trading efficacy, risk management, and financial innovation. The review aimed to evaluate current knowledge on machine learning applications, benchmark algorithmic trading performance, identify risk mitigation techniques, compare algorithm effectiveness, and examine regulatory and ethical considerations. A systematic analysis of diverse methodologies, including supervised, reinforcement, and hybrid learning models across global computational finance and AI literature, was conducted. Findings indicate that deep learning and ensemble methods significantly enhance predictive accuracy and trading profitability under volatile market conditions, while reinforcement learning frameworks improve dynamic portfolio optimisation and risk-adjusted returns. Risk management benefits arise from integrating technical indicators and reward-based safety mechanisms, though universal frameworks remain lacking. Fintech integration advances through blockchain-enabled transparency and automation, yet practical deployment faces scalability and interoperability challenges. Ethical and regulatory discourse is nascent, underscoring the need for responsible AI frameworks to ensure market integrity and investor protection. These findings collectively demonstrate that machine learning substantially transforms cryptocurrency trading strategies, offering enhanced performance and risk control within evolving fintech infrastructures, while highlighting critical gaps in regulatory compliance and ethical governance that warrant focused future research.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "News Sentiment Analysis in Forex Trading Using R-CNN on Deep Recurrent Q-Network",
+      "url": "https://www.semanticscholar.org/paper/51eab7b838cd9842e8b60f9b0571a02c0a33f87f",
+      "description": "Every trader in trading aspires to make the best decisions in buying and selling transactions and maximize the profits they get. The reinforcement learning method is a growing and popular method for making predictions in financial markets. After the AlphaGo defeated the strongest Go Contemporary board game player named Lee Sedol in 2016, this method creates a system capable of learning trading from itself. In a systematic review conducted by Terry Lingze Meng, all the latest articles related to stock and forex predictions that use reinforcement learning as the primary method only use past technical data as their state. In this study, the authors propose the implementation of word2vec and Recurrent Convolution Neural Network to provide the agent with the ability to read and process fundamental factors through the provided news headlines. The action augmentation technique reduces random exploration by the agent. The simulation will run on historical price changes for the seven most frequently traded currency pairs. This implementation demonstrates the impact of adding news headlines to improve risk management and lower the maximum withdrawal point value on almost all tested currency pairs with the highest increase of up to 57.9% on GBPUSD from 7.9% to 3.32%.",
+      "updated_at": "2020"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Reinforcement Learning in Financial Decision Making: A Systematic Review of Performance, Challenges, and Implementation Strategies",
+      "url": "https://www.semanticscholar.org/paper/9c5569306d3db376c4a74827e749e6024380621e",
+      "description": "Reinforcement learning (RL) is an innovative approach to financial decision making, offering specialized solutions to complex investment problems where traditional methods fail. This review analyzes 167 articles from 2017--2025, focusing on market making, portfolio optimization, and algorithmic trading. It identifies key performance issues and challenges in RL for finance. Generally, RL offers advantages over traditional methods, particularly in market making. This study proposes a unified framework to address common concerns such as explainability, robustness, and deployment feasibility. Empirical evidence with synthetic data suggests that implementation quality and domain knowledge often outweigh algorithmic complexity. The study highlights the need for interpretable RL architectures for regulatory compliance, enhanced robustness in nonstationary environments, and standardized benchmarking protocols. Organizations should focus less on algorithm sophistication and more on market microstructure, regulatory constraints, and risk management in decision-making.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "reinforcement learning trading systematic review",
+      "title": "Review on the Integration of Multi-Factor Models and Artificial Intelligence for Quantitative Trading",
+      "url": "https://www.semanticscholar.org/paper/ed5dd75885f28f4a396f3c42189847717f7f34f4",
+      "description": "Artificial intelligence has become a key tool in quantitative trading, while the multi-factor model remains a common framework for stock selection and asset allocation. Existing reviews, however, usually discuss multi-factor models or AI-based quantitative strategies separately. They rarely provide a systematic account of how the two approaches are integrated. This paper aims to fill this gap by reviewing recent Chinese and international studies and examining the integration of multi-factor models with artificial intelligence in quantitative trading. The review shows that traditional multi-factor models provide interpretable variables and economic logic, but they have limitations in factor construction, nonlinear modelling and market regime adaptation. Machine learning improves factor screening and return prediction; deep learning extends the use of time-series and textual information; reinforcement learning further links prediction results with portfolio adjustment and trading decisions. These developments increase the flexibility of quantitative strategies, but they also bring problems such as overfitting, weak interpretability, unstable generalization and regulatory risk. Future research should give more attention to explainable AI, dynamic factor selection, multi-source data fusion and risk-constrained trading systems. Such work can help connect economic meaning with data-driven modelling and improve the practical value of AI-enhanced multi-factor strategies.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
       "query": "symbolic regression alpha mining trading",
       "title": "AlphaMaster: Dual-Chain Feedback for Scalable and Diverse Alpha Factor Discovery",
       "url": "https://www.semanticscholar.org/paper/53a813d41d0dac69f3ded1c3d61ae452fcfd9df2",
@@ -11721,6 +12063,14 @@
       "url": "https://www.semanticscholar.org/paper/7e80a1d3be3f6edd3c9323ec2661905f59ae9124",
       "description": "",
       "updated_at": "2017"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "加密货币 量化 github",
+      "title": "The Evaluation of Flash-aware Linux Swap System",
+      "url": "https://www.semanticscholar.org/paper/fae8a50e495df01d55ad283aabd6fd60938481c7",
+      "description": "",
+      "updated_at": "2013"
     },
     {
       "source": "semantic_scholar",

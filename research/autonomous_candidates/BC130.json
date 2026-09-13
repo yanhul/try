@@ -1,0 +1,21 @@
+{
+  "bc": 130,
+  "candidate_hash": "770adf4b8648dda0828eb2d14e27759cef7978d5b9e4df19dac76eed21b7fd77",
+  "conceptual_change": "Test rolling_std(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "numeric": 0.25,
+    "operator": "rolling_std",
+    "threshold": 0.25,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/QSshuyunmu/A-share-quant"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 129,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,20 @@
+{
+  "bc": 128,
+  "candidate_hash": "50aeb29c884a55f7e22e23f4c441485ca2b8d6835eecb72448e6c6966c5f5c8c",
+  "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.45,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/aakash-ramesh/crypto-stat-arb"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 127,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
