@@ -59,6 +59,14 @@ def normalize_structural_types(c):
   if math.isfinite(v):s["threshold"]=int(v) if v.is_integer() else v
  if isinstance(s.get("window"),str) and s["window"].strip().isdigit():s["window"]=int(s["window"].strip())
 
+def normalize_hypothesis_id(c):
+ """Canonicalize an exact selected-family id into the contract enum without inventing research."""
+ if c.get("hypothesis_id")!=selected_family:return
+ spec=c.get("discovery_spec")
+ if not isinstance(spec,dict):return
+ c["hypothesis_id"]="mechanism_family"
+ spec["mechanism_family"]=selected_family
+
 def fingerprint(c):
  s=c.get("discovery_spec") or {}
  return tuple(s.get(k) for k in ("mechanism_family","operator","left","right","window","threshold","direction")) if isinstance(s,dict) else None
@@ -79,7 +87,7 @@ def request_candidate(prompt,forbidden):
   try:c=json.loads(raw)
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
   if c.get("status")=="HOLD":return c
-  normalize_structural_types(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
+  normalize_structural_types(c);normalize_hypothesis_id(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
   if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
   elif hid=="mechanism_family" and (not isinstance(spec,dict) or spec.get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
   else:
@@ -121,10 +129,7 @@ def main():
   eligible,rejected=eligible_survivors(survivors)
   non_executable=[s for s in eligible if str(s.get("family") or "").strip() not in MECHANISM_FAMILIES]
   eligible=[s for s in eligible if str(s.get("family") or "").strip() in MECHANISM_FAMILIES]
-  rejected=list(rejected)+[
-   {"candidate_id":s.get("candidate_id"),"btc_translation_reason":"non_executable_source_family","family":s.get("family")}
-   for s in non_executable
-  ]
+  rejected=list(rejected)+[{"candidate_id":s.get("candidate_id"),"btc_translation_reason":"non_executable_source_family","family":s.get("family")} for s in non_executable]
   if rejected:print("BTC_TRANSLATION_FILTER_REJECTED "+json.dumps({"count":len(rejected),"reasons":sorted({r.get("btc_translation_reason") for r in rejected})},sort_keys=True),flush=True)
   if not eligible:print("PROVIDER_ROUTER_HOLD no_executable_btc_compatible_screen_survivor");return 0
   families=[]
@@ -144,8 +149,7 @@ def main():
   base,model,key=config();calibrated,issues=verify_with_openai_compatible(base,model,key,c,evidence)
   if not calibrated:raise ValueError("PROVIDER_CALIBRATION_FAIL "+json.dumps(issues,sort_keys=True))
   write_candidate(out,c);print(f"PROVIDER_SELECTED GEMINI model={model} family={selected_family} hash={c['candidate_hash']}");return 0
- except Exception as e:
-  print(f"PROVIDER_FAIL GEMINI: {e}")
+ except Exception as e:print(f"PROVIDER_FAIL GEMINI: {e}")
  print("PROVIDER_ROUTER_HOLD");return 0
 
 if __name__=="__main__":raise SystemExit(main())
