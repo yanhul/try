@@ -1,4 +1,8 @@
+from pathlib import Path
+import json
+
 from research.campaign_controller import continuation_allowed, qualifying_bcs, reconcile_campaign_state
+from research.bc_controller import epoch_seed_failure
 
 
 def test_old_screened_count_cannot_resume_without_new_progress():
@@ -62,3 +66,39 @@ def test_new_campaign_epoch_counts_only_post_boundary_history():
     assert start == 167
     assert screened == 2
     assert state["campaign_screened"] == 2
+
+
+def test_epoch_seed_requires_explicit_controller_handoff(monkeypatch, tmp_path):
+    monkeypatch.delenv("RESEARCH_EPOCH_SEED_FAILURE", raising=False)
+    assert epoch_seed_failure(166, 167) is None
+
+    seed = tmp_path / ".epoch_seed_failure.json"
+    seed.write_text(json.dumps({
+        "kind": "epoch_seed_failure",
+        "decision": "SEED_EPOCH",
+        "parent_bc": 166,
+        "epoch_start_bc": 167,
+        "research_evidence": False,
+        "repair_context": True,
+    }), encoding="utf-8")
+    monkeypatch.setenv("RESEARCH_EPOCH_SEED_FAILURE", str(seed))
+    assert epoch_seed_failure(166, 167) is None
+
+
+def test_epoch_seed_contract_is_consumed_only_from_controller_path(monkeypatch):
+    from research import bc_controller
+    seed = bc_controller.ROOT / "research" / ".epoch_seed_failure.json"
+    seed.write_text(json.dumps({
+        "kind": "epoch_seed_failure",
+        "decision": "SEED_EPOCH",
+        "parent_bc": 166,
+        "epoch_start_bc": 167,
+        "research_evidence": False,
+        "repair_context": True,
+    }), encoding="utf-8")
+    monkeypatch.setenv("RESEARCH_EPOCH_SEED_FAILURE", str(seed))
+    try:
+        assert epoch_seed_failure(166, 167) == seed.resolve()
+        assert epoch_seed_failure(165, 167) is None
+    finally:
+        seed.unlink(missing_ok=True)
