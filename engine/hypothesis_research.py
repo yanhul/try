@@ -16,6 +16,7 @@ from .strategy import ReferenceStrategy
 from .hypotheses import HYPOTHESES
 from .composition import generate_composites
 from .trading_features import momentum_trend,mean_reversion_zscore,volume_spread
+from research.cost_model import CostModel
 
 @dataclass(frozen=True)
 class PreparedSplit:
@@ -29,10 +30,10 @@ def _sha256(path):
   for chunk in iter(lambda:f.read(1024*1024),b""): h.update(chunk)
  return h.hexdigest()
 
-def _trade_metrics(bars,ledger,stop,rr,cost):
+def _trade_metrics(bars,ledger,stop,rr,cost,*,cost_model: CostModel | None = None):
  executed,skipped=execute_trades(bars,ledger,FixedRiskRewardExit(stop,rr))
  trades=[Trade(t.ledger_trade.entry_price,t.exit.price,t.ledger_trade.direction.value,t.ledger_trade.entry_bar,t.exit.bar_index,t.exit.reason) for t in executed]
- return calculate_metrics(trades,cost),skipped
+ return calculate_metrics(trades,cost,cost_model=cost_model),skipped
 
 def prepare_split(bars,start,end,*,pnf_box_fraction=0.01):
  if pnf_box_fraction<=0: raise ValueError("pnf_box_fraction must be positive")
@@ -50,14 +51,14 @@ def prepare_split(bars,start,end,*,pnf_box_fraction=0.01):
   contexts.append({"sweep":rows[t.sweep_bar],"mss":rows[t.mss_bar],"fvg":rows[t.fvg_bar],"entry":entry,"history":rows[:t.entry_bar+1]})
  return PreparedSplit(history=history,ledger=ledger,contexts=contexts)
 
-def evaluate_prepared_split(prepared,predicate,stop=0.01,rr=2.0,cost=0.0):
+def evaluate_prepared_split(prepared,predicate,stop=0.01,rr=2.0,cost=0.0,*,cost_model: CostModel | None = None):
  filtered=[t for t,ctx in zip(prepared.ledger,prepared.contexts) if predicate(ctx,t.direction.value)]
- metrics,skipped=_trade_metrics(prepared.history,filtered,stop,rr,cost)
+ metrics,skipped=_trade_metrics(prepared.history,filtered,stop,rr,cost,cost_model=cost_model)
  return {"candidate_trades":len(prepared.ledger),"accepted_signals":len(filtered),"skipped_overlap_trades":skipped,"metrics":metrics}
 
-def evaluate_split(bars,start,end,predicate,stop=0.01,rr=2.0,cost=0.0,*,prepared=None,pnf_box_fraction=0.01):
+def evaluate_split(bars,start,end,predicate,stop=0.01,rr=2.0,cost=0.0,*,prepared=None,pnf_box_fraction=0.01,cost_model: CostModel | None = None):
  prepared=prepared or prepare_split(bars,start,end,pnf_box_fraction=pnf_box_fraction)
- return evaluate_prepared_split(prepared,predicate,stop,rr,cost)
+ return evaluate_prepared_split(prepared,predicate,stop,rr,cost,cost_model=cost_model)
 
 def run_hypothesis_research(csv_path,output_path,*,stop=0.01,rr=2.0,round_trip_cost=0.0,max_components=3,pnf_box_fraction=0.01):
  bars=load_bars(csv_path); splits=chronological_split(len(bars)); validate_splits(splits,len(bars)); composites=generate_composites(max_components=max_components); candidates=list(HYPOTHESES.items())+[(c.name,c.predicate) for c in composites]
