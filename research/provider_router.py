@@ -5,7 +5,7 @@ import json,math,os,random,sys,time,urllib.error,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
-from research.autonomous_hypothesis import write_candidate,validate_candidate,MECHANISM_FAMILIES
+from research.autonomous_hypothesis import write_candidate,validate_candidate,MECHANISM_FAMILIES,EXECUTABLE_MECHANISM_FAMILIES
 from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
 
@@ -106,7 +106,7 @@ def request_candidate(prompt,forbidden):
 def ground_candidate(c,selected):
  url=str(selected.get("source_url") or "").strip();family=str(selected.get("family") or "").strip()
  if not url:raise ValueError("selected_survivor_missing_source_url")
- if family not in MECHANISM_FAMILIES:raise ValueError(f"non_executable_source_reached_grounding:{family}")
+ if family not in EXECUTABLE_MECHANISM_FAMILIES:raise ValueError(f"non_executable_source_reached_grounding:{family}")
  if c.get("hypothesis_id")=="mechanism_family":
   spec=c.get("discovery_spec")
   if not isinstance(spec,dict) or spec.get("mechanism_family")!=family:raise ValueError("selected_family_mismatch")
@@ -127,8 +127,8 @@ def main():
   q=json.loads(queue.read_text(encoding="utf-8"));raw=q.get("candidates",[]) if isinstance(q,dict) else q
   survivors=[s for s in raw if isinstance(s,dict) and str(s.get("source_url") or "").strip()]
   eligible,rejected=eligible_survivors(survivors)
-  non_executable=[s for s in eligible if str(s.get("family") or "").strip() not in MECHANISM_FAMILIES]
-  eligible=[s for s in eligible if str(s.get("family") or "").strip() in MECHANISM_FAMILIES]
+  non_executable=[s for s in eligible if str(s.get("family") or "").strip() not in EXECUTABLE_MECHANISM_FAMILIES]
+  eligible=[s for s in eligible if str(s.get("family") or "").strip() in EXECUTABLE_MECHANISM_FAMILIES]
   rejected=list(rejected)+[{"candidate_id":s.get("candidate_id"),"btc_translation_reason":"non_executable_source_family","family":s.get("family")} for s in non_executable]
   if rejected:print("BTC_TRANSLATION_FILTER_REJECTED "+json.dumps({"count":len(rejected),"reasons":sorted({r.get("btc_translation_reason") for r in rejected})},sort_keys=True),flush=True)
   if not eligible:print("PROVIDER_ROUTER_HOLD no_executable_btc_compatible_screen_survivor");return 0
