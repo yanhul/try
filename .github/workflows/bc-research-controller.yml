@@ -42,7 +42,7 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-3.1-flash-lite
       GITHUB_TOKEN: ${{ github.token }}
-      AIOS_SOURCE: /tmp/aios
+      AIOS_SOURCE: ${{ github.workspace }}/aios-authority
       AIOS_AUTHORITY_SECRET: ${{ secrets.AIOS_AUTHORITY_SECRET }}
     steps:
       - name: Checkout
@@ -52,7 +52,7 @@ jobs:
         with:
           repository: yanhul/AIOS
           ref: 8693b0fb69a3caa552ef814feeaadc86e5a4c249
-          path: /tmp/aios
+          path: aios-authority
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
