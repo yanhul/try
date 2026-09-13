@@ -1,0 +1,21 @@
+{
+  "bc": 208,
+  "candidate_hash": "39958ee8c326e88fc7c558be4f8b1301d039c22f3888adcfb67f81ea9605a1b8",
+  "conceptual_change": "Shift from volatility-based thresholding to a normalized proximity-to-trend measure using Z-Score of the VWAP distance to detect persistent mean-reverting deviations in BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 207,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

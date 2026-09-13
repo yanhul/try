@@ -1,0 +1,21 @@
+{
+  "bc": 207,
+  "candidate_hash": "24144fe62ca07b39226594a16fc62994f52222d51c0e5d6a08f533a094bf2e2b",
+  "conceptual_change": "Incorporate a liquidity-focused SMC mechanism for BTCUSDT 1H using price displacement relative to range extremities to identify structural market shifts. By monitoring the ratio of high-to-low ranges against close locations, the strategy captures potential stop-run liquidity events typical of ICT-based methodologies.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 206,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

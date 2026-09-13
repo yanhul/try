@@ -1,0 +1,21 @@
+{
+  "bc": 202,
+  "candidate_hash": "31300de7d8e25abf0eab21b53248ca36b036ad7f966baa9fdd9c58c964723ef4",
+  "conceptual_change": "Implement mean-reversion based on the z-score of the close price relative to a 100-period rolling mean, triggering entries when prices deviate significantly from the mean to capture statistical correction.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 201,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

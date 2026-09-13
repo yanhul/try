@@ -1,0 +1,41 @@
+{
+  "bc": 202,
+  "parent_bc": 201,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "31300de7d8e25abf0eab21b53248ca36b036ad7f966baa9fdd9c58c964723ef4",
+  "conceptual_change": "Implement mean-reversion based on the z-score of the close price relative to a 100-period rolling mean, triggering entries when prices deviate significantly from the mean to capture statistical correction.",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 36,
+    "skipped_overlap_trades": 15,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 21,
+      "win_count": 5,
+      "loss_count": 16,
+      "win_rate": 0.23809523809523808,
+      "total_return": -0.12039551540731375,
+      "avg_return": -0.006020377266239176,
+      "profit_factor": 0.36289354673070684,
+      "max_drawdown": 0.12614071880512834,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

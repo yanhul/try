@@ -1,0 +1,22 @@
+{
+  "bc": 204,
+  "candidate_hash": "ad232a575a439e5bdc66e24cfd77b7ce23fdae292d6f5336974215d9fde3ae8c",
+  "conceptual_change": "Incorporate a Liquidity Sweep mechanism focusing on short-term price deviations below local periodic lows followed by rapid mean-reversion, consistent with ICT-style liquidity capture on the 1H timeframe.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "low",
+    "threshold": -0.015,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 203,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

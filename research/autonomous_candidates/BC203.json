@@ -1,0 +1,22 @@
+{
+  "bc": 203,
+  "candidate_hash": "287e9e8f511f362b3c7bf0cef61a6ce83c7e1f7913bffab0a307501315af7072",
+  "conceptual_change": "Incorporate a momentum-based trend following signal leveraging rolling price momentum to identify sustainable market direction. This replaces the failed mean-reversion hypothesis with a trend-alignment mechanism.",
+  "discovery_spec": {
+    "direction": "above",
+    "lag": 20,
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "close",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 202,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

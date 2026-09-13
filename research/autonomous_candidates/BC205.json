@@ -1,0 +1,20 @@
+{
+  "bc": 205,
+  "candidate_hash": "41349c0483396104087040ad1f3091e4b7d81e8670ece4cfbeba1e969b0eb462",
+  "conceptual_change": "Implement a mean-reversion mechanism targeting excessive price deviations from the 100-period rolling mean of the VWAP distance on the BTCUSDT 1H timeframe to identify statistical oversold conditions.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": -2.0
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 204,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
