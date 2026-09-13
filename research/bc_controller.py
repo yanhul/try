@@ -39,8 +39,17 @@ def normalize_queue(s):
  if len(active)>1: active=active[:1]
  if q!=active: write_queue(active)
  return active
-def verify_external_authority(bc):
+def verify_external_authority(bc,candidate_hash=None):
  contract=os.environ.get('AIOS_CONTRACT_PATH'); permit=os.environ.get('AIOS_PERMIT_PATH'); attestation=os.environ.get('AIOS_ATTESTATION_PATH'); secret=os.environ.get('AIOS_AUTHORITY_SECRET')
+ if not all((contract,permit,attestation,secret)) and candidate_hash:
+  try:
+   from research.aios_oos_authority import provision
+   records=provision(bc,candidate_hash)
+   os.environ.update(AIOS_CONTRACT_PATH=records['contract'],AIOS_PERMIT_PATH=records['permit'],AIOS_ATTESTATION_PATH=records['attestation'])
+   contract,permit,attestation=records['contract'],records['permit'],records['attestation']
+   print(f'AIOS_AUTHORITY_PROVISIONED BC{bc}')
+  except Exception as exc:
+   print(f'AIOS_AUTHORITY_HOLD BC{bc} provisioning_failed={exc}'); return False
  if not all((contract,permit,attestation,secret)):
   print(f'AIOS_AUTHORITY_HOLD BC{bc} missing contract/permit/attestation/secret'); return False
  try:
@@ -48,6 +57,10 @@ def verify_external_authority(bc):
   result=verify_authority(contract,permit,attestation,secret); expected_task=f'RESEARCH_BC{bc}'
   if result.get('task_id')!=expected_task or result.get('attested') is not True:
    print(f'AIOS_AUTHORITY_HOLD BC{bc} binding_or_attestation_mismatch'); return False
+  if candidate_hash:
+   stored=json.loads(Path(contract).read_text(encoding='utf-8'))
+   if stored.get('input_digest')!=candidate_hash:
+    print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc:
   print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
@@ -57,10 +70,11 @@ def authorized_state(s):
   print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
  return True
 def oos_once(bc,candidate):
- if not verify_external_authority(bc): return None
+ candidate_hash=candidate['candidate_hash']
+ if not verify_external_authority(bc,candidate_hash): return None
  protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
  if not protocol.exists(): print('OOS_HOLD_PROTOCOL_MISSING'); return None
- FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True); candidate_hash=candidate['candidate_hash']
+ FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True)
  if freeze.exists():
   frozen=load(freeze,{})
   if frozen.get('candidate_hash')!=candidate_hash: print('OOS_HOLD_FROZEN_HASH_MISMATCH'); return None
