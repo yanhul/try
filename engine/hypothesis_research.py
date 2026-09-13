@@ -102,6 +102,8 @@ def _feature_rows(history, pnf_box_fraction):
         base["mean_reversion"] = mr[index]
         base["wyckoff_vsa_vpa"] = vsa[index]["close_location"]
         base["regime"] = mtf[index].get("regime", 0)
+        # Calendar weekday is context only. It is deliberately not converted
+        # into a synthetic bullish/bearish signal.
         base["seasonality"] = history[index].timestamp.weekday()
         base["point_figure"] = pnf_direction[index]
         base["gann_reference"] = gann[index]["slope"]
@@ -135,14 +137,8 @@ def _direction_for_row(row, family):
     if family == "wyckoff_vsa_vpa":
         value = row.get("close_location")
         return Direction.BULLISH if value is not None and value > 0.5 else Direction.BEARISH if value is not None and value < 0.5 else None
-    if family == "volatility":
-        value = row.get("volatility")
-        return Direction.BULLISH if value is not None and value > 0 else Direction.BEARISH if value is not None and value < 0 else None
-    if family == "seasonality":
-        value = row.get("seasonality")
-        if value is None:
-            return None
-        return Direction.BULLISH if int(value) % 2 == 0 else Direction.BEARISH
+    if family in {"volatility", "seasonality"}:
+        raise ValueError(f"non_directional_candidate_family:{family}")
     raise ValueError(f"unsupported_candidate_family:{family}")
 
 
@@ -186,11 +182,9 @@ def prepare_split(
         if family != "discovered_primitive" and family not in {
             "momentum_trend",
             "mean_reversion",
-            "volatility",
             "wyckoff_vsa_vpa",
             "vwap_volume_profile",
             "regime",
-            "seasonality",
             "point_figure",
             "gann_reference",
         }:
