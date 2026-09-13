@@ -1,0 +1,21 @@
+{
+  "bc": 184,
+  "candidate_hash": "85c15ce5655307149ba9149f3c90753c89199d800bb18e658800c33815240405",
+  "conceptual_change": "Implement a mean-reversion signal using the z-score of the rolling mean of the 1H BTCUSDT close price over a 100-period window to identify oversold conditions for potential price recovery.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 183,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

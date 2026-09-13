@@ -1,0 +1,20 @@
+{
+  "bc": 179,
+  "candidate_hash": "caa0f68f86c152ea3acf6733c02b00cd1c0b091196d1d7c9553efb5f4b7064d1",
+  "conceptual_change": "Implement a trend-following momentum strategy on 1H BTCUSDT data by identifying sustained momentum through relative volume changes compared to the short-term rolling mean. This captures structural price movement acceleration characteristic of systematic trend-following systems.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 1.1
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 178,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

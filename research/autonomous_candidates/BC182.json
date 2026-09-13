@@ -1,0 +1,21 @@
+{
+  "bc": 182,
+  "candidate_hash": "85ba1657e1d6488e25f77783822dd4dc0a5119ac34b6e66a7a735c92128ecf10",
+  "conceptual_change": "Implement a momentum-trend following strategy that captures price velocity by measuring the delta of the close price over a 50-period window to identify strong directional bias in the 1H BTCUSDT market.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "delta",
+    "threshold": 0.02,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 181,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

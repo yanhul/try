@@ -1,0 +1,21 @@
+{
+  "bc": 185,
+  "candidate_hash": "38a1c4be0c7aec6cce97d65d509e91ea5c6da2ad79afac910d31bbb623ac821d",
+  "conceptual_change": "Implement a trend-following momentum signal using the ratio of current close price to a 50-period rolling mean to detect breakout continuation phases in 1H BTCUSDT data.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 1.02
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 184,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

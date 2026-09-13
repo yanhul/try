@@ -1,0 +1,21 @@
+{
+  "bc": 180,
+  "candidate_hash": "a3e1af7b343c2cc6d9b9012cc2be2ea1dc88d79cb27e00ddbd3fac4a1f44d4ef",
+  "conceptual_change": "Incorporate a liquidity-focused SMC framework on 1H BTCUSDT by identifying localized market structure breaks (MSS) and liquidity sweeps. This shifts from generic trend-following to identifying institutional footprint patterns by locating price reaction zones near liquidity pockets, emphasizing the ICT methodology of order flow observation.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 179,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

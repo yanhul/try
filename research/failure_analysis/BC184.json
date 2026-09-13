@@ -1,0 +1,41 @@
+{
+  "bc": 184,
+  "parent_bc": 183,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "85c15ce5655307149ba9149f3c90753c89199d800bb18e658800c33815240405",
+  "conceptual_change": "Implement a mean-reversion signal using the z-score of the rolling mean of the 1H BTCUSDT close price over a 100-period window to identify oversold conditions for potential price recovery.",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 36,
+    "skipped_overlap_trades": 15,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 21,
+      "win_count": 5,
+      "loss_count": 16,
+      "win_rate": 0.23809523809523808,
+      "total_return": -0.12039551540731375,
+      "avg_return": -0.006020377266239176,
+      "profit_factor": 0.36289354673070684,
+      "max_drawdown": 0.12614071880512834,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

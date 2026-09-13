@@ -1,0 +1,21 @@
+{
+  "bc": 181,
+  "candidate_hash": "dd2061d4a998be53fc03c119cd748e3dee7d8162be6766c1b7e60a65f32e53c7",
+  "conceptual_change": "Implement mean reversion on 1H BTCUSDT using z-score of price distance to a 100-period rolling mean, triggering long signals when the price deviates significantly below the mean.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": -2.5,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 180,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

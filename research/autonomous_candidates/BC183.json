@@ -1,0 +1,21 @@
+{
+  "bc": 183,
+  "candidate_hash": "557d6f6c00701a83fb371ac52ad0d7725cbcd44a048913c04f303c9e534f1cf0",
+  "conceptual_change": "Incorporate a mechanism identifying Fair Value Gaps (FVG) and liquidity sweeps as defined in ICT methodology for 1H BTCUSDT to identify order block rejection zones.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.002
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 182,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
