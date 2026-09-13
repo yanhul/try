@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "bc": 166,
+    "candidate_hash": "af29f483cf18e63f9a31b861224de52c35e9f5e01af90004ff5001a989a7e82c",
+    "conceptual_change": "Test ratio(close_location,vwap_distance) as the executable translation of the selected screen survivor.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close_location",
+      "numeric_finite_threshold": 0.5,
+      "operator": "ratio",
+      "right": "vwap_distance",
+      "threshold": 0
+    },
+    "evidence_sources": [
+      "https://github.com/QSshuyunmu/A-share-quant"
+    ],
+    "hypothesis_id": "discovered_primitive",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 165,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
