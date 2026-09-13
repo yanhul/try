@@ -25,9 +25,9 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
  if candidate["hypothesis_id"]=="mechanism_family":
   if not isinstance(spec,dict) or spec.get("mechanism_family") not in MECHANISM_FAMILIES:return False,"invalid_mechanism_family"
   if spec.get("mechanism_family") in NON_DIRECTIONAL_MECHANISM_FAMILIES:return False,"non_directional_mechanism_family"
-  threshold=spec.get("threshold",0)
+  threshold=spec.get("threshold")
   if isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or not math.isfinite(threshold):return False,"invalid_discovery_threshold"
-  if spec.get("direction","above") not in {"above","below"}:return False,"invalid_discovery_threshold"
+  if spec.get("direction") not in {"above","below"}:return False,"invalid_discovery_threshold"
  elif candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
  if spec is not None and candidate["hypothesis_id"]!="mechanism_family":
   if not isinstance(spec,dict) or spec.get("operator") not in OPS:return False,"invalid_discovery_operator"
