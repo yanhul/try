@@ -17,7 +17,7 @@ if not isinstance(data["evidence_sources"],list) or not data["evidence_sources"]
 if not isinstance(data["candidate_hash"],str) or not data["candidate_hash"]:raise SystemExit(f"BLOCKED: BC{bc} candidate_hash missing")
 try:
  from engine.hypotheses import HYPOTHESES
- from engine.autonomous_hypothesis import MECHANISM_FAMILIES
+ from research.autonomous_hypothesis import MECHANISM_FAMILIES
  from engine.autonomous_evaluator import EVALUATION_SPEC
 except Exception as exc:raise SystemExit(f"BLOCKED: cannot load governing evaluation modules: {exc}")
 hid=data["hypothesis_id"]
@@ -29,8 +29,7 @@ if hid=="mechanism_family":
  spec=data["discovery_spec"]
  if spec.get("mechanism_family") not in MECHANISM_FAMILIES:raise SystemExit(f"BLOCKED: BC{bc} invalid mechanism family")
  if spec.get("direction") not in {"above","below"}:raise SystemExit(f"BLOCKED: BC{bc} invalid mechanism direction")
- try:
-  threshold=float(spec.get("threshold"))
+ try:threshold=float(spec.get("threshold"))
  except (TypeError,ValueError):raise SystemExit(f"BLOCKED: BC{bc} invalid mechanism threshold")
  if not __import__('math').isfinite(threshold):raise SystemExit(f"BLOCKED: BC{bc} invalid mechanism threshold")
 
