@@ -4,6 +4,7 @@ import pytest
 
 from research.provider_router import ground_candidate, normalize_structural_types, normalize_hypothesis_id
 from research import provider_router
+from research.autonomous_hypothesis import validate_candidate
 from research.btc_translation_policy import btc_translation_status, eligible_survivors
 
 
@@ -56,6 +57,23 @@ def test_unrelated_family_id_is_not_canonicalized():
         assert candidate["hypothesis_id"] == "mean_reversion"
     finally:
         provider_router.selected_family = previous
+
+
+def test_non_directional_mechanism_family_is_not_executable():
+    candidate = {
+        "bc": 168,
+        "parent_bc": 167,
+        "hypothesis_id": "mechanism_family",
+        "conceptual_change": "test volatility",
+        "evidence_sources": ["https://example.test/source"],
+        "rationale": "test",
+        "is_testable": True,
+        "oos_selection_used": False,
+        "discovery_spec": {"mechanism_family": "volatility", "threshold": 0.1, "direction": "above"},
+    }
+    ok, reason = validate_candidate(candidate, 168, 167)
+    assert not ok
+    assert reason == "non_directional_mechanism_family"
 
 
 def test_non_executable_survivor_cannot_be_grounded():
