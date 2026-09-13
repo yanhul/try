@@ -1,0 +1,21 @@
+{
+  "bc": 147,
+  "candidate_hash": "c42f77e62185afe2e41a1f340f162636c71af8e0c3a1d1513e0534711267376c",
+  "conceptual_change": "Test rolling_mean(close_location) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "numeric": 0.5,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/ChampionKerr/sigma-quant-stream"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 146,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

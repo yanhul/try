@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "bc": 155,
+    "candidate_hash": "845c473167543f74469c4ea56bca6ca0d777294b2c1d0a82526c5be5683b5aff",
+    "conceptual_change": "Test zscore(close_location) as the executable translation of the selected screen survivor.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close_location",
+      "numeric_finite_threshold": 1.0,
+      "operator": "zscore",
+      "threshold": 0,
+      "window": 20
+    },
+    "evidence_sources": [
+      "https://github.com/Jcstack/ashare-ai-analyst"
+    ],
+    "hypothesis_id": "discovered_primitive",
+    "is_testable": true,
+    "oos_selection_used": false,
+    "parent_bc": 154,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "bc": 151,
+  "candidate_hash": "749fe75d6290497f6a63ba4e0f7e08241f01abd5ab3eae71ad5279c1a00deb2c",
+  "conceptual_change": "Test rank(range_ratio) as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "numeric_finite_threshold": 0,
+    "operator": "rank",
+    "threshold": 0,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/Cindy-Zhang-Potter/a-share-quant-research"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 150,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
