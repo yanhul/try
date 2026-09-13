@@ -1,0 +1,21 @@
+{
+  "bc": 103,
+  "candidate_hash": "659abab966ddd4021630e5c154ecbef2ff4b32ec0d93ac27fe898565b3453a9c",
+  "conceptual_change": "Test rolling_mean(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "numeric": 0.25,
+    "operator": "rolling_mean",
+    "threshold": 0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/YichuanAlex/high_frequency_order_trade_factors"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 102,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
