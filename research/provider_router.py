@@ -80,9 +80,8 @@ def request_candidate(prompt,forbidden):
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
   if c.get("status")=="HOLD":return c
   normalize_structural_types(c);hid=c.get("hypothesis_id")
-  spec=c.get("discovery_spec")
   if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
-  elif hid=="mechanism_family" and (not isinstance(spec,dict) or spec.get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
+  elif hid=="mechanism_family" and (not isinstance(c.get("discovery_spec"),dict) or c["discovery_spec"].get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
   else:
    c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
    if f is not None and f in forbidden:reason="duplicate_discovery_fingerprint"
@@ -119,8 +118,14 @@ def main():
   q=json.loads(queue.read_text(encoding="utf-8"));raw=q.get("candidates",[]) if isinstance(q,dict) else q
   survivors=[s for s in raw if isinstance(s,dict) and str(s.get("source_url") or "").strip()]
   eligible,rejected=eligible_survivors(survivors)
+  non_executable=[s for s in eligible if str(s.get("family") or "").strip() not in MECHANISM_FAMILIES]
+  eligible=[s for s in eligible if str(s.get("family") or "").strip() in MECHANISM_FAMILIES]
+  rejected=list(rejected)+[
+   {"candidate_id":s.get("candidate_id"),"btc_translation_reason":"non_executable_source_family","family":s.get("family")}
+   for s in non_executable
+  ]
   if rejected:print("BTC_TRANSLATION_FILTER_REJECTED "+json.dumps({"count":len(rejected),"reasons":sorted({r.get("btc_translation_reason") for r in rejected})},sort_keys=True),flush=True)
-  if not eligible:print("PROVIDER_ROUTER_HOLD no_btc_compatible_screen_survivor");return 0
+  if not eligible:print("PROVIDER_ROUTER_HOLD no_executable_btc_compatible_screen_survivor");return 0
   # Deterministic family rotation avoids repeatedly selecting duplicate sources of one family.
   families=[]
   for s in eligible:
