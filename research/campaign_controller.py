@@ -60,11 +60,15 @@ def continuation_allowed(*,new_screened:int,phase:str|None,last_error:object,ter
 
 def _start_new_campaign_epoch(state,policy):
  policy_id=str(policy["campaign_id"]); current_id=str(state.get("campaign_id") or "")
- if current_id==policy_id:return
+ if current_id==policy_id:
+  if state.get("campaign_epoch_initialized") and isinstance(state.get("campaign_start_bc"),int):
+   start=int(state["campaign_start_bc"]); next_bc=int(state.get("next_bc") or 0)
+   if next_bc<start: state["next_bc"]=start; save(state)
+  return
  history=state.get("history",[]) if isinstance(state.get("history",[]),list) else []
  bcs=[int(x["bc"]) for x in history if isinstance(x,dict) and str(x.get("bc","")).isdigit()]
  next_bc=max(bcs+[int(state.get("current_bc") or state.get("last_bc") or 0)])+1
- state["campaign_id"]=policy_id; state["campaign_epoch_initialized"]=True; state["campaign_start_bc"]=next_bc; state["campaign_screened"]=0; state["campaign_terminal"]=False; state["campaign_outcome"]=None; state["campaign_terminal_reason"]=None
+ state["campaign_id"]=policy_id; state["campaign_epoch_initialized"]=True; state["campaign_start_bc"]=next_bc; state["next_bc"]=next_bc; state["campaign_screened"]=0; state["campaign_terminal"]=False; state["campaign_outcome"]=None; state["campaign_terminal_reason"]=None
  print(f"CAMPAIGN_NEW_EPOCH id={policy_id} start_bc={next_bc} prior_id={current_id or 'none'}")
  save(state)
 
@@ -86,8 +90,8 @@ def main():
   window={bc:x for x in state.get("history",[]) if isinstance(x,dict) and str(x.get("bc","")).isdigit() for bc in [int(x["bc"])] if campaign_start<=bc<campaign_start+budget}; promotions=[x for x in window.values() if x.get("decision")=="PROMOTE_TO_FUTURE_OOS_TEST"]
   if promotions: print("CAMPAIGN_BLOCKED budget_exhausted_with_unconsumed_promotion"); save(state); return 3
   return terminal(state,"NO_EDGE_FOUND","FIXED_SCREENING_BUDGET_EXHAUSTED",budget,budget)
- screened=reconciled_screened; env=dict(os.environ); env["RESEARCH_MAX_ITERATIONS"]=str(min(batch,budget-screened)); before_screened=screened; before_history=list(state.get("history",[])); before_bcs=qualifying_bcs(before_history)
- print(f"CAMPAIGN_START screened={screened}/{budget} batch={env['RESEARCH_MAX_ITERATIONS']}"); proc=subprocess.run([sys.executable,"research/bc_controller.py"],cwd=ROOT,env=env)
+ screened=reconciled_screened; env=dict(os.environ); env["RESEARCH_MAX_ITERATIONS"]=str(min(batch,budget-screened)); before_screened=screened; before_history=list(state.get("history",[])); before_bcs={bc for bc in qualifying_bcs(before_history) if campaign_start<=bc<campaign_start+budget}
+ print(f"CAMPAIGN_START screened={screened}/{budget} batch={env['RESEARCH_MAX_ITERATIONS']} start_bc={campaign_start}"); proc=subprocess.run([sys.executable,"research/bc_controller.py"],cwd=ROOT,env=env)
  if proc.returncode!=0:return proc.returncode
  state=load(STATE,{}); _,campaign_start,after_reconciled=reconcile_campaign_state(state,budget)
  if state.get("phase") in {"WAIT_RETRY","HOLD"} or state.get("last_error"):
@@ -95,7 +99,7 @@ def main():
   if retry_resume_allowed(state): print(f"CAMPAIGN_CONTINUE_RETRY retry={state.get('retry_count',0)}/{os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3')} reason={reason} screened={before_screened}/{budget}")
   else: print(f"CAMPAIGN_HOLD reason={reason} screened={before_screened}/{budget}")
   return 0
- history=state.get("history",[]); after_bcs=qualifying_bcs(history); new_bcs=after_bcs-before_bcs; screened=after_reconciled; state["campaign_screened"]=min(budget,screened); state["campaign_budget"]=budget; state["campaign_id"]=policy["campaign_id"]
+ history=state.get("history",[]); after_bcs={bc for bc in qualifying_bcs(history) if campaign_start<=bc<campaign_start+budget}; new_bcs=after_bcs-before_bcs; screened=after_reconciled; state["campaign_screened"]=min(budget,screened); state["campaign_budget"]=budget; state["campaign_id"]=policy["campaign_id"]
  if state.get("terminal"):
   raw=state.get("terminal_reason"); outcome="EDGE_FOUND" if raw=="OOS_PASS" else "NO_EDGE_FOUND" if raw=="OOS_FAIL" else "INCONCLUSIVE" if raw in {"HOLD","UNKNOWN"} else raw
   if outcome not in outcomes: print(f"CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}"); save(state); return 3
