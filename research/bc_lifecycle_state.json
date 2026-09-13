@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 19,
+  "campaign_screened": 27,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": null,
-  "checkpoint_seq": 1151,
-  "current_bc": 186,
+  "checkpoint_seq": 1201,
+  "current_bc": 194,
   "history": [
     {
       "bc": 1,
@@ -1143,17 +1143,65 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 186,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 187,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 188,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 189,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 190,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 191,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 192,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 193,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 164,
-  "last_bc": 185,
+  "iterations": 172,
+  "last_bc": 193,
   "last_error": null,
-  "next_bc": 186,
+  "next_bc": 194,
   "oos_consumed": [],
   "phase": "YIELD",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": null,
-  "updated_at": "2026-09-13T08:18:51.330018+00:00"
+  "updated_at": "2026-09-13T08:21:32.496774+00:00"
 }

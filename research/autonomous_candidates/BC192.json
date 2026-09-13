@@ -1,0 +1,21 @@
+{
+  "bc": 192,
+  "candidate_hash": "ed4396eccb69b0166e6ecb1694f96fbb9ea37b08551eb6f1203a735c95041c59",
+  "conceptual_change": "Implementing ICT-based liquidity sweep logic by identifying price deviations from the 20-period rolling mean of the range_ratio, simulating stop-run behavior (liquidity sweeps) prior to market structure shifts.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 191,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

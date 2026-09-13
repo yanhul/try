@@ -1,0 +1,21 @@
+{
+  "bc": 188,
+  "candidate_hash": "47a30182bf9895e133694c1eb607c39fbf8992f1b6867b6822c1e2ae839c1f3d",
+  "conceptual_change": "Utilize institutional-grade momentum trend detection by identifying persistent price-volume deviations through a rolling mean window, filtering for structural trend alignment.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 1.1,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 187,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

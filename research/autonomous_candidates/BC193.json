@@ -1,0 +1,20 @@
+{
+  "bc": 193,
+  "candidate_hash": "7757504394f4d0a850d10b433a1e69dd04557b5d688b0f8692b8141f36d0c2e9",
+  "conceptual_change": "Utilizing z-score of the close price relative to the 100-period rolling mean to detect extreme price deviations from the historical norm, facilitating mean-reversion entries in BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 192,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

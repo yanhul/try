@@ -1,0 +1,20 @@
+{
+  "bc": 187,
+  "candidate_hash": "e53dce496b880e6a6fc1ada0fddef27391f1b9ec1c01412d6b7aef68cba1b75b",
+  "conceptual_change": "Implement a mean reversion strategy using z-score signals on the close_location metric to identify extreme overextended price positions relative to a 50-period moving average environment.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.0
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 186,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

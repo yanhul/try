@@ -1,22 +1,24 @@
 [
   {
-    "bc": 186,
-    "candidate_hash": "39c631161e493fcf5c3932274019ee9e3114a8bd000fe19b6a22240a58d48a34",
-    "conceptual_change": "Incorporate a Liquidity Sweep mechanism into the SMC/ICT framework by detecting instances where the current low breaches the 20-period rolling low (representing sell-side liquidity), followed by a rapid recovery indicating market rejection.",
+    "bc": 194,
+    "candidate_hash": "247b786fb6fa5b722a13b758e22a5784e8bafe419b2555f2296945635313f55d",
+    "conceptual_change": "Incorporate a trend-following logic using price-volume dynamics by analyzing the delta of the close price relative to the 100-period rolling mean, filtering for established momentum.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "low",
-      "mechanism_family": "smc_ict",
-      "operator": "below",
-      "threshold": 0.005
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "delta",
+      "right": "close",
+      "threshold": 0.05,
+      "window": 100
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 185,
+    "parent_bc": 193,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

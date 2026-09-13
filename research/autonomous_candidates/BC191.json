@@ -1,0 +1,20 @@
+{
+  "bc": 191,
+  "candidate_hash": "d04ff99198bdea59b226a2b7c1b76ef04b48999c1935abe2c83e71db86ca883a",
+  "conceptual_change": "Transitioning from local price-volume deviations to a systematic momentum trend-following approach, identifying sustained directional price velocity relative to the 100-hour rolling mean of the volume ratio to capture institutional trend persistence.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 190,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

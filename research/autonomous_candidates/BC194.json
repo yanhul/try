@@ -1,0 +1,22 @@
+{
+  "bc": 194,
+  "candidate_hash": "247b786fb6fa5b722a13b758e22a5784e8bafe419b2555f2296945635313f55d",
+  "conceptual_change": "Incorporate a trend-following logic using price-volume dynamics by analyzing the delta of the close price relative to the 100-period rolling mean, filtering for established momentum.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "delta",
+    "right": "close",
+    "threshold": 0.05,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 193,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

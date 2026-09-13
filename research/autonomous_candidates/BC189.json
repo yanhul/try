@@ -1,0 +1,21 @@
+{
+  "bc": 189,
+  "candidate_hash": "c34b081376ef0171119e35fd071d59987762aa0bc4fabae84e8a23ddd60417b0",
+  "conceptual_change": "Incorporate Smart Money Concepts (SMC) via structural liquidity sweep identification, focusing on price action relative to local range extremes to define institutional order flow bias.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "low",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 188,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

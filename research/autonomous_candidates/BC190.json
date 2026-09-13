@@ -1,0 +1,20 @@
+{
+  "bc": 190,
+  "candidate_hash": "c36d121556805958771fa825b8cabc880541640671539361d550b87065540b2c",
+  "conceptual_change": "Shift from structural liquidity-based approaches to a purely statistical mean reversion framework by utilizing a rolling Z-Score of the VWAP distance to identify localized extreme deviations from historical equilibrium.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 2.5
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 189,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
