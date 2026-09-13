@@ -2,7 +2,8 @@ import math
 
 import pytest
 
-from research.provider_router import ground_candidate, normalize_structural_types
+from research.provider_router import ground_candidate, normalize_structural_types, normalize_hypothesis_id
+from research import provider_router
 from research.btc_translation_policy import btc_translation_status, eligible_survivors
 
 
@@ -31,6 +32,30 @@ def test_missing_threshold_is_never_invented():
     candidate = {"discovery_spec": {"operator": "identity"}}
     normalize_structural_types(candidate)
     assert "threshold" not in candidate["discovery_spec"]
+
+
+def test_exact_selected_family_id_is_canonicalized_only():
+    previous = provider_router.selected_family
+    try:
+        provider_router.selected_family = "smc_ict"
+        candidate = {"hypothesis_id": "smc_ict", "discovery_spec": {"threshold": 0.5, "direction": "above"}}
+        normalize_hypothesis_id(candidate)
+        assert candidate["hypothesis_id"] == "mechanism_family"
+        assert candidate["discovery_spec"]["mechanism_family"] == "smc_ict"
+        assert candidate["discovery_spec"]["threshold"] == 0.5
+    finally:
+        provider_router.selected_family = previous
+
+
+def test_unrelated_family_id_is_not_canonicalized():
+    previous = provider_router.selected_family
+    try:
+        provider_router.selected_family = "smc_ict"
+        candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"threshold": 0.5, "direction": "above"}}
+        normalize_hypothesis_id(candidate)
+        assert candidate["hypothesis_id"] == "mean_reversion"
+    finally:
+        provider_router.selected_family = previous
 
 
 def test_non_executable_survivor_cannot_be_grounded():
