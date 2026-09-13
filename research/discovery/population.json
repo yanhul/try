@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2090,
-    "expanded": 1930,
-    "normalized": 1930,
+    "raw": 2112,
+    "expanded": 1952,
+    "normalized": 1952,
     "round1": 100,
     "deferred": 27,
     "survivors": 70,
@@ -2585,6 +2585,22 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "onchain",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -2597,6 +2613,38 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -3433,86 +3481,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "667acb5e3216c827",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118656617.ch5",
@@ -3524,54 +3492,6 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "667acb5e3216c827",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -4185,6 +4105,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -4196,6 +4164,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -4228,6 +4228,22 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "b709b8d02efc73b7",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
         "family": "options",
         "rounds": []
       }
@@ -4553,6 +4569,22 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -4565,6 +4597,118 @@
       "lineage": {
         "source": "0bc7fc89046bdb2c",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -6793,54 +6937,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -6857,38 +6953,6 @@
       }
     },
     {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "35858a240d229d33",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part3",
@@ -6901,22 +6965,6 @@
       "lineage": {
         "source": "35858a240d229d33",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -7577,6 +7625,22 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9c08ebc8aca02436",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119057871.ch10",
@@ -7796,54 +7860,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "5657c7996f1c3138",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
         "family": "smc_ict",
         "rounds": []
       }
@@ -8409,22 +8425,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "a9c1b3a81274e963",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
@@ -8953,22 +8953,6 @@
       }
     },
     {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "77db76e6a2140296",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2021.114043",
@@ -9012,22 +8996,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -9113,38 +9081,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9172,22 +9108,6 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "5408e190776d03be",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "edfa6ffeb17a599b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "edfa6ffeb17a599b",
         "family": "unknown",
         "rounds": []
       }
@@ -9225,22 +9145,6 @@
       }
     },
     {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -9252,6 +9156,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9529,6 +9449,54 @@
       }
     },
     {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -9577,6 +9545,22 @@
       }
     },
     {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1d029873c0942566",
       "source": "crossref",
       "source_url": "https://doi.org/10.62989/jemr2025.2.2.10",
@@ -9588,6 +9572,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1d029873c0942566",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -12597,7 +12597,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T06:17:33.309Z",
+      "source_timestamp": "2026-09-13T19:32:04.543Z",
       "lineage": {
         "source": "439f8a811fb17004",
         "family": "china_a_share",
@@ -13085,6 +13085,22 @@
       }
     },
     {
+      "candidate_id": "466e2eb2e5f573af",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/b-data/r/docker-stack",
+      "title": "b-data/r/docker-stack",
+      "description": "Mirrored to https://gitlab.b-data.ch/r/docker-stack and https://github.com/b-data/r-docker-stack.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:34:59.965Z",
+      "lineage": {
+        "source": "466e2eb2e5f573af",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "df1bebaa0fa46bb6",
       "source": "gitlab",
       "source_url": "https://gitlab.com/bsc_sod2d/sod2d_gitlab",
@@ -13288,6 +13304,38 @@
       "source_timestamp": "2026-09-13T08:33:30.116Z",
       "lineage": {
         "source": "488fb7f632252d36",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3cbfe832eb1244c8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/crystalcastleai/codeql",
+      "title": "crystalcastleai/codeql",
+      "description": "CodeQL: the libraries and queries that power security researchers around the world, as well as code scanning in GitHub Advanced Security",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:23:11.860Z",
+      "lineage": {
+        "source": "3cbfe832eb1244c8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f1778e7abaa01a1b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/crystalcastleai/codeql-action-sync-tool",
+      "title": "crystalcastleai/codeql-action-sync-tool",
+      "description": "A tool for syncing the CodeQL Action from GitHub.com to GitHub Enterprise Server, including copying the CodeQL bundle.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:23:11.779Z",
+      "lineage": {
+        "source": "f1778e7abaa01a1b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -13885,6 +13933,22 @@
       }
     },
     {
+      "candidate_id": "f14f8646020ae4ba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-org/api/client-go",
+      "title": "gitlab-org/api/client-go",
+      "description": "GitLab Go SDK\n\nThis project has been migrated from `github.com/xanzy/go-gitlab`.\n",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:26:47.970Z",
+      "lineage": {
+        "source": "f14f8646020ae4ba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c0ae7ff46f130a2e",
       "source": "gitlab",
       "source_url": "https://gitlab.com/gitlab-org/build/omnibus-mirror/curl",
@@ -14021,7 +14085,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T06:33:33.864Z",
+      "source_timestamp": "2026-09-13T19:30:37.722Z",
       "lineage": {
         "source": "81c2f66abe456363",
         "family": "china_a_share",
@@ -14517,7 +14581,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T10:14:09.108Z",
+      "source_timestamp": "2026-09-13T19:43:26.507Z",
       "lineage": {
         "source": "6b50a0528ab9b1b1",
         "family": "china_a_share",
@@ -14645,7 +14709,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T14:19:56.522Z",
+      "source_timestamp": "2026-09-13T19:20:32.516Z",
       "lineage": {
         "source": "6e071d5ffb028c6b",
         "family": "china_a_share",
@@ -14661,7 +14725,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T10:24:47.711Z",
+      "source_timestamp": "2026-09-13T19:19:37.737Z",
       "lineage": {
         "source": "dab833607bd8fc52",
         "family": "china_a_share",
@@ -15213,6 +15277,22 @@
       }
     },
     {
+      "candidate_id": "58bb686b3fa26769",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/jostraca/jostraca",
+      "title": "ricebridge/jostraca/jostraca",
+      "description": "Pull mirror of https://github.com/jostraca/jostraca.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:22:40.151Z",
+      "lineage": {
+        "source": "58bb686b3fa26769",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "eb8fe1a9ce89b3a3",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/rjrodger/aontu",
@@ -15221,7 +15301,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T10:24:42.690Z",
+      "source_timestamp": "2026-09-13T19:18:03.889Z",
       "lineage": {
         "source": "eb8fe1a9ce89b3a3",
         "family": "china_a_share",
@@ -15365,7 +15445,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-12T11:11:38.252Z",
+      "source_timestamp": "2026-09-13T19:32:36.054Z",
       "lineage": {
         "source": "998c898a30325a6f",
         "family": "china_a_share",
@@ -15517,6 +15597,22 @@
       }
     },
     {
+      "candidate_id": "e19a91124f95ad85",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/jsonc",
+      "title": "ricebridge/tabnas/jsonc",
+      "description": "Pull mirror of https://github.com/tabnas/jsonc.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:14:32.039Z",
+      "lineage": {
+        "source": "e19a91124f95ad85",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4f63c71ac554a19c",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/jsonic",
@@ -15541,7 +15637,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-12T11:13:46.127Z",
+      "source_timestamp": "2026-09-13T19:29:55.847Z",
       "lineage": {
         "source": "c49575d8a3b49f74",
         "family": "china_a_share",
@@ -15581,6 +15677,38 @@
       }
     },
     {
+      "candidate_id": "96b547ef3ab8cc1f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/path",
+      "title": "ricebridge/tabnas/path",
+      "description": "Pull mirror of https://github.com/tabnas/path.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:14:07.743Z",
+      "lineage": {
+        "source": "96b547ef3ab8cc1f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f8d9c951489927cc",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/proto",
+      "title": "ricebridge/tabnas/proto",
+      "description": "Pull mirror of https://github.com/tabnas/proto.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:30:52.851Z",
+      "lineage": {
+        "source": "f8d9c951489927cc",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0aa3472769cfcbb1",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/railroad",
@@ -15597,6 +15725,38 @@
       }
     },
     {
+      "candidate_id": "1e225f7b8439b717",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/support",
+      "title": "ricebridge/tabnas/support",
+      "description": "Pull mirror of https://github.com/tabnas/support.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:13:15.810Z",
+      "lineage": {
+        "source": "1e225f7b8439b717",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "120c5c5ebe0394ba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ricebridge/tabnas/toml",
+      "title": "ricebridge/tabnas/toml",
+      "description": "Pull mirror of https://github.com/tabnas/toml.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:41:17.843Z",
+      "lineage": {
+        "source": "120c5c5ebe0394ba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "06153740aceb9d14",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ricebridge/tabnas/xml",
@@ -15605,7 +15765,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-12T11:15:17.490Z",
+      "source_timestamp": "2026-09-13T19:30:02.565Z",
       "lineage": {
         "source": "06153740aceb9d14",
         "family": "china_a_share",
@@ -15784,6 +15944,22 @@
       "source_timestamp": "2026-09-12T11:11:36.669Z",
       "lineage": {
         "source": "bde388e925ce1769",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c760e455b21c7d7",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/single-player/2009scape",
+      "title": "single-player/2009scape",
+      "description": "github.com/szumaster3/runescape",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-13T19:41:46.886Z",
+      "lineage": {
+        "source": "8c760e455b21c7d7",
         "family": "china_a_share",
         "rounds": []
       }
@@ -16600,6 +16776,22 @@
       "source_timestamp": "2026-09-12T06:29:24.471Z",
       "lineage": {
         "source": "1b9063b08cd36743",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fe086aac62e91698",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/mdelk/vosk-models",
+      "title": "mdelk/vosk-models",
+      "description": "Copies of [Vosk models](https://alphacephei.com/vosk/models), to avoid spamming https://alphacephei.com/vosk/models.",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-13T17:59:17.119Z",
+      "lineage": {
+        "source": "fe086aac62e91698",
         "family": "unknown",
         "rounds": []
       }
@@ -26541,22 +26733,6 @@
       }
     },
     {
-      "candidate_id": "3160ecc296e8ac9b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
-      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
-      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "3160ecc296e8ac9b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1f52e5b6748f9991",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/a2c40c0424bed72ad62ffd1ee12b1551dd1c86e6",
@@ -28328,6 +28504,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "87ae852ad995a174",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3160ecc296e8ac9b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
+      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
+      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
+      "family": "execution_mev",
+      "market": null,
+      "query": "decentralized exchange arbitrage MEV research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "3160ecc296e8ac9b",
         "family": "execution_mev",
         "rounds": []
       }
@@ -30265,6 +30457,166 @@
       "lineage": {
         "source": "f8990f570853e228",
         "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "547980eb33b6906f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f3089e21cff970ebb21687f79dea573d1b79af72",
+      "title": "<a href=\"https://www.quantconnect.com/research/20558/bridging-microstructure-and-macro-dynamic-regime-trading-with-vpin-hawkes-and-hurst-on-the-s-amp-p-500/p1#Bridging-Microstructure-and-Macro:-Dynamic-Regime-Trading-with-VPIN,-Hawkes,-and-Hurst-on-the-S&P-500\" rel=\"nofollow\">Bridging Microstructure",
+      "description": "Algorithmic decay is rarely a failure of logic; it is almost always a failure of context. Most quantitative strategies fall into one of two traps: they are either macro-directional systems that suffer brutal slippage due to blind execution, or they are high-frequency microstructure models that get annihilated the moment the overarching market regime shifts.\nThis research attempts to solve the \"execution gap.\" The Capitvio Matrix algorithm proposes a hybrid architecture deployed on Micro S&P 500 Futures (MES). It utilizes a continuous macro-forecasting model governed by the Hurst Exponent to dictate\u00a0when\u00a0to trade, and sub-minute order flow toxicity metrics (VPIN and Hawkes Processes) to dictate\u00a0how\u00a0to execute. The goal is to build an engine that structurally refuses to participate in hostile, low-probability environments.",
+      "family": "regime",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "547980eb33b6906f",
+        "family": "regime",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "109ea0603b337b79",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/142732147542ebb31ccfbdf1f0c8a2ef734c52a0",
+      "title": "A Deterministic Limit Order Book Simulator with Hawkes-Driven Order Flow",
+      "description": "We present a reproducible research framework for market microstructure combining a deterministic C++ limit order book (LOB) simulator with stochastic order flow generated by multivariate marked Hawkes processes. The paper derives full stability and ergodicity proofs for both linear and nonlinear Hawkes models, implements time-rescaling and goodness-of-fit diagnostics, and calibrates exponential and power-law kernels on Binance BTCUSDT and LOBSTER AAPL datasets. Empirical results highlight the nearly-unstable subcritical regime as essential for reproducing realistic clustering in order flow. All code, datasets, and configuration files are publicly available at https://github.com/sohaibelkarmi/High-Frequency-Trading-Simulator",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "109ea0603b337b79",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b682c9ab445f8050",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/71790dd2e04c3193f64e0b17a87144c9cefce893",
+      "title": "Incorporating Liquidity and Order Flow Imbalances for Intraday Stock Volatility Prediction",
+      "description": "Intraday market volatility forecasting is the essence of profitable trading and risk management in times of high market volatility. Classical econometric models rely on historical data and sound economic theory, which renders them incapable of fully comprehending the complex evolution of liquidity depth, bid-ask spreads, and order flow imbalances that occur. in high-speed markets. As a result of these limitations, low liquidity or uncertain price conditions make these predictions less reliable, exposing traders and financial institutions to poor risk decisions and missed opportunities for gain as market conditions are capable of changing rapidly. These shortcomings pose an increasingly pressing need for adaptive, dynamic modeling approaches, which the present research responds to. To address these issues, we present the Stacked Light-GBM Ensemble, a novel approach with three tuned Light-GBM models for varying hyperparameters: small learning rate, shallow depth, and strong regularization. The three models are mixed in a meta-layer to formulate a unified prediction model. The method employs rolling volatility measures, liquidity variations, and market micro-structure to enhance short-term price forecasting. Confirmed with time-series cross-validation using adaptive rolling windows, the model performs much better under times of volatility. Through the incorporation of depth, volume, and order imbalances from the order book, it provides accurate answers to intraday high-frequency behavior. Tensor-RT optimizes the system's performance in real-time to ensure real-time performance consistency during trading sessions. The integration of macroeconomic variables and real-time data feeds transcends the limitations of conventional models. The innovation enhances risk management processes to enable traders to navigate turbulent markets with greater certainty and precision.",
+      "family": "volatility",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "b682c9ab445f8050",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3f0f00df1b8dc892",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3d7cf03e2566c47709fb9bf008ce6c99aff1c1ab",
+      "title": "Investigation of temperature jump, first and second-order velocity slip effects on blood-based ternary nanofluid flow in convergent/divergent channels",
+      "description": "\nPurpose\nHigh surface area-to-volume ratios make nanoparticles ideal for cancer heat therapy and targeted medication delivery. Moreover, ternary nanofluids (TNFs) may possess superior thermophysical properties compared to mono- and hybrid nanofluids due to their synergistic effects. In light of this information, the objective of this article is to examine the blood-based TNF flow within convergent/divergent channels under velocity slip and temperature jump.\n\n\nDesign/methodology/approach\nLeading partial differential equations corresponding to the problem are transformed into a system of nonlinear ordinary differential equations by using similarity variables. The bvp4c code that uses the finite difference method is used to obtain a numerical solution.\n\n\nFindings\nThe effect of nanoparticles may change depending on the characteristics of flow near the wall. The properties and proportions of the used nanoparticles become important to control the flow. When TNF was used, an increase in the Nusselt number between 4.75% and 6.10% was observed at low Reynolds numbers. At high Reynolds numbers, nanoparticles reduce the Nusselt number and skin friction coefficient values under some special flow conditions. Importantly, the effects of second-order slip on engineering parameters were also investigated. Furthermore, the Nusselt number increases with increasing shape factor.\n\n\nResearch limitations/implications\nObtained results of the study can be beneficial in both nature and engineering, especially blood flow in veins.\n\n\nOriginality/value\nThe main innovations of this study are the usage of blood-based TNF and the examination of the effect of shape factor in convergent/divergent channels with second-order velocity slip.\n",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "3f0f00df1b8dc892",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "75e92bb5dbc609a5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a8d9846e3faa0d496c0ce08b31499cf3aebca94a",
+      "title": "JAX-LOB: A GPU-Accelerated limit order book simulator to unlock large scale reinforcement learning for trading",
+      "description": "Financial exchanges across the world use limit order books (LOBs) to process orders and match trades. For research purposes it is important to have large scale efficient simulators of LOB dynamics. LOB simulators have previously been implemented in the context of agent-based models (ABMs), reinforcement learning (RL) environments, and generative models, processing order flows from historical data sets and hand-crafted agents alike. For many applications, there is a requirement for processing multiple books, either for the calibration of ABMs or for the training of RL agents. We showcase the first GPU-enabled LOB simulator designed to process thousands of books in parallel, whether for identical or different securities, with an up to 75x faster per-message processing time. The implementation of our simulator \u2013 JAX-LOB \u2013 is based on design choices that aim to best exploit the powers of JAX without compromising on the realism of LOB-related mechanisms. We integrate JAX-LOB with other JAX packages, to provide an example of how one may address an optimal execution problem with reinforcement learning, and to share some preliminary results from end-to-end RL training on GPUs. The project code is available on GitHub 1",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "75e92bb5dbc609a5",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "581360499268046c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/de36c4fff4041cc386381315bcb30ec6bbd9de2c",
+      "title": "Order Flow Decomposition for Price Impact Analysis in Equity Limit Order Books",
+      "description": "The advent of electronic trading sparked the development of an extensive body of literature dedicated to the study of market microstructure. A key objective in this field is to understand the determinants of price changes, by considering a wide range of variables based on the very rich information provided by the Limit Order Book (LOB). Previously, it has been shown that short term price movements are dictated by the order flows, and, specifically, by the Order Flow Imbalance (OFI). In this work, we study the price impact of order flows, in both contemporaneous and forward-looking scenarios. By building on state-of-the-art results in the field, and by leveraging the potential of market-by-order data, we introduce the Decomposed OFI, a novel extension of the standard OFI from the literature, which incorporates knowledge about order book event types, in addition to order flow information. Our extensive set of experiments, based on 100 stocks for three years of market-by-order data, reveal that our proposed Decomposed OFI models lead to a significant improvement in a forward-looking predictive scenario, from both a statistical and an economic benefits point of view. Moreover, in a contemporaneous prediction setting, models based on Decomposed OFI yield comparable results to standard OFI-based models. Our work opens up further avenues of research in terms of conditional order flow imbalances in equity limit order books.",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "581360499268046c",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "89d57bf973c3fde3",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f56bfacdef05c7737850bbcb5ba8864e31d416c6",
+      "title": "Order Flow Exclusivity and Value Extraction Mechanisms: An Analysis of Ethereum Builder Centralization",
+      "description": "This study investigates the rapid centralization of the Ethereum builder market under the Proposer-Builder Separation (PBS) architecture. We argue that existing research, by focusing predominantly on influential order flows, lacks a comprehensive evaluation of order flow behavioral patterns and economic purposes. To address this gap, we analyze Ethereum transactions from September 2023 to August 2025 to characterize Exclusive Order Flows (EOFs) and non-atomic Maximal Extractable Value (MEV) -- the missing components corresponding to these behavioral and economic dimensions, respectively. We introduce a novel exclusivity metric based on Kullback-Leibler divergence and employ supervised learning to identify 75 EOFs and 322 non-atomic MEV flows, which account for 71\\% and 23\\% of trading-related builder revenue. A longitudinal analysis of builder strategies across these dimensions delineates the market's evolution into four distinct eras, revealing that while EOFs were instrumental in establishing early dominance, incumbents have since decoupled market share from immediate EOF dependency by leveraging entrenched network effects. Ultimately, we conclude that builder centralization is an emergent property of the PBS framework itself, as the architecture systematically violates the fundamental prerequisites of a competitive market.",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "89d57bf973c3fde3",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a74ec577936267d8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d47fc852285e4580411aac2fa218ffcddbdfc714",
+      "title": "Quantifying Price Improvement in Order Flow Auctions",
+      "description": "This work introduces a framework for evaluating onchain order flow auctions (OFAs), emphasizing the metric of price improvement. Utilizing a set of open-source tools, our methodology systematically attributes price improvements to specific modifiable inputs of the system such as routing efficiency, gas optimization, and priority fee settings. When applied to leading Ethereum-based trading interfaces such as 1Inch and Uniswap, the results reveal that auction-enhanced interfaces can provide statistically significant improvements in trading outcomes, averaging 4-5 basis points in our sample. We further identify the sources of such price improvements to be added liquidity for large swaps. This research lays a foundation for future innovations in blockchain based trading platforms.",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "a74ec577936267d8",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3321401d31e0b046",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c600837450e7bdf7adaac9bdc45f60194786ee63",
+      "title": "Quantitative statistical analysis of order-splitting behavior of individual trading accounts in the Japanese stock market over nine years",
+      "description": "In this research, we focus on the order-splitting behavior. The order splitting is a trading strategy to execute their large potential metaorder into small pieces to reduce transaction cost. This strategic behavior is believed to be important because it is a promising candidate for the microscopic origin of the long-range correlation (LRC) in the persistent order flow. Indeed, in 2005, Lillo, Mike, and Farmer (LMF) introduced a microscopic model of the order-splitting traders to predict the asymptotic behavior of the LRC from the microscopic dynamics, even quantitatively. The plausibility of this scenario has been qualitatively investigated by Toth et al. 2015. However, no solid support has been presented yet on the quantitative prediction by the LMF model in the lack of large microscopic datasets. In this report, we have provided the first quantitative statistical analysis of the order-splitting behavior at the level of each trading account. We analyse a large dataset of the Tokyo stock exchange (TSE) market over nine years, including the account data of traders (called virtual servers). The virtual server is a unit of trading accounts in the TSE market, and we can effectively define the trader IDs by an appropriate preprocessing. We apply a strategy clustering to individual traders to identify the order-splitting traders and the random traders. For most of the stocks, we find that the metaorder length distribution obeys power laws with exponent $\\alpha$, such that $P(L)\\propto L^{-\\alpha-1}$ with the metaorder length $L$. By analysing the sign correlation $C(\\tau)\\propto \\tau^{-\\gamma}$, we directly confirmed the LMF prediction $\\gamma \\approx \\alpha-1$. Furthermore, we discuss how to estimate the total number of the splitting traders only from public data via the ACF prefactor formula in the LMF model. Our work provides the first quantitative evidence of the LMF model.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "3321401d31e0b046",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "14aba0529a88217c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/e0e8b91f9d9e98b99ac788ed5141c142ba0b87ee",
+      "title": "Semiparametric estimation for multivariate Hawkes processes using dependent Dirichlet processes: An application to order flow data in financial markets",
+      "description": "The order flow in high-frequency financial markets has been of particular research interest in recent years, as it provides insights into trading and order execution strategies and leads to better understanding of the supply-demand interplay and price formation. In this work, we propose a semiparametric multivariate Hawkes process model that relies on (mixtures of) dependent Dirichlet processes to analyze order flow data. Such a formulation avoids the kind of strong parametric assumptions about the excitation functions of the Hawkes process that often accompany traditional models and which, as we show, are not justified in the case of order flow data. It also allows us to borrow information across dimensions, improving estimation of the individual excitation functions. To fit the model, we develop two algorithms, one using Markov chain Monte Carlo methods and one using a stochastic variational approximation. In the context of simulation studies, we show that our model outperforms benchmark methods in terms of lower estimation error for both algorithms. In the context of real order flow data, we show that our model can capture features of the excitation functions such as non-monotonicity that cannot be accommodated by standard parametric models.",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "14aba0529a88217c",
+        "family": "order_flow",
         "rounds": []
       }
     },
