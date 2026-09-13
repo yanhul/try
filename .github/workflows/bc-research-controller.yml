@@ -10,6 +10,13 @@ on:
     branches:
       - main
       - 'bc[0-9]*'
+    # Research state is persisted by the controller itself. State-only commits
+    # must not create another controller invocation; code/policy/test changes do.
+    paths:
+      - 'research/**/*.py'
+      - 'research/campaign_policy.json'
+      - 'tests/**'
+      - '.github/workflows/bc-research-controller.yml'
 
 concurrency:
   group: try-bc-research-controller-main
@@ -18,6 +25,7 @@ concurrency:
 permissions:
   contents: write
   actions: write
+
 jobs:
   research:
     runs-on: ubuntu-latest
