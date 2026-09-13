@@ -1,13 +1,11 @@
 {
   "bc": 167,
-  "candidate_hash": "efe97e8987ecbcf147fb4877adeba6cba4d2e2907c2aef54f2398b809f571074",
-  "conceptual_change": "Map ICT liquidity sweep heuristics to BTCUSDT 1H price action patterns involving localized high/low breaks followed by rapid mean reversion or trend continuation.",
+  "candidate_hash": "b377d7799ec73c842d50d07f164ec484e04b0f093ea7a5aa1b5bed6d9cb8b0fb",
+  "conceptual_change": "Integration of liquidity sweep detection and Fair Value Gap (FVG) identification as the primary mechanism for BTCUSDT 1H trend reversal entries.",
   "discovery_spec": {
     "direction": "above",
-    "left": "close",
     "mechanism_family": "smc_ict",
-    "operator": "difference",
-    "right": "high",
+    "operator": "delta",
     "threshold": 0.05
   },
   "evidence_sources": [
