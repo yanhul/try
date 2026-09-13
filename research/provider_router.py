@@ -11,8 +11,11 @@ from research.evidence_calibration import verify_with_openai_compatible
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f'''You translate ONLY the SELECTED SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Do not use OOS, expected performance, stars or intuition. Registered hypothesis_ids are allowed; otherwise use hypothesis_id="discovered_primitive". If the survivor family is one of the executable mechanism families, use hypothesis_id="mechanism_family" and discovery_spec.mechanism_family exactly as supplied by the survivor family. Mechanism families are {sorted(MECHANISM_FAMILIES)}. For mechanism_family use only numeric finite threshold (default 0) and direction above/below. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Do not invent evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
+SYSTEM=f'''You translate ONLY the SELECTED SCREEN SURVIVOR supplied by the controller. You are not a selector. Never replace the survivor. Do not use OOS, expected performance, stars or intuition. Registered hypothesis_ids are allowed; otherwise use hypothesis_id="discovered_primitive". If the selected survivor family is one of the executable mechanism families, use hypothesis_id="mechanism_family" and discovery_spec.mechanism_family exactly as supplied by the survivor family. If the selected survivor family is NOT an executable mechanism family, NEVER use hypothesis_id="mechanism_family"; use hypothesis_id="discovered_primitive" with an executable discovery_spec. Mechanism families are {sorted(MECHANISM_FAMILIES)}. For mechanism_family use only numeric finite threshold (default 0) and direction above/below. For discovered_primitive use only operators {OPERATORS}, columns {COLUMNS}, windows {WINDOWS}. discovery_spec requires operator,left,numeric finite threshold,direction above/below; difference/ratio also require right from exactly {COLUMNS}. Threshold is a test parameter, never evidence. Do not invent evidence. Return JSON only with keys hypothesis_id,conceptual_change,evidence_sources,rationale,is_testable,oos_selection_used,discovery_spec.'''
 _PROVIDER_LAST_CALL=0.0
+bc=0
+parent=0
+selected_family=""
 def config(name):
  n=name.upper();d={"GEMINI":("https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),"GEMINI_API_KEY"),"DEEPSEEK":("https://api.deepseek.com",os.getenv("DEEPSEEK_MODEL","deepseek-v4-flash"),"DEEPSEEK_API_KEY")}
  if n in d:b,m,k=d[n]
@@ -73,6 +76,7 @@ def request_candidate(name,prompt,forbidden):
   normalize_structural_types(c);hid=c.get("hypothesis_id")
   if not isinstance(hid,str):reason="invalid_hypothesis_id_type"
   elif hid not in HYPOTHESES and hid not in {"discovered_primitive","mechanism_family"}:reason="unregistered_hypothesis_id"
+  elif hid=="mechanism_family" and selected_family not in MECHANISM_FAMILIES:reason="unsupported_survivor_mechanism_family"
   else:
    c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
    if f is not None and f in forbidden:reason="duplicate_discovery_fingerprint"
@@ -81,6 +85,7 @@ def request_candidate(name,prompt,forbidden):
     if ok:return c
   last=reason;spec=c.get("discovery_spec") if isinstance(c,dict) else None
   if reason=="invalid_mechanism_family":feedback="\nVALIDATOR_FEEDBACK: invalid_mechanism_family. Use the exact executable survivor family from the selected screen survivor.\n"
+  elif reason=="unsupported_survivor_mechanism_family":feedback="\nVALIDATOR_FEEDBACK: unsupported_survivor_mechanism_family. The selected survivor family is not an executable mechanism family. Do NOT use hypothesis_id=mechanism_family. Return hypothesis_id=discovered_primitive with a valid executable discovery_spec using the allowed operators/columns/windows.\n"
   elif reason=="invalid_discovery_threshold":
    if isinstance(spec,dict) and "threshold" not in spec:
     spec["threshold"]=0;ok,again=validate_candidate(c,bc,parent)
@@ -101,19 +106,21 @@ def ground_candidate(c,selected):
  if family in MECHANISM_FAMILIES:
   c["hypothesis_id"]="mechanism_family";c["discovery_spec"]={"mechanism_family":family,"threshold":0,"direction":"above"};expr=f"mechanism_family({family})"
  else:
+  if c.get("hypothesis_id")=="mechanism_family":
+   raise ValueError("unsupported_survivor_family_reached_grounding")
   s=c.get("discovery_spec") or {};op=s.get("operator") if isinstance(s,dict) else None;expr=f"{op}({s.get('left')}"+(f",{s.get('right')})" if s.get('right') is not None else ")") if op else str(c.get("hypothesis_id"))
  c["evidence_sources"]=[url];c["conceptual_change"]=f"Test {expr} as the executable translation of the selected screen survivor.";c["rationale"]="This is a proposed executable test; it does not assert efficacy, causality, market behavior, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False
  return c
 def survivor_evidence(s):
  return compact(json.dumps({k:s.get(k) for k in ("candidate_id","source","source_url","title","description","family","market","query","source_timestamp","lineage")},sort_keys=True,ensure_ascii=False,separators=(",",":")))
 def main():
- global bc,parent
+ global bc,parent,selected_family
  failure=Path(os.environ["RESEARCH_FAILURE_ANALYSIS"]);out=Path(os.environ["RESEARCH_CANDIDATE_OUTPUT"]);bc=int(os.environ["RESEARCH_NEXT_BC"]);parent=int(os.environ["RESEARCH_PARENT_BC"]);queue=ROOT/"research/discovery/research_queue.json"
  if not queue.exists():print("PROVIDER_ROUTER_HOLD missing_screen_queue");return 0
  try:
   q=json.loads(queue.read_text(encoding="utf-8"));raw_survivors=q.get("candidates",[]) if isinstance(q,dict) else q;survivors=[s for s in raw_survivors if isinstance(s,dict) and str(s.get("source_url") or "").strip()]
   if not survivors:print("PROVIDER_ROUTER_HOLD no_screen_survivor_with_provenance");return 0
-  selected=survivors[(parent-1)%len(survivors)]
+  selected=survivors[(parent-1)%len(survivors)];selected_family=str(selected.get("family") or "").strip()
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
  prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected.get('family'))}\nREGISTERED_HYPOTHESES: {json.dumps(sorted(HYPOTHESES))}\nPRIOR_HYPOTHESIS_IDS: {compact(os.getenv('RESEARCH_PRIOR_HYPOTHESES','') or os.getenv('RESEARCH_USED_HYPOTHESIS_IDS',''),4000)}\nFORBIDDEN_DISCOVERY_FINGERPRINTS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-80:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nDo not add empirical claims to rationale; provenance and policy fields are grounded deterministically after translation.")
