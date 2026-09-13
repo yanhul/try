@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import sys
 
+from research import campaign_controller
 from research.campaign_controller import controller_command, continuation_allowed, qualifying_bcs, reconcile_campaign_state
 from research.bc_controller import epoch_seed_failure
 
@@ -36,7 +37,9 @@ def test_qualifying_bcs_counts_only_screening_decisions():
     assert qualifying_bcs(history) == {1, 2}
 
 
-def test_new_campaign_epoch_ignores_prior_history_for_budget():
+def test_new_campaign_epoch_ignores_prior_history_for_budget(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
     state = {
         "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
         "campaign_epoch_initialized": True,
