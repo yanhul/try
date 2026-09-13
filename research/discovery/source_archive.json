@@ -123,6 +123,11 @@
     },
     {
       "source": "arxiv",
+      "query": "MEV execution alpha crypto",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/kRAD6vbK1bKZH/Lk08aHMjC9B+4</id>\n  <title>arXiv Query: search_query=all:MEV OR all:execution OR all:alpha OR all:crypto&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T09:13:59Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:MEV+OR+(all:execution+OR+(all:alpha+OR+all:crypto))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>95579</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2301.03724v1</id>\n    <title>SoK: Hardware Defenses Against Speculative Execution Attacks</title>\n    <updated>2023-01-09T23:58:25Z</updated>\n    <link href=\"https://arxiv.org/abs/2301.03724v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2301.03724v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Speculative execution attacks leverage the speculative and out-of-order execution features in modern computer processors to access secret data or execute code that should not be executed. Secret information can then be leaked through a covert channel. While software patches can be installed for mitigation on existing hardware, these solutions can incur big performance overhead. Hardware mitigation is being studied extensively by the computer architecture community. It has the benefit of preserving software compatibility and the potential for much smaller performance overhead than software solutions.\n  This paper presents a systematization of the hardware defenses against speculative execution attacks that have been proposed. We show that speculative execution attacks consist of 6 critical attack steps. We propose defense strategies, each of which prevents a critical attack step from happening, thus preventing the attack from succeeding. We then summarize 20 hardware defenses and overhead-reducing features that have been proposed. We show that each defense proposed can be classified under one of our defense strategies, which also explains why it can thwart the attack from succeeding. We discuss the scope of the defenses, their performance overhead, and the security-performance trade-offs that can be made.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-01-09T23:58:25Z</published>\n    <arxiv:comment>Accepted to 2021 International Symposium on Secure and Private Execution Environment Design (SEED)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <arxiv:journal_ref>2021 International Symposium on Secure and Private Execution Environment Design (SEED), 2021, pp. 108-120</arxiv:journal_ref>\n    <author>\n      <name>Guangyuan Hu</name>\n    </author>\n    <author>\n      <name>Zecheng He</name>\n    </author>\n    <author>\n      <name>Ruby Lee</name>\n    </author>\n    <arxiv:doi>10.1109/SEED51797.2021.00023</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1109/SEED51797.2021.00023\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2311.01461v1</id>\n    <title>The Property Law of Crypto Tokens</title>\n    <updated>2023-11-02T17:59:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2311.01461v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2311.01461v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the lack of comprehensive studies on Web3 technologies, primarily due to lawyers' reluctance to explore technical intricacies. Understanding the underlying technological foundations is crucial to enhance the credibility of legal opinions. This article aims to illuminate these foundations, debunk myths, and concentrate on determining the legal status of crypto-assets in the context of property rights within the distributed economy. In addition, this article notes that the intangible nature of crypto-assets that derive value from distributed registries, and their resistance to deletion, makes crypto-assets more akin to the autonomy of intellectual property than physical media. The article presents illustrative examples from common law (United States, United Kingdom, New Zealand) and civil law (Germany, Austria, Poland) systems. Proposing a universal solution, it advocates a comprehensive framework safeguarding digital property - data ownership - extending beyond the confines of Web3.\n  This article presents a comprehensive, multi-layered approach to the analysis of tokens as digital content and virtual goods. The approach, universally applicable to various of such goods, scrutinizes property on three distinct layers: first, the rights to the virtual good itself; second, the rights to the assets linked to the virtual good; and third, the rights to the intellectual property intricately associated with the token. Additionally, the paper provides concise analysis of the conflict of laws rules applicable to virtual goods. It also delves into issues concerning formal requirements for the transfer of intellectual property rights, licensing, the first sale (exhaustion) doctrine, the concept of the lawful acquirer, and other crucial aspects of intellectual property in the realm of virtual goods, particularly within the emerging metaverse.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-11-02T17:59:51Z</published>\n    <arxiv:comment>Legal Status of Crypto Tokens (FT, NFT, etc.)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Jakub Wyczik</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2004.12510v1</id>\n    <title>Self-consistent Nonlinear Force-free Field Reconstruction from Weighted Boundary Conditions</title>\n    <updated>2020-04-26T23:57:12Z</updated>\n    <link href=\"https://arxiv.org/abs/2004.12510v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2004.12510v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Vector magnetogram data are often used as photospheric boundary conditions for force-free coronal magnetic field extrapolations. In general, however, vector magnetogram data are not consistent with the force-free assumption. In this article, we demonstrate a way to deal with inconsistent boundary data, by generalizing the \"self-consistency procedure\" of Wheatland &amp; Regnier (2009). In that procedure, the inconsistency is resolved by an iterative process of constructing two solutions based on the values of the force-free parameter alpha on the two polarities of the field in the boundary (the P and N polarities), and taking uncertainty-weighted averages of the boundary alpha values in the P and N solutions. When the alpha values in the P and N regions are very different, the self-consistent solution may lose high alpha values from the boundary conditions. We show how, by altering the weighting of the uncertainties in the P or N boundary conditions, we can preserve high alpha values in the self-consistent solution. The weighted self-consistent extrapolation method is demonstrated on an analytic bipole field and applied to vector magnetogram data taken by the Helioseismic and Magnetic Imager (HMI) instrument for NOAA active region AR 12017 on 2014 March 29.</summary>\n    <category term=\"astro-ph.SR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-04-26T23:57:12Z</published>\n    <arxiv:comment>12 pages, 5 figures, submitted to Solar Physics</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.SR\"/>\n    <author>\n      <name>Alpha Mastrano</name>\n    </author>\n    <author>\n      <name>Kai E. Yang</name>\n    </author>\n    <author>\n      <name>Michael S. Wheatland</name>\n    </author>\n    <arxiv:doi>10.1007/s11207-020-01663-7</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s11207-020-01663-7\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/0805.4082v1</id>\n    <title>Particle Physics Aspects of Antihydrogen Studies with ALPHA at CERN</title>\n    <updated>2008-05-27T09:36:57Z</updated>\n    <link href=\"https://arxiv.org/abs/0805.4082v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/0805.4082v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We discuss aspects of antihydrogen studies, that relate to particle physics ideas and techniques, within the context of the ALPHA experiment at CERN's Antiproton Decelerator facility. We review the fundamental physics motivations for antihydrogen studies, and their potential physics reach. We argue that initial spectroscopy measurements, once antihydrogen is trapped, could provide competitive tests of CPT, possibly probing physics at the Planck Scale. We discuss some of the particle detection techniques used in ALPHA. Preliminary results from commissioning studies of a partial system of the ALPHA Si vertex detector are presented, the results of which highlight the power of annihilation vertex detection capability in antihydrogen studies.</summary>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"nucl-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.atom-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2008-05-27T09:36:57Z</published>\n    <arxiv:comment>Invited talk at Pbar08 - Workshop on Cold Antimatter Plasmas and Application to Fundamental Physics, Okinawa, Japan, 2008. 14 pages, 8 figures</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ex\"/>\n    <arxiv:journal_ref>AIP Conf.Proc.1037:208-220,2008</arxiv:journal_ref>\n    <author>\n      <name> ALPHA Collaboration</name>\n    </author>\n    <author>\n      <name>M. C. Fujiwara</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>G. B. Andresen</name>\n    </author>\n    <author>\n      <name>W. Bertsche</name>\n    </author>\n    <author>\n      <name>P. D. Bowe</name>\n    </author>\n    <author>\n      <name>C. C. Bray</name>\n    </author>\n    <author>\n      <name>E. Butler</name>\n    </author>\n    <author>\n      <name>C. L. Cesar</name>\n    </author>\n    <author>\n      <name>S. Chapman</name>\n    </author>\n    <author>\n      <name>M. Charlton</name>\n    </author>\n    <author>\n      <name>J. Fajans</name>\n    </author>\n    <author>\n      <name>R. Funakoshi</name>\n    </author>\n    <author>\n      <name>D. R. Gill</name>\n    </author>\n    <author>\n      <name>J. S. Hangst</name>\n    </author>\n    <author>\n      <name>W. N. Hardy</name>\n    </author>\n    <author>\n      <name>R. S. Hayano</name>\n    </author>\n    <author>\n      <name>M. E. Hayden</name>\n    </author>\n    <author>\n      <name>A. J. Humphries</name>\n    </author>\n    <author>\n      <name>R. Hydomako</name>\n    </author>\n    <author>\n      <name>M. J. Jenkins</name>\n    </author>\n    <author>\n      <name>L. V. Jorgensen</name>\n    </author>\n    <author>\n      <name>L. Kurchaninov</name>\n    </author>\n    <author>\n      <name>W. Lai</name>\n    </author>\n    <author>\n      <name>R. Lambo</name>\n    </author>\n    <author>\n      <name>N. Madsen</name>\n    </author>\n    <author>\n      <name>P. Nolan</name>\n    </author>\n    <author>\n      <name>K. Olchanski</name>\n    </author>\n    <author>\n      <name>A. Olin</name>\n    </author>\n    <author>\n      <name>A. Povilus</name>\n    </author>\n    <author>\n      <name>P. Pusa</name>\n    </author>\n    <author>\n      <name>F. Robicheaux</name>\n    </author>\n    <author>\n      <name>E. Sarid</name>\n    </author>\n    <author>\n      <name>S. Seif El Nasr</name>\n    </author>\n    <author>\n      <name>D. M. Silveira</name>\n    </author>\n    <author>\n      <name>J. W. Storey</name>\n    </author>\n    <author>\n      <name>R. I. Thompson</name>\n    </author>\n    <author>\n      <name>D. P. van der Werf</name>\n    </author>\n    <author>\n      <name>L. Wasilenko</name>\n    </author>\n    <author>\n      <name>J. S. Wurtele</name>\n    </author>\n    <author>\n      <name>Y. Yamazaki</name>\n    </author>\n    <arxiv:doi>10.1063/1.2977840</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1063/1.2977840\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1104.4661v1</id>\n    <title>Alpha Antihydrogen Experiment</title>\n    <updated>2011-04-24T22:13:34Z</updated>\n    <link href=\"https://arxiv.org/abs/1104.4661v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1104.4661v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>ALPHA is an experiment at CERN, whose ultimate goal is to perform a precise test of CPT symmetry with trapped antihydrogen atoms. After reviewing the motivations, we discuss our recent progress toward the initial goal of stable trapping of antihydrogen, with some emphasis on particle detection techniques.</summary>\n    <category term=\"nucl-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.atom-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.plasm-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2011-04-24T22:13:34Z</published>\n    <arxiv:comment>Invited talk presented at the Fifth Meeting on CPT and Lorentz Symmetry, Bloomington, Indiana, June 28-July 2, 2010</arxiv:comment>\n    <arxiv:primary_category term=\"nucl-ex\"/>\n    <arxiv:journal_ref>Proceedings of the Fifth Meeting on CPT and Lorentz Symmetry, Ed. V.A. Kostelecky, pp. 50-54, World Scientific (2011)</arxiv:journal_ref>\n    <author>\n      <name> ALPHA Collaboration</name>\n    </author>\n    <author>\n      <name>M. C. Fujiwara</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n      <arxiv:affiliation>University of Calgary</arxiv:affiliation>\n    </author>\n    <author>\n      <name>G. B. Andresen</name>\n      <arxiv:affiliation>Aarhus University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>M. D. Ashkezari</name>\n      <arxiv:affiliation>Simon Fraser University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>M. Baquero-Ruiz</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>W. Bertsche</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>C. C. Bray</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>E. Butler</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>C. L. Cesar</name>\n      <arxiv:affiliation>Universidade Federal do Rio de Janeiro</arxiv:affiliation>\n    </author>\n    <author>\n      <name>S. Chapman</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>M. Charlton</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>C. L. Cesar</name>\n      <arxiv:affiliation>Universidade Federal do Rio de Janeiro</arxiv:affiliation>\n    </author>\n    <author>\n      <name>J. Fajans</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>T. Friesen</name>\n      <arxiv:affiliation>University of Calgary</arxiv:affiliation>\n    </author>\n    <author>\n      <name>D. R. Gill</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>J. S. Hangst</name>\n      <arxiv:affiliation>Aarhus University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>W. N. Hardy</name>\n      <arxiv:affiliation>Univ. of British Columbia, BC, V6T 1Z4</arxiv:affiliation>\n    </author>\n    <author>\n      <name>R. S. Hayano</name>\n      <arxiv:affiliation>University of Tokyo, Tokyo 113-0033</arxiv:affiliation>\n    </author>\n    <author>\n      <name>M. E. Hayden</name>\n      <arxiv:affiliation>Simon Fraser University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>A. J. Humphries</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>R. Hydomako</name>\n      <arxiv:affiliation>University of Calgary</arxiv:affiliation>\n    </author>\n    <author>\n      <name>S. Jonsell</name>\n      <arxiv:affiliation>Stockholm University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>L. Kurchaninov</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>R. Lambo</name>\n      <arxiv:affiliation>Universidade Federal do Rio de Janeiro</arxiv:affiliation>\n    </author>\n    <author>\n      <name>N. Madsen</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>S. Menary</name>\n      <arxiv:affiliation>York University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>P. Nolan</name>\n      <arxiv:affiliation>University of Liverpool</arxiv:affiliation>\n    </author>\n    <author>\n      <name>K. Olchanski</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>A. Olin</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>A. Povilus</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>P. Pusa</name>\n      <arxiv:affiliation>University of Liverpool</arxiv:affiliation>\n    </author>\n    <author>\n      <name>F. Robicheaux</name>\n      <arxiv:affiliation>Auburn University</arxiv:affiliation>\n    </author>\n    <author>\n      <name>E. Sarid</name>\n      <arxiv:affiliation>NRCN-Nuclear Research Center Negev</arxiv:affiliation>\n    </author>\n    <author>\n      <name>D. M. Silveira</name>\n      <arxiv:affiliation>Universidade Federal do Rio de Janeiro</arxiv:affiliation>\n    </author>\n    <author>\n      <name>C. So</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>J. W. Storey</name>\n      <arxiv:affiliation>TRIUMF</arxiv:affiliation>\n    </author>\n    <author>\n      <name>R. I. Thompson</name>\n      <arxiv:affiliation>University of Calgary</arxiv:affiliation>\n    </author>\n    <author>\n      <name>D. P. van der Werf</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>D. Wilding</name>\n      <arxiv:affiliation>Swansea University, Swansea SA2 8PP</arxiv:affiliation>\n    </author>\n    <author>\n      <name>J. S. Wurtele</name>\n      <arxiv:affiliation>University of California</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Y. Yamazaki</name>\n      <arxiv:affiliation>RIKEN</arxiv:affiliation>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2608.10292v2</id>\n    <title>Design of ALPHA Phase I: A Plasma Haloscope for 10--20 GHz Post-Inflation Axions</title>\n    <updated>2026-08-18T05:34:17Z</updated>\n    <link href=\"https://arxiv.org/abs/2608.10292v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2608.10292v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The axion is a well-motivated hypothetical particle capable of resolving both the strong CP problem and the dark matter mystery, with recent post-inflationary cosmological simulations favoring masses above 40 μeV. Plasma haloscopes serve as a promising experimental approach to reach theoretically preferred sensitivities in this mass range. ALPHA, hosted at Yale Wright Laboratory, is an international collaboration developing plasma haloscopes to search for QCD dark matter axions. In this letter we present the detailed design and sensitivity projection for the first phase of the ALPHA experiment, which will search the mass range from 10 GHz to 20 GHz (~40 μeV to 80 μeV). This search will make use of wire-array plasma resonators to decouple the physical size from the resonant frequency, a limitation typically faced by traditional microwave cavities, allowing broadband sensitivity approaching KSVZ coupling strengths.</summary>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-08-10T22:57:51Z</published>\n    <arxiv:comment>13 pages, 8 figures</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ex\"/>\n    <author>\n      <name> ALPHA Collaboration</name>\n    </author>\n    <author>\n      <name>Xiran Bai</name>\n    </author>\n    <author>\n      <name>Rustam Balafendiev</name>\n    </author>\n    <author>\n      <name>Sean E. Barrett</name>\n    </author>\n    <author>\n      <name>Eunice Beato</name>\n    </author>\n    <author>\n      <name>Pavel Belov</name>\n    </author>\n    <author>\n      <name>Charles D. Brown</name>\n    </author>\n    <author>\n      <name>Eduardo A. Castro Muñoz</name>\n    </author>\n    <author>\n      <name>Jan Conrad</name>\n    </author>\n    <author>\n      <name>Marcel Demarteau</name>\n    </author>\n    <author>\n      <name>Alex Droster</name>\n    </author>\n    <author>\n      <name>Joseph Dubois</name>\n    </author>\n    <author>\n      <name>Jonathan Echevers</name>\n    </author>\n    <author>\n      <name>Ali Elhadi</name>\n    </author>\n    <author>\n      <name>Jim Enriquez</name>\n    </author>\n    <author>\n      <name>Maryam Haytham Esmat</name>\n    </author>\n    <author>\n      <name>Andrea Gallo Rosso</name>\n    </author>\n    <author>\n      <name>Eleanor Graham</name>\n    </author>\n    <author>\n      <name>Chloe Greenstein</name>\n    </author>\n    <author>\n      <name>Jon E. Gudmundsson</name>\n    </author>\n    <author>\n      <name>Karsten M. Heeger</name>\n    </author>\n    <author>\n      <name>Ishaan Iyer</name>\n    </author>\n    <author>\n      <name>Heather Jackson</name>\n    </author>\n    <author>\n      <name>Junu Jeong</name>\n    </author>\n    <author>\n      <name>Michael J. Jewell</name>\n    </author>\n    <author>\n      <name>Tyler Johnson</name>\n    </author>\n    <author>\n      <name>Shriram Jois</name>\n    </author>\n    <author>\n      <name>Gagandeep Kaur</name>\n    </author>\n    <author>\n      <name>Claire Laffan</name>\n    </author>\n    <author>\n      <name>K. W. Lehnert</name>\n    </author>\n    <author>\n      <name>Samantha M. Lewis</name>\n    </author>\n    <author>\n      <name>Jacob Lindahl</name>\n    </author>\n    <author>\n      <name>Reina H. Maruyama</name>\n    </author>\n    <author>\n      <name>Philip Mauskopf</name>\n    </author>\n    <author>\n      <name>Andrew M. Meyer</name>\n    </author>\n    <author>\n      <name>Alexander J. Millar</name>\n    </author>\n    <author>\n      <name>Dylan R. Miller</name>\n    </author>\n    <author>\n      <name>Hiranya V. Peiris</name>\n    </author>\n    <author>\n      <name>Jianyang Qi</name>\n    </author>\n    <author>\n      <name>Elizabeth P. Ruddy</name>\n    </author>\n    <author>\n      <name>Sharada Sahoo</name>\n    </author>\n    <author>\n      <name>Denis Sakhno</name>\n    </author>\n    <author>\n      <name>Michael Sekatchev</name>\n    </author>\n    <author>\n      <name>Max Silva-Feaver</name>\n    </author>\n    <author>\n      <name>Shenyang Shi</name>\n    </author>\n    <author>\n      <name>Aarav M. Sindhwad</name>\n    </author>\n    <author>\n      <name>Gaganpreet Singh</name>\n    </author>\n    <author>\n      <name>Sukhman Singh</name>\n    </author>\n    <author>\n      <name>Danielle H. Speller</name>\n    </author>\n    <author>\n      <name>Dajie Sun</name>\n    </author>\n    <author>\n      <name>Noshin Tabassum</name>\n    </author>\n    <author>\n      <name>Karl van Bibber</name>\n    </author>\n    <author>\n      <name>Yongqi Wang</name>\n    </author>\n    <author>\n      <name>Frank Wilczek</name>\n    </author>\n    <author>\n      <name>Mackenzie Wooten</name>\n    </author>\n    <author>\n      <name>Sabrina Zacarias</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2009.04274v2</id>\n    <title>Where's Crypto?: Automated Identification and Classification of Proprietary Cryptographic Primitives in Binary Code</title>\n    <updated>2020-10-15T15:59:33Z</updated>\n    <link href=\"https://arxiv.org/abs/2009.04274v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2009.04274v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The continuing use of proprietary cryptography in embedded systems across many industry verticals, from physical access control systems and telecommunications to machine-to-machine authentication, presents a significant obstacle to black-box security-evaluation efforts. In-depth security analysis requires locating and classifying the algorithm in often very large binary images, thus rendering manual inspection, even when aided by heuristics, time consuming.\n  In this paper, we present a novel approach to automate the identification and classification of (proprietary) cryptographic primitives within binary code. Our approach is based on Data Flow Graph (DFG) isomorphism, previously proposed by Lestringant et al. Unfortunately, their DFG isomorphism approach is limited to known primitives only, and relies on heuristics for selecting code fragments for analysis. By combining the said approach with symbolic execution, we overcome all limitations of their work, and are able to extend the analysis into the domain of unknown, proprietary cryptographic primitives. To demonstrate that our proposal is practical, we develop various signatures, each targeted at a distinct class of cryptographic primitives, and present experimental evaluations for each of them on a set of binaries, both publicly available (and thus providing reproducible results), and proprietary ones. Lastly, we provide a free and open-source implementation of our approach, called Where's Crypto?, in the form of a plug-in for the popular IDA disassembler.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-09-09T12:55:04Z</published>\n    <arxiv:comment>A proof-of-concept implementation can be found at https://github.com/wheres-crypto/wheres-crypto</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Carlo Meijer</name>\n    </author>\n    <author>\n      <name>Veelasha Moonsamy</name>\n    </author>\n    <author>\n      <name>Jos Wetzels</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/nucl-ex/0611021v1</id>\n    <title>Evidence for an alpha cluster condensed state in 16O(alpha,alpha') at 400 MeV</title>\n    <updated>2006-11-13T12:19:16Z</updated>\n    <link href=\"https://arxiv.org/abs/nucl-ex/0611021v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/nucl-ex/0611021v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  Inelastic $α$ scattering on 16O is studied at 400 MeV by using an ice target. Near the 4-alpha breakup threshold of 14.4 MeV, a broad peak is observed at an excitation energy of 13.6+/-0.2 MeV with a width of 0.6+/-0.2 MeV. The spin-parity is estimated to be 0+ from the momentum-transfer dependence. The observed width is significantly larger than those of the neighboring 0+ states indicating a state with a well-developed alpha cluster structure. The magnitude of the cross section is sensitive to the density distribution of the constituent alpha clusters. The observed cross section is consistent with the theoretical prediction for the alpha cluster condensed state characterized by its dilute density distribution with a large root-mean-square radius of about 4.3 fm.</summary>\n    <category term=\"nucl-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2006-11-13T12:19:16Z</published>\n    <arxiv:comment>12 pages, 5 fugures, submitted to Phys. Lett. B</arxiv:comment>\n    <arxiv:primary_category term=\"nucl-ex\"/>\n    <author>\n      <name>T. Wakasa</name>\n    </author>\n    <author>\n      <name>E. Ihara</name>\n    </author>\n    <author>\n      <name>K. Fujita</name>\n    </author>\n    <author>\n      <name>Y. Funaki</name>\n    </author>\n    <author>\n      <name>K. Hatanaka</name>\n    </author>\n    <author>\n      <name>H. Horiuchi</name>\n    </author>\n    <author>\n      <name>M. Itoh</name>\n    </author>\n    <author>\n      <name>J. Kamiya</name>\n    </author>\n    <author>\n      <name>G. Ropke</name>\n    </author>\n    <author>\n      <name>H. Sakaguchi</name>\n    </author>\n    <author>\n      <name>N. Sakamoto</name>\n    </author>\n    <author>\n      <name>Y. Sakemi</name>\n    </author>\n    <author>\n      <name>P. Schuck</name>\n    </author>\n    <author>\n      <name>Y. Shimizu</name>\n    </author>\n    <author>\n      <name>M. Takashina</name>\n    </author>\n    <author>\n      <name>S. Terashima</name>\n    </author>\n    <author>\n      <name>A. Tohsaki</name>\n    </author>\n    <author>\n      <name>M. Uchida</name>\n    </author>\n    <author>\n      <name>H. P. Yoshida</name>\n    </author>\n    <author>\n      <name>M. Yosoi</name>\n    </author>\n    <arxiv:doi>10.1016/j.physletb.2007.08.016</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.physletb.2007.08.016\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2603.09219v1</id>\n    <title>AlgoXpert Alpha Research Framework. A Rigorous IS WFA OOS Protocol for Mitigating Overfitting in Quantitative Strategies</title>\n    <updated>2026-03-10T05:40:23Z</updated>\n    <link href=\"https://arxiv.org/abs/2603.09219v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2603.09219v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Transitioning a strategy from backtest to live tradin"
+    },
+    {
+      "source": "arxiv",
       "query": "SMC ICT 流动性 扫损 加密货币",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/LjxoHAh6dtQMIB6zgRHa0h60GOY</id>\n  <title>arXiv Query: search_query=all:SMC OR all:ICT OR all:流动性 OR all:扫损 OR all:加密货币&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T04:24:30Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:SMC+OR+(all:ICT+OR+(all:%E6%B5%81%E5%8A%A8%E6%80%A7+OR+(all:%E6%89%AB%E6%8D%9F+OR+all:%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>4462</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/1002.1193v1</id>\n    <title>ICT in Universities of the Western Himalayan Region of India II: A Comparative SWOT Analysis</title>\n    <updated>2010-02-05T10:51:00Z</updated>\n    <link href=\"https://arxiv.org/abs/1002.1193v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1002.1193v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  This study presents a comparative SWOT analysis to comprehend the pattern of development of ICT within six universities of western Himalayan region of India. With the objective of achieving quality and excellence in higher education system in the region, this study provides a basis to decision makers to exploit opportunities and minimize the external threats. The SWOT analysis of different universities, placed under three categories, has been undertaken within the four-tier framework used earlier by the authors. Guided by the initiatives of National Mission on Education through ICT (NMEICT) for SWOT analysis, findings of this paper reveal, relative consistency of these three categories of universities, with the earlier study. A few suggestions, as opportunities, with an emphasis on problem solving orientation in higher education, have been made to strengthen the leadership of universities in the field of ICT.</summary>\n    <category term=\"cs.OH\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2010-02-05T10:51:00Z</published>\n    <arxiv:comment>International Journal of Computer Science Issues, IJCSI, Vol. 7, Issue 1, No. 3, January 2010, http://ijcsi.org/articles/ICT-in-Universities-of-the-Western-Himalayan-Region-of-India-II-A-Comparative-SWOT-Analysis.php</arxiv:comment>\n    <arxiv:primary_category term=\"cs.OH\"/>\n    <arxiv:journal_ref>International Journal of Computer Science Issues, IJCSI, Vol. 7, Issue 1, No. 3, January 2010, http://ijcsi.org/articles/ICT-in-Universities-of-the-Western-Himalayan-Region-of-India-II-A-Comparative-SWOT-Analysis.php</arxiv:journal_ref>\n    <author>\n      <name>Dhirendra Sharma</name>\n    </author>\n    <author>\n      <name>Vikram Singh</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1007.1559v1</id>\n    <title>An ICT based solution to make mines safer</title>\n    <updated>2010-07-09T11:04:02Z</updated>\n    <link href=\"https://arxiv.org/abs/1007.1559v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1007.1559v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Concern for the human security inside mines is as old as the mining itself. However, ICT (Information and communication technologies), which has impacted human life in so many ways has not been much used for making mines safer. We propose a method that has been practically implemented which can enhance mine safety enormously. It is based on integration of wireless sensor network with an external network through a gateway.</summary>\n    <category term=\"cs.NI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2010-07-09T11:04:02Z</published>\n    <arxiv:comment>ICT: Information and communication Technologies,33 pages</arxiv:comment>\n    <arxiv:primary_category term=\"cs.NI\"/>\n    <author>\n      <name>Dhruv Srivastva</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.10831v1</id>\n    <title>A Methodology for Assessing the Environmental Effects Induced by ICT Services. Part I: Single Services</title>\n    <updated>2020-06-18T19:55:23Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.10831v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.10831v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Information and communication technologies (ICT) are increasingly seen as key enablers for climate change mitigation measures. They can make existing products and activities more efficient or substitute them altogether. Consequently, different initiatives have started to estimate the environmental effects of ICT services. Such assessments, however, lack scientific rigor and often rely on crude assumptions and methods, leading to inaccurate or even misleading results. The few methodological attempts that exist do not address several crucial aspects, and are thus insufficient to foster good as-sessment practice. Starting from such a high level standard from the European Telecommunication Standardisation Institute (ETSI) and the International Telecommunication Union (ITU), this article identifies the shortcomings of existing methodologies and proposes solutions. It addresses several aspects for the assessment of single ICT services: the goal and scope definition (analyzing differences between ICT substitution and optimization, the time perspective of the assessment, the challenge of a hypothetical baseline for the situation without the ICT solution, and the differences between modelling and case studies) as well as the often ignored influence of rebound effects and the difficult extrapolation from case studies to larger populations.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-18T19:55:23Z</published>\n    <arxiv:comment>10 pages, 4 figures, The 7th International Conference on ICT for Sustainability (ICT4S 2020)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Vlad C. Coroamă</name>\n    </author>\n    <author>\n      <name>Pernilla Bergmark</name>\n    </author>\n    <author>\n      <name>Mattias Höjer</name>\n    </author>\n    <author>\n      <name>Jens Malmodin</name>\n    </author>\n    <arxiv:doi>10.1145/3401335.3401716</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3401335.3401716\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.10838v1</id>\n    <title>A Methodology for Assessing the Environmental Effects Induced by ICT Services. Part II: Multiple Services and Companies</title>\n    <updated>2020-06-18T20:12:26Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.10838v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.10838v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Information and communication technologies (ICT) can make existing products and activities more efficient or substitute them altogether and could thus become crucial for the mitigation of climate change. In this context, individual ICT companies, industry organizations and international initiatives have started to estimate the environmental effects of ICT services. Often such assessments rely on crude assumptions and methods, yielding inaccurate or even misleading results. The few existing methodological attempts are too general to provide guidance to practitioners. The starting points of this paper are i) a high level standard from the European Telecommunication Standardisation Institute (ETSI) and the International Telecommunication Union (ITU), and ii) its suggested enhancements for single service assessment outlined in \"A Methodology for Assessing the Environmental Effects Induced by ICT Services Part I: Single services\" (Part I in short). Building on the assessment of single services, the current article identifies and addresses shortcomings of existing methodologies and industry practices with regard to multiple services assessment. For a collection of services, it addresses the goal and scope definition, the so far ignored aggregation of effects among several services, and the allocation between several companies contributing to one or more services. The article finally brings these considerations together with those of Part I into a workflow for performing such assessments in practice.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-18T20:12:26Z</published>\n    <arxiv:comment>10 pages, 4 figures, The 7th International Conference on ICT for Sustainability (ICT4S 2020)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Pernilla Bergmark</name>\n    </author>\n    <author>\n      <name>Vlad C. Coroamă</name>\n    </author>\n    <author>\n      <name>Mattias Höjer</name>\n    </author>\n    <author>\n      <name>Craig Donovan</name>\n    </author>\n    <arxiv:doi>10.1145/3401335.3401711</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3401335.3401711\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2606.03901v1</id>\n    <title>The VMC survey -- LV. The coherent expansion of the SMC</title>\n    <updated>2026-06-02T16:56:05Z</updated>\n    <link href=\"https://arxiv.org/abs/2606.03901v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2606.03901v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Small Magellanic Cloud (SMC) exhibits significant kinematic disequilibrium due to interactions with the Large Magellanic Cloud (LMC). Here, we investigate the two-dimensional stellar kinematics of the SMC to understand the dynamical effects of these interactions by exploiting the increased time baseline of 6-11 years from the VISTA Survey of the Magellanic Clouds (VMC) data release 7. We derive proper motions with a threefold improvement in precision compared to previous studies based on VMC data. We used a geometric framework accounting for perspective effects from line of sight motion to model the systemic motion across the SMC and construct a residual proper motion map. We further introduce an anisotropic linear velocity gradient model to quantify the stretching of the galaxy. For the first time across all stellar populations, the residual proper motion map reveals expansion along the south-east and north-west directions, consistent with LMC-induced tidal forces, detectable even in the central regions. The gradient-corrected residuals show predominantly radial motions towards the SMC centre with no evidence of rotation. Velocity maps for different stellar populations, without assuming a rotating-disk model, reveal a coherent northward motion away from the centre exclusively in older red giant branch stars, interpreted as a kinematic signature of a past (&gt;2 Gyr ago) interaction. This study highlights the inadequacy of simple rotating-disk models in capturing the internal kinematics of the galaxy.</summary>\n    <category term=\"astro-ph.GA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.SR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-06-02T16:56:05Z</published>\n    <arxiv:comment>9 pages, 1 figure, accepted for publication in Astronomy &amp; Astrophysics Letter, Press release available at: https://www.aip.de/en/news/smc-disturbed-and-expanding/</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.GA\"/>\n    <author>\n      <name>S. Vijayasree</name>\n    </author>\n    <author>\n      <name>F. Niederhofer</name>\n    </author>\n    <author>\n      <name>M. -R. L. Cioni</name>\n    </author>\n    <author>\n      <name>J. Th. van Loon</name>\n    </author>\n    <author>\n      <name>K. Bekki</name>\n    </author>\n    <author>\n      <name>R. de Grijs</name>\n    </author>\n    <author>\n      <name>S. Subramanian</name>\n    </author>\n    <author>\n      <name>N. Kacharov</name>\n    </author>\n    <author>\n      <name>A. O. Omkumar</name>\n    </author>\n    <author>\n      <name>L. R. Cullinane</name>\n    </author>\n    <author>\n      <name>V. D. Ivanov</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/0706.4426v1</id>\n    <title>Be stars and binaries in the field of the SMC open cluster NGC330 with VLT-FLAMES</title>\n    <updated>2007-06-29T14:13:02Z</updated>\n    <link href=\"https://arxiv.org/abs/0706.4426v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/0706.4426v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  Observations of hot stars belonging to the young cluster SMC-NGC330 and its surrounding region were obtained with the VLT-GIRAFFE facilities in MEDUSA mode. We investigated the B and Be star properties and proportions in this environment of low metallicity. We also searched for rapid variability in Be stars using photometric databases. With spectroscopic measurements we characterized the emission and properties of Be stars. By cross-correlation with photometric databases such as MACHO and OGLE, we searched for binaries in our sample of hot stars, as well as for short-term variability in Be stars. We report on the global characteristics of the Be star sample (131 objects). We find that the proportion of early Be stars with a large equivalent width of the Halpha emission line is higher in the SMC than in the LMC and MW. We find a slight increase in the proportion of Be stars compared to B-type stars with decreasing metallicity. We also discovered spectroscopic and photometric binaries, and for the latter we give their orbital period. We identify 13 Be stars with short-term variability. We determine their period(s) and find that 9 Be stars are multiperiodic.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2007-06-29T14:13:02Z</published>\n    <arxiv:comment>english not yet corrected, 23 pages, 4th article about the study in the LMC NGC2004 and SMC NGC330</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Astron.Astrophys.472:577-586,2007</arxiv:journal_ref>\n    <author>\n      <name>Christophe Martayan</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Michele Floquet</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Anne-Marie Hubert</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Juan Gutiérrez-Soto</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Juan Fabregat</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Coralie Neiner</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Malek Mekkas</name>\n      <arxiv:affiliation>GEPI</arxiv:affiliation>\n    </author>\n    <arxiv:doi>10.1051/0004-6361:20077390</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1051/0004-6361:20077390\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1506.02128v1</id>\n    <title>The ICT predicament of new ICT-enabled service</title>\n    <updated>2015-06-06T08:47:48Z</updated>\n    <link href=\"https://arxiv.org/abs/1506.02128v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1506.02128v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The advancement of information and communication technologies (ICT) has triggered many ICT-enabled services. Regarding this service, the complementary ICT system involves with customers' devices, industry-wide ICT development and nation-wide ICT infrastructure, which are difficult for any individual organization to control. The ICT predicament is the phenomenon that the complementary ICT system is inferior in delivering the promised service quality of new ICT-enabled service. With the ICT predicament, companies face the decision-making dilemma in launching the new service or postponing the launch. This study proposes a process to resolve the decision-making dilemma regarding the ICT predicament.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2015-06-06T08:47:48Z</published>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Wen-Jan Chang</name>\n    </author>\n    <author>\n      <name> Rua-HuanTsaih</name>\n    </author>\n    <author>\n      <name>David C. Yen</name>\n    </author>\n    <author>\n      <name>Tzu-Shian Han</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1304.1898v1</id>\n    <title>Socio-inspired ICT - Towards a socially grounded society-ICT symbiosis</title>\n    <updated>2013-04-06T15:05:56Z</updated>\n    <link href=\"https://arxiv.org/abs/1304.1898v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1304.1898v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Modern ICT (Information and Communication Technology) has developed a vision where the \"computer\" is no longer associated with the concept of a single device or a network of devices, but rather the entirety of situated services originating in a digital world, which are perceived through the physical world. It is observed that services with explicit user input and output are becoming to be replaced by a computing landscape sensing the physical world via a huge variety of sensors, and controlling it via a plethora of actuators. The nature and appearance of computing devices is changing to be hidden in the fabric of everyday life, invisibly networked, and omnipresent, with applications greatly being based on the notions of context and knowledge. Interaction with such globe spanning, modern ICT systems will presumably be more implicit, at the periphery of human attention, rather than explicit, i.e. at the focus of human attention. Socio-inspired ICT assumes that future, globe scale ICT systems should be viewed as social systems. Such a view challenges research to identify and formalize the principles of interaction and adaptation in social systems, so as to be able to ground future ICT systems on those principles. This position paper therefore is concerned with the intersection of social behaviour and modern ICT, creating or recreating social conventions and social contexts through the use of pervasive, globe-spanning, omnipresent and participative ICT.</summary>\n    <category term=\"physics.soc-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.comp-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2013-04-06T15:05:56Z</published>\n    <arxiv:primary_category term=\"physics.soc-ph\"/>\n    <arxiv:journal_ref>Eur. Phys. J. Special Topics vol. 214, pp 401-434 (2012)</arxiv:journal_ref>\n    <author>\n      <name>A. Ferscha</name>\n    </author>\n    <author>\n      <name>K. Farrahi</name>\n    </author>\n    <author>\n      <name>J. van denHoven</name>\n    </author>\n    <author>\n      <name>D. Hales</name>\n    </author>\n    <author>\n      <name>A. Nowak</name>\n    </author>\n    <author>\n      <name>P. Lukowicz</name>\n    </author>\n    <author>\n      <name>D. Helbing</name>\n    </author>\n    <arxiv:doi>10.1140/epjst/e2012-01700-6</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1140/epjst/e2012-01700-6\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1606.00894v1</id>\n    <title>The Effect of ICT Self-Discipline in the Workplace</title>\n    <updated>2016-05-28T03:30:00Z</updated>\n    <link href=\"https://arxiv.org/abs/1606.00894v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1606.00894v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The ubiquity of Information and Communication Technologies (ICTs) in work settings has changed the way employees behave. ICTs such as smartphones, email and social media makes employees more connected than has ever been possible. The degree of ICT connectivity can create a positive as well as a negative impact on employees' productivity. In this context, the notion of ICT self-discipline - an individual's ability to control their behaviours towards ICTs - becomes pivotal in the process of managing ICT connectivity. This follow-on study reports the results of an online survey of 443 to New Zealand professionals regarding the influence of ICT self-discipline on the relationship between ICT connectivity and employee productivity. Findings indicated that the impact of ICT self-discipline varies depending on the organisation and industry an employee works in. Insights and recommendations for future research are shared in this paper. Findings from this study contribute to IS research and practice.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2016-05-28T03:30:00Z</published>\n    <arxiv:comment>ISBN# 978-0-646-95337-3 Presented at the Australasian Conference on Information Systems 2015 (arXiv:1605.01032)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Balsam Al-Dabbagh</name>\n    </author>\n    <author>\n      <name>Eusebio Scornavacca</name>\n    </author>\n    <author>\n      <name>Allan Sylvester</name>\n    </author>\n    <author>\n      <name>David Johnstone</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1907.06809v1</id>\n    <title>Ethical Underpinnings in the Design and Management of ICT Projects</title>\n    <updated>2019-07-16T02:30:03Z</updated>\n    <link href=\"https://arxiv.org/abs/1907.06809v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1907.06809v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>With a view towards understanding why undesirable outcomes often arise in ICT projects, we draw attention to three aspects in this essay. First, we present several examples to show that incorporating an ethical framework in the design of an ICT system is not sufficient in itself, and that ethics need to guide the deployment and ongoing management of the projects as well. We present a framework that brings together the objectives, design, and deployment management of ICT projects as being shaped by a common underlying ethical system. Second, we argue that power-based equality should be incorporated as a key underlying ethical value in ICT projects, to ensure that the project does not reinforce inequalities in power relationships between the actors directly or indirectly associated with the project. We present a method to model ICT projects to make legible its influence on the power relationships between various actors in the ecosystem. Third, we discuss that the ethical values underlying any ICT project ultimately need to be upheld by the project teams, where certain factors like political ideologies or dispersed teams may affect the rigour with which these ethical values are followed. These three aspects of having an ethical underpinning to the design and management of ICT projects, the need for having a power-based equality principle for ICT projects, and the importance of socialization of the project teams, needs increasing attention in today's age of ICT platforms where millions and billions of users interact on the same platform but which are managed by only a few people.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.HC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-07-16T02:30:03Z</published>\n    <arxiv:comment>Presented at the ACM HCAI Summer School, India 2019</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Aaditeshwar Seth</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1606.00889v1</id>\n    <title>Exploring the roles of ICT in supporting sustainability practices</title>\n    <updated>2016-05-28T03:50:17Z</updated>\n    <link href=\"https://arxiv.org/abs/1606.00889v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1606.00889v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The concern about sustainability has arisen due to the overuse of natural resources and the increased use of energy consumption over the last decades. Information communication technologies (ICT) has the potential to address the three main aspects of sustainability (people, planet, profit) and therefore, several organizations have initiated a sustainable development by integrating ICT within their business activities. However, the roles of ICT in supporting sustainability initiatives have only been discussed in a limited number of studies and there is a lack of practical examples that demonstrate how the different roles of ICT are played out in an organization's environment. Therefore, this research aims to explore how ICT can be used by organizations to support sustainability initiatives. In particular, in this research-in-progress paper, we examine how a leading organization deploys Internet-of-Things as an example of an ICT application to support various sustainability initiatives. The study findings enhance the current understanding of how ICT can support sustainability practices of organizations.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2016-05-28T03:50:17Z</published>\n    <arxiv:comment>ISBN# 978-0-646-95337-3 Presented at the Australasian Conference on Information Systems 2015 (arXiv:1605.01032)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Abdon Carrera Rivera</name>\n    </author>\n    <author>\n      <name>Sherah Kurnia</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1311.3034v1</id>\n    <title>Contribution of Information and Communication Technology (ICT) in Country'S H-Index</title>\n    <updated>2013-11-13T07:27:42Z</updated>\n    <link href=\"https://arxiv.org/abs/1311.3034v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1311.3034v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The aim of this study is to examine the effect of Information and Communication Technology (ICT) development on country's scientific ranking as measured by H-index. Moreover, this study applies ICT development sub-indices including ICT Use, ICT Access and ICT skill to find the distinct effect of these sub-indices on country's H-index. To this purpose, required data for the panel of 14 Middle East countries over the period 1995 to 2009 is collected. Findings of the current study show that ICT development increases the H-index of the sample countries. The results also indicate that ICT Use and ICT Skill sub-indices positively contribute to higher H-index but the effect of ICT access on country's H-index is not clear.</summary>\n    <category term=\"cs.DL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2013-11-13T07:27:42Z</published>\n    <arxiv:comment>Arezoo Aghaei Chadegani</arxiv:comment>\n    <arxiv:primary_category term=\"cs.DL\"/>\n    <arxiv:journal_ref>Journal of Theoretical and Applied Information Technology 57, 1 (2013) 122-127</arxiv:journal_ref>\n    <author>\n      <name>Maryam Farhadi</name>\n      <arxiv:affiliation>IAU, Mobarakeh</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Hadi Salehi</name>\n      <arxiv:affiliation>UKM</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Mohamed Amin Embi</name>\n      <arxiv:affiliation>UKM</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Masood Fooladi</name>\n      <arxiv:affiliation>IAU, Mobarakeh</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Hadi Farhadi</name>\n      <arxiv:affiliation>UKM</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Arezoo Aghaei Chadegani</name>\n      <arxiv:affiliation>IAU, Mobarakeh</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Nader Ale Ebrahim</name>\n      <arxiv:affiliation>UM</arxiv:affiliation>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1901.00181v1</id>\n    <title>Effective integration of ICT to facilitate the secondary education in Sri Lanka</title>\n    <updated>2019-01-01T17:14:28Z</updated>\n    <link href=\"https://arxiv.org/abs/1901.00181v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1901.00181v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Information and Communication Technology (ICT) has been the phenomenon of the 21st century and its growing advances continue to play a vital role as an ideal tool to acquire, store, disseminate and apply knowledge than ever before. Thus, the integration of ICT in diverse business processes has increased the importance as an imperative source of economic growth in the rapidly changing knowledge economy. The paper mainly explores potential barriers towards the effective integration of ICT and its impact on the performance of the secondary education. A structured survey questionnaire gathered empirical data from a random sample of teachers from selected schools in the North Central Province (NCP) of Sri Lanka. Results show very low integration of ICT in schools and teachers ICT competency. ICT infrastructure, leadership support and school planning are revealed as major organizational constraints for the effective integration of ICT in schools. In contrast, respondents' fairly positive attitudes towards ICT indicate potential future developments. Comparative findings revealed that ICT education and English language proficiency are significant demographic predictors of ICT utilization. Results also reported a positive impact of ICT on teachers job performance.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-01-0"
     },
@@ -952,14 +957,6 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "url": "https://doi.org/10.1787/888933433273",
-      "description": "Crossref work type=component",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "A-share quantitative trading factor strategy China",
       "title": "Insider trading under trading ban regulation in China’s A-share market",
       "url": "https://doi.org/10.1016/j.cjar.2015.06.002",
       "description": "Crossref work type=journal-article",
@@ -1016,6 +1013,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "",
+      "url": "https://doi.org/10.52926/jpmjpr1761",
+      "description": "Crossref work type=grant",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Activity of Hip Muscle in Change of Load on One Side of the Lower Limbs",
       "url": "https://doi.org/10.1589/rika.23.671",
       "description": "Crossref work type=journal-article",
@@ -1040,6 +1045,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Quantitative Stock Picking Model Based on Conditional Random Fields",
       "url": "https://doi.org/10.12677/sa.2019.82034",
       "description": "Crossref work type=journal-article",
@@ -1050,6 +1063,22 @@
       "query": "A股 量化 github",
       "title": "Quantitative Stock Selection Model Based on Text Analysis-LSTM",
       "url": "https://doi.org/10.12677/ecl.2025.1451633",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
+      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
+      "url": "https://doi.org/10.12677/ecl.2025.1482826",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -1312,9 +1341,25 @@
     {
       "source": "crossref",
       "query": "China A-share order flow high frequency factors",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "url": "https://doi.org/10.2139/ssrn.5806502",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "China A-share order flow high frequency factors",
       "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow and High Frequency Liquidity Provision",
       "url": "https://doi.org/10.2139/ssrn.2616992",
       "description": "Crossref work type=journal-article",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
+      "query": "China A-share order flow high frequency factors",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "url": "https://doi.org/10.3386/w21286",
+      "description": "Crossref work type=report",
       "updated_at": "2015"
     },
     {
@@ -1792,14 +1837,6 @@
     {
       "source": "crossref",
       "query": "MEV execution alpha crypto",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "url": "https://doi.org/10.2139/ssrn.5150912",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "MEV execution alpha crypto",
       "title": "ELASTIC ALPHA-ALPHA SCATTERING NEAR 40 Mev",
       "url": "https://doi.org/10.2172/4042824",
       "description": "Crossref work type=report",
@@ -1844,6 +1881,14 @@
       "url": "https://doi.org/10.1103/physrev.109.1591",
       "description": "Crossref work type=journal-article",
       "updated_at": "1958"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
+      "url": "https://doi.org/10.12677/sa.2021.103054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
     },
     {
       "source": "crossref",
@@ -2256,6 +2301,14 @@
     {
       "source": "crossref",
       "query": "algorithmic trading research code",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "url": "https://doi.org/10.1787/888933433273",
+      "description": "Crossref work type=component",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "algorithmic trading research code",
       "title": "Overview of Electronic and Algorithmic Trading",
       "url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
       "description": "Crossref work type=book-chapter",
@@ -2496,6 +2549,14 @@
     {
       "source": "crossref",
       "query": "bitcoin seasonality calendar effect trading",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "url": "https://doi.org/10.2139/ssrn.4081000",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "bitcoin seasonality calendar effect trading",
       "title": "The Seasonality of Bitcoin",
       "url": "https://doi.org/10.2139/ssrn.4581124",
       "description": "Crossref work type=posted-content",
@@ -2712,14 +2773,6 @@
     {
       "source": "crossref",
       "query": "crypto momentum trend following strategy bitcoin",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "url": "https://doi.org/10.2139/ssrn.4081000",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto momentum trend following strategy bitcoin",
       "title": "The Effective Combination of Risk-Based Strategies with Momentum and Trend Following",
       "url": "https://doi.org/10.2139/ssrn.2556747",
       "description": "Crossref work type=posted-content",
@@ -2740,6 +2793,14 @@
       "url": "https://doi.org/10.2139/ssrn.4551518",
       "description": "Crossref work type=posted-content",
       "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -2820,14 +2881,6 @@
       "url": "https://doi.org/10.2139/ssrn.6882701",
       "description": "Crossref work type=posted-content",
       "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto order flow order book imbalance microprice",
-      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
-      "url": "https://doi.org/10.1142/s2382626619500114",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2018"
     },
     {
       "source": "crossref",
@@ -3448,14 +3501,6 @@
     {
       "source": "crossref",
       "query": "fair value gap imbalance FVG crypto trading",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "fair value gap imbalance FVG crypto trading",
       "title": "Fair Trading",
       "url": "https://doi.org/10.2139/ssrn.709342",
       "description": "Crossref work type=posted-content",
@@ -3727,14 +3772,6 @@
     },
     {
       "source": "crossref",
-      "query": "genetic programming symbolic regression trading alpha",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2015"
-    },
-    {
-      "source": "crossref",
       "query": "maker adverse selection execution crypto",
       "title": "Adverse Selection",
       "url": "https://doi.org/10.4135/9781529731460",
@@ -3780,6 +3817,14 @@
       "url": "https://doi.org/10.1016/s0378-4266(00)00101-1",
       "description": "Crossref work type=journal-article",
       "updated_at": "2001"
+    },
+    {
+      "source": "crossref",
+      "query": "maker adverse selection execution crypto",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "url": "https://doi.org/10.2139/ssrn.5150912",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -3916,6 +3961,14 @@
       "url": "https://doi.org/10.1142/s2382626620500070",
       "description": "Crossref work type=journal-article",
       "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "url": "https://doi.org/10.1142/s2382626619500114",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2018"
     },
     {
       "source": "crossref",
@@ -4120,26 +4173,10 @@
     {
       "source": "crossref",
       "query": "order flow trading research code",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "url": "https://doi.org/10.2139/ssrn.5806502",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "order flow trading research code",
       "title": "Automating Trade and Order Flow",
       "url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2007"
-    },
-    {
-      "source": "crossref",
-      "query": "order flow trading research code",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "url": "https://doi.org/10.3386/w21286",
-      "description": "Crossref work type=report",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4751,6 +4788,14 @@
     },
     {
       "source": "crossref",
+      "query": "symbolic regression alpha mining trading",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2015"
+    },
+    {
+      "source": "crossref",
       "query": "systematic crypto trading machine learning alpha",
       "title": "&lt;p&gt;MACHINE LEARNING METHODS FOR CRYPTO LEVEL II DATA PREDICTION IN ALGORITHMIC TRADING&lt;/p&gt;",
       "url": "https://doi.org/10.2139/ssrn.4902478",
@@ -4936,24 +4981,8 @@
     {
       "source": "crossref",
       "query": "中国 A股 量化 交易 策略 因子",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "中国 A股 量化 交易 策略 因子",
       "title": "跨文化交际视角下中国典籍外译的归化策略分析",
       "url": "https://doi.org/10.69979/3029-2735.26.06.115",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "中国 A股 量化 交易 策略 因子",
-      "title": "高频量化交易的犯罪风险及防控策略研究",
-      "url": "https://doi.org/10.69979/3029-2700.26.07.084",
       "description": "Crossref work type=journal-article",
       "updated_at": "2026"
     },
@@ -4976,10 +5005,10 @@
     {
       "source": "crossref",
       "query": "因子挖掘 A股 量化 交易",
-      "title": "",
-      "url": "https://doi.org/10.52926/jpmjpr1761",
-      "description": "Crossref work type=grant",
-      "updated_at": ""
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "url": "https://doi.org/10.12677/orf.2024.146534",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5015,11 +5044,11 @@
     },
     {
       "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
-      "url": "https://doi.org/10.12677/sa.2021.103054",
+      "query": "因子挖掘 A股 量化 交易",
+      "title": "证券交易平台高频交易算法的性能优化研究",
+      "url": "https://doi.org/10.37155/2717-5170-0607-73",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5055,30 +5084,6 @@
     },
     {
       "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "url": "https://doi.org/10.12677/ds.2023.96381",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
-      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
       "title": "Quantitative Trading Timing Strategy Based on Investor Sentiment Index",
       "url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -5103,11 +5108,35 @@
     },
     {
       "source": "crossref",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
+      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "高频量化交易的犯罪风险及防控策略研究",
+      "url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
       "query": "威科夫 VSA VPA 量价 加密货币",
       "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
       "url": "https://doi.org/10.12677/fin.2021.113022",
       "description": "Crossref work type=journal-article",
       "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -5132,6 +5161,14 @@
       "url": "https://doi.org/10.32629/ej.v9i4.3403",
       "description": "Crossref work type=journal-article",
       "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
     },
     {
       "source": "crossref",
@@ -5176,6 +5213,22 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -5215,11 +5268,11 @@
     },
     {
       "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5228,30 +5281,6 @@
       "url": "https://doi.org/10.12677/fin.2024.143090",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
-      "url": "https://doi.org/10.12677/aam.2022.111033",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
-      "url": "https://doi.org/10.12677/ecl.2025.1482826",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5512,22 +5541,6 @@
     {
       "source": "crossref",
       "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "url": "https://doi.org/10.12677/orf.2024.146534",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
       "title": "Traffic Flow Prediction Model of BP Neural Network Based on Adaptive Genetic Algorithm Optimization",
       "url": "https://doi.org/10.12677/aam.2020.98155",
       "description": "Crossref work type=journal-article",
@@ -5548,14 +5561,6 @@
       "url": "https://doi.org/10.33142/sca.v8i9.17954",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "证券交易平台高频交易算法的性能优化研究",
-      "url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -6984,7 +6989,7 @@
       "title": "dependabot-gitlab/dependabot",
       "url": "https://gitlab.com/dependabot-gitlab/dependabot",
       "description": "[dependabot](https://github.com/dependabot/dependabot-core) dependency updates with gitlab integration",
-      "updated_at": "2026-09-12T12:07:34.417Z",
+      "updated_at": "2026-09-13T09:13:50.838Z",
       "stars": 381
     },
     {
@@ -7092,7 +7097,7 @@
       "title": "freedesktop-sdk/mirrors/github/curl/curl",
       "url": "https://gitlab.com/freedesktop-sdk/mirrors/github/curl/curl",
       "description": "github.com: curl/curl.git",
-      "updated_at": "2026-09-13T04:31:39.107Z",
+      "updated_at": "2026-09-13T09:13:13.667Z",
       "stars": 1
     },
     {
@@ -15928,22 +15933,6 @@
       "url": "https://www.semanticscholar.org/paper/a974b4889a647d51581a6d993e43f666856e225a",
       "description": "",
       "updated_at": "2009"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "没有ALPHA GO,也能玩个够",
-      "url": "https://www.semanticscholar.org/paper/e4e586bd89dad16e01c77dfb12583342ce5c2ed5",
-      "description": "",
-      "updated_at": "2016"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "用于建模,优化,故障诊断的数据挖掘技术",
-      "url": "https://www.semanticscholar.org/paper/be7574c144b031355e743e97dd5973d88b0e8f14",
-      "description": "",
-      "updated_at": "2000"
     }
   ]
 }
