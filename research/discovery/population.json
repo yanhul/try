@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 1833,
-    "expanded": 1680,
-    "normalized": 1680,
+    "raw": 1824,
+    "expanded": 1671,
+    "normalized": 1671,
     "round1": 68,
     "deferred": 28,
     "survivors": 37,
@@ -612,22 +612,6 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2393,22 +2377,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -2501,6 +2469,86 @@
       "lineage": {
         "source": "c4681db6b9b787f5",
         "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e2d49632f3207c81",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/sa.2021.103054",
+      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e2d49632f3207c81",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "smc_ict",
+      "market": null,
+      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -2665,22 +2713,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -2693,38 +2725,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -3321,6 +3321,22 @@
       }
     },
     {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -3545,6 +3561,86 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "667acb5e3216c827",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118656617.ch5",
@@ -3556,6 +3652,54 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "667acb5e3216c827",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -4649,22 +4793,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -4677,118 +4805,6 @@
       "lineage": {
         "source": "0bc7fc89046bdb2c",
         "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
-        "family": "unknown",
         "rounds": []
       }
     },
@@ -5801,22 +5817,6 @@
       }
     },
     {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6004,6 +6004,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6452,6 +6468,22 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -7897,6 +7929,54 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -8665,6 +8745,22 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "04682721e80adf6f",
       "source": "crossref",
       "source_url": "https://doi.org/10.37155/2717-5316-0508-27",
@@ -8745,22 +8841,6 @@
       }
     },
     {
-      "candidate_id": "e2d49632f3207c81",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/sa.2021.103054",
-      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e2d49632f3207c81",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8e734bb4e77ed879",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2023.135115",
@@ -8809,22 +8889,6 @@
       }
     },
     {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bcb5ccbcca7e1462",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2021.101001",
@@ -8836,22 +8900,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "bcb5ccbcca7e1462",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
         "family": "unknown",
         "rounds": []
       }
@@ -8905,6 +8953,22 @@
       }
     },
     {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c18863b050721775",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
@@ -8917,54 +8981,6 @@
       "lineage": {
         "source": "c18863b050721775",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -8996,22 +9012,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -9113,6 +9113,22 @@
       }
     },
     {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9145,6 +9161,22 @@
       }
     },
     {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "634c42888d8e48ae",
       "source": "crossref",
       "source_url": "https://doi.org/10.70693/cjst.v2i2.1935",
@@ -9172,6 +9204,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -9465,22 +9513,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -9529,22 +9561,6 @@
       }
     },
     {
-      "candidate_id": "edfa6ffeb17a599b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "edfa6ffeb17a599b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1d029873c0942566",
       "source": "crossref",
       "source_url": "https://doi.org/10.62989/jemr2025.2.2.10",
@@ -9556,22 +9572,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1d029873c0942566",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -22713,166 +22713,6 @@
       }
     },
     {
-      "candidate_id": "7a4d833bfed7f53a",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/999f7c40800d0f0d79e316b28c22da04d30de495",
-      "title": "A\u80a1\u6709\u671b\u91cd\u7115\u751f\u673a \u91cf\u5316\u6295\u8d44\u5927\u6709\u53ef\u4e3a\u2014\u2014\u8bbf\u534e\u6cf0\u67cf\u745e\u91cf\u5316\u6295\u8d44\u638c\u8235\u4eba\u3001\u534e\u6cf0\u67cf\u745e\u526f\u603b\u7ecf\u7406 \u7530\u6c49\u537f",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "7a4d833bfed7f53a",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6e76db8f22da7e98",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/92e8906d80e05e15bea50710e0a3e5459f7c313c",
-      "title": "\u534e\u5546\u5927\u76d8\u91cf\u5316\u62df\u4efb\u57fa\u91d1\u7ecf\u7406\u8d39\u9e4f:\u91cf\u5316\u6295\u8d44\u7684\u201c\u4e2d\u897f\u533b\u7ed3\u5408\u201d",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "6e76db8f22da7e98",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "333a7da1ca45f5e8",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4ce0136be22373613d31e9e8658754a774cac2f1",
-      "title": "\u6295\u8d44\u6709\u201c\u8c31\u201d \u521b\u65b0\u6709\u9053\u2014\u2014\u8bbf\u94f6\u534e\u57fa\u91d1\u91cf\u5316\u53ca\u5883\u5916\u6295\u8d44\u603b\u76d1\u5468\u6bc5",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "333a7da1ca45f5e8",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "769fec2596228b18",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/10dbe742b2e3e963825e43f5d7fb71cdf95876d3",
-      "title": "\u65b0\u7684 HASI\u2010R \u5de5\u5177\u5bf9\u4e8e\u8861\u91cf\u5316\u8113\u6027\u6c57\u817a\u708e\u7684\u4e25\u91cd\u7a0b\u5ea6\u65b9\u9762\u6709\u6548\u6027\u5982\u4f55?",
-      "description": "\u5316\u8113\u6027\u6c57\u817a\u708e (HS) \u662f\u4e00\u79cd\u5f15\u8d77\u75bc\u75db\u6027\u7ed3\u8282\u3001\u8113\u80bf\u548c\u96a7\u9053\u7684\u75be\u75c5, \u901a\u5e38\u53d1\u751f\u5728\u814b\u7a9d\u548c\u8179\u80a1\u6c9f\u7b49\u8eab\u4f53\u8936\u76b1\u90e8\u4f4d\u3002\u6bcf 100 \u5230 1000 \u4e2a\u4eba\u4e2d\u5c31\u6709\u4e00\u4e2a\u4eba\u53d7\u5176\u56f0\u6270\u3002\u80fd\u591f\u5728\u4e34\u5e8a\u8bd5\u9a8c\u4e2d\u8861\u91cf HS \u7684\u4e25\u91cd\u7a0b\u5ea6\u662f\u5f88\u91cd\u8981\u7684, \u8fd9\u6837\u6211\u4eec\u5c31\u53ef\u4ee5\u4e86\u89e3\u65b0\u7684\u6cbb\u7597\u65b9\u6cd5\u7684\u6548\u679c\u5982\u4f55\u3002",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "769fec2596228b18",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "193189e7f679506a",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/fca30ab64180eb32fd764897b9c6e45aee215677",
-      "title": "\u6b27\u7248\u91cf\u5316\u5bbd\u677e\u201c\u70b9\u4eae\u201dA\u80a1\u4e0b\u534a\u573a",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "193189e7f679506a",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f563feb96d477028",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/35daee7aec17511bcbdbe1e62b12ad3f69143677",
-      "title": "\u6b69\u884c\u52d5\u4f5c\u306b\u304a\u3051\u308b\u80a1\u30fb\u819d\u30fb\u8db3\u95a2\u7bc0\u306e\u975e\u7dda\u5f62\u306akinematic coupling\u306e\u5b9a\u91cf\u5316",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2017",
-      "lineage": {
-        "source": "f563feb96d477028",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9ef042b7a2275d5b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/8e03d4ba36cb1f7dc47b599a418b66618b8f5186",
-      "title": "\u6b69\u884c\u52d5\u4f5c\u306b\u304a\u3051\u308b\u80a1\u30fb\u819d\u30fb\u8db3\u95a2\u7bc0\u306e\u975e\u7dda\u5f62\u306akinematic coupling\u306e\u5b9a\u91cf\u5316",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2017",
-      "lineage": {
-        "source": "9ef042b7a2275d5b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bfe8d42aedbf3d8c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/455746f81fbc96f6ce8489003bfcb88b7ed73a90",
-      "title": "\u80a1\u6743\u7ed3\u6784\u4e0e\u516c\u53f8\u7ee9\u6548\u5173\u7cfb\u7684\u518d\u8003\u91cf\uff1a\u5185\u751f\u5316\u89c6\u89d2\u2014\u2014\u6765\u81ea\u4e2d\u56fdA\u80a1\u4e0a\u5e02\u516c\u53f8\u7684\u7ecf\u9a8c\u8bc1\u636e",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "bfe8d42aedbf3d8c",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "46b53c5818c665b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
-      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "46b53c5818c665b5",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "72de5402a871b1a7",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/9a88e13ceafbf563986443aa87c28324f92fca9e",
-      "title": "\u9707\u8361\u5e02,\u91cf\u5316\u6295\u8d44\u5bf9\u51b2\u57fa\u91d1\u6210\u201c\u5ba0\u513f\u201d",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "72de5402a871b1a7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "a02506668a16dc2c",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/1b98e364526f0aea3dd50bb5f2c4dad787ef83b3",
@@ -23097,22 +22937,6 @@
       }
     },
     {
-      "candidate_id": "e72cfa6714873c64",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
-      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
-      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share cross-sectional factor mining",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e72cfa6714873c64",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cbcc8ffa0fc1e5a2",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/612d769f6cf18d9356b6d8e7fd53cfb2788e9a78",
@@ -23273,6 +23097,22 @@
       }
     },
     {
+      "candidate_id": "e72cfa6714873c64",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
+      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
+      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share machine learning alpha",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e72cfa6714873c64",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5704d825a68fb5a2",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/031d9a4a20d8a244b3ab313c4fe6c5d35fdc4d3b",
@@ -23332,6 +23172,166 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "fe361447273dfce4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d9b8f07e03eac531",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b6d120bf68141b718c74205fb687def9a8b84bcc",
+      "title": "Analysis of High Dividend Policy of Gree Electric Appliances Based on the Influence Factors and the Improvement of Enterprise Value",
+      "description": ": Cash dividend is an important form for investors to realize the return on investment, which could also cultivate the long-term investment concept of the capital market and enhance the vitality and attraction of the capital market. In order to explore the factors for enterprises to choose high cash dividend policy and its impact on the value of the company, this paper takes Gree Electric, one of the best listed companies in China's A-share market, as the research object. From the three financial factors of profitability, solvency and cash flow, three non-financial factors of supervision of CSRC, growth cycle theory and investment opportunities, the paper explores the influencing factors for Gree to choose high dividend policy. In addition, it explores the reasons for Gree's no dividend event in 2017, which could be contributed to its diversified development strategy. Moreover, it analyses three ways for the high cash dividend policy to enhance the value of the company, which contains enhancing the brand premium, attracting long-term investors and avoiding blind diversification and promoting rational investment.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "d9b8f07e03eac531",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1c3e11e6fa4aa469",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/e6f3895bea7f258a04e6fd14baf7607c7d5498c3",
+      "title": "Analysis of Identification and Driving Factors of Ecological Base Flow Noncompliance in Major Rivers of China",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "1c3e11e6fa4aa469",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4f82beb2c2618820",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/e482d57780dc81506677c40e1732f6f20318ca02",
+      "title": "Characteristics and evolution of mass-transport complex since Late Miocene in the Zengmu and Beikang basins, southern South China Sea",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f82beb2c2618820",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b0dade5582dac9d5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/e58a5117f4963c9bc715175b9c586070fba8a0d7",
+      "title": "Evolution of Global Soybean Trade Flows and Share Reconfiguration Amid Tariff Policy Fluctuations",
+      "description": "In response to the United States' proposed \u201creciprocal tariff\u201d policy scheduled for implementation in 2025, this study aims to quantitatively assess its far-reaching impact on the global soybean trade landscape. Based on monthly high-frequency data from 2000 to 2025, an integrated assessment framework combining an extended gravity model with demand price elasticity is constructed to estimate long-term structural parameters and short-term market responses. Simulation results reveal that tariff barriers trigger significant trade diversion effects, causing U.S. soybean exports to China to plummet by approximately 25% and market share to shrink. Meanwhile, Argentina leverages its low-cost advantage to surge exports by over threefold, emerging as the primary beneficiary of market restructuring, while Brazil maintains its dominant position. This study innovatively integrates long-term and short-term factors, revealing the underlying logic by which unilateral tariff policies reshape the international agricultural competitive landscape through supply chain substitution mechanisms.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "b0dade5582dac9d5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8db79d31e0834201",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d6280ade347f1db602953b503ac30b5cb1c2bc90",
+      "title": "High frequency CO<sub>2</sub> monitoring of soil and vegetation gas exchange with the atmosphere to assess the local carbon balance of a green infrastructure element",
+      "description": "The task of assessing the local carbon balance of green infrastructure elements, which is relevant for the Environmental Social\u2013Governance green agenda, can be successfully solved using modern programmable loggers with NDIR technology for detecting CO2 in the air. The main idea of fully automated continuous monitoring of carbon gas exchange consists in periodic pumping of atmospheric air through closed chambers for soil and vegetation, followed by exposure to assess trends in growth (CO2 emission) or CO2 uptake (photosynthesis) trends using in-chamber CO2 loggers. This know-how was implemented in the Serebryanoborsky experimental forestry of ILAN RAS in Moscow on the example of planting blue spruce (Picea pungens Engelm.) on cultivated loamy sand Cambisol. Budget gas analyzers HT-401/5 (China) with registration every minute were used as CO2 loggers. The monitoring results revealed strong changes in the plant and soil components of C-gas exchange with multiple changes in the local carbon balance from source to sink during the year. Carbon emission losses in the cold period for the soil amount to 8%, and for the plant exceed 17% of the annual flows, without completely stopping even in severe frosts. The share of gross photosynthesis of an evergreen plant exceeds 15% due to periodic winter thaws. Despite a positive annual integral estimate of about 100 gC/(m2 year), the dynamics of the C-balance has a complex oscillatory character with nonlinear reactions of C-flows to temperature, which devalues the widespread estimate with rare measurements of gas fluxes and subsequent temperature extrapolation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "8db79d31e0834201",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8109621e0fd4998a",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/667295c038891d95d08cb9d8e97a4c8ddc5141aa",
+      "title": "High frequency Lunar Penetrating Radar quality control, editing and processing of Chang\u2019E-4 lunar mission",
+      "description": "Chinese lunar landing mission Chang\u2019E-4 reached the far side of the Moon in January 2019 and has been providing unprecedented Lunar Penetrating Radar data able to explore the lunar subsurface down to more than 40\u2009m (with its more resolutive high frequency band). Data are periodically released to the scientific community in raw PDS4 format. Here we provide different versions of the radar dataset after editing (i.e. pre-processing), partial, and full processing in order to provide a complete ready-to-use dataset to end-users (data collected since 4th January 2019 until 27th March 2023) which can be directly exploited for analysis, interpretation, inversion, as well as integration with imagery or other information. In particular, we implemented an efficient and objective way to remove duplicated traces representing more than 90% of original data, as well as a processing flow able to retain all the original data information, while avoiding redundancies. The provided datasets can be implemented with future data releases and straightforwardly exploited for any future analysis.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8109621e0fd4998a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "df034f0f7c372fc4",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/64cae2b446adf18bb5c21a558ffd9e2e84101f09",
+      "title": "Life-course trajectories and modifiable risk factors for incident walking limitation and mortality in 25 high-income, middle-income, and low-income countries (PURE): a prospective cohort study.",
+      "description": "BACKGROUND\nLife expectancy is increasing globally, but if people are to age healthily, they must do so with fewer limitations in their daily activities. However, information on either the frequency or risk factors for limitations to walking ability or other key activities across different regions of the world is limited. Our aim was to describe the incidence, trajectories, risk factors, and population-attributable fraction of new-onset walking limitations in 25 countries at all socioeconomic levels.\n\n\nMETHODS\nPURE is an ongoing, prospective cohort study. The current analysis included community-dwelling participants who lived in four high-income countries (HICs), 16 middle-income countries (MICs), and five low-income countries (LICs). Individuals aged 35-70 years at baseline who completed a baseline questionnaire about activity limitations between Jan 12, 2001, and May 6, 2019, were included in our analysis. The activity limitation screen included questions on self-reported difficulty with walking, grasping, bending, seeing close-up, seeing distance, and hearing. The primary outcome was incident walking limitation and our analytic sample comprised those with no walking limitation at baseline. We estimated the incidence rates, adjusted for age and sex, per 100 person-years in the overall PURE population, by country income level (and separately for China) and sex. We used multistate modelling to evaluate trajectories across the life course, analysed across continuous age, through three distinct sequential states: no limitation, walking limitation, and death. We used survival models to evaluate the associations of socioeconomic status, vascular and behavioural factors, community walkability, and incident adverse events, with incident walking limitations. We then calculated the population-attributable fraction of selected modifiable factors and compared the risk factors for walking limitation and mortality.\n\n\nFINDINGS\n172\u2009889 people from the PURE cohort answered question",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "df034f0f7c372fc4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "84f53f3c010200a8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/552eb6eb7e9d34de2ef851f4f7d844de4bd4998c",
+      "title": "Novel Genetic Diversity and Geographic Structures of Aspergillus fumigatus (Order Eurotiales, Family Aspergillaceae) in the Karst Regions of Guizhou, China",
+      "description": "Aspergillus fumigatus is the primary pathogen causing aspergillosis. Recent molecular population genetic studies have demonstrated that A. fumigatus exhibits high local genetic diversity, with evidence for limited differentiation among geographic populations. However, research on the impacts of geomorphological factors on shaping the population genetic diversity patterns of this species remains scarce. In this study, large-scale sampling and in-depth population genetic analysis were performed on soil-derived A. fumigatus from Guizhou Province, a representative karst landscape in southern China. This area is dominated by plateaus and mountains (accounting for 92.5% of the total area) and represents a classic example of conical karst landscapes. A total of 206 A. fumigatus strains were isolated from 9 sampling sites across Guizhou. Genetic diversity, genetic differentiation, and population structure of these strains were analyzed based on short tandem repeats (STRs) at 9 loci. The results revealed that A. fumigatus in the karst region of Guizhou harbors abundant novel alleles and genotypes, with high genetic diversity. Gene flow among geographical populations was infrequent, and significant genetic differentiation was detected between 30 of the 36 pairs of geographical populations where mountain ranges played a very important role, with the overall regional genetic differentiation reaching PhiPT = 0.061 (p = 0.001). Furthermore, the Guizhou populations showed significant differences from those reported in other regions worldwide. Surprisingly, only one of the 206 (0.49%) A. fumigatus isolates from this region exhibited resistance to the two medical triazoles commonly used for treating aspergillosis, and this resistance frequency was far lower than those reported in previous studies from other regions. We discuss the implications of our results for evolution and environmental antifungal resistance management in this important human fungal pathogen.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "84f53f3c010200a8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "63571a042d850d18",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/143d8069cc66e6ab323b67b7981983a3a189584a",
+      "title": "Theoretical analysis of frequency shift on resonant interaction induced by steady free-surface flow over rippled bottoms",
+      "description": "We theoretically investigate the resonant frequency shift behaviors on triad resonance induced by steady free-surface flow over rippled bottoms. This triad resonance involves two free-surface propagating wave components and one bottom fixed topographic profile wave component. The perturbation analysis of the boundary value problems for free-surface steady uniform flow over a finite rippled patch is applied in this study up to the third order by substituting the perturbation expansion series of the frequency term. Then, we derive the high-order terms in the frequency expansion series quantitatively by considering the third-order nonlinear inhomogeneous forcing terms from both free-surface and bottom boundary conditions. For the theoretical frequency shift solution obtained in this study, we compare it with flume experiment results of one representative triad resonant phenomenon, which is induced by a specific triad resonant combination (k1\u2212k2=kb) and also known as upstream-propagating waves. Within the generation parameters (Fr and kbh) domain of upstream-propagating waves, the theoretical solutions reveal that both the resonant frequency upshift and downshift exist, and the free-surface nonlinearity is the dominant factor of the frequency shift terms. This work will provide the theoretical references for the complex free-surface resonant interaction above a rippled patch in ambient flow.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "63571a042d850d18",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "aa2dbd6cc7f750f2",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fa8980b7d5d6672f1245103afc266754e6dd809b",
+      "title": "Warrant Market Behavior in the Perspective of Active Investment\u2014\u2014Empirical Study on High Frequency Data of the Butterfly Warrant of Baogang Share",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "aa2dbd6cc7f750f2",
         "family": "china_a_share",
         "rounds": []
       }
@@ -24709,166 +24709,6 @@
       "lineage": {
         "source": "aaac9a67d274c5a9",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "753a888baa0312bf",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/53793eb1d0270a497094d043006807b069df0304",
-      "title": "Analysis of Maximal Extractable Value on the Algorand Blockchain",
-      "description": "",
-      "family": "onchain",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "753a888baa0312bf",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "69624104b87ce01a",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb9673fcb64c761c39d7f4cabf51e30467caaf2e",
-      "title": "Analyzing MEV Feasibility and Arbitrage Strategies on Algorand: An Empirical Study",
-      "description": "Maximal Extractable Value (MEV) has become increasingly prevalent in blockchain ecosystems, especially in decentralized exchanges (DEXs), where MEV searchers extract value through activities such as arbitrage. However, most existing studies have focused on fee-based blockchains like Ethereum. Unlike Ethereum, Algorand follows a first-come-first-served (FCFS) model, which results in unique transaction ordering mechanisms and distinct MEV behaviors. This paper investigates four common MEV behaviors on Algorand and proposes a standardized multi-cyclic arbitrage detection algorithm to address the challenge of identifying diverse arbitrage types. Using this approach, we detected 9,542,056 arbitrage transactions, with the highest profit reaching $1,147,913.04. Furthermore, we analyze the strategies employed by MEV searchers, the role of specific tokens and swaps, and the overall MEV dynamics within the Algorand ecosystem. We also observed 44,065 continuous arbitrages, which reveals a new arbitrage strategy. By constructing a dedicated dataset, we further reverse-trace the arbitrage activities of isolated accounts, providing deeper insights into MEV execution patterns. Our findings contribute to a better understanding of MEV in FCFS-based blockchains and offer theoretical support for blockchain security and optimization.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "69624104b87ce01a",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "276be9a915d410ad",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/2451ee849ca5de25131daf7231b743031a2862b4",
-      "title": "Cross-Chain Arbitrage: The Next Frontier of MEV in Decentralized Finance",
-      "description": "Decentralized finance (DeFi) markets are fragmented across block-chains, creating price differences that arbitrage helps eliminate. Today, much of this price alignment occurs against centralized exchanges, whose deep liquidity and fast execution make them dominant venues for price discovery. As trading activity moves on-chain, cross-chain arbitrage between decentralized exchanges is becoming increasingly important. Yet despite its relevance to DeFi, prior work has largely been limited to hypothetical opportunity analyses and conceptual overviews. We conduct a year-long empirical study of cross-chain arbitrage from September 2023 to August 2024 across nine blockchains and identify 242,535 executed arbitrages totaling USD 868.64 million in volume. Activity grows by 5.5x over the study period and surges after the Dencun upgrade on March 13, 2024. Most trades rely on pre-positioned inventory (66.96%) and settle in a median of 9s, whereas bridge-based arbitrages take 242s, highlighting the latency cost of today's bridges. Market concentration is substantial: the five largest addresses execute more than half of all trades, and one address alone captures nearly 40% of daily volume post-Dencun. Taken together, these patterns suggest that cross-chain arbitrage can encourage vertical integration, concentrating sequencing infrastructure and economic power, thereby increasing censorship and consensus security risks. Decentralizing block building and lowering entry barriers are therefore important mitigation directions.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "276be9a915d410ad",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "ca2c8c6f57730320",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b5c23b031b6bb331f578bc97d40181741fd385a1",
-      "title": "Cross-Chain Arbitrage: The Next Frontier of MEV in Decentralized Finance",
-      "description": "Decentralized finance (DeFi) markets are fragmented across block-chains, creating price differences that arbitrage helps eliminate. Today, much of this price alignment occurs against centralized exchanges, whose deep liquidity and fast execution make them dominant venues for price discovery. As trading activity moves on-chain, cross-chain arbitrage between decentralized exchanges is becoming increasingly important. Yet despite its relevance to DeFi, prior work has largely been limited to hypothetical opportunity analyses and conceptual overviews. We conduct a year-long empirical study of cross-chain arbitrage from September 2023 to August 2024 across nine blockchains and identify 242,535 executed arbitrages totaling USD 868.64 million in volume. Activity grows by 5.5x over the study period and surges after the Dencun upgrade on March 13, 2024. Most trades rely on pre-positioned inventory (66.96%) and settle in a median of 9s, whereas bridge-based arbitrages take 242s, highlighting the latency cost of today's bridges. Market concentration is substantial: the five largest addresses execute more than half of all trades, and one address alone captures nearly 40% of daily volume post-Dencun. Taken together, these patterns suggest that cross-chain arbitrage can encourage vertical integration, concentrating sequencing infrastructure and economic power, thereby increasing censorship and consensus security risks. Decentralizing block building and lowering entry barriers are therefore important mitigation directions.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "ca2c8c6f57730320",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d691417daad1146f",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/bb2b46fb67bdba942f5c39e6054f7c2b6ae1a8e4",
-      "title": "Cross-Chain Arbitrage: The Next Frontier of MEV in Decentralized Finance",
-      "description": "Decentralized finance (DeFi) markets spread across Layer-1 (L1) and Layer-2 (L2) blockchains rely on arbitrage to keep prices aligned. Today most price gaps are closed against centralized exchanges (CEXes), whose deep liquidity and fast execution make them the primary venue for price discovery. As trading volume migrates on-chain, cross-chain arbitrage between decentralized exchanges (DEXes) will become the canonical mechanism for price alignment. Yet, despite its importance to DeFi-and the on-chain transparency making real activity tractable in a way CEX-to-DEX arbitrage is not-existing research remains confined to hypothetical opportunity analyses and conceptual overviews. In this paper, we study cross-chain arbitrage with a year-long measurement. We analyze transactions from September 2023 to August 2024 across nine blockchains and identify 242,535 executed arbitrages totaling 868.64 million USD volume. Activity clusters on Ethereum-centric L1-L2 pairs, grows 5.5x over the study period, and surges-higher volume, more trades, lower fees-after the Dencun upgrade (March 13, 2024) which cut costs for rollups. High-volume activity typically involves long-tail assets and moderately correlate with major asset prices. Most trades use pre-positioned inventory (66.96%) and settle in 9s, whereas bridge-based arbitrages take 242s, underscoring the latency cost of today's bridges. Market concentration is high: the five largest addresses execute more than half of all trades, and one alone captures almost 40% of daily volume post-Dencun. We conclude that cross-chain arbitrage fosters vertical integration, centralizing sequencing infrastructure and economic power and thereby exacerbating censorship, liveness, and finality risks; decentralizing block building and lowering entry barriers are critical to countering these threats.",
-      "family": "onchain",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "d691417daad1146f",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2b666a31c0f155b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/09158e72c0138825c2974bd8436a301b09db37e1",
-      "title": "DEX Specs: A Mean-Field Approach to DeFi Currency Exchanges",
-      "description": "We investigate the behavior of liquidity providers (LPs) by modeling a decentralized cryptocurrency exchange (DEX) based on Uniswap v3. LPs with heterogeneous characteristics choose optimal liquidity positions subject to uncertainty regarding the size of exogenous incoming transactions and the prices of assets in the wider market. They engage in a game among themselves, and the resulting liquidity distribution determines the exchange rate dynamics and potential arbitrage opportunities of the pool. We calibrate the distribution of LP characteristics based on Uniswap data and the equilibrium strategy resulting from this mean-field game produces pool exchange rate dynamics and liquidity evolution consistent with observed pool behavior. We subsequently introduce Maximal Extractable Value (MEV) bots who perform Just-In-Time (JIT) liquidity attacks, and develop a Stackelberg game between LPs and bots. This addition results in more accurate simulated pool exchange rate dynamics and stronger predictive power regarding the evolution of the pool liquidity distribution.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "2b666a31c0f155b5",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "87ae852ad995a174",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/9ac0e1fd80972401f9443388fb238b195ba600ae",
-      "title": "Decentralized Exchange Transaction Analysis and Maximal Extractable Value Attack Identification: Focusing on Uniswap USDC3",
-      "description": "With the advancement of blockchain technology and growing concerns about the vulnerabilities and mistrust in centralized financial services, decentralized finance (DeFi) and decentralized exchanges (DEXs) have emerged as promising alternatives. This paper delves into the challenges and issues within DeFi, with a particular focus on Uniswap. We highlight the susceptibility to Maximal Extractable Value (MEV) attacks, providing a background on the current state of DeFi and DEXs. Our approach includes a detailed transaction analysis on Uniswap to identify and analyze MEV attack patterns, alongside a method for detecting bots. The results offer critical insights into the nature of various attacks in DEXs and the correlation between internal and external blockchain events and MEV attack patterns. This research provides valuable guidelines for enhancing DEX security and mitigating MEV risks, serving as an essential resource for stakeholders in the DeFi ecosystem.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "87ae852ad995a174",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3160ecc296e8ac9b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
-      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
-      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "3160ecc296e8ac9b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7e3b82f19c908a6c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/fd9c88389fe25bc761728e1bdf7141e2de16d609",
-      "title": "Measuring CEX-DEX Extracted Value and Searcher Profitability: The Darkest of the MEV Dark Forest",
-      "description": "This paper provides a comprehensive empirical analysis of the economics and dynamics behind arbitrages between centralized and decentralized exchanges (CEX-DEX) on Ethereum. We refine heuristics to identify arbitrage transactions from on-chain data and introduce a robust empirical framework to estimate arbitrage revenue without knowing traders'actual behaviors on CEX. Leveraging an extensive dataset spanning 19 months from August 2023 to March 2025, we estimate a total of 233.8M USD extracted by 19 major CEX-DEX searchers from 7,203,560 identified CEX-DEX arbitrages. Our analysis reveals increasing centralization trends as three searchers captured three-quarters of both volume and extracted value. We also demonstrate that searchers'profitability is tied to their integration level with block builders and uncover exclusive searcher-builder relationships and their market impact. Finally, we correct the previously underestimated profitability of block builders who vertically integrate with a searcher. These insights illuminate the darkest corner of the MEV landscape and highlight the critical implications of CEX-DEX arbitrages for Ethereum's decentralization.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "7e3b82f19c908a6c",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "db69712da5e57059",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/87ad8e447fe58b3165c93a0f6252fdd700c9da77",
-      "title": "Non-Atomic Arbitrage in Decentralized Finance",
-      "description": "The prevalence of maximal extractable value (MEV) in the Ethereum ecosystem has led to a characterization of the latter as a dark forest. Studies of MEV have thus far largely been restricted to purely on-chain MEV, i.e., sandwich attacks, cyclic arbitrage, and liquidations. In this work, we shed light on the prevalence of non-atomic arbitrage on decentralized exchanges (DEXes) on the Ethereum blockchain. Importantly, non-atomic arbitrage exploits price differences between DEXes on the Ethereum blockchain as well as exchanges outside the Ethereum blockchain (i.e., centralized exchanges or DEXes on other blockchains). Thus, non-atomic arbitrage is a type of MEV that involves actions on and off the Ethereum blockchain.In our study of non-atomic arbitrage, we uncover that more than a fourth of the volume on Ethereum\u2019s biggest five DEXes from the merge until 31 October 2023 can likely be attributed to this type of MEV. We further highlight that only eleven searchers are responsible for more than 80% of the identified non-atomic arbitrage volume sitting at a staggering $132 billion and draw a connection between the centralization of the block construction market and non-atomic arbitrage. Finally, we discuss the security implications of these high-value transactions that account for more than 10% of Ethereum\u2019s total block value and outline possible mitigations.",
-      "family": "onchain",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "db69712da5e57059",
-        "family": "onchain",
         "rounds": []
       }
     },
@@ -27316,6 +27156,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "42f9b0f95acb24cb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "46b53c5818c665b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
+      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "46b53c5818c665b5",
         "family": "china_a_share",
         "rounds": []
       }
