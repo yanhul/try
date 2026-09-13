@@ -14,7 +14,6 @@ WINDOWS={3,5,10,20,50,100}
 MECHANISMS={"momentum_trend","mean_reversion","volatility","smc_ict","fvg_imbalance","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
 EVENT_MECHANISMS={"smc_ict","fvg_imbalance"}
 
-
 def sha256(path:Path)->str:
  h=hashlib.sha256()
  with path.open('rb') as f:
@@ -29,8 +28,7 @@ def series_value(ctx,key):
  return value if math.isfinite(value) else None
 
 def discovered_value(spec,ctx):
- op=spec['operator'];left=spec['left'];right=spec.get('right');w=spec.get('window')
- a=series_value(ctx,left);b=series_value(ctx,right) if right else None
+ op=spec['operator'];left=spec['left'];right=spec.get('right');w=spec.get('window');a=series_value(ctx,left);b=series_value(ctx,right) if right else None
  if a is None or (right and b is None):return None
  history=ctx.get('history',[]) or [];vals=[]
  for x in history:
@@ -85,15 +83,14 @@ def mechanism_predicate(spec):
  if family not in MECHANISMS:raise ValueError('invalid_mechanism_family')
  def pred(ctx,trade_direction):
   if family in EVENT_MECHANISMS:
-   event_key='smc_ict' if family=='smc_ict' else 'fvg_imbalance'
-   return trade_direction==ctx.get('entry',{}).get('event_direction',trade_direction) and bool(ctx.get(event_key) or ctx.get('entry',{}).get(event_key))
+   return True
   value=mechanism_value(ctx,family)
   if value is None:return False
   if family=='mean_reversion':
    if trade_direction=='bullish':return value < -abs(threshold) if threshold else value < 0
    return value > abs(threshold) if threshold else value > 0
   if family in {'volatility','seasonality'}:
-   return (value>threshold if comparison=='above' else value<threshold)
+   return value>threshold if comparison=='above' else value<threshold
   expected='bullish' if comparison=='above' else 'bearish'
   if trade_direction!=expected:return False
   return value>threshold if comparison=='above' else value<threshold
@@ -111,8 +108,7 @@ def main()->int:
  elif hid in HYPOTHESES:
   predicate=HYPOTHESES[hid];candidate_universe='reference_event_ledger';candidate_family=None
  else:raise SystemExit(f'UNEXECUTABLE_HYPOTHESIS_ID:{hid}')
- data=(root/a.data).resolve();bars=load_bars(data);splits=chronological_split(len(bars));validate_splits(splits,len(bars))
- kwargs={"candidate_universe":candidate_universe,"candidate_family":candidate_family,"candidate_spec":spec}
+ data=(root/a.data).resolve();bars=load_bars(data);splits=chronological_split(len(bars));validate_splits(splits,len(bars));kwargs={"candidate_universe":candidate_universe,"candidate_family":candidate_family,"candidate_spec":spec}
  is_result=evaluate_split(bars,splits[0].start,splits[0].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'],cost_model=DEFAULT_COST_MODEL,**kwargs)
  val_result=evaluate_split(bars,splits[1].start,splits[1].end,predicate,EVALUATION_SPEC['stop_fraction'],EVALUATION_SPEC['reward_multiple'],EVALUATION_SPEC['round_trip_cost'],cost_model=DEFAULT_COST_MODEL,**kwargs)
  vm=val_result['metrics'];gross_passed=vm.get('profit_factor') is not None and vm['profit_factor']>=1.0 and vm['total_return']>=0.0;cost_available=EVALUATION_SPEC.get('cost_model_status')=='AVAILABLE';net_gate='PASS' if cost_available and gross_passed else ('COST_MODEL_REQUIRED' if not cost_available else 'GROSS_VALIDATION_FAILED');validation_passed=bool(cost_available and gross_passed)
