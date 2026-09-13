@@ -1,6 +1,6 @@
 import math
 
-from research.provider_router import normalize_structural_types
+from research.provider_router import ground_candidate, normalize_structural_types
 
 
 def test_numeric_string_threshold_is_losslessly_normalized():
@@ -28,3 +28,39 @@ def test_missing_threshold_is_never_invented():
     candidate = {"discovery_spec": {"operator": "identity"}}
     normalize_structural_types(candidate)
     assert "threshold" not in candidate["discovery_spec"]
+
+
+def test_non_executable_survivor_cannot_be_grounded_as_mechanism_family():
+    candidate = {
+        "hypothesis_id": "discovered_primitive",
+        "discovery_spec": {
+            "operator": "identity",
+            "left": "close",
+            "threshold": 0,
+            "direction": "above",
+        },
+    }
+    selected = {"family": "china_a_share", "source_url": "https://example.test/source"}
+    grounded = ground_candidate(candidate, selected)
+    assert grounded["hypothesis_id"] == "discovered_primitive"
+    assert "mechanism_family" not in grounded["discovery_spec"]
+
+
+def test_executable_survivor_family_is_canonicalized_deterministically():
+    candidate = {
+        "hypothesis_id": "discovered_primitive",
+        "discovery_spec": {
+            "operator": "identity",
+            "left": "close",
+            "threshold": 0,
+            "direction": "above",
+        },
+    }
+    selected = {"family": "smc_ict", "source_url": "https://example.test/source"}
+    grounded = ground_candidate(candidate, selected)
+    assert grounded["hypothesis_id"] == "mechanism_family"
+    assert grounded["discovery_spec"] == {
+        "mechanism_family": "smc_ict",
+        "threshold": 0,
+        "direction": "above",
+    }
