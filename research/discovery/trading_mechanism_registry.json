@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "contract": "A mechanism is executable only when its required data and deterministic translator exist; provenance alone never implies executable alpha.",
+  "families": {
+    "momentum_trend": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "mean_reversion": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "volatility": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "smc_ict": {"status": "EXECUTABLE_EVENTS", "translator": "engine.strategy.ReferenceStrategy"},
+    "fvg_imbalance": {"status": "EXECUTABLE_EVENTS", "translator": "engine.strategy.ReferenceStrategy"},
+    "wyckoff_vsa_vpa": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "vwap_volume_profile": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "regime": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "seasonality": {"status": "EXECUTABLE_FEATURES", "translator": "engine.context_features"},
+    "cross_sectional": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "china_a_share": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "funding_basis_carry": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "order_flow": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "onchain": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "options": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "prediction_market": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "execution_mev": {"status": "DATA_LANE_REQUIRED", "translator": null},
+    "ml_rl": {"status": "RESEARCH_ONLY", "translator": null}
+  }
+}
