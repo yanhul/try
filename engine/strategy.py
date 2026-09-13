@@ -1,4 +1,4 @@
-﻿from dataclasses import dataclass
+from dataclasses import dataclass
 from typing import Optional
 
 from .events import Direction, Event, EventType, MarketBar
@@ -19,6 +19,7 @@ class ReferenceStrategy:
     def reset(self):
         self.events = []
         self._sweep: Optional[Event] = None
+        self._mss: Optional[Event] = None
         self._fvg: Optional[FVGZone] = None
 
     def process(self, bars: list[MarketBar]) -> list[Event]:
@@ -27,9 +28,6 @@ class ReferenceStrategy:
         for i in range(len(bars)):
             bar = bars[i]
 
-            # ------------------------------------------------
-            # Liquidity sweep
-            # ------------------------------------------------
             if i >= 1:
                 prev = bars[i - 1]
 
@@ -43,6 +41,7 @@ class ReferenceStrategy:
                     )
                     self.events.append(event)
                     self._sweep = event
+                    self._mss = None
 
                 elif bar.high > prev.high and bar.close < prev.high:
                     event = Event(
@@ -54,11 +53,13 @@ class ReferenceStrategy:
                     )
                     self.events.append(event)
                     self._sweep = event
+                    self._mss = None
 
-            # ------------------------------------------------
-            # MSS
-            # ------------------------------------------------
-            if self._sweep is not None and i >= 1:
+            if (
+                self._sweep is not None
+                and self._sweep.bar_index < i
+                and i >= 1
+            ):
                 prev = bars[i - 1]
 
                 if (
@@ -73,7 +74,7 @@ class ReferenceStrategy:
                         price=prev.high,
                     )
                     self.events.append(event)
-                    self._sweep = event
+                    self._mss = event
 
                 elif (
                     self._sweep.direction == Direction.BEARISH
@@ -87,17 +88,17 @@ class ReferenceStrategy:
                         price=prev.low,
                     )
                     self.events.append(event)
-                    self._sweep = event
+                    self._mss = event
 
-            # ------------------------------------------------
-            # FVG
-            # ------------------------------------------------
-            if i >= 2 and self._sweep is not None:
+            if (
+                i >= 2
+                and self._mss is not None
+                and self._mss.bar_index < i
+            ):
                 left = bars[i - 2]
 
                 if (
-                    self._sweep.event_type == EventType.MSS
-                    and self._sweep.direction == Direction.BULLISH
+                    self._mss.direction == Direction.BULLISH
                     and bar.low > left.high
                 ):
                     zone = FVGZone(
@@ -107,7 +108,6 @@ class ReferenceStrategy:
                         upper=bar.low,
                     )
                     self._fvg = zone
-
                     self.events.append(
                         Event(
                             timestamp=bar.timestamp,
@@ -119,8 +119,7 @@ class ReferenceStrategy:
                     )
 
                 elif (
-                    self._sweep.event_type == EventType.MSS
-                    and self._sweep.direction == Direction.BEARISH
+                    self._mss.direction == Direction.BEARISH
                     and bar.high < left.low
                 ):
                     zone = FVGZone(
@@ -130,7 +129,6 @@ class ReferenceStrategy:
                         upper=left.low,
                     )
                     self._fvg = zone
-
                     self.events.append(
                         Event(
                             timestamp=bar.timestamp,
@@ -141,9 +139,6 @@ class ReferenceStrategy:
                         )
                     )
 
-            # ------------------------------------------------
-            # Retest
-            # ------------------------------------------------
             if self._fvg is not None and i > self._fvg.created_at:
                 zone = self._fvg
 
