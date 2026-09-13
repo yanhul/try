@@ -6,6 +6,9 @@ REQUIRED={"bc","parent_bc","hypothesis_id","conceptual_change","evidence_sources
 OPS={"identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"}
 COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance","momentum_trend","mean_reversion","volatility","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
 MECHANISM_FAMILIES={"momentum_trend","mean_reversion","volatility","smc_ict","fvg_imbalance","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
+# Families listed in the source taxonomy but not executable as directional predicates.
+NON_DIRECTIONAL_MECHANISM_FAMILIES={"volatility","seasonality"}
+EXECUTABLE_MECHANISM_FAMILIES=MECHANISM_FAMILIES-NON_DIRECTIONAL_MECHANISM_FAMILIES
 WINDOW_REQUIRED={"zscore","rolling_mean","rolling_std","lag","delta","rank"}
 def canonical_hash(candidate:dict)->str:
  payload={k:candidate[k] for k in sorted(candidate) if k!="candidate_hash"}
@@ -21,6 +24,7 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
  spec=candidate.get("discovery_spec")
  if candidate["hypothesis_id"]=="mechanism_family":
   if not isinstance(spec,dict) or spec.get("mechanism_family") not in MECHANISM_FAMILIES:return False,"invalid_mechanism_family"
+  if spec.get("mechanism_family") in NON_DIRECTIONAL_MECHANISM_FAMILIES:return False,"non_directional_mechanism_family"
   threshold=spec.get("threshold",0)
   if isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or not math.isfinite(threshold):return False,"invalid_discovery_threshold"
   if spec.get("direction","above") not in {"above","below"}:return False,"invalid_discovery_threshold"
