@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 1889,
-    "expanded": 1736,
-    "normalized": 1736,
+    "raw": 1900,
+    "expanded": 1746,
+    "normalized": 1746,
     "round1": 68,
     "deferred": 28,
     "survivors": 37,
@@ -1465,22 +1465,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -1572,22 +1556,6 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -4137,6 +4105,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -4148,6 +4164,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -4180,6 +4228,22 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "b709b8d02efc73b7",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
         "family": "options",
         "rounds": []
       }
@@ -5529,6 +5593,22 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -5716,22 +5796,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6761,54 +6825,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -6825,38 +6841,6 @@
       }
     },
     {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "35858a240d229d33",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part3",
@@ -6869,22 +6853,6 @@
       "lineage": {
         "source": "35858a240d229d33",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -7977,6 +7945,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -7988,6 +7972,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "6dcfeefb260e7e03",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -8585,6 +8585,22 @@
       }
     },
     {
+      "candidate_id": "100a54218862e1f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
+      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "100a54218862e1f9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b917583fb1e919c8",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2021.113022",
@@ -8857,22 +8873,6 @@
       }
     },
     {
-      "candidate_id": "100a54218862e1f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
-      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "100a54218862e1f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1ef8b8bf05802f06",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2025.141013",
@@ -9097,6 +9097,22 @@
       }
     },
     {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9129,6 +9145,22 @@
       }
     },
     {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "634c42888d8e48ae",
       "source": "crossref",
       "source_url": "https://doi.org/10.70693/cjst.v2i2.1935",
@@ -9156,6 +9188,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -9481,22 +9529,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -9545,22 +9577,6 @@
       }
     },
     {
-      "candidate_id": "edfa6ffeb17a599b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "edfa6ffeb17a599b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1d029873c0942566",
       "source": "crossref",
       "source_url": "https://doi.org/10.62989/jemr2025.2.2.10",
@@ -9572,22 +9588,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1d029873c0942566",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -14649,22 +14649,6 @@
       }
     },
     {
-      "candidate_id": "65ff8fa61bb6aca7",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
-      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "65ff8fa61bb6aca7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "466b8eb708589e6a",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/restud/rdu035",
@@ -14948,6 +14932,22 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "b82753e248ea2e11",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "670afeaa28dbc276",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/ijfs7020026",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "670afeaa28dbc276",
         "family": "china_a_share",
         "rounds": []
       }
@@ -15893,6 +15893,22 @@
       "lineage": {
         "source": "202652dad1a6a344",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "65ff8fa61bb6aca7",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
+      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "65ff8fa61bb6aca7",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -18009,22 +18025,6 @@
       }
     },
     {
-      "candidate_id": "bb6db858bad92360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.irfa.2018.09.003",
-      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
-      "description": "OpenAlex work type=article year=2018",
-      "family": "regime",
-      "market": null,
-      "query": "crypto regime switching hidden Markov trading",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "bb6db858bad92360",
-        "family": "regime",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "640089d2af00441f",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s42521-024-00123-2",
@@ -19364,6 +19364,22 @@
       "source_timestamp": "2017",
       "lineage": {
         "source": "5a65302a3252d9e5",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bb6db858bad92360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.irfa.2018.09.003",
+      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
+      "description": "OpenAlex work type=article year=2018",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "bb6db858bad92360",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -20745,22 +20761,6 @@
       }
     },
     {
-      "candidate_id": "670afeaa28dbc276",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/ijfs7020026",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "smc_ict",
-      "market": null,
-      "query": "prediction markets automated trading research",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "670afeaa28dbc276",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cf90b754cabfe824",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjx022",
@@ -21977,6 +21977,22 @@
       }
     },
     {
+      "candidate_id": "04eb306f29464b1d",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.55375/jssc.2021.4.1",
+      "title": "\u56db\u5341\u5e74\uff081980-2020\uff09\u6765\u4e2a\u4eba\u501f\u6b3e\u9886\u57df\u7684\u7814\u7a76\u4e3b\u9898\u53d8\u8fc1 -\u57fa\u4e8e\u6587\u672c\u6316\u6398LDA\u7b97\u6cd5\u7684\u4e3b\u9898\u53d1\u73b0\u548c\u53ef\u89c6\u5316",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "04eb306f29464b1d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dc3373ed06ec9873",
       "source": "openalex",
       "source_url": "https://doi.org/10.33142/mem.v5i1.11182",
@@ -22073,22 +22089,6 @@
       }
     },
     {
-      "candidate_id": "7794ee980d9b0a5b",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
-      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7794ee980d9b0a5b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cc0b2dcd4b769e08",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/n972018-01149",
@@ -22121,38 +22121,6 @@
       }
     },
     {
-      "candidate_id": "04eb306f29464b1d",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.55375/jssc.2021.4.1",
-      "title": "\u56db\u5341\u5e74\uff081980-2020\uff09\u6765\u4e2a\u4eba\u501f\u6b3e\u9886\u57df\u7684\u7814\u7a76\u4e3b\u9898\u53d8\u8fc1 -\u57fa\u4e8e\u6587\u672c\u6316\u6398LDA\u7b97\u6cd5\u7684\u4e3b\u9898\u53d1\u73b0\u548c\u53ef\u89c6\u5316",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "04eb306f29464b1d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -22180,6 +22148,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
@@ -22324,6 +22308,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e4c7ad87aaa81708",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7794ee980d9b0a5b",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
+      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7794ee980d9b0a5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -25269,6 +25269,166 @@
       "lineage": {
         "source": "aaac9a67d274c5a9",
         "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0b333fdb3f64e0b0",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/6ad4fbfb83105b8c27d0c4ed3d2c4d681502eccb",
+      "title": "A Cryptocurrency Multiple Trading Strategy with Kalman Filter Innovation Volatility Interval Forecasts",
+      "description": "Pairs trading and multiple trading strategies are types of market-neutral strategies to use a pair or a combination of stocks and other financial instruments with co-integration or co-movements to generate potential profits, which may not be affected by the direction of the overall market. Commonly used pairs and multiple trading strategies are constructed using the Kalman Filter (KF) to utilize mean reversion in nonstationary but co-integrated asset prices. In this paper, we propose novel resilient pairs trading and multiple trading strategies using the combination of the KF algorithm and the KF innovation volatility interval forecasts using neural networks. The proposed trading strategies are implemented and investigated using the hourly prices of Bitcoin, Ethereum and Bitcoin Cash in the bear market. Those crypto assets are selected because they move in the same direction in the long term and have high trading volumes. The experimental results reveal performance for the proposed trading strategies with the upper and lower trading intervals using KF innovation volatility interval forecasts superior to that of the trading strategies with upper and lower trading bands using KF innovation volatility point forecasts. The performance and robustness of the proposed trading strategies using a proper assumption of transaction costs have also been examined. The strategies using innovation volatility interval forecasts consistently generate higher profits and a more robust number of transactions with or without transaction costs than those using innovation volatility point forecasts.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "0b333fdb3f64e0b0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4f113f530677ecef",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/57c3483bcd575e9b5fb164f50725966d3bf49f2a",
+      "title": "A Low-Volatility Strategy based on Hedging a Quanto Perpetual Swap on BitMEX",
+      "description": "In 2016, BitMEX introduced a novel type of crypto derivates \u2013 Perpetual Swaps, i.e., futures with an infinite term. Perpetual swaps provide a new strategic risk management tool for cryptocurrencies due to their custody-free nature, high leverage, and funding mechanism, but there has been little quantitative analysis on the their benefits. In this paper, we introduce a trading strategy that combines a Quanto Perpetual Swap with a spot position to benefit from the funding mechanism. We compare our strategy with a long-only investment in the underlying cryptocurrency and a similar strategy based on Linear Perpetual Swaps to evaluate their performances in a large-scale backtest covering the years 2021 and 2022. Our analysis shows that our strategy generates positive returns in bullish market phases of the underlying with lower volatility.",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "4f113f530677ecef",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bd50faba8d460d36",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/ff04b35ff13283e61c75af50a6adb4e65b381c16",
+      "title": "A Study on Stock Trading Method based on Volatility Breakout Strategy using a Deep Neural Network",
+      "description": "",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "bd50faba8d460d36",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "32d57cde827e100d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "32d57cde827e100d",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6fa56e72564c67b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
+      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
+      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "6fa56e72564c67b5",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f609682f5a89dcc5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/57ebb18873641f9ddc84504520360928a0fc73e1",
+      "title": "Climate risks and cryptocurrency volatility: evidence from crypto market crisis",
+      "description": "PurposeThis study aims to examine the impact of climate-related risks on cryptocurrency volatility during crisis periods, focusing on the physical risk index (PRI) and transition risk index (TRI). It investigates how acute and chronic climate events, alongside regulatory and technological changes, influence market dynamics in major cryptocurrencies, including Bitcoin, Ethereum, Litecoin and Ripple.Design/methodology/approachA fuzzy logic model is employed to evaluate the effects of PRI and TRI on cryptocurrency volatility. The model\u2019s accuracy is validated using root mean square error (RMSE) metrics to ensure reliability.FindingsThe results reveal that acute events (e.g. hurricanes and wildfires) and chronic risks (e.g. long-term environmental disruptions) significantly heighten cryptocurrency volatility. Transition risks, including regulatory and technological shifts, also play a pivotal role. Bitcoin and Ethereum exhibit the highest sensitivities, reflecting the critical influence of climate risks on market stability.Research limitations/implicationsThis study enriches the literature by integrating climate risk factors into cryptocurrency market analysis and advancing fuzzy logic models to assess non-linear interactions in financial markets. It provides a novel framework for evaluating external shocks\u2019 impact on digital assets.Practical implicationsInvestors and market participants can use these findings to incorporate climate risks into their investment strategies, diversify portfolios and anticipate periods of instability. The insights also guide policymakers in developing resilient frameworks that align cryptocurrency regulations with environmental goals.Social implicationsBy linking climate risks to cryptocurrency market behavior, this research emphasizes the need for sustainable investment practices and collaborative policy efforts. It advocates for integrating environmental sustainability into financial systems to mitigate systemic risks and promote economic",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "f609682f5a89dcc5",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0b7e8e48263c5d84",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3c14b7a0036f99e616e92f9b2eee400156962510",
+      "title": "Comparative Study of Automatic Trading and Buy-and-Hold in the S&P 500 Index Using a Volatility Breakout Strategy",
+      "description": "",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "0b7e8e48263c5d84",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4b0ee1965797ef34",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/521d76a9668628a32f4fbeb2da7a0eb1ec3e0356",
+      "title": "Crypto Volatility Forecasting: Mounting a HAR, Sentiment, and Machine Learning Horserace",
+      "description": "The relationship between investor sentiment and cryptocurrency market volatility remains an area of growing interest in empirical finance. In this study, we present an innovative forecasting approach by utilizing a unique dataset of AI-generated sentiment from a comprehensive database of crypto market news. In a horserace fashion, we first evaluate the Heterogeneous Autoregressive (HAR) model and then compare its forecasting performance to five advanced machine learning (ML) methods. ML performs reasonably well and improves the accuracy of the benchmark HAR model. Interestingly, including sentiment does not improve the forecasting accuracy of the HAR model. However, our findings highlight that investor sentiment seems to influence crypto market volatility in a nonlinear fashion that can (only) be captured by ML methods. In other words, LightGBM, XGBoost, and LSTM models show enhanced predictive accuracy when sentiment data is incorporated, improving no-sentiment forecasts in 54.17% of the cases studied. Overall, our results emphasize the significant potential of integrating machine learning and sentiment analysis as a promising avenue for improved forecasting, offering potential benefits for risk management strategies and provide valuable insights for researchers and practitioners.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "4b0ee1965797ef34",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf6cbb16cb1eb537",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cf6cbb16cb1eb537",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b78e6c722d78454e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c40c802b1fb478ecfad6f4ce5044870631327173",
+      "title": "The Implementation and Refinement of Range Breakout Strategy in Chinese Commodity Market",
+      "description": "The range breakout strategy is a momentum strategy that involves taking a long position in a security when its price exceeds a predetermined range and a short position when the price falls below the range. Previous research has indicated that this strategy is well-suited to the price volatility patterns observed in commodity markets. Considering the significant expansion and di-versification of China's commodity market in recent years, we decided to apply the range breakout strategy to China's commodity futures market and assess its feasibility and profitability. Our research utilized historical performance data from the Zhengzhou Commodity Exchange and Shanghai Future Exchange between September 1, 2012, and July 31, 2022, obtained from CSMR as our database. We focused on the top 27 most liquid commodity futures categories to construct our back-testing portfolio. Our approach centered around using volatility as the basis for entry signals in the range breakout strategy and signal weighting as a portfolio construction method. The results demonstrate that the range breakout strategy, based on volatility, is highly effective in China's commodity futures market. This research con-tributes to the enrichment of optimization strategies in China's Future Market. Furthermore, we explored the use of cross-commodity hedging and the Average True Range (ATR) indicator to further enhance the strategy. Although no practical improvements were discovered beyond the original strategy, this exploration offers valuable insights for future research.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "b78e6c722d78454e",
+        "family": "momentum_trend",
         "rounds": []
       }
     },

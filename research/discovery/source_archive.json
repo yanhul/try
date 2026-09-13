@@ -48,6 +48,11 @@
     },
     {
       "source": "arxiv",
+      "query": "China A-share point-in-time survivorship backtest",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/x930g3J2Z+riAHNtJsbGB9jwvtE</id>\n  <title>arXiv Query: search_query=all:China OR all:A-share OR all:point-in-time OR all:survivorship OR all:backtest&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T06:13:40Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:China+OR+(all:A-share+OR+(all:point-in-time+OR+(all:survivorship+OR+all:backtest)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>159498</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/1509.08248v1</id>\n    <title>Correctness of Backtest Engines</title>\n    <updated>2015-09-28T09:30:12Z</updated>\n    <link href=\"https://arxiv.org/abs/1509.08248v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1509.08248v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In recent years several trading platforms appeared which provide a backtest engine to calculate historic performance of self designed trading strategies on underlying candle data. The construction of a correct working backtest engine is, however, a subtle task as shown by Maier-Paape and Platen (cf. arXiv:1412.5558 [q-fin.TR]). Several platforms are struggling on the correctness.\n  In this work, we discuss the problem how the correctness of backtest engines can be verified. We provide models for candles and for intra-period prices which will be applied to conduct a proof of correctness for a given backtest engine if the here provided tests on specific model candles are successful. Furthermore, we hint to algorithmic considerations in order to allow for a fast implementation of these tests necessary for the proof of correctness.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2015-09-28T09:30:12Z</published>\n    <arxiv:comment>15 pages, 6 figures; Keywords: backtest evaluation, historical simulation, trading system, candle chart, imperfect data, price model, correctness test, backtest correctness</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Robert Löw</name>\n    </author>\n    <author>\n      <name>Stanislaus Maier-Paape</name>\n    </author>\n    <author>\n      <name>Andreas Platen</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2603.19380v1</id>\n    <title>Survivorship Bias in Emerging Market Small-Cap Indices: Evidence from India's NIFTY Smallcap 250</title>\n    <updated>2026-03-19T18:14:04Z</updated>\n    <link href=\"https://arxiv.org/abs/2603.19380v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2603.19380v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This study quantifies survivorship bias in India's NIFTY Smallcap 250 index using a dataset of 1,437 stocks over nine years (2016-2025). By reconstructing historical index composition through market capitalization ranking and comparing equal-weight portfolios of current constituents versus all historical members, I show that survivor-only backtesting overstates annual returns by 4.94 percentage points (23.3%) and Sharpe ratios by 0.097 (9.1%). The analysis reveals an 82.5% turnover rate, including delisted (16.1%), graduated (33.1%), and demoted stocks (33.2%), with all categories contributing to bias. Using bhavcopy data that includes delisted securities, the reconstruction achieves 100% accuracy for current constituents and an estimated 85-90% accuracy historically. These findings highlight that survivorship bias is materially larger in emerging market small-caps and that using only current index members can significantly overstate strategy performance. Briefly, the methodology reconstructs historical index membership using a price-volume-based ranking approach to enable survivor-free backtesting.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-03-19T18:14:04Z</published>\n    <arxiv:comment>25 pages, 7 figures. Research paper on survivorship bias in Indian small-cap equities using reconstructed historical index data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <author>\n      <name>Harjot Singh Ranse</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2305.01642v1</id>\n    <title>Construct sparse portfolio with mutual fund's favourite stocks in China A share market</title>\n    <updated>2023-04-24T09:40:44Z</updated>\n    <link href=\"https://arxiv.org/abs/2305.01642v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2305.01642v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Unlike developed market, some emerging markets are dominated by retail and unprofessional trading. China A share market is a good and fitting example in last 20 years. Meanwhile, lots of research show professional investor in China A share market continuously generate excess return compare with total market index. Specifically, this excess return mostly come from stock selectivity ability instead of market timing. However for some reason such as fund capacity limit, fund manager change or market regional switch, it is very hard to find a fund could continuously beat market. Therefore, in order to get excess return from mutual fund industry, we use quantitative way to build the sparse portfolio that take advantage of favorite stocks by mutual fund in China A market. Firstly we do the analysis about favourite stocks by mutual fund and compare the different method to construct our portfolio. Then we build a sparse stock portfolio with constraint on both individual stock and industry exposure using portfolio optimizer to closely track the partial equity funds index 930950.CSI with median 0.985 correlation. This problem is much more difficult than tracking full information index or traditional ETF as higher turnover of mutual fund, just first 10 holding of mutual fund available and fund report updated quarterly with 15 days delay. Finally we build another low risk and balanced sparse portfolio that consistently outperform benchmark 930950.CSI.</summary>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-24T09:40:44Z</published>\n    <arxiv:comment>Portfolio construction, Sparsity, Index tracking, Mutual fund, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.PM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1412.5558v1</id>\n    <title>Backtest of Trading Systems on Candle Charts</title>\n    <updated>2014-12-17T20:07:35Z</updated>\n    <link href=\"https://arxiv.org/abs/1412.5558v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1412.5558v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this paper we try to design the necessary calculation needed for backtesting trading systems when only candle chart data are available. We lay particular emphasis on situations which are not or not uniquely decidable and give possible strategies to handle such situations.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-12-17T20:07:35Z</published>\n    <arxiv:comment>12 pages, 19 figures; Keywords: backtest evaluation, historical simulation, trading system, candle chart, imperfect data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <arxiv:journal_ref>IFTA Journal, pp. 10-17, 2016</arxiv:journal_ref>\n    <author>\n      <name>Stanislaus Maier-Paape</name>\n    </author>\n    <author>\n      <name>Andreas Platen</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.04676v2</id>\n    <title>Adjust factor with volatility model using MAXFLAT low-pass filter and construct portfolio in China A share market</title>\n    <updated>2023-04-24T09:47:42Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.04676v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.04676v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In the field of quantitative finance, volatility models, such as ARCH, GARCH, FIGARCH, SV, EWMA, play the key role in risk and portfolio management. Meanwhile, factor investing is more and more famous since mid of 20 century. CAPM, Fama French three factor model, Fama French five-factor model, MSCI Barra factor model are mentioned and developed during this period. In this paper, we will show why we need adjust group of factors by our MAXFLAT low-pass volatility model. All of our experiments are under China's CSI 300 and CSI 500 universe which represent China's large cap stocks and mid-small cap stocks. Our result shows adjust factors by MAXFLAT volatility model have better performance in both large cap and small cap universe than original factors or other risk adjust factors in China A share. Also the portfolio constructed by MAXFLAT risk adjust factors have continuous excess return and lower beta compare with benchmark index.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-29T09:46:12Z</published>\n    <arxiv:comment>Volatility model, Multi-factors model, Portfolio construction, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2206.13022v3</id>\n    <title>Status and progress of China SKA Regional Centre prototype</title>\n    <updated>2022-09-30T02:16:14Z</updated>\n    <link href=\"https://arxiv.org/abs/2206.13022v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2206.13022v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Square Kilometre Array (SKA) project consists of delivering two largest radio telescope arrays being built by the SKA Observatory (SKAO), which is an intergovernmental organization bringing together nations from around the world with China being one of the major member countries. The computing resources needed to process, distribute, curate and use the vast amount of data that will be generated by the SKA telescopes are too large for the SKAO to manage on its own. To address this challenge, the SKAO is working with the international community to create a shared, distributed data, computing and networking capability called the SKA Regional Centre Alliance. In this model, the SKAO will be supported by a global network of SKA Regional Centres (SRCs) distributed around the world in its member countries to build an end-to-end science data system that will provide astronomers with high-quality science products. SRCs undertake deep processing, scientific analysis, and long-term storage of the SKA data, as well as user support. China has been actively participating in and promoting the construction of SRCs. This paper introduces the international cooperation and ongoing prototyping of the global SRC network, the construction plan of the China SRC and describes in detail the China SRC prototype. The paper also presents examples of scientific applications of SKA precursor and pathfinder telescopes completed using resources from the China SRC prototype. Finally, the future prospects of the China SRC are presented.</summary>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-06-27T02:41:06Z</published>\n    <arxiv:comment>T. An, et al. Status and progress of China SKA Regional Centre prototype. Sci. China-Phys. Mech. Astron. 65: 129501 (2022)</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.IM\"/>\n    <author>\n      <name>Tao An</name>\n    </author>\n    <author>\n      <name>Xiaocong Wu</name>\n    </author>\n    <author>\n      <name>Baoqiang Lao</name>\n    </author>\n    <author>\n      <name>Shaoguang Guo</name>\n    </author>\n    <author>\n      <name>Zhijun Xu</name>\n    </author>\n    <author>\n      <name>Weijia Lv</name>\n    </author>\n    <author>\n      <name>Yingkang Zhang</name>\n    </author>\n    <author>\n      <name>Zhongli Zhang</name>\n    </author>\n    <arxiv:doi>10.1007/s11433-022-1981-8</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s11433-022-1981-8\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1710.07763v1</id>\n    <title>Modeling the Annual Growth Rate of Electricity Consumption of China in the 21st Century: Trends and Prediction</title>\n    <updated>2017-10-21T06:41:53Z</updated>\n    <link href=\"https://arxiv.org/abs/1710.07763v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1710.07763v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this paper, the annual growth rate of electricity consumption in China in the first 15 years of the 21st century is modeled using multiple linear regression. Historical data and trends of gross domestic product, fixed assets investment and share of the secondary sector in China's GDP are used to account for the observed trend and fluctuation of electricity consumption in recent years. A comparison between the proposed method and the predictions given by China Electricity Council is performed, showing that the proposed method is good at capturing the trend of the electricity consumption of China under complex social and economic background. The electricity consumptions for 2016 and 2017 are also predicted, which is helpful for energy planners and policymakers for future challenges.</summary>\n    <category term=\"stat.AP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-10-21T06:41:53Z</published>\n    <arxiv:comment>2016 US-China Green Energy Summit on Developing Energy Internets to Combat Climate Change</arxiv:comment>\n    <arxiv:primary_category term=\"stat.AP\"/>\n    <author>\n      <name>Kunjin Chen</name>\n    </author>\n    <author>\n      <name>Kunlong Chen</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2303.17791v1</id>\n    <title>Analysis of the current status of tuberculosis transmission in China based on a heterogeneity model</title>\n    <updated>2023-03-31T03:40:09Z</updated>\n    <link href=\"https://arxiv.org/abs/2303.17791v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2303.17791v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Tuberculosis (TB) is an infectious disease transmitted through the respiratory system. China is one of the countries with a high burden of TB. Since 2004, an average of more than 800,000 cases of active TB have been reported each year in China. Analyzing the case data from 2004-2018, we find significant differences in TB incidence by age group. Therefore, the effect of age heterogeneous structure on TB transmission needs further study. We develop a model of TB to explore the role of age heterogeneity as a factor in TB transmission. The model is fitted numerically using the nonlinear least squares method to obtain the key parameters in the model, and the basic reproduction number Rv 0.8017 is calculated and the sensitivity anal-ysis of Rv to the parameters is given. The simulation results show that reducing the number of new infections in the elderly population and increasing the recovery rate of elderly patients with the disease could significantly reduce the transmission of tuberculosis. Furthermore the feasibility of achieving the goals of the WHO End TB Strategy in China is assessed, and we obtain that with existing TB control measures it will take another 30 years for China to reach the WHO goal to reduce 90% of the number of new cases by year 2049. However, in theoretical it is feasible to reach the WHO strategic goal of ending tuberculosis by 2035 if the group contact rate in the elderly population can be reduced though it is difficulty to reduce the contact rate.</summary>\n    <category term=\"stat.AP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-31T03:40:09Z</published>\n    <arxiv:comment>We think this is a very interesting work that gives a good understanding of the current TB transmission in China and assesses the possibility of China achieving the 2035 TB control target and also explores possible ways for how to prevent and control the TB in China</arxiv:comment>\n    <arxiv:primary_category term=\"stat.AP\"/>\n    <author>\n      <name>Chuanqing Xu</name>\n    </author>\n    <author>\n      <name>Kedeng Cheng</name>\n    </author>\n    <author>\n      <name>Yu Wang</name>\n    </author>\n    <author>\n      <name>Songbai Guo</name>\n    </author>\n    <author>\n      <name>Maoxing Liu</name>\n    </author>\n    <author>\n      <name>Xiaojing Wang</name>\n    </author>\n    <author>\n      <name>Zhiguo Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1702.02461v1</id>\n    <title>Who Will Win Practical Artificial Intelligence? AI Engineerings in China</title>\n    <updated>2017-02-06T14:10:28Z</updated>\n    <link href=\"https://arxiv.org/abs/1702.02461v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1702.02461v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Currently, Artificial Intelligence (AI) has won unprecedented attention and is becoming the increasingly popular focus in China. This change can be judged by the impressive record of academic publications, the amount of state-level investment and the presence of nation-wide participation and devotion. In this paper, we place emphasis on discussing the progress of artificial intelligence engineerings in China. We first introduce the focus on AI in Chinese academia, including the supercomputing brain system, Cambrian Period supercomputer of neural networks, and biometric systems. Then, the development of AI in industrial circles and the latest layout of AI products in companies, such as Baidu, Tencent, and Alibaba, are introduced. Last, we bring in the opinions and arguments of the main intelligentsia of China about the future development of AI, including how to examine the relationship between humanity on one side and science and technology on the other.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-02-06T14:10:28Z</published>\n    <arxiv:comment>Affiliations: 1 National Laboratory of Pattern Recognition, Institute of Automation, Chinese Academy of Sciences, Beijing, 100190, P.R. China. 2 The State Key Laboratory of Management and Control for Complex Systems, Institute of Automation, Chinese Academy of Sciences, Beijing, 100190, P.R. China</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Huai-Yu Wu</name>\n    </author>\n    <author>\n      <name>Feiyue Wang</name>\n    </author>\n    <author>\n      <name>Chunhong Pan</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2209.00991v6</id>\n    <title>E-backtesting</title>\n    <updated>2026-04-15T02:17:54Z</updated>\n    <link href=\"https://arxiv.org/abs/2209.00991v6\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2209.00991v6\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In the recent Basel Accords, the Expected Shortfall (ES) replaces the Value-at-Risk (VaR) as the standard risk measure for market risk in the banking sector, making it the most important risk measure in financial regulation. One of the most challenging tasks in risk modeling practice is to backtest ES forecasts provided by financial institutions. To design a model-free backtesting procedure for ES, we make use of the recently developed techniques of e-values and e-processes. Backtest e-statistics are introduced to formulate e-processes for risk measure forecasts, and unique forms of backtest e-statistics for VaR and ES are characterized using recent results on identification functions. For a given backtest e-statistic, a few criteria for optimally constructing the e-processes are studied. The proposed method can be naturally applied to many other risk measures and statistical quantities. We conduct extensive simulation studies and data analysis to illustrate the advantages of the model-free backtesting method, and compare it with the ones in the literature.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ME\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-08-27T03:29:13Z</published>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <author>\n      <name>Qiuqi Wang</name>\n    </author>\n    <author>\n      <name>Ruodu Wang</name>\n    </author>\n    <author>\n      <name>Johanna Ziegel</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/0911.3421v1</id>\n    <title>The Emergence of China as a Leading Nation in Science</title>\n    <updated>2009-11-17T22:29:06Z</updated>\n    <link href=\"https://arxiv.org/abs/0911.3421v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/0911.3421v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  China has become the fifth leading nation in terms of its share of the world's scientific publications. The citation rate of papers with a Chinese address for the corresponding author also exhibits exponential growth. More specifically, China has become a major player in critical technologies like nanotechnology. Although it is difficult to delineate nanoscience and nanotechnology, we show that China has recently achieved a position second only to that of the USA. Funding for R&amp;D has been growing exponentially, but since 1997 even more in terms of business expenditure than in terms of government expenditure. It seems that the Chinese government has effectively used the public-sector research potential to boost the knowledge-based economy of the country. Thus, China may be achieving the (\"Lisbon\") objectives of the transition to a knowledge-based economy more broadly and rapidly than its western counterparts. Because of the sustained increase in Chinese government funding and the virtually unlimited reservoir of highly-skilled human resources, one may expect a continuation of this growth pattern in the near future.</summary>\n    <category term=\"physics.soc-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2009-11-17T22:29:06Z</published>\n    <arxiv:primary_category term=\"physics.soc-ph\"/>\n    <arxiv:journal_ref>Zhou, Ping &amp; Loet Leydesdorff, The emergence of China as a leading nation in science, Research Policy, 35(1), 2006, 83-104</arxiv:journal_ref>\n    <author>\n      <name>Ping Zhou</name>\n    </author>\n    <author>\n      <name>Loet Leydesdorff</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2204.12852v1</id>\n    <title>On Survivorship Bias in MS MARCO</title>\n    <updated>2022-04-27T11:34:14Z</updated>\n    <link href=\"https://arxiv.org/abs/2204.12852v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2204.12852v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Survivorship bias is the tendency to concentrate on the positive outcomes of a selection process and overlook the results that generate negative outcomes. We observe that this bias could be present in the popular MS MARCO dataset, given that annotators could not find answers to 38--45% of the queries, leading to these queries being discarded in training and evaluation processes. Although we find that some discarded queries in MS MARCO are ill-defined or otherwise unanswerable, many are valid questions that could be answered had the collection been annotated more completely (around two thirds using modern ranking techniques). This survivability problem distorts the MS MARCO collection in several ways. We find that it affects the natural distribution of queries in terms of the type of information needed. When used for evaluation, we find that the bias likely yields a significant distortion of the absolute performance scores observed. Finally, given that MS MARCO is frequently used for model training, we train models based on subsets of MS MARCO that simulates more survivorship bias. We find that models trained in this setting are up to 9.9% worse when evaluated on versions of the dataset with more complete annotations, and up to 3.5% worse at zero-shot transfer. Our findings are complementary to other recent suggestions for further annotation of MS MARCO, but with a focus on discarded queries. Code and data for reproducing the results of this paper are available in an online appendix.</summary>\n    <category term=\"cs.IR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-04-27T11:34:14Z</published>\n    <arxiv:comment>SIGIR 2022</arxiv:comment>\n    <arxiv:primary_category term=\"cs.IR\"/>\n    <author>\n      <name>Prashansa Gupta</name>\n    </author>\n    <author>\n      <name>Sean MacAvaney</name>\n    </author>\n    <arxiv:doi>10.1145/3477495.3531832</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3477495.3531832\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2502.19719v1</id>\n    <title>Tripartite Perspective on the Copyright-Sharing Economy in China</title>\n    <updated>2025-02-27T03:23:09Z</updated>\n    <link href=\"https://arxiv.org/abs/2502.19719v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2502.19719v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Internet and digital technologies have facilitated copyright sharing in an unprecedented way, creating significant tensions between the free flow of information and the exclusive nature of intellectual property. Copyright owners, users, and online platforms are the three major players in the copyright system. These stakeholders and their relations form the main structure of the copyright-sharing economy. Using China as an example, this paper provides a tripartite perspective on the copyright ecology based on three categories of sharing, namely unauthorized sharing, altruistic sharing, and freemium sharing. The line between copyright owners, users, and platforms has been blurred by rapidly changing technologies and market forces. By examining the strategies and practices of these parties, this paper illustrate the opportunities and challenges for China's copyright industry and digital economy. The paper concludes that under the shadow of the law, a sustainable copyright-sharing model must carefully align the interests of businesses and individual users.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-02-27T03:23:09Z</published>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <arxiv:journal_ref>Computer Law &amp; Security Review, Vol. 35, Iss. 4 (2019)</arxiv:journal_ref>\n    <author>\n      <name>Jyh-An Lee</name>\n    </author>\n    <arxiv:doi>10.1016/j.clsr.2019.05.00</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.clsr.2019.05.00\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.00294v1</id>\n    <title>Tales of Emotion and Stock in China: Volatility, Causality and Prediction</title>\n    <updated>2017-04-30T10:31:09Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.00294v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.00294v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>How the online social media, like Twitter or its variant Weibo, interacts with the stock market and whether it can be a convincing proxy to predict the stock market have been debated for years, especially for China. As the traditional theory in behavioral finance states, the individual emotions can influence decision-makings of investors, it is reasonable to further explore these controversial topics systematically from the perspective of online emotions, which are richly carried by massive tweets in social media. Through thorough studies on over 10 million stock-relevant tweets and 3 million investors from Weibo, it is revealed that inexperienced investors with high emotional volatility are more sensible to the market fluctuations than the experienced or institutional ones, and their dominant occupation also indicates that the Chinese market might be more emotional as compared to its western counterparts. Then both correlation analysis and causality test demonstrate that five attributes of the stock market in China can be competently predicted by various online emotions, like disgust, joy, sadness and fear. Specifically, the presented prediction model significantly outperforms the baseline model, including the one taking purely financial time series as input features, on predicting five attributes of the stock market under the $K$-means discretization. We also employ this prediction model in the scenario of realistic online application and its performance is further testified.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-04-30T10:31:09Z</published>\n    <arxiv:comment>This an extended version our conference paper titled \"Can online emotions predict the stock market in China?\" in WISE 2016 [arXiv:1604.07529]</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Zhenkun Zhou</name>\n    </author>\n    <author>\n      <name>Ke Xu</name>\n    </author>\n    <author>\n      <name>Jichang Zhao</name>\n    </author"
+    },
+    {
+      "source": "arxiv",
       "query": "China stock limit-up quantitative strategy",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/9Y9KIcQOBIeNW7tB41TpkrLJJEk</id>\n  <title>arXiv Query: search_query=all:China OR all:stock OR all:limit-up OR all:quantitative OR all:strategy&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T11:15:44Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:China+OR+(all:stock+OR+(all:limit-up+OR+(all:quantitative+OR+all:strategy)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>329985</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2412.06830v1</id>\n    <title>A New Strategy for the Exploration of Venus</title>\n    <updated>2024-12-06T22:58:32Z</updated>\n    <link href=\"https://arxiv.org/abs/2412.06830v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2412.06830v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The 2023-2032 Planetary Science and Astrobiology Decadal Survey Origins, Worlds, and Life recommended that \"NASA develop scientific exploration strategies, as it has for Mars, in areas of broad scientific importance, e.g., Venus... that have an increasing number of U.S. missions and international collaboration opportunities\" (OWL, p.22-10). In NASA's initial responses to that Decadal Survey, the agency asserted that \"...specific scientific exploration strategies should be community generated by bodies such as the Analysis Groups,\" thus placing the onus on the planetary community to generate and support these exploration strategies. In late 2022, the Venus Exploration Analysis Group began a project to develop a new exploration strategy for Venus, reflecting the 2021 selections of the VERITAS, DAVINCI, and EnVision missions and the sweeping comparative planetology recommendations relevant to Venus in Origins, Worlds, and Life.\n  This is that strategy.\n  Taking a broad look at the scientific, technological, and programmatic advances required to address the key outstanding questions that Venus poses, and predicated on VERITAS, DAVINCI, and EnVision flying as planned in the early 2030s, this report outlines a set of actions available to NASA, VEXAG, and the planetary science community at large to establish a sustained program of Venus exploration in the years and decades ahead. Key to this approach is recognizing Venus as a unique setting where multiple, cross-disciplinary, Decadal-level planetary, Earth, heliophysics, and exoplanet science questions can be addressed, as well as being a worthy target of exploration in its own right.\n  This report offers Assessments of the current state of Venus exploration, and Actions for the U.S. and international Venus community, as well as NASA, to consider. This strategy is a living document and should be updated as warranted.</summary>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.EP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-12-06T22:58:32Z</published>\n    <arxiv:comment>A New Strategy for the Exploration of Venus</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.IM\"/>\n    <author>\n      <name>The VEXAG Exploration Strategy Study Analysis Workgroup</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.00294v1</id>\n    <title>Tales of Emotion and Stock in China: Volatility, Causality and Prediction</title>\n    <updated>2017-04-30T10:31:09Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.00294v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.00294v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>How the online social media, like Twitter or its variant Weibo, interacts with the stock market and whether it can be a convincing proxy to predict the stock market have been debated for years, especially for China. As the traditional theory in behavioral finance states, the individual emotions can influence decision-makings of investors, it is reasonable to further explore these controversial topics systematically from the perspective of online emotions, which are richly carried by massive tweets in social media. Through thorough studies on over 10 million stock-relevant tweets and 3 million investors from Weibo, it is revealed that inexperienced investors with high emotional volatility are more sensible to the market fluctuations than the experienced or institutional ones, and their dominant occupation also indicates that the Chinese market might be more emotional as compared to its western counterparts. Then both correlation analysis and causality test demonstrate that five attributes of the stock market in China can be competently predicted by various online emotions, like disgust, joy, sadness and fear. Specifically, the presented prediction model significantly outperforms the baseline model, including the one taking purely financial time series as input features, on predicting five attributes of the stock market under the $K$-means discretization. We also employ this prediction model in the scenario of realistic online application and its performance is further testified.</summary>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.SI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-04-30T10:31:09Z</published>\n    <arxiv:comment>This an extended version our conference paper titled \"Can online emotions predict the stock market in China?\" in WISE 2016 [arXiv:1604.07529]</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CY\"/>\n    <author>\n      <name>Zhenkun Zhou</name>\n    </author>\n    <author>\n      <name>Ke Xu</name>\n    </author>\n    <author>\n      <name>Jichang Zhao</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2305.01642v1</id>\n    <title>Construct sparse portfolio with mutual fund's favourite stocks in China A share market</title>\n    <updated>2023-04-24T09:40:44Z</updated>\n    <link href=\"https://arxiv.org/abs/2305.01642v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2305.01642v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Unlike developed market, some emerging markets are dominated by retail and unprofessional trading. China A share market is a good and fitting example in last 20 years. Meanwhile, lots of research show professional investor in China A share market continuously generate excess return compare with total market index. Specifically, this excess return mostly come from stock selectivity ability instead of market timing. However for some reason such as fund capacity limit, fund manager change or market regional switch, it is very hard to find a fund could continuously beat market. Therefore, in order to get excess return from mutual fund industry, we use quantitative way to build the sparse portfolio that take advantage of favorite stocks by mutual fund in China A market. Firstly we do the analysis about favourite stocks by mutual fund and compare the different method to construct our portfolio. Then we build a sparse stock portfolio with constraint on both individual stock and industry exposure using portfolio optimizer to closely track the partial equity funds index 930950.CSI with median 0.985 correlation. This problem is much more difficult than tracking full information index or traditional ETF as higher turnover of mutual fund, just first 10 holding of mutual fund available and fund report updated quarterly with 15 days delay. Finally we build another low risk and balanced sparse portfolio that consistently outperform benchmark 930950.CSI.</summary>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-24T09:40:44Z</published>\n    <arxiv:comment>Portfolio construction, Sparsity, Index tracking, Mutual fund, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.PM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1910.11775v2</id>\n    <title>Physics Briefing Book</title>\n    <updated>2020-01-10T08:40:16Z</updated>\n    <link href=\"https://arxiv.org/abs/1910.11775v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1910.11775v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The European Particle Physics Strategy Update (EPPSU) process takes a bottom-up approach, whereby the community is first invited to submit proposals (also called inputs) for projects that it would like to see realised in the near-term, mid-term and longer-term future. National inputs as well as inputs from National Laboratories are also an important element of the process. All these inputs are then reviewed by the Physics Preparatory Group (PPG), whose role is to organize a Symposium around the submitted ideas and to prepare a community discussion on the importance and merits of the various proposals. The results of these discussions are then concisely summarised in this Briefing Book, prepared by the Conveners, assisted by Scientific Secretaries, and with further contributions provided by the Contributors listed on the title page. This constitutes the basis for the considerations of the European Strategy Group (ESG), consisting of scientific delegates from CERN Member States, Associate Member States, directors of major European laboratories, representatives of various European organizations as well as invitees from outside the European Community. The ESG has the mission to formulate the European Strategy Update for the consideration and approval of the CERN Council.</summary>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-10-25T14:54:44Z</published>\n    <arxiv:comment>254 p. Revised version (10 January 2020): Update of the Physics Briefing Book for the European Strategy for Particle Physics, to take account of comments received from the community, in time for the strategy drafting session that will take place in Bad Honnef (Germany) on 20-24 January 2020</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ex\"/>\n    <author>\n      <name> European Strategy for Particle Physics Preparatory Group</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1603.01580v2</id>\n    <title>Cross-response in correlated financial markets: individual stocks</title>\n    <updated>2016-04-25T09:47:37Z</updated>\n    <link href=\"https://arxiv.org/abs/1603.01580v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1603.01580v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Previous studies of the stock price response to trades focused on the dynamics of single stocks, i.e. they addressed the self-response. We empirically investigate the price response of one stock to the trades of other stocks in a correlated market, i.e. the cross-responses. How large is the impact of one stock on others and vice versa? -- This impact of trades on the price change across stocks appears to be transient instead of permanent as we discuss from the viewpoint of market efficiency. Furthermore, we compare the self-responses on different scales and the self- and cross-responses on the same scale. We also find that the cross-correlation of the trade signs turns out to be a short-memory process.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2016-03-04T19:25:14Z</published>\n    <arxiv:comment>stock pairs, unaveraged, see arXiv:1510.03205</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <arxiv:journal_ref>Eur. Phys. J. B (2016) 89: 105</arxiv:journal_ref>\n    <author>\n      <name>Shanshan Wang</name>\n    </author>\n    <author>\n      <name>Rudi Schäfer</name>\n    </author>\n    <author>\n      <name>Thomas Guhr</name>\n    </author>\n    <arxiv:doi>10.1140/epjb/e2016-60818-y</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1140/epjb/e2016-60818-y\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.04676v2</id>\n    <title>Adjust factor with volatility model using MAXFLAT low-pass filter and construct portfolio in China A share market</title>\n    <updated>2023-04-24T09:47:42Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.04676v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.04676v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In the field of quantitative finance, volatility models, such as ARCH, GARCH, FIGARCH, SV, EWMA, play the key role in risk and portfolio management. Meanwhile, factor investing is more and more famous since mid of 20 century. CAPM, Fama French three factor model, Fama French five-factor model, MSCI Barra factor model are mentioned and developed during this period. In this paper, we will show why we need adjust group of factors by our MAXFLAT low-pass volatility model. All of our experiments are under China's CSI 300 and CSI 500 universe which represent China's large cap stocks and mid-small cap stocks. Our result shows adjust factors by MAXFLAT volatility model have better performance in both large cap and small cap universe than original factors or other risk adjust factors in China A share. Also the portfolio constructed by MAXFLAT risk adjust factors have continuous excess return and lower beta compare with benchmark index.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-29T09:46:12Z</published>\n    <arxiv:comment>Volatility model, Multi-factors model, Portfolio construction, China A share market</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <author>\n      <name>Ke Zhang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2003.02135v2</id>\n    <title>Impact of JD Bernal Thoughts in the Science of Science upon China: Implications for Quantitative Studies of Science Today</title>\n    <updated>2020-03-05T06:38:16Z</updated>\n    <link href=\"https://arxiv.org/abs/2003.02135v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2003.02135v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>John Desmond Bernal (1901-1970) was one of the most eminent scientists in molecular biology, and also regarded as the founding father of the Science of Science. His book The Social Function of Science laid the theoretical foundations for the discipline. In this article, we summarize four chief characteristics of his ideas in the Science of Science: the socio-historical perspective, theoretical models, qualitative and quantitative approaches, and studies of science planning and policy. China has constantly reformed its scientific and technological system based on research evidence of the Science of Science. Therefore, we analyze the impact of Bernal Science-of-Science thoughts on the development of Science of Science in China, and discuss how they might be usefully taken still further in quantitative studies of science.</summary>\n    <category term=\"physics.soc-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.DL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.hist-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-03-03T02:29:11Z</published>\n    <arxiv:comment>12 pages</arxiv:comment>\n    <arxiv:primary_category term=\"physics.soc-ph\"/>\n    <arxiv:journal_ref>Quantitative Science Studies, 2020</arxiv:journal_ref>\n    <author>\n      <name>Yong Zhao</name>\n    </author>\n    <author>\n      <name>Jian Du</name>\n    </author>\n    <author>\n      <name>Yishan Wu</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0410532v1</id>\n    <title>Quantitative Stellar Spectral Classification. III. Spectral Resolution</title>\n    <updated>2004-10-22T10:09:55Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0410532v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0410532v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  The method developed by Stock and Stock (1999) to derive absolute magnitudes and intrinsic colors is applied to simulated low-resolution spectra. The simulation is made by convolving real spectra with a Gaussian function, $σ$ (the full width at half maximum) related to the final spectral resolution. The accuracy with which the stellar parameters are determined indicates that the method may be applied to typical objective-prism spectra. We show that changes in the spectral resolution do not significantly affect the stellar parameters obtained with this method for early-type stars, whereas for later-type stars an improved approach is necessary.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2004-10-22T10:09:55Z</published>\n    <arxiv:comment>12 pages, 7 figures embedded, Accepted by RevMexAA</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Rev.Mex.Astron.Astrofis. 41 (2005) 31-40</arxiv:journal_ref>\n    <author>\n      <name>J. Garcia</name>\n    </author>\n    <author>\n      <name>J. Stock</name>\n    </author>\n    <author>\n      <name>M. J. Stock</name>\n    </author>\n    <author>\n      <name>N. Sanchez</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/physics/0205053v2</id>\n    <title>A Quantum Approach to Stock Price Fluctuations</title>\n    <updated>2003-05-09T00:42:10Z</updated>\n    <link href=\"https://arxiv.org/abs/physics/0205053v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/physics/0205053v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  A simple quantum model explains the Levy-unstable distributions for individual stock returns observed by ref.[1]. The probability density function of the returns is written as the squared modulus of an amplitude. For short time intervals this amplitude is proportional to a Cauchy-distribution and satisfies the Schroedinger equation with a non-hermitian Hamiltonian. The observed power law tails of the return fluctuations imply that the \"decay rate\", $γ(q)$ asymptotically is proportional to $|q|$, for large $|q|$. The wave number, the Fourier-conjugate variable to the return, is interpreted as a quantitative measure of \"market sentiment\". On a time scale of less than a few weeks, the distribution of returns in this quantum model is shape stable and scales. The model quantitatively reproduces the observed cumulative distribution for the short-term normalized returns over 7 orders of magnitude without adjustable parameters. The return fluctuations over large time periods ultimately become Gaussian if $γ(q\\sim 0)\\propto q^2$. The ansatz $γ(q)=b_T\\sqrt{m^2+q^2}$ is found to describe the positive part of the observed historic probability of normalized returns for time periods between T=5 min and $T\\sim 4$ years over more than 4 orders of magnitude in terms of one adjustable parameter $s_T=m b_T\\propto T$. The Sharpe ratio of a stock in this model has a finite limit as the investment horizon $T\\to 0$. Implications for short-term investments are discussed.</summary>\n    <category term=\"physics.soc-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.data-an\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2002-05-20T02:30:34Z</published>\n    <arxiv:comment>24 pages, 4 figures, revised and extended version of \"The Stock Price Distribution in Quantum Finance\"</arxiv:comment>\n    <arxiv:primary_category term=\"physics.soc-ph\"/>\n    <author>\n      <name>Martin Schaden</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/cond-mat/0203511v2</id>\n    <title>Statistical properties of stock order books: empirical results and models</title>\n    <updated>2002-06-18T16:17:45Z</updated>\n    <link href=\"https://arxiv.org/abs/cond-mat/0203511v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/cond-mat/0203511v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We investigate several statistical properties of the order book of three liquid stocks of the Paris Bourse. The results are to a large degree independent of the stock studied. The most interesting features concern (i) the statistics of incoming limit order prices, which follows a power-law around the current price with a diverging mean; and (ii) the humped shape of the average order book, which can be quantitatively reproduced using a `zero intelligence' numerical model, and qualitatively predicted using a simple approximation.</summary>\n    <category term=\"cond-mat\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2002-03-25T12:53:09Z</published>\n    <arxiv:comment>Revised version, 10 pages, 4 .eps figures. to appear in Quantitative Finance</arxiv:comment>\n    <arxiv:primary_category term=\"cond-mat\"/>\n    <arxiv:journal_ref>Quantitative Finance 2 251-256 (2002).</arxiv:journal_ref>\n    <author>\n      <name>J. -P. Bouchaud</name>\n    </author>\n    <author>\n      <name>M. Mezard</name>\n    </author>\n    <author>\n      <name>M. Potters</name>\n    </author>\n    <arxiv:doi>10.1088/1469-7688/2/4/301</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1088/1469-7688/2/4/301\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1801.00597v1</id>\n    <title>Exploiting Investors Social Network for Stock Prediction in China's Market</title>\n    <updated>2018-01-02T10:27:08Z</updated>\n    <link href=\"https://arxiv.org/abs/1801.00597v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1801.00597v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Recent works have shown that social media platforms are able to influence the trends of stock price movements. However, existing works have majorly focused on the U.S. stock market and lacked attention to certain emerging countries such as China, where retail investors dominate the market. In this regard, as retail investors are prone to be influenced by news or other social media, psychological and behavioral features extracted from social media platforms are thought to well predict stock price movements in the China's market. Recent advances in the investor social network in China enables the extraction of such features from web-scale data. In this paper, on the basis of tweets from Xueqiu, a popular Chinese Twitter-like social platform specialized for investors, we analyze features with regard to collective sentiment and perception on stock relatedness and predict stock price movements by employing nonlinear models. The features of interest prove to be effective in our experiments.</summary>\n    <category term=\"cs.CE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2018-01-02T10:27:08Z</published>\n    <arxiv:comment>accepted by Journal of Computational Science</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CE\"/>\n    <author>\n      <name>Xi Zhang</name>\n    </author>\n    <author>\n      <name>Jiawei Shi</name>\n    </author>\n    <author>\n      <name>Di Wang</name>\n    </author>\n    <author>\n      <name>Binxing Fang</name>\n    </author>\n    <arxiv:doi>10.1016/j.jocs.2017.10.013</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.jocs.2017.10.013\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0205315v1</id>\n    <title>Quantitative Stellar Spectral Classification. II. Early Type Stars</title>\n    <updated>2002-05-18T21:44:27Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0205315v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0205315v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  The method developed by Stock and Stock (1999) for stars of spectral types A to K to derive absolute magnitudes and intrinsic colors from the equivalent widths of absorption lines in stellar spectra is extended to B-type stars. Spectra of this type of stars for which the Hipparcos Catalogue gives parallaxes with an error of less than 20% were observed with the CIDA 1-meter reflector equipped with a Richardson spectrograph with a Thompson 576x384 CCD detector. The dispersion is 1.753 A/pixel using a 600 lines/mm grating in the first order. In order to cover the spectral range 3850 A to 5750 A the grating had to be used in two different positions, with an overlap in the region from 4800 A to 4900 A. A total of 116 stars was oberved, but not all with both grating positions. A total of 12 measureable absorption lines was identified in the spectra and their equivalent widths were measured. These were related to the absolute magnitudes derived from the Hipparcos Catalogue and to the intrinsic colors (deduced from the MK spectral types) using linear and second order polynomials and two or three lines as independent variables. The best solutions were obtained with polynomials of three lines, reproducing the absolute magnitudes with an average residual of about 0.40 magnitudes and the intrinsic colors with an average residual of 0.016 magnitudes.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2002-05-18T21:44:27Z</published>\n    <arxiv:comment>17 pages including 4 figures, accepted by Rev.Mex.A.A</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Rev.Mex.Astron.Astrofis. 38 (2002) 127-140</arxiv:journal_ref>\n    <author>\n      <name>M. J. Stock</name>\n    </author>\n    <author>\n      <name>J. Stock</name>\n    </author>\n    <author>\n      <name>J. Garcia</name>\n    </author>\n    <author>\n      <name>N. Sanchez</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2206.13022v3</id>\n    <title>Status and progress of China SKA Regional Centre prototype</title>\n    <updated>2022-09-30T02:16:14Z</updated>\n    <link href=\"https://arxiv.org/abs/2206.13022v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2206.13022v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The Square Kilometre Array (SKA) project consists of delivering two largest radio telescope arrays being built by the SKA Observatory (SKAO), which is an intergovernmental organization bringing together nations from around the world with China being one of the major member countries. The computing resources needed to process, distribute, curate and use the vast amount of data that will be generated by the SKA telescopes are too large for the SKAO to manage on its own. To address this challenge, the SKAO is working with the international community to create a shared, distributed data, computing and networking capability called the SKA Regional Centre Alliance. In this model, the SKAO will be supported by a global network of SKA Regional Centres (SRCs) distributed around the world in its member countries to build an end-to-end science data system that will provide astronomers with high-quality science products. SRCs undertake deep processing, scientific analysis, and long-term storage of the SKA data, as well as user support. China has been actively participating in and promoting the construction of SRCs. This paper introduces the international cooperation and ongoing prototyping of the global SRC network, the construction plan of the China SRC and describes in detail the China SRC prototype. The paper also presents examples of scientific applications of SKA precursor and pathfinder telescopes completed using resources from the China SRC prototype. Finally, the future prospects of the China SRC are presented.</summary>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-06-27T02:41:06Z</published>\n    <arxiv:comment>T. An, et al. Status and progress of China SKA Regional Centre prototype. Sci. China-Phys. Mech. Astron. 65: 129501 (2022)</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.IM\"/>\n    <author>\n      <name>Tao An</name>\n    </author>\n    <author>\n      <name>Xiaocong Wu</name>\n    </author>\n    <author>\n      <name>Baoqiang Lao</name>\n    </author>\n    <author>\n      <name>Shaoguang Guo</name>\n    </author>\n    <author>\n      <name>Zhijun Xu</name>\n    </author>\n    <author>\n      <name>Weijia Lv</name>\n    </author>\n    <author>\n      <name>Yingkang Zhang</name>\n    </author>\n    <author>\n      <name>Zhongli Zhang</name>\n    </author>\n    <arxiv:doi>10.1007/s11433-022-1981-8</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s11433-022-1981-8\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.08240v3</id>\n    <title>Herding boosts too-connected-to-fail risk in stock market of China</title>\n    <updated>2018-04-25T14:11:26Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.08240v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.08240v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The crowd panic and its contagion play non-negligible roles at the time of the stock crash, especially for China where inexperienced investors dominate the market. However, existing models rarely consider investors in networking stocks and accordingly miss the exact knowledge of how panic contagion leads to abrupt crash. In this paper, by networking stocks of sharing common mutual funds, a new methodology of investigating the market crash is presented. It is surp"
     },
@@ -1359,14 +1364,6 @@
     {
       "source": "crossref",
       "query": "China A-share pairs statistical arbitrage",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "url": "https://doi.org/10.21275/sr231123060916",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
       "title": "Comprehensive Review of Pairs Trading in Statistical Arbitrage",
       "url": "https://doi.org/10.54254/2754-1169/2026.35956",
       "description": "Crossref work type=journal-article",
@@ -1411,14 +1408,6 @@
       "url": "https://doi.org/10.1111/irfi.12074",
       "description": "Crossref work type=journal-article",
       "updated_at": "2016"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "url": "https://doi.org/10.2139/ssrn.2610064",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -2695,10 +2684,50 @@
     {
       "source": "crossref",
       "query": "crypto options volatility skew gamma trading",
+      "title": "Chapter 1 Trading in Options",
+      "url": "https://doi.org/10.1515/9783110697865-002",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Chapter 15 Trading Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-016",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Chapter 4 Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-005",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
       "title": "Distribution based Trading Strategies  for Crypto Options",
       "url": "https://doi.org/10.24818/ida-cl/2023.128",
       "description": "Crossref work type=posted-content",
       "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118524046.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118531990.ch2",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2012"
     },
     {
       "source": "crossref",
@@ -2715,6 +2744,14 @@
       "url": "https://doi.org/10.1002/9781118531990.ch4",
       "description": "Crossref work type=other",
       "updated_at": "2010"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto options volatility skew gamma trading",
+      "title": "Volatility Trading Explained",
+      "url": "https://doi.org/10.1002/9781118528693.ch8",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
     },
     {
       "source": "crossref",
@@ -3391,6 +3428,14 @@
     {
       "source": "crossref",
       "query": "fair value gap imbalance FVG crypto trading",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "url": "https://doi.org/10.2139/ssrn.4405361",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "fair value gap imbalance FVG crypto trading",
       "title": "Fair Trading",
       "url": "https://doi.org/10.2139/ssrn.709342",
       "description": "Crossref work type=posted-content",
@@ -3483,14 +3528,6 @@
       "url": "https://doi.org/10.2139/ssrn.4268371",
       "description": "Crossref work type=posted-content",
       "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "funding rate basis carry crypto trading",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "url": "https://doi.org/10.2139/ssrn.4405361",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -4007,30 +4044,6 @@
     {
       "source": "crossref",
       "query": "options volatility trading systematic strategy",
-      "title": "Chapter 1 Trading in Options",
-      "url": "https://doi.org/10.1515/9783110697865-002",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
-      "title": "Chapter 15 Trading Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-016",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
-      "title": "Chapter 4 Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-005",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
       "title": "Creating Your Binary Options Strategy",
       "url": "https://doi.org/10.1002/9781118528693.part5",
       "description": "Crossref work type=other",
@@ -4039,32 +4052,8 @@
     {
       "source": "crossref",
       "query": "options volatility trading systematic strategy",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118524046.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118531990.ch2",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
       "title": "Trading Binary Options",
       "url": "https://doi.org/10.1002/9781118528693.part3",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "options volatility trading systematic strategy",
-      "title": "Volatility Trading Explained",
-      "url": "https://doi.org/10.1002/9781118528693.ch8",
       "description": "Crossref work type=other",
       "updated_at": "2012"
     },
@@ -4615,10 +4604,26 @@
     {
       "source": "crossref",
       "query": "statistical arbitrage pairs trading equities",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "url": "https://doi.org/10.21275/sr231123060916",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
       "title": "Market Neutrality and Pairs Trading",
       "url": "https://doi.org/10.1002/9781119201526.ch4",
       "description": "Crossref work type=other",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "url": "https://doi.org/10.2139/ssrn.2610064",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4919,6 +4924,14 @@
     {
       "source": "crossref",
       "query": "加密货币 量化 github",
+      "title": "IPG增加LD存货量",
+      "url": "https://doi.org/10.3788/lop20084507.0008c",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2008"
+    },
+    {
+      "source": "crossref",
+      "query": "加密货币 量化 github",
       "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
       "url": "https://doi.org/10.12677/fin.2021.113022",
       "description": "Crossref work type=journal-article",
@@ -5055,14 +5068,6 @@
     {
       "source": "crossref",
       "query": "因子挖掘 加密货币 量化 交易",
-      "title": "IPG增加LD存货量",
-      "url": "https://doi.org/10.3788/lop20084507.0008c",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2008"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
       "title": "Internationalisation on Import and Export Trade—Based on the Perspective of Bilateral Currency Swap Agreements",
       "url": "https://doi.org/10.12677/wer.2025.141013",
       "description": "Crossref work type=journal-article",
@@ -5175,6 +5180,14 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -5191,6 +5204,14 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "强化学习的优化控制策略提升智慧建筑节能",
       "url": "https://doi.org/10.70693/cjst.v2i2.1935",
       "description": "Crossref work type=journal-article",
@@ -5203,6 +5224,14 @@
       "url": "https://doi.org/10.61369/edtr.8823",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5367,14 +5396,6 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "城市轨道交通客流预测与调度优化策略研究",
       "url": "https://doi.org/10.67328/bt4095",
       "description": "Crossref work type=journal-article",
@@ -5399,24 +5420,8 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "广东电力现货市场主体交易策略与博弈行为分析",
-      "url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "数据跨境流动中的安全风险与加密防护策略研究",
       "url": "https://doi.org/10.62989/jemr2025.2.2.10",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -7909,14 +7914,6 @@
     {
       "source": "openalex",
       "query": "A-share quantitative trading factor strategy China",
-      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
-      "url": "https://doi.org/10.1007/s13280-014-0504-0",
-      "description": "OpenAlex work type=article year=2014",
-      "updated_at": "2014"
-    },
-    {
-      "source": "openalex",
-      "query": "A-share quantitative trading factor strategy China",
       "title": "Estimates of the Trade and Welfare Effects of NAFTA",
       "url": "https://doi.org/10.1093/restud/rdu035",
       "description": "OpenAlex work type=article year=2014",
@@ -8057,6 +8054,14 @@
       "url": "https://doi.org/10.1098/rsos.150288",
       "description": "OpenAlex work type=article year=2015",
       "updated_at": "2015"
+    },
+    {
+      "source": "openalex",
+      "query": "China A-share T+1 transaction cost backtest",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "url": "https://doi.org/10.3390/ijfs7020026",
+      "description": "OpenAlex work type=article year=2019",
+      "updated_at": "2019"
     },
     {
       "source": "openalex",
@@ -8529,6 +8534,14 @@
       "url": "https://doi.org/10.1038/s41598-024-70260-6",
       "description": "OpenAlex work type=article year=2024",
       "updated_at": "2024"
+    },
+    {
+      "source": "openalex",
+      "query": "China stock limit-up quantitative strategy",
+      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
+      "url": "https://doi.org/10.1007/s13280-014-0504-0",
+      "description": "OpenAlex work type=article year=2014",
+      "updated_at": "2014"
     },
     {
       "source": "openalex",
@@ -9589,14 +9602,6 @@
     {
       "source": "openalex",
       "query": "crypto regime switching hidden Markov trading",
-      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
-      "url": "https://doi.org/10.1016/j.irfa.2018.09.003",
-      "description": "OpenAlex work type=article year=2018",
-      "updated_at": "2018"
-    },
-    {
-      "source": "openalex",
-      "query": "crypto regime switching hidden Markov trading",
       "title": "Regime switching forecasting for cryptocurrencies",
       "url": "https://doi.org/10.1007/s42521-024-00123-2",
       "description": "OpenAlex work type=article year=2025",
@@ -10265,6 +10270,14 @@
       "url": "https://doi.org/10.1016/j.erss.2017.10.018",
       "description": "OpenAlex work type=article year=2017",
       "updated_at": "2017"
+    },
+    {
+      "source": "openalex",
+      "query": "futures trend following systematic strategy",
+      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
+      "url": "https://doi.org/10.1016/j.irfa.2018.09.003",
+      "description": "OpenAlex work type=article year=2018",
+      "updated_at": "2018"
     },
     {
       "source": "openalex",
@@ -10957,14 +10970,6 @@
     {
       "source": "openalex",
       "query": "prediction markets automated trading research",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "url": "https://doi.org/10.3390/ijfs7020026",
-      "description": "OpenAlex work type=article year=2019",
-      "updated_at": "2019"
-    },
-    {
-      "source": "openalex",
-      "query": "prediction markets automated trading research",
       "title": "The Growing Importance of Social Skills in the Labor Market*",
       "url": "https://doi.org/10.1093/qje/qjx022",
       "description": "OpenAlex work type=article year=2017",
@@ -11573,6 +11578,14 @@
     {
       "source": "openalex",
       "query": "因子挖掘 A股 量化 交易",
+      "title": "四十年（1980-2020）来个人借款领域的研究主题变迁 -基于文本挖掘LDA算法的主题发现和可视化",
+      "url": "https://doi.org/10.55375/jssc.2021.4.1",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "因子挖掘 A股 量化 交易",
       "title": "数字化转型下商业银行支持小微企业融资的创新路径研究",
       "url": "https://doi.org/10.33142/mem.v5i1.11182",
       "description": "OpenAlex work type=article year=2024",
@@ -11621,14 +11634,6 @@
     {
       "source": "openalex",
       "query": "因子挖掘 加密货币 量化 交易",
-      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
-      "url": "https://doi.org/10.31497/zrzyxb.20230904",
-      "description": "OpenAlex work type=article year=2023",
-      "updated_at": "2023"
-    },
-    {
-      "source": "openalex",
-      "query": "因子挖掘 加密货币 量化 交易",
       "title": "The theories and methods for systematically understanding land resource",
       "url": "https://doi.org/10.1360/n972018-01149",
       "description": "OpenAlex work type=article year=2019",
@@ -11641,22 +11646,6 @@
       "url": "https://doi.org/10.33142/mem.v3i1.5790",
       "description": "OpenAlex work type=article year=2022",
       "updated_at": "2022"
-    },
-    {
-      "source": "openalex",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "四十年（1980-2020）来个人借款领域的研究主题变迁 -基于文本挖掘LDA算法的主题发现和可视化",
-      "url": "https://doi.org/10.55375/jssc.2021.4.1",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "基于区块链的旅游交易系统设计",
-      "url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
     },
     {
       "source": "openalex",
@@ -11673,6 +11662,14 @@
       "url": "https://doi.org/10.26549/cjygl.v4i8.4930",
       "description": "OpenAlex work type=article year=2020",
       "updated_at": "2020"
+    },
+    {
+      "source": "openalex",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "基于区块链的旅游交易系统设计",
+      "url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
     },
     {
       "source": "openalex",
@@ -11745,6 +11742,14 @@
       "url": "https://doi.org/10.18306/dlkxjz.2021.01.016",
       "description": "OpenAlex work type=article year=2021",
       "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "涨停 连板 A股 量化 策略",
+      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
+      "url": "https://doi.org/10.31497/zrzyxb.20230904",
+      "description": "OpenAlex work type=article year=2023",
+      "updated_at": "2023"
     },
     {
       "source": "openalex",
@@ -13217,6 +13222,86 @@
       "url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
       "description": "This paper presents valuation models of emission allowance options under an emission trading scheme, operating in an open trading phase, where unused allowances are banked to subsequent phases without any limit. Empirical studies are carried out to show that allowance option prices exhibit similar volatility smiles to those of the stock market. Three reduced-form econometrics models, namely a Lognormal allowance price model, a Skewness–Kurtosis-Modified Lognormal allowance price model, and a Mixture Lognormal allowance price model are introduced, with each being accorded with a rich interpretation of its own. Numerical illustration of the models is performed through calibration to the European-Union Emission-Trading-Scheme’s allowance futures option prices collected for EU ETS Phase 3 and Phase 4 respectively, where statistical fitness of the models is assessed comparatively within each sample and across the two samples collected to ensure robustness of the conclusions.",
       "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "A Cryptocurrency Multiple Trading Strategy with Kalman Filter Innovation Volatility Interval Forecasts",
+      "url": "https://www.semanticscholar.org/paper/6ad4fbfb83105b8c27d0c4ed3d2c4d681502eccb",
+      "description": "Pairs trading and multiple trading strategies are types of market-neutral strategies to use a pair or a combination of stocks and other financial instruments with co-integration or co-movements to generate potential profits, which may not be affected by the direction of the overall market. Commonly used pairs and multiple trading strategies are constructed using the Kalman Filter (KF) to utilize mean reversion in nonstationary but co-integrated asset prices. In this paper, we propose novel resilient pairs trading and multiple trading strategies using the combination of the KF algorithm and the KF innovation volatility interval forecasts using neural networks. The proposed trading strategies are implemented and investigated using the hourly prices of Bitcoin, Ethereum and Bitcoin Cash in the bear market. Those crypto assets are selected because they move in the same direction in the long term and have high trading volumes. The experimental results reveal performance for the proposed trading strategies with the upper and lower trading intervals using KF innovation volatility interval forecasts superior to that of the trading strategies with upper and lower trading bands using KF innovation volatility point forecasts. The performance and robustness of the proposed trading strategies using a proper assumption of transaction costs have also been examined. The strategies using innovation volatility interval forecasts consistently generate higher profits and a more robust number of transactions with or without transaction costs than those using innovation volatility point forecasts.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "A Low-Volatility Strategy based on Hedging a Quanto Perpetual Swap on BitMEX",
+      "url": "https://www.semanticscholar.org/paper/57c3483bcd575e9b5fb164f50725966d3bf49f2a",
+      "description": "In 2016, BitMEX introduced a novel type of crypto derivates – Perpetual Swaps, i.e., futures with an infinite term. Perpetual swaps provide a new strategic risk management tool for cryptocurrencies due to their custody-free nature, high leverage, and funding mechanism, but there has been little quantitative analysis on the their benefits. In this paper, we introduce a trading strategy that combines a Quanto Perpetual Swap with a spot position to benefit from the funding mechanism. We compare our strategy with a long-only investment in the underlying cryptocurrency and a similar strategy based on Linear Perpetual Swaps to evaluate their performances in a large-scale backtest covering the years 2021 and 2022. Our analysis shows that our strategy generates positive returns in bullish market phases of the underlying with lower volatility.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "A Study on Stock Trading Method based on Volatility Breakout Strategy using a Deep Neural Network",
+      "url": "https://www.semanticscholar.org/paper/ff04b35ff13283e61c75af50a6adb4e65b381c16",
+      "description": "",
+      "updated_at": "2022"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
+      "url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
+      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 × improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "Climate risks and cryptocurrency volatility: evidence from crypto market crisis",
+      "url": "https://www.semanticscholar.org/paper/57ebb18873641f9ddc84504520360928a0fc73e1",
+      "description": "PurposeThis study aims to examine the impact of climate-related risks on cryptocurrency volatility during crisis periods, focusing on the physical risk index (PRI) and transition risk index (TRI). It investigates how acute and chronic climate events, alongside regulatory and technological changes, influence market dynamics in major cryptocurrencies, including Bitcoin, Ethereum, Litecoin and Ripple.Design/methodology/approachA fuzzy logic model is employed to evaluate the effects of PRI and TRI on cryptocurrency volatility. The model’s accuracy is validated using root mean square error (RMSE) metrics to ensure reliability.FindingsThe results reveal that acute events (e.g. hurricanes and wildfires) and chronic risks (e.g. long-term environmental disruptions) significantly heighten cryptocurrency volatility. Transition risks, including regulatory and technological shifts, also play a pivotal role. Bitcoin and Ethereum exhibit the highest sensitivities, reflecting the critical influence of climate risks on market stability.Research limitations/implicationsThis study enriches the literature by integrating climate risk factors into cryptocurrency market analysis and advancing fuzzy logic models to assess non-linear interactions in financial markets. It provides a novel framework for evaluating external shocks’ impact on digital assets.Practical implicationsInvestors and market participants can use these findings to incorporate climate risks into their investment strategies, diversify portfolios and anticipate periods of instability. The insights also guide policymakers in developing resilient frameworks that align cryptocurrency regulations with environmental goals.Social implicationsBy linking climate risks to cryptocurrency market behavior, this research emphasizes the need for sustainable investment practices and collaborative policy efforts. It advocates for integrating environmental sustainability into financial systems to mitigate systemic risks and promote economic",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "Comparative Study of Automatic Trading and Buy-and-Hold in the S&P 500 Index Using a Volatility Breakout Strategy",
+      "url": "https://www.semanticscholar.org/paper/3c14b7a0036f99e616e92f9b2eee400156962510",
+      "description": "",
+      "updated_at": ""
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "Crypto Volatility Forecasting: Mounting a HAR, Sentiment, and Machine Learning Horserace",
+      "url": "https://www.semanticscholar.org/paper/521d76a9668628a32f4fbeb2da7a0eb1ec3e0356",
+      "description": "The relationship between investor sentiment and cryptocurrency market volatility remains an area of growing interest in empirical finance. In this study, we present an innovative forecasting approach by utilizing a unique dataset of AI-generated sentiment from a comprehensive database of crypto market news. In a horserace fashion, we first evaluate the Heterogeneous Autoregressive (HAR) model and then compare its forecasting performance to five advanced machine learning (ML) methods. ML performs reasonably well and improves the accuracy of the benchmark HAR model. Interestingly, including sentiment does not improve the forecasting accuracy of the HAR model. However, our findings highlight that investor sentiment seems to influence crypto market volatility in a nonlinear fashion that can (only) be captured by ML methods. In other words, LightGBM, XGBoost, and LSTM models show enhanced predictive accuracy when sentiment data is incorporated, improving no-sentiment forecasts in 54.17% of the cases studied. Overall, our results emphasize the significant potential of integrating machine learning and sentiment analysis as a promising avenue for improved forecasting, offering potential benefits for risk management strategies and provide valuable insights for researchers and practitioners.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features—such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index—with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies—BTC, ETH, USDT, XRP, and BNB—serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto volatility breakout strategy",
+      "title": "The Implementation and Refinement of Range Breakout Strategy in Chinese Commodity Market",
+      "url": "https://www.semanticscholar.org/paper/c40c802b1fb478ecfad6f4ce5044870631327173",
+      "description": "The range breakout strategy is a momentum strategy that involves taking a long position in a security when its price exceeds a predetermined range and a short position when the price falls below the range. Previous research has indicated that this strategy is well-suited to the price volatility patterns observed in commodity markets. Considering the significant expansion and di-versification of China's commodity market in recent years, we decided to apply the range breakout strategy to China's commodity futures market and assess its feasibility and profitability. Our research utilized historical performance data from the Zhengzhou Commodity Exchange and Shanghai Future Exchange between September 1, 2012, and July 31, 2022, obtained from CSMR as our database. We focused on the top 27 most liquid commodity futures categories to construct our back-testing portfolio. Our approach centered around using volatility as the basis for entry signals in the range breakout strategy and signal weighting as a portfolio construction method. The results demonstrate that the range breakout strategy, based on volatility, is highly effective in China's commodity futures market. This research con-tributes to the enrichment of optimization strategies in China's Future Market. Furthermore, we explored the use of cross-commodity hedging and the Average True Range (ATR) indicator to further enhance the strategy. Although no practical improvements were discovered beyond the original strategy, this exploration offers valuable insights for future research.",
+      "updated_at": "2023"
     },
     {
       "source": "semantic_scholar",
