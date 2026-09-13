@@ -51,7 +51,7 @@ def test_bullish_mss_and_fvg_and_retest():
         bar(1, 96, 99, 94, 97),
         bar(2, 98, 106, 97, 103),
         bar(3, 103, 110, 107, 109),
-        bar(4, 108, 109, 101, 104),
+        bar(4, 108, 109, 107, 107.5),
     ]
 
     events = ReferenceStrategy().process(bars)
@@ -88,7 +88,7 @@ def test_only_one_retest_for_one_fvg():
         bar(1, 96, 99, 94, 97),
         bar(2, 98, 106, 97, 103),
         bar(3, 103, 110, 107, 109),
-        bar(4, 108, 109, 101, 104),
+        bar(4, 108, 109, 107, 107.5),
         bar(5, 104, 108, 102, 105),
     ]
 
@@ -133,3 +133,28 @@ def test_fvg_must_follow_mss_on_a_later_bar():
     assert fvg_events
     mss = next(e for e in events if e.event_type == EventType.MSS)
     assert fvg_events[0].bar_index > mss.bar_index
+
+
+def test_new_sweep_invalidates_stale_fvg():
+    bars = [
+        bar(0, 100, 105, 95, 100),
+        bar(1, 96, 99, 94, 97),
+        bar(2, 98, 106, 97, 103),
+        bar(3, 103, 110, 107, 109),
+        # This bearish sweep overlaps the old bullish FVG. It must invalidate
+        # the old zone instead of emitting a stale bullish retest.
+        bar(4, 108, 109, 101, 104),
+    ]
+
+    events = ReferenceStrategy().process(bars)
+
+    assert any(
+        e.event_type == EventType.LIQUIDITY_SWEEP
+        and e.direction == Direction.BEARISH
+        and e.bar_index == 4
+        for e in events
+    )
+    assert not any(
+        e.event_type == EventType.RETEST and e.bar_index == 4
+        for e in events
+    )
