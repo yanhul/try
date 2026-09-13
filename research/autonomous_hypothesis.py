@@ -4,7 +4,8 @@ import hashlib,json,math
 from pathlib import Path
 REQUIRED={"bc","parent_bc","hypothesis_id","conceptual_change","evidence_sources","rationale","is_testable","oos_selection_used"}
 OPS={"identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"}
-COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"}
+COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance","momentum_trend","mean_reversion","volatility","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
+MECHANISM_FAMILIES={"momentum_trend","mean_reversion","volatility","smc_ict","fvg_imbalance","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
 WINDOW_REQUIRED={"zscore","rolling_mean","rolling_std","lag","delta","rank"}
 def canonical_hash(candidate:dict)->str:
  payload={k:candidate[k] for k in sorted(candidate) if k!="candidate_hash"}
@@ -18,8 +19,13 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
  if candidate["oos_selection_used"] is not False:return False,"oos_selection_forbidden"
  if candidate["is_testable"] is not True:return False,"not_testable"
  spec=candidate.get("discovery_spec")
- if candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
- if spec is not None:
+ if candidate["hypothesis_id"]=="mechanism_family":
+  if not isinstance(spec,dict) or spec.get("mechanism_family") not in MECHANISM_FAMILIES:return False,"invalid_mechanism_family"
+  threshold=spec.get("threshold",0)
+  if isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or not math.isfinite(threshold):return False,"invalid_discovery_threshold"
+  if spec.get("direction","above") not in {"above","below"}:return False,"invalid_discovery_threshold"
+ elif candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
+ if spec is not None and candidate["hypothesis_id"]!="mechanism_family":
   if not isinstance(spec,dict) or spec.get("operator") not in OPS:return False,"invalid_discovery_operator"
   if spec.get("left") not in COLS:return False,"invalid_discovery_left_column"
   op=spec["operator"]
