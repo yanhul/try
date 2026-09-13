@@ -76,9 +76,13 @@ def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
     if p.exists(): return None
     if parent==start-1:
-        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'
+        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/.epoch_seed_failure.json
         q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
     return None
+
+def controller_command():
+    """Run the controller as a package module so its research.* imports resolve."""
+    return [sys.executable,'-m','research.bc_controller']
 
 def main():
     policy=load(POLICY,None)
@@ -99,7 +103,7 @@ def main():
     print(f'CAMPAIGN_START screened={screened}/{budget} batch={env["RESEARCH_MAX_ITERATIONS"]} start_bc={start}')
     expected=int(state.get('next_bc',start)); seed=_epoch_seed_failure(expected-1,start)
     if seed is not None: env['RESEARCH_EPOCH_SEED_FAILURE']=str(seed)
-    try: rc=subprocess.run([sys.executable,'research/bc_controller.py'],cwd=ROOT,env=env).returncode
+    try: rc=subprocess.run(controller_command(),cwd=ROOT,env=env).returncode
     finally:
         if seed is not None and seed.exists(): seed.unlink()
     if rc: return rc
