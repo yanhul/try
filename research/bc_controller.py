@@ -33,7 +33,9 @@ def regenerate(bc,parent,failure,s):
  if 'PROVIDER_ROUTER_HOLD' in out or ('PROVIDER_FAIL' in out and 'PROVIDER_SELECTED' not in out): return False
  return rc==0 and output.exists()
 def normalize_queue(s):
- q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); active=[x for x in q if isinstance(x,dict) and int(x.get('bc',-1))==expected and int(x.get('parent_bc',expected-1))==expected-1]
+ q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); start=int(s.get('campaign_start_bc') or 1)
+ if expected<start: expected=start; s['next_bc']=expected; save(s)
+ active=[x for x in q if isinstance(x,dict) and int(x.get('bc',-1))==expected and int(x.get('parent_bc',expected-1))==expected-1]
  if len(active)>1: active=active[:1]
  if q!=active: write_queue(active)
  return active
@@ -90,14 +92,16 @@ def main():
   q=normalize_queue(s)
   if not q: return hold(s,'HOLD_EMPTY_QUEUE',s.get('next_bc'))
   c=q[0]; bc=int(c['bc']); parent=int(c.get('parent_bc',bc-1)); candidate=CANDIDATE_DIR/f'BC{bc}.json'; g=gate(bc)
+  if bc<int(s.get('campaign_start_bc') or 1): return hold(s,f'HOLD_PRE_EPOCH_BC_{bc}',bc,retryable=False)
   if not g: return hold(s,'HOLD_NO_GATE',bc,retryable=False)
   checkpoint(s,'OBSERVE',bc)
   try:
-   from autonomous_hypothesis import load_candidate
+   from research.autonomous_hypothesis import load_candidate
    cand=load_candidate(candidate,bc,parent); c=cand; write_queue([cand])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
+   from research.autonomous_hypothesis import load_candidate
    cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; checkpoint(s,'ACT',bc); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
