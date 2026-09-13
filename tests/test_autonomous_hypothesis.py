@@ -61,6 +61,15 @@ def test_rejects_boolean_threshold():
     assert reason == "invalid_discovery_threshold"
 
 
+def test_rejects_missing_mechanism_threshold():
+    c = base()
+    c["hypothesis_id"] = "mechanism_family"
+    c["discovery_spec"] = {"mechanism_family": "momentum_trend", "direction": "above"}
+    ok, reason = validate_candidate(c, 6, 5)
+    assert not ok
+    assert reason == "invalid_discovery_threshold"
+
+
 def test_discovered_primitive_requires_executable_spec():
     c = base()
     c["hypothesis_id"] = "discovered_primitive"
