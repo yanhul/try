@@ -72,17 +72,39 @@ jobs:
           with Path(os.environ['GITHUB_OUTPUT_PATH']).open('a') as out: out.write(f"fast={'true' if eligible else 'false'}\n")
           print(f"FAST_RESUME_{'ELIGIBLE' if eligible else 'INELIGIBLE'} bc={current_bc} retry={retry} error={error}")
           PY
+      - name: Check durable campaign budget before discovery
+        id: budget_gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          export GITHUB_OUTPUT_PATH="$GITHUB_OUTPUT"
+          python - <<'PY'
+          import os
+          import json
+          from pathlib import Path
+          from research.campaign_controller import reconcile_campaign_state
+          policy=json.loads(Path('research/campaign_policy.json').read_text())
+          state_path=Path('research/bc_lifecycle_state.json')
+          state=json.loads(state_path.read_text()) if state_path.exists() else {}
+          budget=int(policy['max_screening_candidates'])
+          _, start, screened=reconcile_campaign_state(state, budget)
+          exhausted=bool(state.get('campaign_terminal')) or screened >= budget
+          Path(os.environ['GITHUB_OUTPUT_PATH']).open('a').write(f"exhausted={'true' if exhausted else 'false'}\n")
+          print(f"CAMPAIGN_BUDGET_{'EXHAUSTED' if exhausted else 'AVAILABLE'} start_bc={start} screened={screened}/{budget}")
+          if exhausted:
+              state_path.write_text(json.dumps(state, indent=2, sort_keys=True)+'\n')
+          PY
       - name: Broad public-source discovery
-        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
         run: python research/discovery_scout.py
       - name: Ingest every discovered system
-        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
         run: python research/discovery/system_ingestion.py
       - name: Audit executable source lanes
-        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
         run: python research/discovery/source_audit.py
       - name: Compile constrained discovery primitives
-        if: ${{ steps.resume_gate.outputs.fast != 'true' }}
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
         run: python research/discovery_compiler.py
       - name: Run bounded autonomous research campaign
         id: controller
