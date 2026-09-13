@@ -4,7 +4,7 @@ import pytest
 
 from research.provider_router import ground_candidate, normalize_structural_types, normalize_hypothesis_id
 from research import provider_router
-from research.autonomous_hypothesis import validate_candidate
+from research.autonomous_hypothesis import EXECUTABLE_MECHANISM_FAMILIES, validate_candidate
 from research.btc_translation_policy import btc_translation_status, eligible_survivors
 
 
@@ -74,6 +74,8 @@ def test_non_directional_mechanism_family_is_not_executable():
     ok, reason = validate_candidate(candidate, 168, 167)
     assert not ok
     assert reason == "non_directional_mechanism_family"
+    assert "volatility" not in EXECUTABLE_MECHANISM_FAMILIES
+    assert "seasonality" not in EXECUTABLE_MECHANISM_FAMILIES
 
 
 def test_non_executable_survivor_cannot_be_grounded():
