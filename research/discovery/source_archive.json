@@ -678,6 +678,11 @@
     },
     {
       "source": "arxiv",
+      "query": "symbolic regression alpha mining trading",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/Mt/EF+hjXK2tMthOWaSR7PN2B8s</id>\n  <title>arXiv Query: search_query=all:symbolic OR all:regression OR all:alpha OR all:mining OR all:trading&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-13T04:28:17Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:symbolic+OR+(all:regression+OR+(all:alpha+OR+(all:mining+OR+all:trading)))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>148045</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/1108.5592v1</id>\n    <title>A Performance Study of Data Mining Techniques: Multiple Linear Regression vs. Factor Analysis</title>\n    <updated>2011-08-26T07:08:13Z</updated>\n    <link href=\"https://arxiv.org/abs/1108.5592v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1108.5592v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The growing volume of data usually creates an interesting challenge for the need of data analysis tools that discover regularities in these data. Data mining has emerged as disciplines that contribute tools for data analysis, discovery of hidden knowledge, and autonomous decision making in many application domains. The purpose of this study is to compare the performance of two data mining techniques viz., factor analysis and multiple linear regression for different sample sizes on three unique sets of data. The performance of the two data mining techniques is compared on following parameters like mean square error (MSE), R-square, R-Square adjusted, condition number, root mean square error(RMSE), number of variables included in the prediction model, modified coefficient of efficiency, F-value, and test of normality. These parameters have been computed using various data mining tools like SPSS, XLstat, Stata, and MS-Excel. It is seen that for all the given dataset, factor analysis outperform multiple linear regression. But the absolute value of prediction accuracy varied between the three datasets indicating that the data distribution and data characteristics play a major role in choosing the correct prediction technique.</summary>\n    <category term=\"cs.DB\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2011-08-26T07:08:13Z</published>\n    <arxiv:comment>Data mining, Multiple Linear Regression, Factor Analysis, Principal Component Regression, Maximum Liklihood Regression, Generalized Least Square Regression</arxiv:comment>\n    <arxiv:primary_category term=\"cs.DB\"/>\n    <author>\n      <name>Abhishek Taneja</name>\n    </author>\n    <author>\n      <name>R. K. Chauhan</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2507.13033v1</id>\n    <title>(Exhaustive) Symbolic Regression and model selection by minimum description length</title>\n    <updated>2025-07-17T12:04:15Z</updated>\n    <link href=\"https://arxiv.org/abs/2507.13033v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2507.13033v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Symbolic regression is the machine learning method for learning functions from data. After a brief overview of the symbolic regression landscape, I will describe the two main challenges that traditional algorithms face: they have an unknown (and likely significant) probability of failing to find any given good function, and they suffer from ambiguity and poorly-justified assumptions in their function-selection procedure. To address these I propose an exhaustive search and model selection by the minimum description length principle, which allows accuracy and complexity to be directly traded off by measuring each in units of information. I showcase the resulting publicly available Exhaustive Symbolic Regression algorithm on three open problems in astrophysics: the expansion history of the universe, the effective behaviour of gravity in galaxies and the potential of the inflaton field. In each case the algorithm identifies many functions superior to the literature standards. This general purpose methodology should find widespread utility in science and beyond.</summary>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.CO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.GA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-07-17T12:04:15Z</published>\n    <arxiv:comment>15 pages, 4 figures; Invited review for the Royal Society Philosophical Transactions A special issue \"Symbolic regression in the physical sciences\"</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph.IM\"/>\n    <author>\n      <name>Harry Desmond</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2512.15920v1</id>\n    <title>Introduction to Symbolic Regression in the Physical Sciences</title>\n    <updated>2025-12-17T19:32:50Z</updated>\n    <link href=\"https://arxiv.org/abs/2512.15920v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2512.15920v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Symbolic regression (SR) has emerged as a powerful method for uncovering interpretable mathematical relationships from data, offering a novel route to both scientific discovery and efficient empirical modelling. This article introduces the Special Issue on Symbolic Regression for the Physical Sciences, motivated by the Royal Society discussion meeting held in April 2025. The contributions collected here span applications from automated equation discovery and emergent-phenomena modelling to the construction of compact emulators for computationally expensive simulations.\n  The introductory review outlines the conceptual foundations of SR, contrasts it with conventional regression approaches, and surveys its main use cases in the physical sciences, including the derivation of effective theories, empirical functional forms and surrogate models. We summarise methodological considerations such as search-space design, operator selection, complexity control, feature selection, and integration with modern AI approaches. We also highlight ongoing challenges, including scalability, robustness to noise, overfitting and computational complexity. Finally we emphasise emerging directions, particularly the incorporation of symmetry constraints, asymptotic behaviour and other theoretical information. Taken together, the papers in this Special Issue illustrate the accelerating progress of SR and its growing relevance across the physical sciences.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.NE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.comp-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.data-an\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-12-17T19:32:50Z</published>\n    <arxiv:comment>8 pages, no figures; accepted in Royal Society Philosophical Transactions A special issue \"Symbolic regression in the physical sciences\"</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Philos Trans A Math Phys Eng Sci 9 April 2026; 384 (2317): 20240600</arxiv:journal_ref>\n    <author>\n      <name>Deaglan J. Bartlett</name>\n    </author>\n    <author>\n      <name>Harry Desmond</name>\n    </author>\n    <author>\n      <name>Pedro G. Ferreira</name>\n    </author>\n    <author>\n      <name>Gabriel Kronberger</name>\n    </author>\n    <arxiv:doi>10.1098/rsta.2024.0600</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1098/rsta.2024.0600\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.06333v2</id>\n    <title>Priors for symbolic regression</title>\n    <updated>2023-06-02T07:50:25Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.06333v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.06333v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>When choosing between competing symbolic models for a data set, a human will naturally prefer the \"simpler\" expression or the one which more closely resembles equations previously seen in a similar context. This suggests a non-uniform prior on functions, which is, however, rarely considered within a symbolic regression (SR) framework. In this paper we develop methods to incorporate detailed prior information on both functions and their parameters into SR. Our prior on the structure of a function is based on a $n$-gram language model, which is sensitive to the arrangement of operators relative to one another in addition to the frequency of occurrence of each operator. We also develop a formalism based on the Fractional Bayes Factor to treat numerical parameter priors in such a way that models may be fairly compared though the Bayesian evidence, and explicitly compare Bayesian, Minimum Description Length and heuristic methods for model selection. We demonstrate the performance of our priors relative to literature standards on benchmarks and a real-world dataset from the field of cosmology.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.CO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-13T08:29:16Z</published>\n    <arxiv:comment>8+2 pages, 2 figures. Accepted for The Genetic and Evolutionary Computation Conference (GECCO) 2023 Workshop on Symbolic Regression</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Deaglan J. Bartlett</name>\n    </author>\n    <author>\n      <name>Harry Desmond</name>\n    </author>\n    <author>\n      <name>Pedro G. Ferreira</name>\n    </author>\n    <arxiv:doi>10.1145/3583133.3596327</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3583133.3596327\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2506.15881v3</id>\n    <title>T-SHRED: Symbolic Regression for Regularization and Model Discovery with Transformer Shallow Recurrent Decoders</title>\n    <updated>2025-12-11T17:28:30Z</updated>\n    <link href=\"https://arxiv.org/abs/2506.15881v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2506.15881v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>SHallow REcurrent Decoders (SHRED) are effective for system identification and forecasting from sparse sensor measurements. Such models are light-weight and computationally efficient, allowing them to be trained on consumer laptops. SHRED-based models rely on Recurrent Neural Networks (RNNs) and a simple Multi-Layer Perceptron (MLP) for the temporal encoding and spatial decoding respectively. Despite the relatively simple structure of SHRED, they are able to predict chaotic dynamical systems on different physical, spatial, and temporal scales directly from a sparse set of sensor measurements. In this work, we modify SHRED by leveraging transformers (T-SHRED) embedded with symbolic regression for the temporal encoding, circumventing auto-regressive long-term forecasting for physical data. This is achieved through a new sparse identification of nonlinear dynamics (SINDy) attention mechanism into T-SHRED to impose sparsity regularization on the latent space, which also allows for immediate symbolic interpretation. Symbolic regression improves model interpretability by learning and regularizing the dynamics of the latent space during training. We analyze the performance of T-SHRED on three different dynamical systems ranging from low-data to high-data regimes.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-06-18T21:14:38Z</published>\n    <arxiv:comment>17 pages, 5 figures, submitted to Transactions of the Royal Society (Symbolic Regression in the Physical Sciences)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Alexey Yermakov</name>\n    </author>\n    <author>\n      <name>David Zoro</name>\n    </author>\n    <author>\n      <name>Mars Liyao Gao</name>\n    </author>\n    <author>\n      <name>J. Nathan Kutz</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2405.18471v2</id>\n    <title>Symbolic Regression for Beyond the Standard Model Physics</title>\n    <updated>2025-04-22T14:35:40Z</updated>\n    <link href=\"https://arxiv.org/abs/2405.18471v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2405.18471v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We propose symbolic regression as a powerful tool for studying Beyond the Standard Model physics. As a benchmark model, we consider the so-called Constrained Minimal Supersymmetric Standard Model, which has a four-dimensional parameter space defined at the GUT scale. We provide a set of analytical expressions that reproduce three low-energy observables of interest in terms of the parameters of the theory: the Higgs mass, the contribution to the anomalous magnetic moment of the muon, and the cold dark matter relic density. To demonstrate the power of the approach, we employ the symbolic expressions in a global fits analysis to derive the posterior probability densities of the parameters, which are obtained extremely rapidly in comparison with conventional methods.</summary>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-th\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.comp-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-05-28T18:00:01Z</published>\n    <arxiv:comment>Version accepted for publication in PRD. 8 pages, 10 figures. For associated code and symbolic expressions see https://gitlab.com/miguel.romao/symbolic-regression-bsm</arxiv:comment>\n    <arxiv:primary_category term=\"hep-ph\"/>\n    <author>\n      <name>Shehu AbdusSalam</name>\n    </author>\n    <author>\n      <name>Steve Abel</name>\n    </author>\n    <author>\n      <name>Miguel Crispim Romao</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2511.08424v1</id>\n    <title>Identification of Empirical Constitutive Models for Age-Hardenable Aluminium Alloy and High-Chromium Martensitic Steel Using Symbolic Regression</title>\n    <updated>2025-11-11T16:33:50Z</updated>\n    <link href=\"https://arxiv.org/abs/2511.08424v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2511.08424v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Process-structure-property relationships are fundamental in materials science and engineering and are key to the development of new and improved materials. Symbolic regression serves as a powerful tool for uncovering mathematical models that describe these relationships. It can automatically generate equations to predict material behaviour under specific manufacturing conditions and optimize performance characteristics such as strength and elasticity.\n  The present work illustrates how symbolic regression can derive constitutive models that describe the behaviour of various metallic alloys during plastic deformation. Constitutive modelling is a mathematical framework for understanding the relationship between stress and strain in materials under different loading conditions. In this study, two materials (age-hardenable aluminium alloy and high-chromium martensitic steel) and two different testing methods (compression and tension) are considered to obtain the required stress-strain data. The results highlight the benefits of using symbolic regression while also discussing potential challenges.</summary>\n    <category term=\"cond-mat.mtrl-sci\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-11-11T16:33:50Z</published>\n    <arxiv:comment>Accepted for publication in Special Issue on Symbolic Regression of the Philosphical Transactions of the Royal Society - Part A</arxiv:comment>\n    <arxiv:primary_category term=\"cond-mat.mtrl-sci\"/>\n    <author>\n      <name>Evgeniya Kabliman</name>\n    </author>\n    <author>\n      <name>Gabriel Kronberger</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2511.22794v1</id>\n    <title>Can Synthetic Data Improve Symbolic Regression Extrapolation Performance?</title>\n    <updated>2025-11-27T22:52:13Z</updated>\n    <link href=\"https://arxiv.org/abs/2511.22794v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2511.22794v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Many machine learning models perform well when making predictions within the training data range, but often struggle when required to extrapolate beyond it. Symbolic regression (SR) using genetic programming (GP) can generate flexible models but is prone to unreliable behaviour in extrapolation. This paper investigates whether adding synthetic data can help improve performance in such cases. We apply Kernel Density Estimation (KDE) to identify regions in the input space where the training data is sparse. Synthetic data is then generated in those regions using a knowledge distillation approach: a teacher model generates predictions on new input points, which are then used to train a student model. We evaluate this method across six benchmark datasets, using neural networks (NN), random forests (RF), and GP both as teacher models (to generate synthetic data) and as student models (trained on the augmented data). Results show that GP models can often improve when trained on synthetic data, especially in extrapolation areas. However, the improvement depends on the dataset and teacher model used. The most important improvements are observed when synthetic data from GPe is used to train GPp in extrapolation regions. Changes in interpolation areas show only slight changes. We also observe heterogeneous errors, where model performance varies across different regions of the input space. Overall, this approach offers a practical solution for better extrapolation. Note: An earlier version of this work appeared in the GECCO 2025 Workshop on Symbolic Regression. This arXiv version corrects several parts of the original submission.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-11-27T22:52:13Z</published>\n    <arxiv:comment>8 pages, 16 figures, GECCO 2025 Symbolic Regression Workshop</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>GECCO Companion 2025, pp. 2548-2555</arxiv:journal_ref>\n    <author>\n      <name>Fitria Wulandari Ramlan</name>\n    </author>\n    <author>\n      <name>Colm O'Riordan</name>\n    </author>\n    <author>\n      <name>Gabriel Kronberger</name>\n    </author>\n    <author>\n      <name>James McDermott</name>\n    </author>\n    <arxiv:doi>10.1145/3712255.3734356</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3712255.3734356\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2108.03274v1</id>\n    <title>Smooth Symbolic Regression: Transformation of Symbolic Regression into a Real-valued Optimization Problem</title>\n    <updated>2021-08-06T18:50:33Z</updated>\n    <link href=\"https://arxiv.org/abs/2108.03274v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2108.03274v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The typical methods for symbolic regression produce rather abrupt changes in solution candidates. In this work, we have tried to transform symbolic regression from an optimization problem, with a landscape that is so rugged that typical analysis methods do not produce meaningful results, to one that can be compared to typical and very smooth real-valued problems. While the ruggedness might not interfere with the performance of optimization, it restricts the possibilities of analysis. Here, we have explored different aspects of a transformation and propose a simple procedure to create real-valued optimization problems from symbolic regression problems.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-08-06T18:50:33Z</published>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Pitzer E. et al., Smooth Symbolic Regression: Transformation of Symbolic Regression into a Real-Valued Optimization Problem. In: Moreno-Díaz R. et al. (eds) Computer Aided Systems Theory. Lecture Notes in Computer Science, Vol. 9520, 2015</arxiv:journal_ref>\n    <author>\n      <name>Erik Pitzer</name>\n    </author>\n    <author>\n      <name>Gabriel Kronberger</name>\n    </author>\n    <arxiv:doi>10.1007/978-3-319-27340-2_47</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/978-3-319-27340-2_47\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2505.03977v1</id>\n    <title>Call for Action: towards the next generation of symbolic regression benchmark</title>\n    <updated>2025-05-06T21:02:20Z</updated>\n    <link href=\"https://arxiv.org/abs/2505.03977v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2505.03977v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Symbolic Regression (SR) is a powerful technique for discovering interpretable mathematical expressions. However, benchmarking SR methods remains challenging due to the diversity of algorithms, datasets, and evaluation criteria. In this work, we present an updated version of SRBench. Our benchmark expands the previous one by nearly doubling the number of evaluated methods, refining evaluation metrics, and using improved visualizations of the results to understand the performances. Additionally, we analyze trade-offs between model complexity, accuracy, and energy consumption. Our results show that no single algorithm dominates across all datasets. We propose a call for action from SR community in maintaining and evolving SRBench as a living benchmark that reflects the state-of-the-art in symbolic regression, by standardizing hyperparameter tuning, execution constraints, and computational resource allocation. We also propose deprecation criteria to maintain the benchmark's relevance and discuss best practices for improving SR algorithms, such as adaptive hyperparameter tuning and energy-efficient implementations.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.NE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-05-06T21:02:20Z</published>\n    <arxiv:comment>10 pages, 4 figures, 3 tables, accepted in Genetic and Evolutionary Computation Conference (GECCO '25) Symbolic Regression Workshop</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Guilherme S. Imai Aldeia</name>\n    </author>\n    <author>\n      <name>Hengzhe Zhang</name>\n    </author>\n    <author>\n      <name>Geoffrey Bomarito</name>\n    </author>\n    <author>\n      <name>Miles Cranmer</name>\n    </author>\n    <author>\n      <name>Alcides Fonseca</name>\n    </author>\n    <author>\n      <name>Bogdan Burlacu</name>\n    </author>\n    <author>\n      <name>William G. La Cava</name>\n    </author>\n    <author>\n      <name>Fabrício Olivetti de França</name>\n    </author>\n    <arxiv:doi>10.1145/3712255.3734309</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1145/3712255.3734309\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.11481v2</id>\n    <title>AI Feynman: a Physics-Inspired Method for Symbolic Regression</title>\n    <updated>2020-04-15T16:39:27Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.11481v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.11481v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>A core challenge for both physics and artificial intellicence (AI) is symbolic regression: finding a symbolic expression that matches data from an unknown function. Although this problem is likely to be NP-hard in principle, functions of practical interest often exhibit symmetries, separability, compositionality and other simplifying properties. In this spirit, we develop a recursive multidimensional symbolic regression algorithm that combines neural network fitting with a suite of physics-inspired techniques. We apply it to 100 equations from the Feynman Lectures on Physics, and it discovers all of them, while previous publicly available software cracks only 71; for a more difficult test set, we improve the state of the art success rate from 15% to 90%.</summary>\n    <category term=\"physics.comp-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-th\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-27T20:03:57Z</published>\n    <arxiv:comment>15 pages, 2 figs. Our code is available at https://github.com/SJ001/AI-Feynman and our Feynman Symbolic Regression Database for benchmarking can be downloaded at https://space.mit.edu/home/tegmark/aifeynman.html</arxiv:comment>\n    <arxiv:primary_category term=\"physics.comp-ph\"/>\n    <arxiv:journal_ref>Science Advances, 6:eaay2631, April 15, 2020</arxiv:journal_ref>\n    <author>\n      <name>Silviu-Marian Udrescu</name>\n      <arxiv:affiliation>MIT</arxiv:affiliation>\n    </author>\n    <author>\n      <name>Max Tegmark</name>\n      <arxiv:affiliation>MIT</arxiv:affiliation>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2509.10500v1</id>\n    <title>Exploring Multi-view Symbolic Regression methods in physical sciences</title>\n    <updated>2025-09-01T12:43:34Z</updated>\n    <link href=\"https://arxiv.org/abs/2509.10500v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2509.10500v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Describing the world behavior through mathematical functions help scientists to achieve a better understanding of the inner mechanisms of different phenomena. Traditionally, this is done by deriving new equations from first principles and careful observations. A modern alternative is to automate part of this process with symbolic regression (SR). The SR algorithms search for a function that adequately fits the observed data while trying to enforce sparsity, in the hopes of generating an interpretable equation. A particularly interesting extension to these algorithms is the Multi-view Symbolic Regression (MvSR). It searches for a parametric function capable of describing multiple datasets generated by the same phenomena, which helps to mitigate the common problems of overfitting and data scarcity. Recently, multiple implementations added support to MvSR with small differences between them. In this paper, we test and compare MvSR as supported in Operon, PySR, phy-SO, and eggp, in different real-world datasets. We show that they all often achieve good accuracy while proposing solutions with only few free parameters. However, we find that certain features enable a more frequent generation of better models. We conclude by providing guidelines for future MvSR developments.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.GA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"astro-ph.IM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"physics.data-an\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2025-09-01T12:43:34Z</published>\n    <arxiv:comment>15 pages, 7 figures. Presented at the \"Symbolic regression in the physical sciences\" conference at the Royal Society. Submitted to Philosophical Transactions A</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Etienne Russeil</name>\n    </author>\n    <author>\n      <name>Fabrício Olivetti de França</name>\n    </author>\n    <author>\n      <name>Konstantin Malanchev</name>\n    </author>\n    <author>\n      <name>Guillaume Moinard</name>\n    </author>\n    <author>\n      <name>Maxime Cherrey</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2204.12159v1</id>\n    <title>Coefficient Mutation in the Gene-pool Optimal Mixing Evolutionary Algorithm for Symbolic Regression</title>\n    <updated>2022-04-26T08:58:47Z</updated>\n    <link href=\"https://arxiv.org/abs/2204.12159v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2204.12159v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Currently, the genetic programming version of the gene-pool optimal mixing evolutionary algorithm (GP-GOMEA) is among the top-performing algorithms for symbolic regression (SR). A key strength of GP-GOMEA is its way of performing variation, which dynamically adapts to the emergence of patterns in the population. However, GP-GOMEA lacks a mechanism to optimize coefficients. In this paper, we study how fairly simple approaches for optimizing coefficients can be integrated into GP-GOMEA. In particular, we considered two variants of Gaussian coefficient mutation. We performed experiments using different settings on 23 benchmark problems, and used machine learning to estimate what aspects of coefficient mutation matter most. We find that the most important aspect is that the number of coefficient mutation attempts needs to be commensur"
+    },
+    {
+      "source": "arxiv",
       "query": "systematic crypto trading machine learning alpha",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/dQzRIBNaSDswCmMRZSPIgIyPmTM</id>\n  <title>arXiv Query: search_query=all:systematic OR all:crypto OR all:trading OR all:machine OR all:learning OR all:alpha&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T04:24:08Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:systematic+OR+(all:crypto+OR+(all:trading+OR+(all:machine+OR+(all:learning+OR+all:alpha))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>663700</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/2306.04338v1</id>\n    <title>Changing Data Sources in the Age of Machine Learning for Official Statistics</title>\n    <updated>2023-06-07T11:08:12Z</updated>\n    <link href=\"https://arxiv.org/abs/2306.04338v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2306.04338v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Data science has become increasingly essential for the production of official statistics, as it enables the automated collection, processing, and analysis of large amounts of data. With such data science practices in place, it enables more timely, more insightful and more flexible reporting. However, the quality and integrity of data-science-driven statistics rely on the accuracy and reliability of the data sources and the machine learning techniques that support them. In particular, changes in data sources are inevitable to occur and pose significant risks that are crucial to address in the context of machine learning for official statistics.\n  This paper gives an overview of the main risks, liabilities, and uncertainties associated with changing data sources in the context of machine learning for official statistics. We provide a checklist of the most prevalent origins and causes of changing data sources; not only on a technical level but also regarding ownership, ethics, regulation, and public perception. Next, we highlight the repercussions of changing data sources on statistical reporting. These include technical effects such as concept drift, bias, availability, validity, accuracy and completeness, but also the neutrality and potential discontinuation of the statistical offering. We offer a few important precautionary measures, such as enhancing robustness in both data sourcing and statistical techniques, and thorough monitoring. In doing so, machine learning-based official statistics can maintain integrity, reliability, consistency, and relevance in policy-making, decision-making, and public discourse.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-06-07T11:08:12Z</published>\n    <arxiv:comment>Presented at UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>UNECE Machine Learning for Official Statistics Workshop 2023</arxiv:journal_ref>\n    <author>\n      <name>Cedric De Boom</name>\n    </author>\n    <author>\n      <name>Michael Reusens</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2006.16189v4</id>\n    <title>DOME: Recommendations for supervised machine learning validation in biology</title>\n    <updated>2021-01-07T07:29:24Z</updated>\n    <link href=\"https://arxiv.org/abs/2006.16189v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2006.16189v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Modern biology frequently relies on machine learning to provide predictions and improve decision processes. There have been recent calls for more scrutiny on machine learning performance and possible limitations. Here we present a set of community-wide recommendations aiming to help establish standards of supervised machine learning validation in biology. Adopting a structured methods description for machine learning based on data, optimization, model, evaluation (DOME) will aim to help both reviewers and readers to better understand and assess the performance and limitations of a method or outcome. The recommendations are formulated as questions to anyone wishing to pursue implementation of a machine learning algorithm. Answers to these questions can be easily included in the supplementary material of published papers.</summary>\n    <category term=\"q-bio.OT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-06-25T12:01:39Z</published>\n    <arxiv:primary_category term=\"q-bio.OT\"/>\n    <author>\n      <name>Ian Walsh</name>\n    </author>\n    <author>\n      <name>Dmytro Fishman</name>\n    </author>\n    <author>\n      <name>Dario Garcia-Gasulla</name>\n    </author>\n    <author>\n      <name>Tiina Titma</name>\n    </author>\n    <author>\n      <name>Gianluca Pollastri</name>\n    </author>\n    <author>\n      <name>The ELIXIR Machine Learning focus group</name>\n    </author>\n    <author>\n      <name>Jen Harrow</name>\n    </author>\n    <author>\n      <name>Fotis E. Psomopoulos</name>\n    </author>\n    <author>\n      <name>Silvio C. E. Tosatto</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2201.12150v2</id>\n    <title>Learning Curves for Decision Making in Supervised Machine Learning: A Survey</title>\n    <updated>2025-01-28T14:39:26Z</updated>\n    <link href=\"https://arxiv.org/abs/2201.12150v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2201.12150v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Learning curves are a concept from social sciences that has been adopted in the context of machine learning to assess the performance of a learning algorithm with respect to a certain resource, e.g., the number of training examples or the number of training iterations. Learning curves have important applications in several machine learning contexts, most notably in data acquisition, early stopping of model training, and model selection. For instance, learning curves can be used to model the performance of the combination of an algorithm and its hyperparameter configuration, providing insights into their potential suitability at an early stage and often expediting the algorithm selection process. Various learning curve models have been proposed to use learning curves for decision making. Some of these models answer the binary decision question of whether a given algorithm at a certain budget will outperform a certain reference performance, whereas more complex models predict the entire learning curve of an algorithm. We contribute a framework that categorises learning curve approaches using three criteria: the decision-making situation they address, the intrinsic learning curve question they answer and the type of resources they use. We survey papers from the literature and classify them into this framework.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-01-28T14:34:32Z</published>\n    <arxiv:comment>Accepted in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning, Volume 113, pages 8371-8425 (2024)</arxiv:journal_ref>\n    <author>\n      <name>Felix Mohr</name>\n    </author>\n    <author>\n      <name>Jan N. van Rijn</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-024-06619-7</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-024-06619-7\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2111.07508v1</id>\n    <title>Public Policymaking for International Agricultural Trade using Association Rules and Ensemble Machine Learning</title>\n    <updated>2021-11-15T02:58:03Z</updated>\n    <link href=\"https://arxiv.org/abs/2111.07508v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2111.07508v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>International economics has a long history of improving our understanding of factors causing trade, and the consequences of free flow of goods and services across countries. The recent shocks to the free trade regime, especially trade disputes among major economies, as well as black swan events, such as trade wars and pandemics, raise the need for improved predictions to inform policy decisions. AI methods are allowing economists to solve such prediction problems in new ways. In this manuscript, we present novel methods that predict and associate food and agricultural commodities traded internationally. Association Rules (AR) analysis has been deployed successfully for economic scenarios at the consumer or store level, such as for market basket analysis. In our work however, we present analysis of imports and exports associations and their effects on commodity trade flows. Moreover, Ensemble Machine Learning methods are developed to provide improved agricultural trade predictions, outlier events' implications, and quantitative pointers to policy makers.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-11-15T02:58:03Z</published>\n    <arxiv:comment>Paper published at Elsevier's Journal of Machine Learning with Applications https://www.sciencedirect.com/science/article/pii/S2666827021000232</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning with Applications, Volume 5, 2021, 100046, ISSN 2666-8270</arxiv:journal_ref>\n    <author>\n      <name>Feras A. Batarseh</name>\n    </author>\n    <author>\n      <name>Munisamy Gopinath</name>\n    </author>\n    <author>\n      <name>Anderson Monken</name>\n    </author>\n    <author>\n      <name>Zhengrong Gu</name>\n    </author>\n    <arxiv:doi>10.1016/j.mlwa.2021.100046</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.mlwa.2021.100046\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2302.08893v4</id>\n    <title>Active learning for data streams: a survey</title>\n    <updated>2023-11-29T21:07:15Z</updated>\n    <link href=\"https://arxiv.org/abs/2302.08893v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2302.08893v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Online active learning is a paradigm in machine learning that aims to select the most informative data points to label from a data stream. The problem of minimizing the cost associated with collecting labeled observations has gained a lot of attention in recent years, particularly in real-world applications where data is only available in an unlabeled form. Annotating each observation can be time-consuming and costly, making it difficult to obtain large amounts of labeled data. To overcome this issue, many active learning strategies have been proposed in the last decades, aiming to select the most informative observations for labeling in order to improve the performance of machine learning models. These approaches can be broadly divided into two categories: static pool-based and stream-based active learning. Pool-based active learning involves selecting a subset of observations from a closed pool of unlabeled data, and it has been the focus of many surveys and literature reviews. However, the growing availability of data streams has led to an increase in the number of approaches that focus on online active learning, which involves continuously selecting and labeling observations as they arrive in a stream. This work aims to provide an overview of the most recently proposed approaches for selecting the most informative observations from data streams in real time. We review the various techniques that have been proposed and discuss their strengths and limitations, as well as the challenges and opportunities that exist in this area of research.</summary>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ME\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-02-17T14:24:13Z</published>\n    <arxiv:comment>Published in Machine Learning (2023)</arxiv:comment>\n    <arxiv:primary_category term=\"stat.ML\"/>\n    <arxiv:journal_ref>Machine Learning (2023): 1-55</arxiv:journal_ref>\n    <author>\n      <name>Davide Cacciarelli</name>\n    </author>\n    <author>\n      <name>Murat Kulahci</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-023-06454-2</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-023-06454-2\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2602.11092v2</id>\n    <title>MerLin: A Discovery Engine for Photonic and Hybrid Quantum Machine Learning</title>\n    <updated>2026-04-17T23:13:30Z</updated>\n    <link href=\"https://arxiv.org/abs/2602.11092v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2602.11092v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Identifying where quantum models may offer practical benefits in near term quantum machine learning (QML) requires moving beyond isolated algorithmic proposals toward systematic and empirical exploration across models, datasets, and hardware constraints. We introduce MerLin, an open-source framework designed as a discovery engine for photonic and hybrid quantum machine learning. MerLin integrates optimized strong simulation of linear optical circuits into standard PyTorch and scikit learn workflows, enabling end-to-end differentiable training of quantum layers.\n  MerLin is designed around systematic benchmarking and reproducibility. As an initial contribution, we reproduce eighteen state-of-the-art photonic and hybrid QML works spanning kernel methods, reservoir computing, convolutional and recurrent architectures, generative models, and modern training paradigms. These reproductions are released as reusable, modular experiments that can be directly extended and adapted, establishing a shared experimental baseline consistent with empirical benchmarking methodologies widely adopted in modern artificial intelligence.\n  By embedding photonic quantum models within established machine learning ecosystems, MerLin allows practitioners to leverage existing tooling for ablation studies, cross-modality comparisons, and hybrid classical-quantum workflows. The framework already implements hardware-aware features, allowing tests on available quantum hardware while enabling exploration beyond its current capabilities, positioning MerLin as a forward-looking co-design tool linking algorithms, benchmarks, and hardware.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.PL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"quant-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-02-11T18:00:01Z</published>\n    <arxiv:comment>Accepted to IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEE WCCI 2026</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>IJCNN SS07 Quantum Machine Learning Algorithms and Applications, IEEE WCCI 2026</arxiv:journal_ref>\n    <author>\n      <name>Cassandre Notton</name>\n    </author>\n    <author>\n      <name>Benjamin Stott</name>\n    </author>\n    <author>\n      <name>Philippe Schoeb</name>\n    </author>\n    <author>\n      <name>Anthony Walsh</name>\n    </author>\n    <author>\n      <name>Grégoire Leboucher</name>\n    </author>\n    <author>\n      <name>Vincent Espitalier</name>\n    </author>\n    <author>\n      <name>Vassilis Apostolou</name>\n    </author>\n    <author>\n      <name>Louis-Félix Vigneux</name>\n    </author>\n    <author>\n      <name>Alexia Salavrakos</name>\n    </author>\n    <author>\n      <name>Jean Senellart</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2304.02381v2</id>\n    <title>Physics-Inspired Interpretability Of Machine Learning Models</title>\n    <updated>2024-12-15T17:17:01Z</updated>\n    <link href=\"https://arxiv.org/abs/2304.02381v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2304.02381v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The ability to explain decisions made by machine learning models remains one of the most significant hurdles towards widespread adoption of AI in highly sensitive areas such as medicine, cybersecurity or autonomous driving. Great interest exists in understanding which features of the input data prompt model decision making. In this contribution, we propose a novel approach to identify relevant features of the input data, inspired by methods from the energy landscapes field, developed in the physical sciences. By identifying conserved weights within groups of minima of the loss landscapes, we can identify the drivers of model decision making. Analogues to this idea exist in the molecular sciences, where coordinate invariants or order parameters are employed to identify critical features of a molecule. However, no such approach exists for machine learning loss landscapes. We will demonstrate the applicability of energy landscape methods to machine learning models and give examples, both synthetic and from the real world, for how these methods can help to make models more interpretable.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-04-05T11:35:17Z</published>\n    <arxiv:comment>6 pages, 2 figures, ICLR 2023 Workshop on Physics for Machine Learning</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICLR 2023 Workshop on Physics for Machine Learning</arxiv:journal_ref>\n    <author>\n      <name>Maximilian P Niroomand</name>\n    </author>\n    <author>\n      <name>David J Wales</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.07435v1</id>\n    <title>Alpha MAML: Adaptive Model-Agnostic Meta-Learning</title>\n    <updated>2019-05-17T18:45:25Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.07435v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.07435v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Model-agnostic meta-learning (MAML) is a meta-learning technique to train a model on a multitude of learning tasks in a way that primes the model for few-shot learning of new tasks. The MAML algorithm performs well on few-shot learning problems in classification, regression, and fine-tuning of policy gradients in reinforcement learning, but comes with the need for costly hyperparameter tuning for training stability. We address this shortcoming by introducing an extension to MAML, called Alpha MAML, to incorporate an online hyperparameter adaptation scheme that eliminates the need to tune meta-learning and learning rates. Our results with the Omniglot database demonstrate a substantial reduction in the need to tune MAML training hyperparameters and improvement to training stability with less sensitivity to hyperparameter choice.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-17T18:45:25Z</published>\n    <arxiv:comment>6th ICML Workshop on Automated Machine Learning (2019)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>ICML Workshop on Automated Machine Learning (2019)</arxiv:journal_ref>\n    <author>\n      <name>Harkirat Singh Behl</name>\n    </author>\n    <author>\n      <name>Atılım Güneş Baydin</name>\n    </author>\n    <author>\n      <name>Philip H. S. Torr</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1705.05172v1</id>\n    <title>Emotion in Reinforcement Learning Agents and Robots: A Survey</title>\n    <updated>2017-05-15T11:49:56Z</updated>\n    <link href=\"https://arxiv.org/abs/1705.05172v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1705.05172v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article provides the first survey of computational models of emotion in reinforcement learning (RL) agents. The survey focuses on agent/robot emotions, and mostly ignores human user emotions. Emotions are recognized as functional in decision-making by influencing motivation and action selection. Therefore, computational emotion models are usually grounded in the agent's decision making architecture, of which RL is an important subclass. Studying emotions in RL-based agents is useful for three research fields. For machine learning (ML) researchers, emotion models may improve learning efficiency. For the interactive ML and human-robot interaction (HRI) community, emotions can communicate state and enhance user investment. Lastly, it allows affective modelling (AM) researchers to investigate their emotion theories in a successful AI agent class. This survey provides background on emotion theory and RL. It systematically addresses 1) from what underlying dimensions (e.g., homeostasis, appraisal) emotions can be derived and how these can be modelled in RL-agents, 2) what types of emotions have been derived from these dimensions, and 3) how these emotions may either influence the learning efficiency of the agent or be useful as social signals. We also systematically compare evaluation criteria, and draw connections to important RL sub-domains like (intrinsic) motivation and model-based RL. In short, this survey provides both a practical overview for engineers wanting to implement emotions in their RL agents, and identifies challenges and directions for future emotion-RL research.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.AI\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.HC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.RO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-05-15T11:49:56Z</published>\n    <arxiv:comment>To be published in Machine Learning Journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Machine Learning 2017</arxiv:journal_ref>\n    <author>\n      <name>Thomas M. Moerland</name>\n    </author>\n    <author>\n      <name>Joost Broekens</name>\n    </author>\n    <author>\n      <name>Catholijn M. Jonker</name>\n    </author>\n    <arxiv:doi>10.1007/s10994-017-5666-0</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10994-017-5666-0\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2303.15563v1</id>\n    <title>Privacy-preserving machine learning for healthcare: open challenges and future perspectives</title>\n    <updated>2023-03-27T19:20:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2303.15563v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2303.15563v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Machine Learning (ML) has recently shown tremendous success in modeling various healthcare prediction tasks, ranging from disease diagnosis and prognosis to patient treatment. Due to the sensitive nature of medical data, privacy must be considered along the entire ML pipeline, from model training to inference. In this paper, we conduct a review of recent literature concerning Privacy-Preserving Machine Learning (PPML) for healthcare. We primarily focus on privacy-preserving training and inference-as-a-service, and perform a comprehensive review of existing trends, identify challenges, and discuss opportunities for future research directions. The aim of this review is to guide the development of private and efficient ML models in healthcare, with the prospects of translating research efforts into real-world settings.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-03-27T19:20:51Z</published>\n    <arxiv:comment>ICLR 2023 Workshop on Trustworthy Machine Learning for Healthcare (TML4H)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <arxiv:journal_ref>Trustworthy Machine Learning for Healthcare. TML4H 2023. Lecture Notes in Computer Science, vol 13932</arxiv:journal_ref>\n    <author>\n      <name>Alejandro Guerra-Manzanares</name>\n    </author>\n    <author>\n      <name>L. Julian Lechuga Lopez</name>\n    </author>\n    <author>\n      <name>Michail Maniatakos</name>\n    </author>\n    <author>\n      <name>Farah E. Shamout</name>\n    </author>\n    <arxiv:doi>10.1007/978-3-031-39539-0_3</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/978-3-031-39539-0_3\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1905.04749v2</id>\n    <title>A Benchmark Study of Machine Learning Models for Online Fake News Detection</title>\n    <updated>2021-03-26T05:30:08Z</updated>\n    <link href=\"https://arxiv.org/abs/1905.04749v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1905.04749v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>The proliferation of fake news and its propagation on social media has become a major concern due to its ability to create devastating impacts. Different machine learning approaches have been suggested to detect fake news. However, most of those focused on a specific type of news (such as political) which leads us to the question of dataset-bias of the models used. In this research, we conducted a benchmark study to assess the performance of different applicable machine learning approaches on three different datasets where we accumulated the largest and most diversified one. We explored a number of advanced pre-trained language models for fake news detection along with the traditional and deep learning ones and compared their performances from different aspects for the first time to the best of our knowledge. We find that BERT and similar pre-trained models perform the best for fake news detection, especially with very small dataset. Hence, these models are significantly better option for languages with limited electronic contents, i.e., training data. We also carried out several analysis based on the models' performance, article's topic, article's length, and discussed different lessons learned from them. We believe that this benchmark study will help the research community to explore further and news sites/blogs to select the most appropriate fake news detection method.</summary>\n    <category term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.IR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-05-12T17:15:11Z</published>\n    <arxiv:comment>22 pages, 5 figures, to be published in Machine Learning with Applications journal</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CL\"/>\n    <arxiv:journal_ref>Machine Learning with Applications: 4(2021).100032</arxiv:journal_ref>\n    <author>\n      <name>Junaed Younus Khan</name>\n    </author>\n    <author>\n      <name>Md. Tawkat Islam Khondaker</name>\n    </author>\n    <author>\n      <name>Sadia Afroz</name>\n    </author>\n    <author>\n      <name>Gias Uddin</name>\n    </author>\n    <author>\n      <name>Anindya Iqbal</name>\n    </author>\n    <arxiv:doi>10.1016/j.mlwa.2021.100032</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.mlwa.2021.100032\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2509.08759v3</id>\n    <title>Fourier Learning Machines: Nonharmonic Fourier-Based Neural Networks for Scientific Machine Learning</title>\n    <updated>2026-03-18T23:01:08Z</updated>\n    <link href=\"https://arxiv.org/abs/2509.08759v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2509.08759v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We introduce the Fourier Learning Machine (FLM), a neural network (NN) architecture designed to represent a multidimensional nonharmonic Fourier series. The FLM uses a simple feedforward structure with cosine activation functions to learn the frequencies, amplitudes, and phase shifts of the series as trainable parameters. This design allows the model to create a problem-specific spectral basis adaptable to both periodic and nonperiodic functions. Unlike previous Fourier-inspired NN models, the FLM is the first architecture able to represent a multidimensional Fourier series with a complete set of basis functions in separable form, doing so by using a standard Multilayer Perceptron-like architecture. A one-to-one correspondence between the Fourier coefficients and amplitudes and phase-shifts is demonstrated, allowing for the translation between a full, separable basis form and the cosine phase-shifted one. Additionally, we evaluate the performance of FLMs on several scientific computing problems, including benchmark Partial Differential Equations (PDEs) and a family of Optimal Control Problems (OCPs). Computational experiments show that the performance of FLMs is comparable, and often superior, to that of established architectures like SIREN and vanilla feedforward NNs.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category"
     },
@@ -984,6 +989,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "",
+      "url": "https://doi.org/10.52926/jpmjpr1761",
+      "description": "Crossref work type=grant",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Activity of Hip Muscle in Change of Load on One Side of the Lower Limbs",
       "url": "https://doi.org/10.1589/rika.23.671",
       "description": "Crossref work type=journal-article",
@@ -1004,6 +1017,14 @@
       "url": "https://doi.org/10.12677/fin.2020.104037",
       "description": "Crossref work type=journal-article",
       "updated_at": "2020"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -1036,6 +1057,14 @@
       "url": "https://doi.org/10.12677/ecl.2025.1482826",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
+      "url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2020"
     },
     {
       "source": "crossref",
@@ -1856,6 +1885,46 @@
     {
       "source": "crossref",
       "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
+      "url": "https://doi.org/10.12677/sa.2021.103054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "url": "https://doi.org/10.12677/fin.2021.113022",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "url": "https://doi.org/10.12677/orf.2021.114043",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
       "title": "国家经济学宣言：货币本质是劳动力，主权属于人民——银行货币垄断是国家经济困难的根源",
       "url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
       "description": "Crossref work type=posted-content",
@@ -1890,6 +1959,14 @@
       "query": "SMC ICT 流动性 扫损 加密货币",
       "title": "生育铸币论——货币本质是劳动力，用生育铸币制度做强国内大循环",
       "url": "https://doi.org/10.31235/osf.io/zfg5x_v5",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "SMC ICT 流动性 扫损 加密货币",
+      "title": "货币本质是劳动力，主权属于人民——“国家经济学”的货币理论",
+      "url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
       "description": "Crossref work type=posted-content",
       "updated_at": "2025"
     },
@@ -2368,72 +2445,8 @@
     {
       "source": "crossref",
       "query": "autonomous trading strategy research backtest",
-      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
-      "url": "https://doi.org/10.1002/9781118656617.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "url": "https://doi.org/10.2139/ssrn.6683818",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "url": "https://doi.org/10.2139/ssrn.4601806",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading Lore",
-      "url": "https://doi.org/10.1002/9781118656617.ch10",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading System Elements: Entries",
-      "url": "https://doi.org/10.1002/9781118656617.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
       "title": "Trading System Elements: Exits",
       "url": "https://doi.org/10.1002/9781118656617.ch5",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "url": "https://doi.org/10.2139/ssrn.6876580",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "url": "https://doi.org/10.1002/9781118656617.ch13",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "What Is a Tradeable Strategy?",
-      "url": "https://doi.org/10.1002/9781118656617.ch1",
       "description": "Crossref work type=other",
       "updated_at": "2013"
     },
@@ -2984,10 +2997,74 @@
     {
       "source": "crossref",
       "query": "crypto trading bot strategy backtest",
+      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
+      "url": "https://doi.org/10.1002/9781118656617.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
       "title": "How Much Sharpe is Illusory? Quantifying Backtest Overfitting in Crypto Factor Strategies",
       "url": "https://doi.org/10.2139/ssrn.7350238",
       "description": "Crossref work type=posted-content",
       "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "url": "https://doi.org/10.2139/ssrn.6683818",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "url": "https://doi.org/10.2139/ssrn.4601806",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading Lore",
+      "url": "https://doi.org/10.1002/9781118656617.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading System Elements: Entries",
+      "url": "https://doi.org/10.1002/9781118656617.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "url": "https://doi.org/10.2139/ssrn.6876580",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "url": "https://doi.org/10.1002/9781118656617.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "What Is a Tradeable Strategy?",
+      "url": "https://doi.org/10.1002/9781118656617.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
     },
     {
       "source": "crossref",
@@ -4912,74 +4989,10 @@
     {
       "source": "crossref",
       "query": "加密货币 量化 github",
-      "title": "IPG增加LD存货量",
-      "url": "https://doi.org/10.3788/lop20084507.0008c",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2008"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "url": "https://doi.org/10.12677/fin.2021.113022",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "url": "https://doi.org/10.12677/orf.2021.114043",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
       "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
       "url": "https://doi.org/10.32629/ej.v9i4.3403",
       "description": "Crossref work type=journal-article",
       "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
-      "url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2020"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "货币本质是劳动力，主权属于人民——“国家经济学”的货币理论",
-      "url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "",
-      "url": "https://doi.org/10.52926/jpmjpr1761",
-      "description": "Crossref work type=grant",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "url": "https://doi.org/10.12677/fin.2024.143090",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 A股 量化 交易",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5016,18 +5029,18 @@
     {
       "source": "crossref",
       "query": "因子挖掘 加密货币 量化 交易",
-      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
-      "url": "https://doi.org/10.12677/sa.2021.103054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
       "title": "An Empirical Analysis of the Factors Affecting the Level of Currency Internationalization—From the Perspective of the Stage of Currency Internationalization",
       "url": "https://doi.org/10.12677/fin.2023.135115",
       "description": "Crossref work type=journal-article",
       "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "IPG增加LD存货量",
+      "url": "https://doi.org/10.3788/lop20084507.0008c",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2008"
     },
     {
       "source": "crossref",
@@ -5047,11 +5060,11 @@
     },
     {
       "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "query": "因子挖掘 加密货币 量化 交易",
+      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
+      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -5082,14 +5095,6 @@
       "query": "多因子 加密货币 量化 交易 策略",
       "title": "基于 CANSLIM 法则的多因子量化策略研究",
       "url": "https://doi.org/10.69979/3029-2700.25.03.078",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
-      "title": "空间货币化视角下商业地产存量改造的社交化赋能路径研究",
-      "url": "https://doi.org/10.63887/fem.2025.1.9.2",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -5144,6 +5149,22 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -5160,6 +5181,14 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "强化学习的优化控制策略提升智慧建筑节能",
       "url": "https://doi.org/10.70693/cjst.v2i2.1935",
       "description": "Crossref work type=journal-article",
@@ -5170,6 +5199,22 @@
       "query": "强化学习 加密货币 交易 策略",
       "title": "深度学习视角下日语专业学生跨文化交际能力提升策略研究",
       "url": "https://doi.org/10.61369/edtr.8823",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "涨停 连板 A股 量化 策略",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "url": "https://doi.org/10.12677/fin.2024.143090",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
     },
@@ -5312,30 +5357,6 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "url": "https://doi.org/10.12677/ds.2023.96381",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "城市轨道交通客流预测与调度优化策略研究",
       "url": "https://doi.org/10.67328/bt4095",
       "description": "Crossref work type=journal-article",
@@ -5360,24 +5381,8 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "广东电力现货市场主体交易策略与博弈行为分析",
-      "url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "数据跨境流动中的安全风险与加密防护策略研究",
       "url": "https://doi.org/10.62989/jemr2025.2.2.10",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -6019,6 +6024,15 @@
       "url": "https://gitlab.com/DigiSphereX/NetSourcePolicy",
       "description": "Mirror of https://github.com/DigiSphereX/NetSourcePolicy",
       "updated_at": "2026-09-13T04:16:22.333Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "DigiSphereX/NetSourcePolicy-deletion_scheduled-86402878",
+      "url": "https://gitlab.com/DigiSphereX/NetSourcePolicy-deletion_scheduled-86402878",
+      "description": "Mirror of https://github.com/DigiSphereX/NetSourcePolicy",
+      "updated_at": "2026-09-13T04:28:20.805Z",
       "stars": 0
     },
     {
@@ -11708,6 +11722,86 @@
     },
     {
       "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "An Enhanced SpiderWeb Strategy: Integrating Advanced Factor Engineering and Machine Learning for Futures Trading",
+      "url": "https://www.semanticscholar.org/paper/bc49d8cd861d2c4ded68c37b2bccdd62ea81d316",
+      "description": "This study enhances the traditional Spider Web Strategy for futures markets by addressing its inherent limitations. While classic approaches successfully identify informed trader behavior, they often fail to capture the complex, nonlinear dynamics of market microstructure due to simplistic metrics and rule-based signal generation. We propose a novel, a three-tiered enhancement: Advanced Factor Engineering, Machine Learning Integration and Multi-dimensional Signal Fusion. Based on a decade of Chinese rebar futures data, our enhanced strategy demonstrates vastly superior performance, achieving an annualized return of 10.84% and a Sharpe ratio of 2.25, significantly outperforming the original strategy and other benchmarks. Our findings confirm that machine learning, when grounded in solid market microstructure theory and sophisticated factor engineering, can unlock significant predictive power from public position data, offering a robust and scalable paradigm for modern quantitative trading.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
+      "url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
+      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China’s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Deep Learning Enhanced Multi-Day Turnover Quantitative Trading Algorithm for Chinese A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/341beedf4855a5a3c76a27af1585f89b191a5730",
+      "description": "This paper presents a sophisticated multi-day turnover quantitative trading algorithm that integrates advanced deep learning techniques with comprehensive cross-sectional stock prediction for the Chinese A-share market. Our framework combines five interconnected modules: initial stock selection through deep cross-sectional prediction networks, opening signal distribution analysis using mixture models for arbitrage identification, market capitalization and liquidity-based dynamic position sizing, grid-search optimized profit-taking and stop-loss mechanisms, and multi-granularity volatility-based market timing models. The algorithm employs a novel approach to balance capital efficiency with risk management through adaptive holding periods and sophisticated entry/exit timing. Trained on comprehensive A-share data from 2010-2020 and rigorously backtested on 2021-2024 data, our method achieves remarkable performance with 15.2\\% annualized returns, maximum drawdown constrained below 5\\%, and a Sharpe ratio of 1.87. The strategy demonstrates exceptional scalability by maintaining 50-100 daily positions with a 9-day maximum holding period, incorporating dynamic profit-taking and stop-loss mechanisms that enhance capital turnover efficiency while preserving risk-adjusted returns. Our approach exhibits robust performance across various market regimes while maintaining high capital capacity suitable for institutional deployment.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Do regulated interaction platforms enhance market integrity? Insider trading evidence from China’s A-share market",
+      "url": "https://www.semanticscholar.org/paper/7c8dee545aa4f37133043cb4173afa15a0800d73",
+      "description": "\n \n This study aims to examine how regulated investor-company dialogue on exchange-run platforms impacts insider trading profitability. It further investigates the conditions under which this disciplinary effect is strongest by analyzing the moderating roles of institutional ownership, analyst coverage and media attention. By exploring discussion topics and sentiment, this paper clarifies the dual function of these regulated platforms as both a transparency mechanism and a potential tool for market manipulation in an emerging market.\n \n \n \n This study matches insider trades from Chinese A-share firms (2019–2023) with Q&A data from exchange-run interaction platforms. Interaction intensity is proxied by the log of question counts and word counts over a 360-day pre-trade window. Insider profitability is measured by 30-day abnormal returns from a Fama-French five-factor model. The main relationship is identified using fixed-effects regressions with two-way clustered standard errors. A battery of robustness checks, including alternative return windows, a three-factor model and latent dirichlet allocation topic modeling and sentiment analysis, confirms the results and explores underlying mechanisms.\n \n \n \n Increased question volume and complexity on regulated platforms significantly reduce insider trading profits. This disciplinary effect is stronger in firms with lower institutional ownership and less analyst or media coverage, suggesting the platform acts as a substitute for traditional monitoring in opaque firms. Findings are robust to alternative specifications. Topic analysis reveals that discussions on strategy and projects are most effective at curbing insider gains. The evidence establishes these platforms as a credible external governance mechanism, although risks of strategic manipulation by insiders remain.\n \n \n \n This paper provides novel empirical evidence linking China’s exchange-sponsored Q&A platforms to insider-trading outcomes. By pairing trading records",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Empirical Research on Multi-Factor Alpha Strategy in the A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/b2fd4d96e9033ff1dccc07d086eca72a878d08c2",
+      "description": "Among many quantitative investment means, Alpha strategy, as a typical strategy, has ushered in unprecedented development opportunities. Therefore, how to obtain excess Alpha returns stably and how to select the portfolio with higher future returns from the massive stock pool has attracted more and more attention from investors. This paper uses the ranking score method to determine the effective factors in the candidate factors and constructs a multi-factor Alpha strategy stock selection model in the A-share market. This paper first uses historical data to conduct sample analysis of stocks, studies the correlation between various indicators of listed companies and Alpha returns of individual stocks, and selects candidate factors that can effectively screen stocks with high Alpha returns. After that, the strategy model was established for back testing to test the application and feasibility of Alpha strategy in China's A-share market. Four effective factors are selected according to previous studies. And use the market data from January 2022 to December 2022 to back test the alpha strategy. The back test results show that the multi-factor Alpha strategy in this paper meets the expected performance in the A-stock market and can outperform the market to obtain excess returns. This paper studies the multi-factor Alpha strategy in the A-stock market, aiming to improve the feasibility of this strategy in the Chinese stock market, hoping to provide objective and effective investment ideas for asset managers and obtain investment methods that can obtain excess returns.",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Hierarchical AI Multi-Agent Fundamental Investing: Evidence from China's A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/e656c49b46dd33a4e7dcea0ebda4cba1399c7ac4",
+      "description": "We present a multi-agent, AI-driven framework for fundamental investing that integrates macro indicators, industry-level and firm-specific information to construct optimized equity portfolios. The architecture comprises: (i) a Macro agent that dynamically screens and weights sectors based on evolving economic indicators and industry performance; (ii) four firm-level agents -- Fundamental, Technical, Report, and News -- that conduct in-depth analyses of individual firms to ensure both breadth and depth of coverage; (iii) a Portfolio agent that uses reinforcement learning to combine the agent outputs into a unified policy to generate the trading strategy; and (iv) a Risk Control agent that adjusts portfolio positions in response to market volatility. We evaluate the system on the constituents by the CSI 300 Index of China's A-share market and find that it consistently outperforms standard benchmarks and a state-of-the-art multi-agent trading system on risk-adjusted returns and drawdown control. Our core contribution is a hierarchical multi-agent design that links top-down macro screening with bottom-up fundamental analysis, offering a robust and extensible approach to factor-based portfolio construction.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "High-Dimensional Spatiotemporal Dependencies and Behavioral Heterogeneity Co-Modeling: LSTM-Multi-Factor Penetrative Analysis and Risk Premium Decomposition of the Reversal Effect in China's A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/07c77290901f22f35fbd062da759ace375c45d5f",
+      "description": "China’s A-share market, with its unique retail-dominated investor base and policy-driven ecosystem, serves as a compelling laboratory for testing market anomalies. This study investigates the efficacy and mechanisms of momentum and reversal effects in this emerging-market context, uncovering how behavioral forces dynamically shape price patterns under structural inefficiencies. Building on monthly data spanning January 2014 to January 2024, we systematically evaluate strategy performance through winner-loser portfolio construction across formation periods (1, 3, 6, 12 months), employing long-short tactics, risk-neutralizing techniques (CAPM and Fama-French three-factor models), and an LSTM deep learning framework. Key findings reveal reversal strategies’ striking dominance over momentum approaches mainly during an economic recession, with win rates consistently hovering at 50%-60% in both economic expansion and recession and peaking with an average of 61.95% in 3-month formation windows—evidence of retail-driven overreaction followed by swift price correction. Our novel LSTM model, integrating implied volatility (IV), turnover, market capitalization, and technical indicators, achieved 81.3% prediction accuracy in out-of-sample tests, with the relative strength index (RSI) emerging as the most influential predictor. By bridging multifactor risk adjustment with nonlinear machine learning, this research marks a breakthrough in quant methodology, offering practitioners a robust toolkit to navigate China’s sentiment-fueled volatility while advancing behavioral theory in nonlinear markets. This study also redefines emerging-market asset pricing paradigms through theoretical and technological breakthroughs. Theoretically, it pioneers a dynamic pricing model that captures the interplay between institutional frictions and behavioral biases, particularly during policy-sensitive windows and sentiment extremes—a critical advance beyond traditional frameworks’ inability to decod",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Machine Learning Enhanced Multi-Factor Quantitative Trading: A Cross-Sectional Portfolio Optimization Approach with Bias Correction",
+      "url": "https://www.semanticscholar.org/paper/ce67f7485c2db4465ca678848ce14a6595e20037",
+      "description": "Rolling-window factor pipelines for Chinese A-share markets contain a subtle but costly flaw: daily price-move limits (+/-10% main-board, +/-20% STAR/ChiNext) render a fraction of closing prices non-executable, yet standard implementations ingest these values before any row-filtering runs. The contaminated aggregates propagate silently through moving averages, correlations, and ranks--a failure mode we term\"upstream contamination\". On real A-share data it inflates apparent information coefficient by 18% while reducing realised Sharpe by 0.44 points, because the model learns to predict returns it cannot trade. We resolve this with a mask-first design: a Boolean tradability mask is constructed at data load time and threaded through every operator, so that no window ever reads a non-tradable price. Built on this foundation, the system adds (i) a GPU-vectorised 213-factor engine via PyTorch unfold primitives (51x over pandas); (ii) an Adjusted-MSE loss penalising wrong-sign predictions 11x more heavily than magnitude errors; (iii) block-bootstrap GBM augmentation; and (iv) Markowitz-Ledoit-Wolf portfolio optimisation with cvxpy warm-start caching. On a calibrated 3,000-stock synthetic panel the system achieves annualised Sharpe 2.05; on proprietary real A-share data (2022-2024) it achieves Sharpe 1.63. Ablation shows the mask contract is the single largest contributor (+0.44), exceeding any model or loss choice. The full implementation is released under MIT licence at https://github.com/initial-d/ml-quant-trading.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Quantitative Stock Selection Strategy Analysis Based on Multi-factor Model Under the Epidemic Situation",
+      "url": "https://www.semanticscholar.org/paper/14078bff09d0a6d723398f7f705a26c7689442e6",
+      "description": "Contemporarily, COVID-19 undoubtedly had a profound impact on the current Chinese economy, as well as presented various challenges and opportunities for different industries in China. As a matter of fact, these changes may profoundly affect the future development trends and competitive landscape of industries. In recent years, the number of stock investors had continued to increase, surpassing 200 million in 2022. In a highly competitive market, the ability to select high-quality stocks often determines the final returns. This study selected the constituent stocks of the “CSI 500” as the “stock pool” for stock selection between 2020 and 2023. By analysing the degree of factor exposure, the correlation between factors, and IC values of factors, suitable and effective factor combinations were selected, and an evaluation model was established using multiple regression analysis to obtain a trading strategy. To ensure its feasibility and rationality, the strategy was simulated using backtesting before actual trading, ultimately aiming to achieve excess alpha returns.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "A-share quantitative trading factor strategy China",
+      "title": "Quantitative Trading Strategy Based on Multifactor Index Enhancement",
+      "url": "https://www.semanticscholar.org/paper/778c395e44212bc3089a880ab464f28cc2355228",
+      "description": "Excellent stock selection strategy can not only spread risks for people, but also bring considerable benefits to people. With the development of China stock market and the continuous improvement of quantitative level, using artificial intelligence for financial investment has gradually become an industry craze. Quantitative investment is a method based on data, with model as the core and with the help of computer programs, among which multi-factor stock selection model is the most widely used. Quantitative investment refers to the process of transforming investors' thoughts or ideas into mathematical models, or simulating real-world situations by using models, so as to judge market behavior or trends, and making specific investment decisions and implementation by computers. This paper constructs a quantitative trading model based on multi-factor index enhancement, verifies the effectiveness of quantitative stock selection strategy, and provides research data and stock selection strategy for investors at different levels; At the same time, it also provides corresponding reference ideas, policy suggestions and theoretical basis for investors to obtain reasonable income, the government to improve and open financial markets, and the whole society to improve the efficiency of resource allocation.",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
       "query": "China A-share T+1 transaction cost backtest",
       "title": "Advances in Web-Age Information Management, 6th International Conference, WAIM 2005, Hangzhou, China, October 11-13, 2005, Proceedings",
       "url": "https://www.semanticscholar.org/paper/1b98e364526f0aea3dd50bb5f2c4dad787ef83b3",
@@ -11788,6 +11882,86 @@
     },
     {
       "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Analysing the influencing factors on caregivers’ burden among amyotrophic lateral sclerosis patients in China: a cross-sectional study based on data mining",
+      "url": "https://www.semanticscholar.org/paper/a50cd40056582c3f918df935870759e25daff638",
+      "description": "Objectives There is significant burden on caregivers of patients with amyotrophic lateral sclerosis (ALS). However, only a few studies have focused on caregivers, and traditional research methods have obvious shortcomings in dealing with multiple influencing factors. This study was designed to explore influencing factors on caregiver burden among ALS patients and their caregivers from a new perspective. Design Cross-sectional study. Setting The data were collected at an affiliated hospital in Guangzhou, Guangdong, China. Participants Fifty-seven pairs of patients with ALS and their caregivers were investigated by standardised questionnaires. Main outcome measures This study primarily assessed the influencing factor of caregiver burden including age, gender, education level, economic status, anxiety, depression, social support, fatigue, sleep quality and stage of disease through data mining. Statistical analysis was performed using SPSS 24.0, and least absolute shrinkage and selection operator (LASSO) regression model was established by Python 3.8.1 to minimise the effect of multicollinearity. Results According to LASSO regression model, we found 10 variables had weights. Among them, Milano-Torinos (MITOS) stage (0–1) had the highest weight (−12.235), followed by younger age group (−3.198), lower-educated group (2.136), fatigue (1.687) and social support (-0.455). Variables including sleep quality, anxiety, depression and sex (male) had moderate weights in this model. Economic status (common), economic status (better), household (city), household (village), educational level (high), sex (female), age (older) and MITOS stage (2–4) had a weight of zero. Conclusions Our study demonstrates that the severity of ALS patients is the most influencing factor in caregiver burden. Caregivers of ALS patients may suffer less from caregiver burden when the patients are less severe, and the caregivers are younger. Low educational status could increase caregiver burden. Caregiver bu",
+      "updated_at": "2022"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Analysis of risky sexual behaviors among male college students who were sexually active in Sichuan, China: a cross-sectional survey",
+      "url": "https://www.semanticscholar.org/paper/448f8c42ec437d8cb51afa312db99a12761f4c3d",
+      "description": "Males have accounted for a significant share of new HIV infections among young people in the recent years. This study aimed to identify the factors associated with risky sexual behaviors, including early sexual debut, multiple sexual partnership and condomless sex, among sexually active male college students and provide implications for tailored health interventions. The cross-sectional study was conducted from December 2020 to December 2021 in 16 colleges that were located in Sichuan Province, one of the high-risk areas in China. Overall 1640 male college students who reported sexually experienced were analyzed in this study. Multivariable logistic regression analysis was applied to determine factors associated with early sexual debut, multiple sexual partnership and condomless sex. The average age of included male students was 19.95 ± 1.56. Of them, 27.74% initiated sexual behavior early, 48.60% reported multiple sexual partnership, and 16.52% did not use condoms at the latest sexual intercourse. Students who were younger (age ≤ 19, AOR = 7.60, 95%CI: 4.84–11.93; age20-21, AOR = 3.26, 95%CI: 2.04–5.21) and self-identified as sexual minorities (AOR = 2.38, 95%CI: 1.69–3.36) were more likely to have early sexual debut. The odds of having multiple sexual partners were higher among those who were ethnic minorities (AOR = 1.79, 95%CI: 1.33–2.41) and accepted extramarital sex (AOR = 1.33, 95%CI: 1.03–1.71). The likelihood of engaging in condomless sex at the latest sexual intercourse was lower among those who had sufficient knowledgeable about HIV (AOR = 0.63, 95%CI: 0.44–0.89), were very confident in condom use efficacy (AOR = 0.26, 95%CI: 0.16–0.43) and confident (AOR = 0.48, 95%CI: 0.34–0.69). Early sexual debut was positively associated with multiple sexual partnership (AOR = 3.64, 95%CI: 2.82–4.71) and condomless sex at the latest intercourse (AOR = 1.53, 95%CI: 1.07–2.20), respectively. Early sexual debut, multiple sexual partnership and condomless sex were of con",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Association of Strontium Exposure with Liver Function: A Cross-Sectional Study from a Mining Area in Hunan, China",
+      "url": "https://www.semanticscholar.org/paper/f77d5e92bd60319a04ef141e7903af33cc9f1aa1",
+      "description": "Previous studies found that some metals could affect liver function. However, the effect of strontium (Sr) exposure on liver function has not been evaluated. A cross-sectional study involved 1021 residents from a mining area in Hunan Province, China. This study was conducted to first investigate the effects of Sr alone as well as combined with five other heavy metals, including lead (Pb), cadmium (Cd), manganese (Mn), zinc (Zn), and copper (Cu) on liver function. Liver function was determined by detecting the level of alanine aminotransferase (ALT), aspartate aminotransferase (AST), and total bilirubin (TBIL) in the serum. The plasma concentrations of Sr, Pb, Cd, Mn, Zn, and Cu were measured using inductively coupled plasma-mass spectrometry (ICP-MS). The sociodemographic characteristics, lifestyle factors, and history of disease were assessed by questionnaire. Then the association between plasma Sr and liver function was analyzed by multiple linear regression and Bayesian kernel machine Regression (BKMR). A positive correlation was found between Sr and ALT and Sr and AST [ALT ( β  = 15.06, 95% confidence interval (CI) 8.37, 21.75, P  < 0.05), AST ( β  = 9.92, 95% CI 3.72, 16.11, P  < 0.05)] by multiple linear regression model. According to the BKMR, Sr and Pb, as well as Sr and Cu, had synergistic effects on liver function. Our findings suggest that Sr may be an independent risk factor for liver injury and has a synergistic relationship with Cu and Pb.",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Associations of musculoskeletal disorders with occupational stress and mental health among coal miners in Xinjiang, China: a cross-sectional study",
+      "url": "https://www.semanticscholar.org/paper/4f053a5147ff5a38cbe73061dccf1027b88445f0",
+      "description": "Musculoskeletal disorders (MSDs), a common type of occupational diseases, have become the main cause of absenteeism and early retirement in the occupational population, as well as a major risk factor for occupational disability. The purpose of this study was to investigate the effects of occupational stress and mental health on MSDs in coal miners in Xinjiang, China, to provide a theoretical basis for reducing the incidence of MSDs in coal miners and improving their physical and mental health. In this study, stratified cluster random sampling was used to randomly select six coal mining companies in Xinjiang, and 1675 coal miners were surveyed by questionnaire. The status of occupational stress, mental health and MSDs among coal miners was investigated by means of the Effort–Reward Imbalance questionnaire (ERI), Symptom Checklist-90(SCL-90), and Musculoskeletal disorders scale (MSDs) questionnaire. The prevalence of MSDs among coal miners was higher, and there were statistical differences among different sexes, ages, working years, shifts, types of work, educational level and monthly income (P < 0.001). The prevalence of MSDs in different body parts in the occupational stress group and mental disorder group was higher than that in the normal group. The results of multivariate logistic regression analysis showed that females had an increased risk of developing MSDs (OR = 2.23, 95% CI.:1.50,3.33). The risk of MSDs was higher with age < 30 years (30-39 years,OR = 2.39, 95% CI.,1.68,3.40; 40-49 years,OR = 2.15, 95% CI.:1.52,3.04; 50-60 years:OR = 3.25, 95% CI.:2.09,5.07), and the longer the working years, the higher the risk of MSDs (OR = 1.90, 95% CI.:1.38,2.62). The two shifts group (OR = 2.18, 95% CI.:1.59,2.98) had an increased risk of developing MSDs compared with the fixed day shift group. The risk of MSDs was lower in heading drivers (OR = 0.41, 95% CI.:0.29,0.60,) and transport workers (OR = 0.30, 95% CI.:0.20,0.43). The higher the education level, the lower the ",
+      "updated_at": "2021"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
+      "url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
+      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Knowledge, attitudes, and practices (KAP) of animal health staff and farmers towards brucellosis control in sheep and goat in China: A cross-sectional study",
+      "url": "https://www.semanticscholar.org/paper/612d769f6cf18d9356b6d8e7fd53cfb2788e9a78",
+      "description": "Background In China, brucellosis has resurfaced recently with a discernible spatial distribution, particularly affecting dairy herds and small ruminant populations. However, limited dissemination of knowledge, attitudes, and practices (KAP) for brucellosis control exists among farmers and animal health staff. This study aimed to assess the KAP of brucellosis control and prevention in animal health staff and farmers, with the goal of educating the public regarding the application of efficient brucellosis control and prevention strategies. Methods We conducted a cross-sectional survey involving 1,468 participants, comprising farmers (n = 1,067) and animal health staff (n = 401) based on their significant density of sheep and goat population. They completed a questionnaire targeting a specific group of farmers and animal health staff through face-to-face interviews. The KAP scores were then categorized as either satisfactory or unsatisfactory based on a cutoff set at ≥80% of the total score for satisfactory. Binary logistic regression was used to identify the association between KAP and geographical information. Results The results indicated satisfaction with KAP among farmers (57.7%, 75.8% and 87.0%) and animal health staff (80.5%, 84.5%, and 78.3%) at ≥ 80% cut-off point of total score. The primary concern of farmers is involved in the understanding of the route of transmission and handwashing practices after contacting animals. Predictors of higher knowledge and positive attitude included province of residence and age. The factors linked to satisfactory practice levels consist of province of residence, educational level, and a history of family members’ infections (p < 0.05). Among animal health staff, the primary factor associated with KAP was province of residence, sex, level of education, and history of family members infection (p < 0.05). Additionally, brucellosis information primarily originated from traditional promotional materials and veterinarians. Conclusi",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Luck “duels” among factors in China",
+      "url": "https://www.semanticscholar.org/paper/92d28475c82b6c59a9b07d7daacb01627eaf60c4",
+      "description": "We investigate the cross-sectional pricing power of factors in the Chinese A-share market under a rigorous multiple-testing framework. We construct 139 characteristicmanaged portfolios and 30 principal components (PCs) derived from instrumented PCA (IPCA), risk-premium PCA (RPPCA), and traditional PCA. Using individual stocks as test assets and a bootstrap-based panel regression approach, we evaluate these candidates' incremental explanatory power while addressing data mining and p-hacking concerns. We find that latent factors constructed via IPCA and RPPCA-notably IPC9 and RPPC1-exhibit significant pricing power, whereas traditional PCs fail to provide incremental information. Among characteristic-based portfolios, three-year capital expenditure (CAPEX) growth, debt growth, and eight-quarter earnings consistency stand out by outperforming PCA-derived factors. Beyond statistical robustness, we provide new economic insights by linking factor efficacy to China-specific market frictions. Specifically, we show that IPC9 proxies for retail-driven noise trader risk and RPPC1 captures a flight-to-quality premium in large-cap stocks, yet the pricing power of both factors is strictly confined to market segments accessible to arbitrage capital. Furthermore, we document a structural migration in the CAPEX factor's efficacy from state-owned to private enterprises, mirroring the secular evolution of China's industrial policy. Further analysis under value-weighted schemes, small-cap exclusions, and sectoral filters underscores market heterogeneity: large-cap investors prioritize profitability and liquidity, mid-caps exhibit sensitivity to institutional trading dynamics, and non-financial stocks reward long-term investment efficiency. These findings contribute to a better understanding of conventional \"factor zoo\" paradigms and advocate for hybrid models that integrate standalone characteristics with synthetic risk proxies.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Physical and mental health status and influencing factors of older adults in community-dwelling in Northeast China: a cross-sectional study",
+      "url": "https://www.semanticscholar.org/paper/eddb0bcb18e896a311a7b519338200d857e7c33b",
+      "description": "Background Between 2020 and 2022, the COVID-19 pandemic spread globally, and the implementation of preventive measures led to reduced outdoor activities for older adults, resulting in a decline in social functioning. This study aims to improve community-based health interventions tailored to older adults experiencing physical and psychological declines following the COVID-19 pandemic. Methods This study utilized previous data mining results to estimate the demand for community health services for older adults. It involves collecting questionnaire responses to understand the basic characteristics and lifestyle behaviors of older adults. The severity of health issues among older adults was assessed using the KCL and GHQ-12 scales. Statistical analyses included descriptive statistics, chi-square tests, t-tests, ANOVA, non-parametric tests as applicable, and stratified binary logistic regression to determine the factors influencing the health status of older adults. Results Over 60% of the older adult population suffers from chronic diseases, and more than 70% do not participate in social activities. In the overall older adults, the detection rate for poor health is 15.60%. Chronic illness, reduced ability to perform daily activities, anxiety, poor self-rated health, sleep disturbances, and nutritional imbalance were identified as key risk factors affecting the health of older adults in the community. Conclusion Older adults mainly engage in physical exercise, maintain a healthy lifestyle, and control their diet as self-care strategies. Early signs of frailty are characterized by declines in lower limb muscle function and memory. The most common manifestation of poor health among older adults is anxiety.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Quality of life and associated factors among people with chronic diseases in Hubei, China: a cross-sectional study",
+      "url": "https://www.semanticscholar.org/paper/bbb4ef1432cb91bb9d984eace3e616d9c8163703",
+      "description": "Chronic diseases are a major threat to human health, substantially reducing quality of life (QOL). Since the COVID-19 pandemic there have been surprisingly few surveys specifically focusing on the QOL of individuals living with chronic diseases. This study addresses this gap and assesses the QOL and associated factors of those with chronic diseases in the immediate aftermath of the COVID-19 pandemic. We conducted a cross-sectional study in six cities of Hubei Province, China, from May to August 2021, using a multi-stage cluster sampling technique to select 1,560 study participants. A 12-Item Short Form Survey (SF-12) Scale assessed QOL. Multivariate linear regression analyses and the Shapley decomposition technique identified related factors and the extent of contribution to QOL. We enjoyed a very high response rate to our invitation to participate; of these 1,507 questionnaires were considered valid (96.6%), and of these 354 patients reported a chronic disease (23.5%). The Physical Component Score (PCS) and Mental Component Score (MCS) among respondents were 59.13 ± 20.17 and 71.14 ± 13.55, respectively. The results of the regression analysis indicated that those who were 60 years or older and reported a recent acute illness in the immediate two-week period prior to survey were more likely to exhibit poorer PCS, whereas those with annual income of 30,000–100,000 Yuan, engaged in regular exercise and reported having eating regularly (regular eating to encourage relatively stable blood sugar levels as opposed to irregular meals/eating) were more likely to have higher PCS. Those reporting an acute illness in the immediate two-week period prior to survey also had lower MCS, but this was mitigated if the person had medical insurance, an annual income of 50,001–100,000 Yuan, regularly exercised, and a more nutritious diet. The Shapley decomposition results revealed that factors such as age (31.2%), income (24.8%), the presence of an illness in the immediate two-week peri",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "China A-share cross-sectional factor mining",
+      "title": "Transmission characteristics in Tuberculosis by WGS: nationwide cross-sectional surveillance in China",
+      "url": "https://www.semanticscholar.org/paper/ae7b04351338d1b3743e061dc836e277e6e2cddc",
+      "description": "ABSTRACT China, with the third largest share of global tuberculosis cases, faces a substantial challenge in its healthcare system as a result of the high burden of multidrug-resistant and rifampicin-resistant tuberculosis (MDR/RR-TB). This study employs a genomic epidemiological approach to assess recent tuberculosis transmissions between individuals, identifying potential risk factors and discerning the role of transmitted resistant isolates in the emergence of drug-resistant tuberculosis in China. We conducted a population-based retrospective study on 5052 Mycobacterium tuberculosis (MTB) isolates from 70 surveillance sites using whole genome sequencing (WGS). Minimum spanning tree analysis identified resistance mutations, while epidemiological data analysis pinpointed transmission risk factors. Of the 5052 isolates, 23% (1160) formed 452 genomic clusters, with 85.6% (387) of the transmissions occurring within the same counties. Individuals with younger age, larger family size, new cases, smear positive, and MDR/RR were at higher odds for recent transmission, while higher education (university and above) and occupation as a non-physical workers emerged as protective factors. At least 61.4% (251/409) of MDR/RR-TB were likely a result of recent transmission of MDR/RR isolates, with previous treatment (crude OR =   2.77), smear-positive (cOR =   2.07) and larger family population (cOR = 1.13) established as risk factors. Our findings highlight that local transmission remains the predominant form of TB transmission in China. Correspondingly, drug-resistant tuberculosis is primarily driven by the transmission of resistant tuberculosis isolates. Targeted interventions for high-risk populations to interrupt transmission within the country will likely provide an opportunity to reduce the prevalence of both tuberculosis and drug-resistant tuberculosis.",
+      "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
       "query": "China A-share machine learning alpha",
       "title": "Can Machine Learning Unlock the Continuous Alpha? Empirical Study Based on China A-Share Market",
       "url": "https://www.semanticscholar.org/paper/d761003b1566083120c33832503725b6b40afb28",
@@ -11825,14 +11999,6 @@
       "url": "https://www.semanticscholar.org/paper/06ac8258aa7276483dd5037dc400bb8047771926",
       "description": "The persistence of per- and polyfluoroalkyl substances (PFAS) in surface water can pose risks to ecosystems, while due to data limitations, the occurrence, risks, and future trends of PFAS at large scales remain unknown. This study investigated the ecological risks of PFAS in surface water in China under different Shared Socioeconomic Pathways (SSPs) using machine learning modeling, based on concentration data collected from 167 published papers. The results indicated that long-chain PFAS currently dominated in most basins and posed significant risks, especially PFOA. Population density and temperature were key factors influencing risks of long-chain PFAS, while secondary industry and precipitation affected the risks of PFBS and PFHxS significantly, respectively. In the future, the ecological risks of long-chain PFAS would overall decrease, with risk probabilities of PFOA and PFOS decreasing significantly in SSP5 (8.15 % and 14.95 % reduction compared to 2020, respectively). The risks of short-chain PFAS were expected to increase, but stabilize in the late stage of SSP1. Nevertheless, the risks of long-chain PFAS would remain higher than those of short-chain PFAS, with high-risk areas concentrated in Southeast China. This study suggests changes in ecological risks of PFAS driven by future climate and human activities, providing new insights for risk management.",
       "updated_at": "2025"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "China A-share machine learning alpha",
-      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
-      "url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
-      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
-      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
@@ -11953,14 +12119,6 @@
       "url": "https://www.semanticscholar.org/paper/d000c62be8f469edb727a2275bdc5492f138c803",
       "description": "In recent years, machine learning (ML) has brought effective approaches and novel techniques to economic decision, investment forecasting, and risk management, etc., coping the variable and intricate nature of economic and financial environments. For the investment in stock market, this research introduces a pioneering quantitative fusion model combining stock timing and picking strategy by leveraging the Multivariate Gaussian-Hidden Markov Model (MGHMM) and Back Propagation Neural Network optimized by Particle Swarm (PSO-BPNN). After the information coefficients (IC) between fifty-two factors that have been winsorized, neutralized and standardized and the return of CSI 300 index are calculated, a given amount of factors that rank ahead are choose to be candidate factors heading for the input of PSO-BPNN after dimension reduction by Principal Component Analysis (PCA), followed by a certain amount of constituent stocks outputted. Subsequently, we conduct the prediction and trading on the basis of the screening stocks and stock market state outputted by MGHMM trained using inputting CSI 300 index data after Box-Cox transformation, bespeaking eximious performance during the period of past four years. Ultimately, some conventional forecast and trading methods are compared with our strategy in Chinese stock market. Our fusion strategy incorporating stock picking and timing presented in this article provide a innovative technique for financial analysis.",
       "updated_at": "2023"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "China stock limit-up quantitative strategy",
-      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
-      "url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
-      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China’s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
-      "updated_at": "2024"
     },
     {
       "source": "semantic_scholar",
@@ -12105,6 +12263,86 @@
       "url": "https://www.semanticscholar.org/paper/345d85d599d473ef4df53fce46eab4153374a7c3",
       "description": "Mining of formulaic alpha factors refers to the process of discovering and developing specific factors or indicators (referred to as alpha factors) for quantitative trading in stock market. To efficiently discover alpha factors in vast search space, reinforcement learning (RL) is commonly employed. This paper proposes a method to enhance existing alpha factor mining approaches by expanding a search space and utilizing pre-trained formulaic alpha set as initial seed values to generate synergistic formulaic alpha. We employ information coefficient (IC) and rank information coefficient (Rank IC) as performance evaluation metrics for the model. Using CSI300 market data, we conducted real investment simulations and observed significant performance improvement compared to existing techniques.",
       "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "AlgoWave-A Rule Based Code Generator for Automatic Trading System",
+      "url": "https://www.semanticscholar.org/paper/85fb0a70ec2cb0fb3a5f24af3353206296f53d60",
+      "description": "Algorithmic trading, also known as automated trading, has transformed financial markets by enabling computers to\nautomatically analyze market conditions and execute trades independently. Traditional methods typically require advanced\nprogramming expertise, which excludes many retail traders and novices without such technical skills. The AlgoWave platform\naddresses this gap through an intuitive web interface that allows users to create and deploy trading strategies without writing any\ncode.\nVia an accessible dashboard featuring dropdown menus and input forms, traders can define strategies using candlestick\npatterns, entry/exit signals, and preferred timeframes. AlgoWave automatically converts these specifications into complete,\nexecutable scripts compatible with international platforms like MetaTrader5 or domestic Indian markets via Python APIs. This\napproach makes advanced automation available to non-programmers who previously lacked access to such capabilities.\nThis paper presents AlgoWave's complete system design from user interface to backend code synthesis and secure deployment\nworkflows—supported by empirical performance evaluations demonstrating both reliability and efficiency. Testing confirms over\n80% reduction in strategy deployment time versus traditional manual coding, with consistent accuracy during simulations across\nhighly volatile market conditions.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Algorithmic Finance, Its Regulation, and Deleuzean Jurisprudence: A Few Remarks on a Necessary Paradigm Shift",
+      "url": "https://www.semanticscholar.org/paper/92e09323ef31d811e03a6819c3938c8cf8d25dd8",
+      "description": "",
+      "updated_at": "2019"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Algorithmic Finance, Its Regulation, and Deleuzean Jurisprudence: A Few Remarks on a Necessary Paradigm Shift",
+      "url": "https://www.semanticscholar.org/paper/b9cf5792066e0412da9457cc6270b9efba64d87c",
+      "description": "",
+      "updated_at": "2019"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Backtesting of Algorithmic Cryptocurrency Trading Strategies",
+      "url": "https://www.semanticscholar.org/paper/fba2b4e1b7b30f453cb54898322c1af421db5c12",
+      "description": "This thesis presents a tool for backtesting algorithmic trading strategies for cryptocurrencies. The tool, called quantbacktest, provides a convenient way to automatically run comparisons of multi-dimensional parameter spaces for algorithmic trading strategies. The tool supports any algorithmic strategy to be simulated and any parameter spaces to be tested and optimized with minimal adjustments. Also, arbitrary trading frequencies can be tested, from intraday to long-term strategies. \n \nMany standard return metrics, risk metrics, and robustness test functionalities come out-of-the-box in CSV format and as diagrams. Users can provide signals and price data via CSV or Excel files. Signal processing does not require a technical (code-level) understanding of the backtesting tool on behalf of the user.",
+      "updated_at": "2020"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "FinGPT: Open-Source Financial Large Language Models",
+      "url": "https://www.semanticscholar.org/paper/5dea206e2a36e672f197252bdd27d156d058f48c",
+      "description": "Large language models (LLMs) have shown the potential of revolutionizing natural language processing tasks in diverse domains, sparking great interest in finance. Accessing high-quality financial data is the first challenge for financial LLMs (FinLLMs). While proprietary models like BloombergGPT have taken advantage of their unique data accumulation, such privileged access calls for an open-source alternative to democratize Internet-scale financial data. In this paper, we present an open-source large language model, FinGPT, for the finance sector. Unlike proprietary models, FinGPT takes a data-centric approach, providing researchers and practitioners with accessible and transparent resources to develop their FinLLMs. We highlight the importance of an automatic data curation pipeline and the lightweight low-rank adaptation technique in building FinGPT. Furthermore, we showcase several potential applications as stepping stones for users, such as robo-advising, algorithmic trading, and low-code development. Through collaborative efforts within the open-source AI4Finance community, FinGPT aims to stimulate innovation, democratize FinLLMs, and unlock new opportunities in open finance. Two associated code repos are https://github.com/AI4Finance-Foundation/FinGPT and https://github.com/AI4Finance-Foundation/FinNLP",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Performance Optimization Techniques for High-Frequency Trading and Financial Platforms",
+      "url": "https://www.semanticscholar.org/paper/03924c04896371a24366d1b317bf7d3dc15dea8e",
+      "description": "High-frequency trading (HFT) has revolutionized financial markets by enabling rapid trade execution and high transaction volumes. This transformation is driven by the need to respond quickly to market fluctuations and execute trades within microseconds. However, the performance of HFT systems is heavily influenced by computational efficiency, network latency, and algorithmic optimization. Ensuring optimal performance minimizes delays, maximizes throughput, and maintains system reliability. This research paper explores the primary performance bottlenecks that obstruct HFT efficiency and explores various optimization strategies. Key focus areas include hardware acceleration techniques such as FPGA and GPU integration, software enhancements for improved code execution speed, and network solutions like direct market access and colocation. The paper also investigates machine learning applications that can predict market movements and refine trading strategies. The paper looks at a lot of existing research and points out the significant technological steps and the hurdles that still need to be tackled to improve high-frequency trading systems. The impact of these improvements is substantial, managing greater efficiency in financial trading platforms and fostering market stability. This study offers valuable information for banks, investors, and tech companies looking to improve their trading results and stay ahead in today’s fast-paced markets.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Research on Classification-Based Financial Market Prediction Algorithms Using Deep Learning",
+      "url": "https://www.semanticscholar.org/paper/464a3e0d336d5f892360046122042270045b287e",
+      "description": "",
+      "updated_at": "2020"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Research on the influence factors and improvement path of rural e-commerce development based on neural network",
+      "url": "https://www.semanticscholar.org/paper/1676eec7e3793436b501d28ea00feb54a84212c8",
+      "description": "Abstract This paper uses big data evaluation models to predict market trends with the goal of promoting rural e-commerce development. A closely integrated algorithmic trading framework is constructed, and strategic evaluation indicators are proposed in traditional indicators. By analyzing the current situation and problems of online marketing of agricultural products, a series of development strategies and safeguards are formulated, and suggestions are made to establish QR code traceability and highlight personalized product development. The results show that age has a greater influence on the development of agribusiness. 65.73% of the 20-35 year olds choose to be willing to buy and do so through the Internet, which is 53.40% higher than the average, and 59.09% of the under-20 year olds choose to be unclear but willing to know, which is 28.64% higher than the average. The data studied and analyzed in this paper are useful for predicting the sales trend of the rural e-commerce market and promoting the development of rural e-commerce development.",
+      "updated_at": "2023"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "Scale-Up Strategies for Processing High-Rate Data Streams in System S",
+      "url": "https://www.semanticscholar.org/paper/cceacc334011cb7f3d462d31df86bcdf89cd208e",
+      "description": "",
+      "updated_at": "2009"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "algorithmic trading research code",
+      "title": "THE POTENTIAL FOR REAL-TIME TESTING OF HIGH-FREQUENCY TRADING STRATEGIES THROUGH A DEVELOPED TOOL DURING VOLATILE MARKET CONDITIONS",
+      "url": "https://www.semanticscholar.org/paper/1921c25f06120d0b5b54ed01e07a9838d79aa33d",
+      "description": "",
+      "updated_at": "2023"
     },
     {
       "source": "semantic_scholar",
