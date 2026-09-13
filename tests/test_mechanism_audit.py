@@ -4,7 +4,13 @@ from research.discovery.mechanism_audit import audit
 def test_trading_mechanism_registry_is_fail_closed():
     result = audit()
     assert result["fail_closed"] is True
-    assert result["total_families"] == 18
+    assert result["total_families"] == 19
+    assert result["counts"] == {
+        "EXECUTABLE_FEATURES": 8,
+        "EXECUTABLE_EVENTS": 2,
+        "DATA_LANE_REQUIRED": 8,
+        "RESEARCH_ONLY": 1,
+    }
     assert "smc_ict" in result["executable_families"]
     assert "fvg_imbalance" in result["executable_families"]
     assert "funding_basis_carry" in result["data_lane_required"]
