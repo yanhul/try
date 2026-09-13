@@ -72,6 +72,18 @@ def oos_once(bc,candidate):
  rc,_=run([sys.executable,'-m','engine.oos_runner','--candidate',str(freeze),'--data','data/BTCUSDT_1h.csv','--protocol','research/oos_protocol.json','--out',str(out)])
  if rc or not out.exists(): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR BC{bc}'); return None
  return load(out,{})
+def epoch_seed_failure(parent,start):
+ raw=os.environ.get('RESEARCH_EPOCH_SEED_FAILURE','').strip()
+ if not raw or parent!=start-1: return None
+ try:
+  p=Path(raw).resolve(); expected=(ROOT/'research'/'.epoch_seed_failure.json').resolve()
+  if p!=expected or not p.exists(): return None
+  seed=load(p,{})
+  if seed.get('kind')!='epoch_seed_failure' or seed.get('decision')!='SEED_EPOCH' or int(seed.get('parent_bc',-1))!=parent or int(seed.get('epoch_start_bc',-1))!=start or seed.get('research_evidence') is not False or seed.get('repair_context') is not True: return None
+  print(f'CONTROLLER_EPOCH_SEED_CONSUMED parent=BC{parent} start=BC{start} evidence=false repair_context=true')
+  return p
+ except (OSError,TypeError,ValueError):
+  return None
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
@@ -84,7 +96,9 @@ def main():
   expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); parent=expected-1
   if parent==0: return hold(s,'HOLD_NO_REGISTERED_BASELINE',expected,retryable=False)
   failure=FAILURE_DIR/f'BC{parent}.json'
-  if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
+  if not failure.exists():
+   failure=epoch_seed_failure(parent,int(s.get('campaign_start_bc') or 1))
+   if failure is None: return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',expected)
   candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); q=[candidate]; checkpoint(s,'PERSISTED',expected)
