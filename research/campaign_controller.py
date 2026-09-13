@@ -22,32 +22,42 @@ def save(state):
 def terminal(state,outcome,reason,screened,budget):
  state["campaign_terminal"]=True; state["campaign_outcome"]=outcome; state["campaign_terminal_reason"]=reason; state["campaign_screened"]=min(int(screened),int(budget)); save(state); print(f"CAMPAIGN_TERMINAL outcome={outcome} screened={state['campaign_screened']}/{budget}"); return 0
 
-def qualifying_bcs(history):
- return {int(x["bc"]) for x in history if isinstance(x,dict) and str(x.get("decision")) in {"REJECT","PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc"," ")).strip().isdigit()}
+def qualifying_bcs(history, start=1):
+ return {int(x["bc"]) for x in history if isinstance(x,dict) and int(x.get("bc",-1)) >= int(start) and str(x.get("decision")) in {"REJECT","PROMOTE_TO_FUTURE_OOS_TEST"} and str(x.get("bc"," ")).strip().isdigit()}
 
-def _durable_completed_bcs():
- if not CANDIDATE_DIR.exists() or not FAILURE_DIR.exists(): return 0
- candidates={int(p.stem[2:]) for p in CANDIDATE_DIR.glob("BC*.json") if p.stem[2:].isdigit()}; failures={int(p.stem[2:]) for p in FAILURE_DIR.glob("BC*.json") if p.stem[2:].isdigit()}; completed=0
+def _epoch_start(state, history):
+ if state.get("campaign_epoch_initialized") and isinstance(state.get("campaign_start_bc"),int):
+  return int(state["campaign_start_bc"])
+ starts=[int(x["bc"]) for x in history if isinstance(x,dict) and str(x.get("bc","")).isdigit() and x.get("next")=="AGENT_HYPOTHESIS"]
+ if starts: return min(starts)
+ qualifying=qualifying_bcs(history,1); return min(qualifying) if qualifying else 1
+
+def _durable_completed_bcs(start=1):
+ if not CANDIDATE_DIR.exists() or not FAILURE_DIR.exists(): return start-1
+ candidates={int(p.stem[2:]) for p in CANDIDATE_DIR.glob("BC*.json") if p.stem[2:].isdigit()}
+ failures={int(p.stem[2:]) for p in FAILURE_DIR.glob("BC*.json") if p.stem[2:].isdigit()}
+ completed=start-1
  while completed+1 in candidates and completed+1 in failures: completed+=1
  return completed
 
 def reconcile_campaign_state(state,budget):
  history=state.get("history",[]); history=history if isinstance(history,list) else []
- known={int(x.get("bc",-1)) for x in history if isinstance(x,dict) and str(x.get("bc","")).isdigit()}; completed=_durable_completed_bcs(); repaired=0
- for bc in range(1,completed+1):
+ start=_epoch_start(state,history)
+ known={int(x.get("bc",-1)) for x in history if isinstance(x,dict) and str(x.get("bc","")).isdigit() and int(x.get("bc",-1)) >= start}
+ completed=_durable_completed_bcs(start); repaired=0
+ for bc in range(start,completed+1):
   if bc in known: continue
   candidate=load(CANDIDATE_DIR/f"BC{bc}.json",{}); failure=load(FAILURE_DIR/f"BC{bc}.json",{}); decision=failure.get("decision")
   if decision not in {"PROMOTE_TO_FUTURE_OOS_TEST","REJECT"}: continue
   history.append({"bc":bc,"decision":decision,"hypothesis_id":candidate.get("hypothesis_id") or failure.get("hypothesis_id"),"candidate_hash":candidate.get("candidate_hash") or failure.get("candidate_hash"),"reason":failure.get("reason")}); repaired+=1; known.add(bc)
- if state.get("campaign_epoch_initialized") and isinstance(state.get("campaign_start_bc"),int):
-  start=int(state["campaign_start_bc"])
- else:
-  starts=[int(x["bc"]) for x in history if isinstance(x,dict) and str(x.get("bc","")).isdigit() and x.get("next")=="AGENT_HYPOTHESIS"]
-  if not starts:
-   qualifying=qualifying_bcs(history); start=min(qualifying) if qualifying else 1
-  else: start=min(starts)
- campaign_bcs=qualifying_bcs(history); screened=len({bc for bc in campaign_bcs if bc>=start}); state["campaign_start_bc"]=start; state["history"]=sorted(history,key=lambda x:int(x.get("bc",0)) if str(x.get("bc","")).isdigit() else 0); state["campaign_screened"]=min(screened,budget)
- if repaired: state["state_reconciled_from_durable_bc_artifacts"]=True; print(f"CAMPAIGN_RECONCILED repaired_history={repaired} completed_bc={completed} start_bc={start} screened={screened}/{budget}")
+ campaign_bcs=qualifying_bcs(history,start)
+ screened=len(campaign_bcs)
+ state["campaign_start_bc"]=start
+ state["history"]=sorted(history,key=lambda x:int(x.get("bc",0)) if str(x.get("bc","")).isdigit() else 0)
+ state["campaign_screened"]=min(screened,budget)
+ if repaired:
+  state["state_reconciled_from_durable_bc_artifacts"]=True
+  print(f"CAMPAIGN_RECONCILED repaired_history={repaired} completed_bc={completed} start_bc={start} screened={screened}/{budget}")
  return completed,start,screened
 
 def retry_resume_allowed(state):
@@ -90,7 +100,7 @@ def main():
   window={bc:x for x in state.get("history",[]) if isinstance(x,dict) and str(x.get("bc","")).isdigit() for bc in [int(x["bc"])] if campaign_start<=bc<campaign_start+budget}; promotions=[x for x in window.values() if x.get("decision")=="PROMOTE_TO_FUTURE_OOS_TEST"]
   if promotions: print("CAMPAIGN_BLOCKED budget_exhausted_with_unconsumed_promotion"); save(state); return 3
   return terminal(state,"NO_EDGE_FOUND","FIXED_SCREENING_BUDGET_EXHAUSTED",budget,budget)
- screened=reconciled_screened; env=dict(os.environ); env["RESEARCH_MAX_ITERATIONS"]=str(min(batch,budget-screened)); before_screened=screened; before_history=list(state.get("history",[])); before_bcs={bc for bc in qualifying_bcs(before_history) if campaign_start<=bc<campaign_start+budget}
+ screened=reconciled_screened; env=dict(os.environ); env["RESEARCH_MAX_ITERATIONS"]=str(min(batch,budget-screened)); before_screened=screened; before_history=list(state.get("history",[])); before_bcs={bc for bc in qualifying_bcs(before_history,campaign_start) if bc<campaign_start+budget}
  print(f"CAMPAIGN_START screened={screened}/{budget} batch={env['RESEARCH_MAX_ITERATIONS']} start_bc={campaign_start}"); proc=subprocess.run([sys.executable,"research/bc_controller.py"],cwd=ROOT,env=env)
  if proc.returncode!=0:return proc.returncode
  state=load(STATE,{}); _,campaign_start,after_reconciled=reconcile_campaign_state(state,budget)
@@ -99,7 +109,7 @@ def main():
   if retry_resume_allowed(state): print(f"CAMPAIGN_CONTINUE_RETRY retry={state.get('retry_count',0)}/{os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3')} reason={reason} screened={before_screened}/{budget}")
   else: print(f"CAMPAIGN_HOLD reason={reason} screened={before_screened}/{budget}")
   return 0
- history=state.get("history",[]); after_bcs={bc for bc in qualifying_bcs(history) if campaign_start<=bc<campaign_start+budget}; new_bcs=after_bcs-before_bcs; screened=after_reconciled; state["campaign_screened"]=min(budget,screened); state["campaign_budget"]=budget; state["campaign_id"]=policy["campaign_id"]
+ history=state.get("history",[]); after_bcs={bc for bc in qualifying_bcs(history,campaign_start) if bc<campaign_start+budget}; new_bcs=after_bcs-before_bcs; screened=after_reconciled; state["campaign_screened"]=min(budget,screened); state["campaign_budget"]=budget; state["campaign_id"]=policy["campaign_id"]
  if state.get("terminal"):
   raw=state.get("terminal_reason"); outcome="EDGE_FOUND" if raw=="OOS_PASS" else "NO_EDGE_FOUND" if raw=="OOS_FAIL" else "INCONCLUSIVE" if raw in {"HOLD","UNKNOWN"} else raw
   if outcome not in outcomes: print(f"CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}"); save(state); return 3
