@@ -1,22 +1,23 @@
 [
   {
-    "bc": 116,
-    "candidate_hash": "659002fdb80a9570ed47668540370c697799b4514e183d49ed1917feff10f72a",
-    "conceptual_change": "Test zscore(vwap_distance) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+    "bc": 124,
+    "candidate_hash": "ff5c12914b46171b84a62335e15197a89580e70da7d41cbe5ce1f7940d740ebd",
+    "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
     "discovery_spec": {
       "direction": "below",
-      "left": "vwap_distance",
-      "operator": "zscore",
-      "threshold": 1.5,
-      "window": 10
+      "left": "volume_ratio",
+      "numeric_finite_threshold": 0.4,
+      "operator": "rolling_std",
+      "threshold": 0,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/Manan-Rawat/Crypto_pairs"
+      "https://github.com/NIU1751879/Trading_Strategies"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
     "oos_selection_used": false,
-    "parent_bc": 115,
+    "parent_bc": 123,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

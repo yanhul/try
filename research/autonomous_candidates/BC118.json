@@ -1,0 +1,20 @@
+{
+  "bc": 118,
+  "candidate_hash": "7706655c1f28d4baf16486a3812fc9d10d036371d8edf887751b2b23d67f86f5",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "rolling_std",
+    "threshold": 0.2,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/Zzzx4Young/okx-quant-trader"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 117,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,21 @@
+{
+  "bc": 121,
+  "candidate_hash": "aab2ebbe0a1e28149854bd3f7ec48dfba7cb9d7d16b7f4b4ba53c4584299dade",
+  "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "numeric_finite_threshold": 0.45,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 5
+  },
+  "evidence_sources": [
+    "https://github.com/kunnaaalll/ApeXQuanT-ShowCase"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 120,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,21 @@
+{
+  "bc": 123,
+  "candidate_hash": "4222f96fec3714fb5125694ec86591db445ea6a2e230bb0df2e6da26edfaac1d",
+  "conceptual_change": "Test rolling_std(volume_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "numeric_finite_threshold": 0.05,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/Jerome-Zhao99/Empirical-analysis-of-multi-factor-model-in-Shanghai-A-shares-market-of-China"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 122,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

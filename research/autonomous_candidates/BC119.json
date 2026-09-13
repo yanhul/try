@@ -1,0 +1,21 @@
+{
+  "bc": 119,
+  "candidate_hash": "38da36da2d09b97ff3245d2c8010d907df43238c50876370f3c6d43648398e56",
+  "conceptual_change": "Test rolling_std(range_ratio) with the supplied discovery parameters as the executable translation of the selected screen survivor.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "numeric_finite_threshold": 0.1,
+    "operator": "rolling_std",
+    "threshold": 0,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/Jcstack/ashare-ai-analyst"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "oos_selection_used": false,
+  "parent_bc": 118,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
