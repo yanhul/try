@@ -66,6 +66,12 @@ def test_crypto_mean_reversion_is_btc_translatable():
     assert reason == "portable_to_btc_ohlcv"
 
 
+def test_non_crypto_market_is_rejected_even_when_family_is_portable():
+    ok, reason = btc_translation_status({"family": "momentum_trend", "market": "CN_A_SHARE", "title": "momentum", "description": "price momentum"})
+    assert not ok
+    assert reason == "single_asset_incompatible:CN_A_SHARE"
+
+
 def test_filter_removes_incompatible_sources_before_selection():
     eligible, rejected = eligible_survivors([
         {"family": "smc_ict", "market": None, "title": "BTC/ETH ICT", "description": "crypto liquidity sweep MSS FVG", "source_url": "https://example.test/a"},
