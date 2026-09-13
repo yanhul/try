@@ -146,6 +146,11 @@ def mechanism_predicate(spec):
     if family not in MECHANISMS:
         raise ValueError("invalid_mechanism_family")
 
+    # These are descriptive/magnitude features, not directional signals.  Do not
+    # manufacture a trade direction from their sign or calendar parity.
+    if family in {"volatility", "seasonality"}:
+        raise ValueError(f"non_directional_mechanism_family:{family}")
+
     def pred(ctx, trade_direction):
         if family == "smc_ict":
             sweep = _event(ctx, "sweep")
@@ -190,8 +195,6 @@ def mechanism_predicate(spec):
             if trade_direction == "bearish":
                 return value > abs(threshold) if threshold else value > 0
             return False
-        if family in {"volatility", "seasonality"}:
-            return value > threshold if comparison == "above" else value < threshold
         expected = "bullish" if comparison == "above" else "bearish"
         if trade_direction != expected:
             return False
