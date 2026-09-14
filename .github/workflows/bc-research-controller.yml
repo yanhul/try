@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: e99f4bb7173a0b761e2ed161394c68614f10a301
+          ref: 151f386683934edd6e124d1ae69bd95a68b3ecbf
           path: aios-authority
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -81,7 +81,7 @@ jobs:
           phase=state.get('phase'); error=str(state.get('last_error') or '')
           retry=int(state.get('retry_count',0)); current_bc=state.get('current_bc')
           required=[Path('research/bc_queue.json'),Path('research/autonomous_candidates'),Path('research/failure_analysis'),Path('research/discovery')]
-          retryable_error=error.startswith(('PROVIDER_FAIL ','HOLD_PROVIDER_ROUTER','HOLD_PROVIDER_REPAIR','HOLD_EVALUATOR','PROVIDER_CALIBRATION_FAIL '))
+          retryable_error=error.startswith(('PROVIDER_FAIL ','HOLD_PROVIDER_ROUTER','HOLD_PROVIDER_REPAIR','HOLD_EVALUATOR','PROVIDER_CALIBRATION_FAIL ','HOLD_OOS_EXECUTOR_OR_AUTHORITY'))
           eligible=(not state.get('campaign_terminal') and phase=='WAIT_RETRY' and retryable_error and 0<=retry<3 and isinstance(current_bc,int) and all(p.exists() for p in required))
           with Path(os.environ['GITHUB_OUTPUT_PATH']).open('a') as out: out.write(f"fast={'true' if eligible else 'false'}\n")
           print(f"FAST_RESUME_{'ELIGIBLE' if eligible else 'INELIGIBLE'} bc={current_bc} retry={retry} error={error}")
