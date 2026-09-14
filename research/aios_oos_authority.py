@@ -32,7 +32,7 @@ def provision(bc: int, candidate_hash: str) -> dict[str, str]:
         "task_id": f"RESEARCH_BC{bc}",
         "scope": "try.research.oos",
         "actor": "yanhul/try",
-        "capabilities": ["try.research"],
+        "capabilities": ["try.research@1"],
         "input_digest": candidate_hash,
         "allowed_effects": ["process_execution"],
         "evidence_required": ["adapter_result"],
@@ -41,13 +41,21 @@ def provision(bc: int, candidate_hash: str) -> dict[str, str]:
         "policy_digest": POLICY_DIGEST,
     }
 
-    # The AIOS authority implementation remains the sole issuer of durable
-    # contract/permit/attestation records. TRY only supplies the workload
-    # request and the deployment-held attestation secret.
+    # The AIOS authority implementation is the sole issuer of durable
+    # contract/permit/attestation records. Materialize every durable registry
+    # input that the pinned AIOS authority actually consumes. registry.yaml is
+    # descriptive; CapabilityRegistry.load() resolves capability authority
+    # from capabilities/capability_registry.json.
     AUTHORITY_ROOT.mkdir(parents=True, exist_ok=True)
     (AUTHORITY_ROOT / "capabilities").mkdir(exist_ok=True)
     (AUTHORITY_ROOT / "policies").mkdir(exist_ok=True)
-    shutil.copy2(AIOS_SOURCE / "capabilities" / "registry.yaml", AUTHORITY_ROOT / "capabilities" / "registry.yaml")
+    capability_registry = AIOS_SOURCE / "capabilities" / "capability_registry.json"
+    if not capability_registry.exists():
+        raise RuntimeError(f"AIOS durable capability registry missing: {capability_registry}")
+    shutil.copy2(capability_registry, AUTHORITY_ROOT / "capabilities" / "capability_registry.json")
+    registry_yaml = AIOS_SOURCE / "capabilities" / "registry.yaml"
+    if registry_yaml.exists():
+        shutil.copy2(registry_yaml, AUTHORITY_ROOT / "capabilities" / "registry.yaml")
     policy_src = AIOS_SOURCE / "policies" / (POLICY_DIGEST + ".json")
     if not policy_src.exists():
         raise RuntimeError(f"AIOS governing policy missing: {policy_src}")
