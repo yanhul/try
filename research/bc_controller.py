@@ -82,6 +82,18 @@ def verify_oos_receipt(bc,candidate_hash,result,receipt_path):
  if receipt.get('dataset_sha256')!=result.get('dataset',{}).get('sha256') or receipt.get('protocol_sha256')!=result.get('protocol_sha256'): return False
  try: return receipt.get('result_sha256')==hashlib.sha256((OOS_DIR/f'BC{bc}_oos_result.json').read_bytes()).hexdigest()
  except OSError: return False
+def write_oos_failure(bc,parent,candidate,result):
+ """Persist candidate-level OOS failure as repair evidence; it must not terminalize the campaign."""
+ path=FAILURE_DIR/f'BC{bc}.json'; FAILURE_DIR.mkdir(parents=True,exist_ok=True)
+ if path.exists(): return path
+ payload={
+  'bc':bc,'parent_bc':parent,'decision':'REJECT','reason':'OOS_FAILED',
+  'hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate.get('candidate_hash'),
+  'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),
+  'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,
+  'action':'reject candidate and require a distinct next hypothesis',
+ }
+ path.write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8'); return path
 def oos_once(bc,candidate):
  candidate_hash=candidate['candidate_hash']
  if not verify_external_authority(bc,candidate_hash): return None
@@ -154,7 +166,14 @@ def main():
    if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
    passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
    if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
-   s['terminal']=True; s['terminal_reason']=decision; s['next_bc']=bc+1; write_queue([]); checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {decision} BC{bc} TERMINAL'); return 0
+   write_queue([])
+   if passed:
+    s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
+   # OOS_FAIL is a candidate-level rejection, not a campaign terminal state.
+   write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc)
+   failure=FAILURE_DIR/f'BC{bc}.json'; nxt=bc+1; checkpoint(s,'DECIDE',nxt)
+   if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
+   candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{nxt}'); continue
   if REJECT not in out and 'SPLIT_GATE False' not in out: checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
   write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
@@ -162,4 +181,4 @@ def main():
   if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
   candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); checkpoint(s,'YIELD',s.get('next_bc')); print('CONTROLLER_AUTO_RESUME scheduler_yield'); return 0
-if __name__=='__main__': raise SystemExit(main())
+if __name__=='__main__':raise SystemExit(main())
