@@ -1,0 +1,53 @@
+name: BC Campaign State Observability
+
+on:
+  workflow_run:
+    workflows: ["BC Research Controller"]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  publish-state:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout persisted campaign state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Validate terminal/result state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/bc_lifecycle_state.json')
+          s=json.loads(p.read_text())
+          print('campaign_id=', s.get('campaign_id'))
+          print('campaign_screened=', s.get('campaign_screened'))
+          print('current_bc=', s.get('current_bc'))
+          print('campaign_terminal=', s.get('campaign_terminal'))
+          print('campaign_outcome=', s.get('campaign_outcome'))
+          print('campaign_terminal_reason=', s.get('campaign_terminal_reason'))
+          if s.get('campaign_terminal') and s.get('campaign_outcome') not in {'EDGE_FOUND','NO_EDGE_FOUND','INCONCLUSIVE'}:
+              raise SystemExit('invalid terminal outcome')
+          PY
+
+      - name: Publish durable campaign evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: campaign-state-${{ github.event.workflow_run.id }}
+          if-no-files-found: error
+          path: |
+            research/bc_lifecycle_state.json
+            research/bc_queue.json
+            research/lineage.jsonl
+            research/failure_analysis/**
+            research/frozen_candidates/**
+            research/oos/**
+            research/bc*_validation_result.json
