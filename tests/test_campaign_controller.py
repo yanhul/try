@@ -112,3 +112,5 @@ def test_epoch_seed_contract_is_consumed_only_from_controller_path(monkeypatch):
 
 def test_controller_is_invoked_as_package_module():
     assert controller_command() == [sys.executable, "-m", "research.bc_controller"]
+
+# Astra trigger: force a fresh controller run after authority-boundary fixes.
