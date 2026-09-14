@@ -29,7 +29,14 @@ def _canonical_contract(record):
     if "record_type" in record and record["record_type"]!=CONTRACT_TYPE: raise ValueError("contract record type mismatch")
     return contract
 
-def contract_identity(contract): return "CT-"+hashlib.sha256(_canonical_contract(contract).encode("utf-8")).hexdigest()
+def contract_identity(contract):
+    """Return the identity of the validated canonical contract.
+
+    _canonical_contract() returns the validated dict, not its serialized
+    representation. Serialize that dict explicitly before hashing.
+    """
+    canonical=_canonical_contract(contract)
+    return "CT-"+hashlib.sha256(_canonical(canonical).encode("utf-8")).hexdigest()
 
 def verify_permit(contract,permit):
     contract=_canonical_contract(contract); cid=contract_identity(contract)
