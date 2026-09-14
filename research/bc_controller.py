@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json, os, subprocess, sys
+import hashlib, json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
@@ -69,10 +69,23 @@ def authorized_state(s):
  if not isinstance(caps,list) or any(str(x)!='research' for x in caps):
   print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
  return True
+def verify_oos_receipt(bc,candidate_hash,result,receipt_path):
+ if not isinstance(result,dict) or result.get('bc')!=bc or result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True or result.get('oos_selection_used') is not False:
+  return False
+ if not receipt_path.exists(): return False
+ try: receipt=load(receipt_path,{})
+ except Exception: return False
+ if receipt.get('receipt_type')!='OOS_EXECUTION_RECEIPT' or receipt.get('schema_version')!=1: return False
+ if receipt.get('bc')!=bc or receipt.get('candidate_hash')!=candidate_hash or receipt.get('oos_executed') is not True or receipt.get('oos_selection_used') is not False: return False
+ if receipt.get('oos_passed') is not result.get('oos_passed'): return False
+ if receipt.get('metrics')!=result.get('metrics'): return False
+ if receipt.get('dataset_sha256')!=result.get('dataset',{}).get('sha256') or receipt.get('protocol_sha256')!=result.get('protocol_sha256'): return False
+ try: return receipt.get('result_sha256')==hashlib.sha256((OOS_DIR/f'BC{bc}_oos_result.json').read_bytes()).hexdigest()
+ except OSError: return False
 def oos_once(bc,candidate):
  candidate_hash=candidate['candidate_hash']
  if not verify_external_authority(bc,candidate_hash): return None
- protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
+ protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; receipt=OOS_DIR/f'BC{bc}_oos_result_receipt.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
  if not protocol.exists(): print('OOS_HOLD_PROTOCOL_MISSING'); return None
  FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True)
  if freeze.exists():
@@ -81,10 +94,10 @@ def oos_once(bc,candidate):
  else: freeze.write_text(json.dumps(candidate,indent=2)+'\n',encoding='utf-8')
  if out.exists():
   result=load(out,{})
-  if result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True: print('OOS_HOLD_EXISTING_ARTIFACT_INVALID'); return None
+  if not verify_oos_receipt(bc,candidate_hash,result,receipt): print('OOS_HOLD_EXISTING_ARTIFACT_OR_RECEIPT_INVALID'); return None
   return result
  rc,_=run([sys.executable,'-m','engine.oos_runner','--candidate',str(freeze),'--data','data/BTCUSDT_1h.csv','--protocol','research/oos_protocol.json','--out',str(out)])
- if rc or not out.exists(): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR BC{bc}'); return None
+ if rc or not out.exists() or not verify_oos_receipt(bc,candidate_hash,load(out,{}),receipt): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR_OR_RECEIPT BC{bc}'); return None
  return load(out,{})
 def epoch_seed_failure(parent,start):
  raw=os.environ.get('RESEARCH_EPOCH_SEED_FAILURE','').strip()
