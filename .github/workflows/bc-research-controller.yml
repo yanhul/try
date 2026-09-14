@@ -128,7 +128,7 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC' controller.log && (grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY' controller.log || ! grep -Eq 'CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD|HOLD_' controller.log); then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC|CONTROLLER_AUTO_RESUME' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY|WAIT_RETRY|scheduler_yield' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
           exit "$rc"
       - name: Persist durable lineage
         if: always()
