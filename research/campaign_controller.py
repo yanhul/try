@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 POLICY=ROOT/'research'/'campaign_policy.json'; STATE=ROOT/'research'/'bc_lifecycle_state.json'
-CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FAILURE_DIR=ROOT/'research'/'failure_analysis'
+CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; OOS_DIR=ROOT/'research'/'oos'
 QUALIFY={'REJECT','PROMOTE_TO_FUTURE_OOS_TEST'}
 
 def load(path,default):
@@ -73,13 +73,21 @@ def _start_new_campaign_epoch(state,policy):
     print(f'CAMPAIGN_NEW_EPOCH id={pid} start_bc={start} prior_id={old or "none"}'); save(state)
 
 def _migrate_candidate_oos_terminal(state):
-    """OOS_FAIL is candidate-level rejection; older state incorrectly terminalized it."""
-    if state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL':
-        state.update(campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason='OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION',terminal=False,phase='OBSERVE',last_error=None,retry_count=0)
-        if not isinstance(state.get('next_bc'),int) or state['next_bc']<=int(state.get('current_bc') or state.get('last_bc') or 0): state['next_bc']=int(state.get('current_bc') or state.get('last_bc') or 0)+1
-        save(state); print(f'CAMPAIGN_MIGRATE_OOS_FAIL_RESUME next_bc={state["next_bc"]}')
-        return True
-    return False
+    """Convert legacy campaign-level OOS_FAIL into a durable candidate rejection."""
+    if not (state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL'):
+        return False
+    parent=int(state.get('current_bc') or state.get('last_bc') or 0); candidate_path=CANDIDATE_DIR/f'BC{parent}.json'; result_path=OOS_DIR/f'BC{parent}_oos_result.json'; receipt_path=OOS_DIR/f'BC{parent}_oos_result_receipt.json'; failure_path=FAILURE_DIR/f'BC{parent}.json'
+    candidate=load(candidate_path,{}) if candidate_path.exists() else {}; result=load(result_path,{}) if result_path.exists() else {}; receipt=load(receipt_path,{}) if receipt_path.exists() else {}
+    candidate_hash=candidate.get('candidate_hash')
+    evidence_ok=(candidate_hash and result.get('bc')==parent and result.get('candidate_hash')==candidate_hash and result.get('oos_executed') is True and result.get('oos_selection_used') is False and result.get('oos_passed') is False and receipt.get('receipt_type')=='OOS_EXECUTION_RECEIPT' and receipt.get('schema_version')==1 and receipt.get('bc')==parent and receipt.get('candidate_hash')==candidate_hash and receipt.get('oos_executed') is True and receipt.get('oos_selection_used') is False and receipt.get('oos_passed') is False and receipt.get('metrics')==result.get('metrics') and receipt.get('dataset_sha256')==result.get('dataset',{}).get('sha256') and receipt.get('protocol_sha256')==result.get('protocol_sha256'))
+    if not evidence_ok:
+        print(f'CAMPAIGN_MIGRATE_OOS_FAIL_HOLD BC{parent} reason=MISSING_DURABLE_OOS_EVIDENCE'); return False
+    FAILURE_DIR.mkdir(parents=True,exist_ok=True)
+    if not failure_path.exists():
+        failure_path.write_text(json.dumps({'bc':parent,'parent_bc':int(candidate.get('parent_bc',parent-1)),'decision':'REJECT','reason':'OOS_FAILED','hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate_hash,'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,'action':'reject candidate and require a distinct next hypothesis','migration':'legacy campaign-level OOS_FAIL converted from durable OOS receipt; no research evidence fabricated'},indent=2,sort_keys=True)+'\n',encoding='utf-8')
+    state.update(campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason='OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION',terminal=False,phase='OBSERVE',last_error=None,retry_count=0)
+    if not isinstance(state.get('next_bc'),int) or state['next_bc']<=parent: state['next_bc']=parent+1
+    save(state); print(f'CAMPAIGN_MIGRATE_OOS_FAIL_RESUME next_bc={state["next_bc"]} failure_analysis=BC{parent}.json'); return True
 
 def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
