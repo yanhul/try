@@ -113,4 +113,20 @@ def test_epoch_seed_contract_is_consumed_only_from_controller_path(monkeypatch):
 def test_controller_is_invoked_as_package_module():
     assert controller_command() == [sys.executable, "-m", "research.bc_controller"]
 
-# Astra trigger: force a fresh controller run after authority-boundary fixes.
+
+def test_historical_oos_failure_is_migrated_to_candidate_rejection(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    state = {
+        "campaign_terminal": True,
+        "campaign_terminal_reason": "OOS_FAIL",
+        "campaign_outcome": "NO_EDGE_FOUND",
+        "terminal": True,
+        "current_bc": 202,
+        "next_bc": 203,
+        "phase": "TERMINAL",
+    }
+    assert campaign_controller._migrate_candidate_oos_terminal(state) is True
+    assert state["campaign_terminal"] is False
+    assert state["terminal"] is False
+    assert state["next_bc"] == 203
+    assert state["campaign_terminal_reason"] == "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION"
