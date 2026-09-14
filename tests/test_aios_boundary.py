@@ -31,3 +31,18 @@ def test_capability_mutation_is_rejected(tmp_path):
         assert "identity mismatch" in str(exc) or "differs" in str(exc)
     else:
         raise AssertionError("forged capability must fail closed")
+
+
+def test_contract_identity_accepts_dict_and_is_order_invariant():
+    contract={"contract_type":"EXECUTION_CONTRACT","task_id":"RESEARCH_BC202","scope":"research","actor":"research-controller","capabilities":["research_execute"],"input_digest":"sha256:data","allowed_effects":["process_execution"],"evidence_required":["adapter_result"],"max_attempts":1,"terminal_states":["OOS_PASS","OOS_FAIL","HOLD"],"policy_digest":"sha256:policy"}
+    reordered={k: contract[k] for k in reversed(list(contract))}
+    assert contract_identity(contract) == contract_identity(reordered)
+
+
+def test_contract_identity_rejects_non_dict_before_hashing():
+    try:
+        contract_identity("not-a-contract")
+    except ValueError as exc:
+        assert "contract must be a dict" in str(exc)
+    else:
+        raise AssertionError("non-dict contract must fail closed")
