@@ -1,0 +1,132 @@
+schema_version: 1
+status: normative
+
+# Registration is descriptive. Activation/promotion is governed by AIOS policy
+# and evidence; workload repositories remain independently owned.
+# Every registered capability MUST declare a manifest at the path recorded below.
+# A manifest may be published by the workload repository or by its AIOS adapter
+# when the workload is external and cannot be modified as part of this repository.
+capabilities:
+  - capability_id: try.research
+    version: "1"
+    kind: research_workload
+    owner: yanhul/try
+    source: https://github.com/yanhul/try
+    manifest: aios/workload.json
+    inputs: [natural_language_problem, research_contract]
+    outputs: [experiment_ledger, research_report, terminal_state]
+    verification: [regression_tests, locked_validation, locked_oos, provenance]
+    context: [data_version, strategy_version, compute_environment]
+    terminal_states: [PASS, EDGE_FOUND, NO_EDGE_FOUND, INCONCLUSIVE, BLOCKED]
+
+  - capability_id: android.assistant
+    version: "1"
+    kind: software_device_workload
+    owner: yanhul/android-ai-assistant
+    source: https://github.com/yanhul/android-ai-assistant
+    manifest: aios/workload.json
+    inputs: [natural_language_command, execution_contract]
+    outputs: [software_artifact, execution_result, verification_report]
+    verification: [android_ci, adversarial_conformance, authority_boundary]
+    context: [android_device, permissions, runtime, model_provider]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: rx50.engineering
+    version: "1"
+    kind: hardware_engineering_workload
+    owner: yanhul/RX50
+    source: https://github.com/yanhul/RX50
+    manifest: aios/workload.json
+    inputs: [engineering_problem, requirements, evidence]
+    outputs: [engineering_artifacts, evidence_report, terminal_state]
+    verification: [requirements_coverage, contradiction_check, electrical_verification, physical_evidence]
+    context: [component_revisions, measurements, hardware_state, toolchain]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: minimind.model
+    version: "1"
+    kind: model_capability
+    owner: jingyaogong/minimind
+    source: https://github.com/jingyaogong/minimind
+    manifest: adapters/minimind/workload.json
+    inputs: [model_task, model_input, inference_contract]
+    outputs: [model_output, capability_receipt, provenance]
+    verification: [artifact_lineage, independent_evaluation, locked_holdout, provenance]
+    context: [workload_revision, model_digest, tokenizer_digest, environment_digest]
+    terminal_states: [AVAILABLE, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: software.audit
+    version: "1"
+    kind: skill_provider
+    owner: ptn1411/skill
+    source: https://github.com/ptn1411/skill
+    manifest: external/skill/authorized-artifact-auditor/workload.json
+    inputs: [software_artifact, audit_contract]
+    outputs: [audit_report, findings, remediation_plan]
+    verification: [report_contract, regression_tests, provenance]
+    context: [artifact_revision, analysis_environment, authorization_scope]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  # AIOS-owned worker contracts. These are worker/capability interfaces, not
+  # authority providers. Execution and promotion remain outside worker control.
+  - capability_id: research.deep
+    version: "1"
+    kind: research_worker
+    owner: yanhul/AIOS
+    source: aios://core/research_worker
+    manifest: core/research_worker.py
+    inputs: [research_request, objective, constraints, evidence_requirements]
+    outputs: [research_findings, evidence_refs, artifacts]
+    verification: [source_evidence, adversarial_verification, provenance]
+    context: [research_worker_state, policy_digest, run_id]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: research.recent_signals
+    version: "1"
+    kind: research_worker
+    owner: yanhul/AIOS
+    source: aios://core/research_worker
+    manifest: core/research_worker.py
+    inputs: [research_request, recency_window, source_set]
+    outputs: [recent_findings, evidence_refs, artifacts]
+    verification: [source_timestamp, source_evidence, provenance]
+    context: [research_worker_state, policy_digest, run_id]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: runtime.background_worker
+    version: "1"
+    kind: durable_worker
+    owner: yanhul/AIOS
+    source: aios://core/worker_lifecycle
+    manifest: core/worker_lifecycle.py
+    inputs: [worker_contract, checkpoint, resume_token]
+    outputs: [worker_state, checkpoint, durable_result]
+    verification: [state_integrity, bounded_transition, provenance]
+    context: [policy_digest, run_id, lifecycle_state]
+    terminal_states: [DONE, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: execution.coding
+    version: "1"
+    kind: coding_worker
+    owner: yanhul/AIOS
+    source: aios://core/worker_lifecycle
+    manifest: core/worker_lifecycle.py
+    inputs: [coding_contract, source_revision, execution_budget]
+    outputs: [artifact, exit_result, test_evidence]
+    verification: [exit_code, tests, adversarial_verification, provenance]
+    context: [worktree, source_commit, policy_digest, run_id]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+  - capability_id: market.universe_discovery
+    version: "1"
+    kind: domain_worker
+    owner: yanhul/AIOS
+    source: aios://capability/market-universe-discovery
+    manifest: core/research_worker.py
+    inputs: [market_contract, universe_constraints, discovery_sources]
+    outputs: [universe_candidates, source_refs, discovery_artifacts]
+    verification: [source_evidence, provenance]
+    context: [research_worker_state, policy_digest, run_id]
+    terminal_states: [PASS, BLOCKED, INCONCLUSIVE]
+
+relationships: []
