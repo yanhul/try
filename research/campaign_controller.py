@@ -72,6 +72,15 @@ def _start_new_campaign_epoch(state,policy):
     state.update(campaign_id=pid,campaign_epoch_initialized=True,campaign_start_bc=start,next_bc=start,campaign_screened=0,campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason=None,phase='OBSERVE',last_error=None,retry_count=0,terminal=False)
     print(f'CAMPAIGN_NEW_EPOCH id={pid} start_bc={start} prior_id={old or "none"}'); save(state)
 
+def _migrate_candidate_oos_terminal(state):
+    """OOS_FAIL is candidate-level rejection; older state incorrectly terminalized it."""
+    if state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL':
+        state.update(campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason='OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION',terminal=False,phase='OBSERVE',last_error=None,retry_count=0)
+        if not isinstance(state.get('next_bc'),int) or state['next_bc']<=int(state.get('current_bc') or state.get('last_bc') or 0): state['next_bc']=int(state.get('current_bc') or state.get('last_bc') or 0)+1
+        save(state); print(f'CAMPAIGN_MIGRATE_OOS_FAIL_RESUME next_bc={state["next_bc"]}')
+        return True
+    return False
+
 def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
     if p.exists(): return None
@@ -81,7 +90,6 @@ def _epoch_seed_failure(parent,start):
     return None
 
 def controller_command():
-    """Run the controller as a package module so its research.* imports resolve."""
     return [sys.executable,'-m','research.bc_controller']
 
 def main():
@@ -93,6 +101,7 @@ def main():
     if budget<=0 or batch<=0 or batch>budget or not outcomes: print('CAMPAIGN_BLOCKED invalid_policy'); return 2
     state=load(STATE,{})
     _start_new_campaign_epoch(state,policy)
+    _migrate_candidate_oos_terminal(state)
     _,start,screened=reconcile_campaign_state(state,budget)
     if state.get('campaign_terminal'):
         o=state.get('campaign_outcome')
