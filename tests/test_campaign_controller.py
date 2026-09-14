@@ -114,8 +114,62 @@ def test_controller_is_invoked_as_package_module():
     assert controller_command() == [sys.executable, "-m", "research.bc_controller"]
 
 
-def test_historical_oos_failure_is_migrated_to_candidate_rejection(monkeypatch, tmp_path):
+def test_historical_oos_failure_requires_durable_evidence(monkeypatch, tmp_path):
     monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "OOS_DIR", tmp_path / "oos")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    state = {
+        "campaign_terminal": True,
+        "campaign_terminal_reason": "OOS_FAIL",
+        "campaign_outcome": "NO_EDGE_FOUND",
+        "terminal": True,
+        "current_bc": 202,
+        "next_bc": 203,
+        "phase": "TERMINAL",
+    }
+    assert campaign_controller._migrate_candidate_oos_terminal(state) is False
+    assert state["campaign_terminal"] is True
+
+
+def test_historical_oos_failure_is_migrated_from_durable_evidence(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "OOS_DIR", tmp_path / "oos")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    for directory in (campaign_controller.CANDIDATE_DIR, campaign_controller.OOS_DIR):
+        directory.mkdir(parents=True)
+    candidate_hash = "candidate-202-hash"
+    (campaign_controller.CANDIDATE_DIR / "BC202.json").write_text(json.dumps({
+        "bc": 202,
+        "parent_bc": 201,
+        "hypothesis_id": "H202",
+        "candidate_hash": candidate_hash,
+        "conceptual_change": "test change",
+        "evidence_sources": ["durable-test"],
+    }), encoding="utf-8")
+    (campaign_controller.OOS_DIR / "BC202_oos_result.json").write_text(json.dumps({
+        "bc": 202,
+        "candidate_hash": candidate_hash,
+        "oos_executed": True,
+        "oos_selection_used": False,
+        "oos_passed": False,
+        "metrics": {"profit_factor": 0.8},
+        "dataset": {"sha256": "dataset-sha"},
+        "protocol_sha256": "protocol-sha",
+    }), encoding="utf-8")
+    (campaign_controller.OOS_DIR / "BC202_oos_result_receipt.json").write_text(json.dumps({
+        "receipt_type": "OOS_EXECUTION_RECEIPT",
+        "schema_version": 1,
+        "bc": 202,
+        "candidate_hash": candidate_hash,
+        "oos_executed": True,
+        "oos_selection_used": False,
+        "oos_passed": False,
+        "metrics": {"profit_factor": 0.8},
+        "dataset_sha256": "dataset-sha",
+        "protocol_sha256": "protocol-sha",
+    }), encoding="utf-8")
     state = {
         "campaign_terminal": True,
         "campaign_terminal_reason": "OOS_FAIL",
@@ -130,3 +184,7 @@ def test_historical_oos_failure_is_migrated_to_candidate_rejection(monkeypatch, 
     assert state["terminal"] is False
     assert state["next_bc"] == 203
     assert state["campaign_terminal_reason"] == "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION"
+    failure = json.loads((campaign_controller.FAILURE_DIR / "BC202.json").read_text(encoding="utf-8"))
+    assert failure["decision"] == "REJECT"
+    assert failure["oos_verdict"] == "OOS_FAIL"
+    assert failure["candidate_hash"] == candidate_hash
