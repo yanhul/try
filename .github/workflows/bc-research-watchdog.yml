@@ -6,7 +6,7 @@ name: BC Research Durable Watchdog
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/2 * * * *'
 
 concurrency:
   group: try-bc-research-controller-main
