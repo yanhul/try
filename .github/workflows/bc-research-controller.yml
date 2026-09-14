@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: 8693b0fb69a3caa552ef814feeaadc86e5a4c249
+          ref: e99f4bb7173a0b761e2ed161394c68614f10a301
           path: aios-authority
       - name: Set up Python
         uses: actions/setup-python@v5
