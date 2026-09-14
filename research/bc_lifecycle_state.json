@@ -2,12 +2,12 @@
   "campaign_budget": 100,
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
-  "campaign_outcome": null,
-  "campaign_screened": 35,
+  "campaign_outcome": "NO_EDGE_FOUND",
+  "campaign_screened": 36,
   "campaign_start_bc": 167,
-  "campaign_terminal": false,
-  "campaign_terminal_reason": null,
-  "checkpoint_seq": 3460,
+  "campaign_terminal": true,
+  "campaign_terminal_reason": "OOS_FAIL",
+  "checkpoint_seq": 3466,
   "current_bc": 202,
   "history": [
     {
@@ -1239,17 +1239,26 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 202,
+      "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "mechanism_family",
+      "oos_verdict": "OOS_FAIL"
     }
   ],
-  "iterations": 548,
+  "iterations": 549,
   "last_bc": 202,
-  "last_error": "HOLD_OOS_EXECUTOR_OR_AUTHORITY",
-  "next_bc": 202,
-  "oos_consumed": [],
-  "phase": "WAIT_RETRY",
-  "retry_count": 1,
+  "last_error": null,
+  "next_bc": 203,
+  "oos_consumed": [
+    "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a"
+  ],
+  "phase": "TERMINAL",
+  "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
-  "terminal": false,
-  "terminal_reason": null,
-  "updated_at": "2026-09-14T13:03:31.376999+00:00"
+  "terminal": true,
+  "terminal_reason": "OOS_FAIL",
+  "updated_at": "2026-09-14T13:04:53.987681+00:00"
 }
