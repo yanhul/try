@@ -5,12 +5,18 @@ on:
     branches: [main]
     paths:
       - 'aios/**'
+      - 'engine/aios_evolution.py'
+      - 'engine/research_pipeline.py'
+      - 'tests/test_aios_evolution_adapter.py'
       - 'research/AIOS_RESEARCH_CONTRACT.md'
       - 'research/aios_conformance.py'
       - '.github/workflows/aios-central-conformance.yml'
   pull_request:
     paths:
       - 'aios/**'
+      - 'engine/aios_evolution.py'
+      - 'engine/research_pipeline.py'
+      - 'tests/test_aios_evolution_adapter.py'
       - 'research/AIOS_RESEARCH_CONTRACT.md'
       - 'research/aios_conformance.py'
       - '.github/workflows/aios-central-conformance.yml'
@@ -19,7 +25,7 @@ permissions:
   contents: read
 
 env:
-  AIOS_REF: 5fba88c58d89feed5363b95d3d03b31150d1fee7
+  AIOS_REF: e2dc2c32bedf7de598b66e1bfe89f300fb83ccfc
 
 jobs:
   central-workload:
@@ -38,6 +44,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Verify TRY to AIOS evolution lifecycle
+        env:
+          AIOS_ROOT: ${{ github.workspace }}/.aios-core
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/.aios-core
+        run: python -m unittest tests.test_aios_evolution_adapter -v
 
       - name: Run research workload through central AIOS runner
         env:
