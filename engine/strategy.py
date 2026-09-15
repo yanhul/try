@@ -39,8 +39,6 @@ class ReferenceStrategy:
                         event = Event(timestamp=bar.timestamp, bar_index=i, event_type=EventType.LIQUIDITY_SWEEP, direction=Direction.BEARISH, price=prev.high)
                         self.events.append(event); self._sweep = event; self._mss = None; self._fvg = None
 
-                # Once an FVG exists, a fresh opposite wick can invalidate it even
-                # when the immediately preceding candle made the extreme.
                 if self._fvg is not None and i >= 2:
                     anchor = bars[i - 2]
                     if self._fvg.direction == Direction.BULLISH and bar.high > anchor.high and bar.close < anchor.high:
@@ -50,7 +48,7 @@ class ReferenceStrategy:
                         event = Event(timestamp=bar.timestamp, bar_index=i, event_type=EventType.LIQUIDITY_SWEEP, direction=Direction.BULLISH, price=anchor.low)
                         self.events.append(event); self._sweep = event; self._mss = None; self._fvg = None
 
-            if self._sweep is not None and self._sweep.bar_index < i and i >= 1:
+            if self._sweep is not None and self._mss is None and self._sweep.bar_index < i and i >= 1:
                 prev = bars[i - 1]
                 if self._sweep.direction == Direction.BULLISH and bar.close > prev.high:
                     event = Event(timestamp=bar.timestamp, bar_index=i, event_type=EventType.MSS, direction=Direction.BULLISH, price=prev.high)
