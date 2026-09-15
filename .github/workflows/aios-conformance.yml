@@ -22,3 +22,4 @@ jobs:
           python-version: '3.12'
       - name: Run bounded AIOS workload adapter
         run: python -m aios.adapter
+      # Conformance must be verified on the same PR head as pytest.
