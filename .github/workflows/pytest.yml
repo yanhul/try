@@ -28,3 +28,4 @@ jobs:
         run: python -m pip install --upgrade pip pytest
       - name: Run test suite
         run: python -m pytest
+      # CI is the merge gate for the executable evolution boundary.
