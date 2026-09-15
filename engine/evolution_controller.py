@@ -1,41 +1,29 @@
 """Bounded evolutionary controller for ASTRA research campaigns.
 
-The controller owns candidate generation and search. It does NOT own the
-research contract, evaluator, dataset, OOS lock, or promotion policy.
+Search state is mutable; research contract, evaluator, dataset, OOS lock,
+and promotion policy remain outside this controller.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 import hashlib
 import json
 from typing import Any, Callable, Mapping, Sequence
 
-from .experiment_ledger import ExperimentRecord, JsonlExperimentLedger, identity_hash
+from .experiment_ledger import ExperimentRecord, JsonlExperimentLedger
 
 IMMUTABLE_KEYS = frozenset({
-    "dataset",
-    "dataset_identity",
-    "evaluator",
-    "evaluation_spec",
-    "cost_model",
-    "oos_policy",
-    "promotion_policy",
-    "evidence_policy",
+    "dataset", "dataset_identity", "evaluator", "evaluation_spec",
+    "cost_model", "oos_policy", "promotion_policy", "evidence_policy",
 })
-
 ALLOWED_MUTATIONS = frozenset({
-    "stop_fraction",
-    "reward_multiple",
-    "pnf_box_fraction",
-    "candidate_family",
-    "candidate_spec",
+    "stop_fraction", "reward_multiple", "pnf_box_fraction",
+    "candidate_family", "candidate_spec",
 })
-
-STATUSES = frozenset({"PROMOTED", "REJECTED", "INVALID", "FAILED", "CRASHED"})
+EVALUATION_STATUSES = frozenset({"SUCCEEDED", "REJECTED", "INVALID", "FAILED", "CRASHED"})
 
 
 def canonical_candidate(config: Mapping[str, Any]) -> dict[str, Any]:
-    """Return a canonical candidate without allowing policy fields to drift."""
     candidate = dict(config)
     forbidden = IMMUTABLE_KEYS.intersection(candidate)
     if forbidden:
@@ -44,9 +32,8 @@ def canonical_candidate(config: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def candidate_id(config: Mapping[str, Any]) -> str:
-    return hashlib.sha256(
-        json.dumps(canonical_candidate(config), sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
-    ).hexdigest()
+    payload = json.dumps(canonical_candidate(config), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def mutate(parent: Mapping[str, Any], field: str, value: Any) -> dict[str, Any]:
@@ -76,7 +63,7 @@ class Evaluation:
 
 
 class EvolutionController:
-    """Generate, evaluate, compare and persist bounded candidate evolution."""
+    """Generate, evaluate and make an evidence-backed search decision."""
 
     def __init__(self, ledger: JsonlExperimentLedger, evaluator: Callable[[Mapping[str, Any]], Evaluation]):
         self.ledger = ledger
@@ -88,8 +75,7 @@ class EvolutionController:
         seen: set[str] = set()
         out: list[Candidate] = []
         for field, value in mutations:
-            child_config = mutate(parent.config, field, value)
-            child = Candidate(child_config, parent.id)
+            child = Candidate(mutate(parent.config, field, value), parent.id)
             if child.id == parent.id or child.id in seen:
                 continue
             seen.add(child.id)
@@ -101,39 +87,45 @@ class EvolutionController:
     def evaluate(self, candidate: Candidate, hypothesis_id: str = "astra") -> Evaluation:
         exp_id = candidate.id
         self.ledger.append(ExperimentRecord(
-            experiment_id=exp_id,
-            hypothesis_id=hypothesis_id,
-            status="PROPOSED",
-            parent_experiment_id=candidate.parent_id,
-            configuration_identity=candidate.id,
+            experiment_id=exp_id, hypothesis_id=hypothesis_id, status="PROPOSED",
+            parent_experiment_id=candidate.parent_id, configuration_identity=exp_id,
             result={"candidate": candidate.config},
         ))
         try:
             evaluation = self.evaluator(candidate.config)
-        except Exception as exc:  # evidence first: crash is a recorded outcome
+        except Exception as exc:
             evaluation = Evaluation("CRASHED", None, {"error": str(exc)}, "EXECUTION_EXCEPTION")
-        if evaluation.status not in STATUSES:
+        if evaluation.status not in EVALUATION_STATUSES:
             raise ValueError(f"invalid_evaluation_status:{evaluation.status}")
         self.ledger.append(ExperimentRecord(
-            experiment_id=exp_id,
-            hypothesis_id=hypothesis_id,
-            status=evaluation.status,
-            parent_experiment_id=candidate.parent_id,
-            configuration_identity=candidate.id,
-            result=dict(evaluation.result),
-            failure_class=evaluation.failure_class,
-            decision=evaluation.status,
+            experiment_id=exp_id, hypothesis_id=hypothesis_id, status=evaluation.status,
+            parent_experiment_id=candidate.parent_id, configuration_identity=exp_id,
+            result=dict(evaluation.result), failure_class=evaluation.failure_class,
+            decision=None,
         ))
         return evaluation
 
+    def decide(self, candidate: Candidate, evaluation: Evaluation, baseline: Evaluation,
+               hypothesis_id: str = "astra") -> str:
+        decision = self.compare(evaluation, baseline)
+        self.ledger.append(ExperimentRecord(
+            experiment_id=candidate.id, hypothesis_id=hypothesis_id,
+            status="PROMOTED" if decision == "PROMOTE" else "REJECTED",
+            parent_experiment_id=candidate.parent_id, configuration_identity=candidate.id,
+            result={"score": evaluation.score, "baseline_score": baseline.score},
+            decision=decision,
+        ))
+        return decision
+
     @staticmethod
     def compare(candidate: Evaluation, baseline: Evaluation) -> str:
-        """Promotion is a comparison result only; the caller supplies fixed policy."""
-        if candidate.status != "PROMOTED":
+        """Compare successful evaluations; promotion is a separate ledger decision."""
+        if candidate.status != "SUCCEEDED" or baseline.status != "SUCCEEDED":
             return "REJECT"
         if candidate.score is None or baseline.score is None:
             return "REJECT"
         return "PROMOTE" if candidate.score > baseline.score else "REJECT"
 
 
-__all__ = ["ALLOWED_MUTATIONS", "Candidate", "Evaluation", "EvolutionController", "candidate_id", "canonical_candidate", "mutate"]
+__all__ = ["ALLOWED_MUTATIONS", "Candidate", "Evaluation", "EvolutionController",
+           "candidate_id", "canonical_candidate", "mutate"]
