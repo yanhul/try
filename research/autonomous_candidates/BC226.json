@@ -1,0 +1,28 @@
+{
+  "bc": 226,
+  "candidate_hash": "ca7a851fc85f2ca39d5261c346371d7b199f32ad5d6f2ed6ed2cf5a88f03e4f4",
+  "conceptual_change": "Transitioning from generic sweep logic to a structural liquidity imbalance identification by evaluating the magnitude of price divergence relative to its rolling mean as a proxy for liquidity voids.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 50.0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 50.0,
+    "window": 20
+  },
+  "parent_bc": 225,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
