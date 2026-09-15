@@ -67,3 +67,21 @@ def test_controller_mutation_reaches_real_evaluator(monkeypatch):
     monkeypatch.setattr("engine.astra_evaluator.evaluate_split",fake_split)
     evaluator=build_evaluator("data/BTCUSDT_1h.csv"); parent=Candidate({"hypothesis_id":"baseline","stop_fraction":0.01,"reward_multiple":2.0,"pnf_box_fraction":0.01}); child=Candidate(mutate(parent.config,"reward_multiple",3.0),parent.id); result=evaluator(child.config)
     assert result.status=="SUCCEEDED" and result.score==3.0 and calls==[(0.01,3.0,0.01,None),(0.01,3.0,0.01,None),(0.01,3.0,0.01,None)]
+
+def test_oos_locked_gate_rejects_after_validation(monkeypatch):
+    calls=[]
+    def fake_split(bars,start,end,predicate,stop,rr,**kwargs):
+        calls.append((start,end))
+        if len(calls) < 3:
+            return {"metrics":{"profit_factor":1.1,"total_return":rr},"accepted_signals":1}
+        return {"metrics":{"profit_factor":0.9,"total_return":-1.0},"accepted_signals":1}
+    monkeypatch.setattr("engine.astra_evaluator.evaluate_split",fake_split)
+    evaluator=build_evaluator("data/BTCUSDT_1h.csv")
+    result=evaluator({"hypothesis_id":"baseline","stop_fraction":0.01,"reward_multiple":3.0,"pnf_box_fraction":0.01})
+    assert result.status=="REJECTED"
+    assert result.score is None
+    assert result.failure_class=="OOS_LOCKED_GATE_FAILED"
+    assert result.result["validation_passed"] is True
+    assert result.result["oos_passed"] is False
+    assert result.result["OOS_POLICY"]=="OOS_LOCKED"
+    assert len(calls)==3
