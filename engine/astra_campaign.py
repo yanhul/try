@@ -35,31 +35,29 @@ def _unique_mutations(items:list[tuple[str,Any]])->list[tuple[str,Any]]:
     return out
 
 def _mutations(parent:Candidate,generation:int)->list[tuple[str,Any]]:
-    """Coarse-to-fine coordinate search; put immediately useful positive moves inside the bounded frontier."""
+    """Coarse-to-fine coordinate search with a stable positive reward frontier."""
     c=parent.config; stop=max(1e-6,float(c.get("stop_fraction",0.01))); rr=max(0.25,float(c.get("reward_multiple",2.0))); pnf=max(1e-6,float(c.get("pnf_box_fraction",0.01)))
     phase=generation%3
     if phase==0:
-        stop_scales=(0.60,0.80,1.25,1.60); rr_delta=(0.5,-0.5,-1.0,1.0); pnf_scales=(0.60,0.80,1.25,1.60)
+        stop_scales=(0.60,0.80,1.25,1.60); rr_delta=(0.5,-0.5,-1.0); pnf_scales=(0.60,0.80,1.25,1.60)
     elif phase==1:
-        stop_scales=(0.85,0.925,1.08,1.175); rr_delta=(0.1,-0.1,-0.25,0.25); pnf_scales=(0.85,0.925,1.08,1.175)
+        stop_scales=(0.85,0.925,1.08,1.175); rr_delta=(0.5,-0.1,-0.25,0.1); pnf_scales=(0.85,0.925,1.08,1.175)
     else:
-        stop_scales=(0.95,1.05); rr_delta=(0.1,-0.1); pnf_scales=(0.95,1.05)
+        stop_scales=(0.95,1.05); rr_delta=(0.5,-0.1,0.1); pnf_scales=(0.95,1.05)
     items=[]
     items += [("reward_multiple",round(max(0.25,rr+x),8)) for x in rr_delta]
     items += [("stop_fraction",round(stop*x,8)) for x in stop_scales]
     items += [("pnf_box_fraction",round(pnf*x,8)) for x in pnf_scales]
     return _unique_mutations(items)
 
-def _last_evaluation(ledger:JsonlExperimentLedger, candidate_id:str)->dict[str,Any]|None:
-    terminal={"SUCCEEDED","REJECTED","INVALID","FAILED","CRASHED"}
-    found=None
+def _last_evaluation(ledger:JsonlExperimentLedger,candidate_id:str)->dict[str,Any]|None:
+    terminal={"SUCCEEDED","REJECTED","INVALID","FAILED","CRASHED"}; found=None
     for record in ledger.read():
         if record.get("experiment_id")==candidate_id and record.get("status") in terminal: found=record
     return found
 
 def _parent_failure(ledger:JsonlExperimentLedger,parent:Candidate)->str|None:
-    record=_last_evaluation(ledger,parent.id)
-    value=(record or {}).get("failure_class")
+    record=_last_evaluation(ledger,parent.id); value=(record or {}).get("failure_class")
     return str(value) if value else None
 
 def run_campaign(data_path:str|Path,ledger_path:str|Path,state_path:str|Path,*,max_generations:int=100,generation_limit:int=6)->CampaignState:
