@@ -3,14 +3,14 @@
   "bc": 207,
   "parent_bc": 206,
   "hypothesis_id": "mechanism_family",
-  "candidate_hash": "24144fe62ca07b39226594a16fc62994f52222d51c0e5d6a08f533a094bf2e2b",
+  "candidate_hash": "0f836096e59a6ea63ab6cce2e89c88b2ebad372c27cff6851e5ec5e85cba5fd2",
   "discovery_spec": {
     "direction": "above",
-    "left": "close_location",
+    "left": "close",
     "mechanism_family": "smc_ict",
-    "operator": "ratio",
-    "right": "range_ratio",
-    "threshold": 0.5
+    "operator": "difference",
+    "right": "high",
+    "threshold": 0.005
   },
   "oos_selection_used": false,
   "oos_executed": false,

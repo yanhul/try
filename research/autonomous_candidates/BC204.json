@@ -1,0 +1,29 @@
+{
+  "bc": 204,
+  "candidate_hash": "f739e96db1e8a72fb030d9512d119c119c6aa5971bfa1ba00c534559a25ea5b3",
+  "conceptual_change": "Shift to ICT liquidity sweep logic focusing on range expansion via close_location relative to previous range_ratio to identify potential liquidity run triggers.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "numeric_finite_threshold": 1.5,
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|ratio|close_location|range_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 203,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

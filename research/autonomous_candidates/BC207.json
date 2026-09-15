@@ -1,0 +1,27 @@
+{
+  "bc": 207,
+  "candidate_hash": "0f836096e59a6ea63ab6cce2e89c88b2ebad372c27cff6851e5ec5e85cba5fd2",
+  "conceptual_change": "Shift from liquidity sweep trigger logic to a difference-based disparity metric between price and high/low extremes to identify localized liquidity exhaustion within an SMC framework.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "high",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|high|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 206,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
