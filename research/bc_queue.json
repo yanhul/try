@@ -1,29 +1,30 @@
 [
   {
-    "bc": 227,
-    "candidate_hash": "6dbee1568b1e143829fe72f1ce6adaf0dd294df5753302e25dbe70f0baa1638d",
-    "conceptual_change": "Shift from simple statistical deviation metrics to a relative range-based mean reversion mechanism, focusing on the ratio between the current range and its rolling mean as a signal for volatility exhaustion.",
+    "bc": 228,
+    "candidate_hash": "e07744dd2b59129c68ee7034567011413b0e26a266b294ae379c9b5650b9d253",
+    "conceptual_change": "Shift from simple statistical deviation to a volume-normalized trend momentum filter using the ratio of volume to its rolling mean to identify high-conviction momentum periods.",
     "discovery_spec": {
       "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "mean_reversion",
+      "left": "volume",
+      "mechanism_family": "momentum_trend",
       "operator": "ratio",
       "right": "rolling_mean",
-      "threshold": 1.25
+      "threshold": 1.5,
+      "window": 50
     },
     "evidence_sources": [
-      "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|range_ratio|rolling_mean|below",
+    "novelty_key": "momentum_trend|ratio|volume|rolling_mean|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
-      "window": null
+      "threshold": 1.5,
+      "window": 50
     },
-    "parent_bc": 226,
+    "parent_bc": 227,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

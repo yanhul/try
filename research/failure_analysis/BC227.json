@@ -1,0 +1,41 @@
+{
+  "bc": 227,
+  "parent_bc": 226,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "6dbee1568b1e143829fe72f1ce6adaf0dd294df5753302e25dbe70f0baa1638d",
+  "conceptual_change": "Shift from simple statistical deviation metrics to a relative range-based mean reversion mechanism, focusing on the ratio between the current range and its rolling mean as a signal for volatility exhaustion.",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 295,
+    "skipped_overlap_trades": 251,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 44,
+      "win_count": 17,
+      "loss_count": 27,
+      "win_rate": 0.38636363636363635,
+      "total_return": -0.05462713055482371,
+      "avg_return": -0.0011734434672537519,
+      "profit_factor": 0.8457971770341441,
+      "max_drawdown": 0.10635494667559757,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
