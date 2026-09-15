@@ -28,4 +28,4 @@ jobs:
         run: python -m pip install --upgrade pip pytest
       - name: Run test suite
         run: python -m pytest
-      # CI merge gate: ASTRA executable evolution boundary.
+      # CI merge gate: ASTRA executable evolution boundary; rerun after root fix.
