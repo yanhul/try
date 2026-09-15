@@ -46,15 +46,18 @@ def test_generation_reuses_terminal_evidence(tmp_path):
 def test_adaptive_mutation_prefers_proven_field(tmp_path):
     ledger=JsonlExperimentLedger(tmp_path/"ledger.jsonl"); parent={"reward_multiple":2.0,"stop_fraction":0.01}
     for i in range(4):
-        c=mutate(parent,"reward_multiple",3.0+i)
-        ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c}))
-        ledger.append(ExperimentRecord(candidate_id(c),"astra","SUCCEEDED",result={"candidate":c,"score":1.0}))
+        c=mutate(parent,"reward_multiple",3.0+i); ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c})); ledger.append(ExperimentRecord(candidate_id(c),"astra","SUCCEEDED",result={"candidate":c,"score":1.0}))
     for i in range(4):
-        c=mutate(parent,"stop_fraction",0.02+i*0.001)
-        ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c}))
-        ledger.append(ExperimentRecord(candidate_id(c),"astra","FAILED",result={"candidate":c},failure_class="OOS_FAIL"))
+        c=mutate(parent,"stop_fraction",0.02+i*0.001); ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c})); ledger.append(ExperimentRecord(candidate_id(c),"astra","FAILED",result={"candidate":c},failure_class="OOS_FAIL"))
     ordered=rank_mutations(parent,[("stop_fraction",0.05),("reward_multiple",8.0)],ledger)
     assert ordered[0][0]=="reward_multiple"
+
+def test_contextual_failure_signal_reorders_mutation_field(tmp_path):
+    ledger=JsonlExperimentLedger(tmp_path/"ledger.jsonl"); parent={"reward_multiple":2.0,"stop_fraction":0.01}
+    c1=mutate(parent,"reward_multiple",3.0); ledger.append(ExperimentRecord(candidate_id(c1),"astra","FAILED",result={"candidate":c1},failure_class="OOS_FAIL"))
+    c2=mutate(parent,"stop_fraction",0.02); ledger.append(ExperimentRecord(candidate_id(c2),"astra","SUCCEEDED",result={"candidate":c2,"score":1.0},failure_class="OOS_FAIL"))
+    ordered=rank_mutations(parent,[("reward_multiple",4.0),("stop_fraction",0.03)],ledger,failure_class="OOS_FAIL")
+    assert ordered[0][0]=="stop_fraction"
 
 def test_controller_mutation_reaches_real_evaluator(monkeypatch):
     calls=[]
