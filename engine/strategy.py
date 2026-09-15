@@ -57,7 +57,7 @@ class ReferenceStrategy:
                     event = Event(timestamp=bar.timestamp, bar_index=i, event_type=EventType.MSS, direction=Direction.BEARISH, price=prev.low)
                     self.events.append(event); self._mss = event; self._fvg = None
 
-            if i >= 2 and self._mss is not None and self._mss.bar_index < i:
+            if i >= 2 and self._fvg is None and self._mss is not None and self._mss.bar_index < i:
                 left = bars[i - 2]
                 if self._mss.direction == Direction.BULLISH and bar.low > left.high:
                     zone = FVGZone(Direction.BULLISH, i, left.high, bar.low); self._fvg = zone
