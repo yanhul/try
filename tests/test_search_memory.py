@@ -30,11 +30,12 @@ def test_ranking_is_deterministic_for_same_memory_and_seed(monkeypatch, tmp_path
     assert rank_families(["momentum_trend", "mean_reversion"], seed=7) == rank_families(["momentum_trend", "mean_reversion"], seed=7)
 
 
-def test_record_is_idempotent_and_excludes_harness_failures(monkeypatch, tmp_path):
+def test_record_is_idempotent_excludes_harness_failures_and_persists_mirror(monkeypatch, tmp_path):
     _isolated(monkeypatch, tmp_path)
     entry = search_memory.record(_candidate(1, "family_a"), _result(False), "OOS_FAIL")
     assert entry["decision"] == "OOS_FAIL"
     assert len(search_memory.load()["events"]) == 1
+    assert search_memory.DURABLE_MEMORY_PATH.exists()
     search_memory.record(_candidate(1, "family_a"), _result(False), "OOS_FAIL")
     assert len(search_memory.load()["events"]) == 1
     assert search_memory.record(_candidate(2, "family_b"), {}, "HOLD_PROVIDER_ROUTER") is None
