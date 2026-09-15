@@ -1,0 +1,27 @@
+{
+  "bc": 219,
+  "candidate_hash": "e672a6f8aab7a8a34c304017211c9cdf1364c88c2a42e75bfb9110eab10f1bac",
+  "conceptual_change": "Shift from simple institutional volume analysis to an ICT-based liquidity framework by isolating price displacement relative to the rolling standard deviation of the range, targeting volatility-adjusted stop run conditions.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|rolling_std|range_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 218,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

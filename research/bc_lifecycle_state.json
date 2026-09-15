@@ -7,8 +7,8 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 3597,
-  "current_bc": 218,
+  "checkpoint_seq": 3605,
+  "current_bc": 219,
   "history": [
     {
       "bc": 1,
@@ -1338,21 +1338,28 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 218,
+      "candidate_hash": "0ebcf479c6e408eeb4827707154645dba1b4670b1e146f55f1784fadace8dc5a",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 565,
-  "last_bc": 217,
+  "iterations": 566,
+  "last_bc": 218,
   "last_error": null,
-  "next_bc": 218,
+  "next_bc": 219,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
     "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98"
   ],
-  "phase": "PERSISTED",
+  "phase": "YIELD",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "updated_at": "2026-09-15T03:50:16.030326+00:00"
+  "updated_at": "2026-09-15T03:54:37.993082+00:00"
 }
