@@ -23,12 +23,20 @@ ALLOWED_MUTATIONS = frozenset({
 EVALUATION_STATUSES = frozenset({"SUCCEEDED", "REJECTED", "INVALID", "FAILED", "CRASHED"})
 
 
+def _reject_immutable(value: Any, path: str = "candidate") -> None:
+    if isinstance(value, Mapping):
+        for key, nested in value.items():
+            if key in IMMUTABLE_KEYS:
+                raise ValueError(f"immutable_candidate_fields:{path}.{key}")
+            _reject_immutable(nested, f"{path}.{key}")
+    elif isinstance(value, (list, tuple)):
+        for index, nested in enumerate(value):
+            _reject_immutable(nested, f"{path}[{index}]")
+
+
 def canonical_candidate(config: Mapping[str, Any]) -> dict[str, Any]:
-    candidate = dict(config)
-    forbidden = IMMUTABLE_KEYS.intersection(candidate)
-    if forbidden:
-        raise ValueError(f"immutable_candidate_fields:{sorted(forbidden)}")
-    return json.loads(json.dumps(candidate, sort_keys=True, ensure_ascii=False))
+    _reject_immutable(config)
+    return json.loads(json.dumps(dict(config), sort_keys=True, ensure_ascii=False))
 
 
 def candidate_id(config: Mapping[str, Any]) -> str:
@@ -63,7 +71,7 @@ class Evaluation:
 
 
 class EvolutionController:
-    """Generate, evaluate and make an evidence-backed search decision."""
+    """Generate, evaluate and make evidence-backed search decisions."""
 
     def __init__(self, ledger: JsonlExperimentLedger, evaluator: Callable[[Mapping[str, Any]], Evaluation]):
         self.ledger = ledger
@@ -84,8 +92,23 @@ class EvolutionController:
                 break
         return out
 
+    def _terminal_ids(self) -> set[str]:
+        terminal = {"SUCCEEDED", "REJECTED", "INVALID", "FAILED", "CRASHED", "PROMOTED"}
+        return {
+            record["experiment_id"]
+            for record in self.ledger.read()
+            if record.get("status") in terminal and record.get("experiment_id")
+        }
+
     def evaluate(self, candidate: Candidate, hypothesis_id: str = "astra") -> Evaluation:
         exp_id = candidate.id
+        if exp_id in self._terminal_ids():
+            last = self.ledger.last(exp_id)
+            if last and last.get("status") == "PROMOTED":
+                return Evaluation("SUCCEEDED", last.get("result", {}).get("score"), last.get("result", {}))
+            if last and last.get("status") in EVALUATION_STATUSES:
+                result = last.get("result") or {}
+                return Evaluation(last["status"], result.get("score"), result, last.get("failure_class"))
         self.ledger.append(ExperimentRecord(
             experiment_id=exp_id, hypothesis_id=hypothesis_id, status="PROPOSED",
             parent_experiment_id=candidate.parent_id, configuration_identity=exp_id,
@@ -116,6 +139,24 @@ class EvolutionController:
             decision=decision,
         ))
         return decision
+
+    def run_generation(self, parent: Candidate, mutations: Sequence[tuple[str, Any]], baseline: Evaluation,
+                       limit: int = 8, hypothesis_id: str = "astra") -> Candidate:
+        """Run one bounded generation and return the best promoted child, or parent.
+
+        Existing terminal ledger records are reused, so interruption/resume does not
+        re-execute completed candidates. Promotion remains a separate decision record.
+        """
+        candidates = self.propose(parent, mutations, limit=limit)
+        best = parent
+        best_score = baseline.score if baseline.status == "SUCCEEDED" else None
+        for candidate in candidates:
+            evaluation = self.evaluate(candidate, hypothesis_id)
+            decision = self.decide(candidate, evaluation, baseline, hypothesis_id)
+            if decision == "PROMOTE" and evaluation.score is not None and (best_score is None or evaluation.score > best_score):
+                best = candidate
+                best_score = evaluation.score
+        return best
 
     @staticmethod
     def compare(candidate: Evaluation, baseline: Evaluation) -> str:
