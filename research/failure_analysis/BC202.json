@@ -1,0 +1,35 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 202,
+  "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
+  "conceptual_change": "Shift from z-score based signal generation to a rolling_mean difference based mean-reversion model. This isolates the deviation of close price from its rolling average over a 20-period lookback window, targeting price excursions that represent localized extremes.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 201,
+  "reason": "OOS_FAILED",
+  "repair": "restored from durable OOS result; no research evidence fabricated",
+  "validation_summary": {
+    "avg_return": -0.000841646222172943,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 18,
+    "max_drawdown": 0.04876866681110581,
+    "profit_factor": 0.886867243144444,
+    "total_return": -0.027940234337365033,
+    "trade_count": 30,
+    "win_count": 12,
+    "win_rate": 0.4
+  }
+}

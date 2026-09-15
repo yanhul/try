@@ -1,0 +1,38 @@
+{
+  "bc": 202,
+  "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
+  "dataset_sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+  "metrics": {
+    "avg_return": -0.000841646222172943,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 18,
+    "max_drawdown": 0.04876866681110581,
+    "profit_factor": 0.886867243144444,
+    "total_return": -0.027940234337365033,
+    "trade_count": 30,
+    "win_count": 12,
+    "win_rate": 0.4
+  },
+  "oos_executed": true,
+  "oos_passed": false,
+  "oos_selection_used": false,
+  "predicate": "mechanism_family",
+  "protocol_sha256": "909f27e6ee36f3b30c6325bbee8e9525827e0675b3e016d1d81efc8fc63f1f73",
+  "receipt_type": "OOS_EXECUTION_RECEIPT",
+  "reconstructed_from_durable_result": true,
+  "result_sha256": "ce3297ab867165799924e6e390c6897accbb7e8da96d741680f7e5b965d79970",
+  "schema_version": 1,
+  "split": {
+    "end": 3624,
+    "name": "OOS",
+    "start": 2899
+  }
+}

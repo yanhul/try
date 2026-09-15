@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 36,
+  "campaign_screened": 37,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 3480,
-  "current_bc": 202,
+  "checkpoint_seq": 3487,
+  "current_bc": 204,
   "history": [
     {
       "bc": 1,
@@ -1246,19 +1246,25 @@
       "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
       "hypothesis_id": "mechanism_family",
       "oos_verdict": "OOS_FAIL"
+    },
+    {
+      "bc": 203,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 549,
-  "last_bc": 202,
-  "last_error": "HOLD_NO_FAILURE_ANALYSIS",
-  "next_bc": 203,
+  "iterations": 550,
+  "last_bc": 203,
+  "last_error": "HOLD_PROVIDER_ROUTER",
+  "next_bc": 204,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a"
   ],
-  "phase": "HOLD",
+  "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "updated_at": "2026-09-15T01:38:32.997002+00:00"
+  "updated_at": "2026-09-15T01:39:51.368121+00:00"
 }
