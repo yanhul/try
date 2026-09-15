@@ -35,18 +35,18 @@ def _unique_mutations(items:list[tuple[str,Any]])->list[tuple[str,Any]]:
     return out
 
 def _mutations(parent:Candidate,generation:int)->list[tuple[str,Any]]:
-    """Coarse-to-fine coordinate search; no policy/evaluator field can mutate."""
+    """Coarse-to-fine coordinate search; put immediately useful positive moves inside the bounded frontier."""
     c=parent.config; stop=max(1e-6,float(c.get("stop_fraction",0.01))); rr=max(0.25,float(c.get("reward_multiple",2.0))); pnf=max(1e-6,float(c.get("pnf_box_fraction",0.01)))
     phase=generation%3
     if phase==0:
-        stop_scales=(0.60,0.80,1.25,1.60); rr_delta=(-1.0,-0.5,0.5,1.0); pnf_scales=(0.60,0.80,1.25,1.60)
+        stop_scales=(0.60,0.80,1.25,1.60); rr_delta=(0.5,-0.5,-1.0,1.0); pnf_scales=(0.60,0.80,1.25,1.60)
     elif phase==1:
-        stop_scales=(0.85,0.925,1.08,1.175); rr_delta=(-0.25,-0.1,0.1,0.25); pnf_scales=(0.85,0.925,1.08,1.175)
+        stop_scales=(0.85,0.925,1.08,1.175); rr_delta=(0.1,-0.1,-0.25,0.25); pnf_scales=(0.85,0.925,1.08,1.175)
     else:
-        stop_scales=(0.95,1.05); rr_delta=(-0.1,0.1); pnf_scales=(0.95,1.05)
+        stop_scales=(0.95,1.05); rr_delta=(0.1,-0.1); pnf_scales=(0.95,1.05)
     items=[]
-    items += [("stop_fraction",round(stop*x,8)) for x in stop_scales]
     items += [("reward_multiple",round(max(0.25,rr+x),8)) for x in rr_delta]
+    items += [("stop_fraction",round(stop*x,8)) for x in stop_scales]
     items += [("pnf_box_fraction",round(pnf*x,8)) for x in pnf_scales]
     return _unique_mutations(items)
 
@@ -74,8 +74,8 @@ def run_campaign(data_path:str|Path,ledger_path:str|Path,state_path:str|Path,*,m
         best=controller.run_generation(parent,_mutations(parent,state.generation),baseline,limit=generation_limit,hypothesis_id="astra",failure_class=failure_class)
         score=state.baseline_score; next_failure=_parent_failure(ledger,best)
         if best.id!=parent.id:
-            ranked=controller.ledger.last(best.id)
-            if ranked: score=(ranked.get("result") or {}).get("score",score)
+            evaluation=ledger.terminal_evaluation(best.id)
+            if evaluation: score=(evaluation.get("result") or {}).get("score",score)
         state=CampaignState(state.generation+1,dict(best.config),score,state.generation+1>=max_generations,next_failure); _save(Path(state_path),state)
     return state
 
