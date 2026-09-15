@@ -67,6 +67,7 @@ def normalize_hypothesis_id(c):
  if not isinstance(spec,dict):return
  c["hypothesis_id"]="mechanism_family";spec["mechanism_family"]=selected_family
 def fingerprint(c):return structural_key(c)
+def discovery_fingerprint(c):return fingerprint(c)
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
  for p in sorted(d.glob("BC*.json")) if d.exists() else []:
