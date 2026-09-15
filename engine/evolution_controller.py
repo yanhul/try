@@ -5,7 +5,7 @@ The authoritative lifecycle/evidence gate remains outside this controller.
 """
 from __future__ import annotations
 from dataclasses import dataclass
-import hashlib, json
+import hashlib, json, math
 from typing import Any, Callable, Mapping, Sequence
 from .experiment_ledger import ExperimentRecord, JsonlExperimentLedger
 
@@ -46,13 +46,65 @@ class Evaluation:
     result:Mapping[str,Any]
     failure_class:str|None=None
 
+@dataclass(frozen=True)
+class MutationStats:
+    field:str
+    trials:int
+    successes:int
+    failures:int
+    priority:float
+
+def _mutation_field(parent: Mapping[str,Any], candidate: Mapping[str,Any]) -> str|None:
+    changed=[k for k in set(parent)|set(candidate) if parent.get(k)!=candidate.get(k)]
+    allowed=[k for k in changed if k in ALLOWED_MUTATIONS]
+    return allowed[0] if len(allowed)==1 else None
+
+def rank_mutations(parent: Mapping[str,Any], mutations: Sequence[tuple[str,Any]], ledger: JsonlExperimentLedger) -> list[tuple[str,Any]]:
+    """Allocate mutation budget from durable terminal outcomes.
+
+    This is a search scheduler, not a promotion gate. Every mutation keeps an
+    exploration floor; UCB only orders otherwise valid mutations. Ambiguous
+    multi-field historical records are ignored rather than guessed.
+    """
+    unique=[]; seen=set()
+    for field,value in mutations:
+        if field not in ALLOWED_MUTATIONS: continue
+        key=json.dumps([field,value],sort_keys=True,ensure_ascii=False,separators=(",",":"))
+        if key not in seen: seen.add(key); unique.append((field,value))
+    if len(unique)<2: return unique
+    latest={}
+    for record in ledger.read():
+        eid=str(record.get("experiment_id") or "")
+        if eid: latest[eid]=record
+    stats={field:[0,0] for field,_ in unique}
+    for record in latest.values():
+        if record.get("status") not in EVALUATION_STATUSES: continue
+        result=record.get("result") or {}; config=result.get("candidate")
+        if not isinstance(config,Mapping): continue
+        field=_mutation_field(parent,config)
+        if field not in stats: continue
+        if record.get("status")=="SUCCEEDED": stats[field][0]+=1
+        else: stats[field][1]+=1
+    total=sum(g+b for g,b in stats.values())
+    priorities={}
+    for field,(good,bad) in stats.items():
+        trials=good+bad
+        if trials==0: priorities[field]=float("inf")
+        else:
+            mean=(good+1.0)/(trials+2.0)
+            bonus=math.sqrt(2.0*math.log(total+1.0)/trials)
+            priorities[field]=mean+bonus
+    # Stable tie-break makes resume/replay deterministic and avoids RNG state.
+    return sorted(unique,key=lambda item:(-priorities[item[0]], item[0], json.dumps(item[1],sort_keys=True,ensure_ascii=False)))
+
 class EvolutionController:
     """Generate, evaluate and emit a non-authoritative search preference."""
     def __init__(self,ledger:JsonlExperimentLedger,evaluator:Callable[[Mapping[str,Any]],Evaluation]): self.ledger=ledger; self.evaluator=evaluator
     def propose(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],limit:int=8)->list[Candidate]:
         if limit<1: raise ValueError("limit must be positive")
+        ordered=rank_mutations(parent.config,mutations,self.ledger)
         seen=set(); out=[]
-        for field,value in mutations:
+        for field,value in ordered:
             child=Candidate(mutate(parent.config,field,value),parent.id)
             if child.id==parent.id or child.id in seen: continue
             seen.add(child.id); out.append(child)
@@ -92,4 +144,4 @@ class EvolutionController:
         if candidate.status!="SUCCEEDED" or baseline.status!="SUCCEEDED" or candidate.score is None or baseline.score is None: return "REJECT"
         return "PREFER" if candidate.score>baseline.score else "REJECT"
 
-__all__=["ALLOWED_MUTATIONS","Candidate","Evaluation","EvolutionController","candidate_id","canonical_candidate","mutate"]
+__all__=["ALLOWED_MUTATIONS","Candidate","Evaluation","EvolutionController","MutationStats","candidate_id","canonical_candidate","mutate","rank_mutations"]
