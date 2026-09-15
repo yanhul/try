@@ -154,26 +154,21 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p /tmp/try-state
           durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/.aios_authority)
-          for path in "${durable_paths[@]}"; do if [ -e "$path" ]; then cp -a "$path" "/tmp/try-state/$(basename "$path")"; fi; done
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
-          for path in "${validation_files[@]}"; do cp -a "$path" "/tmp/try-state/$(basename "$path")"; done
-          controller_state_changed=false; status_args=()
-          for path in "${durable_paths[@]}" "${validation_files[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then status_args+=("$path"); fi; done
-          if [ "${#status_args[@]}" -gt 0 ] && [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}")" ]; then controller_state_changed=true; fi
-          pushed=false
-          for attempt in 1 2 3 4 5; do
-            for path in "${durable_paths[@]}" "${validation_files[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
-            if git diff --cached --quiet; then if [ "$controller_state_changed" = "true" ]; then echo "STATE_PERSISTENCE_LOST controller produced durable changes but nothing can be staged" >&2; exit 1; fi; echo "No autonomous research state changes to persist."; pushed=true; break; fi
-            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
-            if git push origin HEAD:main; then echo "STATE_PERSISTED"; pushed=true; break; fi
-            git fetch origin main; git reset --hard origin/main
-            for item in /tmp/try-state/*; do [ -e "$item" ] || continue; base="$(basename "$item")"; case "$base" in bc_lifecycle_state.json|bc_queue.json|lineage.jsonl|bc*_validation_result.json) cp -a "$item" "research/$base" ;; autonomous_candidates|failure_analysis|frozen_candidates|oos|discovery|.aios_authority) rm -rf "research/$base" && cp -a "$item" "research/$base" ;; esac; done
-            sleep $((attempt * 2)); validation_files=(research/bc*_validation_result.json)
-          done
-          if [ "$pushed" != "true" ]; then echo "Unable to persist state after retries" >&2; exit 1; fi
+          status_args=("${durable_paths[@]}" "${validation_files[@]}")
+          changed=false
+          if [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}" 2>/dev/null)" ]; then changed=true; fi
+          if [ "$changed" != "true" ]; then echo "No autonomous research state changes to persist."; exit 0; fi
+          for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
+          if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
+          if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+          if ! git push origin HEAD:main; then
+            echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2
+            exit 1
+          fi
+          echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
         if: ${{ steps.controller.outputs.continue == 'true' }}
         env:
