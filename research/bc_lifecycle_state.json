@@ -3,11 +3,11 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 51,
+  "campaign_screened": 52,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 3613,
+  "checkpoint_seq": 3619,
   "current_bc": 220,
   "history": [
     {
@@ -1352,21 +1352,29 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 220,
+      "candidate_hash": "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "mechanism_family",
+      "oos_verdict": "OOS_FAIL"
     }
   ],
-  "iterations": 567,
-  "last_bc": 219,
+  "iterations": 568,
+  "last_bc": 220,
   "last_error": null,
-  "next_bc": 220,
+  "next_bc": 221,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
-    "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98"
+    "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
+    "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59"
   ],
-  "phase": "YIELD",
+  "phase": "PERSISTED",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "updated_at": "2026-09-15T03:56:50.251061+00:00"
+  "updated_at": "2026-09-15T03:58:59.530734+00:00"
 }

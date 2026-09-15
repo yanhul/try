@@ -1,0 +1,27 @@
+{
+  "bc": 220,
+  "candidate_hash": "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
+  "conceptual_change": "Transitioning from statistical Z-score normalization to a rolling-standard-deviation-based range volatility mechanism to identify over-extended market states suitable for mean reversion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_std|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 219,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
