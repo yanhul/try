@@ -50,10 +50,16 @@ def _mutations(parent:Candidate,generation:int)->list[tuple[str,Any]]:
     items += [("pnf_box_fraction",round(pnf*x,8)) for x in pnf_scales]
     return _unique_mutations(items)
 
+def _last_evaluation(ledger:JsonlExperimentLedger, candidate_id:str)->dict[str,Any]|None:
+    terminal={"SUCCEEDED","REJECTED","INVALID","FAILED","CRASHED"}
+    found=None
+    for record in ledger.read():
+        if record.get("experiment_id")==candidate_id and record.get("status") in terminal: found=record
+    return found
+
 def _parent_failure(ledger:JsonlExperimentLedger,parent:Candidate)->str|None:
-    record=ledger.last(parent.id)
-    if not record: return None
-    value=record.get("failure_class")
+    record=_last_evaluation(ledger,parent.id)
+    value=(record or {}).get("failure_class")
     return str(value) if value else None
 
 def run_campaign(data_path:str|Path,ledger_path:str|Path,state_path:str|Path,*,max_generations:int=100,generation_limit:int=6)->CampaignState:
@@ -66,15 +72,10 @@ def run_campaign(data_path:str|Path,ledger_path:str|Path,state_path:str|Path,*,m
         parent=Candidate(state.parent); baseline=Evaluation("SUCCEEDED",state.baseline_score,{"score":state.baseline_score},state.failure_class)
         failure_class=state.failure_class or _parent_failure(ledger,parent)
         best=controller.run_generation(parent,_mutations(parent,state.generation),baseline,limit=generation_limit,hypothesis_id="astra",failure_class=failure_class)
-        score=state.baseline_score; next_failure=None
+        score=state.baseline_score; next_failure=_parent_failure(ledger,best)
         if best.id!=parent.id:
             ranked=controller.ledger.last(best.id)
-            if ranked:
-                result=ranked.get("result") or {}; score=result.get("score",score)
-                next_failure=ranked.get("failure_class")
-                if not next_failure:
-                    evaluated=controller.ledger.last(best.id)
-                    next_failure=(evaluated or {}).get("failure_class")
+            if ranked: score=(ranked.get("result") or {}).get("score",score)
         state=CampaignState(state.generation+1,dict(best.config),score,state.generation+1>=max_generations,next_failure); _save(Path(state_path),state)
     return state
 
