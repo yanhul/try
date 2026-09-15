@@ -54,8 +54,6 @@ def call(prompt):
 def normalize_structural_types(c):
  s=c.get("discovery_spec")
  if not isinstance(s,dict):return
- # Canonical provider-boundary alias: accept only a lossless finite numeric alias.
- # If both spellings exist they must agree; otherwise fail closed in validation.
  if "threshold" not in s and "numeric_finite_threshold" in s:
   alias=s.get("numeric_finite_threshold")
   if isinstance(alias,bool):return
@@ -95,6 +93,10 @@ def request_candidate(prompt,forbidden):
   raw=call(prompt+feedback)
   try:c=json.loads(raw)
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
+  if not isinstance(c,dict):
+   last="invalid_json_shape"
+   feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object, not a list/array/scalar. Return one JSON object.\n"
+   continue
   if c.get("status")=="HOLD":return c
   normalize_structural_types(c);normalize_hypothesis_id(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
   if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
