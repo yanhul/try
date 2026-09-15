@@ -1,0 +1,41 @@
+{
+  "bc": 229,
+  "parent_bc": 228,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "1fe315941c0d2176feadb05deaaa688978057252a231a6c11482e01350a84002",
+  "conceptual_change": "Shift from previous volume-based momentum to a liquidity-based structural mechanism identifying price interactions relative to rolling mean volume, specifically targeting liquidity sweep detection via delta analysis of range_ratio.",
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "validation_summary": {
+    "candidate_trades": 2,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "candidate_universe": "reference_event_ledger",
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

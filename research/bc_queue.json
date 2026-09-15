@@ -1,29 +1,30 @@
 [
   {
-    "bc": 229,
-    "candidate_hash": "1fe315941c0d2176feadb05deaaa688978057252a231a6c11482e01350a84002",
-    "conceptual_change": "Shift from previous volume-based momentum to a liquidity-based structural mechanism identifying price interactions relative to rolling mean volume, specifically targeting liquidity sweep detection via delta analysis of range_ratio.",
+    "bc": 230,
+    "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
+    "conceptual_change": "Shift from z-score based signal generation to a price-volume relationship using rolling mean deviations, specifically testing the reversion of VWAP distance.",
     "discovery_spec": {
       "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "smc_ict",
-      "operator": "delta",
-      "threshold": 0.5,
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "difference",
+      "right": "vwap_distance",
+      "threshold": 0.005,
       "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|delta|range_ratio||below",
+    "novelty_key": "mean_reversion|difference|vwap_distance|vwap_distance|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": 20
     },
-    "parent_bc": 228,
+    "parent_bc": 229,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

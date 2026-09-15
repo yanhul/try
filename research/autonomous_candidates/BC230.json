@@ -1,0 +1,28 @@
+{
+  "bc": 230,
+  "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
+  "conceptual_change": "Shift from z-score based signal generation to a price-volume relationship using rolling mean deviations, specifically testing the reversion of VWAP distance.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "vwap_distance",
+    "threshold": 0.005,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|difference|vwap_distance|vwap_distance|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 20
+  },
+  "parent_bc": 229,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
