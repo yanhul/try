@@ -1,0 +1,28 @@
+{
+  "bc": 211,
+  "candidate_hash": "bf2249e4e5ac437bc3610440173cb77243659bca5427b4cad6fcd6f5cdad8ef4",
+  "conceptual_change": "Shift from z-score based signal to a localized mean-reversion model utilizing the difference between closing price and its 100-period rolling mean, normalized by identifying deviations exceeding a specific threshold.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 500.0,
+    "window": 100
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|difference|close|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 500.0,
+    "window": 100
+  },
+  "parent_bc": 210,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

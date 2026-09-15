@@ -3,12 +3,12 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 41,
+  "campaign_screened": 46,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 3520,
-  "current_bc": 208,
+  "checkpoint_seq": 3552,
+  "current_bc": 213,
   "history": [
     {
       "bc": 1,
@@ -1277,20 +1277,52 @@
       "decision": "REJECT",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 208,
+      "candidate_hash": "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "mechanism_family",
+      "oos_verdict": "OOS_FAIL"
+    },
+    {
+      "bc": 209,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 210,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 211,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 212,
+      "decision": "REJECT",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 555,
-  "last_bc": 208,
-  "last_error": "HOLD_OOS_EXECUTOR_OR_AUTHORITY",
-  "next_bc": 208,
+  "iterations": 560,
+  "last_bc": 212,
+  "last_error": "HOLD_PROVIDER_ROUTER",
+  "next_bc": 213,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
-    "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3"
+    "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
+    "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98"
   ],
   "phase": "WAIT_RETRY",
   "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "updated_at": "2026-09-15T02:04:10.174824+00:00"
+  "updated_at": "2026-09-15T02:06:06.473269+00:00"
 }

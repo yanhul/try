@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "bc": 208,
+  "parent_bc": 207,
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "range_ratio",
+    "threshold": 0.005,
+    "window": 50
+  },
+  "candidate_universe": "all_bars",
+  "candidate_family": "mean_reversion",
+  "dataset": {
+    "path": "/home/runner/work/try/try/data/BTCUSDT_1h.csv",
+    "sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+    "bars": 3624
+  },
+  "split": {
+    "name": "OOS",
+    "start": 2899,
+    "end": 3624
+  },
+  "protocol_sha256": "909f27e6ee36f3b30c6325bbee8e9525827e0675b3e016d1d81efc8fc63f1f73",
+  "evaluation_spec": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "cost_model_status": "AVAILABLE",
+    "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
+  },
+  "cost_model": {
+    "status": "AVAILABLE",
+    "label": "generic_spot_preregistered",
+    "fee_bps_per_side": 10.0,
+    "slippage_bps_per_side": 2.0,
+    "fee_round_trip_fraction": 0.002,
+    "slippage_model": "adverse_price_per_side",
+    "assumption_scope": "research_assumption_not_venue_specific"
+  },
+  "execution": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0
+  },
+  "oos_selection_used": false,
+  "oos_executed": true,
+  "predicate": "mechanism_family",
+  "metrics": {
+    "trade_count": 30,
+    "win_count": 12,
+    "loss_count": 18,
+    "win_rate": 0.4,
+    "total_return": -0.027940234337365033,
+    "avg_return": -0.000841646222172943,
+    "profit_factor": 0.886867243144444,
+    "max_drawdown": 0.04876866681110581,
+    "cost_model": {
+      "status": "AVAILABLE",
+      "label": "generic_spot_preregistered",
+      "fee_bps_per_side": 10.0,
+      "slippage_bps_per_side": 2.0,
+      "fee_round_trip_fraction": 0.002,
+      "slippage_model": "adverse_price_per_side",
+      "assumption_scope": "research_assumption_not_venue_specific"
+    }
+  },
+  "trade_count": 30,
+  "oos_passed": false
+}

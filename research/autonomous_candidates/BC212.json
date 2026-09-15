@@ -1,0 +1,28 @@
+{
+  "bc": 212,
+  "candidate_hash": "e19e193956c7a216fa7502d76507bcedd90b40792da27390cec703efb4056e6a",
+  "conceptual_change": "Shift from simple absolute thresholding to a relative volume acceleration mechanism by evaluating the ratio of current volume to its rolling mean, testing for momentum expansion above a sustained volatility-adjusted trend regime.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.5,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|volume|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 50
+  },
+  "parent_bc": 211,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

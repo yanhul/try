@@ -1,0 +1,29 @@
+{
+  "bc": 210,
+  "candidate_hash": "085cce27ef4b8c2d8753af342f78bb558fa15847b8cedfbf3cef511134670f99",
+  "conceptual_change": "Incorporate liquidity identification through the relative proximity of price to the previous low, modeling ICT-style liquidity sweeps using a threshold-gated difference operator on price lows relative to the rolling 50-period mean.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "numeric_finite_threshold": -0.05,
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": -0.05,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|low|rolling_mean|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": -0.05,
+    "window": 50
+  },
+  "parent_bc": 209,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
