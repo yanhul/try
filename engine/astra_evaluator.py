@@ -2,7 +2,8 @@
 
 The dataset, cost model, validation policy, and OOS policy are fixed by the
 adapter/evaluator boundary. Only controller-approved candidate fields are read
-from the candidate configuration.
+from the candidate configuration. OOS is evaluated only after the IS and
+validation gates and is never used to choose or tune a candidate.
 """
 from __future__ import annotations
 
@@ -21,6 +22,18 @@ from .data_split import chronological_split, validate_splits
 from .hypothesis_research import evaluate_split
 from .evolution_controller import Evaluation
 from research.cost_model import DEFAULT_COST_MODEL
+
+
+_OOS_GATE = "OOS_LOCKED"
+
+
+def _gross_gate(result: Mapping[str, Any]) -> bool:
+    metrics = result["metrics"]
+    return (
+        metrics.get("profit_factor") is not None
+        and metrics["profit_factor"] >= 1.0
+        and metrics["total_return"] >= 0.0
+    )
 
 
 def build_evaluator(data_path: str | Path):
@@ -81,24 +94,55 @@ def build_evaluator(data_path: str | Path):
             bars, splits[1].start, splits[1].end, predicate, stop, rr,
             cost_model=cost_model, **kwargs,
         )
-        vm = val_result["metrics"]
-        gross_passed = (
-            vm.get("profit_factor") is not None
-            and vm["profit_factor"] >= 1.0
-            and vm["total_return"] >= 0.0
-        )
-        if not gross_passed:
+        if not _gross_gate(val_result):
             return Evaluation(
                 "REJECTED", None,
-                {"IS": is_result, "VALIDATION": val_result,
-                 "validation_passed": False, "dataset": str(data)},
+                {
+                    "IS": is_result,
+                    "VALIDATION": val_result,
+                    "validation_passed": False,
+                    "OOS_POLICY": _OOS_GATE,
+                    "dataset": str(data),
+                },
                 "VALIDATION_GATE_FAILED",
             )
-        score = float(vm["total_return"])
+
+        # OOS is a locked holdout: it is never fed back into mutation/ranking
+        # and its score is not the optimization objective. It only decides
+        # whether an already-validation-passing candidate is promotable.
+        oos_result = evaluate_split(
+            bars, splits[2].start, splits[2].end, predicate, stop, rr,
+            cost_model=cost_model, **kwargs,
+        )
+        oos_passed = _gross_gate(oos_result)
+        if not oos_passed:
+            return Evaluation(
+                "REJECTED", None,
+                {
+                    "IS": is_result,
+                    "VALIDATION": val_result,
+                    "OOS": oos_result,
+                    "validation_passed": True,
+                    "oos_passed": False,
+                    "OOS_POLICY": _OOS_GATE,
+                    "dataset": str(data),
+                },
+                "OOS_LOCKED_GATE_FAILED",
+            )
+
+        score = float(val_result["metrics"]["total_return"])
         return Evaluation(
             "SUCCEEDED", score,
-            {"score": score, "IS": is_result, "VALIDATION": val_result,
-             "validation_passed": True, "dataset": str(data)},
+            {
+                "score": score,
+                "IS": is_result,
+                "VALIDATION": val_result,
+                "OOS": oos_result,
+                "validation_passed": True,
+                "oos_passed": True,
+                "OOS_POLICY": _OOS_GATE,
+                "dataset": str(data),
+            },
         )
 
     return evaluate
