@@ -85,7 +85,10 @@ def run_campaign(
         state = CampaignState(0, dict(parent.config), baseline.score, False)
         _save(Path(state_path), state)
 
-    while not state.terminal and state.generation < max_generations:
+    # `terminal` records that the previous invocation exhausted its own
+    # generation budget; it is not a reason to discard a durable resumable
+    # search state when a later invocation explicitly raises that budget.
+    while state.generation < max_generations:
         parent = Candidate(state.parent)
         baseline = Evaluation("SUCCEEDED", state.baseline_score, {"score": state.baseline_score})
         best = controller.run_generation(
