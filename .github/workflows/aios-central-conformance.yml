@@ -63,7 +63,7 @@ jobs:
           PYTHONPATH: .aios-core
         run: |
           python .aios-core/scripts/run_workload_adapter.py \
-            --workload-id try-research \
+            --workload-id yanhul/try \
             --execution-id "try-${GITHUB_SHA}" \
             --cwd . \
             --problem "Evaluate the bounded research harness contract and expose its governed result." \
