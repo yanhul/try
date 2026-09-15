@@ -15,7 +15,7 @@ import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any, Mapping
 
 from .strategy_spec import canonicalize, provenance, strategy_hash
 
@@ -37,8 +37,6 @@ class TryEvaluation:
 
 def _load_aios_evolution(aios_root: str | Path | None = None):
     root = Path(aios_root or os.environ.get("AIOS_ROOT", "")).expanduser()
-    if not root:
-        raise ValueError("AIOS_ROOT or aios_root is required")
     root = root.resolve()
     if not (root / "core" / "evolution.py").is_file():
         raise FileNotFoundError(f"AIOS evolution module not found under {root}")
@@ -101,9 +99,8 @@ def candidate_from_pipeline_result(result: Mapping[str, Any], *, candidate_id: s
                                     aios_root: str | Path | None = None):
     """Convert a TRY IS/validation/OOS result into an AIOS candidate/evidence pair.
 
-    OOS is deliberately represented as held-out evidence and is never used for
-    candidate selection. Admission requires the TRY validation gate and the
-    AIOS held-in/held-out PASS contract.
+    OOS is represented as held-out evidence and is never used for candidate
+    selection. AIOS admission therefore requires both explicit TRY gates to PASS.
     """
     selected = dict(result["selected_config"])
     candidate = make_candidate(
@@ -116,7 +113,7 @@ def candidate_from_pipeline_result(result: Mapping[str, Any], *, candidate_id: s
     validation = result["validation"]
     oos = result.get("oos")
     validation_pass = bool(validation.get("passed"))
-    oos_pass = oos is not None
+    oos_pass = bool(result.get("oos_passed", False))
     evaluation = TryEvaluation(
         held_in={
             "status": "PASS" if validation_pass else "FAIL",
@@ -132,7 +129,7 @@ def candidate_from_pipeline_result(result: Mapping[str, Any], *, candidate_id: s
             f"try://result/{result['dataset']['sha256']}",
             f"try://strategy/{strategy_hash(selected)}",
         ),
-        evaluator_digest=str(result.get("evaluator_digest") or result.get("protocol", {}).get("evaluator_digest") or "TRY-PIPELINE-V1"),
+        evaluator_digest=str(result["evaluator_digest"]),
     )
     return candidate, evaluation
 
