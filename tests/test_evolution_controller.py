@@ -14,7 +14,8 @@ def test_immutable_fields_are_rejected():
 
 def test_crash_is_persisted(tmp_path):
     ledger=JsonlExperimentLedger(tmp_path/"ledger.jsonl")
-    result=EvolutionController(ledger,lambda _: (_ for _ in ()).throw(RuntimeError("boom"))).evaluate(Candidate({"reward_multiple":2.0}))
+    def boom(_): raise RuntimeError("boom")
+    result=EvolutionController(ledger,boom).evaluate(Candidate({"reward_multiple":2.0}))
     assert result.status=="CRASHED"; records=ledger.read(); assert [r["status"] for r in records]==["PROPOSED","CRASHED"]; assert records[-1]["failure_class"]=="EXECUTION_EXCEPTION"
 
 def test_propose_preserves_parent_lineage(tmp_path):
@@ -45,7 +46,8 @@ def test_generation_reuses_terminal_evidence(tmp_path):
 def test_controller_mutation_reaches_real_evaluator(monkeypatch):
     calls=[]
     def fake_split(bars,start,end,predicate,stop,rr,**kwargs):
-        calls.append((stop,rr,kwargs["pnf_box_fraction"],kwargs["candidate_family"]); return {"metrics":{"profit_factor":1.1,"total_return":rr},"accepted_signals":1}
+        calls.append((stop,rr,kwargs["pnf_box_fraction"],kwargs["candidate_family"]))
+        return {"metrics":{"profit_factor":1.1,"total_return":rr},"accepted_signals":1}
     monkeypatch.setattr("engine.astra_evaluator.evaluate_split",fake_split)
     evaluator=build_evaluator("data/BTCUSDT_1h.csv"); parent=Candidate({"hypothesis_id":"baseline","stop_fraction":0.01,"reward_multiple":2.0,"pnf_box_fraction":0.01}); child=Candidate(mutate(parent.config,"reward_multiple",3.0),parent.id); result=evaluator(child.config)
     assert result.status=="SUCCEEDED" and result.score==3.0 and calls==[(0.01,3.0,0.01,None),(0.01,3.0,0.01,None)]
