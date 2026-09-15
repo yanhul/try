@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json
+import json, math
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/'research'/'search_memory.json'
@@ -29,13 +29,17 @@ def record(candidate:dict,outcome:str,metrics:dict|None=None):
     s['stagnation']['no_new']=0
     STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8'); return s
 
-def rank(families):
+def rank_families(families, seed=0):
     s=load(); rows=[]
     for i,f in enumerate(families):
         x=s.get('families',{}).get(f,{}); n=int(x.get('tested',0)); fail=int(x.get('fail',0)); score=float(x.get('score',0.0))
-        priority=10.0 if not n else score+1.5/(n**0.5)-0.5*fail/n
-        rows.append((priority,-i,f))
+        priority=10.0 if not n else score + 1.5/math.sqrt(n) - 0.75*fail/n
+        # Stable deterministic tie-break; seed prevents every campaign epoch having the same tie order.
+        tie=((int(seed)*1103515245 + i*12345) & 0x7fffffff)
+        rows.append((priority,tie,f))
     return [f for _,_,f in sorted(rows,reverse=True)]
+
+def rank(families): return rank_families(families)
 
 def note_no_new():
     s=load(); s.setdefault('stagnation',{'no_new':0,'failures':0}); s['stagnation']['no_new']=int(s['stagnation'].get('no_new',0))+1
