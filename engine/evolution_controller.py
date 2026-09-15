@@ -25,8 +25,7 @@ def canonical_candidate(config: Mapping[str,Any])->dict[str,Any]:
     _reject_immutable(config); return json.loads(json.dumps(dict(config),sort_keys=True,ensure_ascii=False))
 
 def candidate_id(config: Mapping[str,Any])->str:
-    payload=json.dumps(canonical_candidate(config),sort_keys=True,separators=(",",":"),ensure_ascii=False)
-    return hashlib.sha256(payload.encode()).hexdigest()
+    payload=json.dumps(canonical_candidate(config),sort_keys=True,separators=(",",":"),ensure_ascii=False); return hashlib.sha256(payload.encode()).hexdigest()
 
 def mutate(parent: Mapping[str,Any],field:str,value:Any)->dict[str,Any]:
     if field not in ALLOWED_MUTATIONS: raise ValueError(f"mutation_not_allowed:{field}")
@@ -34,116 +33,75 @@ def mutate(parent: Mapping[str,Any],field:str,value:Any)->dict[str,Any]:
 
 @dataclass(frozen=True)
 class Candidate:
-    config: Mapping[str,Any]
-    parent_id: str|None=None
+    config: Mapping[str,Any]; parent_id: str|None=None
     @property
-    def id(self)->str: return candidate_id(self.config)
+    def id(self)->str:return candidate_id(self.config)
 
 @dataclass(frozen=True)
 class Evaluation:
-    status:str
-    score:float|None
-    result:Mapping[str,Any]
-    failure_class:str|None=None
+    status:str; score:float|None; result:Mapping[str,Any]; failure_class:str|None=None
 
-@dataclass(frozen=True)
-class MutationStats:
-    field:str
-    trials:int
-    successes:int
-    failures:int
-    priority:float
-
-def _mutation_field(parent: Mapping[str,Any], candidate: Mapping[str,Any]) -> str|None:
-    changed=[k for k in set(parent)|set(candidate) if parent.get(k)!=candidate.get(k)]
-    allowed=[k for k in changed if k in ALLOWED_MUTATIONS]
+def _mutation_field(parent:Mapping[str,Any],candidate:Mapping[str,Any])->str|None:
+    changed=[k for k in set(parent)|set(candidate) if parent.get(k)!=candidate.get(k)]; allowed=[k for k in changed if k in ALLOWED_MUTATIONS]
     return allowed[0] if len(allowed)==1 else None
 
-def rank_mutations(parent: Mapping[str,Any], mutations: Sequence[tuple[str,Any]], ledger: JsonlExperimentLedger, failure_class: str|None=None) -> list[tuple[str,Any]]:
-    """Allocate mutation budget from durable terminal outcomes.
-
-    When the parent has a known failure class, matching historical outcomes
-    receive extra weight. This is contextual scheduling only; it cannot
-    promote or reject a research candidate.
-    """
-    unique=[]; seen=set()
+def rank_mutations(parent:Mapping[str,Any],mutations:Sequence[tuple[str,Any]],ledger:JsonlExperimentLedger,failure_class:str|None=None)->list[tuple[str,Any]]:
+    unique=[];seen=set()
     for field,value in mutations:
-        if field not in ALLOWED_MUTATIONS: continue
+        if field not in ALLOWED_MUTATIONS:continue
         key=json.dumps([field,value],sort_keys=True,ensure_ascii=False,separators=(",",":"))
-        if key not in seen: seen.add(key); unique.append((field,value))
-    if len(unique)<2: return unique
-    latest={}
-    for record in ledger.read():
-        eid=str(record.get("experiment_id") or "")
-        if eid: latest[eid]=record
-    stats={field:[0.0,0.0] for field,_ in unique}
-    context={field:[0.0,0.0] for field,_ in unique}
-    for record in latest.values():
-        if record.get("status") not in EVALUATION_STATUSES: continue
-        result=record.get("result") or {}; config=result.get("candidate")
-        if not isinstance(config,Mapping): continue
+        if key not in seen:seen.add(key);unique.append((field,value))
+    if len(unique)<2:return unique
+    stats={field:[0.0,0.0] for field,_ in unique};context={field:[0.0,0.0] for field,_ in unique}
+    for record in ledger.unique_terminal_evaluations().values():
+        result=record.get("result") or {};config=result.get("candidate")
+        if not isinstance(config,Mapping):continue
         field=_mutation_field(parent,config)
-        if field not in stats: continue
-        good=record.get("status")=="SUCCEEDED"
-        stats[field][0 if good else 1]+=1
-        if failure_class and str(record.get("failure_class") or "") == failure_class:
-            context[field][0 if good else 1]+=1
-    total=sum(g+b for g,b in stats.values())
-    priorities={}
+        if field not in stats:continue
+        good=record.get("status")=="SUCCEEDED";stats[field][0 if good else 1]+=1
+        if failure_class and str(record.get("failure_class") or "")==failure_class:context[field][0 if good else 1]+=1
+    total=sum(g+b for g,b in stats.values());priorities={}
     for field,(good,bad) in stats.items():
         trials=good+bad
-        if trials==0: priorities[field]=float("inf"); continue
-        mean=(good+1.0)/(trials+2.0)
-        bonus=math.sqrt(2.0*math.log(total+1.0)/trials)
-        cgood,cbad=context[field]; ctrials=cgood+cbad
-        # Context is a bounded additive bonus, never an authority signal.
-        contextual=((cgood+1.0)/(ctrials+2.0))*0.35 if ctrials else 0.0
+        if not trials:priorities[field]=float("inf");continue
+        mean=(good+1.0)/(trials+2.0);bonus=math.sqrt(2.0*math.log(total+1.0)/trials)
+        cg,cb=context[field];ct=cg+cb; contextual=((cg+1.0)/(ct+2.0))*0.35 if ct else 0.0
         priorities[field]=mean+bonus+contextual
-    return sorted(unique,key=lambda item:(-priorities[item[0]], item[0], json.dumps(item[1],sort_keys=True,ensure_ascii=False)))
+    return sorted(unique,key=lambda x:(-priorities[x[0]],x[0],json.dumps(x[1],sort_keys=True,ensure_ascii=False)))
 
 class EvolutionController:
-    """Generate, evaluate and emit a non-authoritative search preference."""
-    def __init__(self,ledger:JsonlExperimentLedger,evaluator:Callable[[Mapping[str,Any]],Evaluation]): self.ledger=ledger; self.evaluator=evaluator
+    def __init__(self,ledger:JsonlExperimentLedger,evaluator:Callable[[Mapping[str,Any]],Evaluation]):self.ledger=ledger;self.evaluator=evaluator
     def propose(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],limit:int=8,failure_class:str|None=None)->list[Candidate]:
-        if limit<1: raise ValueError("limit must be positive")
-        ordered=rank_mutations(parent.config,mutations,self.ledger,failure_class=failure_class)
-        seen=set(); out=[]
+        if limit<1:raise ValueError("limit must be positive")
+        ordered=rank_mutations(parent.config,mutations,self.ledger,failure_class);seen=set();out=[]
         for field,value in ordered:
             child=Candidate(mutate(parent.config,field,value),parent.id)
-            if child.id==parent.id or child.id in seen: continue
-            seen.add(child.id); out.append(child)
-            if len(out)>=limit: break
+            if child.id==parent.id or child.id in seen:continue
+            seen.add(child.id);out.append(child)
+            if len(out)>=limit:break
         return out
-    def _terminal_ids(self)->set[str]:
-        terminal={"SUCCEEDED","REJECTED","INVALID","FAILED","CRASHED","RANKED"}
-        return {r["experiment_id"] for r in self.ledger.read() if r.get("status") in terminal and r.get("experiment_id")}
     def evaluate(self,candidate:Candidate,hypothesis_id:str="astra")->Evaluation:
-        exp_id=candidate.id
-        if exp_id in self._terminal_ids():
-            last=self.ledger.last(exp_id)
-            if last and last.get("status") in EVALUATION_STATUSES:
-                result=last.get("result") or {}; return Evaluation(last["status"],result.get("score"),result,last.get("failure_class"))
-        self.ledger.append(ExperimentRecord(exp_id,hypothesis_id,"PROPOSED",candidate.parent_id,configuration_identity=exp_id,result={"candidate":candidate.config}))
-        try: evaluation=self.evaluator(candidate.config)
-        except Exception as exc: evaluation=Evaluation("CRASHED",None,{"error":str(exc)},"EXECUTION_EXCEPTION")
-        if evaluation.status not in EVALUATION_STATUSES: raise ValueError(f"invalid_evaluation_status:{evaluation.status}")
-        self.ledger.append(ExperimentRecord(exp_id,hypothesis_id,evaluation.status,candidate.parent_id,configuration_identity=exp_id,result=dict(evaluation.result),failure_class=evaluation.failure_class))
-        return evaluation
+        existing=self.ledger.terminal_evaluation(candidate.id)
+        if existing:
+            result=existing.get("result") or {};return Evaluation(existing["status"],result.get("score"),result,existing.get("failure_class"))
+        self.ledger.append(ExperimentRecord(candidate.id,hypothesis_id,"PROPOSED",candidate.parent_id,configuration_identity=candidate.id,result={"candidate":candidate.config}))
+        try:evaluation=self.evaluator(candidate.config)
+        except Exception as exc:evaluation=Evaluation("CRASHED",None,{"error":str(exc)},"EXECUTION_EXCEPTION")
+        if evaluation.status not in EVALUATION_STATUSES:raise ValueError(f"invalid_evaluation_status:{evaluation.status}")
+        self.ledger.append(ExperimentRecord(candidate.id,hypothesis_id,evaluation.status,candidate.parent_id,configuration_identity=candidate.id,result=dict(evaluation.result),failure_class=evaluation.failure_class));return evaluation
     def rank(self,candidate:Candidate,evaluation:Evaluation,baseline:Evaluation,hypothesis_id:str="astra")->str:
         for record in reversed(self.ledger.read()):
-            if record.get("experiment_id")==candidate.id and record.get("status")=="RANKED": return str(record.get("decision") or "REJECT")
-        preference="PREFER" if evaluation.status=="SUCCEEDED" and baseline.status=="SUCCEEDED" and evaluation.score is not None and baseline.score is not None and evaluation.score>baseline.score else "REJECT"
-        self.ledger.append(ExperimentRecord(candidate.id,hypothesis_id,"RANKED",candidate.parent_id,configuration_identity=candidate.id,result={"score":evaluation.score,"baseline_score":baseline.score},decision=preference))
-        return preference
+            if record.get("experiment_id")==candidate.id and record.get("status")=="RANKED":return str(record.get("decision") or "REJECT")
+        preference=self.compare(evaluation,baseline);self.ledger.append(ExperimentRecord(candidate.id,hypothesis_id,"RANKED",candidate.parent_id,configuration_identity=candidate.id,result={"score":evaluation.score,"baseline_score":baseline.score},decision=preference));return preference
     def run_generation(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],baseline:Evaluation,limit:int=8,hypothesis_id:str="astra",failure_class:str|None=None)->Candidate:
-        candidates=self.propose(parent,mutations,limit,failure_class=failure_class); best=parent; best_score=baseline.score if baseline.status=="SUCCEEDED" else None
+        candidates=self.propose(parent,mutations,limit,failure_class);best=parent;best_score=baseline.score if baseline.status=="SUCCEEDED" else None
         for candidate in candidates:
-            evaluation=self.evaluate(candidate,hypothesis_id); preference=self.rank(candidate,evaluation,baseline,hypothesis_id)
-            if preference=="PREFER" and evaluation.score is not None and (best_score is None or evaluation.score>best_score): best,best_score=candidate,evaluation.score
+            evaluation=self.evaluate(candidate,hypothesis_id);preference=self.rank(candidate,evaluation,baseline,hypothesis_id)
+            if preference=="PREFER" and evaluation.score is not None and (best_score is None or evaluation.score>best_score):best,best_score=candidate,evaluation.score
         return best
     @staticmethod
     def compare(candidate:Evaluation,baseline:Evaluation)->str:
-        if candidate.status!="SUCCEEDED" or baseline.status!="SUCCEEDED" or candidate.score is None or baseline.score is None: return "REJECT"
+        if candidate.status!="SUCCEEDED" or baseline.status!="SUCCEEDED" or candidate.score is None or baseline.score is None:return "REJECT"
         return "PREFER" if candidate.score>baseline.score else "REJECT"
 
-__all__=["ALLOWED_MUTATIONS","Candidate","Evaluation","EvolutionController","MutationStats","candidate_id","canonical_candidate","mutate","rank_mutations"]
+__all__=["ALLOWED_MUTATIONS","Candidate","Evaluation","EvolutionController","candidate_id","canonical_candidate","mutate","rank_mutations"]
