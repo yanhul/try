@@ -18,11 +18,12 @@ This repository is an execution/research substrate, not the governing control pl
 | Observe → Decide → Act → Verify → Persist → Resume | IMPLEMENTED |
 | Policy outside agent | IMPLEMENTED |
 | Immutable candidate/OOS evidence boundary | IMPLEMENTED |
-| Explicit generalized permit/capability object | TODO |
-| General contract verifier reusable by other substrates | TODO |
-| External-effect receipt/reconciliation layer | TODO |
+| Explicit generalized permit/capability object | AIOS-BACKED |
+| General contract/permit/attestation verifier | AIOS-BACKED — `engine/aios_boundary.py` delegates to `AIOS.core.contract` + `AIOS.core.attestation` |
+| External-effect receipt/reconciliation layer | AIOS-BACKED at the central runner; TRY domain effects remain governed by TRY controller |
+| Evolution candidate/evaluation/admission/promotion | AIOS-BACKED — `engine/aios_evolution.py` delegates to `AIOS.core.evolution` |
 
-The TODO items are deliberate: they must be promoted from proven AIOS primitives rather than reimplemented ad hoc here.
+TRY does not reimplement AIOS authority or evolution rules. The adapter loads an explicitly pinned AIOS checkout through `AIOS_ROOT` and fails closed if the shared primitives are unavailable.
 
 ## Rule
 
