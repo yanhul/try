@@ -15,6 +15,19 @@ def test_numeric_string_threshold_is_losslessly_normalized():
     assert candidate["discovery_spec"]["window"] == 20
 
 
+def test_numeric_threshold_alias_is_losslessly_canonicalized():
+    candidate = {"discovery_spec": {"numeric_finite_threshold": "0.25"}}
+    normalize_structural_types(candidate)
+    assert candidate["discovery_spec"]["threshold"] == 0.25
+    assert "numeric_finite_threshold" in candidate["discovery_spec"]
+
+
+def test_numeric_threshold_alias_integer_is_canonicalized():
+    candidate = {"discovery_spec": {"numeric_finite_threshold": 1}}
+    normalize_structural_types(candidate)
+    assert candidate["discovery_spec"]["threshold"] == 1
+
+
 def test_non_numeric_threshold_is_not_invented():
     candidate = {"discovery_spec": {"threshold": "not-a-number"}}
     normalize_structural_types(candidate)
@@ -27,6 +40,13 @@ def test_non_finite_threshold_is_not_accepted_or_rewritten():
         normalize_structural_types(candidate)
         assert candidate["discovery_spec"]["threshold"] == value
         assert not math.isfinite(float(candidate["discovery_spec"]["threshold"]))
+
+
+def test_non_finite_threshold_alias_is_not_canonicalized():
+    for value in (float("nan"), float("inf"), float("-inf")):
+        candidate = {"discovery_spec": {"numeric_finite_threshold": value}}
+        normalize_structural_types(candidate)
+        assert "threshold" not in candidate["discovery_spec"]
 
 
 def test_missing_threshold_is_never_invented():
