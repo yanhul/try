@@ -2,7 +2,7 @@ import math
 
 import pytest
 
-from research.provider_router import ground_candidate, normalize_structural_types, normalize_hypothesis_id
+from research.provider_router import ground_candidate, normalize_structural_types, normalize_hypothesis_id, request_candidate
 from research import provider_router
 from research.autonomous_hypothesis import EXECUTABLE_MECHANISM_FAMILIES, validate_candidate
 from research.btc_translation_policy import btc_translation_status, eligible_survivors
@@ -53,6 +53,12 @@ def test_missing_threshold_is_never_invented():
     candidate = {"discovery_spec": {"operator": "identity"}}
     normalize_structural_types(candidate)
     assert "threshold" not in candidate["discovery_spec"]
+
+
+def test_provider_rejects_top_level_array_without_attribute_error(monkeypatch):
+    monkeypatch.setattr(provider_router, "call", lambda prompt: "[]")
+    with pytest.raises(ValueError, match="provider_candidate_contract_failed:invalid_json_shape"):
+        request_candidate("test", set())
 
 
 def test_exact_selected_family_id_is_canonicalized_only():
