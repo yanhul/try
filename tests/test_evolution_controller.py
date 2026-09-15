@@ -1,7 +1,7 @@
 import pytest
 from engine.astra_evaluator import build_evaluator
-from engine.evolution_controller import Candidate, Evaluation, EvolutionController, candidate_id, mutate
-from engine.experiment_ledger import JsonlExperimentLedger
+from engine.evolution_controller import Candidate, Evaluation, EvolutionController, candidate_id, mutate, rank_mutations
+from engine.experiment_ledger import ExperimentRecord, JsonlExperimentLedger
 
 def test_mutation_is_bounded_and_deterministic():
     parent={"stop_fraction":0.01,"reward_multiple":2.0}; child=mutate(parent,"reward_multiple",3.0)
@@ -42,6 +42,19 @@ def test_generation_reuses_terminal_evidence(tmp_path):
     best1=controller.run_generation(parent,mutations,baseline,limit=2); best2=controller.run_generation(parent,mutations,baseline,limit=2)
     assert best1.id==best2.id and best1.config["reward_multiple"]==4.0 and len(calls)==2
     statuses=[r["status"] for r in ledger.read()]; assert statuses.count("PROPOSED")==2; assert statuses.count("SUCCEEDED")==2; assert statuses.count("RANKED")==2
+
+def test_adaptive_mutation_prefers_proven_field(tmp_path):
+    ledger=JsonlExperimentLedger(tmp_path/"ledger.jsonl"); parent={"reward_multiple":2.0,"stop_fraction":0.01}
+    for i in range(4):
+        c=mutate(parent,"reward_multiple",3.0+i)
+        ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c}))
+        ledger.append(ExperimentRecord(candidate_id(c),"astra","SUCCEEDED",result={"candidate":c,"score":1.0}))
+    for i in range(4):
+        c=mutate(parent,"stop_fraction",0.02+i*0.001)
+        ledger.append(ExperimentRecord(candidate_id(c),"astra","PROPOSED",result={"candidate":c}))
+        ledger.append(ExperimentRecord(candidate_id(c),"astra","FAILED",result={"candidate":c},failure_class="OOS_FAIL"))
+    ordered=rank_mutations(parent,[("stop_fraction",0.05),("reward_multiple",8.0)],ledger)
+    assert ordered[0][0]=="reward_multiple"
 
 def test_controller_mutation_reaches_real_evaluator(monkeypatch):
     calls=[]
