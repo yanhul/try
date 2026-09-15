@@ -35,6 +35,17 @@ def test_scheduler_prefers_evidence_without_becoming_promotion_authority(tmp_pat
     assert not hasattr(ranked[0], "decision")
 
 
+def test_replay_or_duplicate_terminal_events_count_once(tmp_path):
+    write_candidate(tmp_path, "BC1.json", "a", "momentum_trend")
+    event(tmp_path, "a", "REJECTED")
+    event(tmp_path, "a", "REJECTED")
+    event(tmp_path, "a", "PROMOTED")
+    ranked = rank_families(["momentum_trend"], tmp_path)
+    assert ranked[0].trials == 1
+    assert ranked[0].successes == 1
+    assert ranked[0].failures == 0
+
+
 def test_selection_is_deterministic(tmp_path):
     survivors = [
         {"candidate_id": "b", "family": "smc_ict", "source_url": "https://example/b"},
