@@ -1,0 +1,26 @@
+{
+  "bc": 221,
+  "candidate_hash": "9b52c49fc952458bee4a24fd4da1343964a523799bc150df1ba0f3b3d2f59b40",
+  "conceptual_change": "Shift from simple absolute returns or rolling averages to a relative volume trend mechanism using rank to identify high-conviction momentum periods.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "rank",
+    "threshold": 0.85
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rank|volume||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": null
+  },
+  "parent_bc": 220,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
