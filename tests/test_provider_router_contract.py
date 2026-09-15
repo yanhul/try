@@ -159,3 +159,25 @@ def test_filter_removes_incompatible_sources_before_selection():
     ])
     assert [x["family"] for x in eligible] == ["smc_ict"]
     assert [x["family"] for x in rejected] == ["china_a_share"]
+
+
+def test_duplicate_retry_prompt_is_augmented_without_truncating_frontier(monkeypatch):
+    prompts = []
+    candidate = {
+        "hypothesis_id": "discovered_primitive",
+        "discovery_spec": {"operator": "identity", "left": "close", "threshold": 0, "direction": "above"},
+    }
+    monkeypatch.setattr(provider_router, "call", lambda prompt: prompts.append(prompt) or __import__("json").dumps(candidate))
+    monkeypatch.setattr(provider_router, "validate_candidate", lambda c, bc, parent: (False, "duplicate_structural_mechanism"))
+    forbidden = {("old_family", "operator", "left", "right", "above")}
+    previous_family = provider_router.selected_family
+    try:
+        provider_router.selected_family = "momentum_trend"
+        with pytest.raises(ValueError, match="duplicate_structural_mechanism"):
+            request_candidate("BASE", forbidden)
+    finally:
+        provider_router.selected_family = previous_family
+    assert len(prompts) == 3
+    assert 'old_family' not in prompts[0]
+    assert 'old_family' not in prompts[1]
+    assert 'DUPLICATE structural key rejected' in prompts[1]
