@@ -2,29 +2,38 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
+ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'; LIFECYCLE=ROOT/'research'/'research_lifecycle.jsonl'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','8')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
+
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
+
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
+
 def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
  if error is None: s['last_error']=None; s['retry_count']=0
  else: s['last_error']=str(error); s['retry_count']=int(s.get('retry_count',0))+1
  save(s)
+
 def hold(s,reason,bc=None,retryable=True):
  checkpoint(s,'WAIT_RETRY' if retryable else 'HOLD',bc,error=reason); suffix=f' BC{bc}' if bc is not None else ''; print(f'CONTROLLER_DECISION {reason}{suffix}')
  if retryable and int(s.get('retry_count',0))<=MAX_RETRIES: print(f'CONTROLLER_AUTO_RESUME retry={s["retry_count"]}/{MAX_RETRIES}')
  else: print(f'CONTROLLER_MANUAL_HOLD retry={s.get("retry_count",0)}/{MAX_RETRIES}')
  return 0
+
 def gate(bc):
  p=ROOT/'audit_bc_fast_gate.py'
  if p.exists(): return p
  p=ROOT/f'audit_bc{bc}_fast_gate.py'; return p if p.exists() else None
+
 def write_queue(q): QUEUE.write_text(json.dumps(q,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+
 def used_ids(s): return sorted({str(x['hypothesis_id']) for x in s.get('history',[]) if x.get('hypothesis_id')})
+
 def regenerate(bc,parent,failure,s):
  output=CANDIDATE_DIR/f'BC{bc}.json'; output.parent.mkdir(parents=True,exist_ok=True)
  if output.exists(): output.unlink()
@@ -32,6 +41,7 @@ def regenerate(bc,parent,failure,s):
  rc,out=run([sys.executable,'research/provider_router.py'],env=env)
  if 'PROVIDER_ROUTER_HOLD' in out or ('PROVIDER_FAIL' in out and 'PROVIDER_SELECTED' not in out): return False
  return rc==0 and output.exists()
+
 def normalize_queue(s):
  q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); start=int(s.get('campaign_start_bc') or 1)
  if expected<start: expected=start; s['next_bc']=expected; save(s)
@@ -39,71 +49,67 @@ def normalize_queue(s):
  if len(active)>1: active=active[:1]
  if q!=active: write_queue(active)
  return active
+
+def lifecycle_transition(campaign_id,candidate_hash,bc,to_state,reason,attempt_id=None,parent_id=None,evidence_refs=()):
+ from research.lifecycle import LifecycleEvent, LifecycleStore
+ store=LifecycleStore(LIFECYCLE); work_id=f'BC{bc}:{candidate_hash}'
+ current=store.current(candidate_hash)
+ if current is None: store.ensure_discovered(campaign_id,candidate_hash,work_id,parent_id=parent_id); current='DISCOVERED'
+ if current==to_state: return
+ store.transition(LifecycleEvent(campaign_id,candidate_hash,work_id,attempt_id,current,to_state,reason,tuple(evidence_refs),parent_id=parent_id))
+
+def lifecycle_attempt(s,c,bc,state,reason,attempt_no):
+ candidate_hash=str(c['candidate_hash']); attempt_id=__import__('research.lifecycle',fromlist=['new_attempt_id']).new_attempt_id(candidate_hash,attempt_no)
+ lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,state,reason,attempt_id=attempt_id,parent_id=str(c.get('parent_bc')))
+ return attempt_id
+
 def verify_external_authority(bc,candidate_hash=None):
  contract=os.environ.get('AIOS_CONTRACT_PATH'); permit=os.environ.get('AIOS_PERMIT_PATH'); attestation=os.environ.get('AIOS_ATTESTATION_PATH'); secret=os.environ.get('AIOS_AUTHORITY_SECRET')
  if not all((contract,permit,attestation,secret)) and candidate_hash:
   try:
    from research.aios_oos_authority import provision
-   records=provision(bc,candidate_hash)
-   os.environ.update(AIOS_CONTRACT_PATH=records['contract'],AIOS_PERMIT_PATH=records['permit'],AIOS_ATTESTATION_PATH=records['attestation'])
-   contract,permit,attestation=records['contract'],records['permit'],records['attestation']
-   print(f'AIOS_AUTHORITY_PROVISIONED BC{bc}')
-  except Exception as exc:
-   print(f'AIOS_AUTHORITY_HOLD BC{bc} provisioning_failed={exc}'); return False
- if not all((contract,permit,attestation,secret)):
-  print(f'AIOS_AUTHORITY_HOLD BC{bc} missing contract/permit/attestation/secret'); return False
+   records=provision(bc,candidate_hash); os.environ.update(AIOS_CONTRACT_PATH=records['contract'],AIOS_PERMIT_PATH=records['permit'],AIOS_ATTESTATION_PATH=records['attestation']); contract,permit,attestation=records['contract'],records['permit'],records['attestation']; print(f'AIOS_AUTHORITY_PROVISIONED BC{bc}')
+  except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} provisioning_failed={exc}'); return False
+ if not all((contract,permit,attestation,secret)): print(f'AIOS_AUTHORITY_HOLD BC{bc} missing contract/permit/attestation/secret'); return False
  try:
   from engine.aios_boundary import verify_authority
   result=verify_authority(contract,permit,attestation,secret); expected_task=f'RESEARCH_BC{bc}'
-  if result.get('task_id')!=expected_task or result.get('attested') is not True:
-   print(f'AIOS_AUTHORITY_HOLD BC{bc} binding_or_attestation_mismatch'); return False
-  if candidate_hash:
-   stored=json.loads(Path(contract).read_text(encoding='utf-8'))
-   if stored.get('input_digest')!=candidate_hash:
-    print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
+  if result.get('task_id')!=expected_task or result.get('attested') is not True: print(f'AIOS_AUTHORITY_HOLD BC{bc} binding_or_attestation_mismatch'); return False
+  if candidate_hash and json.loads(Path(contract).read_text(encoding='utf-8')).get('input_digest')!=candidate_hash: print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
- except Exception as exc:
-  print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+ except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+
 def authorized_state(s):
  caps=s.get('capabilities',[])
- if not isinstance(caps,list) or any(str(x)!='research' for x in caps):
-  print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
+ if not isinstance(caps,list) or any(str(x)!='research' for x in caps): print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
  return True
+
 def verify_oos_receipt(bc,candidate_hash,result,receipt_path):
- if not isinstance(result,dict) or result.get('bc')!=bc or result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True or result.get('oos_selection_used') is not False:
-  return False
+ if not isinstance(result,dict) or result.get('bc')!=bc or result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True or result.get('oos_selection_used') is not False: return False
  if not receipt_path.exists(): return False
  try: receipt=load(receipt_path,{})
  except Exception: return False
  if receipt.get('receipt_type')!='OOS_EXECUTION_RECEIPT' or receipt.get('schema_version')!=1: return False
  if receipt.get('bc')!=bc or receipt.get('candidate_hash')!=candidate_hash or receipt.get('oos_executed') is not True or receipt.get('oos_selection_used') is not False: return False
- if receipt.get('oos_passed') is not result.get('oos_passed'): return False
- if receipt.get('metrics')!=result.get('metrics'): return False
+ if receipt.get('oos_passed') is not result.get('oos_passed') or receipt.get('metrics')!=result.get('metrics'): return False
  if receipt.get('dataset_sha256')!=result.get('dataset',{}).get('sha256') or receipt.get('protocol_sha256')!=result.get('protocol_sha256'): return False
  try: return receipt.get('result_sha256')==hashlib.sha256((OOS_DIR/f'BC{bc}_oos_result.json').read_bytes()).hexdigest()
  except OSError: return False
+
 def write_oos_failure(bc,parent,candidate,result):
- """Persist candidate-level OOS failure as repair evidence; it must not terminalize the campaign."""
  path=FAILURE_DIR/f'BC{bc}.json'; FAILURE_DIR.mkdir(parents=True,exist_ok=True)
  if path.exists(): return path
- payload={
-  'bc':bc,'parent_bc':parent,'decision':'REJECT','reason':'OOS_FAILED',
-  'hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate.get('candidate_hash'),
-  'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),
-  'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,
-  'action':'reject candidate and require a distinct next hypothesis',
- }
+ payload={'bc':bc,'parent_bc':parent,'decision':'REJECT','reason':'OOS_FAILED','hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate.get('candidate_hash'),'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,'action':'reject candidate and require a distinct next hypothesis'}
  path.write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8'); return path
+
 def oos_once(bc,candidate):
  candidate_hash=candidate['candidate_hash']
  if not verify_external_authority(bc,candidate_hash): return None
  protocol=ROOT/'research'/'oos_protocol.json'; out=OOS_DIR/f'BC{bc}_oos_result.json'; receipt=OOS_DIR/f'BC{bc}_oos_result_receipt.json'; freeze=FREEZE_DIR/f'BC{bc}.json'
  if not protocol.exists(): print('OOS_HOLD_PROTOCOL_MISSING'); return None
  FREEZE_DIR.mkdir(parents=True,exist_ok=True); OOS_DIR.mkdir(parents=True,exist_ok=True)
- if freeze.exists():
-  frozen=load(freeze,{})
-  if frozen.get('candidate_hash')!=candidate_hash: print('OOS_HOLD_FROZEN_HASH_MISMATCH'); return None
- else: freeze.write_text(json.dumps(candidate,indent=2)+'\n',encoding='utf-8')
+ if freeze.exists() and load(freeze,{}).get('candidate_hash')!=candidate_hash: print('OOS_HOLD_FROZEN_HASH_MISMATCH'); return None
+ if not freeze.exists(): freeze.write_text(json.dumps(candidate,indent=2)+'\n',encoding='utf-8')
  if out.exists():
   result=load(out,{})
   if not verify_oos_receipt(bc,candidate_hash,result,receipt): print('OOS_HOLD_EXISTING_ARTIFACT_OR_RECEIPT_INVALID'); return None
@@ -111,6 +117,7 @@ def oos_once(bc,candidate):
  rc,_=run([sys.executable,'-m','engine.oos_runner','--candidate',str(freeze),'--data','data/BTCUSDT_1h.csv','--protocol','research/oos_protocol.json','--out',str(out)])
  if rc or not out.exists() or not verify_oos_receipt(bc,candidate_hash,load(out,{}),receipt): print(f'CONTROLLER_DECISION HOLD_OOS_EXECUTOR_OR_RECEIPT BC{bc}'); return None
  return load(out,{})
+
 def epoch_seed_failure(parent,start):
  raw=os.environ.get('RESEARCH_EPOCH_SEED_FAILURE','').strip()
  if not raw or parent!=start-1: return None
@@ -119,10 +126,9 @@ def epoch_seed_failure(parent,start):
   if p!=expected or not p.exists(): return None
   seed=load(p,{})
   if seed.get('kind')!='epoch_seed_failure' or seed.get('decision')!='SEED_EPOCH' or int(seed.get('parent_bc',-1))!=parent or int(seed.get('epoch_start_bc',-1))!=start or seed.get('research_evidence') is not False or seed.get('repair_context') is not True: return None
-  print(f'CONTROLLER_EPOCH_SEED_CONSUMED parent=BC{parent} start=BC{start} evidence=false repair_context=true')
-  return p
- except (OSError,TypeError,ValueError):
-  return None
+  print(f'CONTROLLER_EPOCH_SEED_CONSUMED parent=BC{parent} start=BC{start} evidence=false repair_context=true'); return p
+ except (OSError,TypeError,ValueError): return None
+
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
@@ -150,35 +156,44 @@ def main():
   checkpoint(s,'OBSERVE',bc)
   try:
    from research.autonomous_hypothesis import load_candidate
-   cand=load_candidate(candidate,bc,parent); c=cand; write_queue([cand])
+   c=load_candidate(candidate,bc,parent); write_queue([c])
   except Exception as exc:
    print(f'CONTROLLER_CANDIDATE_REPAIR BC{bc} reason={exc}'); failure=FAILURE_DIR/f'BC{parent}.json'
    if not failure.exists() or not regenerate(bc,parent,failure,s): return hold(s,'HOLD_PROVIDER_REPAIR',bc)
    from research.autonomous_hypothesis import load_candidate
-   cand=load_candidate(candidate,bc,parent); write_queue([cand]); c=cand
+   c=load_candidate(candidate,bc,parent); write_queue([c])
+  candidate_hash=str(c['candidate_hash']); lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'CLAIMED','RESEARCH_WORK_CLAIMED',parent_id=str(parent))
   s['last_bc']=bc; s['iterations']=int(s.get('iterations',0))+1; checkpoint(s,'ACT',bc); print(f'CONTROLLER_CANDIDATE BC{bc} hypothesis_id={c["hypothesis_id"]} GATE {g.name}')
+  eval_attempt=lifecycle_attempt(s,c,bc,'EVALUATING','IS_VALIDATION_ATTEMPT',int(s.get('iterations',0)))
   evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
-  if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
+  if rc_eval:
+   lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'UNKNOWN','IS_EXECUTION_UNKNOWN',attempt_id=eval_attempt,parent_id=str(parent)); return hold(s,'HOLD_EVALUATOR',bc)
+  lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'VALIDATING','IS_EXECUTION_RECEIVED',attempt_id=eval_attempt,parent_id=str(parent),evidence_refs=(str(evidence),))
   checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
   if rc: return rc
   if PROMOTE in out:
+   lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'OOS_ELIGIBLE','VALIDATION_GATE_PASSED',parent_id=str(parent))
+   oos_attempt=lifecycle_attempt(s,c,bc,'OOS_EXECUTING','OOS_ATTEMPT',int(s.get('iterations',0)))
    checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
-   if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
-   passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
-   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
+   if result is None:
+    lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'UNKNOWN','OOS_EXECUTION_UNKNOWN',attempt_id=oos_attempt,parent_id=str(parent)); return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
+   passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':'PROMOTE_TO_FUTURE_OOS_TEST','hypothesis_id':c['hypothesis_id'],'candidate_hash':candidate_hash,'oos_verdict':decision})
+   if candidate_hash not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(candidate_hash)
+   lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'EVIDENCE_COMPLETE','OOS_RECEIPT_VERIFIED',attempt_id=oos_attempt,parent_id=str(parent),evidence_refs=(str(OOS_DIR/f'BC{bc}_oos_result.json'),str(OOS_DIR/f'BC{bc}_oos_result_receipt.json')))
+   lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'DECISION_PENDING','AUTHORITY_DECISION_REQUIRED',parent_id=str(parent))
    write_queue([])
    if passed:
-    s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
-   # OOS_FAIL is a candidate-level rejection, not a campaign terminal state.
-   write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc)
+    lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'PROMOTED','OOS_PASS_AUTHORITY_DECISION',parent_id=str(parent)); s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
+   lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'REJECTED','OOS_FAILED',parent_id=str(parent)); write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc)
    failure=FAILURE_DIR/f'BC{bc}.json'; nxt=bc+1; checkpoint(s,'DECIDE',nxt)
    if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
    candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{nxt}'); continue
   if REJECT not in out and 'SPLIT_GATE False' not in out: checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
-  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id']}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
+  lifecycle_transition(str(s.get('campaign_id','DEFAULT')),candidate_hash,bc,'REJECTED','VALIDATION_GATE_REJECTED',parent_id=str(parent),evidence_refs=(str(evidence),))
+  write_queue([]); s['history'].append({'bc':bc,'decision':'REJECT','next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id'],'candidate_hash':candidate_hash}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
   if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
   nxt=bc+1; checkpoint(s,'DECIDE',nxt)
   if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
   candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); checkpoint(s,'YIELD',s.get('next_bc')); print('CONTROLLER_AUTO_RESUME scheduler_yield'); return 0
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__': raise SystemExit(main())
