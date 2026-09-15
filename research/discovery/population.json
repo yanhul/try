@@ -4,12 +4,12 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2197,
-    "expanded": 2035,
-    "normalized": 2035,
-    "round1": 100,
+    "raw": 2213,
+    "expanded": 2051,
+    "normalized": 2051,
+    "round1": 101,
     "deferred": 27,
-    "survivors": 70,
+    "survivors": 71,
     "china_a_share_survivors": 26
   },
   "population": [
@@ -596,6 +596,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "55d007669c4c44b6",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -1385,22 +1401,6 @@
       }
     },
     {
-      "candidate_id": "006a3953ebc01064",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5806502",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "006a3953ebc01064",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "eea99fa3f45fbb3b",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2616992",
@@ -1412,22 +1412,6 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "eea99fa3f45fbb3b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
         "family": "china_a_share",
         "rounds": []
       }
@@ -1545,6 +1529,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -1636,6 +1636,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3556,6 +3572,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "ef68f122117a3b4d",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
         "family": "seasonality",
         "rounds": []
       }
@@ -7017,6 +7049,22 @@
       }
     },
     {
+      "candidate_id": "006a3953ebc01064",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5806502",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "006a3953ebc01064",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5f4cbf122b4b1906",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
@@ -7028,6 +7076,22 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -7993,22 +8057,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -8036,22 +8084,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "f603ba0518586c25",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -8457,38 +8489,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4ebc9a4b188cc6c6",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.esr.2025.101825",
@@ -8729,6 +8729,22 @@
       }
     },
     {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "77db76e6a2140296",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2021.114043",
@@ -8772,6 +8788,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -8985,6 +9017,22 @@
       }
     },
     {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c18863b050721775",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
@@ -9081,38 +9129,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9124,22 +9140,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "741fe7d415cc1ed9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -9209,22 +9209,6 @@
       }
     },
     {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -9236,6 +9220,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9513,22 +9513,6 @@
       }
     },
     {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ec4209b2dcaac339",
       "source": "crossref",
       "source_url": "https://doi.org/10.67328/bt4095",
@@ -9780,6 +9764,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }
@@ -10956,6 +10956,36 @@
       "source_timestamp": "2026-07-27T02:04:25Z",
       "lineage": {
         "source": "68568d883f9110e0",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "287d617df76f30b8",
+      "source": "github",
+      "source_url": "https://github.com/whiteblackparang/crypto-volatility-breakout",
+      "title": "whiteblackparang/crypto-volatility-breakout",
+      "description": "Statistical evaluation of volatility breakout strategy as a risk-timing tool (BTC & ETH 2-year analysis)",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2026-09-15T00:20:34Z",
+      "lineage": {
+        "source": "287d617df76f30b8",
         "family": "volatility",
         "rounds": [
           {
@@ -13085,6 +13115,22 @@
       }
     },
     {
+      "candidate_id": "cbea22b9c867a5aa",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Warzone2100/warzone2100",
+      "title": "Warzone2100/warzone2100",
+      "description": "[MIRROR] Warzone 2100 - a free and open source real time strategy game.\r\nSee upstream repo: https://github.com/warzone2100/warzone2100/\r\nWebsite: https://wz2100.net",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:28:49.269Z",
+      "lineage": {
+        "source": "cbea22b9c867a5aa",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "439f8a811fb17004",
       "source": "gitlab",
       "source_url": "https://gitlab.com/Yeelight/china-mirror-sync",
@@ -13645,6 +13691,22 @@
       }
     },
     {
+      "candidate_id": "98dbf17ffd054627",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/bitcoin-core-mirror/bitcoin-detached-sigs",
+      "title": "bitcoin-core-mirror/bitcoin-detached-sigs",
+      "description": "Mirror of \"Bitcoin detached release signatures\" currently hosted on GitHub.  \r\nThis repository is updated every hour.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:40:45.019Z",
+      "lineage": {
+        "source": "98dbf17ffd054627",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "df1bebaa0fa46bb6",
       "source": "gitlab",
       "source_url": "https://gitlab.com/bsc_sod2d/sod2d_gitlab",
@@ -14005,7 +14067,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T23:20:12.366Z",
+      "source_timestamp": "2026-09-15T00:21:58.871Z",
       "lineage": {
         "source": "1561906337ebb6ed",
         "family": "china_a_share",
@@ -14072,6 +14134,22 @@
       "source_timestamp": "2026-09-13T09:09:01.997Z",
       "lineage": {
         "source": "868ef9d0d1a9a5fb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a4840e0eeb37876f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cznic/doomgeneric",
+      "title": "cznic/doomgeneric",
+      "description": "A CGo-free port of https://github.com/bcc2528/doomgeneric_optimize using modernc.org/ccgo/v4\r\n\r\nJust a proof of concept. Supports only a few Linux/X11 targets. No sound.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:30:39.137Z",
+      "lineage": {
+        "source": "a4840e0eeb37876f",
         "family": "china_a_share",
         "rounds": []
       }
@@ -14264,6 +14342,22 @@
       "source_timestamp": "2026-09-13T14:08:31.464Z",
       "lineage": {
         "source": "dc3fc4c7b516fffb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "000f9136829b90e7",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/exaalt/lammps",
+      "title": "exaalt/lammps",
+      "description": "This is a mirror of a LAMMPS github repository (https://github.com/lammps/lammps.git)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:33:16.976Z",
+      "lineage": {
+        "source": "000f9136829b90e7",
         "family": "china_a_share",
         "rounds": []
       }
@@ -14517,7 +14611,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T23:08:32.053Z",
+      "source_timestamp": "2026-09-15T00:24:02.900Z",
       "lineage": {
         "source": "9c7cb236543837cf",
         "family": "china_a_share",
@@ -14637,6 +14731,22 @@
       }
     },
     {
+      "candidate_id": "180c1ea5cf8f4c38",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/github-prj/2026-09-15-freecodecamp",
+      "title": "github-prj/2026-09-15-freecodecamp",
+      "description": "GitHub \u5c08\u6848\u7814\u7a76\u7b46\u8a18 \u2014 2026-09-15-freecodecamp",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:10:42.968Z",
+      "lineage": {
+        "source": "180c1ea5cf8f4c38",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ce0086607c42aec8",
       "source": "gitlab",
       "source_url": "https://gitlab.com/gitlab-ci-utils/container-images/hadolint",
@@ -14677,7 +14787,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T19:26:47.970Z",
+      "source_timestamp": "2026-09-15T00:27:47.103Z",
       "lineage": {
         "source": "f14f8646020ae4ba",
         "family": "china_a_share",
@@ -14733,6 +14843,38 @@
       }
     },
     {
+      "candidate_id": "91a9fce791f621cd",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-org/build/omnibus-mirror/libicu",
+      "title": "gitlab-org/build/omnibus-mirror/libicu",
+      "description": "Mirror of https://github.com/unicode-org/icu",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:12:19.891Z",
+      "lineage": {
+        "source": "91a9fce791f621cd",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2c571b9f37801ee3",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-org/build/omnibus-mirror/valkey",
+      "title": "gitlab-org/build/omnibus-mirror/valkey",
+      "description": "Mirror of https://github.com/valkey-io/valkey",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:25:18.911Z",
+      "lineage": {
+        "source": "2c571b9f37801ee3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cba196684a436ad9",
       "source": "gitlab",
       "source_url": "https://gitlab.com/gitlab-org/editor-extensions/tree-sitter-scala",
@@ -14776,6 +14918,102 @@
       "source_timestamp": "2026-09-13T04:19:34.526Z",
       "lineage": {
         "source": "ee98dc26a6e35a06",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "331520385cd2ae2d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/source/golang/ev/eventing-github-fb206ac5",
+      "title": "gitlab-oss-package-research/source/golang/ev/eventing-github-fb206ac5",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:29.559Z",
+      "lineage": {
+        "source": "331520385cd2ae2d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "80ddb7f1fc2b46db",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/source/npm/gi/github-kanban-mcp-server-0128027f",
+      "title": "gitlab-oss-package-research/source/npm/gi/github-kanban-mcp-server-0128027f",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:20.887Z",
+      "lineage": {
+        "source": "80ddb7f1fc2b46db",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5e46a801d1f6ec2a",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/source/npm/gi/github-release-tracking-plugin-180d0a73",
+      "title": "gitlab-oss-package-research/source/npm/gi/github-release-tracking-plugin-180d0a73",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:20.738Z",
+      "lineage": {
+        "source": "5e46a801d1f6ec2a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "edc78a3daf13b607",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/source/nuget/gi/github.com-e63abeac",
+      "title": "gitlab-oss-package-research/source/nuget/gi/github.com-e63abeac",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:45.164Z",
+      "lineage": {
+        "source": "edc78a3daf13b607",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ac4c122abe7267b4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/tools/libbehave/3.2.0/maven/gi/github-oauth-4c9810a5",
+      "title": "gitlab-oss-package-research/tools/libbehave/3.2.0/maven/gi/github-oauth-4c9810a5",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:42.454Z",
+      "lineage": {
+        "source": "ac4c122abe7267b4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "330a9c575dd50a52",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gitlab-oss-package-research/tools/libbehave/3.2.0/npm/je/jekyll-for-github-projects-8d34c80a",
+      "title": "gitlab-oss-package-research/tools/libbehave/3.2.0/npm/je/jekyll-for-github-projects-8d34c80a",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:06:34.702Z",
+      "lineage": {
+        "source": "330a9c575dd50a52",
         "family": "china_a_share",
         "rounds": []
       }
@@ -15301,7 +15539,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T23:20:40.809Z",
+      "source_timestamp": "2026-09-15T00:21:43.761Z",
       "lineage": {
         "source": "700f8d0204f8ae8e",
         "family": "china_a_share",
@@ -15453,6 +15691,22 @@
       }
     },
     {
+      "candidate_id": "0382993f828b63f1",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/nvidia/kubernetes/gpu-operator",
+      "title": "nvidia/kubernetes/gpu-operator",
+      "description": "Mirror of https://github.com/NVIDIA/gpu-operator. For all issues and contributions please refer to https://github.com/NVIDIA/gpu-operator/issues.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:15:36.679Z",
+      "lineage": {
+        "source": "0382993f828b63f1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c5d74b90f938db8e",
       "source": "gitlab",
       "source_url": "https://gitlab.com/o-murphy-gh/o-murphy.github.io",
@@ -15477,7 +15731,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T22:48:49.055Z",
+      "source_timestamp": "2026-09-15T00:18:43.847Z",
       "lineage": {
         "source": "6e071d5ffb028c6b",
         "family": "china_a_share",
@@ -17181,6 +17435,22 @@
       }
     },
     {
+      "candidate_id": "a833ec9be727ac0c",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/yunfannas/idol-producer-web",
+      "title": "yunfannas/idol-producer-web",
+      "description": "Idol producer web game (mirrored from GitHub)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-15T00:24:02.266Z",
+      "lineage": {
+        "source": "a833ec9be727ac0c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "90882c331da0fa7b",
       "source": "gitlab",
       "source_url": "https://gitlab.com/zaccesss/zaccesss",
@@ -17717,7 +17987,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-14T07:09:00.640Z",
+      "source_timestamp": "2026-09-15T00:32:58.641Z",
       "lineage": {
         "source": "50f6a0df7b41ba5e",
         "family": "unknown",
@@ -17813,7 +18083,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-11T00:07:15.612Z",
+      "source_timestamp": "2026-09-15T00:06:29.779Z",
       "lineage": {
         "source": "5123256cbef5da41",
         "family": "unknown",
@@ -17845,7 +18115,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-11T00:07:19.251Z",
+      "source_timestamp": "2026-09-15T00:06:40.637Z",
       "lineage": {
         "source": "b574258d152299d1",
         "family": "unknown",
@@ -17941,7 +18211,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-13T09:10:51.692Z",
+      "source_timestamp": "2026-09-15T00:10:01.576Z",
       "lineage": {
         "source": "7a8efaa719a399bf",
         "family": "unknown",
@@ -25549,6 +25819,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -25581,22 +25867,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -25608,54 +25878,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
         "family": "unknown",
         "rounds": []
       }
@@ -25709,22 +25931,6 @@
       }
     },
     {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -25736,22 +25942,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -25949,6 +26139,22 @@
       }
     },
     {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "074d1859ad607682",
       "source": "openalex",
       "source_url": "https://doi.org/10.1177/00081256231202266",
@@ -25960,6 +26166,22 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "074d1859ad607682",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
         "family": "unknown",
         "rounds": []
       }
@@ -25977,6 +26199,54 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -26552,22 +26822,6 @@
       "source_timestamp": "2008",
       "lineage": {
         "source": "bfe8d42aedbf3d8c",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "46b53c5818c665b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
-      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "46b53c5818c665b5",
         "family": "china_a_share",
         "rounds": []
       }
@@ -27417,22 +27671,6 @@
       "lineage": {
         "source": "417e6c8ebe749a0d",
         "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3b3fe274eb3b44d6",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
-      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
-      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China quant trading github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "3b3fe274eb3b44d6",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -32157,6 +32395,22 @@
       }
     },
     {
+      "candidate_id": "3b3fe274eb3b44d6",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
+      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
+      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "3b3fe274eb3b44d6",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "11ef33d74a11ac56",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/d3cacbffbc51ecb49d3ceb22d6adeef85e037ac3",
@@ -33213,22 +33467,6 @@
       }
     },
     {
-      "candidate_id": "42f9b0f95acb24cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
-      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2016",
-      "lineage": {
-        "source": "42f9b0f95acb24cb",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "88540d2cf47c1934",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/055ca300b2e339b634501b7b19c7a0f1cbc88ab2",
@@ -33293,6 +33531,22 @@
       }
     },
     {
+      "candidate_id": "f79e43bf06d5ff80",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
+      "title": "\u201c\u89c4\u4f8b\u201d\u7684\u53d8\u5316\u4e0e\u6ce2\u52a8\u6ea2\u51fa\u6548\u5e94\u2014\u2014\u57fa\u4e8e\u4e2d\u56fd\u80a1\u7968\u5e02\u573a\u7684\u5b9e\u8bc1\u7814\u7a76",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "f79e43bf06d5ff80",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fda85a2a764e0290",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/b0416809cf6c5c2abcfd8a5925043fa39b9fbc11",
@@ -33320,6 +33574,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "bc9f40bdd0593fd8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "85412db3f2f10d5b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
+      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
+      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "85412db3f2f10d5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -33389,18 +33659,34 @@
       }
     },
     {
-      "candidate_id": "85412db3f2f10d5b",
+      "candidate_id": "42f9b0f95acb24cb",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
-      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
-      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2025",
+      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
+      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2016",
       "lineage": {
-        "source": "85412db3f2f10d5b",
-        "family": "unknown",
+        "source": "42f9b0f95acb24cb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "46b53c5818c665b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
+      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "46b53c5818c665b5",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -33448,22 +33734,6 @@
       "source_timestamp": "2005",
       "lineage": {
         "source": "5b32c48d529e136e",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f79e43bf06d5ff80",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
-      "title": "\u201c\u89c4\u4f8b\u201d\u7684\u53d8\u5316\u4e0e\u6ce2\u52a8\u6ea2\u51fa\u6548\u5e94\u2014\u2014\u57fa\u4e8e\u4e2d\u56fd\u80a1\u7968\u5e02\u573a\u7684\u5b9e\u8bc1\u7814\u7a76",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "f79e43bf06d5ff80",
         "family": "china_a_share",
         "rounds": []
       }

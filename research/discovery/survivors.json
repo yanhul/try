@@ -1023,6 +1023,36 @@
       }
     },
     {
+      "candidate_id": "287d617df76f30b8",
+      "source": "github",
+      "source_url": "https://github.com/whiteblackparang/crypto-volatility-breakout",
+      "title": "whiteblackparang/crypto-volatility-breakout",
+      "description": "Statistical evaluation of volatility breakout strategy as a risk-timing tool (BTC & ETH 2-year analysis)",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2026-09-15T00:20:34Z",
+      "lineage": {
+        "source": "287d617df76f30b8",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "184a65fa45278b53",
       "source": "github",
       "source_url": "https://github.com/YichuanAlex/high_frequency_order_trade_factors",
