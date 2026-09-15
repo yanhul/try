@@ -1,63 +1,42 @@
-"""Durable adaptive search memory for autonomous research."""
 from __future__ import annotations
-import json,math,os
+import json
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; MEMORY_PATH=ROOT/"research"/"search_memory.json"
-def _finite(x):
- try:
-  x=float(x);return x if math.isfinite(x) else None
- except (TypeError,ValueError):return None
-def structural_key(candidate):
- spec=candidate.get("discovery_spec") or {};return "|".join("" if spec.get(k) is None else str(spec.get(k)) for k in ("mechanism_family","operator","left","right","direction"))
-def _family(candidate):return (candidate.get("discovery_spec") or {}).get("mechanism_family") or "discovered_primitive"
-def _score(result):
- m=result.get("metrics") or result.get("VALIDATION",{}).get("metrics",{});pf=_finite(m.get("profit_factor"));ret=_finite(m.get("total_return"));dd=_finite(m.get("max_drawdown"));tr=_finite(m.get("trades")) or _finite(m.get("trade_count")) or 0.0
- pf=max(0,min(3,pf if pf is not None else 0));ret=max(-1,min(2,ret if ret is not None else -1));dd=max(0,min(1,abs(dd) if dd is not None else 1));activity=min(1,tr/50)
- return round(.45*pf/3+.30*(ret+1)/3+.15*(1-dd)+.10*activity,8)
+ROOT=Path(__file__).resolve().parents[1]
+STATE=ROOT/'research'/'search_memory.json'
+
 def load():
- if not MEMORY_PATH.exists():return {"schema_version":1,"candidates":{},"families":{},"failures":0}
- try:
-  x=json.loads(MEMORY_PATH.read_text(encoding="utf-8"));
-  if not isinstance(x,dict) or x.get("schema_version")!=1:raise ValueError("invalid_search_memory")
-  return x
- except Exception as e:raise RuntimeError(f"search_memory_corrupt:{e}")
-def record(candidate,result,decision):
- data=load();key=structural_key(candidate);family=_family(candidate);old=data["candidates"].get(key)
- if old and old.get("candidate_hash")==candidate.get("candidate_hash"):return old
- entry={"bc":candidate.get("bc"),"parent_bc":candidate.get("parent_bc"),"candidate_hash":candidate.get("candidate_hash"),"decision":decision,"score":_score(result),"hypothesis_id":candidate.get("hypothesis_id"),"family":family};data["candidates"][key]=entry
- _reaggregate(data);_atomic(data);return entry
-def _reaggregate(data):
- fam={};fails=0
- for e in data.get("candidates",{}).values():
-  family=e.get("family") or "discovered_primitive";z=fam.setdefault(family,{"tested":0,"pass":0,"fail":0,"score_sum":0.0});z["tested"]+=1;z["pass"]+=e.get("decision") in {"PASS","PROMOTE","OOS_PASS"};z["fail"]+=e.get("decision") in {"FAIL","REJECT","OOS_FAIL","VALIDATION_FAIL"};z["score_sum"]+=float(e.get("score",0));fails+=e.get("decision") in {"FAIL","REJECT","OOS_FAIL","VALIDATION_FAIL"}
- data["families"]=fam;data["failures"]=fails
-def _atomic(data):
- tmp=MEMORY_PATH.with_suffix(".tmp");tmp.write_text(json.dumps(data,indent=2,sort_keys=True)+"\n",encoding="utf-8");os.replace(tmp,MEMORY_PATH)
-def rebuild_from_artifacts(data=None):
- data=data or load();canddir=ROOT/"research"/"autonomous_candidates";faildir=ROOT/"research"/"failure_analysis";oosdir=ROOT/"research"/"oos"
- if not canddir.exists():return data
- for p in sorted(canddir.glob("BC*.json")):
-  try:c=json.loads(p.read_text(encoding="utf-8"));bc=int(c["bc"]);key=structural_key(c)
-  except Exception:continue
-  decision=None;result={};fp=faildir/f"BC{bc}.json"
-  if fp.exists():
-   try:f=json.loads(fp.read_text(encoding="utf-8"));decision="OOS_FAIL" if f.get("oos_verdict")=="OOS_FAIL" else "REJECT"
-   except Exception:pass
-  op=oosdir/f"BC{bc}_oos_result.json"
-  if op.exists():
-   try:o=json.loads(op.read_text(encoding="utf-8"));decision="OOS_PASS" if o.get("oos_passed") is True else ("OOS_FAIL" if o.get("oos_executed") is True else decision);result=o
-   except Exception:pass
-  vp=ROOT/"research"/f"bc{bc}_validation_result.json"
-  if vp.exists() and decision is None:
-   try:v=json.loads(vp.read_text(encoding="utf-8"));decision="VALIDATION_PASS" if v.get("validation_passed") is True else "VALIDATION_FAIL";result=v
-   except Exception:pass
-  if decision and (key not in data["candidates"] or data["candidates"][key].get("candidate_hash")!=c.get("candidate_hash")):
-   data["candidates"][key]={"bc":bc,"parent_bc":c.get("parent_bc"),"candidate_hash":c.get("candidate_hash"),"decision":decision,"score":_score(result),"hypothesis_id":c.get("hypothesis_id"),"family":_family(c)}
- _reaggregate(data);return data
-def rank_families(families,seed):
- data=rebuild_from_artifacts();total=max(1,sum(v.get("tested",0) for v in data["families"].values()));ranked=[]
- for i,f in enumerate(families):
-  x=data["families"].get(f,{"tested":0,"pass":0,"fail":0,"score_sum":0});n=x["tested"];mean=x["score_sum"]/n if n else .5;bonus=.45*math.sqrt(math.log(total+2)/(n+1));ranked.append((mean+bonus+((seed+i)%997)*1e-9,f))
- return [f for _,f in sorted(ranked,reverse=True)]
-def stagnant(data=None,window=8):
- data=data or load();entries=list(data.get("candidates",{}).values());return len(entries)>=window and all(x.get("decision") in {"FAIL","REJECT","OOS_FAIL","VALIDATION_FAIL"} for x in entries[-window:])
+    if not STATE.exists(): return {'schema_version':1,'families':{},'structural':{},'recent':[],'stagnation':{'no_new':0,'failures':0}}
+    try:
+        x=json.loads(STATE.read_text(encoding='utf-8')); return x if isinstance(x,dict) else {}
+    except Exception: return {}
+
+def record(candidate:dict,outcome:str,metrics:dict|None=None):
+    s=load(); s.setdefault('families',{}); s.setdefault('structural',{}); s.setdefault('recent',[]); s.setdefault('stagnation',{'no_new':0,'failures':0})
+    spec=candidate.get('discovery_spec') or {}; family=str(spec.get('mechanism_family') or candidate.get('mechanism_family') or 'unknown')
+    key='|'.join('' if spec.get(k) is None else str(spec.get(k)) for k in ('mechanism_family','operator','left','right','direction'))
+    b=s['families'].setdefault(family,{'tested':0,'pass':0,'fail':0,'score':0.0}); b['tested']+=1
+    if outcome in {'PASS','PROMOTE','OOS_PASS'}: b['pass']+=1
+    if outcome in {'FAIL','REJECT','OOS_FAIL'}: b['fail']+=1
+    m=metrics or {}
+    try: score=max(0.0,float(m.get('profit_factor',0))-1.0)+max(0.0,float(m.get('total_return',0)))
+    except (TypeError,ValueError): score=0.0
+    n=b['tested']; b['score']=((b['score']*(n-1))+score)/n
+    q=s['structural'].setdefault(key,{'tested':0,'pass':0,'fail':0}); q['tested']+=1
+    if outcome in {'PASS','PROMOTE','OOS_PASS'}: q['pass']+=1
+    if outcome in {'FAIL','REJECT','OOS_FAIL'}: q['fail']+=1
+    s['recent']=(s['recent']+[{'bc':candidate.get('bc'),'key':key,'family':family,'outcome':outcome}])[-100:]
+    if outcome in {'FAIL','REJECT','OOS_FAIL'}: s['stagnation']['failures']=int(s['stagnation'].get('failures',0))+1
+    s['stagnation']['no_new']=0
+    STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8'); return s
+
+def rank(families):
+    s=load(); rows=[]
+    for i,f in enumerate(families):
+        x=s.get('families',{}).get(f,{}); n=int(x.get('tested',0)); fail=int(x.get('fail',0)); score=float(x.get('score',0.0))
+        priority=10.0 if not n else score+1.5/(n**0.5)-0.5*fail/n
+        rows.append((priority,-i,f))
+    return [f for _,_,f in sorted(rows,reverse=True)]
+
+def note_no_new():
+    s=load(); s.setdefault('stagnation',{'no_new':0,'failures':0}); s['stagnation']['no_new']=int(s['stagnation'].get('no_new',0))+1
+    STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8'); return s['stagnation']['no_new']
