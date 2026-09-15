@@ -22,3 +22,13 @@ def test_invalid_status_rejected(tmp_path):
         pass
     else:
         raise AssertionError("invalid status must be rejected")
+
+
+def test_unique_terminal_evidence_ignores_rank_and_replay(tmp_path):
+    ledger = JsonlExperimentLedger(tmp_path / "experiments.jsonl")
+    ledger.append(ExperimentRecord("e1", "h1", "SUCCEEDED", result={"candidate":{"reward_multiple":3.0},"score":3.0}))
+    ledger.append(ExperimentRecord("e1", "h1", "RANKED", decision="PREFER"))
+    ledger.append(ExperimentRecord("e1", "h1", "SUCCEEDED", result={"candidate":{"reward_multiple":3.0},"score":3.0}))
+    evidence = ledger.unique_terminal_evaluations()
+    assert list(evidence) == ["e1"]
+    assert ledger.terminal_evaluation("e1")["status"] == "SUCCEEDED"
