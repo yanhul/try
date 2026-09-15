@@ -66,4 +66,4 @@ def test_controller_mutation_reaches_real_evaluator(monkeypatch):
         return {"metrics":{"profit_factor":1.1,"total_return":rr},"accepted_signals":1}
     monkeypatch.setattr("engine.astra_evaluator.evaluate_split",fake_split)
     evaluator=build_evaluator("data/BTCUSDT_1h.csv"); parent=Candidate({"hypothesis_id":"baseline","stop_fraction":0.01,"reward_multiple":2.0,"pnf_box_fraction":0.01}); child=Candidate(mutate(parent.config,"reward_multiple",3.0),parent.id); result=evaluator(child.config)
-    assert result.status=="SUCCEEDED" and result.score==3.0 and calls==[(0.01,3.0,0.01,None),(0.01,3.0,0.01,None)]
+    assert result.status=="SUCCEEDED" and result.score==3.0 and calls==[(0.01,3.0,0.01,None),(0.01,3.0,0.01,None),(0.01,3.0,0.01,None)]
