@@ -54,6 +54,16 @@ def call(prompt):
 def normalize_structural_types(c):
  s=c.get("discovery_spec")
  if not isinstance(s,dict):return
+ # Canonical provider-boundary alias: accept only a lossless finite numeric alias.
+ # If both spellings exist they must agree; otherwise fail closed in validation.
+ if "threshold" not in s and "numeric_finite_threshold" in s:
+  alias=s.get("numeric_finite_threshold")
+  if isinstance(alias,bool):return
+  if isinstance(alias,(int,float)) and math.isfinite(alias):s["threshold"]=alias
+  elif isinstance(alias,str):
+   try:v=float(alias)
+   except ValueError:return
+   if math.isfinite(v):s["threshold"]=int(v) if v.is_integer() else v
  if isinstance(s.get("threshold"),str):
   try:v=float(s["threshold"])
   except ValueError:return
@@ -68,8 +78,7 @@ def normalize_hypothesis_id(c):
  c["hypothesis_id"]="mechanism_family"
  spec["mechanism_family"]=selected_family
 
-def fingerprint(c):
- return structural_key(c)
+def fingerprint(c):return structural_key(c)
 
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
@@ -113,8 +122,7 @@ def ground_candidate(c,selected):
  elif c.get("hypothesis_id")=="discovered_primitive":
   if not isinstance(c.get("discovery_spec"),dict):raise ValueError("discovery_spec_required")
  else:raise ValueError("translation_hypothesis_id_forbidden")
- c.pop("candidate_hash",None);c["evidence_sources"]=[url];c["rationale"]="Executable BTC translation of the selected portable mechanism; this is a proposed test and does not assert efficacy, causality, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False;c.update(novelty_metadata(c))
- return c
+ c.pop("candidate_hash",None);c["evidence_sources"]=[url];c["rationale"]="Executable BTC translation of the selected portable mechanism; this is a proposed test and does not assert efficacy, causality, or performance.";c["is_testable"]=True;c["oos_selection_used"]=False;c.update(novelty_metadata(c));return c
 
 def survivor_evidence(s):
  return compact(json.dumps({k:s.get(k) for k in ("candidate_id","source","source_url","title","description","family","market","query","source_timestamp","lineage")},sort_keys=True,ensure_ascii=False,separators=(",",":")))
