@@ -1,0 +1,27 @@
+{
+  "bc": 223,
+  "candidate_hash": "6b215f0ef4d1d3182daa9be706a59276c37a73370a034ea9596ea0fc2e9bcbaf",
+  "conceptual_change": "Shift from relative price z-score normalization to rolling mean-based volatility expansion detection using range_ratio to capture structural mean reversion exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 0.05,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 50
+  },
+  "parent_bc": 222,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
