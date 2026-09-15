@@ -1,0 +1,41 @@
+{
+  "bc": 217,
+  "parent_bc": 216,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "6b584244a4daf66f7344ca3958d9c8d41c1d51efd53d5072551bd1bc37806337",
+  "conceptual_change": "Shift from simple z-score to a ratio-based mean reversion approach by evaluating the relative deviation of the close price against its rolling mean, focusing on extreme divergence as an entry trigger.",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 411,
+    "skipped_overlap_trades": 366,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 17,
+      "loss_count": 28,
+      "win_rate": 0.37777777777777777,
+      "total_return": -0.06635361202883028,
+      "avg_return": -0.0014230131861184122,
+      "profit_factor": 0.815583036313841,
+      "max_drawdown": 0.10869632370794284,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

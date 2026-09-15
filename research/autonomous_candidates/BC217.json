@@ -1,0 +1,28 @@
+{
+  "bc": 217,
+  "candidate_hash": "6b584244a4daf66f7344ca3958d9c8d41c1d51efd53d5072551bd1bc37806337",
+  "conceptual_change": "Shift from simple z-score to a ratio-based mean reversion approach by evaluating the relative deviation of the close price against its rolling mean, focusing on extreme divergence as an entry trigger.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 0.98,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.98,
+    "window": 20
+  },
+  "parent_bc": 216,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
