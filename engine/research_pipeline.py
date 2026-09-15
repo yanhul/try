@@ -45,11 +45,14 @@ def run_is_validation_oos(
     objective: str = "profit_factor",
     validation_min_profit_factor: float = 1.0,
     validation_min_total_return: float = 0.0,
+    oos_min_profit_factor: float | None = None,
+    oos_min_total_return: float | None = None,
 ) -> dict:
     """Select on IS, gate on validation, then evaluate selected config once on OOS.
 
     Candidate strategy definitions are canonicalized and hashed. OOS is never used
-    to rank, filter, or select candidates.
+    to rank, filter, or select candidates. If OOS thresholds are supplied, they are
+    an independent post-selection admission gate, not a search signal.
     """
     bars = load_bars(csv_path)
     splits = chronological_split(len(bars), is_ratio, validation_ratio)
@@ -58,6 +61,7 @@ def run_is_validation_oos(
     if not candidates:
         raise ValueError("no candidates")
 
+    evaluator_digest = _sha256(Path(__file__))
     is_results = []
     for config in candidates:
         stop, rr = _validate_config(config)
@@ -89,15 +93,25 @@ def run_is_validation_oos(
     )
 
     oos = None
+    oos_pass = False
     if validation_pass:
         oos = run_split(
             bars, splits[2].start, splits[2].end, stop, rr,
             selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec
         )
+        om = oos["metrics"]
+        min_pf = validation_min_profit_factor if oos_min_profit_factor is None else oos_min_profit_factor
+        min_return = validation_min_total_return if oos_min_total_return is None else oos_min_total_return
+        oos_pass = (
+            (om.get("profit_factor") is not None)
+            and om["profit_factor"] >= min_pf
+            and om["total_return"] >= min_return
+        )
 
     result = {
-        "schema_version": 2,
+        "schema_version": 3,
         "dataset": {"bars": len(bars), "sha256": _sha256(csv_path)},
+        "evaluator_digest": evaluator_digest,
         "protocol": {
             "selection": "IS_only",
             "validation": "gate_only",
@@ -105,6 +119,8 @@ def run_is_validation_oos(
             "objective": objective,
             "validation_min_profit_factor": validation_min_profit_factor,
             "validation_min_total_return": validation_min_total_return,
+            "oos_min_profit_factor": oos_min_profit_factor,
+            "oos_min_total_return": oos_min_total_return,
             "feature_policy": "features_are_hypotheses; no predictive claim without OOS evidence",
         },
         "splits": {s.name: {"start": s.start, "end": s.end} for s in splits},
@@ -114,6 +130,7 @@ def run_is_validation_oos(
         "selected_provenance": provenance(selected_spec),
         "validation": {"result": validation, "passed": validation_pass},
         "oos": oos,
+        "oos_passed": oos_pass,
     }
 
     output_path = Path(output_path)
