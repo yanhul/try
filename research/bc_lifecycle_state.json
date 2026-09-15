@@ -7,7 +7,7 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 3653,
+  "checkpoint_seq": 3656,
   "current_bc": 225,
   "history": [
     {
@@ -1391,7 +1391,7 @@
   ],
   "iterations": 572,
   "last_bc": 224,
-  "last_error": "HOLD_PROVIDER_ROUTER",
+  "last_error": null,
   "next_bc": 225,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
@@ -1399,10 +1399,10 @@
     "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
     "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59"
   ],
-  "phase": "WAIT_RETRY",
-  "retry_count": 1,
+  "phase": "PERSISTED",
+  "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "updated_at": "2026-09-15T05:29:07.267995+00:00"
+  "updated_at": "2026-09-15T06:15:04.292950+00:00"
 }

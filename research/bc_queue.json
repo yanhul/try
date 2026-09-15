@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 225,
+    "candidate_hash": "c0e792d7c5509eec7aa82e843ff9c7eab9594231049fdd4438d9bb3cda3120fb",
+    "conceptual_change": "Shift from volume-delta momentum to institutional-grade relative trend strength via Z-Score of volume_ratio to isolate high-conviction participation periods.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "volume_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "zscore",
+      "threshold": 1.5,
+      "window": 50
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|zscore|volume_ratio||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 1.5,
+      "window": 50
+    },
+    "parent_bc": 224,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
