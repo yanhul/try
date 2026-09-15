@@ -1,0 +1,27 @@
+{
+  "bc": 229,
+  "candidate_hash": "1fe315941c0d2176feadb05deaaa688978057252a231a6c11482e01350a84002",
+  "conceptual_change": "Shift from previous volume-based momentum to a liquidity-based structural mechanism identifying price interactions relative to rolling mean volume, specifically targeting liquidity sweep detection via delta analysis of range_ratio.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "delta",
+    "threshold": 0.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|delta|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 20
+  },
+  "parent_bc": 228,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

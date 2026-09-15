@@ -1,0 +1,41 @@
+{
+  "bc": 228,
+  "parent_bc": 227,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "e07744dd2b59129c68ee7034567011413b0e26a266b294ae379c9b5650b9d253",
+  "conceptual_change": "Shift from simple statistical deviation to a volume-normalized trend momentum filter using the ratio of volume to its rolling mean to identify high-conviction momentum periods.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 340,
+    "skipped_overlap_trades": 314,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 26,
+      "win_count": 4,
+      "loss_count": 22,
+      "win_rate": 0.15384615384615385,
+      "total_return": -0.18517147448183946,
+      "avg_return": -0.00778684967762778,
+      "profit_factor": 0.2580957295832811,
+      "max_drawdown": 0.19927065401618393,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "GROSS_VALIDATION_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
