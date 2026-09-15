@@ -14,17 +14,18 @@ class CampaignState:
     parent:dict[str,Any]
     baseline_score:float|None
     terminal:bool=False
+    failure_class:str|None=None
 
 def _save(path:Path,state:CampaignState)->None:
     tmp=path.with_suffix(path.suffix+".tmp")
-    tmp.write_text(json.dumps({"generation":state.generation,"parent":state.parent,"baseline_score":state.baseline_score,"terminal":state.terminal},sort_keys=True,ensure_ascii=False),encoding="utf-8")
+    tmp.write_text(json.dumps({"generation":state.generation,"parent":state.parent,"baseline_score":state.baseline_score,"terminal":state.terminal,"failure_class":state.failure_class},sort_keys=True,ensure_ascii=False),encoding="utf-8")
     tmp.replace(path)
 
 def load_state(path:str|Path)->CampaignState|None:
     p=Path(path)
     if not p.exists(): return None
     raw=json.loads(p.read_text(encoding="utf-8"))
-    return CampaignState(int(raw["generation"]),dict(raw["parent"]),raw.get("baseline_score"),bool(raw.get("terminal",False)))
+    return CampaignState(int(raw["generation"]),dict(raw["parent"]),raw.get("baseline_score"),bool(raw.get("terminal",False)),raw.get("failure_class"))
 
 def _unique_mutations(items:list[tuple[str,Any]])->list[tuple[str,Any]]:
     seen=set(); out=[]
@@ -49,20 +50,32 @@ def _mutations(parent:Candidate,generation:int)->list[tuple[str,Any]]:
     items += [("pnf_box_fraction",round(pnf*x,8)) for x in pnf_scales]
     return _unique_mutations(items)
 
+def _parent_failure(ledger:JsonlExperimentLedger,parent:Candidate)->str|None:
+    record=ledger.last(parent.id)
+    if not record: return None
+    value=record.get("failure_class")
+    return str(value) if value else None
+
 def run_campaign(data_path:str|Path,ledger_path:str|Path,state_path:str|Path,*,max_generations:int=100,generation_limit:int=6)->CampaignState:
     if max_generations<1 or generation_limit<1: raise ValueError("campaign limits must be positive")
     ledger=JsonlExperimentLedger(ledger_path); controller=EvolutionController(ledger,build_evaluator(data_path)); state=load_state(state_path)
     if state is None:
         parent=Candidate({"hypothesis_id":"baseline","stop_fraction":0.01,"reward_multiple":2.0,"pnf_box_fraction":0.01})
-        baseline=controller.evaluate(parent,hypothesis_id="astra"); state=CampaignState(0,dict(parent.config),baseline.score,False); _save(Path(state_path),state)
+        baseline=controller.evaluate(parent,hypothesis_id="astra"); state=CampaignState(0,dict(parent.config),baseline.score,False,baseline.failure_class); _save(Path(state_path),state)
     while state.generation<max_generations:
-        parent=Candidate(state.parent); baseline=Evaluation("SUCCEEDED",state.baseline_score,{"score":state.baseline_score})
-        best=controller.run_generation(parent,_mutations(parent,state.generation),baseline,limit=generation_limit,hypothesis_id="astra")
-        score=state.baseline_score
+        parent=Candidate(state.parent); baseline=Evaluation("SUCCEEDED",state.baseline_score,{"score":state.baseline_score},state.failure_class)
+        failure_class=state.failure_class or _parent_failure(ledger,parent)
+        best=controller.run_generation(parent,_mutations(parent,state.generation),baseline,limit=generation_limit,hypothesis_id="astra",failure_class=failure_class)
+        score=state.baseline_score; next_failure=None
         if best.id!=parent.id:
             ranked=controller.ledger.last(best.id)
-            if ranked: score=(ranked.get("result") or {}).get("score",score)
-        state=CampaignState(state.generation+1,dict(best.config),score,state.generation+1>=max_generations); _save(Path(state_path),state)
+            if ranked:
+                result=ranked.get("result") or {}; score=result.get("score",score)
+                next_failure=ranked.get("failure_class")
+                if not next_failure:
+                    evaluated=controller.ledger.last(best.id)
+                    next_failure=(evaluated or {}).get("failure_class")
+        state=CampaignState(state.generation+1,dict(best.config),score,state.generation+1>=max_generations,next_failure); _save(Path(state_path),state)
     return state
 
 __all__=["CampaignState","load_state","run_campaign"]
