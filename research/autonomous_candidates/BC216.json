@@ -1,0 +1,28 @@
+{
+  "bc": 216,
+  "candidate_hash": "1ffd9e01bcfe0453a36d9f185f979abe7c7d3502c46901ab6f2adbfd1a6821cc",
+  "conceptual_change": "Incorporate a liquidity-based entry mechanism by identifying instances where the current close is below the recent low of a 50-period lookback window, simulating a liquidity sweep capture.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "low",
+    "threshold": 0.0,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|low|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 50
+  },
+  "parent_bc": 215,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

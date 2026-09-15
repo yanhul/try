@@ -3,15 +3,15 @@
   "bc": 214,
   "parent_bc": 213,
   "hypothesis_id": "mechanism_family",
-  "candidate_hash": "f3d86dbad63e43d93dd5207611ffe0ddd7d7b015d6b39fa6850bf62550d948f9",
+  "candidate_hash": "95944b39cd67d78631133f0b24dfe7759e066253638b514227086034a0ce882f",
   "discovery_spec": {
     "direction": "below",
     "left": "close",
     "mechanism_family": "mean_reversion",
     "operator": "ratio",
     "right": "rolling_mean",
-    "threshold": 0.99,
-    "window": 20
+    "threshold": 0.995,
+    "window": 10
   },
   "oos_selection_used": false,
   "oos_executed": false,
@@ -38,8 +38,8 @@
   },
   "IS": {
     "candidate_trades": 2173,
-    "accepted_signals": 1121,
-    "skipped_overlap_trades": 926,
+    "accepted_signals": 1119,
+    "skipped_overlap_trades": 924,
     "candidate_universe": "all_bars",
     "metrics": {
       "trade_count": 195,
@@ -63,8 +63,8 @@
   },
   "VALIDATION": {
     "candidate_trades": 725,
-    "accepted_signals": 406,
-    "skipped_overlap_trades": 361,
+    "accepted_signals": 404,
+    "skipped_overlap_trades": 359,
     "candidate_universe": "all_bars",
     "metrics": {
       "trade_count": 45,

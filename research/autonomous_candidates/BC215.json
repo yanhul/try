@@ -1,0 +1,29 @@
+{
+  "bc": 215,
+  "candidate_hash": "ef5662bea0ad25f1744299b2120f93a3326e49ba382d8a7216cd581ed271afcb",
+  "conceptual_change": "Shift from simple moving averages or price-based trend metrics to a volume-momentum relationship mechanism. Instead of price levels, evaluate the strength of trends using the ratio of volume to its own rolling mean, focusing on the persistence of trend volume confirms.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "numeric_finite_threshold": 1.25,
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 1.25,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|volume|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 20
+  },
+  "parent_bc": 214,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

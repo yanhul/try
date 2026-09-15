@@ -3,14 +3,16 @@
   "bc": 215,
   "parent_bc": 214,
   "hypothesis_id": "mechanism_family",
-  "candidate_hash": "58752da77c68aee619a8409090a759d70b132a455f6e51f51ffaafbdc353fcd3",
+  "candidate_hash": "ef5662bea0ad25f1744299b2120f93a3326e49ba382d8a7216cd581ed271afcb",
   "discovery_spec": {
     "direction": "above",
-    "left": "volume_ratio",
+    "left": "volume",
     "mechanism_family": "momentum_trend",
-    "operator": "rank",
-    "threshold": 0.85,
-    "window": 50
+    "numeric_finite_threshold": 1.25,
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 1.25,
+    "window": 20
   },
   "oos_selection_used": false,
   "oos_executed": false,

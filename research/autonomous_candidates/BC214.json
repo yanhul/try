@@ -1,0 +1,28 @@
+{
+  "bc": 214,
+  "candidate_hash": "95944b39cd67d78631133f0b24dfe7759e066253638b514227086034a0ce882f",
+  "conceptual_change": "Shift from z-score based normalization to a mean reversion mechanism using the ratio of current price to rolling mean (moving average) distance, capturing localized price divergence from short-term trend equilibrium.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 0.995,
+    "window": 10
+  },
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close|rolling_mean|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.995,
+    "window": 10
+  },
+  "parent_bc": 213,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
