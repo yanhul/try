@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
-"""Bounded research campaign wrapper with isolated campaign epochs."""
 from __future__ import annotations
 import json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 POLICY=ROOT/'research'/'campaign_policy.json'; STATE=ROOT/'research'/'bc_lifecycle_state.json'
-CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; OOS_DIR=ROOT/'research'/'oos'
+CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; OOS_DIR=ROOT/'research'/'oos'; QUEUE=ROOT/'research'/'bc_queue.json'
 QUALIFY={'REJECT','PROMOTE_TO_FUTURE_OOS_TEST'}
 
 def load(path,default):
@@ -73,18 +71,13 @@ def _start_new_campaign_epoch(state,policy):
     print(f'CAMPAIGN_NEW_EPOCH id={pid} start_bc={start} prior_id={old or "none"}'); save(state)
 
 def _migrate_candidate_oos_terminal(state):
-    """Convert legacy campaign-level OOS_FAIL into a durable candidate rejection."""
-    if not (state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL'):
-        return False
+    if not (state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL'): return False
     parent=int(state.get('current_bc') or state.get('last_bc') or 0); candidate_path=CANDIDATE_DIR/f'BC{parent}.json'; result_path=OOS_DIR/f'BC{parent}_oos_result.json'; receipt_path=OOS_DIR/f'BC{parent}_oos_result_receipt.json'; failure_path=FAILURE_DIR/f'BC{parent}.json'
-    candidate=load(candidate_path,{}) if candidate_path.exists() else {}; result=load(result_path,{}) if result_path.exists() else {}; receipt=load(receipt_path,{}) if receipt_path.exists() else {}
-    candidate_hash=candidate.get('candidate_hash')
+    candidate=load(candidate_path,{}) if candidate_path.exists() else {}; result=load(result_path,{}) if result_path.exists() else {}; receipt=load(receipt_path,{}) if receipt_path.exists() else {}; candidate_hash=candidate.get('candidate_hash')
     evidence_ok=(candidate_hash and result.get('bc')==parent and result.get('candidate_hash')==candidate_hash and result.get('oos_executed') is True and result.get('oos_selection_used') is False and result.get('oos_passed') is False and receipt.get('receipt_type')=='OOS_EXECUTION_RECEIPT' and receipt.get('schema_version')==1 and receipt.get('bc')==parent and receipt.get('candidate_hash')==candidate_hash and receipt.get('oos_executed') is True and receipt.get('oos_selection_used') is False and receipt.get('oos_passed') is False and receipt.get('metrics')==result.get('metrics') and receipt.get('dataset_sha256')==result.get('dataset',{}).get('sha256') and receipt.get('protocol_sha256')==result.get('protocol_sha256'))
-    if not evidence_ok:
-        print(f'CAMPAIGN_MIGRATE_OOS_FAIL_HOLD BC{parent} reason=MISSING_DURABLE_OOS_EVIDENCE'); return False
+    if not evidence_ok: print(f'CAMPAIGN_MIGRATE_OOS_FAIL_HOLD BC{parent} reason=MISSING_DURABLE_OOS_EVIDENCE'); return False
     FAILURE_DIR.mkdir(parents=True,exist_ok=True)
-    if not failure_path.exists():
-        failure_path.write_text(json.dumps({'bc':parent,'parent_bc':int(candidate.get('parent_bc',parent-1)),'decision':'REJECT','reason':'OOS_FAILED','hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate_hash,'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,'action':'reject candidate and require a distinct next hypothesis','migration':'legacy campaign-level OOS_FAIL converted from durable OOS receipt; no research evidence fabricated'},indent=2,sort_keys=True)+'\n',encoding='utf-8')
+    if not failure_path.exists(): failure_path.write_text(json.dumps({'bc':parent,'parent_bc':int(candidate.get('parent_bc',parent-1)),'decision':'REJECT','reason':'OOS_FAILED','hypothesis_id':candidate.get('hypothesis_id'),'candidate_hash':candidate_hash,'conceptual_change':candidate.get('conceptual_change'),'evidence_sources':candidate.get('evidence_sources'),'validation_summary':result.get('metrics'),'oos_verdict':'OOS_FAIL','oos_selection_used':False,'action':'reject candidate and require a distinct next hypothesis','migration':'legacy campaign-level OOS_FAIL converted from durable OOS receipt; no research evidence fabricated'},indent=2,sort_keys=True)+'\n',encoding='utf-8')
     state.update(campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason='OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION',terminal=False,phase='OBSERVE',last_error=None,retry_count=0)
     if not isinstance(state.get('next_bc'),int) or state['next_bc']<=parent: state['next_bc']=parent+1
     save(state); print(f'CAMPAIGN_MIGRATE_OOS_FAIL_RESUME next_bc={state["next_bc"]} failure_analysis=BC{parent}.json'); return True
@@ -93,12 +86,20 @@ def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
     if p.exists(): return None
     if parent==start-1:
-        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'
-        q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
+        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'; q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
     return None
 
-def controller_command():
-    return [sys.executable,'-m','research.bc_controller']
+def controller_command(): return [sys.executable,'-m','research.bc_controller']
+
+def durable_queued_candidate(state,start):
+    q=load(QUEUE,[])
+    if not isinstance(q,list) or not q: return None
+    expected=int(state.get('next_bc',start)); valid=[x for x in q if isinstance(x,dict) and str(x.get('bc','')).isdigit() and int(x['bc'])==expected and int(x.get('parent_bc',expected-1))==expected-1]
+    if not valid: return None
+    candidate_hash=valid[0].get('candidate_hash')
+    if not candidate_hash or not (CANDIDATE_DIR/f'BC{expected}.json').exists(): return None
+    print(f'CAMPAIGN_DURABLE_QUEUE_PRIORITY BC{expected} screened_gate_bypassed=true candidate_hash={candidate_hash}')
+    return valid[0]
 
 def main():
     policy=load(POLICY,None)
@@ -108,18 +109,21 @@ def main():
     budget=int(policy['max_screening_candidates']); batch=int(policy['controller_batch_size']); outcomes=set(policy['terminal_outcomes'])
     if budget<=0 or batch<=0 or batch>budget or not outcomes: print('CAMPAIGN_BLOCKED invalid_policy'); return 2
     state=load(STATE,{})
-    _start_new_campaign_epoch(state,policy)
-    _migrate_candidate_oos_terminal(state)
+    _start_new_campaign_epoch(state,policy); _migrate_candidate_oos_terminal(state)
     _,start,screened=reconcile_campaign_state(state,budget)
-    if state.get('campaign_terminal'):
+    queued=durable_queued_candidate(state,start)
+    if state.get('campaign_terminal') and queued is None:
         o=state.get('campaign_outcome')
         if o not in outcomes: print(f'CAMPAIGN_BLOCKED persisted_invalid_terminal_outcome={o}'); return 3
         print(f"CAMPAIGN_TERMINAL outcome={o} screened={state.get('campaign_screened',0)}/{budget}"); return 0
-    if screened>=budget: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',screened,budget)
-    env=dict(os.environ); env['RESEARCH_MAX_ITERATIONS']=str(min(batch,budget-screened)); before=qualifying_bcs(state.get('history',[]),start)
-    print(f'CAMPAIGN_START screened={screened}/{budget} batch={env["RESEARCH_MAX_ITERATIONS"]} start_bc={start}')
-    expected=int(state.get('next_bc',start)); seed=_epoch_seed_failure(expected-1,start)
+    # A durable queued candidate is already a committed research unit. It must execute
+    # before budget exhaustion/reconciliation can suppress it. The budget is consumed only
+    # after evaluator/gate evidence creates the corresponding durable history entry.
+    if queued is None and screened>=budget: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',screened,budget)
+    env=dict(os.environ); env['RESEARCH_MAX_ITERATIONS']=str(1 if queued else min(batch,budget-screened)); before=qualifying_bcs(state.get('history',[]),start)
+    expected=int(state.get('next_bc',start)); seed=None if queued else _epoch_seed_failure(expected-1,start)
     if seed is not None: env['RESEARCH_EPOCH_SEED_FAILURE']=str(seed)
+    print(f'CAMPAIGN_START screened={screened}/{budget} batch={env["RESEARCH_MAX_ITERATIONS"]} start_bc={start} queued={bool(queued)}')
     try: rc=subprocess.run(controller_command(),cwd=ROOT,env=env).returncode
     finally:
         if seed is not None and seed.exists(): seed.unlink()
@@ -127,8 +131,8 @@ def main():
     state=load(STATE,{}); _,start,after=reconcile_campaign_state(state,budget)
     if state.get('phase') in {'WAIT_RETRY','HOLD'} or state.get('last_error'):
         state['campaign_budget']=budget; state['campaign_id']=policy['campaign_id']; save(state); reason=state.get('last_error') or state.get('phase')
-        if retry_resume_allowed(state): print(f'CAMPAIGN_CONTINUE_RETRY retry={state.get("retry_count",0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES","3")} reason={reason} screened={screened}/{budget}')
-        else: print(f'CAMPAIGN_HOLD reason={reason} screened={screened}/{budget}')
+        if retry_resume_allowed(state): print(f'CAMPAIGN_CONTINUE_RETRY retry={state.get("retry_count",0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES","3")} reason={reason} screened={after}/{budget}')
+        else: print(f'CAMPAIGN_HOLD reason={reason} screened={after}/{budget}')
         return 0
     history=state.get('history',[]); after_set=qualifying_bcs(history,start); new=after_set-before; state.update(campaign_screened=min(after,budget),campaign_budget=budget,campaign_id=policy['campaign_id'])
     if state.get('terminal'):
@@ -139,5 +143,4 @@ def main():
     if not continuation_allowed(new_screened=len(new),phase=state.get('phase'),last_error=state.get('last_error'),terminal_state=bool(state.get('terminal'))):
         save(state); print(f'CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={after}/{budget}'); return 0
     save(state); print(f'CAMPAIGN_CONTINUE screened={after}/{budget}'); return 0
-
 if __name__=='__main__': raise SystemExit(main())
