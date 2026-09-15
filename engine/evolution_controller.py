@@ -52,7 +52,20 @@ def rank_mutations(parent:Mapping[str,Any],mutations:Sequence[tuple[str,Any]],le
         trials=good+bad
         if not trials:priorities[field]=float("inf");continue
         mean=(good+1.0)/(trials+2.0);bonus=math.sqrt(2.0*math.log(total+1.0)/trials);cg,cb=context[field];ct=cg+cb;contextual=((cg+1.0)/(ct+2.0))*0.35 if ct else 0.0;priorities[field]=mean+bonus+contextual
-    return [(f,v) for f,v,_ in sorted(unique,key=lambda x:(-priorities[x[0]],x[2]))]
+    ordered=sorted(unique,key=lambda x:(-priorities[x[0]],x[2]))
+    # Preserve the mutation frontier: each generation must expose the first
+    # candidate from each coordinate before adaptive field-level ranking can
+    # consume the bounded proposal budget. This prevents a successful field
+    # from starving its next positive frontier value.
+    frontier=[];rest=[];frontier_fields=set()
+    for item in ordered:
+        field=item[0]
+        if field not in frontier_fields:
+            frontier.append(item);frontier_fields.add(field)
+        else:
+            rest.append(item)
+    rest.sort(key=lambda x:(-priorities[x[0]],x[2]))
+    return [(f,v) for f,v,_ in frontier+rest]
 @dataclass(frozen=True)
 class Evaluation:
     status:str; score:float|None; result:Mapping[str,Any]; failure_class:str|None=None
