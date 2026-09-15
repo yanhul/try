@@ -78,6 +78,10 @@ def normalize_hypothesis_id(c):
 
 def fingerprint(c):return structural_key(c)
 
+def discovery_fingerprint(c):
+ """Stable fingerprint for discovery candidates; intentionally shares the authoritative structural identity."""
+ return structural_key(c)
+
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
  for p in sorted(d.glob("BC*.json")) if d.exists() else []:
@@ -94,9 +98,7 @@ def request_candidate(prompt,forbidden):
   try:c=json.loads(raw)
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
   if not isinstance(c,dict):
-   last="invalid_json_shape"
-   feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object, not a list/array/scalar. Return one JSON object.\n"
-   continue
+   last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object, not a list/array/scalar. Return one JSON object.\n";continue
   if c.get("status")=="HOLD":return c
   normalize_structural_types(c);normalize_hypothesis_id(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
   if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
