@@ -46,13 +46,13 @@ def _score(result):
 
 
 def _default():
-    return {"schema_version": 1, "candidates": {}, "families": {}, "events": [], "failures": 0, "regime": "NORMAL", "regime_epoch": 0}
+    return {"schema_version": 1, "candidates": {}, "families": {}, "events": [], "failures": 0, "regime": "NORMAL", "regime_epoch": 0, "last_selected_family": None}
 
 
 def _read(path):
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or data.get("schema_version") != 1: raise ValueError("invalid_search_memory")
-    data.setdefault("candidates", {}); data.setdefault("families", {}); data.setdefault("events", []); data.setdefault("failures", 0); data.setdefault("regime", "NORMAL"); data.setdefault("regime_epoch", 0)
+    data.setdefault("candidates", {}); data.setdefault("families", {}); data.setdefault("events", []); data.setdefault("failures", 0); data.setdefault("regime", "NORMAL"); data.setdefault("regime_epoch", 0); data.setdefault("last_selected_family", None)
     return data
 
 
@@ -78,6 +78,16 @@ def record(candidate, result, decision):
     data["events"].append(entry); data["candidates"][key] = entry; _reaggregate(data); _atomic(data); return entry
 
 
+def note_selection(family, bc=None):
+    """Persist the family chosen for the next search without treating it as evidence."""
+    family = str(family or "").strip()
+    if not family: return None
+    data = load(); data["last_selected_family"] = family
+    data["last_selection_bc"] = int(bc) if bc is not None else None
+    _atomic(data)
+    return family
+
+
 def _reaggregate(data):
     families = {}; failures = 0; events = [event for event in data.get("events", []) if event.get("decision") in STRATEGY_DECISIONS]
     for event in events:
@@ -90,7 +100,10 @@ def _reaggregate(data):
         if event.get("decision") in FAILURE_DECISIONS:
             family = event.get("family") or "discovered_primitive"; recent_failures_by_family[family] = recent_failures_by_family.get(family, 0) + 1
     for family, count in recent_failures_by_family.items(): families.setdefault(family, {"tested": 0, "pass": 0, "fail": 0, "score_sum": 0.0, "recent_failures": 0})["recent_failures"] = count
-    data["families"] = families; data["failures"] = failures; data["regime"] = "STAGNANT" if stagnant(data, 8) else "NORMAL"
+    was_stagnant = data.get("regime") == "STAGNANT"
+    now_stagnant = stagnant(data, 8)
+    data["families"] = families; data["failures"] = failures; data["regime"] = "STAGNANT" if now_stagnant else "NORMAL"
+    if now_stagnant and not was_stagnant: data["regime_epoch"] = int(data.get("regime_epoch", 0)) + 1
 
 
 def _atomic(data):
@@ -134,12 +147,13 @@ def stagnant(data=None, window=8):
 
 
 def rank_families(families, seed):
-    """UCB family ranking with an explicit escape regime after repeated failures."""
+    """UCB family ranking with a deterministic escape regime after repeated failures."""
     data = rebuild_from_artifacts(); families = list(dict.fromkeys(str(f) for f in families if str(f).strip()))
     if not families: return []
-    total = max(1, sum(v.get("tested", 0) for v in data.get("families", {}).values())); is_stagnant = data.get("regime") == "STAGNANT"; ranked = []
+    total = max(1, sum(v.get("tested", 0) for v in data.get("families", {}).values())); is_stagnant = data.get("regime") == "STAGNANT"; last = data.get("last_selected_family"); ranked = []
     for index, family in enumerate(families):
         stats = data["families"].get(family, {"tested": 0, "pass": 0, "fail": 0, "score_sum": 0.0, "recent_failures": 0}); tested = int(stats.get("tested", 0)); mean = float(stats.get("score_sum", 0.0)) / tested if tested else 0.5; exploration = math.sqrt(math.log(total + 2) / (tested + 1)); recent_failures = int(stats.get("recent_failures", 0))
         value = (0.25 * mean + 1.25 * exploration - 0.18 * recent_failures) if is_stagnant else (mean + 0.45 * exploration)
+        if is_stagnant and family == last: value -= 0.75
         value += ((int(seed) + index) % 997) * 1e-9; ranked.append((value, family))
     return [family for _, family in sorted(ranked, reverse=True)]
