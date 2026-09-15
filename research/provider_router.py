@@ -9,6 +9,7 @@ from research.autonomous_hypothesis import write_candidate,validate_candidate,ME
 from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
 from research.hypothesis_novelty import structural_key,novelty_metadata
+from research.frontier_scheduler import select_survivor
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
@@ -66,9 +67,6 @@ def normalize_hypothesis_id(c):
  if not isinstance(spec,dict):return
  c["hypothesis_id"]="mechanism_family";spec["mechanism_family"]=selected_family
 def fingerprint(c):return structural_key(c)
-def discovery_fingerprint(c):
- """Executable discovery identity: authoritative structural key plus executable window."""
- spec=c.get("discovery_spec") or {};return (structural_key(c),spec.get("window"))
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
  for p in sorted(d.glob("BC*.json")) if d.exists() else []:
@@ -120,11 +118,8 @@ def main():
   q=json.loads(queue.read_text(encoding="utf-8"));raw=q.get("candidates",[]) if isinstance(q,dict) else q;survivors=[s for s in raw if isinstance(s,dict) and str(s.get("source_url") or "").strip()];eligible,rejected=eligible_survivors(survivors);non_executable=[s for s in eligible if str(s.get("family") or "").strip() not in EXECUTABLE_MECHANISM_FAMILIES];eligible=[s for s in eligible if str(s.get("family") or "").strip() in EXECUTABLE_MECHANISM_FAMILIES];rejected=list(rejected)+[{"candidate_id":s.get("candidate_id"),"btc_translation_reason":"non_executable_source_family","family":s.get("family")} for s in non_executable]
   if rejected:print("BTC_TRANSLATION_FILTER_REJECTED "+json.dumps({"count":len(rejected),"reasons":sorted({r.get("btc_translation_reason") for r in rejected})},sort_keys=True),flush=True)
   if not eligible:print("PROVIDER_ROUTER_HOLD no_executable_btc_compatible_screen_survivor");return 0
-  families=[]
-  for s in eligible:
-   f=str(s.get("family") or "").strip()
-   if f and f not in families:families.append(f)
-  family=families[(parent-1)%len(families)];selected=next(s for s in eligible if str(s.get("family") or "").strip()==family);selected_family=family
+  selected,rank=select_survivor(eligible,ROOT);selected_family=str(selected.get("family") or "").strip()
+  print(f"FRONTIER_PRIORITY family={selected_family} trials={rank.trials} successes={rank.successes} failures={rank.failures} priority={rank.priority}",flush=True)
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected);prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-200:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. A threshold/window change alone is forbidden as novelty. If the selected mechanism has already been structurally tested and no genuinely different OHLCV expression is supported, return HOLD rather than fabricate novelty.")
  try:
