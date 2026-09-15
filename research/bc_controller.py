@@ -26,12 +26,64 @@ def gate(bc):
 def write_queue(q): QUEUE.write_text(json.dumps(q,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 def used_ids(s): return sorted({str(x['hypothesis_id']) for x in s.get('history',[]) if x.get('hypothesis_id')})
 def regenerate(bc,parent,failure,s):
+ """Generate from a durable discovery frontier, not one disposable survivor.
+
+    Provider selection is currently deterministic by family. Rotate the frontier
+    between provider attempts so one rejected/unsupported survivor cannot consume
+    the whole BC. The discovery queue is restored byte-for-byte after each attempt.
+    Provider-wide failures are held immediately; only translation/contract failures
+    advance to the next executable family.
+    """
  output=CANDIDATE_DIR/f'BC{bc}.json'; output.parent.mkdir(parents=True,exist_ok=True)
  if output.exists(): output.unlink()
- env=os.environ.copy(); used=','.join(used_ids(s)); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=used,RESEARCH_PRIOR_HYPOTHESES=used)
- rc,out=run([sys.executable,'research/provider_router.py'],env=env)
- if 'PROVIDER_ROUTER_HOLD' in out or ('PROVIDER_FAIL' in out and 'PROVIDER_SELECTED' not in out): return False
- return rc==0 and output.exists()
+ discovery=ROOT/'research'/'discovery'/'research_queue.json'
+ if not discovery.exists(): return False
+ original_text=discovery.read_text(encoding='utf-8')
+ try:
+  payload=json.loads(original_text); raw=payload.get('candidates',[]) if isinstance(payload,dict) else payload
+  if not isinstance(raw,list): return False
+  families=[]
+  for item in raw:
+   if not isinstance(item,dict) or not str(item.get('source_url') or '').strip(): continue
+   family=str(item.get('family') or '').strip()
+   if family and family not in families: families.append(family)
+  # Only executable families can reach grounding. Keep the order supplied by discovery.
+  executable=[]
+  try:
+   from research.autonomous_hypothesis import EXECUTABLE_MECHANISM_FAMILIES
+   executable=[f for f in families if f in EXECUTABLE_MECHANISM_FAMILIES]
+  except Exception:
+   executable=families
+  if not executable: return False
+  used=','.join(used_ids(s)); last_reason=''
+  for offset,family in enumerate(executable):
+   if output.exists(): output.unlink()
+   ordered=[]
+   # Put the requested family first while preserving every other survivor and their lineage.
+   for f in executable[offset:]+executable[:offset]:
+    ordered.extend([x for x in raw if isinstance(x,dict) and str(x.get('family') or '').strip()==f])
+   ordered.extend([x for x in raw if isinstance(x,dict) and str(x.get('family') or '').strip() not in executable])
+   rotated=dict(payload) if isinstance(payload,dict) else ordered
+   if isinstance(payload,dict): rotated['candidates']=ordered
+   else: rotated=ordered
+   discovery.write_text(json.dumps(rotated,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+   env=os.environ.copy(); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=used,RESEARCH_PRIOR_HYPOTHESES=used)
+   rc,out=run([sys.executable,'research/provider_router.py'],env=env)
+   if rc==0 and output.exists() and 'PROVIDER_SELECTED' in out:
+    print(f'CONTROLLER_TRANSLATION_FRONTIER_SELECTED BC{bc} family={family} offset={offset}')
+    return True
+   # Provider-wide failures must not be hidden behind a different survivor.
+   low=out.lower()
+   provider_wide=any(x in low for x in ('provider_not_configured','provider_rate_limited','provider_http_','provider_request_failed','gemini_api_key','401','403'))
+   if provider_wide:
+    s['provider_failure_reason']=out.strip()[-2000:]; return False
+   last_reason=out.strip()[-2000:]
+   print(f'CONTROLLER_TRANSLATION_REJECTED BC{bc} family={family} offset={offset}')
+  s['translation_frontier_exhausted']=True; s['translation_frontier_last_reason']=last_reason
+  return False
+ finally:
+  try: discovery.write_text(original_text,encoding='utf-8')
+  except OSError: pass
 def normalize_queue(s):
  q=load(QUEUE,[]); expected=int(s.get('next_bc',int(s.get('last_bc') or 0)+1)); start=int(s.get('campaign_start_bc') or 1)
  if expected<start: expected=start; s['next_bc']=expected; save(s)
@@ -117,7 +169,10 @@ def main():
    failure=epoch_seed_failure(parent,int(s.get('campaign_start_bc') or 1))
    if failure is None: return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
-  if not regenerate(expected,parent,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',expected)
+  if not regenerate(expected,parent,failure,s):
+   if s.get('provider_failure_reason'): return hold(s,'HOLD_PROVIDER_'+s['provider_failure_reason'][-400:].replace('\n',' '),expected)
+   if s.get('translation_frontier_exhausted'): return hold(s,'HOLD_TRANSLATION_FRONTIER_EXHAUSTED',expected,retryable=False)
+   return hold(s,'HOLD_PROVIDER_ROUTER',expected)
   candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',expected); print(f'CONTROLLER_CANDIDATE_QUEUED BC{expected}'); return 0
  q=normalize_queue(s)
  if not q: return hold(s,'HOLD_EMPTY_QUEUE',s.get('next_bc'))
@@ -152,7 +207,10 @@ def main():
  write_queue([]); s['history'].append({'bc':bc,'decision':REJECT,'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id'],'candidate_hash':c.get('candidate_hash')}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
  if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
  nxt=bc+1; checkpoint(s,'DECIDE',nxt)
- if not regenerate(nxt,bc,failure,s): return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
+ if not regenerate(nxt,bc,failure,s):
+  if s.get('provider_failure_reason'): return hold(s,'HOLD_PROVIDER_'+s['provider_failure_reason'][-400:].replace('\n',' '),nxt)
+  if s.get('translation_frontier_exhausted'): return hold(s,'HOLD_TRANSLATION_FRONTIER_EXHAUSTED',nxt,retryable=False)
+  return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
  candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
  print(f'CONTROLLER_SCHEDULER_STOP iterations={MAX} terminal=false'); checkpoint(s,'YIELD',s.get('next_bc')); print('CONTROLLER_AUTO_RESUME scheduler_yield'); return 0
 if __name__=='__main__': raise SystemExit(main())
