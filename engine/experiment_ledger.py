@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 STATUSES = frozenset({"PROPOSED", "RUNNING", "SUCCEEDED", "FAILED", "CRASHED", "INVALID", "REJECTED", "RANKED", "PROMOTED"})
+TERMINAL_EVALUATION_STATUSES = frozenset({"SUCCEEDED", "FAILED", "CRASHED", "INVALID", "REJECTED"})
 
 def _canonical(value: Mapping[str, Any]) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
@@ -34,17 +35,13 @@ class ExperimentRecord:
     evidence_refs: tuple[str, ...] = ()
     timestamp: str = ""
     def __post_init__(self) -> None:
-        if not self.experiment_id.strip() or not self.hypothesis_id.strip():
-            raise ValueError("experiment_id and hypothesis_id are required")
-        if self.status not in STATUSES:
-            raise ValueError(f"invalid experiment status: {self.status}")
-        if not self.timestamp:
-            object.__setattr__(self, "timestamp", datetime.now(timezone.utc).isoformat())
+        if not self.experiment_id.strip() or not self.hypothesis_id.strip(): raise ValueError("experiment_id and hypothesis_id are required")
+        if self.status not in STATUSES: raise ValueError(f"invalid experiment status: {self.status}")
+        if not self.timestamp: object.__setattr__(self, "timestamp", datetime.now(timezone.utc).isoformat())
 
 class JsonlExperimentLedger:
     """Append-only JSONL ledger. Existing records are never rewritten."""
-    def __init__(self, path: str | Path):
-        self.path = Path(path); self.path.parent.mkdir(parents=True, exist_ok=True)
+    def __init__(self, path: str | Path): self.path = Path(path); self.path.parent.mkdir(parents=True, exist_ok=True)
     def append(self, record: ExperimentRecord) -> str:
         payload = asdict(record); payload["evidence_refs"] = list(record.evidence_refs); payload["record_hash"] = identity_hash(payload)
         with self.path.open("a", encoding="utf-8") as f:
@@ -57,5 +54,16 @@ class JsonlExperimentLedger:
         for record in reversed(self.read()):
             if record.get("experiment_id") == experiment_id: return record
         return None
+    def terminal_evaluation(self, experiment_id: str) -> dict[str, Any] | None:
+        for record in reversed(self.read()):
+            if record.get("experiment_id") == experiment_id and record.get("status") in TERMINAL_EVALUATION_STATUSES: return record
+        return None
+    def unique_terminal_evaluations(self) -> dict[str,dict[str,Any]]:
+        """One terminal evaluation per experiment id; replay/rank events cannot inflate stats."""
+        out={}
+        for record in self.read():
+            if record.get("status") in TERMINAL_EVALUATION_STATUSES and record.get("experiment_id"):
+                out[str(record["experiment_id"])]=record
+        return out
 
-__all__ = ["STATUSES", "ExperimentRecord", "JsonlExperimentLedger", "identity_hash"]
+__all__ = ["STATUSES", "TERMINAL_EVALUATION_STATUSES", "ExperimentRecord", "JsonlExperimentLedger", "identity_hash"]
