@@ -30,19 +30,16 @@ class Candidate:
     config: Mapping[str,Any]; parent_id: str|None=None
     @property
     def id(self)->str:return candidate_id(self.config)
-@dataclass(frozen=True)
-class Evaluation:
-    status:str; score:float|None; result:Mapping[str,Any]; failure_class:str|None=None
 def _mutation_field(parent:Mapping[str,Any],candidate:Mapping[str,Any])->str|None:
     changed=[k for k in set(parent)|set(candidate) if parent.get(k)!=candidate.get(k)]; allowed=[k for k in changed if k in ALLOWED_MUTATIONS]; return allowed[0] if len(allowed)==1 else None
 def rank_mutations(parent:Mapping[str,Any],mutations:Sequence[tuple[str,Any]],ledger:JsonlExperimentLedger,failure_class:str|None=None)->list[tuple[str,Any]]:
     unique=[];seen=set()
-    for field,value in mutations:
+    for index,(field,value) in enumerate(mutations):
         if field not in ALLOWED_MUTATIONS:continue
         key=json.dumps([field,value],sort_keys=True,ensure_ascii=False,separators=(",",":"))
-        if key not in seen:seen.add(key);unique.append((field,value))
-    if len(unique)<2:return unique
-    stats={field:[0.0,0.0] for field,_ in unique};context={field:[0.0,0.0] for field,_ in unique}
+        if key not in seen:seen.add(key);unique.append((field,value,index))
+    if len(unique)<2:return [(f,v) for f,v,_ in unique]
+    stats={field:[0.0,0.0] for field,_,_ in unique};context={field:[0.0,0.0] for field,_,_ in unique}
     for record in ledger.unique_terminal_evaluations().values():
         result=record.get("result") or {};config=result.get("candidate")
         if not isinstance(config,Mapping):continue
@@ -55,7 +52,10 @@ def rank_mutations(parent:Mapping[str,Any],mutations:Sequence[tuple[str,Any]],le
         trials=good+bad
         if not trials:priorities[field]=float("inf");continue
         mean=(good+1.0)/(trials+2.0);bonus=math.sqrt(2.0*math.log(total+1.0)/trials);cg,cb=context[field];ct=cg+cb;contextual=((cg+1.0)/(ct+2.0))*0.35 if ct else 0.0;priorities[field]=mean+bonus+contextual
-    return sorted(unique,key=lambda x:(-priorities[x[0]],x[0],json.dumps(x[1],sort_keys=True,ensure_ascii=False)))
+    return [(f,v) for f,v,_ in sorted(unique,key=lambda x:(-priorities[x[0]],x[2]))]
+@dataclass(frozen=True)
+class Evaluation:
+    status:str; score:float|None; result:Mapping[str,Any]; failure_class:str|None=None
 class EvolutionController:
     def __init__(self,ledger:JsonlExperimentLedger,evaluator:Callable[[Mapping[str,Any]],Evaluation]):self.ledger=ledger;self.evaluator=evaluator
     def propose(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],limit:int=8,failure_class:str|None=None)->list[Candidate]:
