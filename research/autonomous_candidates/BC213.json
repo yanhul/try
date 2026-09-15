@@ -1,0 +1,28 @@
+{
+  "bc": 213,
+  "candidate_hash": "d219d087333653829b7280aa0957cd76ea82af69574518ad23922585208cabca",
+  "conceptual_change": "Transitioning from liquidity sweeps to a Market Structure Shift (MSS) verification using relative price action against the rolling mean, specifically detecting when the low of a candle diverges from the 50-period rolling mean, indicative of a localized institutional order block rejection.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 0.005,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|low|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 50
+  },
+  "parent_bc": 212,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
