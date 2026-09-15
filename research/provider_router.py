@@ -8,7 +8,7 @@ from research.autonomous_hypothesis import write_candidate,validate_candidate,ME
 from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
 from research.hypothesis_novelty import structural_key,novelty_metadata
-from research.search_memory import rank_families
+from research.search_memory import rank_families,note_selection
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
@@ -104,7 +104,7 @@ def main():
   for s in eligible:
    f=str(s.get("family") or "").strip()
    if f and f not in families:families.append(f)
-  ranked=rank_families(families,seed=bc);selected_family=ranked[0];selected=next(s for s in eligible if str(s.get("family") or "").strip()==selected_family)
+  ranked=rank_families(families,seed=bc);selected_family=ranked[0];selected=next(s for s in eligible if str(s.get("family") or "").strip()==selected_family);note_selection(selected_family,bc)
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));payload=json.dumps([list(x) for x in sorted(forbidden,key=str)],separators=(",",":"));prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{json.dumps(selected,sort_keys=True,separators=(",",":"))}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
  try:
