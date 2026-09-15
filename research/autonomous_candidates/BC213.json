@@ -1,14 +1,15 @@
 {
   "bc": 213,
-  "candidate_hash": "d219d087333653829b7280aa0957cd76ea82af69574518ad23922585208cabca",
-  "conceptual_change": "Transitioning from liquidity sweeps to a Market Structure Shift (MSS) verification using relative price action against the rolling mean, specifically detecting when the low of a candle diverges from the 50-period rolling mean, indicative of a localized institutional order block rejection.",
+  "candidate_hash": "22dbf2e5cb0112b1e9522a0f3c23765011a31c5ee7fa4440b8c8d6035c4bd240",
+  "conceptual_change": "Incorporate a liquidity sweep confirmation mechanism by comparing current low-to-low volatility against a 50-period rolling standard deviation to identify localized stop-run liquidity events as per the smc_ict framework.",
   "discovery_spec": {
-    "direction": "above",
+    "direction": "below",
     "left": "low",
     "mechanism_family": "smc_ict",
+    "numeric_finite_threshold": 0.05,
     "operator": "difference",
-    "right": "rolling_mean",
-    "threshold": 0.005,
+    "right": "rolling_std",
+    "threshold": 0.05,
     "window": 50
   },
   "evidence_sources": [
@@ -16,11 +17,11 @@
   ],
   "hypothesis_id": "mechanism_family",
   "is_testable": true,
-  "novelty_key": "smc_ict|difference|low|rolling_mean|above",
+  "novelty_key": "smc_ict|difference|low|rolling_std|below",
   "novelty_type": "structural_mechanism",
   "oos_selection_used": false,
   "parameterization": {
-    "threshold": 0.005,
+    "threshold": 0.05,
     "window": 50
   },
   "parent_bc": 212,
