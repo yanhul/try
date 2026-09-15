@@ -1,0 +1,27 @@
+{
+  "bc": 218,
+  "candidate_hash": "0ebcf479c6e408eeb4827707154645dba1b4670b1e146f55f1784fadace8dc5a",
+  "conceptual_change": "Shift from relative close-to-mean ratios to a rank-based momentum approach on volume_ratio to identify periods of significant institutional participation, replacing static threshold comparisons with relative ranking.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rank",
+    "threshold": 0.85,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rank|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": 50
+  },
+  "parent_bc": 217,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
