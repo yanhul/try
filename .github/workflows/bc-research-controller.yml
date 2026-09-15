@@ -2,7 +2,7 @@ name: BC Research Controller
 
 # Durable bounded campaign: fixed policy + durable controller resume.
 # Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
-# Manual trigger checkpoint: execute persisted non-terminal lifecycle.
+# Each invocation executes at most one BC and persists before the next dispatch.
 on:
   workflow_dispatch:
   schedule:
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      RESEARCH_MAX_ITERATIONS: 8
+      RESEARCH_MAX_ITERATIONS: 1
       RESEARCH_MAX_RESUME_RETRIES: 3
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini
@@ -102,21 +102,11 @@ jobs:
           set -euo pipefail
           export GITHUB_OUTPUT_PATH="$GITHUB_OUTPUT"
           python - <<'PY'
-          import os
-          import json
+          import os,json
           from pathlib import Path
-          from research.campaign_controller import _start_new_campaign_epoch, reconcile_campaign_state
-          policy=json.loads(Path('research/campaign_policy.json').read_text())
-          state_path=Path('research/bc_lifecycle_state.json')
-          state=json.loads(state_path.read_text()) if state_path.exists() else {}
-          budget=int(policy['max_screening_candidates'])
-          _start_new_campaign_epoch(state, policy)
-          _, start, screened=reconcile_campaign_state(state, budget)
-          exhausted=bool(state.get('campaign_terminal')) or screened >= budget
-          Path(os.environ['GITHUB_OUTPUT_PATH']).open('a').write(f"exhausted={'true' if exhausted else 'false'}\n")
-          print(f"CAMPAIGN_BUDGET_{'EXHAUSTED' if exhausted else 'AVAILABLE'} start_bc={start} screened={screened}/{budget}")
-          if exhausted:
-              state_path.write_text(json.dumps(state, indent=2, sort_keys=True)+'\n')
+          from research.campaign_controller import _start_new_campaign_epoch,reconcile_campaign_state
+          policy=json.loads(Path('research/campaign_policy.json').read_text()); state_path=Path('research/bc_lifecycle_state.json'); state=json.loads(state_path.read_text()) if state_path.exists() else {}; budget=int(policy['max_screening_candidates']); _start_new_campaign_epoch(state,policy); _,start,screened=reconcile_campaign_state(state,budget); exhausted=bool(state.get('campaign_terminal')) or screened>=budget; Path(os.environ['GITHUB_OUTPUT_PATH']).open('a').write(f"exhausted={'true' if exhausted else 'false'}\n"); print(f"CAMPAIGN_BUDGET_{'EXHAUSTED' if exhausted else 'AVAILABLE'} start_bc={start} screened={screened}/{budget}");
+          if exhausted: state_path.write_text(json.dumps(state,indent=2,sort_keys=True)+'\n')
           PY
       - name: Broad public-source discovery
         if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
@@ -140,7 +130,7 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CAMPAIGN_CONTINUE|CONTROLLER_NEXT BC|CONTROLLER_AUTO_RESUME' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY|WAIT_RETRY|scheduler_yield' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq 'CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_AUTO_RESUME|scheduler_yield' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY|WAIT_RETRY|scheduler_yield' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
           exit "$rc"
       - name: Persist durable lineage
         if: always()
@@ -164,10 +154,7 @@ jobs:
           for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
           if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
           if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
-          if ! git push origin HEAD:main; then
-            echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2
-            exit 1
-          fi
+          if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
         if: ${{ steps.controller.outputs.continue == 'true' }}
