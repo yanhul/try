@@ -59,12 +59,12 @@ def _mutation_field(parent: Mapping[str,Any], candidate: Mapping[str,Any]) -> st
     allowed=[k for k in changed if k in ALLOWED_MUTATIONS]
     return allowed[0] if len(allowed)==1 else None
 
-def rank_mutations(parent: Mapping[str,Any], mutations: Sequence[tuple[str,Any]], ledger: JsonlExperimentLedger) -> list[tuple[str,Any]]:
+def rank_mutations(parent: Mapping[str,Any], mutations: Sequence[tuple[str,Any]], ledger: JsonlExperimentLedger, failure_class: str|None=None) -> list[tuple[str,Any]]:
     """Allocate mutation budget from durable terminal outcomes.
 
-    This is a search scheduler, not a promotion gate. Every mutation keeps an
-    exploration floor; UCB only orders otherwise valid mutations. Ambiguous
-    multi-field historical records are ignored rather than guessed.
+    When the parent has a known failure class, matching historical outcomes
+    receive extra weight. This is contextual scheduling only; it cannot
+    promote or reject a research candidate.
     """
     unique=[]; seen=set()
     for field,value in mutations:
@@ -76,33 +76,37 @@ def rank_mutations(parent: Mapping[str,Any], mutations: Sequence[tuple[str,Any]]
     for record in ledger.read():
         eid=str(record.get("experiment_id") or "")
         if eid: latest[eid]=record
-    stats={field:[0,0] for field,_ in unique}
+    stats={field:[0.0,0.0] for field,_ in unique}
+    context={field:[0.0,0.0] for field,_ in unique}
     for record in latest.values():
         if record.get("status") not in EVALUATION_STATUSES: continue
         result=record.get("result") or {}; config=result.get("candidate")
         if not isinstance(config,Mapping): continue
         field=_mutation_field(parent,config)
         if field not in stats: continue
-        if record.get("status")=="SUCCEEDED": stats[field][0]+=1
-        else: stats[field][1]+=1
+        good=record.get("status")=="SUCCEEDED"
+        stats[field][0 if good else 1]+=1
+        if failure_class and str(record.get("failure_class") or "") == failure_class:
+            context[field][0 if good else 1]+=1
     total=sum(g+b for g,b in stats.values())
     priorities={}
     for field,(good,bad) in stats.items():
         trials=good+bad
-        if trials==0: priorities[field]=float("inf")
-        else:
-            mean=(good+1.0)/(trials+2.0)
-            bonus=math.sqrt(2.0*math.log(total+1.0)/trials)
-            priorities[field]=mean+bonus
-    # Stable tie-break makes resume/replay deterministic and avoids RNG state.
+        if trials==0: priorities[field]=float("inf"); continue
+        mean=(good+1.0)/(trials+2.0)
+        bonus=math.sqrt(2.0*math.log(total+1.0)/trials)
+        cgood,cbad=context[field]; ctrials=cgood+cbad
+        # Context is a bounded additive bonus, never an authority signal.
+        contextual=((cgood+1.0)/(ctrials+2.0))*0.35 if ctrials else 0.0
+        priorities[field]=mean+bonus+contextual
     return sorted(unique,key=lambda item:(-priorities[item[0]], item[0], json.dumps(item[1],sort_keys=True,ensure_ascii=False)))
 
 class EvolutionController:
     """Generate, evaluate and emit a non-authoritative search preference."""
     def __init__(self,ledger:JsonlExperimentLedger,evaluator:Callable[[Mapping[str,Any]],Evaluation]): self.ledger=ledger; self.evaluator=evaluator
-    def propose(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],limit:int=8)->list[Candidate]:
+    def propose(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],limit:int=8,failure_class:str|None=None)->list[Candidate]:
         if limit<1: raise ValueError("limit must be positive")
-        ordered=rank_mutations(parent.config,mutations,self.ledger)
+        ordered=rank_mutations(parent.config,mutations,self.ledger,failure_class=failure_class)
         seen=set(); out=[]
         for field,value in ordered:
             child=Candidate(mutate(parent.config,field,value),parent.id)
@@ -126,21 +130,19 @@ class EvolutionController:
         self.ledger.append(ExperimentRecord(exp_id,hypothesis_id,evaluation.status,candidate.parent_id,configuration_identity=exp_id,result=dict(evaluation.result),failure_class=evaluation.failure_class))
         return evaluation
     def rank(self,candidate:Candidate,evaluation:Evaluation,baseline:Evaluation,hypothesis_id:str="astra")->str:
-        """Return PREFER/REJECT as a search signal; never PROMOTE."""
         for record in reversed(self.ledger.read()):
             if record.get("experiment_id")==candidate.id and record.get("status")=="RANKED": return str(record.get("decision") or "REJECT")
         preference="PREFER" if evaluation.status=="SUCCEEDED" and baseline.status=="SUCCEEDED" and evaluation.score is not None and baseline.score is not None and evaluation.score>baseline.score else "REJECT"
         self.ledger.append(ExperimentRecord(candidate.id,hypothesis_id,"RANKED",candidate.parent_id,configuration_identity=candidate.id,result={"score":evaluation.score,"baseline_score":baseline.score},decision=preference))
         return preference
-    def run_generation(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],baseline:Evaluation,limit:int=8,hypothesis_id:str="astra")->Candidate:
-        candidates=self.propose(parent,mutations,limit); best=parent; best_score=baseline.score if baseline.status=="SUCCEEDED" else None
+    def run_generation(self,parent:Candidate,mutations:Sequence[tuple[str,Any]],baseline:Evaluation,limit:int=8,hypothesis_id:str="astra",failure_class:str|None=None)->Candidate:
+        candidates=self.propose(parent,mutations,limit,failure_class=failure_class); best=parent; best_score=baseline.score if baseline.status=="SUCCEEDED" else None
         for candidate in candidates:
             evaluation=self.evaluate(candidate,hypothesis_id); preference=self.rank(candidate,evaluation,baseline,hypothesis_id)
             if preference=="PREFER" and evaluation.score is not None and (best_score is None or evaluation.score>best_score): best,best_score=candidate,evaluation.score
         return best
     @staticmethod
     def compare(candidate:Evaluation,baseline:Evaluation)->str:
-        """Compatibility ranking signal only; callers must not treat it as promotion authority."""
         if candidate.status!="SUCCEEDED" or baseline.status!="SUCCEEDED" or candidate.score is None or baseline.score is None: return "REJECT"
         return "PREFER" if candidate.score>baseline.score else "REJECT"
 
