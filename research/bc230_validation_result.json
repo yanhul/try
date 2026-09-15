@@ -1,5 +1,5 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "bc": 230,
   "parent_bc": 229,
   "hypothesis_id": "mechanism_family",
@@ -24,7 +24,11 @@
     "stop_fraction": 0.01,
     "reward_multiple": 2.0,
     "cost_model_status": "AVAILABLE",
-    "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
+    "validation_basis": "NET_REQUIRED_FOR_PROMOTION",
+    "min_validation_trades": 20,
+    "min_validation_profit_factor": 1.05,
+    "min_validation_total_return": 0.0,
+    "max_validation_drawdown": 0.3
   },
   "candidate_universe": "all_bars",
   "cost_model": {
@@ -87,6 +91,7 @@
     }
   },
   "gross_validation_passed": true,
+  "validation_gate_reasons": [],
   "net_validation_gate": "PASS",
   "validation_passed": true,
   "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
