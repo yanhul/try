@@ -49,7 +49,9 @@ def build_evaluator(data_path: str | Path):
             if not isinstance(spec, dict) or not actual_family:
                 return Evaluation("INVALID", None, {"error": "UNEXECUTABLE_MECHANISM_SPEC"}, "INVALID_SPEC")
             mechanism_spec = dict(spec)
-            mechanism_spec.setdefault("mechanism_family", actual_family)
+            # The controller-approved candidate_family is authoritative for this
+            # mutation; do not allow a stale nested spec to silently win.
+            mechanism_spec["mechanism_family"] = actual_family
             predicate = mechanism_predicate(mechanism_spec)
             universe = "reference_event_ledger" if actual_family in EVENT_MECHANISMS else "all_bars"
         elif hid in HYPOTHESES:
