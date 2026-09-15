@@ -6,19 +6,23 @@ on:
     paths:
       - 'aios/**'
       - 'engine/aios_evolution.py'
+      - 'engine/aios_boundary.py'
       - 'engine/research_pipeline.py'
       - 'tests/test_aios_evolution_adapter.py'
       - 'research/AIOS_RESEARCH_CONTRACT.md'
       - 'research/aios_conformance.py'
+      - 'AIOS_BOUNDARY.md'
       - '.github/workflows/aios-central-conformance.yml'
   pull_request:
     paths:
       - 'aios/**'
       - 'engine/aios_evolution.py'
+      - 'engine/aios_boundary.py'
       - 'engine/research_pipeline.py'
       - 'tests/test_aios_evolution_adapter.py'
       - 'research/AIOS_RESEARCH_CONTRACT.md'
       - 'research/aios_conformance.py'
+      - 'AIOS_BOUNDARY.md'
       - '.github/workflows/aios-central-conformance.yml'
 
 permissions:
@@ -44,6 +48,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Install central runner dependency
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
 
       - name: Verify TRY to AIOS evolution lifecycle
         env:
