@@ -1,0 +1,25 @@
+name: Search Memory Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'research/search_memory.py'
+      - 'research/provider_router.py'
+      - 'tests/test_search_memory.py'
+
+jobs:
+  search-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip install --upgrade pytest
+      - name: Run search-memory regression tests
+        run: python -m pytest -q tests/test_search_memory.py
