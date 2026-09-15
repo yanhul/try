@@ -433,6 +433,11 @@
     },
     {
       "source": "arxiv",
+      "query": "crypto options volatility skew gamma trading",
+      "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/sw6g0n5jnjMnCvDR2jLjO+GjEtA</id>\n  <title>arXiv Query: search_query=all:crypto OR all:options OR all:volatility OR all:skew OR all:gamma OR all:trading&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-15T05:28:15Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:crypto+OR+(all:options+OR+(all:volatility+OR+(all:skew+OR+(all:gamma+OR+all:trading))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>120140</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0611030v1</id>\n    <title>Underground Water Cherenkov Muon Detector Array with the Tibet Air Shower Array for Gamma-Ray Astronomy in the 100 TeV Region</title>\n    <updated>2006-11-01T18:24:49Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0611030v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0611030v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We propose to build a large water-Cherenkov-type muon-detector array (Tibet MD array) around the 37,000 m$^{2}$ Tibet air shower array (Tibet AS array) already constructed at 4,300 m above sea level in Tibet, China. Each muon detector is a waterproof concrete pool, 6 m wide $\\times$ 6 m long $\\times$ 1.5 m deep in size, equipped with a 20 inch-in-diameter PMT. The Tibet MD array consists of 240 muon detectors set up 2.5 m underground. Its total effective area will be 8,640 m$^{2}$ for muon detection. The Tibet MD array will significantly improve gamma-ray sensitivity of the Tibet AS array in the 100 TeV region (10-1000 TeV) by means of gamma/hadron separation based on counting the number of muons accompanying an air shower. The Tibet AS+MD array will have the sensitivity to gamma rays in the 100 TeV region by an order of magnitude better than any other previous existing detectors in the world.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2006-11-01T18:24:49Z</published>\n    <arxiv:comment>4 pages, 4 figures, Accepted for publication in Astrophysics and Space Science, proceeding of \"The Multi-Messenger Approach to High-Energy Gamma-Ray Sources\", Barcelona, July 4-7, 2006</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Astrophys.Space Sci.309:435-439,2007</arxiv:journal_ref>\n    <author>\n      <name> The Tibet AS Gamma Collaboration</name>\n    </author>\n    <author>\n      <name>M. Amenomori</name>\n    </author>\n    <arxiv:doi>10.1007/s10509-007-9395-x</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1007/s10509-007-9395-x\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2601.07991v2</id>\n    <title>Optimal Option Portfolios for Skew-Elliptical t Returns</title>\n    <updated>2026-04-29T21:46:26Z</updated>\n    <link href=\"https://arxiv.org/abs/2601.07991v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2601.07991v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper explores option portfolio optimization when the underlying returns are skew-elliptical t-distributed. We use the variance and value at risk (VaR) to measure portfolio risk. The novelty of our work is the departure from the traditional normal returns setting, allowing investors to capture both heavy-tailed and skewed market dynamics. We provide explicit portfolio weights for the variance and VaR approximation. Our second contribution is the numerical representation of portfolio weights, obtained from numerical optimization for better VaR approximations. The effect of skewness on the portfolio weights is quantified by comparing our optimal skew t weights with those generated in the Student t setting. We also find that, as expected, a better VaR approximation risk measure yields optimal portfolio weights which are more different than the variance optimal weights.</summary>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-01-12T20:43:18Z</published>\n    <arxiv:comment>Keywords. Options, Optimal Portfolios, Value at Risk, Skew-Elliptical t Returns 18 pages, 4 figures</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.PM\"/>\n    <author>\n      <name>Kyle Sung</name>\n    </author>\n    <author>\n      <name>Traian A. Pirvu</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1604.04608v2</id>\n    <title>Super-hedging American Options with Semi-static Trading Strategies under Model Uncertainty</title>\n    <updated>2017-06-26T20:38:50Z</updated>\n    <link href=\"https://arxiv.org/abs/1604.04608v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1604.04608v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We consider the super-hedging price of an American option in a discrete-time market in which stocks are available for dynamic trading and European options are available for static trading. We show that the super-hedging price $π$ is given by the supremum over the prices of the American option under randomized models. That is, $π=\\sup_{(c_i,Q_i)_i}\\sum_ic_iφ^{Q_i}$, where $c_i \\in \\mathbb{R}_+$ and the martingale measure $Q^i$ are chosen such that $\\sum_i c_i=1$ and $\\sum_i c_iQ_i$ prices the European options correctly, and $φ^{Q_i}$ is the price of the American option under the model $Q_i$. Our result generalizes the example given in ArXiv:1604.02274 that the highest model based price can be considered as a randomization over models.</summary>\n    <category term=\"q-fin.MF\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.PR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2016-04-15T19:28:36Z</published>\n    <arxiv:comment>Final version. To appear in the International Journal of Theoretical and Applied Finance. Keywords: American options, super-hedging, model uncertainty, semi-static trading strategies, randomized models</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.MF\"/>\n    <author>\n      <name>Erhan Bayraktar</name>\n    </author>\n    <author>\n      <name>Zhou Zhou</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1502.06681v5</id>\n    <title>Arbitrage, hedging and utility maximization using semi-static trading strategies with American options</title>\n    <updated>2016-02-08T18:13:43Z</updated>\n    <link href=\"https://arxiv.org/abs/1502.06681v5\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1502.06681v5\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We consider a financial market where stocks are available for dynamic trading, and European and American options are available for static trading (semi-static trading strategies). We assume that the American options are infinitely divisible, and can only be bought but not sold. In the first part of the paper, we work within the framework without model ambiguity. We first get the fundamental theorem of asset pricing (FTAP). Using the FTAP, we get the dualities for the hedging prices of European and American options. Based on the hedging dualities, we also get the duality for the utility maximization. In the second part of the paper, we consider the market which admits non-dominated model uncertainty. We first establish the hedging result, and then using the hedging duality we further get the FTAP. Due to the technical difficulty stemming from the non-dominancy of the probability measure set, we use a discretization technique and apply the minimax theorem.</summary>\n    <category term=\"q-fin.MF\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.OC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.PR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2015-02-24T03:15:42Z</published>\n    <arxiv:comment>Final version. To appear in the Annals of Applied Probability. Keywords: Fundamental theorem of asset pricing, hedging duality, utility maximization, semi-static trading strategies, American options, model uncertainty</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.MF\"/>\n    <author>\n      <name>Erhan Bayraktar</name>\n    </author>\n    <author>\n      <name>Zhou Zhou</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1409.0697v4</id>\n    <title>A lattice framework for pricing display advertisement options with the stochastic volatility underlying model</title>\n    <updated>2015-12-09T23:08:21Z</updated>\n    <link href=\"https://arxiv.org/abs/1409.0697v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1409.0697v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Advertisement (abbreviated ad) options are a recent development in online advertising. Simply, an ad option is a first look contract in which a publisher or search engine grants an advertiser a right but not obligation to enter into transactions to purchase impressions or clicks from a specific ad slot at a pre-specified price on a specific delivery date. Such a structure provides advertisers with more flexibility of their guaranteed deliveries. The valuation of ad options is an important topic and previous studies on ad options pricing have been mostly restricted to the situations where the underlying prices follow a geometric Brownian motion (GBM). This assumption is reasonable for sponsored search; however, some studies have also indicated that it is not valid for display advertising. In this paper, we address this issue by employing a stochastic volatility (SV) model and discuss a lattice framework to approximate the proposed SV model in option pricing. Our developments are validated by experiments with real advertising data: (i) we find that the SV model has a better fitness over the GBM model; (ii) we validate the proposed lattice model via two sequential Monte Carlo simulation methods; (iii) we demonstrate that advertisers are able to flexibly manage their guaranteed deliveries by using the proposed options, and publishers can have an increased revenue when some of their inventories are sold via ad options.</summary>\n    <category term=\"cs.GT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-09-02T13:20:58Z</published>\n    <arxiv:comment>Bowei Chen and Jun Wang. A lattice framework for pricing display advertisement options with the stochastic volatility underlying model. Electronic Commerce Research and Applications, 2015, Volume 14, Issue 6, pages 465-479, ISSN: 1567-4223</arxiv:comment>\n    <arxiv:primary_category term=\"cs.GT\"/>\n    <author>\n      <name>Bowei Chen</name>\n    </author>\n    <author>\n      <name>Jun Wang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2001.02404v4</id>\n    <title>Nonparametric Pricing and Hedging of Volatility Swaps in Stochastic Volatility Models</title>\n    <updated>2020-04-03T15:50:16Z</updated>\n    <link href=\"https://arxiv.org/abs/2001.02404v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2001.02404v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this paper the zero vanna implied volatility approximation for the price of freshly minted volatility swaps is generalised to seasoned volatility swaps. We also derive how volatility swaps can be hedged using a strip of vanilla options with weights that are directly related to trading intuition. Additionally, we derive first and second order hedges for volatility swaps using only variance swaps. As dynamically trading variance swaps is in general cheaper and operationally less cumbersome compared to dynamically rebalancing a continuous strip of options, our result makes the hedging of volatility swaps both practically feasible and robust. Within the class of stochastic volatility models our pricing and hedging results are model-independent and can be implemented at almost no computational cost.</summary>\n    <category term=\"q-fin.PR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.MF\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2020-01-08T07:31:43Z</published>\n    <arxiv:comment>Revision of section on hedging volatility swaps</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.PR\"/>\n    <author>\n      <name>Frido Rolloos</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1908.05419v1</id>\n    <title>Modelling Crypto Asset Price Dynamics, Optimal Crypto Portfolio, and Crypto Option Valuation</title>\n    <updated>2019-08-15T04:55:59Z</updated>\n    <link href=\"https://arxiv.org/abs/1908.05419v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1908.05419v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Despite being described as a medium of exchange, cryptocurrencies do not have the typical attributes of a medium of exchange. Consequently, cryptocurrencies are more appropriately described as crypto assets. A common investment attribute shared by the more than 2,500 crypto assets is that they are highly volatile. An investor interested in reducing price volatility of a portfolio of crypto assets can do so by constructing an optimal portfolio through standard optimization techniques that minimize tail risk. Because crypto assets are not backed by any real assets, forming a hedge to reduce the risk contribution of a single crypto asset can only be done with another set of similar assets (i.e., a set of other crypto assets). A major finding of this paper is that crypto portfolios constructed via optimizations that minimize variance and Conditional Value at Risk outperform a major stock market index (the S$\\&amp;$P 500). As of this writing, options in which the underlying is a crypto asset index are not traded, one of the reasons being that the academic literature has not formulated an acceptable fair pricing model. We offer a fair valuation model for crypto asset options based on a dynamic pricing model for the underlying crypto assets. The model was carefully backtested and therefore offers a reliable model for the underlying crypto assets in the natural world. We then obtain the valuation of crypto options by passing the natural world to the equivalent martingale measure via the Esscher transform. Because of the absence of traded crypto options we could not compare the prices obtained from our valuation model to market prices. Yet, we can claim that if such options on crypto assets are introduced, they should follow closely our theoretical prices after adjusting for market frictions and design feature nuances.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-08-15T04:55:59Z</published>\n    <arxiv:comment>25 pages, 6 figures</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <arxiv:journal_ref>The Journal of Alternative Investments Apr 2021, jai.2021.1.133; DOI: 10.3905/jai.2021.1.133</arxiv:journal_ref>\n    <author>\n      <name>Yuan Hu</name>\n    </author>\n    <author>\n      <name>Svetlozar T. Rachev</name>\n    </author>\n    <author>\n      <name>Frank J. Fabozzi</name>\n    </author>\n    <arxiv:doi>10.3905/jai.2021.1.133</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.3905/jai.2021.1.133\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2411.05803v4</id>\n    <title>Liquidity Jump, Liquidity Diffusion, and Crypto Wash Trading</title>\n    <updated>2025-03-31T03:31:09Z</updated>\n    <link href=\"https://arxiv.org/abs/2411.05803v4\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2411.05803v4\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We develop a new framework to detect wash trading in crypto assets through real-time liquidity fluctuation. We propose that short-term price jumps in crypto assets results from wash trading-induced liquidity fluctuation, and construct two complementary liquidity measures, liquidity jump (size of fluctuation) and liquidity diffusion (volatility of fluctuation), to capture the behavioral signature of wash trading. Using US stocks as a benchmark, we demonstrate that joint elevation in both liquidity metrics indicates wash trading in crypto assets. A simulated regulatory treatment that removes likely wash trades confirms this dynamic: it reduces liquidity diffusion significantly while leaving liquidity jump largely unaffected. These findings align with a theoretical model in which manipulative traders amplify both the level and variance of price pressure, whereas passive investors affect only the level. Our model offers practical tools for investors to assess market quality and for regulators to monitor manipulation risk on crypto exchanges without oversight.</summary>\n    <category term=\"q-fin.RM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-10-28T11:58:38Z</published>\n    <arxiv:primary_category term=\"q-fin.RM\"/>\n    <author>\n      <name>Qi Deng</name>\n    </author>\n    <author>\n      <name>Zhong-Guo Zhou</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1912.04492v1</id>\n    <title>151 Estrategias de Trading (151 Trading Strategies)</title>\n    <updated>2019-11-14T14:58:13Z</updated>\n    <link href=\"https://arxiv.org/abs/1912.04492v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1912.04492v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This book, which is in Spanish, provides detailed descriptions, including over 550 mathematical formulas, for over 150 trading strategies across a host of asset classes (and trading styles). This includes stocks, options, fixed income, futures, ETFs, indexes, commodities, foreign exchange, convertibles, structured assets, volatility (as an asset class), real estate, distressed assets, cash, cryptocurrencies, miscellany (such as weather, energy, inflation), global macro, infrastructure, and tax arbitrage. Some strategies are based on machine learning algorithms (such as artificial neural networks, Bayes, k-nearest neighbors). We also give: source code for illustrating out-of-sample backtesting with explanatory notes; around 2,000 bibliographic references; and over 900 glossary, acronym and math definitions. The presentation is intended to be descriptive and pedagogical.\n  -----\n  Este libro proporciona descripciones detalladas, que incluyen más de 550 fórmulas matemáticas, para más de 150 estrategias de trading para una gran cantidad de clases de activos y estilos de trading. Esto incluye acciones, opciones, bonos (renta fija), futuros, ETFs, índices, commodities, divisas, bonos convertibles, activos estructurados, volatilidad (como clase de activos), bienes inmuebles, activos en distress, efectivo, criptomonedas, misceláneos (como clima, energía, inflación), macro global, infraestructura y arbitraje impositivo. Algunas estrategias se basan en algoritmos de aprendizaje automático (como redes neuronales artificiales, Bayes, k vecinos más cercanos). El libro también incluye código para backtesting fuera de la muestra con notas explicativas; cerca de 2,000 referencias bibliográficas; más de 900 términos que comprenden el glosario, acrónimos y definiciones matemáticas. La presentación pretende ser descriptiva y pedagógica.</summary>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.MF\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.PM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-11-14T14:58:13Z</published>\n    <arxiv:comment>398 pages; in Spanish; complete English version is freely downloadable from https://ssrn.com/abstract=3247865; English edition: Z. Kakushadze and J.A. Serur. 151 Trading Strategies. Cham, Switzerland: Palgrave Macmillan, an imprint of Springer Nature, 1st Edition (2018), XX, 480 pp; ISBN 978-3-030-02791-9</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.GN\"/>\n    <arxiv:journal_ref>151 Estrategias de Trading (Spanish Edition, 2019), 398 pp; ISBN 978-1071261873</arxiv:journal_ref>\n    <author>\n      <name>Zura Kakushadze</name>\n    </author>\n    <author>\n      <name>Juan Andrés Serur</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0512460v1</id>\n    <title>Observation of PeV Gamma Rays from the Monogem Ring with the Tibet Air Shower Array</title>\n    <updated>2005-12-17T17:05:43Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0512460v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0512460v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We searched for steady PeV gamma-ray emission from the Monogem ring region with the Tibet air shower array from 1997 February to 2004 October. No evidence for statistically significant gamma-ray signals was found in a region 111$\\degr$ $\\leq$ R.A. $&lt;$ 114$\\degr$, 12$\\fdg$5 $\\leq$ decl. $&lt;$ 15$\\fdg$5 in the Monogem ring where the MAKET-ANI experiment recently claimed a positive detection of PeV high-energy cosmic radiation, although our flux sensitivity is approximately 10 times better than MAKET-ANI's. We set the most stringent integral flux upper limit at a 99% confidence level of 4.0 $\\times$ 10$^{-12}$ cm$^{-2}$ s$^{-1}$ sr$^{-1}$ above 1 PeV on diffuse gamma rays extended in the 3$^{\\circ}$ $\\times$ 3$^{\\circ}$ region.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2005-12-17T17:05:43Z</published>\n    <arxiv:comment>13 pages 3figures, 1 table</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <arxiv:journal_ref>Astrophys.J. 635 (2005) L53-L56</arxiv:journal_ref>\n    <author>\n      <name> The Tibet AS Gamma Collaboration</name>\n    </author>\n    <author>\n      <name>M. Amenomori</name>\n    </author>\n    <arxiv:doi>10.1086/499335</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1086/499335\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/0707.0336v2</id>\n    <title>Pricing Options on Defaultable Stocks</title>\n    <updated>2007-12-21T01:08:18Z</updated>\n    <link href=\"https://arxiv.org/abs/0707.0336v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/0707.0336v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  In this note, we develop stock option price approximations for a model which takes both the risk o default and the stochastic volatility into account. We also let the intensity of defaults be influenced by the volatility. We show that it might be possible to infer the risk neutral default intensity from the stock option prices. Our option price approximation has a rich implied volatility surface structure and fits the data implied volatility well. Our calibration exercise shows that an effective hazard rate from bonds issued by a company can be used to explain the implied volatility skew of the implied volatility of the option prices issued by the same company.</summary>\n    <category term=\"cs.CE\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2007-07-03T03:28:35Z</published>\n    <arxiv:comment>Key Words: Option pricing, multiscale perturbation methods, defaultable stocks, stochastic intensity of default, implied volatility skew</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CE\"/>\n    <author>\n      <name>Erhan Bayraktar</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2408.08866v1</id>\n    <title>High-Frequency Options Trading | With Portfolio Optimization</title>\n    <updated>2024-08-16T17:49:21Z</updated>\n    <link href=\"https://arxiv.org/abs/2408.08866v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2408.08866v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper explores the effectiveness of high-frequency options trading strategies enhanced by advanced portfolio optimization techniques, investigating their ability to consistently generate positive returns compared to traditional long or short positions on options. Utilizing SPY options data recorded in five-minute intervals over a one-month period, we calculate key metrics such as Option Greeks and implied volatility, applying the Binomial Tree model for American options pricing and the Newton-Raphson algorithm for implied volatility calculation. Investment universes are constructed based on criteria like implied volatility and Greeks, followed by the application of various portfolio optimization models, including Standard Mean-Variance and Robust Methods. Our research finds that while basic long-short strategies centered on implied volatility and Greeks generally underperform, more sophisticated strategies incorporating advanced Greeks, such as Vega and Rho, along with dynamic portfolio optimization, show potential in effectively navigating the complexities of the options market. The study highlights the importance of adaptability and responsiveness in dynamic portfolio strategies within the high-frequency trading environment, particularly under volatile market conditions. Future research could refine strategy parameters and explore less frequently traded options, offering new insights into high-frequency options trading and portfolio management.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.CP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-08-16T17:49:21Z</published>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Sid Bhatia</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2208.07168v1</id>\n    <title>AI for trading strategies</title>\n    <updated>2022-06-26T15:31:58Z</updated>\n    <link href=\"https://arxiv.org/abs/2208.07168v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2208.07168v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this bachelor thesis, we show how four different machine learning methods (Long Short-Term Memory, Random Forest, Support Vector Machine Regression, and k-Nearest Neighbor) perform compared to already successfully applied trading strategies such as Cross Signal Trading and a conventional statistical time series model ARMA-GARCH. The aim is to show that machine learning methods perform better than conventional methods in the crude oil market when used correctly. A more detailed performance analysis was made, showing the performance of the different models in different market phases so that the robustness of individual models in high and low volatility phases could be examined more closely. For further investigation, these models would also have to be analyzed in other markets.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-06-26T15:31:58Z</published>\n    <arxiv:comment>Keywords: Machine Learning, Trading strategies, Financial time-series, Time-series analysis, Financial data</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Danijel Jevtic</name>\n    </author>\n    <author>\n      <name>Romain Deleze</name>\n    </author>\n    <author>\n      <name>Joerg Osterrieder</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/astro-ph/0511514v1</id>\n    <title>Flux upper limits of diffuse TeV gamma rays from the Galactic plane using the effective area of the Tibet-II and -III arrays</title>\n    <updated>2005-11-17T13:03:10Z</updated>\n    <link href=\"https://arxiv.org/abs/astro-ph/0511514v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/astro-ph/0511514v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>  We obtained new upper limits on the diffuse gamma rays from the inner Galactic (IG) and outer Galactic (OG) planes in 3.10 TeV region, using the Tibet air shower data and new Monte Carlo simulation results. A difference of the effective area of the air-shower array for observing gamma rays and cosmic rays was carefully taken into account in this analysis, resulting in that the flux upper limits of the diffuse TeV gamma rays were reduced by factors of 4.0.3.7 for 3.10 TeV than those in our previous results (Amenomori, M., Ayabe, S., Cui, S.W., et al. Observation of multi-TeV diffuse gamma rays from the Galactic plane with the Tibet air shower array. Astrophys. J. 580, 887.895, 2002.). This new result suggests that the inverse power index of the energy spectrum of source electrons responsible for generating diffuse TeV gamma rays through inverse Compton effect should be steeper than 2.2 and 2.1 for IG and OG planes, respectively, with 99%C.L.</summary>\n    <category term=\"astro-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2005-11-17T13:03:10Z</published>\n    <arxiv:comment>10 pages, 8 figures, 1 table. Accepted by Advance in Space Research</arxiv:comment>\n    <arxiv:primary_category term=\"astro-ph\"/>\n    <author>\n      <name> The Tibet AS Gamma Collaboration</name>\n    </author>\n    <author>\n      <name>M. Amenomori</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1605.01327v3</id>\n    <title>No-arbitrage and hedging with liquid American options</title>\n    <updated>2018-01-25T21:25:27Z</updated>\n    <link href=\"https://arxiv.org/abs/1605.01327v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1605.01327v3\" rel=\"rela"
+    },
+    {
+      "source": "arxiv",
       "query": "crypto order flow order book imbalance microprice",
       "raw": "<?xml version='1.0' encoding='UTF-8'?>\n<feed xmlns:opensearch=\"http://a9.com/-/spec/opensearch/1.1/\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\" xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>https://arxiv.org/api/9NS98Bz27a0ygcyTiR5ROEp+V3k</id>\n  <title>arXiv Query: search_query=all:crypto OR all:order OR all:flow OR all:order OR all:book OR all:imbalance OR all:microprice&amp;id_list=&amp;start=0&amp;max_results=20</title>\n  <updated>2026-09-12T04:24:06Z</updated>\n  <link href=\"https://arxiv.org/api/query?search_query=all:crypto+OR+(all:order+OR+(all:flow+OR+(all:order+OR+(all:book+OR+(all:imbalance+OR+all:microprice)))))&amp;start=0&amp;max_results=20&amp;id_list=\" type=\"application/atom+xml\"/>\n  <opensearch:itemsPerPage>20</opensearch:itemsPerPage>\n  <opensearch:totalResults>581814</opensearch:totalResults>\n  <opensearch:startIndex>0</opensearch:startIndex>\n  <entry>\n    <id>http://arxiv.org/abs/1410.4915v3</id>\n    <title>Rankin-Selberg L-functions in cyclotomic towers, III</title>\n    <updated>2021-11-14T20:12:15Z</updated>\n    <link href=\"https://arxiv.org/abs/1410.4915v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1410.4915v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Let $π$ be a cuspidal automorphic representation of $\\operatorname{GL}_2$ over a totally real number field $F$. Let $K$ be a totally imaginary quadratic extension of $F$. We estimate central values of the $\\operatorname{GL}_2 \\times \\operatorname{GL}_2$ Rankin-Selberg $L$-functions associated to $π$ times representations induced from Hecke characters of $K$ which are ramified only at a given prime ideal $\\mathfrak{p}$ of $F$. More specifically, we use spectral decompositions of shifted convolution sums and relations to Fourier-Whittaker coefficients of genuine and non-genuine metaplectic forms to obtain nonvanishing estimates, averaging over primitive ring class characters of a given exact order. When $π$ corresponds to a holomorphic Hilbert modular form of arithmetic weight $k \\geq 2$, we then derive finer results from the rationality theorems of Shimura, together with the existence of suitable $\\mathfrak{p}$-adic $L$-functions. This allows us to generalize the theorems of Rohrlich, Vatsal, and Cornut-Vatsal to this setting. Finally, in a self-contained appendix, we explain how to use these results to deduce bounds for Mordell-Weil ranks of the associated $\\operatorname{GL}_2$-type abelian varieties via existing Iwasawa main conjecture divisibilities.</summary>\n    <category term=\"math.NT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-10-18T07:36:46Z</published>\n    <arxiv:comment>More substantial revisions and restructuring (following suggestions of a referee), main results unaffected, 51 pp</arxiv:comment>\n    <arxiv:primary_category term=\"math.NT\"/>\n    <author>\n      <name>Jeanine Van Order</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1105.4789v1</id>\n    <title>Stochastic Price Dynamics Implied By the Limit Order Book</title>\n    <updated>2011-05-24T14:50:39Z</updated>\n    <link href=\"https://arxiv.org/abs/1105.4789v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1105.4789v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>In this paper we present a novel approach to the determination of fat tails in financial data by studying the information contained in the limit order book. In an order-driven market buyers and sellers may submit limit orders, which are executed when the price touches a pre-specified lower, respectively higher, limit-price. We show that, in equilibrium, the collection of all such orders - the limit order book - implies a volatility smile, similar to observations from option pricing in the Black-Scholes model. We also show how a jump-diffusion process can be explicitly inferred to account for the volatility smile.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2011-05-24T14:50:39Z</published>\n    <arxiv:comment>Limit order book, limit orders, volatility smile, jump process, double-exponential jump process, impatience rate, jump diffusion</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Alex Langnau</name>\n    </author>\n    <author>\n      <name>Yanko Punchev</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2103.00264v1</id>\n    <title>Forecasting high-frequency financial time series: an adaptive learning approach with the order book data</title>\n    <updated>2021-02-27T16:42:02Z</updated>\n    <link href=\"https://arxiv.org/abs/2103.00264v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2103.00264v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This paper proposes a forecast-centric adaptive learning model that engages with the past studies on the order book and high-frequency data, with applications to hypothesis testing. In line with the past literature, we produce brackets of summaries of statistics from the high-frequency bid and ask data in the CSI 300 Index Futures market and aim to forecast the one-step-ahead prices. Traditional time series issues, e.g. ARIMA order selection, stationarity, together with potential financial applications are covered in the exploratory data analysis, which pave paths to the adaptive learning model. By designing and running the learning model, we found it to perform well compared to the top fixed models, and some could improve the forecasting accuracy by being more stable and resilient to non-stationarity. Applications to hypothesis testing are shown with a rolling window, and further potential applications to finance and statistics are outlined.</summary>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"econ.EM\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.AP\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-02-27T16:42:02Z</published>\n    <arxiv:comment>Key words: forecasting methods, statistical learning, high-frequency order book</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.ST\"/>\n    <author>\n      <name>Parley Ruogu Yang</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1907.06230v2</id>\n    <title>Multi-Level Order-Flow Imbalance in a Limit Order Book</title>\n    <updated>2019-10-26T13:46:38Z</updated>\n    <link href=\"https://arxiv.org/abs/1907.06230v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1907.06230v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We study the multi-level order-flow imbalance (MLOFI), which is a vector quantity that measures the net flow of buy and sell orders at different price levels in a limit order book (LOB). Using a recent, high-quality data set for 6 liquid stocks on Nasdaq, we fit a simple, linear relationship between MLOFI and the contemporaneous change in mid-price. For all 6 stocks that we study, we find that the out-of-sample goodness-of-fit of the relationship improves with each additional price level that we include in the MLOFI vector. Our results underline how order-flow activity deep into the LOB can influence the price-formation process.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.GN\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2019-07-14T15:00:54Z</published>\n    <arxiv:comment>32 pages, 7 figures</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Ke Xu</name>\n    </author>\n    <author>\n      <name>Martin D. Gould</name>\n    </author>\n    <author>\n      <name>Sam D. Howison</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2112.02947v1</id>\n    <title>The Price Impact of Generalized Order Flow Imbalance</title>\n    <updated>2021-12-06T11:40:47Z</updated>\n    <link href=\"https://arxiv.org/abs/2112.02947v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2112.02947v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Order flow imbalance can explain short-term changes in stock price. This paper considers the change of non-minimum quotation units in real transactions, and proposes a generalized order flow imbalance construction method to improve Order Flow Imbalance (OFI) and Stationarized Order Flow Imbalance (log-OFI). Based on the high-frequency order book snapshot data, we conducted an empirical analysis of the CSI 500 constituent stocks. In order to facilitate the presentation, we selected 10 stocks for comparison. The two indicators after the improvement of the generalized order flow imbalance construction method both show a better ability to explain changes in stock prices. Especially Generalized Stationarized Order Flow Imbalance (log-GOFI), using a linear regression model, on the time scales of 30 seconds, 1 minute, and 5 minutes, the average R-squared out of sample compared with Order Flow Imbalance (OFI) 32.89%, 38.13% and 42.57%, respectively increased to 83.57%, 85.37% and 86.01%. In addition, we found that the interpretability of Generalized Stationarized Order Flow Imbalance (log-GOFI) showed stronger stability on all three time scales.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2021-12-06T11:40:47Z</published>\n    <arxiv:comment>9 pages,5 figures</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Yuhan Su</name>\n    </author>\n    <author>\n      <name>Zeyu Sun</name>\n    </author>\n    <author>\n      <name>Jiarong Li</name>\n    </author>\n    <author>\n      <name>Xianghui Yuan</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2411.02339v3</id>\n    <title>Quantum detailed balance via elementary transitions</title>\n    <updated>2025-05-12T07:24:43Z</updated>\n    <link href=\"https://arxiv.org/abs/2411.02339v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2411.02339v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Quantum detailed balance is formulated in terms of elementary transitions, in close analogy to detailed balance in a classical Markov chain on a finite set of points. An elementary transition is taken to be a pure state of two copies of the quantum system, as a quantum analogue of an ordered pair of classical points representing a classical transition from the first to the second point. This form of quantum detailed balance is shown to be equivalent to standard quantum detailed balance with respect to a reversing operation, thus providing a new conceptual foundation for the latter. Aspects of parity in quantum detailed balance are clarified in the process. The connection with the Accardi-Cecchini dual and the KMS dual (or Petz recovery map) is also elucidated.</summary>\n    <category term=\"quant-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-11-04T18:04:30Z</published>\n    <arxiv:comment>v1: 34 pages. v2: Minor corrections, changes and additions. Further references. 35 pages. v3: New Section 2 added. Additional minor corrections, changes and references. Journal style. 34 pages</arxiv:comment>\n    <arxiv:primary_category term=\"quant-ph\"/>\n    <arxiv:journal_ref>Quantum 9, 1743 (2025)</arxiv:journal_ref>\n    <author>\n      <name>Rocco Duvenhage</name>\n    </author>\n    <author>\n      <name>Kyle Oerder</name>\n    </author>\n    <author>\n      <name>Keagan van den Heuvel</name>\n    </author>\n    <arxiv:doi>10.22331/q-2025-05-15-1743</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.22331/q-2025-05-15-1743\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1312.0514v1</id>\n    <title>Trade arrival dynamics and quote imbalance in a limit order book</title>\n    <updated>2013-12-02T16:47:48Z</updated>\n    <link href=\"https://arxiv.org/abs/1312.0514v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1312.0514v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We examine the dynamics of the bid and ask queues of a limit order book and their relationship with the intensity of trade arrivals. In particular, we study the probability of price movements and trade arrivals as a function of the quote imbalance at the top of the limit order book. We propose a stochastic model in an attempt to capture the joint dynamics of the top of the book queues and the trading process, and describe a semi-analytic approach to calculate the relative probability of market events. We calibrate the model using historical market data and discuss the quality of fit and practical applications of the results.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2013-12-02T16:47:48Z</published>\n    <arxiv:comment>15 pages, 7 figures</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Alexander Lipton</name>\n    </author>\n    <author>\n      <name>Umberto Pesavento</name>\n    </author>\n    <author>\n      <name>Michael G Sotiropoulos</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1708.02715v1</id>\n    <title>Order Flows and Limit Order Book Resiliency on the Meso-Scale</title>\n    <updated>2017-08-09T04:40:29Z</updated>\n    <link href=\"https://arxiv.org/abs/1708.02715v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1708.02715v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We investigate the behavior of limit order books on the meso-scale motivated by order execution scheduling algorithms. To do so we carry out empirical analysis of the order flows from market and limit order submissions, aggregated from tick-by-tick data via volume-based bucketing, as well as various LOB depth and shape metrics. We document a nonlinear relationship between trade imbalance and price change, which however can be converted into a linear link by considering a weighted average of market and limit order flows. We also document a hockey-stick dependence between trade imbalance and one-sided limit order flows, highlighting numerous asymmetric effects between the active and passive sides of the LOB. To address the phenomenological features of price formation, book resilience, and scarce liquidity we apply a variety of statistical models to test for predictive power of different predictors. We show that on the meso-scale the limit order flows (as well as the relative addition/cancellation rates) carry the most predictive power. Another finding is that the deeper LOB shape, rather than just the book imbalance, is more relevant on this timescale. The empirical results are based on analysis of six large-tick assets from Nasdaq.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-08-09T04:40:29Z</published>\n    <arxiv:comment>8 figures; One figure is missing due to arxiv size constraints (was 6MB originally)</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Kyle Bechler</name>\n    </author>\n    <author>\n      <name>Michael Ludkovski</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2604.20949v1</id>\n    <title>Early Detection of Latent Microstructure Regimes in Limit Order Books</title>\n    <updated>2026-04-22T17:47:52Z</updated>\n    <link href=\"https://arxiv.org/abs/2604.20949v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2604.20949v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Limit order books can transition rapidly from stable to stressed conditions, yet standard early-warning signals such as order flow imbalance and short-term volatility are inherently reactive. We formalise this limitation via a three-regime causal data-generating process (stable $\\to$ latent build-up $\\to$ stress) in which a latent deterioration phase creates a prediction window prior to observable stress. Under mild assumptions on temporal drift and regime persistence, we establish identifiability of the latent build-up regime and derive guarantees for strictly positive expected lead-time and non-trivial probability of early detection. We propose a trigger-based detector combining MAX aggregation of complementary signal channels, a rising-edge condition, and adaptive thresholding. Across 200 simulations, the method achieves mean lead-time $+18.6 \\pm 3.2$ timesteps with perfect precision and moderate coverage, outperforming classical change-point and microstructure baselines. A preliminary application to one week of BTC/USDT order book data shows consistent positive lead-times while baselines remain reactive. Results degrade in low signal-to-noise and short build-up regimes, consistent with theory.</summary>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ME\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"stat.ML\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2026-04-22T17:47:52Z</published>\n    <arxiv:comment>48 pages, 7 figures. Combines theoretical guarantees (identifiability and early-detection bounds), 200-run simulation study, and preliminary real-data evaluation on BTC/USDT limit order books. Code and data available</arxiv:comment>\n    <arxiv:primary_category term=\"cs.LG\"/>\n    <author>\n      <name>Prakul Sunil Hiremath</name>\n    </author>\n    <author>\n      <name>Vruksha Arun Hiremath</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2202.03012v2</id>\n    <title>EDCHO: High Order Exact Dynamic Consensus</title>\n    <updated>2022-05-25T09:37:05Z</updated>\n    <link href=\"https://arxiv.org/abs/2202.03012v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2202.03012v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the problem of average consensus in a multi-agent system when the desired consensus quantity is a time varying signal. Although this problem has been addressed in existing literature by linear schemes, only bounded steady-state errors have been achieved. Other approaches have used first order sliding modes to achieve zero steady-state error, but suffer from the chattering effect. In this work, we propose a new exact dynamic consensus algorithm which leverages high order sliding modes, in the form of a distributed differentiator to achieve zero steady-state error of the average of time varying reference signals in a group of agents. Moreover, our proposal is also able to achieve consensus to high order derivatives of the average signal, if desired. An in depth formal study on the stability and convergence for EDCHO is provided for undirected connected graphs. Finally, the effectiveness and advantages of our proposal are shown with concrete simulation scenarios.</summary>\n    <category term=\"eess.SY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.MA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.OC\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2022-02-07T09:09:42Z</published>\n    <arxiv:comment>This is the preprint version of the accepted Manuscript: Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, EDCHO: High order exact dynamic consensus, Automatica, Volume 131, 2021, ISSN 0005-1098. Please cite the publisher's version</arxiv:comment>\n    <arxiv:primary_category term=\"eess.SY\"/>\n    <arxiv:journal_ref>Rodrigo Aldana-Lopez, Rosario Aragues, Carlos Sagues, EDCHO: High order exact dynamic consensus, Automatica, Volume 131, 2021, ISSN 0005-1098</arxiv:journal_ref>\n    <author>\n      <name>Rodrigo Aldana-López</name>\n    </author>\n    <author>\n      <name>Rosario Aragüés</name>\n    </author>\n    <author>\n      <name>Carlos Sagüés</name>\n    </author>\n    <arxiv:doi>10.1016/j.automatica.2021.109750</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.1016/j.automatica.2021.109750\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2311.01461v1</id>\n    <title>The Property Law of Crypto Tokens</title>\n    <updated>2023-11-02T17:59:51Z</updated>\n    <link href=\"https://arxiv.org/abs/2311.01461v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2311.01461v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>This article addresses the lack of comprehensive studies on Web3 technologies, primarily due to lawyers' reluctance to explore technical intricacies. Understanding the underlying technological foundations is crucial to enhance the credibility of legal opinions. This article aims to illuminate these foundations, debunk myths, and concentrate on determining the legal status of crypto-assets in the context of property rights within the distributed economy. In addition, this article notes that the intangible nature of crypto-assets that derive value from distributed registries, and their resistance to deletion, makes crypto-assets more akin to the autonomy of intellectual property than physical media. The article presents illustrative examples from common law (United States, United Kingdom, New Zealand) and civil law (Germany, Austria, Poland) systems. Proposing a universal solution, it advocates a comprehensive framework safeguarding digital property - data ownership - extending beyond the confines of Web3.\n  This article presents a comprehensive, multi-layered approach to the analysis of tokens as digital content and virtual goods. The approach, universally applicable to various of such goods, scrutinizes property on three distinct layers: first, the rights to the virtual good itself; second, the rights to the assets linked to the virtual good; and third, the rights to the intellectual property intricately associated with the token. Additionally, the paper provides concise analysis of the conflict of laws rules applicable to virtual goods. It also delves into issues concerning formal requirements for the transfer of intellectual property rights, licensing, the first sale (exhaustion) doctrine, the concept of the lawful acquirer, and other crucial aspects of intellectual property in the realm of virtual goods, particularly within the emerging metaverse.</summary>\n    <category term=\"cs.CR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.CY\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2023-11-02T17:59:51Z</published>\n    <arxiv:comment>Legal Status of Crypto Tokens (FT, NFT, etc.)</arxiv:comment>\n    <arxiv:primary_category term=\"cs.CR\"/>\n    <author>\n      <name>Jakub Wyczik</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1010.2219v1</id>\n    <title>Infinite saturated orders</title>\n    <updated>2010-10-11T20:12:17Z</updated>\n    <link href=\"https://arxiv.org/abs/1010.2219v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1010.2219v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We generalize the notion of saturated order to infinite partial orders and give both a set-theoretic and an algebraic characterization of such orders. We then study the proof theoretic strength of the equivalence of these characterizations in the context of reverse mathematics, showing that depending on one's choice of definitions it is either provable in $\\mathsf{RCA}_0$ or equivalent to $\\mathsf{ACA}_0$.</summary>\n    <category term=\"math.LO\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2010-10-11T20:12:17Z</published>\n    <arxiv:comment>Accepted for publication in Order</arxiv:comment>\n    <arxiv:primary_category term=\"math.LO\"/>\n    <author>\n      <name>Damir D. Dzhafarov</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2411.13594v1</id>\n    <title>High resolution microprice estimates from limit orderbook data using hyperdimensional vector Tsetlin Machines</title>\n    <updated>2024-11-18T13:18:30Z</updated>\n    <link href=\"https://arxiv.org/abs/2411.13594v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/2411.13594v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We propose an error-correcting model for the microprice, a high-frequency estimator of future prices given higher order information of imbalances in the orderbook. The model takes into account a current microprice estimate given the spread and best bid to ask imbalance, and adjusts the microprice based on recent dynamics of higher price rank imbalances. We introduce a computationally fast estimator using a recently proposed hyperdimensional vector Tsetlin machine framework and demonstrate empirically that this estimator can provide a robust estimate of future prices in the orderbook.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"cs.LG\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"q-fin.ST\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2024-11-18T13:18:30Z</published>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Christian D. Blakely</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1407.5684v3</id>\n    <title>One-level limit order book models with memory and variable spread</title>\n    <updated>2016-03-13T05:07:07Z</updated>\n    <link href=\"https://arxiv.org/abs/1407.5684v3\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1407.5684v3\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We propose a new model for the level I of a Limit Order Book (LOB), which incorporates the information about the standing orders at the opposite side of the book after each price change and the arrivals of new orders within the spread. Our main result gives a diffusion approximation for the mid-price process. To illustrate the applicability of the considered framework, we also propose a feasible method to compute several quantities of interest}, such as the distribution of the time span between price changes and the probability of consecutive price increments conditioned on the current state of the book. The proposed method is used to develop an efficient simulation scheme for the price dynamics, which is then applied to assess numerically the accuracy of the diffusion approximation.</summary>\n    <category term=\"q-fin.TR\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2014-07-21T22:49:40Z</published>\n    <arxiv:comment>This is a revision of the former manuscript \"One-level limit order books with sparsity and memory\". The first model (related to sparsity) has been removed from this version and the discussion and results regarding the second model have been expanded. This version also corrects some typos and mistakes from the first version</arxiv:comment>\n    <arxiv:primary_category term=\"q-fin.TR\"/>\n    <author>\n      <name>Jonathan A. Chávez-Casillas</name>\n    </author>\n    <author>\n      <name>José E. Figueroa-López</name>\n    </author>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1712.08950v1</id>\n    <title>A note on dual third order Jacobsthal vectors</title>\n    <updated>2017-12-24T17:49:31Z</updated>\n    <link href=\"https://arxiv.org/abs/1712.08950v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1712.08950v1\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>Dual third order Jacobsthal and dual third order Jacobsthal-Lucas numbers are defined. In this study, we work on these dual numbers and we obtain the properties e.g. some quadratic identities, summation, norm, negadual third order Jacobsthal identities, Binet formulas and relations of them. We also define new vectors which are called dual third order Jacobsthal vectors and dual third order Jacobsthal-Lucas vectors. We give properties of these vectors to exert in geometry of dual space.</summary>\n    <category term=\"math.RA\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"math.NT\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <published>2017-12-24T17:49:31Z</published>\n    <arxiv:comment>Third order Jacobsthal numbers, third order Jacobsthal-Lucas numbers, dual third order Jacobsthal numbers, dual third order Jacobsthal vectors</arxiv:comment>\n    <arxiv:primary_category term=\"math.RA\"/>\n    <author>\n      <name>Gamaliel Cerda-Morales</name>\n    </author>\n    <arxiv:doi>10.33039/ami.2020.05.003</arxiv:doi>\n    <link rel=\"related\" href=\"https://doi.org/10.33039/ami.2020.05.003\" title=\"doi\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/1409.2618v2</id>\n    <title>Optimal Execution with Dynamic Order Flow Imbalance</title>\n    <updated>2014-10-18T06:47:11Z</updated>\n    <link href=\"https://arxiv.org/abs/1409.2618v2\" rel=\"alternate\" type=\"text/html\"/>\n    <link href=\"https://arxiv.org/pdf/1409.2618v2\" rel=\"related\" type=\"application/pdf\" title=\"pdf\"/>\n    <summary>We examine optimal execution models that take into account both market microstructure impact and informational costs. Informational footprint is related to order flow and is represented by the trader's influence on the flow imbalance process, while microstructure influence is captured by instantaneous price impact. We propose a continuous-time stochastic control problem that balances between these two costs. Incorporating order flow imbalance leads to the consideration of the current market state and specifically whether one's orders lean with or against the prevailing order flow, key components often ignored by execution models in the literature. In particular, to react to changing order flow, we endogenize the trading horizon $T$. After developing the general indefinite-horizon formulation, we i"
     },
@@ -977,14 +982,6 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "url": "https://doi.org/10.1787/888933433273",
-      "description": "Crossref work type=component",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "A-share quantitative trading factor strategy China",
       "title": "Insider trading under trading ban regulation in China’s A-share market",
       "url": "https://doi.org/10.1016/j.cjar.2015.06.002",
       "description": "Crossref work type=journal-article",
@@ -1041,6 +1038,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "",
+      "url": "https://doi.org/10.52926/jpmjpr1761",
+      "description": "Crossref work type=grant",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Activity of Hip Muscle in Change of Load on One Side of the Lower Limbs",
       "url": "https://doi.org/10.1589/rika.23.671",
       "description": "Crossref work type=journal-article",
@@ -1065,6 +1070,14 @@
     {
       "source": "crossref",
       "query": "A股 量化 github",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
       "title": "Quantitative Stock Picking Model Based on Conditional Random Fields",
       "url": "https://doi.org/10.12677/sa.2019.82034",
       "description": "Crossref work type=journal-article",
@@ -1077,6 +1090,30 @@
       "url": "https://doi.org/10.12677/ecl.2025.1451633",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
+      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
+      "url": "https://doi.org/10.12677/ecl.2025.1482826",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "A股 量化 github",
+      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
+      "url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2020"
     },
     {
       "source": "crossref",
@@ -1329,25 +1366,9 @@
     {
       "source": "crossref",
       "query": "China A-share order flow high frequency factors",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "url": "https://doi.org/10.2139/ssrn.5806502",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share order flow high frequency factors",
       "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow and High Frequency Liquidity Provision",
       "url": "https://doi.org/10.2139/ssrn.2616992",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2015"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share order flow high frequency factors",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "url": "https://doi.org/10.3386/w21286",
-      "description": "Crossref work type=report",
       "updated_at": "2015"
     },
     {
@@ -1409,14 +1430,6 @@
     {
       "source": "crossref",
       "query": "China A-share pairs statistical arbitrage",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "url": "https://doi.org/10.21275/sr231123060916",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
       "title": "Comprehensive Review of Pairs Trading in Statistical Arbitrage",
       "url": "https://doi.org/10.54254/2754-1169/2026.35956",
       "description": "Crossref work type=journal-article",
@@ -1461,14 +1474,6 @@
       "url": "https://doi.org/10.1111/irfi.12074",
       "description": "Crossref work type=journal-article",
       "updated_at": "2016"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "url": "https://doi.org/10.2139/ssrn.2610064",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -1897,22 +1902,6 @@
     {
       "source": "crossref",
       "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "url": "https://doi.org/10.12677/fin.2021.113022",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "url": "https://doi.org/10.12677/orf.2021.114043",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "SMC ICT 流动性 扫损 加密货币",
       "title": "国家经济学宣言：货币本质是劳动力，主权属于人民——银行货币垄断是国家经济困难的根源",
       "url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
       "description": "Crossref work type=posted-content",
@@ -2321,6 +2310,14 @@
     {
       "source": "crossref",
       "query": "algorithmic trading research code",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "url": "https://doi.org/10.1787/888933433273",
+      "description": "Crossref work type=component",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "algorithmic trading research code",
       "title": "Overview of Electronic and Algorithmic Trading",
       "url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
       "description": "Crossref work type=book-chapter",
@@ -2433,72 +2430,8 @@
     {
       "source": "crossref",
       "query": "autonomous trading strategy research backtest",
-      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
-      "url": "https://doi.org/10.1002/9781118656617.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "url": "https://doi.org/10.2139/ssrn.6683818",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "url": "https://doi.org/10.2139/ssrn.4601806",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading Lore",
-      "url": "https://doi.org/10.1002/9781118656617.ch10",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading System Elements: Entries",
-      "url": "https://doi.org/10.1002/9781118656617.ch4",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
       "title": "Trading System Elements: Exits",
       "url": "https://doi.org/10.1002/9781118656617.ch5",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "url": "https://doi.org/10.2139/ssrn.6876580",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "url": "https://doi.org/10.1002/9781118656617.ch13",
-      "description": "Crossref work type=other",
-      "updated_at": "2013"
-    },
-    {
-      "source": "crossref",
-      "query": "autonomous trading strategy research backtest",
-      "title": "What Is a Tradeable Strategy?",
-      "url": "https://doi.org/10.1002/9781118656617.ch1",
       "description": "Crossref work type=other",
       "updated_at": "2013"
     },
@@ -2809,46 +2742,6 @@
     {
       "source": "crossref",
       "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 1 Trading in Options",
-      "url": "https://doi.org/10.1515/9783110697865-002",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 15 Trading Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-016",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Chapter 4 Volatility",
-      "url": "https://doi.org/10.1515/9783110697865-005",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118524046.ch2",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Making Sense of Volatility in Options Trading",
-      "url": "https://doi.org/10.1002/9781118531990.ch2",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2012"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
       "title": "Volatility Skew: Smile or Smirk?",
       "url": "https://doi.org/10.1002/9781118524046.ch4",
       "description": "Crossref work type=other",
@@ -2861,14 +2754,6 @@
       "url": "https://doi.org/10.1002/9781118531990.ch4",
       "description": "Crossref work type=other",
       "updated_at": "2010"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto options volatility skew gamma trading",
-      "title": "Volatility Trading Explained",
-      "url": "https://doi.org/10.1002/9781118528693.ch8",
-      "description": "Crossref work type=other",
-      "updated_at": "2012"
     },
     {
       "source": "crossref",
@@ -3041,10 +2926,74 @@
     {
       "source": "crossref",
       "query": "crypto trading bot strategy backtest",
+      "title": "Developing a Strategy So it Trades Like it Back‐Tests",
+      "url": "https://doi.org/10.1002/9781118656617.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
       "title": "How Much Sharpe is Illusory? Quantifying Backtest Overfitting in Crypto Factor Strategies",
       "url": "https://doi.org/10.2139/ssrn.7350238",
       "description": "Crossref work type=posted-content",
       "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "url": "https://doi.org/10.2139/ssrn.6683818",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "url": "https://doi.org/10.2139/ssrn.4601806",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading Lore",
+      "url": "https://doi.org/10.1002/9781118656617.ch10",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading System Elements: Entries",
+      "url": "https://doi.org/10.1002/9781118656617.ch4",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "url": "https://doi.org/10.2139/ssrn.6876580",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "url": "https://doi.org/10.1002/9781118656617.ch13",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto trading bot strategy backtest",
+      "title": "What Is a Tradeable Strategy?",
+      "url": "https://doi.org/10.1002/9781118656617.ch1",
+      "description": "Crossref work type=other",
+      "updated_at": "2013"
     },
     {
       "source": "crossref",
@@ -3553,6 +3502,22 @@
     {
       "source": "crossref",
       "query": "fair value gap imbalance FVG crypto trading",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "url": "https://doi.org/10.2139/ssrn.4405361",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "fair value gap imbalance FVG crypto trading",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "fair value gap imbalance FVG crypto trading",
       "title": "Fair Trading",
       "url": "https://doi.org/10.2139/ssrn.709342",
       "description": "Crossref work type=posted-content",
@@ -3645,22 +3610,6 @@
       "url": "https://doi.org/10.2139/ssrn.4268371",
       "description": "Crossref work type=posted-content",
       "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "funding rate basis carry crypto trading",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "url": "https://doi.org/10.2139/ssrn.4405361",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "funding rate basis carry crypto trading",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2023"
     },
     {
       "source": "crossref",
@@ -3837,14 +3786,6 @@
       "url": "https://doi.org/10.21275/art2019288",
       "description": "Crossref work type=journal-article",
       "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "genetic programming symbolic regression trading alpha",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "description": "Crossref work type=book-chapter",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4169,9 +4110,49 @@
     {
       "source": "crossref",
       "query": "options volatility trading systematic strategy",
+      "title": "Chapter 1 Trading in Options",
+      "url": "https://doi.org/10.1515/9783110697865-002",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Chapter 15 Trading Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-016",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Chapter 4 Volatility",
+      "url": "https://doi.org/10.1515/9783110697865-005",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2022"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
       "title": "Creating Your Binary Options Strategy",
       "url": "https://doi.org/10.1002/9781118528693.part5",
       "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118524046.ch2",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Making Sense of Volatility in Options Trading",
+      "url": "https://doi.org/10.1002/9781118531990.ch2",
+      "description": "Crossref work type=book-chapter",
       "updated_at": "2012"
     },
     {
@@ -4184,11 +4165,35 @@
     },
     {
       "source": "crossref",
+      "query": "options volatility trading systematic strategy",
+      "title": "Volatility Trading Explained",
+      "url": "https://doi.org/10.1002/9781118528693.ch8",
+      "description": "Crossref work type=other",
+      "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "order flow trading research code",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "url": "https://doi.org/10.2139/ssrn.5806502",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
       "query": "order flow trading research code",
       "title": "Automating Trade and Order Flow",
       "url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2007"
+    },
+    {
+      "source": "crossref",
+      "query": "order flow trading research code",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "url": "https://doi.org/10.3386/w21286",
+      "description": "Crossref work type=report",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4673,6 +4678,14 @@
     {
       "source": "crossref",
       "query": "statistical arbitrage pairs trading equities",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "url": "https://doi.org/10.21275/sr231123060916",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
       "title": "Market Neutrality and Pairs Trading",
       "url": "https://doi.org/10.1002/9781119201526.ch4",
       "description": "Crossref work type=other",
@@ -4685,6 +4698,14 @@
       "url": "https://doi.org/10.1002/9781119201526.ch15",
       "description": "Crossref work type=other",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "url": "https://doi.org/10.2139/ssrn.2610064",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4797,6 +4818,14 @@
       "url": "https://doi.org/10.1007/978-1-4899-7687-1_100458",
       "description": "Crossref work type=book-chapter",
       "updated_at": "2017"
+    },
+    {
+      "source": "crossref",
+      "query": "symbolic regression alpha mining trading",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "description": "Crossref work type=book-chapter",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -4969,30 +4998,6 @@
     {
       "source": "crossref",
       "query": "中国 A股 量化 交易 策略 因子",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "中国 A股 量化 交易 策略 因子",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "url": "https://doi.org/10.12677/fin.2024.143090",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "中国 A股 量化 交易 策略 因子",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "url": "https://doi.org/10.12677/aam.2024.136273",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "中国 A股 量化 交易 策略 因子",
       "title": "中国旅游企业海外参展产品展示与促进策略研究——以ITB柏林国际旅游交易会为例",
       "url": "https://doi.org/10.64216/3104-9672.25.07.010",
       "description": "Crossref work type=journal-article",
@@ -5040,27 +5045,11 @@
     },
     {
       "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
-      "url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "加密货币 量化 github",
-      "title": "以数字化货币为路径，助力股权投资业务高质量发展",
-      "url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2020"
-    },
-    {
-      "source": "crossref",
       "query": "因子挖掘 A股 量化 交易",
-      "title": "",
-      "url": "https://doi.org/10.52926/jpmjpr1761",
-      "description": "Crossref work type=grant",
-      "updated_at": ""
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "url": "https://doi.org/10.12677/orf.2024.146534",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5091,6 +5080,14 @@
       "query": "因子挖掘 A股 量化 交易",
       "title": "當證券交易法遇上迷因股",
       "url": "https://doi.org/10.53106/1684739326504",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "因子挖掘 A股 量化 交易",
+      "title": "证券交易平台高频交易算法的性能优化研究",
+      "url": "https://doi.org/10.37155/2717-5170-0607-73",
       "description": "Crossref work type=journal-article",
       "updated_at": "2024"
     },
@@ -5129,14 +5126,6 @@
     {
       "source": "crossref",
       "query": "因子挖掘 加密货币 量化 交易",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "url": "https://doi.org/10.12677/orf.2024.146534",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "因子挖掘 加密货币 量化 交易",
       "title": "Research on Tax Issues in the Context of Dig-ital Economy—Take the Mining Mechanism of Bitcoin as an Example",
       "url": "https://doi.org/10.12677/wer.2021.101001",
       "description": "Crossref work type=journal-article",
@@ -5169,14 +5158,6 @@
     {
       "source": "crossref",
       "query": "多因子 加密货币 量化 交易 策略",
-      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
-      "url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
-    },
-    {
-      "source": "crossref",
-      "query": "多因子 加密货币 量化 交易 策略",
       "title": "基于 CANSLIM 法则的多因子量化策略研究",
       "url": "https://doi.org/10.69979/3029-2700.25.03.078",
       "description": "Crossref work type=journal-article",
@@ -5185,10 +5166,58 @@
     {
       "source": "crossref",
       "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "url": "https://doi.org/10.12677/fin.2021.113022",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "url": "https://doi.org/10.12677/ds.2023.96381",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "url": "https://doi.org/10.12677/orf.2021.114043",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
       "title": "The Monetary Institution to Uphold Consumer Paramountcy in the Cheap-Money Era",
       "url": "https://doi.org/10.12677/etw.2012.23012",
       "description": "Crossref work type=journal-article",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "主权信用质量边际恶化与债务货币化视角下的黄金定价机制研究",
+      "url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
+      "url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2021"
+    },
+    {
+      "source": "crossref",
+      "query": "威科夫 VSA VPA 量价 加密货币",
+      "title": "因势“利”导——中国货币政策传导机制从数量型向价格型转型",
+      "url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5225,6 +5254,22 @@
     {
       "source": "crossref",
       "query": "强化学习 加密货币 交易 策略",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "url": "https://doi.org/10.12677/aam.2024.136273",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
+      "url": "https://doi.org/10.12677/aam.2023.124175",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
       "title": "Traffic Signal Control Based on Improved Deep Reinforcement Learning Strategy",
       "url": "https://doi.org/10.12677/mos.2024.131014",
       "description": "Crossref work type=journal-article",
@@ -5237,6 +5282,14 @@
       "url": "https://doi.org/10.32629/ej.v2i3.152",
       "description": "Crossref work type=journal-article",
       "updated_at": "2019"
+    },
+    {
+      "source": "crossref",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "广东电力现货市场主体交易策略与博弈行为分析",
+      "url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2026"
     },
     {
       "source": "crossref",
@@ -5256,19 +5309,19 @@
     },
     {
       "source": "crossref",
-      "query": "涨停 连板 A股 量化 策略",
-      "title": "Research on Quantitative Stock Selection Strategy Based on Attention-GRU",
-      "url": "https://doi.org/10.12677/aam.2022.111033",
+      "query": "强化学习 加密货币 交易 策略",
+      "title": "火电厂在电力现货交易中的竞价策略与优化",
+      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2022"
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
       "query": "涨停 连板 A股 量化 策略",
-      "title": "Stock Return Forecasts and Quantitative Investment Strategies for the E-Commerce Industry",
-      "url": "https://doi.org/10.12677/ecl.2025.1482826",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "url": "https://doi.org/10.12677/fin.2024.143090",
       "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
+      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -5409,30 +5462,6 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "url": "https://doi.org/10.12677/ds.2023.96381",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading—Taking Gold and Bitcoin Trading Strategies as Examples",
-      "url": "https://doi.org/10.12677/aam.2023.124175",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "加密货币的发展和对中国央行数字货币发行的推动作用",
-      "url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2021"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "城市轨道交通客流预测与调度优化策略研究",
       "url": "https://doi.org/10.67328/bt4095",
       "description": "Crossref work type=journal-article",
@@ -5457,24 +5486,8 @@
     {
       "source": "crossref",
       "query": "订单流 加密货币 交易 策略",
-      "title": "广东电力现货市场主体交易策略与博弈行为分析",
-      "url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
       "title": "数据跨境流动中的安全风险与加密防护策略研究",
       "url": "https://doi.org/10.62989/jemr2025.2.2.10",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "订单流 加密货币 交易 策略",
-      "title": "火电厂在电力现货交易中的竞价策略与优化",
-      "url": "https://doi.org/10.37155/2717-5197-0714-13",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
     },
@@ -5589,14 +5602,6 @@
       "url": "https://doi.org/10.33142/sca.v8i9.17954",
       "description": "Crossref work type=journal-article",
       "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "量化 交易 alpha 挖掘 遗传 算法",
-      "title": "证券交易平台高频交易算法的性能优化研究",
-      "url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2024"
     },
     {
       "source": "crossref",
@@ -15702,14 +15707,6 @@
     {
       "source": "semantic_scholar",
       "query": "crypto momentum trend following strategy bitcoin",
-      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
-      "url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
-      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
-      "updated_at": "2025"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "crypto momentum trend following strategy bitcoin",
       "title": "Market Efficiency and Crypto Dynamics in a Downward Market Trend",
       "url": "https://www.semanticscholar.org/paper/0692459bf8c273ec143fddb24e11bf2132ee7173",
       "description": "The study aims to analyze and distinguish the patterns of the volatility dynamics of Bitcoin and Bitcoin-based ETFs and that of established capital markets in the context of crisis market dynamics characterized by significant and persistent negative market trends. In order to investigate these the assumptions of the Efficient Markets Hypothesis are used and the measurement of market efficiency and the magnitude of impact of market shocks are carried out. By investigating the volatility characteristics of Bitcoin and its underlying ETF, the iShares Bitcoin Trust ETF (IBIT), on the one hand, and on the other hand, the established equity markets represented by the S&P 500 Market Index and the NASDAQ Composite Index, it is possible to achieve a characteristic distinction in the patterns of volatility dynamics in the context of a crisis and a pronounced downward market trend. The temporal aspect of the study covers two specific periods characterized by significant fluctuations in global capital markets, namely the global pandemic of COWID-19 and the intensification of protectionist sentiment in the United States following the election and inauguration of President Donald Trump's administration during his second presidential term in the period 2024-2025. The empirical results enable us to record the existence of hedging potential of the use of Bitcoin, and its underlying ETF, against established volatility dynamics of the capital markets. The pattern of volatility dynamics of Bitcoin between the two crisis periods studied shows a development that brings it closer to equity markets in the 2024-2025 period, but at the same time retains the hedging potential expressed by a significantly lower impact in a down market environment of the negative market information compared to equity markets. Bitcoin's hedging potential is demonstrated not only in terms of the volatility dynamics of the cryptocurrency itself, but also relative to the Bitcoin-based ETF, the iShares Bitcoin Trust",
@@ -16602,6 +16599,14 @@
       "url": "https://www.semanticscholar.org/paper/173ca411727e8ac95f3cfab4599725788f92e7a2",
       "description": "Systematic traders employ algorithmic strategies to manage their investments. As a result of the deterministic nature of such strategies, it is possible to determine their exact responses to any conceivable set of market conditions. Consequently, sensitivity analysis can be conducted to systematically uncover undesirable strategy behavior and enhance strategy robustness by adding controls to reduce exposure during periods of poor performance/unfavorable market conditions, or to increase exposure during periods of strong performance/favorable market conditions. In this study, we formulate both a simple systematic trend-following strategy (i.e., trading model) to simulate investment decisions and a market model to simulate the evolution of instrument prices. We then map the relationship between market model parameters under various conditions and strategy performance. We focus, in particular, on identifying the performance impact of changes in both serial dependence in price variability and changes in the trend. The long-range serial dependence of the true range worsens performance of the simple classic trend-following strategy. During periods of strong performance, the dispersion of trading outcomes increases significantly as long-range serial dependence increases.",
       "updated_at": "2019"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "futures trend following systematic strategy",
+      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
+      "url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
+      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
+      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
