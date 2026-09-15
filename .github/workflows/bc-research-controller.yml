@@ -123,6 +123,9 @@ jobs:
       - name: Compile constrained discovery primitives
         if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
         run: python research/discovery_compiler.py
+      - name: Repair durable OOS evidence before campaign resume
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' }}
+        run: python research/repair_oos_evidence.py
       - name: Run bounded autonomous research campaign
         id: controller
         shell: bash
