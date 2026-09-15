@@ -89,7 +89,7 @@ def prior_fingerprints():
 
 def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
- for _ in range(3):
+ for attempt in range(3):
   raw=call(prompt+feedback)
   try:c=json.loads(raw)
   except Exception:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
@@ -109,7 +109,7 @@ def request_candidate(prompt,forbidden):
     if ok:return c
   last=reason
   if reason=="selected_family_mismatch":feedback=f"\nVALIDATOR_FEEDBACK: mechanism_family is INVALID unless it exactly equals {selected_family!r}. Use hypothesis_id=mechanism_family with discovery_spec.mechanism_family={selected_family!r}, OR use discovered_primitive with a valid executable OHLCV spec. Do not invent any other family label.\n"
-  elif reason=="duplicate_structural_mechanism":feedback="\nVALIDATOR_FEEDBACK: this mechanism was already tested. Changing only threshold/window is NOT novelty. Produce a genuinely different family/operator/left/right/direction mechanism, or HOLD if the selected source cannot support one.\n"
+  elif reason=="duplicate_structural_mechanism":feedback=f"\nVALIDATOR_FEEDBACK: DUPLICATE structural key rejected. This exact family/operator/left/right/direction has already been tested. Attempt {attempt+1}/3: choose a DIFFERENT unused structural key from the selected survivor's mechanism, not a threshold/window change. If no faithful unused BTC/OHLCV mechanism exists, return HOLD.\n"
   elif reason=="invalid_mechanism_family":feedback=f"\nVALIDATOR_FEEDBACK: invalid mechanism family. The ONLY allowed family for this request is {selected_family!r}; set discovery_spec.mechanism_family to that exact value if using mechanism_family.\n"
   else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Regenerate only an executable BTC OHLCV translation.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
@@ -150,7 +150,8 @@ def main():
   selected=next(s for s in eligible if str(s.get("family") or "").strip()==family);selected_family=family
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));evidence=survivor_evidence(selected)
- prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS: {json.dumps([list(x) for x in sorted(forbidden,key=str)[-200:]],separators=(',',':'))}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. A threshold/window change alone is forbidden as novelty. If the selected mechanism has already been structurally tested and no genuinely different OHLCV expression is supported, return HOLD rather than fabricate novelty.")
+ forbidden_payload=json.dumps([list(x) for x in sorted(forbidden,key=str)],separators=(',',':'))
+ prompt=(f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nALLOWED_MECHANISM_FAMILY_FOR_THIS_REQUEST: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {forbidden_payload}\nFAILURE ANALYSIS (repair context only, never evidence):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative; translate this one only):\n{json.dumps(selected,sort_keys=True,separators=(',',':'))}\nTranslate the mechanism faithfully to BTCUSDT 1H without changing asset, data lane, or selected family. A threshold/window change alone is forbidden as novelty. If the selected mechanism has already been structurally tested and no genuinely different OHLCV expression is supported, return HOLD rather than fabricate novelty.")
  try:
   c=request_candidate(prompt,forbidden)
   if c.get("status")=="HOLD":print("PROVIDER_GEMINI_HOLD");return 0
