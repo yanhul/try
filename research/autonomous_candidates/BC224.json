@@ -1,0 +1,27 @@
+{
+  "bc": 224,
+  "candidate_hash": "ba8c073be5ab434c88cc6dbabb217056f94a6b8706d09be590c90266142aa49d",
+  "conceptual_change": "Transition to volume-based trend confirmation using volume_ratio delta to identify institutional accumulation momentum, avoiding forbidden price-based identity/delta/rolling_mean structures.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "delta",
+    "threshold": 0.15,
+    "window": 50
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|delta|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.15,
+    "window": 50
+  },
+  "parent_bc": 223,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

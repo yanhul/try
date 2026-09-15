@@ -1,29 +1,29 @@
 [
   {
-    "bc": 223,
-    "candidate_hash": "6b215f0ef4d1d3182daa9be706a59276c37a73370a034ea9596ea0fc2e9bcbaf",
-    "conceptual_change": "Shift from relative price z-score normalization to rolling mean-based volatility expansion detection using range_ratio to capture structural mean reversion exhaustion.",
+    "bc": 224,
+    "candidate_hash": "ba8c073be5ab434c88cc6dbabb217056f94a6b8706d09be590c90266142aa49d",
+    "conceptual_change": "Transition to volume-based trend confirmation using volume_ratio delta to identify institutional accumulation momentum, avoiding forbidden price-based identity/delta/rolling_mean structures.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "mean_reversion",
-      "operator": "rolling_mean",
-      "threshold": 0.05,
+      "direction": "above",
+      "left": "volume_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "delta",
+      "threshold": 0.15,
       "window": 50
     },
     "evidence_sources": [
-      "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|rolling_mean|range_ratio||below",
+    "novelty_key": "momentum_trend|delta|volume_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 0.15,
       "window": 50
     },
-    "parent_bc": 222,
+    "parent_bc": 223,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
