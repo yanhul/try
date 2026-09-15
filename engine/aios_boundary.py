@@ -1,64 +1,63 @@
-"""AIOS execution-contract/permit/attestation verification boundary."""
+"""TRY execution boundary backed by the shared AIOS authority primitives.
+
+TRY owns research semantics; AIOS owns contract/permit/attestation validation.
+This module is intentionally a thin compatibility adapter and contains no
+second implementation of the authority rules.
+"""
 from __future__ import annotations
-import hashlib, hmac, json
+
+import importlib
+import json
+import os
+import sys
 from pathlib import Path
 
-CONTRACT_TYPE="EXECUTION_CONTRACT"; PERMIT_TYPE="EXECUTION_PERMIT"; ATTESTATION_TYPE="EXECUTION_PERMIT_ATTESTATION"
-_REQUIRED={"contract_type","task_id","scope","actor","capabilities","input_digest","allowed_effects","evidence_required","max_attempts","terminal_states","policy_digest"}
-_RECORD_METADATA={"record_type","contract_id"}
-_PERMIT_REQUIRED={"permit_type","permit_id","contract_id","task_id","actor","capabilities","allowed_effects","max_attempts","policy_digest","issuer"}
-_ATTESTATION_REQUIRED={"attestation_type","contract_id","permit_id","issuer","algorithm","signature"}
 
-def _canonical(obj): return json.dumps(obj,sort_keys=True,separators=(",",":"),ensure_ascii=True)
+def _aios_modules(aios_root: str | Path | None = None):
+    root = Path(aios_root or os.environ.get("AIOS_ROOT", "")).expanduser().resolve()
+    if not (root / "core" / "contract.py").is_file():
+        raise FileNotFoundError(f"AIOS contract module not found under {root}")
+    root_s = str(root)
+    if root_s not in sys.path:
+        sys.path.insert(0, root_s)
+    return importlib.import_module("core.contract"), importlib.import_module("core.attestation")
 
-def _canonical_contract(record):
-    if not isinstance(record,dict): raise ValueError("contract must be a dict")
-    extra=set(record)-_REQUIRED-_RECORD_METADATA
-    if extra: raise ValueError(f"contract contains unsupported fields: {sorted(extra)}")
-    missing=_REQUIRED-set(record)
-    if missing: raise ValueError(f"contract missing fields: {sorted(missing)}")
-    contract={k:record[k] for k in _REQUIRED}
-    if contract.get("contract_type")!=CONTRACT_TYPE: raise ValueError("contract schema/type mismatch")
-    for k in ("task_id","scope","actor","input_digest","policy_digest"):
-        if not isinstance(contract.get(k),str) or not contract[k].strip(): raise ValueError(f"contract {k} invalid")
-    for k in ("capabilities","allowed_effects","evidence_required","terminal_states"):
-        if not isinstance(contract.get(k),list) or not all(isinstance(v,str) and v.strip() for v in contract[k]): raise ValueError(f"contract {k} invalid")
-    if isinstance(contract.get("max_attempts"),bool) or not isinstance(contract.get("max_attempts"),int) or contract["max_attempts"]<1: raise ValueError("contract max_attempts invalid")
-    expected="CT-"+hashlib.sha256(_canonical(contract).encode("utf-8")).hexdigest()
-    if "contract_id" in record and record["contract_id"]!=expected: raise ValueError("stored contract identity mismatch")
-    if "record_type" in record and record["record_type"]!=CONTRACT_TYPE: raise ValueError("contract record type mismatch")
-    return contract
 
-def contract_identity(contract):
-    """Return the identity of the validated canonical contract.
+def contract_identity(contract, *, aios_root=None):
+    contract_mod, _ = _aios_modules(aios_root)
+    return contract_mod.contract_identity(contract)
 
-    _canonical_contract() returns the validated dict, not its serialized
-    representation. Serialize that dict explicitly before hashing.
-    """
-    canonical=_canonical_contract(contract)
-    return "CT-"+hashlib.sha256(_canonical(canonical).encode("utf-8")).hexdigest()
 
-def verify_permit(contract,permit):
-    contract=_canonical_contract(contract); cid=contract_identity(contract)
-    if not isinstance(permit,dict) or set(permit)!=_PERMIT_REQUIRED or permit.get("permit_type")!=PERMIT_TYPE: raise ValueError("permit schema/type mismatch")
-    if permit.get("contract_id")!=cid: raise ValueError("permit is not bound to contract")
-    expected=dict(permit); expected.pop("permit_id")
-    if permit.get("permit_id")!="PT-"+hashlib.sha256(_canonical(expected).encode("utf-8")).hexdigest(): raise ValueError("permit identity mismatch")
-    for k in ("task_id","actor","capabilities","allowed_effects","max_attempts","policy_digest"):
-        if permit.get(k)!=contract.get(k): raise ValueError(f"permit/{k} differs from contract")
+def verify_permit(contract, permit, *, aios_root=None):
+    contract_mod, _ = _aios_modules(aios_root)
+    return contract_mod.verify_permit(contract, permit)
 
-def verify_attestation(contract,permit,attestation,secret):
-    if not isinstance(secret,str) or not secret: raise ValueError("missing authority attestation secret")
-    contract=_canonical_contract(contract); verify_permit(contract,permit)
-    if not isinstance(attestation,dict) or set(attestation)!=_ATTESTATION_REQUIRED: raise ValueError("attestation schema mismatch")
-    if attestation.get("attestation_type")!=ATTESTATION_TYPE or attestation.get("algorithm")!="HMAC-SHA256": raise ValueError("attestation type/algorithm mismatch")
-    if (attestation.get("contract_id"),attestation.get("permit_id"),attestation.get("issuer"))!=(permit["contract_id"],permit["permit_id"],permit["issuer"]): raise ValueError("attestation is not bound to permit")
-    msg=f"{permit['contract_id']}\n{permit['permit_id']}\n{permit['issuer']}".encode("utf-8")
-    expected=hmac.new(secret.encode("utf-8"),msg,hashlib.sha256).hexdigest()
-    if not hmac.compare_digest(attestation.get("signature",""),expected): raise ValueError("attestation signature mismatch")
 
-def verify_authority(contract_path,permit_path,attestation_path=None,secret=None):
-    contract=_canonical_contract(json.loads(Path(contract_path).read_text(encoding="utf-8")))
-    permit=json.loads(Path(permit_path).read_text(encoding="utf-8")); verify_permit(contract,permit)
-    if attestation_path is not None: verify_attestation(contract,permit,json.loads(Path(attestation_path).read_text(encoding="utf-8")),secret or "")
-    return {"contract_id":contract_identity(contract),"issuer":permit["issuer"],"task_id":contract["task_id"],"actor":contract["actor"],"attested":attestation_path is not None}
+def verify_attestation(contract, permit, attestation, secret, *, aios_root=None):
+    _, attestation_mod = _aios_modules(aios_root)
+    return attestation_mod.verify_attestation(contract, permit, attestation, secret)
+
+
+def verify_authority(contract_path, permit_path, attestation_path=None, secret=None, *, aios_root=None):
+    contract = json.loads(Path(contract_path).read_text(encoding="utf-8"))
+    permit = json.loads(Path(permit_path).read_text(encoding="utf-8"))
+    verify_permit(contract, permit, aios_root=aios_root)
+    if attestation_path is not None:
+        verify_attestation(
+            contract,
+            permit,
+            json.loads(Path(attestation_path).read_text(encoding="utf-8")),
+            secret or "",
+            aios_root=aios_root,
+        )
+    return {
+        "contract_id": contract_identity(contract, aios_root=aios_root),
+        "issuer": permit["issuer"],
+        "task_id": contract["task_id"],
+        "actor": contract["actor"],
+        "attested": attestation_path is not None,
+        "authority_provider": "AIOS.core.contract+attestation",
+    }
+
+
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority"]
