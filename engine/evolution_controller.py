@@ -130,6 +130,16 @@ class EvolutionController:
 
     def decide(self, candidate: Candidate, evaluation: Evaluation, baseline: Evaluation,
                hypothesis_id: str = "astra") -> str:
+        # A decision is durable evidence too. If this candidate was already
+        # decided, reuse that decision instead of appending a duplicate record.
+        for record in reversed(self.ledger.read()):
+            if record.get("experiment_id") != candidate.id:
+                continue
+            status = record.get("status")
+            if status == "PROMOTED":
+                return "PROMOTE"
+            if status == "REJECTED" and record.get("decision") in {"REJECT", "PROMOTE"}:
+                return str(record["decision"])
         decision = self.compare(evaluation, baseline)
         self.ledger.append(ExperimentRecord(
             experiment_id=candidate.id, hypothesis_id=hypothesis_id,
