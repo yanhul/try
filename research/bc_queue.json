@@ -1,29 +1,28 @@
 [
   {
-    "bc": 256,
-    "candidate_hash": "01eddcf037d77c2c99c00e5fbfd60f57b5b5df73e7cae04ccb0431ea59b05d4b",
-    "conceptual_change": "Moving from pure price-based ICT metrics to a liquidity-adjusted distance metric, evaluating the deviation of the high from the VWAP to capture potential exhausted liquidity sweeps.",
+    "bc": 257,
+    "candidate_hash": "759985df5d47248c2dacb502541b99204429061503d97ec7536c1f9a921b23c3",
+    "conceptual_change": "Shift from price-lag momentum to relative liquidity z-score thresholds to detect volume-exhaustion-driven trend surges.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "high",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.005
+      "direction": "above",
+      "left": "volume_ratio",
+      "operator": "zscore",
+      "threshold": 1.5,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|vwap_distance|below",
+    "novelty_key": "|zscore|volume_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": null
+      "threshold": 1.5,
+      "window": 20
     },
-    "parent_bc": 255,
+    "parent_bc": 256,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
