@@ -1,0 +1,26 @@
+{
+  "bc": 241,
+  "candidate_hash": "5401c972023705d6d0464660f5f958fa522b5516570b8f65a1e68787ffab1fd0",
+  "conceptual_change": "Instead of evaluating absolute volume, this shifts to the statistical significance of volume changes relative to the recent distribution, targeting low-conviction downward momentum regimes.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|zscore|volume_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 2.0,
+    "window": 20
+  },
+  "parent_bc": 240,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
