@@ -1,29 +1,29 @@
 [
   {
-    "bc": 236,
-    "candidate_hash": "e226817c0c313d770ed5e7280cabe9b91cdc959cb3ca590330988a0b51005a4a",
-    "conceptual_change": "Shift from liquidity sweep mechanics to identifying bearish order flow imbalance (order blocks) by looking for price segments where the closing price fails to maintain a meaningful positive delta against the opening price, specifically targeting the breakdown of support in ICT framework.",
+    "bc": 237,
+    "candidate_hash": "b048860948c7062d609c6f4fc26a1c4cddbdcad276c859a94c22bb2bde8bf49d",
+    "conceptual_change": "Transitioning from price-based momentum metrics to volume-intensity attenuation. Instead of price-level breakouts, this hypothesis identifies trend exhaustion through the persistent decay of trade volume relative to the rolling 48-hour average, signaling a lack of institutional conviction in the prevailing trend direction.",
     "discovery_spec": {
       "direction": "below",
-      "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "open",
-      "threshold": 0.0005
+      "left": "volume",
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_mean",
+      "threshold": 0.85,
+      "window": 48
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|close|open|below",
+    "novelty_key": "momentum_trend|rolling_mean|volume||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0005,
-      "window": null
+      "threshold": 0.85,
+      "window": 48
     },
-    "parent_bc": 235,
+    "parent_bc": 236,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
