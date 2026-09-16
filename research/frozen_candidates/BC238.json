@@ -1,0 +1,27 @@
+{
+  "bc": 238,
+  "candidate_hash": "927cb7e59758d1956172b9bfe13cf9b6e2658cca643777af94742f9089e9cd67",
+  "conceptual_change": "Shifting from price-based mean reversion to volume-normalized momentum exhaustion. Instead of relying on price deviations, this model monitors when the raw trade volume exceeds 1.5x the rolling volume_ratio, signaling an overextended move prone to immediate mean-reversion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|volume|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": null
+  },
+  "parent_bc": 237,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
