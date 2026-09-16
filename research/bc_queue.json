@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 231,
+    "candidate_hash": "47a9b6efea6e210c1cb51dfac7c5985f215ed23175933c3d85906b468f674733",
+    "conceptual_change": "Shift from volatility or z-score thresholds to a momentum-dampened mean reversion model, evaluating if the 24-period rolling mean of vwap_distance remains below a tight threshold for potential mean reversion entry.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_mean",
+      "threshold": 0.05,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "mean_reversion|rolling_mean|vwap_distance||below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": 24
+    },
+    "parent_bc": 230,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]

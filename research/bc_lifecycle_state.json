@@ -7,7 +7,7 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 7161,
+  "checkpoint_seq": 7164,
   "current_bc": 231,
   "history": [
     {
@@ -1433,7 +1433,7 @@
   ],
   "iterations": 1153,
   "last_bc": 230,
-  "last_error": "HOLD_TRANSLATION_FRONTIER_EXHAUSTED",
+  "last_error": null,
   "next_bc": 231,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
@@ -1442,12 +1442,12 @@
     "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
     "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac"
   ],
-  "phase": "HOLD",
-  "retry_count": 1,
+  "phase": "PERSISTED",
+  "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:translation_hypothesis_id_forbidden\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-16T04:26:42.672731+00:00"
+  "updated_at": "2026-09-16T05:03:18.673564+00:00"
 }
