@@ -171,7 +171,11 @@ def _ensure_research_capability(state, policy):
 def _migrate_candidate_oos_terminal(state):
     if not (state.get('campaign_terminal') and state.get('campaign_terminal_reason') == 'OOS_FAIL'):
         return False
-    parent = int(state.get('current_bc') or state.get('last_bc') or 0)
+    raw_parent = state.get('oos_failed_bc')
+    if not isinstance(raw_parent, int) or raw_parent <= 0:
+        print('CAMPAIGN_MIGRATE_OOS_FAIL_HOLD reason=MISSING_EXPLICIT_OOS_FAILED_BC')
+        return False
+    parent = raw_parent
     candidate_path = CANDIDATE_DIR / f'BC{parent}.json'
     result_path = OOS_DIR / f'BC{parent}_oos_result.json'
     receipt_path = OOS_DIR / f'BC{parent}_oos_result_receipt.json'
@@ -338,6 +342,13 @@ def main():
                                       retry_allowed=False, blocked=False, progress_event=False)
         if action is LifecycleAction.BLOCKED:
             print(f'CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}'); save(state); return 3
+        if raw == 'OOS_FAIL':
+            failed_bc = state.get('current_bc')
+            if not isinstance(failed_bc, int) or failed_bc <= 0:
+                print('CAMPAIGN_BLOCKED OOS_FAIL_MISSING_CURRENT_BC')
+                save(state)
+                return 3
+            state['oos_failed_bc'] = failed_bc
         state.update(campaign_terminal=True, campaign_outcome=outcome, campaign_terminal_reason=raw)
         save(state)
         print(f'CAMPAIGN_TERMINAL outcome={outcome} screened={after}/{budget}')
