@@ -67,8 +67,14 @@ def _start_new_campaign_epoch(state,policy):
     history=state.get('history',[]) if isinstance(state.get('history',[]),list) else []
     bcs=[int(x['bc']) for x in history if isinstance(x,dict) and str(x.get('bc','')).isdigit()]
     start=max(bcs+[int(state.get('current_bc') or state.get('last_bc') or 0)])+1
-    state.update(campaign_id=pid,campaign_epoch_initialized=True,campaign_start_bc=start,next_bc=start,campaign_screened=0,campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason=None,phase='OBSERVE',last_error=None,retry_count=0,terminal=False)
+    state.update(campaign_id=pid,campaign_epoch_initialized=True,campaign_start_bc=start,next_bc=start,campaign_screened=0,campaign_terminal=False,campaign_outcome=None,campaign_terminal_reason=None,phase='OBSERVE',last_error=None,retry_count=0,terminal=False,capabilities=['research'])
     print(f'CAMPAIGN_NEW_EPOCH id={pid} start_bc={start} prior_id={old or "none"}'); save(state)
+
+def _ensure_research_capability(state,policy):
+    caps=state.get('capabilities')
+    if caps is None:
+        state['capabilities']=['research']; state['capability_repaired_from_campaign_policy']=True; save(state); print('CAMPAIGN_CAPABILITY_REPAIRED research')
+    return state
 
 def _migrate_candidate_oos_terminal(state):
     if not (state.get('campaign_terminal') and state.get('campaign_terminal_reason')=='OOS_FAIL'): return False
@@ -86,7 +92,7 @@ def _epoch_seed_failure(parent,start):
     p=FAILURE_DIR/f'BC{parent}.json'
     if p.exists(): return None
     if parent==start-1:
-        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research'/'.epoch_seed_failure.json'; q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
+        FAILURE_DIR.mkdir(parents=True,exist_ok=True); q=ROOT/'research' / '.epoch_seed_failure.json'; q.write_text(json.dumps({'kind':'epoch_seed_failure','decision':'SEED_EPOCH','parent_bc':parent,'epoch_start_bc':start,'research_evidence':False,'repair_context':True,'reason':'Epoch seed only; no prior failure evidence. This artifact is bootstrap/repair context, not research evidence.'})+'\n',encoding='utf-8'); return q
     return None
 
 def controller_command(): return [sys.executable,'-m','research.bc_controller']
@@ -109,16 +115,13 @@ def main():
     budget=int(policy['max_screening_candidates']); batch=int(policy['controller_batch_size']); outcomes=set(policy['terminal_outcomes'])
     if budget<=0 or batch<=0 or batch>budget or not outcomes: print('CAMPAIGN_BLOCKED invalid_policy'); return 2
     state=load(STATE,{})
-    _start_new_campaign_epoch(state,policy); _migrate_candidate_oos_terminal(state)
+    _start_new_campaign_epoch(state,policy); _ensure_research_capability(state,policy); _migrate_candidate_oos_terminal(state)
     _,start,screened=reconcile_campaign_state(state,budget)
     queued=durable_queued_candidate(state,start)
     if state.get('campaign_terminal') and queued is None:
         o=state.get('campaign_outcome')
         if o not in outcomes: print(f'CAMPAIGN_BLOCKED persisted_invalid_terminal_outcome={o}'); return 3
         print(f"CAMPAIGN_TERMINAL outcome={o} screened={state.get('campaign_screened',0)}/{budget}"); return 0
-    # A durable queued candidate is already a committed research unit. It must execute
-    # before budget exhaustion/reconciliation can suppress it. The budget is consumed only
-    # after evaluator/gate evidence creates the corresponding durable history entry.
     if queued is None and screened>=budget: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',screened,budget)
     env=dict(os.environ); env['RESEARCH_MAX_ITERATIONS']=str(1 if queued else min(batch,budget-screened)); before=qualifying_bcs(state.get('history',[]),start)
     expected=int(state.get('next_bc',start)); seed=None if queued else _epoch_seed_failure(expected-1,start)
@@ -129,6 +132,10 @@ def main():
         if seed is not None and seed.exists(): seed.unlink()
     if rc: return rc
     state=load(STATE,{}); _,start,after=reconcile_campaign_state(state,budget)
+    queued_after=durable_queued_candidate(state,start)
+    if queued_after is not None and not state.get('terminal'):
+        state.update(campaign_budget=budget,campaign_id=policy['campaign_id'],campaign_terminal=False,campaign_outcome=None,phase='PERSISTED',last_error=None,retry_count=0)
+        save(state); print(f'CAMPAIGN_CONTINUE_DURABLE_QUEUE BC{queued_after["bc"]} screened={after}/{budget}'); return 0
     if state.get('phase') in {'WAIT_RETRY','HOLD'} or state.get('last_error'):
         state['campaign_budget']=budget; state['campaign_id']=policy['campaign_id']; save(state); reason=state.get('last_error') or state.get('phase')
         if retry_resume_allowed(state): print(f'CAMPAIGN_CONTINUE_RETRY retry={state.get("retry_count",0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES","3")} reason={reason} screened={after}/{budget}')
