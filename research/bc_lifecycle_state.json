@@ -3,11 +3,11 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 55,
+  "campaign_screened": 56,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 7238,
+  "checkpoint_seq": 7244,
   "current_bc": 240,
   "history": [
     {
@@ -1492,12 +1492,19 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 240,
+      "candidate_hash": "b4a9e589d30ba2d837166d0f99e41b3223eb4a44821fd0f28e94520fa91ca4ea",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "mechanism_family",
+      "oos_verdict": "OOS_FAIL"
     }
   ],
-  "iterations": 1162,
-  "last_bc": 239,
+  "iterations": 1163,
+  "last_bc": 240,
   "last_error": null,
-  "next_bc": 240,
+  "next_bc": 241,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -1505,14 +1512,15 @@
     "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
     "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
     "47a9b6efea6e210c1cb51dfac7c5985f215ed23175933c3d85906b468f674733",
-    "927cb7e59758d1956172b9bfe13cf9b6e2658cca643777af94742f9089e9cd67"
+    "927cb7e59758d1956172b9bfe13cf9b6e2658cca643777af94742f9089e9cd67",
+    "b4a9e589d30ba2d837166d0f99e41b3223eb4a44821fd0f28e94520fa91ca4ea"
   ],
-  "phase": "YIELD",
+  "phase": "PERSISTED",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:translation_hypothesis_id_forbidden\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-16T06:43:09.821450+00:00"
+  "updated_at": "2026-09-16T06:44:59.542648+00:00"
 }
