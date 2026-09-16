@@ -74,6 +74,25 @@ def test_new_campaign_epoch_counts_only_post_boundary_history(monkeypatch, tmp_p
     assert state["campaign_screened"] == 2
 
 
+def test_missing_capability_is_repaired_to_declared_research(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    state = {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002"}
+    policy = {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002"}
+    campaign_controller._ensure_research_capability(state, policy)
+    assert state["capabilities"] == ["research"]
+    assert state["capability_repaired_from_campaign_policy"] is True
+    persisted = json.loads((tmp_path / "state.json").read_text(encoding="utf-8"))
+    assert persisted["capabilities"] == ["research"]
+
+
+def test_existing_capability_is_not_overwritten(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    state = {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002", "capabilities": ["research"]}
+    campaign_controller._ensure_research_capability(state, {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002"})
+    assert state["capabilities"] == ["research"]
+    assert not (tmp_path / "state.json").exists()
+
+
 def test_epoch_seed_requires_explicit_controller_handoff(monkeypatch, tmp_path):
     monkeypatch.delenv("RESEARCH_EPOCH_SEED_FAILURE", raising=False)
     assert epoch_seed_failure(166, 167) is None
