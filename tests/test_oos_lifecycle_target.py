@@ -65,37 +65,20 @@ def test_migration_uses_explicit_failed_bc_not_current_cursor(tmp_path, monkeypa
     assert "BC247" in capsys.readouterr().out
 
 
-def test_oos_repair_failure_prevents_controller_execution(tmp_path):
-    """Mirror GitHub Actions fail-fast sequencing using the real repair entrypoint."""
+def test_oos_repair_failure_is_a_workflow_gate(tmp_path, monkeypatch):
+    """The real repair must fail, and the workflow must place it before controller."""
     state_path = tmp_path / "state.json"
-    marker = tmp_path / "controller-ran"
+    monkeypatch.setattr(repair_oos_evidence, "STATE", state_path)
     state_path.write_text(
         '{"campaign_terminal_reason":"OOS_FAIL","current_bc":999}\n',
         encoding="utf-8",
     )
-    repair_script = tmp_path / "run_repair.py"
-    repair_script.write_text(
-        "from pathlib import Path\n"
-        "from research import repair_oos_evidence\n"
-        f"repair_oos_evidence.STATE = Path(r'{state_path}')\n"
-        "raise SystemExit(repair_oos_evidence.main())\n",
-        encoding="utf-8",
-    )
-    marker_script = tmp_path / "mark_controller.py"
-    marker_script.write_text(
-        "from pathlib import Path\n"
-        f"Path(r'{marker}').write_text('ran')\n",
-        encoding="utf-8",
-    )
-    import os
-    import subprocess
-    env = os.environ.copy()
-    env["PYTHONPATH"] = os.getcwd()
-    result = subprocess.run(
-        ["bash", "-c", f"set -e; python '{repair_script}'; python '{marker_script}'"],
-        capture_output=True,
-        text=True,
-        env=env,
-    )
-    assert result.returncode == 2
-    assert not marker.exists()
+    assert repair_oos_evidence.main() == 2
+
+    from pathlib import Path
+    workflow = Path(".github/workflows/bc-research-controller.yml").read_text(encoding="utf-8")
+    repair = workflow.index("python research/repair_oos_evidence.py")
+    controller = workflow.index("python research/campaign_controller.py")
+    assert repair < controller
+    repair_block = workflow[workflow.rfind("- name:", 0, repair):controller]
+    assert "continue-on-error: true" not in repair_block
