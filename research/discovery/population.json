@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2686,
-    "expanded": 2351,
-    "normalized": 2351,
+    "raw": 2704,
+    "expanded": 2364,
+    "normalized": 2364,
     "round1": 209,
     "deferred": 99,
     "survivors": 107,
@@ -41,6 +41,22 @@
             "family_order": "round_robin"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "d83c7dfaafbac82c",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "d83c7dfaafbac82c",
+        "family": "china_a_share",
+        "rounds": []
       }
     },
     {
@@ -188,6 +204,22 @@
             "family": "unknown"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "6c0804b28496792c",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "6c0804b28496792c",
+        "family": "unknown",
+        "rounds": []
       }
     },
     {
@@ -464,6 +496,22 @@
             "family": "unknown"
           }
         ]
+      }
+    },
+    {
+      "candidate_id": "28e816e82272def1",
+      "source": "arxiv",
+      "source_url": null,
+      "title": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": null,
+      "lineage": {
+        "source": "28e816e82272def1",
+        "family": "unknown",
+        "rounds": []
       }
     },
     {
@@ -1764,6 +1812,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "cfed84d97a733725",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "006a3953ebc01064",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5806502",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "006a3953ebc01064",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3145,22 +3209,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3173,38 +3221,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -4805,22 +4821,6 @@
       "lineage": {
         "source": "355018ac87ffc9d3",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "006a3953ebc01064",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5806502",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "description": "Crossref work type=posted-content",
-      "family": "order_flow",
-      "market": null,
-      "query": "crypto order flow order book imbalance microprice",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "006a3953ebc01064",
-        "family": "order_flow",
         "rounds": []
       }
     },
@@ -8436,6 +8436,54 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "5657c7996f1c3138",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
         "family": "smc_ict",
         "rounds": []
       }
@@ -21187,6 +21235,22 @@
       }
     },
     {
+      "candidate_id": "422f4561e786ab29",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/rachel.green.r/ecoscan-26059766-deletion_scheduled-86525816",
+      "title": "rachel.green.r/ecoscan-26059766-deletion_scheduled-86525816",
+      "description": "[Ananicy](https://github.com/Nefelim4ag/Ananicy) rewritten in C++ for much lower CPU and memory usage.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:45:07.084Z",
+      "lineage": {
+        "source": "422f4561e786ab29",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "338a9642aaeaa7b4",
       "source": "gitlab",
       "source_url": "https://gitlab.com/rachel.green.r/ecoscan-26454254-deletion_scheduled-86407117",
@@ -22395,7 +22459,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T01:38:11.732Z",
+      "source_timestamp": "2026-09-16T07:44:42.285Z",
       "lineage": {
         "source": "bde388e925ce1769",
         "family": "china_a_share",
@@ -35283,6 +35347,166 @@
       }
     },
     {
+      "candidate_id": "8ff1721ef1c73d51",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b5b0d453c9f47606ccc92a77e6d0d99b569482bd",
+      "title": "Attention-Based Multi-Asset Order Flow Networks for Enhanced Mid-Price Prediction",
+      "description": "Financial markets are complex adaptive systems where assets continuously influence each other through dynamic and nonlinear interactions. Accurate mid-price forecasting in high-frequency trading (HFT) depends on capturing these market-wide dynamics. While order flow imbalance (OFI) features have proven more effective than raw limit order book (LOB) data for short-term forecasting, most existing models remain limited to single-asset dynamics, ignoring informative signals from related instruments. We propose OF-MATNet, a deep learning-based multi-asset forecasting framework that leverages OFI data from multiple Nasdaq-listed assets. Our approach captures nonlinear cross-asset dependencies through a Transformer-based architecture with multi-axis attention mechanisms over time, assets, and order book levels, enhanced with positional encoding. Informative peer assets for each target are selected using rolling-window Granger causality tests conducted during the training phase, enabling the model to exploit statistically validated cross-asset influences. Experiments on 110 assets show that OF-MATNet significantly outperforms both our single-asset baseline (OF-SATNet) and state-of-the-art models such as DeepLOB, BINCTABL, and TLOB. OF-MATNet achieves consistent R2 improvements in over 90% of cases, with larger gains for assets highly influenced by peers or at longer prediction horizons. Further analysis reveals that temporal attention contributes most to forecasting, but cross-asset and level-wise information are critical in enhancing accuracy. These findings underscore the practical value of modeling nonlinear cross-asset relationships for strategic financial decision-making.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "8ff1721ef1c73d51",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4c6aa902b1438d3e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/46221f26880a77bf13ad8c9af8269d2f991edb38",
+      "title": "Bridging the Reality Gap in Limit Order Book Simulation",
+      "description": "We introduce a practical, interactive simulator of the limit order book for large-tick assets, designed to produce realistic execution, costs, and P&L. The book state is projected onto a tractable representation based on spread and volume imbalance, enabling robust estimation from market data. Event timing is calibrated to reproduce the fine-scale temporal structure of real markets, revealing a pronounced mode at exchange round-trip latency consistent with simultaneous reactions and latency races among participants. We further incorporate a feedback mechanism that accumulates signed trade flow through a power-law decay kernel, reproducing both concave market impact during execution and partial post-trade reversion. Across several stocks and strategy case studies, the simulator yields realistic behavior where profitability becomes highly sensitive to execution parameters. We present the approach as a practical recipe: project, estimate, validate, adapt, for building realistic limit order book simulations.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "4c6aa902b1438d3e",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "20871a54dc8ee8ec",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
+      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
+      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "20871a54dc8ee8ec",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bcc172893cccaef8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/abaec26ab84ad0f2234ae190402ece82ad809200",
+      "title": "Deep order flow imbalance: Extracting alpha at multiple horizons from the limit order book",
+      "description": "We employ deep learning in forecasting high\u2010frequency returns at multiple horizons for 115 stocks traded on Nasdaq using order book information at the most granular level. While raw order book states can be used as input to the forecasting models, we achieve state\u2010of\u2010the\u2010art predictive accuracy by training simpler \u201coff\u2010the\u2010shelf\u201d artificial neural networks on stationary inputs derived from the order book. Specifically, models trained on order flow significantly outperform most models trained directly on order books. Using cross\u2010sectional regressions, we link the forecasting performance of a long short\u2010term memory network to stock characteristics at the market microstructure level, suggesting that \u201cinformation\u2010rich\u201d stocks can be predicted more accurately. Finally, we demonstrate that the effective horizon of stock specific forecasts is approximately two average price changes.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "bcc172893cccaef8",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "034c25630c7a2b94",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c12fdbfb16080c16e0955fbfa93b3babddb16e36",
+      "title": "Event-Time Order-Flow Memory, Operational-Time Impact, and Subordinated Market Observables",
+      "description": "We consider two canonical market-microstructure regularities: the long-memory of trade signs and the square-root law of meta-order impact. The point is not to propose new empirical laws, but to separate the clocks on which existing laws are defined. The sign-memory law is an event-time statement about the ordering and fragmentation of hidden orders. The square-root impact law is an operational-time statement about front motion in a locally linear latent order book. Starting from a discrete-time random-walk bid/ask reaction--diffusion order book with a separate event clock, we identify an event-time imbalance reduction, derive the operational-time front and impact equations in the locally linear regime, and then subordinate both sign and impact observables to calendar time. Fractional or tempered clock effects enter through this event-to-calendar projection, not through a different operational-time impact mechanism. This gives a compact clock-aware framework in which event-time sign persistence, operational-time square-root impact, and anomalous calendar-time effects appear as distinct but compatible consequences of a common order-book representation.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "034c25630c7a2b94",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e64a68c38946cf95",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a888c0e166e86d57139e677d228ea11733066ae7",
+      "title": "Herding and Liquidity in Order-Book Markets. I. A Robust Liquidity-Stress Crossover and its Reflexive Mechanism",
+      "description": "Agent-based models of markets readily produce emergent instabilities, but telling a genuine collective effect apart from a parameter artefact takes discipline. We apply Bouchaud's phase-diagram method to a continuous-double-auction order-book model. The method is to map the full phase diagram, test its robustness to rule changes, and rule out degenerate and numerical origins before we call any feature a tipping point. The model has fundamental-anchored zero-intelligence liquidity and a mid-anchored chartist herding layer, controlled by the fraction $\\varphi$ and the strength $\\kappa$ of herders. A 7x6 grid (336 runs, each with a scrambled-sign null) locates an emergent liquidity-stress crossover. The order parameter, the fraction of events with a one-sided book, rises to about 0.34 at $(\\varphi,\\kappa)=(0.9,1.0)$, is zero across all 42 scrambled cells, and forms a smooth crossover rather than a discontinuous Dark Corner. The dry-up is rule-robust (it recurs under an order-flow-imbalance rule), horizon-robust (about 0.32-0.35 across a 16x range of momentum window), and has a monotone onset boundary $\\varphi^*(\\kappa) = \\{0.55, 0.45, 0.36\\}$. We then decompose the mechanism at a matched directional-bias amplitude (mean |p_buy - 0.5| about 0.269). Price-momentum herding carries a large, comparator-robust reflexive component (+0.29; buying begets buying), whereas the order-flow rule's component is about 0 and comparator-dependent. The RMS-mispricing gradient is a placement artefact, largest at $\\kappa=0$. A companion two-market analysis finds no directional cross-market contagion across a signal-only herding link.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e64a68c38946cf95",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e3d509e6ae9eddaf",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/fccd567c46ecbf23fb80f37b84eea649d8218620",
+      "title": "Modelling Crypto Asset Order-Flow Imbalance as an Additive and Multiplicative Process",
+      "description": "This study models order-flow imbalance (OFI) in cryptocurrency markets as a stationary additive multiplicative stochastic process and derives a structural decomposition of conditional return variance into an additive and multiplicative OFI channel. The multiplicative component captures the self-amplifying dynamics generated by trend followers, leveraged traders, and large holders, whose state-dependent order flow pressure defines concentrated market regimes.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e3d509e6ae9eddaf",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "185e44b2ee34da7b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4136bb7a6854685fe1e47c3e0c9e07dbcdc2d23d",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "description": "We study the multi-level order-flow imbalance (MLOFI), which is a vector quantity that measures the net flow of buy and sell orders at different price levels in a limit order book (LOB). Using a recent, high-quality data set for six liquid stocks on Nasdaq, we fit a simple, linear relationship between MLOFI and the contemporaneous change in mid-price. For all six stocks that we study, we find that the out-of-sample goodness-of-fit of the relationship improves with each additional price level that we include in the MLOFI vector. Our results underline how order-flow activity deep into the LOB can influence the price-formation process.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "185e44b2ee34da7b",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6438b94cae6f87b9",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3e7442d6073c00646d16e719fd23b82c5e50bfec",
+      "title": "Order-Flow Filtration and Directional Association with Short-Horizon Returns",
+      "description": "Electronic markets generate dense order flow with many transient orders, which degrade directional signals derived from the limit order book (LOB). We study whether simple structural filters on order lifetime, modification count, and modification timing sharpen the association between order book imbalance (OBI) and short-horizon returns in BankNifty index futures, where unfiltered OBI is already known to be a strong short-horizon directional indicator. The efficacy of each filter is evaluated using a three-step diagnostic ladder: contemporaneous correlations, linear association between discretised regimes, and Hawkes event-time excitation between OBI and return regimes. Our results indicate that filtration of the aggregate order flow produces only modest changes relative to the unfiltered benchmark. By contrast, when filters are applied on the parent orders of executed trades, the resulting OBI series exhibits systematically stronger directional association. Motivated by recent regulatory initiatives to curb noisy order flow, we treat the association between OBI and short-horizon returns as a policy-relevant diagnostic of market quality. We then compare unfiltered and filtered OBI series, using tick-by-tick data from the National Stock Exchange of India, to infer how structural filters on the order flow affect OBI-return dynamics in an emerging market setting.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "6438b94cae6f87b9",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "11fafbb2330f083a",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/15ee0dfa2ba58878b5431f7b74e4f124e3b0bc0f",
+      "title": "When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures",
+      "description": "Building event-conditioned market models requires separating macro-event labels from persistent microstructure state. We study this distinction in Binance BTCUSDT and ETHUSDT futures from 2023-2026, combining top-20 L2 order book data, trade-flow records, and macro-event windows. We define a supervised discrete L2 liquidity-state transition task, distinct from latent-regime detection and price-direction prediction, and evaluate models in rolling monthly out-of-sample folds with event-clustered validation and blocked permutation tests, admitting each feature layer only if it improves on the layer below it on the same panel. Within these event windows, the first-order predictive signal is the pre-event L2 liquidity state: a coarse pre-event state baseline strongly predicts post-event liquidity regimes, interpretable logit models over continuous L2 features fail to improve on it, and a shallow nonlinear L2 model adds a robust further gain of comparable size to the state baseline's own. The macro-event calendar enters only by locating the windows and supplying matched non-event controls; we use event timing but not the event's label content, so pre-event state competes against an uninformed within-window baseline, not against the event type. Order flow adds further value only when layered on top of the L2 state model, not as a replacement. This value is not robustly cross-symbol: for ETH it is present across calm, mixed, and stressed regimes and largest under stressed pre-event liquidity, whereas BTC shows only isolated five-minute passes and no regime that clears at both horizons. These findings motivate a state-first design principle for market microstructure models. We provide a liquidity-state transition baseline and evaluation protocol that reinforcement-learning, execution-policy, or LLM-based context layers should exceed before their added value is credited.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "11fafbb2330f083a",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f2ac08ce6e202700",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5ae329d9e84205ed7088c0abf8af9b14feccb655",
@@ -35694,22 +35918,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "93eb0273e2fd4833",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "cf6cbb16cb1eb537",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "cf6cbb16cb1eb537",
         "family": "volatility",
         "rounds": []
       }
@@ -37491,22 +37699,6 @@
       }
     },
     {
-      "candidate_id": "20871a54dc8ee8ec",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
-      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
-      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
-      "family": "order_flow",
-      "market": null,
-      "query": "market microstructure order book strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "20871a54dc8ee8ec",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "040529bcb47658b8",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/deb6dff2dee990f817145e0835b6bbdb3e3bf7f2",
@@ -37775,6 +37967,22 @@
       "lineage": {
         "source": "9c5bac29f4e2a1e1",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf6cbb16cb1eb537",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cf6cbb16cb1eb537",
+        "family": "onchain",
         "rounds": []
       }
     },
