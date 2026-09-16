@@ -14,7 +14,10 @@ from pathlib import Path
 
 
 def _aios_modules(aios_root: str | Path | None = None):
-    root = Path(aios_root or os.environ.get("AIOS_ROOT", "")).expanduser().resolve()
+    configured = aios_root or os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        raise FileNotFoundError("AIOS_ROOT/AIOS_SOURCE is not configured")
+    root = Path(configured).expanduser().resolve()
     if not (root / "core" / "contract.py").is_file():
         raise FileNotFoundError(f"AIOS contract module not found under {root}")
     root_s = str(root)
