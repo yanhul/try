@@ -1,0 +1,24 @@
+{
+  "bc": 240,
+  "candidate_hash": "b4a9e589d30ba2d837166d0f99e41b3223eb4a44821fd0f28e94520fa91ca4ea",
+  "conceptual_change": "Shift focus from price-level comparisons to the deviation of the close relative to its own moving average, identifying periods where price is significantly below its local equilibrium, suggesting a reversion opportunity.",
+  "discovery_spec": {
+    "direction": "below",
+    "mechanism_family": "mean_reversion",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion||||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 239,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

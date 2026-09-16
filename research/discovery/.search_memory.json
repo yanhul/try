@@ -540,6 +540,16 @@
       "parent_bc": 197,
       "score": 0.25
     },
+    "smc_ict|difference|high|rolling_mean|above": {
+      "bc": 239,
+      "candidate_hash": "69c5f76917ceb189aca08fb12e6d7f63e9d473ce1411ed043f42053cc65d8fec",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7067d798ef7d702e657af2dad6d5053590e66d3c190e8b6014883286b9c5cb6a",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 238,
+      "score": 0.25
+    },
     "smc_ict|difference|low|low|below": {
       "bc": 189,
       "candidate_hash": "c34b081376ef0171119e35fd071d59987762aa0bc4fabae84e8a23ddd60417b0",
@@ -3021,9 +3031,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 237,
       "score": 0.43099758
+    },
+    {
+      "bc": 239,
+      "candidate_hash": "69c5f76917ceb189aca08fb12e6d7f63e9d473ce1411ed043f42053cc65d8fec",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7067d798ef7d702e657af2dad6d5053590e66d3c190e8b6014883286b9c5cb6a",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 238,
+      "score": 0.25
     }
   ],
-  "failures": 199,
+  "failures": 200,
   "families": {
     "discovered_primitive": {
       "fail": 102,
@@ -3035,7 +3055,7 @@
     "mean_reversion": {
       "fail": 31,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 11.926669700000001,
       "tested": 31
     },
@@ -3054,11 +3074,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 28,
+      "fail": 29,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 7.45243488,
-      "tested": 28
+      "recent_failures": 3,
+      "score_sum": 7.70243488,
+      "tested": 29
     },
     "volatility": {
       "fail": 11,
@@ -3068,8 +3088,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 239,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 240,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
