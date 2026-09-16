@@ -62,11 +62,16 @@ def test_migration_uses_explicit_failed_bc_not_current_cursor(tmp_path, monkeypa
     assert campaign_controller._migrate_candidate_oos_terminal(state) is True
     assert (failure_dir / "BC247.json").exists()
     assert not (failure_dir / "BC999.json").exists()
+    assert state["campaign_terminal"] is False
+    assert state["campaign_terminal_reason"] is None
+    assert state["last_oos_migration"] == {
+        "failed_bc": 247, "reason": "OOS_FAIL", "action": "CANDIDATE_REJECTION"
+    }
     assert "BC247" in capsys.readouterr().out
 
 
 def test_oos_repair_failure_is_a_workflow_gate(tmp_path, monkeypatch):
-    """The real repair must fail, and the workflow must place it before controller."""
+    """Repair failure must be non-zero and the workflow must explicitly gate controller execution."""
     state_path = tmp_path / "state.json"
     monkeypatch.setattr(repair_oos_evidence, "STATE", state_path)
     state_path.write_text(
@@ -81,4 +86,9 @@ def test_oos_repair_failure_is_a_workflow_gate(tmp_path, monkeypatch):
     controller = workflow.index("python research/campaign_controller.py")
     assert repair < controller
     repair_block = workflow[workflow.rfind("- name:", 0, repair):controller]
+    assert "id: oos_repair" in repair_block
+    assert "set -euo pipefail" in repair_block
+    assert "repair_ok=true" in repair_block
+    controller_block = workflow[workflow.rfind("- name:", 0, controller):]
+    assert "steps.oos_repair.outputs.repair_ok == 'true'" in controller_block
     assert "continue-on-error: true" not in repair_block
