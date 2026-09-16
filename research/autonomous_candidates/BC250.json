@@ -1,0 +1,27 @@
+{
+  "bc": 250,
+  "candidate_hash": "27b92e1beaf5fe777745454998f711ee64a36f18cb082887f4abb1c7bae3792c",
+  "conceptual_change": "Shifts from static price levels to measuring the local dispersion (standard deviation) of the close_location metric to identify high-liquidity volatility regimes where Smart Money Concepts (SMC) order blocks are more likely to be triggered during liquidity sweeps.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_std",
+    "threshold": 0.35,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|rolling_std|close_location||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.35,
+    "window": 24
+  },
+  "parent_bc": 249,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
