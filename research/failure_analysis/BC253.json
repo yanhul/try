@@ -1,0 +1,41 @@
+{
+  "bc": 253,
+  "parent_bc": 252,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "a1e853435e8d4819485b2d2ca67e20c11ed6b7ff18d271014094db31230e2f5e",
+  "conceptual_change": "Transitioning from price-based mean reversion to volume-profile-adjusted mean reversion by measuring if the current volume exceeds a 24-period simple moving average of volume, signaling potential exhaustion within a mean-reversion framework.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 454,
+    "skipped_overlap_trades": 409,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 18,
+      "loss_count": 27,
+      "win_rate": 0.4,
+      "total_return": -0.037996053908543215,
+      "avg_return": -0.0007564317994551462,
+      "profit_factor": 0.8983377381680266,
+      "max_drawdown": 0.12180423816425656,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
