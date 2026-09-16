@@ -197,6 +197,7 @@ def test_historical_oos_failure_is_migrated_from_durable_evidence(monkeypatch, t
         "current_bc": 202,
         "next_bc": 203,
         "phase": "TERMINAL",
+        "oos_failed_bc": 202,
     }
     assert campaign_controller._migrate_candidate_oos_terminal(state) is True
     assert state["campaign_terminal"] is False
