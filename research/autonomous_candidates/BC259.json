@@ -1,0 +1,27 @@
+{
+  "bc": 259,
+  "candidate_hash": "aee4cf28e3c520c0b555fd115074a7b66eafa0fe4dcdb785f3f5794349c3c54f",
+  "conceptual_change": "Shift from simple liquidty sweeps towards identifying periods of compressed price range volatility using a rolling standard deviation of close location, filtering for ICT-defined 'consolidation' zones that precede institutional displacement.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_std",
+    "threshold": 0.25,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|rolling_std|close_location||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.25,
+    "window": 24
+  },
+  "parent_bc": 258,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
