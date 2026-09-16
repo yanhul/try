@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 230,
+  "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
+  "conceptual_change": "Shift from z-score based signal generation to a price-volume relationship using rolling mean deviations, specifically testing the reversion of VWAP distance.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/KASHAPP10/statistical-arbitrage-crypto"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 229,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000841646222172943,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 18,
+    "max_drawdown": 0.04876866681110581,
+    "profit_factor": 0.886867243144444,
+    "total_return": -0.027940234337365033,
+    "trade_count": 30,
+    "win_count": 12,
+    "win_rate": 0.4
+  }
+}
