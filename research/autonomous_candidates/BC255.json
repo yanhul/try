@@ -1,0 +1,27 @@
+{
+  "bc": 255,
+  "candidate_hash": "220038c6b8b94d47057de1742a528d480123b8af463d76b675a2657d1c015525",
+  "conceptual_change": "Shifted from price/volume ratio analysis to volume-profile normalization using a 20-period z-score. By identifying periods where volume is significantly below the recent mean, we isolate low-liquidity regimes that precede high-volatility momentum breakouts.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|zscore|volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 254,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
