@@ -1,11 +1,31 @@
 from __future__ import annotations
 import json, os, subprocess, sys
 from datetime import datetime, timezone
+from enum import StrEnum
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 POLICY=ROOT/'research'/'campaign_policy.json'; STATE=ROOT/'research'/'bc_lifecycle_state.json'
 CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; OOS_DIR=ROOT/'research'/'oos'; QUEUE=ROOT/'research'/'bc_queue.json'
 QUALIFY={'REJECT','PROMOTE_TO_FUTURE_OOS_TEST'}
+
+class LifecycleAction(StrEnum):
+    TERMINAL='TERMINAL'
+    BLOCKED='BLOCKED'
+    CONTINUE_DURABLE_QUEUE='CONTINUE_DURABLE_QUEUE'
+    CONTINUE_RETRY='CONTINUE_RETRY'
+    CONTINUE_PROGRESS='CONTINUE_PROGRESS'
+    HOLD='HOLD'
+    BUDGET_EXHAUSTED='BUDGET_EXHAUSTED'
+
+def lifecycle_transition(*,terminal_state:bool,terminal_outcome_valid:bool,budget_exhausted:bool,durable_queue:bool,retry_allowed:bool,blocked:bool,progress_event:bool)->LifecycleAction:
+    """Single transition contract; accounting counters never decide liveness."""
+    if blocked: return LifecycleAction.BLOCKED
+    if terminal_state: return LifecycleAction.TERMINAL if terminal_outcome_valid else LifecycleAction.BLOCKED
+    if durable_queue: return LifecycleAction.CONTINUE_DURABLE_QUEUE
+    if budget_exhausted: return LifecycleAction.BUDGET_EXHAUSTED
+    if retry_allowed: return LifecycleAction.CONTINUE_RETRY
+    if progress_event: return LifecycleAction.CONTINUE_PROGRESS
+    return LifecycleAction.HOLD
 
 def load(path,default):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else default
@@ -57,7 +77,7 @@ def retry_resume_allowed(state):
     return not state.get('campaign_terminal') and not state.get('terminal') and state.get('phase')=='WAIT_RETRY' and int(state.get('retry_count',0))<int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3')) and bool(state.get('last_error'))
 
 def continuation_allowed(*,new_screened:int,phase:str|None,last_error:object,terminal_state:bool)->bool:
-    return not terminal_state and phase not in {'WAIT_RETRY','HOLD'} and not last_error and new_screened>0
+    return lifecycle_transition(terminal_state=terminal_state,terminal_outcome_valid=True,budget_exhausted=False,durable_queue=False,retry_allowed=phase=='WAIT_RETRY' and bool(last_error),blocked=phase=='HOLD' or bool(last_error),progress_event=new_screened>0) is LifecycleAction.CONTINUE_PROGRESS
 
 def _start_new_campaign_epoch(state,policy):
     pid=str(policy['campaign_id']); old=str(state.get('campaign_id') or '')
@@ -134,6 +154,8 @@ def main():
     state=load(STATE,{}); _,start,after=reconcile_campaign_state(state,budget)
     queued_after=durable_queued_candidate(state,start)
     if queued_after is not None and not state.get('terminal'):
+        action=lifecycle_transition(terminal_state=False,terminal_outcome_valid=True,budget_exhausted=False,durable_queue=True,retry_allowed=False,blocked=False,progress_event=False)
+        if action is not LifecycleAction.CONTINUE_DURABLE_QUEUE: return 4
         state.update(campaign_budget=budget,campaign_id=policy['campaign_id'],campaign_terminal=False,campaign_outcome=None,phase='PERSISTED',last_error=None,retry_count=0)
         save(state); print(f'CAMPAIGN_CONTINUE_DURABLE_QUEUE BC{queued_after["bc"]} screened={after}/{budget}'); return 0
     if state.get('phase') in {'WAIT_RETRY','HOLD'} or state.get('last_error'):
@@ -144,10 +166,12 @@ def main():
     history=state.get('history',[]); after_set=qualifying_bcs(history,start); new=after_set-before; state.update(campaign_screened=min(after,budget),campaign_budget=budget,campaign_id=policy['campaign_id'])
     if state.get('terminal'):
         raw=state.get('terminal_reason'); outcome='EDGE_FOUND' if raw=='OOS_PASS' else 'NO_EDGE_FOUND' if raw=='OOS_FAIL' else 'INCONCLUSIVE' if raw in {'HOLD','UNKNOWN'} else raw
-        if outcome not in outcomes: print(f'CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}'); save(state); return 3
+        action=lifecycle_transition(terminal_state=True,terminal_outcome_valid=outcome in outcomes,budget_exhausted=False,durable_queue=False,retry_allowed=False,blocked=False,progress_event=False)
+        if action is LifecycleAction.BLOCKED: print(f'CAMPAIGN_BLOCKED terminal_reason_not_in_policy={raw}'); save(state); return 3
         state.update(campaign_terminal=True,campaign_outcome=outcome,campaign_terminal_reason=raw); save(state); print(f'CAMPAIGN_TERMINAL outcome={outcome} screened={after}/{budget}'); return 0
-    if after>=budget: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',after,budget)
-    if not continuation_allowed(new_screened=len(new),phase=state.get('phase'),last_error=state.get('last_error'),terminal_state=bool(state.get('terminal'))):
+    action=lifecycle_transition(terminal_state=False,terminal_outcome_valid=True,budget_exhausted=after>=budget,durable_queue=False,retry_allowed=False,blocked=False,progress_event=bool(new))
+    if action is LifecycleAction.BUDGET_EXHAUSTED: return terminal(state,'NO_EDGE_FOUND','FIXED_SCREENING_BUDGET_EXHAUSTED',after,budget)
+    if action is not LifecycleAction.CONTINUE_PROGRESS:
         save(state); print(f'CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={after}/{budget}'); return 0
     save(state); print(f'CAMPAIGN_CONTINUE screened={after}/{budget}'); return 0
 if __name__=='__main__': raise SystemExit(main())
