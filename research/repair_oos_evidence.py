@@ -102,8 +102,11 @@ def main() -> int:
     state = load(STATE, {})
     if not state:
         return 0
+    # A migrated OOS failure has already been converted to a candidate-level
+    # rejection by campaign_controller. It is not a repair request. In
+    # particular, never reinterpret current_bc as the failed OOS BC here.
     reason = state.get("campaign_terminal_reason")
-    if reason not in {"OOS_FAIL", "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION"}:
+    if reason != "OOS_FAIL":
         print("OOS_EVIDENCE_REPAIR_NOT_REQUIRED")
         return 0
     bc = int(state.get("current_bc") or state.get("last_bc") or 0)
@@ -113,7 +116,10 @@ def main() -> int:
     if repair_bc(bc):
         return 0
     print(f"OOS_EVIDENCE_REPAIR_HOLD BC{bc} reason=INSUFFICIENT_DURABLE_EVIDENCE")
-    return 0
+    # HOLD must be a control-flow failure, not an informational success.
+    # The workflow stops before the controller, preventing durable-queue
+    # execution while the required OOS evidence is unresolved.
+    return 2
 
 
 if __name__ == "__main__":
