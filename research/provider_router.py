@@ -12,7 +12,7 @@ from research.search_memory import rank_families,note_selection
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are not a selector. Use only BTCUSDT 1H OHLCV. Never use OOS, expected performance, stars or intuition as evidence. Valid families: {sorted(MECHANISM_FAMILIES)}. A mechanism_family hypothesis MUST use exactly SELECTED_SURVIVOR_FAMILY. discovered_primitive may use only operators {OPERATORS} and columns {COLUMNS}. Threshold/window are parameters, NOT novelty. New hypotheses must change family/operator/left/right/direction. Return JSON only.'''
+SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are not a selector. Use only BTCUSDT 1H OHLCV. Never use OOS, expected performance, stars or intuition as evidence. Valid families: {sorted(MECHANISM_FAMILIES)}. A mechanism_family hypothesis MUST use exactly SELECTED_SURVIVOR_FAMILY. discovered_primitive may use only operators {OPERATORS} and columns {COLUMNS}. Threshold/window are parameters, NOT novelty. New hypotheses must change family/operator/left/right/direction. Return exactly one JSON object with this shape: {{"hypothesis_id":"mechanism_family|discovered_primitive","discovery_spec":{{...}},"conceptual_change":"...","evidence_sources":["..."],"rationale":"...","is_testable":true,"oos_selection_used":false}}. For mechanism_family, discovery_spec MUST contain mechanism_family, threshold and direction. For discovered_primitive, discovery_spec MUST contain operator, left, threshold and direction, plus right for difference/ratio and window for windowed operators. Do not put discovery_spec fields at the top level. Do not use a family name as hypothesis_id unless it is exactly SELECTED_SURVIVOR_FAMILY. Return JSON only.'''
 _PROVIDER_LAST_CALL=0.0
 bc=parent=0;selected_family=""
 def config(): return "https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.1-flash-lite"),os.getenv("GEMINI_API_KEY","")
@@ -53,17 +53,17 @@ def normalize_structural_types(c):
   if math.isfinite(v):s["threshold"]=int(v) if v.is_integer() else v
  if isinstance(s.get("window"),str) and s["window"].strip().isdigit():s["window"]=int(s["window"].strip())
 def normalize_hypothesis_id(c):
-    """Canonicalize provider metadata without weakening the executable schema.
-
-    The provider may emit a human-readable/opaque hypothesis_id even when its
-    discovery_spec is already a valid executable shape. hypothesis_id is lineage
-    metadata at this boundary; executable semantics come from discovery_spec.
-    Canonicalization is allowed only when the spec itself proves which executable
-    form it represents, and mechanism_family is always pinned to selected_family.
-    """
+    """Canonicalize provider metadata while preserving executable semantics."""
     spec=c.get("discovery_spec")
+    structural_fields={"mechanism_family","operator","left","right","window","threshold","direction","numeric_finite_threshold"}
     if not isinstance(spec,dict):
-        return
+        spec={k:c.pop(k) for k in list(c) if k in structural_fields}
+        if spec:c["discovery_spec"]=spec
+        else:return
+    else:
+        # Repair the common provider serialization mistake without inventing values.
+        for key in structural_fields:
+            if key not in spec and key in c: spec[key]=c.pop(key)
     explicit_family=spec.get("mechanism_family")
     if explicit_family is not None:
         if explicit_family==selected_family:
@@ -73,8 +73,8 @@ def normalize_hypothesis_id(c):
         c["hypothesis_id"]="mechanism_family"
         spec["mechanism_family"]=selected_family
         return
-    primitive_keys={"operator","left","right","window","threshold","direction","numeric_finite_threshold"}
-    if c.get("hypothesis_id") not in {"mechanism_family","discovered_primitive"} and primitive_keys.intersection(spec):
+    primitive_shape=(spec.get("operator") in OPERATORS and spec.get("left") in COLUMNS)
+    if c.get("hypothesis_id") not in {"mechanism_family","discovered_primitive"} and primitive_shape:
         c["hypothesis_id"]="discovered_primitive"
 def fingerprint(c):return structural_key(c)
 def prior_fingerprints():
@@ -90,7 +90,7 @@ def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
  for _ in range(3):
   try:c=json.loads(call(prompt+feedback))
-  except json.JSONDecodeError:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object.\n";continue
+  except json.JSONDecodeError:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object matching the required schema.\n";continue
   if not isinstance(c,dict):last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object.\n";continue
   if c.get("status")=="HOLD":return c
   normalize_structural_types(c);normalize_hypothesis_id(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
@@ -104,7 +104,7 @@ def request_candidate(prompt,forbidden):
     if ok:return c
   last=reason
   if reason=="duplicate_structural_mechanism":feedback="\nVALIDATOR_FEEDBACK: duplicate_structural_mechanism. DUPLICATE structural key rejected. Choose a genuinely different executable structural mechanism; threshold/window alone is not novelty. If none exists, return HOLD.\n"
-  else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Choose a genuinely different executable structural mechanism; threshold/window alone is not novelty. If none exists, return HOLD.\n"
+  else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Return the exact required JSON schema and choose a genuinely different executable structural mechanism; threshold/window alone is not novelty. If none exists, return HOLD.\n"
  raise ValueError(f"provider_candidate_contract_failed:{last}")
 def ground_candidate(c,selected):
  family=str(selected.get("family") or "").strip();url=str(selected.get("source_url") or "").strip()
