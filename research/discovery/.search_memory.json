@@ -1,0 +1,2916 @@
+{
+  "candidates": {
+    "mean_reversion|difference|close|range_ratio|below": {
+      "bc": 208,
+      "candidate_hash": "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
+      "decision": "OOS_FAIL",
+      "event_id": "a5f1845b2585d64bddefeb6addd8515cdb32289922c5e6df4661a36a05d891e4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 207,
+      "score": 0.43292076
+    },
+    "mean_reversion|difference|close|rolling_mean|above": {
+      "bc": 211,
+      "candidate_hash": "bf2249e4e5ac437bc3610440173cb77243659bca5427b4cad6fcd6f5cdad8ef4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e142519f3e49d5084708c68d7bb781b0eac1fdf2904d7feab71a76f698052195",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 210,
+      "score": 0.25
+    },
+    "mean_reversion|difference|close|rolling_mean|below": {
+      "bc": 202,
+      "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
+      "decision": "OOS_FAIL",
+      "event_id": "5ad4bd5b76c48b510e462b18936b6a379eaa0daee4915c43fc25432f49492646",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 201,
+      "score": 0.43292076
+    },
+    "mean_reversion|difference|range_ratio|range_ratio|below": {
+      "bc": 205,
+      "candidate_hash": "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
+      "decision": "OOS_FAIL",
+      "event_id": "96350009bbeee7324ac6dc647974ddedc5c5380f916c918766c0f6d4fe826ad8",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 204,
+      "score": 0.43292076
+    },
+    "mean_reversion|difference|vwap_distance|vwap_distance|below": {
+      "bc": 230,
+      "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
+      "decision": "OOS_FAIL",
+      "event_id": "2899350a50c5facfcfd423414ed79e8091c06c86f66ab3a86230c0e5dc96a7ad",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 229,
+      "score": 0.43292076
+    },
+    "mean_reversion|ratio|close|rolling_mean|above": {
+      "bc": 217,
+      "candidate_hash": "6b584244a4daf66f7344ca3958d9c8d41c1d51efd53d5072551bd1bc37806337",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "fad411c5fa341f800eee4d39e6d064c590208f965622a5704ec8462c0ba84103",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 216,
+      "score": 0.43939765
+    },
+    "mean_reversion|ratio|close|rolling_mean|below": {
+      "bc": 214,
+      "candidate_hash": "95944b39cd67d78631133f0b24dfe7759e066253638b514227086034a0ce882f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "0eb64581fe92391724aa42123f3e92da1cc99141d152f216f985b3eb280ee8f4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 213,
+      "score": 0.42114753
+    },
+    "mean_reversion|ratio|range_ratio|rolling_mean|below": {
+      "bc": 227,
+      "candidate_hash": "6dbee1568b1e143829fe72f1ce6adaf0dd294df5753302e25dbe70f0baa1638d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "590b3e91c0bf169f69847c83c88f71a14223d79ba5d7c6340d99aecfed5e6a3c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 226,
+      "score": 0.44345362
+    },
+    "mean_reversion|rolling_mean|range_ratio||below": {
+      "bc": 223,
+      "candidate_hash": "6b215f0ef4d1d3182daa9be706a59276c37a73370a034ea9596ea0fc2e9bcbaf",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6c6fec98f01e1140370f970ade0cfd8e1a0ee67acd96731276b82fec76edd22a",
+      "family": "mean_reversion",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 222,
+      "score": 0.25
+    },
+    "mean_reversion|rolling_std|range_ratio||below": {
+      "bc": 220,
+      "candidate_hash": "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
+      "decision": "OOS_FAIL",
+      "event_id": "66067062f1e446eccf1818005cd5a85fd895cd82aaf259e5525ed467c66a013c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 219,
+      "score": 0.43292076
+    },
+    "mean_reversion|zscore|close_location||above": {
+      "bc": 187,
+      "candidate_hash": "e53dce496b880e6a6fc1ada0fddef27391f1b9ec1c01412d6b7aef68cba1b75b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "81cab2e196a26d6eb9f2e0737ca9a0cb4c3170845324b468d97aa3c0fe853126",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 186,
+      "score": 0.37288423
+    },
+    "mean_reversion|zscore|close_location||below": {
+      "bc": 175,
+      "candidate_hash": "026334f4d77cbff0bc8a83ee7a1b7a8833ff40243ef5ef90522d1ad8d09fdd6d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "38272aa05d0ca3b83224e34d974845977b118cd8f45752dd3c3751021db50461",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 174,
+      "score": 0.37288423
+    },
+    "mean_reversion|zscore|close||above": {
+      "bc": 193,
+      "candidate_hash": "7757504394f4d0a850d10b433a1e69dd04557b5d688b0f8692b8141f36d0c2e9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d0a0369b08a309e36cb3f8fb44b98b7955e4769d6ba4b9285a0f5b9684e3a724",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 192,
+      "score": 0.31547337
+    },
+    "mean_reversion|zscore|close||below": {
+      "bc": 199,
+      "candidate_hash": "592134dc2ae162e358b1be3cc41670a0103f74e52750ba3126c90da985326234",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "aa08002963459f2d8d8bcde8649457c0d9f924203a0fd4ac93bf0e3038c2a156",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 198,
+      "score": 0.37288423
+    },
+    "mean_reversion|zscore|vwap_distance||above": {
+      "bc": 178,
+      "candidate_hash": "7722703b13645ee568d8c4552116250cfa3a09ab731c096f20e9d02b2e6f0a99",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e0d10c72c5a88bd357d2a86528d0350a749c17272c996a11a87cfded093275a4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 177,
+      "score": 0.31547337
+    },
+    "mean_reversion|zscore|vwap_distance||below": {
+      "bc": 196,
+      "candidate_hash": "677ee4c49a99e04f53868107ddefbb05f4811d08e8d97d4ead5f8750a33dedbc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d5f650e9ccba7c9cc47213232e5cb2e6b36337b4fa2b5079358a69c8887a5a46",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 195,
+      "score": 0.37288423
+    },
+    "mean_reversion||||above": {
+      "bc": 164,
+      "candidate_hash": "988957a9268196a9f56e521bea5af68992db2f46d559bea148c8917c21b39bad",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "14f9c70fa55a87498f4e1d5048e401e4fe512f921e3fe7b75c802e1c2c52dc02",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 163,
+      "score": 0.39608885
+    },
+    "momentum_trend|delta|close|close|above": {
+      "bc": 194,
+      "candidate_hash": "247b786fb6fa5b722a13b758e22a5784e8bafe419b2555f2296945635313f55d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6cd42d3ec742f5561ad7bfc8cd0aed5bebccc77c4b8bf52fdc6657e05fb5595c",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 193,
+      "score": 0.24681783
+    },
+    "momentum_trend|delta|close||above": {
+      "bc": 182,
+      "candidate_hash": "85ba1657e1d6488e25f77783822dd4dc0a5119ac34b6e66a7a735c92128ecf10",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a978200804ee3de76a2055933f4c9e9bbb2fb886f99182c569e27a34c8185a7a",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 181,
+      "score": 0.34859881
+    },
+    "momentum_trend|delta|volume_ratio||above": {
+      "bc": 224,
+      "candidate_hash": "ba8c073be5ab434c88cc6dbabb217056f94a6b8706d09be590c90266142aa49d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e29a316b465ab08f981111a0372d143959bc446c4fce4aa721d56c75e8a0a450",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 223,
+      "score": 0.25
+    },
+    "momentum_trend|delta|volume_ratio||below": {
+      "bc": 206,
+      "candidate_hash": "98d1466b7dc399ccb4ff94ff900fd7c59f393845ef5b29d4f8a9e17518141287",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5c9d8ce9c997a2127e82047c28dde9c9b8320982ec4008e858a0b40cac2aabbf",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 205,
+      "score": 0.29230661
+    },
+    "momentum_trend|identity|close||above": {
+      "bc": 145,
+      "candidate_hash": "2f6b7422dd4eba40ff089471e1fa0611705579b7952934c729091924b4787669",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "601322d877fc5799a5682d1e243982786544b0a1504c80e9080af46a2ffb697f",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 144,
+      "score": 0.32150183
+    },
+    "momentum_trend|rank|volume_ratio||above": {
+      "bc": 218,
+      "candidate_hash": "0ebcf479c6e408eeb4827707154645dba1b4670b1e146f55f1784fadace8dc5a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "db532558fd13f825b0d5d215d114e5da26061c9e961041f1e3511e5442398751",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 217,
+      "score": 0.25
+    },
+    "momentum_trend|rank|volume||above": {
+      "bc": 221,
+      "candidate_hash": "9b52c49fc952458bee4a24fd4da1343964a523799bc150df1ba0f3b3d2f59b40",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "54d19ba9dc688924a4278ed2e5c9d5547de3c21617fc99c3aaa622e7d15e46d5",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 220,
+      "score": 0.25
+    },
+    "momentum_trend|ratio|close|rolling_mean|above": {
+      "bc": 185,
+      "candidate_hash": "38a1c4be0c7aec6cce97d65d509e91ea5c6da2ad79afac910d31bbb623ac821d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "fdc7ab662c7811b4d5f127201f1732028186bb241260334be0b7198346be297d",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 184,
+      "score": 0.25
+    },
+    "momentum_trend|ratio|close|vwap_distance|above": {
+      "bc": 200,
+      "candidate_hash": "46d22ab26b6131d9d7645dbbd858b557538732ee5275aac9875f37ff35aef4ff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2dded270ade2a27fdeaf95cb44ae99a6ec5a2f0695c23a35b8fad939d1e77572",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 199,
+      "score": 0.25
+    },
+    "momentum_trend|ratio|volume|rolling_mean|above": {
+      "bc": 215,
+      "candidate_hash": "ef5662bea0ad25f1744299b2120f93a3326e49ba382d8a7216cd581ed271afcb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "813c2870a89bc7b525dcf83c6e2af5adedf60fae2284c2c322db35498472f69d",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 214,
+      "score": 0.25
+    },
+    "momentum_trend|ratio|volume|rolling_mean|below": {
+      "bc": 228,
+      "candidate_hash": "e07744dd2b59129c68ee7034567011413b0e26a266b294ae379c9b5650b9d253",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "af38b2916b26937b71c4bd7fb806e4d2ead99c5f1d2498ccd1be9b22e2b56393",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 227,
+      "score": 0.29230661
+    },
+    "momentum_trend|ratio|volume|volume_ratio|above": {
+      "bc": 212,
+      "candidate_hash": "e19e193956c7a216fa7502d76507bcedd90b40792da27390cec703efb4056e6a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "17ecce80069f90d53a6c40d4b9082c5429e707c68da89a34eb989fa39ba8a462",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 211,
+      "score": 0.25
+    },
+    "momentum_trend|rolling_mean|close||above": {
+      "bc": 197,
+      "candidate_hash": "49de07f169cca862ac9e15ea5621f88e742851c694f28adfbea07e54e28de284",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5c3ddf69970ccf84fdb93328736963522eddf82695c37a236146ddcea5efa365",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 196,
+      "score": 0.25
+    },
+    "momentum_trend|rolling_mean|close||below": {
+      "bc": 209,
+      "candidate_hash": "4a8cf313996eb11e08761a7047c9ce06836a79d125afc9bdc4dc6a2fbd353caa",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4e05b8e24eaecc1a328f492df3677ef80c7aa04c94fd7c590bda4352cc6c24da",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 208,
+      "score": 0.29230661
+    },
+    "momentum_trend|rolling_mean|volume_ratio||above": {
+      "bc": 191,
+      "candidate_hash": "d04ff99198bdea59b226a2b7c1b76ef04b48999c1935abe2c83e71db86ca883a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ae2d7af7f2e4f26b2d04b89b8a6dcb262937f0631fc6f6fb2b371b092af2439f",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 190,
+      "score": 0.25
+    },
+    "momentum_trend|rolling_mean|volume_ratio||below": {
+      "bc": 203,
+      "candidate_hash": "8b6dcf34a0e95cbfbb4a5026ecc7bb2b9fe6601711db17dc8a7a9d3b2b0d9773",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8332850e053c5bbc7985df80acaadeae04499f9a0228a19f209169f1d1d6791c",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 202,
+      "score": 0.29230661
+    },
+    "momentum_trend|zscore|close||above": {
+      "bc": 176,
+      "candidate_hash": "ff643aad4512b60a2bf089b2c3776a4b375b37574bcb1ba38f35b20c5fc694d5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "382c6268ce9908e2ced7c85261d875faecbfb39941a51492e1bb9788499621dd",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 175,
+      "score": 0.25
+    },
+    "momentum_trend|zscore|volume_ratio||above": {
+      "bc": 225,
+      "candidate_hash": "c0e792d7c5509eec7aa82e843ff9c7eab9594231049fdd4438d9bb3cda3120fb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6227ff58e7349b98bc12f9b5b3f4c025d56ba3ce035b5c2526b57f271c4bbe05",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 224,
+      "score": 0.25
+    },
+    "regime|identity|close||above": {
+      "bc": 141,
+      "candidate_hash": "8d9da159531c1aa9c9cc8c9d372305c8b211eccc7967b2d7fe564fd5b2947691",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "08e63e2be1c83286e8370daec12927a1dce2678ff001fe799af661b4a4d588f4",
+      "family": "regime",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 140,
+      "score": 0.25
+    },
+    "regime|identity|range_ratio||above": {
+      "bc": 133,
+      "candidate_hash": "d78f5e153811c81f48da9e8c84443a4188c7e401af39b265676640fdf320dde5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e47628c5f33f9b3490538fb6c9adaf0b9fbe6ba6e0705a8a7e104cf7c907e1c9",
+      "family": "regime",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 132,
+      "score": 0.25
+    },
+    "smc_ict|below|low||below": {
+      "bc": 186,
+      "candidate_hash": "39c631161e493fcf5c3932274019ee9e3114a8bd000fe19b6a22240a58d48a34",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "96a62bd36946b66642e31cfd171088fca2ee2cffa2ebd908fca8a327775404b1",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 185,
+      "score": 0.25
+    },
+    "smc_ict|delta|range_ratio||below": {
+      "bc": 229,
+      "candidate_hash": "1fe315941c0d2176feadb05deaaa688978057252a231a6c11482e01350a84002",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d021bc217463741af31621982ccd718e51aee66002d49fd4f0b57dca42b8e411",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 228,
+      "score": 0.25
+    },
+    "smc_ict|delta|||above": {
+      "bc": 167,
+      "candidate_hash": "b377d7799ec73c842d50d07f164ec484e04b0f093ea7a5aa1b5bed6d9cb8b0fb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d435443c69f7921c54da3bc916c50eeb58ba3d343fb4628f4ca2820594be6252",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 166,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|high|above": {
+      "bc": 207,
+      "candidate_hash": "0f836096e59a6ea63ab6cce2e89c88b2ebad372c27cff6851e5ec5e85cba5fd2",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5736afdd35dd6b58b66f3cce223b5c647e1d9f2ca4f563033b66a1f16629822e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 206,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|high|below": {
+      "bc": 177,
+      "candidate_hash": "0b4436e8c7450d4316201168288cc5aada0d510578e598523b6e575304d44ab4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "997f2f18983fd389400b51f3836a6b670ce877e22391de3c471974b4abf5508f",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 176,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|low|above": {
+      "bc": 174,
+      "candidate_hash": "a2023c8e19b4067f283cd4de7315dc69afffca259bffaa0da382d84b76397530",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7eb4cfa46dc232dc956c29bf84a8d386402a15dc0b968b4a30af4285a617c7f7",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 173,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|low|below": {
+      "bc": 216,
+      "candidate_hash": "1ffd9e01bcfe0453a36d9f185f979abe7c7d3502c46901ab6f2adbfd1a6821cc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5f2458d16c708de66b6958ea2f70a89d854592c5d25a7a94248c17fde6ce304c",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 215,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|open|above": {
+      "bc": 201,
+      "candidate_hash": "4c000b5231811254b839be9415592489e5a18b72afffc761e948acaa561293fe",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1106ef88ba97f3cf9f83f9c04da6611ec177e4d257549b0b9edef1b12c69ef4b",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 200,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|rolling_mean|above": {
+      "bc": 226,
+      "candidate_hash": "ca7a851fc85f2ca39d5261c346371d7b199f32ad5d6f2ed6ed2cf5a88f03e4f4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "63fcce9469d05381104ec0cf8c243e04fb416396176b6f7d40792fe680ccdefe",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 225,
+      "score": 0.25
+    },
+    "smc_ict|difference|close|vwap_distance|above": {
+      "bc": 198,
+      "candidate_hash": "eef3fbe5cd2d46d51cddbad7fa4d6773edcbd1d646af0380d19636c869427e07",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d8aa441ae1ee30801c79795a6726da86bdc643cd2e1104fd8bd1a5c0adf171fd",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 197,
+      "score": 0.25
+    },
+    "smc_ict|difference|low|low|below": {
+      "bc": 189,
+      "candidate_hash": "c34b081376ef0171119e35fd071d59987762aa0bc4fabae84e8a23ddd60417b0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "441d0ac46b7aa55ca4f942967139d66185f5ec3f33771200d607a5c503710453",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 188,
+      "score": 0.25
+    },
+    "smc_ict|difference|low|rolling_mean|below": {
+      "bc": 210,
+      "candidate_hash": "085cce27ef4b8c2d8753af342f78bb558fa15847b8cedfbf3cef511134670f99",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25fc85393c36f3fd6d4aef87131a41d1f65cdd655248285d043d0fb3b706b088",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 209,
+      "score": 0.25
+    },
+    "smc_ict|difference|low|rolling_std|below": {
+      "bc": 213,
+      "candidate_hash": "22dbf2e5cb0112b1e9522a0f3c23765011a31c5ee7fa4440b8c8d6035c4bd240",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ceaad9f41633ad9936aecd6fb1da68d521b0e84d1b5578d0406662ee927ab132",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 212,
+      "score": 0.25
+    },
+    "smc_ict|difference|range_ratio|rolling_mean|above": {
+      "bc": 192,
+      "candidate_hash": "ed4396eccb69b0166e6ecb1694f96fbb9ea37b08551eb6f1203a735c95041c59",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a753b3a235f2b0c78bc840aff3ce23153213587214d7da432522d0f757b1eb38",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 191,
+      "score": 0.25
+    },
+    "smc_ict|ratio|close_location|range_ratio|above": {
+      "bc": 204,
+      "candidate_hash": "f739e96db1e8a72fb030d9512d119c119c6aa5971bfa1ba00c534559a25ea5b3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c442421afec147f62bfaaea6af54b7e69a10728cb5054cb47f45787b24d84271",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 203,
+      "score": 0.25
+    },
+    "smc_ict|ratio|close_location|range_ratio|below": {
+      "bc": 180,
+      "candidate_hash": "a3e1af7b343c2cc6d9b9012cc2be2ea1dc88d79cb27e00ddbd3fac4a1f44d4ef",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25374e0deb9ca2b154b46b397c264385b55dbc8135c8129bbd16dfdabd6c3b3f",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 179,
+      "score": 0.25
+    },
+    "smc_ict|ratio|volume|rolling_mean|above": {
+      "bc": 222,
+      "candidate_hash": "dd7f38e0c835849b825a6fd5ccd1afbc1bd138a8aebb9d1499aeaa02a47b675d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2ff29df6082f669133e75898136f2b17b55cd6caae88ec437e268b33f931a198",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 221,
+      "score": 0.25
+    },
+    "smc_ict|rolling_mean|range_ratio||above": {
+      "bc": 195,
+      "candidate_hash": "ee7e9698bd13d5010b5e64dd669023d2535b5aa21608b33294e3a0469b09d33f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4ae5749ae821d0cc1b8febfc47b477076303d78a4407134f72ea98c446faa1b6",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 194,
+      "score": 0.25
+    },
+    "smc_ict|rolling_std|range_ratio||above": {
+      "bc": 219,
+      "candidate_hash": "e672a6f8aab7a8a34c304017211c9cdf1364c88c2a42e75bfb9110eab10f1bac",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "39ca34f69ee0b10c1315c9d6f9e8ef85ec0301e820959013fe32803d8d7069a3",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 218,
+      "score": 0.25
+    },
+    "smc_ict|zscore|close||above": {
+      "bc": 171,
+      "candidate_hash": "f8dfa654224be9b1357325e4d2452a76225af6b27bbb8a8be89b550b054ee4b9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "23a74aa5a3d81ae3d535932ec6ee3921f0020c50be7d2c73485b99f4b9e62b5e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 170,
+      "score": 0.25
+    },
+    "smc_ict||||above": {
+      "bc": 161,
+      "candidate_hash": "ca9df85272af5199b63a127853b050debb10025da48f3cf78153a330ef57b3a8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ab7368f6a874d716d0514d9645c6e434788c59105fabbde15cee7e446a2f9d86",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 160,
+      "score": 0.36310872
+    },
+    "volatility|above|volatility||above": {
+      "bc": 143,
+      "candidate_hash": "54e646615ecc5e440ba7bf2d954d25b41d0c39c29aa472b0b5529d67ab086bbb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7a5be562c6fab3338f36dd07b94d5bb3f681b3cdf819dec7bcd4f2c6b4753b2a",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 142,
+      "score": 0.36310872
+    },
+    "volatility|identity|close||above": {
+      "bc": 136,
+      "candidate_hash": "b41366d13e6cc5ee724f01a2721e744cbbf1e0b72b56f3077203a74f8c279f21",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7b6b3ff7875d89e3d784df39a27128bb9798b7ce5834672e406c3606e616a9cd",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 135,
+      "score": 0.41055913
+    },
+    "volatility|identity|range_ratio||above": {
+      "bc": 144,
+      "candidate_hash": "65b1d72769258c92be54f4e97ec5af3781479c77d0e79a51aecfe7514d6397a8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "53d473a9f470d3c6690da91007ea32603107ff8e2136b4a3997712ca9b2144c8",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 143,
+      "score": 0.36310872
+    },
+    "volatility|rolling_std|vwap_distance||above": {
+      "bc": 139,
+      "candidate_hash": "b25edd0cde00c280717d87e45bcaf97b82c95aa984f7b357da28ed6f4fff3e33",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cf2168e6085deadb27404bd617e60330f7e66b51efa54e953c7c7d8eb197f6e5",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 138,
+      "score": 0.41055913
+    },
+    "volatility||||above": {
+      "bc": 165,
+      "candidate_hash": "f3225c416bb93539bb960877a4325bef7f1779299a8554b7d325477d8ba241ce",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a125d103b9be8ae13205f51c602b40b3f3181b4439cdd1113233beb889289a28",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 164,
+      "score": 0.36310872
+    },
+    "|delta|volume_ratio||above": {
+      "bc": 68,
+      "candidate_hash": "c70908bc3e065a9a8c2dff67ed7dc926b32a6c546b4be89f09bfcaaa57b0922c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "352f2a858ddf2349ccb51fb7c15746c11c90ab3704118d5acca0cf489d240602",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 67,
+      "score": 0.25
+    },
+    "|difference|range_ratio|range_ratio|above": {
+      "bc": 64,
+      "candidate_hash": "0db42e859ddb428183554cdecf4abb860bd6036941fc0b5e30da08d34b493458",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "26bbbe3613387cfa01d1fa672fd896c6091c70241f6b976353e7169e1e19dcb9",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 63,
+      "score": 0.25
+    },
+    "|difference|vwap_distance|vwap_distance|above": {
+      "bc": 66,
+      "candidate_hash": "2ed96eae70af0239951114ab2c8d09a3c08a7102cf4ce3e5d9186a2bbd9cfe1a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "56bd70b25452dbae8ee99e9d410e579cf5e929567b850c6a3f157854f434f292",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 65,
+      "score": 0.25
+    },
+    "|identity|close_location||above": {
+      "bc": 113,
+      "candidate_hash": "2c2c3c803be56a23b17afb41e6dbe3ca1d7e249fa2844c5a4ca65aae615b9c0b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ed511480f1967f52ba337f83a3966c66294ee670ed4d816c36968beb0d67689a",
+      "family": "discovered_primitive",
+      "hypothesis_id": "sweep_confirmation",
+      "parent_bc": 112,
+      "score": 0.2495
+    },
+    "|identity|close||above": {
+      "bc": 142,
+      "candidate_hash": "8e3b1226e69e99dbaa22d0ec4421d38948b4f9b7d909e3e533571ac9c73611c5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7321256ee53440405f66ba88742390f48475c9a7543d6a56979da99d7982b096",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 141,
+      "score": 0.36310872
+    },
+    "|rank|range_ratio||above": {
+      "bc": 151,
+      "candidate_hash": "749fe75d6290497f6a63ba4e0f7e08241f01abd5ab3eae71ad5279c1a00deb2c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "940870ba1845f8f486dc207f09ba0376098ef2cc3336a67307638c8a6619ac49",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 150,
+      "score": 0.25
+    },
+    "|rank|range_ratio||below": {
+      "bc": 59,
+      "candidate_hash": "06f3f240a70dcdae070ea2c0a133de7936fc66b1741eb81f3cb416d906839c3b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "dc74de3517e9a7fdc8c18a50cd0fe90873eaaa5b416e353fe02740a5b2e631d2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 58,
+      "score": 0.25
+    },
+    "|ratio|close_location|vwap_distance|above": {
+      "bc": 166,
+      "candidate_hash": "af29f483cf18e63f9a31b861224de52c35e9f5e01af90004ff5001a989a7e82c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "221f1d3b2d8a40f38331049b350e358472fdaa66f8f0c6b5f7cf31ebb9e3c18f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 165,
+      "score": 0.38272652
+    },
+    "|ratio|range_ratio|range_ratio|above": {
+      "bc": 65,
+      "candidate_hash": "815a6575b20d585fcd45ae27060cc012c87b30b6891f2c70e3e940f38802286d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6f7fae54d204acc9857f35d1d09f6feb011ff6b26b467fca034969f97a0aa7b8",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 64,
+      "score": 0.25
+    },
+    "|rolling_mean|close_location||above": {
+      "bc": 67,
+      "candidate_hash": "964a8f3658ff42de4480f1d1d5d78eef8f703f8e58151d54c7c20e03e472eed0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4a833ac383812730ff9795a22b848a90a6e09f3e8e7750c31adad41b6148e1dc",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 66,
+      "score": 0.48502862
+    },
+    "|rolling_mean|range_ratio||below": {
+      "bc": 61,
+      "candidate_hash": "827bad5efb3ba32ec03db70e620037ceacab3d26adcf3bd7ba7586da004279fe",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6ea4a59f40d92f9b1dd4e34eec50bf64787f898f62e24fcd4e7a773ca7060c67",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 60,
+      "score": 0.25
+    },
+    "|rolling_mean|volume_ratio||above": {
+      "bc": 75,
+      "candidate_hash": "e0a6412a4c8735110a5d65945bcf9fc239243b4795324af91a54c0fb507a9a66",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3cc3e41a636b19ea4bc1ceb971cbcba04917c483be0dc76307fe9c02368030cb",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 74,
+      "score": 0.25
+    },
+    "|rolling_mean|vwap_distance||below": {
+      "bc": 88,
+      "candidate_hash": "23434468a68608120432df4afbfe7a86232280b18905768c55972297d69bd26a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9917838fc2b4522f862b17601482a4521d0a4572a1df28a0a59eaf063240fd61",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 87,
+      "score": 0.31164949
+    },
+    "|rolling_std|close_location||above": {
+      "bc": 47,
+      "candidate_hash": "505c73a4009ba171c9ee1496330c5ee553577a31154ee01f6efa7b02b6c526fd",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ad0139ee64f4618765faac0b3bcf2e64d014035a27b140cfe9255abd5bc4ead6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 46,
+      "score": 0.25
+    },
+    "|rolling_std|close_location||below": {
+      "bc": 95,
+      "candidate_hash": "b8dd7a819ec1d3d619e8305a23d387053fdec4887b6b9067514e95949d6686cf",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a5548e5139a383ff33c185232aaac9e112cfb2064d825ed257b0ffc0f776de86",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 94,
+      "score": 0.25
+    },
+    "|rolling_std|close||above": {
+      "bc": 126,
+      "candidate_hash": "3a0050d77c7fb96cfe09d2b1c1e981e8e683a32214a4ef10beb6fa730f8c21e1",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "43c40ccd95341226155a02edbc13e84e022d0507511a1e4f8e9f0f8197afd1d2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 125,
+      "score": 0.41055913
+    },
+    "|rolling_std|close||below": {
+      "bc": 80,
+      "candidate_hash": "9c9f4f0a54eb1e2763cc1b823eddac35fe4ea52e2c8aa776af247e0367b138ab",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "0aee1185cfb0bd5ae917b5d816ad8daab339740d6498f75050b137b18b44dc2f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 79,
+      "score": 0.25
+    },
+    "|rolling_std|range_ratio||above": {
+      "bc": 97,
+      "candidate_hash": "32dbcc808e93b9649b2d024ceb621c18866cfeee19f3f08aede14cc6a524bec3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "74a3e4de2a8834163dae0727169e700a66a280992ae12d8ac8ef1692b2ef6c16",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 96,
+      "score": 0.25
+    },
+    "|rolling_std|range_ratio||below": {
+      "bc": 92,
+      "candidate_hash": "2e3a254d342276ff0128dd5cee11b9c7cb44e92f86f9cee90d9bc362f3f6f2b3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f5775fa6cd71ec76a4fbc22cf6335e530179e4aa2518253a16c190ef4fbfccef",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 91,
+      "score": 0.25
+    },
+    "|rolling_std|volume_ratio||above": {
+      "bc": 90,
+      "candidate_hash": "354230a3ed65c83321d01fe4c80b5555b9e1ddd38fa6b12bebae6e73248f3c98",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "98c9c09b44da4df8a98ebed2055fcae33a3dd2f7e5f7da360a2e565f7440771d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 89,
+      "score": 0.25
+    },
+    "|rolling_std|volume_ratio||below": {
+      "bc": 79,
+      "candidate_hash": "a919d8c17ce99b16faa60eb6ef263b470bc96efe57c05eea2a61302a8c89167f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ca7a61bd7a9abc1c5819992c2461fb580b63c112c4d2a9c3acabc80cc6b25c52",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 78,
+      "score": 0.25
+    },
+    "|rolling_std|volume||above": {
+      "bc": 83,
+      "candidate_hash": "ae0d64ce16b7c422b9dc05c7a6caa159650ddd68edc51db9bcdd25c60ec49e98",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1889ecc012b734d6352ae280bec2001686baf967fb212f470bf37655a67d5ee6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 82,
+      "score": 0.41055913
+    },
+    "|rolling_std|vwap_distance||above": {
+      "bc": 81,
+      "candidate_hash": "68744d3fb2e48c5fc03ac8e6ad18ebf6968de4af807340766138b4c52277c668",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "43a5f7616bd7fb08252112c49e5428eb678030503f8c16d8b35a3b099db0b298",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 80,
+      "score": 0.41055913
+    },
+    "|rolling_std|vwap_distance||below": {
+      "bc": 85,
+      "candidate_hash": "67ad9b2a0a791bcfb9c0c22de507604e01b308d97b54f7214d32714c2e79cc8d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1b81aed41d44f158b2233cc013fdbf4a31ce53da541b409657dbe910ba5fb50f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 84,
+      "score": 0.25
+    },
+    "|zscore|close_location||above": {
+      "bc": 155,
+      "candidate_hash": "845c473167543f74469c4ea56bca6ca0d777294b2c1d0a82526c5be5683b5aff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "988168db90d174fee178e5d033e1b744600760d1b4f584c37740931a98f0491e",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 154,
+      "score": 0.24681186
+    },
+    "|zscore|close_location||below": {
+      "bc": 42,
+      "candidate_hash": "cb5e5e1cbcf72798361937f536001b81b3a39d5a3a99d57162d825de6962dfa9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c409c0edc62cf50d2a4dce9338d25fbfc6eba3e939564c66cfc9f77358ef810c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 41,
+      "score": 0.41055913
+    },
+    "|zscore|close||above": {
+      "bc": 63,
+      "candidate_hash": "664970c54e39d6b8d0bd38aef7cbbe74465c04ae307b5255a5bc4d9ecdb231ee",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9518a43f3e79d3a8b706a95d7cf074bc281e9f977c692ac5a77fda708d6ca39c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 62,
+      "score": 0.25
+    },
+    "|zscore|close||below": {
+      "bc": 52,
+      "candidate_hash": "cba314558b4f9a769d3b5cec443184bd1126ddb406ff7cc8f550de295a8eb6c5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "be5323c6bd7898fa4e6f7bcfe29fd79c2bae2885c2d723d8899efda1fcab524a",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 51,
+      "score": 0.25
+    },
+    "|zscore|range_ratio||above": {
+      "bc": 99,
+      "candidate_hash": "d0f7a37c120bfb7842c415cd78dff4c98a5618405d6e027bf4586ac398f971c8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "12cb7d1704f6feb35022ad7d86bd32d0e2d78a58dd6241c7a0aff6d917b86b7c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 98,
+      "score": 0.25
+    },
+    "|zscore|volume||above": {
+      "bc": 71,
+      "candidate_hash": "87e6ce66cc49366f816ffc97ed36fe928cbee9d42c1cd6703c5ce49b4162a733",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "29671d987895a0d3231668880ec6a8734e15ceff013d9494bb36b07f098e48fa",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 70,
+      "score": 0.25
+    },
+    "|zscore|vwap_distance||above": {
+      "bc": 55,
+      "candidate_hash": "c508298cd87dd3ea59264cd4213d8ae960a161700ed47c233e17fe18f5637c3d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cf1c1f13a401ae7cd0a30467c1219b1408f93933a9a253b623da06b2446afb32",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 54,
+      "score": 0.2495
+    },
+    "|zscore|vwap_distance||below": {
+      "bc": 98,
+      "candidate_hash": "f88af3819dbac36c0e5c0483f527770fea0607ad0788c791f86985170dea8fbc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e942af83ba8a73ed8ae70e86d5f4712df67c2608b1871aca781d6690a6b73892",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 97,
+      "score": 0.40748526
+    }
+  },
+  "events": [
+    {
+      "bc": 100,
+      "candidate_hash": "c3be07d2304b0c3468dc001d954c54c38b636c73141b8a189c9ed0cbc0f7a06a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cc3f89a7a7d01602cf14c61f12541a26de361306316164fe390d4d572cfe5daa",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 99,
+      "score": 0.25
+    },
+    {
+      "bc": 101,
+      "candidate_hash": "ad4c2d517913b5246e34775fa50e1bc77405d0483ee2780385f05a03bed58a17",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "abfccd763b674421afe42b7d5f862479af397f1b9f1c7d6de5c7a047583e3a52",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 100,
+      "score": 0.31164949
+    },
+    {
+      "bc": 102,
+      "candidate_hash": "599149e1edd374e41cc975cf6e500949d31d61cb90a6e053995dbe51ba193da1",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "21906c90bdfb16310851083932588c4dc03c2e0fce868b69f82a6919bfe82cf9",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 101,
+      "score": 0.25
+    },
+    {
+      "bc": 103,
+      "candidate_hash": "b2533fb0e973afc20776a60b0a952a169adf2b91980119b3a48688f22e9bedc6",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "bc2cba82b7c83e01eb6df3727482e863b3badb7435253cef1bbb0e5697a0b024",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 102,
+      "score": 0.25
+    },
+    {
+      "bc": 104,
+      "candidate_hash": "fcabcc23c37359fef7a9ddb52ae32bffa0099c948811f75a42c99898bcc3dd9a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "fdbf50b550046505747785843c96c97010d7469032f041136cee10d76cbafe4b",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 103,
+      "score": 0.25
+    },
+    {
+      "bc": 105,
+      "candidate_hash": "bbdcc691c55b1a1246f5cfc5333251a77f50f1b75aa85b449b3a483c99196137",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "50581642ca969a3897f1209b8ad9c56e30e6306f4ad0c3140f41858d843c449b",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 104,
+      "score": 0.25
+    },
+    {
+      "bc": 106,
+      "candidate_hash": "cad892c1eb59d173b09a6d9e20436daadc424c7a092d058c9723982feb77de82",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "78e020ef812960ca9016bfb9e5fee29441536a67ac4257f7682efde03f84dc9f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 105,
+      "score": 0.25
+    },
+    {
+      "bc": 107,
+      "candidate_hash": "c6c783316b5571ba00291f44bdd4db473137cab44cc04f71ca0099ee72faf6fd",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ee89f275462a816c4ddf399b56d87fd70f80f565b13a3a0b532e9cba0e7904a0",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 106,
+      "score": 0.25
+    },
+    {
+      "bc": 108,
+      "candidate_hash": "b190c2f2ce5ab539e6e540807e6f2f5f5e773c4756576427508331874a641e77",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2be5c3ad7d46ecb903feb60ec316a06f44210ea13a09642d49aad279667f8ff4",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 107,
+      "score": 0.25
+    },
+    {
+      "bc": 109,
+      "candidate_hash": "9b2d69fbd3f9137566db4c469ce6ffce9027b2697161d986e99b8831da1172cf",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c2f9e207b860c9a49459cca8ee8028a27d0695736120b803e2d9af061c5d2384",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 108,
+      "score": 0.25
+    },
+    {
+      "bc": 110,
+      "candidate_hash": "62a8cb2deed8d6a9862527b10227b1eb826f22044eac10a5cf5837f9a59830c9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "27cbd1fab1aa0a155b41b65288b1d25e365f479275164896791b2f043cee5429",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 109,
+      "score": 0.25
+    },
+    {
+      "bc": 111,
+      "candidate_hash": "241028f87c6f213103c86bb9c36d1c69faaea57b2b25d61caae7fa669475ec15",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "46080556777d3a24d81f1d5c8eb5ba57f6685848a4648fccd17ec3972c6f6c64",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 110,
+      "score": 0.25
+    },
+    {
+      "bc": 112,
+      "candidate_hash": "b1bd69b4a9917c4879ca205ac34681cf7db4f87e553e801cb6082defc6afd745",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3ad06a0f84a3fea0298e47d8101130a514919b0e5a88316a6b016d34dd7dfb65",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 111,
+      "score": 0.25
+    },
+    {
+      "bc": 113,
+      "candidate_hash": "2c2c3c803be56a23b17afb41e6dbe3ca1d7e249fa2844c5a4ca65aae615b9c0b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ed511480f1967f52ba337f83a3966c66294ee670ed4d816c36968beb0d67689a",
+      "family": "discovered_primitive",
+      "hypothesis_id": "sweep_confirmation",
+      "parent_bc": 112,
+      "score": 0.2495
+    },
+    {
+      "bc": 114,
+      "candidate_hash": "69a794e326973893ba9b9a69930affcd642179e4bfb569d9552399d2801c7952",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8e6d50cd28b0978e1b0eebfee8bf8eba73e31963f5b21247015746f8042a823d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 113,
+      "score": 0.25
+    },
+    {
+      "bc": 115,
+      "candidate_hash": "c05601f0655b8b579785ea4fcb795a03fb435c07762c11a385742e1740c2f2b7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "590f907c8622b4addf35e6d4865f0f007be0d34a9103cfe5987be98dc2d07cce",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 114,
+      "score": 0.25
+    },
+    {
+      "bc": 116,
+      "candidate_hash": "659002fdb80a9570ed47668540370c697799b4514e183d49ed1917feff10f72a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7e914b8bb0c2ed7a4a3a17f6dfaa515edf2b7dc58379a3ecc895514171fbbaf6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 115,
+      "score": 0.41055913
+    },
+    {
+      "bc": 117,
+      "candidate_hash": "b1db6d05d2971bff159e7066eff84d3b121ae78c42a2a98edab53a7bab2eb331",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "28fb4f3826aa3a84dd388f12955a96b4c4b3b78d5b1f91c049a8d85815d8bd35",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 116,
+      "score": 0.25
+    },
+    {
+      "bc": 118,
+      "candidate_hash": "7706655c1f28d4baf16486a3812fc9d10d036371d8edf887751b2b23d67f86f5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6307372dab42ac95db21eae456274a427a4016e0fca3b104d222bf2c68557411",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 117,
+      "score": 0.25
+    },
+    {
+      "bc": 119,
+      "candidate_hash": "38da36da2d09b97ff3245d2c8010d907df43238c50876370f3c6d43648398e56",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "323b5d90abe1d3259fa25c19d0909f6dde91a8131e456ac94ae8d115edf68ad3",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 118,
+      "score": 0.25
+    },
+    {
+      "bc": 120,
+      "candidate_hash": "7c101de18878f1fa85cddfceb59b4da92cc79d350bf0bd9bd34a2e4e9186383b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ce4fdda07f8ae1031bf8ae0dfb09b543cd185e0a6478bfddd9f9a70f7d46ca4f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 119,
+      "score": 0.31164949
+    },
+    {
+      "bc": 121,
+      "candidate_hash": "aab2ebbe0a1e28149854bd3f7ec48dfba7cb9d7d16b7f4b4ba53c4584299dade",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "27a35412f7b485af7a19316e8105e3016cc8369151f2dae3424017f0d7909f28",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 120,
+      "score": 0.25
+    },
+    {
+      "bc": 122,
+      "candidate_hash": "4f526eeba1497ab8cc44432fda43ca189707bb7508570bac9522c643c1d32ab3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "93553b04aa9af2c9e0d9557f1bea01cd3e53fc55c71cf38c0c10f2a9caba3098",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 121,
+      "score": 0.25
+    },
+    {
+      "bc": 123,
+      "candidate_hash": "4222f96fec3714fb5125694ec86591db445ea6a2e230bb0df2e6da26edfaac1d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b16ad7d795e3d3d9999fd4238b7e27d393326cf3c3920f66494c1e8c22686b27",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 122,
+      "score": 0.25
+    },
+    {
+      "bc": 124,
+      "candidate_hash": "ff5c12914b46171b84a62335e15197a89580e70da7d41cbe5ce1f7940d740ebd",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7615ab00dbe5792f82b86dbb8ed846c82e9cb44aa10befa16688d8726346d323",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 123,
+      "score": 0.25
+    },
+    {
+      "bc": 125,
+      "candidate_hash": "8be029d3b1f69cd659d5683d160820c1f97f8f59098eca6bd6d8f765f41c8519",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "adbe57d9aa1abf06002c6526561f04b86c4ebe585bc1c514d122a43946f993eb",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 124,
+      "score": 0.25
+    },
+    {
+      "bc": 126,
+      "candidate_hash": "3a0050d77c7fb96cfe09d2b1c1e981e8e683a32214a4ef10beb6fa730f8c21e1",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "43c40ccd95341226155a02edbc13e84e022d0507511a1e4f8e9f0f8197afd1d2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 125,
+      "score": 0.41055913
+    },
+    {
+      "bc": 127,
+      "candidate_hash": "ce6e9ea8b9f73d1d3baeff81805a0cff791756e16f90ebf63720c4d9d652071a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f294dbd527e2c520455193e881461287d154e80bd6eac730d3e85bdbbb989cb4",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 126,
+      "score": 0.25
+    },
+    {
+      "bc": 128,
+      "candidate_hash": "50aeb29c884a55f7e22e23f4c441485ca2b8d6835eecb72448e6c6966c5f5c8c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8bdcb0a0f2db0a38c6603ecdfd25f5ea623a177c31e95e395db61922975645ba",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 127,
+      "score": 0.25
+    },
+    {
+      "bc": 129,
+      "candidate_hash": "5ea085a7ab8c1083904b6216c1f5999b7240d83231765fc92dc7a12cd93935a9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b8257079d3b2cceec589ba8f432f14446ada3385d37fdb105ada84230e8d0e7c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 128,
+      "score": 0.25
+    },
+    {
+      "bc": 130,
+      "candidate_hash": "770adf4b8648dda0828eb2d14e27759cef7978d5b9e4df19dac76eed21b7fd77",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e3206c87ab85b37ec6771bb694ae18d9542ff575776e6608713dd5ae14a389db",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 129,
+      "score": 0.41055913
+    },
+    {
+      "bc": 131,
+      "candidate_hash": "1ba89ccc1a4f30afe4b5469f5d307c7faef1f1a23f0fbea8faa9875a40e88d11",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "20cb132e95775afd3a28dfbc048553667e16e4330eeb4034e74fd74499e319ca",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 130,
+      "score": 0.41055913
+    },
+    {
+      "bc": 132,
+      "candidate_hash": "093c47e95f5ac651f0c72905c8ec4eaa8f5221746c7d7a501f06a329f0fa3e73",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9febad45a9a262568e004c56bca0d54b7bc17a9e8c2fdfd4e999d56c7cf09d38",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 131,
+      "score": 0.2495
+    },
+    {
+      "bc": 133,
+      "candidate_hash": "d78f5e153811c81f48da9e8c84443a4188c7e401af39b265676640fdf320dde5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e47628c5f33f9b3490538fb6c9adaf0b9fbe6ba6e0705a8a7e104cf7c907e1c9",
+      "family": "regime",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 132,
+      "score": 0.25
+    },
+    {
+      "bc": 134,
+      "candidate_hash": "1ca575c48fce313b08861bee272e4eaaa58ae98c0d1c4b482be214185f911594",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cc9e06d22065e6915f832628ac54b5f04eaa1578dcd2f915bd87c3f1ce28c02a",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 133,
+      "score": 0.45649476
+    },
+    {
+      "bc": 135,
+      "candidate_hash": "d53f75468a057006641c7d4085f1a67265d37fd18b9d9dea799b4e383c3a2279",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "125799cb4adeb3de499c1de05a32b0089f8a8643b20a9f39c0c3ff89e940d5cc",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 134,
+      "score": 0.41055913
+    },
+    {
+      "bc": 136,
+      "candidate_hash": "b41366d13e6cc5ee724f01a2721e744cbbf1e0b72b56f3077203a74f8c279f21",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7b6b3ff7875d89e3d784df39a27128bb9798b7ce5834672e406c3606e616a9cd",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 135,
+      "score": 0.41055913
+    },
+    {
+      "bc": 137,
+      "candidate_hash": "45d402fbf6369cc62f0c433ccf460caa29631b84621292e25a272d1f4a6f13ff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8b48fea2063c47abbded28f1d95d118264da88a8f057034fb4832ea374092145",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 136,
+      "score": 0.45649476
+    },
+    {
+      "bc": 138,
+      "candidate_hash": "53dff6ea3fb0980c312c2629592c5bd15914161c3118fa45f8eb43faa63443c0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e99c5e73a61279ea48f20fc017d5aea63f1cc9b31960992a5daae4fb90459985",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 137,
+      "score": 0.41055913
+    },
+    {
+      "bc": 139,
+      "candidate_hash": "b25edd0cde00c280717d87e45bcaf97b82c95aa984f7b357da28ed6f4fff3e33",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cf2168e6085deadb27404bd617e60330f7e66b51efa54e953c7c7d8eb197f6e5",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 138,
+      "score": 0.41055913
+    },
+    {
+      "bc": 140,
+      "candidate_hash": "dedab4548c5ddd37a6e49846361dc75b7b4c665796d48e328e689e9d7f160ee5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f49b2dd3d5869cd50502e2f2fa3a13e70eb347f0afd9f03ee219ce3b06564972",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 139,
+      "score": 0.25
+    },
+    {
+      "bc": 141,
+      "candidate_hash": "8d9da159531c1aa9c9cc8c9d372305c8b211eccc7967b2d7fe564fd5b2947691",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "08e63e2be1c83286e8370daec12927a1dce2678ff001fe799af661b4a4d588f4",
+      "family": "regime",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 140,
+      "score": 0.25
+    },
+    {
+      "bc": 142,
+      "candidate_hash": "8e3b1226e69e99dbaa22d0ec4421d38948b4f9b7d909e3e533571ac9c73611c5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7321256ee53440405f66ba88742390f48475c9a7543d6a56979da99d7982b096",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 141,
+      "score": 0.36310872
+    },
+    {
+      "bc": 143,
+      "candidate_hash": "54e646615ecc5e440ba7bf2d954d25b41d0c39c29aa472b0b5529d67ab086bbb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7a5be562c6fab3338f36dd07b94d5bb3f681b3cdf819dec7bcd4f2c6b4753b2a",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 142,
+      "score": 0.36310872
+    },
+    {
+      "bc": 144,
+      "candidate_hash": "65b1d72769258c92be54f4e97ec5af3781479c77d0e79a51aecfe7514d6397a8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "53d473a9f470d3c6690da91007ea32603107ff8e2136b4a3997712ca9b2144c8",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 143,
+      "score": 0.36310872
+    },
+    {
+      "bc": 145,
+      "candidate_hash": "2f6b7422dd4eba40ff089471e1fa0611705579b7952934c729091924b4787669",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "601322d877fc5799a5682d1e243982786544b0a1504c80e9080af46a2ffb697f",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 144,
+      "score": 0.32150183
+    },
+    {
+      "bc": 146,
+      "candidate_hash": "e0d675eca7ee798d4d643b4cf67757bb0d6606fe2f871ef485f1b33a835674a5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f079cd16cf6fa340501e65ef16dae816e4d32a3d35d29a23db21eb2ad6b3d978",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 145,
+      "score": 0.25
+    },
+    {
+      "bc": 147,
+      "candidate_hash": "c42f77e62185afe2e41a1f340f162636c71af8e0c3a1d1513e0534711267376c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a4bf404230e78cd70b05af8fc312b5d1aa39462eab7ed5db8ec9fdbbfe1f6c3b",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 146,
+      "score": 0.36310872
+    },
+    {
+      "bc": 148,
+      "candidate_hash": "7ad677edd76dea19f70c31d0e341bff0d5bf96da1ab489ebe68ed9699bd4c9e0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "827a60e41b4982e3c87d2b5ba092bb682d68f6931a22a9a3d35ee9293bb12b27",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 147,
+      "score": 0.39608885
+    },
+    {
+      "bc": 149,
+      "candidate_hash": "bf01b785d81bdd0aa0e387b8cf3f236fe9b56b42a8d89dc1a647ab3987cf64c2",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b99b5cb39113354aa08948c8edd1ab0661511a147800610abf58256931b57403",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 148,
+      "score": 0.36310872
+    },
+    {
+      "bc": 150,
+      "candidate_hash": "f7e096e0312048bb5dfcc8ff6998a2887b2e74febeca4f0bfb86a364f30a1b04",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e08533e89adf2756ebc428740507383150e37ae1c61d3e2c3569cdfcff71218e",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 149,
+      "score": 0.36310872
+    },
+    {
+      "bc": 151,
+      "candidate_hash": "749fe75d6290497f6a63ba4e0f7e08241f01abd5ab3eae71ad5279c1a00deb2c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "940870ba1845f8f486dc207f09ba0376098ef2cc3336a67307638c8a6619ac49",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 150,
+      "score": 0.25
+    },
+    {
+      "bc": 152,
+      "candidate_hash": "ed720fc4838d835e615fc0ba17b058f745c1216b090a3360af82b7bd5c330f59",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e11c297e8138839bfcff2f794efe7846e567249715ef402712191c4c9e16cecf",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 151,
+      "score": 0.39608885
+    },
+    {
+      "bc": 153,
+      "candidate_hash": "b0790af090c91a4eb1352f089adb38ccc5175b3a342de0904eb8565139099aa0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "65bd156e7d426e22d7b23cfdece79eea87933b3f56405b1964d4a1797845c472",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 152,
+      "score": 0.36310872
+    },
+    {
+      "bc": 154,
+      "candidate_hash": "cfd8613c808631a81ede089f8be1c7380da285b73407c44dd2fc03e1381825d0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5b1d2e67d8f649ac6e864bf7ff787e77853d34b4d88af19da283443719b6d86f",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 153,
+      "score": 0.36310872
+    },
+    {
+      "bc": 155,
+      "candidate_hash": "845c473167543f74469c4ea56bca6ca0d777294b2c1d0a82526c5be5683b5aff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "988168db90d174fee178e5d033e1b744600760d1b4f584c37740931a98f0491e",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 154,
+      "score": 0.24681186
+    },
+    {
+      "bc": 156,
+      "candidate_hash": "55d5f06d1bd27a526bd1157e44f22798fe15b78a109c15967fdda9b750599490",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9e65fd6cf4826c80bfba0bbbd9464ffa7c8098e67f3d3a8ee2f9168ec82c105b",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 155,
+      "score": 0.39608885
+    },
+    {
+      "bc": 157,
+      "candidate_hash": "288643def7f608a64adb6eb8fd862ffc58f090c0832ae974cd93c3a15c500c24",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2d5ebf82dae675af93531db68ba4ba856e77a493af8d6589edd1968df545e6b3",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 156,
+      "score": 0.36310872
+    },
+    {
+      "bc": 158,
+      "candidate_hash": "8dfe5b4c4205ca0b5bb5993df2d68f67f4f7e07120311dd2eabedba6f3d9f99f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "427e9d445ffb679e725ad5d41270deec82f1b7484015d5c4d976772436edac02",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 157,
+      "score": 0.36310872
+    },
+    {
+      "bc": 159,
+      "candidate_hash": "c7b1f674c01906d27f6048ee6ae3f7cfb3fec85fe1501784bb758e2aa2e8c27d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "882348c9f1ba70ada34a002a5c5335c9e49320951be269354a9efb6cbc101fbf",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 158,
+      "score": 0.25
+    },
+    {
+      "bc": 160,
+      "candidate_hash": "cfe72add1b22b5c32b5bc8b7972fbcfebc1c5ac4918b60a9682031e8d3e55459",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e0a503b3ff9725a9988f75787671361c848f78dcf5427d44aa40b6aa15b6c3f4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 159,
+      "score": 0.39608885
+    },
+    {
+      "bc": 161,
+      "candidate_hash": "ca9df85272af5199b63a127853b050debb10025da48f3cf78153a330ef57b3a8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ab7368f6a874d716d0514d9645c6e434788c59105fabbde15cee7e446a2f9d86",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 160,
+      "score": 0.36310872
+    },
+    {
+      "bc": 162,
+      "candidate_hash": "213a66820fb6b0887449f5351e4b76e253dca53daaa50e03aadea8fc90f82c6e",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "86a6dbaac95a352647948bdb7d3cc6fe579513a62fbc063ee78ccc2f372aa136",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 161,
+      "score": 0.36310872
+    },
+    {
+      "bc": 163,
+      "candidate_hash": "02067dfaaf9aaa3b71ccafe2476524981fe0a882bdaac69e26993529f2e96a62",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c3db78c35bf9b48d7190f7ad5ee37dd3a4e4b3562e493c8f05f21d920d899c25",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 162,
+      "score": 0.25
+    },
+    {
+      "bc": 164,
+      "candidate_hash": "988957a9268196a9f56e521bea5af68992db2f46d559bea148c8917c21b39bad",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "14f9c70fa55a87498f4e1d5048e401e4fe512f921e3fe7b75c802e1c2c52dc02",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 163,
+      "score": 0.39608885
+    },
+    {
+      "bc": 165,
+      "candidate_hash": "f3225c416bb93539bb960877a4325bef7f1779299a8554b7d325477d8ba241ce",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a125d103b9be8ae13205f51c602b40b3f3181b4439cdd1113233beb889289a28",
+      "family": "volatility",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 164,
+      "score": 0.36310872
+    },
+    {
+      "bc": 166,
+      "candidate_hash": "af29f483cf18e63f9a31b861224de52c35e9f5e01af90004ff5001a989a7e82c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "221f1d3b2d8a40f38331049b350e358472fdaa66f8f0c6b5f7cf31ebb9e3c18f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 165,
+      "score": 0.38272652
+    },
+    {
+      "bc": 167,
+      "candidate_hash": "b377d7799ec73c842d50d07f164ec484e04b0f093ea7a5aa1b5bed6d9cb8b0fb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d435443c69f7921c54da3bc916c50eeb58ba3d343fb4628f4ca2820594be6252",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 166,
+      "score": 0.25
+    },
+    {
+      "bc": 168,
+      "candidate_hash": "30cef1a0e165308f9d9dc947b695e669849fdfcbdcd84911801539ae85a27925",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9c7464043d55bf48db4dd08b347cbc8f8831a8eb104a5302ae1cbb81a70e04f7",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 167,
+      "score": 0.25
+    },
+    {
+      "bc": 169,
+      "candidate_hash": "73cfd8650d495ad706c1c22b6daef7af19f803778a04fe2d6054bc14b4e20e40",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a4276e5bbc8e6cf910828b05a9ddd40ba6e946b62971d991e352786171f79a72",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 168,
+      "score": 0.31547337
+    },
+    {
+      "bc": 170,
+      "candidate_hash": "f9a6910c4a8f2011e39675fc966b3e5202f4d2269235efc6411058369a1fffbc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f73d9b422d8e6394a2ccb34ed9f49bd04e543f2468be62ba3566237d80efe217",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 169,
+      "score": 0.25
+    },
+    {
+      "bc": 171,
+      "candidate_hash": "f8dfa654224be9b1357325e4d2452a76225af6b27bbb8a8be89b550b054ee4b9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "23a74aa5a3d81ae3d535932ec6ee3921f0020c50be7d2c73485b99f4b9e62b5e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 170,
+      "score": 0.25
+    },
+    {
+      "bc": 172,
+      "candidate_hash": "a2175e8f4cd6db1cc199f8a7b6325da5ae455fe0932a4415da3b6bd6b35b1ce9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "def59ce013ad32f87a8b27fd41ced6cd57463fbb51d2e7747ba381d7b67bf6ee",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 171,
+      "score": 0.37288423
+    },
+    {
+      "bc": 173,
+      "candidate_hash": "1579eae580823004114335e7722328056865f4417e8de80a818cd9dfc4820c56",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e5c56d3f62d11cee3ccbf50f378e94220d0d3b9296284dc1dc3a3b9af39371ab",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 172,
+      "score": 0.25
+    },
+    {
+      "bc": 174,
+      "candidate_hash": "a2023c8e19b4067f283cd4de7315dc69afffca259bffaa0da382d84b76397530",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7eb4cfa46dc232dc956c29bf84a8d386402a15dc0b968b4a30af4285a617c7f7",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 173,
+      "score": 0.25
+    },
+    {
+      "bc": 175,
+      "candidate_hash": "026334f4d77cbff0bc8a83ee7a1b7a8833ff40243ef5ef90522d1ad8d09fdd6d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "38272aa05d0ca3b83224e34d974845977b118cd8f45752dd3c3751021db50461",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 174,
+      "score": 0.37288423
+    },
+    {
+      "bc": 176,
+      "candidate_hash": "ff643aad4512b60a2bf089b2c3776a4b375b37574bcb1ba38f35b20c5fc694d5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "382c6268ce9908e2ced7c85261d875faecbfb39941a51492e1bb9788499621dd",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 175,
+      "score": 0.25
+    },
+    {
+      "bc": 177,
+      "candidate_hash": "0b4436e8c7450d4316201168288cc5aada0d510578e598523b6e575304d44ab4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "997f2f18983fd389400b51f3836a6b670ce877e22391de3c471974b4abf5508f",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 176,
+      "score": 0.25
+    },
+    {
+      "bc": 178,
+      "candidate_hash": "7722703b13645ee568d8c4552116250cfa3a09ab731c096f20e9d02b2e6f0a99",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e0d10c72c5a88bd357d2a86528d0350a749c17272c996a11a87cfded093275a4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 177,
+      "score": 0.31547337
+    },
+    {
+      "bc": 179,
+      "candidate_hash": "caa0f68f86c152ea3acf6733c02b00cd1c0b091196d1d7c9553efb5f4b7064d1",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c9897a8de64bcbe3f5cf3492c1abb7ade9b4f628e6b516671d3e679c391c2435",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 178,
+      "score": 0.25
+    },
+    {
+      "bc": 180,
+      "candidate_hash": "a3e1af7b343c2cc6d9b9012cc2be2ea1dc88d79cb27e00ddbd3fac4a1f44d4ef",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25374e0deb9ca2b154b46b397c264385b55dbc8135c8129bbd16dfdabd6c3b3f",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 179,
+      "score": 0.25
+    },
+    {
+      "bc": 181,
+      "candidate_hash": "dd2061d4a998be53fc03c119cd748e3dee7d8162be6766c1b7e60a65f32e53c7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d0b525697ac5f29c22aa430348df22e3eba999cbafc01b849bc7538c33fd25f9",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 180,
+      "score": 0.31547337
+    },
+    {
+      "bc": 182,
+      "candidate_hash": "85ba1657e1d6488e25f77783822dd4dc0a5119ac34b6e66a7a735c92128ecf10",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a978200804ee3de76a2055933f4c9e9bbb2fb886f99182c569e27a34c8185a7a",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 181,
+      "score": 0.34859881
+    },
+    {
+      "bc": 183,
+      "candidate_hash": "557d6f6c00701a83fb371ac52ad0d7725cbcd44a048913c04f303c9e534f1cf0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "38995b40bf320c7f4529a1c90d81addec9536ecaa8a35b5cf966aacf9636122c",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 182,
+      "score": 0.25
+    },
+    {
+      "bc": 184,
+      "candidate_hash": "85c15ce5655307149ba9149f3c90753c89199d800bb18e658800c33815240405",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6e28810dca0588043059ef1164b1c87241359ab293299dcc50c196bf5121f726",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 183,
+      "score": 0.31547337
+    },
+    {
+      "bc": 185,
+      "candidate_hash": "38a1c4be0c7aec6cce97d65d509e91ea5c6da2ad79afac910d31bbb623ac821d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "fdc7ab662c7811b4d5f127201f1732028186bb241260334be0b7198346be297d",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 184,
+      "score": 0.25
+    },
+    {
+      "bc": 186,
+      "candidate_hash": "39c631161e493fcf5c3932274019ee9e3114a8bd000fe19b6a22240a58d48a34",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "96a62bd36946b66642e31cfd171088fca2ee2cffa2ebd908fca8a327775404b1",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 185,
+      "score": 0.25
+    },
+    {
+      "bc": 187,
+      "candidate_hash": "e53dce496b880e6a6fc1ada0fddef27391f1b9ec1c01412d6b7aef68cba1b75b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "81cab2e196a26d6eb9f2e0737ca9a0cb4c3170845324b468d97aa3c0fe853126",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 186,
+      "score": 0.37288423
+    },
+    {
+      "bc": 188,
+      "candidate_hash": "47a30182bf9895e133694c1eb607c39fbf8992f1b6867b6822c1e2ae839c1f3d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1db7ba0f1bf36a71454e43b8c7ec9e00c60e007aeaa54b31d92031a1e8281408",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 187,
+      "score": 0.25
+    },
+    {
+      "bc": 189,
+      "candidate_hash": "c34b081376ef0171119e35fd071d59987762aa0bc4fabae84e8a23ddd60417b0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "441d0ac46b7aa55ca4f942967139d66185f5ec3f33771200d607a5c503710453",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 188,
+      "score": 0.25
+    },
+    {
+      "bc": 190,
+      "candidate_hash": "c36d121556805958771fa825b8cabc880541640671539361d550b87065540b2c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5a5ca900341bcbd0926d230cbf0e913f4e6c6f2747d850e3675dc4f4907acba4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 189,
+      "score": 0.31547337
+    },
+    {
+      "bc": 191,
+      "candidate_hash": "d04ff99198bdea59b226a2b7c1b76ef04b48999c1935abe2c83e71db86ca883a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ae2d7af7f2e4f26b2d04b89b8a6dcb262937f0631fc6f6fb2b371b092af2439f",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 190,
+      "score": 0.25
+    },
+    {
+      "bc": 192,
+      "candidate_hash": "ed4396eccb69b0166e6ecb1694f96fbb9ea37b08551eb6f1203a735c95041c59",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a753b3a235f2b0c78bc840aff3ce23153213587214d7da432522d0f757b1eb38",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 191,
+      "score": 0.25
+    },
+    {
+      "bc": 193,
+      "candidate_hash": "7757504394f4d0a850d10b433a1e69dd04557b5d688b0f8692b8141f36d0c2e9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d0a0369b08a309e36cb3f8fb44b98b7955e4769d6ba4b9285a0f5b9684e3a724",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 192,
+      "score": 0.31547337
+    },
+    {
+      "bc": 194,
+      "candidate_hash": "247b786fb6fa5b722a13b758e22a5784e8bafe419b2555f2296945635313f55d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6cd42d3ec742f5561ad7bfc8cd0aed5bebccc77c4b8bf52fdc6657e05fb5595c",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 193,
+      "score": 0.24681783
+    },
+    {
+      "bc": 195,
+      "candidate_hash": "ee7e9698bd13d5010b5e64dd669023d2535b5aa21608b33294e3a0469b09d33f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4ae5749ae821d0cc1b8febfc47b477076303d78a4407134f72ea98c446faa1b6",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 194,
+      "score": 0.25
+    },
+    {
+      "bc": 196,
+      "candidate_hash": "677ee4c49a99e04f53868107ddefbb05f4811d08e8d97d4ead5f8750a33dedbc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d5f650e9ccba7c9cc47213232e5cb2e6b36337b4fa2b5079358a69c8887a5a46",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 195,
+      "score": 0.37288423
+    },
+    {
+      "bc": 197,
+      "candidate_hash": "49de07f169cca862ac9e15ea5621f88e742851c694f28adfbea07e54e28de284",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5c3ddf69970ccf84fdb93328736963522eddf82695c37a236146ddcea5efa365",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 196,
+      "score": 0.25
+    },
+    {
+      "bc": 198,
+      "candidate_hash": "eef3fbe5cd2d46d51cddbad7fa4d6773edcbd1d646af0380d19636c869427e07",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d8aa441ae1ee30801c79795a6726da86bdc643cd2e1104fd8bd1a5c0adf171fd",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 197,
+      "score": 0.25
+    },
+    {
+      "bc": 199,
+      "candidate_hash": "592134dc2ae162e358b1be3cc41670a0103f74e52750ba3126c90da985326234",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "aa08002963459f2d8d8bcde8649457c0d9f924203a0fd4ac93bf0e3038c2a156",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 198,
+      "score": 0.37288423
+    },
+    {
+      "bc": 200,
+      "candidate_hash": "46d22ab26b6131d9d7645dbbd858b557538732ee5275aac9875f37ff35aef4ff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2dded270ade2a27fdeaf95cb44ae99a6ec5a2f0695c23a35b8fad939d1e77572",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 199,
+      "score": 0.25
+    },
+    {
+      "bc": 201,
+      "candidate_hash": "4c000b5231811254b839be9415592489e5a18b72afffc761e948acaa561293fe",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1106ef88ba97f3cf9f83f9c04da6611ec177e4d257549b0b9edef1b12c69ef4b",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 200,
+      "score": 0.25
+    },
+    {
+      "bc": 202,
+      "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
+      "decision": "OOS_FAIL",
+      "event_id": "5ad4bd5b76c48b510e462b18936b6a379eaa0daee4915c43fc25432f49492646",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 201,
+      "score": 0.43292076
+    },
+    {
+      "bc": 203,
+      "candidate_hash": "8b6dcf34a0e95cbfbb4a5026ecc7bb2b9fe6601711db17dc8a7a9d3b2b0d9773",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8332850e053c5bbc7985df80acaadeae04499f9a0228a19f209169f1d1d6791c",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 202,
+      "score": 0.29230661
+    },
+    {
+      "bc": 204,
+      "candidate_hash": "f739e96db1e8a72fb030d9512d119c119c6aa5971bfa1ba00c534559a25ea5b3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c442421afec147f62bfaaea6af54b7e69a10728cb5054cb47f45787b24d84271",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 203,
+      "score": 0.25
+    },
+    {
+      "bc": 205,
+      "candidate_hash": "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
+      "decision": "OOS_FAIL",
+      "event_id": "96350009bbeee7324ac6dc647974ddedc5c5380f916c918766c0f6d4fe826ad8",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 204,
+      "score": 0.43292076
+    },
+    {
+      "bc": 206,
+      "candidate_hash": "98d1466b7dc399ccb4ff94ff900fd7c59f393845ef5b29d4f8a9e17518141287",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5c9d8ce9c997a2127e82047c28dde9c9b8320982ec4008e858a0b40cac2aabbf",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 205,
+      "score": 0.29230661
+    },
+    {
+      "bc": 207,
+      "candidate_hash": "0f836096e59a6ea63ab6cce2e89c88b2ebad372c27cff6851e5ec5e85cba5fd2",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5736afdd35dd6b58b66f3cce223b5c647e1d9f2ca4f563033b66a1f16629822e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 206,
+      "score": 0.25
+    },
+    {
+      "bc": 208,
+      "candidate_hash": "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
+      "decision": "OOS_FAIL",
+      "event_id": "a5f1845b2585d64bddefeb6addd8515cdb32289922c5e6df4661a36a05d891e4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 207,
+      "score": 0.43292076
+    },
+    {
+      "bc": 209,
+      "candidate_hash": "4a8cf313996eb11e08761a7047c9ce06836a79d125afc9bdc4dc6a2fbd353caa",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4e05b8e24eaecc1a328f492df3677ef80c7aa04c94fd7c590bda4352cc6c24da",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 208,
+      "score": 0.29230661
+    },
+    {
+      "bc": 210,
+      "candidate_hash": "085cce27ef4b8c2d8753af342f78bb558fa15847b8cedfbf3cef511134670f99",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25fc85393c36f3fd6d4aef87131a41d1f65cdd655248285d043d0fb3b706b088",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 209,
+      "score": 0.25
+    },
+    {
+      "bc": 211,
+      "candidate_hash": "bf2249e4e5ac437bc3610440173cb77243659bca5427b4cad6fcd6f5cdad8ef4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e142519f3e49d5084708c68d7bb781b0eac1fdf2904d7feab71a76f698052195",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 210,
+      "score": 0.25
+    },
+    {
+      "bc": 212,
+      "candidate_hash": "e19e193956c7a216fa7502d76507bcedd90b40792da27390cec703efb4056e6a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "17ecce80069f90d53a6c40d4b9082c5429e707c68da89a34eb989fa39ba8a462",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 211,
+      "score": 0.25
+    },
+    {
+      "bc": 213,
+      "candidate_hash": "22dbf2e5cb0112b1e9522a0f3c23765011a31c5ee7fa4440b8c8d6035c4bd240",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ceaad9f41633ad9936aecd6fb1da68d521b0e84d1b5578d0406662ee927ab132",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 212,
+      "score": 0.25
+    },
+    {
+      "bc": 214,
+      "candidate_hash": "95944b39cd67d78631133f0b24dfe7759e066253638b514227086034a0ce882f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "0eb64581fe92391724aa42123f3e92da1cc99141d152f216f985b3eb280ee8f4",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 213,
+      "score": 0.42114753
+    },
+    {
+      "bc": 215,
+      "candidate_hash": "ef5662bea0ad25f1744299b2120f93a3326e49ba382d8a7216cd581ed271afcb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "813c2870a89bc7b525dcf83c6e2af5adedf60fae2284c2c322db35498472f69d",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 214,
+      "score": 0.25
+    },
+    {
+      "bc": 216,
+      "candidate_hash": "1ffd9e01bcfe0453a36d9f185f979abe7c7d3502c46901ab6f2adbfd1a6821cc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5f2458d16c708de66b6958ea2f70a89d854592c5d25a7a94248c17fde6ce304c",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 215,
+      "score": 0.25
+    },
+    {
+      "bc": 217,
+      "candidate_hash": "6b584244a4daf66f7344ca3958d9c8d41c1d51efd53d5072551bd1bc37806337",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "fad411c5fa341f800eee4d39e6d064c590208f965622a5704ec8462c0ba84103",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 216,
+      "score": 0.43939765
+    },
+    {
+      "bc": 218,
+      "candidate_hash": "0ebcf479c6e408eeb4827707154645dba1b4670b1e146f55f1784fadace8dc5a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "db532558fd13f825b0d5d215d114e5da26061c9e961041f1e3511e5442398751",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 217,
+      "score": 0.25
+    },
+    {
+      "bc": 219,
+      "candidate_hash": "e672a6f8aab7a8a34c304017211c9cdf1364c88c2a42e75bfb9110eab10f1bac",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "39ca34f69ee0b10c1315c9d6f9e8ef85ec0301e820959013fe32803d8d7069a3",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 218,
+      "score": 0.25
+    },
+    {
+      "bc": 220,
+      "candidate_hash": "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
+      "decision": "OOS_FAIL",
+      "event_id": "66067062f1e446eccf1818005cd5a85fd895cd82aaf259e5525ed467c66a013c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 219,
+      "score": 0.43292076
+    },
+    {
+      "bc": 221,
+      "candidate_hash": "9b52c49fc952458bee4a24fd4da1343964a523799bc150df1ba0f3b3d2f59b40",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "54d19ba9dc688924a4278ed2e5c9d5547de3c21617fc99c3aaa622e7d15e46d5",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 220,
+      "score": 0.25
+    },
+    {
+      "bc": 222,
+      "candidate_hash": "dd7f38e0c835849b825a6fd5ccd1afbc1bd138a8aebb9d1499aeaa02a47b675d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2ff29df6082f669133e75898136f2b17b55cd6caae88ec437e268b33f931a198",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 221,
+      "score": 0.25
+    },
+    {
+      "bc": 223,
+      "candidate_hash": "6b215f0ef4d1d3182daa9be706a59276c37a73370a034ea9596ea0fc2e9bcbaf",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6c6fec98f01e1140370f970ade0cfd8e1a0ee67acd96731276b82fec76edd22a",
+      "family": "mean_reversion",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 222,
+      "score": 0.25
+    },
+    {
+      "bc": 224,
+      "candidate_hash": "ba8c073be5ab434c88cc6dbabb217056f94a6b8706d09be590c90266142aa49d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e29a316b465ab08f981111a0372d143959bc446c4fce4aa721d56c75e8a0a450",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 223,
+      "score": 0.25
+    },
+    {
+      "bc": 225,
+      "candidate_hash": "c0e792d7c5509eec7aa82e843ff9c7eab9594231049fdd4438d9bb3cda3120fb",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6227ff58e7349b98bc12f9b5b3f4c025d56ba3ce035b5c2526b57f271c4bbe05",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 224,
+      "score": 0.25
+    },
+    {
+      "bc": 226,
+      "candidate_hash": "ca7a851fc85f2ca39d5261c346371d7b199f32ad5d6f2ed6ed2cf5a88f03e4f4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "63fcce9469d05381104ec0cf8c243e04fb416396176b6f7d40792fe680ccdefe",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 225,
+      "score": 0.25
+    },
+    {
+      "bc": 227,
+      "candidate_hash": "6dbee1568b1e143829fe72f1ce6adaf0dd294df5753302e25dbe70f0baa1638d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "590b3e91c0bf169f69847c83c88f71a14223d79ba5d7c6340d99aecfed5e6a3c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 226,
+      "score": 0.44345362
+    },
+    {
+      "bc": 228,
+      "candidate_hash": "e07744dd2b59129c68ee7034567011413b0e26a266b294ae379c9b5650b9d253",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "af38b2916b26937b71c4bd7fb806e4d2ead99c5f1d2498ccd1be9b22e2b56393",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 227,
+      "score": 0.29230661
+    },
+    {
+      "bc": 229,
+      "candidate_hash": "1fe315941c0d2176feadb05deaaa688978057252a231a6c11482e01350a84002",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d021bc217463741af31621982ccd718e51aee66002d49fd4f0b57dca42b8e411",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 228,
+      "score": 0.25
+    },
+    {
+      "bc": 230,
+      "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
+      "decision": "OOS_FAIL",
+      "event_id": "2899350a50c5facfcfd423414ed79e8091c06c86f66ab3a86230c0e5dc96a7ad",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 229,
+      "score": 0.43292076
+    },
+    {
+      "bc": 40,
+      "candidate_hash": "a2d13dc715be15816b4487587db7c4b1ca47b5ff7fbb6cadce6565f832b2161b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4958735752f57ca9250cd45896e4c9127b6d7caefe6f2f0fd2968c27ce01e3c8",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 39,
+      "score": 0.4029852
+    },
+    {
+      "bc": 41,
+      "candidate_hash": "2f0718be4f98877daa3a0f9cbf6987a3ed7589649c290411a43fd7e2b27f404a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "145b28a8c9d3151bc12166dd36a87adb5166c3a4df73cdff2e84ec6cfc60b3c7",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 40,
+      "score": 0.41055913
+    },
+    {
+      "bc": 42,
+      "candidate_hash": "cb5e5e1cbcf72798361937f536001b81b3a39d5a3a99d57162d825de6962dfa9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c409c0edc62cf50d2a4dce9338d25fbfc6eba3e939564c66cfc9f77358ef810c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 41,
+      "score": 0.41055913
+    },
+    {
+      "bc": 43,
+      "candidate_hash": "ffc447e5f793f0e796577c2d1f6da10a362deefada1cdbd8fffb206c6178b261",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1e20598e013cae2fab82a2610ae9003536dd4dd3645b5d8884aa8e89b23e1598",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 42,
+      "score": 0.41055913
+    },
+    {
+      "bc": 44,
+      "candidate_hash": "d7882736bb72782ddcb406f3b5cb88b35d137f8429aa543fa3e54ee2f1f30eaa",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f77c1e850b21238b55991c9f18f7aa8bde06e99ba7b6566826c33fd2189615b3",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 43,
+      "score": 0.37703041
+    },
+    {
+      "bc": 45,
+      "candidate_hash": "a3b7079bf408c39a55ada63e3e1fd23a3b3d2aad8ba15602fc9995da712438b8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "760d02f02cdd90a5bc1437b9ccef7ff89660c25519617e32492b7b287a684a6f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 44,
+      "score": 0.41055913
+    },
+    {
+      "bc": 46,
+      "candidate_hash": "35befa5c1bc23e4b0a62109278bb6fbd2e05e70c95db4a4499c406f1fb3d88fd",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "48c753a07faf088f8e921200396a92d6292fa0405b5846470c7ef282b5b3768b",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 45,
+      "score": 0.25
+    },
+    {
+      "bc": 47,
+      "candidate_hash": "505c73a4009ba171c9ee1496330c5ee553577a31154ee01f6efa7b02b6c526fd",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ad0139ee64f4618765faac0b3bcf2e64d014035a27b140cfe9255abd5bc4ead6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 46,
+      "score": 0.25
+    },
+    {
+      "bc": 48,
+      "candidate_hash": "2a74b060f1f9849e4c1ef17a46c83590ce353ec482001c71d27d859578e97414",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "2a833e1f89621fbca80389429fdcdf8069f55906ce5f3e278df1201bd39db514",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 47,
+      "score": 0.2495
+    },
+    {
+      "bc": 49,
+      "candidate_hash": "27f45911f831458b5301bd731c75a897d0a36e4ee5a76d1c71a049b6cf100493",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "16c6b0e1a88a650a9fee4ddb33de095852e6daabca755171a75bf25a0ce33140",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 48,
+      "score": 0.25
+    },
+    {
+      "bc": 50,
+      "candidate_hash": "92dff155f6458c1df186054e7b433432bb2a71c23732c3990c5436e01fc574db",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "24900fde9d8193c7784db2260af360e5f6241aaff6c9cde7589b987f62b5d489",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 49,
+      "score": 0.25
+    },
+    {
+      "bc": 51,
+      "candidate_hash": "a8ef6b41d43c8099d973e5776a400af2b9e9f72cabab8d4e6b3c63396b6ca079",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7413095e19c6d321a42e34495d2fac8e0d9864bd1643cacdbc0e9ce21152a79d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 50,
+      "score": 0.25
+    },
+    {
+      "bc": 52,
+      "candidate_hash": "cba314558b4f9a769d3b5cec443184bd1126ddb406ff7cc8f550de295a8eb6c5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "be5323c6bd7898fa4e6f7bcfe29fd79c2bae2885c2d723d8899efda1fcab524a",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 51,
+      "score": 0.25
+    },
+    {
+      "bc": 53,
+      "candidate_hash": "ca4ff71f74310e94ad84d21206cec02c1bd2233bec7819feddb9838046b8e2d5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b99d4d669ca4f82d855ffb72624830c8ea71e69c3a031714f972d7f19ad637e1",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 52,
+      "score": 0.25
+    },
+    {
+      "bc": 54,
+      "candidate_hash": "c5bd3be289dd1fbb15a6a5b72b6c97c9c6cc9287d582cd14c5cc24132a4a4a0a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4373d4e7388de15f4ee6231b673791d90d3eead2f74607e84e8bb14697be69ad",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 53,
+      "score": 0.2495
+    },
+    {
+      "bc": 55,
+      "candidate_hash": "c508298cd87dd3ea59264cd4213d8ae960a161700ed47c233e17fe18f5637c3d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "cf1c1f13a401ae7cd0a30467c1219b1408f93933a9a253b623da06b2446afb32",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 54,
+      "score": 0.2495
+    },
+    {
+      "bc": 56,
+      "candidate_hash": "81ecc9ddcd1686c6cec3290afb59927e4d9aab04f21c90e383ddb9cddee85b49",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f3dd22c43e48a27f8fcfc2056040e8388e6732f3b1397f34977e38339ae73bab",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 55,
+      "score": 0.41055913
+    },
+    {
+      "bc": 57,
+      "candidate_hash": "b745a716137e6ed3f46a8510efe72c9352a0074d46330520de27eb736ed4c27e",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7e9cf4bc48e60b1052e869db09a70d7141a1d641802b204a2c063a87e4441f6f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 56,
+      "score": 0.25
+    },
+    {
+      "bc": 58,
+      "candidate_hash": "d59afc97884d0ad53db036ee53ef0088d4977b170cdd0bd18d82d39d7aa66f08",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25b34302b166f44faebe6c720f527aeafddb5db509baa94c8b1c4eca6bd0fa0a",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 57,
+      "score": 0.25
+    },
+    {
+      "bc": 59,
+      "candidate_hash": "06f3f240a70dcdae070ea2c0a133de7936fc66b1741eb81f3cb416d906839c3b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "dc74de3517e9a7fdc8c18a50cd0fe90873eaaa5b416e353fe02740a5b2e631d2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 58,
+      "score": 0.25
+    },
+    {
+      "bc": 60,
+      "candidate_hash": "5ab45bc03afcfcc99669da2a8075ae30a129ee4eb117d4cbbf12caa5d5506d9b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "dc8ef9539d9a494678f10d09242f0e6e416cc8f1357263650c5556f456ffaf27",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 59,
+      "score": 0.25
+    },
+    {
+      "bc": 61,
+      "candidate_hash": "827bad5efb3ba32ec03db70e620037ceacab3d26adcf3bd7ba7586da004279fe",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6ea4a59f40d92f9b1dd4e34eec50bf64787f898f62e24fcd4e7a773ca7060c67",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 60,
+      "score": 0.25
+    },
+    {
+      "bc": 62,
+      "candidate_hash": "33bc4015a2b642e7fc7496f052bccb51eea0fed3e1f7f408a0ab4b081f3e96af",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "643662a433339db0419956d952fffb736245b2b5228819bbfe98084b4d19a5fd",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 61,
+      "score": 0.25
+    },
+    {
+      "bc": 63,
+      "candidate_hash": "664970c54e39d6b8d0bd38aef7cbbe74465c04ae307b5255a5bc4d9ecdb231ee",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9518a43f3e79d3a8b706a95d7cf074bc281e9f977c692ac5a77fda708d6ca39c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 62,
+      "score": 0.25
+    },
+    {
+      "bc": 64,
+      "candidate_hash": "0db42e859ddb428183554cdecf4abb860bd6036941fc0b5e30da08d34b493458",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "26bbbe3613387cfa01d1fa672fd896c6091c70241f6b976353e7169e1e19dcb9",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 63,
+      "score": 0.25
+    },
+    {
+      "bc": 65,
+      "candidate_hash": "815a6575b20d585fcd45ae27060cc012c87b30b6891f2c70e3e940f38802286d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6f7fae54d204acc9857f35d1d09f6feb011ff6b26b467fca034969f97a0aa7b8",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 64,
+      "score": 0.25
+    },
+    {
+      "bc": 66,
+      "candidate_hash": "2ed96eae70af0239951114ab2c8d09a3c08a7102cf4ce3e5d9186a2bbd9cfe1a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "56bd70b25452dbae8ee99e9d410e579cf5e929567b850c6a3f157854f434f292",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 65,
+      "score": 0.25
+    },
+    {
+      "bc": 67,
+      "candidate_hash": "964a8f3658ff42de4480f1d1d5d78eef8f703f8e58151d54c7c20e03e472eed0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4a833ac383812730ff9795a22b848a90a6e09f3e8e7750c31adad41b6148e1dc",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 66,
+      "score": 0.48502862
+    },
+    {
+      "bc": 68,
+      "candidate_hash": "c70908bc3e065a9a8c2dff67ed7dc926b32a6c546b4be89f09bfcaaa57b0922c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "352f2a858ddf2349ccb51fb7c15746c11c90ab3704118d5acca0cf489d240602",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 67,
+      "score": 0.25
+    },
+    {
+      "bc": 69,
+      "candidate_hash": "6571eecdf1c9393613e620d154204811cf1ae61f42ec2b6f106843f60abacaa0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7940591e8041e089e6a6308b4261f17b801262df59b08be361a34f151ef10f45",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 68,
+      "score": 0.25
+    },
+    {
+      "bc": 70,
+      "candidate_hash": "d944faa6c6d36357ee54f4b33649c46b8541a8521a378cae51b30242d9c1b8db",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "70de8e37b6a90a865efb4064d77d995e8e4c1a5e8f68073cd2fddd0674077cf9",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 69,
+      "score": 0.41055913
+    },
+    {
+      "bc": 71,
+      "candidate_hash": "87e6ce66cc49366f816ffc97ed36fe928cbee9d42c1cd6703c5ce49b4162a733",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "29671d987895a0d3231668880ec6a8734e15ceff013d9494bb36b07f098e48fa",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 70,
+      "score": 0.25
+    },
+    {
+      "bc": 72,
+      "candidate_hash": "863d11d52eb01b8c5af85414a2fbcf0a5bcbf29bac0412767965bbe83f995554",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "59f095bba2d6348e3835bda3b631bbb10d068284af8c4dc12e27002d6b0e8801",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 71,
+      "score": 0.25
+    },
+    {
+      "bc": 73,
+      "candidate_hash": "ad59c40f7cc389ada4b7ea44a4990553e5a154d6e455143a29c0d66ff9c72d1d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "98888197840a6373d984c25bcbe81d2c0feaae20b4b3187db221aff3a6ede8d9",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 72,
+      "score": 0.25
+    },
+    {
+      "bc": 74,
+      "candidate_hash": "739e6839b53c04582e05733ec697af1e95049c9f605bcb8e89df9939d3636618",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d536e7080a85b2a6405776aa4384dc4ab499dda1faf604e0d1a142a9430478c6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 73,
+      "score": 0.25
+    },
+    {
+      "bc": 75,
+      "candidate_hash": "e0a6412a4c8735110a5d65945bcf9fc239243b4795324af91a54c0fb507a9a66",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3cc3e41a636b19ea4bc1ceb971cbcba04917c483be0dc76307fe9c02368030cb",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 74,
+      "score": 0.25
+    },
+    {
+      "bc": 76,
+      "candidate_hash": "0345281e4df425119d126af1b796422e8ab0f85b34964e2ea1cf8cd0372d4d12",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ec44747694d575ec5f182430d30af0be737e0985d19b2f8a6536dbce385e6a73",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 75,
+      "score": 0.25
+    },
+    {
+      "bc": 77,
+      "candidate_hash": "a5708ea336de046f514bf4610879592ee3ad74d448469b381b70526f8783ffa9",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "7b7e27afb2b236db35024cc054d678c5a4654d66a83ae8a1e17fb17914aaa75d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 76,
+      "score": 0.41055913
+    },
+    {
+      "bc": 78,
+      "candidate_hash": "63d685554e28e1fadb15c7ce6e2a2c9bbf28dac5665d091e235d6f04e12c205a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8566f9ece12c86d73d060b3e6a8ccd4a118791f35e1b6098abe6815cf682a2cd",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 77,
+      "score": 0.41055913
+    },
+    {
+      "bc": 79,
+      "candidate_hash": "a919d8c17ce99b16faa60eb6ef263b470bc96efe57c05eea2a61302a8c89167f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "ca7a61bd7a9abc1c5819992c2461fb580b63c112c4d2a9c3acabc80cc6b25c52",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 78,
+      "score": 0.25
+    },
+    {
+      "bc": 80,
+      "candidate_hash": "9c9f4f0a54eb1e2763cc1b823eddac35fe4ea52e2c8aa776af247e0367b138ab",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "0aee1185cfb0bd5ae917b5d816ad8daab339740d6498f75050b137b18b44dc2f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 79,
+      "score": 0.25
+    },
+    {
+      "bc": 81,
+      "candidate_hash": "68744d3fb2e48c5fc03ac8e6ad18ebf6968de4af807340766138b4c52277c668",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "43a5f7616bd7fb08252112c49e5428eb678030503f8c16d8b35a3b099db0b298",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 80,
+      "score": 0.41055913
+    },
+    {
+      "bc": 82,
+      "candidate_hash": "152ff8ab75b3fbd679f468ed5d42a9f22ab7cd9e47b6434726a9fea06bd16fef",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "62c0d7e97341cb90b2cbfd305b58ff30b01d3d1fa3d085cd0aa4d212bc0460c1",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 81,
+      "score": 0.41055913
+    },
+    {
+      "bc": 83,
+      "candidate_hash": "ae0d64ce16b7c422b9dc05c7a6caa159650ddd68edc51db9bcdd25c60ec49e98",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1889ecc012b734d6352ae280bec2001686baf967fb212f470bf37655a67d5ee6",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 82,
+      "score": 0.41055913
+    },
+    {
+      "bc": 84,
+      "candidate_hash": "22c51e51d9bcd265b737f1ce5eba491bf1206d08f7047722c098cd79ff3a37e8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3682aef051bd2bb0fda3773f16d90a987ae0505bf290c9f703a4096dd0cc6ab2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 83,
+      "score": 0.41055913
+    },
+    {
+      "bc": 85,
+      "candidate_hash": "67ad9b2a0a791bcfb9c0c22de507604e01b308d97b54f7214d32714c2e79cc8d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1b81aed41d44f158b2233cc013fdbf4a31ce53da541b409657dbe910ba5fb50f",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 84,
+      "score": 0.25
+    },
+    {
+      "bc": 86,
+      "candidate_hash": "2d419414eded2ee18b0945d9dfd6ce967065af311a5b71dd43d9226cd575a31b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d427b25974d76f92f80f65524a836d48e6813254ed935c686bff07334c910506",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 85,
+      "score": 0.25
+    },
+    {
+      "bc": 87,
+      "candidate_hash": "f9cf7ecc0a0bc83d3c62508dde7ab2dc0515a53f8bb9bb603a66a49752fee59f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6262e67564daec7bcab56b0ca87d82043606839ab3ef5c687b9cf0187bcda06d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 86,
+      "score": 0.25
+    },
+    {
+      "bc": 88,
+      "candidate_hash": "23434468a68608120432df4afbfe7a86232280b18905768c55972297d69bd26a",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "9917838fc2b4522f862b17601482a4521d0a4572a1df28a0a59eaf063240fd61",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 87,
+      "score": 0.31164949
+    },
+    {
+      "bc": 89,
+      "candidate_hash": "9b6f7585aed7aa5a246fdc39a0f6a54f00313767302cccc34edc67d00305944f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "d1cf0be86d0dd78e3886f24f347c8aa722fb57f09cce78239c13f3046b3a7497",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 88,
+      "score": 0.25
+    },
+    {
+      "bc": 90,
+      "candidate_hash": "354230a3ed65c83321d01fe4c80b5555b9e1ddd38fa6b12bebae6e73248f3c98",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "98c9c09b44da4df8a98ebed2055fcae33a3dd2f7e5f7da360a2e565f7440771d",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 89,
+      "score": 0.25
+    },
+    {
+      "bc": 91,
+      "candidate_hash": "da6cadb396fee6af62eb56a1b388e44e9bf93657b0cd52816669468d544b2b5b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c35511fe11c42bd0cd2c833578b7676510e11a0524e2da865e84bb253695d8cc",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 90,
+      "score": 0.25
+    },
+    {
+      "bc": 92,
+      "candidate_hash": "2e3a254d342276ff0128dd5cee11b9c7cb44e92f86f9cee90d9bc362f3f6f2b3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "f5775fa6cd71ec76a4fbc22cf6335e530179e4aa2518253a16c190ef4fbfccef",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 91,
+      "score": 0.25
+    },
+    {
+      "bc": 93,
+      "candidate_hash": "b0f8722585d2250061730f8dc7f63a216431b60efd2ca96b5474ab3d1fbeadff",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e59ad6aa559774fe05826c37507906e23513a364418ceed1f6bb7be4e1519502",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 92,
+      "score": 0.25
+    },
+    {
+      "bc": 94,
+      "candidate_hash": "8116b4e950068827d8c9cb971d2e32ad731b24fe6d6968743735ce0bf35088c7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "602246924798e54a27505eedfffcc03342e05d46a1161b89da41f8998e4a0729",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 93,
+      "score": 0.25
+    },
+    {
+      "bc": 95,
+      "candidate_hash": "b8dd7a819ec1d3d619e8305a23d387053fdec4887b6b9067514e95949d6686cf",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "a5548e5139a383ff33c185232aaac9e112cfb2064d825ed257b0ffc0f776de86",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 94,
+      "score": 0.25
+    },
+    {
+      "bc": 96,
+      "candidate_hash": "e4d3467b6a7b2e132987fc1a17aaa9b5312f1402efca380043a6e8e6b8f10fb5",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "58d575117991bb2ed01c28d3dc5614f3152af41bb42bda7c7f0a6cd6591bb8f2",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 95,
+      "score": 0.25
+    },
+    {
+      "bc": 97,
+      "candidate_hash": "32dbcc808e93b9649b2d024ceb621c18866cfeee19f3f08aede14cc6a524bec3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "74a3e4de2a8834163dae0727169e700a66a280992ae12d8ac8ef1692b2ef6c16",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 96,
+      "score": 0.25
+    },
+    {
+      "bc": 98,
+      "candidate_hash": "f88af3819dbac36c0e5c0483f527770fea0607ad0788c791f86985170dea8fbc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e942af83ba8a73ed8ae70e86d5f4712df67c2608b1871aca781d6690a6b73892",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 97,
+      "score": 0.40748526
+    },
+    {
+      "bc": 99,
+      "candidate_hash": "d0f7a37c120bfb7842c415cd78dff4c98a5618405d6e027bf4586ac398f971c8",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "12cb7d1704f6feb35022ad7d86bd32d0e2d78a58dd6241c7a0aff6d917b86b7c",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 98,
+      "score": 0.25
+    }
+  ],
+  "failures": 191,
+  "families": {
+    "discovered_primitive": {
+      "fail": 102,
+      "pass": 0,
+      "recent_failures": 8,
+      "score_sum": 29.279679859999995,
+      "tested": 102
+    },
+    "mean_reversion": {
+      "fail": 28,
+      "pass": 0,
+      "recent_failures": 0,
+      "score_sum": 10.619297740000002,
+      "tested": 28
+    },
+    "momentum_trend": {
+      "fail": 22,
+      "pass": 0,
+      "recent_failures": 0,
+      "score_sum": 5.836144909999999,
+      "tested": 22
+    },
+    "regime": {
+      "fail": 2,
+      "pass": 0,
+      "recent_failures": 0,
+      "score_sum": 0.5,
+      "tested": 2
+    },
+    "smc_ict": {
+      "fail": 26,
+      "pass": 0,
+      "recent_failures": 0,
+      "score_sum": 6.95243488,
+      "tested": 26
+    },
+    "volatility": {
+      "fail": 11,
+      "pass": 0,
+      "recent_failures": 0,
+      "score_sum": 4.18399756,
+      "tested": 11
+    }
+  },
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 231,
+  "regime": "STAGNANT",
+  "regime_epoch": 1,
+  "schema_version": 1
+}

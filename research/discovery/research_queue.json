@@ -543,17 +543,17 @@
       }
     },
     {
-      "candidate_id": "1a3809b88494a50e",
+      "candidate_id": "c2772f18b1cd4394",
       "source": "github",
-      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
-      "title": "vcorp-dev/depthfeed-strategy-builder",
-      "description": "Node-based, multi-asset backtester \u2014 prediction markets, shares and crypto in one strategy, on recorded order-book depth.",
+      "source_url": "https://github.com/kunnaaalll/ApeXQuant",
+      "title": "kunnaaalll/ApeXQuant",
+      "description": "ApeXQuanT - Autonomous Market Intelligence & Systematic Trading Research Platform. Research-driven FX trading infrastructure featuring SMC/MTF analysis, deterministic risk controls, historical backtesting, structural strategy research, walk-forward validation, and ML-based shadow learning.",
       "family": "smc_ict",
       "market": null,
-      "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-08-22T12:32:41Z",
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026-09-15T22:53:54Z",
       "lineage": {
-        "source": "1a3809b88494a50e",
+        "source": "c2772f18b1cd4394",
         "family": "smc_ict",
         "rounds": [
           {
@@ -645,6 +645,36 @@
       "lineage": {
         "source": "c5290bb15b21b27d",
         "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "1a3809b88494a50e",
+      "source": "github",
+      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
+      "title": "vcorp-dev/depthfeed-strategy-builder",
+      "description": "Node-based, multi-asset backtester \u2014 prediction markets, shares and crypto in one strategy, on recorded order-book depth.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2026-08-22T12:32:41Z",
+      "lineage": {
+        "source": "1a3809b88494a50e",
+        "family": "smc_ict",
         "rounds": [
           {
             "round": 1,
@@ -1541,7 +1571,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2026-09-15T08:51:51Z",
+      "source_timestamp": "2026-09-15T12:04:00Z",
       "lineage": {
         "source": "92944febc6d41bf1",
         "family": "china_a_share",
