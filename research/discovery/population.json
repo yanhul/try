@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2655,
-    "expanded": 2341,
-    "normalized": 2341,
+    "raw": 2656,
+    "expanded": 2342,
+    "normalized": 2342,
     "round1": 209,
     "deferred": 99,
     "survivors": 107,
@@ -2761,6 +2761,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3316,22 +3332,6 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4628,6 +4628,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
         "family": "options",
         "rounds": []
       }
@@ -6185,38 +6201,6 @@
       }
     },
     {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6404,6 +6388,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6773,6 +6773,22 @@
       "lineage": {
         "source": "53f18a556609aabb",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -8773,22 +8789,6 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -17774,6 +17774,22 @@
       "source_timestamp": "2026-09-13T10:15:54.902Z",
       "lineage": {
         "source": "1d7586e3e0637a6e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "57516e5bbce89666",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/chilarai/github_bot",
+      "title": "chilarai/github_bot",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:03:14.108Z",
+      "lineage": {
+        "source": "57516e5bbce89666",
         "family": "china_a_share",
         "rounds": []
       }
@@ -31203,38 +31219,6 @@
       }
     },
     {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -31294,6 +31278,38 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e4ff0e17ae795a42",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e4ff0e17ae795a42",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd09dc1c3043f329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -31443,22 +31459,6 @@
       }
     },
     {
-      "candidate_id": "074d1859ad607682",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1177/00081256231202266",
-      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "074d1859ad607682",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9fe1d07564202770",
       "source": "openalex",
       "source_url": "https://doi.org/10.3901/jme.2021.10.196",
@@ -31523,22 +31523,6 @@
       }
     },
     {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "32bb9e108267a457",
       "source": "openalex",
       "source_url": "https://doi.org/10.33142/sca.v4i3.4017",
@@ -31566,6 +31550,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "074d1859ad607682",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1177/00081256231202266",
+      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "074d1859ad607682",
         "family": "unknown",
         "rounds": []
       }
@@ -31630,6 +31630,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -33518,22 +33534,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "adf32453b89373ee",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "abc55c5433c9357f",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "abc55c5433c9357f",
         "family": "execution_mev",
         "rounds": []
       }
@@ -35523,22 +35523,6 @@
       }
     },
     {
-      "candidate_id": "cf6cbb16cb1eb537",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "cf6cbb16cb1eb537",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "b78e6c722d78454e",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c40c802b1fb478ecfad6f4ce5044870631327173",
@@ -37459,6 +37443,22 @@
       }
     },
     {
+      "candidate_id": "abc55c5433c9357f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "abc55c5433c9357f",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cd84e9e8a21548a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ab1fb0d047856a6951575b875bff1c9356aa543e",
@@ -37583,6 +37583,22 @@
       "lineage": {
         "source": "9c5bac29f4e2a1e1",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf6cbb16cb1eb537",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cf6cbb16cb1eb537",
+        "family": "onchain",
         "rounds": []
       }
     },

@@ -1,29 +1,29 @@
 [
   {
-    "bc": 247,
-    "candidate_hash": "158ef46f953ce2fdcde9ee5c115cee1c0c901f923c2901bfbdcb7ca7c576e74e",
-    "conceptual_change": "Shift from simple trend identification to assessing the convergence of price relative to the internal VWAP deviation threshold to capture mean-exhaustion within established momentum.",
+    "bc": 248,
+    "candidate_hash": "b2f5ce28718900c657c71949c3eb4c7917077fdfbde07dffd0d9bbaef2fe2fe1",
+    "conceptual_change": "Shift from price-based mean reversion to volatility-clustering of volume as a regime filter for potential mean-reversion triggers.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.0
+      "direction": "above",
+      "left": "volume",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_std",
+      "threshold": 0.5,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|vwap_distance|below",
+    "novelty_key": "mean_reversion|rolling_std|volume||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": null
+      "threshold": 0.5,
+      "window": 24
     },
-    "parent_bc": 246,
+    "parent_bc": 247,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
