@@ -66,19 +66,25 @@ def test_migration_uses_explicit_failed_bc_not_current_cursor(tmp_path, monkeypa
 
 
 def test_oos_repair_failure_prevents_controller_execution(tmp_path):
-    """Mirror GitHub Actions fail-fast sequencing: repair rc!=0 blocks controller."""
+    """Mirror GitHub Actions fail-fast sequencing using the real repair entrypoint."""
     state_path = tmp_path / "state.json"
     marker = tmp_path / "controller-ran"
     state_path.write_text(
         '{"campaign_terminal_reason":"OOS_FAIL","current_bc":999}\n',
         encoding="utf-8",
     )
+    script = f"""
+from pathlib import Path
+from research import repair_oos_evidence
+repair_oos_evidence.STATE = Path(r"{state_path}")
+raise SystemExit(repair_oos_evidence.main())
+"""
+    import subprocess
     command = (
         "set -e; "
-        f"python research/repair_oos_evidence.py --state {state_path} >/dev/null; "
+        f"python -c {script!r}; "
         f"python -c \"from pathlib import Path; Path(r'{marker}').write_text('ran')\""
     )
-    import subprocess
     result = subprocess.run(["bash", "-c", command], capture_output=True, text=True)
-    assert result.returncode != 0
+    assert result.returncode == 2
     assert not marker.exists()
