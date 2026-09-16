@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2659,
-    "expanded": 2345,
-    "normalized": 2345,
+    "raw": 2686,
+    "expanded": 2351,
+    "normalized": 2351,
     "round1": 209,
     "deferred": 99,
     "survivors": 107,
@@ -1145,22 +1145,6 @@
       }
     },
     {
-      "candidate_id": "bf4a623110ac6de2",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.52926/jpmjpr1761",
-      "title": "A\u80a1 \u91cf\u5316 github",
-      "description": "Crossref work type=grant",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bf4b4904031aa9f4",
       "source": "crossref",
       "source_url": "https://doi.org/10.1589/rika.23.671",
@@ -1204,22 +1188,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "2eab78c2566eb075",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2836,6 +2804,22 @@
       "source_timestamp": "1978",
       "lineage": {
         "source": "519731fd846961a5",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -6889,22 +6873,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -9289,6 +9257,54 @@
       }
     },
     {
+      "candidate_id": "bf4a623110ac6de2",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.52926/jpmjpr1761",
+      "title": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "description": "Crossref work type=grant",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "bf4a623110ac6de2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "bd6914979df8243b",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2024.146534",
@@ -9300,6 +9316,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9625,22 +9657,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2023.124175",
@@ -9765,22 +9781,6 @@
       "lineage": {
         "source": "26b59f7794cb279a",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -15779,6 +15779,22 @@
       }
     },
     {
+      "candidate_id": "6b9c09d180ea8638",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Al3xDiaz/shell",
+      "title": "Al3xDiaz/shell",
+      "description": "Fork of caelestia-dots/shell with local bar customizations (mirrored from GitHub)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:31:06.916Z",
+      "lineage": {
+        "source": "6b9c09d180ea8638",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3614fe4d459aa00d",
       "source": "gitlab",
       "source_url": "https://gitlab.com/Automatewithansible/ComplianceAsCode",
@@ -17435,7 +17451,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T05:03:05.474Z",
+      "source_timestamp": "2026-09-16T07:24:54.829Z",
       "lineage": {
         "source": "99703f9cad271d6d",
         "family": "china_a_share",
@@ -17835,7 +17851,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T03:32:30.727Z",
+      "source_timestamp": "2026-09-16T07:41:21.741Z",
       "lineage": {
         "source": "488fb7f632252d36",
         "family": "china_a_share",
@@ -17966,6 +17982,38 @@
       "source_timestamp": "2026-09-13T06:03:26.963Z",
       "lineage": {
         "source": "9e0f9e718397739f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ee48bffceb03876b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cscs-ci/ci-testing/webhook-ci/mirrors/4455690602105886/4525297225819146",
+      "title": "cscs-ci/ci-testing/webhook-ci/mirrors/4455690602105886/4525297225819146",
+      "description": "Mirror of https://github.com/GridTools/gt4py",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:32:18.513Z",
+      "lineage": {
+        "source": "ee48bffceb03876b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d5f4a19550ea6f57",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cscs-ci/ci-testing/webhook-ci/mirrors/4455690602105886/4525297225819147",
+      "title": "cscs-ci/ci-testing/webhook-ci/mirrors/4455690602105886/4525297225819147",
+      "description": "Mirror of https://github.com/GridTools/gt4py",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:36:05.860Z",
+      "lineage": {
+        "source": "d5f4a19550ea6f57",
         "family": "china_a_share",
         "rounds": []
       }
@@ -18699,7 +18747,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T23:13:39.378Z",
+      "source_timestamp": "2026-09-16T07:28:29.712Z",
       "lineage": {
         "source": "7b39bf63fa863709",
         "family": "china_a_share",
@@ -19675,7 +19723,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-15T09:50:57.267Z",
+      "source_timestamp": "2026-09-16T07:42:33.684Z",
       "lineage": {
         "source": "e42ba0d8d38eb709",
         "family": "china_a_share",
@@ -20731,7 +20779,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T19:19:37.737Z",
+      "source_timestamp": "2026-09-16T07:35:00.890Z",
       "lineage": {
         "source": "dab833607bd8fc52",
         "family": "china_a_share",
@@ -21251,6 +21299,22 @@
       }
     },
     {
+      "candidate_id": "619516c1893e7596",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/rachel.green.r/ecoscan-7901435-deletion_scheduled-86525102",
+      "title": "rachel.green.r/ecoscan-7901435-deletion_scheduled-86525102",
+      "description": "Android app to record screen using native API and without root.\r\nThis Project was moved from https://github.com/vijai1996/screenrecorder",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:28:14.320Z",
+      "lineage": {
+        "source": "619516c1893e7596",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "73382068fbe689c3",
       "source": "gitlab",
       "source_url": "https://gitlab.com/radek-sprta/introduction",
@@ -21483,7 +21547,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T03:52:50.201Z",
+      "source_timestamp": "2026-09-16T07:23:51.308Z",
       "lineage": {
         "source": "d6d5e8d4e160930c",
         "family": "china_a_share",
@@ -22267,7 +22331,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T04:02:55.957Z",
+      "source_timestamp": "2026-09-16T07:39:29.257Z",
       "lineage": {
         "source": "b189e5fe218041ef",
         "family": "china_a_share",
@@ -22814,6 +22878,22 @@
       "source_timestamp": "2026-09-15T10:11:42.816Z",
       "lineage": {
         "source": "90882c331da0fa7b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "49bd321eb8e31870",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/zideqile/hls.js",
+      "title": "zideqile/hls.js",
+      "description": "mirror for hls.js on github",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-16T07:24:36.414Z",
+      "lineage": {
+        "source": "49bd321eb8e31870",
         "family": "china_a_share",
         "rounds": []
       }
@@ -35347,22 +35427,6 @@
       }
     },
     {
-      "candidate_id": "6fa56e72564c67b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
-      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
-      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "6fa56e72564c67b5",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aa8ed4bad3606511",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/def497c3bb64b78b67b4996bbe0bae2e4f042a02",
@@ -35539,6 +35603,38 @@
       }
     },
     {
+      "candidate_id": "32d57cde827e100d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "32d57cde827e100d",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6fa56e72564c67b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
+      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
+      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "6fa56e72564c67b5",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f609682f5a89dcc5",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/57ebb18873641f9ddc84504520360928a0fc73e1",
@@ -35582,6 +35678,38 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "4b0ee1965797ef34",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "93eb0273e2fd4833",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/f5a16235078ef8f0ecfc4a5df68266ffff1fb34f",
+      "title": "Public Opinion as an Option: Leveraging Prediction Markets to Hedge Exposure to Spot Crypto Volatility",
+      "description": "This paper proposes an investment strategy through resource allocation into Kalshi Crypto Event Contracts in order to effectively hedge exposure to spot asset volatility. Using Bitcoin as a proof of concept, we treat corresponding Kalshi markets on the asset's future price as option contracts, and through construction of different portfolio allocations present a framework for which event contracts can be effectively utilized by retail investors in order to control risk framework without reducing underlying exposure to spot volatility. We showcase this information through analysis of three separate Kalshi event contracts, all relating to a different underlying market regime (i.e bullish, bearish, flat), and provide a comprehensive risk profile for each regime. Results show that a dynamic Kalshi/Bitcoin hedging strategy outperforms more simplistic portfolios across all regimes, supporting our initial hypothesis. We discuss further considerations which can erode profits in the future (i.e. fees), and provide direction for future research.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "93eb0273e2fd4833",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf6cbb16cb1eb537",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cf6cbb16cb1eb537",
         "family": "volatility",
         "rounds": []
       }
@@ -37651,22 +37779,6 @@
       }
     },
     {
-      "candidate_id": "cf6cbb16cb1eb537",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "family": "onchain",
-      "market": null,
-      "query": "on chain wallet flow trading signal research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "cf6cbb16cb1eb537",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "73a842238c2f99c9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ea8ba090e0f140219f448221c6cb66a31de9c065",
@@ -39199,22 +39311,6 @@
       "lineage": {
         "source": "666e5ab7c7ce84c9",
         "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "32d57cde827e100d",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
-      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
-      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
-      "family": "volatility",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "32d57cde827e100d",
-        "family": "volatility",
         "rounds": []
       }
     },
