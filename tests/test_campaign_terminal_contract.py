@@ -36,7 +36,7 @@ def test_insufficient_oos_repair_evidence_fails_closed(tmp_path, monkeypatch, ca
     state_path = tmp_path / "state.json"
     monkeypatch.setattr(repair_oos_evidence, "STATE", state_path)
     state_path.write_text(
-        '{"campaign_terminal_reason":"OOS_FAIL","current_bc":251}\n',
+        '{"campaign_terminal_reason":"OOS_FAIL","oos_failed_bc":251}\n',
         encoding="utf-8",
     )
 
