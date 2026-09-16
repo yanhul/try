@@ -14,19 +14,8 @@ from .events import EventType
 from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 from research.cost_model import DEFAULT_COST_MODEL
+from research.validation_policy import EVALUATION_SPEC, validation_gate
 
-EVALUATION_SPEC = {
-    "stop_fraction": 0.01,
-    "reward_multiple": 2.0,
-    "cost_model_status": "AVAILABLE",
-    "validation_basis": "NET_REQUIRED_FOR_PROMOTION",
-    # Promotion is deliberately stricter than the old non-negative gate.  These
-    # are evaluator policy, not tunable candidate parameters.
-    "min_validation_trades": 20,
-    "min_validation_profit_factor": 1.05,
-    "min_validation_total_return": 0.0,
-    "max_validation_drawdown": 0.30,
-}
 WINDOWS = {3, 5, 10, 20, 50, 100}
 MECHANISMS = {
     "momentum_trend", "mean_reversion", "volatility", "smc_ict", "fvg_imbalance",
@@ -56,24 +45,14 @@ def series_value(ctx, key):
 
 
 def discovered_value(spec, ctx):
-    op = spec["operator"]
-    left = spec["left"]
-    right = spec.get("right")
-    w = spec.get("window")
-    a = series_value(ctx, left)
-    b = series_value(ctx, right) if right else None
-    if a is None or (right and b is None):
-        return None
-    history = ctx.get("history", []) or []
-    vals = []
+    op = spec["operator"]; left = spec["left"]; right = spec.get("right"); w = spec.get("window")
+    a = series_value(ctx, left); b = series_value(ctx, right) if right else None
+    if a is None or (right and b is None): return None
+    history = ctx.get("history", []) or []; vals = []
     for x in history:
-        v = x.get(left)
-        try:
-            v = float(v)
-        except (TypeError, ValueError):
-            return None
-        if not math.isfinite(v):
-            return None
+        try: v = float(x.get(left))
+        except (TypeError, ValueError): return None
+        if not math.isfinite(v): return None
         vals.append(v)
     if op == "identity": value = a
     elif op == "difference": value = a - b
@@ -81,8 +60,7 @@ def discovered_value(spec, ctx):
         if b == 0: return None
         value = a / b
     elif op in {"rolling_mean", "rolling_std", "zscore", "lag", "delta", "rank"}:
-        if not isinstance(w, int) or isinstance(w, bool) or w not in WINDOWS or len(vals) < w:
-            return None
+        if not isinstance(w, int) or isinstance(w, bool) or w not in WINDOWS or len(vals) < w: return None
         window = vals[-w:]
         if op == "rolling_mean": value = sum(window) / w
         elif op == "rolling_std":
@@ -97,8 +75,7 @@ def discovered_value(spec, ctx):
 
 
 def discovered_predicate(spec):
-    direction = spec["direction"]
-    threshold = float(spec["threshold"])
+    direction = spec["direction"]; threshold = float(spec["threshold"])
     def pred(ctx, trade_direction):
         value = discovered_value(spec, ctx)
         if value is None: return False
@@ -108,8 +85,7 @@ def discovered_predicate(spec):
 
 
 def _event(ctx, key):
-    value = ctx.get(key)
-    return value if isinstance(value, dict) else {}
+    value = ctx.get(key); return value if isinstance(value, dict) else {}
 
 
 def _event_value(ctx, key, field):
@@ -120,9 +96,7 @@ def _event_value(ctx, key, field):
 
 
 def mechanism_predicate(spec):
-    family = spec["mechanism_family"]
-    threshold = float(spec.get("threshold", 0.0))
-    comparison = spec.get("direction", "above")
+    family = spec["mechanism_family"]; threshold = float(spec.get("threshold", 0.0)); comparison = spec.get("direction", "above")
     if family not in MECHANISMS: raise ValueError("invalid_mechanism_family")
     if family in {"volatility", "seasonality"}: raise ValueError(f"non_directional_mechanism_family:{family}")
     def pred(ctx, trade_direction):
@@ -165,24 +139,6 @@ def mechanism_value(ctx, family):
     return None
 
 
-def validation_gate(metrics):
-    """Return (passed, reasons) without allowing candidate parameters to alter policy."""
-    reasons = []
-    trade_count = int(metrics.get("trade_count", 0) or 0)
-    pf = metrics.get("profit_factor")
-    total_return = metrics.get("total_return")
-    drawdown = metrics.get("max_drawdown")
-    if trade_count < EVALUATION_SPEC["min_validation_trades"]:
-        reasons.append("INSUFFICIENT_VALIDATION_TRADES")
-    if pf is None or pf < EVALUATION_SPEC["min_validation_profit_factor"]:
-        reasons.append("PROFIT_FACTOR_BELOW_GATE")
-    if total_return is None or total_return < EVALUATION_SPEC["min_validation_total_return"]:
-        reasons.append("NON_POSITIVE_VALIDATION_RETURN")
-    if drawdown is None or drawdown > EVALUATION_SPEC["max_validation_drawdown"]:
-        reasons.append("VALIDATION_DRAWDOWN_ABOVE_GATE")
-    return not reasons, reasons
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(); ap.add_argument("--candidate", required=True); ap.add_argument("--data", default="data/BTCUSDT_1h.csv"); ap.add_argument("--out", required=True); a = ap.parse_args()
     root = Path(__file__).resolve().parents[1]
@@ -203,17 +159,7 @@ def main() -> int:
     validation_passed, gate_reasons = validation_gate(val_result["metrics"])
     cost_available = EVALUATION_SPEC.get("cost_model_status") == "AVAILABLE"
     net_gate = "PASS" if cost_available and validation_passed else ("COST_MODEL_REQUIRED" if not cost_available else "VALIDATION_QUALITY_FAILED")
-    result = {
-        "schema_version": 10, "bc": candidate["bc"], "parent_bc": candidate["parent_bc"], "hypothesis_id": hid,
-        "candidate_hash": candidate["candidate_hash"], "discovery_spec": candidate.get("discovery_spec"),
-        "oos_selection_used": False, "oos_executed": False,
-        "dataset": {"path": str(data), "sha256": sha256(data), "bars": len(bars)},
-        "evaluation_spec": dict(EVALUATION_SPEC), "candidate_universe": candidate_universe,
-        "cost_model": cost_model.metadata(), "IS": is_result, "VALIDATION": val_result,
-        "gross_validation_passed": validation_passed, "validation_gate_reasons": gate_reasons,
-        "net_validation_gate": net_gate, "validation_passed": bool(cost_available and validation_passed),
-        "validation_basis": "NET_REQUIRED_FOR_PROMOTION",
-    }
+    result = {"schema_version": 10, "bc": candidate["bc"], "parent_bc": candidate["parent_bc"], "hypothesis_id": hid, "candidate_hash": candidate["candidate_hash"], "discovery_spec": candidate.get("discovery_spec"), "oos_selection_used": False, "oos_executed": False, "dataset": {"path": str(data), "sha256": sha256(data), "bars": len(bars)}, "evaluation_spec": dict(EVALUATION_SPEC), "candidate_universe": candidate_universe, "cost_model": cost_model.metadata(), "IS": is_result, "VALIDATION": val_result, "gross_validation_passed": validation_passed, "validation_gate_reasons": gate_reasons, "net_validation_gate": net_gate, "validation_passed": bool(cost_available and validation_passed), "validation_basis": "NET_REQUIRED_FOR_PROMOTION"}
     out = root / a.out; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"bc": candidate["bc"], "hypothesis_id": hid, "candidate_universe": candidate_universe, "gross_validation_passed": validation_passed, "gate_reasons": gate_reasons, "net_gate": net_gate}, indent=2))
     return 0
