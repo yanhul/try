@@ -1,0 +1,27 @@
+{
+  "bc": 234,
+  "candidate_hash": "58bbd6cea9c28ec7266bb3703632c336c541734990017b5b4e7307d3b94bb679",
+  "conceptual_change": "Shifting focus from price-level momentum to normalized volume-based momentum decay; identifying periods where the raw volume is significantly low relative to the volume ratio profile (low activity regime) as a precursor to trend exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|volume|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": null
+  },
+  "parent_bc": 233,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
