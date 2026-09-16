@@ -11,8 +11,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 7394,
-  "current_bc": 258,
+  "checkpoint_seq": 7397,
+  "current_bc": 259,
   "history": [
     {
       "bc": 1,
@@ -1633,7 +1633,7 @@
   ],
   "iterations": 1181,
   "last_bc": 258,
-  "last_error": null,
+  "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_http_503:GEMINI PROVIDER_ROUTER_HOLD",
   "next_bc": 259,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
@@ -1649,13 +1649,13 @@
     "609556f24469ef36371b286b524543e918c7d515f82ffc1e45f5cbb063d12535",
     "03e92c0e33877d2dc8a7404a21a7224c407fe5880e46c48d85a34e30d6e85ec3"
   ],
-  "phase": "PERSISTED",
+  "phase": "WAIT_RETRY",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_http_503:GEMINI\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 0,
+  "retry_count": 1,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:translation_hypothesis_id_forbidden\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-16T08:41:22.931239+00:00"
+  "updated_at": "2026-09-16T08:45:24.602368+00:00"
 }
