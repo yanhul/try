@@ -1,0 +1,27 @@
+{
+  "bc": 232,
+  "candidate_hash": "fda53bdb07d570a8025f24f25eab61ba230c49af14f8890aef1969a9d353d17f",
+  "conceptual_change": "Shift from volatility-based regimes to a lagged momentum persistence model, checking if the current close is below the price from 24 periods prior, identifying downward trend momentum.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "lag",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|lag|close||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 231,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
