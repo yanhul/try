@@ -63,3 +63,22 @@ def test_migration_uses_explicit_failed_bc_not_current_cursor(tmp_path, monkeypa
     assert (failure_dir / "BC247.json").exists()
     assert not (failure_dir / "BC999.json").exists()
     assert "BC247" in capsys.readouterr().out
+
+
+def test_oos_repair_failure_prevents_controller_execution(tmp_path):
+    """Mirror GitHub Actions fail-fast sequencing: repair rc!=0 blocks controller."""
+    state_path = tmp_path / "state.json"
+    marker = tmp_path / "controller-ran"
+    state_path.write_text(
+        '{"campaign_terminal_reason":"OOS_FAIL","current_bc":999}\n',
+        encoding="utf-8",
+    )
+    command = (
+        "set -e; "
+        f"python research/repair_oos_evidence.py --state {state_path} >/dev/null; "
+        f"python -c \"from pathlib import Path; Path(r'{marker}').write_text('ran')\""
+    )
+    import subprocess
+    result = subprocess.run(["bash", "-c", command], capture_output=True, text=True)
+    assert result.returncode != 0
+    assert not marker.exists()
