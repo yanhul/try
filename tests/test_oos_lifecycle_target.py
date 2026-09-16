@@ -87,11 +87,15 @@ def test_oos_repair_failure_prevents_controller_execution(tmp_path):
         f"Path(r'{marker}').write_text('ran')\n",
         encoding="utf-8",
     )
+    import os
     import subprocess
+    env = os.environ.copy()
+    env["PYTHONPATH"] = os.getcwd()
     result = subprocess.run(
         ["bash", "-c", f"set -e; python '{repair_script}'; python '{marker_script}'"],
         capture_output=True,
         text=True,
+        env=env,
     )
     assert result.returncode == 2
     assert not marker.exists()
