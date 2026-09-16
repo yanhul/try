@@ -69,7 +69,7 @@ jobs:
       - name: Install test runner
         run: python -m pip install --upgrade pytest
       - name: Run research feature and harness tests
-        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_campaign_controller.py tests/test_provider_router_contract.py tests/test_system_ingestion.py tests/test_hypothesis_novelty.py tests/test_campaign_terminal_contract.py tests/test_oos_lifecycle_target.py
+        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_campaign_controller.py tests/test_provider_router_contract.py tests/test_system_ingestion.py tests/test_hypothesis_novelty.py tests/test_campaign_terminal_contract.py tests/test_oos_lifecycle_target.py tests/test_governance_kernel.py
       - name: Run AIOS static conformance
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
@@ -136,7 +136,13 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_AUTO_RESUME|scheduler_yield' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|PROVIDER_ROUTER_HOLD|PROVIDER_FAIL|AIOS_AUTHORITY_HOLD' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY|WAIT_RETRY|scheduler_yield' controller.log; then echo "continue=true" >> "$GITHUB_OUTPUT"; else echo "continue=false" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq 'CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_AUTO_RESUME|CAMPAIGN_CONTINUE_DURABLE_QUEUE|scheduler_yield' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD'; then
+            echo "continue=true" >> "$GITHUB_OUTPUT"
+          elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && grep -Eq 'HOLD_OOS_EXECUTOR_OR_AUTHORITY|WAIT_RETRY|scheduler_yield' controller.log; then
+            echo "continue=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "continue=false" >> "$GITHUB_OUTPUT"
+          fi
           exit "$rc"
       - name: Persist durable lineage
         if: always()
