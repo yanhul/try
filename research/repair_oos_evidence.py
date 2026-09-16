@@ -2,8 +2,8 @@
 """Repair durable evidence lost by an interrupted/legacy campaign persist.
 
 This never executes OOS and never invents research results. It only reconstructs
-an integrity receipt from an already persisted BC*_oos_result.json, then restores
-the candidate-level failure artifact when the result proves OOS_FAIL.
+a receipt from an already persisted BC*_oos_result.json, then restores the
+candidate-level failure artifact when the result proves OOS_FAIL.
 """
 from __future__ import annotations
 import hashlib, json
@@ -102,23 +102,21 @@ def main() -> int:
     state = load(STATE, {})
     if not state:
         return 0
-    # A migrated OOS failure has already been converted to a candidate-level
-    # rejection by campaign_controller. It is not a repair request. In
-    # particular, never reinterpret current_bc as the failed OOS BC here.
     reason = state.get("campaign_terminal_reason")
     if reason != "OOS_FAIL":
         print("OOS_EVIDENCE_REPAIR_NOT_REQUIRED")
         return 0
-    bc = int(state.get("current_bc") or state.get("last_bc") or 0)
-    if not bc:
-        print("OOS_EVIDENCE_REPAIR_HOLD missing_bc")
-        return 1
+
+    # OOS_FAIL is a durable transition that must carry its own target. Never
+    # infer the failed BC from current_bc/last_bc: those are mutable cursors.
+    raw_bc = state.get("oos_failed_bc")
+    if not isinstance(raw_bc, int) or raw_bc <= 0:
+        print("OOS_EVIDENCE_REPAIR_HOLD missing_oos_failed_bc")
+        return 2
+    bc = raw_bc
     if repair_bc(bc):
         return 0
     print(f"OOS_EVIDENCE_REPAIR_HOLD BC{bc} reason=INSUFFICIENT_DURABLE_EVIDENCE")
-    # HOLD must be a control-flow failure, not an informational success.
-    # The workflow stops before the controller, preventing durable-queue
-    # execution while the required OOS evidence is unresolved.
     return 2
 
 
