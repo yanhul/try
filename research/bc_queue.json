@@ -1,30 +1,29 @@
 [
   {
-    "bc": 245,
-    "candidate_hash": "b2a6f296a7805cf4dc4d5472a84f2809a3f0c6458f5863a1fd21b55385bc641b",
-    "conceptual_change": "Transitioning from simple momentum indicators to an institutional-grade basis-relative spread signal. By utilizing the difference between the absolute price (close) and its current vwap_distance, we isolate price action momentum that is explicitly decoupled from the localized volume-weighted average context, rather than relying on standard delta-based trend calculations.",
+    "bc": 246,
+    "candidate_hash": "3b2ffa4f674eab80622ad1b8773913d79b8c9e8e7c41f205c0c905cd33f0c543",
+    "conceptual_change": "Shift from price-VWAP alignment to institutional liquidity gap detection. This hypothesis monitors deviations where the current candle low drops below the open, identifying potential stop-run or liquidity sweep events characteristic of ICT market structure shifts, rather than momentum-based trend following.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
+      "direction": "below",
+      "left": "low",
+      "mechanism_family": "smc_ict",
       "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.0,
-      "window": 24
+      "right": "open",
+      "threshold": 0.0
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|vwap_distance|above",
+    "novelty_key": "smc_ict|difference|low|open|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.0,
-      "window": 24
+      "window": null
     },
-    "parent_bc": 244,
+    "parent_bc": 245,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
