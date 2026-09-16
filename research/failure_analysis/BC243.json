@@ -1,0 +1,41 @@
+{
+  "bc": 243,
+  "parent_bc": 242,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "ea0a0c2838d1eb448597cd891c5c88d5c71586861a0757898d3c5de77a44e374",
+  "conceptual_change": "Shifted from price-based momentum to volume-weighted institutional accumulation identification by assessing if current volume significantly exceeds the multi-day rolling average (48-hour window).",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
