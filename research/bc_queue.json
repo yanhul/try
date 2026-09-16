@@ -1,29 +1,29 @@
 [
   {
-    "bc": 246,
-    "candidate_hash": "3b2ffa4f674eab80622ad1b8773913d79b8c9e8e7c41f205c0c905cd33f0c543",
-    "conceptual_change": "Shift from price-VWAP alignment to institutional liquidity gap detection. This hypothesis monitors deviations where the current candle low drops below the open, identifying potential stop-run or liquidity sweep events characteristic of ICT market structure shifts, rather than momentum-based trend following.",
+    "bc": 247,
+    "candidate_hash": "158ef46f953ce2fdcde9ee5c115cee1c0c901f923c2901bfbdcb7ca7c576e74e",
+    "conceptual_change": "Shift from simple trend identification to assessing the convergence of price relative to the internal VWAP deviation threshold to capture mean-exhaustion within established momentum.",
     "discovery_spec": {
       "direction": "below",
-      "left": "low",
-      "mechanism_family": "smc_ict",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
       "operator": "difference",
-      "right": "open",
+      "right": "vwap_distance",
       "threshold": 0.0
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|low|open|below",
+    "novelty_key": "momentum_trend|difference|close|vwap_distance|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.0,
       "window": null
     },
-    "parent_bc": 245,
+    "parent_bc": 246,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
