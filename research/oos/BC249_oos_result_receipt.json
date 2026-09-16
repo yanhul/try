@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "receipt_type": "OOS_EXECUTION_RECEIPT",
+  "bc": 249,
+  "candidate_hash": "af3341f68d143d09e76742102a29000b65a10677985512d662c86d83102dabd8",
+  "result_sha256": "fbc26fc804d70caafd2b7c73fccf3fe306b9cb5413a0ca99c0740b8f698548ff",
+  "dataset_sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+  "protocol_sha256": "909f27e6ee36f3b30c6325bbee8e9525827e0675b3e016d1d81efc8fc63f1f73",
+  "split": {
+    "name": "OOS",
+    "start": 2899,
+    "end": 3624
+  },
+  "oos_selection_used": false,
+  "oos_executed": true,
+  "oos_passed": false,
+  "metrics": {
+    "trade_count": 30,
+    "win_count": 12,
+    "loss_count": 18,
+    "win_rate": 0.4,
+    "total_return": -0.027940234337365033,
+    "avg_return": -0.000841646222172943,
+    "profit_factor": 0.886867243144444,
+    "max_drawdown": 0.04876866681110581,
+    "cost_model": {
+      "status": "AVAILABLE",
+      "label": "generic_spot_preregistered",
+      "fee_bps_per_side": 10.0,
+      "slippage_bps_per_side": 2.0,
+      "fee_round_trip_fraction": 0.002,
+      "slippage_model": "adverse_price_per_side",
+      "assumption_scope": "research_assumption_not_venue_specific"
+    }
+  },
+  "predicate": "mechanism_family"
+}
