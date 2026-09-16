@@ -1,14 +1,14 @@
 [
   {
-    "bc": 248,
-    "candidate_hash": "b2f5ce28718900c657c71949c3eb4c7917077fdfbde07dffd0d9bbaef2fe2fe1",
-    "conceptual_change": "Shift from price-based mean reversion to volatility-clustering of volume as a regime filter for potential mean-reversion triggers.",
+    "bc": 249,
+    "candidate_hash": "af3341f68d143d09e76742102a29000b65a10677985512d662c86d83102dabd8",
+    "conceptual_change": "Instead of focusing on price levels or volume ratios, this mechanism measures the realized volatility of the VWAP deviation over a 24-hour lookback period to identify regimes of mean-reversion stability.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "volume",
+      "direction": "below",
+      "left": "vwap_distance",
       "mechanism_family": "mean_reversion",
       "operator": "rolling_std",
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": 24
     },
     "evidence_sources": [
@@ -16,14 +16,14 @@
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|rolling_std|volume||above",
+    "novelty_key": "mean_reversion|rolling_std|vwap_distance||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": 24
     },
-    "parent_bc": 247,
+    "parent_bc": 248,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
