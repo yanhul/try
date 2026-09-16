@@ -20,13 +20,10 @@ def test_oos_fail_maps_to_no_edge_found():
     assert outcome == "NO_EDGE_FOUND"
 
 
-def test_migrated_oos_marker_does_not_retarget_current_bc(monkeypatch, capsys):
-    monkeypatch.setattr(
-        repair_oos_evidence,
-        "STATE",
-        monkeypatch.tmp_path / "state.json",
-    )
-    repair_oos_evidence.STATE.write_text(
+def test_migrated_oos_marker_does_not_retarget_current_bc(tmp_path, monkeypatch, capsys):
+    state_path = tmp_path / "state.json"
+    monkeypatch.setattr(repair_oos_evidence, "STATE", state_path)
+    state_path.write_text(
         '{"campaign_terminal_reason":"OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION","current_bc":251}\n',
         encoding="utf-8",
     )
@@ -35,13 +32,10 @@ def test_migrated_oos_marker_does_not_retarget_current_bc(monkeypatch, capsys):
     assert "NOT_REQUIRED" in capsys.readouterr().out
 
 
-def test_insufficient_oos_repair_evidence_fails_closed(monkeypatch, capsys):
-    monkeypatch.setattr(
-        repair_oos_evidence,
-        "STATE",
-        monkeypatch.tmp_path / "state.json",
-    )
-    repair_oos_evidence.STATE.write_text(
+def test_insufficient_oos_repair_evidence_fails_closed(tmp_path, monkeypatch, capsys):
+    state_path = tmp_path / "state.json"
+    monkeypatch.setattr(repair_oos_evidence, "STATE", state_path)
+    state_path.write_text(
         '{"campaign_terminal_reason":"OOS_FAIL","current_bc":251}\n',
         encoding="utf-8",
     )
