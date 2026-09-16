@@ -1,0 +1,27 @@
+{
+  "bc": 251,
+  "candidate_hash": "7f66e7f800c451b16c27111dee10e39f570ccf5d63d91943eeb8141ac586ac87",
+  "conceptual_change": "Shift from price-based trend indicators to volume-based relative distribution (rank) to filter out periods of low institutional conviction (exhaustion) in volume participation.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rank",
+    "threshold": 0.85,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rank|volume_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": 24
+  },
+  "parent_bc": 250,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
