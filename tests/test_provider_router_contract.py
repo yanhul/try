@@ -78,9 +78,22 @@ def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
     previous = provider_router.selected_family
     try:
         provider_router.selected_family = "smc_ict"
-        candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"threshold": 0.5, "direction": "above"}}
+        candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"operator": "zscore", "left": "close", "window": 20, "threshold": 0.5, "direction": "above"}}
         normalize_hypothesis_id(candidate)
         assert candidate["hypothesis_id"] == "discovered_primitive"
+    finally:
+        provider_router.selected_family = previous
+
+
+def test_provider_top_level_structural_fields_are_repacked_and_canonicalized():
+    previous = provider_router.selected_family
+    try:
+        provider_router.selected_family = "mean_reversion"
+        candidate = {"hypothesis_id": "opaque-provider-id", "operator": "zscore", "left": "close", "window": "20", "threshold": "0.5", "direction": "above"}
+        normalize_hypothesis_id(candidate)
+        assert candidate["hypothesis_id"] == "discovered_primitive"
+        assert candidate["discovery_spec"] == {"operator": "zscore", "left": "close", "window": "20", "threshold": "0.5", "direction": "above"}
+        assert "operator" not in candidate
     finally:
         provider_router.selected_family = previous
 
