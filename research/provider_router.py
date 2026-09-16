@@ -53,7 +53,29 @@ def normalize_structural_types(c):
   if math.isfinite(v):s["threshold"]=int(v) if v.is_integer() else v
  if isinstance(s.get("window"),str) and s["window"].strip().isdigit():s["window"]=int(s["window"].strip())
 def normalize_hypothesis_id(c):
- if c.get("hypothesis_id")==selected_family and isinstance(c.get("discovery_spec"),dict):c["hypothesis_id"]="mechanism_family";c["discovery_spec"]["mechanism_family"]=selected_family
+    """Canonicalize provider metadata without weakening the executable schema.
+
+    The provider may emit a human-readable/opaque hypothesis_id even when its
+    discovery_spec is already a valid executable shape. hypothesis_id is lineage
+    metadata at this boundary; executable semantics come from discovery_spec.
+    Canonicalization is allowed only when the spec itself proves which executable
+    form it represents, and mechanism_family is always pinned to selected_family.
+    """
+    spec=c.get("discovery_spec")
+    if not isinstance(spec,dict):
+        return
+    explicit_family=spec.get("mechanism_family")
+    if explicit_family is not None:
+        if explicit_family==selected_family:
+            c["hypothesis_id"]="mechanism_family"
+        return
+    if c.get("hypothesis_id")==selected_family:
+        c["hypothesis_id"]="mechanism_family"
+        spec["mechanism_family"]=selected_family
+        return
+    primitive_keys={"operator","left","right","window","threshold","direction","numeric_finite_threshold"}
+    if c.get("hypothesis_id") not in {"mechanism_family","discovered_primitive"} and primitive_keys.intersection(spec):
+        c["hypothesis_id"]="discovered_primitive"
 def fingerprint(c):return structural_key(c)
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
