@@ -1,0 +1,27 @@
+{
+  "bc": 235,
+  "candidate_hash": "c2fc78310748b61066d60eb44160547c0993fd422285cf25e5a5f0158e2702ad",
+  "conceptual_change": "Shift from high-volatility price-based reversion to identifying mean reversion opportunities through relative volume exhaustion, where volume below the volume ratio threshold indicates lack of conviction in the current trend.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|volume|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 234,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
