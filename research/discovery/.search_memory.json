@@ -620,6 +620,16 @@
       "parent_bc": 197,
       "score": 0.25
     },
+    "smc_ict|difference|high|open|below": {
+      "bc": 252,
+      "candidate_hash": "e6dd0b69eb40d8ac20a59585462fc2c9f87c44cfcb652881afe92a95ce7e226d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b86d5466525ec779564737544c40b83c14fe0cf2efc091bf6471080e56aaddc4",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 251,
+      "score": 0.25
+    },
     "smc_ict|difference|high|rolling_mean|above": {
       "bc": 239,
       "candidate_hash": "69c5f76917ceb189aca08fb12e6d7f63e9d473ce1411ed043f42053cc65d8fec",
@@ -3281,9 +3291,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 250,
       "score": 0.29230661
+    },
+    {
+      "bc": 252,
+      "candidate_hash": "e6dd0b69eb40d8ac20a59585462fc2c9f87c44cfcb652881afe92a95ce7e226d",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b86d5466525ec779564737544c40b83c14fe0cf2efc091bf6471080e56aaddc4",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 251,
+      "score": 0.25
     }
   ],
-  "failures": 212,
+  "failures": 213,
   "families": {
     "discovered_primitive": {
       "fail": 103,
@@ -3295,7 +3315,7 @@
     "mean_reversion": {
       "fail": 35,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 13.678112400000002,
       "tested": 35
     },
@@ -3314,11 +3334,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 32,
+      "fail": 33,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 8.45243488,
-      "tested": 32
+      "recent_failures": 3,
+      "score_sum": 8.70243488,
+      "tested": 33
     },
     "volatility": {
       "fail": 11,
@@ -3328,8 +3348,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 252,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 253,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

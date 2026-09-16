@@ -1,0 +1,41 @@
+{
+  "bc": 252,
+  "parent_bc": 251,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "e6dd0b69eb40d8ac20a59585462fc2c9f87c44cfcb652881afe92a95ce7e226d",
+  "conceptual_change": "Shift from previous high-based filtering to measuring the local displacement of price against the opening price of the 1H candle to identify potential liquidity sweeps (ICT-style displacement) within the SMC framework.",
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "validation_summary": {
+    "candidate_trades": 2,
+    "accepted_signals": 0,
+    "skipped_overlap_trades": 0,
+    "candidate_universe": "reference_event_ledger",
+    "metrics": {
+      "trade_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate": 0.0,
+      "total_return": 0.0,
+      "avg_return": 0.0,
+      "profit_factor": null,
+      "max_drawdown": 0.0,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
