@@ -1,29 +1,29 @@
 [
   {
-    "bc": 251,
-    "candidate_hash": "7f66e7f800c451b16c27111dee10e39f570ccf5d63d91943eeb8141ac586ac87",
-    "conceptual_change": "Shift from price-based trend indicators to volume-based relative distribution (rank) to filter out periods of low institutional conviction (exhaustion) in volume participation.",
+    "bc": 252,
+    "candidate_hash": "e6dd0b69eb40d8ac20a59585462fc2c9f87c44cfcb652881afe92a95ce7e226d",
+    "conceptual_change": "Shift from previous high-based filtering to measuring the local displacement of price against the opening price of the 1H candle to identify potential liquidity sweeps (ICT-style displacement) within the SMC framework.",
     "discovery_spec": {
       "direction": "below",
-      "left": "volume_ratio",
-      "mechanism_family": "momentum_trend",
-      "operator": "rank",
-      "threshold": 0.85,
-      "window": 24
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "open",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rank|volume_ratio||below",
+    "novelty_key": "smc_ict|difference|high|open|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.85,
-      "window": 24
+      "threshold": 0.005,
+      "window": null
     },
-    "parent_bc": 250,
+    "parent_bc": 251,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
