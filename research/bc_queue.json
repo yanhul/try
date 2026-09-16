@@ -1,29 +1,29 @@
 [
   {
-    "bc": 232,
-    "candidate_hash": "fda53bdb07d570a8025f24f25eab61ba230c49af14f8890aef1969a9d353d17f",
-    "conceptual_change": "Shift from volatility-based regimes to a lagged momentum persistence model, checking if the current close is below the price from 24 periods prior, identifying downward trend momentum.",
+    "bc": 233,
+    "candidate_hash": "811bd6bfc3c8bcee78d837f20d57d63bcdc7c05debeb9528e4ee3b44917672b0",
+    "conceptual_change": "Shift from simple SMC structural sweeps to a liquidity-based regime filter, using the 24-period rolling mean of the close_location metric to identify areas of bearish order flow bias (selling pressure dominant within the price range).",
     "discovery_spec": {
       "direction": "below",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "lag",
-      "threshold": 0.0,
+      "left": "close_location",
+      "mechanism_family": "smc_ict",
+      "operator": "rolling_mean",
+      "threshold": 0.5,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|lag|close||below",
+    "novelty_key": "smc_ict|rolling_mean|close_location||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 0.5,
       "window": 24
     },
-    "parent_bc": 231,
+    "parent_bc": 232,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

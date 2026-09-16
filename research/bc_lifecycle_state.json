@@ -7,8 +7,8 @@
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
-  "checkpoint_seq": 7173,
-  "current_bc": 232,
+  "checkpoint_seq": 7181,
+  "current_bc": 233,
   "history": [
     {
       "bc": 1,
@@ -1436,12 +1436,19 @@
       "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
       "hypothesis_id": "mechanism_family",
       "oos_verdict": "OOS_FAIL"
+    },
+    {
+      "bc": 232,
+      "candidate_hash": "fda53bdb07d570a8025f24f25eab61ba230c49af14f8890aef1969a9d353d17f",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1154,
-  "last_bc": 231,
+  "iterations": 1155,
+  "last_bc": 232,
   "last_error": null,
-  "next_bc": 232,
+  "next_bc": 233,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -1450,12 +1457,12 @@
     "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
     "47a9b6efea6e210c1cb51dfac7c5985f215ed23175933c3d85906b468f674733"
   ],
-  "phase": "PERSISTED",
+  "phase": "YIELD",
   "retry_count": 0,
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:translation_hypothesis_id_forbidden\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-16T05:05:51.558243+00:00"
+  "updated_at": "2026-09-16T05:08:55.883679+00:00"
 }
