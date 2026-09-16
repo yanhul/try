@@ -73,18 +73,25 @@ def test_oos_repair_failure_prevents_controller_execution(tmp_path):
         '{"campaign_terminal_reason":"OOS_FAIL","current_bc":999}\n',
         encoding="utf-8",
     )
-    script = f"""
-from pathlib import Path
-from research import repair_oos_evidence
-repair_oos_evidence.STATE = Path(r"{state_path}")
-raise SystemExit(repair_oos_evidence.main())
-"""
-    import subprocess
-    command = (
-        "set -e; "
-        f"python -c {script!r}; "
-        f"python -c \"from pathlib import Path; Path(r'{marker}').write_text('ran')\""
+    repair_script = tmp_path / "run_repair.py"
+    repair_script.write_text(
+        "from pathlib import Path\n"
+        "from research import repair_oos_evidence\n"
+        f"repair_oos_evidence.STATE = Path(r'{state_path}')\n"
+        "raise SystemExit(repair_oos_evidence.main())\n",
+        encoding="utf-8",
     )
-    result = subprocess.run(["bash", "-c", command], capture_output=True, text=True)
+    marker_script = tmp_path / "mark_controller.py"
+    marker_script.write_text(
+        "from pathlib import Path\n"
+        f"Path(r'{marker}').write_text('ran')\n",
+        encoding="utf-8",
+    )
+    import subprocess
+    result = subprocess.run(
+        ["bash", "-c", f"set -e; python '{repair_script}'; python '{marker_script}'"],
+        capture_output=True,
+        text=True,
+    )
     assert result.returncode == 2
     assert not marker.exists()
