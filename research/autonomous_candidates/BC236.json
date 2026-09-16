@@ -1,0 +1,27 @@
+{
+  "bc": 236,
+  "candidate_hash": "e226817c0c313d770ed5e7280cabe9b91cdc959cb3ca590330988a0b51005a4a",
+  "conceptual_change": "Shift from liquidity sweep mechanics to identifying bearish order flow imbalance (order blocks) by looking for price segments where the closing price fails to maintain a meaningful positive delta against the opening price, specifically targeting the breakdown of support in ICT framework.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.0005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|open|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0005,
+    "window": null
+  },
+  "parent_bc": 235,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

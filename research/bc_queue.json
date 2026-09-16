@@ -1,29 +1,29 @@
 [
   {
-    "bc": 235,
-    "candidate_hash": "c2fc78310748b61066d60eb44160547c0993fd422285cf25e5a5f0158e2702ad",
-    "conceptual_change": "Shift from high-volatility price-based reversion to identifying mean reversion opportunities through relative volume exhaustion, where volume below the volume ratio threshold indicates lack of conviction in the current trend.",
+    "bc": 236,
+    "candidate_hash": "e226817c0c313d770ed5e7280cabe9b91cdc959cb3ca590330988a0b51005a4a",
+    "conceptual_change": "Shift from liquidity sweep mechanics to identifying bearish order flow imbalance (order blocks) by looking for price segments where the closing price fails to maintain a meaningful positive delta against the opening price, specifically targeting the breakdown of support in ICT framework.",
     "discovery_spec": {
       "direction": "below",
-      "left": "volume",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.25
+      "left": "close",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "open",
+      "threshold": 0.0005
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|volume|volume_ratio|below",
+    "novelty_key": "smc_ict|difference|close|open|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
+      "threshold": 0.0005,
       "window": null
     },
-    "parent_bc": 234,
+    "parent_bc": 235,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
