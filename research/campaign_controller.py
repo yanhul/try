@@ -76,7 +76,8 @@ def _epoch_start(state, history):
     if state.get('campaign_epoch_initialized') and isinstance(state.get('campaign_start_bc'), int):
         return int(state['campaign_start_bc'])
     vals = [int(x['bc']) for x in history if isinstance(x, dict) and str(x.get('bc', '')).isdigit() and x.get('next') == 'AGENT_HYPOTHESIS']
-    return min(vals) if vals else (min(qualifying_bcs(history)) if qualifying_bcs(history) else 1)
+    qualifying = qualifying_bcs(history)
+    return min(vals) if vals else (min(qualifying) if qualifying else 1)
 
 
 def _durable_completed_bcs(start=1):
@@ -210,8 +211,10 @@ def _migrate_candidate_oos_terminal(state):
             'migration': 'legacy campaign-level OOS_FAIL converted from durable OOS receipt; no research evidence fabricated'
         }, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     state.update(campaign_terminal=False, campaign_outcome=None,
-                 campaign_terminal_reason='OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION', terminal=False,
-                 phase='OBSERVE', last_error=None, retry_count=0)
+                 campaign_terminal_reason=None, terminal=False,
+                 phase='OBSERVE', last_error=None, retry_count=0,
+                 last_oos_migration={'failed_bc': parent, 'reason': 'OOS_FAIL',
+                                     'action': 'CANDIDATE_REJECTION'})
     if not isinstance(state.get('next_bc'), int) or state['next_bc'] <= parent:
         state['next_bc'] = parent + 1
     save(state)
