@@ -1,29 +1,29 @@
 [
   {
-    "bc": 237,
-    "candidate_hash": "b048860948c7062d609c6f4fc26a1c4cddbdcad276c859a94c22bb2bde8bf49d",
-    "conceptual_change": "Transitioning from price-based momentum metrics to volume-intensity attenuation. Instead of price-level breakouts, this hypothesis identifies trend exhaustion through the persistent decay of trade volume relative to the rolling 48-hour average, signaling a lack of institutional conviction in the prevailing trend direction.",
+    "bc": 238,
+    "candidate_hash": "927cb7e59758d1956172b9bfe13cf9b6e2658cca643777af94742f9089e9cd67",
+    "conceptual_change": "Shifting from price-based mean reversion to volume-normalized momentum exhaustion. Instead of relying on price deviations, this model monitors when the raw trade volume exceeds 1.5x the rolling volume_ratio, signaling an overextended move prone to immediate mean-reversion.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "volume",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_mean",
-      "threshold": 0.85,
-      "window": 48
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.5
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_mean|volume||below",
+    "novelty_key": "mean_reversion|ratio|volume|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.85,
-      "window": 48
+      "threshold": 1.5,
+      "window": null
     },
-    "parent_bc": 236,
+    "parent_bc": 237,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
