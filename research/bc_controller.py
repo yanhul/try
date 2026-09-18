@@ -6,6 +6,7 @@ from research.oos_lifecycle import (
     assert_history_entry_legal,
     evaluate_oos,
     terminal_reason_from_oos,
+    promotion_event,
     OOSLifecycleError,
 )
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
@@ -113,6 +114,18 @@ def verify_external_authority(bc,candidate_hash=None):
    if stored.get('input_digest')!=candidate_hash: print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+def append_promotion_event(s, bc, candidate_hash):
+    existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
+    if existing:
+        for x in existing:
+            assert_history_entry_legal(x)
+        return False
+    event=promotion_event()
+    event.update({'bc':int(bc),'candidate_hash':candidate_hash})
+    assert_history_entry_legal(event)
+    s.setdefault('history',[]).append(event)
+    return True
+
 def migrate_legacy_state(s):
     """Fail-closed migration of pre-canonical OOS history.
     
@@ -248,6 +261,7 @@ def main():
  if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
  if rc: return rc if PROMOTE in out:
+  append_promotion_event(s,bc,c['candidate_hash'])
   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
   if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
