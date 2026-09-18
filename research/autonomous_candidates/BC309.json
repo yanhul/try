@@ -1,0 +1,27 @@
+{
+  "bc": 309,
+  "candidate_hash": "e2609065aa88004b60b2caf2d461096176912753e477143f9ce4401a316885ce",
+  "conceptual_change": "Shifted focus from price-level distances to volatility-normalized range compression, using the 24-period rolling mean of the range_ratio to identify mean-reverting exhaustion events.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 0.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|range_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 24
+  },
+  "parent_bc": 308,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
