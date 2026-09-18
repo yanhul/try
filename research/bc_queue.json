@@ -1,26 +1,29 @@
 [
   {
-    "bc": 304,
-    "candidate_hash": "fae51cf6e6864531536b8a40353417c35fab086e626017abc8162d39c0ed1449",
-    "conceptual_change": "Transitioning from local volatility analysis to a direct trend-following regime by evaluating the rolling average of price momentum, focusing on sustained directional movement rather than compression or mean reversion.",
+    "bc": 305,
+    "candidate_hash": "4b1145b6cd9e9a3239805b15b3c4cecf903da5a1231e4bcdddfcee72759f60de",
+    "conceptual_change": "Shift from price-level comparisons to evaluating the rate of change in the close_location primitive, which proxies ICT-style liquidity sweep intensity by measuring how rapidly price settles within the range, indicating trend exhaustion or breakout velocity.",
     "discovery_spec": {
       "direction": "above",
-      "mechanism_family": "momentum_trend",
-      "threshold": 0.0
+      "left": "close_location",
+      "mechanism_family": "smc_ict",
+      "operator": "delta",
+      "threshold": 0.05,
+      "window": 12
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend||||above",
+    "novelty_key": "smc_ict|delta|close_location||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": null
+      "threshold": 0.05,
+      "window": 12
     },
-    "parent_bc": 303,
+    "parent_bc": 304,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

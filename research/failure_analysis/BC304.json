@@ -1,0 +1,41 @@
+{
+  "bc": 304,
+  "parent_bc": 303,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "fae51cf6e6864531536b8a40353417c35fab086e626017abc8162d39c0ed1449",
+  "conceptual_change": "Transitioning from local volatility analysis to a direct trend-following regime by evaluating the rolling average of price momentum, focusing on sustained directional movement rather than compression or mean reversion.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 385,
+    "skipped_overlap_trades": 347,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 38,
+      "win_count": 14,
+      "loss_count": 24,
+      "win_rate": 0.3684210526315789,
+      "total_return": -0.0660085390842039,
+      "avg_return": -0.0016955477304493947,
+      "profit_factor": 0.7834273645529914,
+      "max_drawdown": 0.10629416121267468,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
