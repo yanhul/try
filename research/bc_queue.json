@@ -1,29 +1,28 @@
 [
   {
-    "bc": 383,
-    "candidate_hash": "1dd98e4652a7eca64355a6ea2e8a07e52b1558cbc1e1eb4d0ef940e92944c531",
-    "conceptual_change": "Transitioned from volatility-adjusted VWAP deviations to a pure relative structural ratio. This hypothesis measures the relationship between price position within the bar (close_location) and the relative liquidity intensity (volume_ratio), identifying potential mean-reversion setups where thin-volume bars exhibit excessive positional exhaustion.",
+    "bc": 384,
+    "candidate_hash": "ad2c790ece6eba296d3f93653d7cb889433d59557a2391509fd58b773d046a85",
+    "conceptual_change": "Shift from complex relational primitives to a primary momentum indicator: the intraday price expansion (close minus open). This targets directional volatility breakout momentum rather than liquidity-adjusted positional exhaustion.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "close_location",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 0.85
+      "direction": "above",
+      "left": "close",
+      "operator": "difference",
+      "right": "open",
+      "threshold": 0.0
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|close_location|volume_ratio|below",
+    "novelty_key": "|difference|close|open|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.85,
+      "threshold": 0.0,
       "window": null
     },
-    "parent_bc": 382,
+    "parent_bc": 383,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

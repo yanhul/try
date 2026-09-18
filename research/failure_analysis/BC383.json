@@ -1,0 +1,41 @@
+{
+  "bc": 383,
+  "parent_bc": 382,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "1dd98e4652a7eca64355a6ea2e8a07e52b1558cbc1e1eb4d0ef940e92944c531",
+  "conceptual_change": "Transitioned from volatility-adjusted VWAP deviations to a pure relative structural ratio. This hypothesis measures the relationship between price position within the bar (close_location) and the relative liquidity intensity (volume_ratio), identifying potential mean-reversion setups where thin-volume bars exhibit excessive positional exhaustion.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 454,
+    "skipped_overlap_trades": 409,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 18,
+      "loss_count": 27,
+      "win_rate": 0.4,
+      "total_return": -0.037996053908543215,
+      "avg_return": -0.0007564317994551462,
+      "profit_factor": 0.8983377381680266,
+      "max_drawdown": 0.12180423816425656,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
