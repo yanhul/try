@@ -207,10 +207,15 @@ def migrate_legacy_state(s):
    entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
    entry['migration_id']='OOS_CANONICAL_V1'
    changed=True
- if s.get('terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
-  s['legacy_terminal_reason']=s['terminal_reason']; s['terminal_reason']=None; changed=True
- if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
-  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']; s['campaign_terminal_reason']=None; changed=True
+ evaluation=s.get('oos_evaluation')
+ if evaluation:
+  s['legacy_oos_evaluation']=evaluation
+  s['oos_evaluation']=None
+  changed=True
+ if s.get('terminal_reason') in {'OOS_PASS','OOS_FAIL'}:
+  s['legacy_terminal_reason']=s['terminal_reason']; s['terminal_reason']=None; s['terminal']=False; changed=True
+ if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'}:
+  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']; s['campaign_terminal_reason']=None; s['terminal']=False; changed=True
  if changed:
   s.setdefault('state_migrations',[]).append({'migration_id':'OOS_CANONICAL_V1','status':'APPLIED','reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists'})
   s['state_schema_version']=2
