@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "bc": 366,
+  "parent_bc": 365,
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "a769f8ae84288b47cf4eb15655be4ce391f73f31019c7ac7429d64d1c0b92b51",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "candidate_universe": "all_bars",
+  "candidate_family": "mean_reversion",
+  "dataset": {
+    "path": "/home/runner/work/try/try/data/BTCUSDT_1h.csv",
+    "sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+    "bars": 3624
+  },
+  "split": {
+    "name": "OOS",
+    "start": 2899,
+    "end": 3624
+  },
+  "protocol_sha256": "909f27e6ee36f3b30c6325bbee8e9525827e0675b3e016d1d81efc8fc63f1f73",
+  "evaluation_spec": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "cost_model_status": "AVAILABLE",
+    "validation_basis": "NET_REQUIRED_FOR_PROMOTION",
+    "min_validation_trades": 20,
+    "min_validation_profit_factor": 1.05,
+    "min_validation_total_return": 0.0,
+    "max_validation_drawdown": 0.3
+  },
+  "cost_model": {
+    "status": "AVAILABLE",
+    "label": "generic_spot_preregistered",
+    "fee_bps_per_side": 10.0,
+    "slippage_bps_per_side": 2.0,
+    "fee_round_trip_fraction": 0.002,
+    "slippage_model": "adverse_price_per_side",
+    "assumption_scope": "research_assumption_not_venue_specific"
+  },
+  "execution": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0
+  },
+  "oos_selection_used": false,
+  "oos_executed": true,
+  "predicate": "mechanism_family",
+  "metrics": {
+    "trade_count": 27,
+    "win_count": 11,
+    "loss_count": 16,
+    "win_rate": 0.4074074074074074,
+    "total_return": -0.02060679388804565,
+    "avg_return": -0.000668202467291535,
+    "profit_factor": 0.9090577136708607,
+    "max_drawdown": 0.04866932550696065,
+    "cost_model": {
+      "status": "AVAILABLE",
+      "label": "generic_spot_preregistered",
+      "fee_bps_per_side": 10.0,
+      "slippage_bps_per_side": 2.0,
+      "fee_round_trip_fraction": 0.002,
+      "slippage_model": "adverse_price_per_side",
+      "assumption_scope": "research_assumption_not_venue_specific"
+    }
+  },
+  "trade_count": 27,
+  "oos_passed": false
+}

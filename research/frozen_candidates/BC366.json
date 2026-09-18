@@ -1,0 +1,27 @@
+{
+  "bc": 366,
+  "candidate_hash": "a769f8ae84288b47cf4eb15655be4ce391f73f31019c7ac7429d64d1c0b92b51",
+  "conceptual_change": "Transitioned from price-based mean reversion to statistical volume intensity, identifying abnormal volume surges relative to a 24-hour baseline which frequently precede liquidity-driven mean reversion events in BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|zscore|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 365,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
