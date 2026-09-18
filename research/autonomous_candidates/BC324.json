@@ -1,0 +1,28 @@
+{
+  "bc": 324,
+  "candidate_hash": "71ae2a8cf0c0048383ccc260895e0b795ce163c751e3a5d7557551624a64a33e",
+  "conceptual_change": "Shift from high/low level proximity to checking if price highs are compressing below the recent rolling volatility standard deviation, identifying potential exhaustion in liquidity sweep patterns.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "high",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_std",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|high|rolling_std|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 323,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
