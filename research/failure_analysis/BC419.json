@@ -1,0 +1,41 @@
+{
+  "bc": 419,
+  "parent_bc": 418,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "ae21fef4370b93efe5d4a8b544845b065682e5ec646db7e5408305cbc24e6157",
+  "conceptual_change": "Switching from simple momentum indicators to a relative ranking of vwap_distance over a rolling window to identify extreme statistical deviations that persist as trend continuations rather than mean-reversion pullbacks.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 203,
+    "skipped_overlap_trades": 175,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 28,
+      "win_count": 11,
+      "loss_count": 17,
+      "win_rate": 0.39285714285714285,
+      "total_return": -0.01404271967084858,
+      "avg_return": -0.00039999485859022103,
+      "profit_factor": 0.9452898959582526,
+      "max_drawdown": 0.05349344490524566,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
