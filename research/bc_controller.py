@@ -198,6 +198,9 @@ def migrate_legacy_state(s):
   verdict=entry.get('oos_verdict')
   if verdict in {'OOS_PASS','OOS_FAIL'}:
    entry['legacy_oos_verdict']=verdict
+   if entry.get('decision') is not None:
+    entry['legacy_decision']=entry.get('decision')
+    entry['decision']='LEGACY_OOS_MIGRATED'
    entry['oos_verdict']=None
    entry['oos_executed']=False
    entry['oos_state']='UNKNOWN'
