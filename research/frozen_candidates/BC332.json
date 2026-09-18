@@ -1,0 +1,27 @@
+{
+  "bc": 332,
+  "candidate_hash": "ca0f5e70febca7247ffe205c3d70244ec760dc12e9f8e9228a0d741dc684f7c0",
+  "conceptual_change": "Shift from volume-based metrics to price-level exhaustion against a longer-term trend benchmark (24H rolling mean) to identify deep oversold conditions.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|close||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 331,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
