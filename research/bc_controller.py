@@ -204,9 +204,10 @@ def main():
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
   evaluation=evaluate_oos(result,receipt)
   decision=evaluation['oos_verdict']
-  history_entry={'bc':bc,'decision':PROMOTE,'hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],**evaluation}
-  assert_history_entry_legal(history_entry)
-  s['history'].append(history_entry)
+  evaluation_entry={'bc':bc,'candidate_hash':c['candidate_hash'],**evaluation}
+  assert_history_entry_legal({'decision':PROMOTE,'oos_verdict':None,'oos_executed':False})
+  assert_history_entry_legal(evaluation_entry)
+  s['oos_evaluation']=evaluation_entry
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
   if decision == 'OOS_PASS':
