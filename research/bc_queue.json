@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 261,
+    "candidate_hash": "0c12b376fca4d9ede0916f39222153fcd031e9345531f6739c266474b80183d7",
+    "conceptual_change": "Shifted from volume-based ranking to price-based ranking to identify momentum exhaustion where the current close is in the lower quartile of the trailing 24-hour range, indicating potential trend acceleration in a bearish direction.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "rank",
+      "threshold": 0.75,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|rank|close||below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.75,
+      "window": 24
+    },
+    "parent_bc": 260,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
