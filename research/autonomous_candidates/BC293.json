@@ -1,0 +1,27 @@
+{
+  "bc": 293,
+  "candidate_hash": "aa41602186b37ae8206b536d2dae6186afa19274ef567eb2254724edb530c840",
+  "conceptual_change": "Shift from price/volume intensity to local volume volatility as a proxy for trend participation intensity; identifying periods of high volume instability (increased dispersion in traded volume) to capture momentum acceleration.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|volume||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 20
+  },
+  "parent_bc": 292,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
