@@ -1,0 +1,27 @@
+{
+  "bc": 276,
+  "candidate_hash": "1b55385ee626d184ab9b8b723fa5febfa89a2183c4a9efb3aee7ad4cf73931f0",
+  "conceptual_change": "Transitioning from price-based momentum to volatility-adjusted volume intensity, focusing on anomalous 24-hour liquidity spikes (rolling standard deviation of volume_ratio) to identify trend ignition phases.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 275,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
