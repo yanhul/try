@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 323,
+  "candidate_hash": "15195a5b46c4521b62477f6ae1fdb0f2040ddd2a759ef7f6e2e550eb09308990",
+  "conceptual_change": "Transitioned from price-based mean reversion to volatility-based volume intensity analysis. By evaluating the rolling standard deviation of volume_ratio, we identify periods of anomalous volume clustering which often precede price mean reversion events.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 322,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000668202467291535,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 16,
+    "max_drawdown": 0.04866932550696065,
+    "profit_factor": 0.9090577136708607,
+    "total_return": -0.02060679388804565,
+    "trade_count": 27,
+    "win_count": 11,
+    "win_rate": 0.4074074074074074
+  }
+}
