@@ -45,9 +45,10 @@ def main() -> int:
 
     history = [x for x in state.get("history", []) if int(x.get("bc", -1)) == int(bc)]
     latest = history[-1] if history else {}
-    if latest:
-        # The screening promotion event is intentionally verdict-free.
-        assert_history_entry_legal(latest)
+    # Every durable event is checked; validating only the latest entry allows an
+    # earlier illegal verdict to survive and become provenance.
+    for entry in history:
+        assert_history_entry_legal(entry)
     oos_evaluation = state.get("oos_evaluation") or {}
     if oos_evaluation and int(oos_evaluation.get("bc", -1)) == int(bc):
         assert_history_entry_legal(oos_evaluation)
@@ -57,8 +58,6 @@ def main() -> int:
     evaluated_verdict = oos_evaluation.get("oos_verdict")
     if evaluated_verdict in {"OOS_PASS", "OOS_FAIL"}:
         verdict = evaluated_verdict
-    elif latest.get("decision") in {"PROMOTE_TO_FUTURE_OOS_TEST", "REJECT_BC"}:
-        verdict = latest.get("decision")
     else:
         verdict = "UNKNOWN"
     record = {
@@ -73,13 +72,14 @@ def main() -> int:
         "evaluator": "engine.autonomous_evaluator + registered BC gate",
         "result": result,
         "verdict": verdict,
+        "decision": latest.get("decision", "UNKNOWN"),
         "evidence": [str(validation_path.relative_to(ROOT))] if validation_path.exists() else [],
         "findings": latest.get("findings", []),
         "constraints": latest.get("constraints", []),
         "claims": latest.get("claims", []),
         "oos_lifecycle": {
-            "promotion": latest if latest.get("decision") == "PROMOTE_TO_FUTURE_OOS_TEST" else None,
-            "evaluation": oos_evaluation if oos_evaluation.get("oos_verdict") in {"OOS_PASS", "OOS_FAIL"} else None,
+            "promotion": next((x for x in history if x.get("decision") == "PROMOTE_TO_FUTURE_OOS_TEST"), None),
+            "evaluation": oos_evaluation if oos_evaluation.get("event_type") == "OOS_EVALUATION" and oos_evaluation.get("oos_verdict") in {"OOS_PASS", "OOS_FAIL"} else None,
         },
     }
     append_experiment(record)
