@@ -1,0 +1,26 @@
+{
+  "bc": 335,
+  "candidate_hash": "0d411cc77d72cc3bd9797ba63c92a4bb87807c2dfdbf8177157f68d915405263",
+  "conceptual_change": "Switching from price-based momentum triggers to volume-based rolling mean decay analysis to identify exhaustion points in BTC hourly trend progression, filtering out liquidity spikes.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend||volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 334,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
