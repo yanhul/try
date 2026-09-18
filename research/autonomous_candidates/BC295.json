@@ -1,0 +1,27 @@
+{
+  "bc": 295,
+  "candidate_hash": "c91e15b49e376026394078ce343e33cb3dff91eaa6c84cea0b46c4b5832c2f17",
+  "conceptual_change": "Instead of price-based liquidity sweeps, we use the z-score of range_ratio (volatility normalized) to identify periods of price compression (low volatility) that often precede institutional expansions in SMC liquidity models.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|zscore|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 294,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
