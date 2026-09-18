@@ -3,7 +3,7 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 88,
+  "campaign_screened": 89,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
@@ -11,7 +11,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 8798,
+  "checkpoint_seq": 8804,
   "current_bc": 423,
   "history": [
     {
@@ -2777,12 +2777,19 @@
       "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
       "hypothesis_id": "mechanism_family",
       "oos_verdict": "OOS_FAIL"
+    },
+    {
+      "bc": 423,
+      "candidate_hash": "cd277ea9dde9100dac73bc1803f6cd3bcd8f24b88263c0a3cda1f414663f5bf0",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "hypothesis_id": "mechanism_family",
+      "oos_verdict": "OOS_FAIL"
     }
   ],
-  "iterations": 1345,
-  "last_bc": 422,
+  "iterations": 1346,
+  "last_bc": 423,
   "last_error": null,
-  "next_bc": 423,
+  "next_bc": 424,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -2823,7 +2830,8 @@
     "a2fb043b4c0653ded3733fa4b8cb80e9706f977b3204d244a4c9a763a000d564",
     "00c258a23251c4b9cd7488d36a3c1894b47c11ffa0b9435363c729d600a26dd0",
     "886b8270cba9e46c26434c2d4ded95d98fe9c8d6160e75f33e9cf84a36772b43",
-    "5dfb5dc9847b3237a160081acd57c385bf40fc14a83929b425987c2325efdc95"
+    "5dfb5dc9847b3237a160081acd57c385bf40fc14a83929b425987c2325efdc95",
+    "cd277ea9dde9100dac73bc1803f6cd3bcd8f24b88263c0a3cda1f414663f5bf0"
   ],
   "phase": "PERSISTED",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI\nPROVIDER_ROUTER_HOLD",
@@ -2833,5 +2841,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-18T11:56:15.503334+00:00"
+  "updated_at": "2026-09-18T11:58:15.576605+00:00"
 }
