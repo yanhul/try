@@ -1,0 +1,27 @@
+{
+  "bc": 268,
+  "candidate_hash": "81a726732b953ebbb03f77df53e8fa814e8e654622e79c66f63e86b4a6c4a254",
+  "conceptual_change": "Shifted from absolute ICT structural point identification to a smoothed regime-filter approach using a 48-period rolling mean of close_location to detect sustained liquidity accumulation phases above the median range.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_mean",
+    "threshold": 0.5,
+    "window": 48
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|rolling_mean|close_location||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 48
+  },
+  "parent_bc": 267,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
