@@ -1,30 +1,29 @@
 [
   {
-    "bc": 336,
-    "candidate_hash": "6069dc3316b2291504f1ff5be61b35950f1525dc1a014f15f70719782aeeb082",
-    "conceptual_change": "Transitioning from price-based mean reversion to liquidity-based normalization, specifically targeting low volume relative to local volume flow to capture mean reversion entries during volatility exhaustion.",
+    "bc": 337,
+    "candidate_hash": "c1c4002c8aabd3802c2c1f7246ed27727c39aab452116f13eb618929447640bd",
+    "conceptual_change": "Shift from volume-based liquidity signals to volatility-normalized range contraction signals to identify mean reversion entries when price action becomes abnormally compressed.",
     "discovery_spec": {
       "direction": "below",
-      "left": "volume_ratio",
+      "left": "range_ratio",
       "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume",
-      "threshold": 1.25,
-      "window": 24
+      "operator": "zscore",
+      "threshold": 1.5,
+      "window": 20
     },
     "evidence_sources": [
       "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|volume_ratio|volume|below",
+    "novelty_key": "mean_reversion|zscore|range_ratio||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
-      "window": 24
+      "threshold": 1.5,
+      "window": 20
     },
-    "parent_bc": 335,
+    "parent_bc": 336,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
