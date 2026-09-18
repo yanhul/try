@@ -1,0 +1,27 @@
+{
+  "bc": 401,
+  "candidate_hash": "00c258a23251c4b9cd7488d36a3c1894b47c11ffa0b9435363c729d600a26dd0",
+  "conceptual_change": "Shift from price-distance metrics to range-volatility normalization using a rolling Z-score of range_ratio to identify stretched volatility regimes for potential mean reversion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|zscore|range_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 400,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,41 @@
+{
+  "bc": 400,
+  "parent_bc": 399,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "490b151d367abd3348878ee0dd727e071fe389845d07c72db29eb154a986c4a6",
+  "conceptual_change": "Transitioned from deviation-based thresholds to rank-based relative positioning of vwap_distance, focusing on normalized localized exhaustion rather than absolute price-distance triggers.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 154,
+    "skipped_overlap_trades": 135,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 19,
+      "win_count": 4,
+      "loss_count": 15,
+      "win_rate": 0.21052631578947367,
+      "total_return": -0.11077591490065652,
+      "avg_return": -0.006085764521325276,
+      "profit_factor": 0.37854040338881223,
+      "max_drawdown": 0.12616237920504011,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
