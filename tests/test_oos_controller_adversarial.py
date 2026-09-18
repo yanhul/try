@@ -81,3 +81,13 @@ def test_receipt_verifier_recomputes_result_artifact_hash(tmp_path, monkeypatch)
     assert verify_oos_receipt(306, "c306", result, receipt_path)
     artifact.write_text("tampered", encoding="utf-8")
     assert not verify_oos_receipt(306, "c306", result, receipt_path)
+
+def test_duplicate_legacy_oos_state_fails_closed():
+    state = {
+        "history": [
+            {"bc": 306, "oos_verdict": "OOS_FAIL"},
+            {"bc": 306, "oos_verdict": "OOS_PASS"},
+        ]
+    }
+    with pytest.raises(OOSLifecycleError, match="DUPLICATE_OOS_STATE"):
+        migrate_legacy_state(state)
