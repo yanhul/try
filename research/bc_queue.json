@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 406,
+    "candidate_hash": "fae091d16f20fac570d4daa600d493fc2b7c4026b1236c45a7fb6c288b650b82",
+    "conceptual_change": "Transitioning from simple liquidity sweep detection to a deviation-based structural analysis, evaluating the magnitude of vwap_distance divergence over a 24-period rolling window as a proxy for institutional order block exhaustion.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "vwap_distance",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "vwap_distance",
+      "threshold": 0.05,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|difference|vwap_distance|vwap_distance|above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": 24
+    },
+    "parent_bc": 405,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
