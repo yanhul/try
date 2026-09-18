@@ -1,0 +1,26 @@
+{
+  "bc": 372,
+  "candidate_hash": "feef87d3064d0f2b72ce921f3ea590a699c8b26d6abb44e695feaa507ddbc30d",
+  "conceptual_change": "Transitioning from simple trend identification to normalized relative institutional engagement, measuring the magnitude of price deviation from the volume-weighted average price relative to instantaneous volume intensity.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|vwap_distance|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 371,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
