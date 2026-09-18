@@ -1,29 +1,29 @@
 [
   {
-    "bc": 302,
-    "candidate_hash": "aa95b9b681399b36fadcac5b8cb2e7125c0683cb7c5c2a22ba63856fb0a18499",
-    "conceptual_change": "Shifting from relative volume/price ratio to the trend intensity of VWAP deviation, specifically looking for sustained low-mean VWAP distance to confirm mean-reverting momentum exhaustion rather than breakouts.",
+    "bc": 303,
+    "candidate_hash": "9548d22eda02a8d38fb0bead1e280f484e99dfe42522f4ae51693fb5879e57eb",
+    "conceptual_change": "Shift from VWAP-based deviation to local price volatility within the range (close_location) over a 24-hour period, identifying compression phases that precede mean-reverting breakouts.",
     "discovery_spec": {
       "direction": "below",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_mean",
-      "threshold": 0.005,
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_std",
+      "threshold": 0.35,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_mean|vwap_distance||below",
+    "novelty_key": "mean_reversion|rolling_std|close_location||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
+      "threshold": 0.35,
       "window": 24
     },
-    "parent_bc": 301,
+    "parent_bc": 302,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
