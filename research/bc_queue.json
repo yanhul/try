@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 314,
+    "candidate_hash": "29ef2a2f97603041aa6d25d72897743f3d6dc80eb832c9064781a351b1416ca4",
+    "conceptual_change": "Replacing price-based momentum triggers with volatility-adjusted range expansion patterns (rolling standard deviation of range_ratio) to identify breakout momentum regimes.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "range_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_std",
+      "threshold": 0.05,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|rolling_std|range_ratio||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": 24
+    },
+    "parent_bc": 313,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
