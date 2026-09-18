@@ -1,0 +1,27 @@
+{
+  "bc": 316,
+  "candidate_hash": "fcce15e4e7585bee230538597b0933f66247e2e92b786d8c19e6cac05179064e",
+  "conceptual_change": "Changed from trend following on price/volume to trend-regime detection using volatility compression, specifically filtering for low range-ratio standard deviation (48h lookback) as a signal for incipient momentum exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 48
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 48
+  },
+  "parent_bc": 315,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
