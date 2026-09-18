@@ -1,29 +1,29 @@
 [
   {
-    "bc": 407,
-    "candidate_hash": "37f10173a16c2c4218a117ff558e50b534c6962b6d17510a868ce523bdb092e4",
-    "conceptual_change": "Shifted focus from price-based mean reversion to liquidity-based regime identification by evaluating the exhaustion of 24-period rolling trading volume intensity.",
+    "bc": 408,
+    "candidate_hash": "05e7670dbb8c1b41fd846844a5271d8d401070bf68430b88d3e2db9a2313d279",
+    "conceptual_change": "Shifted from price/volume intensity to evaluating the relative relationship between intraday range volatility and distance from VWAP to detect mean reversion opportunities.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "volume",
+      "direction": "above",
+      "left": "range_ratio",
       "mechanism_family": "mean_reversion",
-      "operator": "rolling_mean",
-      "threshold": 50.0,
-      "window": 24
+      "operator": "ratio",
+      "right": "vwap_distance",
+      "threshold": 0.85
     },
     "evidence_sources": [
       "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|rolling_mean|volume||below",
+    "novelty_key": "mean_reversion|ratio|range_ratio|vwap_distance|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 50.0,
-      "window": 24
+      "threshold": 0.85,
+      "window": null
     },
-    "parent_bc": 406,
+    "parent_bc": 407,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
