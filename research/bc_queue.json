@@ -1,28 +1,29 @@
 [
   {
-    "bc": 364,
-    "candidate_hash": "7ddf910c154ea20029b2f7473e7591e132a93da32123bd9fde144322790eee4b",
-    "conceptual_change": "Shifts from price-relative proximity to a volume-normalized VWAP distance, identifying extreme momentum exhaustion relative to current trading activity.",
+    "bc": 365,
+    "candidate_hash": "9757e7047faae9a1a735517f3261b5a1b5eb5fc1494b0282b33447195eb828b0",
+    "conceptual_change": "Shifts focus from generic ICT price-level interaction to the discrepancy between high-price volatility and the underlying relative volume intensity, isolating institutional 'low-volume' liquidity traps.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "vwap_distance",
-      "operator": "ratio",
-      "right": "volume",
-      "threshold": 0.85
+      "direction": "below",
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "volume_ratio",
+      "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|ratio|vwap_distance|volume|above",
+    "novelty_key": "smc_ict|difference|high|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.85,
+      "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 363,
+    "parent_bc": 364,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
