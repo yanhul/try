@@ -137,6 +137,31 @@ def append_oos_event(s,event):
  s.setdefault('history',[]).append(event)
  return event
 
+def oos_current_state(s,bc):
+ entries=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
+ return entries[-1].get('oos_state') if entries else None
+
+def ensure_oos_state(s,bc,candidate_hash,target):
+ from research.oos_lifecycle import OOSState, advance
+ target=OOSState(target)
+ current=oos_current_state(s,bc)
+ if current==target: return
+ if current is None:
+  raise OOSLifecycleError('OOS_STATE_REQUIRES_PROMOTION')
+ if current=="UNKNOWN":
+  current="UNKNOWN"
+ path=[OOSState.OOS_AUTHORIZED,OOSState.OOS_DISPATCHED,OOSState.OOS_EXECUTED,OOSState.OOS_RECEIPT,OOSState.OOS_EVALUATED]
+ if target not in path: raise OOSLifecycleError('OOS_TARGET_NOT_PROGRESS_STATE')
+ if current in path and path.index(current)>=path.index(target): return
+ if current==OOSState.OOS_PENDING:
+  start=0
+ elif current==OOSState.UNKNOWN:
+  start=0
+ else:
+  start=path.index(OOSState(current))+1
+ for state in path[start:path.index(target)+1]:
+  append_oos_event(s,lifecycle_event(state,bc=bc,candidate_hash=candidate_hash))
+
 def append_promotion_event(s,bc,candidate_hash):
  existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
  if existing:
@@ -278,8 +303,7 @@ def main():
  if PROMOTE in out:
   try:
    append_promotion_event(s,bc,c['candidate_hash'])
-   append_oos_event(s,lifecycle_event('OOS_AUTHORIZED',bc=bc,candidate_hash=c['candidate_hash']))
-   append_oos_event(s,lifecycle_event('OOS_DISPATCHED',bc=bc,candidate_hash=c['candidate_hash']))
+   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_DISPATCHED')
   except OOSLifecycleError as exc:
    return hold(s,'HOLD_OOS_HISTORY_INTEGRITY:'+str(exc),bc,retryable=False)
   checkpoint(s,'FREEZE_OOS',bc)
@@ -288,9 +312,12 @@ def main():
    append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'UNKNOWN','oos_verdict':None,'oos_executed':False})
    return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
-  append_oos_event(s,lifecycle_event('OOS_EXECUTED',bc=bc,candidate_hash=c['candidate_hash']))
+  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EXECUTED')
   checkpoint(s,'OOS_EXECUTED',bc)
-  append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'OOS_RECEIPT','oos_verdict':None,'oos_executed':True,'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
+  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT')
+  rec=s['history'][-1]
+  rec.update({'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
+  assert_history_entry_legal(rec)
   checkpoint(s,'OOS_RECEIPT',bc)
   try:
    evaluation=evaluate_oos(result,receipt)
