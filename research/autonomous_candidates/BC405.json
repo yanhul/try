@@ -1,0 +1,27 @@
+{
+  "bc": 405,
+  "candidate_hash": "72311a94d38ef9bd863a38cfe55693e97f99144ef3c566ac0a56dcfdca4ffc76",
+  "conceptual_change": "Shifted from absolute ICT liquidity sweep mechanics to a relative discrepancy analysis between price distance from VWAP and realized volume intensity, specifically targeting instances where liquidity sweep indicators are decoupled from volumetric confirmation.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.0
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|vwap_distance|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 404,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
