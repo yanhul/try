@@ -1,0 +1,28 @@
+{
+  "bc": 356,
+  "candidate_hash": "ebd64218f78c516c0f3b3edcbe1219cc21feeec7f55167ffa95ea16ae1a5fe17",
+  "conceptual_change": "Shift from complex cross-modal relationships to a pure price-action structural indicator that identifies bullish momentum via a positive price delta within a single timeframe interval.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.0,
+    "window": 1
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|difference|close|open|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 1
+  },
+  "parent_bc": 355,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
