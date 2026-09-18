@@ -1,0 +1,27 @@
+{
+  "bc": 375,
+  "candidate_hash": "11be377f16d0a0e84286ad298c532ea33df4d9aad054d7e128d11172e11fe263",
+  "conceptual_change": "Transitioning from price-level volatility analysis to the relationship between intraday price range and distance from the VWAP, normalizing range by liquidity-weighted price deviations.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|range_ratio|vwap_distance|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 374,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
