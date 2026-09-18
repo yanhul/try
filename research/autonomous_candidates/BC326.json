@@ -1,0 +1,27 @@
+{
+  "bc": 326,
+  "candidate_hash": "ee194b38bd249bfedf2346e310cd1e1926d6f11a42cc56ac3dacaaa7e5f13828",
+  "conceptual_change": "Shift from previous primitive explorations to testing SMC-based structural liquidity gaps by measuring the absolute difference between price and volume intensity, identifying zones where price under-performance relative to volume signals potential exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.0
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 325,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
