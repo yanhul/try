@@ -1,30 +1,29 @@
 [
   {
-    "bc": 300,
-    "candidate_hash": "000a807a0fee4a39017fecb0faa77c28186324f353fa140818fc3040cbd417f5",
-    "conceptual_change": "Shift from volatility-ratio dynamics to price-level deviation relative to a short-term liquidity mean to identify localized ICT market structure breaks below institutional price averages.",
+    "bc": 301,
+    "candidate_hash": "14efbc8b4817c6427105a49c591ae740a937e744012000fd490e2e7424ca75ca",
+    "conceptual_change": "Utilize the ratio of vwap_distance to volume_ratio to identify extended mean reversion targets where liquidity divergence suggests price exhaustion, moving away from simple volatility thresholds.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "rolling_mean",
-      "threshold": 0.0,
-      "window": 20
+      "direction": "above",
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.25
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|close|rolling_mean|below",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": 20
+      "threshold": 1.25,
+      "window": null
     },
-    "parent_bc": 299,
+    "parent_bc": 300,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
