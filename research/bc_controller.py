@@ -136,11 +136,17 @@ def append_promotion_event(s,bc,candidate_hash):
 def migrate_legacy_state(s):
  history=s.get('history',[])
  if not isinstance(history,list): raise OOSLifecycleError('STATE_HISTORY_SCHEMA_INVALID')
+ version=int(s.get('state_schema_version',1))
+ if version not in {1,2}: raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
+ if version==2:
+  for entry in history:
+   assert_history_entry_legal(entry)
+  return False
  changed=False
  for entry in history:
   if not isinstance(entry,dict): raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
   verdict=entry.get('oos_verdict')
-  if verdict in {'OOS_PASS','OOS_FAIL'} and not (entry.get('event_type')=='OOS_EVALUATION' and entry.get('receipt_digest')):
+  if verdict in {'OOS_PASS','OOS_FAIL'}:
    entry['legacy_oos_verdict']=verdict
    entry['oos_verdict']=None
    entry['oos_executed']=False
@@ -148,23 +154,15 @@ def migrate_legacy_state(s):
    entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
    entry['migration_id']='OOS_CANONICAL_V1'
    changed=True
-  elif entry.get('event_type')=='OOS_EVALUATION':
-   assert_history_entry_legal(entry)
  if s.get('terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
-  s['legacy_terminal_reason']=s['terminal_reason']
-  s['terminal_reason']=None
-  changed=True
+  s['legacy_terminal_reason']=s['terminal_reason']; s['terminal_reason']=None; changed=True
  if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
-  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']
-  s['campaign_terminal_reason']=None
-  changed=True
+  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']; s['campaign_terminal_reason']=None; changed=True
  if changed:
   s.setdefault('state_migrations',[]).append({'migration_id':'OOS_CANONICAL_V1','status':'APPLIED','reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists'})
   s['state_schema_version']=2
- elif int(s.get('state_schema_version',2))!=2:
-  raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
  else:
-  s.setdefault('state_schema_version',2)
+  s['state_schema_version']=2
  return changed
 
 def authorized_state(s):
