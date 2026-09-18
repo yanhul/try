@@ -11,6 +11,10 @@ from enum import StrEnum
 from typing import Any
 
 
+class OOSLifecycleError(ValueError):
+    pass
+
+
 class OOSState(StrEnum):
     VALIDATION_PASS = "VALIDATION_PASS"
     OOS_AUTHORIZED = "OOS_AUTHORIZED"
@@ -47,10 +51,6 @@ def advance(current: OOSState | str, target: OOSState | str) -> OOSState:
     if target not in _TRANSITIONS[current]:
         raise OOSLifecycleError(f"ILLEGAL_OOS_TRANSITION:{current}->{target}")
     return target
-
-
-class OOSLifecycleError(ValueError):
-    pass
 
 
 def promotion_event() -> dict[str, Any]:
