@@ -1,0 +1,27 @@
+{
+  "bc": 407,
+  "candidate_hash": "37f10173a16c2c4218a117ff558e50b534c6962b6d17510a868ce523bdb092e4",
+  "conceptual_change": "Shifted focus from price-based mean reversion to liquidity-based regime identification by evaluating the exhaustion of 24-period rolling trading volume intensity.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 50.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 50.0,
+    "window": 24
+  },
+  "parent_bc": 406,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

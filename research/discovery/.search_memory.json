@@ -1950,6 +1950,16 @@
       "parent_bc": 404,
       "score": 0.25
     },
+    "smc_ict|difference|vwap_distance|vwap_distance|above": {
+      "bc": 406,
+      "candidate_hash": "fae091d16f20fac570d4daa600d493fc2b7c4026b1236c45a7fb6c288b650b82",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6f8200a072b3ceeebf8cc06a8d32e7895d277c0b7ba9868411a2fd03995f1bcf",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 405,
+      "score": 0.25
+    },
     "smc_ict|ratio|close_location|range_ratio|above": {
       "bc": 204,
       "candidate_hash": "f739e96db1e8a72fb030d9512d119c119c6aa5971bfa1ba00c534559a25ea5b3",
@@ -6361,9 +6371,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 404,
       "score": 0.25
+    },
+    {
+      "bc": 406,
+      "candidate_hash": "fae091d16f20fac570d4daa600d493fc2b7c4026b1236c45a7fb6c288b650b82",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "6f8200a072b3ceeebf8cc06a8d32e7895d277c0b7ba9868411a2fd03995f1bcf",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 405,
+      "score": 0.25
     }
   ],
-  "failures": 366,
+  "failures": 367,
   "families": {
     "discovered_primitive": {
       "fail": 119,
@@ -6375,7 +6395,7 @@
     "mean_reversion": {
       "fail": 86,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 36.08476852000001,
       "tested": 86
     },
@@ -6394,11 +6414,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 73,
+      "fail": 74,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 18.70243488,
-      "tested": 73
+      "recent_failures": 3,
+      "score_sum": 18.95243488,
+      "tested": 74
     },
     "volatility": {
       "fail": 11,
@@ -6408,8 +6428,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 406,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 407,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
