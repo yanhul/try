@@ -1,0 +1,26 @@
+{
+  "bc": 387,
+  "candidate_hash": "a2144d46779b1787c9405fc3f56e89d3cf0946ad5e571258c73acd4a13927a71",
+  "conceptual_change": "Instead of focusing on price momentum or basic rolling averages, this mechanism utilizes the difference between the relative volume ratio and the absolute volume to identify high-conviction breakout regimes where relative volume intensity decouples from total market participation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|difference|volume_ratio|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 386,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
