@@ -3465,22 +3465,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aec1864e886cea32",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118531877.index",
@@ -6836,6 +6820,22 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
