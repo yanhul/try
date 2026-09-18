@@ -75,3 +75,33 @@ def test_promotion_event_is_not_duplicated_on_resume():
     assert append_promotion_event(state, 310, "candidate-310") is True
     assert append_promotion_event(state, 310, "candidate-310") is False
     assert len(state["history"]) == 1
+
+
+def test_nonpromotion_legacy_verdict_is_demoted():
+    state = {"history": [{"bc": 311, "decision": "REJECT_BC", "oos_verdict": "OOS_FAIL"}]}
+    assert migrate_legacy_state(state) is True
+    entry = state["history"][0]
+    assert entry["oos_verdict"] is None
+    assert entry["legacy_oos_verdict"] == "OOS_FAIL"
+    assert entry["oos_state"] == "UNKNOWN"
+
+
+def test_promotion_candidate_binding_mismatch_fails_closed():
+    state = {"history": []}
+    append_promotion_event(state, 310, "candidate-a")
+    try:
+        append_promotion_event(state, 310, "candidate-b")
+    except OOSLifecycleError as exc:
+        assert str(exc) == "PROMOTION_CANDIDATE_BINDING_MISMATCH"
+    else:
+        raise AssertionError("promotion candidate rebinding was accepted")
+
+
+def test_unsupported_state_schema_fails_closed():
+    state = {"history": [], "state_schema_version": 99}
+    try:
+        migrate_legacy_state(state)
+    except OOSLifecycleError as exc:
+        assert str(exc) == "UNSUPPORTED_STATE_SCHEMA_VERSION"
+    else:
+        raise AssertionError("unsupported durable state schema was accepted")
