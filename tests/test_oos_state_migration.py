@@ -25,3 +25,29 @@ def test_malformed_history_fails_closed():
  try: migrate_legacy_state({"history":[1]})
  except OOSLifecycleError as e: assert str(e)=="STATE_HISTORY_ENTRY_INVALID"
  else: raise AssertionError("malformed history accepted")
+
+import copy
+from research.bc_controller import append_oos_event, append_promotion_event
+from research.oos_lifecycle import OOSLifecycleError, lifecycle_event
+
+def test_oos_event_exact_replay_is_idempotent():
+    s={"history":[]}
+    append_promotion_event(s, 306, "c306")
+    e=lifecycle_event("OOS_AUTHORIZED", bc=306, candidate_hash="c306")
+    first=append_oos_event(s,e)
+    second=append_oos_event(s,copy.deepcopy(e))
+    assert first == second
+    assert len([x for x in s["history"] if x.get("oos_state")=="OOS_AUTHORIZED"]) == 1
+
+def test_oos_event_same_state_with_changed_evidence_fails_closed():
+    s={"history":[]}
+    append_promotion_event(s, 306, "c306")
+    e=lifecycle_event("OOS_AUTHORIZED", bc=306, candidate_hash="c306")
+    append_oos_event(s,e)
+    bad=copy.deepcopy(e); bad["attempt_id"]="tampered"
+    try:
+        append_oos_event(s,bad)
+    except OOSLifecycleError as exc:
+        assert str(exc) in {"OOS_EVENT_REPLAY_MISMATCH","DUPLICATE_OOS_STATE"}
+    else:
+        raise AssertionError("tampered replay accepted")
