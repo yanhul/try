@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "bc": 264,
+    "candidate_hash": "f565d2ca19d4c37de5cbb5afcdca10c504b6596d6b2e17ebc88b6a3390453d45",
+    "conceptual_change": "Shift from simple return-based momentum to evaluating the 200-period rolling mean of the volume_ratio to identify regime-level shifts in liquidity participation that precede sustained trend breakouts, avoiding previously used price-based mechanisms.",
+    "discovery_spec": {
+      "direction": "below",
+      "mechanism_family": "momentum_trend",
+      "threshold": 0.005
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend||||below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.005,
+      "window": null
+    },
+    "parent_bc": 263,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]

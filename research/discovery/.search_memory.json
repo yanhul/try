@@ -130,6 +130,16 @@
       "parent_bc": 222,
       "score": 0.25
     },
+    "mean_reversion|rolling_mean|volume||above": {
+      "bc": 263,
+      "candidate_hash": "a153502a0a17612e50712b52349704af415961a281370925195326d10c24f1d2",
+      "decision": "OOS_FAIL",
+      "event_id": "58e2e9491ef931ac7b7c9c09d71eff9f2006aad608e78821d9171322a049bc2b",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 262,
+      "score": 0.43292076
+    },
     "mean_reversion|rolling_mean|vwap_distance||below": {
       "bc": 231,
       "candidate_hash": "47a9b6efea6e210c1cb51dfac7c5985f215ed23175933c3d85906b468f674733",
@@ -3501,9 +3511,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 261,
       "score": 0.25
+    },
+    {
+      "bc": 263,
+      "candidate_hash": "a153502a0a17612e50712b52349704af415961a281370925195326d10c24f1d2",
+      "decision": "OOS_FAIL",
+      "event_id": "58e2e9491ef931ac7b7c9c09d71eff9f2006aad608e78821d9171322a049bc2b",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 262,
+      "score": 0.43292076
     }
   ],
-  "failures": 223,
+  "failures": 224,
   "families": {
     "discovered_primitive": {
       "fail": 104,
@@ -3513,16 +3533,16 @@
       "tested": 104
     },
     "mean_reversion": {
-      "fail": 39,
+      "fail": 40,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 15.429555100000002,
-      "tested": 39
+      "recent_failures": 3,
+      "score_sum": 15.862475860000002,
+      "tested": 40
     },
     "momentum_trend": {
       "fail": 31,
       "pass": 0,
-      "recent_failures": 2,
+      "recent_failures": 1,
       "score_sum": 8.553260309999999,
       "tested": 31
     },
@@ -3548,8 +3568,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 263,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 264,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
