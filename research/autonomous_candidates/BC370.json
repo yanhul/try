@@ -1,0 +1,27 @@
+{
+  "bc": 370,
+  "candidate_hash": "b644e4199d5d3c5888fcd3d290b3016169424074c6eafae5b8b40c20bbc2b76f",
+  "conceptual_change": "Transitioned from simple price-based trend detection to evaluating volume flow relative to its own recent distribution to capture low-volatility momentum persistence.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "rank",
+    "threshold": 0.8,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rank|volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.8,
+    "window": 20
+  },
+  "parent_bc": 369,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

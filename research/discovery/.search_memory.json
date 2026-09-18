@@ -1640,6 +1640,16 @@
       "parent_bc": 212,
       "score": 0.25
     },
+    "smc_ict|difference|low|volume|above": {
+      "bc": 369,
+      "candidate_hash": "0ae86b7b1ffb42d58f52df2e5294df8f565938e8d0e82425a3e9c4eae39cf082",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25130138f49d092fbc2ceb4ad7a31ae9f7fe25f8fa3d79004c90728563da0228",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 368,
+      "score": 0.25
+    },
     "smc_ict|difference|low|vwap_distance|above": {
       "bc": 284,
       "candidate_hash": "3ee06275c0d5e78fd79c64896edd9670208657310b5ae1d4a03c8a0787c9c22f",
@@ -5621,9 +5631,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 367,
       "score": 0.25
+    },
+    {
+      "bc": 369,
+      "candidate_hash": "0ae86b7b1ffb42d58f52df2e5294df8f565938e8d0e82425a3e9c4eae39cf082",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "25130138f49d092fbc2ceb4ad7a31ae9f7fe25f8fa3d79004c90728563da0228",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 368,
+      "score": 0.25
     }
   ],
-  "failures": 329,
+  "failures": 330,
   "families": {
     "discovered_primitive": {
       "fail": 111,
@@ -5642,7 +5662,7 @@
     "momentum_trend": {
       "fail": 65,
       "pass": 0,
-      "recent_failures": 2,
+      "recent_failures": 1,
       "score_sum": 18.893636560000004,
       "tested": 65
     },
@@ -5654,11 +5674,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 63,
+      "fail": 64,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 16.20243488,
-      "tested": 63
+      "recent_failures": 3,
+      "score_sum": 16.45243488,
+      "tested": 64
     },
     "volatility": {
       "fail": 11,
@@ -5668,8 +5688,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 369,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 370,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
