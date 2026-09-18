@@ -1,0 +1,27 @@
+{
+  "bc": 271,
+  "candidate_hash": "ed1af93f2c15f6a6347a7dc25d81b6bfb97bd5b6b7de41a12c24e7eb88ca3c65",
+  "conceptual_change": "Shifted from volume-based dispersion to price-based volatility contraction as a precursor to regime-shifting momentum breakouts, filtering for low realized volatility on the 1H timeframe.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|close||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 270,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
