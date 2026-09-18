@@ -1,29 +1,29 @@
 [
   {
-    "bc": 279,
-    "candidate_hash": "b35fefce327c522c402bdc5ee9a15f58b7d6bae2e19d74fd4a1d2b6e553c0bd6",
-    "conceptual_change": "Transitioning from basic price-level differences to a regime-based liquidity intensity measurement, using the Z-Score of the Close Location (relative position in candle range) to identify high-conviction liquidity expansion zones (sweeps).",
+    "bc": 280,
+    "candidate_hash": "28eac08167b9c5e02a9d4e1a5bbea0fcf7416b71b6981aead42c3ae20e20b4df",
+    "conceptual_change": "Shifted from absolute volume or price thresholds to measuring the contraction (low rolling standard deviation) of relative volume flow to isolate low-volatility momentum accumulation periods before trend initiation.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close_location",
-      "mechanism_family": "smc_ict",
-      "operator": "zscore",
+      "direction": "below",
+      "left": "volume_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_std",
       "threshold": 1.5,
-      "window": 20
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|zscore|close_location||above",
+    "novelty_key": "momentum_trend|rolling_std|volume_ratio||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 1.5,
-      "window": 20
+      "window": 24
     },
-    "parent_bc": 278,
+    "parent_bc": 279,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

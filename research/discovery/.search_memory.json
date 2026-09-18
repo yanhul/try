@@ -970,6 +970,16 @@
       "parent_bc": 218,
       "score": 0.25
     },
+    "smc_ict|zscore|close_location||above": {
+      "bc": 279,
+      "candidate_hash": "b35fefce327c522c402bdc5ee9a15f58b7d6bae2e19d74fd4a1d2b6e553c0bd6",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8867620bca37dcf7b3c84b84920f334abb7286e5742f47caa490af38be8b10c9",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 278,
+      "score": 0.25
+    },
     "smc_ict|zscore|close_location||below": {
       "bc": 277,
       "candidate_hash": "943fa58db560ff7cd1b0a6ee307d9c1c8eb456e00b733b20be71142310914418",
@@ -3821,9 +3831,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 277,
       "score": 0.43099758
+    },
+    {
+      "bc": 279,
+      "candidate_hash": "b35fefce327c522c402bdc5ee9a15f58b7d6bae2e19d74fd4a1d2b6e553c0bd6",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8867620bca37dcf7b3c84b84920f334abb7286e5742f47caa490af38be8b10c9",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 278,
+      "score": 0.25
     }
   ],
-  "failures": 239,
+  "failures": 240,
   "families": {
     "discovered_primitive": {
       "fail": 106,
@@ -3842,7 +3862,7 @@
     "momentum_trend": {
       "fail": 36,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 10.05884266,
       "tested": 36
     },
@@ -3854,11 +3874,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 40,
+      "fail": 41,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 10.45243488,
-      "tested": 40
+      "recent_failures": 3,
+      "score_sum": 10.70243488,
+      "tested": 41
     },
     "volatility": {
       "fail": 11,
@@ -3868,8 +3888,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 279,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 280,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
