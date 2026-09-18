@@ -1,0 +1,27 @@
+{
+  "bc": 348,
+  "candidate_hash": "e90a21545d4ec7289d6c12af3f25836a4a39e959f306d6cde31d83fd34a1ec6f",
+  "conceptual_change": "Shift from price-level liquidity sweep detection to a rolling average of VWAP divergence, representing the institutional 'fair value' gap that often precedes liquidity reclamation in SMC frameworks.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "rolling_mean",
+    "threshold": 0.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|rolling_mean|vwap_distance||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 24
+  },
+  "parent_bc": 347,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
