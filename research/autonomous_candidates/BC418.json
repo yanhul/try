@@ -1,0 +1,27 @@
+{
+  "bc": 418,
+  "candidate_hash": "3cbc317fb597bb80db64d02a23c46deee15fba00b05724d9a075ded8e571e1f2",
+  "conceptual_change": "Instead of focusing on price action levels (like FVG or MSS), we analyze the divergence between VWAP deviation and absolute trade volume, signaling institutional participation exhaustion at liquidity pockets.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|vwap_distance|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 417,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

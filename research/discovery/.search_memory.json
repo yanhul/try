@@ -250,6 +250,16 @@
       "parent_bc": 226,
       "score": 0.44345362
     },
+    "mean_reversion|ratio|range_ratio|volume_ratio|above": {
+      "bc": 417,
+      "candidate_hash": "bd14eabd4d09b277bdc2b5bf3ddb6d0d263a93d42144637a69d208140af8f9ac",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e2736bc60a4ad26eb67ff666927e467684629938e9cd24eb6e52579c36747775",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 416,
+      "score": 0.44345362
+    },
     "mean_reversion|ratio|range_ratio|volume_ratio|below": {
       "bc": 341,
       "candidate_hash": "9d3a20fc66455d7d19de77d0dc6831802330cefb60d1250e8992ab0a7cd1d7e4",
@@ -6581,9 +6591,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 415,
       "score": 0.45268042
+    },
+    {
+      "bc": 417,
+      "candidate_hash": "bd14eabd4d09b277bdc2b5bf3ddb6d0d263a93d42144637a69d208140af8f9ac",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "e2736bc60a4ad26eb67ff666927e467684629938e9cd24eb6e52579c36747775",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 416,
+      "score": 0.44345362
     }
   ],
-  "failures": 377,
+  "failures": 378,
   "families": {
     "discovered_primitive": {
       "fail": 120,
@@ -6593,11 +6613,11 @@
       "tested": 120
     },
     "mean_reversion": {
-      "fail": 91,
+      "fail": 92,
       "pass": 0,
-      "recent_failures": 3,
-      "score_sum": 38.12573054000001,
-      "tested": 91
+      "recent_failures": 4,
+      "score_sum": 38.56918416000001,
+      "tested": 92
     },
     "momentum_trend": {
       "fail": 78,
@@ -6616,7 +6636,7 @@
     "smc_ict": {
       "fail": 75,
       "pass": 0,
-      "recent_failures": 1,
+      "recent_failures": 0,
       "score_sum": 19.20243488,
       "tested": 75
     },
@@ -6628,8 +6648,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 417,
+  "last_selected_family": "smc_ict",
+  "last_selection_bc": 418,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

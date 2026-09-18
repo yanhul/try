@@ -1,29 +1,29 @@
 [
   {
-    "bc": 417,
-    "candidate_hash": "bd14eabd4d09b277bdc2b5bf3ddb6d0d263a93d42144637a69d208140af8f9ac",
-    "conceptual_change": "Instead of evaluating raw price or volume levels, we evaluate the relative intensity of price range (volatility) normalized against relative volume. This specifically identifies mean reversion candidates when high relative range occurs without accompanying volume, suggesting exhaustion in the current trend.",
+    "bc": 418,
+    "candidate_hash": "3cbc317fb597bb80db64d02a23c46deee15fba00b05724d9a075ded8e571e1f2",
+    "conceptual_change": "Instead of focusing on price action levels (like FVG or MSS), we analyze the divergence between VWAP deviation and absolute trade volume, signaling institutional participation exhaustion at liquidity pockets.",
     "discovery_spec": {
       "direction": "above",
-      "left": "range_ratio",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.25
+      "left": "vwap_distance",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|range_ratio|volume_ratio|above",
+    "novelty_key": "smc_ict|difference|vwap_distance|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 416,
+    "parent_bc": 417,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
