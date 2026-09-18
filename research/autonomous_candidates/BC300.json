@@ -1,0 +1,28 @@
+{
+  "bc": 300,
+  "candidate_hash": "000a807a0fee4a39017fecb0faa77c28186324f353fa140818fc3040cbd417f5",
+  "conceptual_change": "Shift from volatility-ratio dynamics to price-level deviation relative to a short-term liquidity mean to identify localized ICT market structure breaks below institutional price averages.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 0.0,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|close|rolling_mean|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 20
+  },
+  "parent_bc": 299,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
