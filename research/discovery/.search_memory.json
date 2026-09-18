@@ -230,6 +230,16 @@
       "parent_bc": 219,
       "score": 0.43292076
     },
+    "mean_reversion|rolling_std|volume_ratio||below": {
+      "bc": 283,
+      "candidate_hash": "42f70d51aabc0bcd119811eb15fc4319562d37ee45eea2bc95cce43cf0eb7dfc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "219378b8e58951c2ae81e14de382338d51c8534e17fee64ce3dc3a686a772761",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 282,
+      "score": 0.45268042
+    },
     "mean_reversion|rolling_std|volume||above": {
       "bc": 248,
       "candidate_hash": "b2f5ce28718900c657c71949c3eb4c7917077fdfbde07dffd0d9bbaef2fe2fe1",
@@ -3901,9 +3911,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 281,
       "score": 0.29230661
+    },
+    {
+      "bc": 283,
+      "candidate_hash": "42f70d51aabc0bcd119811eb15fc4319562d37ee45eea2bc95cce43cf0eb7dfc",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "219378b8e58951c2ae81e14de382338d51c8534e17fee64ce3dc3a686a772761",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 282,
+      "score": 0.45268042
     }
   ],
-  "failures": 243,
+  "failures": 244,
   "families": {
     "discovered_primitive": {
       "fail": 106,
@@ -3913,11 +3933,11 @@
       "tested": 106
     },
     "mean_reversion": {
-      "fail": 45,
+      "fail": 46,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 18.05880698,
-      "tested": 45
+      "recent_failures": 3,
+      "score_sum": 18.5114874,
+      "tested": 46
     },
     "momentum_trend": {
       "fail": 38,
@@ -3936,7 +3956,7 @@
     "smc_ict": {
       "fail": 41,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 10.70243488,
       "tested": 41
     },
@@ -3948,8 +3968,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 283,
+  "last_selected_family": "smc_ict",
+  "last_selection_bc": 284,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
