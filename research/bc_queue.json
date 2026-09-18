@@ -1,30 +1,30 @@
 [
   {
-    "bc": 394,
-    "candidate_hash": "08f239dfb068bd1a09b2c5558a09be9884e5d52732200760f91616b041535648",
-    "conceptual_change": "Shifted from simple price momentum to a relative structural momentum metric comparing the deviation from VWAP against the normalized volume level to detect institutional momentum persistence.",
+    "bc": 395,
+    "candidate_hash": "e0bb7196a4afb3dc662b1934697eed33801d3e203d971f021616ac3daca98145",
+    "conceptual_change": "Changed the structural mechanism from simple liquidity-based price levels to measuring the intensity of price dislocation relative to VWAP compared to the recent rolling volatility, identifying institutional expansion phases.",
     "discovery_spec": {
       "direction": "above",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
+      "mechanism_family": "smc_ict",
       "operator": "difference",
-      "right": "volume",
+      "right": "rolling_std",
       "threshold": 0.005,
-      "window": null
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|vwap_distance|volume|above",
+    "novelty_key": "smc_ict|difference|vwap_distance|rolling_std|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.005,
-      "window": null
+      "window": 24
     },
-    "parent_bc": 393,
+    "parent_bc": 394,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

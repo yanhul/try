@@ -1,0 +1,41 @@
+{
+  "bc": 394,
+  "parent_bc": 393,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "08f239dfb068bd1a09b2c5558a09be9884e5d52732200760f91616b041535648",
+  "conceptual_change": "Shifted from simple price momentum to a relative structural momentum metric comparing the deviation from VWAP against the normalized volume level to detect institutional momentum persistence.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 300,
+    "skipped_overlap_trades": 271,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 29,
+      "win_count": 10,
+      "loss_count": 19,
+      "win_rate": 0.3448275862068966,
+      "total_return": -0.05496013378202824,
+      "avg_return": -0.0018477165260649539,
+      "profit_factor": 0.7665241550643607,
+      "max_drawdown": 0.09277364643773843,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
