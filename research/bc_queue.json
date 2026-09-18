@@ -1,28 +1,29 @@
 [
   {
-    "bc": 285,
-    "candidate_hash": "a86c7a12700cd7d9fe10159a9a76fe36f9f817c3b82e8feb761bd48174b15afd",
-    "conceptual_change": "Shifting from structural ICT pivot identification to a volatility-adjusted mean reversion logic using the difference between close price levels and normalized volume ratio (liquidity normalized price) to identify mean-reverting exhaustion spikes.",
+    "bc": 286,
+    "candidate_hash": "f101ef043554f58123c4d0ec17304c802f17f6097c1f370d58f03bbb1989ca8d",
+    "conceptual_change": "Transitioning from local price-volume exhaustion metrics to a broader trend-following regime indicator based on the 24-period rolling mean of vwap_distance. This mechanism captures sustained price divergence from the volume-weighted average price as a confirmation of momentum direction, diverging from previous volatility-adjusted mean reversion models.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "operator": "difference",
-      "right": "volume_ratio",
-      "threshold": 0.05
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_mean",
+      "threshold": 0.0,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|difference|close|volume_ratio|above",
+    "novelty_key": "momentum_trend|rolling_mean|vwap_distance||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
-      "window": null
+      "threshold": 0.0,
+      "window": 24
     },
-    "parent_bc": 284,
+    "parent_bc": 285,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

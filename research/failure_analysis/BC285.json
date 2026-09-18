@@ -1,0 +1,41 @@
+{
+  "bc": 285,
+  "parent_bc": 284,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "a86c7a12700cd7d9fe10159a9a76fe36f9f817c3b82e8feb761bd48174b15afd",
+  "conceptual_change": "Shifting from structural ICT pivot identification to a volatility-adjusted mean reversion logic using the difference between close price levels and normalized volume ratio (liquidity normalized price) to identify mean-reverting exhaustion spikes.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 725,
+    "skipped_overlap_trades": 678,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 47,
+      "win_count": 17,
+      "loss_count": 30,
+      "win_rate": 0.3617021276595745,
+      "total_return": -0.06464874702265866,
+      "avg_return": -0.0013188327000998397,
+      "profit_factor": 0.8283200471567792,
+      "max_drawdown": 0.11961317796116741,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

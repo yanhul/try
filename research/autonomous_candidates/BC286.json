@@ -1,0 +1,27 @@
+{
+  "bc": 286,
+  "candidate_hash": "f101ef043554f58123c4d0ec17304c802f17f6097c1f370d58f03bbb1989ca8d",
+  "conceptual_change": "Transitioning from local price-volume exhaustion metrics to a broader trend-following regime indicator based on the 24-period rolling mean of vwap_distance. This mechanism captures sustained price divergence from the volume-weighted average price as a confirmation of momentum direction, diverging from previous volatility-adjusted mean reversion models.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_mean|vwap_distance||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 285,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
