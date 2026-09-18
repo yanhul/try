@@ -1,0 +1,26 @@
+{
+  "bc": 391,
+  "candidate_hash": "25a3f567753871b7536ad96eaab40b7a599b6e8d8feee4f291d026f47cbe72aa",
+  "conceptual_change": "Shifted to an inter-modal difference metric between price (close) and volume-intensity, targeting mean reversion when price deviates significantly from normalized volume pressure.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|difference|close|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 390,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

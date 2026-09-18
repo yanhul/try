@@ -1,29 +1,28 @@
 [
   {
-    "bc": 390,
-    "candidate_hash": "635990f8b8dcbcf3c9f2b8f4f39b347b8fb00635bec93baf029c0d3aa0efbed8",
-    "conceptual_change": "Shifted from absolute price delta metrics to a normalized price-to-volume-intensity ratio to detect momentum exhaustion or confirmation relative to localized volume shocks.",
+    "bc": 391,
+    "candidate_hash": "25a3f567753871b7536ad96eaab40b7a599b6e8d8feee4f291d026f47cbe72aa",
+    "conceptual_change": "Shifted to an inter-modal difference metric between price (close) and volume-intensity, targeting mean reversion when price deviates significantly from normalized volume pressure.",
     "discovery_spec": {
       "direction": "above",
       "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.05
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|close|volume_ratio|above",
+    "novelty_key": "|difference|close|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.05,
+      "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 389,
+    "parent_bc": 390,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
