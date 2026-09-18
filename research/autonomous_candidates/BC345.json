@@ -1,0 +1,26 @@
+{
+  "bc": 345,
+  "candidate_hash": "e55daae2de3d7f5d18474b0d68641a8748f108a21b2a54f1678fc4251d5d714d",
+  "conceptual_change": "Evaluate the volatility-to-volume intensity ratio to capture momentum expansions where price range expansion significantly outpaces current relative volume, signaling potential trend exhaustion breakout.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|range_ratio|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": null
+  },
+  "parent_bc": 344,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

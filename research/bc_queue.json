@@ -1,29 +1,28 @@
 [
   {
-    "bc": 344,
-    "candidate_hash": "935286f5d819f2503f2a0af769bc7767c300b83cde3675d8f19fa65543b91d4d",
-    "conceptual_change": "Shift from price-level liquidity sweep identifiers to a structural disparity metric measuring the excess of the local high relative to normalized volume intensity as an ICT-style breakout confirmation.",
+    "bc": 345,
+    "candidate_hash": "e55daae2de3d7f5d18474b0d68641a8748f108a21b2a54f1678fc4251d5d714d",
+    "conceptual_change": "Evaluate the volatility-to-volume intensity ratio to capture momentum expansions where price range expansion significantly outpaces current relative volume, signaling potential trend exhaustion breakout.",
     "discovery_spec": {
       "direction": "above",
-      "left": "high",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "volume",
-      "threshold": 0.005
+      "left": "range_ratio",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.5
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|volume|above",
+    "novelty_key": "|ratio|range_ratio|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
+      "threshold": 1.5,
       "window": null
     },
-    "parent_bc": 343,
+    "parent_bc": 344,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
