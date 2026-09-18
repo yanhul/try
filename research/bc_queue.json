@@ -1,29 +1,30 @@
 [
   {
-    "bc": 314,
-    "candidate_hash": "29ef2a2f97603041aa6d25d72897743f3d6dc80eb832c9064781a351b1416ca4",
-    "conceptual_change": "Replacing price-based momentum triggers with volatility-adjusted range expansion patterns (rolling standard deviation of range_ratio) to identify breakout momentum regimes.",
+    "bc": 315,
+    "candidate_hash": "83762fbd02ecb8bb55c81ff291404cb676afc9d9763185c217ab7150aa495c4b",
+    "conceptual_change": "Shift from price-based liquidity sweeps to relative volatility-adjusted high expansion, targeting expansion relative to standard deviation to capture breakout phases in smart money order flow.",
     "discovery_spec": {
       "direction": "above",
-      "left": "range_ratio",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_std",
-      "threshold": 0.05,
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "rolling_std",
+      "threshold": 0.005,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|range_ratio||above",
+    "novelty_key": "smc_ict|difference|high|rolling_std|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 0.005,
       "window": 24
     },
-    "parent_bc": 313,
+    "parent_bc": 314,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

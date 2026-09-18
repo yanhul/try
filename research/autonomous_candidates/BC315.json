@@ -1,0 +1,28 @@
+{
+  "bc": 315,
+  "candidate_hash": "83762fbd02ecb8bb55c81ff291404cb676afc9d9763185c217ab7150aa495c4b",
+  "conceptual_change": "Shift from price-based liquidity sweeps to relative volatility-adjusted high expansion, targeting expansion relative to standard deviation to capture breakout phases in smart money order flow.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "high",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_std",
+    "threshold": 0.005,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|high|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 24
+  },
+  "parent_bc": 314,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
