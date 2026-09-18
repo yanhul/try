@@ -1,0 +1,27 @@
+{
+  "bc": 369,
+  "candidate_hash": "0ae86b7b1ffb42d58f52df2e5294df8f565938e8d0e82425a3e9c4eae39cf082",
+  "conceptual_change": "Shifted from price-based liquidity gap evaluation to analyzing the spread between price lows and aggregate volume footprint to identify institutional demand exhaustion.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|low|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 368,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
