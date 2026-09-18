@@ -1570,6 +1570,16 @@
       "parent_bc": 194,
       "score": 0.25
     },
+    "smc_ict|rolling_mean|vwap_distance||above": {
+      "bc": 348,
+      "candidate_hash": "e90a21545d4ec7289d6c12af3f25836a4a39e959f306d6cde31d83fd34a1ec6f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "09e57976ab6490f6616ef9937cb62fef4d70ce7ba3c53748e294d22afea93baf",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 347,
+      "score": 0.25
+    },
     "smc_ict|rolling_std|close_location||above": {
       "bc": 250,
       "candidate_hash": "27b92e1beaf5fe777745454998f711ee64a36f18cb082887f4abb1c7bae3792c",
@@ -5201,9 +5211,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 346,
       "score": 0.25
+    },
+    {
+      "bc": 348,
+      "candidate_hash": "e90a21545d4ec7289d6c12af3f25836a4a39e959f306d6cde31d83fd34a1ec6f",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "09e57976ab6490f6616ef9937cb62fef4d70ce7ba3c53748e294d22afea93baf",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 347,
+      "score": 0.25
     }
   ],
-  "failures": 308,
+  "failures": 309,
   "families": {
     "discovered_primitive": {
       "fail": 109,
@@ -5222,7 +5242,7 @@
     "momentum_trend": {
       "fail": 59,
       "pass": 0,
-      "recent_failures": 2,
+      "recent_failures": 1,
       "score_sum": 17.095747600000003,
       "tested": 59
     },
@@ -5234,11 +5254,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 57,
+      "fail": 58,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 14.70243488,
-      "tested": 57
+      "recent_failures": 3,
+      "score_sum": 14.95243488,
+      "tested": 58
     },
     "volatility": {
       "fail": 11,
@@ -5248,8 +5268,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 348,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 349,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

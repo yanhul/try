@@ -1,0 +1,27 @@
+{
+  "bc": 349,
+  "candidate_hash": "2861dde6e97382f86ba69a329da04510b0130b9f923c939334cfbde442ea3da0",
+  "conceptual_change": "Shift from simple trend indicators to a cross-modal relationship between institutional VWAP deviation and absolute volume liquidity to identify low-conviction momentum exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|difference|vwap_distance|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 348,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
