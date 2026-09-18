@@ -1,0 +1,27 @@
+{
+  "bc": 279,
+  "candidate_hash": "b35fefce327c522c402bdc5ee9a15f58b7d6bae2e19d74fd4a1d2b6e553c0bd6",
+  "conceptual_change": "Transitioning from basic price-level differences to a regime-based liquidity intensity measurement, using the Z-Score of the Close Location (relative position in candle range) to identify high-conviction liquidity expansion zones (sweeps).",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|zscore|close_location||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 278,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
