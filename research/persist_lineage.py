@@ -46,12 +46,15 @@ def main() -> int:
     history = [x for x in state.get("history", []) if int(x.get("bc", -1)) == int(bc)]
     latest = history[-1] if history else {}
     if latest:
-        # Durable lineage must never promote a transport/provider marker into an OOS verdict.
+        # The screening promotion event is intentionally verdict-free.
         assert_history_entry_legal(latest)
+    oos_evaluation = state.get("oos_evaluation") or {}
+    if oos_evaluation and int(oos_evaluation.get("bc", -1)) == int(bc):
+        assert_history_entry_legal(oos_evaluation)
     validation_path = VALIDATION / f"bc{int(bc)}_validation_result.json"
     validation = load(validation_path, {})
     result = validation if validation else latest
-    verdict = latest.get("oos_verdict") or latest.get("decision") or state.get("phase", "UNKNOWN")
+    verdict = oos_evaluation.get("oos_verdict") or latest.get("decision") or state.get("phase", "UNKNOWN")
     record = {
         "experiment_id": experiment_id,
         "generation": int(bc),
