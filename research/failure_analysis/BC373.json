@@ -1,0 +1,41 @@
+{
+  "bc": 373,
+  "parent_bc": 372,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "1addb887e409cc0fcc3de2e16dce8d855f27b07c7f63bb88447189a103dd25c1",
+  "conceptual_change": "Shifting from relative price-to-vwap measurements to identifying extreme volume-based mean reversion patterns by detecting statistically significant spikes in trading activity relative to the rolling historical baseline.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 579,
+    "skipped_overlap_trades": 534,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 18,
+      "loss_count": 27,
+      "win_rate": 0.4,
+      "total_return": -0.037996053908543215,
+      "avg_return": -0.0007564317994551487,
+      "profit_factor": 0.8983377381680264,
+      "max_drawdown": 0.12180423816425677,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

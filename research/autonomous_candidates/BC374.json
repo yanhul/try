@@ -1,0 +1,27 @@
+{
+  "bc": 374,
+  "candidate_hash": "a025a1130da018d24e81e3659087631ca477379d69f7c89155eb5f11fb9c8a73",
+  "conceptual_change": "Shifting from previous price-based trends to analyzing the ratio of price movement relative to trading volume intensity as an indicator of momentum conviction, moving away from univariate price primitives.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|close|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 373,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
