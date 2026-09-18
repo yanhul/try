@@ -271,7 +271,9 @@ def main():
    return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
   append_oos_event(s,lifecycle_event('OOS_EXECUTED',bc=bc,candidate_hash=c['candidate_hash']))
+  checkpoint(s,'OOS_EXECUTED',bc)
   append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'OOS_RECEIPT','oos_verdict':None,'oos_executed':True,'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
+  checkpoint(s,'OOS_RECEIPT',bc)
   try:
    evaluation=evaluate_oos(result,receipt)
    evaluation_entry={'bc':bc,'candidate_hash':c['candidate_hash'],**evaluation}
@@ -280,6 +282,7 @@ def main():
    return hold(s,'HOLD_OOS_EVALUATION_INTEGRITY:'+str(exc),bc,retryable=False)
   s['oos_evaluation']=evaluation_entry
   append_oos_event(s,evaluation_entry)
+  checkpoint(s,'OOS_EVALUATED',bc)
   decision=evaluation['oos_verdict']
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
