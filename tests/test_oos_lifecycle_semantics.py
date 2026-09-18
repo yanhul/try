@@ -121,3 +121,21 @@ def test_canonical_transition_graph_separates_provider_failure_from_verdict():
     assert advance(OOSState.OOS_DISPATCHED, OOSState.PROVIDER_FAIL) == OOSState.PROVIDER_FAIL
     with pytest.raises(OOSLifecycleError, match="ILLEGAL_OOS_TRANSITION"):
         advance(OOSState.PROVIDER_FAIL, OOSState.OOS_FAIL)
+
+
+def test_adversarial_verdict_without_evaluation_event_is_rejected():
+    with pytest.raises(OOSLifecycleError, match="OOS_VERDICT_REQUIRES_EVALUATION_EVENT"):
+        assert_history_entry_legal({
+            "oos_verdict": "OOS_FAIL",
+            "oos_executed": True,
+            "receipt_digest": "abc",
+        })
+
+
+def test_adversarial_verdict_without_receipt_binding_is_rejected():
+    with pytest.raises(OOSLifecycleError, match="OOS_VERDICT_REQUIRES_RECEIPT_BINDING"):
+        assert_history_entry_legal({
+            "event_type": "OOS_EVALUATION",
+            "oos_verdict": "OOS_FAIL",
+            "oos_executed": True,
+        })
