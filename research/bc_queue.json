@@ -1,29 +1,29 @@
 [
   {
-    "bc": 346,
-    "candidate_hash": "443ad657a0601bf6aad17f74323391a8090c1bcedfb1df0941bf0a05f6f7efb9",
-    "conceptual_change": "Introduce a ratio-based primitive between volume intensity and price deviation from VWAP to identify localized oversold conditions where volume relative to the mean has collapsed alongside positive price distance, suggesting a reversion trap.",
+    "bc": 347,
+    "candidate_hash": "f0aa3958d676fffe16f0860f56a453069d1b233de87da193460efaae2b7d50e7",
+    "conceptual_change": "Shift from simple return comparisons to ranking the relative dispersion of price from the volume-weighted average price (VWAP) over a multi-day rolling window to capture institutional momentum shifts.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "volume_ratio",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "vwap_distance",
-      "threshold": 0.5
+      "direction": "above",
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
+      "operator": "rank",
+      "threshold": 0.85,
+      "window": 48
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|volume_ratio|vwap_distance|below",
+    "novelty_key": "momentum_trend|rank|vwap_distance||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
-      "window": null
+      "threshold": 0.85,
+      "window": 48
     },
-    "parent_bc": 345,
+    "parent_bc": 346,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
