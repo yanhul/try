@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 338,
+    "candidate_hash": "3021de2d11e0efb627ebe506dc236d11acfe98ae328ac75fbac60077ce3301b5",
+    "conceptual_change": "Transition from traditional trend indicators to a cross-modal price-volume differential, capturing deviations where absolute close price magnitude exceeds raw volume counts to isolate idiosyncratic momentum anomalies.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.0,
+      "window": null
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|difference|close|volume|above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.0,
+      "window": null
+    },
+    "parent_bc": 337,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
