@@ -3225,22 +3225,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3253,38 +3237,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -8564,6 +8516,54 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "5657c7996f1c3138",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
         "family": "smc_ict",
         "rounds": []
       }
@@ -17719,7 +17719,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T16:02:19.343Z",
+      "source_timestamp": "2026-09-18T17:01:43.044Z",
       "lineage": {
         "source": "bcd35e3d0e9e43e0",
         "family": "china_a_share",
@@ -35775,6 +35775,22 @@
       }
     },
     {
+      "candidate_id": "e72cfa6714873c64",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
+      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
+      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share cross-sectional factor mining",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e72cfa6714873c64",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cbcc8ffa0fc1e5a2",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/612d769f6cf18d9356b6d8e7fd53cfb2788e9a78",
@@ -35930,22 +35946,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "d9b7baa7577c924c",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "e72cfa6714873c64",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
-      "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
-      "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share machine learning alpha",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e72cfa6714873c64",
         "family": "china_a_share",
         "rounds": []
       }
@@ -39375,22 +39375,6 @@
       }
     },
     {
-      "candidate_id": "e76606538ea79bd7",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d2ee6c2eaf96ff229958f6c99c6b4fcf465099f7",
-      "title": "Hubble: An LLM-Driven Agentic Framework for Safe, Diverse, and Reproducible Alpha Factor Discovery",
-      "description": "Automated alpha discovery is difficult because the search space of formulaic factors is combinatorial, the signal-to-noise ratio in daily equity data is low, and unconstrained program generation is operationally unsafe. We present Hubble, an agentic factor mining framework that combines large language models (LLMs) with a domain-specific operator language, an abstract syntax tree (AST) execution sandbox, a dual-channel retrieval-augmented generation (RAG) module, and a family-aware selection mechanism. Instead of treating the LLM as an unconstrained code generator, Hubble restricts generation to interpretable operator trees, evaluates every candidate through a deterministic cross-sectional pipeline, and feeds back both top formulas and structured family-level diagnostics to subsequent rounds. The current system additionally introduces positive/negative RAG, formula-similarity penalties, standardized multi-metric scoring, dual reporting of RankIC and Pearson IC, and persistent diagnostics artifacts for post-hoc research analysis. On a U.S. equity universe of roughly 500 stocks, our main run evaluates 104 valid candidates across three rounds with zero runtime crashes and discovers a top set dominated by range, volatility, and trend families rather than crowded volume-only motifs. We then fix the resulting top-5 factors and validate them on a held-out period from 2025-06-01 to 2026-03-13. In this out-of-sample window, the two range factors and two volatility factors remain positive and several achieve HAC-significant Pearson IC and long-short evidence, whereas the weakest in-sample trend factor decays materially. These results suggest that safe LLM-guided search can be upgraded from a syntax-compliant generator into a reproducible alpha-research workflow that jointly optimizes validity, diversity, interpretability, and family-level generalization.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "equity factor investing cross sectional alpha backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e76606538ea79bd7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cded4cae4deee833",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/2953584d7b70b5200b43cfd3fe592bec45587b66",
@@ -39775,22 +39759,6 @@
       }
     },
     {
-      "candidate_id": "2ac48a73bca2f48c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
-      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
-      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2ac48a73bca2f48c",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6fd24decf6afb06f",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c146b50c7a9ebbcd269f79059ff537c9c4401430",
@@ -39803,6 +39771,22 @@
       "lineage": {
         "source": "6fd24decf6afb06f",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e76606538ea79bd7",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d2ee6c2eaf96ff229958f6c99c6b4fcf465099f7",
+      "title": "Hubble: An LLM-Driven Agentic Framework for Safe, Diverse, and Reproducible Alpha Factor Discovery",
+      "description": "Automated alpha discovery is difficult because the search space of formulaic factors is combinatorial, the signal-to-noise ratio in daily equity data is low, and unconstrained program generation is operationally unsafe. We present Hubble, an agentic factor mining framework that combines large language models (LLMs) with a domain-specific operator language, an abstract syntax tree (AST) execution sandbox, a dual-channel retrieval-augmented generation (RAG) module, and a family-aware selection mechanism. Instead of treating the LLM as an unconstrained code generator, Hubble restricts generation to interpretable operator trees, evaluates every candidate through a deterministic cross-sectional pipeline, and feeds back both top formulas and structured family-level diagnostics to subsequent rounds. The current system additionally introduces positive/negative RAG, formula-similarity penalties, standardized multi-metric scoring, dual reporting of RankIC and Pearson IC, and persistent diagnostics artifacts for post-hoc research analysis. On a U.S. equity universe of roughly 500 stocks, our main run evaluates 104 valid candidates across three rounds with zero runtime crashes and discovers a top set dominated by range, volatility, and trend families rather than crowded volume-only motifs. We then fix the resulting top-5 factors and validate them on a held-out period from 2025-06-01 to 2026-03-13. In this out-of-sample window, the two range factors and two volatility factors remain positive and several achieve HAC-significant Pearson IC and long-short evidence, whereas the weakest in-sample trend factor decays materially. These results suggest that safe LLM-guided search can be upgraded from a syntax-compliant generator into a reproducible alpha-research workflow that jointly optimizes validity, diversity, interpretability, and family-level generalization.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e76606538ea79bd7",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -39914,6 +39898,22 @@
       "source_timestamp": "1986",
       "lineage": {
         "source": "6086d77819f7120e",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ac48a73bca2f48c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
+      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
+      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2ac48a73bca2f48c",
         "family": "cross_sectional",
         "rounds": []
       }
