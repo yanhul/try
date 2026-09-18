@@ -1,0 +1,28 @@
+{
+  "bc": 342,
+  "candidate_hash": "c7e3cdbfe7e61a5630e408d9b91416a9b39647feed507fe53b89f7daebbf14c5",
+  "conceptual_change": "Shifted from price level analysis to measuring the deviation of the low price relative to local volatility (rolling standard deviation) to identify ICT-style liquidity sweep levels.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_std",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|low|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 341,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
