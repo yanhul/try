@@ -258,14 +258,44 @@ def main():
  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
  if rc: return rc
  if PROMOTE in out:
-  checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
-  if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
-  passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':PROMOTE,'hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
+  try:
+   append_promotion_event(s,bc,c['candidate_hash'])
+   append_oos_event(s,lifecycle_event('OOS_AUTHORIZED',bc=bc,candidate_hash=c['candidate_hash']))
+  except OOSLifecycleError as exc:
+   return hold(s,'HOLD_OOS_HISTORY_INTEGRITY:'+str(exc),bc,retryable=False)
+  checkpoint(s,'FREEZE_OOS',bc)
+  result=oos_once(bc,c)
+  if result is None:
+   append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'UNKNOWN','oos_verdict':None,'oos_executed':False})
+   return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
+  receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
+  append_oos_event(s,lifecycle_event('OOS_EXECUTED',bc=bc,candidate_hash=c['candidate_hash']))
+  append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'OOS_RECEIPT','oos_verdict':None,'oos_executed':True,'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
+  try:
+   evaluation=evaluate_oos(result,receipt)
+   evaluation_entry={'bc':bc,'candidate_hash':c['candidate_hash'],**evaluation}
+   assert_history_entry_legal(evaluation_entry)
+  except OOSLifecycleError as exc:
+   return hold(s,'HOLD_OOS_EVALUATION_INTEGRITY:'+str(exc),bc,retryable=False)
+  s['oos_evaluation']=evaluation_entry
+  append_oos_event(s,evaluation_entry)
+  decision=evaluation['oos_verdict']
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
-  if passed:
-   s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
-  write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}'); return 0
+  if decision=='OOS_PASS':
+   s['terminal']=True
+   s['terminal_reason']=terminal_reason_from_oos(result,receipt)
+   s['next_bc']=bc+1
+   checkpoint(s,'TERMINAL',bc)
+   print(f'CONTROLLER_DECISION {s["terminal_reason"]} BC{bc} TERMINAL')
+   return 0
+  write_oos_failure(bc,parent,c,result)
+  s['terminal']=False
+  s['terminal_reason']=terminal_reason_from_oos(result,receipt)
+  s['next_bc']=bc+1
+  checkpoint(s,'PERSISTED',bc)
+  print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}')
+  return 0
  if REJECT not in out and 'SPLIT_GATE False' not in out:
   checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
  write_queue([]); s['history'].append({'bc':bc,'decision':REJECT,'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id'],'candidate_hash':c.get('candidate_hash')}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
