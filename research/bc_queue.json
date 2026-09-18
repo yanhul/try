@@ -1,29 +1,29 @@
 [
   {
-    "bc": 352,
-    "candidate_hash": "8ad15eff99e0aefa053309f197f53de0aed7598506f1e9716a93ed7c92016990",
-    "conceptual_change": "Transitioning from volume-based price modeling to measuring the disparity between the price range high and volume magnitude as a proxy for institutional liquidity exhaustion.",
+    "bc": 353,
+    "candidate_hash": "999c953819e2f4b312f5ae8e44694d15d6fd09d250db8a51343c5db0acb06f8c",
+    "conceptual_change": "Shifting from liquidity exhaustion proxies to localized divergence between VWAP deviation and volatility range ratio to identify mean reversion opportunities.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "high",
-      "mechanism_family": "smc_ict",
+      "direction": "above",
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
       "operator": "difference",
-      "right": "volume",
-      "threshold": 0.05
+      "right": "range_ratio",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|volume|below",
+    "novelty_key": "mean_reversion|difference|vwap_distance|range_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 351,
+    "parent_bc": 352,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
