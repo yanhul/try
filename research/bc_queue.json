@@ -1,29 +1,29 @@
 [
   {
-    "bc": 367,
-    "candidate_hash": "bea8ffa02e7c4a6291e1b0539393b8ae33cc3c78f6d8c65f6a25c101c436b046",
-    "conceptual_change": "Shifted from absolute volume or price thresholds to a relative relationship between price efficiency (vwap_distance) and immediate volume flow (volume_ratio) to filter trend strength.",
+    "bc": 368,
+    "candidate_hash": "b5c290183904aec9e000c823a700976b1c09d97fc9215b40062b3ae81e1072f4",
+    "conceptual_change": "Shifted from absolute ICT liquidity proxies to evaluating the ratio of price efficiency (vwap_distance) against raw liquidity volume to detect exhaustion in institutional order flow.",
     "discovery_spec": {
       "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
+      "mechanism_family": "smc_ict",
       "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.25
+      "right": "volume",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|vwap_distance|volume_ratio|below",
+    "novelty_key": "smc_ict|ratio|vwap_distance|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 366,
+    "parent_bc": 367,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
