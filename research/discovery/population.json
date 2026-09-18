@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3004,
-    "expanded": 2612,
-    "normalized": 2612,
+    "raw": 3006,
+    "expanded": 2614,
+    "normalized": 2614,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1412,22 +1412,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "5676d6ef4cb0a00b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3361f743c083fe40",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "3361f743c083fe40",
         "family": "china_a_share",
         "rounds": []
       }
@@ -8169,22 +8153,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9c08ebc8aca02436",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119057871.ch10",
@@ -9145,6 +9113,22 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "a9c1b3a81274e963",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
@@ -9492,6 +9476,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3361f743c083fe40",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "3361f743c083fe40",
         "family": "unknown",
         "rounds": []
       }
@@ -24154,6 +24154,38 @@
       "source_timestamp": "2026-09-13T23:26:36.404Z",
       "lineage": {
         "source": "3b5a58bae2016207",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "28b4edd013f42cc9",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/powertech-center/origins/chromium",
+      "title": "powertech-center/origins/chromium",
+      "description": "https://github.com/chromium/chromium | *.*.*.*",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T23:13:24.919Z",
+      "lineage": {
+        "source": "28b4edd013f42cc9",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "43916947a03d2ceb",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/powertech-center/origins/electron",
+      "title": "powertech-center/origins/electron",
+      "description": "https://github.com/electron/electron | v*.*.*",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T23:14:02.169Z",
+      "lineage": {
+        "source": "43916947a03d2ceb",
         "family": "china_a_share",
         "rounds": []
       }
