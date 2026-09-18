@@ -1993,6 +1993,22 @@
       }
     },
     {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c46d8cf558932aa3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6535019",
@@ -2948,6 +2964,22 @@
       "source_timestamp": "1978",
       "lineage": {
         "source": "519731fd846961a5",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -7065,22 +7097,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -7684,22 +7700,6 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "order_flow",
-      "market": null,
-      "query": "order flow trading research code",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -16457,7 +16457,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T01:21:00.150Z",
+      "source_timestamp": "2026-09-18T06:05:02.528Z",
       "lineage": {
         "source": "0ce7aa0f7a3bf993",
         "family": "china_a_share",
@@ -20345,7 +20345,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T07:46:53.339Z",
+      "source_timestamp": "2026-09-18T06:06:31.879Z",
       "lineage": {
         "source": "5479480326b9b31f",
         "family": "china_a_share",
@@ -35105,6 +35105,22 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -35517,22 +35533,6 @@
       "lineage": {
         "source": "49907d2f67f821ee",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
         "rounds": []
       }
     },
