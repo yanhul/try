@@ -1,0 +1,27 @@
+{
+  "bc": 275,
+  "candidate_hash": "73bd59273f9621a2403844c63e97295430a998ceb9d73cb9e6d1696360ffa4df",
+  "conceptual_change": "Shifted from price/structural point difference to a statistical intensity measure of relative volatility (range_ratio) within the SMC framework, identifying abnormal expansion periods as a proxy for liquidity-driven institutional participation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 48
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|zscore|range_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 48
+  },
+  "parent_bc": 274,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
