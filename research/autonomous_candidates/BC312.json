@@ -1,0 +1,28 @@
+{
+  "bc": 312,
+  "candidate_hash": "8622b73247877461e4dfdbc75921b63fe7d37f04f16507777babe80d53303f17",
+  "conceptual_change": "Transitioning from general liquidity sweep structures to identifying price-level deviations relative to the 24-hour mean price, isolating institutional support rejections (low-price pullbacks exceeding the rolling trend mean) as specific SMC entry trigger points.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "low",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 0.005,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|low|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 24
+  },
+  "parent_bc": 311,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

@@ -1,0 +1,41 @@
+{
+  "bc": 311,
+  "parent_bc": 310,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "eb7bb99f6ea18266f8c66deee418171b6abeb4cf85744810a7f9de5b12271f64",
+  "conceptual_change": "Shifted focus from price-level distances to the volatility of intra-bar positioning (close_location), identifying periods where the distribution of close prices within the bar range exhibits high standard deviation, signaling potential mean-reversion exhaustion after erratic localized price discovery.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 620,
+    "skipped_overlap_trades": 574,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 46,
+      "win_count": 19,
+      "loss_count": 27,
+      "win_rate": 0.41304347826086957,
+      "total_return": -0.021072402005077318,
+      "avg_return": -0.00035755107373475236,
+      "profit_factor": 0.9508782993019078,
+      "max_drawdown": 0.10635494667559757,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
