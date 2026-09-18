@@ -1,28 +1,29 @@
 [
   {
-    "bc": 387,
-    "candidate_hash": "a2144d46779b1787c9405fc3f56e89d3cf0946ad5e571258c73acd4a13927a71",
-    "conceptual_change": "Instead of focusing on price momentum or basic rolling averages, this mechanism utilizes the difference between the relative volume ratio and the absolute volume to identify high-conviction breakout regimes where relative volume intensity decouples from total market participation.",
+    "bc": 388,
+    "candidate_hash": "bb59c81834d8fc47024e464bd9b4ed6919261594a41849da82c13758139d9867",
+    "conceptual_change": "Instead of relying on simple liquidity sweeps or price-level identification, this hypothesis measures the expansion of volatility (range_ratio) relative to anomalous volume spikes (volume_ratio) to detect institutional liquidity voids (FVGs) before consolidation.",
     "discovery_spec": {
       "direction": "above",
-      "left": "volume_ratio",
+      "left": "range_ratio",
+      "mechanism_family": "smc_ict",
       "operator": "difference",
-      "right": "volume",
+      "right": "volume_ratio",
       "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|difference|volume_ratio|volume|above",
+    "novelty_key": "smc_ict|difference|range_ratio|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 386,
+    "parent_bc": 387,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

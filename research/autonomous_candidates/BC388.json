@@ -1,0 +1,27 @@
+{
+  "bc": 388,
+  "candidate_hash": "bb59c81834d8fc47024e464bd9b4ed6919261594a41849da82c13758139d9867",
+  "conceptual_change": "Instead of relying on simple liquidity sweeps or price-level identification, this hypothesis measures the expansion of volatility (range_ratio) relative to anomalous volume spikes (volume_ratio) to detect institutional liquidity voids (FVGs) before consolidation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|range_ratio|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 387,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

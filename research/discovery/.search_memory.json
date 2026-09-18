@@ -2110,6 +2110,16 @@
       "parent_bc": 63,
       "score": 0.25
     },
+    "|difference|volume_ratio|volume|above": {
+      "bc": 387,
+      "candidate_hash": "a2144d46779b1787c9405fc3f56e89d3cf0946ad5e571258c73acd4a13927a71",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c2402083b704decb666e2a501cae2d12d6d0a3a35502cea96719bcac5182c82e",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 386,
+      "score": 0.25
+    },
     "|difference|vwap_distance|range_ratio|below": {
       "bc": 385,
       "candidate_hash": "34e3b9205b9422dcd06e9e3cd0151730b1a6705806a561fac83350126b45df7f",
@@ -5981,16 +5991,26 @@
       "hypothesis_id": "discovered_primitive",
       "parent_bc": 385,
       "score": 0.44384116
+    },
+    {
+      "bc": 387,
+      "candidate_hash": "a2144d46779b1787c9405fc3f56e89d3cf0946ad5e571258c73acd4a13927a71",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c2402083b704decb666e2a501cae2d12d6d0a3a35502cea96719bcac5182c82e",
+      "family": "discovered_primitive",
+      "hypothesis_id": "discovered_primitive",
+      "parent_bc": 386,
+      "score": 0.25
     }
   ],
-  "failures": 347,
+  "failures": 348,
   "families": {
     "discovered_primitive": {
-      "fail": 116,
+      "fail": 117,
       "pass": 0,
-      "recent_failures": 4,
-      "score_sum": 33.69972536999999,
-      "tested": 116
+      "recent_failures": 5,
+      "score_sum": 33.94972536999999,
+      "tested": 117
     },
     "mean_reversion": {
       "fail": 82,
@@ -6002,7 +6022,7 @@
     "momentum_trend": {
       "fail": 69,
       "pass": 0,
-      "recent_failures": 1,
+      "recent_failures": 0,
       "score_sum": 19.975067610000007,
       "tested": 69
     },
@@ -6028,8 +6048,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "momentum_trend",
-  "last_selection_bc": 387,
+  "last_selected_family": "smc_ict",
+  "last_selection_bc": 388,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
