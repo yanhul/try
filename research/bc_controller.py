@@ -2,12 +2,18 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from research.oos_lifecycle import OOSLifecycleError, assert_history_entry_legal, evaluate_oos, lifecycle_event, promotion_event, terminal_reason_from_oos
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','1')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
-def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+def save(s):
+ s['updated_at']=datetime.now(timezone.utc).isoformat()
+ STATE.parent.mkdir(parents=True,exist_ok=True)
+ tmp=STATE.with_name(STATE.name+'.tmp')
+ tmp.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+ os.replace(tmp,STATE)
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
@@ -108,6 +114,59 @@ def verify_external_authority(bc,candidate_hash=None):
    if stored.get('input_digest')!=candidate_hash: print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+def append_oos_event(s,event):
+ event=dict(event)
+ assert_history_entry_legal(event)
+ s.setdefault('history',[]).append(event)
+ return event
+
+def append_promotion_event(s,bc,candidate_hash):
+ existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
+ if existing:
+  if len(existing)!=1: raise OOSLifecycleError('DUPLICATE_PROMOTION_EVENTS')
+  assert_history_entry_legal(existing[0])
+  if existing[0].get('candidate_hash')!=candidate_hash: raise OOSLifecycleError('PROMOTION_CANDIDATE_BINDING_MISMATCH')
+  return False
+ event=promotion_event()
+ event.update({'bc':int(bc),'candidate_hash':candidate_hash})
+ assert_history_entry_legal(event)
+ s.setdefault('history',[]).append(event)
+ return True
+
+def migrate_legacy_state(s):
+ history=s.get('history',[])
+ if not isinstance(history,list): raise OOSLifecycleError('STATE_HISTORY_SCHEMA_INVALID')
+ changed=False
+ for entry in history:
+  if not isinstance(entry,dict): raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
+  verdict=entry.get('oos_verdict')
+  if verdict in {'OOS_PASS','OOS_FAIL'} and not (entry.get('event_type')=='OOS_EVALUATION' and entry.get('receipt_digest')):
+   entry['legacy_oos_verdict']=verdict
+   entry['oos_verdict']=None
+   entry['oos_executed']=False
+   entry['oos_state']='UNKNOWN'
+   entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
+   entry['migration_id']='OOS_CANONICAL_V1'
+   changed=True
+  elif entry.get('event_type')=='OOS_EVALUATION':
+   assert_history_entry_legal(entry)
+ if s.get('terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
+  s['legacy_terminal_reason']=s['terminal_reason']
+  s['terminal_reason']=None
+  changed=True
+ if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
+  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']
+  s['campaign_terminal_reason']=None
+  changed=True
+ if changed:
+  s.setdefault('state_migrations',[]).append({'migration_id':'OOS_CANONICAL_V1','status':'APPLIED','reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists'})
+  s['state_schema_version']=2
+ elif int(s.get('state_schema_version',2))!=2:
+  raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
+ else:
+  s.setdefault('state_schema_version',2)
+ return changed
+
 def authorized_state(s):
  caps=s.get('capabilities',[])
  if not isinstance(caps,list) or any(str(x)!='research' for x in caps): print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
@@ -155,6 +214,11 @@ def epoch_seed_failure(parent,start):
  except (OSError,TypeError,ValueError): return None
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
+ try:
+  if migrate_legacy_state(s): save(s)
+ except OOSLifecycleError as exc:
+  checkpoint(s,'HOLD',error=str(exc)); return 4
+ for entry in s.get('history',[]): assert_history_entry_legal(entry)
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
  if s.get('terminal'):
   bc=int(s.get('current_bc') or s.get('last_bc') or 0)
