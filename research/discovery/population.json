@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2847,
-    "expanded": 2455,
-    "normalized": 2455,
+    "raw": 2848,
+    "expanded": 2456,
+    "normalized": 2456,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -3161,22 +3161,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3189,38 +3173,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -3444,22 +3396,6 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -6937,6 +6873,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -8505,6 +8457,54 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -9497,6 +9497,22 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -9685,22 +9701,6 @@
       "lineage": {
         "source": "bcb5ccbcca7e1462",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
         "rounds": []
       }
     },
@@ -19959,7 +19959,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T07:09:19.164Z",
+      "source_timestamp": "2026-09-18T08:25:09.413Z",
       "lineage": {
         "source": "393d2bf0af1cb350",
         "family": "china_a_share",
@@ -20250,6 +20250,22 @@
       "source_timestamp": "2026-09-18T05:31:42.820Z",
       "lineage": {
         "source": "81c2f66abe456363",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4a5b46eb33c2f609",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/hodgef/simple-keyboard-layouts",
+      "title": "hodgef/simple-keyboard-layouts",
+      "description": "Mirror of https://github.com/simple-keyboard/simple-keyboard-layouts for GitLab users",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T08:26:01.400Z",
+      "lineage": {
+        "source": "4a5b46eb33c2f609",
         "family": "china_a_share",
         "rounds": []
       }
@@ -25263,22 +25279,6 @@
       }
     },
     {
-      "candidate_id": "bbc97eef253b08aa",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1257/jep.21.3.131",
-      "title": "Transportation Costs and International Trade in the Second Era of Globalization",
-      "description": "OpenAlex work type=article year=2007",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2007",
-      "lineage": {
-        "source": "bbc97eef253b08aa",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d679668c6e9acd45",
       "source": "openalex",
       "source_url": "https://doi.org/10.18653/v1/2023.acl-long.891",
@@ -25322,38 +25322,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "e1786444c203056d",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "39de84499681e205",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "description": "OpenAlex work type=conference-paper year=2025",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "39de84499681e205",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "02ae174b1c897775",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2308.09975",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "description": "OpenAlex work type=preprint year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "02ae174b1c897775",
         "family": "china_a_share",
         "rounds": []
       }
@@ -25471,22 +25439,6 @@
       }
     },
     {
-      "candidate_id": "4b387f829e4403e9",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1007/s10462-022-10226-0",
-      "title": "Deep learning in the stock market\u2014a systematic survey of practice, backtesting, and applications",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "4b387f829e4403e9",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "39934e604729fa53",
       "source": "openalex",
       "source_url": "https://doi.org/10.3390/systems12020065",
@@ -25530,22 +25482,6 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "b82753e248ea2e11",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "670afeaa28dbc276",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/ijfs7020026",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "670afeaa28dbc276",
         "family": "china_a_share",
         "rounds": []
       }
@@ -25738,22 +25674,6 @@
       "source_timestamp": "2008",
       "lineage": {
         "source": "c5bfdcb31b2e8776",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4b01a119657ea23b",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.inffus.2021.05.008",
-      "title": "A review of uncertainty quantification in deep learning: Techniques, applications and challenges",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share machine learning alpha",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "4b01a119657ea23b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -27167,6 +27087,22 @@
       }
     },
     {
+      "candidate_id": "4833d662c731054d",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2204.09050",
+      "title": "House Price Prediction Based On Deep Learning",
+      "description": "OpenAlex work type=preprint year=2022",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "T+1 \u6da8\u8dcc\u505c \u4ea4\u6613\u6210\u672c \u56de\u6d4b",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "4833d662c731054d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fb7d6efc2a0d0e4b",
       "source": "openalex",
       "source_url": "https://doi.org/10.1787/146e68af-zh",
@@ -28063,6 +27999,22 @@
       }
     },
     {
+      "candidate_id": "2f5f3d7c80b0f360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/fire.12290",
+      "title": "Bitcoin intraday time series momentum",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "cross sectional crypto factors momentum reversal",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "2f5f3d7c80b0f360",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7e303348512cb293",
       "source": "openalex",
       "source_url": "https://doi.org/10.3386/w31284",
@@ -28282,22 +28234,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "4644c1866a0237b0",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f5f3d7c80b0f360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/fire.12290",
-      "title": "Bitcoin intraday time series momentum",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "2f5f3d7c80b0f360",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -28831,6 +28767,22 @@
       }
     },
     {
+      "candidate_id": "9b1512a9cf54b16a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
+      "title": "Cryptocurrency Trading: A Comprehensive Survey",
+      "description": "OpenAlex work type=preprint year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "9b1512a9cf54b16a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6e8454b06f77fc1c",
       "source": "openalex",
       "source_url": "https://doi.org/10.31979/etd.6xze-y9xu",
@@ -28922,22 +28874,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "b83160bb5bad442f",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9b1512a9cf54b16a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
-      "title": "Cryptocurrency Trading: A Comprehensive Survey",
-      "description": "OpenAlex work type=preprint year=2020",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "9b1512a9cf54b16a",
         "family": "volatility",
         "rounds": []
       }
@@ -31311,6 +31247,22 @@
       }
     },
     {
+      "candidate_id": "bbc97eef253b08aa",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1257/jep.21.3.131",
+      "title": "Transportation Costs and International Trade in the Second Era of Globalization",
+      "description": "OpenAlex work type=article year=2007",
+      "family": "unknown",
+      "market": null,
+      "query": "portfolio optimization risk parity systematic trading",
+      "source_timestamp": "2007",
+      "lineage": {
+        "source": "bbc97eef253b08aa",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "57f8632d7ce9f43b",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/0022-1082.00077",
@@ -31455,6 +31407,22 @@
       }
     },
     {
+      "candidate_id": "670afeaa28dbc276",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/ijfs7020026",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "670afeaa28dbc276",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cf90b754cabfe824",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjx022",
@@ -31530,6 +31498,22 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "38de320c5841f2fa",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4b387f829e4403e9",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/s10462-022-10226-0",
+      "title": "Deep learning in the stock market\u2014a systematic survey of practice, backtesting, and applications",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "4b387f829e4403e9",
         "family": "unknown",
         "rounds": []
       }
@@ -31627,6 +31611,22 @@
       "lineage": {
         "source": "2fedcd8d92b10f7e",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4b01a119657ea23b",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.inffus.2021.05.008",
+      "title": "A review of uncertainty quantification in deep learning: Techniques, applications and challenges",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "4b01a119657ea23b",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -32559,6 +32559,38 @@
       }
     },
     {
+      "candidate_id": "39de84499681e205",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "description": "OpenAlex work type=conference-paper year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "39de84499681e205",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "02ae174b1c897775",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2308.09975",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "description": "OpenAlex work type=preprint year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "02ae174b1c897775",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "99f29dd3de71b31b",
       "source": "openalex",
       "source_url": "https://doi.org/10.18653/v1/2025.findings-naacl.444",
@@ -32703,22 +32735,6 @@
       }
     },
     {
-      "candidate_id": "e5bcd170034fb329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/n112016-00135",
-      "title": "Development status and prospects of the Energy Internet}{Development status and prospects of the Energy Internet",
-      "description": "OpenAlex work type=article year=2017",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2017",
-      "lineage": {
-        "source": "e5bcd170034fb329",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "3e60dd1a8201cbc4",
       "source": "openalex",
       "source_url": "https://doi.org/10.5846/stxb201604260785",
@@ -32815,49 +32831,33 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
+      "candidate_id": "e4ff0e17ae795a42",
       "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
       "description": "OpenAlex work type=article year=2021",
       "family": "unknown",
       "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2021",
       "lineage": {
-        "source": "923d3553ccdcdef5",
+        "source": "e4ff0e17ae795a42",
         "family": "unknown",
         "rounds": []
       }
     },
     {
-      "candidate_id": "dd02d29c19991af2",
+      "candidate_id": "dd09dc1c3043f329",
       "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484383391.069",
-      "title": "Government Finance Statistics Manual 2014",
-      "description": "OpenAlex work type=book year=2019",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
       "family": "unknown",
       "market": null,
       "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
+      "source_timestamp": "2025",
       "lineage": {
-        "source": "dd02d29c19991af2",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7e6cb00668361636",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9798400267468.002",
-      "title": "\u4e2d\u534e\u4eba\u6c11\u5171\u548c\u56fd",
-      "description": "OpenAlex work type=article year=2024",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7e6cb00668361636",
+        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -32895,6 +32895,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -32906,118 +32922,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3f2d8946e7b6e6ed",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
-      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "3f2d8946e7b6e6ed",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "794181e2ea96b546",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484352588.081",
-      "title": "World Economic Outlook, April 2018",
-      "description": "OpenAlex work type=book year=2018",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "794181e2ea96b546",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -33039,22 +32943,6 @@
       }
     },
     {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -33066,22 +32954,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -33130,22 +33002,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "6ef38b3cd00147d5",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4833d662c731054d",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2204.09050",
-      "title": "House Price Prediction Based On Deep Learning",
-      "description": "OpenAlex work type=preprint year=2022",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "4833d662c731054d",
         "family": "china_a_share",
         "rounds": []
       }
@@ -33215,22 +33071,6 @@
       }
     },
     {
-      "candidate_id": "074d1859ad607682",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1177/00081256231202266",
-      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "074d1859ad607682",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9fe1d07564202770",
       "source": "openalex",
       "source_url": "https://doi.org/10.3901/jme.2021.10.196",
@@ -33242,22 +33082,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "9fe1d07564202770",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1a3ee48b93042c98",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781616359409.002",
-      "title": "People's Republic of China: 2013 Article IV Consultation",
-      "description": "OpenAlex work type=article year=2013",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "1a3ee48b93042c98",
         "family": "china_a_share",
         "rounds": []
       }
@@ -33327,6 +33151,54 @@
       }
     },
     {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "074d1859ad607682",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1177/00081256231202266",
+      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "074d1859ad607682",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d663d3f1912e8837",
       "source": "openalex",
       "source_url": "https://doi.org/10.5846/stxb201201310130",
@@ -33343,6 +33215,134 @@
       }
     },
     {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e5bcd170034fb329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/n112016-00135",
+      "title": "Development status and prospects of the Energy Internet}{Development status and prospects of the Energy Internet",
+      "description": "OpenAlex work type=article year=2017",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "e5bcd170034fb329",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd02d29c19991af2",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484383391.069",
+      "title": "Government Finance Statistics Manual 2014",
+      "description": "OpenAlex work type=book year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "dd02d29c19991af2",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1a3ee48b93042c98",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781616359409.002",
+      "title": "People's Republic of China: 2013 Article IV Consultation",
+      "description": "OpenAlex work type=article year=2013",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "1a3ee48b93042c98",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "794181e2ea96b546",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484352588.081",
+      "title": "World Economic Outlook, April 2018",
+      "description": "OpenAlex work type=book year=2018",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "794181e2ea96b546",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7e6cb00668361636",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9798400267468.002",
+      "title": "\u4e2d\u534e\u4eba\u6c11\u5171\u548c\u56fd",
+      "description": "OpenAlex work type=article year=2024",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7e6cb00668361636",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "aefbaa96fb912552",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2021.04.19",
@@ -33354,6 +33354,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "aefbaa96fb912552",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3f2d8946e7b6e6ed",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
+      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "3f2d8946e7b6e6ed",
         "family": "unknown",
         "rounds": []
       }
@@ -34751,22 +34767,6 @@
       }
     },
     {
-      "candidate_id": "3b3fe274eb3b44d6",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
-      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
-      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China quant trading github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "3b3fe274eb3b44d6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ed3fe634a5f0f71c",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/72273dd15a43dd21c3cfdf47c2d365fd3d77ad70",
@@ -35115,6 +35115,22 @@
       "lineage": {
         "source": "47da219ff47fa1df",
         "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "832937213c945052",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
+      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
+      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "832937213c945052",
+        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -37967,22 +37983,6 @@
       }
     },
     {
-      "candidate_id": "832937213c945052",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
-      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
-      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "832937213c945052",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "46687a38e80ef3f6",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/cfd123dbc9857cf185691b891091446f0c046041",
@@ -39947,6 +39947,22 @@
       "lineage": {
         "source": "32a90979ec7b325f",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b3fe274eb3b44d6",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
+      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
+      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "3b3fe274eb3b44d6",
+        "family": "china_a_share",
         "rounds": []
       }
     },

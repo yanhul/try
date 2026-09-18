@@ -1,30 +1,30 @@
 [
   {
-    "bc": 350,
-    "candidate_hash": "5ef026752f1d01cc46de7b555b0c34883c229ff6723c80a698a4f98afd95f881",
-    "conceptual_change": "Shift from price-based trend metrics to a volume-normalized VWAP deviation ratio, filtering for institutional momentum persistence by evaluating the relationship between price displacement from the mean and total turnover volume.",
+    "bc": 351,
+    "candidate_hash": "308686f7a2b48d3de110577a75a6a380f7d1476c5e08cd094862fc5faad2f640",
+    "conceptual_change": "Shift from price/rolling-mean relationships to a volume-normalized deviation model, where the difference between vwap_distance and absolute volume provides a stable signal for mean reversion during periods of low institutional turnover.",
     "discovery_spec": {
-      "direction": "above",
+      "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "operator": "ratio",
+      "mechanism_family": "mean_reversion",
+      "operator": "difference",
       "right": "volume",
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": null
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|vwap_distance|volume|above",
+    "novelty_key": "mean_reversion|difference|vwap_distance|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 349,
+    "parent_bc": 350,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

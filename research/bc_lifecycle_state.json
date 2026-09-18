@@ -11,8 +11,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 8149,
-  "current_bc": 350,
+  "checkpoint_seq": 8157,
+  "current_bc": 351,
   "history": [
     {
       "bc": 1,
@@ -2266,12 +2266,19 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 350,
+      "candidate_hash": "5ef026752f1d01cc46de7b555b0c34883c229ff6723c80a698a4f98afd95f881",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1272,
-  "last_bc": 349,
+  "iterations": 1273,
+  "last_bc": 350,
   "last_error": null,
-  "next_bc": 350,
+  "next_bc": 351,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -2312,5 +2319,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-18T08:24:47.224485+00:00"
+  "updated_at": "2026-09-18T08:27:17.311421+00:00"
 }
