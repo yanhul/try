@@ -1,0 +1,26 @@
+{
+  "bc": 364,
+  "candidate_hash": "7ddf910c154ea20029b2f7473e7591e132a93da32123bd9fde144322790eee4b",
+  "conceptual_change": "Shifts from price-relative proximity to a volume-normalized VWAP distance, identifying extreme momentum exhaustion relative to current trading activity.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 0.85
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|vwap_distance|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": null
+  },
+  "parent_bc": 363,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
