@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2937,
-    "expanded": 2545,
-    "normalized": 2545,
+    "raw": 2938,
+    "expanded": 2546,
+    "normalized": 2546,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -2932,22 +2932,6 @@
       "source_timestamp": "1978",
       "lineage": {
         "source": "519731fd846961a5",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -6916,6 +6900,22 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -16666,6 +16666,22 @@
       "source_timestamp": "2026-09-14T02:25:01.751Z",
       "lineage": {
         "source": "e97a1b6ac625fd21",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2e047022dc2d51c0",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/DeveloperC/template",
+      "title": "DeveloperC/template",
+      "description": "\ud83d\udcbe Mirror of GitHub repository https://github.com/DeveloperC286/template",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T15:10:56.371Z",
+      "lineage": {
+        "source": "2e047022dc2d51c0",
         "family": "china_a_share",
         "rounds": []
       }
