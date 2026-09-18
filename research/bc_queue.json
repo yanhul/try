@@ -1,28 +1,29 @@
 [
   {
-    "bc": 345,
-    "candidate_hash": "e55daae2de3d7f5d18474b0d68641a8748f108a21b2a54f1678fc4251d5d714d",
-    "conceptual_change": "Evaluate the volatility-to-volume intensity ratio to capture momentum expansions where price range expansion significantly outpaces current relative volume, signaling potential trend exhaustion breakout.",
+    "bc": 346,
+    "candidate_hash": "443ad657a0601bf6aad17f74323391a8090c1bcedfb1df0941bf0a05f6f7efb9",
+    "conceptual_change": "Introduce a ratio-based primitive between volume intensity and price deviation from VWAP to identify localized oversold conditions where volume relative to the mean has collapsed alongside positive price distance, suggesting a reversion trap.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "range_ratio",
+      "direction": "below",
+      "left": "volume_ratio",
+      "mechanism_family": "mean_reversion",
       "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.5
+      "right": "vwap_distance",
+      "threshold": 0.5
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|ratio|range_ratio|volume_ratio|above",
+    "novelty_key": "mean_reversion|ratio|volume_ratio|vwap_distance|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
+      "threshold": 0.5,
       "window": null
     },
-    "parent_bc": 344,
+    "parent_bc": 345,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
