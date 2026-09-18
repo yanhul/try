@@ -1,0 +1,27 @@
+{
+  "bc": 266,
+  "candidate_hash": "a4c5588739070c8b6f2c9761989c61b264a026ac3029f5e482ae7077ce01ca36",
+  "conceptual_change": "Shifted from price-based trend momentum to volume-anomaly identification using a rolling Z-Score of trade volume to isolate high-conviction momentum breakout regimes in the BTCUSDT 1H timeframe.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|zscore|volume||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 265,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
