@@ -1,0 +1,28 @@
+{
+  "bc": 376,
+  "candidate_hash": "f63fb5c1f541e383d627ec4bf0a0c551027a8adc8e9aa557787935818c200e9b",
+  "conceptual_change": "Shifting from liquidity sweeps to identifying institutional 'displacement' by measuring deviations of current price distance from the VWAP relative to its recent rolling mean, capturing structural breaks in volatility common in ICT frameworks.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "rolling_mean",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|vwap_distance|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 375,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
