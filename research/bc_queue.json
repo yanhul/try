@@ -1,30 +1,29 @@
 [
   {
-    "bc": 360,
-    "candidate_hash": "8fec1d9b365f9677140c4597340008567b340df39b395286008dde461a4eda22",
-    "conceptual_change": "Shifted from absolute price-volume relationships to the spatial difference between current close and relative liquidity (volume_ratio) to identify exhaustion after price deviations within the SMC structural framework.",
+    "bc": 361,
+    "candidate_hash": "8041723b11e1be7985dafcabeafe68f4628439c897d27bdd5372c814ac081cbe",
+    "conceptual_change": "Shifted focus from price-level comparisons to the relative dispersion of price from the volume-weighted average price normalized by volume intensity to detect trend exhaustion.",
     "discovery_spec": {
       "direction": "below",
-      "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "volume_ratio",
-      "threshold": 0.0,
-      "window": null
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
+      "operator": "ratio",
+      "right": "volume",
+      "threshold": 1.5
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|close|volume_ratio|below",
+    "novelty_key": "momentum_trend|ratio|vwap_distance|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 1.5,
       "window": null
     },
-    "parent_bc": 359,
+    "parent_bc": 360,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
