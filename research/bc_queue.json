@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 319,
+    "candidate_hash": "8a77334d7b232ccc2d2e6ce3ad9ef6ab3b2a91e32fe5973fcfc6a49feb46250c",
+    "conceptual_change": "Shifting from standard trend-following identifiers to a relationship-based momentum signal using the spread between price proximity and relative volume activity.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "difference",
+      "right": "volume_ratio",
+      "threshold": 0.05
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|difference|close|volume_ratio|above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": null
+    },
+    "parent_bc": 318,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
