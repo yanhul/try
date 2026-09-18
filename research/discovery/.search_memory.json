@@ -110,6 +110,16 @@
       "parent_bc": 213,
       "score": 0.42114753
     },
+    "mean_reversion|ratio|close|volume_ratio|below": {
+      "bc": 320,
+      "candidate_hash": "264e900cecfaa70ba47e25ad06600faeb6e4dd0a9bf8a60989d5bb3cd8e7fec3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4e9ccd7df34246031c41267e4231cdb5b7f3b26cf25c59aba844d85ebef5822c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 319,
+      "score": 0.42114753
+    },
     "mean_reversion|ratio|close|vwap_distance|above": {
       "bc": 290,
       "candidate_hash": "fa23928ae813f71da2b6a42a8a0e7e91fbde5047e52dd18deaaf2fe982a6b056",
@@ -4641,9 +4651,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 318,
       "score": 0.24681783
+    },
+    {
+      "bc": 320,
+      "candidate_hash": "264e900cecfaa70ba47e25ad06600faeb6e4dd0a9bf8a60989d5bb3cd8e7fec3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4e9ccd7df34246031c41267e4231cdb5b7f3b26cf25c59aba844d85ebef5822c",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 319,
+      "score": 0.42114753
     }
   ],
-  "failures": 280,
+  "failures": 281,
   "families": {
     "discovered_primitive": {
       "fail": 107,
@@ -4653,11 +4673,11 @@
       "tested": 107
     },
     "mean_reversion": {
-      "fail": 58,
+      "fail": 59,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 23.80197176,
-      "tested": 58
+      "recent_failures": 3,
+      "score_sum": 24.22311929,
+      "tested": 59
     },
     "momentum_trend": {
       "fail": 51,
@@ -4676,7 +4696,7 @@
     "smc_ict": {
       "fail": 51,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 13.20243488,
       "tested": 51
     },
@@ -4689,7 +4709,7 @@
     }
   },
   "last_selected_family": "mean_reversion",
-  "last_selection_bc": 320,
+  "last_selection_bc": 321,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

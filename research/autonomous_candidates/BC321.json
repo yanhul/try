@@ -1,0 +1,27 @@
+{
+  "bc": 321,
+  "candidate_hash": "df6869797afcca41b8c349f774075c760be038be95047a551a1818d9da71f8dd",
+  "conceptual_change": "Evaluate mean reversion based on the relationship between closing price magnitude and volume intensity instead of price-moving average deviation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": null
+  },
+  "parent_bc": 320,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
