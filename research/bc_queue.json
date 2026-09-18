@@ -1,29 +1,29 @@
 [
   {
-    "bc": 409,
-    "candidate_hash": "7923e508f20f5649c3fdc8aa7a13f336e4fd3666b78afa738520c327607d60e4",
-    "conceptual_change": "Transitioning from simple liquidity sweep detection to a regime-based volatility measure of vwap_distance, identifying institutional supply-demand imbalances via high z-score deviations from the vwap rather than static price levels.",
+    "bc": 410,
+    "candidate_hash": "3e0648182fe5b4472a33ee327034145668e2bc3d6fc5096a03417bb186556b3e",
+    "conceptual_change": "Shifting from basic price-volume relationships to a normalized volatility-adjusted momentum metric using z-scored distance from VWAP, capturing sustained momentum deviations that indicate institutional trend exhaustion or continuation.",
     "discovery_spec": {
       "direction": "above",
       "left": "vwap_distance",
-      "mechanism_family": "smc_ict",
+      "mechanism_family": "momentum_trend",
       "operator": "zscore",
       "threshold": 1.5,
-      "window": 24
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|zscore|vwap_distance||above",
+    "novelty_key": "momentum_trend|zscore|vwap_distance||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 1.5,
-      "window": 24
+      "window": 20
     },
-    "parent_bc": 408,
+    "parent_bc": 409,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

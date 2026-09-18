@@ -2160,6 +2160,16 @@
       "parent_bc": 392,
       "score": 0.25
     },
+    "smc_ict|zscore|vwap_distance||above": {
+      "bc": 409,
+      "candidate_hash": "7923e508f20f5649c3fdc8aa7a13f336e4fd3666b78afa738520c327607d60e4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5996e2b9c1b957fab3f93ce23962f4f96f26f61808c54bee5ef14dd7c4e1129c",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 408,
+      "score": 0.25
+    },
     "smc_ict|zscore|vwap_distance||below": {
       "bc": 242,
       "candidate_hash": "35f5b8b9c10a9c37b1f17aedc2ca20092b6c088234c7adebe188a4e306b84700",
@@ -6421,9 +6431,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 407,
       "score": 0.45268042
+    },
+    {
+      "bc": 409,
+      "candidate_hash": "7923e508f20f5649c3fdc8aa7a13f336e4fd3666b78afa738520c327607d60e4",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "5996e2b9c1b957fab3f93ce23962f4f96f26f61808c54bee5ef14dd7c4e1129c",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 408,
+      "score": 0.25
     }
   ],
-  "failures": 369,
+  "failures": 370,
   "families": {
     "discovered_primitive": {
       "fail": 119,
@@ -6435,7 +6455,7 @@
     "mean_reversion": {
       "fail": 88,
       "pass": 0,
-      "recent_failures": 4,
+      "recent_failures": 3,
       "score_sum": 36.78744894000001,
       "tested": 88
     },
@@ -6454,11 +6474,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 74,
+      "fail": 75,
       "pass": 0,
-      "recent_failures": 3,
-      "score_sum": 18.95243488,
-      "tested": 74
+      "recent_failures": 4,
+      "score_sum": 19.20243488,
+      "tested": 75
     },
     "volatility": {
       "fail": 11,
@@ -6468,8 +6488,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 409,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 410,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
