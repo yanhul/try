@@ -50,6 +50,8 @@ def main() -> int:
     oos_evaluation = state.get("oos_evaluation") or {}
     if oos_evaluation:
         assert_history_entry_legal(oos_evaluation)
+        if oos_evaluation.get("bc") != int(bc) or oos_evaluation.get("candidate_hash") != candidate.get("candidate_hash"):
+            raise ValueError("OOS_EVALUATION_BINDING_MISMATCH")
     validation_path = VALIDATION / f"bc{int(bc)}_validation_result.json"
     validation = load(validation_path, {})
     result = validation if validation else latest
