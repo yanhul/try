@@ -1,0 +1,28 @@
+{
+  "bc": 294,
+  "candidate_hash": "397a835300f7529898b747d1ffbcf0dc8e34bb89725dcc1298ee058047459d33",
+  "conceptual_change": "Shifted from price-based mean reversion to relative volume exhaustion signaling; by measuring the ratio of volume_ratio to raw volume, we identify transient liquidity spikes that trigger price reversals in the 1H timeframe.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 0.95,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|volume_ratio|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.95,
+    "window": 24
+  },
+  "parent_bc": 293,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

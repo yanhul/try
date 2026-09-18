@@ -1,29 +1,30 @@
 [
   {
-    "bc": 293,
-    "candidate_hash": "aa41602186b37ae8206b536d2dae6186afa19274ef567eb2254724edb530c840",
-    "conceptual_change": "Shift from price/volume intensity to local volume volatility as a proxy for trend participation intensity; identifying periods of high volume instability (increased dispersion in traded volume) to capture momentum acceleration.",
+    "bc": 294,
+    "candidate_hash": "397a835300f7529898b747d1ffbcf0dc8e34bb89725dcc1298ee058047459d33",
+    "conceptual_change": "Shifted from price-based mean reversion to relative volume exhaustion signaling; by measuring the ratio of volume_ratio to raw volume, we identify transient liquidity spikes that trigger price reversals in the 1H timeframe.",
     "discovery_spec": {
       "direction": "above",
-      "left": "volume",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_std",
-      "threshold": 0.5,
-      "window": 20
+      "left": "volume_ratio",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume",
+      "threshold": 0.95,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|volume||above",
+    "novelty_key": "mean_reversion|ratio|volume_ratio|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
-      "window": 20
+      "threshold": 0.95,
+      "window": 24
     },
-    "parent_bc": 292,
+    "parent_bc": 293,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
