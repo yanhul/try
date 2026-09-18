@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2906,
-    "expanded": 2514,
-    "normalized": 2514,
+    "raw": 2907,
+    "expanded": 2515,
+    "normalized": 2515,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -4073,6 +4073,22 @@
       }
     },
     {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4164,6 +4180,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4596,22 +4628,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -9060,22 +9076,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -21663,6 +21663,22 @@
       }
     },
     {
+      "candidate_id": "b4215da58bfcd2e0",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/klausmeyer/whatchy",
+      "title": "klausmeyer/whatchy",
+      "description": "Mirror of https://github.com/klausmeyer/whatchy",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T13:13:25.603Z",
+      "lineage": {
+        "source": "b4215da58bfcd2e0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "63b38176ab6c8c78",
       "source": "gitlab",
       "source_url": "https://gitlab.com/lincolnaleixo/retrolife",
@@ -24135,7 +24151,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T11:54:06.830Z",
+      "source_timestamp": "2026-09-18T13:14:50.802Z",
       "lineage": {
         "source": "a970415e6896292d",
         "family": "china_a_share",
@@ -33743,22 +33759,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -33786,6 +33786,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
@@ -36159,6 +36175,22 @@
       }
     },
     {
+      "candidate_id": "abc55c5433c9357f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "abc55c5433c9357f",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d9421027cdf1e5e4",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/cab65db26eec716c7fab6d45de00923fcbab30db",
@@ -36170,6 +36202,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "d9421027cdf1e5e4",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ae8e7be0fb33131b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
+      "title": "Data protection and security of machine learning models in market-neutral crypto-currency trading strategies",
+      "description": "Cryptocurrency markets and algorithmic crypto trading are increasingly relying on deep learning models and market-neutral strategies, which amplifies the requirements for data protection and model security. This paper presents an end-to-end approach to data protection in a cloud-based algorithmic cryptocurrency trading system that implements market-neutral strategies using machine learning models. We examine the cryptographic mechanisms of the Bitcoin and Ethereum protocols and their contribution to transaction integrity, non-repudiation, and resistance to replay. We then show how these guarantees interact with higher-level data flows in exchanges and DeFi protocols. We analyse typical threats in DeFi protocols and exchange APIs, including re-entrancy attacks, oracle manipulation, flash loans, MEV attacks, and abuse of API keys, and we highlight how these threats can distort training data, backtests, and live execution. We systematise data and secret protection patterns in Azure, AWS, and GCP cloud infrastructures, focusing on key and secret management services, encryption of data in transit and at rest, least-privilege access, network segmentation, and incident-driven key revocation. Special attention is paid to machine learning security threats in financial time-series forecasting, including data poisoning, adversarial perturbations, model extraction, and model inversion, and to their relationship with regulatory requirements for algorithmic trading and the NIST AI RMF framework. Using a prototype market-neutral crypto trading system based on LSTM/GRU models as a case study, we derive a threat\u2013mitigation matrix, outline a risk-based kill-switch design that links portfolio risk metrics with technical controls, and propose practical architectural recommendations for data protection along the entire pipeline. In addition, we provide a small experiment with HMAC-SHA256 signing and a timestamp window for exchange API requests, demonstrating the detection and blocking o",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ae8e7be0fb33131b",
         "family": "execution_mev",
         "rounds": []
       }
@@ -40303,22 +40351,6 @@
       }
     },
     {
-      "candidate_id": "abc55c5433c9357f",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "on chain wallet flow trading signal research",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "abc55c5433c9357f",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cd84e9e8a21548a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ab1fb0d047856a6951575b875bff1c9356aa543e",
@@ -41439,6 +41471,22 @@
       }
     },
     {
+      "candidate_id": "62f6f7b3e0c0e855",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
+      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
+      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
+      "family": "unknown",
+      "market": null,
+      "query": "reinforcement learning trading systematic review",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "62f6f7b3e0c0e855",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "413c2b5288c75e75",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/3cc99d0ee028971ddaea011625061b3d913c7af2",
@@ -41823,22 +41871,6 @@
       }
     },
     {
-      "candidate_id": "ae8e7be0fb33131b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
-      "title": "Data protection and security of machine learning models in market-neutral crypto-currency trading strategies",
-      "description": "Cryptocurrency markets and algorithmic crypto trading are increasingly relying on deep learning models and market-neutral strategies, which amplifies the requirements for data protection and model security. This paper presents an end-to-end approach to data protection in a cloud-based algorithmic cryptocurrency trading system that implements market-neutral strategies using machine learning models. We examine the cryptographic mechanisms of the Bitcoin and Ethereum protocols and their contribution to transaction integrity, non-repudiation, and resistance to replay. We then show how these guarantees interact with higher-level data flows in exchanges and DeFi protocols. We analyse typical threats in DeFi protocols and exchange APIs, including re-entrancy attacks, oracle manipulation, flash loans, MEV attacks, and abuse of API keys, and we highlight how these threats can distort training data, backtests, and live execution. We systematise data and secret protection patterns in Azure, AWS, and GCP cloud infrastructures, focusing on key and secret management services, encryption of data in transit and at rest, least-privilege access, network segmentation, and incident-driven key revocation. Special attention is paid to machine learning security threats in financial time-series forecasting, including data poisoning, adversarial perturbations, model extraction, and model inversion, and to their relationship with regulatory requirements for algorithmic trading and the NIST AI RMF framework. Using a prototype market-neutral crypto trading system based on LSTM/GRU models as a case study, we derive a threat\u2013mitigation matrix, outline a risk-based kill-switch design that links portfolio risk metrics with technical controls, and propose practical architectural recommendations for data protection along the entire pipeline. In addition, we provide a small experiment with HMAC-SHA256 signing and a timestamp window for exchange API requests, demonstrating the detection and blocking o",
-      "family": "execution_mev",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "ae8e7be0fb33131b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1cc7f591c282fa01",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
@@ -41994,22 +42026,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "fd642ce475624981",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "62f6f7b3e0c0e855",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
-      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
-      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "62f6f7b3e0c0e855",
         "family": "unknown",
         "rounds": []
       }
