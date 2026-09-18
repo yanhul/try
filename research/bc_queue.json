@@ -1,29 +1,29 @@
 [
   {
-    "bc": 343,
-    "candidate_hash": "74bc421794761caf0fa92b447079cdf5565818902645cc40e7bb9aa7388ee0f7",
-    "conceptual_change": "Shifted focus from price-level proximity to measuring the difference between volume intensity and vwap distance as a mean reversion trigger.",
+    "bc": 344,
+    "candidate_hash": "935286f5d819f2503f2a0af769bc7767c300b83cde3675d8f19fa65543b91d4d",
+    "conceptual_change": "Shift from price-level liquidity sweep identifiers to a structural disparity metric measuring the excess of the local high relative to normalized volume intensity as an ICT-style breakout confirmation.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "volume",
-      "mechanism_family": "mean_reversion",
+      "direction": "above",
+      "left": "high",
+      "mechanism_family": "smc_ict",
       "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.5
+      "right": "volume",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|difference|volume|vwap_distance|below",
+    "novelty_key": "smc_ict|difference|high|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 342,
+    "parent_bc": 343,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

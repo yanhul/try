@@ -70,6 +70,16 @@
       "parent_bc": 204,
       "score": 0.43292076
     },
+    "mean_reversion|difference|volume|vwap_distance|below": {
+      "bc": 343,
+      "candidate_hash": "74bc421794761caf0fa92b447079cdf5565818902645cc40e7bb9aa7388ee0f7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "171070209a4688e0146160ce1f2e993bead610751f651d70850925f77e4ef940",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 342,
+      "score": 0.45268042
+    },
     "mean_reversion|difference|vwap_distance|volume_ratio|above": {
       "bc": 318,
       "candidate_hash": "fd4e251d974082aef356a5490d90eb55eee629c008fafd2c5cd7ade6436ba0f5",
@@ -5101,9 +5111,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 341,
       "score": 0.25
+    },
+    {
+      "bc": 343,
+      "candidate_hash": "74bc421794761caf0fa92b447079cdf5565818902645cc40e7bb9aa7388ee0f7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "171070209a4688e0146160ce1f2e993bead610751f651d70850925f77e4ef940",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 342,
+      "score": 0.45268042
     }
   ],
-  "failures": 303,
+  "failures": 304,
   "families": {
     "discovered_primitive": {
       "fail": 108,
@@ -5113,16 +5133,16 @@
       "tested": 108
     },
     "mean_reversion": {
-      "fail": 68,
+      "fail": 69,
       "pass": 0,
-      "recent_failures": 3,
-      "score_sum": 28.152538789999998,
-      "tested": 68
+      "recent_failures": 4,
+      "score_sum": 28.605219209999998,
+      "tested": 69
     },
     "momentum_trend": {
       "fail": 58,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 16.845747600000003,
       "tested": 58
     },
@@ -5148,8 +5168,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 343,
+  "last_selected_family": "smc_ict",
+  "last_selection_bc": 344,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
