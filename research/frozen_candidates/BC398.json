@@ -1,0 +1,28 @@
+{
+  "bc": 398,
+  "candidate_hash": "a2fb043b4c0653ded3733fa4b8cb80e9706f977b3204d244a4c9a763a000d564",
+  "conceptual_change": "Shift from volatility-adjusted VWAP deviations to assessing the spread between price and volume-weighted relative activity as a mean-reverting trigger.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.0,
+    "window": null
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|difference|close|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 397,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
