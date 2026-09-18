@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2793,
-    "expanded": 2401,
-    "normalized": 2401,
+    "raw": 2804,
+    "expanded": 2412,
+    "normalized": 2412,
     "round1": 212,
     "deferred": 102,
     "survivors": 107,
@@ -1177,6 +1177,38 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "27fed6aba5fea5e8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.cjar.2015.06.002",
@@ -2121,22 +2153,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -2228,22 +2244,6 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3897,22 +3897,6 @@
       }
     },
     {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "unknown",
-      "market": null,
-      "query": "algorithmic trading research code",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -4409,22 +4393,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4852,6 +4820,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -8729,6 +8713,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -8756,6 +8756,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "f603ba0518586c25",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -9140,22 +9156,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
         "family": "unknown",
         "rounds": []
       }
@@ -13899,7 +13899,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-18T01:36:32Z",
+      "source_timestamp": "2026-09-18T05:05:36Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -15977,7 +15977,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T07:00:48.293Z",
+      "source_timestamp": "2026-09-18T05:00:37.985Z",
       "lineage": {
         "source": "60a488f3d7c789b4",
         "family": "china_a_share",
@@ -16425,7 +16425,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-14T02:46:13.739Z",
+      "source_timestamp": "2026-09-18T05:05:58.395Z",
       "lineage": {
         "source": "899ea27426e1861a",
         "family": "china_a_share",
@@ -17297,6 +17297,22 @@
       }
     },
     {
+      "candidate_id": "48f319ae4fbaf693",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/aa22396584/telltale",
+      "title": "aa22396584/telltale",
+      "description": "Open-source Flutter OBD2 telemetry and diagnostics (ELM327). Primary development & issues on GitLab (mirrors: GitHub \u00b7 Codeberg).",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T05:03:42.004Z",
+      "lineage": {
+        "source": "48f319ae4fbaf693",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2eb55de95ab4178f",
       "source": "gitlab",
       "source_url": "https://gitlab.com/aa22396584/twmcp",
@@ -17385,7 +17401,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T01:06:38.610Z",
+      "source_timestamp": "2026-09-18T05:01:28.281Z",
       "lineage": {
         "source": "bcd35e3d0e9e43e0",
         "family": "china_a_share",
@@ -17569,6 +17585,22 @@
       }
     },
     {
+      "candidate_id": "777e8c9adc2d5422",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/b-data/jupyterlab/python/docker-stack",
+      "title": "b-data/jupyterlab/python/docker-stack",
+      "description": "Mirrored to https://gitlab.b-data.ch/jupyterlab/python/docker-stack and https://github.com/b-data/jupyterlab-python-docker-stack.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:34:29.819Z",
+      "lineage": {
+        "source": "777e8c9adc2d5422",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "a6d3800b485ed33a",
       "source": "gitlab",
       "source_url": "https://gitlab.com/b-data/jupyterlab/r-project/docker-stack",
@@ -17705,7 +17737,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T04:40:09.815Z",
+      "source_timestamp": "2026-09-18T04:56:01.281Z",
       "lineage": {
         "source": "76b0df01d6fbe363",
         "family": "china_a_share",
@@ -17721,7 +17753,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T01:09:48.011Z",
+      "source_timestamp": "2026-09-18T04:44:13.198Z",
       "lineage": {
         "source": "99703f9cad271d6d",
         "family": "china_a_share",
@@ -18353,6 +18385,22 @@
       }
     },
     {
+      "candidate_id": "b9c237b76c2a22e5",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cscs-ci/ci-testing/webhook-ci/mirrors/5137461961076608/2926829081096545",
+      "title": "cscs-ci/ci-testing/webhook-ci/mirrors/5137461961076608/2926829081096545",
+      "description": "Mirror of https://github.com/vondele/nettest",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:26:10.712Z",
+      "lineage": {
+        "source": "b9c237b76c2a22e5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1561906337ebb6ed",
       "source": "gitlab",
       "source_url": "https://gitlab.com/cscs-ci/ci-testing/webhook-ci/mirrors/5985887337886893/5392709053677205",
@@ -18412,6 +18460,22 @@
       "source_timestamp": "2026-09-15T09:02:52.637Z",
       "lineage": {
         "source": "1d44acc0ed9ec3a8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "aaa4e09f9bf47528",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/cscs-ci/ci-testing/webhook-ci/mirrors/8804541097822692/4070757937813711",
+      "title": "cscs-ci/ci-testing/webhook-ci/mirrors/8804541097822692/4070757937813711",
+      "description": "Mirror of https://github.com/EnzymeAD/Enzyme-JAX",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:35:28.439Z",
+      "lineage": {
+        "source": "aaa4e09f9bf47528",
         "family": "china_a_share",
         "rounds": []
       }
@@ -18697,7 +18761,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T07:21:06.509Z",
+      "source_timestamp": "2026-09-18T04:24:26.254Z",
       "lineage": {
         "source": "dc3fc4c7b516fffb",
         "family": "china_a_share",
@@ -19249,6 +19313,22 @@
       }
     },
     {
+      "candidate_id": "e10dec460f1bd581",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gdcni/azure/sonic-sairedis",
+      "title": "gdcni/azure/sonic-sairedis",
+      "description": "https://github.com/Azure/sonic-sairedis",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:25:56.913Z",
+      "lineage": {
+        "source": "e10dec460f1bd581",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dc3c980d9b4132ba",
       "source": "gitlab",
       "source_url": "https://gitlab.com/git-vcs/git",
@@ -19417,7 +19497,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T01:10:10.199Z",
+      "source_timestamp": "2026-09-18T04:41:15.593Z",
       "lineage": {
         "source": "91a9fce791f621cd",
         "family": "china_a_share",
@@ -19756,6 +19836,70 @@
       "source_timestamp": "2026-09-18T00:41:30.538Z",
       "lineage": {
         "source": "81c2f66abe456363",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8d005007dfcc6276",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/hwdsl2/docker-ipsec-vpn-server",
+      "title": "hwdsl2/docker-ipsec-vpn-server",
+      "description": "Mirror of https://github.com/hwdsl2/docker-ipsec-vpn-server. Please open issues and pull requests there. Docker image to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2. https://hub.docker.com/r/hwdsl2/ipsec-vpn-server",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:15:58.405Z",
+      "lineage": {
+        "source": "8d005007dfcc6276",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1f85f3117ae8baba",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/hwdsl2/openvpn-install",
+      "title": "hwdsl2/openvpn-install",
+      "description": "Mirror of https://github.com/hwdsl2/openvpn-install. Please open issues and pull requests there. OpenVPN server installer for Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS, Fedora and Amazon Linux 2.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:16:37.397Z",
+      "lineage": {
+        "source": "1f85f3117ae8baba",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a2d7aed8c3615f17",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/hwdsl2/setup-ipsec-vpn",
+      "title": "hwdsl2/setup-ipsec-vpn",
+      "description": "Mirror of https://github.com/hwdsl2/setup-ipsec-vpn. Please open issues and pull requests there. Scripts to build your own IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:16:47.000Z",
+      "lineage": {
+        "source": "a2d7aed8c3615f17",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "62c115fa6f97d73b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/hwdsl2/wireguard-install",
+      "title": "hwdsl2/wireguard-install",
+      "description": "Mirror of https://github.com/hwdsl2/wireguard-install. Please open issues and pull requests there. WireGuard VPN server installer for Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS and Fedora.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:16:57.009Z",
+      "lineage": {
+        "source": "62c115fa6f97d73b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -21057,6 +21201,22 @@
       }
     },
     {
+      "candidate_id": "27e6a23bc2d4b090",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/nighthawk24/nighthawk-android-wallet",
+      "title": "nighthawk24/nighthawk-android-wallet",
+      "description": "Nighthawk Android DarkFi wallet (mirror of GitHub nighthawk-dark)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T05:01:23.822Z",
+      "lineage": {
+        "source": "27e6a23bc2d4b090",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0bb8408ae7aa1414",
       "source": "gitlab",
       "source_url": "https://gitlab.com/nmatt0/mithril-deletion_scheduled-86402158",
@@ -21145,7 +21305,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T05:08:17.454Z",
+      "source_timestamp": "2026-09-18T05:08:18.171Z",
       "lineage": {
         "source": "c5d74b90f938db8e",
         "family": "china_a_share",
@@ -21468,6 +21628,22 @@
       "source_timestamp": "2026-09-13T14:32:42.379Z",
       "lineage": {
         "source": "4c7230961212c931",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4a35f560a6d1fd2d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/peikk0/tmux-cssh",
+      "title": "peikk0/tmux-cssh",
+      "description": "ClusterSSH with tmux -- mirrored on GitHub at https://github.com/peikk0/tmux-cssh",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T04:52:51.541Z",
+      "lineage": {
+        "source": "4a35f560a6d1fd2d",
         "family": "china_a_share",
         "rounds": []
       }
@@ -23161,7 +23337,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T00:45:23.918Z",
+      "source_timestamp": "2026-09-18T04:16:45.501Z",
       "lineage": {
         "source": "dde663d06bd58e32",
         "family": "china_a_share",
@@ -32001,6 +32177,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -32028,22 +32220,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
@@ -33761,22 +33937,6 @@
       }
     },
     {
-      "candidate_id": "f257c9e93022e8d8",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
-      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share pairs statistical arbitrage",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f257c9e93022e8d8",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6e772af56b3c70b3",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5b9a2e411446b5ceef863b2f7cde78e2becfd23e",
@@ -33917,6 +34077,22 @@
       "lineage": {
         "source": "417e6c8ebe749a0d",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b3fe274eb3b44d6",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
+      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
+      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China quant trading github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "3b3fe274eb3b44d6",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -39121,22 +39297,6 @@
       }
     },
     {
-      "candidate_id": "3b3fe274eb3b44d6",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
-      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
-      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "prediction market order book trading strategy",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "3b3fe274eb3b44d6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "11ef33d74a11ac56",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/d3cacbffbc51ecb49d3ceb22d6adeef85e037ac3",
@@ -39772,6 +39932,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "db1b404b2a31e2f5",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f257c9e93022e8d8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
+      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
+      "description": "",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f257c9e93022e8d8",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -42805,7 +42981,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-18T01:36:32Z",
+      "source_timestamp": "2026-09-18T05:05:36Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",

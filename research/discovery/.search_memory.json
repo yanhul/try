@@ -680,6 +680,16 @@
       "parent_bc": 197,
       "score": 0.25
     },
+    "smc_ict|difference|high|open|above": {
+      "bc": 262,
+      "candidate_hash": "5f312dc578711c6bd4a93efb169d4ca70ba14fd1316a853386e4e4b3438cffc2",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "86020fe3f76bcee56f986c58c1e50991a8ffbb005f097ab512bbc4bc79a48271",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 261,
+      "score": 0.25
+    },
     "smc_ict|difference|high|open|below": {
       "bc": 252,
       "candidate_hash": "e6dd0b69eb40d8ac20a59585462fc2c9f87c44cfcb652881afe92a95ce7e226d",
@@ -3481,9 +3491,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 260,
       "score": 0.29230661
+    },
+    {
+      "bc": 262,
+      "candidate_hash": "5f312dc578711c6bd4a93efb169d4ca70ba14fd1316a853386e4e4b3438cffc2",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "86020fe3f76bcee56f986c58c1e50991a8ffbb005f097ab512bbc4bc79a48271",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 261,
+      "score": 0.25
     }
   ],
-  "failures": 222,
+  "failures": 223,
   "families": {
     "discovered_primitive": {
       "fail": 104,
@@ -3495,7 +3515,7 @@
     "mean_reversion": {
       "fail": 39,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 15.429555100000002,
       "tested": 39
     },
@@ -3514,11 +3534,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 35,
+      "fail": 36,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 9.20243488,
-      "tested": 35
+      "recent_failures": 3,
+      "score_sum": 9.45243488,
+      "tested": 36
     },
     "volatility": {
       "fail": 11,
@@ -3528,8 +3548,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 262,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 263,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
