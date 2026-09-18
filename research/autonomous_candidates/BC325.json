@@ -1,0 +1,26 @@
+{
+  "bc": 325,
+  "candidate_hash": "0eea0a992a1509319c205fb4541b85001cfc763f58446b764cfbab5378f98449",
+  "conceptual_change": "Shift from volatility-based thresholding to a relationship-based momentum check between price action and relative volume intensity, specifically targeting divergences where the closing price falls significantly below the volume-ratio benchmark.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|difference|close|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 324,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

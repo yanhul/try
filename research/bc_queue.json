@@ -1,30 +1,28 @@
 [
   {
-    "bc": 324,
-    "candidate_hash": "71ae2a8cf0c0048383ccc260895e0b795ce163c751e3a5d7557551624a64a33e",
-    "conceptual_change": "Shift from high/low level proximity to checking if price highs are compressing below the recent rolling volatility standard deviation, identifying potential exhaustion in liquidity sweep patterns.",
+    "bc": 325,
+    "candidate_hash": "0eea0a992a1509319c205fb4541b85001cfc763f58446b764cfbab5378f98449",
+    "conceptual_change": "Shift from volatility-based thresholding to a relationship-based momentum check between price action and relative volume intensity, specifically targeting divergences where the closing price falls significantly below the volume-ratio benchmark.",
     "discovery_spec": {
       "direction": "below",
-      "left": "high",
-      "mechanism_family": "smc_ict",
+      "left": "close",
       "operator": "difference",
-      "right": "rolling_std",
-      "threshold": 0.0,
-      "window": 24
+      "right": "volume_ratio",
+      "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|rolling_std|below",
+    "novelty_key": "|difference|close|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": 24
+      "threshold": 0.05,
+      "window": null
     },
-    "parent_bc": 323,
+    "parent_bc": 324,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
