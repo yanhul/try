@@ -1,0 +1,27 @@
+{
+  "bc": 288,
+  "candidate_hash": "236ae1ef0673bfc6fa198afa8dfe737e80e867d8f9ecfb3afd6dc58625e50355",
+  "conceptual_change": "Move from standard price-based momentum to range-bound volatility compression detection, specifically tracking the 24-period rolling mean of range_ratio to identify periods of narrowing range before trend breakouts.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_mean",
+    "threshold": 0.005,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_mean|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 24
+  },
+  "parent_bc": 287,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
