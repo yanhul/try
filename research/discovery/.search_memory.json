@@ -2040,6 +2040,16 @@
       "parent_bc": 396,
       "score": 0.25
     },
+    "smc_ict|difference|vwap_distance|volume_ratio|above": {
+      "bc": 421,
+      "candidate_hash": "bc9bbca64c7a2a5de734ad3884fc6cbca793403c5c49b92694b1a15c0f240e76",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "febdcabfb23f1fd4e2dd366b95a7dc078becaea982c434cff45e09a0320666f3",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 420,
+      "score": 0.25
+    },
     "smc_ict|difference|vwap_distance|volume_ratio|below": {
       "bc": 405,
       "candidate_hash": "72311a94d38ef9bd863a38cfe55693e97f99144ef3c566ac0a56dcfdca4ffc76",
@@ -6661,9 +6671,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 419,
       "score": 0.25
+    },
+    {
+      "bc": 421,
+      "candidate_hash": "bc9bbca64c7a2a5de734ad3884fc6cbca793403c5c49b92694b1a15c0f240e76",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "febdcabfb23f1fd4e2dd366b95a7dc078becaea982c434cff45e09a0320666f3",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 420,
+      "score": 0.25
     }
   ],
-  "failures": 381,
+  "failures": 382,
   "families": {
     "discovered_primitive": {
       "fail": 121,
@@ -6675,7 +6695,7 @@
     "mean_reversion": {
       "fail": 92,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 38.56918416000001,
       "tested": 92
     },
@@ -6694,11 +6714,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 77,
+      "fail": 78,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 19.70243488,
-      "tested": 77
+      "recent_failures": 3,
+      "score_sum": 19.95243488,
+      "tested": 78
     },
     "volatility": {
       "fail": 11,
@@ -6708,8 +6728,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 421,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 422,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
