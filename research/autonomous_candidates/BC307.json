@@ -1,0 +1,27 @@
+{
+  "bc": 307,
+  "candidate_hash": "9bbde4d449bf95ff7fcb041cb5bf39f607716fa50e76874cb37f6b40dabc96e5",
+  "conceptual_change": "Transitioning from price-based momentum to volatility-adjusted momentum using the rolling standard deviation of vwap_distance. This captures periods of expanding trend conviction (high volatility in vwap distance) rather than simple price changes.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|vwap_distance||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 24
+  },
+  "parent_bc": 306,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
