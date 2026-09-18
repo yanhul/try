@@ -1177,22 +1177,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2f7484b60fe4b409",
       "source": "crossref",
       "source_url": "https://doi.org/10.1787/888933433273",
@@ -2089,6 +2073,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -2180,6 +2180,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3412,22 +3428,6 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4708,22 +4708,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "5bcbec7510800163",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "options",
         "rounds": []
       }
@@ -6169,22 +6153,6 @@
       }
     },
     {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6372,6 +6340,38 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6852,6 +6852,22 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -8105,6 +8121,22 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9c08ebc8aca02436",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119057871.ch10",
@@ -8633,22 +8665,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -8676,22 +8692,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "f603ba0518586c25",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -9241,22 +9241,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -9284,22 +9268,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "c14abd6d48892212",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9337,22 +9305,6 @@
       }
     },
     {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4df47a29f00cecb3",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2735.26.06.115",
@@ -9369,54 +9321,6 @@
       }
     },
     {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "100a54218862e1f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
-      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "100a54218862e1f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "356134320a245ee6",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2012.21002",
@@ -9428,22 +9332,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "356134320a245ee6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
         "family": "unknown",
         "rounds": []
       }
@@ -9476,22 +9364,6 @@
       "source_timestamp": "",
       "lineage": {
         "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9609,6 +9481,22 @@
       }
     },
     {
+      "candidate_id": "100a54218862e1f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
+      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "100a54218862e1f9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1ef8b8bf05802f06",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2025.141013",
@@ -9620,6 +9508,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1ef8b8bf05802f06",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
         "family": "unknown",
         "rounds": []
       }
@@ -9641,6 +9545,22 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -9652,6 +9572,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "0e50ab58257dcd9d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }
@@ -9689,6 +9625,54 @@
       }
     },
     {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "21fd48f83a5554a3",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ojls.2024.121012",
@@ -9700,6 +9684,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "21fd48f83a5554a3",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -26095,22 +26095,6 @@
       }
     },
     {
-      "candidate_id": "670afeaa28dbc276",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/ijfs7020026",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "670afeaa28dbc276",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8506db6d9deadd5d",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/poms.13128",
@@ -32031,6 +32015,22 @@
       }
     },
     {
+      "candidate_id": "670afeaa28dbc276",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/ijfs7020026",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "670afeaa28dbc276",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cf90b754cabfe824",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjx022",
@@ -33439,6 +33439,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -33471,22 +33487,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -33498,54 +33498,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
         "family": "unknown",
         "rounds": []
       }
@@ -33599,22 +33551,6 @@
       }
     },
     {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -33626,22 +33562,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -33759,22 +33679,6 @@
       }
     },
     {
-      "candidate_id": "074d1859ad607682",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1177/00081256231202266",
-      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "074d1859ad607682",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9fe1d07564202770",
       "source": "openalex",
       "source_url": "https://doi.org/10.3901/jme.2021.10.196",
@@ -33855,6 +33759,54 @@
       }
     },
     {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "074d1859ad607682",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1177/00081256231202266",
+      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "074d1859ad607682",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d663d3f1912e8837",
       "source": "openalex",
       "source_url": "https://doi.org/10.5846/stxb201201310130",
@@ -33867,6 +33819,54 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
+        "family": "unknown",
         "rounds": []
       }
     },
