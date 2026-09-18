@@ -1,29 +1,30 @@
 [
   {
-    "bc": 349,
-    "candidate_hash": "2861dde6e97382f86ba69a329da04510b0130b9f923c939334cfbde442ea3da0",
-    "conceptual_change": "Shift from simple trend indicators to a cross-modal relationship between institutional VWAP deviation and absolute volume liquidity to identify low-conviction momentum exhaustion.",
+    "bc": 350,
+    "candidate_hash": "5ef026752f1d01cc46de7b555b0c34883c229ff6723c80a698a4f98afd95f881",
+    "conceptual_change": "Shift from price-based trend metrics to a volume-normalized VWAP deviation ratio, filtering for institutional momentum persistence by evaluating the relationship between price displacement from the mean and total turnover volume.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "vwap_distance",
       "mechanism_family": "momentum_trend",
-      "operator": "difference",
+      "operator": "ratio",
       "right": "volume",
-      "threshold": 0.05
+      "threshold": 0.5,
+      "window": null
     },
     "evidence_sources": [
       "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|vwap_distance|volume|below",
+    "novelty_key": "momentum_trend|ratio|vwap_distance|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 0.5,
       "window": null
     },
-    "parent_bc": 348,
+    "parent_bc": 349,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
