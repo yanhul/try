@@ -1,28 +1,28 @@
 [
   {
-    "bc": 384,
-    "candidate_hash": "ad2c790ece6eba296d3f93653d7cb889433d59557a2391509fd58b773d046a85",
-    "conceptual_change": "Shift from complex relational primitives to a primary momentum indicator: the intraday price expansion (close minus open). This targets directional volatility breakout momentum rather than liquidity-adjusted positional exhaustion.",
+    "bc": 385,
+    "candidate_hash": "34e3b9205b9422dcd06e9e3cd0151730b1a6705806a561fac83350126b45df7f",
+    "conceptual_change": "Shift from price-open momentum to a relative proximity mechanism that measures the deviation of VWAP from price normalized by the range, looking for mean reversion when the price is excessively distant from the range-normalized VWAP threshold.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close",
+      "direction": "below",
+      "left": "vwap_distance",
       "operator": "difference",
-      "right": "open",
-      "threshold": 0.0
+      "right": "range_ratio",
+      "threshold": 0.0015
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "|difference|close|open|above",
+    "novelty_key": "|difference|vwap_distance|range_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 0.0015,
       "window": null
     },
-    "parent_bc": 383,
+    "parent_bc": 384,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
