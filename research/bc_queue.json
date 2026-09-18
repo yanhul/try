@@ -1,30 +1,29 @@
 [
   {
-    "bc": 395,
-    "candidate_hash": "e0bb7196a4afb3dc662b1934697eed33801d3e203d971f021616ac3daca98145",
-    "conceptual_change": "Changed the structural mechanism from simple liquidity-based price levels to measuring the intensity of price dislocation relative to VWAP compared to the recent rolling volatility, identifying institutional expansion phases.",
+    "bc": 396,
+    "candidate_hash": "9d1824824ca7cb6eaca7470893640171fa328f1f9e956020ffc6eca427718db1",
+    "conceptual_change": "Shifted focus from price-level differences to the relative percentile standing of range volatility, isolating high-expansion momentum regimes that typically precede sustained trend continuation in hourly Bitcoin data.",
     "discovery_spec": {
       "direction": "above",
-      "left": "vwap_distance",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "rolling_std",
-      "threshold": 0.005,
+      "left": "range_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "rank",
+      "threshold": 0.8,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|vwap_distance|rolling_std|above",
+    "novelty_key": "momentum_trend|rank|range_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
+      "threshold": 0.8,
       "window": 24
     },
-    "parent_bc": 394,
+    "parent_bc": 395,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

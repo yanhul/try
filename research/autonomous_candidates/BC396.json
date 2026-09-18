@@ -1,0 +1,27 @@
+{
+  "bc": 396,
+  "candidate_hash": "9d1824824ca7cb6eaca7470893640171fa328f1f9e956020ffc6eca427718db1",
+  "conceptual_change": "Shifted focus from price-level differences to the relative percentile standing of range volatility, isolating high-expansion momentum regimes that typically precede sustained trend continuation in hourly Bitcoin data.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "rank",
+    "threshold": 0.8,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rank|range_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.8,
+    "window": 24
+  },
+  "parent_bc": 395,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
