@@ -25,6 +25,29 @@ class OOSState(StrEnum):
     UNKNOWN = "UNKNOWN"
     BLOCKED = "BLOCKED"
 
+_TRANSITIONS: dict[OOSState, frozenset[OOSState]] = {
+    OOSState.VALIDATION_PASS: frozenset({OOSState.OOS_AUTHORIZED}),
+    OOSState.OOS_AUTHORIZED: frozenset({OOSState.OOS_DISPATCHED, OOSState.BLOCKED}),
+    OOSState.OOS_DISPATCHED: frozenset({OOSState.OOS_EXECUTED, OOSState.PROVIDER_FAIL, OOSState.UNKNOWN}),
+    OOSState.OOS_EXECUTED: frozenset({OOSState.OOS_RECEIPT, OOSState.UNKNOWN}),
+    OOSState.OOS_RECEIPT: frozenset({OOSState.OOS_EVALUATED, OOSState.UNKNOWN}),
+    OOSState.OOS_EVALUATED: frozenset({OOSState.OOS_PASS, OOSState.OOS_FAIL}),
+    OOSState.PROVIDER_FAIL: frozenset({OOSState.UNKNOWN, OOSState.OOS_DISPATCHED, OOSState.BLOCKED}),
+    OOSState.UNKNOWN: frozenset({OOSState.OOS_AUTHORIZED, OOSState.BLOCKED}),
+    OOSState.BLOCKED: frozenset(),
+    OOSState.OOS_PASS: frozenset(),
+    OOSState.OOS_FAIL: frozenset(),
+    OOSState.OOS_PENDING: frozenset({OOSState.OOS_AUTHORIZED, OOSState.BLOCKED}),
+}
+
+
+def advance(current: OOSState | str, target: OOSState | str) -> OOSState:
+    current = OOSState(current)
+    target = OOSState(target)
+    if target not in _TRANSITIONS[current]:
+        raise OOSLifecycleError(f"ILLEGAL_OOS_TRANSITION:{current}->{target}")
+    return target
+
 
 class OOSLifecycleError(ValueError):
     pass
