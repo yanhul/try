@@ -1,0 +1,41 @@
+{
+  "bc": 363,
+  "parent_bc": 362,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "bfa2f7001d03233ce0f5c85f8bde98734ba9b43a4ec509905ca28eda805c370f",
+  "conceptual_change": "Shifts from absolute volume-vwap divergence to a relative price-to-vwap-deviation ratio, targeting mean reversion when price relative to its distance from VWAP reaches a lower exhaustion threshold.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 295,
+    "skipped_overlap_trades": 251,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 44,
+      "win_count": 17,
+      "loss_count": 27,
+      "win_rate": 0.38636363636363635,
+      "total_return": -0.05462713055482371,
+      "avg_return": -0.0011734434672537519,
+      "profit_factor": 0.8457971770341441,
+      "max_drawdown": 0.10635494667559757,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
