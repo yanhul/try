@@ -1,0 +1,27 @@
+{
+  "bc": 282,
+  "candidate_hash": "1ef0d5407716ae0bc388576dd1589f4b3bf9a8f98fdd77f9f7c23bbc06eeed9a",
+  "conceptual_change": "Instead of focusing on price momentum or volume rank, this hypothesis targets low-volatility regimes in volume flow (using rolling standard deviation of volume over 24 periods) to identify consolidated periods that precede trend breakouts, adhering to the momentum_trend family.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 24
+  },
+  "parent_bc": 281,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
