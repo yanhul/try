@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2964,
-    "expanded": 2572,
-    "normalized": 2572,
+    "raw": 2965,
+    "expanded": 2573,
+    "normalized": 2573,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1892,22 +1892,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "cfed84d97a733725",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "006a3953ebc01064",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5806502",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "006a3953ebc01064",
         "family": "china_a_share",
         "rounds": []
       }
@@ -4873,6 +4857,22 @@
       }
     },
     {
+      "candidate_id": "006a3953ebc01064",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5806502",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "006a3953ebc01064",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0c85e9f244eab585",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5355126",
@@ -4980,6 +4980,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "65c37f9bb4e2fec8",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a2dc9d847fb016e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1142/s2382626619500114",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "description": "Crossref work type=journal-article",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "a2dc9d847fb016e9",
         "family": "order_flow",
         "rounds": []
       }
@@ -7209,22 +7225,6 @@
       }
     },
     {
-      "candidate_id": "a2dc9d847fb016e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1142/s2382626619500114",
-      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
-      "description": "Crossref work type=journal-article",
-      "family": "order_flow",
-      "market": null,
-      "query": "market microstructure order book strategy",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "a2dc9d847fb016e9",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "41c39d6ac16f05ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.1142/s238262661850003x",
@@ -9289,22 +9289,6 @@
       }
     },
     {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "21fd48f83a5554a3",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ojls.2024.121012",
@@ -9433,22 +9417,6 @@
       }
     },
     {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "5267b52c5a5f160e",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
@@ -9476,22 +9444,6 @@
       "source_timestamp": "",
       "lineage": {
         "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9689,6 +9641,22 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -9700,6 +9668,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "0e50ab58257dcd9d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }
@@ -9721,6 +9705,38 @@
       }
     },
     {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8cdd8cefab46dde7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8cdd8cefab46dde7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4d447b63c1b957f9",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.25.03.078",
@@ -9737,6 +9753,70 @@
       }
     },
     {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -9748,22 +9828,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "fdc75585f2a46736",
-        "family": "wyckoff_vsa_vpa",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8cdd8cefab46dde7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "8cdd8cefab46dde7",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -9833,22 +9897,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9881,22 +9929,6 @@
       }
     },
     {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "5408e190776d03be",
       "source": "crossref",
       "source_url": "https://doi.org/10.32629/ej.v2i3.152",
@@ -9908,22 +9940,6 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "5408e190776d03be",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "edfa6ffeb17a599b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "edfa6ffeb17a599b",
         "family": "unknown",
         "rounds": []
       }
@@ -9956,22 +9972,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -20314,6 +20314,22 @@
       "source_timestamp": "2026-09-13T04:31:18.524Z",
       "lineage": {
         "source": "f659e97a5301b605",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c783cab0a865e5a8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/openssh/openssh-portable",
+      "title": "freedesktop-sdk/mirrors/github/openssh/openssh-portable",
+      "description": "github.com: openssh/openssh-portable.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T18:22:11.330Z",
+      "lineage": {
+        "source": "c783cab0a865e5a8",
         "family": "china_a_share",
         "rounds": []
       }
@@ -37087,22 +37103,6 @@
       }
     },
     {
-      "candidate_id": "3160ecc296e8ac9b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
-      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
-      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "3160ecc296e8ac9b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1f52e5b6748f9991",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/a2c40c0424bed72ad62ffd1ee12b1551dd1c86e6",
@@ -39466,6 +39466,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "87ae852ad995a174",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3160ecc296e8ac9b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
+      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
+      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
+      "family": "execution_mev",
+      "market": null,
+      "query": "decentralized exchange arbitrage MEV research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "3160ecc296e8ac9b",
         "family": "execution_mev",
         "rounds": []
       }
