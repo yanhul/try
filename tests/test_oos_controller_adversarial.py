@@ -41,7 +41,7 @@ def test_unknown_resume_rebuilds_only_forward():
         "oos_verdict": None,
         "oos_executed": False,
     })
-    ensure_oos_state(state, 306, "c306", "OOS_RECEIPT")
+    ensure_oos_state(state, 306, "c306", "OOS_RECEIPT", receipt_type="OOS_EXECUTION_RECEIPT", receipt_schema_version=1, receipt_id="artifact-hash")
     states = [x["oos_state"] for x in state["history"] if x.get("bc") == 306]
     assert states == ["OOS_PENDING", "UNKNOWN", "OOS_AUTHORIZED", "OOS_DISPATCHED", "OOS_EXECUTED", "OOS_RECEIPT"]
 
