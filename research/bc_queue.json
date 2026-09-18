@@ -1,30 +1,30 @@
 [
   {
-    "bc": 402,
-    "candidate_hash": "af52731580cf35463e460a183907412685c06c3247824a99ec87e32fc3e269d9",
-    "conceptual_change": "Transitioning from simple liquidity sweep detection to a volatility-adjusted price break mechanism, specifically measuring the spread between current close and the 20-period rolling standard deviation of price action to identify institutional expansion phases in SMC context.",
+    "bc": 403,
+    "candidate_hash": "8a2ca99dfd0fe418ff9f9a424e9979a3ba4fc72a73523bc9b9d9954818c2da23",
+    "conceptual_change": "Shifting from relative proximity metrics to a structural normalized ratio between current VWAP distance and the local moving average of that distance to capture mean-reverting deviations.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "rolling_std",
-      "threshold": 0.05,
-      "window": 20
+      "direction": "below",
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "rolling_mean",
+      "threshold": 1.25,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|close|rolling_std|above",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|rolling_mean|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
-      "window": 20
+      "threshold": 1.25,
+      "window": 24
     },
-    "parent_bc": 401,
+    "parent_bc": 402,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
