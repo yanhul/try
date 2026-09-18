@@ -250,6 +250,16 @@
       "parent_bc": 340,
       "score": 0.43099758
     },
+    "mean_reversion|ratio|range_ratio|vwap_distance|above": {
+      "bc": 408,
+      "candidate_hash": "05e7670dbb8c1b41fd846844a5271d8d401070bf68430b88d3e2db9a2313d279",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b5e65c7de95a8dec1a2406771223c1766ea8a721f94aa3f5834a24513e6e4d1e",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 407,
+      "score": 0.45268042
+    },
     "mean_reversion|ratio|range_ratio|vwap_distance|below": {
       "bc": 375,
       "candidate_hash": "11be377f16d0a0e84286ad298c532ea33df4d9aad054d7e128d11172e11fe263",
@@ -6401,23 +6411,33 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 406,
       "score": 0.25
+    },
+    {
+      "bc": 408,
+      "candidate_hash": "05e7670dbb8c1b41fd846844a5271d8d401070bf68430b88d3e2db9a2313d279",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "b5e65c7de95a8dec1a2406771223c1766ea8a721f94aa3f5834a24513e6e4d1e",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 407,
+      "score": 0.45268042
     }
   ],
-  "failures": 368,
+  "failures": 369,
   "families": {
     "discovered_primitive": {
       "fail": 119,
       "pass": 0,
-      "recent_failures": 1,
+      "recent_failures": 0,
       "score_sum": 34.70834563999999,
       "tested": 119
     },
     "mean_reversion": {
-      "fail": 87,
+      "fail": 88,
       "pass": 0,
-      "recent_failures": 3,
-      "score_sum": 36.33476852000001,
-      "tested": 87
+      "recent_failures": 4,
+      "score_sum": 36.78744894000001,
+      "tested": 88
     },
     "momentum_trend": {
       "fail": 75,
@@ -6448,8 +6468,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 408,
+  "last_selected_family": "smc_ict",
+  "last_selection_bc": 409,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
