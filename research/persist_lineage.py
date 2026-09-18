@@ -54,7 +54,13 @@ def main() -> int:
     validation_path = VALIDATION / f"bc{int(bc)}_validation_result.json"
     validation = load(validation_path, {})
     result = validation if validation else latest
-    verdict = oos_evaluation.get("oos_verdict") or latest.get("decision") or state.get("phase", "UNKNOWN")
+    evaluated_verdict = oos_evaluation.get("oos_verdict")
+    if evaluated_verdict in {"OOS_PASS", "OOS_FAIL"}:
+        verdict = evaluated_verdict
+    elif latest.get("decision") in {"PROMOTE_TO_FUTURE_OOS_TEST", "REJECT_BC"}:
+        verdict = latest.get("decision")
+    else:
+        verdict = "UNKNOWN"
     record = {
         "experiment_id": experiment_id,
         "generation": int(bc),
@@ -71,6 +77,10 @@ def main() -> int:
         "findings": latest.get("findings", []),
         "constraints": latest.get("constraints", []),
         "claims": latest.get("claims", []),
+        "oos_lifecycle": {
+            "promotion": latest if latest.get("decision") == "PROMOTE_TO_FUTURE_OOS_TEST" else None,
+            "evaluation": oos_evaluation if oos_evaluation.get("oos_verdict") in {"OOS_PASS", "OOS_FAIL"} else None,
+        },
     }
     append_experiment(record)
     print(f"LINEAGE_RECORDED {experiment_id}")
