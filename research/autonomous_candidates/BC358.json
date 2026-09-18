@@ -1,0 +1,28 @@
+{
+  "bc": 358,
+  "candidate_hash": "aa7d26940b86096807ccbedc3399864d2e244688465ff62c5fbd50b23534b255",
+  "conceptual_change": "Shifting from simple price momentum indicators to a cross-sectional ratio of vwap_distance over volume_ratio to measure the acceleration of price relative to liquidity spikes, identifying regime shifts where trend strength outpaces recent volume averages.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.25,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|vwap_distance|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 24
+  },
+  "parent_bc": 357,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
