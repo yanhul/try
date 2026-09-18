@@ -1,29 +1,28 @@
 [
   {
-    "bc": 418,
-    "candidate_hash": "3cbc317fb597bb80db64d02a23c46deee15fba00b05724d9a075ded8e571e1f2",
-    "conceptual_change": "Instead of focusing on price action levels (like FVG or MSS), we analyze the divergence between VWAP deviation and absolute trade volume, signaling institutional participation exhaustion at liquidity pockets.",
+    "bc": 419,
+    "candidate_hash": "ae21fef4370b93efe5d4a8b544845b065682e5ec646db7e5408305cbc24e6157",
+    "conceptual_change": "Switching from simple momentum indicators to a relative ranking of vwap_distance over a rolling window to identify extreme statistical deviations that persist as trend continuations rather than mean-reversion pullbacks.",
     "discovery_spec": {
       "direction": "above",
       "left": "vwap_distance",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "volume",
-      "threshold": 0.005
+      "operator": "rank",
+      "threshold": 0.85,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|vwap_distance|volume|above",
+    "novelty_key": "|rank|vwap_distance||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": null
+      "threshold": 0.85,
+      "window": 20
     },
-    "parent_bc": 417,
+    "parent_bc": 418,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

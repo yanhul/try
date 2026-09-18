@@ -1,0 +1,26 @@
+{
+  "bc": 419,
+  "candidate_hash": "ae21fef4370b93efe5d4a8b544845b065682e5ec646db7e5408305cbc24e6157",
+  "conceptual_change": "Switching from simple momentum indicators to a relative ranking of vwap_distance over a rolling window to identify extreme statistical deviations that persist as trend continuations rather than mean-reversion pullbacks.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "operator": "rank",
+    "threshold": 0.85,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|rank|vwap_distance||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": 20
+  },
+  "parent_bc": 418,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
