@@ -1,29 +1,29 @@
 [
   {
-    "bc": 259,
-    "candidate_hash": "aee4cf28e3c520c0b555fd115074a7b66eafa0fe4dcdb785f3f5794349c3c54f",
-    "conceptual_change": "Shift from simple liquidty sweeps towards identifying periods of compressed price range volatility using a rolling standard deviation of close location, filtering for ICT-defined 'consolidation' zones that precede institutional displacement.",
+    "bc": 260,
+    "candidate_hash": "4c6856616c57284b6cced4e21c749d6d345464e56661387ac3b9b59f9dfe216a",
+    "conceptual_change": "Instead of static distance metrics, this uses the change (delta) in VWAP distance over a 24-period window to detect rapid mean reversion exhaustion, measuring if price is accelerating back toward the VWAP anchor.",
     "discovery_spec": {
       "direction": "below",
-      "left": "close_location",
-      "mechanism_family": "smc_ict",
-      "operator": "rolling_std",
-      "threshold": 0.25,
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "delta",
+      "threshold": 0.005,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|rolling_std|close_location||below",
+    "novelty_key": "mean_reversion|delta|vwap_distance||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.25,
+      "threshold": 0.005,
       "window": 24
     },
-    "parent_bc": 258,
+    "parent_bc": 259,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
