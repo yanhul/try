@@ -1,29 +1,29 @@
 [
   {
-    "bc": 298,
-    "candidate_hash": "8184fa58eff27bb6864b1db09a3e7c2d9fb214215cb73eaa1f1f09fdf39f66c2",
-    "conceptual_change": "Shift from price-level comparisons or simple moving averages to volatility-based trend identification, focusing on periods where the 24-hour rolling standard deviation of the close price exceeds a specific threshold, signaling high-momentum volatility regimes.",
+    "bc": 299,
+    "candidate_hash": "209ad3249742554019ae866acf62bdc894a29ad770150953ed5813a9d3de0018",
+    "conceptual_change": "Shift from simple moving average deviations to normalized volatility-volume relationship by evaluating the ratio of vwap_distance to volume_ratio to capture mean-reverting exhaustion during volume-light conditions.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_std",
-      "threshold": 0.005,
-      "window": 24
+      "direction": "below",
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.25
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|close||above",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": 24
+      "threshold": 1.25,
+      "window": null
     },
-    "parent_bc": 297,
+    "parent_bc": 298,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
