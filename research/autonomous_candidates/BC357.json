@@ -1,0 +1,27 @@
+{
+  "bc": 357,
+  "candidate_hash": "8d7e76970ea2a7d879a967665a3b0ecb66666c05cc18766216eb07258bd8ace3",
+  "conceptual_change": "Transitioning from price-delta momentum to a cross-modal ratio of price relative to volume intensity to capture mean-reversion exhaustion when volume significantly exceeds price, indicating a liquidity imbalance typically associated with price snap-backs.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": null
+  },
+  "parent_bc": 356,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

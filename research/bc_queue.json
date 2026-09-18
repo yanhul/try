@@ -1,30 +1,29 @@
 [
   {
-    "bc": 356,
-    "candidate_hash": "ebd64218f78c516c0f3b3edcbe1219cc21feeec7f55167ffa95ea16ae1a5fe17",
-    "conceptual_change": "Shift from complex cross-modal relationships to a pure price-action structural indicator that identifies bullish momentum via a positive price delta within a single timeframe interval.",
+    "bc": 357,
+    "candidate_hash": "8d7e76970ea2a7d879a967665a3b0ecb66666c05cc18766216eb07258bd8ace3",
+    "conceptual_change": "Transitioning from price-delta momentum to a cross-modal ratio of price relative to volume intensity to capture mean-reversion exhaustion when volume significantly exceeds price, indicating a liquidity imbalance typically associated with price snap-backs.",
     "discovery_spec": {
-      "direction": "above",
+      "direction": "below",
       "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "difference",
-      "right": "open",
-      "threshold": 0.0,
-      "window": 1
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume",
+      "threshold": 0.5
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|open|above",
+    "novelty_key": "mean_reversion|ratio|close|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": 1
+      "threshold": 0.5,
+      "window": null
     },
-    "parent_bc": 355,
+    "parent_bc": 356,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
