@@ -1,0 +1,27 @@
+{
+  "bc": 354,
+  "candidate_hash": "bb5af1f64b872908b672a940d974b58fdba7466d1d89ec1b9d99e220bac84eef",
+  "conceptual_change": "Shift from price-centric mean reversion to volume-normalized VWAP deviation to identify liquidity-backed price reversals.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 0.95
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|volume|vwap_distance|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.95,
+    "window": null
+  },
+  "parent_bc": 353,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
