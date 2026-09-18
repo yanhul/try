@@ -1,0 +1,27 @@
+{
+  "bc": 353,
+  "candidate_hash": "999c953819e2f4b312f5ae8e44694d15d6fd09d250db8a51343c5db0acb06f8c",
+  "conceptual_change": "Shifting from liquidity exhaustion proxies to localized divergence between VWAP deviation and volatility range ratio to identify mean reversion opportunities.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "range_ratio",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|difference|vwap_distance|range_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 352,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
