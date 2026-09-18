@@ -1,29 +1,28 @@
 [
   {
-    "bc": 354,
-    "candidate_hash": "bb5af1f64b872908b672a940d974b58fdba7466d1d89ec1b9d99e220bac84eef",
-    "conceptual_change": "Shift from price-centric mean reversion to volume-normalized VWAP deviation to identify liquidity-backed price reversals.",
+    "bc": 355,
+    "candidate_hash": "117703907b6295b53643be1a6dade0a35721de424c043bf4bb7690f5c0ff6b35",
+    "conceptual_change": "Shift from price-price interaction to a cross-modal relationship between price and volume magnitude to isolate low-volume trend exhaustion points.",
     "discovery_spec": {
       "direction": "below",
-      "left": "volume",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "vwap_distance",
-      "threshold": 0.95
+      "left": "close",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|volume|vwap_distance|below",
+    "novelty_key": "|difference|close|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.95,
+      "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 353,
+    "parent_bc": 354,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
