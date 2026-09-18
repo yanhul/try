@@ -8,6 +8,7 @@ from research.oos_lifecycle import (
     promotion_event,
     provider_failure_event,
     terminal_reason_from_oos,
+    advance,
 )
 
 
@@ -100,3 +101,14 @@ def test_adversarial_receipt_binding_mismatch_is_rejected():
     receipt["candidate_hash"] = "wrong"
     with pytest.raises(OOSLifecycleError, match="OOS_RECEIPT_BINDING_MISMATCH:candidate_hash"):
         evaluate_oos(valid_result(), receipt)
+
+def test_canonical_transition_graph_rejects_verdict_without_evaluation():
+    assert advance(OOSState.OOS_RECEIPT, OOSState.OOS_EVALUATED) == OOSState.OOS_EVALUATED
+    with pytest.raises(OOSLifecycleError, match="ILLEGAL_OOS_TRANSITION"):
+        advance(OOSState.OOS_DISPATCHED, OOSState.OOS_FAIL)
+
+
+def test_canonical_transition_graph_separates_provider_failure_from_verdict():
+    assert advance(OOSState.OOS_DISPATCHED, OOSState.PROVIDER_FAIL) == OOSState.PROVIDER_FAIL
+    with pytest.raises(OOSLifecycleError, match="ILLEGAL_OOS_TRANSITION"):
+        advance(OOSState.PROVIDER_FAIL, OOSState.OOS_FAIL)
