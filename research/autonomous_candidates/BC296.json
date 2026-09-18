@@ -1,0 +1,26 @@
+{
+  "bc": 296,
+  "candidate_hash": "f1c0f3f5df4947329b57258bd0f2bf2a625c377bc56f946483293f4bd4680c02",
+  "conceptual_change": "Shifted from price-based volatility indicators to pure volume-trend momentum, evaluating if the 20-period rolling mean of volume exceeding a normalized threshold signals sustainable trend participation.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "momentum_trend",
+    "threshold": 0.05,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend||volume||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 20
+  },
+  "parent_bc": 295,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

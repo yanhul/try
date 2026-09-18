@@ -1150,6 +1150,16 @@
       "parent_bc": 274,
       "score": 0.25
     },
+    "smc_ict|zscore|range_ratio||below": {
+      "bc": 295,
+      "candidate_hash": "c91e15b49e376026394078ce343e33cb3dff91eaa6c84cea0b46c4b5832c2f17",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4ce178416d77ad3f6ae84af1d5bf3b05ca0e0b53521cf28b02c0512ecf285e72",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 294,
+      "score": 0.25
+    },
     "smc_ict|zscore|vwap_distance||below": {
       "bc": 242,
       "candidate_hash": "35f5b8b9c10a9c37b1f17aedc2ca20092b6c088234c7adebe188a4e306b84700",
@@ -4141,9 +4151,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 293,
       "score": 0.43741661
+    },
+    {
+      "bc": 295,
+      "candidate_hash": "c91e15b49e376026394078ce343e33cb3dff91eaa6c84cea0b46c4b5832c2f17",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "4ce178416d77ad3f6ae84af1d5bf3b05ca0e0b53521cf28b02c0512ecf285e72",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 294,
+      "score": 0.25
     }
   ],
-  "failures": 255,
+  "failures": 256,
   "families": {
     "discovered_primitive": {
       "fail": 107,
@@ -4155,7 +4175,7 @@
     "mean_reversion": {
       "fail": 50,
       "pass": 0,
-      "recent_failures": 4,
+      "recent_failures": 3,
       "score_sum": 20.25023896,
       "tested": 50
     },
@@ -4174,11 +4194,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 43,
+      "fail": 44,
       "pass": 0,
-      "recent_failures": 1,
-      "score_sum": 11.20243488,
-      "tested": 43
+      "recent_failures": 2,
+      "score_sum": 11.45243488,
+      "tested": 44
     },
     "volatility": {
       "fail": 11,
@@ -4188,8 +4208,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 295,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 296,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

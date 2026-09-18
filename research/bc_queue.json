@@ -1,29 +1,28 @@
 [
   {
-    "bc": 295,
-    "candidate_hash": "c91e15b49e376026394078ce343e33cb3dff91eaa6c84cea0b46c4b5832c2f17",
-    "conceptual_change": "Instead of price-based liquidity sweeps, we use the z-score of range_ratio (volatility normalized) to identify periods of price compression (low volatility) that often precede institutional expansions in SMC liquidity models.",
+    "bc": 296,
+    "candidate_hash": "f1c0f3f5df4947329b57258bd0f2bf2a625c377bc56f946483293f4bd4680c02",
+    "conceptual_change": "Shifted from price-based volatility indicators to pure volume-trend momentum, evaluating if the 20-period rolling mean of volume exceeding a normalized threshold signals sustainable trend participation.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "smc_ict",
-      "operator": "zscore",
-      "threshold": 1.5,
-      "window": 24
+      "direction": "above",
+      "left": "volume",
+      "mechanism_family": "momentum_trend",
+      "threshold": 0.05,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|zscore|range_ratio||below",
+    "novelty_key": "momentum_trend||volume||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
-      "window": 24
+      "threshold": 0.05,
+      "window": 20
     },
-    "parent_bc": 294,
+    "parent_bc": 295,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
