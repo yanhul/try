@@ -1,0 +1,27 @@
+{
+  "bc": 283,
+  "candidate_hash": "42f70d51aabc0bcd119811eb15fc4319562d37ee45eea2bc95cce43cf0eb7dfc",
+  "conceptual_change": "Shift from price-based mean reversion to volatility-based volume distribution filtering, specifically targeting periods where the rolling standard deviation of the volume ratio is suppressed, signaling a return to mean volume levels.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 48
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_std|volume_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 48
+  },
+  "parent_bc": 282,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
