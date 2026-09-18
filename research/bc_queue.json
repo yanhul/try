@@ -1,29 +1,29 @@
 [
   {
-    "bc": 321,
-    "candidate_hash": "df6869797afcca41b8c349f774075c760be038be95047a551a1818d9da71f8dd",
-    "conceptual_change": "Evaluate mean reversion based on the relationship between closing price magnitude and volume intensity instead of price-moving average deviation.",
+    "bc": 322,
+    "candidate_hash": "ca92f90cc19cfea3dd284fdae2347b73c820fd68073d36b64964b83e0f37663b",
+    "conceptual_change": "Shift from relative price-moving average deviation to assessing volatility-based liquidity expansion (high minus low difference) as an indicator of a liquidity sweep event in the ICT framework.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume",
-      "threshold": 0.5
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "low",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|close|volume|above",
+    "novelty_key": "smc_ict|difference|high|low|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 320,
+    "parent_bc": 321,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
