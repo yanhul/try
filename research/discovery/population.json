@@ -6105,6 +6105,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6292,38 +6324,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -36111,22 +36111,6 @@
       }
     },
     {
-      "candidate_id": "3b4f72acef38657e",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
-      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
-      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China\u2019s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "3b4f72acef38657e",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2318005cb28a8ccd",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/341beedf4855a5a3c76a27af1585f89b191a5730",
@@ -36250,22 +36234,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "d021b5bab455d25e",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6d7dfca0d4d93282",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/ae9b47062b1168fc4d391be13cb4d8d2e79e0040",
-      "title": "Research on A-Share Event-Driven Trading Strategy Based on Event Classification and Volatility Forecasting",
-      "description": "Aiming at the problems of insufficient characterization of event heterogeneity, limited volatility forecasting accuracy and weak strategy adaptability in A-share event-driven investment, this paper constructs a full-process quantitative investment framework including event identification, quantitative classification, volatility forecasting and dynamic arbitrage. Eleven core event features are extracted from six dimensions, and the Gaussian Mixture Model (GMM) is adopted for unsupervised clustering to divide A-share market events into four categories: long-term policy-driven (lasting impact), high-linkage policy events (general impact), fundamental corporate events (moderate volatility) and sudden shock events (rapid impact). An exponential decay model is built to depict the temporal evolution law of event impacts. Based on the heterogeneity of different event types, differentiated multi-factor volatility forecasting models such as HAR-RV are constructed. Finally, with the goal of maximizing the Sharpe ratio, a mean-variance optimization strategy integrating transaction costs, position constraints and Conditional Value at Risk (CVaR) tail risk control is established, and four core innovative mechanisms are designed. The empirical results from December 2024 to September 2025 show that the strategy achieves an annualized return of 18.2%, a Sharpe ratio of 1.25 and a maximum drawdown of 6.8%. Its performance in return acquisition and risk control is significantly superior to the CSI 300 market benchmark, providing a feasible solution for A-share event-driven quantitative investment.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "6d7dfca0d4d93282",
         "family": "china_a_share",
         "rounds": []
       }
@@ -37434,6 +37402,22 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "a518efbb3aeb8416",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b4f72acef38657e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
+      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
+      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China\u2019s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "3b4f72acef38657e",
         "family": "china_a_share",
         "rounds": []
       }
@@ -40463,6 +40447,22 @@
       }
     },
     {
+      "candidate_id": "6d7dfca0d4d93282",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/ae9b47062b1168fc4d391be13cb4d8d2e79e0040",
+      "title": "Research on A-Share Event-Driven Trading Strategy Based on Event Classification and Volatility Forecasting",
+      "description": "Aiming at the problems of insufficient characterization of event heterogeneity, limited volatility forecasting accuracy and weak strategy adaptability in A-share event-driven investment, this paper constructs a full-process quantitative investment framework including event identification, quantitative classification, volatility forecasting and dynamic arbitrage. Eleven core event features are extracted from six dimensions, and the Gaussian Mixture Model (GMM) is adopted for unsupervised clustering to divide A-share market events into four categories: long-term policy-driven (lasting impact), high-linkage policy events (general impact), fundamental corporate events (moderate volatility) and sudden shock events (rapid impact). An exponential decay model is built to depict the temporal evolution law of event impacts. Based on the heterogeneity of different event types, differentiated multi-factor volatility forecasting models such as HAR-RV are constructed. Finally, with the goal of maximizing the Sharpe ratio, a mean-variance optimization strategy integrating transaction costs, position constraints and Conditional Value at Risk (CVaR) tail risk control is established, and four core innovative mechanisms are designed. The empirical results from December 2024 to September 2025 show that the strategy achieves an annualized return of 18.2%, a Sharpe ratio of 1.25 and a maximum drawdown of 6.8%. Its performance in return acquisition and risk control is significantly superior to the CSI 300 market benchmark, providing a feasible solution for A-share event-driven quantitative investment.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "6d7dfca0d4d93282",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ee061558b1076aef",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/316aedb124cac1465e6e0ccf644bf2f7b78c2b2a",
@@ -40639,22 +40639,6 @@
       }
     },
     {
-      "candidate_id": "2ac48a73bca2f48c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
-      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
-      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2ac48a73bca2f48c",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6fd24decf6afb06f",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c146b50c7a9ebbcd269f79059ff537c9c4401430",
@@ -40794,6 +40778,22 @@
       "source_timestamp": "1986",
       "lineage": {
         "source": "6086d77819f7120e",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ac48a73bca2f48c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
+      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
+      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2ac48a73bca2f48c",
         "family": "cross_sectional",
         "rounds": []
       }
