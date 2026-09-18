@@ -4089,22 +4089,6 @@
       }
     },
     {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4196,22 +4180,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4649,6 +4617,22 @@
       }
     },
     {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b3f9e35cacf20d6e",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2556747",
@@ -4693,22 +4677,6 @@
       "lineage": {
         "source": "8bd7a27d01f281bb",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "options",
         "rounds": []
       }
     },
@@ -6233,6 +6201,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6420,22 +6420,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6805,6 +6789,22 @@
       "lineage": {
         "source": "53f18a556609aabb",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -8921,22 +8921,6 @@
       }
     },
     {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "096d6e7bf7b79532",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4902478",
@@ -9108,6 +9092,22 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -34895,6 +34895,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -34927,22 +34943,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -34954,6 +34954,54 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
         "family": "unknown",
         "rounds": []
       }
@@ -35007,6 +35055,22 @@
       }
     },
     {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -35018,6 +35082,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -35215,22 +35295,6 @@
       }
     },
     {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "074d1859ad607682",
       "source": "openalex",
       "source_url": "https://doi.org/10.1177/00081256231202266",
@@ -35242,22 +35306,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "074d1859ad607682",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
         "family": "unknown",
         "rounds": []
       }
@@ -35275,54 +35323,6 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
-        "family": "unknown",
         "rounds": []
       }
     },
@@ -38682,22 +38682,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "44d372980e7dc038",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7e017f233b12b357",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/3e23c4eb8e8a79cfe5b92cb45263688f4720ffca",
-      "title": "Statistical Arbitrage in Polish Equities Market Using Deep Learning Techniques",
-      "description": "We study a systematic approach to a popular Statistical Arbitrage technique: Pairs Trading. Instead of relying on two highly correlated assets, we replace the second asset with a replication of the first using risk factor representations. These factors are obtained through Principal Components Analysis (PCA), exchange traded funds (ETFs), and, as our main contribution, Long Short Term Memory networks (LSTMs). Residuals between the main asset and its replication are examined for mean reversion properties, and trading signals are generated for sufficiently fast mean reverting portfolios. Beyond introducing a deep learning based replication method, we adapt the framework of Avellaneda and Lee (2008) to the Polish market. Accordingly, components of WIG20, mWIG40, and selected sector indices replace the original S&P500 universe, and market parameters such as the risk free rate and transaction costs are updated to reflect local conditions. We outline the full strategy pipeline: risk factor construction, residual modeling via the Ornstein Uhlenbeck process, and signal generation. Each replication technique is described together with its practical implementation. Strategy performance is evaluated over two periods: 2017-2019 and the recessive year 2020. All methods yield profits in 2017-2019, with PCA achieving roughly 20 percent cumulative return and an annualized Sharpe ratio of up to 2.63. Despite multiple adaptations, our conclusions remain consistent with those of the original paper. During the COVID-19 recession, only the ETF based approach remains profitable (about 5 percent annual return), while PCA and LSTM methods underperform. LSTM results, although negative, are promising and indicate potential for future optimization.",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "crypto mean reversion statistical arbitrage strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "7e017f233b12b357",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -42794,6 +42778,22 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "2331fe4e9eb9286e",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7e017f233b12b357",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3e23c4eb8e8a79cfe5b92cb45263688f4720ffca",
+      "title": "Statistical Arbitrage in Polish Equities Market Using Deep Learning Techniques",
+      "description": "We study a systematic approach to a popular Statistical Arbitrage technique: Pairs Trading. Instead of relying on two highly correlated assets, we replace the second asset with a replication of the first using risk factor representations. These factors are obtained through Principal Components Analysis (PCA), exchange traded funds (ETFs), and, as our main contribution, Long Short Term Memory networks (LSTMs). Residuals between the main asset and its replication are examined for mean reversion properties, and trading signals are generated for sufficiently fast mean reverting portfolios. Beyond introducing a deep learning based replication method, we adapt the framework of Avellaneda and Lee (2008) to the Polish market. Accordingly, components of WIG20, mWIG40, and selected sector indices replace the original S&P500 universe, and market parameters such as the risk free rate and transaction costs are updated to reflect local conditions. We outline the full strategy pipeline: risk factor construction, residual modeling via the Ornstein Uhlenbeck process, and signal generation. Each replication technique is described together with its practical implementation. Strategy performance is evaluated over two periods: 2017-2019 and the recessive year 2020. All methods yield profits in 2017-2019, with PCA achieving roughly 20 percent cumulative return and an annualized Sharpe ratio of up to 2.63. Despite multiple adaptations, our conclusions remain consistent with those of the original paper. During the COVID-19 recession, only the ETF based approach remains profitable (about 5 percent annual return), while PCA and LSTM methods underperform. LSTM results, although negative, are promising and indicate potential for future optimization.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "7e017f233b12b357",
         "family": "mean_reversion",
         "rounds": []
       }
