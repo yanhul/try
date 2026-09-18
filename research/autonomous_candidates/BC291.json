@@ -1,0 +1,27 @@
+{
+  "bc": 291,
+  "candidate_hash": "d5d1214784580c5bb463b00d3ad529b20b2dcbb939f4829e377f23eb2d90fea2",
+  "conceptual_change": "Shift from price/volume trend intensity indicators to a volatility-normalized z-score of volume ratio to isolate low-participation trend exhaustion phases.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|zscore|volume_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 290,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

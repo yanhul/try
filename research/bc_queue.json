@@ -1,29 +1,29 @@
 [
   {
-    "bc": 290,
-    "candidate_hash": "fa23928ae813f71da2b6a42a8a0e7e91fbde5047e52dd18deaaf2fe982a6b056",
-    "conceptual_change": "Shift to analyzing the price-to-VWAP-distance ratio as a normalized measure of mean reversion potential, rather than absolute distance.",
+    "bc": 291,
+    "candidate_hash": "d5d1214784580c5bb463b00d3ad529b20b2dcbb939f4829e377f23eb2d90fea2",
+    "conceptual_change": "Shift from price/volume trend intensity indicators to a volatility-normalized z-score of volume ratio to isolate low-participation trend exhaustion phases.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "close",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "vwap_distance",
-      "threshold": 0.95
+      "direction": "below",
+      "left": "volume_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "zscore",
+      "threshold": 1.5,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|close|vwap_distance|above",
+    "novelty_key": "momentum_trend|zscore|volume_ratio||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.95,
-      "window": null
+      "threshold": 1.5,
+      "window": 20
     },
-    "parent_bc": 289,
+    "parent_bc": 290,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

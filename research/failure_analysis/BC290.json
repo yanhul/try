@@ -1,0 +1,41 @@
+{
+  "bc": 290,
+  "parent_bc": 289,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "fa23928ae813f71da2b6a42a8a0e7e91fbde5047e52dd18deaaf2fe982a6b056",
+  "conceptual_change": "Shift to analyzing the price-to-VWAP-distance ratio as a normalized measure of mean reversion potential, rather than absolute distance.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 425,
+    "skipped_overlap_trades": 380,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 17,
+      "loss_count": 28,
+      "win_rate": 0.37777777777777777,
+      "total_return": -0.06635361202882983,
+      "avg_return": -0.0014230131861184066,
+      "profit_factor": 0.8155830363138415,
+      "max_drawdown": 0.12190319772798106,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
