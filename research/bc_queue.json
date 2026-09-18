@@ -1,29 +1,29 @@
 [
   {
-    "bc": 266,
-    "candidate_hash": "a4c5588739070c8b6f2c9761989c61b264a026ac3029f5e482ae7077ce01ca36",
-    "conceptual_change": "Shifted from price-based trend momentum to volume-anomaly identification using a rolling Z-Score of trade volume to isolate high-conviction momentum breakout regimes in the BTCUSDT 1H timeframe.",
+    "bc": 267,
+    "candidate_hash": "101b5dbfc4ce90c8c3e49b9908ea4cb97cbd7b8fdcec1e6b466bdf66c17a4b5c",
+    "conceptual_change": "Shifted from price-momentum or volume-zscore metrics to a structural mean-reversion model focusing on the 24-period rolling mean of vwap_distance, identifying mean-reversion points when distance from vwap significantly exceeds the local average.",
     "discovery_spec": {
       "direction": "above",
-      "left": "volume",
-      "mechanism_family": "momentum_trend",
-      "operator": "zscore",
-      "threshold": 1.5,
-      "window": 20
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_mean",
+      "threshold": 0.05,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|zscore|volume||above",
+    "novelty_key": "mean_reversion|rolling_mean|vwap_distance||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
-      "window": 20
+      "threshold": 0.05,
+      "window": 24
     },
-    "parent_bc": 265,
+    "parent_bc": 266,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
