@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "bc": 414,
+    "candidate_hash": "0667c48a16e0c9c5f615457d7419ada7df90e68e6b6537acbcbc04b08ead5af2",
+    "conceptual_change": "Shift from simple return-based trend identification to a normalized, windowed momentum signal comparing price relative to its recent average, isolating sustained price excursions from baseline market noise.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "threshold": 0.0,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend||close||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.0,
+      "window": 24
+    },
+    "parent_bc": 413,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
