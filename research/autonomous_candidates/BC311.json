@@ -1,0 +1,27 @@
+{
+  "bc": 311,
+  "candidate_hash": "eb7bb99f6ea18266f8c66deee418171b6abeb4cf85744810a7f9de5b12271f64",
+  "conceptual_change": "Shifted focus from price-level distances to the volatility of intra-bar positioning (close_location), identifying periods where the distribution of close prices within the bar range exhibits high standard deviation, signaling potential mean-reversion exhaustion after erratic localized price discovery.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_std",
+    "threshold": 0.35,
+    "window": 48
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_std|close_location||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.35,
+    "window": 48
+  },
+  "parent_bc": 310,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

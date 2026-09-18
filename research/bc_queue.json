@@ -1,29 +1,29 @@
 [
   {
-    "bc": 310,
-    "candidate_hash": "f0308e4874f668cd1339bbd2942dcc080e39fabe65e96a9f4d2d3fa2387cc911",
-    "conceptual_change": "Transitioned from simple price-level mean trends to a volatility-constriction filter on vwap-deviation, specifically using the rolling standard deviation of vwap_distance to detect periods of low volatility expansion potential.",
+    "bc": 311,
+    "candidate_hash": "eb7bb99f6ea18266f8c66deee418171b6abeb4cf85744810a7f9de5b12271f64",
+    "conceptual_change": "Shifted focus from price-level distances to the volatility of intra-bar positioning (close_location), identifying periods where the distribution of close prices within the bar range exhibits high standard deviation, signaling potential mean-reversion exhaustion after erratic localized price discovery.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
+      "direction": "above",
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
       "operator": "rolling_std",
-      "threshold": 0.005,
+      "threshold": 0.35,
       "window": 48
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|vwap_distance||below",
+    "novelty_key": "mean_reversion|rolling_std|close_location||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
+      "threshold": 0.35,
       "window": 48
     },
-    "parent_bc": 309,
+    "parent_bc": 310,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
