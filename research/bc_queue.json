@@ -1,29 +1,28 @@
 [
   {
-    "bc": 284,
-    "candidate_hash": "3ee06275c0d5e78fd79c64896edd9670208657310b5ae1d4a03c8a0787c9c22f",
-    "conceptual_change": "Utilize the displacement of the low price relative to the vwap_distance primitive to identify institutional support zones (liquidity demand) as a proxy for ICT-style oversold structural pivots, distinct from previous rejected SMC primitives.",
+    "bc": 285,
+    "candidate_hash": "a86c7a12700cd7d9fe10159a9a76fe36f9f817c3b82e8feb761bd48174b15afd",
+    "conceptual_change": "Shifting from structural ICT pivot identification to a volatility-adjusted mean reversion logic using the difference between close price levels and normalized volume ratio (liquidity normalized price) to identify mean-reverting exhaustion spikes.",
     "discovery_spec": {
       "direction": "above",
-      "left": "low",
-      "mechanism_family": "smc_ict",
+      "left": "close",
       "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.005
+      "right": "volume_ratio",
+      "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|low|vwap_distance|above",
+    "novelty_key": "|difference|close|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
+      "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 283,
+    "parent_bc": 284,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
