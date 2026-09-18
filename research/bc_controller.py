@@ -2,6 +2,11 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from research.oos_lifecycle import (
+    assert_history_entry_legal,
+    evaluate_oos,
+    terminal_reason_from_oos,
+)
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','1')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
 def run(cmd,env=None):
@@ -196,12 +201,17 @@ def main():
  if PROMOTE in out:
   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
   if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
-  passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':PROMOTE,'hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
+  receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
+  evaluation=evaluate_oos(result,receipt)
+  decision=evaluation['oos_verdict']
+  history_entry={'bc':bc,'decision':PROMOTE,'hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],**evaluation}
+  assert_history_entry_legal(history_entry)
+  s['history'].append(history_entry)
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
-  if passed:
-   s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
-  write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}'); return 0
+  if decision == 'OOS_PASS':
+   s['terminal']=True; s['terminal_reason']=terminal_reason_from_oos(result,receipt); s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION {s["terminal_reason"]} BC{bc} TERMINAL'); return 0
+  write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']=terminal_reason_from_oos(result,receipt); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}'); return 0
  if REJECT not in out and 'SPLIT_GATE False' not in out:
   checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
  write_queue([]); s['history'].append({'bc':bc,'decision':REJECT,'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id'],'candidate_hash':c.get('candidate_hash')}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
