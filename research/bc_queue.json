@@ -1,30 +1,29 @@
 [
   {
-    "bc": 338,
-    "candidate_hash": "3021de2d11e0efb627ebe506dc236d11acfe98ae328ac75fbac60077ce3301b5",
-    "conceptual_change": "Transition from traditional trend indicators to a cross-modal price-volume differential, capturing deviations where absolute close price magnitude exceeds raw volume counts to isolate idiosyncratic momentum anomalies.",
+    "bc": 339,
+    "candidate_hash": "77778386edeffff96648b43af7cf91a729f2a178da0a61faec71f7191e171f08",
+    "conceptual_change": "Shift from simple ICT liquidity concepts to a structural deviation metric comparing price high-point reach against the distance from volume-weighted average price (VWAP) to identify potential liquidity sweep exhaustion.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
+      "left": "high",
+      "mechanism_family": "smc_ict",
       "operator": "difference",
-      "right": "volume",
-      "threshold": 0.0,
-      "window": null
+      "right": "vwap_distance",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|volume|above",
+    "novelty_key": "smc_ict|difference|high|vwap_distance|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 0.005,
       "window": null
     },
-    "parent_bc": 337,
+    "parent_bc": 338,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
