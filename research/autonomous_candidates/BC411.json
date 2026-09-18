@@ -1,0 +1,27 @@
+{
+  "bc": 411,
+  "candidate_hash": "ce6f5ef9133c2a434421d55ed300106c11fed885c9db2c513dcd86a13e6a633a",
+  "conceptual_change": "Transitioned from price/VWAP distance metrics to a volatility-based volume stability filter, focusing on regimes where volume dispersion is constrained as a prerequisite for mean reversion triggers.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_std",
+    "threshold": 0.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_std|volume||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 24
+  },
+  "parent_bc": 410,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

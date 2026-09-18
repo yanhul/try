@@ -1,29 +1,29 @@
 [
   {
-    "bc": 410,
-    "candidate_hash": "3e0648182fe5b4472a33ee327034145668e2bc3d6fc5096a03417bb186556b3e",
-    "conceptual_change": "Shifting from basic price-volume relationships to a normalized volatility-adjusted momentum metric using z-scored distance from VWAP, capturing sustained momentum deviations that indicate institutional trend exhaustion or continuation.",
+    "bc": 411,
+    "candidate_hash": "ce6f5ef9133c2a434421d55ed300106c11fed885c9db2c513dcd86a13e6a633a",
+    "conceptual_change": "Transitioned from price/VWAP distance metrics to a volatility-based volume stability filter, focusing on regimes where volume dispersion is constrained as a prerequisite for mean reversion triggers.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "operator": "zscore",
-      "threshold": 1.5,
-      "window": 20
+      "direction": "below",
+      "left": "volume",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_std",
+      "threshold": 0.5,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|zscore|vwap_distance||above",
+    "novelty_key": "mean_reversion|rolling_std|volume||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
-      "window": 20
+      "threshold": 0.5,
+      "window": 24
     },
-    "parent_bc": 409,
+    "parent_bc": 410,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
