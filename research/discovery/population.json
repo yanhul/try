@@ -2969,6 +2969,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -4793,6 +4809,22 @@
       }
     },
     {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "21e9eca29ecdf96a",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118524046.ch2",
@@ -6297,22 +6329,6 @@
       }
     },
     {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6980,22 +6996,6 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -35423,6 +35423,22 @@
       }
     },
     {
+      "candidate_id": "ad9399b71f887dc2",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
+      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
+      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ad9399b71f887dc2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9a8d05aed9044c3a",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/080e17f4448caf26d447f530d2f3d054ed1fe916",
@@ -41082,22 +41098,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "fcbb64a82fa6f5de",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "ad9399b71f887dc2",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
-      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
-      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "ad9399b71f887dc2",
         "family": "china_a_share",
         "rounds": []
       }

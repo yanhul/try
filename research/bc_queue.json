@@ -1,29 +1,30 @@
 [
   {
-    "bc": 378,
-    "candidate_hash": "2a618579ae65e7aeaf48c011efd1ca4bc08079e7630dab5df6987b4066c789d9",
-    "conceptual_change": "Shift from price-level liquidity to a liquidity-adjusted structural sweep model that evaluates high-point deviations against normalized volume intensity to identify institutional order flow.",
+    "bc": 379,
+    "candidate_hash": "d17950f39bd73757c72a68bb759b1d3656639c5255e27f5f19eb042993391215",
+    "conceptual_change": "Transitioning from price-relative indicators to a temporal consistency model that measures the divergence rate of current vwap_distance relative to its own historical lag, shifting from signal existence to signal momentum acceleration.",
     "discovery_spec": {
       "direction": "above",
-      "left": "high",
-      "mechanism_family": "smc_ict",
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
       "operator": "difference",
-      "right": "volume_ratio",
-      "threshold": 0.05
+      "right": "vwap_distance",
+      "threshold": 0.05,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|volume_ratio|above",
+    "novelty_key": "momentum_trend|difference|vwap_distance|vwap_distance|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.05,
-      "window": null
+      "window": 24
     },
-    "parent_bc": 377,
+    "parent_bc": 378,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
