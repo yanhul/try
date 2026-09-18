@@ -1,30 +1,29 @@
 [
   {
-    "bc": 382,
-    "candidate_hash": "455634bbdf2ea00c7733a0cbec2682fe2a43a535edb6639656e1f18813099ffd",
-    "conceptual_change": "Shift from relative close-level liquidity assessments to a volatility-adjusted deviation model. This primitive identifies potential liquidity sweeps by analyzing the deviation of the VWAP distance from its rolling average, effectively filtering for mean-reversion setups when the VWAP is significantly tighter than the local trend baseline, indicative of consolidation before a sweep.",
+    "bc": 383,
+    "candidate_hash": "1dd98e4652a7eca64355a6ea2e8a07e52b1558cbc1e1eb4d0ef940e92944c531",
+    "conceptual_change": "Transitioned from volatility-adjusted VWAP deviations to a pure relative structural ratio. This hypothesis measures the relationship between price position within the bar (close_location) and the relative liquidity intensity (volume_ratio), identifying potential mean-reversion setups where thin-volume bars exhibit excessive positional exhaustion.",
     "discovery_spec": {
       "direction": "below",
-      "left": "vwap_distance",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "rolling_mean",
-      "threshold": 0.005,
-      "window": 24
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 0.85
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|vwap_distance|rolling_mean|below",
+    "novelty_key": "mean_reversion|ratio|close_location|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": 24
+      "threshold": 0.85,
+      "window": null
     },
-    "parent_bc": 381,
+    "parent_bc": 382,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
