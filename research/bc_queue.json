@@ -1,29 +1,29 @@
 [
   {
-    "bc": 268,
-    "candidate_hash": "81a726732b953ebbb03f77df53e8fa814e8e654622e79c66f63e86b4a6c4a254",
-    "conceptual_change": "Shifted from absolute ICT structural point identification to a smoothed regime-filter approach using a 48-period rolling mean of close_location to detect sustained liquidity accumulation phases above the median range.",
+    "bc": 269,
+    "candidate_hash": "c6fdae7de5d4469ecc77b69d0f909fff486d5d5f79ac6997d5c94fdbf04a5e35",
+    "conceptual_change": "Changed the primitive from absolute price distance to a 24-hour rolling mean of close_location to identify mean-reversion zones where intraday price closes consistently in the bottom 35% of the range, signaling potential oversold exhaustion.",
     "discovery_spec": {
-      "direction": "above",
+      "direction": "below",
       "left": "close_location",
-      "mechanism_family": "smc_ict",
+      "mechanism_family": "mean_reversion",
       "operator": "rolling_mean",
-      "threshold": 0.5,
-      "window": 48
+      "threshold": 0.35,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|rolling_mean|close_location||above",
+    "novelty_key": "mean_reversion|rolling_mean|close_location||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
-      "window": 48
+      "threshold": 0.35,
+      "window": 24
     },
-    "parent_bc": 267,
+    "parent_bc": 268,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
