@@ -3017,22 +3017,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3572,6 +3556,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4201,6 +4201,54 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b44eea7dc4f191af",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118656617.ch10",
@@ -4212,6 +4260,86 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "667acb5e3216c827",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch5",
+      "title": "Trading System Elements: Exits",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "667acb5e3216c827",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -5285,22 +5413,6 @@
       "lineage": {
         "source": "0bc7fc89046bdb2c",
         "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "667acb5e3216c827",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch5",
-      "title": "Trading System Elements: Exits",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "667acb5e3216c827",
-        "family": "unknown",
         "rounds": []
       }
     },
@@ -8265,22 +8377,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9c08ebc8aca02436",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119057871.ch10",
@@ -8308,118 +8404,6 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "35ff6a605255efdc",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -9220,6 +9204,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
         "family": "unknown",
         "rounds": []
       }
@@ -39039,6 +39039,22 @@
       }
     },
     {
+      "candidate_id": "af167e6720e20273",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
+      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
+      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af167e6720e20273",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "aaac9a67d274c5a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
@@ -43162,22 +43178,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a0a5895001ce0cbb",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af167e6720e20273",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
-      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
-      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af167e6720e20273",
         "family": "smc_ict",
         "rounds": []
       }
