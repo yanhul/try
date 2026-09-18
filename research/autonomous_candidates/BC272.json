@@ -1,0 +1,26 @@
+{
+  "bc": 272,
+  "candidate_hash": "c75f993b9f933493646dd4c13b1bde83494760e427bda52940ef597d69f224d0",
+  "conceptual_change": "Shifted from absolute price volatility to the relative scale of VWAP deviation normalized by range volatility to capture mean-reversion exhaustion in compressed 1H price action.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "ratio",
+    "right": "range_ratio",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|vwap_distance|range_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": null
+  },
+  "parent_bc": 271,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
