@@ -67,6 +67,8 @@ def _require_receipt_binding(result,receipt):
 
 def evaluate_oos(result,receipt):
  _require_receipt_binding(result,receipt)
+ if receipt.get("result_sha256") is None:
+  raise OOSLifecycleError("OOS_RECEIPT_RESULT_BINDING_MISSING")
  passed=result.get("oos_passed")
  if not isinstance(passed,bool): raise OOSLifecycleError("OOS_EVALUATION_VERDICT_MISSING")
  verdict="OOS_PASS" if passed else "OOS_FAIL"
@@ -83,6 +85,11 @@ def assert_history_entry_legal(entry):
   if verdict is not None: raise OOSLifecycleError("PROMOTION_MUST_NOT_CARRY_OOS_VERDICT")
   if executed is not False: raise OOSLifecycleError("PROMOTION_MUST_BE_PRE_OOS")
   if state!="OOS_PENDING": raise OOSLifecycleError("PROMOTION_STATE_MUST_BE_OOS_PENDING")
+ if state in {"OOS_EXECUTED","OOS_RECEIPT"} and entry.get("oos_executed") is not True:
+  raise OOSLifecycleError("OOS_EXECUTED_STATE_REQUIRES_EXECUTION")
+ if state=="OOS_RECEIPT":
+  if not entry.get("receipt_type") or entry.get("receipt_schema_version")!=1 or not entry.get("receipt_id"):
+   raise OOSLifecycleError("OOS_RECEIPT_STATE_REQUIRES_RECEIPT_BINDING")
  if verdict is not None:
   if entry.get("event_type")!="OOS_EVALUATION": raise OOSLifecycleError("OOS_VERDICT_REQUIRES_EVALUATION_EVENT")
   if not entry.get("receipt_digest"): raise OOSLifecycleError("OOS_VERDICT_REQUIRES_RECEIPT_BINDING")
