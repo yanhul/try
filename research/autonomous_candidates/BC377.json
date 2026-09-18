@@ -1,0 +1,27 @@
+{
+  "bc": 377,
+  "candidate_hash": "63ed407dca568d4aac0621883d31ced75eab7a651a4eed0ce6982fd8e0dfda67",
+  "conceptual_change": "Changing from absolute price level analysis to the differential relationship between price and relative volume intensity to filter out low-conviction momentum phases.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|difference|close|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 376,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
