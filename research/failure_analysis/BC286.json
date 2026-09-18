@@ -1,0 +1,41 @@
+{
+  "bc": 286,
+  "parent_bc": 285,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "f101ef043554f58123c4d0ec17304c802f17f6097c1f370d58f03bbb1989ca8d",
+  "conceptual_change": "Transitioning from local price-volume exhaustion metrics to a broader trend-following regime indicator based on the 24-period rolling mean of vwap_distance. This mechanism captures sustained price divergence from the volume-weighted average price as a confirmation of momentum direction, diverging from previous volatility-adjusted mean reversion models.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 385,
+    "skipped_overlap_trades": 347,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 38,
+      "win_count": 14,
+      "loss_count": 24,
+      "win_rate": 0.3684210526315789,
+      "total_return": -0.0660085390842039,
+      "avg_return": -0.0016955477304493947,
+      "profit_factor": 0.7834273645529914,
+      "max_drawdown": 0.10629416121267468,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

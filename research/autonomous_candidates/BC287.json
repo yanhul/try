@@ -1,0 +1,27 @@
+{
+  "bc": 287,
+  "candidate_hash": "430c7e7ae5ab9914b0b2b247544e0a750ce2bcc92b7edfb0bba97efb0e017156",
+  "conceptual_change": "Shift from relative price distance to a rolling average of close location (relative bar position) to identify mean-reverting exhaustion points where price finishes consistently high within the range, indicating an overextended state needing correction.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 0.005,
+    "window": 12
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|close_location||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 12
+  },
+  "parent_bc": 286,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

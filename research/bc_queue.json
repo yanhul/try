@@ -1,29 +1,29 @@
 [
   {
-    "bc": 286,
-    "candidate_hash": "f101ef043554f58123c4d0ec17304c802f17f6097c1f370d58f03bbb1989ca8d",
-    "conceptual_change": "Transitioning from local price-volume exhaustion metrics to a broader trend-following regime indicator based on the 24-period rolling mean of vwap_distance. This mechanism captures sustained price divergence from the volume-weighted average price as a confirmation of momentum direction, diverging from previous volatility-adjusted mean reversion models.",
+    "bc": 287,
+    "candidate_hash": "430c7e7ae5ab9914b0b2b247544e0a750ce2bcc92b7edfb0bba97efb0e017156",
+    "conceptual_change": "Shift from relative price distance to a rolling average of close location (relative bar position) to identify mean-reverting exhaustion points where price finishes consistently high within the range, indicating an overextended state needing correction.",
     "discovery_spec": {
       "direction": "above",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
       "operator": "rolling_mean",
-      "threshold": 0.0,
-      "window": 24
+      "threshold": 0.005,
+      "window": 12
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_mean|vwap_distance||above",
+    "novelty_key": "mean_reversion|rolling_mean|close_location||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": 24
+      "threshold": 0.005,
+      "window": 12
     },
-    "parent_bc": 285,
+    "parent_bc": 286,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
