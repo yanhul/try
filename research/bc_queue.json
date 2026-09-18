@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 399,
+    "candidate_hash": "1ed2c82279edfc43c4ef1e633768458df30c53f710e062623759a3f9fdbb6f82",
+    "conceptual_change": "Shift from simple VWAP distance thresholding to relative rank-based exhaustion in trend strength, isolating regimes where VWAP deviation is not at its historical ceiling.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
+      "operator": "rank",
+      "threshold": 0.85,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|rank|vwap_distance||below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.85,
+      "window": 24
+    },
+    "parent_bc": 398,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
