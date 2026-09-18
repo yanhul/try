@@ -1,29 +1,29 @@
 [
   {
-    "bc": 361,
-    "candidate_hash": "8041723b11e1be7985dafcabeafe68f4628439c897d27bdd5372c814ac081cbe",
-    "conceptual_change": "Shifted focus from price-level comparisons to the relative dispersion of price from the volume-weighted average price normalized by volume intensity to detect trend exhaustion.",
+    "bc": 362,
+    "candidate_hash": "68aa5b9e175b88f109be00f5972620b8611c581e7fa0aaf517c77c7d6d6ba3ae",
+    "conceptual_change": "Instead of evaluating absolute distance from vwap, this mechanism analyzes the relationship between vwap-deviation intensity and volume magnitude to identify overextended moves that lack sufficient volume validation for continuation.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
+      "mechanism_family": "mean_reversion",
       "operator": "ratio",
       "right": "volume",
-      "threshold": 1.5
+      "threshold": 1.25
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|vwap_distance|volume|below",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
+      "threshold": 1.25,
       "window": null
     },
-    "parent_bc": 360,
+    "parent_bc": 361,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
