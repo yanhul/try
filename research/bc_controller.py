@@ -14,7 +14,13 @@ PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
-def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+def save(s):
+ s['updated_at']=datetime.now(timezone.utc).isoformat()
+ STATE.parent.mkdir(parents=True,exist_ok=True)
+ tmp=STATE.with_name(STATE.name+'.tmp')
+ tmp.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+ os.replace(tmp,STATE)
+
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
