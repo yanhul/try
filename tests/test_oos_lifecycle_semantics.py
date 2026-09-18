@@ -139,3 +139,24 @@ def test_adversarial_verdict_without_receipt_binding_is_rejected():
             "oos_verdict": "OOS_FAIL",
             "oos_executed": True,
         })
+
+
+def test_adversarial_verdict_requires_evaluation_event_and_receipt_binding():
+    with pytest.raises(OOSLifecycleError, match="OOS_VERDICT_REQUIRES_EVALUATION_EVENT"):
+        assert_history_entry_legal({
+            "oos_state": "OOS_EVALUATED",
+            "oos_verdict": "OOS_FAIL",
+            "oos_executed": True,
+        })
+
+
+def test_adversarial_terminal_reason_cannot_be_created_from_provider_failure():
+    event = provider_failure_event("provider_http_503")
+    assert event["oos_verdict"] is None
+    assert event["oos_state"] == OOSState.PROVIDER_FAIL
+
+
+def test_promotion_has_pending_state():
+    event = promotion_event()
+    assert event["oos_state"] == OOSState.OOS_PENDING
+    assert event["oos_verdict"] is None
