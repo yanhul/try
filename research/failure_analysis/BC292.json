@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 292,
+  "candidate_hash": "b64d75b6a53229c5277c14780dd19548711d1d52f2156cab75ecd6d9088194f9",
+  "conceptual_change": "Shift from price/volume trend intensity indicators to a volatility-normalized z-score of raw volume to identify periods of unusually low volume activity relative to the recent rolling window, serving as a contrarian signal for potential mean reversion in trendless or exhausted market regimes.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 291,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000668202467291535,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 16,
+    "max_drawdown": 0.04866932550696065,
+    "profit_factor": 0.9090577136708607,
+    "total_return": -0.02060679388804565,
+    "trade_count": 27,
+    "win_count": 11,
+    "win_rate": 0.4074074074074074
+  }
+}
