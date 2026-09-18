@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 397,
+    "candidate_hash": "a67e6f0d1d7dec492d246e42ed59c3e7aa6316f2d3b20f00773468dc7d51e677",
+    "conceptual_change": "Shifted focus from price-level gaps to the interaction between VWAP divergence and volatility-adjusted market structure, specifically identifying liquidity contraction phases where VWAP deviation falls beneath the 24-period realized volatility.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "vwap_distance",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "rolling_std",
+      "threshold": 0.05,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|difference|vwap_distance|rolling_std|below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": 24
+    },
+    "parent_bc": 396,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
