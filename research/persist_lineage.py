@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 from lineage_engine import append_experiment, read_lineage
+from research.oos_lifecycle import assert_history_entry_legal
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "research" / "bc_lifecycle_state.json"
@@ -44,6 +45,9 @@ def main() -> int:
 
     history = [x for x in state.get("history", []) if int(x.get("bc", -1)) == int(bc)]
     latest = history[-1] if history else {}
+    if latest:
+        # Durable lineage must never promote a transport/provider marker into an OOS verdict.
+        assert_history_entry_legal(latest)
     validation_path = VALIDATION / f"bc{int(bc)}_validation_result.json"
     validation = load(validation_path, {})
     result = validation if validation else latest
