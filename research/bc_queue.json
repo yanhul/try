@@ -1,30 +1,30 @@
 [
   {
-    "bc": 403,
-    "candidate_hash": "8a2ca99dfd0fe418ff9f9a424e9979a3ba4fc72a73523bc9b9d9954818c2da23",
-    "conceptual_change": "Shifting from relative proximity metrics to a structural normalized ratio between current VWAP distance and the local moving average of that distance to capture mean-reverting deviations.",
+    "bc": 404,
+    "candidate_hash": "9942de204f373c757167f17914d88be1ba62c6fd87db670d80bbc69258ca80aa",
+    "conceptual_change": "Transitioning from simple static indicators to a dynamic ratio-based filter that compares current deviation from the VWAP relative to its own recent volatility (windowed historical mean) to capture explosive trend breakouts.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "vwap_distance",
-      "mechanism_family": "mean_reversion",
+      "mechanism_family": "momentum_trend",
       "operator": "ratio",
-      "right": "rolling_mean",
+      "right": "vwap_distance",
       "threshold": 1.25,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|vwap_distance|rolling_mean|below",
+    "novelty_key": "momentum_trend|ratio|vwap_distance|vwap_distance|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 1.25,
       "window": 24
     },
-    "parent_bc": 402,
+    "parent_bc": 403,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

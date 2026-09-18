@@ -340,6 +340,16 @@
       "parent_bc": 277,
       "score": 0.43099758
     },
+    "mean_reversion|ratio|vwap_distance|rolling_mean|below": {
+      "bc": 403,
+      "candidate_hash": "8a2ca99dfd0fe418ff9f9a424e9979a3ba4fc72a73523bc9b9d9954818c2da23",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3a5eeb0e3a31f7681c9c7b5f401c9a20608f4e17c27452c9bcbc13ed48f23cfb",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 402,
+      "score": 0.44345362
+    },
     "mean_reversion|ratio|vwap_distance|volume_ratio|above": {
       "bc": 301,
       "candidate_hash": "14efbc8b4817c6427105a49c591ae740a937e744012000fd490e2e7424ca75ca",
@@ -6301,9 +6311,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 401,
       "score": 0.25
+    },
+    {
+      "bc": 403,
+      "candidate_hash": "8a2ca99dfd0fe418ff9f9a424e9979a3ba4fc72a73523bc9b9d9954818c2da23",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "3a5eeb0e3a31f7681c9c7b5f401c9a20608f4e17c27452c9bcbc13ed48f23cfb",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 402,
+      "score": 0.44345362
     }
   ],
-  "failures": 363,
+  "failures": 364,
   "families": {
     "discovered_primitive": {
       "fail": 119,
@@ -6313,11 +6333,11 @@
       "tested": 119
     },
     "mean_reversion": {
-      "fail": 85,
+      "fail": 86,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 35.64131490000001,
-      "tested": 85
+      "recent_failures": 3,
+      "score_sum": 36.08476852000001,
+      "tested": 86
     },
     "momentum_trend": {
       "fail": 74,
@@ -6336,7 +6356,7 @@
     "smc_ict": {
       "fail": 72,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 18.45243488,
       "tested": 72
     },
@@ -6348,8 +6368,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 403,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 404,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
