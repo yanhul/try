@@ -183,6 +183,11 @@ def migrate_legacy_state(s):
  if version==2:
   for entry in history:
    assert_history_entry_legal(entry)
+  evaluation=s.get('oos_evaluation')
+  if evaluation:
+   assert_history_entry_legal(evaluation)
+   if evaluation not in history:
+    raise OOSLifecycleError('OOS_EVALUATION_NOT_PRESENT_IN_HISTORY')
   return False
  changed=False
  for entry in history:
