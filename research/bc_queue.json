@@ -1,28 +1,26 @@
 [
   {
-    "bc": 296,
-    "candidate_hash": "f1c0f3f5df4947329b57258bd0f2bf2a625c377bc56f946483293f4bd4680c02",
-    "conceptual_change": "Shifted from price-based volatility indicators to pure volume-trend momentum, evaluating if the 20-period rolling mean of volume exceeding a normalized threshold signals sustainable trend participation.",
+    "bc": 297,
+    "candidate_hash": "739151e129f20050f84f2aa47628e8b44afd8ef4186855d2057cafdcb84dbdff",
+    "conceptual_change": "Instead of evaluating price levels or rolling averages of price-derived indicators, this hypothesis utilizes the delta of the close_location primitive as a proxy for identifying localized liquidity exhaustion (short-term reversals) within the SMC framework.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "volume",
-      "mechanism_family": "momentum_trend",
-      "threshold": 0.05,
-      "window": 20
+      "direction": "below",
+      "mechanism_family": "smc_ict",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend||volume||above",
+    "novelty_key": "smc_ict||||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
-      "window": 20
+      "threshold": 0.005,
+      "window": null
     },
-    "parent_bc": 295,
+    "parent_bc": 296,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
