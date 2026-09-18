@@ -1,0 +1,27 @@
+{
+  "bc": 260,
+  "candidate_hash": "4c6856616c57284b6cced4e21c749d6d345464e56661387ac3b9b59f9dfe216a",
+  "conceptual_change": "Instead of static distance metrics, this uses the change (delta) in VWAP distance over a 24-period window to detect rapid mean reversion exhaustion, measuring if price is accelerating back toward the VWAP anchor.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "delta",
+    "threshold": 0.005,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|delta|vwap_distance||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 24
+  },
+  "parent_bc": 259,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
