@@ -20,11 +20,12 @@ def test_legacy_promotion_verdict_is_demoted_to_unknown():
     changed = migrate_legacy_state(state)
     assert changed is True
     entry = state["history"][0]
-    assert entry["decision"] == "LEGACY_UNVERIFIED_OOS"
+    assert entry["decision"] == "PROMOTE_TO_FUTURE_OOS_TEST"
     assert entry["legacy_oos_verdict"] == "OOS_FAIL"
     assert entry["oos_verdict"] is None
     assert entry["oos_executed"] is False
     assert entry["oos_state"] == "UNKNOWN"
+    assert entry["semantic_status"] == "LEGACY_UNVERIFIED_OOS"
     assert state["terminal_reason"] is None
     assert state["legacy_terminal_reason"] == "OOS_FAIL"
     assert state["state_schema_version"] == 2
