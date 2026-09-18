@@ -1,0 +1,41 @@
+{
+  "bc": 319,
+  "parent_bc": 318,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "8a77334d7b232ccc2d2e6ce3ad9ef6ab3b2a91e32fe5973fcfc6a49feb46250c",
+  "conceptual_change": "Shifting from standard trend-following identifiers to a relationship-based momentum signal using the spread between price proximity and relative volume activity.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 12,
+    "skipped_overlap_trades": 9,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 3,
+      "win_count": 0,
+      "loss_count": 3,
+      "win_rate": 0.0,
+      "total_return": -0.03672869063186579,
+      "avg_return": -0.012395920815836793,
+      "profit_factor": 0.0,
+      "max_drawdown": 0.03672869063186579,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

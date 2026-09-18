@@ -1,29 +1,29 @@
 [
   {
-    "bc": 319,
-    "candidate_hash": "8a77334d7b232ccc2d2e6ce3ad9ef6ab3b2a91e32fe5973fcfc6a49feb46250c",
-    "conceptual_change": "Shifting from standard trend-following identifiers to a relationship-based momentum signal using the spread between price proximity and relative volume activity.",
+    "bc": 320,
+    "candidate_hash": "264e900cecfaa70ba47e25ad06600faeb6e4dd0a9bf8a60989d5bb3cd8e7fec3",
+    "conceptual_change": "Shift to a ratio-based mean reversion mechanism comparing price levels to relative volume fluctuations rather than windowed moving averages.",
     "discovery_spec": {
-      "direction": "above",
+      "direction": "below",
       "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "difference",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
       "right": "volume_ratio",
-      "threshold": 0.05
+      "threshold": 1.05
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|volume_ratio|above",
+    "novelty_key": "mean_reversion|ratio|close|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 1.05,
       "window": null
     },
-    "parent_bc": 318,
+    "parent_bc": 319,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
