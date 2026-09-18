@@ -1,0 +1,26 @@
+{
+  "bc": 277,
+  "candidate_hash": "943fa58db560ff7cd1b0a6ee307d9c1c8eb456e00b733b20be71142310914418",
+  "conceptual_change": "Shifting focus from absolute price levels to normalized distribution of close location relative to the periodic high-low range, identifying institutional 'discount' zones through z-score distribution.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close_location",
+    "mechanism_family": "smc_ict",
+    "operator": "zscore",
+    "threshold": 1.5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|zscore|close_location||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": null
+  },
+  "parent_bc": 276,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
