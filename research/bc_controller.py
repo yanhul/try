@@ -144,7 +144,7 @@ def oos_current_state(s,bc):
  entries=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
  return entries[-1].get('oos_state') if entries else None
 
-def ensure_oos_state(s,bc,candidate_hash,target):
+def ensure_oos_state(s,bc,candidate_hash,target,**event_extra):
  from research.oos_lifecycle import OOSState, advance
  target=OOSState(target)
  current=oos_current_state(s,bc)
@@ -163,7 +163,7 @@ def ensure_oos_state(s,bc,candidate_hash,target):
  else:
   start=path.index(OOSState(current))+1
  for state in path[start:path.index(target)+1]:
-  append_oos_event(s,lifecycle_event(state,bc=bc,candidate_hash=candidate_hash))
+  append_oos_event(s,lifecycle_event(state,bc=bc,candidate_hash=candidate_hash,**event_extra if state == OOSState.OOS_RECEIPT else {}))
 
 def append_promotion_event(s,bc,candidate_hash):
  existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
@@ -330,7 +330,7 @@ def main():
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EXECUTED')
   checkpoint(s,'OOS_EXECUTED',bc)
-  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT')
+  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT',receipt_type=receipt.get('receipt_type'),receipt_schema_version=receipt.get('schema_version'),receipt_id=receipt.get('result_sha256'))
   receipt_events=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('oos_state')=='OOS_RECEIPT']
   if len(receipt_events)!=1: return hold(s,'HOLD_OOS_RECEIPT_EVENT_AMBIGUOUS',bc,retryable=False)
   rec=receipt_events[0]
