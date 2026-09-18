@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2935,
-    "expanded": 2543,
-    "normalized": 2543,
+    "raw": 2936,
+    "expanded": 2544,
+    "normalized": 2544,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -3476,6 +3476,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -7076,22 +7092,6 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -17114,6 +17114,22 @@
       "source_timestamp": "2026-09-18T14:49:42.207Z",
       "lineage": {
         "source": "659bd459faa04b7e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "da69206152aaeba6",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/StefRe/violentmonkey-userscripts",
+      "title": "StefRe/violentmonkey-userscripts",
+      "description": "Use scripts for [violentmonkey](https://violentmonkey.github.io/).",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T14:57:39.850Z",
+      "lineage": {
+        "source": "da69206152aaeba6",
         "family": "china_a_share",
         "rounds": []
       }
@@ -36047,6 +36063,22 @@
       }
     },
     {
+      "candidate_id": "f257c9e93022e8d8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
+      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f257c9e93022e8d8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6e772af56b3c70b3",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5b9a2e411446b5ceef863b2f7cde78e2becfd23e",
@@ -42090,22 +42122,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "db1b404b2a31e2f5",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f257c9e93022e8d8",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
-      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
-      "description": "",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f257c9e93022e8d8",
         "family": "mean_reversion",
         "rounds": []
       }
