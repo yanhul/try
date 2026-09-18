@@ -4,7 +4,7 @@ from research.oos_lifecycle import OOSLifecycleError,OOSState,advance,assert_his
 def result():
  return {"bc":306,"candidate_hash":"c306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"dataset":{"sha256":"d306"},"protocol_sha256":"p306"}
 def receipt():
- return {"schema_version":1,"receipt_type":"OOS_EXECUTION_RECEIPT","bc":306,"candidate_hash":"c306","dataset_sha256":"d306","protocol_sha256":"p306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash"}}
+ return {"schema_version":1,"receipt_type":"OOS_EXECUTION_RECEIPT","bc":306,"candidate_hash":"c306","dataset_sha256":"d306","protocol_sha256":"p306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash"}
 
 def test_promotion_is_pending_and_verdict_free():
  e=promotion_event(); assert e["oos_state"]=="OOS_PENDING" and e["oos_verdict"] is None; assert_history_entry_legal(e)
