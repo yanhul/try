@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 333,
+    "candidate_hash": "00777f739b3f98dc0a5447335ebc0a736a48a001e6e26b2779198365829a2b26",
+    "conceptual_change": "Move from standard price momentum to an normalized price-to-volume divergence signal, specifically using the difference between close and volume over a 24-period lookback window to isolate liquidity-weighted momentum exhaustion.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.0,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|difference|close|volume|below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.0,
+      "window": 24
+    },
+    "parent_bc": 332,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
