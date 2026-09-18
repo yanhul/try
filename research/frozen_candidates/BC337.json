@@ -1,0 +1,27 @@
+{
+  "bc": 337,
+  "candidate_hash": "c1c4002c8aabd3802c2c1f7246ed27727c39aab452116f13eb618929447640bd",
+  "conceptual_change": "Shift from volume-based liquidity signals to volatility-normalized range contraction signals to identify mean reversion entries when price action becomes abnormally compressed.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|zscore|range_ratio||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 20
+  },
+  "parent_bc": 336,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
