@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2959,
-    "expanded": 2567,
-    "normalized": 2567,
+    "raw": 2960,
+    "expanded": 2568,
+    "normalized": 2568,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -2057,6 +2057,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -2148,6 +2164,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2916,6 +2948,22 @@
       "source_timestamp": "1978",
       "lineage": {
         "source": "519731fd846961a5",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -4089,6 +4137,22 @@
       }
     },
     {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4180,6 +4244,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4612,22 +4692,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -6937,22 +7001,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -8649,22 +8697,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -8692,22 +8724,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "f603ba0518586c25",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -9124,22 +9140,6 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -25663,6 +25663,22 @@
       }
     },
     {
+      "candidate_id": "3dddc6f87a9562bd",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/wcbrocato/ai-deal-finder",
+      "title": "wcbrocato/ai-deal-finder",
+      "description": "Mirror of the GitHub-authoritative AI Deal Finder skill project.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T17:34:37.734Z",
+      "lineage": {
+        "source": "3dddc6f87a9562bd",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dde663d06bd58e32",
       "source": "gitlab",
       "source_url": "https://gitlab.com/wekan/wekan",
@@ -37263,6 +37279,22 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -37691,22 +37723,6 @@
       "lineage": {
         "source": "49907d2f67f821ee",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
         "rounds": []
       }
     },
