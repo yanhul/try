@@ -1,0 +1,27 @@
+{
+  "bc": 381,
+  "candidate_hash": "3609f2a1249f085ddb44682140ebc743587d968e8b37b9461f40c1db2090b8f4",
+  "conceptual_change": "Transitioning from simple mean-distance thresholds to a normalized relative-volume ratio interaction. Instead of checking raw distance, this evaluates the intensity of vwap-deviation scaled against current volume surges, identifying mean-reversion triggers when relative price distance is compressed during low-volume accumulation.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 0.95,
+    "window": null
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|vwap_distance|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.95,
+    "window": null
+  },
+  "parent_bc": 380,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
