@@ -1,0 +1,27 @@
+{
+  "bc": 367,
+  "candidate_hash": "bea8ffa02e7c4a6291e1b0539393b8ae33cc3c78f6d8c65f6a25c101c436b046",
+  "conceptual_change": "Shifted from absolute volume or price thresholds to a relative relationship between price efficiency (vwap_distance) and immediate volume flow (volume_ratio) to filter trend strength.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|vwap_distance|volume_ratio|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 366,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
