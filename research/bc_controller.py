@@ -6,6 +6,7 @@ from research.oos_lifecycle import (
     assert_history_entry_legal,
     evaluate_oos,
     terminal_reason_from_oos,
+    OOSLifecycleError,
 )
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','1')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
@@ -97,8 +98,7 @@ def normalize_queue(s):
  if q!=active: write_queue(active)
  return active
 def verify_external_authority(bc,candidate_hash=None):
- contract=os.environ.get('AIOS_CONTRACT_PATH'); permit=os.environ.get('AIOS_PERMIT_PATH'); attestation=os.environ.get('AIOS_ATTESTATION_PATH'); secret=os.environ.get('AIOS_AUTHORITY_SECRET')
- if not all((contract,permit,attestation,secret)) and candidate_hash:
+ contract=os.environ.get('AIOS_CONTRACT_PATH'); permit=os.environ.get('AIOS_PERMIT_PATH'); attestation=os.environ.get('AIOS_ATTESTATION_PATH'); secret=os.environ.get('AIOS_AUTHORITY_SECRET') if not all((contract,permit,attestation,secret)) and candidate_hash:
   try:
    from research.aios_oos_authority import provision
    records=provision(bc,candidate_hash); os.environ.update(AIOS_CONTRACT_PATH=records['contract'],AIOS_PERMIT_PATH=records['permit'],AIOS_ATTESTATION_PATH=records['attestation']); contract,permit,attestation=records['contract'],records['permit'],records['attestation']; print(f'AIOS_AUTHORITY_PROVISIONED BC{bc}')
@@ -113,6 +113,50 @@ def verify_external_authority(bc,candidate_hash=None):
    if stored.get('input_digest')!=candidate_hash: print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+def migrate_legacy_state(s):
+    """Fail-closed migration of pre-canonical OOS history.
+    
+    Legacy PROMOTE_TO_FUTURE_OOS_TEST entries carrying OOS_PASS/OOS_FAIL
+    cannot be treated as evaluated verdicts because the old state does not
+    prove execution+receipt+evaluation. Preserve the raw historical claim
+    under legacy_oos_verdict, but remove its authority as oos_verdict.
+    """
+    changed=False
+    history=s.get('history',[])
+    if not isinstance(history,list):
+        raise OOSLifecycleError('STATE_HISTORY_SCHEMA_INVALID')
+    for entry in history:
+        if not isinstance(entry,dict):
+            raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
+        verdict=entry.get('oos_verdict')
+        if entry.get('decision')==PROMOTE and verdict in {'OOS_PASS','OOS_FAIL'}:
+            entry['legacy_oos_verdict']=verdict
+            entry['oos_verdict']=None
+            entry['oos_executed']=False
+            entry['oos_state']='UNKNOWN'
+            entry['decision']='LEGACY_UNVERIFIED_OOS'
+            entry['semantic_status']='UNKNOWN'
+            entry['migration_id']='OOS_CANONICAL_V1'
+            entry['migration_reason']='legacy promotion carried an unverifiable OOS verdict; execution, receipt, and evaluation lineage are absent'
+            changed=True
+    terminal_reason=s.get('terminal_reason')
+    if terminal_reason in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
+        s['legacy_terminal_reason']=terminal_reason
+        s['terminal_reason']=None
+        changed=True
+    if changed:
+        s.setdefault('state_migrations',[])
+        if not any(x.get('migration_id')=='OOS_CANONICAL_V1' for x in s['state_migrations'] if isinstance(x,dict)):
+            s['state_migrations'].append({
+                'migration_id':'OOS_CANONICAL_V1',
+                'status':'APPLIED',
+                'reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists',
+            })
+        s['state_schema_version']=2
+    else:
+        s.setdefault('state_schema_version',2)
+    return changed
+
 def authorized_state(s):
  caps=s.get('capabilities',[])
  if not isinstance(caps,list) or any(str(x)!='research' for x in caps): print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
@@ -160,6 +204,12 @@ def epoch_seed_failure(parent,start):
  except (OSError,TypeError,ValueError): return None
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
+ try:
+  if migrate_legacy_state(s):
+   save(s)
+ except OOSLifecycleError as exc:
+  checkpoint(s,'HOLD',error=str(exc))
+  return 4
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
  if s.get('terminal'):
   bc=int(s.get('current_bc') or s.get('last_bc') or 0)
@@ -197,8 +247,7 @@ def main():
  evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
  if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
- if rc: return rc
- if PROMOTE in out:
+ if rc: return rc if PROMOTE in out:
   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
   if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
