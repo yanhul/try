@@ -1,0 +1,28 @@
+{
+  "bc": 336,
+  "candidate_hash": "6069dc3316b2291504f1ff5be61b35950f1525dc1a014f15f70719782aeeb082",
+  "conceptual_change": "Transitioning from price-based mean reversion to liquidity-based normalization, specifically targeting low volume relative to local volume flow to capture mean reversion entries during volatility exhaustion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.25,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|volume_ratio|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 24
+  },
+  "parent_bc": 335,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
