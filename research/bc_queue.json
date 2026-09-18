@@ -1,29 +1,29 @@
 [
   {
-    "bc": 261,
-    "candidate_hash": "0c12b376fca4d9ede0916f39222153fcd031e9345531f6739c266474b80183d7",
-    "conceptual_change": "Shifted from volume-based ranking to price-based ranking to identify momentum exhaustion where the current close is in the lower quartile of the trailing 24-hour range, indicating potential trend acceleration in a bearish direction.",
+    "bc": 262,
+    "candidate_hash": "5f312dc578711c6bd4a93efb169d4ca70ba14fd1316a853386e4e4b3438cffc2",
+    "conceptual_change": "Shifted from absolute price thresholds to identifying ICT-style supply-side liquidity sweeps, where a significant upward deviation of the current bar's high relative to its opening price (representing a wick formation) signals potential order block mitigation or liquidity grab in a bearish trend context.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
-      "operator": "rank",
-      "threshold": 0.75,
-      "window": 24
+      "direction": "above",
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "open",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rank|close||below",
+    "novelty_key": "smc_ict|difference|high|open|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.75,
-      "window": 24
+      "threshold": 0.005,
+      "window": null
     },
-    "parent_bc": 260,
+    "parent_bc": 261,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
