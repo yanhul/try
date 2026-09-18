@@ -1,29 +1,30 @@
 [
   {
-    "bc": 316,
-    "candidate_hash": "fcce15e4e7585bee230538597b0933f66247e2e92b786d8c19e6cac05179064e",
-    "conceptual_change": "Changed from trend following on price/volume to trend-regime detection using volatility compression, specifically filtering for low range-ratio standard deviation (48h lookback) as a signal for incipient momentum exhaustion.",
+    "bc": 317,
+    "candidate_hash": "f93cbed3014f56826391972970d03c0e88ac8f7c41dc104db990b2802e13c9a6",
+    "conceptual_change": "Shift from liquidity sweep signal models to mean-reversion liquidity structural drift detection, specifically focusing on the deviation of the high from the 24-period rolling mean in an SMC context to identify potential exhaustion before a liquidity grab.",
     "discovery_spec": {
       "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_std",
-      "threshold": 0.05,
-      "window": 48
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "rolling_mean",
+      "threshold": 0.005,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|range_ratio||below",
+    "novelty_key": "smc_ict|difference|high|rolling_mean|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
-      "window": 48
+      "threshold": 0.005,
+      "window": 24
     },
-    "parent_bc": 315,
+    "parent_bc": 316,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
