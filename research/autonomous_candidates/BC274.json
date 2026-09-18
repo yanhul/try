@@ -1,0 +1,27 @@
+{
+  "bc": 274,
+  "candidate_hash": "e6372e874268b6681e218da5dcfbd7b5507e1ff04bb2b9b90fb0eddad57896d5",
+  "conceptual_change": "Shifting from price or volatility levels to a mean reversion mechanism based on the rolling average of volume_ratio (24H window). This tests if sustained deviations in relative volume density trigger reversals rather than price-based distance metrics.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "rolling_mean",
+    "threshold": 0.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|rolling_mean|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 24
+  },
+  "parent_bc": 273,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
