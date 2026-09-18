@@ -1,0 +1,41 @@
+{
+  "bc": 272,
+  "parent_bc": 271,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "c75f993b9f933493646dd4c13b1bde83494760e427bda52940ef597d69f224d0",
+  "conceptual_change": "Shifted from absolute price volatility to the relative scale of VWAP deviation normalized by range volatility to capture mean-reversion exhaustion in compressed 1H price action.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 725,
+    "skipped_overlap_trades": 683,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 42,
+      "win_count": 11,
+      "loss_count": 31,
+      "win_rate": 0.2619047619047619,
+      "total_return": -0.19006746421382725,
+      "avg_return": -0.004925382984013066,
+      "profit_factor": 0.46202385927444395,
+      "max_drawdown": 0.20727306236306686,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

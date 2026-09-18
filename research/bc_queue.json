@@ -1,28 +1,29 @@
 [
   {
-    "bc": 272,
-    "candidate_hash": "c75f993b9f933493646dd4c13b1bde83494760e427bda52940ef597d69f224d0",
-    "conceptual_change": "Shifted from absolute price volatility to the relative scale of VWAP deviation normalized by range volatility to capture mean-reversion exhaustion in compressed 1H price action.",
+    "bc": 273,
+    "candidate_hash": "a6843265d621d767879c8fbfa4030f294f009956b0a15637cc25297a8eead64b",
+    "conceptual_change": "Transitioned from simple price-based trends to analyzing the rolling average of normalized range volatility (range_ratio) to identify periods of expansion following volatility compression, distinct from price-only momentum.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "vwap_distance",
-      "operator": "ratio",
-      "right": "range_ratio",
-      "threshold": 0.5
+      "direction": "above",
+      "left": "range_ratio",
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_mean",
+      "threshold": 0.0,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|ratio|vwap_distance|range_ratio|below",
+    "novelty_key": "momentum_trend|rolling_mean|range_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.5,
-      "window": null
+      "threshold": 0.0,
+      "window": 24
     },
-    "parent_bc": 271,
+    "parent_bc": 272,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
