@@ -75,6 +75,15 @@ def test_adversarial_executed_false_plus_oos_fail_is_rejected():
         })
 
 
+def test_promotion_and_evaluation_are_distinct_events():
+    promotion = promotion_event()
+    evaluation = evaluate_oos(valid_result(), valid_receipt())
+    assert_history_entry_legal(promotion)
+    assert_history_entry_legal(evaluation)
+    assert promotion["oos_verdict"] is None
+    assert evaluation["oos_verdict"] == "OOS_FAIL"
+
+
 def test_adversarial_promotion_cannot_carry_verdict():
     with pytest.raises(OOSLifecycleError, match="PROMOTION_MUST_NOT_CARRY_OOS_VERDICT"):
         assert_history_entry_legal({
