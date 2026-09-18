@@ -117,6 +117,23 @@ def verify_external_authority(bc,candidate_hash=None):
 def append_oos_event(s,event):
  event=dict(event)
  assert_history_entry_legal(event)
+ bc=event.get('bc')
+ target=event.get('oos_state')
+ if bc is None or target is None: raise OOSLifecycleError('OOS_EVENT_REQUIRES_BC_AND_STATE')
+ prior=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
+ if prior:
+  current=prior[-1].get('oos_state')
+  try:
+   from research.oos_lifecycle import advance
+   advance(current,target)
+  except Exception as exc:
+   raise OOSLifecycleError(f'OOS_HISTORY_TRANSITION_INVALID:{current}->{target}') from exc
+ else:
+  raise OOSLifecycleError('OOS_EVENT_REQUIRES_PROMOTION_PREDECESSOR')
+ for existing in prior:
+  if existing.get('oos_state')==target and existing.get('candidate_hash')==event.get('candidate_hash'):
+   if existing != event: raise OOSLifecycleError('OOS_EVENT_REPLAY_MISMATCH')
+   return existing
  s.setdefault('history',[]).append(event)
  return event
 
