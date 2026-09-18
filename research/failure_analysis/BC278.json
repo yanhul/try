@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 278,
+  "candidate_hash": "321a62bb1ab5ce1f3acf9aed10adff356edfe2fc2d51ce8ea28ae96b8c5f6634",
+  "conceptual_change": "Shifting from simple price-to-rolling-mean comparisons to a ratio of vwap_distance (deviation from volume-weighted fair value) normalized by range_ratio (relative volatility), targeting over-extended price action.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 277,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000668202467291535,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 16,
+    "max_drawdown": 0.04866932550696065,
+    "profit_factor": 0.9090577136708607,
+    "total_return": -0.02060679388804565,
+    "trade_count": 27,
+    "win_count": 11,
+    "win_rate": 0.4074074074074074
+  }
+}
