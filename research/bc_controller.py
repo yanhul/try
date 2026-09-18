@@ -184,8 +184,15 @@ def migrate_legacy_state(s):
  version=int(s.get('state_schema_version',1))
  if version not in {1,2}: raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
  if version==2:
+  seen_states={}
   for entry in history:
    assert_history_entry_legal(entry)
+   if entry.get('oos_state'):
+    bc_key=int(entry.get('bc',-1))
+    key=(bc_key,entry.get('oos_state'))
+    if key in seen_states:
+     raise OOSLifecycleError('DUPLICATE_OOS_STATE')
+    seen_states[key]=entry
   evaluation=s.get('oos_evaluation')
   if evaluation:
    assert_history_entry_legal(evaluation)
@@ -216,6 +223,12 @@ def migrate_legacy_state(s):
   s['legacy_terminal_reason']=s['terminal_reason']; s['terminal_reason']=None; s['terminal']=False; changed=True
  if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'}:
   s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']; s['campaign_terminal_reason']=None; s['terminal']=False; changed=True
+ seen_states={}
+ for entry in history:
+  if entry.get('oos_state'):
+   key=(int(entry.get('bc',-1)),entry.get('oos_state'))
+   if key in seen_states: raise OOSLifecycleError('DUPLICATE_OOS_STATE')
+   seen_states[key]=entry
  if changed:
   s.setdefault('state_migrations',[]).append({'migration_id':'OOS_CANONICAL_V1','status':'APPLIED','reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists'})
   s['state_schema_version']=2
