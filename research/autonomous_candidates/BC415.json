@@ -1,0 +1,26 @@
+{
+  "bc": 415,
+  "candidate_hash": "0a7fae130ab5ec591efcff01991ecde40ba9b4a0d29bd394531536c703956253",
+  "conceptual_change": "Transitioning from simple trend identification to an institutional-style baseline variance check, where we prioritize trades only when the close price exceeds the rolling VWAP distance threshold, filtering out noise in low-volatility regimes.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "difference",
+    "right": "vwap_distance",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|difference|close|vwap_distance|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 414,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
