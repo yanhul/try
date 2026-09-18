@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 306,
+  "candidate_hash": "511c15fd50748bda5887ce8afa1eee6ef74b24c976cd3735c35d40b1bdfe6a9f",
+  "conceptual_change": "Instead of static price level distance, I am using the delta of close_location to capture intra-bar price movement velocity. A positive delta suggests price is moving toward the high of the range after a consolidation or dip, identifying potential mean reversion to the upper bound of the recent range.",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 305,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000841646222172943,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 18,
+    "max_drawdown": 0.04876866681110581,
+    "profit_factor": 0.886867243144444,
+    "total_return": -0.027940234337365033,
+    "trade_count": 30,
+    "win_count": 12,
+    "win_rate": 0.4
+  }
+}

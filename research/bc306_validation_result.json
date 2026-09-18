@@ -1,0 +1,96 @@
+{
+  "schema_version": 10,
+  "bc": 306,
+  "parent_bc": 305,
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "511c15fd50748bda5887ce8afa1eee6ef74b24c976cd3735c35d40b1bdfe6a9f",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "delta",
+    "threshold": -0.15
+  },
+  "oos_selection_used": false,
+  "oos_executed": false,
+  "dataset": {
+    "path": "/home/runner/work/try/try/data/BTCUSDT_1h.csv",
+    "sha256": "69959f8163ba2124b87f4536128f04026df3140d61080f8a2b9b4d6a6286379b",
+    "bars": 3624
+  },
+  "evaluation_spec": {
+    "stop_fraction": 0.01,
+    "reward_multiple": 2.0,
+    "cost_model_status": "AVAILABLE",
+    "validation_basis": "NET_REQUIRED_FOR_PROMOTION",
+    "min_validation_trades": 20,
+    "min_validation_profit_factor": 1.05,
+    "min_validation_total_return": 0.0,
+    "max_validation_drawdown": 0.3
+  },
+  "candidate_universe": "all_bars",
+  "cost_model": {
+    "status": "AVAILABLE",
+    "label": "generic_spot_preregistered",
+    "fee_bps_per_side": 10.0,
+    "slippage_bps_per_side": 2.0,
+    "fee_round_trip_fraction": 0.002,
+    "slippage_model": "adverse_price_per_side",
+    "assumption_scope": "research_assumption_not_venue_specific"
+  },
+  "IS": {
+    "candidate_trades": 2173,
+    "accepted_signals": 2043,
+    "skipped_overlap_trades": 1826,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 217,
+      "win_count": 66,
+      "loss_count": 151,
+      "win_rate": 0.30414746543778803,
+      "total_return": -0.5220420472588085,
+      "avg_return": -0.0033018814426259203,
+      "profit_factor": 0.6173158024048314,
+      "max_drawdown": 0.5461094791065653,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "VALIDATION": {
+    "candidate_trades": 725,
+    "accepted_signals": 678,
+    "skipped_overlap_trades": 633,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 20,
+      "loss_count": 25,
+      "win_rate": 0.4444444444444444,
+      "total_return": 0.021329127286434213,
+      "avg_return": 0.0005767309738713549,
+      "profit_factor": 1.0837134979388046,
+      "max_drawdown": 0.0699112905766004,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": true,
+  "validation_gate_reasons": [],
+  "net_validation_gate": "PASS",
+  "validation_passed": true,
+  "validation_basis": "NET_REQUIRED_FOR_PROMOTION"
+}
