@@ -1,29 +1,29 @@
 [
   {
-    "bc": 388,
-    "candidate_hash": "bb59c81834d8fc47024e464bd9b4ed6919261594a41849da82c13758139d9867",
-    "conceptual_change": "Instead of relying on simple liquidity sweeps or price-level identification, this hypothesis measures the expansion of volatility (range_ratio) relative to anomalous volume spikes (volume_ratio) to detect institutional liquidity voids (FVGs) before consolidation.",
+    "bc": 389,
+    "candidate_hash": "c9b45b0b5587581487025a688760ebd61eb44943db7c063ab5090630e081d4d6",
+    "conceptual_change": "Shift from volatility-based liquidity assessment to a directional price-change momentum metric, focusing on the spread between the candle close and open to filter for sustained directional drift.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "range_ratio",
-      "mechanism_family": "smc_ict",
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
       "operator": "difference",
-      "right": "volume_ratio",
+      "right": "open",
       "threshold": 0.05
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|range_ratio|volume_ratio|above",
+    "novelty_key": "momentum_trend|difference|close|open|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.05,
       "window": null
     },
-    "parent_bc": 387,
+    "parent_bc": 388,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
