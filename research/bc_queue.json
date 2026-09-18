@@ -1,28 +1,29 @@
 [
   {
-    "bc": 330,
-    "candidate_hash": "525e55b6d24752d06c3b39185f45c3b5a09b4c2a3d07472fbf7efc5896247e3b",
-    "conceptual_change": "Shifted from price-based momentum to evaluating the exhaustion of trend relative to the VWAP by checking if the price has deviated below the rolling mean of the vwap_distance, identifying mean-reverting momentum failure.",
+    "bc": 331,
+    "candidate_hash": "6eb70039e574f20ddc84499126a2dcdc67c76285646797d796b4f08259b220d5",
+    "conceptual_change": "Instead of evaluating price-based distance or volume-price metrics, this hypothesis utilizes the rolling mean of the volume_ratio to identify periods of low-relative-volume exhaustion within the mean-reversion family.",
     "discovery_spec": {
       "direction": "below",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "threshold": 0.0,
-      "window": 48
+      "left": "volume_ratio",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_mean",
+      "threshold": 1.25,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend||vwap_distance||below",
+    "novelty_key": "mean_reversion|rolling_mean|volume_ratio||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
-      "window": 48
+      "threshold": 1.25,
+      "window": 24
     },
-    "parent_bc": 329,
+    "parent_bc": 330,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
