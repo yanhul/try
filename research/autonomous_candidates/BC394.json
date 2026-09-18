@@ -1,0 +1,28 @@
+{
+  "bc": 394,
+  "candidate_hash": "08f239dfb068bd1a09b2c5558a09be9884e5d52732200760f91616b041535648",
+  "conceptual_change": "Shifted from simple price momentum to a relative structural momentum metric comparing the deviation from VWAP against the normalized volume level to detect institutional momentum persistence.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "volume",
+    "threshold": 0.005,
+    "window": null
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|difference|vwap_distance|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 393,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
