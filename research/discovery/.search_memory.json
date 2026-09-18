@@ -990,6 +990,16 @@
       "parent_bc": 346,
       "score": 0.25
     },
+    "momentum_trend|rank|vwap_distance||below": {
+      "bc": 399,
+      "candidate_hash": "1ed2c82279edfc43c4ef1e633768458df30c53f710e062623759a3f9fdbb6f82",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "19ba11dd23652942816aede5762183b20e775bfea1502066ab7398483f7633b0",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 398,
+      "score": 0.29230661
+    },
     "momentum_trend|ratio|close|rolling_mean|above": {
       "bc": 185,
       "candidate_hash": "38a1c4be0c7aec6cce97d65d509e91ea5c6da2ad79afac910d31bbb623ac821d",
@@ -6221,14 +6231,24 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 397,
       "score": 0.43292076
+    },
+    {
+      "bc": 399,
+      "candidate_hash": "1ed2c82279edfc43c4ef1e633768458df30c53f710e062623759a3f9fdbb6f82",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "19ba11dd23652942816aede5762183b20e775bfea1502066ab7398483f7633b0",
+      "family": "momentum_trend",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 398,
+      "score": 0.29230661
     }
   ],
-  "failures": 359,
+  "failures": 360,
   "families": {
     "discovered_primitive": {
       "fail": 118,
       "pass": 0,
-      "recent_failures": 1,
+      "recent_failures": 0,
       "score_sum": 34.39356652999999,
       "tested": 118
     },
@@ -6240,11 +6260,11 @@
       "tested": 84
     },
     "momentum_trend": {
-      "fail": 73,
+      "fail": 74,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 21.17094078000001,
-      "tested": 73
+      "recent_failures": 3,
+      "score_sum": 21.46324739000001,
+      "tested": 74
     },
     "regime": {
       "fail": 2,
@@ -6268,8 +6288,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "momentum_trend",
-  "last_selection_bc": 399,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 400,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

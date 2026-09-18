@@ -1,29 +1,28 @@
 [
   {
-    "bc": 399,
-    "candidate_hash": "1ed2c82279edfc43c4ef1e633768458df30c53f710e062623759a3f9fdbb6f82",
-    "conceptual_change": "Shift from simple VWAP distance thresholding to relative rank-based exhaustion in trend strength, isolating regimes where VWAP deviation is not at its historical ceiling.",
+    "bc": 400,
+    "candidate_hash": "490b151d367abd3348878ee0dd727e071fe389845d07c72db29eb154a986c4a6",
+    "conceptual_change": "Transitioned from deviation-based thresholds to rank-based relative positioning of vwap_distance, focusing on normalized localized exhaustion rather than absolute price-distance triggers.",
     "discovery_spec": {
       "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
       "operator": "rank",
-      "threshold": 0.85,
-      "window": 24
+      "threshold": 0.2,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rank|vwap_distance||below",
+    "novelty_key": "|rank|vwap_distance||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.85,
-      "window": 24
+      "threshold": 0.2,
+      "window": 20
     },
-    "parent_bc": 398,
+    "parent_bc": 399,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
