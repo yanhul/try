@@ -1,0 +1,27 @@
+{
+  "bc": 298,
+  "candidate_hash": "8184fa58eff27bb6864b1db09a3e7c2d9fb214215cb73eaa1f1f09fdf39f66c2",
+  "conceptual_change": "Shift from price-level comparisons or simple moving averages to volatility-based trend identification, focusing on periods where the 24-hour rolling standard deviation of the close price exceeds a specific threshold, signaling high-momentum volatility regimes.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "rolling_std",
+    "threshold": 0.005,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|rolling_std|close||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": 24
+  },
+  "parent_bc": 297,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
