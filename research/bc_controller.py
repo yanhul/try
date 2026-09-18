@@ -121,6 +121,13 @@ def append_oos_event(s,event):
  target=event.get('oos_state')
  if bc is None or target is None: raise OOSLifecycleError('OOS_EVENT_REQUIRES_BC_AND_STATE')
  prior=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
+ # Exact replay is idempotent, but a same-state event with different evidence is corruption.
+ same=[x for x in prior if x.get('oos_state')==target and x.get('candidate_hash')==event.get('candidate_hash')]
+ if same:
+  if len(same)!=1 or same[0] != event: raise OOSLifecycleError('OOS_EVENT_REPLAY_MISMATCH')
+  return same[0]
+ if any(x.get('oos_state')==target for x in prior):
+  raise OOSLifecycleError('DUPLICATE_OOS_STATE')
  if prior:
   current=prior[-1].get('oos_state')
   try:
@@ -130,10 +137,6 @@ def append_oos_event(s,event):
    raise OOSLifecycleError(f'OOS_HISTORY_TRANSITION_INVALID:{current}->{target}') from exc
  else:
   raise OOSLifecycleError('OOS_EVENT_REQUIRES_PROMOTION_PREDECESSOR')
- for existing in prior:
-  if existing.get('oos_state')==target and existing.get('candidate_hash')==event.get('candidate_hash'):
-   if existing != event: raise OOSLifecycleError('OOS_EVENT_REPLAY_MISMATCH')
-   return existing
  s.setdefault('history',[]).append(event)
  return event
 
@@ -320,7 +323,9 @@ def main():
   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EXECUTED')
   checkpoint(s,'OOS_EXECUTED',bc)
   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT')
-  rec=s['history'][-1]
+  receipt_events=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('oos_state')=='OOS_RECEIPT']
+  if len(receipt_events)!=1: return hold(s,'HOLD_OOS_RECEIPT_EVENT_AMBIGUOUS',bc,retryable=False)
+  rec=receipt_events[0]
   rec.update({'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
   assert_history_entry_legal(rec)
   checkpoint(s,'OOS_RECEIPT',bc)
