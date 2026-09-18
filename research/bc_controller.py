@@ -147,8 +147,7 @@ def migrate_legacy_state(s):
             entry['oos_verdict']=None
             entry['oos_executed']=False
             entry['oos_state']='UNKNOWN'
-            entry['decision']='LEGACY_UNVERIFIED_OOS'
-            entry['semantic_status']='UNKNOWN'
+            entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
             entry['migration_id']='OOS_CANONICAL_V1'
             entry['migration_reason']='legacy promotion carried an unverifiable OOS verdict; execution, receipt, and evaluation lineage are absent'
             changed=True
