@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from enum import StrEnum
 from typing import Any
+import hashlib
+import json
 
 
 class OOSLifecycleError(ValueError):
@@ -104,7 +106,9 @@ def evaluate_oos(result: dict[str, Any], receipt: dict[str, Any]) -> dict[str, A
     if not isinstance(passed, bool):
         raise OOSLifecycleError("OOS_EVALUATION_VERDICT_MISSING")
     verdict = OOSState.OOS_PASS.value if passed else OOSState.OOS_FAIL.value
+    receipt_digest = hashlib.sha256(json.dumps(receipt, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
     return {
+        "event_type": "OOS_EVALUATION",
         "oos_state": OOSState.OOS_EVALUATED.value,
         "oos_verdict": verdict,
         "oos_executed": True,
@@ -112,6 +116,7 @@ def evaluate_oos(result: dict[str, Any], receipt: dict[str, Any]) -> dict[str, A
         "receipt_schema_version": receipt["schema_version"],
         "bc": result["bc"],
         "candidate_hash": result["candidate_hash"],
+        "receipt_digest": receipt_digest,
     }
 
 
@@ -132,6 +137,10 @@ def assert_history_entry_legal(entry: dict[str, Any]) -> None:
         if executed is not False:
             raise OOSLifecycleError("PROMOTION_MUST_BE_PRE_OOS")
     if verdict is not None:
+        if entry.get("event_type") != "OOS_EVALUATION":
+            raise OOSLifecycleError("OOS_VERDICT_REQUIRES_EVALUATION_EVENT")
+        if not entry.get("receipt_digest"):
+            raise OOSLifecycleError("OOS_VERDICT_REQUIRES_RECEIPT_BINDING")
         if verdict not in {OOSState.OOS_PASS.value, OOSState.OOS_FAIL.value}:
             raise OOSLifecycleError("UNKNOWN_OOS_VERDICT")
         if executed is not True:
