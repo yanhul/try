@@ -325,8 +325,17 @@ def main():
    assert_history_entry_legal(evaluation_entry)
   except OOSLifecycleError as exc:
    return hold(s,'HOLD_OOS_EVALUATION_INTEGRITY:'+str(exc),bc,retryable=False)
+  current=oos_current_state(s,bc)
+  if current=='OOS_EVALUATED':
+   existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('event_type')=='OOS_EVALUATION']
+   if len(existing)!=1 or existing[0].get('oos_verdict')!=evaluation_entry.get('oos_verdict') or existing[0].get('receipt_digest')!=evaluation_entry.get('receipt_digest'):
+    return hold(s,'HOLD_OOS_EVALUATION_REPLAY_MISMATCH',bc,retryable=False)
+   evaluation_entry=existing[0]
+  else:
+   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EVALUATED')
+   evaluation_entry['oos_state']='OOS_EVALUATED'
+   append_oos_event(s,evaluation_entry)
   s['oos_evaluation']=evaluation_entry
-  append_oos_event(s,evaluation_entry)
   checkpoint(s,'OOS_EVALUATED',bc)
   decision=evaluation['oos_verdict']
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
