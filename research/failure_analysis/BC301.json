@@ -1,0 +1,41 @@
+{
+  "bc": 301,
+  "parent_bc": 300,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "14efbc8b4817c6427105a49c591ae740a937e744012000fd490e2e7424ca75ca",
+  "conceptual_change": "Utilize the ratio of vwap_distance to volume_ratio to identify extended mean reversion targets where liquidity divergence suggests price exhaustion, moving away from simple volatility thresholds.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 295,
+    "skipped_overlap_trades": 251,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 44,
+      "win_count": 17,
+      "loss_count": 27,
+      "win_rate": 0.38636363636363635,
+      "total_return": -0.05462713055482371,
+      "avg_return": -0.0011734434672537519,
+      "profit_factor": 0.8457971770341441,
+      "max_drawdown": 0.10635494667559757,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

@@ -1,29 +1,29 @@
 [
   {
-    "bc": 301,
-    "candidate_hash": "14efbc8b4817c6427105a49c591ae740a937e744012000fd490e2e7424ca75ca",
-    "conceptual_change": "Utilize the ratio of vwap_distance to volume_ratio to identify extended mean reversion targets where liquidity divergence suggests price exhaustion, moving away from simple volatility thresholds.",
+    "bc": 302,
+    "candidate_hash": "aa95b9b681399b36fadcac5b8cb2e7125c0683cb7c5c2a22ba63856fb0a18499",
+    "conceptual_change": "Shifting from relative volume/price ratio to the trend intensity of VWAP deviation, specifically looking for sustained low-mean VWAP distance to confirm mean-reverting momentum exhaustion rather than breakouts.",
     "discovery_spec": {
-      "direction": "above",
+      "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "mean_reversion",
-      "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.25
+      "mechanism_family": "momentum_trend",
+      "operator": "rolling_mean",
+      "threshold": 0.005,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "mean_reversion|ratio|vwap_distance|volume_ratio|above",
+    "novelty_key": "momentum_trend|rolling_mean|vwap_distance||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.25,
-      "window": null
+      "threshold": 0.005,
+      "window": 24
     },
-    "parent_bc": 300,
+    "parent_bc": 301,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
