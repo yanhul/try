@@ -1,29 +1,29 @@
 [
   {
-    "bc": 280,
-    "candidate_hash": "28eac08167b9c5e02a9d4e1a5bbea0fcf7416b71b6981aead42c3ae20e20b4df",
-    "conceptual_change": "Shifted from absolute volume or price thresholds to measuring the contraction (low rolling standard deviation) of relative volume flow to isolate low-volatility momentum accumulation periods before trend initiation.",
+    "bc": 281,
+    "candidate_hash": "b708e644c7094f6f52058a9ed8c53ee0e683b35416481445c21272044fdbc8f3",
+    "conceptual_change": "Shifted from absolute volume metrics to identifying periods of localized price range expansion using rolling standard deviation of range_ratio, aiming to capture mean reversion after high volatility regimes.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "volume_ratio",
-      "mechanism_family": "momentum_trend",
+      "direction": "above",
+      "left": "range_ratio",
+      "mechanism_family": "mean_reversion",
       "operator": "rolling_std",
-      "threshold": 1.5,
+      "threshold": 0.05,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_std|volume_ratio||below",
+    "novelty_key": "mean_reversion|rolling_std|range_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
+      "threshold": 0.05,
       "window": 24
     },
-    "parent_bc": 279,
+    "parent_bc": 280,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2813,
-    "expanded": 2421,
-    "normalized": 2421,
+    "raw": 2815,
+    "expanded": 2423,
+    "normalized": 2423,
     "round1": 212,
     "deferred": 102,
     "survivors": 107,
@@ -2953,22 +2953,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3209,6 +3193,22 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "onchain",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3221,6 +3221,38 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -3444,6 +3476,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4217,22 +4265,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4660,6 +4692,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -8489,54 +8537,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -9273,6 +9273,38 @@
       }
     },
     {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -9300,6 +9332,22 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "6d93e7594371566c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9833,38 +9881,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -9956,22 +9972,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -19340,6 +19340,38 @@
       "source_timestamp": "2026-09-18T00:58:04.333Z",
       "lineage": {
         "source": "915bed67a9d43bfe",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64029607b305c9e0",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/sophgo/edk2-non-osi",
+      "title": "freedesktop-sdk/mirrors/github/sophgo/edk2-non-osi",
+      "description": "github.com: sophgo/edk2-non-osi.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T05:51:27.241Z",
+      "lineage": {
+        "source": "64029607b305c9e0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f62c8a4fe54c053f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/sophgo/zsbl",
+      "title": "freedesktop-sdk/mirrors/github/sophgo/zsbl",
+      "description": "github.com: sophgo/zsbl.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T05:51:52.180Z",
+      "lineage": {
+        "source": "f62c8a4fe54c053f",
         "family": "china_a_share",
         "rounds": []
       }
@@ -30161,6 +30193,22 @@
       }
     },
     {
+      "candidate_id": "66319896a7de85fd",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
+      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
+      "description": "OpenAlex work type=review year=2018",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "66319896a7de85fd",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "853ff5b2e9f1c418",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s10551-019-04160-5",
@@ -31777,22 +31825,6 @@
       }
     },
     {
-      "candidate_id": "66319896a7de85fd",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
-      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
-      "description": "OpenAlex work type=review year=2018",
-      "family": "onchain",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "66319896a7de85fd",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8e1ab433cf5afcbb",
       "source": "openalex",
       "source_url": "https://doi.org/10.1192/bjp.bp.110.083733",
@@ -32289,22 +32321,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -32332,6 +32348,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
