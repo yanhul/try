@@ -1,0 +1,27 @@
+{
+  "bc": 313,
+  "candidate_hash": "242dd8473bf76b15cc900ba2fe8e92c2613e468eb344a22981414011c3ddc98f",
+  "conceptual_change": "Shifting from relative price-to-mean distance to price-to-volume ratio variance as a mean reversion signal, isolating liquidity-imbalance-driven pullbacks.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "difference",
+    "right": "volume_ratio",
+    "threshold": 0.0
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|difference|close|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 312,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
