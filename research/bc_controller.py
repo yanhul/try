@@ -117,14 +117,40 @@ def verify_external_authority(bc,candidate_hash=None):
 def append_promotion_event(s, bc, candidate_hash):
     existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
     if existing:
-        for x in existing:
-            assert_history_entry_legal(x)
+        if len(existing) != 1:
+            raise OOSLifecycleError('DUPLICATE_PROMOTION_EVENTS')
+        x=existing[0]
+        assert_history_entry_legal(x)
+        if x.get('candidate_hash') != candidate_hash:
+            raise OOSLifecycleError('PROMOTION_CANDIDATE_BINDING_MISMATCH')
         return False
     event=promotion_event()
     event.update({'bc':int(bc),'candidate_hash':candidate_hash})
     assert_history_entry_legal(event)
     s.setdefault('history',[]).append(event)
     return True
+
+def append_oos_event(s, event):
+    """Persist every canonical OOS transport/evaluation boundary."""
+    event=dict(event)
+    assert_history_entry_legal(event)
+    s.setdefault('history',[]).append(event)
+    return event
+
+def validate_durable_oos_state(s):
+    """Reject any durable verdict that is not a canonical evaluation event."""
+    history=s.get('history',[])
+    if not isinstance(history,list):
+        raise OOSLifecycleError('STATE_HISTORY_SCHEMA_INVALID')
+    for entry in history:
+        if not isinstance(entry,dict):
+            raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
+        assert_history_entry_legal(entry)
+    evaluation=s.get('oos_evaluation')
+    if evaluation:
+        assert_history_entry_legal(evaluation)
+        if evaluation.get('event_type') != 'OOS_EVALUATION':
+            raise OOSLifecycleError('OOS_EVALUATION_EVENT_INVALID')
 
 def migrate_legacy_state(s):
     """Fail-closed migration of pre-canonical OOS history.
@@ -142,6 +168,18 @@ def migrate_legacy_state(s):
         if not isinstance(entry,dict):
             raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
         verdict=entry.get('oos_verdict')
+        if verdict in {'OOS_PASS','OOS_FAIL'} and entry.get('decision') != PROMOTE:
+            # Preserve only canonical evaluation verdicts; legacy non-promotion verdicts
+            # are unverifiable unless they carry the new evaluation binding.
+            if entry.get('event_type') != 'OOS_EVALUATION' or not entry.get('receipt_digest'):
+                entry['legacy_oos_verdict']=verdict
+                entry['oos_verdict']=None
+                entry['oos_executed']=False
+                entry['oos_state']='UNKNOWN'
+                entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
+                entry['migration_id']='OOS_CANONICAL_V1'
+                changed=True
+                continue
         if entry.get('decision')==PROMOTE and verdict in {'OOS_PASS','OOS_FAIL'}:
             entry['legacy_oos_verdict']=verdict
             entry['oos_verdict']=None
@@ -156,6 +194,10 @@ def migrate_legacy_state(s):
         s['legacy_terminal_reason']=terminal_reason
         s['terminal_reason']=None
         changed=True
+    if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'} and not s.get('terminal'):
+        s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']
+        s['campaign_terminal_reason']=None
+        changed=True
     if changed:
         s.setdefault('state_migrations',[])
         if not any(x.get('migration_id')=='OOS_CANONICAL_V1' for x in s['state_migrations'] if isinstance(x,dict)):
@@ -167,6 +209,8 @@ def migrate_legacy_state(s):
         s['state_schema_version']=2
     else:
         s.setdefault('state_schema_version',2)
+    if int(s.get('state_schema_version',2)) != 2:
+        raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
     return changed
 
 def authorized_state(s):
@@ -259,17 +303,28 @@ def main():
  evidence=ROOT/'research'/f'bc{bc}_validation_result.json'; rc_eval,_=run([sys.executable,'-m','engine.autonomous_evaluator','--candidate',str(candidate),'--data','data/BTCUSDT_1h.csv','--out',str(evidence)])
  if rc_eval: return hold(s,'HOLD_EVALUATOR',bc)
  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
- if rc: return rc if PROMOTE in out:
-  append_promotion_event(s,bc,c['candidate_hash'])
+ if rc:
+  if PROMOTE not in out:
+   return hold(s,'HOLD_GATE_NO_PROMOTION',bc,retryable=False)
+  try:
+   append_promotion_event(s,bc,c['candidate_hash'])
+   append_oos_event(s, {'bc':bc,'candidate_hash':c['candidate_hash'],**__import__('research.oos_lifecycle',fromlist=['lifecycle_event']).lifecycle_event('OOS_AUTHORIZED',bc=bc,candidate_hash=c['candidate_hash'])})
+  except OOSLifecycleError as exc:
+   return hold(s,'HOLD_OOS_HISTORY_INTEGRITY:'+str(exc),bc,retryable=False)
   checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
-  if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
+  if result is None:
+   append_oos_event(s, {'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'UNKNOWN','oos_verdict':None,'oos_executed':False})
+   return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
   receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
+  append_oos_event(s, {'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'OOS_EXECUTED','oos_verdict':None,'oos_executed':True})
+  append_oos_event(s, {'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'OOS_RECEIPT','oos_verdict':None,'oos_executed':True,'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
   evaluation=evaluate_oos(result,receipt)
   decision=evaluation['oos_verdict']
   evaluation_entry={'bc':bc,'candidate_hash':c['candidate_hash'],**evaluation}
   assert_history_entry_legal({'decision':PROMOTE,'oos_verdict':None,'oos_executed':False})
   assert_history_entry_legal(evaluation_entry)
   s['oos_evaluation']=evaluation_entry
+  append_oos_event(s, evaluation_entry)
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
   if decision == 'OOS_PASS':
