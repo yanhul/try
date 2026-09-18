@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2960,
-    "expanded": 2568,
-    "normalized": 2568,
+    "raw": 2961,
+    "expanded": 2569,
+    "normalized": 2569,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -6857,22 +6857,6 @@
       }
     },
     {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "genetic programming symbolic regression trading alpha",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2a84d886a1d3a525",
       "source": "crossref",
       "source_url": "https://doi.org/10.4135/9781529731460",
@@ -8949,6 +8933,22 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -18327,7 +18327,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T15:52:33.138Z",
+      "source_timestamp": "2026-09-18T17:43:10.286Z",
       "lineage": {
         "source": "99703f9cad271d6d",
         "family": "china_a_share",
@@ -19687,7 +19687,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T15:52:31.741Z",
+      "source_timestamp": "2026-09-18T17:43:21.813Z",
       "lineage": {
         "source": "dc3fc4c7b516fffb",
         "family": "china_a_share",
@@ -21175,7 +21175,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T16:27:46.544Z",
+      "source_timestamp": "2026-09-18T17:42:38.134Z",
       "lineage": {
         "source": "81c2f66abe456363",
         "family": "china_a_share",
@@ -25658,6 +25658,22 @@
       "source_timestamp": "2026-09-18T16:07:19.073Z",
       "lineage": {
         "source": "06059e2600b39233",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1648aea60fe058da",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/voxl-public/voxl-sdk/services/voxl-open-vins-server",
+      "title": "voxl-public/voxl-sdk/services/voxl-open-vins-server",
+      "description": "VIO solution for VOXL based on open_vins (https://github.com/rpng/open_vins)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T17:42:37.309Z",
+      "lineage": {
+        "source": "1648aea60fe058da",
         "family": "china_a_share",
         "rounds": []
       }
@@ -34591,6 +34607,38 @@
       }
     },
     {
+      "candidate_id": "e4ff0e17ae795a42",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e4ff0e17ae795a42",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd09dc1c3043f329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "dd09dc1c3043f329",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -34650,38 +34698,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -38639,22 +38655,6 @@
       }
     },
     {
-      "candidate_id": "af167e6720e20273",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
-      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
-      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af167e6720e20273",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aaac9a67d274c5a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
@@ -38698,6 +38698,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "4c6aa902b1438d3e",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "20871a54dc8ee8ec",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
+      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
+      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "20871a54dc8ee8ec",
         "family": "order_flow",
         "rounds": []
       }
@@ -38879,22 +38895,6 @@
       }
     },
     {
-      "candidate_id": "1cc7f591c282fa01",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
-      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
-      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
-      "family": "regime",
-      "market": null,
-      "query": "crypto regime switching hidden Markov trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "1cc7f591c282fa01",
-        "family": "regime",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7c560fda9c9ee657",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ab28e11db7fe9608f490ecd5159c567f167c0855",
@@ -38971,22 +38971,6 @@
       "lineage": {
         "source": "ee32d8530a2d65b8",
         "family": "regime",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd9d86f909092462",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c98431d219b752eacc018b554823374b68d4a5c2",
-      "title": "Automated AI-Based Crypto Trading Bot Using LSTM andReinforcement Learning",
-      "description": "The volatility and continuous nature of cryptocurrency markets pose formidable challenges for human traders, who remain susceptible to emotional decision-making and cognitive fatigue over extended trading periods. This paper introduces a multi-layered artificial intelligence trading framework designed to address these constraints through systematic, data-driven decision processes. The proposed architecture integrates three complementary intelligent modules: a Long Short-Term Memory (LSTM) network that processes historical price sequences to generate forward-looking price estimates; a Reinforcement Learning (RL) agent that functions as the central decision-making component, dynamically calibrating risk exposure in accordance with real-time market conditions; and a Natural Language Processing (NLP) module that derives quantified market sentiment from live financial news streams. Empirical evaluation conducted through simulated paper trading trials demonstrates that this integrated methodology yields measurably superior risk-adjusted performance relative to conventional rule-based trading systems. These findings affirm that coupling memory-augmented sequence modeling with adaptive strategy optimization represents a viable pathway toward more consistent and sustainable engagement with digital asset markets.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "bd9d86f909092462",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -41039,22 +41023,6 @@
       }
     },
     {
-      "candidate_id": "20871a54dc8ee8ec",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
-      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
-      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
-      "family": "order_flow",
-      "market": null,
-      "query": "market microstructure order book strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "20871a54dc8ee8ec",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "040529bcb47658b8",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/deb6dff2dee990f817145e0835b6bbdb3e3bf7f2",
@@ -42047,6 +42015,22 @@
       }
     },
     {
+      "candidate_id": "642e162e9febaa54",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
+      "title": "Crypto Trading Using AI",
+      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "642e162e9febaa54",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c40ac717ed8cb63",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/152a40b1cf4f4b8a16e48d3b41be223842ef02e2",
@@ -42719,6 +42703,22 @@
       }
     },
     {
+      "candidate_id": "bd9d86f909092462",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c98431d219b752eacc018b554823374b68d4a5c2",
+      "title": "Automated AI-Based Crypto Trading Bot Using LSTM andReinforcement Learning",
+      "description": "The volatility and continuous nature of cryptocurrency markets pose formidable challenges for human traders, who remain susceptible to emotional decision-making and cognitive fatigue over extended trading periods. This paper introduces a multi-layered artificial intelligence trading framework designed to address these constraints through systematic, data-driven decision processes. The proposed architecture integrates three complementary intelligent modules: a Long Short-Term Memory (LSTM) network that processes historical price sequences to generate forward-looking price estimates; a Reinforcement Learning (RL) agent that functions as the central decision-making component, dynamically calibrating risk exposure in accordance with real-time market conditions; and a Natural Language Processing (NLP) module that derives quantified market sentiment from live financial news streams. Empirical evaluation conducted through simulated paper trading trials demonstrates that this integrated methodology yields measurably superior risk-adjusted performance relative to conventional rule-based trading systems. These findings affirm that coupling memory-augmented sequence modeling with adaptive strategy optimization represents a viable pathway toward more consistent and sustainable engagement with digital asset markets.",
+      "family": "volatility",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "bd9d86f909092462",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7f625a1607704e06",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/75c339e463b3ff62aec021b1bbdc810bd6e3d26b",
@@ -42730,22 +42730,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "7f625a1607704e06",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "642e162e9febaa54",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
-      "title": "Crypto Trading Using AI",
-      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "642e162e9febaa54",
         "family": "smc_ict",
         "rounds": []
       }
@@ -42763,6 +42747,22 @@
       "lineage": {
         "source": "ae8e7be0fb33131b",
         "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1cc7f591c282fa01",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
+      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
+      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
+      "family": "regime",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "1cc7f591c282fa01",
+        "family": "regime",
         "rounds": []
       }
     },
@@ -42794,6 +42794,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a0a5895001ce0cbb",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af167e6720e20273",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
+      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
+      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af167e6720e20273",
         "family": "smc_ict",
         "rounds": []
       }
