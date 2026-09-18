@@ -1,29 +1,30 @@
 [
   {
-    "bc": 327,
-    "candidate_hash": "40142e41c7aade2d357b082abb3ef16f262506ed80989e5ec3a6182e9419de41",
-    "conceptual_change": "Shift from relative trend intensity measurements to identifying momentum persistence via historical volume ratio behavior to confirm regime sustainability.",
+    "bc": 328,
+    "candidate_hash": "297cec4e2f6f99c9697dcc1b2e59f90c7e210220f65302a9c9d7f8d4b7174713",
+    "conceptual_change": "Transition from direct price-based mean reversion indicators to a volatility-adjusted volume-weighted anomaly detector that seeks extreme divergence between vwap distance and relative volume activity.",
     "discovery_spec": {
       "direction": "above",
-      "left": "volume_ratio",
-      "mechanism_family": "momentum_trend",
-      "operator": "lag",
-      "threshold": 0.05,
-      "window": 24
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.0,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|lag|volume_ratio||above",
+    "novelty_key": "mean_reversion|difference|vwap_distance|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
-      "window": 24
+      "threshold": 0.0,
+      "window": 20
     },
-    "parent_bc": 326,
+    "parent_bc": 327,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
