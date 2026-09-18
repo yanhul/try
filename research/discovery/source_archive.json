@@ -2726,14 +2726,6 @@
     {
       "source": "crossref",
       "query": "China A-share pairs statistical arbitrage",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "url": "https://doi.org/10.21275/sr231123060916",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2023"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
       "title": "Comprehensive Review of Pairs Trading in Statistical Arbitrage",
       "url": "https://doi.org/10.54254/2754-1169/2026.35956",
       "description": "Crossref work type=journal-article",
@@ -2778,14 +2770,6 @@
       "url": "https://doi.org/10.1111/irfi.12074",
       "description": "Crossref work type=journal-article",
       "updated_at": "2016"
-    },
-    {
-      "source": "crossref",
-      "query": "China A-share pairs statistical arbitrage",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "url": "https://doi.org/10.2139/ssrn.2610064",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -6014,6 +5998,14 @@
     {
       "source": "crossref",
       "query": "statistical arbitrage pairs trading equities",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "url": "https://doi.org/10.21275/sr231123060916",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2023"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
       "title": "Market Neutrality and Pairs Trading",
       "url": "https://doi.org/10.1002/9781119201526.ch4",
       "description": "Crossref work type=other",
@@ -6026,6 +6018,14 @@
       "url": "https://doi.org/10.1002/9781119201526.ch15",
       "description": "Crossref work type=other",
       "updated_at": "2012"
+    },
+    {
+      "source": "crossref",
+      "query": "statistical arbitrage pairs trading equities",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "url": "https://doi.org/10.2139/ssrn.2610064",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2015"
     },
     {
       "source": "crossref",
@@ -11241,6 +11241,15 @@
       "url": "https://gitlab.com/jmrp/gitlab-mcp-server",
       "description": "Read-only mirror of https://github.com/jmrplens/gitlab-mcp-server. Please open code contributions on GitHub.",
       "updated_at": "2026-09-16T08:21:49.396Z",
+      "stars": 0
+    },
+    {
+      "source": "gitlab",
+      "query": "A股 量化 github",
+      "title": "jmrp/jmrp.io",
+      "url": "https://gitlab.com/jmrp/jmrp.io",
+      "description": "Read-only mirror of https://github.com/jmrplens/jmrp.io. Please open code contributions on GitHub.",
+      "updated_at": "2026-09-18T06:42:18.151Z",
       "stars": 0
     },
     {
@@ -19375,6 +19384,14 @@
     {
       "source": "semantic_scholar",
       "query": "crypto mean reversion statistical arbitrage strategy",
+      "title": "Statistical Arbitrage in Polish Equities Market Using Deep Learning Techniques",
+      "url": "https://www.semanticscholar.org/paper/3e23c4eb8e8a79cfe5b92cb45263688f4720ffca",
+      "description": "We study a systematic approach to a popular Statistical Arbitrage technique: Pairs Trading. Instead of relying on two highly correlated assets, we replace the second asset with a replication of the first using risk factor representations. These factors are obtained through Principal Components Analysis (PCA), exchange traded funds (ETFs), and, as our main contribution, Long Short Term Memory networks (LSTMs). Residuals between the main asset and its replication are examined for mean reversion properties, and trading signals are generated for sufficiently fast mean reverting portfolios. Beyond introducing a deep learning based replication method, we adapt the framework of Avellaneda and Lee (2008) to the Polish market. Accordingly, components of WIG20, mWIG40, and selected sector indices replace the original S&P500 universe, and market parameters such as the risk free rate and transaction costs are updated to reflect local conditions. We outline the full strategy pipeline: risk factor construction, residual modeling via the Ornstein Uhlenbeck process, and signal generation. Each replication technique is described together with its practical implementation. Strategy performance is evaluated over two periods: 2017-2019 and the recessive year 2020. All methods yield profits in 2017-2019, with PCA achieving roughly 20 percent cumulative return and an annualized Sharpe ratio of up to 2.63. Despite multiple adaptations, our conclusions remain consistent with those of the original paper. During the COVID-19 recession, only the ETF based approach remains profitable (about 5 percent annual return), while PCA and LSTM methods underperform. LSTM results, although negative, are promising and indicate potential for future optimization.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto mean reversion statistical arbitrage strategy",
       "title": "VOLATILITY ARBITRAGE VIA DISPERSION TRADING ON BANKNIFTY Implied Correlation Mean-Reversion in Indian Equity Index Options",
       "url": "https://www.semanticscholar.org/paper/47d3230bcb97997fabe52b64c1a36146ea2cff3f",
       "description": "We implement and evaluate a dispersion trading strategy on BANKNIFTY-India's banking sector index, using live NSE F&O option chain data spanning October 2024 through December 2025. Dispersion trading exploits the well-documented structural premium embedded in index implied volatility (IV) relative to the market-cap-weighted average IV of its constituents, a discrepancy rooted in demand imbalances in index protection products and the correlation risk premium. Our signal is derived from dirty implied correlation, defined as the squared ratio of index IV to weighted constituent IV, which we z-score on a 20-day rolling window. Positions are entered when the z-score crosses ±0.5 and unwound at mean-reversion to zero. We build a custom vectorized Black-Scholes IV solver, replacing the standard MIBIAN library, achieving approximately 400,000 options per second via Corrado-Miller initialization, Newton-Raphson iteration, and Brent's method fallback. Position sizing is anchored to official NSE 2025 F&O lot sizes, with delta-neutral hedging executed through BankNifty futures contracts. P&L is approximated via a first-order vega expansion, with ATM straddle vega computed in closed form. The backtest spans the top-five constituents by index weight-HDFCBANK, ICICIBANK, KOTAKBANK, SBIN, and AXISBANK-covering approximately 80% of the index by notional weight. Performance is assessed across the Sharpe ratio, Calmar ratio, win rate, profit factor, and maximum drawdown. The results contribute empirical evidence on the tradability of the correlation risk premium in an emerging-market derivatives context, and raise structural questions around liquidity constraints, lot-size mismatch, and the practical limits of delta-neutral dispersion in a regime of concentrated index exposure.",
@@ -19411,14 +19428,6 @@
       "url": "https://www.semanticscholar.org/paper/67740ce61edd3e2e8c001d0c69b2584ef5422824",
       "description": "Forecasting models for systematic trading strategies do not adapt quickly when financial market conditions rapidly change, as was seen in the advent of the COVID-19 pandemic in 2020, causing many forecasting models to take loss-making positions. To deal with such situations, the authors propose a novel time-series trend-following forecaster that can quickly adapt to new market conditions, referred to as regimes. The authors leverage recent developments from the deep learning community and use few-shot learning. They propose the cross-attentive time-series trend network—X-Trend—which takes positions attending over a context set of financial time-series regimes. X-Trend transfers trends from similar patterns in the context set to make forecasts and then takes positions for a new distinct target regime. By quickly adapting to new financial regimes, X-Trend increases the Sharpe ratio by 18.9% over a neural forecaster and 10-fold over a conventional time-series momentum strategy during the turbulent market period from 2018 to 2023. The authors’ strategy recovers twice as quickly from the COVID-19 drawdown compared to the neural forecaster. X-Trend can also take zero-shot positions on novel unseen financial assets obtaining a fivefold Sharpe ratio increase versus a neural time-series trend forecaster over the same period. Furthermore, the cross-attention mechanism allows for interpretation of the relationship between forecasts and patterns in the context set.",
       "updated_at": "2023"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "crypto momentum trend following strategy bitcoin",
-      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
-      "url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
-      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
-      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
@@ -20395,6 +20404,14 @@
       "url": "https://www.semanticscholar.org/paper/173ca411727e8ac95f3cfab4599725788f92e7a2",
       "description": "Systematic traders employ algorithmic strategies to manage their investments. As a result of the deterministic nature of such strategies, it is possible to determine their exact responses to any conceivable set of market conditions. Consequently, sensitivity analysis can be conducted to systematically uncover undesirable strategy behavior and enhance strategy robustness by adding controls to reduce exposure during periods of poor performance/unfavorable market conditions, or to increase exposure during periods of strong performance/favorable market conditions. In this study, we formulate both a simple systematic trend-following strategy (i.e., trading model) to simulate investment decisions and a market model to simulate the evolution of instrument prices. We then map the relationship between market model parameters under various conditions and strategy performance. We focus, in particular, on identifying the performance impact of changes in both serial dependence in price variability and changes in the trend. The long-range serial dependence of the true range worsens performance of the simple classic trend-following strategy. During periods of strong performance, the dispersion of trading outcomes increases significantly as long-range serial dependence increases.",
       "updated_at": "2019"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "futures trend following systematic strategy",
+      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
+      "url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
+      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
+      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
@@ -21435,14 +21452,6 @@
       "url": "https://www.semanticscholar.org/paper/b7a6c6419d18cbf4ad1254fa4a6280b7a3ef1a3f",
       "description": "",
       "updated_at": "2010"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "statistical arbitrage pairs trading equities",
-      "title": "Statistical Arbitrage in Polish Equities Market Using Deep Learning Techniques",
-      "url": "https://www.semanticscholar.org/paper/3e23c4eb8e8a79cfe5b92cb45263688f4720ffca",
-      "description": "We study a systematic approach to a popular Statistical Arbitrage technique: Pairs Trading. Instead of relying on two highly correlated assets, we replace the second asset with a replication of the first using risk factor representations. These factors are obtained through Principal Components Analysis (PCA), exchange traded funds (ETFs), and, as our main contribution, Long Short Term Memory networks (LSTMs). Residuals between the main asset and its replication are examined for mean reversion properties, and trading signals are generated for sufficiently fast mean reverting portfolios. Beyond introducing a deep learning based replication method, we adapt the framework of Avellaneda and Lee (2008) to the Polish market. Accordingly, components of WIG20, mWIG40, and selected sector indices replace the original S&P500 universe, and market parameters such as the risk free rate and transaction costs are updated to reflect local conditions. We outline the full strategy pipeline: risk factor construction, residual modeling via the Ornstein Uhlenbeck process, and signal generation. Each replication technique is described together with its practical implementation. Strategy performance is evaluated over two periods: 2017-2019 and the recessive year 2020. All methods yield profits in 2017-2019, with PCA achieving roughly 20 percent cumulative return and an annualized Sharpe ratio of up to 2.63. Despite multiple adaptations, our conclusions remain consistent with those of the original paper. During the COVID-19 recession, only the ETF based approach remains profitable (about 5 percent annual return), while PCA and LSTM methods underperform. LSTM results, although negative, are promising and indicate potential for future optimization.",
-      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
