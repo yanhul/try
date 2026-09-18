@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2902,
-    "expanded": 2510,
-    "normalized": 2510,
+    "raw": 2904,
+    "expanded": 2512,
+    "normalized": 2512,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1172,22 +1172,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "55d007669c4c44b6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9065,6 +9049,22 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "a9c1b3a81274e963",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
@@ -9337,6 +9337,22 @@
       }
     },
     {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "77db76e6a2140296",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2021.114043",
@@ -9396,6 +9412,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "3361f743c083fe40",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -10169,33 +10201,17 @@
       }
     },
     {
-      "candidate_id": "7b7cb607398a2acb",
+      "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
       "description": "Crossref work type=journal-article",
       "family": "unknown",
       "market": null,
       "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2023",
       "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
+        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }
@@ -10484,22 +10500,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
         "family": "unknown",
         "rounds": []
       }
@@ -17711,6 +17711,22 @@
       }
     },
     {
+      "candidate_id": "833f57d4b71198ca",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/alvinjoy/alvinjoy",
+      "title": "alvinjoy/alvinjoy",
+      "description": "About me mirrored from https://github.com/alvinsjoy/alvinsjoy",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T13:04:31.439Z",
+      "lineage": {
+        "source": "833f57d4b71198ca",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "cd3463906963787d",
       "source": "gitlab",
       "source_url": "https://gitlab.com/andrcuns/allure-report-publisher",
@@ -24458,6 +24474,22 @@
       "source_timestamp": "2026-09-13T01:24:46.158Z",
       "lineage": {
         "source": "5289f876de157557",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "588d66c0af32f48b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/stephanbehm/github-pr-bot",
+      "title": "stephanbehm/github-pr-bot",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T13:04:05.519Z",
+      "lineage": {
+        "source": "588d66c0af32f48b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -33679,22 +33711,6 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -33722,6 +33738,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
