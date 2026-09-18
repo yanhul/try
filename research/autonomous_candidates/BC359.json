@@ -1,0 +1,27 @@
+{
+  "bc": 359,
+  "candidate_hash": "49da43425e0e9541a61aee499ab3bb3ea7766300128e18c1cbf046263f225c50",
+  "conceptual_change": "Transitioning from volume/liquidity metrics to a spatial efficiency ratio within the SMC framework; evaluating the distance from VWAP relative to absolute volume to identify exhaustion points or structural breaks (Liquidity Voids) following high-volatility price expansions.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|ratio|vwap_distance|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 358,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
