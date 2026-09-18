@@ -1,0 +1,41 @@
+{
+  "bc": 333,
+  "parent_bc": 332,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "00777f739b3f98dc0a5447335ebc0a736a48a001e6e26b2779198365829a2b26",
+  "conceptual_change": "Move from standard price momentum to an normalized price-to-volume divergence signal, specifically using the difference between close and volume over a 24-period lookback window to isolate liquidity-weighted momentum exhaustion.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 340,
+    "skipped_overlap_trades": 314,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 26,
+      "win_count": 4,
+      "loss_count": 22,
+      "win_rate": 0.15384615384615385,
+      "total_return": -0.18517147448183946,
+      "avg_return": -0.00778684967762778,
+      "profit_factor": 0.2580957295832811,
+      "max_drawdown": 0.19927065401618393,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
