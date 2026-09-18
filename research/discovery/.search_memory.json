@@ -1130,6 +1130,16 @@
       "parent_bc": 264,
       "score": 0.25
     },
+    "smc_ict|difference|high|low|above": {
+      "bc": 322,
+      "candidate_hash": "ca92f90cc19cfea3dd284fdae2347b73c820fd68073d36b64964b83e0f37663b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "eef399552388187351b9c5e030100d21f9ca4d06c2dc3b5a127aa92ac69f559e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 321,
+      "score": 0.25
+    },
     "smc_ict|difference|high|open|above": {
       "bc": 262,
       "candidate_hash": "5f312dc578711c6bd4a93efb169d4ca70ba14fd1316a853386e4e4b3438cffc2",
@@ -4681,9 +4691,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 320,
       "score": 0.45268042
+    },
+    {
+      "bc": 322,
+      "candidate_hash": "ca92f90cc19cfea3dd284fdae2347b73c820fd68073d36b64964b83e0f37663b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "eef399552388187351b9c5e030100d21f9ca4d06c2dc3b5a127aa92ac69f559e",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 321,
+      "score": 0.25
     }
   ],
-  "failures": 282,
+  "failures": 283,
   "families": {
     "discovered_primitive": {
       "fail": 107,
@@ -4702,7 +4722,7 @@
     "momentum_trend": {
       "fail": 51,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 14.587765070000001,
       "tested": 51
     },
@@ -4714,11 +4734,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 51,
+      "fail": 52,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 13.20243488,
-      "tested": 51
+      "recent_failures": 3,
+      "score_sum": 13.45243488,
+      "tested": 52
     },
     "volatility": {
       "fail": 11,
@@ -4728,8 +4748,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 322,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 323,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1

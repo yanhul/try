@@ -1,29 +1,29 @@
 [
   {
-    "bc": 322,
-    "candidate_hash": "ca92f90cc19cfea3dd284fdae2347b73c820fd68073d36b64964b83e0f37663b",
-    "conceptual_change": "Shift from relative price-moving average deviation to assessing volatility-based liquidity expansion (high minus low difference) as an indicator of a liquidity sweep event in the ICT framework.",
+    "bc": 323,
+    "candidate_hash": "15195a5b46c4521b62477f6ae1fdb0f2040ddd2a759ef7f6e2e550eb09308990",
+    "conceptual_change": "Transitioned from price-based mean reversion to volatility-based volume intensity analysis. By evaluating the rolling standard deviation of volume_ratio, we identify periods of anomalous volume clustering which often precede price mean reversion events.",
     "discovery_spec": {
       "direction": "above",
-      "left": "high",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "low",
-      "threshold": 0.005
+      "left": "volume_ratio",
+      "mechanism_family": "mean_reversion",
+      "operator": "rolling_std",
+      "threshold": 1.5,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|low|above",
+    "novelty_key": "mean_reversion|rolling_std|volume_ratio||above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": null
+      "threshold": 1.5,
+      "window": 24
     },
-    "parent_bc": 321,
+    "parent_bc": 322,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
