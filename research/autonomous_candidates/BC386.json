@@ -1,0 +1,26 @@
+{
+  "bc": 386,
+  "candidate_hash": "0917069dde2fe564e7466a62b70b9eaf18f8c44d33c3de982d0babeac18b3ffb",
+  "conceptual_change": "Shift from price-based delta/difference indicators to a volume-flow acceleration mechanism, filtering for high-conviction momentum where actual trade volume significantly exceeds the rolling average ratio.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "operator": "ratio",
+    "right": "volume_ratio",
+    "threshold": 1.25
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|volume|volume_ratio|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": null
+  },
+  "parent_bc": 385,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

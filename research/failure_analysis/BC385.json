@@ -1,0 +1,41 @@
+{
+  "bc": 385,
+  "parent_bc": 384,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "34e3b9205b9422dcd06e9e3cd0151730b1a6705806a561fac83350126b45df7f",
+  "conceptual_change": "Shift from price-open momentum to a relative proximity mechanism that measures the deviation of VWAP from price normalized by the range, looking for mean reversion when the price is excessively distant from the range-normalized VWAP threshold.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 725,
+    "skipped_overlap_trades": 683,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 42,
+      "win_count": 11,
+      "loss_count": 31,
+      "win_rate": 0.2619047619047619,
+      "total_return": -0.19006746421382725,
+      "avg_return": -0.004925382984013066,
+      "profit_factor": 0.46202385927444395,
+      "max_drawdown": 0.20727306236306686,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}

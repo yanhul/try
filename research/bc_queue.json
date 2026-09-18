@@ -1,28 +1,28 @@
 [
   {
-    "bc": 385,
-    "candidate_hash": "34e3b9205b9422dcd06e9e3cd0151730b1a6705806a561fac83350126b45df7f",
-    "conceptual_change": "Shift from price-open momentum to a relative proximity mechanism that measures the deviation of VWAP from price normalized by the range, looking for mean reversion when the price is excessively distant from the range-normalized VWAP threshold.",
+    "bc": 386,
+    "candidate_hash": "0917069dde2fe564e7466a62b70b9eaf18f8c44d33c3de982d0babeac18b3ffb",
+    "conceptual_change": "Shift from price-based delta/difference indicators to a volume-flow acceleration mechanism, filtering for high-conviction momentum where actual trade volume significantly exceeds the rolling average ratio.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "vwap_distance",
-      "operator": "difference",
-      "right": "range_ratio",
-      "threshold": 0.0015
+      "direction": "above",
+      "left": "volume",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.25
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "|difference|vwap_distance|range_ratio|below",
+    "novelty_key": "|ratio|volume|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0015,
+      "threshold": 1.25,
       "window": null
     },
-    "parent_bc": 384,
+    "parent_bc": 385,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
