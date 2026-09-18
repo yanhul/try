@@ -261,6 +261,7 @@ def main():
   try:
    append_promotion_event(s,bc,c['candidate_hash'])
    append_oos_event(s,lifecycle_event('OOS_AUTHORIZED',bc=bc,candidate_hash=c['candidate_hash']))
+   append_oos_event(s,lifecycle_event('OOS_DISPATCHED',bc=bc,candidate_hash=c['candidate_hash']))
   except OOSLifecycleError as exc:
    return hold(s,'HOLD_OOS_HISTORY_INTEGRITY:'+str(exc),bc,retryable=False)
   checkpoint(s,'FREEZE_OOS',bc)
