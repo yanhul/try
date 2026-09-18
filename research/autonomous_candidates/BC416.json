@@ -1,0 +1,27 @@
+{
+  "bc": 416,
+  "candidate_hash": "1407a61f6da36b7c323c6458f5d4f5eaf8ba465fbf263a273027ab95b19cb1e9",
+  "conceptual_change": "Shifted from absolute price or volume levels to a normalized volatility-to-volume intensity ratio to isolate mean-reverting exhaustion signals.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "range_ratio",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 0.85
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|range_ratio|volume|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.85,
+    "window": null
+  },
+  "parent_bc": 415,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
