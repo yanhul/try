@@ -1,29 +1,30 @@
 [
   {
-    "bc": 412,
-    "candidate_hash": "cdc5efe74908f827c3a9b142b408e211103cfb9031cbd6448d51d9a5d180dd97",
-    "conceptual_change": "Shifted from absolute price-volume distance metrics to a normalized ratio-based approach comparing relative deviation of current price from VWAP over consecutive lookback periods to capture momentum persistence.",
+    "bc": 413,
+    "candidate_hash": "886b8270cba9e46c26434c2d4ded95d98fe9c8d6160e75f33e9cf84a36772b43",
+    "conceptual_change": "Transitioned from pure vwap-based distance metrics to a structural relationship between current price levels and normalized trade volume magnitude as a liquidity-driven mean reversion signal.",
     "discovery_spec": {
-      "direction": "below",
-      "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "operator": "ratio",
-      "right": "vwap_distance",
-      "threshold": 1.15
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "mean_reversion",
+      "operator": "difference",
+      "right": "volume",
+      "threshold": 0.0,
+      "window": null
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|vwap_distance|vwap_distance|below",
+    "novelty_key": "mean_reversion|difference|close|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.15,
+      "threshold": 0.0,
       "window": null
     },
-    "parent_bc": 411,
+    "parent_bc": 412,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
