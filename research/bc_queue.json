@@ -1,29 +1,29 @@
 [
   {
-    "bc": 288,
-    "candidate_hash": "236ae1ef0673bfc6fa198afa8dfe737e80e867d8f9ecfb3afd6dc58625e50355",
-    "conceptual_change": "Move from standard price-based momentum to range-bound volatility compression detection, specifically tracking the 24-period rolling mean of range_ratio to identify periods of narrowing range before trend breakouts.",
+    "bc": 289,
+    "candidate_hash": "e7a8843db046897f431206b10c4c89943a12be401f76f439dc642412c207c568",
+    "conceptual_change": "Shift from simple liquidity levels to measuring the deviation of the recent local low relative to the dynamic volume-weighted average price (VWAP) proximity to capture ICT-style liquidity premium in price action.",
     "discovery_spec": {
       "direction": "below",
-      "left": "range_ratio",
-      "mechanism_family": "momentum_trend",
-      "operator": "rolling_mean",
-      "threshold": 0.005,
-      "window": 24
+      "left": "low",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "vwap_distance",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|rolling_mean|range_ratio||below",
+    "novelty_key": "smc_ict|difference|low|vwap_distance|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 0.005,
-      "window": 24
+      "window": null
     },
-    "parent_bc": 287,
+    "parent_bc": 288,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
