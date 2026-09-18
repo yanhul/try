@@ -35231,6 +35231,22 @@
       }
     },
     {
+      "candidate_id": "46b53c5818c665b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
+      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "46b53c5818c665b5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "72de5402a871b1a7",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/9a88e13ceafbf563986443aa87c28324f92fca9e",
@@ -39039,22 +39055,6 @@
       }
     },
     {
-      "candidate_id": "e76606538ea79bd7",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d2ee6c2eaf96ff229958f6c99c6b4fcf465099f7",
-      "title": "Hubble: An LLM-Driven Agentic Framework for Safe, Diverse, and Reproducible Alpha Factor Discovery",
-      "description": "Automated alpha discovery is difficult because the search space of formulaic factors is combinatorial, the signal-to-noise ratio in daily equity data is low, and unconstrained program generation is operationally unsafe. We present Hubble, an agentic factor mining framework that combines large language models (LLMs) with a domain-specific operator language, an abstract syntax tree (AST) execution sandbox, a dual-channel retrieval-augmented generation (RAG) module, and a family-aware selection mechanism. Instead of treating the LLM as an unconstrained code generator, Hubble restricts generation to interpretable operator trees, evaluates every candidate through a deterministic cross-sectional pipeline, and feeds back both top formulas and structured family-level diagnostics to subsequent rounds. The current system additionally introduces positive/negative RAG, formula-similarity penalties, standardized multi-metric scoring, dual reporting of RankIC and Pearson IC, and persistent diagnostics artifacts for post-hoc research analysis. On a U.S. equity universe of roughly 500 stocks, our main run evaluates 104 valid candidates across three rounds with zero runtime crashes and discovers a top set dominated by range, volatility, and trend families rather than crowded volume-only motifs. We then fix the resulting top-5 factors and validate them on a held-out period from 2025-06-01 to 2026-03-13. In this out-of-sample window, the two range factors and two volatility factors remain positive and several achieve HAC-significant Pearson IC and long-short evidence, whereas the weakest in-sample trend factor decays materially. These results suggest that safe LLM-guided search can be upgraded from a syntax-compliant generator into a reproducible alpha-research workflow that jointly optimizes validity, diversity, interpretability, and family-level generalization.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "equity factor investing cross sectional alpha backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e76606538ea79bd7",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cded4cae4deee833",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/2953584d7b70b5200b43cfd3fe592bec45587b66",
@@ -39439,22 +39439,6 @@
       }
     },
     {
-      "candidate_id": "2ac48a73bca2f48c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
-      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
-      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2ac48a73bca2f48c",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6fd24decf6afb06f",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c146b50c7a9ebbcd269f79059ff537c9c4401430",
@@ -39467,6 +39451,22 @@
       "lineage": {
         "source": "6fd24decf6afb06f",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e76606538ea79bd7",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d2ee6c2eaf96ff229958f6c99c6b4fcf465099f7",
+      "title": "Hubble: An LLM-Driven Agentic Framework for Safe, Diverse, and Reproducible Alpha Factor Discovery",
+      "description": "Automated alpha discovery is difficult because the search space of formulaic factors is combinatorial, the signal-to-noise ratio in daily equity data is low, and unconstrained program generation is operationally unsafe. We present Hubble, an agentic factor mining framework that combines large language models (LLMs) with a domain-specific operator language, an abstract syntax tree (AST) execution sandbox, a dual-channel retrieval-augmented generation (RAG) module, and a family-aware selection mechanism. Instead of treating the LLM as an unconstrained code generator, Hubble restricts generation to interpretable operator trees, evaluates every candidate through a deterministic cross-sectional pipeline, and feeds back both top formulas and structured family-level diagnostics to subsequent rounds. The current system additionally introduces positive/negative RAG, formula-similarity penalties, standardized multi-metric scoring, dual reporting of RankIC and Pearson IC, and persistent diagnostics artifacts for post-hoc research analysis. On a U.S. equity universe of roughly 500 stocks, our main run evaluates 104 valid candidates across three rounds with zero runtime crashes and discovers a top set dominated by range, volatility, and trend families rather than crowded volume-only motifs. We then fix the resulting top-5 factors and validate them on a held-out period from 2025-06-01 to 2026-03-13. In this out-of-sample window, the two range factors and two volatility factors remain positive and several achieve HAC-significant Pearson IC and long-short evidence, whereas the weakest in-sample trend factor decays materially. These results suggest that safe LLM-guided search can be upgraded from a syntax-compliant generator into a reproducible alpha-research workflow that jointly optimizes validity, diversity, interpretability, and family-level generalization.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e76606538ea79bd7",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -39578,6 +39578,22 @@
       "source_timestamp": "1986",
       "lineage": {
         "source": "6086d77819f7120e",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ac48a73bca2f48c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
+      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
+      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2ac48a73bca2f48c",
         "family": "cross_sectional",
         "rounds": []
       }
@@ -42634,22 +42650,6 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "36699a08be9e0d39",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "46b53c5818c665b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
-      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "46b53c5818c665b5",
         "family": "china_a_share",
         "rounds": []
       }
