@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 2868,
-    "expanded": 2476,
-    "normalized": 2476,
+    "raw": 2869,
+    "expanded": 2477,
+    "normalized": 2477,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1172,6 +1172,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "55d007669c4c44b6",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "rounds": []
       }
@@ -2905,6 +2921,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3833,22 +3865,6 @@
       }
     },
     {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "unknown",
-      "market": null,
-      "query": "algorithmic trading research code",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -4105,22 +4121,6 @@
       }
     },
     {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4212,6 +4212,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4644,22 +4660,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -7049,22 +7049,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -9188,6 +9172,22 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -19391,6 +19391,22 @@
       }
     },
     {
+      "candidate_id": "40dc384405492a1f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/aio-libs/multidict",
+      "title": "freedesktop-sdk/mirrors/github/aio-libs/multidict",
+      "description": "github.com: aio-libs/multidict.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-18T10:04:33.970Z",
+      "lineage": {
+        "source": "40dc384405492a1f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "377d6db064ab1421",
       "source": "gitlab",
       "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/apache/buildstream",
@@ -25807,22 +25823,6 @@
       }
     },
     {
-      "candidate_id": "670afeaa28dbc276",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/ijfs7020026",
-      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "670afeaa28dbc276",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8506db6d9deadd5d",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/poms.13128",
@@ -27375,22 +27375,6 @@
       }
     },
     {
-      "candidate_id": "8917aabfe639b17e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1257/0895330042162430",
-      "title": "The Capital Asset Pricing Model: Theory and Evidence",
-      "description": "OpenAlex work type=article year=2004",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2004",
-      "lineage": {
-        "source": "8917aabfe639b17e",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4140aea9fe9faabe",
       "source": "openalex",
       "source_url": "https://doi.org/10.1109/access.2022.3219495",
@@ -27818,6 +27802,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "b3801c96b61d06c7",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4574d8c2646147cf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/jofi.12186",
+      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "4574d8c2646147cf",
         "family": "unknown",
         "rounds": []
       }
@@ -28335,6 +28335,22 @@
       }
     },
     {
+      "candidate_id": "2f5f3d7c80b0f360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/fire.12290",
+      "title": "Bitcoin intraday time series momentum",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "cross sectional crypto factors momentum reversal",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "2f5f3d7c80b0f360",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7e303348512cb293",
       "source": "openalex",
       "source_url": "https://doi.org/10.3386/w31284",
@@ -28554,22 +28570,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "4644c1866a0237b0",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f5f3d7c80b0f360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/fire.12290",
-      "title": "Bitcoin intraday time series momentum",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "2f5f3d7c80b0f360",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -30975,22 +30975,6 @@
       }
     },
     {
-      "candidate_id": "4574d8c2646147cf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/jofi.12186",
-      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "order_flow",
-      "market": null,
-      "query": "market microstructure order book strategy",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "4574d8c2646147cf",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "78619bc74b86807f",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjv027",
@@ -31754,6 +31738,22 @@
       "source_timestamp": "1991",
       "lineage": {
         "source": "606beccd7c7e6688",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "670afeaa28dbc276",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/ijfs7020026",
+      "title": "Stock Market Analysis: A Review and Taxonomy of Prediction Techniques",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "670afeaa28dbc276",
         "family": "smc_ict",
         "rounds": []
       }
@@ -32575,6 +32575,22 @@
       }
     },
     {
+      "candidate_id": "8917aabfe639b17e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1257/0895330042162430",
+      "title": "The Capital Asset Pricing Model: Theory and Evidence",
+      "description": "OpenAlex work type=article year=2004",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2004",
+      "lineage": {
+        "source": "8917aabfe639b17e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d2cc3b36eb4a2dc1",
       "source": "openalex",
       "source_url": "https://doi.org/10.1109/access.2021.3073203",
@@ -33215,54 +33231,6 @@
       }
     },
     {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e4ff0e17ae795a42",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
@@ -33311,22 +33279,6 @@
       }
     },
     {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -33338,22 +33290,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -33471,22 +33407,6 @@
       }
     },
     {
-      "candidate_id": "074d1859ad607682",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1177/00081256231202266",
-      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "074d1859ad607682",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9fe1d07564202770",
       "source": "openalex",
       "source_url": "https://doi.org/10.3901/jme.2021.10.196",
@@ -33567,6 +33487,54 @@
       }
     },
     {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "074d1859ad607682",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1177/00081256231202266",
+      "title": "From Buzzword to Biz World: R ealizing B lockchain\u2019s P otential in the I nternational B usiness C ontext",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "074d1859ad607682",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d663d3f1912e8837",
       "source": "openalex",
       "source_url": "https://doi.org/10.5846/stxb201201310130",
@@ -33579,6 +33547,54 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -36351,22 +36367,6 @@
       }
     },
     {
-      "candidate_id": "2e5f5b4821040351",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
-      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
-      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2e5f5b4821040351",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c66cb6d754328358",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c3f90711e2a5509edba8cd8a89f6296a195e992a",
@@ -36427,38 +36427,6 @@
       "lineage": {
         "source": "814c5f83fa80d9cd",
         "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c2dd84158993e060",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4639c1109a00b56c81de92b6cbb4a9d8241cfb81",
-      "title": "Research on dynamic multi-strategy integration of quantitative trading based on deep reinforcement learning",
-      "description": "In this article, we introduce a framework called Financial Strategy Reinforcement Learning (FSRL) to address the challenges posed by dynamic and complex financial markets, which relies on modeling multi-strategy choices as Markov decision processes (MDP) to dynamically adapt to a wide variety of market conditions and optimize risk and return. This study combines a finite state machine (FSM) with a standardized backtest environment, which has the benefit of ensuring that the robustness and repeatability of the strategy can be evaluated. We conducted validation experiments using major market indexes in China and the United States, and the results of the experiments show that the FSRL framework has advantages over traditional methods. It achieves a higher Sharpe ratio, a higher return, and a better risk control effect. This research provides a scalable and innovative solution for promoting quantitative trading and dynamic strategy integration.",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "c2dd84158993e060",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1c82a4041c11b16c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b03b76e5d1da4cc2e07becba2ef4922f9da4fc39",
-      "title": "Research on the Quantitative Trading Strategy Based on Bollinger Band Strategy and Polynomial Regression Model",
-      "description": "First, this paper made time-price line charts for gold and bitcoin and analyzed their primary trend of flat-rising. Subsequently, we established the Bollinger Bands strategy and a regression polynomial combinatorial model in Python to make the trade points precise. We import gold and bitcoin data into the model, respectively, and let it automatically perform graphing and data processing to obtain the fitting images, optimal fitting times, model coefficient list, and model intercept of the gold and bitcoin PR models. Afterward, we determined the trading conditions, stop-loss levels, and commissions and used the Bollinger Bands strategy to backtest the five-year trading to obtain the trading results of a single strategy. Based on the conservative principle of risk hedging and split-position trading, we reset the position distribution combined the Bollinger Bands strategy and the regression polynomial combination model into a comprehensive model. This paper plotted the fluctuations of gold and bitcoin in the time dimension. The comprehensive model shows the characteristics of high total return, low total transaction cost, and small maximum drawdown, which proves that the comprehensive model provides the best strategy.",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "1c82a4041c11b16c",
-        "family": "momentum_trend",
         "rounds": []
       }
     },
@@ -40703,6 +40671,22 @@
       }
     },
     {
+      "candidate_id": "2e5f5b4821040351",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
+      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
+      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2e5f5b4821040351",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "af0f7de51c154b70",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c0e91ab5b88755c9d786bd2c5769daaa2f05a04b",
@@ -40746,6 +40730,38 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1da095c3c7165647",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c2dd84158993e060",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4639c1109a00b56c81de92b6cbb4a9d8241cfb81",
+      "title": "Research on dynamic multi-strategy integration of quantitative trading based on deep reinforcement learning",
+      "description": "In this article, we introduce a framework called Financial Strategy Reinforcement Learning (FSRL) to address the challenges posed by dynamic and complex financial markets, which relies on modeling multi-strategy choices as Markov decision processes (MDP) to dynamically adapt to a wide variety of market conditions and optimize risk and return. This study combines a finite state machine (FSM) with a standardized backtest environment, which has the benefit of ensuring that the robustness and repeatability of the strategy can be evaluated. We conducted validation experiments using major market indexes in China and the United States, and the results of the experiments show that the FSRL framework has advantages over traditional methods. It achieves a higher Sharpe ratio, a higher return, and a better risk control effect. This research provides a scalable and innovative solution for promoting quantitative trading and dynamic strategy integration.",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "c2dd84158993e060",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1c82a4041c11b16c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b03b76e5d1da4cc2e07becba2ef4922f9da4fc39",
+      "title": "Research on the Quantitative Trading Strategy Based on Bollinger Band Strategy and Polynomial Regression Model",
+      "description": "First, this paper made time-price line charts for gold and bitcoin and analyzed their primary trend of flat-rising. Subsequently, we established the Bollinger Bands strategy and a regression polynomial combinatorial model in Python to make the trade points precise. We import gold and bitcoin data into the model, respectively, and let it automatically perform graphing and data processing to obtain the fitting images, optimal fitting times, model coefficient list, and model intercept of the gold and bitcoin PR models. Afterward, we determined the trading conditions, stop-loss levels, and commissions and used the Bollinger Bands strategy to backtest the five-year trading to obtain the trading results of a single strategy. Based on the conservative principle of risk hedging and split-position trading, we reset the position distribution combined the Bollinger Bands strategy and the regression polynomial combination model into a comprehensive model. This paper plotted the fluctuations of gold and bitcoin in the time dimension. The comprehensive model shows the characteristics of high total return, low total transaction cost, and small maximum drawdown, which proves that the comprehensive model provides the best strategy.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "1c82a4041c11b16c",
         "family": "momentum_trend",
         "rounds": []
       }

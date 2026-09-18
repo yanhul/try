@@ -1,0 +1,27 @@
+{
+  "bc": 393,
+  "candidate_hash": "94d97fc0fd0bb8d11e07c0a3a4e1d5861c72173fc0e4b96201aaa37ed84135bf",
+  "conceptual_change": "Changed from price-based liquidity gap detection to volume-relative structural anomaly detection, identifying institutional participation via volume z-scores.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume",
+    "mechanism_family": "smc_ict",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|zscore|volume||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 392,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
