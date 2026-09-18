@@ -1,29 +1,29 @@
 [
   {
-    "bc": 339,
-    "candidate_hash": "77778386edeffff96648b43af7cf91a729f2a178da0a61faec71f7191e171f08",
-    "conceptual_change": "Shift from simple ICT liquidity concepts to a structural deviation metric comparing price high-point reach against the distance from volume-weighted average price (VWAP) to identify potential liquidity sweep exhaustion.",
+    "bc": 340,
+    "candidate_hash": "6149957b13d5a14dc91aace13217583b70b2c148459af8b7d33e6d8317d88813",
+    "conceptual_change": "Transitioned from high-level liquidity structure to a localized statistical momentum indicator using Z-score to measure the deviation of the close from its moving average, capturing trend exhaustion during lower-volatility regimes.",
     "discovery_spec": {
-      "direction": "above",
-      "left": "high",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "vwap_distance",
-      "threshold": 0.005
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "zscore",
+      "threshold": 1.5,
+      "window": 20
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|high|vwap_distance|above",
+    "novelty_key": "momentum_trend|zscore|close||below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": null
+      "threshold": 1.5,
+      "window": 20
     },
-    "parent_bc": 338,
+    "parent_bc": 339,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
