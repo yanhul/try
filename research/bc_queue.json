@@ -1,29 +1,29 @@
 [
   {
-    "bc": 389,
-    "candidate_hash": "c9b45b0b5587581487025a688760ebd61eb44943db7c063ab5090630e081d4d6",
-    "conceptual_change": "Shift from volatility-based liquidity assessment to a directional price-change momentum metric, focusing on the spread between the candle close and open to filter for sustained directional drift.",
+    "bc": 390,
+    "candidate_hash": "635990f8b8dcbcf3c9f2b8f4f39b347b8fb00635bec93baf029c0d3aa0efbed8",
+    "conceptual_change": "Shifted from absolute price delta metrics to a normalized price-to-volume-intensity ratio to detect momentum exhaustion or confirmation relative to localized volume shocks.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "close",
       "mechanism_family": "momentum_trend",
-      "operator": "difference",
-      "right": "open",
-      "threshold": 0.05
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.05
     },
     "evidence_sources": [
       "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|difference|close|open|below",
+    "novelty_key": "momentum_trend|ratio|close|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.05,
+      "threshold": 1.05,
       "window": null
     },
-    "parent_bc": 388,
+    "parent_bc": 389,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
