@@ -1,0 +1,27 @@
+{
+  "bc": 327,
+  "candidate_hash": "40142e41c7aade2d357b082abb3ef16f262506ed80989e5ec3a6182e9419de41",
+  "conceptual_change": "Shift from relative trend intensity measurements to identifying momentum persistence via historical volume ratio behavior to confirm regime sustainability.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "volume_ratio",
+    "mechanism_family": "momentum_trend",
+    "operator": "lag",
+    "threshold": 0.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|lag|volume_ratio||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": 24
+  },
+  "parent_bc": 326,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
