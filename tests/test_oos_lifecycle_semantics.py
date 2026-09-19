@@ -37,3 +37,27 @@ def test_receipt_identity_is_required():
 def test_receipt_identity_is_canonical():
  r=receipt(); r["receipt_id"]="0"*64
  with pytest.raises(OOSLifecycleError,match="OOS_RECEIPT_ID_MISMATCH"): evaluate_oos(result(),r)
+
+
+def test_gate1_rejects_mutated_validation_passed():
+    import copy, importlib.util
+    spec = importlib.util.spec_from_file_location("audit_bc1_fast_gate", "audit_bc1_fast_gate.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    artifact = json.loads(__import__('pathlib').Path("research/BTCUSDT_1h_hypotheses_v1.json").read_text())
+    mutated = copy.deepcopy(artifact)
+    mutated["hypotheses"]["baseline"]["validation_passed"] = True
+    with pytest.raises(ValueError, match="bootstrap gate requires recorded validation_passed=false"):
+        module.validate_baseline(mutated)
+
+
+def test_gate1_rejects_mutated_validation_metric():
+    import copy, importlib.util
+    spec = importlib.util.spec_from_file_location("audit_bc1_fast_gate", "audit_bc1_fast_gate.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    artifact = json.loads(__import__('pathlib').Path("research/BTCUSDT_1h_hypotheses_v1.json").read_text())
+    mutated = copy.deepcopy(artifact)
+    mutated["hypotheses"]["baseline"]["VALIDATION"]["metrics"]["win_rate"] = 0.99
+    with pytest.raises(ValueError, match="win_rate is inconsistent"):
+        module.validate_baseline(mutated)
