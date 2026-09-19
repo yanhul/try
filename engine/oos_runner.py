@@ -44,6 +44,7 @@ def main():
     result_sha=sha256(out)
     receipt=out.with_name(out.stem+'_receipt.json')
     receipt_payload={'schema_version':1,'receipt_type':'OOS_EXECUTION_RECEIPT','bc':candidate['bc'],'candidate_hash':candidate_sha,'result_sha256':result_sha,'dataset_sha256':dataset_sha,'protocol_sha256':protocol_sha,'split':payload['split'],'oos_selection_used':False,'oos_executed':True,'oos_passed':passed,'metrics':m,'predicate':predicate_name}
+    receipt_payload['receipt_id']=hashlib.sha256(json.dumps(receipt_payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     receipt.write_text(json.dumps(receipt_payload,indent=2)+'\n')
     print(json.dumps({'bc':candidate['bc'],'hypothesis_id':hid,'candidate_universe':candidate_universe,'oos_passed':passed,'metrics':m,'receipt':str(receipt)},indent=2)); return 0
 if __name__=='__main__': raise SystemExit(main())
