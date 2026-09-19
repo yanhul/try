@@ -15,5 +15,9 @@ jobs:
           python-version: "3.11"
       - name: Install test runner
         run: python -m pip install --upgrade pip pytest
+      - name: Gate 1 strict bootstrap
+        run: python audit_bc1_fast_gate.py
       - name: Run OOS authority tests
         run: python -m pytest tests/test_oos_lifecycle_semantics.py tests/test_oos_state_migration.py tests/test_oos_controller_adversarial.py
+      - name: Compile authoritative gate modules
+        run: python -m py_compile research/oos_lifecycle.py research/bc_controller.py engine/oos_runner.py audit_bc_fast_gate.py audit_bc1_fast_gate.py
