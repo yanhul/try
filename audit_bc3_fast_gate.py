@@ -81,6 +81,8 @@ def validate_gate3(candidate, evidence):
     if not required.issubset(candidate): return False, "candidate_fields_missing"
     if candidate["bc"] != 3 or candidate["parent_bc"] != 2: return False, "bc_parent_mismatch"
     if candidate["is_testable"] is not True or candidate["oos_selection_used"] is not False: return False, "candidate_provenance_invalid"
+    from engine.hypotheses import HYPOTHESES
+    if candidate["hypothesis_id"] not in HYPOTHESES and candidate["hypothesis_id"] not in {"mechanism_family", "discovered_primitive"}: return False, "unexecutable_hypothesis_id"
     if candidate["candidate_hash"] != canonical_hash(candidate): return False, "candidate_hash_mismatch"
     required_e = {"schema_version","bc","parent_bc","hypothesis_id","candidate_hash","oos_selection_used","oos_executed","validation_passed","gross_validation_passed","validation_basis","net_validation_gate","dataset","VALIDATION"}
     if not required_e.issubset(evidence): return False, "evidence_fields_missing"
