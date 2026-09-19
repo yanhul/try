@@ -1,0 +1,27 @@
+{
+  "bc": 430,
+  "candidate_hash": "528f98806ca6342cdbe9fa44926dea4c59826c39acdfdffb1294ed6646de7020",
+  "conceptual_change": "Shift from first-order trend signals to a normalized statistical deviation (zscore) of the price relative to the VWAP, identifying periods where price has momentum but remains statistically suppressed within its recent distribution.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "zscore",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|zscore|vwap_distance||below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 429,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
