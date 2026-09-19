@@ -2,12 +2,18 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from research.oos_lifecycle import OOSLifecycleError, assert_history_entry_legal, evaluate_oos, lifecycle_event, promotion_event, terminal_reason_from_oos
 ROOT=Path(__file__).resolve().parents[1]; STATE=ROOT/'research'/'bc_lifecycle_state.json'; QUEUE=ROOT/'research'/'bc_queue.json'; FAILURE_DIR=ROOT/'research'/'failure_analysis'; CANDIDATE_DIR=ROOT/'research'/'autonomous_candidates'; FREEZE_DIR=ROOT/'research'/'frozen_candidates'; OOS_DIR=ROOT/'research'/'oos'
 PROMOTE='PROMOTE_TO_FUTURE_OOS_TEST'; REJECT='REJECT_BC'; MAX=int(os.environ.get('RESEARCH_MAX_ITERATIONS','1')); MAX_RETRIES=int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES','3'))
 def run(cmd,env=None):
  p=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,env=env); out=p.stdout+p.stderr; print(out,end=''); return p.returncode,out
 def load(p,d): return json.loads(p.read_text(encoding='utf-8')) if p.exists() else d
-def save(s): s['updated_at']=datetime.now(timezone.utc).isoformat(); STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+def save(s):
+ s['updated_at']=datetime.now(timezone.utc).isoformat()
+ STATE.parent.mkdir(parents=True,exist_ok=True)
+ tmp=STATE.with_name(STATE.name+'.tmp')
+ tmp.write_text(json.dumps(s,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+ os.replace(tmp,STATE)
 def checkpoint(s,phase,bc=None,error=None):
  s['phase']=phase; s['checkpoint_seq']=int(s.get('checkpoint_seq',0))+1
  if bc is not None: s['current_bc']=int(bc)
@@ -108,6 +114,128 @@ def verify_external_authority(bc,candidate_hash=None):
    if stored.get('input_digest')!=candidate_hash: print(f'AIOS_AUTHORITY_HOLD BC{bc} candidate_binding_mismatch'); return False
   print(f'AIOS_AUTHORITY_VERIFIED BC{bc} contract_id={result["contract_id"]} issuer={result["issuer"]} attested=true'); return True
  except Exception as exc: print(f'AIOS_AUTHORITY_HOLD BC{bc} reason={exc}'); return False
+def append_oos_event(s,event):
+ event=dict(event)
+ assert_history_entry_legal(event)
+ bc=event.get('bc')
+ target=event.get('oos_state')
+ if bc is None or target is None: raise OOSLifecycleError('OOS_EVENT_REQUIRES_BC_AND_STATE')
+ prior=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
+ # Exact replay is idempotent, but a same-state event with different evidence is corruption.
+ same=[x for x in prior if x.get('oos_state')==target and x.get('candidate_hash')==event.get('candidate_hash')]
+ if same:
+  if len(same)!=1 or same[0] != event: raise OOSLifecycleError('OOS_EVENT_REPLAY_MISMATCH')
+  return same[0]
+ if any(x.get('oos_state')==target for x in prior):
+  raise OOSLifecycleError('DUPLICATE_OOS_STATE')
+ if prior:
+  current=prior[-1].get('oos_state')
+  try:
+   from research.oos_lifecycle import advance
+   advance(current,target)
+  except Exception as exc:
+   raise OOSLifecycleError(f'OOS_HISTORY_TRANSITION_INVALID:{current}->{target}') from exc
+ else:
+  raise OOSLifecycleError('OOS_EVENT_REQUIRES_PROMOTION_PREDECESSOR')
+ s.setdefault('history',[]).append(event)
+ return event
+
+def oos_current_state(s,bc):
+ entries=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('oos_state')]
+ return entries[-1].get('oos_state') if entries else None
+
+def ensure_oos_state(s,bc,candidate_hash,target,**event_extra):
+ from research.oos_lifecycle import OOSState, advance
+ target=OOSState(target)
+ current=oos_current_state(s,bc)
+ if current==target: return
+ if current is None:
+  raise OOSLifecycleError('OOS_STATE_REQUIRES_PROMOTION')
+ if current=="UNKNOWN":
+  current="UNKNOWN"
+ path=[OOSState.OOS_AUTHORIZED,OOSState.OOS_DISPATCHED,OOSState.OOS_EXECUTED,OOSState.OOS_RECEIPT,OOSState.OOS_EVALUATED]
+ if target not in path: raise OOSLifecycleError('OOS_TARGET_NOT_PROGRESS_STATE')
+ if current in path and path.index(current)>=path.index(target): return
+ if current==OOSState.OOS_PENDING:
+  start=0
+ elif current==OOSState.UNKNOWN:
+  start=0
+ else:
+  start=path.index(OOSState(current))+1
+ for state in path[start:path.index(target)+1]:
+  append_oos_event(s,lifecycle_event(state,bc=bc,candidate_hash=candidate_hash,**event_extra if state == OOSState.OOS_RECEIPT else {}))
+
+def append_promotion_event(s,bc,candidate_hash):
+ existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==int(bc) and x.get('decision')==PROMOTE]
+ if existing:
+  if len(existing)!=1: raise OOSLifecycleError('DUPLICATE_PROMOTION_EVENTS')
+  assert_history_entry_legal(existing[0])
+  if existing[0].get('candidate_hash')!=candidate_hash: raise OOSLifecycleError('PROMOTION_CANDIDATE_BINDING_MISMATCH')
+  return False
+ event=promotion_event()
+ event.update({'bc':int(bc),'candidate_hash':candidate_hash})
+ assert_history_entry_legal(event)
+ s.setdefault('history',[]).append(event)
+ return True
+
+def migrate_legacy_state(s):
+ history=s.get('history',[])
+ if not isinstance(history,list): raise OOSLifecycleError('STATE_HISTORY_SCHEMA_INVALID')
+ version=int(s.get('state_schema_version',1))
+ if version not in {1,2}: raise OOSLifecycleError('UNSUPPORTED_STATE_SCHEMA_VERSION')
+ if version==2:
+  seen_states={}
+  for entry in history:
+   assert_history_entry_legal(entry)
+   if entry.get('oos_state'):
+    bc_key=int(entry.get('bc',-1))
+    key=(bc_key,entry.get('oos_state'))
+    if key in seen_states:
+     raise OOSLifecycleError('DUPLICATE_OOS_STATE')
+    seen_states[key]=entry
+  evaluation=s.get('oos_evaluation')
+  if evaluation:
+   assert_history_entry_legal(evaluation)
+   if evaluation not in history:
+    raise OOSLifecycleError('OOS_EVALUATION_NOT_PRESENT_IN_HISTORY')
+  return False
+ changed=False
+ for entry in history:
+  if not isinstance(entry,dict): raise OOSLifecycleError('STATE_HISTORY_ENTRY_INVALID')
+  verdict=entry.get('oos_verdict')
+  if verdict in {'OOS_PASS','OOS_FAIL'}:
+   entry['legacy_oos_verdict']=verdict
+   if entry.get('decision') is not None:
+    entry['legacy_decision']=entry.get('decision')
+    entry['decision']='LEGACY_OOS_MIGRATED'
+   entry['oos_verdict']=None
+   entry['oos_executed']=False
+   entry['oos_state']='UNKNOWN'
+   entry['semantic_status']='LEGACY_UNVERIFIED_OOS'
+   entry['migration_id']='OOS_CANONICAL_V1'
+   changed=True
+ evaluation=s.get('oos_evaluation')
+ if evaluation:
+  s['legacy_oos_evaluation']=evaluation
+  s['oos_evaluation']=None
+  changed=True
+ if s.get('terminal_reason') in {'OOS_PASS','OOS_FAIL'}:
+  s['legacy_terminal_reason']=s['terminal_reason']; s['terminal_reason']=None; s['terminal']=False; changed=True
+ if s.get('campaign_terminal_reason') in {'OOS_PASS','OOS_FAIL'}:
+  s['legacy_campaign_terminal_reason']=s['campaign_terminal_reason']; s['campaign_terminal_reason']=None; s['terminal']=False; changed=True
+ seen_states={}
+ for entry in history:
+  if entry.get('oos_state'):
+   key=(int(entry.get('bc',-1)),entry.get('oos_state'))
+   if key in seen_states: raise OOSLifecycleError('DUPLICATE_OOS_STATE')
+   seen_states[key]=entry
+ if changed:
+  s.setdefault('state_migrations',[]).append({'migration_id':'OOS_CANONICAL_V1','status':'APPLIED','reason':'legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists'})
+  s['state_schema_version']=2
+ else:
+  s['state_schema_version']=2
+ return changed
+
 def authorized_state(s):
  caps=s.get('capabilities',[])
  if not isinstance(caps,list) or any(str(x)!='research' for x in caps): print('AIOS_STATE_HOLD undeclared capability in durable controller state'); return False
@@ -155,10 +283,18 @@ def epoch_seed_failure(parent,start):
  except (OSError,TypeError,ValueError): return None
 def main():
  s=load(STATE,{'history':[],'iterations':0,'last_bc':None,'next_bc':1,'oos_consumed':[],'terminal':False,'phase':'OBSERVE','retry_count':0})
+ try:
+  if migrate_legacy_state(s): save(s)
+ except OOSLifecycleError as exc:
+  checkpoint(s,'HOLD',error=str(exc)); return 4
+ for entry in s.get('history',[]): assert_history_entry_legal(entry)
  if not authorized_state(s): checkpoint(s,'HOLD',error='persisted controller state contains undeclared capability'); return 4
  if s.get('terminal'):
   bc=int(s.get('current_bc') or s.get('last_bc') or 0)
-  if bc and verify_external_authority(bc): print('CONTROLLER_DECISION TERMINAL_STATE_AUTHORIZED'); return 0
+  ev=s.get('oos_evaluation') or {}
+  if bc and ev.get('bc')==bc and ev.get('oos_verdict')=='OOS_PASS' and verify_external_authority(bc):
+   print('CONTROLLER_DECISION TERMINAL_STATE_AUTHORIZED'); return 0
+  checkpoint(s,'HOLD',bc,error='persisted terminal state lacks bound OOS_PASS evaluation or valid authority attestation'); return 3
   checkpoint(s,'HOLD',bc,error='persisted terminal state lacks valid external authority attestation'); return 3
  checkpoint(s,'OBSERVE',s.get('current_bc')); q=normalize_queue(s)
  if not q:
@@ -194,14 +330,61 @@ def main():
  checkpoint(s,'VERIFY',bc); rc,out=run([sys.executable,g.name,str(bc)] if g.name=='audit_bc_fast_gate.py' else [sys.executable,g.name])
  if rc: return rc
  if PROMOTE in out:
-  checkpoint(s,'FREEZE_OOS',bc); result=oos_once(bc,c)
-  if result is None: return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
-  passed=result.get('oos_passed') is True; decision='OOS_PASS' if passed else 'OOS_FAIL'; s['history'].append({'bc':bc,'decision':PROMOTE,'hypothesis_id':c['hypothesis_id'],'candidate_hash':c['candidate_hash'],'oos_verdict':decision})
+  try:
+   append_promotion_event(s,bc,c['candidate_hash'])
+   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_DISPATCHED')
+  except OOSLifecycleError as exc:
+   return hold(s,'HOLD_OOS_HISTORY_INTEGRITY:'+str(exc),bc,retryable=False)
+  checkpoint(s,'FREEZE_OOS',bc)
+  result=oos_once(bc,c)
+  if result is None:
+   append_oos_event(s,{'bc':bc,'candidate_hash':c['candidate_hash'],'oos_state':'UNKNOWN','oos_verdict':None,'oos_executed':False})
+   return hold(s,'HOLD_OOS_EXECUTOR_OR_AUTHORITY',bc)
+  receipt=load(OOS_DIR/f'BC{bc}_oos_result_receipt.json',{})
+  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EXECUTED')
+  checkpoint(s,'OOS_EXECUTED',bc)
+  ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT',receipt_type=receipt.get('receipt_type'),receipt_schema_version=receipt.get('schema_version'),receipt_id=receipt.get('result_sha256'))
+  receipt_events=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('oos_state')=='OOS_RECEIPT']
+  if len(receipt_events)!=1: return hold(s,'HOLD_OOS_RECEIPT_EVENT_AMBIGUOUS',bc,retryable=False)
+  rec=receipt_events[0]
+  rec.update({'receipt_type':receipt.get('receipt_type'),'receipt_schema_version':receipt.get('schema_version'),'receipt_id':receipt.get('result_sha256')})
+  assert_history_entry_legal(rec)
+  checkpoint(s,'OOS_RECEIPT',bc)
+  try:
+   evaluation=evaluate_oos(result,receipt)
+   evaluation_entry={'bc':bc,'candidate_hash':c['candidate_hash'],**evaluation}
+   assert_history_entry_legal(evaluation_entry)
+  except OOSLifecycleError as exc:
+   return hold(s,'HOLD_OOS_EVALUATION_INTEGRITY:'+str(exc),bc,retryable=False)
+  current=oos_current_state(s,bc)
+  if current=='OOS_EVALUATED':
+   existing=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('event_type')=='OOS_EVALUATION']
+   if len(existing)!=1 or existing[0].get('oos_verdict')!=evaluation_entry.get('oos_verdict') or existing[0].get('receipt_digest')!=evaluation_entry.get('receipt_digest'):
+    return hold(s,'HOLD_OOS_EVALUATION_REPLAY_MISMATCH',bc,retryable=False)
+   evaluation_entry=existing[0]
+  else:
+   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_EVALUATED')
+   evaluation_entry['oos_state']='OOS_EVALUATED'
+   append_oos_event(s,evaluation_entry)
+  s['oos_evaluation']=evaluation_entry
+  checkpoint(s,'OOS_EVALUATED',bc)
+  decision=evaluation['oos_verdict']
   if c['candidate_hash'] not in s.get('oos_consumed',[]): s.setdefault('oos_consumed',[]).append(c['candidate_hash'])
   write_queue([])
-  if passed:
-   s['terminal']=True; s['terminal_reason']='OOS_PASS'; s['next_bc']=bc+1; checkpoint(s,'TERMINAL',bc); print(f'CONTROLLER_DECISION OOS_PASS BC{bc} TERMINAL'); return 0
-  write_oos_failure(bc,parent,c,result); s['terminal']=False; s['terminal_reason']='OOS_FAIL'; s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}'); return 0
+  if decision=='OOS_PASS':
+   s['terminal']=True
+   s['terminal_reason']=terminal_reason_from_oos(result,receipt)
+   s['next_bc']=bc+1
+   checkpoint(s,'TERMINAL',bc)
+   print(f'CONTROLLER_DECISION {s["terminal_reason"]} BC{bc} TERMINAL')
+   return 0
+  write_oos_failure(bc,parent,c,result)
+  s['terminal']=False
+  s['terminal_reason']=terminal_reason_from_oos(result,receipt)
+  s['next_bc']=bc+1
+  checkpoint(s,'PERSISTED',bc)
+  print(f'CONTROLLER_NEXT_AFTER_OOS_FAIL BC{bc+1}')
+  return 0
  if REJECT not in out and 'SPLIT_GATE False' not in out:
   checkpoint(s,'HOLD',bc,error='NO_EXPLICIT_DECISION'); print(f'CONTROLLER_DECISION BC{bc}_NO_EXPLICIT_DECISION_BLOCKED'); return 5
  write_queue([]); s['history'].append({'bc':bc,'decision':REJECT,'next':'AGENT_HYPOTHESIS','hypothesis_id':c['hypothesis_id'],'candidate_hash':c.get('candidate_hash')}); s['next_bc']=bc+1; checkpoint(s,'PERSISTED',bc); failure=FAILURE_DIR/f'BC{bc}.json'
