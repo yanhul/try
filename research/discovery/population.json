@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3071,
-    "expanded": 2679,
-    "normalized": 2679,
+    "raw": 3072,
+    "expanded": 2680,
+    "normalized": 2680,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1177,22 +1177,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2f7484b60fe4b409",
       "source": "crossref",
       "source_url": "https://doi.org/10.1787/888933433273",
@@ -1940,22 +1924,6 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "eea99fa3f45fbb3b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3465,22 +3433,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aec1864e886cea32",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118531877.index",
@@ -4137,6 +4089,22 @@
       }
     },
     {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4228,6 +4196,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4660,22 +4644,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -6137,6 +6105,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6324,38 +6324,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -6729,6 +6697,22 @@
       }
     },
     {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2a84d886a1d3a525",
       "source": "crossref",
       "source_url": "https://doi.org/10.4135/9781529731460",
@@ -6820,6 +6804,22 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -7529,6 +7529,22 @@
       }
     },
     {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "970199a1deb2afee",
       "source": "crossref",
       "source_url": "https://doi.org/10.5220/0010391004260436",
@@ -8165,6 +8181,22 @@
       "lineage": {
         "source": "520257e582899388",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -8921,22 +8953,6 @@
       }
     },
     {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "096d6e7bf7b79532",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4902478",
@@ -9092,22 +9108,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -25210,6 +25210,22 @@
       "source_timestamp": "2026-09-16T07:15:42.526Z",
       "lineage": {
         "source": "1991448bbb16c3dc",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "df9b08b0414f6dd3",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/rachel.green.r/ecoscan-26454254-deletion_scheduled-86649841",
+      "title": "rachel.green.r/ecoscan-26454254-deletion_scheduled-86649841",
+      "description": "Release management template for [semantic-release](https://github.com/semantic-release/semantic-release)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-19T06:42:14.313Z",
+      "lineage": {
+        "source": "df9b08b0414f6dd3",
         "family": "china_a_share",
         "rounds": []
       }
@@ -44735,22 +44751,6 @@
       }
     },
     {
-      "candidate_id": "85412db3f2f10d5b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
-      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
-      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "85412db3f2f10d5b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6cecd68115f14526",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/1aa17f0625e29596cb4786af2a2d155852304085",
@@ -44987,6 +44987,22 @@
       "lineage": {
         "source": "df63befed808f2f5",
         "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "85412db3f2f10d5b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
+      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
+      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "85412db3f2f10d5b",
+        "family": "unknown",
         "rounds": []
       }
     },
