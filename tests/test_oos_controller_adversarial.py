@@ -131,7 +131,8 @@ def test_evaluation_is_appended_as_one_canonical_event():
                "bc":306,"candidate_hash":"c306","dataset_sha256":"d306",
                "protocol_sha256":"p306","oos_executed":True,
                "oos_selection_used":False,"oos_passed":False,
-               "metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash","receipt_id":"rid306"}
+               "metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash"}
+    receipt["receipt_id"]=hashlib.sha256(json.dumps(receipt,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     entry = {"bc":306,"candidate_hash":"c306",**evaluate_oos(result,receipt)}
     assert append_oos_event(state,entry) == entry
     assert state["history"][-1] == entry
