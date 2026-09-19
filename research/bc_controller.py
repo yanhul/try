@@ -244,7 +244,7 @@ def verify_oos_receipt(bc,candidate_hash,result,receipt_path):
  if not isinstance(result,dict) or result.get('bc')!=bc or result.get('candidate_hash')!=candidate_hash or result.get('oos_executed') is not True or result.get('oos_selection_used') is not False or not receipt_path.exists(): return False
  try: receipt=load(receipt_path,{})
  except Exception: return False
- if receipt.get('receipt_type')!='OOS_EXECUTION_RECEIPT' or receipt.get('schema_version')!=1 or receipt.get('bc')!=bc or receipt.get('candidate_hash')!=candidate_hash or receipt.get('oos_executed') is not True or receipt.get('oos_selection_used') is not False: return False
+ if receipt.get('receipt_type')!='OOS_EXECUTION_RECEIPT' or receipt.get('schema_version')!=1 or receipt.get('bc')!=bc or receipt.get('candidate_hash')!=candidate_hash or receipt.get('oos_executed') is not True or receipt.get('oos_selection_used') is not False or not receipt.get('receipt_id'): return False
  if receipt.get('oos_passed') is not result.get('oos_passed') or receipt.get('metrics')!=result.get('metrics'): return False
  if receipt.get('dataset_sha256')!=result.get('dataset',{}).get('sha256') or receipt.get('protocol_sha256')!=result.get('protocol_sha256'): return False
  try: return receipt.get('result_sha256')==hashlib.sha256((OOS_DIR/f'BC{bc}_oos_result.json').read_bytes()).hexdigest()
@@ -346,7 +346,7 @@ def main():
   receipt_binding={
    'receipt_type':receipt.get('receipt_type'),
    'receipt_schema_version':receipt.get('schema_version'),
-   'receipt_id':receipt.get('result_sha256'),
+   'receipt_id':receipt.get('receipt_id'),
   }
   ensure_oos_state(s,bc,c['candidate_hash'],'OOS_RECEIPT',**receipt_binding)
   receipt_events=[x for x in s.get('history',[]) if isinstance(x,dict) and int(x.get('bc',-1))==bc and x.get('oos_state')=='OOS_RECEIPT']
