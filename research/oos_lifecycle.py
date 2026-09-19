@@ -63,6 +63,7 @@ def _require_receipt_binding(result,receipt):
  if receipt.get("schema_version")!=1: raise OOSLifecycleError("OOS_RECEIPT_SCHEMA")
  if receipt.get("oos_executed") is not True: raise OOSLifecycleError("OOS_RECEIPT_REQUIRES_EXECUTION")
  if receipt.get("oos_selection_used") is not False: raise OOSLifecycleError("OOS_RECEIPT_SELECTION_CONTAMINATION")
+ if not receipt.get("receipt_id"): raise OOSLifecycleError("OOS_RECEIPT_ID_MISSING")
  if receipt.get("metrics")!=result.get("metrics"): raise OOSLifecycleError("OOS_RECEIPT_METRICS_MISMATCH")
 
 def evaluate_oos(result,receipt):
