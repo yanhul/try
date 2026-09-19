@@ -1,6 +1,7 @@
 name: Gate 3 Validation Authority
 
 on:
+  workflow_dispatch:
   push:
     branches: ["**"]
   pull_request:
