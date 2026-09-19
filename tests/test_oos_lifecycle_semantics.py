@@ -1,10 +1,12 @@
-import pytest
+import pytest, hashlib, json
 from research.oos_lifecycle import OOSLifecycleError,OOSState,advance,assert_history_entry_legal,evaluate_oos,lifecycle_event,promotion_event,provider_failure_event
 
 def result():
  return {"bc":306,"candidate_hash":"c306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"dataset":{"sha256":"d306"},"protocol_sha256":"p306"}
 def receipt():
- return {"schema_version":1,"receipt_type":"OOS_EXECUTION_RECEIPT","bc":306,"candidate_hash":"c306","dataset_sha256":"d306","protocol_sha256":"p306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash","receipt_id":"rid306"}
+ r={"schema_version":1,"receipt_type":"OOS_EXECUTION_RECEIPT","bc":306,"candidate_hash":"c306","dataset_sha256":"d306","protocol_sha256":"p306","oos_executed":True,"oos_selection_used":False,"oos_passed":False,"metrics":{"profit_factor":0.8},"result_sha256":"artifact-hash"}
+ r["receipt_id"]=hashlib.sha256(json.dumps(r,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ return r
 
 def test_promotion_is_pending_and_verdict_free():
  e=promotion_event(); assert e["oos_state"]=="OOS_PENDING" and e["oos_verdict"] is None; assert_history_entry_legal(e)
