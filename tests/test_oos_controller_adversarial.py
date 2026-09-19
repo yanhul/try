@@ -81,6 +81,10 @@ def test_receipt_verifier_recomputes_result_artifact_hash(tmp_path, monkeypatch)
     receipt_path = oos_dir / "BC306_oos_result_receipt.json"
     receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
     assert verify_oos_receipt(306, "c306", result, receipt_path)
+    tampered_receipt=dict(receipt); tampered_receipt["receipt_id"]="0"*64
+    receipt_path.write_text(json.dumps(tampered_receipt), encoding="utf-8")
+    assert not verify_oos_receipt(306, "c306", result, receipt_path)
+    receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
     artifact.write_text("tampered", encoding="utf-8")
     assert not verify_oos_receipt(306, "c306", result, receipt_path)
 
