@@ -31,3 +31,6 @@ def test_gate3_rejects_identity_mutation():
 
 def test_gate3_rejects_execution_before_oos_authority():
     c=candidate(); e=evidence(c); e["oos_executed"]=True; assert gate().validate_gate3(c,e)==(False,"oos_execution_forbidden")
+
+def test_gate3_rejects_unexecutable_hypothesis():
+    c = candidate(); e = evidence(c); c["hypothesis_id"] = "not_registered"; c["candidate_hash"] = gate().canonical_hash(c); e["candidate_hash"] = c["candidate_hash"]; e["hypothesis_id"] = c["hypothesis_id"]; assert gate().validate_gate3(c,e)==(False,"unexecutable_hypothesis_id")
