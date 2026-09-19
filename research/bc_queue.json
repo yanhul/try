@@ -1,29 +1,30 @@
 [
   {
-    "bc": 430,
-    "candidate_hash": "528f98806ca6342cdbe9fa44926dea4c59826c39acdfdffb1294ed6646de7020",
-    "conceptual_change": "Shift from first-order trend signals to a normalized statistical deviation (zscore) of the price relative to the VWAP, identifying periods where price has momentum but remains statistically suppressed within its recent distribution.",
+    "bc": 431,
+    "candidate_hash": "5079fb361cb32fa1b04dbe248e986e97652b1426328e615162c76e97419aae5f",
+    "conceptual_change": "Instead of analyzing price deviation or raw volume, this hypothesis measures the ratio of vwap_distance against its own lagged historical state, identifying local mean reversion when the current relative distance to vwap is significantly lower than the recent volatility-adjusted norm.",
     "discovery_spec": {
       "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "momentum_trend",
-      "operator": "zscore",
-      "threshold": 1.5,
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "vwap_distance",
+      "threshold": 0.85,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|zscore|vwap_distance||below",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|vwap_distance|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.5,
+      "threshold": 0.85,
       "window": 24
     },
-    "parent_bc": 429,
+    "parent_bc": 430,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
