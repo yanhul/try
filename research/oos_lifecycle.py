@@ -64,6 +64,10 @@ def _require_receipt_binding(result,receipt):
  if receipt.get("oos_executed") is not True: raise OOSLifecycleError("OOS_RECEIPT_REQUIRES_EXECUTION")
  if receipt.get("oos_selection_used") is not False: raise OOSLifecycleError("OOS_RECEIPT_SELECTION_CONTAMINATION")
  if not receipt.get("receipt_id"): raise OOSLifecycleError("OOS_RECEIPT_ID_MISSING")
+ claimed_receipt_id=receipt.get("receipt_id")
+ canonical_receipt=dict(receipt); canonical_receipt.pop("receipt_id",None)
+ expected_receipt_id=hashlib.sha256(json.dumps(canonical_receipt,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ if claimed_receipt_id!=expected_receipt_id: raise OOSLifecycleError("OOS_RECEIPT_ID_MISMATCH")
  if receipt.get("metrics")!=result.get("metrics"): raise OOSLifecycleError("OOS_RECEIPT_METRICS_MISMATCH")
 
 def evaluate_oos(result,receipt):
