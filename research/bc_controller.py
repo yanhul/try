@@ -245,6 +245,10 @@ def verify_oos_receipt(bc,candidate_hash,result,receipt_path):
  try: receipt=load(receipt_path,{})
  except Exception: return False
  if receipt.get('receipt_type')!='OOS_EXECUTION_RECEIPT' or receipt.get('schema_version')!=1 or receipt.get('bc')!=bc or receipt.get('candidate_hash')!=candidate_hash or receipt.get('oos_executed') is not True or receipt.get('oos_selection_used') is not False or not receipt.get('receipt_id'): return False
+ canonical_receipt=dict(receipt); claimed_receipt_id=canonical_receipt.pop('receipt_id',None)
+ if not claimed_receipt_id: return False
+ expected_receipt_id=hashlib.sha256(json.dumps(canonical_receipt,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ if claimed_receipt_id!=expected_receipt_id: return False
  if receipt.get('oos_passed') is not result.get('oos_passed') or receipt.get('metrics')!=result.get('metrics'): return False
  if receipt.get('dataset_sha256')!=result.get('dataset',{}).get('sha256') or receipt.get('protocol_sha256')!=result.get('protocol_sha256'): return False
  try: return receipt.get('result_sha256')==hashlib.sha256((OOS_DIR/f'BC{bc}_oos_result.json').read_bytes()).hexdigest()
