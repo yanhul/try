@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 429,
+    "candidate_hash": "6175908045aed0bdb3ae21088225f4e484f1956ccba1cf66dded3a002036dea3",
+    "conceptual_change": "Shift from simple trend identification to measuring the acceleration (delta) of the vwap_distance over a 12-period window to identify momentum breakouts.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "vwap_distance",
+      "mechanism_family": "momentum_trend",
+      "operator": "delta",
+      "threshold": 0.05,
+      "window": 12
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|delta|vwap_distance||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.05,
+      "window": 12
+    },
+    "parent_bc": 428,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
