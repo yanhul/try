@@ -31,3 +31,7 @@ def test_evaluation_binds_receipt():
 def test_receipt_identity_is_required():
  r=receipt(); r.pop("receipt_id")
  with pytest.raises(OOSLifecycleError,match="OOS_RECEIPT_ID_MISSING"): evaluate_oos(result(),r)
+
+def test_receipt_identity_is_canonical():
+ r=receipt(); r["receipt_id"]="0"*64
+ with pytest.raises(OOSLifecycleError,match="OOS_RECEIPT_ID_MISMATCH"): evaluate_oos(result(),r)
