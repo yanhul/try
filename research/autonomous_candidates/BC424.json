@@ -1,0 +1,26 @@
+{
+  "bc": 424,
+  "candidate_hash": "faad1fb9b6fda08573e756c1f0a97efb47ee6e821fa5462ced70cc253e4b13c5",
+  "conceptual_change": "Shifted from absolute price thresholds to a relative relationship between vwap_distance and absolute trading volume to measure trend exhaustion when distance from vwap is constrained by low volume.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.5
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|vwap_distance|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": null
+  },
+  "parent_bc": 423,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
