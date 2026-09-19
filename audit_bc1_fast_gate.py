@@ -13,6 +13,10 @@ validation = base["VALIDATION"]
 if base.get("validation_passed") is not False:
     raise SystemExit("BLOCKED: BC1 bootstrap gate requires recorded validation_passed=false")
 
-print("BC1_VALIDATION_PASS", validation["metrics"])
+if validation.get("metrics") != base.get("VALIDATION",{}).get("metrics"):
+    raise SystemExit("BLOCKED: BC1 validation metrics are internally inconsistent")
+if base.get("OOS") is not None:
+    raise SystemExit("BLOCKED: BC1 must not contain OOS evidence before validation promotion")
+print("BC1_VALIDATION_FAIL", validation["metrics"])
 print("SPLIT_GATE False")
 print("REJECT_BC")
