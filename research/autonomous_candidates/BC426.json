@@ -1,0 +1,28 @@
+{
+  "bc": 426,
+  "candidate_hash": "d7d518a8cef3568701a465408923975f17474d9c6f269342fb3161086fa3e93b",
+  "conceptual_change": "Shifted from price level momentum to a relative trend intensity indicator by comparing the current distance from VWAP against its own 20-period moving average. This captures accelerating trend regimes where the current divergence significantly exceeds the short-term mean, distinguishing persistent trend momentum from simple volatility expansions.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "rolling_mean",
+    "threshold": 1.25,
+    "window": 20
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|vwap_distance|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 20
+  },
+  "parent_bc": 425,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
