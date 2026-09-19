@@ -1,0 +1,28 @@
+{
+  "bc": 432,
+  "candidate_hash": "5ab5f9b0fe7e66ee3b2a5eaa07e8bf62e24618e16631e671603ed9b54aca3bcb",
+  "conceptual_change": "Instead of static thresholds or simple differences, this hypothesis uses the ratio of vwap_distance to its rolling standard deviation (volatility normalization) to identify oversold conditions relative to recent price-volume dispersion patterns.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_std",
+    "threshold": 0.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|vwap_distance|rolling_std|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 24
+  },
+  "parent_bc": 431,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
