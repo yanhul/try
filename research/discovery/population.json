@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3048,
-    "expanded": 2656,
-    "normalized": 2656,
+    "raw": 3049,
+    "expanded": 2657,
+    "normalized": 2657,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1305,22 +1305,6 @@
       }
     },
     {
-      "candidate_id": "bf4a623110ac6de2",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.52926/jpmjpr1761",
-      "title": "A\u80a1 \u91cf\u5316 github",
-      "description": "Crossref work type=grant",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bf4b4904031aa9f4",
       "source": "crossref",
       "source_url": "https://doi.org/10.1589/rika.23.671",
@@ -1364,22 +1348,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "2eab78c2566eb075",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "rounds": []
       }
@@ -1444,22 +1412,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "5676d6ef4cb0a00b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3361f743c083fe40",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "3361f743c083fe40",
         "family": "china_a_share",
         "rounds": []
       }
@@ -6281,38 +6233,6 @@
       }
     },
     {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6500,6 +6420,38 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -9321,38 +9273,6 @@
       }
     },
     {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -9417,6 +9337,22 @@
       }
     },
     {
+      "candidate_id": "100a54218862e1f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
+      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "100a54218862e1f9",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b917583fb1e919c8",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2021.113022",
@@ -9428,6 +9364,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "b917583fb1e919c8",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
         "family": "unknown",
         "rounds": []
       }
@@ -9481,6 +9433,54 @@
       }
     },
     {
+      "candidate_id": "3361f743c083fe40",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "3361f743c083fe40",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5267b52c5a5f160e",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
@@ -9493,6 +9493,86 @@
       "lineage": {
         "source": "5267b52c5a5f160e",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bf4a623110ac6de2",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.52926/jpmjpr1761",
+      "title": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "description": "Crossref work type=grant",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "bf4a623110ac6de2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -9609,22 +9689,6 @@
       }
     },
     {
-      "candidate_id": "100a54218862e1f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
-      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "100a54218862e1f9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1ef8b8bf05802f06",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2025.141013",
@@ -9641,22 +9705,6 @@
       }
     },
     {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bcb5ccbcca7e1462",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2021.101001",
@@ -9668,22 +9716,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "bcb5ccbcca7e1462",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
         "family": "unknown",
         "rounds": []
       }
@@ -10249,22 +10281,6 @@
       }
     },
     {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2023.124175",
@@ -10276,22 +10292,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -14011,7 +14011,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T04:03:26Z",
+      "source_timestamp": "2026-09-19T04:19:29Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -21866,6 +21866,22 @@
       "source_timestamp": "2026-09-19T00:40:25.564Z",
       "lineage": {
         "source": "9cf571379b3e64be",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26405c0595a657cf",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gms-squared/support/gitlab-ci-templates/releases",
+      "title": "gms-squared/support/gitlab-ci-templates/releases",
+      "description": "Project to provide a semantic release CI/CD template for github fow, gitlab flow or trunk-based developments",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-19T04:19:06.785Z",
+      "lineage": {
+        "source": "26405c0595a657cf",
         "family": "china_a_share",
         "rounds": []
       }
@@ -37071,6 +37087,22 @@
       }
     },
     {
+      "candidate_id": "46b53c5818c665b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
+      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "46b53c5818c665b5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "72de5402a871b1a7",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/9a88e13ceafbf563986443aa87c28324f92fca9e",
@@ -40303,6 +40335,22 @@
       }
     },
     {
+      "candidate_id": "1cc7f591c282fa01",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
+      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
+      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
+      "family": "regime",
+      "market": null,
+      "query": "crypto regime switching hidden Markov trading",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "1cc7f591c282fa01",
+        "family": "regime",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7c560fda9c9ee657",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ab28e11db7fe9608f490ecd5159c567f167c0855",
@@ -40538,22 +40586,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "bd50faba8d460d36",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "32d57cde827e100d",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
-      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
-      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "32d57cde827e100d",
         "family": "volatility",
         "rounds": []
       }
@@ -43743,22 +43775,6 @@
       }
     },
     {
-      "candidate_id": "62f6f7b3e0c0e855",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
-      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
-      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
-      "family": "unknown",
-      "market": null,
-      "query": "reinforcement learning trading systematic review",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "62f6f7b3e0c0e855",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "413c2b5288c75e75",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/3cc99d0ee028971ddaea011625061b3d913c7af2",
@@ -44159,22 +44175,6 @@
       }
     },
     {
-      "candidate_id": "1cc7f591c282fa01",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
-      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
-      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
-      "family": "regime",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "1cc7f591c282fa01",
-        "family": "regime",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "913fe758577e2533",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/48c24f36155d956e672752bd10d9453b52243b62",
@@ -44219,6 +44219,22 @@
       "lineage": {
         "source": "666e5ab7c7ce84c9",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "32d57cde827e100d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "family": "volatility",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "32d57cde827e100d",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -44282,6 +44298,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "fd642ce475624981",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "62f6f7b3e0c0e855",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
+      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
+      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "62f6f7b3e0c0e855",
         "family": "unknown",
         "rounds": []
       }
@@ -44618,22 +44650,6 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "42f9b0f95acb24cb",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "46b53c5818c665b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
-      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "46b53c5818c665b5",
         "family": "china_a_share",
         "rounds": []
       }
@@ -46899,7 +46915,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T04:03:26Z",
+      "source_timestamp": "2026-09-19T04:19:29Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
