@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from research import bc_controller
-from research.bc_controller import append_oos_event, append_promotion_event, ensure_oos_state, migrate_legacy_state, verify_oos_receipt
+from research.bc_controller import append_promotion_event, ensure_oos_state, migrate_legacy_state, verify_oos_receipt
 from research.oos_lifecycle import OOSLifecycleError, assert_history_entry_legal
 
 
