@@ -1961,22 +1961,6 @@
       }
     },
     {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c46d8cf558932aa3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6535019",
@@ -7673,6 +7657,22 @@
       }
     },
     {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "970199a1deb2afee",
       "source": "crossref",
       "source_url": "https://doi.org/10.5220/0010391004260436",
@@ -9273,54 +9273,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -9513,6 +9465,70 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "04682721e80adf6f",
       "source": "crossref",
       "source_url": "https://doi.org/10.37155/2717-5316-0508-27",
@@ -9652,22 +9668,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1ef8b8bf05802f06",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
         "family": "unknown",
         "rounds": []
       }
@@ -14011,7 +14011,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T04:52:08Z",
+      "source_timestamp": "2026-09-19T05:08:17Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -24103,7 +24103,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T05:08:18.171Z",
+      "source_timestamp": "2026-09-19T05:08:05.468Z",
       "lineage": {
         "source": "c5d74b90f938db8e",
         "family": "china_a_share",
@@ -36863,6 +36863,22 @@
       }
     },
     {
+      "candidate_id": "3b4f72acef38657e",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
+      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
+      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China\u2019s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "3b4f72acef38657e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2318005cb28a8ccd",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/341beedf4855a5a3c76a27af1585f89b191a5730",
@@ -36922,6 +36938,38 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "7b4288e6be3d31cb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2bd0e8d885c36e2c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/07c77290901f22f35fbd062da759ace375c45d5f",
+      "title": "High-Dimensional Spatiotemporal Dependencies and Behavioral Heterogeneity Co-Modeling: LSTM-Multi-Factor Penetrative Analysis and Risk Premium Decomposition of the Reversal Effect in China's A-Share Market",
+      "description": "China\u2019s A-share market, with its unique retail-dominated investor base and policy-driven ecosystem, serves as a compelling laboratory for testing market anomalies. This study investigates the efficacy and mechanisms of momentum and reversal effects in this emerging-market context, uncovering how behavioral forces dynamically shape price patterns under structural inefficiencies. Building on monthly data spanning January 2014 to January 2024, we systematically evaluate strategy performance through winner-loser portfolio construction across formation periods (1, 3, 6, 12 months), employing long-short tactics, risk-neutralizing techniques (CAPM and Fama-French three-factor models), and an LSTM deep learning framework. Key findings reveal reversal strategies\u2019 striking dominance over momentum approaches mainly during an economic recession, with win rates consistently hovering at 50%-60% in both economic expansion and recession and peaking with an average of 61.95% in 3-month formation windows\u2014evidence of retail-driven overreaction followed by swift price correction. Our novel LSTM model, integrating implied volatility (IV), turnover, market capitalization, and technical indicators, achieved 81.3% prediction accuracy in out-of-sample tests, with the relative strength index (RSI) emerging as the most influential predictor. By bridging multifactor risk adjustment with nonlinear machine learning, this research marks a breakthrough in quant methodology, offering practitioners a robust toolkit to navigate China\u2019s sentiment-fueled volatility while advancing behavioral theory in nonlinear markets. This study also redefines emerging-market asset pricing paradigms through theoretical and technological breakthroughs. Theoretically, it pioneers a dynamic pricing model that captures the interplay between institutional frictions and behavioral biases, particularly during policy-sensitive windows and sentiment extremes\u2014a critical advance beyond traditional frameworks\u2019 inability to decod",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "2bd0e8d885c36e2c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "07b84dc88150d072",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/ce67f7485c2db4465ca678848ce14a6595e20037",
+      "title": "Machine Learning Enhanced Multi-Factor Quantitative Trading: A Cross-Sectional Portfolio Optimization Approach with Bias Correction",
+      "description": "Rolling-window factor pipelines for Chinese A-share markets contain a subtle but costly flaw: daily price-move limits (+/-10% main-board, +/-20% STAR/ChiNext) render a fraction of closing prices non-executable, yet standard implementations ingest these values before any row-filtering runs. The contaminated aggregates propagate silently through moving averages, correlations, and ranks--a failure mode we term\"upstream contamination\". On real A-share data it inflates apparent information coefficient by 18% while reducing realised Sharpe by 0.44 points, because the model learns to predict returns it cannot trade. We resolve this with a mask-first design: a Boolean tradability mask is constructed at data load time and threaded through every operator, so that no window ever reads a non-tradable price. Built on this foundation, the system adds (i) a GPU-vectorised 213-factor engine via PyTorch unfold primitives (51x over pandas); (ii) an Adjusted-MSE loss penalising wrong-sign predictions 11x more heavily than magnitude errors; (iii) block-bootstrap GBM augmentation; and (iv) Markowitz-Ledoit-Wolf portfolio optimisation with cvxpy warm-start caching. On a calibrated 3,000-stock synthetic panel the system achieves annualised Sharpe 2.05; on proprietary real A-share data (2022-2024) it achieves Sharpe 1.63. Ablation shows the mask contract is the single largest contributor (+0.44), exceeding any model or loss choice. The full implementation is released under MIT licence at https://github.com/initial-d/ml-quant-trading.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "07b84dc88150d072",
         "family": "china_a_share",
         "rounds": []
       }
@@ -38047,38 +38095,6 @@
       }
     },
     {
-      "candidate_id": "2bd0e8d885c36e2c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/07c77290901f22f35fbd062da759ace375c45d5f",
-      "title": "High-Dimensional Spatiotemporal Dependencies and Behavioral Heterogeneity Co-Modeling: LSTM-Multi-Factor Penetrative Analysis and Risk Premium Decomposition of the Reversal Effect in China's A-Share Market",
-      "description": "China\u2019s A-share market, with its unique retail-dominated investor base and policy-driven ecosystem, serves as a compelling laboratory for testing market anomalies. This study investigates the efficacy and mechanisms of momentum and reversal effects in this emerging-market context, uncovering how behavioral forces dynamically shape price patterns under structural inefficiencies. Building on monthly data spanning January 2014 to January 2024, we systematically evaluate strategy performance through winner-loser portfolio construction across formation periods (1, 3, 6, 12 months), employing long-short tactics, risk-neutralizing techniques (CAPM and Fama-French three-factor models), and an LSTM deep learning framework. Key findings reveal reversal strategies\u2019 striking dominance over momentum approaches mainly during an economic recession, with win rates consistently hovering at 50%-60% in both economic expansion and recession and peaking with an average of 61.95% in 3-month formation windows\u2014evidence of retail-driven overreaction followed by swift price correction. Our novel LSTM model, integrating implied volatility (IV), turnover, market capitalization, and technical indicators, achieved 81.3% prediction accuracy in out-of-sample tests, with the relative strength index (RSI) emerging as the most influential predictor. By bridging multifactor risk adjustment with nonlinear machine learning, this research marks a breakthrough in quant methodology, offering practitioners a robust toolkit to navigate China\u2019s sentiment-fueled volatility while advancing behavioral theory in nonlinear markets. This study also redefines emerging-market asset pricing paradigms through theoretical and technological breakthroughs. Theoretically, it pioneers a dynamic pricing model that captures the interplay between institutional frictions and behavioral biases, particularly during policy-sensitive windows and sentiment extremes\u2014a critical advance beyond traditional frameworks\u2019 inability to decod",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China quant trading github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "2bd0e8d885c36e2c",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "07b84dc88150d072",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/ce67f7485c2db4465ca678848ce14a6595e20037",
-      "title": "Machine Learning Enhanced Multi-Factor Quantitative Trading: A Cross-Sectional Portfolio Optimization Approach with Bias Correction",
-      "description": "Rolling-window factor pipelines for Chinese A-share markets contain a subtle but costly flaw: daily price-move limits (+/-10% main-board, +/-20% STAR/ChiNext) render a fraction of closing prices non-executable, yet standard implementations ingest these values before any row-filtering runs. The contaminated aggregates propagate silently through moving averages, correlations, and ranks--a failure mode we term\"upstream contamination\". On real A-share data it inflates apparent information coefficient by 18% while reducing realised Sharpe by 0.44 points, because the model learns to predict returns it cannot trade. We resolve this with a mask-first design: a Boolean tradability mask is constructed at data load time and threaded through every operator, so that no window ever reads a non-tradable price. Built on this foundation, the system adds (i) a GPU-vectorised 213-factor engine via PyTorch unfold primitives (51x over pandas); (ii) an Adjusted-MSE loss penalising wrong-sign predictions 11x more heavily than magnitude errors; (iii) block-bootstrap GBM augmentation; and (iv) Markowitz-Ledoit-Wolf portfolio optimisation with cvxpy warm-start caching. On a calibrated 3,000-stock synthetic panel the system achieves annualised Sharpe 2.05; on proprietary real A-share data (2022-2024) it achieves Sharpe 1.63. Ablation shows the mask contract is the single largest contributor (+0.44), exceeding any model or loss choice. The full implementation is released under MIT licence at https://github.com/initial-d/ml-quant-trading.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China quant trading github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "07b84dc88150d072",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "af0bad3897c956e0",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c4aa59e0fde9a8dec0ee14a0b72e3c77d6dbe30b",
@@ -38170,22 +38186,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "a518efbb3aeb8416",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3b4f72acef38657e",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a87ae4720cb3ec093f6a0f779a8a0ce0713812a6",
-      "title": "Analysis of stock selection strategy of multi-factorial model based on rotation factor and investor sentiment",
-      "description": "With the wide application of advanced technologies including AI which with high precision and automation level, financial technology has shown a progressive trend, and quantitative trading strategies have bright prospect. Based on China\u2019s A-share market, this study constructs a quantitative strategy for stock selection by combining the industry rotation effect with a multi-factor model considering investor sentiment. Firstly, the strategy screens the target industries according to the rotation factor calculated by PER, and then determine the stocks by the multi-factor model formed by the factors after effective test. In this study, the effectiveness of the strategy is verified through six constructed back-test portfolios from both sides. According to the analysis, the return of the strategy considering the rotation effect and investor sentiment is higher than the market. The comparison of the impact of the rotation factor and the emotional factor shows that the change of macro and middle environment has a greater impact on stock prices than the micro level. Up to now, there are few stock selection strategies considering both rotation effect and investor sentiment. These results attempt to supplement this aspect and enrich the field of asset pricing.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China stock limit-up quantitative strategy",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "3b4f72acef38657e",
         "family": "china_a_share",
         "rounds": []
       }
@@ -46979,7 +46979,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T04:52:08Z",
+      "source_timestamp": "2026-09-19T05:08:17Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
