@@ -3017,6 +3017,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -7076,22 +7092,6 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "rounds": []
       }
@@ -38287,22 +38287,6 @@
       }
     },
     {
-      "candidate_id": "3b3fe274eb3b44d6",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
-      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
-      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China quant trading github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "3b3fe274eb3b44d6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ed3fe634a5f0f71c",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/72273dd15a43dd21c3cfdf47c2d365fd3d77ad70",
@@ -43563,6 +43547,22 @@
       "lineage": {
         "source": "32a90979ec7b325f",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3b3fe274eb3b44d6",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/7aaaecac059885ae2eb0d6736e2809667e0dfd5a",
+      "title": "Benchmark Dataset for Short-Term Market Prediction of Limit Order Book in China Markets",
+      "description": "Limit order books (LOBs) have generated big financial data for analysis and prediction from both academic community and industry practitioners. This article presents a benchmark LOB dataset from the Chinese stock market, covering a few thousand stocks for the period of June to September 2020. Experiment protocols are designed for model performance evaluation: at the end of every second, to forecast the upcoming volume-weighted average price change and volume over 12 horizons ranging from 1 second to 300 seconds. Results based on a linear regression model and deep learning models are compared. A practical short-term trading strategy framework based on the alpha signal generated is presented. The data and code are available on Github (github.com/HKGSAS). Key Findings \u25aa There is a gap between benchmarking a high-frequency LOB dataset and model for researchers to objectively assess prediction performances, which this article serves to bridge. \u25aa A more practically effective set of features is proposed to capture both LOB snapshots and periodic data. The prediction target is similarly too simplistic in the published literature\u2014mid-price direction change for the next few events, which is not suitable for a practical trading strategy. The authors propose to predict the price change and volume magnitude over 12 short-term horizons. \u25aa This article proposes comparing the performance of baseline linear regression and state-of-the-art deep learning models, based on both accuracy statistics and trading profits.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "3b3fe274eb3b44d6",
+        "family": "china_a_share",
         "rounds": []
       }
     },
