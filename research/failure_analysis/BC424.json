@@ -1,0 +1,41 @@
+{
+  "bc": 424,
+  "parent_bc": 423,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "faad1fb9b6fda08573e756c1f0a97efb47ee6e821fa5462ced70cc253e4b13c5",
+  "conceptual_change": "Shifted from absolute price thresholds to a relative relationship between vwap_distance and absolute trading volume to measure trend exhaustion when distance from vwap is constrained by low volume.",
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 725,
+    "skipped_overlap_trades": 683,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 42,
+      "win_count": 11,
+      "loss_count": 31,
+      "win_rate": 0.2619047619047619,
+      "total_return": -0.19006746421382725,
+      "avg_return": -0.004925382984013066,
+      "profit_factor": 0.46202385927444395,
+      "max_drawdown": 0.20727306236306686,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
