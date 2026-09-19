@@ -1,0 +1,19 @@
+name: Gate 2 OOS
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  oos-lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test runner
+        run: python -m pip install --upgrade pip pytest
+      - name: Run OOS authority tests
+        run: python -m pytest tests/test_oos_lifecycle_semantics.py tests/test_oos_state_migration.py tests/test_oos_controller_adversarial.py
