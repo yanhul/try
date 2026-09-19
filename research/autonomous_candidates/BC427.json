@@ -1,0 +1,27 @@
+{
+  "bc": 427,
+  "candidate_hash": "ce9afc2b1cfde6a335ca0534ad8bb0864e7d81cfbdef54574155dccfe7fe896a",
+  "conceptual_change": "Shifted from price-action levels to a liquidity-aware VWAP deviation strategy. By measuring the difference between the current VWAP distance and the open price, we identify potential mean-reversion zones following institutional liquidity sweeps, aligning with ICT principles where price is drawn back to equilibrium after significant divergence.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "open",
+    "threshold": 0.005
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|vwap_distance|open|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.005,
+    "window": null
+  },
+  "parent_bc": 426,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
