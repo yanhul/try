@@ -1,29 +1,30 @@
 [
   {
-    "bc": 427,
-    "candidate_hash": "ce9afc2b1cfde6a335ca0534ad8bb0864e7d81cfbdef54574155dccfe7fe896a",
-    "conceptual_change": "Shifted from price-action levels to a liquidity-aware VWAP deviation strategy. By measuring the difference between the current VWAP distance and the open price, we identify potential mean-reversion zones following institutional liquidity sweeps, aligning with ICT principles where price is drawn back to equilibrium after significant divergence.",
+    "bc": 428,
+    "candidate_hash": "3ccf7620808420840041562583ac9d5f12bd4c74b4f9f8b0588a8f0241b396bc",
+    "conceptual_change": "Shift from price-based thresholds to a windowed rolling mean of VWAP distance. This captures transient deviations from the mean volume-weighted price, triggering a mean reversion when the distance compresses significantly below the 24-hour historical norm.",
     "discovery_spec": {
       "direction": "below",
       "left": "vwap_distance",
-      "mechanism_family": "smc_ict",
+      "mechanism_family": "mean_reversion",
       "operator": "difference",
-      "right": "open",
-      "threshold": 0.005
+      "right": "rolling_mean",
+      "threshold": 0.05,
+      "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|vwap_distance|open|below",
+    "novelty_key": "mean_reversion|difference|vwap_distance|rolling_mean|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.005,
-      "window": null
+      "threshold": 0.05,
+      "window": 24
     },
-    "parent_bc": 426,
+    "parent_bc": 427,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
