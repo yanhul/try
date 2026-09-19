@@ -4185,22 +4185,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4628,6 +4612,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -35503,17 +35503,33 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
+      "candidate_id": "e4ff0e17ae795a42",
       "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
       "description": "OpenAlex work type=article year=2021",
       "family": "unknown",
       "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2021",
       "lineage": {
-        "source": "923d3553ccdcdef5",
+        "source": "e4ff0e17ae795a42",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd09dc1c3043f329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -35551,6 +35567,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -35562,38 +35594,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -37919,22 +37919,6 @@
       }
     },
     {
-      "candidate_id": "abc55c5433c9357f",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "abc55c5433c9357f",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d9421027cdf1e5e4",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/cab65db26eec716c7fab6d45de00923fcbab30db",
@@ -39658,22 +39642,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "4c6aa902b1438d3e",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "20871a54dc8ee8ec",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
-      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
-      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
-      "family": "order_flow",
-      "market": null,
-      "query": "crypto order flow order book imbalance microprice",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "20871a54dc8ee8ec",
         "family": "order_flow",
         "rounds": []
       }
@@ -41935,6 +41903,22 @@
       }
     },
     {
+      "candidate_id": "20871a54dc8ee8ec",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
+      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
+      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "20871a54dc8ee8ec",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "040529bcb47658b8",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/deb6dff2dee990f817145e0835b6bbdb3e3bf7f2",
@@ -42059,6 +42043,22 @@
       "lineage": {
         "source": "58d25e2b2233013d",
         "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "abc55c5433c9357f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "abc55c5433c9357f",
+        "family": "smc_ict",
         "rounds": []
       }
     },

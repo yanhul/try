@@ -3806,14 +3806,6 @@
     {
       "source": "crossref",
       "query": "bitcoin seasonality calendar effect trading",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "url": "https://doi.org/10.2139/ssrn.4081000",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2022"
-    },
-    {
-      "source": "crossref",
-      "query": "bitcoin seasonality calendar effect trading",
       "title": "The Seasonality of Bitcoin",
       "url": "https://doi.org/10.2139/ssrn.4581124",
       "description": "Crossref work type=posted-content",
@@ -4026,6 +4018,14 @@
       "url": "https://doi.org/10.2139/ssrn.4955617",
       "description": "Crossref work type=posted-content",
       "updated_at": "2024"
+    },
+    {
+      "source": "crossref",
+      "query": "crypto momentum trend following strategy bitcoin",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "url": "https://doi.org/10.2139/ssrn.4081000",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2022"
     },
     {
       "source": "crossref",
@@ -19223,11 +19223,19 @@
     },
     {
       "source": "openalex",
-      "query": "因子挖掘 加密货币 量化 交易",
-      "title": "基于区块链的旅游交易系统设计",
-      "url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "中国第三方跨境支付发展现状、问题及对策",
+      "url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
       "description": "OpenAlex work type=article year=2021",
       "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "多因子 加密货币 量化 交易 策略",
+      "title": "企业预算编制与执行的影响因素及优化策略研究",
+      "url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "description": "OpenAlex work type=article year=2025",
+      "updated_at": "2025"
     },
     {
       "source": "openalex",
@@ -19248,26 +19256,18 @@
     {
       "source": "openalex",
       "query": "多因子 加密货币 量化 交易 策略",
+      "title": "基于区块链的旅游交易系统设计",
+      "url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "description": "OpenAlex work type=article year=2021",
+      "updated_at": "2021"
+    },
+    {
+      "source": "openalex",
+      "query": "多因子 加密货币 量化 交易 策略",
       "title": "实施海洋负排放 践行碳中和战略",
       "url": "https://doi.org/10.1360/sste-2020-0358",
       "description": "OpenAlex work type=article year=2021",
       "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "强化学习 加密货币 交易 策略",
-      "title": "中国第三方跨境支付发展现状、问题及对策",
-      "url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "description": "OpenAlex work type=article year=2021",
-      "updated_at": "2021"
-    },
-    {
-      "source": "openalex",
-      "query": "强化学习 加密货币 交易 策略",
-      "title": "企业预算编制与执行的影响因素及优化策略研究",
-      "url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "description": "OpenAlex work type=article year=2025",
-      "updated_at": "2025"
     },
     {
       "source": "openalex",
@@ -20432,14 +20432,6 @@
     {
       "source": "semantic_scholar",
       "query": "MEV execution alpha crypto",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "updated_at": "2026"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "MEV execution alpha crypto",
       "title": "Constrained Policy Optimization for Provably Fair Order Matching",
       "url": "https://www.semanticscholar.org/paper/cab65db26eec716c7fab6d45de00923fcbab30db",
       "description": "Automated matching engines execute millions of orders per session, yet systematic asymmetries in latency, order size, and market access compound into persistent execution disparities that erode participant trust. We formulate provably fair order matching as a Constrained Markov Decision Process and propose CPO-FOAM (Constrained Policy Optimization with Feedback-Optimized Adaptive Margins). An inner loop computes an analytic trust-region step on the Fisher information manifold; a PID-controlled outer loop dynamically tightens safety margins, suppressing the sawtooth oscillations endemic to Lagrangian methods under non-stationary dynamics. Group fairness (demographic parity, equalized odds) enters the CMDP cost vector while individual Lipschitz fairness is enforced deterministically via spectral normalization. We prove BIBO stability and that the integral term drives steady-state violations to zero. On LOBSTER NASDAQ data across six market regimes, CPO-FOAM recovers 95.9% of unconstrained throughput at 2.5% constraint violation frequency; on crypto-asset LOB data under MEV injection it captures 98.4% of the reward envelope at 3.2% CVF. The method scales sub-linearly to M=8 constraints, settles on-chain within one Ethereum block, and yields a 2.1X reward improvement on Safety-Gymnasium, confirming domain-agnostic generalization.",
@@ -21299,14 +21291,6 @@
       "title": "Bridging the Reality Gap in Limit Order Book Simulation",
       "url": "https://www.semanticscholar.org/paper/46221f26880a77bf13ad8c9af8269d2f991edb38",
       "description": "We introduce a practical, interactive simulator of the limit order book for large-tick assets, designed to produce realistic execution, costs, and P&L. The book state is projected onto a tractable representation based on spread and volume imbalance, enabling robust estimation from market data. Event timing is calibrated to reproduce the fine-scale temporal structure of real markets, revealing a pronounced mode at exchange round-trip latency consistent with simultaneous reactions and latency races among participants. We further incorporate a feedback mechanism that accumulates signed trade flow through a power-law decay kernel, reproducing both concave market impact during execution and partial post-trade reversion. Across several stocks and strategy case studies, the simulator yields realistic behavior where profitability becomes highly sensitive to execution parameters. We present the approach as a practical recipe: project, estimate, validate, adapt, for building realistic limit order book simulations.",
-      "updated_at": "2026"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "crypto order flow order book imbalance microprice",
-      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
-      "url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
-      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
       "updated_at": "2026"
     },
     {
@@ -22440,6 +22424,14 @@
     {
       "source": "semantic_scholar",
       "query": "market microstructure order book strategy",
+      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
+      "url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
+      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "market microstructure order book strategy",
       "title": "Information Indicators of Limit Order Book and Optimal Dynamic Order Submission Strategy",
       "url": "https://www.semanticscholar.org/paper/deb6dff2dee990f817145e0835b6bbdb3e3bf7f2",
       "description": "",
@@ -22500,6 +22492,14 @@
       "url": "https://www.semanticscholar.org/paper/7ea6ca63e01688f5ef062568d20f9ac0dc504304",
       "description": "",
       "updated_at": "2014"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "on chain wallet flow trading signal research",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
