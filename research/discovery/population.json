@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3122,
-    "expanded": 2730,
-    "normalized": 2730,
+    "raw": 3123,
+    "expanded": 2731,
+    "normalized": 2731,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1188,22 +1188,6 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3940,6 +3924,22 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "01733d647ea68b37",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
         "family": "unknown",
         "rounds": []
       }
@@ -17263,6 +17263,22 @@
       }
     },
     {
+      "candidate_id": "aa89b238291e2c59",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Northern.tech/Mender/integration-test-runner",
+      "title": "Northern.tech/Mender/integration-test-runner",
+      "description": "Github web-hook to Jenkins Proxy used to run integration tests ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T20:09:50.438Z",
+      "lineage": {
+        "source": "aa89b238291e2c59",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9b392733efb7f5c7",
       "source": "gitlab",
       "source_url": "https://gitlab.com/Orange-OpenSource/kanod/baremetal-operator",
@@ -27687,7 +27703,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T21:00:14.774Z",
+      "source_timestamp": "2026-09-20T20:11:43.315Z",
       "lineage": {
         "source": "6e633916c7e7269e",
         "family": "china_a_share",
@@ -41695,22 +41711,6 @@
       }
     },
     {
-      "candidate_id": "32d57cde827e100d",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
-      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
-      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "32d57cde827e100d",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6fa56e72564c67b5",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
@@ -44911,22 +44911,6 @@
       }
     },
     {
-      "candidate_id": "62f6f7b3e0c0e855",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
-      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
-      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
-      "family": "unknown",
-      "market": null,
-      "query": "reinforcement learning trading systematic review",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "62f6f7b3e0c0e855",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "413c2b5288c75e75",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/3cc99d0ee028971ddaea011625061b3d913c7af2",
@@ -45407,6 +45391,22 @@
       }
     },
     {
+      "candidate_id": "32d57cde827e100d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "family": "volatility",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "32d57cde827e100d",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e44415f0686bbacc",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/f8d83d1909463a9b71a7a54013832c68dc9832c5",
@@ -45466,6 +45466,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "fd642ce475624981",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "62f6f7b3e0c0e855",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
+      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
+      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "62f6f7b3e0c0e855",
         "family": "unknown",
         "rounds": []
       }
