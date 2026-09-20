@@ -1,30 +1,29 @@
 [
   {
-    "bc": 446,
-    "candidate_hash": "8c6e3dbc716fbcdd5ece34d9e19b441b2ba6d3c4dbc7330949e7e5f2c25df380",
-    "conceptual_change": "Translate 24/7 crypto smart money concept liquidity sweeps by evaluating volatility-adjusted structural price compression via a rolling standard deviation baseline.",
+    "bc": 447,
+    "candidate_hash": "16c1651b157270896963cfa2baa87097a29842e4e3772f0d1f95a83a77214a1f",
+    "conceptual_change": "Translating the selected mean reversion framework to capture price extension relative to VWAP over a 24-period window on BTCUSDT 1H, expecting a reversion when price stretches beyond the standard ratio threshold.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "difference",
-      "right": "rolling_std",
-      "threshold": 0.0,
+      "operator": "ratio",
+      "right": "vwap_distance",
+      "threshold": 1.05,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "smc_ict|difference|close|rolling_std|below",
+    "novelty_key": "|ratio|close|vwap_distance|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 1.05,
       "window": 24
     },
-    "parent_bc": 445,
+    "parent_bc": 446,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

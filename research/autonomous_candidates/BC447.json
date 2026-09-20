@@ -1,0 +1,27 @@
+{
+  "bc": 447,
+  "candidate_hash": "16c1651b157270896963cfa2baa87097a29842e4e3772f0d1f95a83a77214a1f",
+  "conceptual_change": "Translating the selected mean reversion framework to capture price extension relative to VWAP over a 24-period window on BTCUSDT 1H, expecting a reversion when price stretches beyond the standard ratio threshold.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 1.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|close|vwap_distance|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.05,
+    "window": 24
+  },
+  "parent_bc": 446,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
