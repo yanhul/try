@@ -3,7 +3,7 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 51,
+  "campaign_screened": 52,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
@@ -11,7 +11,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11083,
+  "checkpoint_seq": 11092,
   "current_bc": 443,
   "history": [
     {
@@ -3298,13 +3298,63 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "oos_executed": false,
+      "oos_state": "OOS_PENDING",
+      "oos_verdict": null
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "oos_executed": false,
+      "oos_state": "OOS_AUTHORIZED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "oos_executed": false,
+      "oos_state": "OOS_DISPATCHED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "oos_executed": true,
+      "oos_state": "OOS_EXECUTED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "oos_executed": true,
+      "oos_state": "OOS_RECEIPT",
+      "oos_verdict": null,
+      "receipt_id": "d00e2d0dda0704a313da4dcba03f08d28cabf7c5b12ade09b8aa23abcce8d7d9",
+      "receipt_schema_version": 1,
+      "receipt_type": "OOS_EXECUTION_RECEIPT"
+    },
+    {
+      "bc": 443,
+      "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+      "event_type": "OOS_EVALUATION",
+      "oos_executed": true,
+      "oos_state": "OOS_EVALUATED",
+      "oos_verdict": "OOS_FAIL",
+      "receipt_digest": "73f4cf4da3ac2ee99da9dc8496d6dc1d1b231fd5e422c7f622e68b46931ef7e8",
+      "receipt_schema_version": 1,
+      "receipt_type": "OOS_EXECUTION_RECEIPT"
     }
   ],
-  "iterations": 1365,
-  "last_bc": 442,
+  "iterations": 1366,
+  "last_bc": 443,
   "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 443,
+  "next_bc": 444,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3350,16 +3400,17 @@
     "3ccf7620808420840041562583ac9d5f12bd4c74b4f9f8b0588a8f0241b396bc",
     "6cf8beb246f640143ff452c6438b2057f5d0a00f8f310776b8d8052d10109ed2",
     "c73893e53fbfe9e4dd2d886cd6286ad37582d96ac763e81bbccc2ad62ce7f747",
-    "9623b6efa1321d5544301a7194f9165b6638adddd8adaaf95dde5bfe5e249b1f"
+    "9623b6efa1321d5544301a7194f9165b6638adddd8adaaf95dde5bfe5e249b1f",
+    "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9"
   ],
   "oos_evaluation": {
-    "bc": 441,
-    "candidate_hash": "9623b6efa1321d5544301a7194f9165b6638adddd8adaaf95dde5bfe5e249b1f",
+    "bc": 443,
+    "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
     "event_type": "OOS_EVALUATION",
     "oos_executed": true,
     "oos_state": "OOS_EVALUATED",
     "oos_verdict": "OOS_FAIL",
-    "receipt_digest": "d5baae92148c658bf73cd49e194b8109b5562f21adcd7be11cf5a1d283dc610c",
+    "receipt_digest": "73f4cf4da3ac2ee99da9dc8496d6dc1d1b231fd5e422c7f622e68b46931ef7e8",
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
@@ -3379,5 +3430,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:invalid_discovery_window\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-20T15:35:10.908998+00:00"
+  "updated_at": "2026-09-20T15:36:43.138911+00:00"
 }
