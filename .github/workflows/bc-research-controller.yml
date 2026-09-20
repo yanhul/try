@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 30
     env:
       RESEARCH_MAX_ITERATIONS: 1
-      RESEARCH_MAX_RESUME_RETRIES: 3
+      RESEARCH_MAX_RESUME_RETRIES: 10
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
       RESEARCH_PROVIDER_ORDER: gemini
       RESEARCH_PROVIDER_MIN_INTERVAL_SECONDS: 5
