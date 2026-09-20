@@ -1,0 +1,98 @@
+name: AIOS TRY Provider Real E2E
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "research/aios_repair_provider.py"
+      - "tests/test_aios_repair_provider.py"
+      - "AIOS_BOUNDARY.md"
+      - ".github/workflows/aios-try-provider-e2e.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
+      TRY_PROVIDER_TOKEN: e2e-bridge-token
+      TRY_PROVIDER_HOST: 127.0.0.1
+      TRY_PROVIDER_PORT: "8787"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require TRY-owned Gemini credential
+        run: |
+          test -n "${GEMINI_API_KEY:-}" || {
+            echo "BLOCKED: TRY repository has no GEMINI_API_KEY; credential remains TRY-owned."
+            exit 1
+          }
+      - name: Start TRY provider
+        run: |
+          python research/aios_repair_provider.py > "$RUNNER_TEMP/try-provider.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/try-provider.pid
+          python - <<'PY'
+          import json, os, time, urllib.request
+          req=urllib.request.Request(
+              "http://127.0.0.1:8787/healthz",
+              headers={"Authorization":"Bearer "+os.environ["TRY_PROVIDER_TOKEN"]},
+          )
+          for _ in range(30):
+              try:
+                  with urllib.request.urlopen(req, timeout=2) as r:
+                      data=json.loads(r.read().decode())
+                  assert data["status"]=="READY"
+                  print("TRY_PROVIDER_READY", data)
+                  break
+              except Exception:
+                  time.sleep(1)
+          else:
+              print(open(os.environ["RUNNER_TEMP"]+"/try-provider.log",encoding="utf-8").read())
+              raise SystemExit("TRY_PROVIDER_HEALTH_FAIL")
+          PY
+      - name: Checkout AIOS client
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          path: aios
+      - name: Real Gemini proposal through AIOS client
+        env:
+          PYTHONPATH: ${{ github.workspace }}/aios
+          TRY_REPAIR_PROVIDER_URL: http://127.0.0.1:8787
+          TRY_REPAIR_PROVIDER_TOKEN: e2e-bridge-token
+        run: |
+          python - <<'PY'
+          import json, os
+          from core.try_repair_provider import propose
+          out=propose(
+              request_id="real-e2e-"+os.environ["GITHUB_RUN_ID"],
+              repository="yanhul/AIOS",
+              sha="a"*40,
+              attempt=1,
+              failure={
+                  "ci_failure_log_tail":
+                      "pytest failed: core/broken_fixture.py:1 SyntaxError: invalid syntax",
+              },
+              source={
+                  "core/broken_fixture.py":
+                      "def broken(:\n    return 1\n",
+              },
+          )
+          if out.get("status") == "HOLD":
+              raise SystemExit("REAL_E2E_PROVIDER_HOLD: "+str(out))
+          assert out["schema"] == 2
+          assert out["files"]
+          for item in out["files"]:
+              assert isinstance(item["path"], str)
+              assert isinstance(item["content"], str)
+              assert not item["path"].startswith(".aios/")
+          print("REAL_E2E_PASS schema=2 files="+str(len(out["files"])))
+          print(json.dumps({"schema":out["schema"],"files":[x["path"] for x in out["files"]]}, sort_keys=True))
+          PY
+      - name: Provider logs on failure
+        if: failure()
+        run: cat "$RUNNER_TEMP/try-provider.log" || true
