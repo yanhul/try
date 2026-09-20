@@ -1,0 +1,23 @@
+name: TRY Cloudflare Repair Provider Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health
+        env:
+          WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+        run: |
+          test -n "$WORKER_URL"
+          body="$(curl --fail --silent --show-error "$WORKER_URL/healthz")"
+          echo "$body"
+          echo "$body" | grep -q '"status":"READY"'
+          echo "$body" | grep -q '"provider":"gemini"'
