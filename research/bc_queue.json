@@ -1,29 +1,30 @@
 [
   {
-    "bc": 436,
-    "candidate_hash": "481e8de15684cb35b8db7e754105e6233eb5ff9c5cd3cd13053a62e83ac83927",
-    "conceptual_change": "Translating smart money concepts ICT structural reference levels into a 24-period rolling mean price baseline on BTCUSDT 1H to capture institutional order block equilibrium zones.",
+    "bc": 437,
+    "candidate_hash": "6cf8beb246f640143ff452c6438b2057f5d0a00f8f310776b8d8052d10109ed2",
+    "conceptual_change": "Evaluate the ratio of vwap_distance to its rolling standard deviation under a mean_reversion mechanism to detect extreme extensions ready to snap back on BTCUSDT 1H.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "rolling_mean",
-      "threshold": 0.0,
+      "left": "vwap_distance",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "rolling_std",
+      "threshold": 1.5,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|rolling_mean|close||above",
+    "novelty_key": "mean_reversion|ratio|vwap_distance|rolling_std|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 1.5,
       "window": 24
     },
-    "parent_bc": 435,
+    "parent_bc": 436,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

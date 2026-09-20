@@ -2260,6 +2260,16 @@
       "parent_bc": 232,
       "score": 0.25
     },
+    "smc_ict|rolling_mean|close||above": {
+      "bc": 436,
+      "candidate_hash": "481e8de15684cb35b8db7e754105e6233eb5ff9c5cd3cd13053a62e83ac83927",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c749ef61babc82768c1e236c6ef03c7e36ef4870737ac132df3071350e5598b2",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 435,
+      "score": 0.25
+    },
     "smc_ict|rolling_mean|range_ratio||above": {
       "bc": 195,
       "candidate_hash": "ee7e9698bd13d5010b5e64dd669023d2535b5aa21608b33294e3a0469b09d33f",
@@ -6961,9 +6971,19 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 434,
       "score": 0.25
+    },
+    {
+      "bc": 436,
+      "candidate_hash": "481e8de15684cb35b8db7e754105e6233eb5ff9c5cd3cd13053a62e83ac83927",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c749ef61babc82768c1e236c6ef03c7e36ef4870737ac132df3071350e5598b2",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 435,
+      "score": 0.25
     }
   ],
-  "failures": 396,
+  "failures": 397,
   "families": {
     "discovered_primitive": {
       "fail": 123,
@@ -6975,7 +6995,7 @@
     "mean_reversion": {
       "fail": 98,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 2,
       "score_sum": 41.22598770000002,
       "tested": 98
     },
@@ -6994,11 +7014,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 81,
+      "fail": 82,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 20.70243488,
-      "tested": 81
+      "recent_failures": 3,
+      "score_sum": 20.95243488,
+      "tested": 82
     },
     "volatility": {
       "fail": 11,
@@ -7008,8 +7028,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "smc_ict",
-  "last_selection_bc": 436,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 437,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
