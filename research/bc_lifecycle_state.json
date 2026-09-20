@@ -11,8 +11,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11151,
-  "current_bc": 451,
+  "checkpoint_seq": 11158,
+  "current_bc": 452,
   "history": [
     {
       "bc": 1,
@@ -3397,13 +3397,20 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 451,
+      "candidate_hash": "f3c5cf8da53c5e755bd0f4efb21a0f4339d519b62aeeb3b3e87038b89403bb73",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1373,
-  "last_bc": 450,
-  "last_error": null,
+  "iterations": 1374,
+  "last_bc": 451,
+  "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI PROVIDER_ROUTER_HOLD",
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 451,
+  "next_bc": 452,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3463,9 +3470,9 @@
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
-  "phase": "PERSISTED",
+  "phase": "WAIT_RETRY",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 0,
+  "retry_count": 1,
   "state_migrations": [
     {
       "migration_id": "OOS_CANONICAL_V1",
@@ -3478,6 +3485,6 @@
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
-  "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:invalid_discovery_window\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-20T16:03:17.786608+00:00"
+  "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
+  "updated_at": "2026-09-20T16:05:47.023017+00:00"
 }
