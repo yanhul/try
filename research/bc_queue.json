@@ -1,30 +1,30 @@
 [
   {
-    "bc": 452,
-    "candidate_hash": "a2a966fedd712b2d555b6a2cdccddccc46c1dc68258906f717d0bbef413d984d",
-    "conceptual_change": "Switch from standard moving average ratios to volatility-scaled momentum tracking by evaluating the ratio of close to rolling standard deviation over a 24-period window, targeting breakout trends.",
+    "bc": 453,
+    "candidate_hash": "e7ed6f5f1140cd1b5df41d14854c02c3293cbf221ea3f3959df41030f3f88645",
+    "conceptual_change": "Evaluate the ratio of the close location within the bar to volume, capturing mean-reversion dynamics when price finishes high relative to the underlying volume traded.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "mechanism_family": "momentum_trend",
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
       "operator": "ratio",
-      "right": "rolling_std",
-      "threshold": 1.05,
+      "right": "volume",
+      "threshold": 1.0,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|close|rolling_std|above",
+    "novelty_key": "mean_reversion|ratio|close_location|volume|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.05,
+      "threshold": 1.0,
       "window": 24
     },
-    "parent_bc": 451,
+    "parent_bc": 452,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
