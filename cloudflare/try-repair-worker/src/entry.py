@@ -198,6 +198,28 @@ class Default(WorkerEntrypoint):
             body = await request.json()
             response = await _propose(body, self.env)
             return Response.json(response, status=200)
+        except RuntimeError as exc:
+            message = str(exc)
+            if message.startswith("gemini_http_"):
+                try:
+                    status = int(message.split(":", 1)[0].rsplit("_", 1)[1])
+                except (ValueError, IndexError):
+                    status = 502
+                if status in GEMINI_RETRYABLE:
+                    return Response.json(
+                        {
+                            "status": "RETRYABLE_PROVIDER_FAILURE",
+                            "provider": "gemini",
+                            "http_status": status,
+                            "reason": message[:2000],
+                        },
+                        status=503,
+                        headers={"Retry-After": "2"},
+                    )
+            return Response.json(
+                {"status": "HOLD", "reason": f"{type(exc).__name__}:{exc}"},
+                status=200,
+            )
         except Exception as exc:
             return Response.json(
                 {"status": "HOLD", "reason": f"{type(exc).__name__}:{exc}"},
