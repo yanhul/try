@@ -6,6 +6,7 @@ an untrusted schema-2 proposal.
 """
 from __future__ import annotations
 
+import asyncio
 import json
 from urllib.parse import urlparse
 
@@ -15,6 +16,9 @@ MAX_BODY = 1_000_000
 MAX_SOURCE_FILES = 120
 MAX_FILE_BYTES = 120_000
 MAX_LOG_BYTES = 80_000
+GEMINI_MAX_ATTEMPTS = 3
+GEMINI_BACKOFF_SECONDS = (1, 2)
+GEMINI_RETRYABLE = {429, 500, 502, 503, 504}
 DENIED_PREFIXES = (".github/workflows/", ".aios/", "secrets/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
 
@@ -94,22 +98,32 @@ async def _call_gemini(prompt: str, env) -> dict:
         "max_tokens": 6000,
         "response_format": {"type": "json_object"},
     }
-    response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-        method="POST",
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {key}",
-        },
-        body=json.dumps(body),
-    )
-    if not response.ok:
-        detail = await response.text()
-        raise RuntimeError(f"gemini_http_{response.status}:{detail[:1000]}")
 
-    payload = await response.json()
-    content = payload["choices"][0]["message"]["content"]
-    return json.loads(content)
+    last_detail = ""
+    last_status = 0
+    for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
+        response = await fetch(
+            "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            method="POST",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {key}",
+            },
+            body=json.dumps(body),
+        )
+        if response.ok:
+            payload = await response.json()
+            content = payload["choices"][0]["message"]["content"]
+            return json.loads(content)
+
+        last_status = response.status
+        detail = await response.text()
+        last_detail = detail[:1000]
+        if response.status not in GEMINI_RETRYABLE or attempt == GEMINI_MAX_ATTEMPTS:
+            break
+        await asyncio.sleep(GEMINI_BACKOFF_SECONDS[attempt - 1])
+
+    raise RuntimeError(f"gemini_http_{last_status}:{last_detail}")
 
 
 async def _propose(request: dict, env) -> dict:
