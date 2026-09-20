@@ -53,3 +53,6 @@ Never move `GEMINI_API_KEY` into AIOS. `TRY_REPAIR_PROVIDER_TOKEN` is only the b
 The provider runtime is considered reachable only when `GET /healthz` returns `{"status":"READY","provider":"gemini","model":"..."}`. Health checks do not call Gemini. The repair endpoint remains `POST /v1/repair/propose` and requires the bridge token.
 
 For CI deployment, expose only the provider URL and bridge token to AIOS: `TRY_REPAIR_PROVIDER_URL` and `TRY_REPAIR_PROVIDER_TOKEN`. The `GEMINI_API_KEY` remains a TRY-only runtime secret.
+### GitHub credential ownership
+
+Any GitHub credential used by the TRY-side reasoning/relay runtime belongs in TRY, not AIOS. In particular, `TRY_GITHUB_TOKEN` is a TRY repository secret/runtime variable and must never be copied into an AIOS workflow or `secrets.TRY_GITHUB_TOKEN`. AIOS only sends bounded repair evidence through the provider bridge; AIOS keeps its own repository-scoped `GITHUB_TOKEN` for its own CI operations.
