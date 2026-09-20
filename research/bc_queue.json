@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 436,
+    "candidate_hash": "481e8de15684cb35b8db7e754105e6233eb5ff9c5cd3cd13053a62e83ac83927",
+    "conceptual_change": "Translating smart money concepts ICT structural reference levels into a 24-period rolling mean price baseline on BTCUSDT 1H to capture institutional order block equilibrium zones.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "smc_ict",
+      "operator": "rolling_mean",
+      "threshold": 0.0,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|rolling_mean|close||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.0,
+      "window": 24
+    },
+    "parent_bc": 435,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
