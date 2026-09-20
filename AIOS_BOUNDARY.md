@@ -46,3 +46,10 @@ Required separation:
 `AIOS evidence -> TRY reasoning -> untrusted proposal -> AIOS authority -> mutation -> tests -> verification`
 
 Never move `GEMINI_API_KEY` into AIOS. `TRY_REPAIR_PROVIDER_TOKEN` is only the bridge credential; it is not the external model credential.
+
+
+### Runtime contract
+
+The provider runtime is considered reachable only when `GET /healthz` returns `{"status":"READY","provider":"gemini","model":"..."}`. Health checks do not call Gemini. The repair endpoint remains `POST /v1/repair/propose` and requires the bridge token.
+
+For CI deployment, expose only the provider URL and bridge token to AIOS: `TRY_REPAIR_PROVIDER_URL` and `TRY_REPAIR_PROVIDER_TOKEN`. The `GEMINI_API_KEY` remains a TRY-only runtime secret.
