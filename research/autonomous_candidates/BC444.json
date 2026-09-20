@@ -1,0 +1,26 @@
+{
+  "bc": 444,
+  "candidate_hash": "28074ff257c6bce04ca33b30d867daf5bd5c61bae3ec7164a98dfe9ac5a73e0a",
+  "conceptual_change": "Translate smart money concept liquidity sweep breakout using the difference between close and rolling mean within the smc_ict family to capture institutional accumulation phases.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "right": "rolling_mean",
+    "threshold": 0.01
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict||close|rolling_mean|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.01,
+    "window": null
+  },
+  "parent_bc": 443,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
