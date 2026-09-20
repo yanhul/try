@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 442,
+    "candidate_hash": "fb2af95fcc5a9f9e01b24bebb9958c62beca988cdb7d5f9d4e67e81a5c0ac52c",
+    "conceptual_change": "Evaluate Smart Money Concepts liquidity sweep mechanics by tracking statistical deviation of closes via zscore to identify capitulation below key institutional thresholds.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "smc_ict",
+      "operator": "zscore",
+      "threshold": -2.0,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|zscore|close||below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": -2.0,
+      "window": 24
+    },
+    "parent_bc": 441,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
