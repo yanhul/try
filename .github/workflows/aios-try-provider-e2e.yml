@@ -34,7 +34,7 @@ jobs:
       - name: Start TRY provider
         run: |
           python research/aios_repair_provider.py > "$RUNNER_TEMP/try-provider.log" 2>&1 &
-          echo $! > "$RUNNER_TEMP/try-provider.pid
+          echo $! > "$RUNNER_TEMP/try-provider.pid"
           python - <<'PY'
           import json, os, time, urllib.request
           req=urllib.request.Request(
