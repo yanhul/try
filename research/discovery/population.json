@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3101,
-    "expanded": 2709,
-    "normalized": 2709,
+    "raw": 3102,
+    "expanded": 2710,
+    "normalized": 2710,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1428,22 +1428,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "5676d6ef4cb0a00b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3361f743c083fe40",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
-      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "3361f743c083fe40",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9513,6 +9497,22 @@
       }
     },
     {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "356134320a245ee6",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2012.21002",
@@ -9540,6 +9540,38 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3361f743c083fe40",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
+      "title": "\u4ee5\u6570\u5b57\u5316\u8d27\u5e01\u4e3a\u8def\u5f84\uff0c\u52a9\u529b\u80a1\u6743\u6295\u8d44\u4e1a\u52a1\u9ad8\u8d28\u91cf\u53d1\u5c55",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "3361f743c083fe40",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -10425,22 +10457,6 @@
       }
     },
     {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "46b924c064416884",
       "source": "crossref",
       "source_url": "https://doi.org/10.61369/se.2025030021",
@@ -10468,22 +10484,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "ab7a95c62ac5f17d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -18083,13 +18083,29 @@
       "source": "gitlab",
       "source_url": "https://gitlab.com/alderichoarau/alderichoarau.github.io",
       "title": "alderichoarau/alderichoarau.github.io",
-      "description": "Personal portfolio and website built with Angular. Hosted with GitHub Pages",
+      "description": "Mirror of github.com/alderichoarau/alderichoarau.github.io \u2014 issues & PRs go there\r\nPersonal portfolio and website built with Angular. Hosted with GitHub Pages",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T16:19:34.817Z",
+      "source_timestamp": "2026-09-20T17:06:02.829Z",
       "lineage": {
         "source": "ce2e328f17c3f706",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "37a88a4ec3dfcdcf",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/alderichoarau/azure-infra-terraform",
+      "title": "alderichoarau/azure-infra-terraform",
+      "description": "Mirror of https://github.com/alderichoarau/azure-infra-terraform \u2014 issues & PRs go there\r\nAzure Landing Zone managed with Terraform \u2014 modular IaC with remote state, OIDC and CI/CD",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T17:03:55.442Z",
+      "lineage": {
+        "source": "37a88a4ec3dfcdcf",
         "family": "china_a_share",
         "rounds": []
       }
@@ -21095,7 +21111,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T10:16:57.468Z",
+      "source_timestamp": "2026-09-20T17:05:17.144Z",
       "lineage": {
         "source": "1916a953d0acc956",
         "family": "china_a_share",
@@ -26679,7 +26695,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T11:50:31.080Z",
+      "source_timestamp": "2026-09-20T17:06:05.920Z",
       "lineage": {
         "source": "32ebcdec086effbe",
         "family": "china_a_share",
@@ -27687,7 +27703,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T14:45:37.670Z",
+      "source_timestamp": "2026-09-20T17:05:33.288Z",
       "lineage": {
         "source": "06059e2600b39233",
         "family": "china_a_share",
