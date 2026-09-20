@@ -86,10 +86,47 @@ def prior_fingerprints():
    if f is not None:out.add(f)
   except Exception:pass
  return out
+def deterministic_candidate(forbidden):
+    """Fail-closed local translation fallback when Gemini is quota/rate limited.
+
+    It never invents evidence or performance claims: the selected public-source
+    survivor remains the only evidence source, while the executable OHLCV
+    expression is generated from the fixed structural vocabulary already governed
+    by autonomous_hypothesis.validate_candidate().
+    """
+    thresholds = (0.0, 0.5, 1.0)
+    windows = (3, 5, 10, 20, 50, 100)
+    for op in OPERATORS:
+        for left in COLUMNS:
+            rights = COLUMNS if op in {"difference", "ratio"} else (None,)
+            for right in rights:
+                for window in (windows if op in {"zscore", "rolling_mean", "rolling_std", "lag", "delta", "rank"} else (None,)):
+                    for direction in ("above", "below"):
+                        for threshold in thresholds:
+                            spec={"operator":op,"left":left,"direction":direction,"threshold":threshold}
+                            if right is not None: spec["right"]=right
+                            if window is not None: spec["window"]=window
+                            candidate={"bc":bc,"parent_bc":parent,"hypothesis_id":"discovered_primitive",
+                              "discovery_spec":spec,
+                              "conceptual_change":f"Deterministic executable OHLCV primitive using {op}({left})" + (f" with {right}" if right else "") + (f" over window {window}" if window else ""),
+                              "evidence_sources":[],"rationale":"", "is_testable":True,"oos_selection_used":False}
+                            key=fingerprint(candidate)
+                            if key in forbidden: continue
+                            ok,reason=validate_candidate(candidate,bc,parent)
+                            if ok:
+                                return candidate
+    raise ValueError("deterministic_translation_frontier_exhausted")
+
 def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
  for _ in range(3):
   try:c=json.loads(call(prompt+feedback))
+  except RuntimeError as e:
+   last=str(e)
+   if "provider_rate_limited" in last:
+    print("PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited")
+    return deterministic_candidate(forbidden)
+   raise
   except json.JSONDecodeError:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object matching the required schema.\n";continue
   if not isinstance(c,dict):last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object.\n";continue
   if c.get("status")=="HOLD":return c
