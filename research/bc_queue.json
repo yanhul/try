@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 457,
+    "candidate_hash": "618705c4f0a5c14300f78315112fe7331a1c08df65c6838e2c6e3207ba8d7347",
+    "conceptual_change": "Incorporate momentum tracking via the price-to-volume-ratio relationship, establishing trend persistence filtering when relative volume drops below threshold levels during price progression.",
+    "discovery_spec": {
+      "direction": "below",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
+      "operator": "ratio",
+      "right": "volume_ratio",
+      "threshold": 1.25,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "momentum_trend|ratio|close|volume_ratio|below",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 1.25,
+      "window": 24
+    },
+    "parent_bc": 456,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
