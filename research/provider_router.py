@@ -142,7 +142,8 @@ def request_candidate(prompt,forbidden):
   last=reason
   if reason=="duplicate_structural_mechanism":feedback="\nVALIDATOR_FEEDBACK: duplicate_structural_mechanism. DUPLICATE structural key rejected. Choose a genuinely different executable structural mechanism; threshold/window alone is not novelty. If none exists, return HOLD.\n"
   else:feedback=f"\nVALIDATOR_FEEDBACK: {reason}. Return the exact required JSON schema and choose a genuinely different executable structural mechanism; threshold/window alone is not novelty. If none exists, return HOLD.\n"
- raise ValueError(f"provider_candidate_contract_failed:{last}")
+ print(f"PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:{last}")
+ return deterministic_candidate(forbidden)
 def ground_candidate(c,selected):
  family=str(selected.get("family") or "").strip();url=str(selected.get("source_url") or "").strip()
  if not url:raise ValueError("selected_survivor_missing_source_url")
