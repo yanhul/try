@@ -3,7 +3,7 @@
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 90,
+  "campaign_screened": 48,
   "campaign_start_bc": 167,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
@@ -11,7 +11,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 10951,
+  "checkpoint_seq": 10954,
   "current_bc": 433,
   "history": [
     {
@@ -1247,9 +1247,15 @@
     {
       "bc": 202,
       "candidate_hash": "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 203,
@@ -1266,9 +1272,15 @@
     {
       "bc": 205,
       "candidate_hash": "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 206,
@@ -1285,9 +1297,15 @@
     {
       "bc": 208,
       "candidate_hash": "00d73570a302dbee8b291beb65e57d01428142c0a13ef04d46ea121de6ad8a98",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 209,
@@ -1360,9 +1378,15 @@
     {
       "bc": 220,
       "candidate_hash": "2ea689244b0559363047b30e017399ccb43c3ff82bd1ea6d080d5638df6f0b59",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 221,
@@ -1430,16 +1454,28 @@
     {
       "bc": 230,
       "candidate_hash": "ae292f701f7336425e2f087100c4adf49ff0b7306044486a52a110573a0b3dac",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 231,
       "candidate_hash": "47a9b6efea6e210c1cb51dfac7c5985f215ed23175933c3d85906b468f674733",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 232,
@@ -1486,9 +1522,15 @@
     {
       "bc": 238,
       "candidate_hash": "927cb7e59758d1956172b9bfe13cf9b6e2658cca643777af94742f9089e9cd67",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 239,
@@ -1500,9 +1542,15 @@
     {
       "bc": 240,
       "candidate_hash": "b4a9e589d30ba2d837166d0f99e41b3223eb4a44821fd0f28e94520fa91ca4ea",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 241,
@@ -1528,9 +1576,15 @@
     {
       "bc": 244,
       "candidate_hash": "db34b0efebef73eefbbfc0806cfbec18887481fae1d41b10ec5c50a34e707cde",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 245,
@@ -1563,9 +1617,15 @@
     {
       "bc": 249,
       "candidate_hash": "af3341f68d143d09e76742102a29000b65a10677985512d662c86d83102dabd8",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 250,
@@ -1598,9 +1658,15 @@
     {
       "bc": 254,
       "candidate_hash": "609556f24469ef36371b286b524543e918c7d515f82ffc1e45f5cbb063d12535",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 255,
@@ -1626,9 +1692,15 @@
     {
       "bc": 258,
       "candidate_hash": "03e92c0e33877d2dc8a7404a21a7224c407fe5880e46c48d85a34e30d6e85ec3",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 259,
@@ -1640,9 +1712,15 @@
     {
       "bc": 260,
       "candidate_hash": "4c6856616c57284b6cced4e21c749d6d345464e56661387ac3b9b59f9dfe216a",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 261,
@@ -1661,9 +1739,15 @@
     {
       "bc": 263,
       "candidate_hash": "a153502a0a17612e50712b52349704af415961a281370925195326d10c24f1d2",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 264,
@@ -1689,9 +1773,15 @@
     {
       "bc": 267,
       "candidate_hash": "101b5dbfc4ce90c8c3e49b9908ea4cb97cbd7b8fdcec1e6b466bdf66c17a4b5c",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 268,
@@ -1738,9 +1828,15 @@
     {
       "bc": 274,
       "candidate_hash": "e6372e874268b6681e218da5dcfbd7b5507e1ff04bb2b9b90fb0eddad57896d5",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 275,
@@ -1766,9 +1862,15 @@
     {
       "bc": 278,
       "candidate_hash": "321a62bb1ab5ce1f3acf9aed10adff356edfe2fc2d51ce8ea28ae96b8c5f6634",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 279,
@@ -1787,9 +1889,15 @@
     {
       "bc": 281,
       "candidate_hash": "b708e644c7094f6f52058a9ed8c53ee0e683b35416481445c21272044fdbc8f3",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 282,
@@ -1829,9 +1937,15 @@
     {
       "bc": 287,
       "candidate_hash": "430c7e7ae5ab9914b0b2b247544e0a750ce2bcc92b7edfb0bba97efb0e017156",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 288,
@@ -1864,9 +1978,15 @@
     {
       "bc": 292,
       "candidate_hash": "b64d75b6a53229c5277c14780dd19548711d1d52f2156cab75ecd6d9088194f9",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 293,
@@ -1962,9 +2082,15 @@
     {
       "bc": 306,
       "candidate_hash": "511c15fd50748bda5887ce8afa1eee6ef74b24c976cd3735c35d40b1bdfe6a9f",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 307,
@@ -1983,9 +2109,15 @@
     {
       "bc": 309,
       "candidate_hash": "e2609065aa88004b60b2caf2d461096176912753e477143f9ce4401a316885ce",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 310,
@@ -2011,9 +2143,15 @@
     {
       "bc": 313,
       "candidate_hash": "242dd8473bf76b15cc900ba2fe8e92c2613e468eb344a22981414011c3ddc98f",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 314,
@@ -2046,9 +2184,15 @@
     {
       "bc": 318,
       "candidate_hash": "fd4e251d974082aef356a5490d90eb55eee629c008fafd2c5cd7ade6436ba0f5",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 319,
@@ -2081,9 +2225,15 @@
     {
       "bc": 323,
       "candidate_hash": "15195a5b46c4521b62477f6ae1fdb0f2040ddd2a759ef7f6e2e550eb09308990",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 324,
@@ -2116,9 +2266,15 @@
     {
       "bc": 328,
       "candidate_hash": "297cec4e2f6f99c9697dcc1b2e59f90c7e210220f65302a9c9d7f8d4b7174713",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 329,
@@ -2144,9 +2300,15 @@
     {
       "bc": 332,
       "candidate_hash": "ca0f5e70febca7247ffe205c3d70244ec760dc12e9f8e9228a0d741dc684f7c0",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 333,
@@ -2158,9 +2320,15 @@
     {
       "bc": 334,
       "candidate_hash": "b4aba979c11027c505c50b9d5501a5c9060e9f68f9001c040ded4539f93aa73a",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 335,
@@ -2179,9 +2347,15 @@
     {
       "bc": 337,
       "candidate_hash": "c1c4002c8aabd3802c2c1f7246ed27727c39aab452116f13eb618929447640bd",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 338,
@@ -2207,9 +2381,15 @@
     {
       "bc": 341,
       "candidate_hash": "9d3a20fc66455d7d19de77d0dc6831802330cefb60d1250e8992ab0a7cd1d7e4",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 342,
@@ -2277,9 +2457,15 @@
     {
       "bc": 351,
       "candidate_hash": "308686f7a2b48d3de110577a75a6a380f7d1476c5e08cd094862fc5faad2f640",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 352,
@@ -2291,9 +2477,15 @@
     {
       "bc": 353,
       "candidate_hash": "999c953819e2f4b312f5ae8e44694d15d6fd09d250db8a51343c5db0acb06f8c",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 354,
@@ -2382,9 +2574,15 @@
     {
       "bc": 366,
       "candidate_hash": "a769f8ae84288b47cf4eb15655be4ce391f73f31019c7ac7429d64d1c0b92b51",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 367,
@@ -2417,9 +2615,15 @@
     {
       "bc": 371,
       "candidate_hash": "fbc9b682d930ea286404e3a7af788b034b09e4ad5e447bcc123126c2d0f6b2e7",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 372,
@@ -2480,9 +2684,15 @@
     {
       "bc": 380,
       "candidate_hash": "9f033e5a22cedfef50226b6ad59575c6c77d7364f54486104387166ed5eb1b1c",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 381,
@@ -2564,9 +2774,15 @@
     {
       "bc": 392,
       "candidate_hash": "3a82900e1ec494d1e5ebc65d45a48457528a564f58e38c1d31067606f14ff10c",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 393,
@@ -2606,9 +2822,15 @@
     {
       "bc": 398,
       "candidate_hash": "a2fb043b4c0653ded3733fa4b8cb80e9706f977b3204d244a4c9a763a000d564",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 399,
@@ -2627,9 +2849,15 @@
     {
       "bc": 401,
       "candidate_hash": "00c258a23251c4b9cd7488d36a3c1894b47c11ffa0b9435363c729d600a26dd0",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 402,
@@ -2711,9 +2939,15 @@
     {
       "bc": 413,
       "candidate_hash": "886b8270cba9e46c26434c2d4ded95d98fe9c8d6160e75f33e9cf84a36772b43",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 414,
@@ -2774,16 +3008,28 @@
     {
       "bc": 422,
       "candidate_hash": "5dfb5dc9847b3237a160081acd57c385bf40fc14a83929b425987c2325efdc95",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 423,
       "candidate_hash": "cd277ea9dde9100dac73bc1803f6cd3bcd8f24b88263c0a3cda1f414663f5bf0",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 424,
@@ -2816,9 +3062,15 @@
     {
       "bc": 428,
       "candidate_hash": "3ccf7620808420840041562583ac9d5f12bd4c74b4f9f8b0588a8f0241b396bc",
-      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "decision": "LEGACY_OOS_MIGRATED",
       "hypothesis_id": "mechanism_family",
-      "oos_verdict": "OOS_FAIL"
+      "legacy_decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "legacy_oos_verdict": "OOS_FAIL",
+      "migration_id": "OOS_CANONICAL_V1",
+      "oos_executed": false,
+      "oos_state": "UNKNOWN",
+      "oos_verdict": null,
+      "semantic_status": "LEGACY_UNVERIFIED_OOS"
     },
     {
       "bc": 429,
@@ -2852,6 +3104,7 @@
   "iterations": 1355,
   "last_bc": 432,
   "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI PROVIDER_ROUTER_HOLD",
+  "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 433,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
@@ -2900,10 +3153,18 @@
   "phase": "WAIT_RETRY",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI\nPROVIDER_ROUTER_HOLD",
   "retry_count": 1,
+  "state_migrations": [
+    {
+      "migration_id": "OOS_CANONICAL_V1",
+      "reason": "legacy OOS verdicts demoted to UNKNOWN until execution/receipt/evaluation evidence exists",
+      "status": "APPLIED"
+    }
+  ],
   "state_reset_reason": "reconciled durable state from contiguous candidate/failure lineage",
+  "state_schema_version": 2,
   "terminal": false,
-  "terminal_reason": "OOS_FAIL",
+  "terminal_reason": null,
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-19T07:47:12.998936+00:00"
+  "updated_at": "2026-09-20T14:31:03.905120+00:00"
 }

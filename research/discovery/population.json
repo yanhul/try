@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3075,
-    "expanded": 2683,
-    "normalized": 2683,
+    "raw": 3089,
+    "expanded": 2697,
+    "normalized": 2697,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1385,22 +1385,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2c145150b3588ffb",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/sa.2019.82034",
@@ -2020,22 +2004,6 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "eea99fa3f45fbb3b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3305,6 +3273,22 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "onchain",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3317,6 +3301,38 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -4313,22 +4329,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4761,6 +4761,22 @@
       }
     },
     {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b3f9e35cacf20d6e",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2556747",
@@ -4809,54 +4825,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -4868,38 +4836,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -4932,22 +4868,6 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "b709b8d02efc73b7",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
         "family": "options",
         "rounds": []
       }
@@ -7689,6 +7609,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -7701,6 +7669,38 @@
       "lineage": {
         "source": "7b2b67be3a752147",
         "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -7721,6 +7721,22 @@
       }
     },
     {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5f4cbf122b4b1906",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
@@ -7732,6 +7748,22 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -8601,54 +8633,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -9353,6 +9337,70 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -9385,6 +9433,22 @@
       }
     },
     {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4df47a29f00cecb3",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2735.26.06.115",
@@ -9396,6 +9460,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "4df47a29f00cecb3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9493,22 +9573,6 @@
       "lineage": {
         "source": "5267b52c5a5f160e",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -9769,22 +9833,6 @@
       }
     },
     {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -9877,38 +9925,6 @@
       "lineage": {
         "source": "267fc5e965ffcee1",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
         "rounds": []
       }
     },
@@ -10020,22 +10036,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "rounds": []
       }
@@ -14043,7 +14043,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T07:43:55Z",
+      "source_timestamp": "2026-09-20T14:26:33Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -14203,7 +14203,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-18T23:08:31Z",
+      "source_timestamp": "2026-09-20T03:09:37Z",
       "lineage": {
         "source": "8b67a116a6623830",
         "family": "prediction_market",
@@ -17255,7 +17255,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T05:22:15.155Z",
+      "source_timestamp": "2026-09-20T13:50:41.646Z",
       "lineage": {
         "source": "f183aec39960c8b5",
         "family": "china_a_share",
@@ -17399,7 +17399,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T06:35:54.670Z",
+      "source_timestamp": "2026-09-20T13:47:44.853Z",
       "lineage": {
         "source": "da79d68c037a14d6",
         "family": "china_a_share",
@@ -17447,7 +17447,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T01:08:40.384Z",
+      "source_timestamp": "2026-09-20T14:04:04.555Z",
       "lineage": {
         "source": "cbea22b9c867a5aa",
         "family": "china_a_share",
@@ -17991,7 +17991,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T07:01:26.824Z",
+      "source_timestamp": "2026-09-20T14:01:28.441Z",
       "lineage": {
         "source": "bcd35e3d0e9e43e0",
         "family": "china_a_share",
@@ -18167,7 +18167,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T10:27:35.260Z",
+      "source_timestamp": "2026-09-20T14:21:02.687Z",
       "lineage": {
         "source": "45ba7b4962f4fd12",
         "family": "china_a_share",
@@ -18615,7 +18615,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T04:56:01.281Z",
+      "source_timestamp": "2026-09-20T13:55:18.198Z",
       "lineage": {
         "source": "76b0df01d6fbe363",
         "family": "china_a_share",
@@ -20527,6 +20527,38 @@
       }
     },
     {
+      "candidate_id": "97d9f6ce32368cd1",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/LudovicRousseau/CCID",
+      "title": "freedesktop-sdk/mirrors/github/LudovicRousseau/CCID",
+      "description": "github.com: LudovicRousseau/CCID.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T14:06:39.903Z",
+      "lineage": {
+        "source": "97d9f6ce32368cd1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9ccadd2b42644bc2",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/PyYoshi/uchardet",
+      "title": "freedesktop-sdk/mirrors/github/PyYoshi/uchardet",
+      "description": "github.com: PyYoshi/uchardet.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T14:08:12.817Z",
+      "lineage": {
+        "source": "9ccadd2b42644bc2",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "38431c4ff1623a72",
       "source": "gitlab",
       "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/abseil/abseil-cpp",
@@ -20615,7 +20647,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T06:08:00.455Z",
+      "source_timestamp": "2026-09-20T14:10:29.114Z",
       "lineage": {
         "source": "077a862e592c6872",
         "family": "china_a_share",
@@ -20631,7 +20663,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T22:05:26.784Z",
+      "source_timestamp": "2026-09-20T14:10:41.125Z",
       "lineage": {
         "source": "ba56579e69dcabab",
         "family": "china_a_share",
@@ -20711,7 +20743,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-12T22:49:21.872Z",
+      "source_timestamp": "2026-09-20T14:12:39.796Z",
       "lineage": {
         "source": "af42941dfb3a1a47",
         "family": "china_a_share",
@@ -20863,6 +20895,22 @@
       }
     },
     {
+      "candidate_id": "e9476b2814b5cd6c",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/gitpython-developers/GitPython",
+      "title": "freedesktop-sdk/mirrors/github/gitpython-developers/GitPython",
+      "description": "github.com: gitpython-developers/GitPython.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T14:16:09.049Z",
+      "lineage": {
+        "source": "e9476b2814b5cd6c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6d1aaadc67909922",
       "source": "gitlab",
       "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/golang/crypto",
@@ -21002,6 +21050,22 @@
       "source_timestamp": "2026-09-19T06:26:03.642Z",
       "lineage": {
         "source": "f14c237239f1091c",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "172f88ffd13b78cc",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/nemtrif/utfcpp",
+      "title": "freedesktop-sdk/mirrors/github/nemtrif/utfcpp",
+      "description": "github.com: nemtrif/utfcpp.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T14:25:09.027Z",
+      "lineage": {
+        "source": "172f88ffd13b78cc",
         "family": "china_a_share",
         "rounds": []
       }
@@ -24007,7 +24071,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T21:41:32.897Z",
+      "source_timestamp": "2026-09-20T14:15:16.862Z",
       "lineage": {
         "source": "6b50a0528ab9b1b1",
         "family": "china_a_share",
@@ -24375,7 +24439,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T06:42:51.642Z",
+      "source_timestamp": "2026-09-20T13:47:06.717Z",
       "lineage": {
         "source": "50eb56a3d9af4181",
         "family": "china_a_share",
@@ -24487,7 +24551,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T15:38:11.414Z",
+      "source_timestamp": "2026-09-20T13:53:36.714Z",
       "lineage": {
         "source": "f0d24dc0c011a0ff",
         "family": "china_a_share",
@@ -25503,6 +25567,22 @@
       }
     },
     {
+      "candidate_id": "0ab0b6d2084e91c5",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/radidmondal/Bottle-3d-game",
+      "title": "radidmondal/Bottle-3d-game",
+      "description": "Game gitlab er GitHub to .... ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T14:16:51.922Z",
+      "lineage": {
+        "source": "0ab0b6d2084e91c5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "287474c076d16611",
       "source": "gitlab",
       "source_url": "https://gitlab.com/redhat/centos-stream/tests/kernel/filesystems/ltp",
@@ -26423,7 +26503,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T16:38:16.057Z",
+      "source_timestamp": "2026-09-20T14:21:02.458Z",
       "lineage": {
         "source": "6257c73ed364f872",
         "family": "china_a_share",
@@ -27335,7 +27415,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T02:36:04.871Z",
+      "source_timestamp": "2026-09-20T13:54:35.973Z",
       "lineage": {
         "source": "346b209528eccb35",
         "family": "china_a_share",
@@ -27703,7 +27783,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T22:05:59.201Z",
+      "source_timestamp": "2026-09-20T14:18:56.512Z",
       "lineage": {
         "source": "90882c331da0fa7b",
         "family": "china_a_share",
@@ -28071,7 +28151,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-18T17:16:25.382Z",
+      "source_timestamp": "2026-09-19T08:47:09.063Z",
       "lineage": {
         "source": "1079c2ee1f761f8f",
         "family": "unknown",
@@ -28087,7 +28167,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-16T13:25:37.428Z",
+      "source_timestamp": "2026-09-19T23:31:30.423Z",
       "lineage": {
         "source": "d0d25d6d7f969846",
         "family": "unknown",
@@ -28103,7 +28183,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-19T06:36:49.420Z",
+      "source_timestamp": "2026-09-20T09:25:27.587Z",
       "lineage": {
         "source": "235585c5c5350674",
         "family": "unknown",
@@ -28122,6 +28202,22 @@
       "source_timestamp": "2026-09-18T09:21:05.324Z",
       "lineage": {
         "source": "0c4b88c085992c15",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3dd9ab5f6e9c19fb",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/FxznDevOps/Alpha",
+      "title": "FxznDevOps/Alpha",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-19T08:54:28.345Z",
+      "lineage": {
+        "source": "3dd9ab5f6e9c19fb",
         "family": "unknown",
         "rounds": []
       }
@@ -28154,6 +28250,38 @@
       "source_timestamp": "2026-09-15T18:34:08.190Z",
       "lineage": {
         "source": "82e757bf70170f37",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7de7ae908951ffec",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/LeonLi-SZ/nato",
+      "title": "LeonLi-SZ/nato",
+      "description": "MIT Processing GUI exam on NATO alphabet",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-19T23:10:13.443Z",
+      "lineage": {
+        "source": "7de7ae908951ffec",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b7561ca8ee96edb4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/NelikKKL/webcraft",
+      "title": "NelikKKL/webcraft",
+      "description": "Minecraft alpha 1.2.6 to web!",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-19T13:28:18.959Z",
+      "lineage": {
+        "source": "b7561ca8ee96edb4",
         "family": "unknown",
         "rounds": []
       }
@@ -28407,7 +28535,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-17T19:22:11.198Z",
+      "source_timestamp": "2026-09-19T19:09:18.656Z",
       "lineage": {
         "source": "5b9d0f962d99d627",
         "family": "unknown",
@@ -28487,7 +28615,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-16T00:05:50.255Z",
+      "source_timestamp": "2026-09-20T00:05:43.260Z",
       "lineage": {
         "source": "35f17b4421a91c73",
         "family": "unknown",
@@ -28503,7 +28631,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-16T00:05:46.000Z",
+      "source_timestamp": "2026-09-20T00:05:35.699Z",
       "lineage": {
         "source": "fdfdb8ad2ad0d698",
         "family": "unknown",
@@ -28535,7 +28663,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-16T00:05:34.424Z",
+      "source_timestamp": "2026-09-20T00:05:36.248Z",
       "lineage": {
         "source": "4d5cc0ea0f80be17",
         "family": "unknown",
@@ -28591,6 +28719,22 @@
       }
     },
     {
+      "candidate_id": "1c5b92c4740818fc",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/h1boy-gitlab-a/rigtest-alpha-2",
+      "title": "h1boy-gitlab-a/rigtest-alpha-2",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-19T10:38:26.451Z",
+      "lineage": {
+        "source": "1c5b92c4740818fc",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "03e4b608e6e4e4c4",
       "source": "gitlab",
       "source_url": "https://gitlab.com/henry-ldr/alpha-fund-website",
@@ -28631,7 +28775,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-18T16:07:10.658Z",
+      "source_timestamp": "2026-09-19T16:01:35.264Z",
       "lineage": {
         "source": "1b9063b08cd36743",
         "family": "unknown",
@@ -28663,7 +28807,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-18T08:55:34.023Z",
+      "source_timestamp": "2026-09-20T08:02:42.160Z",
       "lineage": {
         "source": "415391b503ddd42a",
         "family": "unknown",
@@ -28762,6 +28906,22 @@
       "source_timestamp": "2026-09-18T01:53:37.840Z",
       "lineage": {
         "source": "6cb32eb5803252e4",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "57178f131e988c9f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/vachell/alpha-testground-deletion_scheduled-82563114",
+      "title": "vachell/alpha-testground-deletion_scheduled-82563114",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-20T07:31:12.767Z",
+      "lineage": {
+        "source": "57178f131e988c9f",
         "family": "unknown",
         "rounds": []
       }
@@ -31119,6 +31279,22 @@
       }
     },
     {
+      "candidate_id": "ace43829969a0646",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.21315/mjms2018.25.6.9",
+      "title": "A Review on Sample Size Determination for Cronbach\u2019s Alpha Test: A Simple Guide for Researchers",
+      "description": "OpenAlex work type=article year=2018",
+      "family": "unknown",
+      "market": null,
+      "query": "alternative data quantitative alpha research",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "ace43829969a0646",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5dda3689bf2ad618",
       "source": "openalex",
       "source_url": "https://doi.org/10.3389/fpubh.2018.00149",
@@ -31626,6 +31802,22 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "7e303348512cb293",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "accb9f48b5c982da",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2991/smtesm-19.2019.68",
+      "title": "Innovative Trends in the Process Modelling of International Strategies: Systematic of Fundamental Factor Models",
+      "description": "OpenAlex work type=conference-paper year=2019",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "cross sectional crypto factors momentum reversal",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "accb9f48b5c982da",
         "family": "cross_sectional",
         "rounds": []
       }
@@ -34367,6 +34559,22 @@
       }
     },
     {
+      "candidate_id": "f79dbae783597b5c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1109/access.2020.3026180",
+      "title": "Peer-to-Peer Energy Trading in Virtual Power Plant Based on Blockchain Smart Contracts",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f79dbae783597b5c",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "aef133809d061e0f",
       "source": "openalex",
       "source_url": "https://doi.org/10.1016/j.apenergy.2022.119003",
@@ -35107,7 +35315,7 @@
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s10462-022-10226-0",
       "title": "Deep learning in the stock market\u2014a systematic survey of practice, backtesting, and applications",
-      "description": "OpenAlex work type=book-chapter year=2022",
+      "description": "OpenAlex work type=article year=2022",
       "family": "unknown",
       "market": null,
       "query": "quantitative trading strategy backtest github",
@@ -36351,6 +36559,22 @@
       }
     },
     {
+      "candidate_id": "6ef38b3cd00147d5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1177/18681034231186441",
+      "title": "Foreign Investment, State Capitalism, and National Development in Borneo: Rethinking Brunei\u2013China Economic Relations",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "6ef38b3cd00147d5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "51eaf23e5795f261",
       "source": "openalex",
       "source_url": "https://doi.org/10.18306/dlkxjz.2020.02.012",
@@ -36495,6 +36719,22 @@
       }
     },
     {
+      "candidate_id": "3f2d8946e7b6e6ed",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
+      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "3f2d8946e7b6e6ed",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e4ff0e17ae795a42",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
@@ -36586,22 +36826,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "6f51daf1a61bc141",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ef38b3cd00147d5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1177/18681034231186441",
-      "title": "Foreign Investment, State Capitalism, and National Development in Borneo: Rethinking Brunei\u2013China Economic Relations",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "6ef38b3cd00147d5",
         "family": "china_a_share",
         "rounds": []
       }
@@ -36959,17 +37183,17 @@
       }
     },
     {
-      "candidate_id": "3f2d8946e7b6e6ed",
+      "candidate_id": "efb60804d0cbc0ad",
       "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
-      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
-      "description": "OpenAlex work type=article year=2022",
+      "source_url": "https://doi.org/10.64083/etm2630119",
+      "title": "\u6570\u5b57\u666e\u60e0\u91d1\u878d\u5bf9\u519c\u6751\u5c45\u6c11\u6d88\u8d39\u5347\u7ea7\u7684\u5f71\u54cd\u673a\u5236\u4e0e\u6848\u4f8b\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2026",
       "family": "unknown",
       "market": null,
       "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2022",
+      "source_timestamp": "2026",
       "lineage": {
-        "source": "3f2d8946e7b6e6ed",
+        "source": "efb60804d0cbc0ad",
         "family": "unknown",
         "rounds": []
       }
@@ -38906,6 +39130,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "d9421027cdf1e5e4",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ae8e7be0fb33131b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
+      "title": "Data protection and security of machine learning models in market-neutral crypto-currency trading strategies",
+      "description": "Cryptocurrency markets and algorithmic crypto trading are increasingly relying on deep learning models and market-neutral strategies, which amplifies the requirements for data protection and model security. This paper presents an end-to-end approach to data protection in a cloud-based algorithmic cryptocurrency trading system that implements market-neutral strategies using machine learning models. We examine the cryptographic mechanisms of the Bitcoin and Ethereum protocols and their contribution to transaction integrity, non-repudiation, and resistance to replay. We then show how these guarantees interact with higher-level data flows in exchanges and DeFi protocols. We analyse typical threats in DeFi protocols and exchange APIs, including re-entrancy attacks, oracle manipulation, flash loans, MEV attacks, and abuse of API keys, and we highlight how these threats can distort training data, backtests, and live execution. We systematise data and secret protection patterns in Azure, AWS, and GCP cloud infrastructures, focusing on key and secret management services, encryption of data in transit and at rest, least-privilege access, network segmentation, and incident-driven key revocation. Special attention is paid to machine learning security threats in financial time-series forecasting, including data poisoning, adversarial perturbations, model extraction, and model inversion, and to their relationship with regulatory requirements for algorithmic trading and the NIST AI RMF framework. Using a prototype market-neutral crypto trading system based on LSTM/GRU models as a case study, we derive a threat\u2013mitigation matrix, outline a risk-based kill-switch design that links portfolio risk metrics with technical controls, and propose practical architectural recommendations for data protection along the entire pipeline. In addition, we provide a small experiment with HMAC-SHA256 signing and a timestamp window for exchange API requests, demonstrating the detection and blocking o",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ae8e7be0fb33131b",
         "family": "execution_mev",
         "rounds": []
       }
@@ -44559,22 +44799,6 @@
       }
     },
     {
-      "candidate_id": "ae8e7be0fb33131b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
-      "title": "Data protection and security of machine learning models in market-neutral crypto-currency trading strategies",
-      "description": "Cryptocurrency markets and algorithmic crypto trading are increasingly relying on deep learning models and market-neutral strategies, which amplifies the requirements for data protection and model security. This paper presents an end-to-end approach to data protection in a cloud-based algorithmic cryptocurrency trading system that implements market-neutral strategies using machine learning models. We examine the cryptographic mechanisms of the Bitcoin and Ethereum protocols and their contribution to transaction integrity, non-repudiation, and resistance to replay. We then show how these guarantees interact with higher-level data flows in exchanges and DeFi protocols. We analyse typical threats in DeFi protocols and exchange APIs, including re-entrancy attacks, oracle manipulation, flash loans, MEV attacks, and abuse of API keys, and we highlight how these threats can distort training data, backtests, and live execution. We systematise data and secret protection patterns in Azure, AWS, and GCP cloud infrastructures, focusing on key and secret management services, encryption of data in transit and at rest, least-privilege access, network segmentation, and incident-driven key revocation. Special attention is paid to machine learning security threats in financial time-series forecasting, including data poisoning, adversarial perturbations, model extraction, and model inversion, and to their relationship with regulatory requirements for algorithmic trading and the NIST AI RMF framework. Using a prototype market-neutral crypto trading system based on LSTM/GRU models as a case study, we derive a threat\u2013mitigation matrix, outline a risk-based kill-switch design that links portfolio risk metrics with technical controls, and propose practical architectural recommendations for data protection along the entire pipeline. In addition, we provide a small experiment with HMAC-SHA256 signing and a timestamp window for exchange API requests, demonstrating the detection and blocking o",
-      "family": "execution_mev",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "ae8e7be0fb33131b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1cc7f591c282fa01",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
@@ -47331,7 +47555,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-19T07:43:55Z",
+      "source_timestamp": "2026-09-20T14:26:33Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -47461,7 +47685,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-18T23:08:31Z",
+      "source_timestamp": "2026-09-20T03:09:37Z",
       "lineage": {
         "source": "8b67a116a6623830",
         "family": "prediction_market",
