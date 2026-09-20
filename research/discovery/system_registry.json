@@ -5,8 +5,8 @@
     "source_archive.json",
     "china_a_share_sources.json"
   ],
-  "total_records": 3104,
-  "system_records": 2646,
+  "total_records": 3105,
+  "system_records": 2647,
   "records": [
     {
       "source_id": "SRC-4a144f646a4f6c73",
@@ -19614,6 +19614,20 @@
       "title": "alderichoarau/alderichoarau.github.io",
       "url": "https://gitlab.com/alderichoarau/alderichoarau.github.io",
       "description": "Mirror of github.com/alderichoarau/alderichoarau.github.io — issues & PRs go there\r\nPersonal portfolio and website built with Angular. Hosted with GitHub Pages",
+      "query": "A股 量化 github",
+      "family": "unclassified",
+      "mechanism": "unknown",
+      "is_system": true,
+      "provenance_only": true,
+      "translation_status": "PENDING_INDEPENDENT_TRANSLATION",
+      "executable": false
+    },
+    {
+      "source_id": "SRC-ebab2a7b48828a76",
+      "source": "gitlab",
+      "title": "alderichoarau/alderichoarau.gitlab.io",
+      "url": "https://gitlab.com/alderichoarau/alderichoarau.gitlab.io",
+      "description": "Mirror of github.com/alderichoarau/alderichoarau.github.io — issues & PRs go there Personal portfolio and website built with Angular. Hosted with GitHub Pages",
       "query": "A股 量化 github",
       "family": "unclassified",
       "mechanism": "unknown",
@@ -39956,7 +39970,7 @@
       "title": "Interpretable Factor Decomposition for Decision Intelligence in Large-Scale Financial Markets: Evidence from China's A-Share Market",
       "url": "https://www.semanticscholar.org/paper/d42e8aaa87a52f80587f6c119601bb0be4a6e4a8",
       "description": "We present an interpretable machine learning pipeline to decompose cross-sectional equity return predictability into auditable factor contributions. We apply an XGBoost model with TreeSHAP attribution and conduct stress testing on 3,632 Chinese A-share stocks from 2009 until 2019. On prediction, using 60-month rolling windows over 55 months of out-of-sample data, XGBoost obtains a mean AUC of 0.547 (rank IC = 0.119) and +2.38%/month (Newey-West t = 5.94; annualized Sharpe 2.23) long-short spread for the top vs bottom quintiles. This alpha is persistent after adjusting for the Carhart four-factor model (+2.31%/month; t = 7.48). On interpretation, SHAP decomposition indicates that behavioral signals (turnover and momentum) account for 58.2% of predictive attribution compared to 10.7% for valuation ratios, on average, across 50 industry groups. Ablation analysis serves to cross-validate this ranking and provides evidence that SHAP and ablation diverge in a manner that highlights feature substitutability structure that is largely invisible to either method used in isolation.",
-      "query": "China A-share cross-sectional factor mining",
+      "query": "China A-share machine learning alpha",
       "family": "ml_rl",
       "mechanism": "cross_sectional_factor",
       "is_system": true,
