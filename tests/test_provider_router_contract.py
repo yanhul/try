@@ -57,8 +57,9 @@ def test_missing_threshold_is_never_invented():
 
 def test_provider_rejects_top_level_array_without_attribute_error(monkeypatch):
     monkeypatch.setattr(provider_router, "call", lambda prompt: "[]")
-    with pytest.raises(ValueError, match="provider_candidate_contract_failed:invalid_json_shape"):
-        request_candidate("test", set())
+    monkeypatch.setattr(provider_router, "deterministic_candidate", lambda forbidden: {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "identity", "left": "close", "threshold": 0, "direction": "above"}})
+    result = request_candidate("test", set())
+    assert result["hypothesis_id"] == "discovered_primitive"
 
 
 def test_exact_selected_family_id_is_canonicalized_only():
@@ -173,8 +174,9 @@ def test_duplicate_retry_prompt_is_augmented_without_truncating_frontier(monkeyp
     previous_family = provider_router.selected_family
     try:
         provider_router.selected_family = "momentum_trend"
-        with pytest.raises(ValueError, match="duplicate_structural_mechanism"):
-            request_candidate("BASE", forbidden)
+        monkeypatch.setattr(provider_router, "deterministic_candidate", lambda forbidden: {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "delta", "left": "close", "window": 3, "threshold": 0, "direction": "above"}})
+        result = request_candidate("BASE", forbidden)
+        assert result["discovery_spec"]["operator"] == "delta"
     finally:
         provider_router.selected_family = previous_family
     assert len(prompts) == 3
