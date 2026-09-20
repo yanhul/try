@@ -1,0 +1,27 @@
+{
+  "bc": 448,
+  "candidate_hash": "d1c1a834bdee5b8a6eaba0936ce9c357d61c4d033917dafd63b85df65c3f32a6",
+  "conceptual_change": "Switching to evaluating price relative to volume ratio on a different rolling horizon to capture structural liquidity-driven mean reversion on BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.15,
+    "window": 12
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "|ratio|close|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.15,
+    "window": 12
+  },
+  "parent_bc": 447,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

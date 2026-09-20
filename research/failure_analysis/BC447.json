@@ -1,0 +1,41 @@
+{
+  "bc": 447,
+  "parent_bc": 446,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "discovered_primitive",
+  "candidate_hash": "16c1651b157270896963cfa2baa87097a29842e4e3772f0d1f95a83a77214a1f",
+  "conceptual_change": "Translating the selected mean reversion framework to capture price extension relative to VWAP over a 24-period window on BTCUSDT 1H, expecting a reversion when price stretches beyond the standard ratio threshold.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 424,
+    "skipped_overlap_trades": 395,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 29,
+      "win_count": 9,
+      "loss_count": 20,
+      "win_rate": 0.3103448275862069,
+      "total_return": -0.0783707896723076,
+      "avg_return": -0.0027159510833031234,
+      "profit_factor": 0.6677964302759626,
+      "max_drawdown": 0.11737246802293265,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
