@@ -3182,6 +3182,14 @@
     {
       "source": "crossref",
       "query": "MEV execution alpha crypto",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "url": "https://doi.org/10.2139/ssrn.5150912",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "MEV execution alpha crypto",
       "title": "ELASTIC ALPHA-ALPHA SCATTERING NEAR 40 Mev",
       "url": "https://doi.org/10.2172/4042824",
       "description": "Crossref work type=report",
@@ -5194,14 +5202,6 @@
       "url": "https://doi.org/10.1016/s0378-4266(00)00101-1",
       "description": "Crossref work type=journal-article",
       "updated_at": "2001"
-    },
-    {
-      "source": "crossref",
-      "query": "maker adverse selection execution crypto",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "url": "https://doi.org/10.2139/ssrn.5150912",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -14364,7 +14364,7 @@
       "title": "radek-sprta/introduction",
       "url": "https://gitlab.com/radek-sprta/introduction",
       "description": "Generate README.md profile pages from GitHub, GitLab, and RSS data.",
-      "updated_at": "2026-09-20T19:46:25.954Z",
+      "updated_at": "2026-09-20T20:47:40.886Z",
       "stars": 0
     },
     {
@@ -22379,6 +22379,14 @@
     {
       "source": "semantic_scholar",
       "query": "crypto trading bot strategy backtest",
+      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
+      "url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
+      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 × improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
+      "updated_at": "2025"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto trading bot strategy backtest",
       "title": "CRYPTO TRADING BOT USING MOVING AVERAGE, SUPPORT AND RESISTANCE",
       "url": "https://www.semanticscholar.org/paper/def497c3bb64b78b67b4996bbe0bae2e4f042a02",
       "description": "",
@@ -22399,6 +22407,14 @@
       "url": "https://www.semanticscholar.org/paper/3416dd98d0875c52f07c649200960958b3e14b8c",
       "description": "Designing profitable and reliable trading strategies is challenging in the highly volatile cryptocurrency market. Existing works applied deep reinforcement learning methods and optimistically reported increased profits in backtesting, which may suffer from the false positive issue due to overfitting. In this paper, we propose a practical approach to address backtest overfitting for cryptocurrency trading using deep reinforcement learning. First, we formulate the detection of backtest overfitting as a hypothesis test. Then, we train the DRL agents, estimate the probability of overfitting, and reject the overfitted agents, increasing the chance of good trading performance. Finally, on 10 cryptocurrencies over a testing period from 05/01/2022 to 06/27/2022 (during which the crypto market crashed two times), we show that the less overfitted deep reinforcement learning agents have a higher return than that of more overfitted agents, an equal weight strategy, and the S&P DBM Index (market benchmark), offering confidence in possible deployment to a real market.",
       "updated_at": "2022"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto trading bot strategy backtest",
+      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
+      "url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
+      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
+      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
@@ -22455,14 +22471,6 @@
       "url": "https://www.semanticscholar.org/paper/ff04b35ff13283e61c75af50a6adb4e65b381c16",
       "description": "",
       "updated_at": "2022"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "crypto volatility breakout strategy",
-      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
-      "url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
-      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 × improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
-      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
@@ -23951,14 +23959,6 @@
       "url": "https://www.semanticscholar.org/paper/322cc5ce3c72095dd598a9ad7fc2a2b5c044474e",
       "description": "Financial time series (e.g., stock prices, index returns) exhibit inherent characteristics such as non-stationarity, volatility clustering, and nonlinearity, which pose significant challenges to traditional forecasting models. This study proposes a comprehensive framework integrating deep learning (DL) models for time series forecasting and quantitative trading strategy design to address these challenges. First, we compare the forecasting performance of three state-of-the-art DL architectures—Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU), and Temporal Fusion Transformer (TFT)—against classical models (ARIMA, GARCH) using the S&P 500 index (2010–2023) as the experimental dataset. Second, we design a rule-based quantitative trading strategy based on the DL model's price predictions, incorporating stop-loss, take-profit, and position management rules. Experimental results show that the TFT model outperforms other models in forecasting accuracy: it achieves a Mean Absolute Percentage Error (MAPE) of 1.23%, which is 42.1% and 28.5% lower than ARIMA (2.12%) and LSTM (1.72%), respectively. In the trading backtest (2022–2023), the TFT-based strategy delivers an annualized return of 15.2%, a maximum drawdown of 12.3%, and a Sharpe ratio of 1.8—outperforming the buy-and-hold strategy (8.7% annualized return, 25.6% maximum drawdown, 0.9 Sharpe ratio). This framework provides both theoretical insights for DL applications in financial forecasting and practical guidance for quantitative trading.",
       "updated_at": "2025"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "quantitative trading strategy backtest github",
-      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
-      "url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
-      "description": "Quantitative strategy optimization remains largely manual, requiring domain experts to identify weak signals, tune risk-control rules, and repeatedly validate iterative revisions. Large language models can accelerate this process, but directly relying on them to rewrite trading strategies often introduces hallucinated edits, strategy drift, and backtest overfitting. We propose EVOQUANT, a self-Evolving Verifier-guided framework for strategy Optimization in Quantitative trading. Our method utilizes LLMs to deeply diagnose performance bottlenecks, generates semantically controlled candidate edits, selects the best strategy through a multi-stage verification pipeline, and distills optimization experience into reusable knowledge for continual self-improvement. We evaluate our method using seven representative strategies: four from the A-share market and three from the Crypto market. Experimental results show that our method significantly improves the Sharpe ratio across all tested strategies: the average test Sharpe increases from -0.298 to 0.538, and the best-performing strategy achieves a 199% relative improvement. Ablation studies and stress tests under stricter conditions further validate the effectiveness and robustness of the framework. Overall, this work transforms quantitative strategy optimization from costly manual trial and error into an automated and verifiable iterative paradigm, offering a new path for applying large language models to financial strategy research.",
-      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
