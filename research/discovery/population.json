@@ -4137,6 +4137,22 @@
       }
     },
     {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -4228,6 +4244,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "rounds": []
       }
@@ -4660,22 +4692,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -9140,22 +9156,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
         "family": "unknown",
         "rounds": []
       }
@@ -25799,7 +25799,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T22:27:50.912Z",
+      "source_timestamp": "2026-09-20T17:46:29.206Z",
       "lineage": {
         "source": "73382068fbe689c3",
         "family": "china_a_share",
@@ -25815,7 +25815,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T14:55:30.913Z",
+      "source_timestamp": "2026-09-20T17:45:34.631Z",
       "lineage": {
         "source": "0ab0b6d2084e91c5",
         "family": "china_a_share",
@@ -40847,6 +40847,22 @@
       }
     },
     {
+      "candidate_id": "c9a4cb0f5bf64de2",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
+      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
+      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "c9a4cb0f5bf64de2",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ae3b18bca69a6078",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/0692459bf8c273ec143fddb24e11bf2132ee7173",
@@ -41290,22 +41306,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "7e159a147d4e76b7",
-        "family": "regime",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1cc7f591c282fa01",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
-      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
-      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
-      "family": "regime",
-      "market": null,
-      "query": "crypto regime switching hidden Markov trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "1cc7f591c282fa01",
         "family": "regime",
         "rounds": []
       }
@@ -42762,22 +42762,6 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "9d15e35ed07505f4",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c9a4cb0f5bf64de2",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/780fb848f60b26684a6239de7a42c3bd00249702",
-      "title": "Follow the Leader: Enhancing Systematic Trend-Following Using Network Momentum",
-      "description": "We present a systematic, trend-following strategy, applied to commodity futures markets, that combines univariate trend indicators with cross-sectional trend indicators that capture so-called {\\em momentum spillover}, which can occur when there is a lead-lag relationship between the trending behaviour of different markets. Our strategy utilises two methods for detecting lead-lag relationships, with a method for computing {\\em network momentum}, to produce a novel trend-following indicator. We use our new trend indicator to construct a portfolio whose performance we compare to a baseline model which uses only univariate indicators, and demonstrate statistically significant improvements in Sharpe ratio, skewness of returns, and downside performance, using synthetic bootstrapped data samples taken from time-series of actual prices.",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "futures trend following systematic strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "c9a4cb0f5bf64de2",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -44383,6 +44367,22 @@
       }
     },
     {
+      "candidate_id": "642e162e9febaa54",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
+      "title": "Crypto Trading Using AI",
+      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "642e162e9febaa54",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c40ac717ed8cb63",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/152a40b1cf4f4b8a16e48d3b41be223842ef02e2",
@@ -45119,22 +45119,6 @@
       }
     },
     {
-      "candidate_id": "642e162e9febaa54",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
-      "title": "Crypto Trading Using AI",
-      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "642e162e9febaa54",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ae8e7be0fb33131b",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
@@ -45147,6 +45131,22 @@
       "lineage": {
         "source": "ae8e7be0fb33131b",
         "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1cc7f591c282fa01",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/60790ce841936101f50eee38c7cbbef57ff421b5",
+      "title": "Developing Robust Crypto-Currency Trading Strategies: A Fusion of Machine Learning and Hidden Markov Modelling for Enhanced Performance",
+      "description": "This study addresses the intricate challenges of predicting Bitcoin (BTC) prices and devising effective trading strategies by employing advanced models. Cryptocurrency markets, notably Bitcoin, exhibit dynamic behaviors that challenge traditional forecasting methods. This research introduces a comprehensive approach, combining Deep Learning models\u2014specifically LSTM, Bi-LSTM, ARIMA, and Facebook Prophet\u2014with Hidden Markov Models (HMMs). The proposed models demonstrate exceptional accuracy through rigorous evaluation, with the best achieving a noteworthy R2 Score of 98%. The integration of HMMs enhances the forecasting capabilities and facilitates the development of a robust trading strategy. This research contributes valuable insights into the fusion of deep learning and probabilistic modeling for improved BTC price prediction and trading decisions. The study\u2019s outcomes underscore the potential of advanced techniques in optimizing decision-making processes within the volatile cryptocurrency landscape.",
+      "family": "regime",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "1cc7f591c282fa01",
+        "family": "regime",
         "rounds": []
       }
     },
