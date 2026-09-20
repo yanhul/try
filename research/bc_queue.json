@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 455,
+    "candidate_hash": "b4c48fb0e4368c6f9a858a1641c66f3e5bb87ca4cd650d5fde403fcdef82aaed",
+    "conceptual_change": "Assess smart money concepts by measuring the absolute difference between close price and volume_ratio to isolate imbalances where price structure decouples from relative volume intensity.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "volume_ratio",
+      "threshold": 0.0
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|difference|close|volume_ratio|above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.0,
+      "window": null
+    },
+    "parent_bc": 454,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
