@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "bc": 456,
+    "candidate_hash": "050215b0366c79e180c6e66121b3c41958ae6360d214e17c07ca29521b040b69",
+    "conceptual_change": "Capture Smart Money Concept liquidity accumulation zones by utilizing a rolling mean filter on volume to detect institutional footprint persistence prior to structural market shifts.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "volume",
+      "mechanism_family": "smc_ict",
+      "operator": "rolling_mean",
+      "threshold": 1.5,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/3yther/quant-bot"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "smc_ict|rolling_mean|volume||above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 1.5,
+      "window": 24
+    },
+    "parent_bc": 455,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
