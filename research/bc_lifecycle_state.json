@@ -11,8 +11,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11224,
-  "current_bc": 456,
+  "checkpoint_seq": 11231,
+  "current_bc": 457,
   "history": [
     {
       "bc": 1,
@@ -3432,13 +3432,20 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 456,
+      "candidate_hash": "050215b0366c79e180c6e66121b3c41958ae6360d214e17c07ca29521b040b69",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1378,
-  "last_bc": 455,
-  "last_error": null,
+  "iterations": 1379,
+  "last_bc": 456,
+  "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI PROVIDER_ROUTER_HOLD",
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 456,
+  "next_bc": 457,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3498,9 +3505,9 @@
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
-  "phase": "PERSISTED",
+  "phase": "WAIT_RETRY",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_rate_limited:GEMINI\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 0,
+  "retry_count": 1,
   "state_migrations": [
     {
       "migration_id": "OOS_CANONICAL_V1",
@@ -3514,5 +3521,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-20T16:53:01.448029+00:00"
+  "updated_at": "2026-09-20T16:55:43.505838+00:00"
 }
