@@ -1,0 +1,41 @@
+{
+  "bc": 453,
+  "parent_bc": 452,
+  "decision": "REJECT",
+  "reason": "VALIDATION_FAILED",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "e7ed6f5f1140cd1b5df41d14854c02c3293cbf221ea3f3959df41030f3f88645",
+  "conceptual_change": "Evaluate the ratio of the close location within the bar to volume, capturing mean-reversion dynamics when price finishes high relative to the underlying volume traded.",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "validation_summary": {
+    "candidate_trades": 725,
+    "accepted_signals": 404,
+    "skipped_overlap_trades": 359,
+    "candidate_universe": "all_bars",
+    "metrics": {
+      "trade_count": 45,
+      "win_count": 16,
+      "loss_count": 29,
+      "win_rate": 0.35555555555555557,
+      "total_return": -0.09387525767098948,
+      "avg_return": -0.002089594572781669,
+      "profit_factor": 0.7385368502206135,
+      "max_drawdown": 0.13496980824609667,
+      "cost_model": {
+        "status": "AVAILABLE",
+        "label": "generic_spot_preregistered",
+        "fee_bps_per_side": 10.0,
+        "slippage_bps_per_side": 2.0,
+        "fee_round_trip_fraction": 0.002,
+        "slippage_model": "adverse_price_per_side",
+        "assumption_scope": "research_assumption_not_venue_specific"
+      }
+    }
+  },
+  "gross_validation_passed": false,
+  "net_validation_gate": "VALIDATION_QUALITY_FAILED",
+  "oos_selection_used": false,
+  "action": "reject candidate and require a distinct next hypothesis"
+}
