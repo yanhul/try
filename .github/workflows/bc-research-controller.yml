@@ -177,3 +177,5 @@ jobs:
         run: |
           sleep 60
           gh workflow run bc-research-controller.yml --ref main
+
+# G4B autonomous continuation trigger: durable state remains authoritative.
