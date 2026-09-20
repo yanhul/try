@@ -72,6 +72,22 @@ def qualifying_bcs(history, start=1):
     return out
 
 
+def screened_bcs(history, start=1):
+    """Durably evaluated BCs; distinct from qualifying outcomes."""
+    out = set()
+    for item in history if isinstance(history, list) else []:
+        if not isinstance(item, dict):
+            continue
+        raw = str(item.get('bc', '')).strip()
+        if not raw.isdigit() or int(raw) < int(start):
+            continue
+        if (str(item.get('decision') or '') in QUALIFY
+                or str(item.get('event_type') or '') == 'OOS_EVALUATION'
+                or str(item.get('oos_state') or '') == 'OOS_EVALUATED'):
+            out.add(int(raw))
+    return out
+
+
 def _epoch_start(state, history):
     if state.get('campaign_epoch_initialized') and isinstance(state.get('campaign_start_bc'), int):
         return int(state['campaign_start_bc'])
@@ -112,7 +128,7 @@ def reconcile_campaign_state(state, budget):
         repaired += 1
     state['campaign_start_bc'] = start
     state['history'] = sorted(history, key=lambda x: int(x.get('bc', 0)) if isinstance(x, dict) and str(x.get('bc', '')).isdigit() else 0)
-    screened = len(qualifying_bcs(history, start))
+    screened = len(screened_bcs(history, start))
     state['campaign_screened'] = min(screened, int(budget))
     if repaired:
         state['state_reconciled_from_durable_bc_artifacts'] = True
@@ -286,7 +302,7 @@ def main():
         return terminal(state, 'NO_EDGE_FOUND', 'FIXED_SCREENING_BUDGET_EXHAUSTED', screened, budget)
     env = dict(os.environ)
     env['RESEARCH_MAX_ITERATIONS'] = str(1 if queued else min(batch, budget - screened))
-    before = qualifying_bcs(state.get('history', []), start)
+    before = screened_bcs(state.get('history', []), start)
     expected = int(state.get('next_bc', start))
     seed = None if queued else _epoch_seed_failure(expected - 1, start)
     if seed is not None:
@@ -333,7 +349,7 @@ def main():
             print(f'CAMPAIGN_HOLD reason={reason} screened={after}/{budget}')
         return 0
     history = state.get('history', [])
-    after_set = qualifying_bcs(history, start)
+    after_set = screened_bcs(history, start)
     new = after_set - before
     state.update(campaign_screened=min(after, budget), campaign_budget=budget, campaign_id=policy['campaign_id'])
     if state.get('terminal'):
@@ -361,9 +377,13 @@ def main():
                                   retry_allowed=False, blocked=False, progress_event=bool(new))
     if action is LifecycleAction.BUDGET_EXHAUSTED:
         return terminal(state, 'NO_EDGE_FOUND', 'FIXED_SCREENING_BUDGET_EXHAUSTED', after, budget)
-    if action is not LifecycleAction.CONTINUE_PROGRESS:
+    if action is LifecycleAction.HOLD:
+        # Accounting stasis is not a research verdict. The next invocation must
+        # continue the durable frontier; only explicit controller/provider states
+        # may produce HOLD.
+        state['campaign_frontier_transition_required'] = True
         save(state)
-        print(f'CAMPAIGN_HOLD reason=NO_NEW_SCREENED_BC screened={after}/{budget}')
+        print(f'CAMPAIGN_FRONTIER_CONTINUE reason=NO_NEW_SCREENED_BC screened={after}/{budget}')
         return 0
     save(state)
     print(f'CAMPAIGN_CONTINUE screened={after}/{budget}')
