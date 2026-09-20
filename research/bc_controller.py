@@ -46,6 +46,42 @@ def regenerate(bc,parent,failure,s):
  if not discovery.exists(): return False
  original_text=discovery.read_text(encoding='utf-8')
  try:
+  # Same-mechanism parameter optimization is allowed only after an IS/validation
+  # rejection. An OOS failure is never used to choose another parameter set.
+  parent_candidate_path=CANDIDATE_DIR/f'BC{parent}.json'
+  oos_failed=str(failure.get('oos_verdict','')) == 'OOS_FAIL' if isinstance(failure,dict) else False
+  if parent_candidate_path.exists() and not oos_failed:
+   try:
+    from research.autonomous_hypothesis import validate_candidate, write_candidate
+    from research.hypothesis_novelty import parameter_key, parameter_variants
+    parent_candidate=load(parent_candidate_path,{})
+    used_parameter_keys=set()
+    for prior_path in sorted(CANDIDATE_DIR.glob('BC*.json')):
+     try:
+      used_parameter_keys.add(parameter_key(load(prior_path,{})))
+     except Exception:
+      continue
+    for variant in parameter_variants(parent_candidate, limit=24):
+     if parameter_key(variant) in used_parameter_keys:
+      continue
+     variant['bc']=bc; variant['parent_bc']=parent
+     variant['conceptual_change']=str(parent_candidate.get('conceptual_change',''))+' [bounded parameter optimization]'
+     variant['evidence_sources']=list(parent_candidate.get('evidence_sources') or [])
+     variant['rationale']='Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.'
+     variant['is_testable']=True; variant['oos_selection_used']=False
+     variant.pop('candidate_hash',None)
+     ok,reason=validate_candidate(variant,bc,parent)
+     if not ok:
+      continue
+     write_candidate(output,variant)
+     s['parameter_optimization_active']=True
+     s['parameter_optimization_parent_bc']=parent
+     s['parameter_optimization_exhausted_for_parent']=False
+     print(f'CONTROLLER_PARAMETER_FRONTIER_SELECTED BC{bc} parent=BC{parent} parameter_key={parameter_key(variant)}')
+     return True
+    s['parameter_optimization_exhausted_for_parent']=True
+   except Exception as exc:
+    s['parameter_optimization_error']=str(exc)
   payload=json.loads(original_text); raw=payload.get('candidates',[]) if isinstance(payload,dict) else payload
   if not isinstance(raw,list): return False
   families=[]
