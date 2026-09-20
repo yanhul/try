@@ -1,0 +1,28 @@
+{
+  "bc": 439,
+  "candidate_hash": "c73893e53fbfe9e4dd2d886cd6286ad37582d96ac763e81bbccc2ad62ce7f747",
+  "conceptual_change": "Evaluate the ratio of closing price to its rolling standard deviation over a 24-period window, targeting mean-reversion pullbacks when price expansion relative to rolling volatility exceeds upper thresholds.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_std",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 438,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
