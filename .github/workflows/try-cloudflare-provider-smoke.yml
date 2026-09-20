@@ -1,6 +1,11 @@
 name: TRY Cloudflare Repair Provider Smoke
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/try-cloudflare-provider-smoke.yml"
+      - "cloudflare/try-repair-worker/**"
   workflow_dispatch:
   schedule:
     - cron: "*/30 * * * *"
@@ -21,3 +26,13 @@ jobs:
           echo "$body"
           echo "$body" | grep -q '"status":"READY"'
           echo "$body" | grep -q '"provider":"gemini"'
+      - name: Authenticated proposal smoke
+        env:
+          WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+        run: |
+          test -n "$WORKER_URL"
+          test -n "$TRY_PROVIDER_TOKEN"
+          curl --fail --silent --show-error -X POST "$WORKER_URL/v1/repair/propose" -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" --data '{"request_id":"smoke","repository":"yanhul/AIOS","sha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","attempt":1,"failure":{"ci_failure_log_tail":"smoke"},"source_snapshot":{"core/smoke.py":"def smoke(): return 1"}}' > /tmp/proposal.json
+          cat /tmp/proposal.json
+          python -c 'import json; x=json.load(open("/tmp/proposal.json")); assert x.get("schema")==2 or x.get("status")=="HOLD", x'
