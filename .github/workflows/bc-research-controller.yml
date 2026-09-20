@@ -74,7 +74,7 @@ jobs:
       - name: Run AIOS static conformance
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
-        run: python research/adversarial_conformance.py
+        run: python -m research.adversarial_conformance
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
       - name: Check strict fast-resume eligibility
@@ -147,7 +147,7 @@ jobs:
           exit "$rc"
       - name: Persist durable lineage
         if: always()
-        run: python research/persist_lineage.py
+        run: python -m research.persist_lineage
       - name: Persist autonomous research state
         if: always()
         env:
