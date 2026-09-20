@@ -28,3 +28,13 @@ def test_metadata_exposes_parameterization_separately():
     assert meta["novelty_type"] == "structural_mechanism"
     assert meta["novelty_key"] == "mean_reversion|zscore|vwap_distance||above"
     assert meta["parameterization"] == {"window": 50, "threshold": 2.5}
+
+
+def test_parameter_variants_preserve_structure_and_change_parameters():
+    from research.hypothesis_novelty import parameter_key, parameter_variants
+    base = candidate(2.5, 50)
+    variants = parameter_variants(base, limit=6)
+    assert variants
+    assert all(structural_key(v) == structural_key(base) for v in variants)
+    assert all(parameter_key(v) != parameter_key(base) for v in variants)
+    assert all(v["search_phase"] == "PARAMETER_OPTIMIZATION" for v in variants)
