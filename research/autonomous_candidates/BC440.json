@@ -1,0 +1,28 @@
+{
+  "bc": 440,
+  "candidate_hash": "38cfeb1fdc6124d0a4ed096aed4879f5d8b631a94b42d25cac4f532e4071b0c6",
+  "conceptual_change": "Invert the failed variance expansion threshold to capture trend continuation when closing price relative to its rolling volatility compresses below a specific lower boundary, signaling a structural consolidation preceding a breakout.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "rolling_std",
+    "threshold": 1.5,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|close|rolling_std|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.5,
+    "window": 24
+  },
+  "parent_bc": 439,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
