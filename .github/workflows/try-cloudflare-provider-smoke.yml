@@ -24,8 +24,7 @@ jobs:
           test -n "$WORKER_URL"
           body="$(curl --fail --silent --show-error "$WORKER_URL/healthz")"
           echo "$body"
-          echo "$body" | grep -q '"status":"READY"'
-          echo "$body" | grep -q '"provider":"gemini"'
+          echo "$body" | python -c 'import json,sys; x=json.load(sys.stdin); assert x.get("status")=="READY" and x.get("provider")=="gemini", x'
       - name: Authenticated proposal smoke
         env:
           WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
