@@ -133,6 +133,20 @@ def propose(request: dict[str, Any]) -> dict[str, Any]:
 
 class Handler(BaseHTTPRequestHandler):
     server_version = "TRY-AIOS-Provider/1"
+    def do_GET(self) -> None:
+        if self.path != "/healthz":
+            self.send_error(404)
+            return
+        try:
+            body = json.dumps(health(), sort_keys=True).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        except Exception as exc:
+            self.send_error(503, str(exc))
+
     def do_POST(self) -> None:
         if self.path not in {"/healthz", "/v1/repair/propose"}:
             self.send_error(404)
