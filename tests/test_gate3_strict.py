@@ -24,7 +24,7 @@ def test_gate3_rejects_oos_contamination():
     c=candidate(); e=evidence(c); e["oos_selection_used"]=True; assert gate().validate_gate3(c,e)==(False,"oos_selection_forbidden")
 
 def test_gate3_rejects_metric_mutation():
-    c=candidate(); e=evidence(c); e["VALIDATION"]["metrics"]["trade_count"]=19; assert gate().validate_gate3(c,e)==(False,"validation_gate_inconsistent")
+    c=candidate(); e=evidence(c); e["VALIDATION"]["metrics"]["trade_count"]=19; assert gate().validate_gate3(c,e)==(False,"validation_metrics_invalid")
 
 def test_gate3_rejects_identity_mutation():
     c=candidate(); e=evidence(c); e["hypothesis_id"]="quiet_retest"; assert gate().validate_gate3(c,e)==(False,"hypothesis_identity_mismatch")
