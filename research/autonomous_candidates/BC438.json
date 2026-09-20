@@ -1,0 +1,28 @@
+{
+  "bc": 438,
+  "candidate_hash": "f5c4c3ef59c8edc7850359d1c6b73c074bf71af29eaa54cf1f89f8b593deeef3",
+  "conceptual_change": "Capture momentum expansion by evaluating when the price difference relative to its rolling volatility metric expands upward, ensuring structural differentiation from prior tested primitives.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "difference",
+    "right": "rolling_std",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|difference|close|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": 24
+  },
+  "parent_bc": 437,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
