@@ -1,0 +1,12 @@
+[project]
+name = "try-aios-repair-provider-worker"
+version = "0.1.0"
+description = "Cloudflare Python Worker runtime for the TRY-owned AIOS repair provider"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "workers-py",
+  "workers-runtime-sdk",
+]

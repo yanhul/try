@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "try-aios-repair-provider",
+  "main": "src/entry.py",
+  "compatibility_date": "2026-09-19",
+  "compatibility_flags": ["python_workers"],
+  "workers_dev": true
+}
