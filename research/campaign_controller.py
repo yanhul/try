@@ -11,7 +11,7 @@ CANDIDATE_DIR = ROOT / 'research' / 'autonomous_candidates'
 FAILURE_DIR = ROOT / 'research' / 'failure_analysis'
 OOS_DIR = ROOT / 'research' / 'oos'
 QUEUE = ROOT / 'research' / 'bc_queue.json'
-QUALIFY = {'REJECT', 'PROMOTE_TO_FUTURE_OOS_TEST'}
+QUALIFY = {'REJECT', 'REJECT_BC', 'PROMOTE_TO_FUTURE_OOS_TEST'}
 
 
 class LifecycleAction(StrEnum):
