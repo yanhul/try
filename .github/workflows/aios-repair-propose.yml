@@ -1,0 +1,75 @@
+name: AIOS Repair Proposal Relay
+
+on:
+  workflow_dispatch:
+    inputs:
+      request:
+        description: "Bounded AIOS repair request JSON"
+        required: true
+        type: string
+      artifact_name:
+        description: "Proposal artifact name"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require TRY-owned Gemini credential
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          test -n "${GEMINI_API_KEY:-}" || {
+            echo "BLOCKED: TRY repository has no GEMINI_API_KEY"
+            exit 1
+          }
+      - name: Write bounded request
+        env:
+          REQUEST_JSON: ${{ inputs.request }}
+        run: |
+          python - <<'PY'
+          import json, os
+          obj=json.loads(os.environ["REQUEST_JSON"])
+          if not isinstance(obj, dict):
+              raise SystemExit("request_not_object")
+          if len(json.dumps(obj, sort_keys=True, separators=(",", ":")).encode()) > 60000:
+              raise SystemExit("request_too_large")
+          required=("request_id","repository","sha","attempt","failure","source_snapshot")
+          if any(k not in obj for k in required):
+              raise SystemExit("request_missing_field")
+          if obj["repository"] != "yanhul/AIOS":
+              raise SystemExit("unauthorized_repository")
+          if not isinstance(obj["sha"], str) or len(obj["sha"]) != 40:
+              raise SystemExit("invalid_sha")
+          open("request.json","w",encoding="utf-8").write(json.dumps(obj,sort_keys=True))
+          PY
+      - name: Run TRY-owned Gemini reasoning
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
+        run: |
+          python - <<'PY'
+          import json
+          from research.aios_repair_provider import propose
+          req=json.load(open("request.json",encoding="utf-8"))
+          out=propose(req)
+          if out.get("status") == "HOLD":
+              raise SystemExit("TRY_PROVIDER_HOLD: "+str(out.get("reason","provider_hold")))
+          out["request_id"]=req["request_id"]
+          out["base_sha"]=req["sha"]
+          out["attempt"]=int(req["attempt"])
+          open("repair-proposal.json","w",encoding="utf-8").write(json.dumps(out,indent=2,sort_keys=True))
+          print(json.dumps({"schema":out.get("schema"),"request_id":out["request_id"],"base_sha":out["base_sha"],"attempt":out["attempt"],"files":[x["path"] for x in out["files"]]},sort_keys=True))
+          PY
+      - name: Upload immutable proposal artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: repair-proposal.json
+          retention-days: 7
