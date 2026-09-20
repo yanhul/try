@@ -9,6 +9,20 @@ MECHANISM_FAMILIES={"momentum_trend","mean_reversion","volatility","smc_ict","fv
 # Families listed in the source taxonomy but not executable as directional predicates.
 NON_DIRECTIONAL_MECHANISM_FAMILIES={"volatility","seasonality"}
 EXECUTABLE_MECHANISM_FAMILIES=MECHANISM_FAMILIES-NON_DIRECTIONAL_MECHANISM_FAMILIES
+# Family-specific executable vocabulary. This is a search-quality guard, not a performance claim.
+# A source family may translate to a BTC-compatible proxy, but only through primitives
+# whose observable inputs/operators are explicitly admissible for that family.
+FAMILY_PRIMITIVES={
+ "momentum_trend":{"ops":{"identity","difference","delta","lag","rolling_mean"},"cols":{"open","high","low","close","volume","momentum_trend"}},
+ "mean_reversion":{"ops":{"difference","ratio","zscore","rolling_mean","rolling_std","delta"},"cols":{"close","vwap_distance","range_ratio","volume_ratio"}},
+ "smc_ict":{"ops":{"difference","delta","lag"},"cols":{"high","low","close","close_location","range_ratio"}},
+ "fvg_imbalance":{"ops":{"difference","delta","lag"},"cols":{"high","low","close","close_location","range_ratio"}},
+ "wyckoff_vsa_vpa":{"ops":{"difference","ratio","delta","lag","rolling_mean","zscore"},"cols":{"open","high","low","close","volume","volume_ratio","range_ratio","close_location"}},
+ "vwap_volume_profile":{"ops":{"difference","ratio","zscore","rolling_mean","rolling_std","delta"},"cols":{"close","volume","volume_ratio","vwap_distance","range_ratio"}},
+ "regime":{"ops":{"difference","ratio","zscore","rolling_mean","rolling_std","lag","delta"},"cols":{"close","volume","volume_ratio","range_ratio","vwap_distance"}},
+ "point_figure":{"ops":{"difference","delta","lag","rolling_mean"},"cols":{"open","high","low","close","range_ratio"}},
+ "gann_reference":{"ops":{"difference","delta","lag","rolling_mean"},"cols":{"open","high","low","close"}},
+}
 WINDOW_REQUIRED={"zscore","rolling_mean","rolling_std","lag","delta","rank"}
 def canonical_hash(candidate:dict)->str:
  payload={k:candidate[k] for k in sorted(candidate) if k!="candidate_hash"}
@@ -30,6 +44,14 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
   if spec.get("direction") not in {"above","below"}:return False,"invalid_discovery_threshold"
  elif candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
  if spec is not None and candidate["hypothesis_id"]!="mechanism_family":
+  family=spec.get("mechanism_family")
+  if family is not None:
+   if family not in EXECUTABLE_MECHANISM_FAMILIES:return False,"invalid_primitive_mechanism_family"
+   profile=FAMILY_PRIMITIVES.get(family)
+   if profile is None:return False,"missing_family_primitive_profile"
+   if spec.get("operator") not in profile["ops"]:return False,"family_operator_not_admissible"
+   if spec.get("left") not in profile["cols"]:return False,"family_left_column_not_admissible"
+   if spec.get("right") is not None and spec.get("right") not in profile["cols"]:return False,"family_right_column_not_admissible"
   if not isinstance(spec,dict) or spec.get("operator") not in OPS:return False,"invalid_discovery_operator"
   if spec.get("left") not in COLS:return False,"invalid_discovery_left_column"
   op=spec["operator"]
