@@ -79,7 +79,7 @@ def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
     previous = provider_router.selected_family
     try:
         provider_router.selected_family = "smc_ict"
-        candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"operator": "zscore", "left": "close", "window": 20, "threshold": 0.5, "direction": "above"}}
+        candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"mechanism_family": "smc_ict", "operator": "difference", "left": "high", "right": "low", "threshold": 0.5, "direction": "above"}}
         normalize_hypothesis_id(candidate)
         assert candidate["hypothesis_id"] == "discovered_primitive"
     finally:
@@ -183,3 +183,22 @@ def test_duplicate_retry_prompt_is_augmented_without_truncating_frontier(monkeyp
     assert 'old_family' not in prompts[0]
     assert 'old_family' not in prompts[1]
     assert 'DUPLICATE structural key rejected' in prompts[1]
+
+
+def test_grounding_binds_primitive_to_selected_family():
+    candidate = {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "difference", "left": "high", "right": "low", "threshold": 0, "direction": "above"}}
+    selected = {"family": "smc_ict", "source_url": "https://example.test/source"}
+    grounded = ground_candidate(candidate, selected)
+    assert grounded["discovery_spec"]["mechanism_family"] == "smc_ict"
+
+
+def test_family_profile_rejects_generic_smc_zscore():
+    candidate = {
+        "bc": 1, "parent_bc": 0, "hypothesis_id": "discovered_primitive",
+        "conceptual_change": "x", "evidence_sources": ["x"], "rationale": "x",
+        "is_testable": True, "oos_selection_used": False,
+        "discovery_spec": {"mechanism_family": "smc_ict", "operator": "zscore", "left": "close", "window": 20, "threshold": 1, "direction": "above"},
+    }
+    ok, reason = validate_candidate(candidate, 1, 0)
+    assert not ok
+    assert reason == "family_operator_not_admissible"
