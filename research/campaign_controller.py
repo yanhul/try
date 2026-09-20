@@ -383,7 +383,7 @@ def main():
         # may produce HOLD.
         state['campaign_frontier_transition_required'] = True
         save(state)
-        print(f'CAMPAIGN_FRONTIER_CONTINUE reason=NO_NEW_SCREENED_BC screened={after}/{budget}')
+        print(f'CAMPAIGN_CONTINUE reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
         return 0
     save(state)
     print(f'CAMPAIGN_CONTINUE screened={after}/{budget}')
