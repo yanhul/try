@@ -49,7 +49,8 @@ def regenerate(bc,parent,failure,s):
   # Same-mechanism parameter optimization is allowed only after an IS/validation
   # rejection. An OOS failure is never used to choose another parameter set.
   parent_candidate_path=CANDIDATE_DIR/f'BC{parent}.json'
-  oos_failed=str(failure.get('oos_verdict','')) == 'OOS_FAIL' if isinstance(failure,dict) else False
+  failure_record=load(failure,{}) if isinstance(failure,Path) else (failure if isinstance(failure,dict) else {})
+  oos_failed=str(failure_record.get('oos_verdict','')) == 'OOS_FAIL'
   if parent_candidate_path.exists() and not oos_failed:
    try:
     from research.autonomous_hypothesis import validate_candidate, write_candidate
