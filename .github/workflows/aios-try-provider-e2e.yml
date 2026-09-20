@@ -24,7 +24,6 @@ jobs:
       TRY_PROVIDER_HOST: 127.0.0.1
       TRY_PROVIDER_PORT: "8787"
       NO_PROXY: 127.0.0.1,localhost,::1
-      no_proxy: 127.0.0.1,localhost,::1
     steps:
       - uses: actions/checkout@v4
       - name: Require TRY-owned Gemini credential
