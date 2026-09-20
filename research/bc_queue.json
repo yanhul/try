@@ -1,29 +1,30 @@
 [
   {
-    "bc": 449,
-    "candidate_hash": "0483dc9030e5e19ae045d5c7f0155fd98ea884b4b9750c77dabf618054f5ebb9",
-    "conceptual_change": "Translating structural liquidity-driven mean reversion by evaluating the ratio of raw volume to volume ratio over a rolling horizon on BTCUSDT 1H to capture local exhaustion extremes.",
+    "bc": 450,
+    "candidate_hash": "9b20782031a8e35258d0e7bf9e3e6e227f18e8a76140dc10fc5b821c514ba071",
+    "conceptual_change": "Shift momentum tracking from direct moving averages or raw returns to the price-to-volume scaling ratio over a 24-hour window, capturing structural continuation phases when price action decouples downward from volume intensity.",
     "discovery_spec": {
       "direction": "below",
-      "left": "volume",
+      "left": "close",
+      "mechanism_family": "momentum_trend",
       "operator": "ratio",
-      "right": "volume_ratio",
-      "threshold": 1.2,
+      "right": "volume",
+      "threshold": 1.25,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
     ],
-    "hypothesis_id": "discovered_primitive",
+    "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "|ratio|volume|volume_ratio|below",
+    "novelty_key": "momentum_trend|ratio|close|volume|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.2,
+      "threshold": 1.25,
       "window": 24
     },
-    "parent_bc": 448,
+    "parent_bc": 449,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]

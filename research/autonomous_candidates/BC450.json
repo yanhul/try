@@ -1,0 +1,28 @@
+{
+  "bc": 450,
+  "candidate_hash": "9b20782031a8e35258d0e7bf9e3e6e227f18e8a76140dc10fc5b821c514ba071",
+  "conceptual_change": "Shift momentum tracking from direct moving averages or raw returns to the price-to-volume scaling ratio over a 24-hour window, capturing structural continuation phases when price action decouples downward from volume intensity.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "volume",
+    "threshold": 1.25,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|close|volume|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 24
+  },
+  "parent_bc": 449,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
