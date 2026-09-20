@@ -8,7 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
-from lineage_engine import append_experiment, read_lineage
+from research.lineage_engine import append_experiment, read_lineage
 from research.oos_lifecycle import assert_history_entry_legal
 
 ROOT = Path(__file__).resolve().parents[1]
