@@ -1,30 +1,30 @@
 [
   {
-    "bc": 450,
-    "candidate_hash": "9b20782031a8e35258d0e7bf9e3e6e227f18e8a76140dc10fc5b821c514ba071",
-    "conceptual_change": "Shift momentum tracking from direct moving averages or raw returns to the price-to-volume scaling ratio over a 24-hour window, capturing structural continuation phases when price action decouples downward from volume intensity.",
+    "bc": 451,
+    "candidate_hash": "f3c5cf8da53c5e755bd0f4efb21a0f4339d519b62aeeb3b3e87038b89403bb73",
+    "conceptual_change": "Examine the ratio of close to volume_ratio over a 24-period window to identify mean reversion opportunities when price decouples abnormally relative to recent volume expansion.",
     "discovery_spec": {
-      "direction": "below",
+      "direction": "above",
       "left": "close",
-      "mechanism_family": "momentum_trend",
+      "mechanism_family": "mean_reversion",
       "operator": "ratio",
-      "right": "volume",
+      "right": "volume_ratio",
       "threshold": 1.25,
       "window": 24
     },
     "evidence_sources": [
-      "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "momentum_trend|ratio|close|volume|below",
+    "novelty_key": "mean_reversion|ratio|close|volume_ratio|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
       "threshold": 1.25,
       "window": 24
     },
-    "parent_bc": 449,
+    "parent_bc": 450,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
