@@ -3,7 +3,7 @@ import json
 import sys
 
 from research import campaign_controller
-from research.campaign_controller import controller_command, continuation_allowed, qualifying_bcs, reconcile_campaign_state
+from research.campaign_controller import controller_command, continuation_allowed, qualifying_bcs, screened_bcs, reconcile_campaign_state
 from research.bc_controller import epoch_seed_failure
 
 
@@ -25,6 +25,17 @@ def test_fresh_nonterminal_progress_can_continue():
 
 def test_terminal_state_cannot_continue():
     assert continuation_allowed(new_screened=1, phase="PERSISTED", last_error=None, terminal_state=True) is False
+
+
+def test_screened_bcs_is_distinct_from_qualifying_bcs():
+    history = [
+        {"bc": 1, "decision": "REJECT"},
+        {"bc": 2, "decision": "PROMOTE_TO_FUTURE_OOS_TEST"},
+        {"bc": 3, "event_type": "OOS_EVALUATION", "oos_verdict": "OOS_FAIL"},
+        {"bc": 4, "decision": "HOLD"},
+    ]
+    assert screened_bcs(history) == {1, 2, 3}
+    assert qualifying_bcs(history) == {1, 2}
 
 
 def test_qualifying_bcs_counts_only_screening_decisions():
