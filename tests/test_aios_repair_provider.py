@@ -41,3 +41,10 @@ def test_propose_passes_only_bounded_evidence(monkeypatch):
     assert len(seen["failure"]["ci_failure_log_tail"]) == 80000
     assert len(seen["source_snapshot"]["core/x.py"]) == 120000
     assert out["schema"] == 2
+
+
+def test_health_requires_provider_config(monkeypatch):
+    monkeypatch.setenv("GEMINI_MODEL", "test-model")
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    from research.aios_repair_provider import health
+    assert health() == {"status": "READY", "provider": "gemini", "model": "test-model"}
