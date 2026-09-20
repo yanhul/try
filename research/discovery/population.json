@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3123,
-    "expanded": 2731,
-    "normalized": 2731,
+    "raw": 3125,
+    "expanded": 2733,
+    "normalized": 2733,
     "round1": 213,
     "deferred": 102,
     "survivors": 108,
@@ -1177,22 +1177,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "27fed6aba5fea5e8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.cjar.2015.06.002",
@@ -1364,6 +1348,22 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "2eab78c2566eb075",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3481,22 +3481,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aec1864e886cea32",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118531877.index",
@@ -4164,22 +4148,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "ef68f122117a3b4d",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
         "family": "seasonality",
         "rounds": []
       }
@@ -7017,6 +6985,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "maker adverse selection execution crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -9209,6 +9193,38 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4ebc9a4b188cc6c6",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.esr.2025.101825",
@@ -9348,22 +9364,6 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "240ae47d3c450aef",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "rounds": []
       }
@@ -24927,6 +24927,22 @@
       }
     },
     {
+      "candidate_id": "3e465d6443b331d4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openmc-dev/openmc",
+      "title": "openmc-dev/openmc",
+      "description": "This is a mirror of the primary OpenMC repository hosted on GitHub at https://github.com/openmc-dev/openmc.\r\n\r\nAny issues or contributions should be submitted there.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T20:18:59.227Z",
+      "lineage": {
+        "source": "3e465d6443b331d4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9bc80c81743019ff",
       "source": "gitlab",
       "source_url": "https://gitlab.com/openshop/gohugoio/hugo",
@@ -27418,6 +27434,22 @@
       "source_timestamp": "2026-09-20T17:16:03.135Z",
       "lineage": {
         "source": "bfc1ed70f9be1480",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dfe5656cfc9872ea",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/shrugal/testflight",
+      "title": "shrugal/testflight",
+      "description": "A World of Warcraft addon for experimenting with crafting recipes without reagent and spec limits.\r\n\r\n[Mirror](https://github.com/shrugal/TestFlight)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-20T20:17:14.027Z",
+      "lineage": {
+        "source": "dfe5656cfc9872ea",
         "family": "china_a_share",
         "rounds": []
       }
