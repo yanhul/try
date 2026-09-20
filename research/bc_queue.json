@@ -1,29 +1,29 @@
 [
   {
-    "bc": 442,
-    "candidate_hash": "fb2af95fcc5a9f9e01b24bebb9958c62beca988cdb7d5f9d4e67e81a5c0ac52c",
-    "conceptual_change": "Evaluate Smart Money Concepts liquidity sweep mechanics by tracking statistical deviation of closes via zscore to identify capitulation below key institutional thresholds.",
+    "bc": 443,
+    "candidate_hash": "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
+    "conceptual_change": "Capture mean-reversion entries when the hourly close drops significantly below the open price by a fixed percentage threshold, indicating an intraday exhaustion drop suitable for bounce trading.",
     "discovery_spec": {
       "direction": "below",
       "left": "close",
-      "mechanism_family": "smc_ict",
-      "operator": "zscore",
-      "threshold": -2.0,
-      "window": 24
+      "mechanism_family": "mean_reversion",
+      "operator": "difference",
+      "right": "open",
+      "threshold": 0.005
     },
     "evidence_sources": [
-      "https://github.com/3yther/quant-bot"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "mechanism_family",
     "is_testable": true,
-    "novelty_key": "smc_ict|zscore|close||below",
+    "novelty_key": "mean_reversion|difference|close|open|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": -2.0,
-      "window": 24
+      "threshold": 0.005,
+      "window": null
     },
-    "parent_bc": 441,
+    "parent_bc": 442,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
