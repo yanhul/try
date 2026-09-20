@@ -11,8 +11,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11095,
-  "current_bc": 444,
+  "checkpoint_seq": 11103,
+  "current_bc": 445,
   "history": [
     {
       "bc": 1,
@@ -3348,13 +3348,20 @@
       "receipt_digest": "73f4cf4da3ac2ee99da9dc8496d6dc1d1b231fd5e422c7f622e68b46931ef7e8",
       "receipt_schema_version": 1,
       "receipt_type": "OOS_EXECUTION_RECEIPT"
+    },
+    {
+      "bc": 444,
+      "candidate_hash": "28074ff257c6bce04ca33b30d867daf5bd5c61bae3ec7164a98dfe9ac5a73e0a",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1366,
-  "last_bc": 443,
+  "iterations": 1367,
+  "last_bc": 444,
   "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 444,
+  "next_bc": 445,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3430,5 +3437,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FAIL GEMINI: provider_candidate_contract_failed:invalid_discovery_window\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-20T15:38:51.948795+00:00"
+  "updated_at": "2026-09-20T15:42:15.122245+00:00"
 }

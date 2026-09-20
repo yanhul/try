@@ -1,0 +1,28 @@
+{
+  "bc": 445,
+  "candidate_hash": "2eb7ee60402bda7a0a5a47c3a5d5158e69029c5606aded4ad9b6309f462a9c79",
+  "conceptual_change": "Translate institutional futures trend-following momentum using a rolling ratio between close price and vwap_distance over a 24-period window to capture structural continuation.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "close",
+    "mechanism_family": "momentum_trend",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 1.05,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|ratio|close|vwap_distance|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.05,
+    "window": 24
+  },
+  "parent_bc": 444,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
