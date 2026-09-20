@@ -1,29 +1,29 @@
 [
   {
-    "bc": 448,
-    "candidate_hash": "d1c1a834bdee5b8a6eaba0936ce9c357d61c4d033917dafd63b85df65c3f32a6",
-    "conceptual_change": "Switching to evaluating price relative to volume ratio on a different rolling horizon to capture structural liquidity-driven mean reversion on BTCUSDT 1H.",
+    "bc": 449,
+    "candidate_hash": "0483dc9030e5e19ae045d5c7f0155fd98ea884b4b9750c77dabf618054f5ebb9",
+    "conceptual_change": "Translating structural liquidity-driven mean reversion by evaluating the ratio of raw volume to volume ratio over a rolling horizon on BTCUSDT 1H to capture local exhaustion extremes.",
     "discovery_spec": {
       "direction": "below",
-      "left": "close",
+      "left": "volume",
       "operator": "ratio",
-      "right": "volume",
-      "threshold": 1.15,
-      "window": 12
+      "right": "volume_ratio",
+      "threshold": 1.2,
+      "window": 24
     },
     "evidence_sources": [
       "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "|ratio|close|volume|below",
+    "novelty_key": "|ratio|volume|volume_ratio|below",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 1.15,
-      "window": 12
+      "threshold": 1.2,
+      "window": 24
     },
-    "parent_bc": 447,
+    "parent_bc": 448,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
   }
 ]
