@@ -1,0 +1,26 @@
+{
+  "bc": 433,
+  "candidate_hash": "00bfa436295d8b81b72481db611f7d9fbd23668ab1bd0cec53506797f7d3df2c",
+  "conceptual_change": "Shifting from relative volume ratios to a volatility-adjusted liquidity dispersion model, measuring when the deviation from VWAP significantly exceeds the recent rolling standard deviation, indicating a potential liquidity sweep or exhaustion point.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "vwap_distance",
+    "mechanism_family": "smc_ict",
+    "right": "rolling_std",
+    "threshold": 0.05
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict||vwap_distance|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.05,
+    "window": null
+  },
+  "parent_bc": 432,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
