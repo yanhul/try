@@ -73,3 +73,5 @@ def write_candidate(path:Path,candidate:dict)->None:
  ok,reason=validate_candidate(candidate,int(candidate["bc"]),int(candidate["parent_bc"]))
  if not ok:raise ValueError(reason)
  path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(candidate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+
+# Family-specific primitive admissibility remains fail-closed.
