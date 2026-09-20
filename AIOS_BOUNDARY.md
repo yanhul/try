@@ -28,3 +28,21 @@ TRY does not reimplement AIOS authority or evolution rules. The adapter loads an
 ## Rule
 
 Do not weaken this boundary to make a research iteration pass. New AI execution capabilities must enter through an explicit, controller-owned contract/capability boundary.
+
+
+## AIOS repair reasoning bridge
+
+TRY is the owner of the external reasoning credential. AIOS must not carry or call the Gemini credential directly.
+
+The optional stdlib provider service is `python research/aios_repair_provider.py`.
+It exposes only `POST /v1/repair/propose`, protected by `TRY_PROVIDER_TOKEN`.
+The service accepts bounded failure evidence plus an immutable AIOS source snapshot and returns an untrusted schema-2 patch proposal.
+It has no repository mutation capability and cannot grant AIOS authority.
+
+The corresponding AIOS client is `core/try_repair_provider.py`. AIOS remains responsible for proposal validation, authority, mutation, testing, receipts, and PASS/FAIL determination.
+
+Required separation:
+
+`AIOS evidence -> TRY reasoning -> untrusted proposal -> AIOS authority -> mutation -> tests -> verification`
+
+Never move `GEMINI_API_KEY` into AIOS. `TRY_REPAIR_PROVIDER_TOKEN` is only the bridge credential; it is not the external model credential.
