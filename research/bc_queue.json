@@ -1,14 +1,14 @@
 [
   {
-    "bc": 463,
-    "candidate_hash": "5d557ccf4bc58ca39a90ced4f889caa7151d9e5eefbde1946a0fbd84afc8a941",
-    "conceptual_change": "Translate the selected smart money concepts liquidity baseline mechanism using an identity operator on close within the smc_ict family to capture structural price positioning relative to liquidity pools. [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization]",
+    "bc": 464,
+    "candidate_hash": "65a091cac899e98fcc3b198a18ee9d2d8ded030d61e2168c866969be744320d6",
+    "conceptual_change": "Translate the selected smart money concepts liquidity baseline mechanism using an identity operator on close within the smc_ict family to capture structural price positioning relative to liquidity pools. [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization]",
     "discovery_spec": {
       "direction": "above",
       "left": "close",
       "mechanism_family": "smc_ict",
       "operator": "identity",
-      "threshold": 2.5
+      "threshold": 3.0
     },
     "evidence_sources": [
       "https://github.com/3yther/quant-bot"
@@ -23,7 +23,7 @@
       "threshold": 0.0,
       "window": null
     },
-    "parent_bc": 462,
+    "parent_bc": 463,
     "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
     "search_phase": "PARAMETER_OPTIMIZATION"
   }
