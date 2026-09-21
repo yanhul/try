@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json,math,os,random,sys,time,urllib.error,urllib.request
+import json,math,os,random,sys,time,datetime,urllib.error,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -14,6 +14,8 @@ COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","clos
 WINDOWS=[3,5,10,20,50,100]
 SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are not a selector. Use only BTCUSDT 1H OHLCV. Never use OOS, expected performance, stars or intuition as evidence. Valid families: {sorted(MECHANISM_FAMILIES)}. A mechanism_family hypothesis MUST use exactly SELECTED_SURVIVOR_FAMILY. discovered_primitive may use only operators {OPERATORS} and columns {COLUMNS}. Threshold/window are parameters, NOT novelty. New hypotheses must change family/operator/left/right/direction. Return exactly one JSON object with this shape: {{"hypothesis_id":"mechanism_family|discovered_primitive","discovery_spec":{{...}},"conceptual_change":"...","evidence_sources":["..."],"rationale":"...","is_testable":true,"oos_selection_used":false}}. For mechanism_family, discovery_spec MUST contain mechanism_family, threshold and direction. For discovered_primitive, discovery_spec MUST contain mechanism_family, operator, left, threshold and direction, plus right for difference/ratio and window for windowed operators. mechanism_family MUST equal SELECTED_SURVIVOR_FAMILY. Do not put discovery_spec fields at the top level. Do not use a family name as hypothesis_id unless it is exactly SELECTED_SURVIVOR_FAMILY. Return JSON only.'''
 _PROVIDER_LAST_CALL=0.0
+USAGE_PATH=ROOT/"research/provider_usage.json"
+RPD_LIMIT=max(1,int(os.getenv("RESEARCH_PROVIDER_RPD_LIMIT","450")))
 bc=parent=0;selected_family=""
 def config(): return "https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.5-flash-lite"),os.getenv("GEMINI_API_KEY","")
 def interval():
@@ -22,10 +24,21 @@ def interval():
 def compact(s,limit=None):
  limit=limit or max(4000,int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT","12000")));s=s or ""
  return s if len(s)<=limit else s[:limit//2]+f"\n...[compacted {len(s)-limit} chars]...\n"+s[-(limit-limit//2):]
+def _reserve_rpd_slot():
+    day=datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+    try: state=json.loads(USAGE_PATH.read_text(encoding="utf-8")) if USAGE_PATH.exists() else {}
+    except Exception: state={}
+    if state.get("day")!=day: state={"day":day,"calls":0}
+    calls=int(state.get("calls",0))
+    if calls>=RPD_LIMIT: raise RuntimeError(f"provider_rpd_budget_exhausted:{calls}/{RPD_LIMIT}")
+    state["calls"]=calls+1; USAGE_PATH.write_text(json.dumps(state,sort_keys=True)+"\n",encoding="utf-8")
+    return state["calls"]
+
 def call(prompt):
  global _PROVIDER_LAST_CALL
  base,model,key=config()
  if not key:raise RuntimeError("provider_not_configured:GEMINI")
+ _reserve_rpd_slot()
  gap=interval()-(time.monotonic()-_PROVIDER_LAST_CALL)
  if gap>0:time.sleep(gap)
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":700,"response_format":{"type":"json_object"}}
