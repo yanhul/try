@@ -99,7 +99,6 @@ jobs:
           AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
           AIOS_REPAIR_SOURCE_BRANCH: ${{ env.SOURCE_BRANCH }}
-          AIOS_REPAIR_PASS_ATTEMPT: "3"
           AIOS_REPAIR_PROPOSALS_DIR: ${{ github.workspace }}/target
         run: |
           set -euo pipefail
@@ -107,7 +106,7 @@ jobs:
           test "$status" = PASS
           attempt="$(python -c 'import json; print(json.load(open("repair-result.json")).get("attempt",3))')"
           echo "AIOS_REPAIR_PASS_ATTEMPT=$attempt" >> "$GITHUB_ENV"
-          python "${{ github.workspace }}/trusted-aios/scripts/ci_repair_publish.py"
+          AIOS_REPAIR_PASS_ATTEMPT="$attempt" python "${{ github.workspace }}/trusted-aios/scripts/ci_repair_publish.py"
           branch="aios/autorepair/$RUN_ID"
           git push --set-upstream "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" "$branch"
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$SOURCE_BRANCH" --head "$branch" --title "fix: autonomous repair for BC controller run $RUN_ID" --body "Bounded loop: external research evidence → TRY repair provider → AIOS authority mutation → independent verification; up to 3 attempts."
