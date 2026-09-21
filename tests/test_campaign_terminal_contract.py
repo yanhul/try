@@ -6,6 +6,14 @@ def test_terminal_outcomes_are_fixed_by_policy_mapping():
         "REJECT",
         "PROMOTE_TO_FUTURE_OOS_TEST",
     }
+    assert "REJECT_BC" in campaign_controller.SCREENED_DECISIONS
+    assert "REJECT_BC" not in campaign_controller.QUALIFY
+
+
+def test_reject_bc_counts_as_screened_but_not_terminal_qualifying():
+    history = [{"bc": 459, "decision": "REJECT_BC"}]
+    assert campaign_controller.screened_bcs(history, start=1) == {459}
+    assert campaign_controller.qualifying_bcs(history, start=1) == set()
 
 
 def test_oos_pass_maps_to_edge_found():
