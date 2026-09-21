@@ -11,7 +11,8 @@ CANDIDATE_DIR = ROOT / 'research' / 'autonomous_candidates'
 FAILURE_DIR = ROOT / 'research' / 'failure_analysis'
 OOS_DIR = ROOT / 'research' / 'oos'
 QUEUE = ROOT / 'research' / 'bc_queue.json'
-QUALIFY = {'REJECT', 'REJECT_BC', 'PROMOTE_TO_FUTURE_OOS_TEST'}
+QUALIFY = {'REJECT', 'PROMOTE_TO_FUTURE_OOS_TEST'}
+SCREENED_DECISIONS = QUALIFY | {'REJECT_BC'}
 
 
 class LifecycleAction(StrEnum):
@@ -81,7 +82,7 @@ def screened_bcs(history, start=1):
         raw = str(item.get('bc', '')).strip()
         if not raw.isdigit() or int(raw) < int(start):
             continue
-        if (str(item.get('decision') or '') in QUALIFY
+        if (str(item.get('decision') or '') in SCREENED_DECISIONS
                 or str(item.get('event_type') or '') == 'OOS_EVALUATION'
                 or str(item.get('oos_state') or '') == 'OOS_EVALUATED'):
             out.add(int(raw))
