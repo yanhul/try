@@ -1,13 +1,13 @@
 [
   {
-    "bc": 475,
-    "candidate_hash": "917ed4c67cc29457e4b46cf89fef0e7ee4a8c33e9ea3b37286e8ede30bb708bf",
-    "conceptual_change": "Translate the selected momentum trend mechanism using the zscore operator on volume over a 24-period window to capture volume expansion breakouts. [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization]",
+    "bc": 476,
+    "candidate_hash": "9e3fb2cc74429821abf5b2eee75223accd54c32b6e6549343dbff12eb41ee987",
+    "conceptual_change": "Translate the selected momentum trend mechanism using the zscore operator on volume over a 24-period window to capture volume expansion breakouts. [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization]",
     "discovery_spec": {
       "direction": "above",
       "mechanism_family": "momentum_trend",
       "operator": "zscore",
-      "threshold": 2.5,
+      "threshold": 3.0,
       "window": 24
     },
     "evidence_sources": [
@@ -23,7 +23,7 @@
       "threshold": 1.25,
       "window": 24
     },
-    "parent_bc": 474,
+    "parent_bc": 475,
     "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
     "search_phase": "PARAMETER_OPTIMIZATION"
   }
