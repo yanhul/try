@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json, os, subprocess, tempfile
 from pathlib import Path
+from research.repair_research import run as research_run
 
 MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
@@ -63,6 +64,12 @@ def main():
         owned=frozenset()
         for attempt in range(1,MAX_ATTEMPTS+1):
             failure["attempt"]=attempt
+            if attempt > 1:
+                evidence=research_run(failure)
+                failure["repair_research_evidence"]=evidence
+                if evidence.get("status") not in {"EVIDENCE_COLLECTED","NO_EVIDENCE"}:
+                    results.append({"attempt":attempt,"status":"HOLD","reason":evidence.get("reason","research_hold")})
+                    break
             req_id=f"try-ci-repair:{run_id}:{attempt}"
             try:
                 proposal=propose(request_id=req_id,repository="yanhul/try",sha=base,attempt=attempt,
