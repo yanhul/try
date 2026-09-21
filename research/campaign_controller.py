@@ -148,8 +148,39 @@ def reconcile_campaign_state(state, budget):
     # capped only for the current epoch and may never advance next_bc by itself.
     state['campaign_screened'] = min(screened, int(budget))
     durable_next = frontier + 1 if frontier >= start - 1 else start
-    if not isinstance(state.get('next_bc'), int) or state.get('next_bc', start) < durable_next:
+    current_next = state.get('next_bc')
+    if current_next is not None and not isinstance(current_next, int):
+        raise ValueError('campaign frontier invariant violated: next_bc must be integer')
+    if isinstance(current_next, int) and current_next > durable_next:
+        raise ValueError(
+            f'campaign frontier invariant violated: next_bc={current_next} '
+            f'exceeds durable frontier next={durable_next}'
+        )
+    if current_next != durable_next:
         state['next_bc'] = durable_next
+        state['campaign_frontier_transition_required'] = True
+
+    # Queue is a continuation artifact, not an authority for an already-completed BC.
+    # Drop stale entries only when the durable candidate+failure pair proves completion.
+    queue = load(QUEUE, [])
+    if isinstance(queue, list):
+        clean_queue = []
+        for item in queue:
+            if not isinstance(item, dict) or not str(item.get('bc', '')).isdigit():
+                continue
+            bc = int(item['bc'])
+            failure_exists = (FAILURE_DIR / f'BC{bc}.json').exists()
+            if bc <= frontier or failure_exists:
+                continue
+            if bc != durable_next or int(item.get('parent_bc', bc - 1)) != bc - 1:
+                continue
+            if not item.get('candidate_hash') or not (CANDIDATE_DIR / f'BC{bc}.json').exists():
+                continue
+            clean_queue.append(item)
+        if clean_queue != queue:
+            QUEUE.parent.mkdir(parents=True, exist_ok=True)
+            QUEUE.write_text(json.dumps(clean_queue, indent=2, sort_keys=True) + '\\n', encoding='utf-8')
+
     if repaired:
         state['state_reconciled_from_durable_bc_artifacts'] = True
         print(f'CAMPAIGN_RECONCILED repaired_history={repaired} completed_bc={completed} start_bc={start} screened={screened}/{budget}')
