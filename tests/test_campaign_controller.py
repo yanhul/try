@@ -176,3 +176,29 @@ def test_epoch_boundary_resets_budget_without_erasing_history(monkeypatch, tmp_p
     assert state["campaign_start_bc"] == 267
     assert state["campaign_screened"] == 0
     assert len(state["history"]) == 100
+
+
+def test_epoch_rollover_fails_closed_on_unresolved_candidate(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    monkeypatch.setattr(campaign_controller, "OOS_DIR", tmp_path / "oos")
+    (tmp_path / "candidates").mkdir(parents=True)
+    (tmp_path / "candidates" / "BC267.json").write_text(json.dumps({"bc": 267}), encoding="utf-8")
+    state = {"campaign_terminal": False, "phase": "PERSISTED", "next_bc": 267, "retry_count": 0}
+    assert campaign_controller.epoch_rollover_allowed(state, 167, 100, 100) is False
+
+
+def test_epoch_rollover_fails_closed_on_retry(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    monkeypatch.setattr(campaign_controller, "OOS_DIR", tmp_path / "oos")
+    state = {"campaign_terminal": False, "phase": "WAIT_RETRY", "last_error": "provider_rate_limited", "next_bc": 267, "retry_count": 1}
+    assert campaign_controller.epoch_rollover_allowed(state, 167, 100, 100) is False
+
+
+def test_epoch_rollover_requires_exact_frontier(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    monkeypatch.setattr(campaign_controller, "OOS_DIR", tmp_path / "oos")
+    state = {"campaign_terminal": False, "phase": "PERSISTED", "next_bc": 268, "retry_count": 0}
+    assert campaign_controller.epoch_rollover_allowed(state, 167, 100, 100) is False
