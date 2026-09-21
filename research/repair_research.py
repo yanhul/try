@@ -63,9 +63,20 @@ def api(path: str):
         return json.loads(r.read().decode("utf-8", errors="replace"))
 
 def search_repositories(query: str):
-    params = urllib.parse.urlencode({"q":query, "per_page":MAX_RESULTS, "sort":"stars", "order":"desc"})
+    # Retrieval order is relevance-based; stars are metadata only.
+    params = urllib.parse.urlencode({"q":query, "per_page":MAX_RESULTS})
     data = api("/search/repositories?" + params)
     return data.get("items", [])[:MAX_RESULTS]
+
+def repository_head(full_name: str, ref: str | None):
+    if not ref:
+        return None
+    try:
+        data = api("/repos/" + full_name + "/commits?" + urllib.parse.urlencode({"sha": ref, "per_page": 1}))
+        items = data if isinstance(data, list) else []
+        return items[0].get("sha") if items else None
+    except Exception:
+        return None
 
 def readme(full_name: str, ref: str | None):
     path = "/repos/" + full_name + "/contents/README.md"
@@ -100,6 +111,8 @@ def run(failure: dict) -> dict:
         return {"status":"HOLD","reason":"research_budget_exhausted","failure_signature":sig,"query":query,"query_digest":qdigest}
 
     attempt = len([x for x in prior if x.get("failure_signature") == sig]) + 1
+    run_id = os.getenv("GITHUB_RUN_ID") or "local"
+    attempt_id = f"{sig[:16]}-{attempt}-{run_id}"
     sources = []
     try:
         repos = search_repositories(query)
@@ -110,13 +123,16 @@ def run(failure: dict) -> dict:
         full = repo.get("full_name")
         if not full:
             continue
-        text = readme(full, repo.get("default_branch"))
+        ref = repo.get("default_branch")
+        text = readme(full, ref)
+        source_sha = repository_head(full, ref)
         source = {
             "source_type":"github_repository",
             "source_url":repo.get("html_url"),
             "repository":full,
-            "source_ref":repo.get("default_branch"),
-            "source_sha":repo.get("pushed_at"),
+            "source_ref":ref,
+            "source_sha":source_sha,
+            "source_immutable":bool(source_sha),
             "title":repo.get("name"),
             "description":repo.get("description"),
             "stars":repo.get("stargazers_count"),
@@ -127,7 +143,7 @@ def run(failure: dict) -> dict:
 
     evidence = {
         "schema_version":1,
-        "research_attempt_id":f"{sig[:16]}-{attempt}",
+        "research_attempt_id":attempt_id,
         "failure_signature":sig,
         "query":query,
         "query_digest":qdigest,
@@ -142,7 +158,10 @@ def run(failure: dict) -> dict:
     evidence["evidence_digest"] = digest
     DIR.mkdir(parents=True, exist_ok=True); HISTORY.mkdir(parents=True, exist_ok=True)
     LATEST.write_text(json.dumps(evidence, indent=2, ensure_ascii=False, sort_keys=True)+"\n", encoding="utf-8")
-    (HISTORY / f"{evidence['research_attempt_id']}.json").write_text(json.dumps(evidence, indent=2, ensure_ascii=False, sort_keys=True)+"\n", encoding="utf-8")
+    history_path = HISTORY / f"{evidence['research_attempt_id']}.json"
+    if history_path.exists():
+        raise RuntimeError("research_history_collision")
+    history_path.write_text(json.dumps(evidence, indent=2, ensure_ascii=False, sort_keys=True)+"\n", encoding="utf-8")
     prior.append({"research_attempt_id":evidence["research_attempt_id"],"failure_signature":sig,"query_digest":qdigest,"evidence_digest":digest})
     STATE.write_text(json.dumps({"schema_version":1,"attempts":prior[-100:]}, indent=2, sort_keys=True)+"\n", encoding="utf-8")
     evidence["status"] = "EVIDENCE_COLLECTED" if sources else "NO_EVIDENCE"

@@ -163,7 +163,19 @@ jobs:
           PY
           )"
           python -m research.repair_research | tee repair-research.log
-          echo "continue=true" >> "$GITHUB_OUTPUT"
+          if [ -f research/repair_research/latest.json ]; then echo "REPAIR_RESEARCH_EVIDENCE_READY"; fi
+          echo "continue=false" >> "$GITHUB_OUTPUT"
+          echo "proposal_ready=false" >> "$GITHUB_OUTPUT"
+
+      - name: Upload repair research evidence
+        if: ${{ failure() && hashFiles('research/repair_research/latest.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: repair-research-${{ github.run_id }}
+          path: |
+            research/repair_research/latest.json
+            research/repair_research/history
+          retention-days: 7
 
       - name: Persist durable lineage
         if: always()
@@ -190,7 +202,7 @@ jobs:
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
-        if: ${{ steps.controller.outputs.continue == 'true' || steps.repair_research.outputs.continue == 'true' }}
+        if: ${{ steps.controller.outputs.continue == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
