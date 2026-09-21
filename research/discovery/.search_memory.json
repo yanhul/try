@@ -200,6 +200,16 @@
       "parent_bc": 229,
       "score": 0.43292076
     },
+    "mean_reversion|ratio|close_location|rolling_std|above": {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "decision": "OOS_FAIL",
+      "event_id": "8beb48fb985eed26c954d43d614f0dfb5c939063377201d9b5a92d6748d40f2a",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 467,
+      "score": 0.43292076
+    },
     "mean_reversion|ratio|close_location|volume_ratio|below": {
       "bc": 383,
       "candidate_hash": "1dd98e4652a7eca64355a6ea2e8a07e52b1558cbc1e1eb4d0ef940e92944c531",
@@ -7511,9 +7521,29 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 465,
       "score": 0.43292076
+    },
+    {
+      "bc": 467,
+      "candidate_hash": "1fdab5ea17d375befe02f759d9011fe9c4e5c23237f4250ce2cac5e47ab6a1f3",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1d31942e8060f7f863cd27da139631d73bd00bb9c617d4ab9f08f8e0d3aa8a34",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 466,
+      "score": 0.44345362
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "decision": "OOS_FAIL",
+      "event_id": "8beb48fb985eed26c954d43d614f0dfb5c939063377201d9b5a92d6748d40f2a",
+      "family": "mean_reversion",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 467,
+      "score": 0.43292076
     }
   ],
-  "failures": 427,
+  "failures": 429,
   "families": {
     "discovered_primitive": {
       "fail": 126,
@@ -7523,11 +7553,11 @@
       "tested": 126
     },
     "mean_reversion": {
-      "fail": 107,
+      "fail": 109,
       "pass": 0,
-      "recent_failures": 2,
-      "score_sum": 45.12325106000003,
-      "tested": 107
+      "recent_failures": 4,
+      "score_sum": 45.99962544000003,
+      "tested": 109
     },
     "momentum_trend": {
       "fail": 87,
@@ -7546,7 +7576,7 @@
     "smc_ict": {
       "fail": 94,
       "pass": 0,
-      "recent_failures": 6,
+      "recent_failures": 4,
       "score_sum": 23.95243488,
       "tested": 94
     },
@@ -7558,8 +7588,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "mean_reversion",
-  "last_selection_bc": 467,
+  "last_selected_family": "momentum_trend",
+  "last_selection_bc": 469,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
