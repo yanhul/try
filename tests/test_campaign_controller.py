@@ -158,3 +158,21 @@ def test_historical_oos_failure_is_migrated_from_durable_evidence(monkeypatch, t
     assert failure["decision"] == "REJECT"
     assert failure["oos_verdict"] == "OOS_FAIL"
     assert failure["candidate_hash"] == candidate_hash
+
+
+def test_epoch_boundary_resets_budget_without_erasing_history(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    state = {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002", "campaign_epoch": 1,
+             "campaign_epoch_initialized": True, "campaign_start_bc": 167,
+             "next_bc": 267, "campaign_terminal": False, "history":
+             [{"bc": bc, "decision": "REJECT"} for bc in range(167, 267)]}
+    _, start, screened = reconcile_campaign_state(state, 100)
+    assert start == 167 and screened == 100
+    next_bc = int(state["next_bc"])
+    state.update(campaign_epoch=2, campaign_start_bc=next_bc, campaign_screened=0)
+    assert state["campaign_epoch"] == 2
+    assert state["campaign_start_bc"] == 267
+    assert state["campaign_screened"] == 0
+    assert len(state["history"]) == 100
