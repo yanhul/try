@@ -19,3 +19,22 @@ def test_research_budget_is_bounded(monkeypatch, tmp_path):
     assert second["status"]=="NO_EVIDENCE"
     assert third["status"]=="NO_EVIDENCE"
     assert fourth["status"]=="HOLD"
+
+def test_research_is_evidence_only(monkeypatch, tmp_path):
+    import research.repair_research as rr
+    rr.DIR=tmp_path/"repair_research"; rr.HISTORY=rr.DIR/"history"; rr.LATEST=rr.DIR/"latest.json"; rr.STATE=rr.DIR/"state.json"
+    monkeypatch.setattr(rr, "search_repositories", lambda q: [])
+    result=run({"error":"repair needed","step":"controller"})
+    assert result["status"]=="NO_EVIDENCE"
+    assert "continue" not in result
+    assert result["research_only"] is True
+
+def test_history_attempts_are_distinct(monkeypatch, tmp_path):
+    import research.repair_research as rr
+    rr.DIR=tmp_path/"repair_research"; rr.HISTORY=rr.DIR/"history"; rr.LATEST=rr.DIR/"latest.json"; rr.STATE=rr.DIR/"state.json"
+    monkeypatch.setattr(rr, "search_repositories", lambda q: [])
+    monkeypatch.setenv("GITHUB_RUN_ID","fixed")
+    f={"error":"immutable failure","step":"controller"}
+    first=run(f); second=run(f)
+    assert first["research_attempt_id"] != second["research_attempt_id"]
+    assert len(list(rr.HISTORY.glob("*.json"))) == 2
