@@ -147,7 +147,7 @@ jobs:
           exit "$rc"
       - name: External repair research escalation
         id: repair_research
-        if: ${{ failure() && steps.controller.outcome == 'failure' }}
+        if: ${{ failure() }}
         shell: bash
         run: |
           set -euo pipefail
