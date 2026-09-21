@@ -2341,13 +2341,13 @@
       "score": 0.25
     },
     "smc_ict|identity|close||above": {
-      "bc": 458,
-      "candidate_hash": "dd15c471f92fb9bbd830c829c37100d35d2c898f872e4938bba07facbe8f575c",
+      "bc": 464,
+      "candidate_hash": "65a091cac899e98fcc3b198a18ee9d2d8ded030d61e2168c866969be744320d6",
       "decision": "VALIDATION_FAIL",
-      "event_id": "a2efb65ca4e87d59479f84ba6ac85875bdf429ccdcf5e318b4b831126eab5f30",
+      "event_id": "1591ae345e0f44a120aae30eaafdd2e22545039b0f6db587027f6ad9ae89cb40",
       "family": "smc_ict",
       "hypothesis_id": "mechanism_family",
-      "parent_bc": 457,
+      "parent_bc": 463,
       "score": 0.25
     },
     "smc_ict|ratio|close_location|range_ratio|above": {
@@ -7421,9 +7421,69 @@
       "hypothesis_id": "mechanism_family",
       "parent_bc": 457,
       "score": 0.25
+    },
+    {
+      "bc": 459,
+      "candidate_hash": "ebace7f36af1a35c3149189ae5679a8f63631e1eae421d2935d19b3b2155385c",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "87330082b3ab0514f80a9e20386f810ae98e2e93e4d18fb2edc07d11939c138d",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 458,
+      "score": 0.25
+    },
+    {
+      "bc": 460,
+      "candidate_hash": "b236ee18ac38f686c1f0e8a2cb4abc6d2bb38e35ed211c01cb5316c9beb5183b",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "33a97f5e248c24ae2628f1d3ce98636b29abaee4ac482a0884c82075be1f63e8",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 459,
+      "score": 0.25
+    },
+    {
+      "bc": 461,
+      "candidate_hash": "6dba730ebbead0bf486599fe5e82b0c1ecfd74041f17fd5917d187ae3f3038e7",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "bc2e85c69a2d8844db3882e546bb5130330bd20e1341f349a384f8176d14d3ff",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 460,
+      "score": 0.25
+    },
+    {
+      "bc": 462,
+      "candidate_hash": "9143496d694a77b6ba64ea39f2f7d310cfe493ba7ac2d45221b8e16b7db721a0",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "c12d2db5d532f15e967a0572da2a0709e5b6df5121b502279b2980a2382fdb48",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 461,
+      "score": 0.25
+    },
+    {
+      "bc": 463,
+      "candidate_hash": "5d557ccf4bc58ca39a90ced4f889caa7151d9e5eefbde1946a0fbd84afc8a941",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "8f06476b63f3616d3f888bcd0a3c284f7d22dff6308e6a266b2352c758491bfa",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 462,
+      "score": 0.25
+    },
+    {
+      "bc": 464,
+      "candidate_hash": "65a091cac899e98fcc3b198a18ee9d2d8ded030d61e2168c866969be744320d6",
+      "decision": "VALIDATION_FAIL",
+      "event_id": "1591ae345e0f44a120aae30eaafdd2e22545039b0f6db587027f6ad9ae89cb40",
+      "family": "smc_ict",
+      "hypothesis_id": "mechanism_family",
+      "parent_bc": 463,
+      "score": 0.25
     }
   ],
-  "failures": 419,
+  "failures": 425,
   "families": {
     "discovered_primitive": {
       "fail": 126,
@@ -7435,14 +7495,14 @@
     "mean_reversion": {
       "fail": 105,
       "pass": 0,
-      "recent_failures": 3,
+      "recent_failures": 0,
       "score_sum": 44.23764988000003,
       "tested": 105
     },
     "momentum_trend": {
       "fail": 87,
       "pass": 0,
-      "recent_failures": 2,
+      "recent_failures": 1,
       "score_sum": 25.305843140000015,
       "tested": 87
     },
@@ -7454,11 +7514,11 @@
       "tested": 2
     },
     "smc_ict": {
-      "fail": 88,
+      "fail": 94,
       "pass": 0,
-      "recent_failures": 3,
-      "score_sum": 22.45243488,
-      "tested": 88
+      "recent_failures": 7,
+      "score_sum": 23.95243488,
+      "tested": 94
     },
     "volatility": {
       "fail": 11,
@@ -7468,8 +7528,8 @@
       "tested": 11
     }
   },
-  "last_selected_family": "momentum_trend",
-  "last_selection_bc": 459,
+  "last_selected_family": "mean_reversion",
+  "last_selection_bc": 465,
   "regime": "STAGNANT",
   "regime_epoch": 1,
   "schema_version": 1
