@@ -292,6 +292,17 @@ def main():
     _ensure_research_capability(state, policy)
     _migrate_candidate_oos_terminal(state)
     _, start, screened = reconcile_campaign_state(state, budget)
+    # Fixed budget applies to each campaign epoch, not the whole autonomous run.
+    if screened >= budget and not state.get('campaign_terminal'):
+        next_bc = int(state.get('next_bc') or (start + screened))
+        state.update(campaign_epoch=int(state.get('campaign_epoch') or 1) + 1,
+                     campaign_start_bc=next_bc, campaign_screened=0,
+                     campaign_terminal=False, campaign_outcome=None,
+                     campaign_terminal_reason=None, phase='OBSERVE',
+                     last_error=None, retry_count=0, terminal=False)
+        save(state)
+        start, screened = next_bc, 0
+        print(f'CAMPAIGN_NEW_EPOCH id={state["campaign_id"]} epoch={state["campaign_epoch"]} start_bc={start}')
     queued = durable_queued_candidate(state, start)
     if state.get('campaign_terminal') and queued is None:
         outcome = state.get('campaign_outcome')
