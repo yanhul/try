@@ -250,3 +250,48 @@ def test_reconcile_rolls_exact_completed_epoch_to_next_boundary(monkeypatch, tmp
     assert screened == 0
     assert state["campaign_epoch"] == 2
     assert state["next_bc"] == 267
+
+
+def test_reconcile_advances_next_bc_past_completed_failure_and_purges_stale_queue(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    monkeypatch.setattr(campaign_controller, "QUEUE", tmp_path / "queue.json")
+    campaign_controller.CANDIDATE_DIR.mkdir(parents=True)
+    campaign_controller.FAILURE_DIR.mkdir(parents=True)
+    for bc in range(167, 177):
+        (campaign_controller.CANDIDATE_DIR / f"BC{bc}.json").write_text(json.dumps({"bc": bc, "candidate_hash": f"h{bc}"}), encoding="utf-8")
+        (campaign_controller.FAILURE_DIR / f"BC{bc}.json").write_text(json.dumps({"bc": bc, "decision": "REJECT"}), encoding="utf-8")
+    (campaign_controller.CANDIDATE_DIR / "BC177.json").write_text(json.dumps({"bc": 177, "candidate_hash": "h177"}), encoding="utf-8")
+    campaign_controller.QUEUE.write_text(json.dumps([{"bc": 176, "parent_bc": 175, "candidate_hash": "h176"}]), encoding="utf-8")
+    state = {
+        "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
+        "campaign_epoch_initialized": True,
+        "campaign_start_bc": 167,
+        "next_bc": 176,
+        "campaign_epoch": 1,
+        "history": [{"bc": bc, "decision": "REJECT"} for bc in range(167, 176)],
+    }
+    _, start, screened = reconcile_campaign_state(state, 100)
+    assert start == 167
+    assert screened == 10
+    assert state["next_bc"] == 177
+    assert json.loads(campaign_controller.QUEUE.read_text(encoding="utf-8")) == []
+
+
+def test_reconcile_fails_closed_on_skipped_frontier(monkeypatch, tmp_path):
+    monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
+    monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    campaign_controller.CANDIDATE_DIR.mkdir(parents=True)
+    campaign_controller.FAILURE_DIR.mkdir(parents=True)
+    for bc in range(167, 177):
+        (campaign_controller.CANDIDATE_DIR / f"BC{bc}.json").write_text(json.dumps({"bc": bc}), encoding="utf-8")
+        (campaign_controller.FAILURE_DIR / f"BC{bc}.json").write_text(json.dumps({"bc": bc, "decision": "REJECT"}), encoding="utf-8")
+    state = {
+        "campaign_epoch_initialized": True,
+        "campaign_start_bc": 167,
+        "next_bc": 200,
+        "history": [{"bc": bc, "decision": "REJECT"} for bc in range(167, 177)],
+    }
+    import pytest
+    with pytest.raises(ValueError, match="next_bc=200.*durable frontier next=177"):
+        reconcile_campaign_state(state, 100)
