@@ -138,9 +138,7 @@ jobs:
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
           if grep -Eq 'CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_AUTO_RESUME|CAMPAIGN_CONTINUE_DURABLE_QUEUE|CAMPAIGN_CONTINUE_RETRY|CAMPAIGN_CONTINUE ' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD'; then
-            # Evidence collection alone must never restart the same failing controller.
-          # Continuation requires a later proposal + independent verification.
-          echo "continue=false" >> "$GITHUB_OUTPUT"
+            echo "continue=true" >> "$GITHUB_OUTPUT"
           elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
@@ -165,7 +163,19 @@ jobs:
           PY
           )"
           python -m research.repair_research | tee repair-research.log
-          echo "continue=true" >> "$GITHUB_OUTPUT"
+          if [ -f research/repair_research/latest.json ]; then echo "REPAIR_RESEARCH_EVIDENCE_READY"; fi
+          echo "continue=false" >> "$GITHUB_OUTPUT"
+          echo "proposal_ready=false" >> "$GITHUB_OUTPUT"
+
+      - name: Upload repair research evidence
+        if: ${{ failure() && hashFiles(\'research/repair_research/latest.json\') != \'\' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: repair-research-${{ github.run_id }}
+          path: |
+            research/repair_research/latest.json
+            research/repair_research/history
+          retention-days: 7
 
       - name: Persist durable lineage
         if: always()
