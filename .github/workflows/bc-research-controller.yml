@@ -146,7 +146,7 @@ jobs:
           exit "$rc"
       - name: External repair research escalation
         id: repair_research
-        if: ${{ failure() }}
+        if: ${{ always() }}
         shell: bash
         run: |
           set -euo pipefail
@@ -167,7 +167,7 @@ jobs:
           echo "proposal_ready=false" >> "$GITHUB_OUTPUT"
 
       - name: Upload repair research evidence
-        if: ${{ failure() && hashFiles(\'research/repair_research/latest.json\') != \'\' }}
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: repair-research-${{ github.run_id }}
@@ -175,6 +175,7 @@ jobs:
             research/repair_research/latest.json
             research/repair_research/history
           retention-days: 7
+          if-no-files-found: ignore
 
       - name: Persist durable lineage
         if: always()
