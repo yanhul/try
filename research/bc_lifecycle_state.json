@@ -1,17 +1,18 @@
 {
   "campaign_budget": 100,
+  "campaign_epoch": 3,
   "campaign_epoch_initialized": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 100,
-  "campaign_start_bc": 167,
+  "campaign_screened": 83,
+  "campaign_start_bc": 367,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
   "capabilities": [
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11531,
+  "checkpoint_seq": 11534,
   "current_bc": 459,
   "history": [
     {
@@ -3457,7 +3458,7 @@
   ],
   "iterations": 1381,
   "last_bc": 458,
-  "last_error": "HOLD_PROVIDER_PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted PROVIDER_ROUTER_HOLD",
+  "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 459,
   "oos_consumed": [
@@ -3519,9 +3520,12 @@
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
-  "phase": "WAIT_RETRY",
+  "parameter_optimization_active": true,
+  "parameter_optimization_exhausted_for_parent": false,
+  "parameter_optimization_parent_bc": 458,
+  "phase": "PERSISTED",
   "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 1,
+  "retry_count": 0,
   "state_migrations": [
     {
       "migration_id": "OOS_CANONICAL_V1",
@@ -3535,5 +3539,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-20T22:25:27.859094+00:00"
+  "updated_at": "2026-09-21T23:18:31.620114+00:00"
 }

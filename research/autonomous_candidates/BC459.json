@@ -1,0 +1,28 @@
+{
+  "bc": 459,
+  "candidate_hash": "ebace7f36af1a35c3149189ae5679a8f63631e1eae421d2935d19b3b2155385c",
+  "conceptual_change": "Translate the selected smart money concepts liquidity baseline mechanism using an identity operator on close within the smc_ict family to capture structural price positioning relative to liquidity pools. [bounded parameter optimization]",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "smc_ict",
+    "operator": "identity",
+    "threshold": 0.5
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "smc_ict|identity|close||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "optimization_parent_hypothesis_id": "mechanism_family",
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 458,
+  "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
+  "search_phase": "PARAMETER_OPTIMIZATION"
+}
