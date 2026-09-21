@@ -138,7 +138,9 @@ jobs:
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
           if grep -Eq 'CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_AUTO_RESUME|CAMPAIGN_CONTINUE_DURABLE_QUEUE|CAMPAIGN_CONTINUE_RETRY|CAMPAIGN_CONTINUE ' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD'; then
-            echo "continue=true" >> "$GITHUB_OUTPUT"
+            # Evidence collection alone must never restart the same failing controller.
+          # Continuation requires a later proposal + independent verification.
+          echo "continue=false" >> "$GITHUB_OUTPUT"
           elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
@@ -190,7 +192,7 @@ jobs:
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
-        if: ${{ steps.controller.outputs.continue == 'true' || steps.repair_research.outputs.continue == 'true' }}
+        if: ${{ steps.controller.outputs.continue == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
