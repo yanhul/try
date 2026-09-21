@@ -7,7 +7,7 @@ def test_failure_signature_is_stable():
 def test_query_excludes_noise():
     q=query_from_failure({"error":"ValueError provider_router malformed_candidate"})
     assert "valueerror" in q
-    assert "error" not in q
+    assert " error " not in f" {q} "
 
 def test_research_budget_is_bounded(monkeypatch, tmp_path):
     import research.repair_research as rr
