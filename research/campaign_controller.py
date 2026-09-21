@@ -127,10 +127,29 @@ def reconcile_campaign_state(state, budget):
                         'candidate_hash': candidate.get('candidate_hash') or failure.get('candidate_hash'),
                         'reason': failure.get('reason')})
         repaired += 1
-    state['campaign_start_bc'] = start
     state['history'] = sorted(history, key=lambda x: int(x.get('bc', 0)) if isinstance(x, dict) and str(x.get('bc', '')).isdigit() else 0)
-    screened = len(screened_bcs(history, start))
+
+    # Recover epoch boundaries from the durable contiguous frontier.  Never use
+    # a capped accounting counter to infer the frontier: older buggy runs may
+    # have consumed multiple budgets without advancing campaign_start_bc.
+    frontier = _durable_completed_bcs(start)
+    contiguous_count = max(0, frontier - start + 1)
+    full_epochs, remainder = divmod(contiguous_count, int(budget))
+    if full_epochs:
+        state['campaign_epoch'] = int(state.get('campaign_epoch') or 1) + full_epochs
+        start = start + full_epochs * int(budget)
+        state['campaign_start_bc'] = start
+        state['campaign_epoch_initialized'] = True
+    else:
+        state['campaign_start_bc'] = start
+
+    screened = len(screened_bcs(state['history'], start))
+    # The durable frontier is authoritative for liveness; history accounting is
+    # capped only for the current epoch and may never advance next_bc by itself.
     state['campaign_screened'] = min(screened, int(budget))
+    durable_next = frontier + 1 if frontier >= start - 1 else start
+    if not isinstance(state.get('next_bc'), int) or state.get('next_bc', start) < durable_next:
+        state['next_bc'] = durable_next
     if repaired:
         state['state_reconciled_from_durable_bc_artifacts'] = True
         print(f'CAMPAIGN_RECONCILED repaired_history={repaired} completed_bc={completed} start_bc={start} screened={screened}/{budget}')
@@ -258,8 +277,15 @@ def controller_command():
 
 
 def epoch_rollover_allowed(state, start, screened, budget):
-    """Fail-closed proof that no durable work remains before a new epoch."""
-    if screened < budget or state.get('campaign_terminal'):
+    """Fail-closed epoch boundary proof using the durable contiguous frontier."""
+    if state.get('campaign_terminal'):
+        return False
+    frontier = _durable_completed_bcs(start)
+    if frontier < start + int(budget) - 1:
+        return False
+    # The current epoch may only roll exactly at its durable boundary.
+    expected_next = start + int(budget)
+    if int(state.get('next_bc') or expected_next) != expected_next:
         return False
     if durable_queued_candidate(state, start) is not None:
         return False
@@ -267,14 +293,11 @@ def epoch_rollover_allowed(state, start, screened, budget):
         return False
     if state.get('last_error') or int(state.get('retry_count', 0)) > 0:
         return False
-    next_bc = int(state.get('next_bc') or (start + screened))
-    if next_bc != start + screened:
-        return False
-    # A candidate/OOS artifact without a durable failure/decision is unresolved.
-    candidate = CANDIDATE_DIR / f'BC{next_bc}.json'
-    failure = FAILURE_DIR / f'BC{next_bc}.json'
-    oos_result = OOS_DIR / f'BC{next_bc}_oos_result.json'
-    oos_receipt = OOS_DIR / f'BC{next_bc}_oos_result_receipt.json'
+    # No unresolved artifact may exist at the boundary candidate.
+    candidate = CANDIDATE_DIR / f'BC{expected_next}.json'
+    failure = FAILURE_DIR / f'BC{expected_next}.json'
+    oos_result = OOS_DIR / f'BC{expected_next}_oos_result.json'
+    oos_receipt = OOS_DIR / f'BC{expected_next}_oos_result_receipt.json'
     if candidate.exists() and not failure.exists():
         return False
     if oos_result.exists() and not failure.exists():
@@ -319,19 +342,7 @@ def main():
     _ensure_research_capability(state, policy)
     _migrate_candidate_oos_terminal(state)
     _, start, screened = reconcile_campaign_state(state, budget)
-    # A full epoch must not erase a durable frontier or a provider retry.
-    # Queue/retry obligations have precedence over epoch rollover; only a clean
-    # exhausted epoch may advance its boundary.
-    if epoch_rollover_allowed(state, start, screened, budget):
-        next_bc = int(state.get('next_bc') or (start + screened))
-        state.update(campaign_epoch=int(state.get('campaign_epoch') or 1) + 1,
-                     campaign_start_bc=next_bc, campaign_screened=0,
-                     campaign_terminal=False, campaign_outcome=None,
-                     campaign_terminal_reason=None, phase='OBSERVE',
-                     last_error=None, retry_count=0, terminal=False)
-        save(state)
-        start, screened = next_bc, 0
-        print(f'CAMPAIGN_NEW_EPOCH id={state["campaign_id"]} epoch={state["campaign_epoch"]} start_bc={start}')
+    # Epoch recovery is performed only from durable contiguous artifacts in reconcile_campaign_state.
     queued = durable_queued_candidate(state, start)
     if state.get('campaign_terminal') and queued is None:
         outcome = state.get('campaign_outcome')
