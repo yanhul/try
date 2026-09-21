@@ -11,7 +11,7 @@ MAX_SOURCE_BYTES=90000
 def git(*args):
     return subprocess.run(["git", *args], cwd=".", text=True, capture_output=True, check=True).stdout.strip()
 
-def source_snapshot(sha, log):
+def source_snapshot(sha, log, owned=frozenset()):
     paths=git("ls-tree","-r","--name-only",sha).splitlines()
     mentioned={line.strip().split()[0].rstrip(":") for line in log.splitlines() if "/" in line}
     paths=[p for p in paths if p.endswith(".py") and not p.startswith(("tests/","\.github/","\.aios/","secrets/"))]
@@ -24,6 +24,14 @@ def source_snapshot(sha, log):
         raw=raw[:10000]
         out[p]=raw
         used+=len(raw.encode())
+    for p in sorted(owned):
+        if p.startswith(("tests/",".github/",".aios/","secrets/")) or not p.endswith(".py"):
+            continue
+        try:
+            raw=Path(p).read_text(encoding="utf-8",errors="replace")[:10000]
+        except OSError:
+            continue
+        out[p]=raw
     return out
 
 def authority(root, run_id):
@@ -73,7 +81,7 @@ def main():
             req_id=f"try-ci-repair:{run_id}:{attempt}"
             try:
                 proposal=propose(request_id=req_id,repository="yanhul/try",sha=base,attempt=attempt,
-                                  failure=failure,source=source_snapshot(base,log))
+                                  failure=failure,source=source_snapshot(base,log,owned))
             except TryRepairProviderError as exc:
                 proposal={"status":"HOLD","reason":str(exc)}
             Path(f"repair-proposal-{attempt}.json").write_text(json.dumps(proposal,indent=2,sort_keys=True),encoding="utf-8")
