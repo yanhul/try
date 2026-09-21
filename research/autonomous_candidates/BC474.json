@@ -1,0 +1,28 @@
+{
+  "bc": 474,
+  "candidate_hash": "13d41e43a32e8dfe7615d6b0fe14b28cc17d16f38d87d2e6ad81e97769b40c79",
+  "conceptual_change": "Translate the selected momentum trend mechanism using the zscore operator on volume over a 24-period window to capture volume expansion breakouts. [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization] [bounded parameter optimization]",
+  "discovery_spec": {
+    "direction": "above",
+    "mechanism_family": "momentum_trend",
+    "operator": "zscore",
+    "threshold": 2.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dr-EEEEE/FuturesBacktestingEngine"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "momentum_trend|zscore|||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "optimization_parent_hypothesis_id": "mechanism_family",
+  "parameterization": {
+    "threshold": 1.25,
+    "window": 24
+  },
+  "parent_bc": 473,
+  "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
+  "search_phase": "PARAMETER_OPTIMIZATION"
+}

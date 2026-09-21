@@ -5,7 +5,7 @@
   "campaign_frontier_transition_required": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 6,
+  "campaign_screened": 7,
   "campaign_start_bc": 467,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
@@ -13,8 +13,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11659,
-  "current_bc": 473,
+  "checkpoint_seq": 11667,
+  "current_bc": 474,
   "history": [
     {
       "bc": 1,
@@ -3639,13 +3639,20 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 473,
+      "candidate_hash": "64cc3992c87fa274f26da6077583fa5a056a263ccf53e9ff70c0a3046dd51d03",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "mechanism_family",
+      "next": "AGENT_HYPOTHESIS"
     }
   ],
-  "iterations": 1395,
-  "last_bc": 472,
+  "iterations": 1396,
+  "last_bc": 473,
   "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 473,
+  "next_bc": 474,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3709,7 +3716,7 @@
   },
   "parameter_optimization_active": true,
   "parameter_optimization_exhausted_for_parent": false,
-  "parameter_optimization_parent_bc": 472,
+  "parameter_optimization_parent_bc": 473,
   "phase": "PERSISTED",
   "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
   "retry_count": 0,
@@ -3726,5 +3733,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-21T23:50:39.364249+00:00"
+  "updated_at": "2026-09-21T23:52:27.617143+00:00"
 }
