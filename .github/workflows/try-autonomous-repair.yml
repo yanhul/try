@@ -78,81 +78,48 @@ jobs:
             cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
           fi
 
-      - name: Generate bounded repair proposal
+      - name: Run bounded research-aware repair loop
         working-directory: target
         env:
           PYTHONPATH: ${{ github.workspace }}/trusted-aios
           AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
-          AIOS_REPAIR_ATTEMPT: "1"
           AIOS_REPAIR_LOG: ${{ runner.temp }}/ci-failure.log
-          GITHUB_REPOSITORY: ${{ github.repository }}
+          AIOS_REPAIR_EVIDENCE: ${{ runner.temp }}/research/latest.json
           TRY_REPAIR_PROVIDER_URL: ${{ secrets.TRY_REPAIR_PROVIDER_URL }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_REPAIR_PROVIDER_TOKEN }}
-        run: |
-          python - <<'PY'
-          import json, os, subprocess
-          from pathlib import Path
-          from research.aios_repair_provider import TryRepairProviderError, propose
-
-          sha=os.environ["AIOS_REPAIR_SHA"]
-          log=Path(os.environ["AIOS_REPAIR_LOG"]).read_text(encoding="utf-8",errors="replace")[-80000:]
-          paths=subprocess.check_output(["git","ls-tree","-r","--name-only",sha],text=True).splitlines()
-          allowed=[p for p in paths if p.endswith(".py") and not p.startswith(("tests/","\.github/","\.aios/","secrets/"))]
-          tokens={line.strip().split()[0].rstrip(":") for line in log.splitlines() if "/" in line}
-          allowed.sort(key=lambda p:(0 if any(t in p for t in tokens) else 1, p))
-          source={}; used=0
-          for p in allowed:
-              if len(source)>=80 or used>=90000: break
-              raw=subprocess.run(["git","show",f"{sha}:{p}"],capture_output=True,text=True,check=False).stdout
-              if not raw: continue
-              raw=raw[:10000]
-              source[p]=raw
-              used += len(raw.encode())
-          failure={"run_id":int(os.environ["AIOS_REPAIR_RUN_ID"]),"sha":sha,"attempt":1,"ci_failure_log_tail":log}
-          req={"request_id":f"try-ci-repair:{os.environ['AIOS_REPAIR_RUN_ID']}:1","repository":os.environ["GITHUB_REPOSITORY"],"sha":sha,"attempt":1,"failure":failure,"source_snapshot":source}
-          try:
-              out=propose(request_id=req["request_id"],repository=req["repository"],sha=sha,attempt=1,failure=failure,source=source)
-          except TryRepairProviderError as exc:
-              raise SystemExit(f"TRY_PROVIDER_BLOCKED: {exc}")
-          if out.get("status")=="HOLD":
-              raise SystemExit("TRY_PROVIDER_HOLD: "+str(out.get("reason","provider_hold")))
-          out["request_id"]=req["request_id"]; out["base_sha"]=sha; out["run_id"]=int(os.environ["AIOS_REPAIR_RUN_ID"]); out["attempt"]=1
-          Path("repair-proposal.json").write_text(json.dumps(out,indent=2,sort_keys=True),encoding="utf-8")
-          print(json.dumps({"status":"PROPOSAL_READY","files":[x["path"] for x in out["files"]]}))
-          PY
-
-      - name: Apply proposal through trusted AIOS authority and independently verify
-        working-directory: target
-        env:
-          PYTHONPATH: ${{ github.workspace }}/trusted-aios
-          AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
-          AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
-          AIOS_REPAIR_PROPOSALS: ${{ github.workspace }}/target/repair-proposal.json
-        run: python "${{ github.workspace }}/trusted-aios/scripts/ci_repair_apply_attempt.py"
-
-      - name: Verify mutation scope
-        working-directory: target
-        run: |
-          python - <<'PY'
-          import json, subprocess
-          expected=sorted(x["path"] for x in json.load(open("repair-proposal.json"))["files"])
-          actual=sorted(subprocess.check_output(["git","diff","--name-only"],text=True).splitlines())
-          assert actual == expected, (actual, expected)
-          PY
+        run: python -m research.autonomous_repair
 
       - name: Publish verified repair branch
         working-directory: target
+        if: ${{ success() }}
         env:
           GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: ${{ github.workspace }}/trusted-aios
+          AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
+          AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
+          AIOS_REPAIR_SOURCE_BRANCH: ${{ env.SOURCE_BRANCH }}
+          AIOS_REPAIR_PASS_ATTEMPT: "3"
+          AIOS_REPAIR_PROPOSALS_DIR: ${{ github.workspace }}/target
         run: |
           set -euo pipefail
-          status="$(python -c 'import json; print(json.load(open("repair-result.json"))["test"]["status"])')"
+          status="$(python -c 'import json; print(json.load(open("repair-result.json"))["status"])')"
           test "$status" = PASS
+          attempt="$(python -c 'import json; print(json.load(open("repair-result.json")).get("attempt",3))')"
+          echo "AIOS_REPAIR_PASS_ATTEMPT=$attempt" >> "$GITHUB_ENV"
+          python "${{ github.workspace }}/trusted-aios/scripts/ci_repair_publish.py"
           branch="aios/autorepair/$RUN_ID"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "fix: autonomous repair for BC controller run $RUN_ID"
-          git push --set-upstream "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" "HEAD:$branch"
-          gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$branch" --title "fix: autonomous repair for BC controller run $RUN_ID" --body "Generated by bounded TRY→AIOS repair. Provider output was untrusted; mutation passed AIOS authority and independent pytest verification before publication."
+          git push --set-upstream "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" "$branch"
+          gh pr create --repo "$GITHUB_REPOSITORY" --base "$SOURCE_BRANCH" --head "$branch" --title "fix: autonomous repair for BC controller run $RUN_ID" --body "Bounded loop: external research evidence → TRY repair provider → AIOS authority mutation → independent verification; up to 3 attempts."
+
+      - name: Upload autonomous repair evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: try-autonomous-repair-$RUN_ID
+          path: |
+            target/repair-result*.json
+            target/repair-proposal-*.json
+            $RUNNER_TEMP/ci-failure.log
+          if-no-files-found: ignore
+          retention-days: 7
