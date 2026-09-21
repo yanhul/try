@@ -12,7 +12,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11584,
+  "checkpoint_seq": 11587,
   "current_bc": 465,
   "history": [
     {
@@ -3500,7 +3500,7 @@
   ],
   "iterations": 1387,
   "last_bc": 464,
-  "last_error": "HOLD_PROVIDER_PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted PROVIDER_ROUTER_HOLD",
+  "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 465,
   "oos_consumed": [
@@ -3565,9 +3565,9 @@
   "parameter_optimization_active": true,
   "parameter_optimization_exhausted_for_parent": true,
   "parameter_optimization_parent_bc": 463,
-  "phase": "WAIT_RETRY",
+  "phase": "PERSISTED",
   "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 1,
+  "retry_count": 0,
   "state_migrations": [
     {
       "migration_id": "OOS_CANONICAL_V1",
@@ -3581,5 +3581,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-21T23:31:57.107477+00:00"
+  "updated_at": "2026-09-21T23:33:42.707329+00:00"
 }

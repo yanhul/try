@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "bc": 465,
+    "candidate_hash": "41bfe555fe24ad614b09de2efb35bb04a83a4851c6a971759c66bddaa616d15e",
+    "conceptual_change": "Translate the selected mean reversion mechanism using the ratio between close_location and vwap_distance over a 24-period window to capture structural price deviations from the volume-weighted average price relative to intra-period range positioning.",
+    "discovery_spec": {
+      "direction": "above",
+      "left": "close_location",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "vwap_distance",
+      "threshold": 0.5,
+      "window": 24
+    },
+    "evidence_sources": [
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+    ],
+    "hypothesis_id": "mechanism_family",
+    "is_testable": true,
+    "novelty_key": "mean_reversion|ratio|close_location|vwap_distance|above",
+    "novelty_type": "structural_mechanism",
+    "oos_selection_used": false,
+    "parameterization": {
+      "threshold": 0.5,
+      "window": 24
+    },
+    "parent_bc": 464,
+    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+  }
+]
