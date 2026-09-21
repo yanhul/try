@@ -168,7 +168,7 @@ jobs:
           echo "proposal_ready=false" >> "$GITHUB_OUTPUT"
 
       - name: Upload repair research evidence
-        if: ${{ failure() && hashFiles(\'research/repair_research/latest.json\') != \'\' }}
+        if: ${{ failure() && hashFiles('research/repair_research/latest.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: repair-research-${{ github.run_id }}
