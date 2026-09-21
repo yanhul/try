@@ -145,6 +145,26 @@ jobs:
             echo "continue=false" >> "$GITHUB_OUTPUT"
           fi
           exit "$rc"
+      - name: External repair research escalation
+        id: repair_research
+        if: ${{ failure() && steps.controller.outcome == 'failure' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          export REPAIR_FAILURE_JSON="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          text=Path('controller.log').read_text(encoding='utf-8',errors='replace') if Path('controller.log').exists() else ''
+          print(json.dumps({
+              'error': text.splitlines()[-1] if text.splitlines() else 'controller_failed',
+              'step': 'campaign_controller',
+              'ci_failure_log_tail': text[-12000:],
+          }))
+          PY
+          )"
+          python -m research.repair_research | tee repair-research.log
+          echo "continue=true" >> "$GITHUB_OUTPUT"
+
       - name: Persist durable lineage
         if: always()
         run: python -m research.persist_lineage
@@ -157,7 +177,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/.aios_authority)
+          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/.aios_authority)
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
@@ -170,7 +190,7 @@ jobs:
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
-        if: ${{ steps.controller.outputs.continue == 'true' }}
+        if: ${{ steps.controller.outputs.continue == 'true' || steps.repair_research.outputs.continue == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
