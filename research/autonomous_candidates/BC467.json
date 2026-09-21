@@ -1,0 +1,28 @@
+{
+  "bc": 467,
+  "candidate_hash": "1fdab5ea17d375befe02f759d9011fe9c4e5c23237f4250ce2cac5e47ab6a1f3",
+  "conceptual_change": "Translate the selected mean reversion mechanism using the ratio between close_location and rolling_std over a 14-period window to capture structural price deviations based on relative range positioning and volatility.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_std",
+    "threshold": 1.2,
+    "window": 14
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close_location|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 1.2,
+    "window": 14
+  },
+  "parent_bc": 466,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
