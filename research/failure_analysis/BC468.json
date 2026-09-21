@@ -1,0 +1,34 @@
+{
+  "action": "reject candidate and require a distinct next hypothesis",
+  "bc": 468,
+  "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+  "conceptual_change": "Translate the selected mean reversion mechanism using the ratio between close_location and rolling_std over a 14-period window to capture structural price deviations based on relative range positioning and volatility. [bounded parameter optimization]",
+  "decision": "REJECT",
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "oos_selection_used": false,
+  "oos_verdict": "OOS_FAIL",
+  "parent_bc": 467,
+  "reason": "OOS_FAILED",
+  "validation_summary": {
+    "avg_return": -0.000841646222172943,
+    "cost_model": {
+      "assumption_scope": "research_assumption_not_venue_specific",
+      "fee_bps_per_side": 10.0,
+      "fee_round_trip_fraction": 0.002,
+      "label": "generic_spot_preregistered",
+      "slippage_bps_per_side": 2.0,
+      "slippage_model": "adverse_price_per_side",
+      "status": "AVAILABLE"
+    },
+    "loss_count": 18,
+    "max_drawdown": 0.04876866681110581,
+    "profit_factor": 0.886867243144444,
+    "total_return": -0.027940234337365033,
+    "trade_count": 30,
+    "win_count": 12,
+    "win_rate": 0.4
+  }
+}

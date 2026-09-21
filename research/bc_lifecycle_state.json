@@ -5,7 +5,7 @@
   "campaign_frontier_transition_required": true,
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
   "campaign_outcome": null,
-  "campaign_screened": 1,
+  "campaign_screened": 2,
   "campaign_start_bc": 467,
   "campaign_terminal": false,
   "campaign_terminal_reason": "OOS_FAIL_MIGRATED_TO_CANDIDATE_REJECTION",
@@ -13,7 +13,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 11615,
+  "checkpoint_seq": 11624,
   "current_bc": 468,
   "history": [
     {
@@ -3561,13 +3561,63 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+      "oos_executed": false,
+      "oos_state": "OOS_PENDING",
+      "oos_verdict": null
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "oos_executed": false,
+      "oos_state": "OOS_AUTHORIZED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "oos_executed": false,
+      "oos_state": "OOS_DISPATCHED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "oos_executed": true,
+      "oos_state": "OOS_EXECUTED",
+      "oos_verdict": null
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "oos_executed": true,
+      "oos_state": "OOS_RECEIPT",
+      "oos_verdict": null,
+      "receipt_id": "2660950629d6750cbde31d3b92b74156b37a36b85e9fd5bef531c8ef34d649b0",
+      "receipt_schema_version": 1,
+      "receipt_type": "OOS_EXECUTION_RECEIPT"
+    },
+    {
+      "bc": 468,
+      "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+      "event_type": "OOS_EVALUATION",
+      "oos_executed": true,
+      "oos_state": "OOS_EVALUATED",
+      "oos_verdict": "OOS_FAIL",
+      "receipt_digest": "2f8b6a952c79cd9e3c9d4a1c16be460d31268246e002fb3caa1b9605a42ca118",
+      "receipt_schema_version": 1,
+      "receipt_type": "OOS_EXECUTION_RECEIPT"
     }
   ],
-  "iterations": 1390,
-  "last_bc": 467,
+  "iterations": 1391,
+  "last_bc": 468,
   "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 468,
+  "next_bc": 469,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3615,16 +3665,17 @@
     "c73893e53fbfe9e4dd2d886cd6286ad37582d96ac763e81bbccc2ad62ce7f747",
     "9623b6efa1321d5544301a7194f9165b6638adddd8adaaf95dde5bfe5e249b1f",
     "16cc38f6ee5ae68766d48d0b0c1caf1736d64ac6f4b8d1a2e3df586a33bcefb9",
-    "c4e15c51fab259076a05b6d7969d55c5fa2fe4adbfa6cc61046718fd3975122e"
+    "c4e15c51fab259076a05b6d7969d55c5fa2fe4adbfa6cc61046718fd3975122e",
+    "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb"
   ],
   "oos_evaluation": {
-    "bc": 466,
-    "candidate_hash": "c4e15c51fab259076a05b6d7969d55c5fa2fe4adbfa6cc61046718fd3975122e",
+    "bc": 468,
+    "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
     "event_type": "OOS_EVALUATION",
     "oos_executed": true,
     "oos_state": "OOS_EVALUATED",
     "oos_verdict": "OOS_FAIL",
-    "receipt_digest": "d640cb1da8c48c26dbf3037ff2545badaeb7291c70fb5218c428a73138b7b2a0",
+    "receipt_digest": "2f8b6a952c79cd9e3c9d4a1c16be460d31268246e002fb3caa1b9605a42ca118",
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
@@ -3647,5 +3698,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-21T23:40:33.538001+00:00"
+  "updated_at": "2026-09-21T23:42:17.902907+00:00"
 }

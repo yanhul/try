@@ -1,0 +1,30 @@
+{
+  "bc": 468,
+  "candidate_hash": "13adf22f52d8b051ba0335663a5bae556fac727ae91fee76aecbc87a3ee212cb",
+  "conceptual_change": "Translate the selected mean reversion mechanism using the ratio between close_location and rolling_std over a 14-period window to capture structural price deviations based on relative range positioning and volatility. [bounded parameter optimization]",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "rolling_std",
+    "threshold": 0.0,
+    "window": 14
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close_location|rolling_std|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "optimization_parent_hypothesis_id": "mechanism_family",
+  "parameterization": {
+    "threshold": 1.2,
+    "window": 14
+  },
+  "parent_bc": 467,
+  "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
+  "search_phase": "PARAMETER_OPTIMIZATION"
+}
