@@ -257,6 +257,33 @@ def controller_command():
     return [sys.executable, '-m', 'research.bc_controller']
 
 
+def epoch_rollover_allowed(state, start, screened, budget):
+    """Fail-closed proof that no durable work remains before a new epoch."""
+    if screened < budget or state.get('campaign_terminal'):
+        return False
+    if durable_queued_candidate(state, start) is not None:
+        return False
+    if state.get('phase') in {'WAIT_RETRY', 'HOLD', 'ACT', 'VERIFY', 'PERSIST', 'DISPATCH'}:
+        return False
+    if state.get('last_error') or int(state.get('retry_count', 0)) > 0:
+        return False
+    next_bc = int(state.get('next_bc') or (start + screened))
+    if next_bc != start + screened:
+        return False
+    # A candidate/OOS artifact without a durable failure/decision is unresolved.
+    candidate = CANDIDATE_DIR / f'BC{next_bc}.json'
+    failure = FAILURE_DIR / f'BC{next_bc}.json'
+    oos_result = OOS_DIR / f'BC{next_bc}_oos_result.json'
+    oos_receipt = OOS_DIR / f'BC{next_bc}_oos_result_receipt.json'
+    if candidate.exists() and not failure.exists():
+        return False
+    if oos_result.exists() and not failure.exists():
+        return False
+    if oos_receipt.exists() and not failure.exists():
+        return False
+    return True
+
+
 def durable_queued_candidate(state, start):
     queue = load(QUEUE, [])
     if not isinstance(queue, list) or not queue:
@@ -295,9 +322,7 @@ def main():
     # A full epoch must not erase a durable frontier or a provider retry.
     # Queue/retry obligations have precedence over epoch rollover; only a clean
     # exhausted epoch may advance its boundary.
-    queued = durable_queued_candidate(state, start)
-    retry_pending = state.get('phase') == 'WAIT_RETRY' and bool(state.get('last_error'))
-    if screened >= budget and not state.get('campaign_terminal') and queued is None and not retry_pending:
+    if epoch_rollover_allowed(state, start, screened, budget):
         next_bc = int(state.get('next_bc') or (start + screened))
         state.update(campaign_epoch=int(state.get('campaign_epoch') or 1) + 1,
                      campaign_start_bc=next_bc, campaign_screened=0,
