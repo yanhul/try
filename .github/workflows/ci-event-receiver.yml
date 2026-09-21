@@ -35,7 +35,6 @@ jobs:
           from pathlib import Path
 
           payload = json.loads(os.environ["PAYLOAD"] or "{}")
-
           required = ("repo", "workflow", "run_id", "run_url", "sha", "branch", "conclusion", "message")
           missing = [key for key in required if not str(payload.get(key) or "").strip()]
           if missing:
@@ -72,7 +71,6 @@ jobs:
               raise SystemExit(f"ci_failure event cannot record conclusion={conclusion}")
 
           message = str(payload["message"]).strip()
-
           p = Path("notifications/ci_events.jsonl")
           existing = []
           if p.exists():
@@ -80,11 +78,7 @@ jobs:
                   if line.strip():
                       existing.append(json.loads(line))
 
-          prior = next(
-              (item for item in existing if str(item.get("run_id") or "") == run_id),
-              None,
-          )
-
+          prior = next((item for item in existing if str(item.get("run_id") or "") == run_id), None)
           if prior is not None:
               event = prior
               print(json.dumps({"deduplicated": True, "run_id": run_id}, sort_keys=True))
@@ -116,10 +110,20 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add notifications/ci_events.jsonl notifications/latest_ci_failure.json
-          if git diff --cached --quiet; then
-            echo "Replay detected; no duplicate notification commit required."
-            exit 0
-          fi
-          git commit -m "notify: record CI failure event [skip ci]"
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --mixed origin/main
+            git add notifications/ci_events.jsonl notifications/latest_ci_failure.json
+            if git diff --cached --quiet; then
+              echo "No notification mutation remains after synchronization."
+              exit 0
+            fi
+            git commit -m "notify: record CI failure event [skip ci]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            git reset --mixed HEAD^
+            sleep 2
+          done
+          echo "Failed to persist notification after bounded synchronization retries." >&2
+          exit 1
