@@ -1,0 +1,30 @@
+{
+  "bc": 466,
+  "candidate_hash": "c4e15c51fab259076a05b6d7969d55c5fa2fe4adbfa6cc61046718fd3975122e",
+  "conceptual_change": "Translate the selected mean reversion mechanism using the ratio between close_location and vwap_distance over a 24-period window to capture structural price deviations from the volume-weighted average price relative to intra-period range positioning. [bounded parameter optimization]",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close_location",
+    "mechanism_family": "mean_reversion",
+    "operator": "ratio",
+    "right": "vwap_distance",
+    "threshold": 0.0,
+    "window": 24
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|ratio|close_location|vwap_distance|above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "optimization_parent_hypothesis_id": "mechanism_family",
+  "parameterization": {
+    "threshold": 0.5,
+    "window": 24
+  },
+  "parent_bc": 465,
+  "rationale": "Bounded IS/validation parameter optimization after prior candidate rejection; OOS is not used for selection.",
+  "search_phase": "PARAMETER_OPTIMIZATION"
+}
