@@ -11,6 +11,10 @@ permissions:
   contents: read
   actions: write
 
+concurrency:
+  group: try-bc-research-continuation-main
+  cancel-in-progress: false
+
 jobs:
   resume:
     runs-on: ubuntu-latest
@@ -30,12 +34,19 @@ jobs:
             exit 0
           fi
 
+          intent="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/continuation_intent.json --jq '.content' 2>/dev/null | base64 -d || true)"
+          intent_status="$(jq -r '.status // "ABSENT"' <<<"$intent" 2>/dev/null || echo ABSENT)"
+          if [ "$intent_status" = "DISPATCHED" ]; then
+            echo "CONTINUATION_RECEIPT_PRESENT; watchdog will not duplicate dispatch."
+            exit 0
+          fi
+
           active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')"
           if [ "${active:-0}" -gt 0 ]; then
             echo "CONTROLLER_ACTIVE count=$active; no duplicate dispatch."
             exit 0
           fi
 
-          echo "CONTROLLER_IDLE_NONTERMINAL; dispatching canonical main controller."
+          echo "CONTROLLER_IDLE_NONTERMINAL intent=$intent_status; dispatching canonical main controller."
           gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "BC_CONTROLLER_DISPATCHED=true"
