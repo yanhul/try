@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3154,
-    "expanded": 2762,
-    "normalized": 2762,
+    "raw": 3155,
+    "expanded": 2763,
+    "normalized": 2763,
     "round1": 214,
     "deferred": 102,
     "survivors": 109,
@@ -1172,22 +1172,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "55d007669c4c44b6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3465,6 +3449,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "aec1864e886cea32",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118531877.index",
@@ -3844,6 +3844,22 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "01733d647ea68b37",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
         "family": "unknown",
         "rounds": []
       }
@@ -4857,6 +4873,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -4868,6 +4932,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -4900,6 +4996,22 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "b709b8d02efc73b7",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
         "family": "options",
         "rounds": []
       }
@@ -7001,22 +7113,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e73b581e564cfa82",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2490234",
@@ -7561,54 +7657,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -7625,38 +7673,6 @@
       }
     },
     {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "35858a240d229d33",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part3",
@@ -7669,22 +7685,6 @@
       "lineage": {
         "source": "35858a240d229d33",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -11907,7 +11907,7 @@
       "family": "unknown",
       "market": null,
       "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-09-22T02:49:50Z",
+      "source_timestamp": "2026-09-22T03:12:26Z",
       "lineage": {
         "source": "0256e5107f6136db",
         "family": "unknown",
@@ -14169,7 +14169,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T02:56:29Z",
+      "source_timestamp": "2026-09-22T03:12:38Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -17064,6 +17064,22 @@
       "source_timestamp": "2026-09-15T09:30:23.112Z",
       "lineage": {
         "source": "d4085ea67b230e58",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "00524423c5a3897d",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/DonytXz/DonytXz-github-io-deletion_scheduled-86563986",
+      "title": "DonytXz/DonytXz-github-io-deletion_scheduled-86563986",
+      "description": "Personal portfolio.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T03:13:47.228Z",
+      "lineage": {
+        "source": "00524423c5a3897d",
         "family": "china_a_share",
         "rounds": []
       }
@@ -21669,7 +21685,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:27:57.321Z",
+      "source_timestamp": "2026-09-22T03:14:18.377Z",
       "lineage": {
         "source": "9c7cb236543837cf",
         "family": "china_a_share",
@@ -21845,7 +21861,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T21:36:21.394Z",
+      "source_timestamp": "2026-09-22T03:14:28.901Z",
       "lineage": {
         "source": "915bed67a9d43bfe",
         "family": "china_a_share",
@@ -29981,6 +29997,22 @@
       }
     },
     {
+      "candidate_id": "2e482703537c3e86",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1093/rfs/hhu032",
+      "title": "High-Frequency Trading and Price Discovery",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "2e482703537c3e86",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e318bcf50fa0cdc3",
       "source": "openalex",
       "source_url": "https://doi.org/10.1146/annurev-economics-080315-015041",
@@ -29992,6 +30024,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "e318bcf50fa0cdc3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "aa0b1a3108215794",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1257/aer.103.6.2121",
+      "title": "The China Syndrome: Local Labor Market Effects of Import Competition in the United States",
+      "description": "OpenAlex work type=article year=2013",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "aa0b1a3108215794",
         "family": "china_a_share",
         "rounds": []
       }
@@ -30072,6 +30120,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "e1786444c203056d",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "39de84499681e205",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "description": "OpenAlex work type=conference-paper year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "39de84499681e205",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "02ae174b1c897775",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2308.09975",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "description": "OpenAlex work type=preprint year=2023",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "02ae174b1c897775",
         "family": "china_a_share",
         "rounds": []
       }
@@ -30168,22 +30248,6 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "d104c0d21e455744",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fe255c9750e2189",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/electronics14091721",
-      "title": "Artificial Intelligence vs. Efficient Markets: A Critical Reassessment of Predictive Models in the Big Data Era",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "5fe255c9750e2189",
         "family": "china_a_share",
         "rounds": []
       }
@@ -30637,22 +30701,6 @@
       }
     },
     {
-      "candidate_id": "2e482703537c3e86",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1093/rfs/hhu032",
-      "title": "High-Frequency Trading and Price Discovery",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "2e482703537c3e86",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "f2363e3c128ba133",
       "source": "openalex",
       "source_url": "https://doi.org/10.1371/journal.pgen.1002967",
@@ -30904,6 +30952,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "28b1df173315cb0a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fe255c9750e2189",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/electronics14091721",
+      "title": "Artificial Intelligence vs. Efficient Markets: A Critical Reassessment of Predictive Models in the Big Data Era",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share point-in-time survivorship backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5fe255c9750e2189",
         "family": "china_a_share",
         "rounds": []
       }
@@ -32205,6 +32269,22 @@
       }
     },
     {
+      "candidate_id": "4574d8c2646147cf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/jofi.12186",
+      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "4574d8c2646147cf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "133c36fcb94e1a80",
       "source": "openalex",
       "source_url": "https://doi.org/10.1038/s42254-021-00348-9",
@@ -33085,22 +33165,6 @@
       }
     },
     {
-      "candidate_id": "b7ba90c08aeafc86",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.2139/ssrn.3046209",
-      "title": "Why Do Businesses Go Crypto? An Empirical Analysis of Initial Coin Offerings",
-      "description": "OpenAlex work type=preprint year=2017",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2017",
-      "lineage": {
-        "source": "b7ba90c08aeafc86",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c4b9daeff61f1754",
       "source": "openalex",
       "source_url": "https://doi.org/10.18642/jsata_7100121990",
@@ -33528,38 +33592,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a7dfeebe229c553d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9b1512a9cf54b16a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
-      "title": "Cryptocurrency Trading: A Comprehensive Survey",
-      "description": "OpenAlex work type=preprint year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "9b1512a9cf54b16a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9e57481562327130",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1186/s40854-021-00321-6",
-      "title": "Cryptocurrency trading: a comprehensive survey",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "9e57481562327130",
         "family": "unknown",
         "rounds": []
       }
@@ -34653,6 +34685,22 @@
       }
     },
     {
+      "candidate_id": "b7ba90c08aeafc86",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2139/ssrn.3046209",
+      "title": "Why Do Businesses Go Crypto? An Empirical Analysis of Initial Coin Offerings",
+      "description": "OpenAlex work type=preprint year=2017",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "b7ba90c08aeafc86",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3a716b52e35b92e4",
       "source": "openalex",
       "source_url": "https://doi.org/10.1088/1748-9326/aac1c6",
@@ -35213,38 +35261,6 @@
       }
     },
     {
-      "candidate_id": "aa0b1a3108215794",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1257/aer.103.6.2121",
-      "title": "The China Syndrome: Local Labor Market Effects of Import Competition in the United States",
-      "description": "OpenAlex work type=article year=2013",
-      "family": "unknown",
-      "market": null,
-      "query": "market making strategy code",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "aa0b1a3108215794",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa499860627e17a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.2307/2118445",
-      "title": "The Effect of Credit Market Competition on Lending Relationships",
-      "description": "OpenAlex work type=article year=1995",
-      "family": "unknown",
-      "market": null,
-      "query": "market making strategy code",
-      "source_timestamp": "1995",
-      "lineage": {
-        "source": "caa499860627e17a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "88af0dc203cb014c",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjz041",
@@ -35256,22 +35272,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "88af0dc203cb014c",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1620a5c728e3d3e3",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1002/smj.642",
-      "title": "The fit between product market strategy and business model: implications for firm performance",
-      "description": "OpenAlex work type=article year=2007",
-      "family": "unknown",
-      "market": null,
-      "query": "market making strategy code",
-      "source_timestamp": "2007",
-      "lineage": {
-        "source": "1620a5c728e3d3e3",
         "family": "unknown",
         "rounds": []
       }
@@ -35305,6 +35305,22 @@
       "lineage": {
         "source": "7094590e1edcb2f8",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f04abc64958e1e21",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2307/2328565",
+      "title": "Efficient Capital Markets: II",
+      "description": "OpenAlex work type=article year=1991",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "1991",
+      "lineage": {
+        "source": "f04abc64958e1e21",
+        "family": "order_flow",
         "rounds": []
       }
     },
@@ -35384,6 +35400,22 @@
       "source_timestamp": "1996",
       "lineage": {
         "source": "d14c822fb5661c25",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "78619bc74b86807f",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1093/qje/qjv027",
+      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
+      "description": "OpenAlex work type=article year=2015",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "78619bc74b86807f",
         "family": "order_flow",
         "rounds": []
       }
@@ -35741,22 +35773,6 @@
       }
     },
     {
-      "candidate_id": "624cc04799a7e5b0",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1007/s13174-010-0007-6",
-      "title": "Cloud computing: state-of-the-art and research challenges",
-      "description": "OpenAlex work type=article year=2010",
-      "family": "order_flow",
-      "market": null,
-      "query": "order flow trading research code",
-      "source_timestamp": "2010",
-      "lineage": {
-        "source": "624cc04799a7e5b0",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "acdffd551cd7e704",
       "source": "openalex",
       "source_url": "https://doi.org/10.1609/aaai.v31i1.10735",
@@ -36045,22 +36061,6 @@
       }
     },
     {
-      "candidate_id": "f04abc64958e1e21",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.2307/2328565",
-      "title": "Efficient Capital Markets: II",
-      "description": "OpenAlex work type=article year=1991",
-      "family": "smc_ict",
-      "market": null,
-      "query": "prediction market order book trading strategy",
-      "source_timestamp": "1991",
-      "lineage": {
-        "source": "f04abc64958e1e21",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "57f8632d7ce9f43b",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/0022-1082.00077",
@@ -36104,6 +36104,38 @@
       "source_timestamp": "1992",
       "lineage": {
         "source": "831948f291b4827c",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa499860627e17a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2307/2118445",
+      "title": "The Effect of Credit Market Competition on Lending Relationships",
+      "description": "OpenAlex work type=article year=1995",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "1995",
+      "lineage": {
+        "source": "caa499860627e17a",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1620a5c728e3d3e3",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1002/smj.642",
+      "title": "The fit between product market strategy and business model: implications for firm performance",
+      "description": "OpenAlex work type=article year=2007",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2007",
+      "lineage": {
+        "source": "1620a5c728e3d3e3",
         "family": "smc_ict",
         "rounds": []
       }
@@ -36173,6 +36205,22 @@
       }
     },
     {
+      "candidate_id": "624cc04799a7e5b0",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/s13174-010-0007-6",
+      "title": "Cloud computing: state-of-the-art and research challenges",
+      "description": "OpenAlex work type=article year=2010",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2010",
+      "lineage": {
+        "source": "624cc04799a7e5b0",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d9188e20bb34325e",
       "source": "openalex",
       "source_url": "https://doi.org/10.1016/j.procs.2018.05.050",
@@ -36200,22 +36248,6 @@
       "source_timestamp": "1991",
       "lineage": {
         "source": "606beccd7c7e6688",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4574d8c2646147cf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/jofi.12186",
-      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "smc_ict",
-      "market": null,
-      "query": "prediction markets automated trading research",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "4574d8c2646147cf",
         "family": "smc_ict",
         "rounds": []
       }
@@ -36297,6 +36329,38 @@
       "lineage": {
         "source": "400dd4a150c0f101",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9b1512a9cf54b16a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
+      "title": "Cryptocurrency Trading: A Comprehensive Survey",
+      "description": "OpenAlex work type=preprint year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "9b1512a9cf54b16a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9e57481562327130",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1186/s40854-021-00321-6",
+      "title": "Cryptocurrency trading: a comprehensive survey",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "9e57481562327130",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -36792,22 +36856,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "f645de1cc827b90d",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "78619bc74b86807f",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1093/qje/qjv027",
-      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
-      "description": "OpenAlex work type=article year=2015",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "78619bc74b86807f",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -37373,38 +37421,6 @@
       }
     },
     {
-      "candidate_id": "39de84499681e205",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "description": "OpenAlex work type=conference-paper year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "39de84499681e205",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "02ae174b1c897775",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2308.09975",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "description": "OpenAlex work type=preprint year=2023",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "02ae174b1c897775",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "99f29dd3de71b31b",
       "source": "openalex",
       "source_url": "https://doi.org/10.18653/v1/2025.findings-naacl.444",
@@ -37661,38 +37677,6 @@
       }
     },
     {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -37752,6 +37736,38 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e4ff0e17ae795a42",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e4ff0e17ae795a42",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd09dc1c3043f329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
@@ -45405,22 +45421,6 @@
       }
     },
     {
-      "candidate_id": "62f6f7b3e0c0e855",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
-      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
-      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
-      "family": "unknown",
-      "market": null,
-      "query": "reinforcement learning trading systematic review",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "62f6f7b3e0c0e855",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "413c2b5288c75e75",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/3cc99d0ee028971ddaea011625061b3d913c7af2",
@@ -45992,6 +45992,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "fd642ce475624981",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "62f6f7b3e0c0e855",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/4b838ba89aab747a81d6d6c77cb912179e69ed39",
+      "title": "Machine Learning Applications in Algorithmic Trading: A Comprehensive Systematic Review",
+      "description": ": This paper reviews recent advancements in machine learning (ML) driven automated trading systems (ATS). ATS has progressed from simple rule-based systems to sophisticated ML models like deep reinforcement learning, deep learning, and Q-learning that can adapt to evolving markets. These techniques have been successfully applied across various financial instruments to optimize trading strategies, forecast prices, and enhance profits. The literature indicates that ML improves ATS performance over conventional methods by identifying intricate patterns and relationships in data. However, risks like overfitting, instability, and low interpretability exist. Techniques to mitigate these limitations include cross-validation, careful model management",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "62f6f7b3e0c0e855",
         "family": "unknown",
         "rounds": []
       }
@@ -47517,7 +47533,7 @@
       "family": "unknown",
       "market": null,
       "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-09-22T02:49:50Z",
+      "source_timestamp": "2026-09-22T03:12:26Z",
       "lineage": {
         "source": "0256e5107f6136db",
         "family": "unknown",
@@ -48609,7 +48625,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T02:56:29Z",
+      "source_timestamp": "2026-09-22T03:12:38Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
