@@ -78,10 +78,27 @@ def _load_discovery_sources():
    sources.extend(x for x in seed_items if isinstance(x,dict)); store += '+china_seed'
   except (OSError,json.JSONDecodeError,TypeError): pass
  return sources,store
+def _source_digest():
+ h=hashlib.sha256()
+ for path in (ARCHIVE,LATEST,SEEDS):
+  h.update(str(path.relative_to(ROOT)).encode())
+  h.update(b"\\0")
+  try: h.update(path.read_bytes())
+  except OSError: pass
+  h.update(b"\\0")
+ return h.hexdigest()
 def build():
+ source_digest=_source_digest()
+ if all(path.exists() for path in (POPULATION,SURVIVORS,QUEUE,CACHE_META)):
+  try:
+   meta=json.loads(CACHE_META.read_text(encoding='utf-8'))
+   if meta.get('schema_version')==1 and meta.get('source_digest')==source_digest:
+    return json.loads(POPULATION.read_text(encoding='utf-8'))
+  except (OSError,json.JSONDecodeError,TypeError):
+   pass
  raw,store=_load_discovery_sources(); expanded=[]
  for x in raw: expanded.extend(expand_source(x))
  normalized=[normalize(x) for x in expanded]; r1=round1_source_quality(normalized); executable,deferred=round2_feasibility(r1); survivors=round3_diversity(executable)
  payload={'schema_version':4,'architecture':'durable_source_archive + market_seed -> expand -> normalize_dedup -> feasibility -> diversity -> survivor_registry -> executable_translation','source_store':store,'policy_authority':'research/campaign_policy.json','counts':{'raw':len(raw),'expanded':len(expanded),'normalized':len(normalized),'round1':len(r1),'deferred':len(deferred),'survivors':len(survivors),'china_a_share_survivors':sum(x['family']=='china_a_share' for x in survivors)},'population':normalized,'deferred':deferred}
- POPULATION.write_text(json.dumps(payload,indent=2),encoding='utf-8'); SURVIVORS.write_text(json.dumps({'schema_version':4,'status':'SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION','survivors':survivors},indent=2),encoding='utf-8'); QUEUE.write_text(json.dumps({'schema_version':4,'status':'READY_FOR_EXECUTABLE_TRANSLATION','candidates':survivors},indent=2),encoding='utf-8'); CACHE_META.write_text(json.dumps({'schema_version':1,'source_digest':digest},sort_keys=True)+'\n',encoding='utf-8'); return payload
+ POPULATION.write_text(json.dumps(payload,indent=2),encoding='utf-8'); SURVIVORS.write_text(json.dumps({'schema_version':4,'status':'SCREEN_SURVIVORS_NOT_PERFORMANCE_PROMOTION','survivors':survivors},indent=2),encoding='utf-8'); QUEUE.write_text(json.dumps({'schema_version':4,'status':'READY_FOR_EXECUTABLE_TRANSLATION','candidates':survivors},indent=2),encoding='utf-8'); CACHE_META.write_text(json.dumps({'schema_version':1,'source_digest':source_digest},sort_keys=True)+'\n',encoding='utf-8'); return payload
 if __name__=='__main__': print('POPULATION_ENGINE_DONE',json.dumps(build()['counts'],sort_keys=True))
