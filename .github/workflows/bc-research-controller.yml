@@ -188,15 +188,10 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority)
+          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority research/continuation_intent.json)
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
-          changed=false
-          if [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}" 2>/dev/null)" ]; then changed=true; fi
-          if [ "$changed" != "true" ]; then echo "No autonomous research state changes to persist."; exit 0; fi
-          for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
-          if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
           if [ "$CONTINUE" = "true" ]; then
             python - <<'PY'
           import json
@@ -214,12 +209,16 @@ jobs:
           }
           Path('research/continuation_intent.json').write_text(json.dumps(intent,indent=2,sort_keys=True)+'\n')
           PY
-            git add research/continuation_intent.json
-            git commit -m "research: continue autonomous lifecycle [skip ci]"
           else
             rm -f research/continuation_intent.json
-            git add -A -- research/continuation_intent.json
-            if ! git diff --cached --quiet; then git commit -m "research: clear continuation intent [skip ci]"; fi
+          fi
+          if [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}" 2>/dev/null)" ]; then
+            for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
+            if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
+            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+          else
+            echo "No autonomous research state changes to persist."
+            exit 0
           fi
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
