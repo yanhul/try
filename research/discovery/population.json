@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3235,
-    "expanded": 2843,
-    "normalized": 2843,
+    "raw": 3255,
+    "expanded": 2863,
+    "normalized": 2863,
     "round1": 243,
     "deferred": 125,
     "survivors": 115,
@@ -1929,22 +1929,6 @@
       }
     },
     {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c46d8cf558932aa3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6535019",
@@ -2821,22 +2805,6 @@
       "lineage": {
         "source": "14640e7b57a09e04",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "281089f5d6bcd27f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.7498983",
-      "title": "Execution-Aware Alpha Mining: Teaching LLM Factor Agents to Account for Trading Costs\u200b",
-      "description": "Crossref work type=posted-content",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "281089f5d6bcd27f",
-        "family": "cross_sectional",
         "rounds": []
       }
     },
@@ -4409,22 +4377,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4873,6 +4825,22 @@
       }
     },
     {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b3f9e35cacf20d6e",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2556747",
@@ -4921,6 +4889,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -4932,6 +4948,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -4964,6 +5012,22 @@
       "source_timestamp": "2010",
       "lineage": {
         "source": "b709b8d02efc73b7",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
         "family": "options",
         "rounds": []
       }
@@ -6409,6 +6473,22 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6596,22 +6676,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -7641,54 +7705,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -7701,38 +7717,6 @@
       "lineage": {
         "source": "7b2b67be3a752147",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -7753,22 +7737,6 @@
       }
     },
     {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "5f4cbf122b4b1906",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50004-5",
@@ -7780,6 +7748,22 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -8937,6 +8921,22 @@
       }
     },
     {
+      "candidate_id": "281089f5d6bcd27f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.7498983",
+      "title": "Execution-Aware Alpha Mining: Teaching LLM Factor Agents to Account for Trading Costs\u200b",
+      "description": "Crossref work type=posted-content",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "281089f5d6bcd27f",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4133db7bfc68270a",
       "source": "crossref",
       "source_url": "https://doi.org/10.1109/icdm65498.2025.00114",
@@ -9481,54 +9481,6 @@
       }
     },
     {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "356134320a245ee6",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2012.21002",
@@ -9545,22 +9497,6 @@
       }
     },
     {
-      "candidate_id": "e98ef9709ad0d2f0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e98ef9709ad0d2f0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "3361f743c083fe40",
       "source": "crossref",
       "source_url": "https://doi.org/10.36012/emr.v2i4.2269",
@@ -9572,22 +9508,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "3361f743c083fe40",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -9849,6 +9769,54 @@
       }
     },
     {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -9860,6 +9828,38 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "fdc75585f2a46736",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e98ef9709ad0d2f0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e98ef9709ad0d2f0",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -26498,6 +26498,326 @@
       "source_timestamp": "2026-09-20T20:18:59.227Z",
       "lineage": {
         "source": "3e465d6443b331d4",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ec79eb32ec9ceccd",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/BuzzardOS",
+      "title": "openresearchtools/BuzzardOS",
+      "description": "Read-only mirror of https://github.com/openresearchtools/BuzzardOS. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:30.902Z",
+      "lineage": {
+        "source": "ec79eb32ec9ceccd",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8d83a8ff3f837b00",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/ComfyUI-BlenderAI-node",
+      "title": "openresearchtools/ComfyUI-BlenderAI-node",
+      "description": "Read-only mirror of https://github.com/openresearchtools/ComfyUI-BlenderAI-node. Used for AI model generation, next-generation Blender rendering engine, texture enhancement&generation (based on ComfyUI)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:32.899Z",
+      "lineage": {
+        "source": "8d83a8ff3f837b00",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3996c5fe080a26d0",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/PDF-Markdown-Studio",
+      "title": "openresearchtools/PDF-Markdown-Studio",
+      "description": "Read-only mirror of https://github.com/openresearchtools/PDF-Markdown-Studio. Convert PDFs and Images to Markdown using either FAST text extractors or local vision models.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:46.617Z",
+      "lineage": {
+        "source": "3996c5fe080a26d0",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7a0f78dc134295b1",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/PEGPU",
+      "title": "openresearchtools/PEGPU",
+      "description": "Read-only mirror of https://github.com/openresearchtools/PEGPU. VM runtime for eGPU passthrough for M series Macs",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:48.520Z",
+      "lineage": {
+        "source": "7a0f78dc134295b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5015b222845036e9",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/PEGPU-machine",
+      "title": "openresearchtools/PEGPU-machine",
+      "description": "Read-only mirror of https://github.com/openresearchtools/PEGPU-machine. Fork of QEMU that supports PCI Passthrough on macOS",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:50.309Z",
+      "lineage": {
+        "source": "5015b222845036e9",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7639ef7fcede50da",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/Portable-Comfy",
+      "title": "openresearchtools/Portable-Comfy",
+      "description": "Read-only mirror of https://github.com/openresearchtools/Portable-Comfy. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:53.913Z",
+      "lineage": {
+        "source": "7639ef7fcede50da",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a1ef9c87c7ae3b22",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/buzzard-search",
+      "title": "openresearchtools/buzzard-search",
+      "description": "Read-only mirror of https://github.com/openresearchtools/buzzard-search. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:29.278Z",
+      "lineage": {
+        "source": "a1ef9c87c7ae3b22",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e6c2392bffb1d4c7",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/engine",
+      "title": "openresearchtools/engine",
+      "description": "Read-only mirror of https://github.com/openresearchtools/engine. Openresearchtools-Engine is a local AI runtime you can embed directly into an application.  It aims to unify chat, vision, embeddings, reranking, audio transcription/diarization, and PDF-to-Markdown in one native stack (Rust + C++), so you don\u2019t have to glue together separate runtimes for each task.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:34.752Z",
+      "lineage": {
+        "source": "e6c2392bffb1d4c7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c9efbe06a6d36222",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/gnozzard",
+      "title": "openresearchtools/gnozzard",
+      "description": "Read-only mirror of https://github.com/openresearchtools/gnozzard. Simple classic GNOME Desktop extension for Debian 13+ With native portable apps and  AppImage support.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:36.478Z",
+      "lineage": {
+        "source": "c9efbe06a6d36222",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "163f101e465cbfcb",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/llama-cpp-arm64-builds",
+      "title": "openresearchtools/llama-cpp-arm64-builds",
+      "description": "Read-only mirror of https://github.com/openresearchtools/llama-cpp-arm64-builds. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:38.213Z",
+      "lineage": {
+        "source": "163f101e465cbfcb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b1fbc9928d32f140",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/llama-deb",
+      "title": "openresearchtools/llama-deb",
+      "description": "Read-only mirror of https://github.com/openresearchtools/llama-deb. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:40.897Z",
+      "lineage": {
+        "source": "b1fbc9928d32f140",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "63fad6b39f6614ee",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/lufus",
+      "title": "openresearchtools/lufus",
+      "description": "Read-only mirror of https://github.com/openresearchtools/lufus. Linux version of Rufus: Create Windows installers, Windows To Go drives, and bootable USB media for Linux and other operating systems - all from Linux",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:42.876Z",
+      "lineage": {
+        "source": "63fad6b39f6614ee",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cbfb19cb9b48fa51",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/openresearchtools.github.io",
+      "title": "openresearchtools/openresearchtools.github.io",
+      "description": "Read-only mirror of https://github.com/openresearchtools/openresearchtools.github.io. openresearchtools.com",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:44.622Z",
+      "lineage": {
+        "source": "cbfb19cb9b48fa51",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "866c036c9ee31bd8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/pi-web",
+      "title": "openresearchtools/pi-web",
+      "description": "Read-only mirror of https://github.com/openresearchtools/pi-web. Web UI for Pi Coding Agent that keeps sessions alive in real workspaces.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:51.996Z",
+      "lineage": {
+        "source": "866c036c9ee31bd8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9ee5730bfefae61",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/simplehf",
+      "title": "openresearchtools/simplehf",
+      "description": "Read-only mirror of https://github.com/openresearchtools/simplehf. Simple, fast GUI downloader for Huggingface repositories written in RUST. Preserves repository folder structures and actual file names. Published via openresearchtools apt repository  for Debian 13+ Ubuntu 24.04/26.04",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:55.659Z",
+      "lineage": {
+        "source": "a9ee5730bfefae61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b8ec83c87355f4e6",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/slopperly",
+      "title": "openresearchtools/slopperly",
+      "description": "Read-only mirror of https://github.com/openresearchtools/slopperly. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:28:58.909Z",
+      "lineage": {
+        "source": "b8ec83c87355f4e6",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "794c30b34f9bf2aa",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/systematic-reviewer",
+      "title": "openresearchtools/systematic-reviewer",
+      "description": "Read-only mirror of https://github.com/openresearchtools/systematic-reviewer. Systematic Reviewer is built as a third-party extension for Zotero reference manager for systematic reviews and text-based research analysis, it turns a library collection into a project workspace for screening, extraction, semantic search, report development, and traceable research workflows.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:29:00.820Z",
+      "lineage": {
+        "source": "794c30b34f9bf2aa",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e3fbe09c1137e7af",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/torkitten",
+      "title": "openresearchtools/torkitten",
+      "description": "Read-only mirror of https://github.com/openresearchtools/torkitten. ",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:29:03.120Z",
+      "lineage": {
+        "source": "e3fbe09c1137e7af",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "52ffeb832b98f220",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/transcribeoffline",
+      "title": "openresearchtools/transcribeoffline",
+      "description": "Read-only mirror of https://github.com/openresearchtools/transcribeoffline. Transcribe Offline by openresearchtools.com is an open source desktop application that allows you to transcribe audio and video fully offline, with optional speaker diarisation and word-level alignment. It can also generate subtitles and integrate with local large language models (LLMs) for summarisation and editing",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:29:05.279Z",
+      "lineage": {
+        "source": "52ffeb832b98f220",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7d5d580edef296f7",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/openresearchtools/unsloth",
+      "title": "openresearchtools/unsloth",
+      "description": "Read-only mirror of https://github.com/openresearchtools/unsloth. Unsloth is a local UI for training and running Kimi K3, Gemma 4, Qwen3.6, DeepSeek-V4, GLM and other models.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T14:29:07.327Z",
+      "lineage": {
+        "source": "7d5d580edef296f7",
         "family": "china_a_share",
         "rounds": []
       }
