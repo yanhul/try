@@ -6,6 +6,9 @@ name: BC Research Controller
 # Each invocation executes at most one BC and persists before the next dispatch.
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/bc-research-controller.yml'
   # Daily research scan: 09:00 GMT+7 = 02:00 UTC
   schedule:
     - cron: '0 2 * * *'
