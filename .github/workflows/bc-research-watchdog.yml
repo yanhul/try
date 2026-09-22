@@ -37,8 +37,20 @@ jobs:
           intent="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/continuation_intent.json --jq '.content' 2>/dev/null | base64 -d || true)"
           intent_status="$(jq -r '.status // "ABSENT"' <<<"$intent" 2>/dev/null || echo ABSENT)"
           if [ "$intent_status" = "DISPATCHED" ]; then
-            echo "CONTINUATION_RECEIPT_PRESENT; watchdog will not duplicate dispatch."
-            exit 0
+            dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
+            dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
+            if [ -n "$dispatch_id" ]; then
+              run_state="$(gh run view "$dispatch_id" --json status,conclusion)"
+              run_status="$(printf '%s' "$run_state" | jq -r '.status')"
+              run_conclusion="$(printf '%s' "$run_state" | jq -r '.conclusion // empty')"
+              if [ "$run_status" != "completed" ] || [ "$run_conclusion" = "success" ]; then
+                echo "CONTINUATION_RECEIPT_ACTIVE status=$run_status conclusion=$run_conclusion; no duplicate dispatch."
+                exit 0
+              fi
+              echo "CONTINUATION_RECEIPT_STALE outcome=$run_conclusion; watchdog will recover."
+            else
+              echo "CONTINUATION_RECEIPT_INVALID; watchdog will recover."
+            fi
           fi
 
           active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')"
