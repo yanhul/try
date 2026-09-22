@@ -6457,38 +6457,6 @@
       }
     },
     {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "fvg_imbalance",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6676,6 +6644,38 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -41943,6 +41943,22 @@
       }
     },
     {
+      "candidate_id": "f257c9e93022e8d8",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
+      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f257c9e93022e8d8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6e772af56b3c70b3",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5b9a2e411446b5ceef863b2f7cde78e2becfd23e",
@@ -47970,22 +47986,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "db1b404b2a31e2f5",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f257c9e93022e8d8",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0cb5b474a4460cc13f30f3aa30bc18f69a38937a",
-      "title": "Exploring arbitrage opportunities between China's carbon markets based on statistical arbitrage pairs trading strategy",
-      "description": "",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f257c9e93022e8d8",
         "family": "mean_reversion",
         "rounds": []
       }
