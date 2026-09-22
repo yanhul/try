@@ -20,6 +20,8 @@ def test_continuation_is_event_driven_and_durable():
     assert 'types:' in CONTINUATION and 'completed' in CONTINUATION
     assert 'status' in CONTINUATION and 'DISPATCHED' in CONTINUATION
     assert 'gh workflow run bc-research-controller.yml --ref main' in CONTINUATION
+    assert 'CREATED_BY_RUN_ID' in CONTINUATION
+    assert 'source_run_id' in CONTINUATION
     assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
     assert 'sleep' not in CONTINUATION.lower()
