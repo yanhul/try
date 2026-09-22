@@ -8,7 +8,8 @@ on:
       - completed
 
 concurrency:
-  # Serialize continuation handling with the controller so the DISPATCHED receipt is committed before the successor can read state.\n  group: try-bc-research-controller-main
+  # Serialize continuation handling with the controller so the DISPATCHED receipt is committed before the successor can read state.
+  group: try-bc-research-controller-main
   cancel-in-progress: false
 
 permissions:
