@@ -2,10 +2,9 @@ name: BC Research Completion Continuation
 
 on:
   workflow_run:
-    workflows:
-      - BC Research Controller
-    types:
-      - completed
+    workflows: [BC Research Controller]
+    types: [completed]
+  workflow_dispatch:
 
 concurrency:
   # Serialize continuation handling with the controller so the DISPATCHED receipt is committed before the successor can read state.
@@ -60,7 +59,7 @@ jobs:
 
           target_sha="$(git rev-parse HEAD)"
           echo "CONTINUATION_EVENT_RECEIVED source_run_id=$SOURCE_RUN_ID source_sha=$SOURCE_SHA target_sha=$target_sha"
-          run_url="$(gh workflow run bc-research-controller.yml --ref main)"
+          run_url="$(gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main)"
           test -n "$run_url"
           echo "CONTINUATION_DISPATCHED url=$run_url"
 
