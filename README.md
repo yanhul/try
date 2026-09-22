@@ -28,5 +28,22 @@ python run_research_pipeline.py \
 `engine/features.py` contains causal, measurable OHLCV features (spread, body,
 wicks, close location, volume/range ratios, effort/result, and one-bar structure).
 It is deliberately **not** a Wyckoff/VSA/VPA classifier. Those labels must be
-introduced as explicit hypotheses and tested through the IS → validation → OOS
+introduced as explicit hypotheses and tested through the IS -> validation -> OOS
 protocol rather than being treated as established edge.
+
+### Long-running research execution
+
+Research jobs should be submitted asynchronously when the execution runtime
+supports completion events.
+
+Preferred flow:
+
+`submit -> persist job/attempt identity -> suspend -> completion event -> resume -> verify -> continue`
+
+Avoid using repeated `sleep`/status polling as the default waiting mechanism.
+Polling is only a fallback when no completion event exists, and it must be
+bounded by timeout and execution budget.
+
+This is a harness-efficiency rule, not a profitability claim. Any claimed
+cost/time reduction must be measured with a controlled before/after benchmark
+on the same research workload.
