@@ -10,7 +10,6 @@ def test_controller_persists_intent_before_dispatch_lane():
     assert 'research/continuation_intent.json' in CONTROLLER
     assert 'created_by_run_id' in CONTROLLER
     assert 'gh workflow run bc-research-controller.yml' not in CONTROLLER
-    assert 'research/continuation_intent.json' in CONTROLLER
     assert 'sleep 60' not in CONTROLLER
     assert "cron: '*/15 * * * *'" not in CONTROLLER
 
