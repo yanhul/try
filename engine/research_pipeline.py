@@ -9,6 +9,8 @@ from typing import Iterable
 from .backtest import load_bars
 from .data_split import chronological_split, validate_splits
 from .split_research import run_split
+from .strategy import ReferenceStrategy
+from .ledger import build_ledger
 from .strategy_spec import canonicalize, provenance, strategy_hash
 
 
@@ -59,8 +61,8 @@ def run_is_validation_oos(
     validate_splits(splits, len(bars))
     # Strategy/event generation is candidate-independent for this engine.
     # Compute it once; run_split slices the causal prefix for each split.
-    events = __import__("engine.strategy", fromlist=["ReferenceStrategy"]).ReferenceStrategy().process(bars)
-    ledger = __import__("engine.ledger", fromlist=["build_ledger"]).build_ledger(events)
+    events = ReferenceStrategy().process(bars)
+    ledger = build_ledger(events)
     research_context = {"bars": bars, "events": events, "ledger": ledger}
     candidates = [canonicalize(c) | {"stop_fraction": c["stop_fraction"], "reward_multiple": c["reward_multiple"]} for c in candidates]
     if not candidates:
