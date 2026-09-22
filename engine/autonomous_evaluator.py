@@ -163,19 +163,27 @@ def main() -> int:
     out = root / a.out; out.parent.mkdir(parents=True, exist_ok=True)
     cache_dir = root / "research" / "evaluation_cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
+    evaluator_digest = sha256(Path(__file__))
+    result["evaluator_digest"] = evaluator_digest
     cache_key = hashlib.sha256(json.dumps({
         "candidate_hash": candidate["candidate_hash"],
         "dataset_sha256": result["dataset"]["sha256"],
-        "evaluator_digest": sha256(Path(__file__)),
+        "evaluator_digest": evaluator_digest,
         "evaluation_spec": EVALUATION_SPEC,
     }, sort_keys=True, default=str).encode()).hexdigest()
     cache_path = cache_dir / f"{cache_key}.json"
+    cached = None
     if cache_path.exists():
-        cached = json.loads(cache_path.read_text(encoding="utf-8"))
-        if (cached.get("candidate_hash") == candidate["candidate_hash"]
-                and cached.get("dataset", {}).get("sha256") == result["dataset"]["sha256"]
-                and cached.get("evaluator_digest") == result["evaluator_digest"]):
-            result = cached
+        try:
+            cached = json.loads(cache_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError, TypeError):
+            cached = None
+    if isinstance(cached, dict) and (
+            cached.get("candidate_hash") == candidate["candidate_hash"]
+            and cached.get("dataset", {}).get("sha256") == result["dataset"]["sha256"]
+            and cached.get("evaluator_digest") == evaluator_digest
+            and cached.get("evaluation_spec") == result["evaluation_spec"]):
+        result = cached
     else:
         cache_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
