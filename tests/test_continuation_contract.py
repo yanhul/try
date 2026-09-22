@@ -57,3 +57,10 @@ def test_controller_does_not_trigger_from_state_pushes():
 def test_controller_does_not_delete_or_own_dispatch_receipts():
     assert 'rm -f research/continuation_intent.json' not in CONTROLLER
     assert 'research/continuation_intent.json)' not in CONTROLLER
+
+
+def test_failed_dispatch_receipt_is_reopened():
+    assert 'gh run view "$dispatch_id"' in CONTINUATION
+    assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION
+    assert 'i["status"]="PENDING"' in CONTINUATION
+    assert 'CONTINUATION_RECEIPT_CONFIRMED_SUCCESS' in CONTINUATION
