@@ -180,7 +180,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority)
+          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority research/continuation_intent.json)
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
