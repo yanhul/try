@@ -18,6 +18,8 @@ import subprocess, sys
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'research'/'discovery'/'latest.json'
 ARCHIVE=ROOT/'research'/'discovery'/'source_archive.json'
+CACHE_META=ROOT/'research'/'discovery'/'scan_cache.json'
+CACHE_TTL_SECONDS=max(0,int(os.getenv('RESEARCH_DISCOVERY_CACHE_TTL_SECONDS','21600')))
 QUERIES=[
  'crypto momentum trend following strategy bitcoin','crypto mean reversion statistical arbitrage strategy','crypto volatility breakout strategy','smart money concepts ICT liquidity sweep trading strategy crypto','fair value gap imbalance FVG crypto trading','Wyckoff VSA VPA volume price analysis crypto','VWAP volume profile crypto trading strategy','funding rate basis carry crypto trading','crypto order flow order book imbalance microprice','cross sectional crypto factors momentum reversal','crypto regime switching hidden Markov trading','bitcoin seasonality calendar effect trading','Solana on chain alpha liquidity trading','crypto options volatility skew gamma trading','prediction market order book trading strategy','maker adverse selection execution crypto','MEV execution alpha crypto','systematic crypto trading machine learning alpha','symbolic regression alpha mining trading','evolutionary alpha discovery trading strategy','LLM alpha mining quantitative trading','autonomous trading strategy research backtest','A-share quantitative trading factor strategy China','China stock limit-up quantitative strategy','China A-share order flow high frequency factors','China A-share T+1 transaction cost backtest','China A-share cross-sectional factor mining','China A-share point-in-time survivorship backtest','China A-share pairs statistical arbitrage','China A-share machine learning alpha','中国 A股 量化 交易 策略 因子','因子挖掘 A股 量化 交易','涨停 连板 A股 量化 策略','订单流 A股 高频 因子','T+1 涨跌停 交易成本 回测','多因子 加密货币 量化 交易 策略','因子挖掘 加密货币 量化 交易','量化 交易 alpha 挖掘 遗传 算法','强化学习 加密货币 交易 策略','订单流 加密货币 交易 策略','资金费率 基差 套利 加密货币','SMC ICT 流动性 扫损 加密货币','威科夫 VSA VPA 量价 加密货币',
  'equity factor investing cross sectional alpha backtest','statistical arbitrage pairs trading equities','futures trend following systematic strategy','options volatility trading systematic strategy','market microstructure order book strategy','alternative data quantitative alpha research','reinforcement learning trading systematic review','genetic programming symbolic regression trading alpha','portfolio optimization risk parity systematic trading','event driven quantitative trading earnings news','prediction markets automated trading research','decentralized exchange arbitrage MEV research','on chain wallet flow trading signal research',
@@ -104,6 +106,27 @@ def merge_success(previous,fresh):
 def main():
     previous=load_success(ARCHIVE,'sources')
     if not previous: previous=load_success(OUT,'results')
+    now=int(__import__('time').time())
+    cached=False
+    if CACHE_META.exists() and OUT.exists() and ARCHIVE.exists() and CACHE_TTL_SECONDS:
+        try:
+            meta=json.loads(CACHE_META.read_text(encoding='utf-8'))
+            cached=(meta.get('schema_version') == 1
+                    and meta.get('queries_sha256') == __import__('hashlib').sha256(
+                        json.dumps(QUERIES,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
+                    and now-int(meta.get('completed_at',0)) < CACHE_TTL_SECONDS)
+        except Exception:
+            cached=False
+    if cached:
+        print(f'DISCOVERY_SCOUT_CACHE_HIT ttl={CACHE_TTL_SECONDS}s retained_success={len(previous)}')
+        engine=ROOT/'research'/'discovery'/'population_engine.py'
+        proc=subprocess.run([sys.executable,str(engine)],cwd=str(ROOT),text=True,capture_output=True)
+        print(proc.stdout,end='')
+        if proc.returncode:
+            print(proc.stderr,end='')
+            raise SystemExit(proc.returncode)
+        print('DISCOVERY_POPULATION_READY_FROM_CACHE')
+        return
     results=[]; jobs=[]
     funcs=[github,gitlab,arxiv,openalex,crossref,semantic_scholar,papers_with_code]
     with ThreadPoolExecutor(max_workers=12) as pool:
@@ -115,6 +138,7 @@ def main():
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(payload,indent=2,ensure_ascii=False),encoding='utf-8')
     ARCHIVE.write_text(json.dumps({'schema_version':4,'sources':merged},indent=2,ensure_ascii=False),encoding='utf-8')
+    CACHE_META.write_text(json.dumps({'schema_version':1,'completed_at':now,'queries_sha256':__import__('hashlib').sha256(json.dumps(QUERIES,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()},sort_keys=True)+'\\n',encoding='utf-8')
     print(f'DISCOVERY_SCOUT_DONE fresh={len(results)} retained_success={len(merged)} output={OUT}')
     engine=ROOT/'research'/'discovery'/'population_engine.py'
     proc=subprocess.run([sys.executable,str(engine)],cwd=str(ROOT),text=True,capture_output=True)
