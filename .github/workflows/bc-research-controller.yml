@@ -208,7 +208,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          sleep 60
+          set -euo pipefail
+          # Durable state was persisted immediately before this dispatch.
+          # Do not spend a runner/LLM turn polling with sleep; dispatch the next
+          # controller invocation directly. concurrency serializes the lifecycle.
           gh workflow run bc-research-controller.yml --ref main
 
 # G4B autonomous continuation trigger: durable state remains authoritative.
