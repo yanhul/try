@@ -6,8 +6,6 @@ name: BC Research Controller
 # Each invocation executes at most one BC and persists before the next dispatch.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/15 * * * *'
   push:
     branches:
       - main
@@ -199,21 +197,35 @@ jobs:
           if [ "$changed" != "true" ]; then echo "No autonomous research state changes to persist."; exit 0; fi
           for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
           if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
-          if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+          if [ "$CONTINUE" = "true" ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('research/bc_lifecycle_state.json').read_text())
+          intent={
+              'schema_version': 1,
+              'status': 'PENDING',
+              'campaign_id': state.get('campaign_id'),
+              'next_bc': state.get('next_bc'),
+              'current_bc': state.get('current_bc'),
+              'checkpoint_seq': state.get('checkpoint_seq'),
+              'created_by_run_id': int('${{ github.run_id }}'),
+              'target_ref': 'main',
+          }
+          Path('research/continuation_intent.json').write_text(json.dumps(intent,indent=2,sort_keys=True)+'\n')
+          PY
+            git add research/continuation_intent.json
+            git commit -m "research: continue autonomous lifecycle [skip ci]"
+          else
+            rm -f research/continuation_intent.json
+            git add -A -- research/continuation_intent.json
+            if ! git diff --cached --quiet; then git commit -m "research: clear continuation intent [skip ci]"; fi
+          fi
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
       - name: Auto-resume non-terminal campaign
         if: ${{ steps.controller.outputs.continue == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          # Durable state was persisted immediately before this dispatch.
-          # Do not spend a runner/LLM turn polling with sleep; dispatch the next
-          # controller invocation directly. concurrency serializes the lifecycle.
-          gh workflow run bc-research-controller.yml --ref main
-
+        run: echo "deprecated: continuation is event-driven"
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
