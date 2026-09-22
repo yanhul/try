@@ -41,3 +41,39 @@ def test_failed_validation_blocks_oos(tmp_path):
     )
     assert result["validation"]["passed"] is False
     assert result["oos"] is None
+
+
+def test_split_cache_preserves_causal_event_warmup(tmp_path):
+    from engine.backtest import load_bars
+    from engine.data_split import chronological_split
+    from engine.ledger import build_ledger
+    from engine.strategy import ReferenceStrategy
+    from engine.split_research import run_split
+
+    csv = tmp_path / "data.csv"
+    _csv(csv)
+    bars = load_bars(csv)
+    splits = chronological_split(len(bars))
+    events = ReferenceStrategy().process(bars)
+    ledger = build_ledger(events)
+    context = {
+        "bars": bars,
+        "events": events,
+        "ledger": ledger,
+        "split_cache": {
+            (splits[1].start, splits[1].end): {
+                "events": [e for e in events if e.bar_index < splits[1].end],
+                "ledger": [t for t in ledger if splits[1].start <= t.entry_bar < splits[1].end],
+            }
+        },
+    }
+    uncached = run_split(
+        bars, splits[1].start, splits[1].end, 0.01, 2.0, 0.0,
+        {"stop_fraction": 0.01, "reward_multiple": 2.0},
+    )
+    cached = run_split(
+        bars, splits[1].start, splits[1].end, 0.01, 2.0, 0.0,
+        {"stop_fraction": 0.01, "reward_multiple": 2.0},
+        research_context=context,
+    )
+    assert cached == uncached
