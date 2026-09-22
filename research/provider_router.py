@@ -109,9 +109,10 @@ def deterministic_candidate(forbidden):
  specs=[]
  for op,left,right in preferred.get(selected_family,[]):
   if op in profile["ops"] and left in profile["cols"] and (right is None or right in profile["cols"]):specs.append((op,left,right))
+ family_cols=sorted(profile["cols"])
  for op in sorted(profile["ops"]):
-  for left in sorted(profile["cols"]):
-   for right in (sorted(profile["cols"]) if op in {"difference","ratio"} else (None,)):specs.append((op,left,right))
+  for left in family_cols:
+   for right in (family_cols if op in {"difference","ratio"} else (None,)):specs.append((op,left,right))
  seen=set()
  for op,left,right in specs:
   if (op,left,right) in seen:continue
