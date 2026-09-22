@@ -87,8 +87,10 @@ def normalize_hypothesis_id(c):
   return
  if c.get("hypothesis_id")==selected_family:
   c["hypothesis_id"]="mechanism_family";spec["mechanism_family"]=selected_family;return
- primitive_shape=(spec.get("mechanism_family")==selected_family and spec.get("operator") in OPERATORS and spec.get("left") in COLUMNS)
- if c.get("hypothesis_id") not in {"mechanism_family","discovered_primitive"} and primitive_shape:c["hypothesis_id"]="discovered_primitive"
+ primitive_shape=(spec.get("operator") in OPERATORS and spec.get("left") in COLUMNS)
+ if c.get("hypothesis_id") not in {"mechanism_family","discovered_primitive"} and primitive_shape:
+  spec["mechanism_family"]=selected_family
+  c["hypothesis_id"]="discovered_primitive"
 def fingerprint(c):return structural_key(c)
 def prior_fingerprints():
  out=set();d=ROOT/"research/autonomous_candidates"
