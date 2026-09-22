@@ -29,6 +29,8 @@ def run_split(
     reward_multiple=2.0,
     round_trip_cost=0.0,
     strategy_spec=None,
+    *,
+    research_context=None,
 ):
     if end <= start:
         return {"bars": 0, "events": 0, "trades": 0, "metrics": {}}
@@ -36,11 +38,21 @@ def run_split(
     spec = canonicalize(strategy_spec or {"strategy_id": "ReferenceStrategy"})
     filters = spec.get("features", {}).get("filters", {})
 
-    # Warm-up is causal: strategy sees only bars before `end`. We filter
-    # executions by entry timestamp so split boundaries do not reset state.
+    # Warm-up is causal: all events up to `end` depend only on bars before
+    # `end`. A precomputed full-history context is therefore safe and avoids
+    # rerunning the identical strategy/ledger pass for every candidate.
     history = bars[:end]
-    events = ReferenceStrategy().process(history)
-    ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
+    if research_context is not None:
+        context_bars = research_context.get("bars")
+        events = research_context.get("events")
+        base_ledger = research_context.get("ledger")
+        if context_bars is not bars or not isinstance(events, list) or not isinstance(base_ledger, list):
+            raise ValueError("invalid research context")
+        events = [e for e in events if e.bar_index < end]
+        ledger = [t for t in base_ledger if start <= t.entry_bar < end]
+    else:
+        events = ReferenceStrategy().process(history)
+        ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
     if filters:
         ledger = [t for t in ledger if evaluate_filters(history, t.entry_bar, filters)]
     exit_policy = FixedRiskRewardExit(stop_fraction, reward_multiple)
