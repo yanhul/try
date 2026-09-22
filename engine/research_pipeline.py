@@ -57,6 +57,11 @@ def run_is_validation_oos(
     bars = load_bars(csv_path)
     splits = chronological_split(len(bars), is_ratio, validation_ratio)
     validate_splits(splits, len(bars))
+    # Strategy/event generation is candidate-independent for this engine.
+    # Compute it once; run_split slices the causal prefix for each split.
+    events = __import__("engine.strategy", fromlist=["ReferenceStrategy"]).ReferenceStrategy().process(bars)
+    ledger = __import__("engine.ledger", fromlist=["build_ledger"]).build_ledger(events)
+    research_context = {"bars": bars, "events": events, "ledger": ledger}
     candidates = [canonicalize(c) | {"stop_fraction": c["stop_fraction"], "reward_multiple": c["reward_multiple"]} for c in candidates]
     if not candidates:
         raise ValueError("no candidates")
@@ -65,7 +70,7 @@ def run_is_validation_oos(
     is_results = []
     for config in candidates:
         stop, rr = _validate_config(config)
-        result = run_split(bars, splits[0].start, splits[0].end, stop, rr, config.get("execution", {}).get("round_trip_cost", 0.0), config)
+        result = run_split(bars, splits[0].start, splits[0].end, stop, rr, config.get("execution", {}).get("round_trip_cost", 0.0), config, research_context=research_context)
         is_results.append({
             "config": config,
             "strategy_hash": strategy_hash(config),
@@ -83,7 +88,8 @@ def run_is_validation_oos(
 
     validation = run_split(
         bars, splits[1].start, splits[1].end, stop, rr,
-        selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec
+        selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec,
+        research_context=research_context,
     )
     vm = validation["metrics"]
     validation_pass = (
@@ -97,7 +103,8 @@ def run_is_validation_oos(
     if validation_pass:
         oos = run_split(
             bars, splits[2].start, splits[2].end, stop, rr,
-            selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec
+            selected_spec.get("execution", {}).get("round_trip_cost", 0.0), selected_spec,
+            research_context=research_context,
         )
         om = oos["metrics"]
         min_pf = validation_min_profit_factor if oos_min_profit_factor is None else oos_min_profit_factor
