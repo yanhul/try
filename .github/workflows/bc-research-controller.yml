@@ -223,9 +223,6 @@ jobs:
           fi
           if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
           echo "STATE_PERSISTED"
-      - name: Auto-resume non-terminal campaign
-        if: ${{ steps.controller.outputs.continue == 'true' }}
-        run: echo "deprecated: continuation is event-driven"
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
