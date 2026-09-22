@@ -220,7 +220,21 @@ jobs:
             echo "No autonomous research state changes to persist."
             exit 0
           fi
-          if ! git push origin HEAD:main; then echo "STATE_PERSISTENCE_CONFLICT stale controller workspace; refusing to overwrite newer durable main" >&2; exit 1; fi
+          if ! git push origin HEAD:main; then
+            git fetch origin main
+            overlap="$(git diff --name-only HEAD..origin/main -- ${durable_paths[@]} ${validation_files[@]} 2>/dev/null || true)"
+            if [ -n "$overlap" ]; then
+              echo "STATE_PERSISTENCE_CONFLICT durable paths changed on remote; refusing merge" >&2
+              printf '%s\n' "$overlap" >&2
+              exit 1
+            fi
+            git rebase origin/main
+            if ! git push origin HEAD:main; then
+              echo "STATE_PERSISTENCE_CONFLICT rebase retry rejected; refusing overwrite" >&2
+              exit 1
+            fi
+            echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
+          fi
           echo "STATE_PERSISTED"
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
