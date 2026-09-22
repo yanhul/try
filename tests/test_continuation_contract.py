@@ -47,3 +47,8 @@ def test_watchdog_serializes_with_continuation_lane():
     watchdog = (ROOT / '.github/workflows/bc-research-watchdog.yml').read_text()
     assert 'group: try-bc-research-continuation-main' in watchdog
     assert 'CONTINUATION_RECEIPT_PRESENT' in watchdog
+
+
+def test_controller_does_not_trigger_from_state_pushes():
+    assert "  push:" not in CONTROLLER
+    assert 'github.event_name !=' not in CONTROLLER
