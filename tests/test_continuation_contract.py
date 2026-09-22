@@ -52,3 +52,8 @@ def test_watchdog_serializes_with_continuation_lane():
 def test_controller_does_not_trigger_from_state_pushes():
     assert "  push:" not in CONTROLLER
     assert 'github.event_name !=' not in CONTROLLER
+
+
+def test_controller_does_not_delete_or_own_dispatch_receipts():
+    assert 'rm -f research/continuation_intent.json' not in CONTROLLER
+    assert 'research/continuation_intent.json)' not in CONTROLLER
