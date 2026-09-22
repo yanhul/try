@@ -3065,6 +3065,22 @@
       }
     },
     {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3636,22 +3652,6 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
-        "family": "vwap_volume_profile",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4948,22 +4948,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "5bcbec7510800163",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "options",
         "rounds": []
       }
@@ -6697,6 +6681,22 @@
       }
     },
     {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fa28e26915596092",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7408678",
@@ -8393,22 +8393,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "quantitative trading strategy backtest github",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9c08ebc8aca02436",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119057871.ch10",
@@ -9364,6 +9348,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
         "family": "unknown",
         "rounds": []
       }
@@ -40653,6 +40653,22 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -41081,22 +41097,6 @@
       "lineage": {
         "source": "49907d2f67f821ee",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
         "rounds": []
       }
     },
