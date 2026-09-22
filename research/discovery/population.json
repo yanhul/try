@@ -2985,22 +2985,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3476,6 +3460,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -6473,6 +6473,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6660,38 +6692,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -9737,22 +9737,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -10069,6 +10053,22 @@
       "lineage": {
         "source": "044a1342910e3a12",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -14943,7 +14943,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T22:13:17Z",
+      "source_timestamp": "2026-09-22T22:29:18Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -22527,7 +22527,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T18:10:17.780Z",
+      "source_timestamp": "2026-09-22T22:29:56.544Z",
       "lineage": {
         "source": "3a1c141835eb6fdc",
         "family": "china_a_share",
@@ -22559,7 +22559,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:45:54.869Z",
+      "source_timestamp": "2026-09-22T22:30:35.087Z",
       "lineage": {
         "source": "7b39bf63fa863709",
         "family": "china_a_share",
@@ -22655,7 +22655,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T06:29:56.987Z",
+      "source_timestamp": "2026-09-22T22:33:34.444Z",
       "lineage": {
         "source": "ea2570355b876d0b",
         "family": "china_a_share",
@@ -24895,7 +24895,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T14:30:16.026Z",
+      "source_timestamp": "2026-09-22T22:32:07.557Z",
       "lineage": {
         "source": "e42ba0d8d38eb709",
         "family": "china_a_share",
@@ -26127,7 +26127,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T16:28:05.060Z",
+      "source_timestamp": "2026-09-22T22:30:52.887Z",
       "lineage": {
         "source": "f52c1b5aff5d9771",
         "family": "china_a_share",
@@ -29487,7 +29487,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T13:41:28.332Z",
+      "source_timestamp": "2026-09-22T22:29:46.273Z",
       "lineage": {
         "source": "a970415e6896292d",
         "family": "china_a_share",
@@ -40023,6 +40023,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -40050,22 +40066,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "34c60d1a8e49b37d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "923d3553ccdcdef5",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "923d3553ccdcdef5",
         "family": "unknown",
         "rounds": []
       }
@@ -44167,6 +44167,22 @@
       }
     },
     {
+      "candidate_id": "af167e6720e20273",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
+      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
+      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af167e6720e20273",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "aaac9a67d274c5a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
@@ -48231,22 +48247,6 @@
       }
     },
     {
-      "candidate_id": "af167e6720e20273",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
-      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
-      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af167e6720e20273",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "666e5ab7c7ce84c9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/bc2a83b0e145a54f11a4352e1e5a962d88006bf3",
@@ -51517,7 +51517,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T22:13:17Z",
+      "source_timestamp": "2026-09-22T22:29:18Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
