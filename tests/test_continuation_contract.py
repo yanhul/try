@@ -12,6 +12,8 @@ def test_controller_persists_intent_before_dispatch_lane():
     assert 'gh workflow run bc-research-controller.yml' not in CONTROLLER
     assert 'sleep 60' not in CONTROLLER
     assert "cron: '*/15 * * * *'" not in CONTROLLER
+    assert 'STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN' in CONTROLLER
+    assert 'durable paths changed on remote' in CONTROLLER
 
 
 def test_continuation_is_event_driven_and_durable():
