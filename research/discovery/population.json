@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3275,
-    "expanded": 2883,
-    "normalized": 2883,
+    "raw": 3279,
+    "expanded": 2887,
+    "normalized": 2887,
     "round1": 243,
     "deferred": 125,
     "survivors": 115,
@@ -3129,38 +3129,6 @@
       }
     },
     {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c1a1adbbb4a75fdf",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
@@ -3321,22 +3289,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3349,38 +3301,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -8761,6 +8681,54 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -9673,22 +9641,6 @@
       }
     },
     {
-      "candidate_id": "e98ef9709ad0d2f0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e98ef9709ad0d2f0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "04682721e80adf6f",
       "source": "crossref",
       "source_url": "https://doi.org/10.37155/2717-5316-0508-27",
@@ -9865,22 +9817,6 @@
       }
     },
     {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2023.124175",
@@ -9892,22 +9828,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "rounds": []
       }
@@ -9977,6 +9897,54 @@
       }
     },
     {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -9988,6 +9956,38 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "fdc75585f2a46736",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e98ef9709ad0d2f0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e98ef9709ad0d2f0",
+        "family": "wyckoff_vsa_vpa",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "wyckoff_vsa_vpa",
         "rounds": []
       }
@@ -14943,7 +14943,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T15:46:19Z",
+      "source_timestamp": "2026-09-22T21:57:09Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -17103,7 +17103,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:00:48.275Z",
+      "source_timestamp": "2026-09-22T22:00:44.466Z",
       "lineage": {
         "source": "60a488f3d7c789b4",
         "family": "china_a_share",
@@ -19151,7 +19151,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:01:44.062Z",
+      "source_timestamp": "2026-09-22T22:02:03.380Z",
       "lineage": {
         "source": "bcd35e3d0e9e43e0",
         "family": "china_a_share",
@@ -19887,7 +19887,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T14:24:14.144Z",
+      "source_timestamp": "2026-09-22T21:44:22.299Z",
       "lineage": {
         "source": "df1bebaa0fa46bb6",
         "family": "china_a_share",
@@ -19951,7 +19951,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T14:40:36.417Z",
+      "source_timestamp": "2026-09-22T21:45:10.218Z",
       "lineage": {
         "source": "99703f9cad271d6d",
         "family": "china_a_share",
@@ -20991,7 +20991,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:39:19.788Z",
+      "source_timestamp": "2026-09-22T21:51:26.948Z",
       "lineage": {
         "source": "c633f3dab54398a9",
         "family": "china_a_share",
@@ -21119,7 +21119,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T14:54:58.207Z",
+      "source_timestamp": "2026-09-22T21:52:22.412Z",
       "lineage": {
         "source": "a31d64ba66e3cde9",
         "family": "china_a_share",
@@ -21135,7 +21135,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T05:13:43.447Z",
+      "source_timestamp": "2026-09-22T21:52:40.536Z",
       "lineage": {
         "source": "e3171d9e0e4f53a2",
         "family": "china_a_share",
@@ -23615,7 +23615,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:18:59.728Z",
+      "source_timestamp": "2026-09-22T21:43:03.753Z",
       "lineage": {
         "source": "297f3a668baec00f",
         "family": "china_a_share",
@@ -23743,7 +23743,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:29:16.649Z",
+      "source_timestamp": "2026-09-22T21:48:42.090Z",
       "lineage": {
         "source": "393d2bf0af1cb350",
         "family": "china_a_share",
@@ -26015,7 +26015,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T01:17:19.896Z",
+      "source_timestamp": "2026-09-22T21:59:54.637Z",
       "lineage": {
         "source": "f93adef50473d78c",
         "family": "china_a_share",
@@ -26591,7 +26591,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T13:45:14.889Z",
+      "source_timestamp": "2026-09-22T21:52:41.691Z",
       "lineage": {
         "source": "012249a202f920b2",
         "family": "china_a_share",
@@ -28847,7 +28847,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T23:33:18.076Z",
+      "source_timestamp": "2026-09-22T21:48:06.247Z",
       "lineage": {
         "source": "cbd9fb85e1f634a0",
         "family": "china_a_share",
@@ -29055,7 +29055,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T23:29:19.516Z",
+      "source_timestamp": "2026-09-22T21:59:56.111Z",
       "lineage": {
         "source": "4f63c71ac554a19c",
         "family": "china_a_share",
@@ -29135,7 +29135,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T13:29:25.549Z",
+      "source_timestamp": "2026-09-22T21:48:19.394Z",
       "lineage": {
         "source": "0cc73f5940be676a",
         "family": "china_a_share",
@@ -29215,7 +29215,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-13T21:29:01.481Z",
+      "source_timestamp": "2026-09-22T21:53:21.312Z",
       "lineage": {
         "source": "1e225f7b8439b717",
         "family": "china_a_share",
@@ -29311,7 +29311,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T22:41:21.192Z",
+      "source_timestamp": "2026-09-22T21:52:55.959Z",
       "lineage": {
         "source": "6257c73ed364f872",
         "family": "china_a_share",
@@ -29327,7 +29327,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:02:37.224Z",
+      "source_timestamp": "2026-09-22T21:41:39.796Z",
       "lineage": {
         "source": "32ebcdec086effbe",
         "family": "china_a_share",
@@ -29391,7 +29391,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T13:45:02.807Z",
+      "source_timestamp": "2026-09-22T21:52:42.661Z",
       "lineage": {
         "source": "01419bd18eb3b958",
         "family": "china_a_share",
@@ -30415,7 +30415,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T15:05:21.584Z",
+      "source_timestamp": "2026-09-22T21:59:39.320Z",
       "lineage": {
         "source": "346b209528eccb35",
         "family": "china_a_share",
@@ -30607,7 +30607,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T17:42:37.309Z",
+      "source_timestamp": "2026-09-22T21:50:26.956Z",
       "lineage": {
         "source": "1648aea60fe058da",
         "family": "china_a_share",
@@ -31647,7 +31647,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-22T15:12:06.178Z",
+      "source_timestamp": "2026-09-22T17:28:12.006Z",
       "lineage": {
         "source": "c7e0cc91a02b5ca4",
         "family": "unknown",
@@ -31903,7 +31903,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-22T03:00:10.745Z",
+      "source_timestamp": "2026-09-22T17:54:36.197Z",
       "lineage": {
         "source": "1b9063b08cd36743",
         "family": "unknown",
@@ -32034,6 +32034,22 @@
       "source_timestamp": "2026-09-18T13:58:46.782Z",
       "lineage": {
         "source": "8eca7fc5f066da11",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a9dad8c34545be77",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/payalmishra1809/HFT-ALPHA-GENERATOR-ORDER-PIPELINE",
+      "title": "payalmishra1809/HFT-ALPHA-GENERATOR-ORDER-PIPELINE",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-22T17:57:09.636Z",
+      "lineage": {
+        "source": "a9dad8c34545be77",
         "family": "unknown",
         "rounds": []
       }
@@ -33586,6 +33602,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "02bf5293b1172170",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "072f1c6840748050",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.18653/v1/2025.emnlp-demos.14",
+      "title": "Alpha-GPT: Human-AI Interactive Alpha Mining for Quantitative Investment",
+      "description": "OpenAlex work type=conference-paper year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "072f1c6840748050",
         "family": "unknown",
         "rounds": []
       }
@@ -37559,6 +37591,22 @@
       }
     },
     {
+      "candidate_id": "5515d77d96113c60",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2139/ssrn.1686966",
+      "title": "Dynamic Order Submission Strategies with Competition between a Dealer Market and a Crossing Network",
+      "description": "OpenAlex work type=preprint year=2007",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2007",
+      "lineage": {
+        "source": "5515d77d96113c60",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f04abc64958e1e21",
       "source": "openalex",
       "source_url": "https://doi.org/10.2307/2328565",
@@ -38251,7 +38299,7 @@
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s10614-022-10327-6",
       "title": "On ESG Portfolio Construction: A Multi-Objective Optimization Approach",
-      "description": "OpenAlex work type=article year=2022",
+      "description": "OpenAlex work type=book-chapter year=2022",
       "family": "unknown",
       "market": null,
       "query": "portfolio optimization risk parity systematic trading",
@@ -39490,6 +39538,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "4413496517e9f3fa",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9488dac5abae248",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.37155/2661-4669-0306-37",
+      "title": "\u52a0\u5f3a\u5de5\u6c11\u5efa\u5de5\u7a0b\u4e2d\u65bd\u5de5\u7ba1\u7406\u7684\u7b56\u7565\u5206\u6790",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b9488dac5abae248",
         "family": "china_a_share",
         "rounds": []
       }
@@ -42275,22 +42339,6 @@
       "lineage": {
         "source": "47da219ff47fa1df",
         "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "832937213c945052",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
-      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
-      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "832937213c945052",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -45175,6 +45223,22 @@
       }
     },
     {
+      "candidate_id": "832937213c945052",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
+      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
+      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "evolutionary alpha discovery trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "832937213c945052",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "46687a38e80ef3f6",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/cfd123dbc9857cf185691b891091446f0c046041",
@@ -45203,6 +45267,22 @@
       "lineage": {
         "source": "784d06e66ff888f9",
         "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ac48a73bca2f48c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
+      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
+      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "evolutionary alpha discovery trading strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2ac48a73bca2f48c",
+        "family": "cross_sectional",
         "rounds": []
       }
     },
@@ -45330,22 +45410,6 @@
       "source_timestamp": "1986",
       "lineage": {
         "source": "6086d77819f7120e",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2ac48a73bca2f48c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
-      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
-      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "factor alpha research code",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2ac48a73bca2f48c",
         "family": "cross_sectional",
         "rounds": []
       }
@@ -47351,6 +47415,22 @@
       }
     },
     {
+      "candidate_id": "642e162e9febaa54",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
+      "title": "Crypto Trading Using AI",
+      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "642e162e9febaa54",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c40ac717ed8cb63",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/152a40b1cf4f4b8a16e48d3b41be223842ef02e2",
@@ -48055,22 +48135,6 @@
       }
     },
     {
-      "candidate_id": "642e162e9febaa54",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
-      "title": "Crypto Trading Using AI",
-      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "642e162e9febaa54",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "ae8e7be0fb33131b",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/a705dfad2336afe9987fcb17c980c99781865792",
@@ -48343,22 +48407,6 @@
       }
     },
     {
-      "candidate_id": "85412db3f2f10d5b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
-      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
-      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "85412db3f2f10d5b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6cecd68115f14526",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/1aa17f0625e29596cb4786af2a2d155852304085",
@@ -48402,22 +48450,6 @@
       "source_timestamp": "2017",
       "lineage": {
         "source": "74e5cd03a7bc872f",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "42f9b0f95acb24cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
-      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2016",
-      "lineage": {
-        "source": "42f9b0f95acb24cb",
         "family": "china_a_share",
         "rounds": []
       }
@@ -48487,6 +48519,22 @@
       }
     },
     {
+      "candidate_id": "f79e43bf06d5ff80",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
+      "title": "\u201c\u89c4\u4f8b\u201d\u7684\u53d8\u5316\u4e0e\u6ce2\u52a8\u6ea2\u51fa\u6548\u5e94\u2014\u2014\u57fa\u4e8e\u4e2d\u56fd\u80a1\u7968\u5e02\u573a\u7684\u5b9e\u8bc1\u7814\u7a76",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "f79e43bf06d5ff80",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fda85a2a764e0290",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/b0416809cf6c5c2abcfd8a5925043fa39b9fbc11",
@@ -48514,6 +48562,22 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "bc9f40bdd0593fd8",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "85412db3f2f10d5b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
+      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
+      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "85412db3f2f10d5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -48583,6 +48647,22 @@
       }
     },
     {
+      "candidate_id": "42f9b0f95acb24cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
+      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2016",
+      "lineage": {
+        "source": "42f9b0f95acb24cb",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5f1f5dc90d21a56d",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/7df2c08245ecc4c63dae0feeb65b2140249703a1",
@@ -48626,22 +48706,6 @@
       "source_timestamp": "2005",
       "lineage": {
         "source": "5b32c48d529e136e",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f79e43bf06d5ff80",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
-      "title": "\u201c\u89c4\u4f8b\u201d\u7684\u53d8\u5316\u4e0e\u6ce2\u52a8\u6ea2\u51fa\u6548\u5e94\u2014\u2014\u57fa\u4e8e\u4e2d\u56fd\u80a1\u7968\u5e02\u573a\u7684\u5b9e\u8bc1\u7814\u7a76",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u8ba2\u5355\u6d41 A\u80a1 \u9ad8\u9891 \u56e0\u5b50",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "f79e43bf06d5ff80",
         "family": "china_a_share",
         "rounds": []
       }
@@ -51405,7 +51469,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-22T15:46:19Z",
+      "source_timestamp": "2026-09-22T21:57:09Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
