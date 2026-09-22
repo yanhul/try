@@ -48,7 +48,6 @@ jobs:
           if not eligible:
               raise SystemExit(0)
           PY
-          sleep 5
           gh workflow run bc-research-controller.yml --ref main
           echo "AUTO_RESUME_DISPATCHED"
 
