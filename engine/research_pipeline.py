@@ -66,7 +66,7 @@ def run_is_validation_oos(
     research_context = {"bars": bars, "events": events, "ledger": ledger, "split_cache": {}}
     for split in splits:
         research_context["split_cache"][(int(split.start), int(split.end))] = {
-            "events": [e for e in events if e.bar_index < split.end and e.bar_index >= split.start],
+            "events": [e for e in events if e.bar_index < split.end],
             "ledger": [t for t in ledger if split.start <= t.entry_bar < split.end],
         }
     candidates = [canonicalize(c) | {"stop_fraction": c["stop_fraction"], "reward_multiple": c["reward_multiple"]} for c in candidates]
