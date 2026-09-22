@@ -34,3 +34,16 @@ def test_controller_has_fast_dispatch_with_durable_receipt():
     assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTROLLER
     assert "intent['status']='DISPATCHED'" in CONTROLLER
     assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTROLLER
+
+
+def test_continuation_ignores_completed_controller_runs():
+    assert '.status == "queued"' in CONTINUATION
+    assert '.status == "in_progress"' in CONTINUATION
+    assert '.status == "pending"' in CONTINUATION
+    assert '.status == "waiting"' in CONTINUATION
+
+
+def test_watchdog_serializes_with_continuation_lane():
+    watchdog = (ROOT / '.github/workflows/bc-research-watchdog.yml').read_text()
+    assert 'group: try-bc-research-continuation-main' in watchdog
+    assert 'CONTINUATION_RECEIPT_PRESENT' in watchdog
