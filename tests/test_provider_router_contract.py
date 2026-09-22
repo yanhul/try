@@ -62,6 +62,11 @@ def test_provider_rejects_top_level_array_without_attribute_error(monkeypatch):
     assert result["hypothesis_id"] == "discovered_primitive"
 
 
+def test_async_event_rule_is_present_in_provider_system_prompt():
+    assert "never use sleep/wait/status polling" in provider_router.SYSTEM
+    assert "resume on the event" in provider_router.SYSTEM
+
+
 def test_exact_selected_family_id_is_canonicalized_only():
     previous = provider_router.selected_family
     try:
@@ -88,14 +93,9 @@ def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
 
 def test_non_directional_mechanism_family_is_not_executable():
     candidate = {
-        "bc": 168,
-        "parent_bc": 167,
-        "hypothesis_id": "mechanism_family",
-        "conceptual_change": "test volatility",
-        "evidence_sources": ["https://example.test/source"],
-        "rationale": "test",
-        "is_testable": True,
-        "oos_selection_used": False,
+        "bc": 168, "parent_bc": 167, "hypothesis_id": "mechanism_family",
+        "conceptual_change": "test volatility", "evidence_sources": ["https://example.test/source"],
+        "rationale": "test", "is_testable": True, "oos_selection_used": False,
         "discovery_spec": {"mechanism_family": "volatility", "threshold": 0.1, "direction": "above"},
     }
     ok, reason = validate_candidate(candidate, 168, 167)
@@ -180,9 +180,9 @@ def test_duplicate_retry_prompt_is_augmented_without_truncating_frontier(monkeyp
     finally:
         provider_router.selected_family = previous_family
     assert len(prompts) == 3
-    assert 'old_family' not in prompts[0]
-    assert 'old_family' not in prompts[1]
-    assert 'DUPLICATE structural key rejected' in prompts[1]
+    assert "old_family" not in prompts[0]
+    assert "old_family" not in prompts[1]
+    assert "DUPLICATE structural key rejected" in prompts[1]
 
 
 def test_grounding_binds_primitive_to_selected_family():
