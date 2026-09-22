@@ -1,0 +1,127 @@
+name: BC Research Continuation
+
+# Event-driven continuation/recovery for the bounded BC controller.
+# The controller persists a continuation intent before its durable state commit.
+# This workflow consumes that intent only after the controller run completes.
+on:
+  workflow_run:
+    workflows:
+      - BC Research Controller
+    types:
+      - completed
+    branches:
+      - main
+  schedule:
+    - cron: '17/15 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: try-bc-research-continuation-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  continue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Reconcile durable continuation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          intent_path="research/continuation_intent.json"
+          if [ ! -f "$intent_path" ]; then
+            echo "CONTINUATION_NONE"
+            exit 0
+          fi
+
+          python - <<'PY' > /tmp/intent.env
+          import json
+          from pathlib import Path
+          intent=json.loads(Path("research/continuation_intent.json").read_text())
+          if intent.get("schema_version") != 1:
+              raise SystemExit("CONTINUATION_INTENT_INVALID schema_version")
+          if intent.get("target_ref") != "main":
+              raise SystemExit("CONTINUATION_INTENT_INVALID target_ref")
+          if intent.get("status") not in {"PENDING","DISPATCHED"}:
+              raise SystemExit("CONTINUATION_INTENT_INVALID status")
+          print("STATUS="+str(intent.get("status")))
+          print("CAMPAIGN_ID="+str(intent.get("campaign_id") or ""))
+          print("NEXT_BC="+str(intent.get("next_bc") or ""))
+          PY
+          source /tmp/intent.env
+
+          if [ "$STATUS" = "DISPATCHED" ]; then
+            echo "CONTINUATION_RECEIPT_ALREADY_DURABLE"
+            exit 0
+          fi
+
+          state_path="research/bc_lifecycle_state.json"
+          if [ ! -f "$state_path" ]; then
+            echo "CONTINUATION_HOLD state_missing"
+            exit 0
+          fi
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path("research/bc_lifecycle_state.json").read_text())
+          intent=json.loads(Path("research/continuation_intent.json").read_text())
+          if state.get("campaign_terminal") or state.get("terminal"):
+              raise SystemExit("CONTINUATION_SUPPRESSED terminal_state")
+          if state.get("campaign_id") != intent.get("campaign_id"):
+              raise SystemExit("CONTINUATION_SUPPRESSED campaign_lineage_mismatch")
+          if state.get("next_bc") != intent.get("next_bc"):
+              raise SystemExit("CONTINUATION_SUPPRESSED frontier_mismatch")
+          print(f"CONTINUATION_LINEAGE_OK bc={state.get('next_bc')}")
+          PY
+
+          target_sha="$(git rev-parse HEAD)"
+          existing="$(gh run list --workflow bc-research-controller.yml --branch main --commit "$target_sha" --event workflow_dispatch --limit 20 --json databaseId,url,status,event,headSha)"
+          existing_url="$(printf '%s' "$existing" | jq -r '.[0].url // empty')"
+
+          if [ -n "$existing_url" ]; then
+            run_url="$existing_url"
+            echo "CONTINUATION_EXISTING_RUN url=$run_url"
+          else
+            echo "CONTINUATION_DISPATCH_REQUEST target_sha=$target_sha"
+            run_url="$(gh workflow run bc-research-controller.yml --ref main)"
+            if [ -z "$run_url" ]; then
+              echo "CONTINUATION_DISPATCH_NO_RECEIPT" >&2
+              exit 1
+            fi
+            echo "CONTINUATION_DISPATCHED url=$run_url"
+          fi
+
+          python - "$run_url" "$target_sha" <<'PY'
+          import json,sys
+          from pathlib import Path
+          path=Path("research/continuation_intent.json")
+          intent=json.loads(path.read_text())
+          intent["status"]="DISPATCHED"
+          intent["dispatch_run_url"]=sys.argv[1]
+          intent["dispatch_head_sha"]=sys.argv[2]
+          path.write_text(json.dumps(intent,indent=2,sort_keys=True)+"\n")
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/continuation_intent.json
+          git commit -m "research: record continuation dispatch [skip ci]"
+          if ! git push origin HEAD:main; then
+            echo "CONTINUATION_RECEIPT_PUSH_CONFLICT newer main exists; next completion/watchdog will reconcile by run identity" >&2
+            exit 1
+          fi
+          echo "CONTINUATION_RECEIPT_PERSISTED"
