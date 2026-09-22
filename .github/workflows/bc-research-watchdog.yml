@@ -4,6 +4,13 @@ name: BC Research Durable Watchdog
 # state/evidence mutator. This workflow only dispatches it.
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - BC Research Controller
+    types:
+      - completed
+    branches:
+      - main
   schedule:
     - cron: '*/2 * * * *'
 
