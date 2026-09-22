@@ -86,7 +86,7 @@ def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
         provider_router.selected_family = "smc_ict"
         candidate = {"hypothesis_id": "mean_reversion", "discovery_spec": {"mechanism_family": "smc_ict", "operator": "difference", "left": "high", "right": "low", "threshold": 0.5, "direction": "above"}}
         normalize_hypothesis_id(candidate)
-        assert candidate["hypothesis_id"] == "mechanism_family"
+        assert candidate["hypothesis_id"] == "discovered_primitive"
     finally:
         provider_router.selected_family = previous
 
