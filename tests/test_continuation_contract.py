@@ -64,3 +64,9 @@ def test_failed_dispatch_receipt_is_reopened():
     assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION
     assert 'i["status"]="PENDING"' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_CONFIRMED_SUCCESS' in CONTINUATION
+
+
+def test_receipt_lookup_ignores_failed_runs():
+    assert '.status != "completed" or .conclusion == "success"' in CONTROLLER
+    assert 'status == "queued" or .status == "in_progress"' in CONTINUATION
+    assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION
