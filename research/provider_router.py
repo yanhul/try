@@ -177,17 +177,31 @@ def main():
   for s in eligible:
    f=str(s.get("family") or "").strip()
    if f and f not in families:families.append(f)
-  ranked=rank_families(families,seed=bc);selected_family=ranked[0];selected=next(s for s in eligible if str(s.get("family") or "").strip()==selected_family);note_selection(selected_family,bc)
+  ranked=rank_families(families,seed=bc)
  except Exception as e:print(f"PROVIDER_ROUTER_HOLD malformed_screen_queue:{e}");return 0
- forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));payload=json.dumps([list(x) for x in sorted(forbidden,key=str)],separators=(",",":"));prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{json.dumps(selected,sort_keys=True,separators=(",",":"))}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
- try:
-  c=request_candidate(prompt,forbidden)
-  if c.get("status")=="HOLD":print("PROVIDER_GEMINI_HOLD");return 0
-  ground_candidate(c,selected);ok,reason=validate_candidate(c,bc,parent)
-  if not ok:raise ValueError(f"grounded_candidate_contract_failed:{reason}")
-  base,model,key=config();calibrated,issues=verify_with_openai_compatible(base,model,key,c,survivor_evidence(selected))
-  if not calibrated:raise ValueError("PROVIDER_CALIBRATION_FAIL "+json.dumps(issues,sort_keys=True))
-  write_candidate(out,c);print(f"PROVIDER_SELECTED GEMINI model={model} family={selected_family} novelty={c['novelty_key']} hash={c['candidate_hash']}");return 0
- except Exception as e:print(f"PROVIDER_FAIL GEMINI: {e}")
- print("PROVIDER_ROUTER_HOLD");return 0
+ forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));payload=json.dumps([list(x) for x in sorted(forbidden,key=str)],separators=(",",":"))
+ last_error=None
+ for selected_family in ranked:
+  selected=next(s for s in eligible if str(s.get("family") or "").strip()==selected_family);note_selection(selected_family,bc)
+  prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{json.dumps(selected,sort_keys=True,separators=(",",":"))}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
+  try:
+   c=request_candidate(prompt,forbidden)
+   if c.get("status")=="HOLD":
+    print(f"PROVIDER_GEMINI_HOLD family={selected_family}")
+    continue
+   ground_candidate(c,selected);ok,reason=validate_candidate(c,bc,parent)
+   if not ok:raise ValueError(f"grounded_candidate_contract_failed:{reason}")
+   base,model,key=config();calibrated,issues=verify_with_openai_compatible(base,model,key,c,survivor_evidence(selected))
+   if not calibrated:raise ValueError("PROVIDER_CALIBRATION_FAIL "+json.dumps(issues,sort_keys=True))
+   write_candidate(out,c);print(f"PROVIDER_SELECTED GEMINI model={model} family={selected_family} novelty={c['novelty_key']} hash={c['candidate_hash']}");return 0
+  except ValueError as e:
+   last_error=str(e)
+   if "deterministic_translation_frontier_exhausted" in last_error:
+    print(f"PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family={selected_family}")
+    continue
+   print(f"PROVIDER_FAIL GEMINI: {last_error}");return 0
+  except Exception as e:
+   print(f"PROVIDER_FAIL GEMINI: {e}");return 0
+ print(f"PROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error={last_error}") 
+ return 0
 if __name__=="__main__":raise SystemExit(main())
