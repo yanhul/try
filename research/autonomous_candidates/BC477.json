@@ -1,0 +1,27 @@
+{
+  "bc": 477,
+  "candidate_hash": "a2402687a19b419e349a42153cb3b950e61f2f51bfab5b6424832ba3238480e4",
+  "conceptual_change": "Use a 3-period delta of the close price within the mean_reversion family to capture short-term downside exhaustion and subsequent recovery.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "delta",
+    "threshold": -0.015,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|delta|close||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": -0.015,
+    "window": 3
+  },
+  "parent_bc": 476,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
