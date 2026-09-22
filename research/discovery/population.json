@@ -4281,22 +4281,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "seasonality",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6255cab10cf143e1",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.4581124",
@@ -4740,6 +4724,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -9417,54 +9417,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2023.124175",
@@ -9705,6 +9657,38 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "bd6914979df8243b",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2024.146534",
@@ -9716,6 +9700,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -33399,22 +33399,6 @@
       }
     },
     {
-      "candidate_id": "9e57481562327130",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1186/s40854-021-00321-6",
-      "title": "Cryptocurrency trading: a comprehensive survey",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "China quant trading github",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "9e57481562327130",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "29d0593eea455d3a",
       "source": "openalex",
       "source_url": "https://doi.org/10.2196/24486",
@@ -34471,6 +34455,22 @@
       }
     },
     {
+      "candidate_id": "8917aabfe639b17e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1257/0895330042162430",
+      "title": "The Capital Asset Pricing Model: Theory and Evidence",
+      "description": "OpenAlex work type=article year=2004",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2004",
+      "lineage": {
+        "source": "8917aabfe639b17e",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d08568545eef6664",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s11042-020-10139-6",
@@ -35127,22 +35127,6 @@
       }
     },
     {
-      "candidate_id": "2f5f3d7c80b0f360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/fire.12290",
-      "title": "Bitcoin intraday time series momentum",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "cross sectional crypto factors momentum reversal",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "2f5f3d7c80b0f360",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7e303348512cb293",
       "source": "openalex",
       "source_url": "https://doi.org/10.3386/w31284",
@@ -35271,6 +35255,22 @@
       }
     },
     {
+      "candidate_id": "9b1512a9cf54b16a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
+      "title": "Cryptocurrency Trading: A Comprehensive Survey",
+      "description": "OpenAlex work type=preprint year=2020",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "9b1512a9cf54b16a",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d915148a3f2c2bec",
       "source": "openalex",
       "source_url": "https://doi.org/10.1016/j.ribaf.2024.102472",
@@ -35367,6 +35367,22 @@
       }
     },
     {
+      "candidate_id": "a1dc5b1de794dba8",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.jfineco.2019.07.001",
+      "title": "Trading and arbitrage in cryptocurrency markets",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "crypto mean reversion statistical arbitrage strategy",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "a1dc5b1de794dba8",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4644c1866a0237b0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1016/j.bcra.2021.100021",
@@ -35378,6 +35394,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "4644c1866a0237b0",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f5f3d7c80b0f360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/fire.12290",
+      "title": "Bitcoin intraday time series momentum",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "2f5f3d7c80b0f360",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -35906,22 +35938,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a7dfeebe229c553d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9b1512a9cf54b16a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
-      "title": "Cryptocurrency Trading: A Comprehensive Survey",
-      "description": "OpenAlex work type=preprint year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "9b1512a9cf54b16a",
         "family": "unknown",
         "rounds": []
       }
@@ -36967,6 +36983,22 @@
       }
     },
     {
+      "candidate_id": "9e57481562327130",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1186/s40854-021-00321-6",
+      "title": "Cryptocurrency trading: a comprehensive survey",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "9e57481562327130",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1eab4a22cd4cc988",
       "source": "openalex",
       "source_url": "https://doi.org/10.1787/91c40e07-en",
@@ -37042,6 +37074,22 @@
       "source_timestamp": "2015",
       "lineage": {
         "source": "5fc808e17965d761",
+        "family": "funding_basis_carry",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "80e0c2501f6dbfe6",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/app9081561",
+      "title": "When Energy Trading Meets Blockchain in Electrical Power System: The State of the Art",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "funding_basis_carry",
+      "market": null,
+      "query": "funding rate basis carry crypto trading",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "80e0c2501f6dbfe6",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -37986,22 +38034,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "aef133809d061e0f",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "80e0c2501f6dbfe6",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/app9081561",
-      "title": "When Energy Trading Meets Blockchain in Electrical Power System: The State of the Art",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "onchain",
-      "market": null,
-      "query": "on chain wallet flow trading signal research",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "80e0c2501f6dbfe6",
         "family": "onchain",
         "rounds": []
       }
@@ -39239,22 +39271,6 @@
       }
     },
     {
-      "candidate_id": "a1dc5b1de794dba8",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.jfineco.2019.07.001",
-      "title": "Trading and arbitrage in cryptocurrency markets",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "a1dc5b1de794dba8",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "19c3f4607c9ebd31",
       "source": "openalex",
       "source_url": "https://doi.org/10.1002/widm.1391",
@@ -39475,22 +39491,6 @@
       "lineage": {
         "source": "32463bf0c0899b38",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8917aabfe639b17e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1257/0895330042162430",
-      "title": "The Capital Asset Pricing Model: Theory and Evidence",
-      "description": "OpenAlex work type=article year=2004",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2004",
-      "lineage": {
-        "source": "8917aabfe639b17e",
-        "family": "unknown",
         "rounds": []
       }
     },
@@ -45415,22 +45415,6 @@
       }
     },
     {
-      "candidate_id": "2ac48a73bca2f48c",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
-      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
-      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "2ac48a73bca2f48c",
-        "family": "cross_sectional",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6fd24decf6afb06f",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/c146b50c7a9ebbcd269f79059ff537c9c4401430",
@@ -45570,6 +45554,22 @@
       "source_timestamp": "1986",
       "lineage": {
         "source": "6086d77819f7120e",
+        "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2ac48a73bca2f48c",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/a32955e689434d22c49bda1c82d231f927229eb7",
+      "title": "XALPHA: A Memory-Driven AI Quant Researcher for Hypothesis-to-Code Alpha Discovery",
+      "description": "Financial markets are noisy, non-stationary, and high-dimensional, making it difficult to discover predictive and robust trading signals. Alpha discovery has evolved from manual factor design to machine learning, evolutionary search, and recent LLM-based frameworks, improving the efficiency of factor generation, search, and evaluation. However, existing methods still mostly automate isolated steps, rather than functioning as end-to-end quant researchers that can absorb external knowledge, close the hypothesis-to-code validation loop, and learn from accumulated discovery feedback. To fill this gap, we introduce XAlpha, a memory-driven AI Quant Researcher for continuous hypothesis-to-code alpha discovery. XAlpha maintains a multi-source research memory system that integrates report-grounded financial knowledge with discovery feedback from prior generations and research cycles. Guided by this memory system, a Macro Brain plans research themes and selects suitable Archetypes; a Micro Brain transforms the planned hypothesis pool into executable factor code and verifies ex-ante tri-alignment among the hypothesis idea, code logic, and financial plausibility; and a Cross Brain consolidates empirical outcomes into generation-level feedback, cycle-level summaries, and archetype-level research cues for future exploration. In this way, XAlpha turns alpha mining from isolated factor generation into a closed-loop research process that continuously reads, hypothesizes, implements, validates, reflects, and evolves. Experiments on CSI300 show that XAlpha achieves stronger overall alpha discovery performance than representative baselines.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "factor alpha research code",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "2ac48a73bca2f48c",
         "family": "cross_sectional",
         "rounds": []
       }
