@@ -2302,6 +2302,14 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "url": "https://doi.org/10.1787/888933433273",
+      "description": "Crossref work type=component",
+      "updated_at": ""
+    },
+    {
+      "source": "crossref",
+      "query": "A-share quantitative trading factor strategy China",
       "title": "Insider trading under trading ban regulation in China’s A-share market",
       "url": "https://doi.org/10.1016/j.cjar.2015.06.002",
       "description": "Crossref work type=journal-article",
@@ -3198,6 +3206,14 @@
     {
       "source": "crossref",
       "query": "MEV execution alpha crypto",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "url": "https://doi.org/10.2139/ssrn.5150912",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2025"
+    },
+    {
+      "source": "crossref",
+      "query": "MEV execution alpha crypto",
       "title": "ELASTIC ALPHA-ALPHA SCATTERING NEAR 40 Mev",
       "url": "https://doi.org/10.2172/4042824",
       "description": "Crossref work type=report",
@@ -3470,14 +3486,6 @@
     {
       "source": "crossref",
       "query": "VWAP volume profile crypto trading strategy",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "url": "https://doi.org/10.2139/ssrn.5150912",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "VWAP volume profile crypto trading strategy",
       "title": "Index",
       "url": "https://doi.org/10.1002/9781118531877.index",
       "description": "Crossref work type=other",
@@ -3670,14 +3678,6 @@
     {
       "source": "crossref",
       "query": "algorithmic trading research code",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "url": "https://doi.org/10.1787/888933433273",
-      "description": "Crossref work type=component",
-      "updated_at": ""
-    },
-    {
-      "source": "crossref",
-      "query": "algorithmic trading research code",
       "title": "Overview of Electronic and Algorithmic Trading",
       "url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
       "description": "Crossref work type=book-chapter",
@@ -3865,14 +3865,6 @@
       "title": "An Adaptive Multi-Agent Bitcoin Trading System",
       "url": "https://doi.org/10.2139/ssrn.5580590",
       "description": "Crossref work type=posted-content",
-      "updated_at": "2025"
-    },
-    {
-      "source": "crossref",
-      "query": "bitcoin seasonality calendar effect trading",
-      "title": "Bitcoin Trading",
-      "url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "description": "Crossref work type=dataset",
       "updated_at": "2025"
     },
     {
@@ -4306,14 +4298,6 @@
       "url": "https://doi.org/10.2139/ssrn.6882701",
       "description": "Crossref work type=posted-content",
       "updated_at": "2026"
-    },
-    {
-      "source": "crossref",
-      "query": "crypto order flow order book imbalance microprice",
-      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
-      "url": "https://doi.org/10.1142/s2382626619500114",
-      "description": "Crossref work type=journal-article",
-      "updated_at": "2018"
     },
     {
       "source": "crossref",
@@ -5462,6 +5446,14 @@
     {
       "source": "crossref",
       "query": "market microstructure order book strategy",
+      "title": "Multi-Level Order-Flow Imbalance in a Limit Order Book",
+      "url": "https://doi.org/10.1142/s2382626619500114",
+      "description": "Crossref work type=journal-article",
+      "updated_at": "2018"
+    },
+    {
+      "source": "crossref",
+      "query": "market microstructure order book strategy",
       "title": "Optimal Hedge Tracking Portfolios in a Limit Order Book",
       "url": "https://doi.org/10.1142/s238262661850003x",
       "description": "Crossref work type=journal-article",
@@ -6346,6 +6338,14 @@
       "url": "https://doi.org/10.2139/ssrn.2419243",
       "description": "Crossref work type=posted-content",
       "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "systematic trading strategy repository",
+      "title": "Bitcoin Trading",
+      "url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "description": "Crossref work type=dataset",
+      "updated_at": "2025"
     },
     {
       "source": "crossref",
@@ -23699,6 +23699,14 @@
     {
       "source": "semantic_scholar",
       "query": "crypto order flow order book imbalance microprice",
+      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
+      "url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
+      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
+      "updated_at": "2026"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "crypto order flow order book imbalance microprice",
       "title": "Deep order flow imbalance: Extracting alpha at multiple horizons from the limit order book",
       "url": "https://www.semanticscholar.org/paper/abaec26ab84ad0f2234ae190402ece82ad809200",
       "description": "We employ deep learning in forecasting high‐frequency returns at multiple horizons for 115 stocks traded on Nasdaq using order book information at the most granular level. While raw order book states can be used as input to the forecasting models, we achieve state‐of‐the‐art predictive accuracy by training simpler “off‐the‐shelf” artificial neural networks on stationary inputs derived from the order book. Specifically, models trained on order flow significantly outperform most models trained directly on order books. Using cross‐sectional regressions, we link the forecasting performance of a long short‐term memory network to stock characteristics at the market microstructure level, suggesting that “information‐rich” stocks can be predicted more accurately. Finally, we demonstrate that the effective horizon of stock specific forecasts is approximately two average price changes.",
@@ -24831,14 +24839,6 @@
       "url": "https://www.semanticscholar.org/paper/05ce2199a6d25e614bcf81affc06e18f2a07d970",
       "description": "Based on rare policy changes in the Chinese stock market in January 2016, we study the impacts of market-wide circuit breakers on market microstructure. To test if market-wide circuit breakers have the “cooling effect” and the magnet effect, we use high frequency transactions and limit order book data and Lasso IV models for endogenous market microstructure variables and exogenous policy variables based on a novel identification strategy. We find that market-wide circuit breakers have no “cooling effect” in decelerating falling prices (or returns) or reducing market volatility and order imbalance. Their presence does not affect bid-ask spreads but does reduces the large-, mid-, and small-sized trades in volume and trades. We also find that market-wide circuit breakers indeed induce significant magnet effects on stock returns, order imbalance, quote imbalance, and trades of various sizes.",
       "updated_at": "2019"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "market microstructure order book strategy",
-      "title": "Deep Learning of Robust Market Making under Regime-Switching Order Flow",
-      "url": "https://www.semanticscholar.org/paper/c17855fbf7a4dd6fa671fe842dc439bc94153ae4",
-      "description": "Classical market-making strategies based on stochastic control, such as the Avellaneda-Stoikov and the Gu\\'{e}ant-Lehalle-Fernandez-Tapia (GLFT) extension, provide closed-form quoting rules, but rest on assumptions that break down at realistic microstructure timescales. One of them is that order flow is stationary, while empirical evidence points to the existence of regimes, possibly associated with algorithmic execution of metaorders. In this case, existing methods provide negative PnL. In this paper, we develop a deep reinforcement-learning market maker (RLMM) - a Rainbow-style distributional DQN (C51) which is calibrated and tested in a zero-intelligence limit order book. We find that, in the stationary setting, RLMM outperforms GLFT across the entire observed risk-return frontier. The RLMM is more robust to flow asymmetry than GLFT, but, like any stationarily trained strategy, it still suffers large drawdowns from inventory saturation under persistent directional imbalance. Augmenting the state of RLMM with two auxiliary signals - a Bayesian online change-point filter over the directional flow bias and a queue-adjusted quote-exposure imbalance -restores profitability. A final scenario-bandit step that reweights low-return regime scenarios further improves performance under random-persistence and correlated-direction stress.",
-      "updated_at": "2026"
     },
     {
       "source": "semantic_scholar",
