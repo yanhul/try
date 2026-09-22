@@ -27,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Dispatch canonical controller when idle and non-terminal
         env:
           GH_TOKEN: ${{ github.token }}
