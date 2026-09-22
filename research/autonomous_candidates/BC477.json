@@ -1,0 +1,27 @@
+{
+  "bc": 477,
+  "candidate_hash": "37ed603e48ac6bc3de85481365c62c083fea59976c569d6096ae115a763b0e38",
+  "conceptual_change": "Use a 3-period delta of the close price within the mean_reversion family to capture short-term oversold bounces on 1H BTCUSDT.",
+  "discovery_spec": {
+    "direction": "above",
+    "left": "close",
+    "mechanism_family": "mean_reversion",
+    "operator": "delta",
+    "threshold": -0.015,
+    "window": 3
+  },
+  "evidence_sources": [
+    "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "mean_reversion|delta|close||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": -0.015,
+    "window": 3
+  },
+  "parent_bc": 476,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}
