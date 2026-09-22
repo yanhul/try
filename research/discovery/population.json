@@ -4,13 +4,13 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3174,
-    "expanded": 2782,
-    "normalized": 2782,
-    "round1": 214,
-    "deferred": 102,
-    "survivors": 109,
-    "china_a_share_survivors": 36
+    "raw": 3202,
+    "expanded": 2810,
+    "normalized": 2810,
+    "round1": 241,
+    "deferred": 122,
+    "survivors": 116,
+    "china_a_share_survivors": 37
   },
   "population": [
     {
@@ -1177,6 +1177,38 @@
       }
     },
     {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "27fed6aba5fea5e8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.cjar.2015.06.002",
@@ -1908,6 +1940,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "cfed84d97a733725",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "006a3953ebc01064",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5806502",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "006a3953ebc01064",
         "family": "china_a_share",
         "rounds": []
       }
@@ -4025,22 +4073,6 @@
       }
     },
     {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "unknown",
-      "market": null,
-      "query": "algorithmic trading research code",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -4265,22 +4297,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "13a9e4b178672aa9",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7475338",
@@ -4292,118 +4308,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "13a9e4b178672aa9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -5033,6 +4937,54 @@
       }
     },
     {
+      "candidate_id": "f62dd370fb95d2f8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-002",
+      "title": "Chapter 1 Trading in Options",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "f62dd370fb95d2f8",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "fbbf63993ad9d7f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-016",
+      "title": "Chapter 15 Trading Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fbbf63993ad9d7f9",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5bcbec7510800163",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1515/9783110697865-005",
+      "title": "Chapter 4 Volatility",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "5bcbec7510800163",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "5d9351fd8accc17f",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
@@ -5044,6 +4996,38 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5d9351fd8accc17f",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "21e9eca29ecdf96a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "21e9eca29ecdf96a",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "169ff2682e668919",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
+      "title": "Making Sense of Volatility in Options Trading",
+      "description": "Crossref work type=book-chapter",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "169ff2682e668919",
         "family": "options",
         "rounds": []
       }
@@ -5081,6 +5065,22 @@
       }
     },
     {
+      "candidate_id": "2f1483f78ef8e7ac",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
+      "title": "Volatility Trading Explained",
+      "description": "Crossref work type=other",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2012",
+      "lineage": {
+        "source": "2f1483f78ef8e7ac",
+        "family": "options",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "355018ac87ffc9d3",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119206965.ch4",
@@ -5093,22 +5093,6 @@
       "lineage": {
         "source": "355018ac87ffc9d3",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "006a3953ebc01064",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5806502",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "description": "Crossref work type=posted-content",
-      "family": "order_flow",
-      "market": null,
-      "query": "crypto order flow order book imbalance microprice",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "006a3953ebc01064",
-        "family": "order_flow",
         "rounds": []
       }
     },
@@ -5433,6 +5417,22 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -5449,6 +5449,70 @@
       }
     },
     {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "667acb5e3216c827",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118656617.ch5",
@@ -5460,6 +5524,54 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "667acb5e3216c827",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -7753,54 +7865,6 @@
       }
     },
     {
-      "candidate_id": "f62dd370fb95d2f8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-002",
-      "title": "Chapter 1 Trading in Options",
-      "description": "Crossref work type=book-chapter",
-      "family": "options",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "f62dd370fb95d2f8",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "fbbf63993ad9d7f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-016",
-      "title": "Chapter 15 Trading Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "fbbf63993ad9d7f9",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5bcbec7510800163",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1515/9783110697865-005",
-      "title": "Chapter 4 Volatility",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "5bcbec7510800163",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7b2b67be3a752147",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part5",
@@ -7817,38 +7881,6 @@
       }
     },
     {
-      "candidate_id": "21e9eca29ecdf96a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118524046.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "21e9eca29ecdf96a",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "169ff2682e668919",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118531990.ch2",
-      "title": "Making Sense of Volatility in Options Trading",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "169ff2682e668919",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "35858a240d229d33",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118528693.part3",
@@ -7861,22 +7893,6 @@
       "lineage": {
         "source": "35858a240d229d33",
         "family": "options",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f1483f78ef8e7ac",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118528693.ch8",
-      "title": "Volatility Trading Explained",
-      "description": "Crossref work type=other",
-      "family": "volatility",
-      "market": null,
-      "query": "options volatility trading systematic strategy",
-      "source_timestamp": "2012",
-      "lineage": {
-        "source": "2f1483f78ef8e7ac",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -9305,22 +9321,6 @@
       }
     },
     {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "a9c1b3a81274e963",
       "source": "crossref",
       "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
@@ -9481,6 +9481,70 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "14738f0bbc4f0199",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3104-9672.25.07.010",
@@ -9513,6 +9577,22 @@
       }
     },
     {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4df47a29f00cecb3",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2735.26.06.115",
@@ -9524,6 +9604,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "4df47a29f00cecb3",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c18863b050721775",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
+      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "c18863b050721775",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9625,38 +9721,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bd6914979df8243b",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/orf.2024.146534",
@@ -9668,22 +9732,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "bd6914979df8243b",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -9833,22 +9881,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0d43019b3403244c",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3080-1486.26.02.026",
@@ -9913,22 +9945,6 @@
       }
     },
     {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "af5eda9b0df688b6",
       "source": "crossref",
       "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
@@ -9940,22 +9956,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "af5eda9b0df688b6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c18863b050721775",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
-      "title": "\u9ad8\u9891\u91cf\u5316\u4ea4\u6613\u7684\u72af\u7f6a\u98ce\u9669\u53ca\u9632\u63a7\u7b56\u7565\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "c18863b050721775",
         "family": "unknown",
         "rounds": []
       }
@@ -10982,6 +10982,36 @@
       "source_timestamp": "2026-09-08T12:33:24Z",
       "lineage": {
         "source": "8d88bb7f6d224032",
+        "family": "china_a_share",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "6dddcc530fa39744",
+      "source": "github",
+      "source_url": "https://github.com/shy3130/shy3130",
+      "title": "shy3130/shy3130",
+      "description": "GitHub Profile \u00b7 A\u80a1\u91cf\u5316 \u00b7 \u5f00\u6e90\u5de5\u5177",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T04:07:24Z",
+      "lineage": {
+        "source": "6dddcc530fa39744",
         "family": "china_a_share",
         "rounds": [
           {
@@ -12485,6 +12515,32 @@
       }
     },
     {
+      "candidate_id": "3bb4947d64728a85",
+      "source": "github",
+      "source_url": "https://github.com/Cryptohopper-Reviews/cryptohopper-reviews",
+      "title": "Cryptohopper-Reviews/cryptohopper-reviews",
+      "description": "Cryptohopper Reviews compares the crypto trading bot with 3Commas, Pionex, Coinrule, and Bitsgap, covering TradingView alerts, automated strategies, grid and DCA tools, exchange support, backtesting, trade ideas, and practical features for choosing and configuring a crypto trading platform.",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026-09-16T21:04:36Z",
+      "lineage": {
+        "source": "3bb4947d64728a85",
+        "family": "unknown",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "unknown"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "0b7a6ea07b5bccb6",
       "source": "github",
       "source_url": "https://github.com/Dhillon6576/Gold-Bot",
@@ -12493,7 +12549,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-12T22:35:04Z",
+      "source_timestamp": "2026-09-19T02:16:48Z",
       "lineage": {
         "source": "0b7a6ea07b5bccb6",
         "family": "unknown",
@@ -12519,7 +12575,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T04:37:28Z",
+      "source_timestamp": "2026-09-22T04:33:35Z",
       "lineage": {
         "source": "d17c81af679a58e4",
         "family": "unknown",
@@ -12623,7 +12679,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T04:50:04Z",
+      "source_timestamp": "2026-09-22T05:59:18Z",
       "lineage": {
         "source": "6b9b6508e08640e2",
         "family": "unknown",
@@ -12727,7 +12783,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T07:21:44Z",
+      "source_timestamp": "2026-09-21T17:32:18Z",
       "lineage": {
         "source": "af46be4766dd286e",
         "family": "unknown",
@@ -12753,7 +12809,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T00:55:40Z",
+      "source_timestamp": "2026-09-20T07:16:19Z",
       "lineage": {
         "source": "31b3510641840746",
         "family": "unknown",
@@ -12779,7 +12835,7 @@
       "family": "execution_mev",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T21:09:02Z",
+      "source_timestamp": "2026-09-17T10:51:40Z",
       "lineage": {
         "source": "05ca7c46e9e04998",
         "family": "execution_mev",
@@ -12857,7 +12913,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T06:56:30Z",
+      "source_timestamp": "2026-09-21T07:23:50Z",
       "lineage": {
         "source": "fb518932f0c61124",
         "family": "prediction_market",
@@ -12961,7 +13017,7 @@
       "family": "execution_mev",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-04T04:32:53Z",
+      "source_timestamp": "2026-09-16T07:56:44Z",
       "lineage": {
         "source": "150e535ed24511db",
         "family": "execution_mev",
@@ -13257,7 +13313,7 @@
       "family": "cross_sectional",
       "market": null,
       "query": "factor alpha research code",
-      "source_timestamp": "2026-09-14T07:30:43Z",
+      "source_timestamp": "2026-09-20T07:31:02Z",
       "lineage": {
         "source": "d2c08e51e69557d3",
         "family": "cross_sectional",
@@ -13287,7 +13343,7 @@
       "family": "cross_sectional",
       "market": null,
       "query": "factor alpha research code",
-      "source_timestamp": "2026-09-16T01:47:17Z",
+      "source_timestamp": "2026-09-22T04:07:42Z",
       "lineage": {
         "source": "d4b4f843ffe09451",
         "family": "cross_sectional",
@@ -13347,7 +13403,7 @@
       "family": "cross_sectional",
       "market": null,
       "query": "factor alpha research code",
-      "source_timestamp": "2026-09-14T10:29:54Z",
+      "source_timestamp": "2026-09-16T06:58:24Z",
       "lineage": {
         "source": "bc1640d1e5779e1c",
         "family": "cross_sectional",
@@ -13905,7 +13961,7 @@
       "family": "unknown",
       "market": null,
       "query": "market making strategy code",
-      "source_timestamp": "2026-08-19T11:45:16Z",
+      "source_timestamp": "2026-09-16T13:32:26Z",
       "lineage": {
         "source": "175d2ecc4171e89b",
         "family": "unknown",
@@ -14130,6 +14186,650 @@
             "round": 2,
             "decision": "DEFER_DATA_LANE",
             "family": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "6490c981c418559a",
+      "source": "github",
+      "source_url": "https://github.com/0tabris/-Multilevel-Monte-Carlo-MLMC-for-Path-Dependent-Options",
+      "title": "0tabris/-Multilevel-Monte-Carlo-MLMC-for-Path-Dependent-Options",
+      "description": "comprehensive limit order book (LOB) simulator driven by self-exciting Hawkes processes for order arrivals and cancellations, with an integrated market-making strategy. The system will model realistic order flow dynamics, simulate LOB microstructure, and evaluate market-making performance under various market conditions.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2025-11-17T06:32:48Z",
+      "lineage": {
+        "source": "6490c981c418559a",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "04d9fe090ba848ea",
+      "source": "github",
+      "source_url": "https://github.com/Ananya9999999/Limit-Order-Book-Simulator",
+      "title": "Ananya9999999/Limit-Order-Book-Simulator",
+      "description": "Production-grade LOB engine modeling market microstructure, order matching, and HFT strategies. Microsecond latency, NSE tick replay, multi-agent back-testing. Built for Graviton-style quant roles.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-12T17:52:00Z",
+      "lineage": {
+        "source": "04d9fe090ba848ea",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5ad592bc8d39c2a1",
+      "source": "github",
+      "source_url": "https://github.com/Krish-B-Shah/order-book-trading-bot",
+      "title": "Krish-B-Shah/order-book-trading-bot",
+      "description": "Custom-built high-frequency trading simulator featuring a priority-based order book, limit/market order matching engine, and real-time P&L tracking for market-making strategies. Designed to model core microstructure behaviors found in modern electronic exchanges.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2025-10-30T19:35:36Z",
+      "lineage": {
+        "source": "5ad592bc8d39c2a1",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3480c70e76a5c519",
+      "source": "github",
+      "source_url": "https://github.com/KyleC144/OrderBookSim",
+      "title": "KyleC144/OrderBookSim",
+      "description": "An event-driven limit order book simulator designed to study market microstructure dynamics and evaluate systematic market-making strategies under realistic order flow conditions.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-03-02T17:47:13Z",
+      "lineage": {
+        "source": "3480c70e76a5c519",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "b2dd546a9cf27a5d",
+      "source": "github",
+      "source_url": "https://github.com/MaxGamer1312/Deep-Reinforcement-Learning-for-Optimal-Trade-Execution",
+      "title": "MaxGamer1312/Deep-Reinforcement-Learning-for-Optimal-Trade-Execution",
+      "description": "A reinforcement learning system that learns optimal order execution strategies for large stock trades using L3 order book reconstruction. The agent uses a PPO actor-critic architecture to minimize market impact and slippage while executing large orders within a time constraint, trained on real market microstructure data from Databento.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-05-27T15:15:33Z",
+      "lineage": {
+        "source": "b2dd546a9cf27a5d",
+        "family": "execution_mev",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "execution_mev"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0bf899d73725043c",
+      "source": "github",
+      "source_url": "https://github.com/Mohamadrezaanbari/BinaScalp-Core",
+      "title": "Mohamadrezaanbari/BinaScalp-Core",
+      "description": "A modular, testable Binance scalping bot foundation built for low-latency market analysis, order-book tracking, microstructure-based signal generation, and risk-controlled execution. Designed as a clean starting point for research, strategy development, and production-grade trading infrastructure.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-24T08:01:50Z",
+      "lineage": {
+        "source": "0bf899d73725043c",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9fc200075c3cb6d6",
+      "source": "github",
+      "source_url": "https://github.com/NicoBaranow/backtest-framework",
+      "title": "NicoBaranow/backtest-framework",
+      "description": "High-fidelity vectorized backtesting framework for derivatives market microstructure. Integrates continuous Limit Order Book (LOB) reconstruction, market impact simulations, and latency modeling for institutional-grade strategies.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-13T22:19:00Z",
+      "lineage": {
+        "source": "9fc200075c3cb6d6",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a848c6742441b269",
+      "source": "github",
+      "source_url": "https://github.com/SURUJ404/Aegis",
+      "title": "SURUJ404/Aegis",
+      "description": " Multi-venue crypto market-making engine in Rust: WebSocket feeds, order book & microstructure analytics, strategy/risk/execution pipeline, deterministic backtesting, Prometheus + Grafana observability, Docker/K8s deployment.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-18T19:28:58Z",
+      "lineage": {
+        "source": "a848c6742441b269",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3fdfda28c6b69fbc",
+      "source": "github",
+      "source_url": "https://github.com/Space-Paragon1/Market-Microstructure-Simulator",
+      "title": "Space-Paragon1/Market-Microstructure-Simulator",
+      "description": "A Python simulator for market microstructure research \u2014 implements a central limit order book (CLOB) with price-time priority, event-driven order flow, and execution analytics (VWAP, slippage, spread capture) to study liquidity, strategy behavior, and market dynamics.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-19T03:23:01Z",
+      "lineage": {
+        "source": "3fdfda28c6b69fbc",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "24acd50387430ed1",
+      "source": "github",
+      "source_url": "https://github.com/Supersidd-2005/market-exchange-simulator",
+      "title": "Supersidd-2005/market-exchange-simulator",
+      "description": "xchange Simulator  A high-performance C++ simulation of a financial exchange, featuring a price-time-priority limit order book and matching engine. The project models how buy and sell orders are processed, matched, cancelled, and converted into trades while providing a foundation for experimenting with market microstructure and trading strategies.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-28T16:30:23Z",
+      "lineage": {
+        "source": "24acd50387430ed1",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "b08397c4890a3945",
+      "source": "github",
+      "source_url": "https://github.com/andrealandini/deribit-lob-model",
+      "title": "andrealandini/deribit-lob-model",
+      "description": "Real-time limit order book analysis and paper-trading system for Deribit, featuring live WebSocket market data, microstructure-based trading strategies, and a terminal dashboard for strategy performance comparison.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-04T16:34:29Z",
+      "lineage": {
+        "source": "b08397c4890a3945",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "87fdc4ef8301490d",
+      "source": "github",
+      "source_url": "https://github.com/arnavgupta2004/limit-order-book-market-making",
+      "title": "arnavgupta2004/limit-order-book-market-making",
+      "description": "Research-grade limit order book, market microstructure, and market-making simulator with price-time priority, queue modeling, realistic execution, C++ acceleration, and statistical strategy evaluation.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-21T13:46:22Z",
+      "lineage": {
+        "source": "87fdc4ef8301490d",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "dec168741dd0862b",
+      "source": "github",
+      "source_url": "https://github.com/dhairyabansal-dev/Market-Microstructure-Engine",
+      "title": "dhairyabansal-dev/Market-Microstructure-Engine",
+      "description": "Python-based research project for analyzing order-book liquidity, market imbalance, execution costs, slippage and basic execution strategies through a testable simulation framework.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-11T17:22:17Z",
+      "lineage": {
+        "source": "dec168741dd0862b",
+        "family": "execution_mev",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "execution_mev"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a4bc2a5f4be070c9",
+      "source": "github",
+      "source_url": "https://github.com/gopherchaan/market-microstructure-lab",
+      "title": "gopherchaan/market-microstructure-lab",
+      "description": "A configurable WebSocket order book simulator written in Go. Designed for testing algorithmic trading strategies and anomaly detection systems without connecting to a live exchange. Supports replayable scenarios and adjustable speed.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-05-13T05:02:31Z",
+      "lineage": {
+        "source": "a4bc2a5f4be070c9",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "2de859411ac8120b",
+      "source": "github",
+      "source_url": "https://github.com/hgfjh/RustyBackTester",
+      "title": "hgfjh/RustyBackTester",
+      "description": "A Rust portfolio project for replaying historical limit order book data, reconstructing a local book, running a simple market-making strategy, simulating order lifecycle and fills, and producing run artifacts and summary statistics. The goal of the project is to explore market microstructure and systems-oriented simulation.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-29T11:45:15Z",
+      "lineage": {
+        "source": "2de859411ac8120b",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c4554dd34a08ea1f",
+      "source": "github",
+      "source_url": "https://github.com/kpetridis24/lobsim",
+      "title": "kpetridis24/lobsim",
+      "description": "Ultra fast, deterministic L3 limit order book replay + paper-execution engine designed for market microstructure research and strategy prototyping.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-17T07:54:04Z",
+      "lineage": {
+        "source": "c4554dd34a08ea1f",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0749ee1420cd67ef",
+      "source": "github",
+      "source_url": "https://github.com/lukaszkazala/orderbook-imbalance-backtester",
+      "title": "lukaszkazala/orderbook-imbalance-backtester",
+      "description": "Quantitative trading strategy based on order book imbalance and market microstructure analysis.",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-18T07:50:32Z",
+      "lineage": {
+        "source": "0749ee1420cd67ef",
+        "family": "fvg_imbalance",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "14160efe001e16fa",
+      "source": "github",
+      "source_url": "https://github.com/real-rayezwtkl/lob_simulation",
+      "title": "real-rayezwtkl/lob_simulation",
+      "description": "Simulated a limit order book to study market microstructure, modeling stochastic order arrivals and price dynamics. Analyzed bid-ask spread, liquidity, and evaluated a market-making strategy using Monte Carlo simulations and statistical testing.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-11T16:14:31Z",
+      "lineage": {
+        "source": "14160efe001e16fa",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "fd1b77d4213d0a04",
+      "source": "github",
+      "source_url": "https://github.com/yhdong11/FE570_Final_Project",
+      "title": "yhdong11/FE570_Final_Project",
+      "description": "FE 570 Market Microstructure \u2014 Final Project: from AAPL TAQ analysis to a calibrated market-making strategy in a SHIFT-like order book.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-06-25T14:38:03Z",
+      "lineage": {
+        "source": "fd1b77d4213d0a04",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "1ba654ca09346db9",
+      "source": "github",
+      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "title": "yourairdrop/driftscout-live",
+      "description": "5-minute crypto UP/DOWN binary-market strategy: CEX price-drift signal + prediction-market order-book microstructure + calibrated classifier",
+      "family": "smc_ict",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-10T15:46:57Z",
+      "lineage": {
+        "source": "1ba654ca09346db9",
+        "family": "smc_ict",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "aa7d0e185862888c",
+      "source": "github",
+      "source_url": "https://github.com/LLMTEST717/MT_TRADING_SYSTEM",
+      "title": "LLMTEST717/MT_TRADING_SYSTEM",
+      "description": "Python-based systematic trading system for JPMorgan Chase stock using 5-timeframe volatility bands, multi-layer position management, and options premium strategies. Targets 5% annual alpha through automated day/swing/long-term trading with comprehensive risk controls. Paper trading ready.",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2026-03-24T10:35:57Z",
+      "lineage": {
+        "source": "aa7d0e185862888c",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "aab36bf14f018ec1",
+      "source": "github",
+      "source_url": "https://github.com/chanhyeong28/TradingAlgorithmForDeribit",
+      "title": "chanhyeong28/TradingAlgorithmForDeribit",
+      "description": "A comprehensive Python package for implementing trading algorithms on Deribit exchange. This toolkit provides tools for real-time volatility monitoring, options backtesting, and systematic trading strategies",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2025-12-07T15:25:26Z",
+      "lineage": {
+        "source": "aab36bf14f018ec1",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "4aed5d69bf418325",
+      "source": "github",
+      "source_url": "https://github.com/hrtang512/IMC-Prosperity4",
+      "title": "hrtang512/IMC-Prosperity4",
+      "description": "Algorithmic trading research for IMC Prosperity 4, including custom backtesting, options pricing, volatility analysis, order-book strategies, execution diagnostics, and systematic strategy development in Python.",
+      "family": "volatility",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2026-07-03T01:45:15Z",
+      "lineage": {
+        "source": "4aed5d69bf418325",
+        "family": "volatility",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "742e2e05afc1f50f",
+      "source": "github",
+      "source_url": "https://github.com/pvc1997/diamond_options_engine",
+      "title": "pvc1997/diamond_options_engine",
+      "description": "Systematic Indian F&O options trading engine with 89 MCP tools, 18+ strategies, real-time Greeks, volatility analysis, and risk management \u2014 all driven by natural language through Claude Code.  ",
+      "family": "options",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2026-09-13T19:15:37Z",
+      "lineage": {
+        "source": "742e2e05afc1f50f",
+        "family": "options",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "options"
           }
         ]
       }
@@ -14941,6 +15641,36 @@
       }
     },
     {
+      "candidate_id": "31b246ae5f9b21b8",
+      "source": "github",
+      "source_url": "https://github.com/MackenzieCampbelAndross/StatARB",
+      "title": "MackenzieCampbelAndross/StatARB",
+      "description": "StatArb is a statistical arbitrage platform that uses cointegration analysis on Nifty 50 equities to identify mean reverting pairs, generate trading signals, backtest strategies, and analyze risk.",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2026-09-19T07:47:06Z",
+      "lineage": {
+        "source": "31b246ae5f9b21b8",
+        "family": "mean_reversion",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "7d412ac2683513ba",
       "source": "github",
       "source_url": "https://github.com/Nithyadodda07/pairs-trading-strategy",
@@ -15189,7 +15919,7 @@
       "family": "mean_reversion",
       "market": null,
       "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2026-09-18T03:56:40Z",
+      "source_timestamp": "2026-09-21T07:53:21Z",
       "lineage": {
         "source": "a94085f447c12add",
         "family": "mean_reversion",
@@ -15943,7 +16673,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T05:02:14Z",
+      "source_timestamp": "2026-09-22T05:13:01Z",
       "lineage": {
         "source": "919d6743c8ebe37f",
         "family": "unknown",
@@ -19064,6 +19794,22 @@
       "source_timestamp": "2026-09-22T06:14:58.627Z",
       "lineage": {
         "source": "de87dd72b6f9f34a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86d3d10c91755e78",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/chandler.bing/ecoscan-10540630-deletion_scheduled-86739954",
+      "title": "chandler.bing/ecoscan-10540630-deletion_scheduled-86739954",
+      "description": "Build HTML presentations with [reveal.js](https://revealjs.com/) from [Org mode](https://orgmode.org) source files. Based on [fork of org-reveal](https://github.com/lechten/org-reveal). Core of [emacs-reveal](https://gitlab.com/oer/emacs-reveal).\r\n\r\n[Readme presentation](https://oer.gitlab.io/org-re-reveal/Readme.html)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T06:15:17.356Z",
+      "lineage": {
+        "source": "86d3d10c91755e78",
         "family": "china_a_share",
         "rounds": []
       }
@@ -30269,6 +31015,22 @@
       }
     },
     {
+      "candidate_id": "65ff8fa61bb6aca7",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
+      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "65ff8fa61bb6aca7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "466b8eb708589e6a",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/restud/rdu035",
@@ -31529,22 +32291,6 @@
       "lineage": {
         "source": "6636ae97a91e134d",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "65ff8fa61bb6aca7",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
-      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China stock limit-up quantitative strategy",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "65ff8fa61bb6aca7",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -35757,22 +36503,6 @@
       }
     },
     {
-      "candidate_id": "78619bc74b86807f",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1093/qje/qjv027",
-      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
-      "description": "OpenAlex work type=article year=2015",
-      "family": "order_flow",
-      "market": null,
-      "query": "market microstructure order book strategy",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "78619bc74b86807f",
-        "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bbab21bb45942a2e",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/jjfinec/nbt003",
@@ -37112,6 +37842,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "f645de1cc827b90d",
+        "family": "mean_reversion",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "78619bc74b86807f",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1093/qje/qjv027",
+      "title": "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response *",
+      "description": "OpenAlex work type=article year=2015",
+      "family": "mean_reversion",
+      "market": null,
+      "query": "statistical arbitrage pairs trading equities",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "78619bc74b86807f",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -48115,6 +48861,32 @@
       }
     },
     {
+      "candidate_id": "3bb4947d64728a85",
+      "source": "github",
+      "source_url": "https://github.com/Cryptohopper-Reviews/cryptohopper-reviews",
+      "title": "Cryptohopper-Reviews/cryptohopper-reviews",
+      "description": "Cryptohopper Reviews compares the crypto trading bot with 3Commas, Pionex, Coinrule, and Bitsgap, covering TradingView alerts, automated strategies, grid and DCA tools, exchange support, backtesting, trade ideas, and practical features for choosing and configuring a crypto trading platform.",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026-09-16T21:04:36Z",
+      "lineage": {
+        "source": "3bb4947d64728a85",
+        "family": "unknown",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "unknown"
+          }
+        ]
+      }
+    },
+    {
       "candidate_id": "0b7a6ea07b5bccb6",
       "source": "github",
       "source_url": "https://github.com/Dhillon6576/Gold-Bot",
@@ -48123,7 +48895,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-12T22:35:04Z",
+      "source_timestamp": "2026-09-19T02:16:48Z",
       "lineage": {
         "source": "0b7a6ea07b5bccb6",
         "family": "unknown",
@@ -48149,7 +48921,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T04:37:28Z",
+      "source_timestamp": "2026-09-22T04:33:35Z",
       "lineage": {
         "source": "d17c81af679a58e4",
         "family": "unknown",
@@ -48253,7 +49025,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T04:50:04Z",
+      "source_timestamp": "2026-09-22T05:59:18Z",
       "lineage": {
         "source": "6b9b6508e08640e2",
         "family": "unknown",
@@ -48357,7 +49129,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T07:21:44Z",
+      "source_timestamp": "2026-09-21T17:32:18Z",
       "lineage": {
         "source": "af46be4766dd286e",
         "family": "unknown",
@@ -48383,7 +49155,7 @@
       "family": "unknown",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-16T00:55:40Z",
+      "source_timestamp": "2026-09-20T07:16:19Z",
       "lineage": {
         "source": "31b3510641840746",
         "family": "unknown",
@@ -48409,7 +49181,7 @@
       "family": "execution_mev",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T21:09:02Z",
+      "source_timestamp": "2026-09-17T10:51:40Z",
       "lineage": {
         "source": "05ca7c46e9e04998",
         "family": "execution_mev",
@@ -48487,7 +49259,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-15T06:56:30Z",
+      "source_timestamp": "2026-09-21T07:23:50Z",
       "lineage": {
         "source": "fb518932f0c61124",
         "family": "prediction_market",
@@ -48591,7 +49363,7 @@
       "family": "execution_mev",
       "market": null,
       "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026-09-04T04:32:53Z",
+      "source_timestamp": "2026-09-16T07:56:44Z",
       "lineage": {
         "source": "150e535ed24511db",
         "family": "execution_mev",
@@ -48695,7 +49467,7 @@
       "family": "unknown",
       "market": null,
       "query": "market making strategy code",
-      "source_timestamp": "2026-08-19T11:45:16Z",
+      "source_timestamp": "2026-09-16T13:32:26Z",
       "lineage": {
         "source": "175d2ecc4171e89b",
         "family": "unknown",
@@ -48890,6 +49662,500 @@
             "round": 2,
             "decision": "DEFER_DATA_LANE",
             "family": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "6490c981c418559a",
+      "source": "github",
+      "source_url": "https://github.com/0tabris/-Multilevel-Monte-Carlo-MLMC-for-Path-Dependent-Options",
+      "title": "0tabris/-Multilevel-Monte-Carlo-MLMC-for-Path-Dependent-Options",
+      "description": "comprehensive limit order book (LOB) simulator driven by self-exciting Hawkes processes for order arrivals and cancellations, with an integrated market-making strategy. The system will model realistic order flow dynamics, simulate LOB microstructure, and evaluate market-making performance under various market conditions.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2025-11-17T06:32:48Z",
+      "lineage": {
+        "source": "6490c981c418559a",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "04d9fe090ba848ea",
+      "source": "github",
+      "source_url": "https://github.com/Ananya9999999/Limit-Order-Book-Simulator",
+      "title": "Ananya9999999/Limit-Order-Book-Simulator",
+      "description": "Production-grade LOB engine modeling market microstructure, order matching, and HFT strategies. Microsecond latency, NSE tick replay, multi-agent back-testing. Built for Graviton-style quant roles.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-12T17:52:00Z",
+      "lineage": {
+        "source": "04d9fe090ba848ea",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "5ad592bc8d39c2a1",
+      "source": "github",
+      "source_url": "https://github.com/Krish-B-Shah/order-book-trading-bot",
+      "title": "Krish-B-Shah/order-book-trading-bot",
+      "description": "Custom-built high-frequency trading simulator featuring a priority-based order book, limit/market order matching engine, and real-time P&L tracking for market-making strategies. Designed to model core microstructure behaviors found in modern electronic exchanges.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2025-10-30T19:35:36Z",
+      "lineage": {
+        "source": "5ad592bc8d39c2a1",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3480c70e76a5c519",
+      "source": "github",
+      "source_url": "https://github.com/KyleC144/OrderBookSim",
+      "title": "KyleC144/OrderBookSim",
+      "description": "An event-driven limit order book simulator designed to study market microstructure dynamics and evaluate systematic market-making strategies under realistic order flow conditions.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-03-02T17:47:13Z",
+      "lineage": {
+        "source": "3480c70e76a5c519",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "b2dd546a9cf27a5d",
+      "source": "github",
+      "source_url": "https://github.com/MaxGamer1312/Deep-Reinforcement-Learning-for-Optimal-Trade-Execution",
+      "title": "MaxGamer1312/Deep-Reinforcement-Learning-for-Optimal-Trade-Execution",
+      "description": "A reinforcement learning system that learns optimal order execution strategies for large stock trades using L3 order book reconstruction. The agent uses a PPO actor-critic architecture to minimize market impact and slippage while executing large orders within a time constraint, trained on real market microstructure data from Databento.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-05-27T15:15:33Z",
+      "lineage": {
+        "source": "b2dd546a9cf27a5d",
+        "family": "execution_mev",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "execution_mev"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0bf899d73725043c",
+      "source": "github",
+      "source_url": "https://github.com/Mohamadrezaanbari/BinaScalp-Core",
+      "title": "Mohamadrezaanbari/BinaScalp-Core",
+      "description": "A modular, testable Binance scalping bot foundation built for low-latency market analysis, order-book tracking, microstructure-based signal generation, and risk-controlled execution. Designed as a clean starting point for research, strategy development, and production-grade trading infrastructure.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-24T08:01:50Z",
+      "lineage": {
+        "source": "0bf899d73725043c",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "9fc200075c3cb6d6",
+      "source": "github",
+      "source_url": "https://github.com/NicoBaranow/backtest-framework",
+      "title": "NicoBaranow/backtest-framework",
+      "description": "High-fidelity vectorized backtesting framework for derivatives market microstructure. Integrates continuous Limit Order Book (LOB) reconstruction, market impact simulations, and latency modeling for institutional-grade strategies.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-13T22:19:00Z",
+      "lineage": {
+        "source": "9fc200075c3cb6d6",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a848c6742441b269",
+      "source": "github",
+      "source_url": "https://github.com/SURUJ404/Aegis",
+      "title": "SURUJ404/Aegis",
+      "description": " Multi-venue crypto market-making engine in Rust: WebSocket feeds, order book & microstructure analytics, strategy/risk/execution pipeline, deterministic backtesting, Prometheus + Grafana observability, Docker/K8s deployment.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-18T19:28:58Z",
+      "lineage": {
+        "source": "a848c6742441b269",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "3fdfda28c6b69fbc",
+      "source": "github",
+      "source_url": "https://github.com/Space-Paragon1/Market-Microstructure-Simulator",
+      "title": "Space-Paragon1/Market-Microstructure-Simulator",
+      "description": "A Python simulator for market microstructure research \u2014 implements a central limit order book (CLOB) with price-time priority, event-driven order flow, and execution analytics (VWAP, slippage, spread capture) to study liquidity, strategy behavior, and market dynamics.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-19T03:23:01Z",
+      "lineage": {
+        "source": "3fdfda28c6b69fbc",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "24acd50387430ed1",
+      "source": "github",
+      "source_url": "https://github.com/Supersidd-2005/market-exchange-simulator",
+      "title": "Supersidd-2005/market-exchange-simulator",
+      "description": "xchange Simulator  A high-performance C++ simulation of a financial exchange, featuring a price-time-priority limit order book and matching engine. The project models how buy and sell orders are processed, matched, cancelled, and converted into trades while providing a foundation for experimenting with market microstructure and trading strategies.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-28T16:30:23Z",
+      "lineage": {
+        "source": "24acd50387430ed1",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "b08397c4890a3945",
+      "source": "github",
+      "source_url": "https://github.com/andrealandini/deribit-lob-model",
+      "title": "andrealandini/deribit-lob-model",
+      "description": "Real-time limit order book analysis and paper-trading system for Deribit, featuring live WebSocket market data, microstructure-based trading strategies, and a terminal dashboard for strategy performance comparison.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-04T16:34:29Z",
+      "lineage": {
+        "source": "b08397c4890a3945",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "87fdc4ef8301490d",
+      "source": "github",
+      "source_url": "https://github.com/arnavgupta2004/limit-order-book-market-making",
+      "title": "arnavgupta2004/limit-order-book-market-making",
+      "description": "Research-grade limit order book, market microstructure, and market-making simulator with price-time priority, queue modeling, realistic execution, C++ acceleration, and statistical strategy evaluation.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-21T13:46:22Z",
+      "lineage": {
+        "source": "87fdc4ef8301490d",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "dec168741dd0862b",
+      "source": "github",
+      "source_url": "https://github.com/dhairyabansal-dev/Market-Microstructure-Engine",
+      "title": "dhairyabansal-dev/Market-Microstructure-Engine",
+      "description": "Python-based research project for analyzing order-book liquidity, market imbalance, execution costs, slippage and basic execution strategies through a testable simulation framework.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-09-11T17:22:17Z",
+      "lineage": {
+        "source": "dec168741dd0862b",
+        "family": "execution_mev",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "execution_mev"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "a4bc2a5f4be070c9",
+      "source": "github",
+      "source_url": "https://github.com/gopherchaan/market-microstructure-lab",
+      "title": "gopherchaan/market-microstructure-lab",
+      "description": "A configurable WebSocket order book simulator written in Go. Designed for testing algorithmic trading strategies and anomaly detection systems without connecting to a live exchange. Supports replayable scenarios and adjustable speed.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-05-13T05:02:31Z",
+      "lineage": {
+        "source": "a4bc2a5f4be070c9",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "2de859411ac8120b",
+      "source": "github",
+      "source_url": "https://github.com/hgfjh/RustyBackTester",
+      "title": "hgfjh/RustyBackTester",
+      "description": "A Rust portfolio project for replaying historical limit order book data, reconstructing a local book, running a simple market-making strategy, simulating order lifecycle and fills, and producing run artifacts and summary statistics. The goal of the project is to explore market microstructure and systems-oriented simulation.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-07-29T11:45:15Z",
+      "lineage": {
+        "source": "2de859411ac8120b",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "c4554dd34a08ea1f",
+      "source": "github",
+      "source_url": "https://github.com/kpetridis24/lobsim",
+      "title": "kpetridis24/lobsim",
+      "description": "Ultra fast, deterministic L3 limit order book replay + paper-execution engine designed for market microstructure research and strategy prototyping.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-08-17T07:54:04Z",
+      "lineage": {
+        "source": "c4554dd34a08ea1f",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "14160efe001e16fa",
+      "source": "github",
+      "source_url": "https://github.com/real-rayezwtkl/lob_simulation",
+      "title": "real-rayezwtkl/lob_simulation",
+      "description": "Simulated a limit order book to study market microstructure, modeling stochastic order arrivals and price dynamics. Analyzed bid-ask spread, liquidity, and evaluated a market-making strategy using Monte Carlo simulations and statistical testing.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-04-11T16:14:31Z",
+      "lineage": {
+        "source": "14160efe001e16fa",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "fd1b77d4213d0a04",
+      "source": "github",
+      "source_url": "https://github.com/yhdong11/FE570_Final_Project",
+      "title": "yhdong11/FE570_Final_Project",
+      "description": "FE 570 Market Microstructure \u2014 Final Project: from AAPL TAQ analysis to a calibrated market-making strategy in a SHIFT-like order book.",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2026-06-25T14:38:03Z",
+      "lineage": {
+        "source": "fd1b77d4213d0a04",
+        "family": "order_flow",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "order_flow"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "742e2e05afc1f50f",
+      "source": "github",
+      "source_url": "https://github.com/pvc1997/diamond_options_engine",
+      "title": "pvc1997/diamond_options_engine",
+      "description": "Systematic Indian F&O options trading engine with 89 MCP tools, 18+ strategies, real-time Greeks, volatility analysis, and risk management \u2014 all driven by natural language through Claude Code.  ",
+      "family": "options",
+      "market": null,
+      "query": "options volatility trading systematic strategy",
+      "source_timestamp": "2026-09-13T19:15:37Z",
+      "lineage": {
+        "source": "742e2e05afc1f50f",
+        "family": "options",
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "DEFER_DATA_LANE",
+            "family": "options"
           }
         ]
       }
@@ -49683,7 +50949,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-16T05:02:14Z",
+      "source_timestamp": "2026-09-22T05:13:01Z",
       "lineage": {
         "source": "919d6743c8ebe37f",
         "family": "unknown",
