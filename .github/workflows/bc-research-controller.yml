@@ -41,6 +41,7 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}
       AIOS_SOURCE: ${{ github.workspace }}/aios-authority
       AIOS_AUTHORITY_SECRET: ${{ secrets.AIOS_AUTHORITY_SECRET }}
+      AIOS_AUTHORITY_SHA: 151f386683934edd6e124d1ae69bd95a68b3ecbf
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -183,7 +184,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority research/continuation_intent.json)
+          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/repair_research research/provider_usage.json research/.aios_authority research/aios_conformance_receipt.json research/continuation_intent.json)
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
