@@ -160,7 +160,25 @@ def main() -> int:
     cost_available = EVALUATION_SPEC.get("cost_model_status") == "AVAILABLE"
     net_gate = "PASS" if cost_available and validation_passed else ("COST_MODEL_REQUIRED" if not cost_available else "VALIDATION_QUALITY_FAILED")
     result = {"schema_version": 10, "bc": candidate["bc"], "parent_bc": candidate["parent_bc"], "hypothesis_id": hid, "candidate_hash": candidate["candidate_hash"], "discovery_spec": candidate.get("discovery_spec"), "oos_selection_used": False, "oos_executed": False, "dataset": {"path": str(data), "sha256": sha256(data), "bars": len(bars)}, "evaluation_spec": dict(EVALUATION_SPEC), "candidate_universe": candidate_universe, "cost_model": cost_model.metadata(), "IS": is_result, "VALIDATION": val_result, "gross_validation_passed": validation_passed, "validation_gate_reasons": gate_reasons, "net_validation_gate": net_gate, "validation_passed": bool(cost_available and validation_passed), "validation_basis": "NET_REQUIRED_FOR_PROMOTION"}
-    out = root / a.out; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    out = root / a.out; out.parent.mkdir(parents=True, exist_ok=True)
+    cache_dir = root / "research" / "evaluation_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_key = hashlib.sha256(json.dumps({
+        "candidate_hash": candidate["candidate_hash"],
+        "dataset_sha256": result["dataset"]["sha256"],
+        "evaluator_digest": sha256(Path(__file__)),
+        "evaluation_spec": EVALUATION_SPEC,
+    }, sort_keys=True, default=str).encode()).hexdigest()
+    cache_path = cache_dir / f"{cache_key}.json"
+    if cache_path.exists():
+        cached = json.loads(cache_path.read_text(encoding="utf-8"))
+        if (cached.get("candidate_hash") == candidate["candidate_hash"]
+                and cached.get("dataset", {}).get("sha256") == result["dataset"]["sha256"]
+                and cached.get("evaluator_digest") == result["evaluator_digest"]):
+            result = cached
+    else:
+        cache_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"bc": candidate["bc"], "hypothesis_id": hid, "candidate_universe": candidate_universe, "gross_validation_passed": validation_passed, "gate_reasons": gate_reasons, "net_gate": net_gate}, indent=2))
     return 0
 
