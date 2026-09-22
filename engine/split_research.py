@@ -48,8 +48,15 @@ def run_split(
         base_ledger = research_context.get("ledger")
         if context_bars is not bars or not isinstance(events, list) or not isinstance(base_ledger, list):
             raise ValueError("invalid research context")
-        events = [e for e in events if e.bar_index < end]
-        ledger = [t for t in base_ledger if start <= t.entry_bar < end]
+        split_cache = research_context.get("split_cache")
+        key = (int(start), int(end))
+        if isinstance(split_cache, dict) and key in split_cache:
+            cached = split_cache[key]
+            events = cached["events"]
+            ledger = cached["ledger"]
+        else:
+            events = [e for e in events if e.bar_index < end]
+            ledger = [t for t in base_ledger if start <= t.entry_bar < end]
     else:
         events = ReferenceStrategy().process(history)
         ledger = [t for t in build_ledger(events) if start <= t.entry_bar < end]
