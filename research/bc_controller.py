@@ -51,7 +51,16 @@ def regenerate(bc,parent,failure,s):
   parent_candidate_path=CANDIDATE_DIR/f'BC{parent}.json'
   failure_record=load(failure,{}) if isinstance(failure,Path) else (failure if isinstance(failure,dict) else {})
   oos_failed=str(failure_record.get('oos_verdict','')) == 'OOS_FAIL'
-  if parent_candidate_path.exists() and not oos_failed:
+  parent_validation = failure_record.get('validation_summary') if isinstance(failure_record,dict) else None
+  parent_accepted = parent_validation.get('accepted_signals') if isinstance(parent_validation,dict) else None
+  # A zero-signal structure is a dead end, not a parameter-tuning opportunity.
+  # Move immediately to the structural discovery frontier instead of burning BCs
+  # on thresholds/windows that cannot produce any validation trade.
+  parameter_search_allowed = (
+   parent_candidate_path.exists() and not oos_failed
+   and isinstance(parent_accepted,(int,float)) and parent_accepted > 0
+  )
+  if parameter_search_allowed:
    try:
     from research.autonomous_hypothesis import validate_candidate, write_candidate
     from research.hypothesis_novelty import parameter_key, parameter_variants
@@ -83,6 +92,8 @@ def regenerate(bc,parent,failure,s):
     s['parameter_optimization_exhausted_for_parent']=True
    except Exception as exc:
     s['parameter_optimization_error']=str(exc)
+  if parent_candidate_path.exists() and not oos_failed and parent_accepted == 0:
+   print(f'CONTROLLER_SKIP_PARAMETER_FRONTIER BC{bc} parent=BC{parent} reason=ZERO_VALIDATION_SIGNALS')
   payload=json.loads(original_text); raw=payload.get('candidates',[]) if isinstance(payload,dict) else payload
   if not isinstance(raw,list): return False
   families=[]
