@@ -1,27 +1,28 @@
 [
   {
     "bc": 477,
-    "candidate_hash": "37ed603e48ac6bc3de85481365c62c083fea59976c569d6096ae115a763b0e38",
-    "conceptual_change": "Use a 3-period delta of the close price within the mean_reversion family to capture short-term oversold bounces on 1H BTCUSDT.",
+    "candidate_hash": "9221eac33028fefa2cf8ffa0cd6ebabc17c17c28daf630d528529aa69ce1c3c5",
+    "conceptual_change": "Translate the selected smc_ict liquidity structure mechanism into a valid difference primitive comparing high and high over a rolling period to capture structural sweeps on BTCUSDT 1H.",
     "discovery_spec": {
       "direction": "above",
-      "left": "close",
-      "mechanism_family": "mean_reversion",
-      "operator": "delta",
-      "threshold": -0.015,
-      "window": 3
+      "left": "high",
+      "mechanism_family": "smc_ict",
+      "operator": "difference",
+      "right": "high",
+      "threshold": 0.0,
+      "window": 1
     },
     "evidence_sources": [
-      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
+      "https://github.com/3yther/quant-bot"
     ],
     "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "mean_reversion|delta|close||above",
+    "novelty_key": "smc_ict|difference|high|high|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": -0.015,
-      "window": 3
+      "threshold": 0.0,
+      "window": 1
     },
     "parent_bc": 476,
     "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
