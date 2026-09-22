@@ -236,6 +236,45 @@ jobs:
             echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
           fi
           echo "STATE_PERSISTED"
+      - name: Fast event-driven continuation dispatch
+        if: ${{ steps.controller.outputs.continue == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          intent_path="research/continuation_intent.json"
+          if [ ! -f "$intent_path" ]; then echo "CONTINUATION_INTENT_MISSING" >&2; exit 1; fi
+          target_sha="$(git rev-parse HEAD)"
+          existing="$(gh run list --workflow bc-research-controller.yml --branch main --commit "$target_sha" --event workflow_dispatch --limit 20 --json databaseId,url,status,event,headSha)"
+          existing_url="$(printf '%s' "$existing" | jq -r --argjson source_run_id "$GITHUB_RUN_ID" 'map(select(.databaseId != $source_run_id))[0].url // empty')"
+          if [ -n "$existing_url" ]; then
+            run_url="$existing_url"
+            echo "CONTINUATION_EXISTING_RUN url=$run_url"
+          else
+            run_url="$(gh workflow run bc-research-controller.yml --ref main)"
+            [ -n "$run_url" ] || { echo "CONTINUATION_DISPATCH_NO_RECEIPT" >&2; exit 1; }
+            echo "CONTINUATION_DISPATCHED url=$run_url"
+          fi
+          python - "$run_url" "$target_sha" <<'PY'
+          import json,sys
+          from pathlib import Path
+          p=Path('research/continuation_intent.json')
+          intent=json.loads(p.read_text())
+          intent['status']='DISPATCHED'
+          intent['dispatch_run_url']=sys.argv[1]
+          intent['dispatch_head_sha']=sys.argv[2]
+          p.write_text(json.dumps(intent,indent=2,sort_keys=True)+'\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/continuation_intent.json
+          git commit -m "research: record fast continuation dispatch [skip ci]"
+          if ! git push origin HEAD:main; then
+            echo "CONTINUATION_RECEIPT_PUSH_CONFLICT; durable PENDING intent remains recoverable" >&2
+            exit 1
+          fi
+          echo "CONTINUATION_RECEIPT_PERSISTED"
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
