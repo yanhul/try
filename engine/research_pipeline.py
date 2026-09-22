@@ -63,7 +63,12 @@ def run_is_validation_oos(
     # Compute it once; run_split slices the causal prefix for each split.
     events = ReferenceStrategy().process(bars)
     ledger = build_ledger(events)
-    research_context = {"bars": bars, "events": events, "ledger": ledger}
+    research_context = {"bars": bars, "events": events, "ledger": ledger, "split_cache": {}}
+    for split in splits:
+        research_context["split_cache"][(int(split.start), int(split.end))] = {
+            "events": [e for e in events if e.bar_index < split.end and e.bar_index >= split.start],
+            "ledger": [t for t in ledger if split.start <= t.entry_bar < split.end],
+        }
     candidates = [canonicalize(c) | {"stop_fraction": c["stop_fraction"], "reward_multiple": c["reward_multiple"]} for c in candidates]
     if not candidates:
         raise ValueError("no candidates")
