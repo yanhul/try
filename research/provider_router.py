@@ -77,9 +77,11 @@ def normalize_hypothesis_id(c):
    if key not in spec and key in c: spec[key]=c.pop(key)
  explicit_family=spec.get("mechanism_family")
  if explicit_family is not None:
-  primitive_shape=(explicit_family==selected_family and spec.get("operator") in OPERATORS and spec.get("left") in COLUMNS)
-  if primitive_shape:
-   c["hypothesis_id"]="discovered_primitive"
+  primitive_keys={"operator","left","right","window"}
+  has_primitive=any(key in spec for key in primitive_keys)
+  if has_primitive:
+   primitive_shape=(explicit_family==selected_family and spec.get("operator") in OPERATORS and spec.get("left") in COLUMNS)
+   c["hypothesis_id"]="discovered_primitive" if primitive_shape else "invalid_discovered_primitive"
   elif explicit_family==selected_family:
    c["hypothesis_id"]="mechanism_family"
   return
