@@ -13,7 +13,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 12768,
+  "checkpoint_seq": 12771,
   "current_bc": 477,
   "history": [
     {
@@ -3671,7 +3671,7 @@
   ],
   "iterations": 1399,
   "last_bc": 476,
-  "last_error": null,
+  "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_http_503:GEMINI PROVIDER_ROUTER_HOLD",
   "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 477,
   "oos_consumed": [
@@ -3738,9 +3738,9 @@
   "parameter_optimization_active": true,
   "parameter_optimization_exhausted_for_parent": false,
   "parameter_optimization_parent_bc": 476,
-  "phase": "PERSISTED",
+  "phase": "WAIT_RETRY",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_http_503:GEMINI\nPROVIDER_ROUTER_HOLD",
-  "retry_count": 0,
+  "retry_count": 1,
   "state_migrations": [
     {
       "migration_id": "OOS_CANONICAL_V1",
@@ -3754,5 +3754,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_FAIL GEMINI: deterministic_translation_frontier_exhausted\nPROVIDER_ROUTER_HOLD",
-  "updated_at": "2026-09-22T22:23:50.098205+00:00"
+  "updated_at": "2026-09-22T22:25:44.144857+00:00"
 }
