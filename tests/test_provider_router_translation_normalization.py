@@ -19,6 +19,27 @@ def test_opaque_provider_id_with_selected_mechanism_spec_is_canonicalized():
         provider_router.selected_family = previous
 
 
+
+def test_selected_family_with_primitive_fields_is_canonicalized_as_discovered_primitive():
+    previous = provider_router.selected_family
+    try:
+        provider_router.selected_family = "momentum_trend"
+        candidate = {
+            "hypothesis_id": "gemini_generated_hypothesis_primitive",
+            "discovery_spec": {
+                "mechanism_family": "momentum_trend",
+                "operator": "difference",
+                "left": "high",
+                "right": "low",
+                "threshold": 0.5,
+                "direction": "above",
+            },
+        }
+        provider_router.normalize_hypothesis_id(candidate)
+        assert candidate["hypothesis_id"] == "discovered_primitive"
+    finally:
+        provider_router.selected_family = previous
+
 def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
     previous = provider_router.selected_family
     try:
