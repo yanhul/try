@@ -60,6 +60,7 @@ jobs:
           print("STATUS="+str(intent.get("status")))
           print("CAMPAIGN_ID="+str(intent.get("campaign_id") or ""))
           print("NEXT_BC="+str(intent.get("next_bc") or ""))
+          print("CREATED_BY_RUN_ID="+str(intent.get("created_by_run_id") or ""))
           PY
           source /tmp/intent.env
 
@@ -90,7 +91,7 @@ jobs:
 
           target_sha="$(git rev-parse HEAD)"
           existing="$(gh run list --workflow bc-research-controller.yml --branch main --commit "$target_sha" --event workflow_dispatch --limit 20 --json databaseId,url,status,event,headSha)"
-          existing_url="$(printf '%s' "$existing" | jq -r '.[0].url // empty')"
+          existing_url="$(printf '%s' "$existing" | jq -r --argjson source_run_id "$CREATED_BY_RUN_ID" 'map(select(.databaseId != $source_run_id))[0].url // empty')"
 
           if [ -n "$existing_url" ]; then
             run_url="$existing_url"
