@@ -27,3 +27,10 @@ def test_continuation_is_event_driven_and_durable():
     assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
     assert 'sleep' not in CONTINUATION.lower()
+
+
+def test_controller_has_fast_dispatch_with_durable_receipt():
+    assert 'Fast event-driven continuation dispatch' in CONTROLLER
+    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTROLLER
+    assert "intent['status']='DISPATCHED'" in CONTROLLER
+    assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTROLLER
