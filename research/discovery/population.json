@@ -32263,6 +32263,22 @@
       }
     },
     {
+      "candidate_id": "65ff8fa61bb6aca7",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
+      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "65ff8fa61bb6aca7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "466b8eb708589e6a",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/restud/rdu035",
@@ -33539,22 +33555,6 @@
       "lineage": {
         "source": "6636ae97a91e134d",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "65ff8fa61bb6aca7",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1007/s13280-014-0504-0",
-      "title": "A Quantitative Review of Urban Ecosystem Service Assessments: Concepts, Models, and Implementation",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China stock limit-up quantitative strategy",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "65ff8fa61bb6aca7",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -44615,22 +44615,6 @@
       }
     },
     {
-      "candidate_id": "6fa56e72564c67b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
-      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
-      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "6fa56e72564c67b5",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aa8ed4bad3606511",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/def497c3bb64b78b67b4996bbe0bae2e4f042a02",
@@ -44775,6 +44759,38 @@
       }
     },
     {
+      "candidate_id": "32d57cde827e100d",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
+      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
+      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "32d57cde827e100d",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6fa56e72564c67b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b756561201bd1cb8de93e3ec7f37d960526d2f40",
+      "title": "CMS-VAE: A Strategy-aware Variational AutoEncoder for High-Fidelity Crypto Market Simulation",
+      "description": "Cryptocurrency markets exhibit extreme volatility, non-stationarity, and complex inter-asset dependencies that pose significant challenges for generating realistic synthetic data, a crucial need for risk management, backtesting, and strategy development. While recent Time Series Generation (TSG) models, such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and diffusion methods, have shown promise, they often fall short in capturing crypto-specific dynamics, generalizing effectively, and aligning synthetic data with trading objectives. To address these challenges, we propose CMS-VAE, a VAE-based framework tailored for Crypto Market Simulation. CMS-VAE employs a dilated CNN architecture to model long-range temporal dependencies and cross-asset correlations, and introduces the Ensemble Financial Performance Loss (EFPL), which integrates strategy-aware supervision over diverse strategies to produce strategy-consistent and risk-aligned synthetic data. Extensive experiments across generative fidelity, predictive modeling, and statistical arbitrage show that CMS-VAE consistently outperforms state-of-the-art baselines. It achieves up to 96.8% lower prediction errors and 1.4 \u00d7 improvements in the Sharpe ratio. These results position CMS-VAE as an effective and efficient tool for high-fidelity crypto market simulation.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "6fa56e72564c67b5",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f609682f5a89dcc5",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/57ebb18873641f9ddc84504520360928a0fc73e1",
@@ -44834,6 +44850,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "93eb0273e2fd4833",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "cf6cbb16cb1eb537",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
+      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
+      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "cf6cbb16cb1eb537",
         "family": "volatility",
         "rounds": []
       }
@@ -46887,22 +46919,6 @@
       }
     },
     {
-      "candidate_id": "cf6cbb16cb1eb537",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c1ae62e6825712b0e597a5b70819a2d9157fe6ab",
-      "title": "Temporal Fusion Transformer-Based Trading Strategy for Multi-Crypto Assets Using On-Chain and Technical Indicators",
-      "description": "Cryptocurrency markets are characterized by high volatility, nonlinear dependencies, and limited transparency, making short-term forecasting particularly challenging for both researchers and practitioners. To address these complexities, this study introduces a Temporal Fusion Transformer (TFT)-based forecasting framework that integrates on-chain and technical indicators to improve predictive performance and inform tactical trading decisions. By combining multi-source features\u2014such as Spent Output Profit Ratio (SOPR), Total Value Locked (TVL), active addresses (AA), exchange net flow (ENF), Realized Cap HODL Waves, and the Crypto Fear and Greed Index\u2014with classical signals like Relative Strength Index (RSI) and moving average convergence divergence (MACD), the model captures behavioral patterns, investor sentiment, and price dynamics in a unified structure. Five major cryptocurrencies\u2014BTC, ETH, USDT, XRP, and BNB\u2014serve as the empirical basis for evaluation. The proposed TFT model is benchmarked against LSTM, GRU, SVR, and XGBoost using standard regression metrics to assess forecasting accuracy. Beyond prediction, a signal-based trading strategy is developed by translating model outputs into daily buy, hold, or sell signals, with performance assessed through a comprehensive set of financial metrics. The results suggest that integrating attention-based deep learning with domain-informed indicators provides an effective and interpretable approach for multi-asset cryptocurrency forecasting and real-time portfolio strategy optimization.",
-      "family": "onchain",
-      "market": null,
-      "query": "on chain wallet flow trading signal research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "cf6cbb16cb1eb537",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "73a842238c2f99c9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/ea8ba090e0f140219f448221c6cb66a31de9c065",
@@ -48371,22 +48387,6 @@
       "lineage": {
         "source": "666e5ab7c7ce84c9",
         "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "32d57cde827e100d",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/dba475177e8b4fcf213c7bfdac889868009e15bc",
-      "title": "Agent-Based Genetic Algorithm for Crypto Trading Strategy Optimization",
-      "description": "Cryptocurrency markets present formidable challenges for trading strategy optimization due to extreme volatility, non-stationary dynamics, and complex microstructure patterns that render conventional parameter optimization methods fundamentally inadequate. We introduce Cypto Genetic Algorithm Agent (CGA-Agent), a pioneering hybrid framework that synergistically integrates genetic algorithms with intelligent multi-agent coordination mechanisms for adaptive trading strategy parameter optimization in dynamic financial environments. The framework uniquely incorporates real-time market microstructure intelligence and adaptive strategy performance feedback through intelligent mechanisms that dynamically guide evolutionary processes, transcending the limitations of static optimization approaches. Comprehensive empirical evaluation across three cryptocurrencies demonstrates systematic and statistically significant performance improvements on both total returns and risk-adjusted metrics.",
-      "family": "volatility",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "32d57cde827e100d",
-        "family": "volatility",
         "rounds": []
       }
     },
