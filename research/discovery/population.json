@@ -3017,22 +3017,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3508,6 +3492,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -4121,22 +4121,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "13a9e4b178672aa9",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7475338",
@@ -4148,118 +4132,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "13a9e4b178672aa9",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "667acb5e3216c827",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch5",
-      "title": "Trading System Elements: Exits",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "667acb5e3216c827",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
         "family": "unknown",
         "rounds": []
       }
@@ -5273,6 +5145,22 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -5285,6 +5173,118 @@
       "lineage": {
         "source": "0bc7fc89046bdb2c",
         "family": "cross_sectional",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "667acb5e3216c827",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch5",
+      "title": "Trading System Elements: Exits",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "667acb5e3216c827",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "crypto trading bot strategy backtest",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -6933,22 +6933,6 @@
       "lineage": {
         "source": "53f18a556609aabb",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "genetic programming symbolic regression trading alpha",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -9061,6 +9045,22 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
         "rounds": []
       }
     },
@@ -35709,6 +35709,22 @@
       }
     },
     {
+      "candidate_id": "66319896a7de85fd",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
+      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
+      "description": "OpenAlex work type=review year=2018",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "66319896a7de85fd",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "853ff5b2e9f1c418",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s10551-019-04160-5",
@@ -37337,22 +37353,6 @@
       "lineage": {
         "source": "3367bc5373ba03d7",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "66319896a7de85fd",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
-      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
-      "description": "OpenAlex work type=review year=2018",
-      "family": "onchain",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "66319896a7de85fd",
-        "family": "onchain",
         "rounds": []
       }
     },
@@ -40233,22 +40233,6 @@
       "lineage": {
         "source": "832937213c945052",
         "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "ad9399b71f887dc2",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
-      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
-      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "ad9399b71f887dc2",
-        "family": "china_a_share",
         "rounds": []
       }
     },
@@ -46008,6 +45992,22 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "fcbb64a82fa6f5de",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ad9399b71f887dc2",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5a0c9fe6746ac535917fe17797f3d2d689f3f35f",
+      "title": "Navigating the Alpha Jungle: An LLM-Powered MCTS Framework for Formulaic Factor Mining",
+      "description": "Alpha factor mining is pivotal in quantitative investment for identifying predictive signals from complex financial data. While traditional formulaic alpha mining relies on human expertise, contemporary automated methods, such as those based on genetic programming or reinforcement learning, often struggle with search inefficiency or yield alpha factors that are difficult to interpret. This paper introduces a novel framework that integrates Large Language Models (LLMs) with Monte Carlo Tree Search (MCTS) to overcome these limitations. Our framework leverages the LLM's instruction-following and reasoning capability to iteratively generate and refine symbolic alpha formulas within an MCTS-driven exploration. A key innovation is the guidance of MCTS exploration by rich, quantitative feedback from financial backtesting of each candidate factor, enabling efficient navigation of the vast search space. Furthermore, a frequent subtree avoidance mechanism is introduced to enhance search diversity and prevent formulaic homogenization, further improving performance. Experimental results on real-world stock market data demonstrate that our LLM-based framework outperforms existing methods by mining alphas with superior predictive accuracy and trading performance. The resulting formulas are also more amenable to human interpretation, establishing a more effective and efficient paradigm for formulaic alpha mining.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "ad9399b71f887dc2",
         "family": "china_a_share",
         "rounds": []
       }
