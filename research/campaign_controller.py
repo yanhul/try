@@ -179,7 +179,7 @@ def reconcile_campaign_state(state, budget):
             clean_queue.append(item)
         if clean_queue != queue:
             QUEUE.parent.mkdir(parents=True, exist_ok=True)
-            QUEUE.write_text(json.dumps(clean_queue, indent=2, sort_keys=True) + '\\n', encoding='utf-8')
+            QUEUE.write_text(json.dumps(clean_queue, indent=2, sort_keys=True) + '\n', encoding='utf-8')
 
     if repaired:
         state['state_reconciled_from_durable_bc_artifacts'] = True
