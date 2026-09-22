@@ -164,6 +164,16 @@ def test_epoch_boundary_resets_budget_without_erasing_history(monkeypatch, tmp_p
     monkeypatch.setattr(campaign_controller, "STATE", tmp_path / "state.json")
     monkeypatch.setattr(campaign_controller, "CANDIDATE_DIR", tmp_path / "candidates")
     monkeypatch.setattr(campaign_controller, "FAILURE_DIR", tmp_path / "failures")
+    campaign_controller.CANDIDATE_DIR.mkdir(parents=True)
+    campaign_controller.FAILURE_DIR.mkdir(parents=True)
+    for bc in range(167, 267):
+        (campaign_controller.CANDIDATE_DIR / f"BC{bc}.json").write_text(
+            json.dumps({"bc": bc, "candidate_hash": f"h{bc}"}), encoding="utf-8"
+        )
+        (campaign_controller.FAILURE_DIR / f"BC{bc}.json").write_text(
+            json.dumps({"bc": bc, "decision": "REJECT", "candidate_hash": f"h{bc}"}),
+            encoding="utf-8",
+        )
     state = {"campaign_id": "BTCUSDT-1H-AUTONOMOUS-002", "campaign_epoch": 1,
              "campaign_epoch_initialized": True, "campaign_start_bc": 167,
              "next_bc": 267, "campaign_terminal": False, "history":
