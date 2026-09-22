@@ -234,13 +234,41 @@ jobs:
             echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
           fi
           echo "STATE_PERSISTED"
-      - name: Mark event-driven continuation pending
+      - name: Dispatch durable continuation
         if: ${{ steps.controller.outputs.continue == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          test -f research/continuation_intent.json
-          echo "CONTINUATION_PENDING_COMMITTED_BY_STATE_PERSISTENCE"
+          intent_path="research/continuation_intent.json"
+          test -f "$intent_path"
+          test "$(jq -r '.status' "$intent_path")" = "PENDING"
+          source_run_id="$(jq -r '.created_by_run_id' "$intent_path")"
+          test "$source_run_id" = "${{ github.run_id }}"
+
+          run_url="$(gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main)"
+          test -n "$run_url"
+          echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id url=$run_url"
+
+          target_sha="$(git rev-parse HEAD)"
+          jq --arg url "$run_url" --arg sha "$target_sha" --arg source "$source_run_id" \
+            '.status="DISPATCHED" | .dispatch_run_url=$url | .dispatch_head_sha=$sha | .dispatch_source_run_id=($source|tonumber)' \
+            "$intent_path" > "$intent_path.tmp"
+          mv "$intent_path.tmp" "$intent_path"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$intent_path"
+          git commit -m "research: record continuation dispatch [skip ci]"
+
+          if ! git push origin HEAD:main; then
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+          echo "CONTINUATION_RECEIPT_PERSISTED"
+
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
