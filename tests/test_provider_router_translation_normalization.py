@@ -62,6 +62,26 @@ def test_selected_family_with_malformed_primitive_fields_fails_closed():
     finally:
         provider_router.selected_family = previous
 
+
+def test_selected_family_with_partial_primitive_fields_does_not_downgrade_to_family():
+    previous = provider_router.selected_family
+    try:
+        provider_router.selected_family = "momentum_trend"
+        candidate = {
+            "hypothesis_id": "mechanism_family",
+            "discovery_spec": {
+                "mechanism_family": "momentum_trend",
+                "operator": "zscore",
+                "threshold": 3.0,
+                "window": 24,
+                "direction": "above",
+            },
+        }
+        provider_router.normalize_hypothesis_id(candidate)
+        assert candidate["hypothesis_id"] == "invalid_discovered_primitive"
+    finally:
+        provider_router.selected_family = previous
+
 def test_opaque_provider_id_with_primitive_spec_is_canonicalized():
     previous = provider_router.selected_family
     try:
