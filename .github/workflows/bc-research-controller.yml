@@ -220,8 +220,7 @@ jobs:
             remote_overlap="$(git diff --name-only "$base_sha..origin/main" -- "${durable_paths[@]}" "${validation_files[@]}" 2>/dev/null || true)"
             if [ -n "$remote_overlap" ]; then
               echo "STATE_PERSISTENCE_CONFLICT remote durable paths changed since base; refusing merge" >&2
-              printf '%s
-' "$remote_overlap" >&2
+              printf '%s\\n' "$remote_overlap" >&2
               exit 1
             fi
             git rebase origin/main
