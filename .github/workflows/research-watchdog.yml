@@ -48,7 +48,7 @@ jobs:
           if not eligible:
               raise SystemExit(0)
           PY
-          gh workflow run bc-research-controller.yml --ref main
+          gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "AUTO_RESUME_DISPATCHED"
 
       - name: Open durable incident if stale
