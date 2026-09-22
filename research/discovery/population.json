@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3146,
-    "expanded": 2754,
-    "normalized": 2754,
+    "raw": 3153,
+    "expanded": 2761,
+    "normalized": 2761,
     "round1": 214,
     "deferred": 102,
     "survivors": 109,
@@ -1172,22 +1172,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "55d007669c4c44b6",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "408b437740429b8b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2419243",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "408b437740429b8b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -3273,22 +3257,6 @@
       }
     },
     {
-      "candidate_id": "7d4b92a7d686fef1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4770775",
-      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
-      "description": "Crossref work type=posted-content",
-      "family": "onchain",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7d4b92a7d686fef1",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0f675d2f6ade3ded",
       "source": "crossref",
       "source_url": "https://doi.org/10.3386/w13204",
@@ -3301,38 +3269,6 @@
       "lineage": {
         "source": "0f675d2f6ade3ded",
         "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "731383bc4280c908",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "731383bc4280c908",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d8ada6888a9b4983",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
-      "title": "Liquidity and Trading Frictions",
-      "description": "Crossref work type=book-chapter",
-      "family": "smc_ict",
-      "market": null,
-      "query": "Solana on chain alpha liquidity trading",
-      "source_timestamp": "2011",
-      "lineage": {
-        "source": "d8ada6888a9b4983",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -8665,6 +8601,54 @@
       }
     },
     {
+      "candidate_id": "7d4b92a7d686fef1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4770775",
+      "title": "Liquidity Jump, Liquidity Diffusion, and Treatment on Wash Trading of Crypto Assets",
+      "description": "Crossref work type=posted-content",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "7d4b92a7d686fef1",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "731383bc4280c908",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/8363.003.0014",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "731383bc4280c908",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d8ada6888a9b4983",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.7551/mitpress/9780262016285.003.0012",
+      "title": "Liquidity and Trading Frictions",
+      "description": "Crossref work type=book-chapter",
+      "family": "smc_ict",
+      "market": null,
+      "query": "smart money concepts ICT liquidity sweep trading strategy crypto",
+      "source_timestamp": "2011",
+      "lineage": {
+        "source": "d8ada6888a9b4983",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "94ba296f6893f7a8",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119196877.ch4",
@@ -9220,6 +9204,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "8ea919f1f416226a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "408b437740429b8b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2419243",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic trading strategy repository",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "408b437740429b8b",
         "family": "unknown",
         "rounds": []
       }
@@ -11907,7 +11907,7 @@
       "family": "unknown",
       "market": null,
       "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-09-18T20:29:19Z",
+      "source_timestamp": "2026-09-22T02:49:50Z",
       "lineage": {
         "source": "0256e5107f6136db",
         "family": "unknown",
@@ -14169,7 +14169,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-21T23:56:38Z",
+      "source_timestamp": "2026-09-22T02:56:29Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -19013,7 +19013,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T22:57:33.818Z",
+      "source_timestamp": "2026-09-22T02:38:15.598Z",
       "lineage": {
         "source": "99703f9cad271d6d",
         "family": "china_a_share",
@@ -20877,6 +20877,22 @@
       }
     },
     {
+      "candidate_id": "7eeced568549f405",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/filforopen-source/WordPress",
+      "title": "filforopen-source/WordPress",
+      "description": "WordPress, Git-ified. This repository is just a mirror of the WordPress subversion repository. Please do not send pull requests. Submit pull requests to https://github.com/WordPress/wordpress-develop and patches to https://core.trac.wordpress.org/ instead.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:52:06.150Z",
+      "lineage": {
+        "source": "7eeced568549f405",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0115907cdd67765e",
       "source": "gitlab",
       "source_url": "https://gitlab.com/filiptronicek/gitpod",
@@ -21509,7 +21525,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T19:46:27.214Z",
+      "source_timestamp": "2026-09-22T02:55:26.686Z",
       "lineage": {
         "source": "f42d4458a11ae03a",
         "family": "china_a_share",
@@ -21669,7 +21685,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T10:25:49.711Z",
+      "source_timestamp": "2026-09-22T02:38:34.202Z",
       "lineage": {
         "source": "f3bc5faa3f057dbf",
         "family": "china_a_share",
@@ -21733,7 +21749,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T02:27:31.928Z",
+      "source_timestamp": "2026-09-22T02:40:02.362Z",
       "lineage": {
         "source": "b171a1180cb1deb6",
         "family": "china_a_share",
@@ -21781,7 +21797,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T14:26:47.911Z",
+      "source_timestamp": "2026-09-22T02:40:31.976Z",
       "lineage": {
         "source": "977fa130cfe1da89",
         "family": "china_a_share",
@@ -21973,7 +21989,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T22:46:20.564Z",
+      "source_timestamp": "2026-09-22T02:46:16.936Z",
       "lineage": {
         "source": "699716a98018ac8d",
         "family": "china_a_share",
@@ -22005,7 +22021,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T22:52:34.776Z",
+      "source_timestamp": "2026-09-22T02:53:08.849Z",
       "lineage": {
         "source": "a37ec09dd8b8cd1a",
         "family": "china_a_share",
@@ -22341,7 +22357,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:06:47.833Z",
+      "source_timestamp": "2026-09-22T02:44:11.806Z",
       "lineage": {
         "source": "297f3a668baec00f",
         "family": "china_a_share",
@@ -22405,7 +22421,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:39:39.986Z",
+      "source_timestamp": "2026-09-22T02:45:37.903Z",
       "lineage": {
         "source": "2c571b9f37801ee3",
         "family": "china_a_share",
@@ -25301,7 +25317,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T13:53:36.714Z",
+      "source_timestamp": "2026-09-22T02:37:15.307Z",
       "lineage": {
         "source": "f0d24dc0c011a0ff",
         "family": "china_a_share",
@@ -28189,6 +28205,38 @@
       }
     },
     {
+      "candidate_id": "7aef156319912960",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ultralytics/handbook",
+      "title": "ultralytics/handbook",
+      "description": "Ultralytics company handbook covering our mission, values, onboarding, people, policies, security, and operations.\n\nGitHub: https://github.com/ultralytics/handbook\n\nhttps://handbook.ultralytics.com",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:39:18.311Z",
+      "lineage": {
+        "source": "7aef156319912960",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "99bcb7bfcc5b6e7e",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ultralytics/inference",
+      "title": "ultralytics/inference",
+      "description": "High-performance Ultralytics YOLO inference in Rust with ONNX Runtime, GPU backends, CLI, and WebGPU/WASM.\n\nGitHub: https://github.com/ultralytics/inference\n\nhttps://docs.ultralytics.com/inference",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:39:43.115Z",
+      "lineage": {
+        "source": "99bcb7bfcc5b6e7e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "86b3275e8dbeb9c5",
       "source": "gitlab",
       "source_url": "https://gitlab.com/ultralytics/lite",
@@ -28197,9 +28245,57 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T02:37:13.733Z",
+      "source_timestamp": "2026-09-22T02:39:58.301Z",
       "lineage": {
         "source": "86b3275e8dbeb9c5",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "daa1b1201ff83595",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ultralytics/openapi",
+      "title": "ultralytics/openapi",
+      "description": "Generate interactive API documentation and typed Python SDKs from any OpenAPI specification\n\nGitHub: https://github.com/ultralytics/openapi\n\nhttps://platform.ultralytics.com/api/docs",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:40:02.566Z",
+      "lineage": {
+        "source": "daa1b1201ff83595",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b147bf7b54e7b8a",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ultralytics/sdk",
+      "title": "ultralytics/sdk",
+      "description": "Official Python SDK for the Ultralytics Platform API\n\nGitHub: https://github.com/ultralytics/sdk\n\nhttps://platform.ultralytics.com/api/docs",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:40:07.443Z",
+      "lineage": {
+        "source": "7b147bf7b54e7b8a",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "2cf8ed1eb8abefe9",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/ultralytics/skills",
+      "title": "ultralytics/skills",
+      "description": "Agent skills for Ultralytics YOLO, covering models, datasets, training, tuning, inference, tracking, and export.\n\nGitHub: https://github.com/ultralytics/skills\n\nhttps://www.ultralytics.com",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-22T02:40:12.146Z",
+      "lineage": {
+        "source": "2cf8ed1eb8abefe9",
         "family": "china_a_share",
         "rounds": []
       }
@@ -28213,7 +28309,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T02:35:48.677Z",
+      "source_timestamp": "2026-09-22T02:38:11.447Z",
       "lineage": {
         "source": "f483c0ffe4cb2cd6",
         "family": "china_a_share",
@@ -28245,7 +28341,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T22:03:15.969Z",
+      "source_timestamp": "2026-09-22T02:38:29.517Z",
       "lineage": {
         "source": "346b209528eccb35",
         "family": "china_a_share",
@@ -28293,7 +28389,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-19T02:39:03.260Z",
+      "source_timestamp": "2026-09-22T02:43:57.828Z",
       "lineage": {
         "source": "1f2701fd1299e12d",
         "family": "china_a_share",
@@ -29133,6 +29229,22 @@
       }
     },
     {
+      "candidate_id": "5cefed100c490e0b",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/Majd.Alaraki/getalphabitv3",
+      "title": "Majd.Alaraki/getalphabitv3",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-09-22T00:02:25.324Z",
+      "lineage": {
+        "source": "5cefed100c490e0b",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b7561ca8ee96edb4",
       "source": "gitlab",
       "source_url": "https://gitlab.com/NelikKKL/webcraft",
@@ -29557,7 +29669,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-18T00:06:15.838Z",
+      "source_timestamp": "2026-09-22T00:02:43.483Z",
       "lineage": {
         "source": "662c389e2974b260",
         "family": "unknown",
@@ -37533,17 +37645,17 @@
       }
     },
     {
-      "candidate_id": "923d3553ccdcdef5",
+      "candidate_id": "7e6cb00668361636",
       "source": "openalex",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
-      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
-      "description": "OpenAlex work type=article year=2021",
+      "source_url": "https://doi.org/10.5089/9798400267468.002",
+      "title": "\u4e2d\u534e\u4eba\u6c11\u5171\u548c\u56fd",
+      "description": "OpenAlex work type=article year=2024",
       "family": "unknown",
       "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
       "lineage": {
-        "source": "923d3553ccdcdef5",
+        "source": "7e6cb00668361636",
         "family": "unknown",
         "rounds": []
       }
@@ -37581,6 +37693,22 @@
       }
     },
     {
+      "candidate_id": "923d3553ccdcdef5",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6548",
+      "title": "\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u65c5\u6e38\u4ea4\u6613\u7cfb\u7edf\u8bbe\u8ba1",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "923d3553ccdcdef5",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "e1522f4b00b76fe0",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/sste-2020-0358",
@@ -37592,6 +37720,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3f2d8946e7b6e6ed",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
+      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "3f2d8946e7b6e6ed",
         "family": "unknown",
         "rounds": []
       }
@@ -37901,6 +38045,38 @@
       }
     },
     {
+      "candidate_id": "dd02d29c19991af2",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484383391.069",
+      "title": "Government Finance Statistics Manual 2014",
+      "description": "OpenAlex work type=book year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "dd02d29c19991af2",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1a3ee48b93042c98",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781616359409.002",
+      "title": "People's Republic of China: 2013 Article IV Consultation",
+      "description": "OpenAlex work type=article year=2013",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "1a3ee48b93042c98",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "604b151bc704fc76",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
@@ -37929,6 +38105,22 @@
       "lineage": {
         "source": "d663d3f1912e8837",
         "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "794181e2ea96b546",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484352588.081",
+      "title": "World Economic Outlook, April 2018",
+      "description": "OpenAlex work type=book year=2018",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "794181e2ea96b546",
+        "family": "unknown",
         "rounds": []
       }
     },
@@ -37981,70 +38173,6 @@
       }
     },
     {
-      "candidate_id": "dd02d29c19991af2",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484383391.069",
-      "title": "Government Finance Statistics Manual 2014",
-      "description": "OpenAlex work type=book year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "dd02d29c19991af2",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1a3ee48b93042c98",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781616359409.002",
-      "title": "People's Republic of China: 2013 Article IV Consultation",
-      "description": "OpenAlex work type=article year=2013",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "1a3ee48b93042c98",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "794181e2ea96b546",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484352588.081",
-      "title": "World Economic Outlook, April 2018",
-      "description": "OpenAlex work type=book year=2018",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "794181e2ea96b546",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7e6cb00668361636",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9798400267468.002",
-      "title": "\u4e2d\u534e\u4eba\u6c11\u5171\u548c\u56fd",
-      "description": "OpenAlex work type=article year=2024",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "7e6cb00668361636",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aefbaa96fb912552",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2021.04.19",
@@ -38056,22 +38184,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "aefbaa96fb912552",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3f2d8946e7b6e6ed",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.01",
-      "title": "\u5f00\u653e\u7ecf\u6d4e\u6a21\u578b\u4e0b\u4e2d\u7f8e\u4e24\u56fd\u653f\u7b56\u5de5\u5177\u6709\u6548\u6027\u7684\u6bd4\u8f83",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "3f2d8946e7b6e6ed",
         "family": "unknown",
         "rounds": []
       }
@@ -40285,6 +40397,22 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -40713,22 +40841,6 @@
       "lineage": {
         "source": "49907d2f67f821ee",
         "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
         "rounds": []
       }
     },
@@ -41661,22 +41773,6 @@
       }
     },
     {
-      "candidate_id": "af167e6720e20273",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
-      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
-      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af167e6720e20273",
-        "family": "volatility",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "aaac9a67d274c5a9",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/16f8d627a54239d16f31ea87b45eb6e7ac16e702",
@@ -41977,22 +42073,6 @@
       "lineage": {
         "source": "ee32d8530a2d65b8",
         "family": "regime",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd9d86f909092462",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/c98431d219b752eacc018b554823374b68d4a5c2",
-      "title": "Automated AI-Based Crypto Trading Bot Using LSTM andReinforcement Learning",
-      "description": "The volatility and continuous nature of cryptocurrency markets pose formidable challenges for human traders, who remain susceptible to emotional decision-making and cognitive fatigue over extended trading periods. This paper introduces a multi-layered artificial intelligence trading framework designed to address these constraints through systematic, data-driven decision processes. The proposed architecture integrates three complementary intelligent modules: a Long Short-Term Memory (LSTM) network that processes historical price sequences to generate forward-looking price estimates; a Reinforcement Learning (RL) agent that functions as the central decision-making component, dynamically calibrating risk exposure in accordance with real-time market conditions; and a Natural Language Processing (NLP) module that derives quantified market sentiment from live financial news streams. Empirical evaluation conducted through simulated paper trading trials demonstrates that this integrated methodology yields measurably superior risk-adjusted performance relative to conventional rule-based trading systems. These findings affirm that coupling memory-augmented sequence modeling with adaptive strategy optimization represents a viable pathway toward more consistent and sustainable engagement with digital asset markets.",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "bd9d86f909092462",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -45005,22 +45085,6 @@
       }
     },
     {
-      "candidate_id": "642e162e9febaa54",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
-      "title": "Crypto Trading Using AI",
-      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
-      "family": "smc_ict",
-      "market": null,
-      "query": "prediction markets automated trading research",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "642e162e9febaa54",
-        "family": "smc_ict",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "3c40ac717ed8cb63",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/152a40b1cf4f4b8a16e48d3b41be223842ef02e2",
@@ -45693,6 +45757,22 @@
       }
     },
     {
+      "candidate_id": "bd9d86f909092462",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/c98431d219b752eacc018b554823374b68d4a5c2",
+      "title": "Automated AI-Based Crypto Trading Bot Using LSTM andReinforcement Learning",
+      "description": "The volatility and continuous nature of cryptocurrency markets pose formidable challenges for human traders, who remain susceptible to emotional decision-making and cognitive fatigue over extended trading periods. This paper introduces a multi-layered artificial intelligence trading framework designed to address these constraints through systematic, data-driven decision processes. The proposed architecture integrates three complementary intelligent modules: a Long Short-Term Memory (LSTM) network that processes historical price sequences to generate forward-looking price estimates; a Reinforcement Learning (RL) agent that functions as the central decision-making component, dynamically calibrating risk exposure in accordance with real-time market conditions; and a Natural Language Processing (NLP) module that derives quantified market sentiment from live financial news streams. Empirical evaluation conducted through simulated paper trading trials demonstrates that this integrated methodology yields measurably superior risk-adjusted performance relative to conventional rule-based trading systems. These findings affirm that coupling memory-augmented sequence modeling with adaptive strategy optimization represents a viable pathway toward more consistent and sustainable engagement with digital asset markets.",
+      "family": "volatility",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "bd9d86f909092462",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7f625a1607704e06",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/75c339e463b3ff62aec021b1bbdc810bd6e3d26b",
@@ -45704,6 +45784,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "7f625a1607704e06",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "642e162e9febaa54",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
+      "title": "Crypto Trading Using AI",
+      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
+      "family": "smc_ict",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "642e162e9febaa54",
         "family": "smc_ict",
         "rounds": []
       }
@@ -45768,6 +45864,22 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a0a5895001ce0cbb",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af167e6720e20273",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/760f0e4028741178cbd90f724132f1a0b3d01d65",
+      "title": "Uncovering Conditional Alpha: A Divide-and-Conquer Approach to Volatility Trading in Crypto-Proxy Markets",
+      "description": "This study develops a comprehensive framework for evaluating volatility trading strategies in crypto-proxy option markets under realistic market conditions. A high-fidelity backtesting environment is constructed that explicitly incorporates commissions, bidask spreads, slippage, and liquidity limits, ensuring that reported performance metrics reflect true implementable outcomes rather than theoretical gains. The methodological progression begins with a simple slope-based trading rule and extends to generalized machine learning classifiers and reinforcement learning agents. Empirical results demonstrate that the baseline heuristic and universal machine learning models quickly lose profitability once realistic frictions are introduced, highlighting the fragility of universal alpha in frictional markets. By contrast, sector-specific approaches uncover conditional profitability that remains robust under practical constraints. In particular, XGBoost yields positive returns in Bitcoin spot exchange-traded funds, while reinforcement learning agents generate consistent gains in mining and semiconductor sectors. These results collectively support a conditional efficiency paradigm, whereby market inefficiencies are not broad-based but localized, context-dependent, and exploitable only through specialized, adaptive modeling techniques. The framework thus contributes to both academic research and practical trading strategy design, offering insights into how algorithmic trading in emerging digital asset markets must evolve to remain viable in the presence of persistent market frictions.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af167e6720e20273",
         "family": "smc_ict",
         "rounds": []
       }
@@ -47389,7 +47501,7 @@
       "family": "unknown",
       "market": null,
       "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2026-09-18T20:29:19Z",
+      "source_timestamp": "2026-09-22T02:49:50Z",
       "lineage": {
         "source": "0256e5107f6136db",
         "family": "unknown",
@@ -48481,7 +48593,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-21T23:56:38Z",
+      "source_timestamp": "2026-09-22T02:56:29Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
