@@ -233,8 +233,8 @@ jobs:
           intent_path="research/continuation_intent.json"
           if [ ! -f "$intent_path" ]; then echo "CONTINUATION_INTENT_MISSING" >&2; exit 1; fi
           target_sha="$(git rev-parse HEAD)"
-          existing="$(gh run list --workflow bc-research-controller.yml --branch main --commit "$target_sha" --event workflow_dispatch --limit 20 --json databaseId,url,status,event,headSha)"
-          existing_url="$(printf '%s' "$existing" | jq -r --argjson source_run_id "$GITHUB_RUN_ID" 'map(select(.databaseId != $source_run_id))[0].url // empty')"
+          existing="$(gh run list --workflow bc-research-controller.yml --branch main --commit "$target_sha" --event workflow_dispatch --limit 20 --json databaseId,url,status,conclusion,event,headSha)"
+          existing_url="$(printf '%s' "$existing" | jq -r --argjson source_run_id "$GITHUB_RUN_ID" 'map(select(.databaseId != $source_run_id) | select(.status != "completed" or .conclusion == "success"))[0].url // empty')"
           if [ -n "$existing_url" ]; then
             run_url="$existing_url"
             echo "CONTINUATION_EXISTING_RUN url=$run_url"
