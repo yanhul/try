@@ -8,7 +8,7 @@ on:
       - completed
 
 concurrency:
-  group: try-bc-research-continuation-${{ github.event.workflow_run.id }}
+  # Serialize continuation handling with the controller so the DISPATCHED receipt is committed before the successor can read state.\n  group: try-bc-research-controller-main
   cancel-in-progress: false
 
 permissions:
