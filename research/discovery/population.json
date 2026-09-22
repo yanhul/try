@@ -2009,22 +2009,6 @@
       }
     },
     {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c46d8cf558932aa3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6535019",
@@ -7812,6 +7796,22 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -21637,7 +21637,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-21T23:02:24.713Z",
+      "source_timestamp": "2026-09-22T05:36:22.719Z",
       "lineage": {
         "source": "1fc30dcabd195dbc",
         "family": "china_a_share",
@@ -35709,6 +35709,22 @@
       }
     },
     {
+      "candidate_id": "66319896a7de85fd",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
+      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
+      "description": "OpenAlex work type=review year=2018",
+      "family": "onchain",
+      "market": null,
+      "query": "on chain wallet flow trading signal research",
+      "source_timestamp": "2018",
+      "lineage": {
+        "source": "66319896a7de85fd",
+        "family": "onchain",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "853ff5b2e9f1c418",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/s10551-019-04160-5",
@@ -37341,22 +37357,6 @@
       }
     },
     {
-      "candidate_id": "66319896a7de85fd",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1016/j.rser.2018.10.014",
-      "title": "Blockchain technology in the energy sector: A systematic review of challenges and opportunities",
-      "description": "OpenAlex work type=review year=2018",
-      "family": "onchain",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2018",
-      "lineage": {
-        "source": "66319896a7de85fd",
-        "family": "onchain",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "8e1ab433cf5afcbb",
       "source": "openalex",
       "source_url": "https://doi.org/10.1192/bjp.bp.110.083733",
@@ -37869,6 +37869,38 @@
       }
     },
     {
+      "candidate_id": "e4ff0e17ae795a42",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
+      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e4ff0e17ae795a42",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd09dc1c3043f329",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
+      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "dd09dc1c3043f329",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "30220a0b0a4a0c55",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.10",
@@ -37928,38 +37960,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e1522f4b00b76fe0",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "e4ff0e17ae795a42",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
-      "title": "\u4e2d\u56fd\u7b2c\u4e09\u65b9\u8de8\u5883\u652f\u4ed8\u53d1\u5c55\u73b0\u72b6\u3001\u95ee\u9898\u53ca\u5bf9\u7b56",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e4ff0e17ae795a42",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "dd09dc1c3043f329",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.3.13",
-      "title": "\u4f01\u4e1a\u9884\u7b97\u7f16\u5236\u4e0e\u6267\u884c\u7684\u5f71\u54cd\u56e0\u7d20\u53ca\u4f18\u5316\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "dd09dc1c3043f329",
         "family": "unknown",
         "rounds": []
       }
