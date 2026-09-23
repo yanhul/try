@@ -28,9 +28,13 @@ def digest(obj):
 
 def _spec(candidate):
     spec=candidate.get("discovery_spec") or {}
+    family=spec.get("mechanism_family") or candidate.get("family")
     if candidate.get("hypothesis_id")=="composite_primitive":
-        return spec.get("mechanism_family"), [t for t in spec.get("terms",[]) if isinstance(t,dict)]
-    return spec.get("mechanism_family"), [spec]
+        return family, [t for t in spec.get("terms",[]) if isinstance(t,dict)]
+    # Discovery absorption records are source-level records; they may not yet
+    # carry an executable operator spec. Bind the source to the trusted family
+    # adapter without inventing an operator.
+    return family, ([spec] if spec.get("operator") else [])
 
 def main():
     if not PROOF.exists():
