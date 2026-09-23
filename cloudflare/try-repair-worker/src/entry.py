@@ -18,7 +18,8 @@ MAX_FILE_BYTES = 120_000
 MAX_LOG_BYTES = 80_000
 GEMINI_MAX_ATTEMPTS = 3
 GEMINI_BACKOFF_SECONDS = (1, 2)
-GEMINI_RETRYABLE = {429, 500, 502, 503, 504}
+GEMINI_RETRYABLE = {500, 502, 503, 504}
+GEMINI_QUOTA_STATUS = 429
 DENIED_PREFIXES = (".github/workflows/", ".aios/", "secrets/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
 
@@ -119,6 +120,8 @@ async def _call_gemini(prompt: str, env) -> dict:
         last_status = response.status
         detail = await response.text()
         last_detail = detail[:1000]
+        if response.status == GEMINI_QUOTA_STATUS:
+            raise RuntimeError(f"gemini_quota_exhausted:{last_status}:{last_detail}")
         if response.status not in GEMINI_RETRYABLE or attempt == GEMINI_MAX_ATTEMPTS:
             break
         await asyncio.sleep(GEMINI_BACKOFF_SECONDS[attempt - 1])
@@ -200,6 +203,17 @@ class Default(WorkerEntrypoint):
             return Response.json(response, status=200)
         except RuntimeError as exc:
             message = str(exc)
+            if message.startswith("gemini_quota_exhausted:"):
+                return Response.json(
+                    {
+                        "status": "PROVIDER_QUOTA_EXHAUSTED",
+                        "provider": "gemini",
+                        "http_status": 429,
+                        "reason": message[:2000],
+                    },
+                    status=429,
+                    headers={"Retry-After": "60"},
+                )
             if message.startswith("gemini_http_"):
                 try:
                     status = int(message.split(":", 1)[0].rsplit("_", 1)[1])
