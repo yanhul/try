@@ -31,6 +31,8 @@ def structural_key(candidate: dict) -> tuple:
 def novelty_metadata(candidate: dict) -> dict:
     spec = candidate.get("discovery_spec") or {}
     key = structural_key(candidate)
+    if candidate.get("hypothesis_id") == "composite_primitive":
+        return {"novelty_key": "|".join("" if x is None else str(x) for x in key), "novelty_type": "composite_structural_mechanism", "parameterization": {}}
     return {
         "novelty_key": "|".join("" if x is None else str(x) for x in key),
         "novelty_type": "structural_mechanism",
