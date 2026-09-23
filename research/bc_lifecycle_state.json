@@ -13,7 +13,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 12990,
+  "checkpoint_seq": 12993,
   "current_bc": 477,
   "history": [
     {
@@ -3671,7 +3671,7 @@
   ],
   "iterations": 1399,
   "last_bc": 476,
-  "last_error": "HOLD_PROVIDER_PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend PROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
+  "last_error": "HOLD_PROVIDER_TION_FAMILY_EXHAUSTED family=mean_reversion PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend PROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
   "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 477,
   "oos_consumed": [
@@ -3739,7 +3739,7 @@
   "parameter_optimization_exhausted_for_parent": false,
   "parameter_optimization_parent_bc": 476,
   "phase": "WAIT_RETRY",
-  "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
+  "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
   "retry_count": 1,
   "state_migrations": [
     {
@@ -3754,5 +3754,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
-  "updated_at": "2026-09-23T00:11:54.243639+00:00"
+  "updated_at": "2026-09-23T00:18:47.659898+00:00"
 }
