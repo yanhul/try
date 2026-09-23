@@ -85,8 +85,9 @@ def _validate(proposal: dict) -> dict:
 
 async def _call_gemini(prompt: str, env) -> dict:
     key = getattr(env, "GEMINI_API_KEY", "")
+    project_id = getattr(env, "GEMINI_PROJECT_ID", "")
     model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-    if not key:
+    if not key or not project_id:
         raise RuntimeError("provider_not_configured:GEMINI")
 
     body = {
@@ -171,13 +172,20 @@ class Default(WorkerEntrypoint):
 
         if request.method == "GET" and path == "/healthz":
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-            if not getattr(self.env, "GEMINI_API_KEY", ""):
+            if not getattr(self.env, "GEMINI_API_KEY", "") or not getattr(
+                self.env, "GEMINI_PROJECT_ID", ""
+            ):
                 return Response.json(
                     {"status": "NOT_READY", "provider": "gemini"},
                     status=503,
                 )
             return Response.json(
-                {"status": "READY", "provider": "gemini", "model": model}
+                {
+                    "status": "READY",
+                    "provider": "gemini",
+                    "model": model,
+                    "project_bound": True,
+                }
             )
 
         if request.method != "POST" or path != "/v1/repair/propose":
