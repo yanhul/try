@@ -31,11 +31,17 @@ def _finite(value):
 
 def structural_key(candidate):
     spec = candidate.get("discovery_spec") or {}
+    if candidate.get("hypothesis_id") == "composite_primitive":
+        terms = spec.get("terms") or []
+        parts = [str(spec.get("mechanism_family") or "composite"), str(spec.get("combine") or "and")]
+        for term in terms[:2]:
+            parts.append("|".join("" if term.get(key) is None else str(term.get(key)) for key in ("operator", "left", "right", "direction")))
+        return "|".join(parts)
     return "|".join("" if spec.get(key) is None else str(spec.get(key)) for key in ("mechanism_family", "operator", "left", "right", "direction"))
 
 
 def _family(candidate):
-    return (candidate.get("discovery_spec") or {}).get("mechanism_family") or "discovered_primitive"
+    return (candidate.get("discovery_spec") or {}).get("mechanism_family") or ("composite_primitive" if candidate.get("hypothesis_id") == "composite_primitive" else "discovered_primitive")
 
 
 def _score(result):
