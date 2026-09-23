@@ -202,3 +202,18 @@ def test_family_profile_rejects_generic_smc_zscore():
     ok, reason = validate_candidate(candidate, 1, 0)
     assert not ok
     assert reason == "family_operator_not_admissible"
+
+
+def test_rpd_ledger_resets_when_api_credential_rotates(monkeypatch, tmp_path):
+    usage=tmp_path/"provider_usage.json"
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
+    monkeypatch.setattr(provider_router, "RPD_LIMIT", 1)
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "new-key"))
+    assert provider_router._reserve_rpd_slot() == 1
+    with pytest.raises(RuntimeError, match="provider_rpd_budget_exhausted:1/1"):
+        provider_router._reserve_rpd_slot()
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "rotated-key"))
+    assert provider_router._reserve_rpd_slot() == 1
+    state=__import__("json").loads(usage.read_text())
+    assert state["calls"] == 1
+    assert state["key_id"] == __import__("hashlib").sha256(b"rotated-key").hexdigest()[:16]
