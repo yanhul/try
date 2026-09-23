@@ -43,7 +43,6 @@ def call(prompt):
  global _PROVIDER_LAST_CALL
  base,model,key=config()
  if not key:raise RuntimeError("provider_not_configured:GEMINI")
- _reserve_rpd_slot()
  gap=interval()-(time.monotonic()-_PROVIDER_LAST_CALL)
  if gap>0:time.sleep(gap)
  body={"model":model,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":prompt}],"max_tokens":700,"response_format":{"type":"json_object"}}
@@ -51,10 +50,15 @@ def call(prompt):
  _PROVIDER_LAST_CALL=time.monotonic();retries=max(0,int(os.getenv("RESEARCH_PROVIDER_RATE_RETRIES","3")))
  for attempt in range(retries+1):
   try:
+   # Every HTTP attempt consumes provider RPD; retries are real requests.
+   _reserve_rpd_slot()
    with urllib.request.urlopen(req,timeout=90) as r:return json.loads(r.read().decode())["choices"][0]["message"]["content"]
   except urllib.error.HTTPError as e:
-   if e.code not in {429,500,502,503,504}:raise
-   if attempt>=retries:raise RuntimeError(f"provider_{'rate_limited' if e.code==429 else 'http_'+str(e.code)}:GEMINI") from e
+   if e.code == 429:
+    # Quota/RPD exhaustion is terminal for this provider window; never retry it.
+    raise RuntimeError("provider_quota_exhausted:429:RPD:GEMINI") from e
+   if e.code not in {500,502,503,504}:raise
+   if attempt>=retries:raise RuntimeError(f"provider_http_{e.code}:GEMINI") from e
    time.sleep(min(float(os.getenv("RESEARCH_PROVIDER_BACKOFF_CAP_SECONDS","120")),15.0*(2**attempt)+random.uniform(0,3)));_PROVIDER_LAST_CALL=time.monotonic()
  raise RuntimeError("provider_request_failed:GEMINI")
 def normalize_structural_types(c):
