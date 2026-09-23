@@ -9,7 +9,7 @@ from __future__ import annotations
 import hashlib, json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "research/discovery/system_registry.json"
 QUEUE = ROOT / "research/discovery/research_queue.json"
 OUT = ROOT / "research/discovery/absorption_proof.json"
@@ -38,10 +38,7 @@ def main() -> int:
     for source in records:
         sid = str(source.get("source_id") or "")
         family = str(source.get("family") or "")
-        lineage = source.get("lineage") or {}
-        rounds = lineage.get("rounds") or []
-        decisions = {str(x.get("decision")) for x in rounds if isinstance(x, dict)}
-        candidate = by_url.get(str(source.get("url") or ""))
+        # The registry is the provenance catalog; executable-lane decisions are\n        # durably carried by the frontier candidate lineage.\n        candidate = by_url.get(str(source.get("url") or ""))\n        lineage = (candidate or {}).get("lineage") or {}\n        rounds = lineage.get("rounds") or []\n        decisions = {str(x.get("decision")) for x in rounds if isinstance(x, dict)}
         if not source.get("is_system"):
             continue
         if not source.get("url"):
