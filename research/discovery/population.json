@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3342,
-    "expanded": 2950,
-    "normalized": 2950,
+    "raw": 3344,
+    "expanded": 2952,
+    "normalized": 2952,
     "round1": 243,
     "deferred": 125,
     "survivors": 115,
@@ -4825,22 +4825,6 @@
       }
     },
     {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "options",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "21e9eca29ecdf96a",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118524046.ch2",
@@ -6473,6 +6457,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6660,22 +6676,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -9417,6 +9417,54 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "6ae6c4fa15c9d4b1",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2024.143090",
+      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "6ae6c4fa15c9d4b1",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "f56eb7abd5076ed7",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2023.124175",
@@ -10089,38 +10137,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6ae6c4fa15c9d4b1",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2024.143090",
-      "title": "Research on Double Fusion Modeling for Volatility Quantitative Trading Strategies in Hong Kong Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6aca210ab0bd2e2f",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2022.111033",
@@ -10132,22 +10148,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "6aca210ab0bd2e2f",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "rounds": []
       }
@@ -22023,6 +22023,22 @@
       }
     },
     {
+      "candidate_id": "d01981a454bb431f",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/eiou-org/eiou-docker",
+      "title": "eiou-org/eiou-docker",
+      "description": "Restored preservation copy of Vowels-Group/eiou-docker from GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-23T13:13:01.518Z",
+      "lineage": {
+        "source": "d01981a454bb431f",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "162d4f668f96d33a",
       "source": "gitlab",
       "source_url": "https://gitlab.com/elxr/packages/QATzip",
@@ -25927,6 +25943,22 @@
       }
     },
     {
+      "candidate_id": "58e93a850deffe23",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/klausmeyer/docker-registry-browser",
+      "title": "klausmeyer/docker-registry-browser",
+      "description": "Mirror of https://github.com/klausmeyer/docker-registry-browser",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-23T13:13:10.985Z",
+      "lineage": {
+        "source": "58e93a850deffe23",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "eb281b1a44c887d1",
       "source": "gitlab",
       "source_url": "https://gitlab.com/klausmeyer/k8s-pi-cluster",
@@ -25935,7 +25967,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T13:13:15.322Z",
+      "source_timestamp": "2026-09-23T13:13:16.478Z",
       "lineage": {
         "source": "eb281b1a44c887d1",
         "family": "china_a_share",
@@ -25951,7 +25983,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T13:13:25.603Z",
+      "source_timestamp": "2026-09-23T13:13:27.581Z",
       "lineage": {
         "source": "b4215da58bfcd2e0",
         "family": "china_a_share",
@@ -29631,7 +29663,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-23T09:32:11.702Z",
+      "source_timestamp": "2026-09-23T13:13:04.307Z",
       "lineage": {
         "source": "fc3a69c22e845ffb",
         "family": "china_a_share",
@@ -43495,22 +43527,6 @@
       }
     },
     {
-      "candidate_id": "3160ecc296e8ac9b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
-      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
-      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "3160ecc296e8ac9b",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1f52e5b6748f9991",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/a2c40c0424bed72ad62ffd1ee12b1551dd1c86e6",
@@ -45906,6 +45922,22 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "87ae852ad995a174",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3160ecc296e8ac9b",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
+      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
+      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) \u2013 an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
+      "family": "execution_mev",
+      "market": null,
+      "query": "decentralized exchange arbitrage MEV research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "3160ecc296e8ac9b",
         "family": "execution_mev",
         "rounds": []
       }
