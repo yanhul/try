@@ -96,3 +96,23 @@ def test_primitive_ranking_prefers_unseen_feature_space_bin(monkeypatch, tmp_pat
     new_bin["discovery_spec"]["right"] = "close"
     ranked = search_memory.rank_primitives([same_bin, new_bin], seed=13)
     assert ranked[0]["discovery_spec"]["left"] == "volume"
+
+
+def test_primitive_ranking_round_robins_feature_bins(monkeypatch, tmp_path):
+    _isolated(monkeypatch, tmp_path)
+    price_a = _candidate(1, "family_a", operator="difference")
+    price_a["discovery_spec"]["left"] = "close"
+    price_a["discovery_spec"]["right"] = "open"
+    price_b = _candidate(2, "family_a", operator="difference")
+    price_b["discovery_spec"]["left"] = "high"
+    price_b["discovery_spec"]["right"] = "low"
+    volume_a = _candidate(3, "family_a", operator="ratio")
+    volume_a["discovery_spec"]["left"] = "volume"
+    volume_a["discovery_spec"]["right"] = "close"
+    volume_b = _candidate(4, "family_a", operator="ratio")
+    volume_b["discovery_spec"]["left"] = "volume"
+    volume_b["discovery_spec"]["right"] = "open"
+    ranked = search_memory.rank_primitives([price_a, price_b, volume_a, volume_b], seed=17)
+    bins = [search_memory._primitive_bin(c) for c in ranked]
+    assert bins[0] != bins[1]
+    assert len(set(bins[:4])) == 2
