@@ -127,7 +127,8 @@ def deterministic_candidate(forbidden):
      if fingerprint(candidate) not in forbidden:candidates.append(candidate)
  for candidate in rank_primitives(candidates, seed=bc):
   ok,reason=validate_candidate(candidate,bc,parent)
-  if ok:return candidate raise ValueError("deterministic_translation_frontier_exhausted")
+  if ok:return candidate
+ raise ValueError("deterministic_translation_frontier_exhausted")
 def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
  for _ in range(3):
