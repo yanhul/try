@@ -43,6 +43,18 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
   if isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or not math.isfinite(threshold):return False,"invalid_discovery_threshold"
   if spec.get("direction") not in {"above","below"}:return False,"invalid_discovery_threshold"
  elif candidate["hypothesis_id"]=="discovered_primitive" and not isinstance(spec,dict):return False,"discovery_spec_required"
+ elif candidate["hypothesis_id"]=="composite_primitive":
+  if not isinstance(spec,dict) or spec.get("combine") not in {"and","or"}: return False,"invalid_composite_operator"
+  terms=spec.get("terms")
+  if not isinstance(terms,list) or len(terms)!=2: return False,"composite_requires_two_terms"
+  for term in terms:
+   if not isinstance(term,dict) or term.get("operator") not in OPS or term.get("left") not in COLS:return False,"invalid_composite_term"
+   op=term["operator"]
+   if op in {"difference","ratio"} and term.get("right") not in COLS:return False,"invalid_composite_right_column"
+   if op in WINDOW_REQUIRED and term.get("window") not in {3,5,10,20,50,100}:return False,"invalid_composite_window"
+   if term.get("direction") not in {"above","below"} or not isinstance(term.get("threshold"),(int,float)) or isinstance(term.get("threshold"),bool) or not math.isfinite(term["threshold"]):return False,"invalid_composite_threshold"
+  family=spec.get("mechanism_family")
+  if family not in EXECUTABLE_MECHANISM_FAMILIES:return False,"invalid_composite_family"
  if spec is not None and candidate["hypothesis_id"]!="mechanism_family":
   family=spec.get("mechanism_family")
   if family is not None:
