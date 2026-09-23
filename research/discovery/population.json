@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 3294,
-    "expanded": 2902,
-    "normalized": 2902,
+    "raw": 3295,
+    "expanded": 2903,
+    "normalized": 2903,
     "round1": 243,
     "deferred": 125,
     "survivors": 115,
@@ -2105,6 +2105,22 @@
       }
     },
     {
+      "candidate_id": "7a1536f3fe674cc7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.21275/sr231123060916",
+      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7a1536f3fe674cc7",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dcc991bf702b81ba",
       "source": "crossref",
       "source_url": "https://doi.org/10.54254/2754-1169/2026.35956",
@@ -2196,6 +2212,22 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "abbfab99f4d03b57",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "941fac1fe101d68b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.2610064",
+      "title": "Statistical Arbitrage with Pairs Trading",
+      "description": "Crossref work type=posted-content",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "941fac1fe101d68b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -6361,6 +6393,38 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -6548,38 +6612,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "funding_basis_carry",
         "rounds": []
       }
@@ -8857,22 +8889,6 @@
       }
     },
     {
-      "candidate_id": "7a1536f3fe674cc7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.21275/sr231123060916",
-      "title": "Cointegration-Based Pairs Trading Strategy in Commodity Markets: A Novel Approach to Statistical Arbitrage",
-      "description": "Crossref work type=journal-article",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7a1536f3fe674cc7",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6dcfeefb260e7e03",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781119201526.ch4",
@@ -8900,22 +8916,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "f603ba0518586c25",
-        "family": "mean_reversion",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "941fac1fe101d68b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.2610064",
-      "title": "Statistical Arbitrage with Pairs Trading",
-      "description": "Crossref work type=posted-content",
-      "family": "mean_reversion",
-      "market": null,
-      "query": "statistical arbitrage pairs trading equities",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "941fac1fe101d68b",
         "family": "mean_reversion",
         "rounds": []
       }
@@ -14943,7 +14943,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-23T00:48:42Z",
+      "source_timestamp": "2026-09-23T01:05:36Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
@@ -20455,6 +20455,22 @@
       }
     },
     {
+      "candidate_id": "12db01564496c23e",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/chandler.bing/ecoscan-4406901-deletion_scheduled-86784311",
+      "title": "chandler.bing/ecoscan-4406901-deletion_scheduled-86784311",
+      "description": "Mirror of GFWList project at Github",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-09-23T01:05:51.883Z",
+      "lineage": {
+        "source": "12db01564496c23e",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7d01c360de41fdb2",
       "source": "gitlab",
       "source_url": "https://gitlab.com/chandler.bing/ecoscan-44832549-deletion_scheduled-86405056",
@@ -23631,7 +23647,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-18T21:22:59.946Z",
+      "source_timestamp": "2026-09-23T01:08:26.805Z",
       "lineage": {
         "source": "cbc254b962f1206c",
         "family": "china_a_share",
@@ -32951,22 +32967,6 @@
       }
     },
     {
-      "candidate_id": "286c5e7553fbfc35",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.3390/app12199637",
-      "title": "Financial Fraud Detection Based on Machine Learning: A Systematic Literature Review",
-      "description": "OpenAlex work type=review year=2022",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share machine learning alpha",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "286c5e7553fbfc35",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "b081bc212f993b3a",
       "source": "openalex",
       "source_url": "https://doi.org/10.48550/arxiv.2204.14198",
@@ -33847,22 +33847,6 @@
       }
     },
     {
-      "candidate_id": "8a0261d9c58b862e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1145/3637528.3671801",
-      "title": "A Multimodal Foundation Agent for Financial Trading: Tool-Augmented, Diversified, and Generalist",
-      "description": "OpenAlex work type=conference-paper year=2024",
-      "family": "unknown",
-      "market": null,
-      "query": "LLM alpha mining quantitative trading",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "8a0261d9c58b862e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "02bf5293b1172170",
       "source": "openalex",
       "source_url": "https://doi.org/10.48550/arxiv.2411.15594",
@@ -34098,6 +34082,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "ce6e7ea75ba252ca",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1efebf2229628e4c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1145/3576915.3616590",
+      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
+      "description": "OpenAlex work type=conference-paper year=2023",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "1efebf2229628e4c",
         "family": "execution_mev",
         "rounds": []
       }
@@ -34727,22 +34727,6 @@
       }
     },
     {
-      "candidate_id": "4574d8c2646147cf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/jofi.12186",
-      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
-      "description": "OpenAlex work type=article year=2014",
-      "family": "unknown",
-      "market": null,
-      "query": "algorithmic trading research code",
-      "source_timestamp": "2014",
-      "lineage": {
-        "source": "4574d8c2646147cf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "133c36fcb94e1a80",
       "source": "openalex",
       "source_url": "https://doi.org/10.1038/s42254-021-00348-9",
@@ -34978,6 +34962,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "e416ce734ce1863a",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9b1512a9cf54b16a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
+      "title": "Cryptocurrency Trading: A Comprehensive Survey",
+      "description": "OpenAlex work type=preprint year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "9b1512a9cf54b16a",
         "family": "unknown",
         "rounds": []
       }
@@ -35271,22 +35271,6 @@
       }
     },
     {
-      "candidate_id": "2f5f3d7c80b0f360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/fire.12290",
-      "title": "Bitcoin intraday time series momentum",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "cross sectional crypto factors momentum reversal",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "2f5f3d7c80b0f360",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "7e303348512cb293",
       "source": "openalex",
       "source_url": "https://doi.org/10.3386/w31284",
@@ -35527,6 +35511,22 @@
       }
     },
     {
+      "candidate_id": "2f5f3d7c80b0f360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/fire.12290",
+      "title": "Bitcoin intraday time series momentum",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "2f5f3d7c80b0f360",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0040e7625b9f1dff",
       "source": "openalex",
       "source_url": "https://doi.org/10.1016/j.frl.2021.102049",
@@ -35618,6 +35618,22 @@
       "source_timestamp": "2017",
       "lineage": {
         "source": "ca7152bdf100ebb7",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b7ba90c08aeafc86",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2139/ssrn.3046209",
+      "title": "Why Do Businesses Go Crypto? An Empirical Analysis of Initial Coin Offerings",
+      "description": "OpenAlex work type=preprint year=2017",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2017",
+      "lineage": {
+        "source": "b7ba90c08aeafc86",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -36055,22 +36071,6 @@
       }
     },
     {
-      "candidate_id": "9b1512a9cf54b16a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2003.11352",
-      "title": "Cryptocurrency Trading: A Comprehensive Survey",
-      "description": "OpenAlex work type=preprint year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "9b1512a9cf54b16a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6e8454b06f77fc1c",
       "source": "openalex",
       "source_url": "https://doi.org/10.31979/etd.6xze-y9xu",
@@ -36306,22 +36306,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "59c13afe068bee62",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1efebf2229628e4c",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1145/3576915.3616590",
-      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
-      "description": "OpenAlex work type=conference-paper year=2023",
-      "family": "execution_mev",
-      "market": null,
-      "query": "decentralized exchange arbitrage MEV research",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "1efebf2229628e4c",
         "family": "execution_mev",
         "rounds": []
       }
@@ -37191,22 +37175,6 @@
       }
     },
     {
-      "candidate_id": "b7ba90c08aeafc86",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.2139/ssrn.3046209",
-      "title": "Why Do Businesses Go Crypto? An Empirical Analysis of Initial Coin Offerings",
-      "description": "OpenAlex work type=preprint year=2017",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2017",
-      "lineage": {
-        "source": "b7ba90c08aeafc86",
-        "family": "funding_basis_carry",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "3a716b52e35b92e4",
       "source": "openalex",
       "source_url": "https://doi.org/10.1088/1748-9326/aac1c6",
@@ -37783,22 +37751,6 @@
       }
     },
     {
-      "candidate_id": "caa499860627e17a",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.2307/2118445",
-      "title": "The Effect of Credit Market Competition on Lending Relationships",
-      "description": "OpenAlex work type=article year=1995",
-      "family": "unknown",
-      "market": null,
-      "query": "market making strategy code",
-      "source_timestamp": "1995",
-      "lineage": {
-        "source": "caa499860627e17a",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "88af0dc203cb014c",
       "source": "openalex",
       "source_url": "https://doi.org/10.1093/qje/qjz041",
@@ -37810,22 +37762,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "88af0dc203cb014c",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1620a5c728e3d3e3",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1002/smj.642",
-      "title": "The fit between product market strategy and business model: implications for firm performance",
-      "description": "OpenAlex work type=article year=2007",
-      "family": "unknown",
-      "market": null,
-      "query": "market making strategy code",
-      "source_timestamp": "2007",
-      "lineage": {
-        "source": "1620a5c728e3d3e3",
         "family": "unknown",
         "rounds": []
       }
@@ -37970,6 +37906,22 @@
       "source_timestamp": "1996",
       "lineage": {
         "source": "d14c822fb5661c25",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "4574d8c2646147cf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/jofi.12186",
+      "title": "Rise of the Machines: Algorithmic Trading in the Foreign Exchange Market",
+      "description": "OpenAlex work type=article year=2014",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "4574d8c2646147cf",
         "family": "order_flow",
         "rounds": []
       }
@@ -38690,6 +38642,38 @@
       "source_timestamp": "1992",
       "lineage": {
         "source": "831948f291b4827c",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa499860627e17a",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2307/2118445",
+      "title": "The Effect of Credit Market Competition on Lending Relationships",
+      "description": "OpenAlex work type=article year=1995",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "1995",
+      "lineage": {
+        "source": "caa499860627e17a",
+        "family": "smc_ict",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1620a5c728e3d3e3",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1002/smj.642",
+      "title": "The fit between product market strategy and business model: implications for firm performance",
+      "description": "OpenAlex work type=article year=2007",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2007",
+      "lineage": {
+        "source": "1620a5c728e3d3e3",
         "family": "smc_ict",
         "rounds": []
       }
@@ -39543,6 +39527,22 @@
       }
     },
     {
+      "candidate_id": "8a0261d9c58b862e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1145/3637528.3671801",
+      "title": "A Multimodal Foundation Agent for Financial Trading: Tool-Augmented, Diversified, and Generalist",
+      "description": "OpenAlex work type=conference-paper year=2024",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8a0261d9c58b862e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4d6acf68b17fb314",
       "source": "openalex",
       "source_url": "https://doi.org/10.1109/access.2023.3330156",
@@ -39602,6 +39602,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "b9ad93e49bf76b11",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "286c5e7553fbfc35",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3390/app12199637",
+      "title": "Financial Fraud Detection Based on Machine Learning: A Systematic Literature Review",
+      "description": "OpenAlex work type=review year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "systematic crypto trading machine learning alpha",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "286c5e7553fbfc35",
         "family": "unknown",
         "rounds": []
       }
@@ -40151,22 +40167,6 @@
       }
     },
     {
-      "candidate_id": "7794ee980d9b0a5b",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
-      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
-      "description": "OpenAlex work type=article year=2023",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7794ee980d9b0a5b",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "cc0b2dcd4b769e08",
       "source": "openalex",
       "source_url": "https://doi.org/10.1360/n972018-01149",
@@ -40279,54 +40279,6 @@
       }
     },
     {
-      "candidate_id": "c58b8d68825004ba",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
-      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "c58b8d68825004ba",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "604b151bc704fc76",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
-      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
-      "description": "OpenAlex work type=article year=2022",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "604b151bc704fc76",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f3848ca9d3af0f9e",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
-      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
-      "description": "OpenAlex work type=article year=2020",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2020",
-      "lineage": {
-        "source": "f3848ca9d3af0f9e",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e4ff0e17ae795a42",
       "source": "openalex",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2021.07.08",
@@ -40375,22 +40327,6 @@
       }
     },
     {
-      "candidate_id": "87383390925f37bf",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
-      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "87383390925f37bf",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1a843a97130300e6",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/etr.2025.1.5.21",
@@ -40402,22 +40338,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "1a843a97130300e6",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "094a83348606a374",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
-      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
-      "description": "OpenAlex work type=article year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -40498,6 +40418,22 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e4c7ad87aaa81708",
+        "family": "china_a_share",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7794ee980d9b0a5b",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.31497/zrzyxb.20230904",
+      "title": "The impact of flow economy on innovative development of tourism resources: Hot reaction and cold thinking",
+      "description": "OpenAlex work type=article year=2023",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7794ee980d9b0a5b",
         "family": "china_a_share",
         "rounds": []
       }
@@ -40631,6 +40567,22 @@
       }
     },
     {
+      "candidate_id": "c58b8d68825004ba",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1360/ssv-2020-0044",
+      "title": "An interim review of lessons from the Novel Coronavirus (SARS-CoV-2) outbreak in China",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "c58b8d68825004ba",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "074d1859ad607682",
       "source": "openalex",
       "source_url": "https://doi.org/10.1177/00081256231202266",
@@ -40642,6 +40594,54 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "074d1859ad607682",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "dd02d29c19991af2",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781484383391.069",
+      "title": "Government Finance Statistics Manual 2014",
+      "description": "OpenAlex work type=book year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "dd02d29c19991af2",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1a3ee48b93042c98",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781616359409.002",
+      "title": "People's Republic of China: 2013 Article IV Consultation",
+      "description": "OpenAlex work type=article year=2013",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "1a3ee48b93042c98",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "604b151bc704fc76",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2022.07.06",
+      "title": "RCEP\u80cc\u666f\u4e0b\u4e2d\u65e5\u519c\u4ea7\u54c1\u8d38\u6613\u53d1\u5c55\u7684\u673a\u9047\u4e0e\u6311\u6218",
+      "description": "OpenAlex work type=article year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "604b151bc704fc76",
         "family": "unknown",
         "rounds": []
       }
@@ -40663,38 +40663,6 @@
       }
     },
     {
-      "candidate_id": "dd02d29c19991af2",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781484383391.069",
-      "title": "Government Finance Statistics Manual 2014",
-      "description": "OpenAlex work type=book year=2019",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2019",
-      "lineage": {
-        "source": "dd02d29c19991af2",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "1a3ee48b93042c98",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.5089/9781616359409.002",
-      "title": "People's Republic of China: 2013 Article IV Consultation",
-      "description": "OpenAlex work type=article year=2013",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "1a3ee48b93042c98",
-        "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "794181e2ea96b546",
       "source": "openalex",
       "source_url": "https://doi.org/10.5089/9781484352588.081",
@@ -40702,10 +40670,58 @@
       "description": "OpenAlex work type=book year=2018",
       "family": "unknown",
       "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
       "source_timestamp": "2018",
       "lineage": {
         "source": "794181e2ea96b546",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f3848ca9d3af0f9e",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.36012/emr.v2i6.2986",
+      "title": "\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u6211\u56fd\u4e0e\u4f0a\u6717\u7ecf\u8d38\u5408\u4f5c\u9762\u4e34\u7684\u8d22\u52a1\u98ce\u9669\u4e0e\u9632\u8303",
+      "description": "OpenAlex work type=article year=2020",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2020",
+      "lineage": {
+        "source": "f3848ca9d3af0f9e",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "87383390925f37bf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
+      "title": "\u5eb7\u590d\u533b\u7597\u5668\u6750\u51fa\u53e3\u8d38\u6613\u7684\u7ade\u4e89\u6218\u7565\u7814\u7a76",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "87383390925f37bf",
+        "family": "unknown",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "094a83348606a374",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.52288/jbi.26636204.2019.07.02",
+      "title": "\u798f\u5efa\u7701\u51fa\u53e3\u8de8\u5883\u7535\u5b50\u5546\u52a1\u7684\u73b0\u72b6\u53ca\u53d1\u5c55\u7814\u7a76 \u2014\u4ee5\u201c\u4e00\u5e26\u4e00\u8def\u201d\u80cc\u666f\u4e0b\u5728\u6cf0\u56fd\u7684\u53d1\u5c55\u7b56\u7565\u4e3a\u4f8b",
+      "description": "OpenAlex work type=article year=2019",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2019",
+      "lineage": {
+        "source": "094a83348606a374",
         "family": "unknown",
         "rounds": []
       }
@@ -42626,6 +42642,22 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "adf32453b89373ee",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "abc55c5433c9357f",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
+      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
+      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "abc55c5433c9357f",
         "family": "execution_mev",
         "rounds": []
       }
@@ -46819,22 +46851,6 @@
       "lineage": {
         "source": "58d25e2b2233013d",
         "family": "order_flow",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "abc55c5433c9357f",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/1af965a0708412e0cf2b4bbc90efbd3908a7403d",
-      "title": "Artificial Intelligence in Equity and Crypto Markets: Progress, Profitability Evidence, and the Limits of Automated Investing",
-      "description": "Artificial intelligence (AI) now supports investment workflows from data and prediction through research, portfolios, execution, and tool use. Technical capability, however, is not evidence of investment profitability. This critical state-of-the-art review examines public research available through 31 August 2026 on listed equities, exchange-traded funds, centralized crypto spot, perpetual futures, and on-chain markets. We organize evidence with an alpha-translation chain: point-in-time information must yield a stable signal, feasible positions, executable orders, and risk-adjusted returns after costs. Across machine learning, time-series foundation models, financial language models, reinforcement learning, and agents, the examined record shows real but mainly upstream progress in prediction, text processing, portfolio design, and workflow integration. Evidence is thinner for durable net performance. Temporal contamination, repeated selection, survivorship, weak benchmarks, implementation costs, venue mechanics, and capacity can break translation to net alpha. Strong historical results coexist with predictor decay, corrected look-ahead failures, mixed prospective evidence, and few audited live-capital records. Crypto adds informative state but requires separate treatment of spot, perpetual, and decentralized cash flows and execution. Within the public evidence examined here, no general AI architecture is shown to deliver persistent, cross-regime, capacity-aware net alpha. More credible claims require point-in-time data and models, decision-aligned objectives, joint portfolio--execution evaluation, controlled adaptation, prospective tests, and authority-matched governance. These conditions can improve evidence and implementation; they do not guarantee profit.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "on chain wallet flow trading signal research",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "abc55c5433c9357f",
-        "family": "smc_ict",
         "rounds": []
       }
     },
@@ -51709,7 +51725,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-09-23T00:48:42Z",
+      "source_timestamp": "2026-09-23T01:05:36Z",
       "lineage": {
         "source": "81df71e41e39b2f4",
         "family": "prediction_market",
