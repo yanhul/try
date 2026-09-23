@@ -35,32 +35,43 @@ def main() -> int:
 
     absorbed = []
     blocked = []
-    for source in records:
-        sid = str(source.get("source_id") or "")
-        family = str(source.get("family") or "")
-        # The registry is the provenance catalog; executable-lane decisions are\n        # durably carried by the frontier candidate lineage.\n        candidate = by_url.get(str(source.get("url") or ""))\n        lineage = (candidate or {}).get("lineage") or {}\n        rounds = lineage.get("rounds") or []\n        decisions = {str(x.get("decision")) for x in rounds if isinstance(x, dict)}
-        if not source.get("is_system"):
+    registry_by_url = {str(x.get("url")): x for x in records if isinstance(x, dict) and x.get("url")}
+
+    # The durable frontier is the absorption scope: every executable candidate
+    # in the queue must resolve back to a provenance registry record and carry
+    # the three discovery-lane decisions. Non-executable/provenance-only
+    # registry records are intentionally outside the absorption denominator.
+    for candidate in candidates:
+        if not isinstance(candidate, dict):
             continue
-        if not source.get("url"):
-            blocked.append({"source_id": sid, "reason": "missing_source_url"})
+        family = str(candidate.get("family") or "")
+        url = str(candidate.get("source_url") or "")
+        if family not in EXECUTABLE_FAMILIES:
+            continue
+        sid = str((candidate.get("lineage") or {}).get("source") or "")
+        source = registry_by_url.get(url)
+        rounds = (candidate.get("lineage") or {}).get("rounds") or []
+        decisions = {str(x.get("decision")) for x in rounds if isinstance(x, dict)}
+        if not url:
+            blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "missing_source_url"})
+            continue
+        if not source:
+            blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "source_registry_match_missing"})
+            continue
+        if sid and str(source.get("source_id") or "") != sid:
+            blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "source_lineage_mismatch"})
+            continue
+        if not source.get("is_system"):
+            blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "registry_record_not_system"})
             continue
         if not {"PASS_SOURCE","PASS_EXECUTABLE_DATA_LANE","PASS_DIVERSITY_DEDUP"} <= decisions:
-            blocked.append({"source_id": sid, "reason": "source_gates_incomplete"})
-            continue
-        if family not in EXECUTABLE_FAMILIES:
-            blocked.append({"source_id": sid, "reason": f"non_executable_family:{family}"})
-            continue
-        if not candidate:
-            blocked.append({"source_id": sid, "reason": "not_present_in_research_frontier"})
-            continue
-        if not candidate.get("lineage"):
-            blocked.append({"source_id": sid, "reason": "candidate_lineage_missing"})
+            blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "source_gates_incomplete"})
             continue
         absorbed.append({
-            "source_id": sid,
-            "candidate_id": sid,
+            "source_id": source.get("source_id"),
+            "candidate_id": candidate.get("candidate_id"),
             "family": family,
-            "source_url": source["url"],
+            "source_url": url,
             "source_digest": digest(source),
             "candidate_digest": digest(candidate),
             "status": "ABSORBED",
