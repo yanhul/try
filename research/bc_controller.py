@@ -455,7 +455,10 @@ def main():
  if not failure.exists(): return hold(s,'HOLD_NO_FAILURE_ANALYSIS',bc,retryable=False)
  nxt=bc+1; checkpoint(s,'DECIDE',nxt)
  if not regenerate(nxt,bc,failure,s):
-  if s.get('provider_failure_reason'): return hold(s,'HOLD_PROVIDER_'+s['provider_failure_reason'][-400:].replace('\n',' '),nxt)
+  if s.get('provider_failure_reason'):
+   reason=s['provider_failure_reason'][-400:].replace('\n',' ')
+   quota=('provider_quota_exhausted' in reason.lower() or 'provider_rpd_budget_exhausted' in reason.lower())
+   return hold(s,'HOLD_PROVIDER_'+reason,nxt,retryable=not quota)
   if s.get('translation_frontier_exhausted'): return hold(s,'HOLD_TRANSLATION_FRONTIER_EXHAUSTED',nxt,retryable=False)
   return hold(s,'HOLD_PROVIDER_ROUTER',nxt)
  candidate=json.loads((CANDIDATE_DIR/f'BC{nxt}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',nxt); print(f'CONTROLLER_NEXT BC{nxt}')
