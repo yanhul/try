@@ -12,7 +12,7 @@ from research.search_memory import rank_families,rank_primitives,note_selection
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
-SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are not a selector. Use only BTCUSDT 1H OHLCV. Never use OOS, expected performance, stars or intuition as evidence. Valid families: {sorted(MECHANISM_FAMILIES)}. A mechanism_family hypothesis MUST use exactly SELECTED_SURVIVOR_FAMILY. discovered_primitive may use only operators {OPERATORS} and columns {COLUMNS}. Threshold/window are parameters, NOT novelty. New hypotheses must change family/operator/left/right/direction. Return exactly one JSON object with this shape: {{"hypothesis_id":"mechanism_family|discovered_primitive","discovery_spec":{{...}},"conceptual_change":"...","evidence_sources":["..."],"rationale":"...","is_testable":true,"oos_selection_used":false}}. For mechanism_family, discovery_spec MUST contain only the executable family selection fields mechanism_family, threshold and direction (do not attach operator/left/right/window fields). If operator/left/right/window primitive fields are present, the hypothesis_id MUST be discovered_primitive and the primitive MUST be executable for SELECTED_SURVIVOR_FAMILY. For discovered_primitive, discovery_spec MUST contain mechanism_family, operator, left, threshold and direction, plus right for difference/ratio and window for windowed operators. mechanism_family MUST equal SELECTED_SURVIVOR_FAMILY. Do not put discovery_spec fields at the top level. Do not use a family name as hypothesis_id unless it is exactly SELECTED_SURVIVOR_FAMILY. Return JSON only. When the surrounding harness exposes an asynchronous completion event, never use sleep/wait/status polling to wait for it; yield and resume on the event instead.'''
+SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are not a selector. Use only BTCUSDT 1H OHLCV. Never use OOS, expected performance, stars or intuition as evidence. Valid families: {sorted(MECHANISM_FAMILIES)}. A mechanism_family hypothesis MUST use exactly SELECTED_SURVIVOR_FAMILY. discovered_primitive may use only operators {OPERATORS} and columns {COLUMNS}. composite_primitive may combine exactly two discovered_primitive terms with combine=and|or; each term must satisfy the same primitive contract and both terms must belong to SELECTED_SURVIVOR_FAMILY. Threshold/window are parameters, NOT novelty. New hypotheses must change family/operator/left/right/direction. Return exactly one JSON object with this shape: {{"hypothesis_id":"mechanism_family|discovered_primitive","discovery_spec":{{...}},"conceptual_change":"...","evidence_sources":["..."],"rationale":"...","is_testable":true,"oos_selection_used":false}}. For mechanism_family, discovery_spec MUST contain only the executable family selection fields mechanism_family, threshold and direction (do not attach operator/left/right/window fields). If operator/left/right/window primitive fields are present, the hypothesis_id MUST be discovered_primitive and the primitive MUST be executable for SELECTED_SURVIVOR_FAMILY. For discovered_primitive, discovery_spec MUST contain mechanism_family, operator, left, threshold and direction, plus right for difference/ratio and window for windowed operators. For composite_primitive, discovery_spec MUST contain mechanism_family, combine (and|or), and exactly two primitive terms; each term MUST contain operator, left, threshold, direction, plus right/window when required. mechanism_family MUST equal SELECTED_SURVIVOR_FAMILY. Do not put discovery_spec fields at the top level. Do not use a family name as hypothesis_id unless it is exactly SELECTED_SURVIVOR_FAMILY. Return JSON only. When the surrounding harness exposes an asynchronous completion event, never use sleep/wait/status polling to wait for it; yield and resume on the event instead.'''
 _PROVIDER_LAST_CALL=0.0
 USAGE_PATH=ROOT/"research/provider_usage.json"
 RPD_LIMIT=max(1,int(os.getenv("RESEARCH_PROVIDER_RPD_LIMIT","450")))
@@ -77,6 +77,10 @@ def normalize_hypothesis_id(c):
    if key not in spec and key in c: spec[key]=c.pop(key)
  explicit_family=spec.get("mechanism_family")
  if explicit_family is not None:
+  if "terms" in spec or "combine" in spec:
+   composite_shape=(explicit_family==selected_family and spec.get("combine") in {"and","or"} and isinstance(spec.get("terms"),list) and len(spec["terms"])==2)
+   c["hypothesis_id"]="composite_primitive" if composite_shape else "invalid_composite_primitive"
+   return
   primitive_keys={"operator","left","right","window"}
   has_primitive=any(key in spec for key in primitive_keys)
   if has_primitive:
@@ -125,10 +129,11 @@ def deterministic_candidate(forbidden):
      if window is not None:spec["window"]=window
      candidate={"bc":bc,"parent_bc":parent,"hypothesis_id":"discovered_primitive","discovery_spec":spec,"conceptual_change":f"BTC-compatible {selected_family} proxy using {op}({left})"+(f" with {right}" if right else "")+(f" over window {window}" if window else ""),"evidence_sources":[],"rationale":"","is_testable":True,"oos_selection_used":False}
      if fingerprint(candidate) not in forbidden:candidates.append(candidate)
- for candidate in rank_primitives(candidates, seed=bc):
+ ranked_candidates=rank_primitives(candidates, seed=bc)
+ for candidate in ranked_candidates:
   ok,reason=validate_candidate(candidate,bc,parent)
   if ok:return candidate
- top=rank_primitives(candidates, seed=bc)[:12]
+ top=ranked_candidates[:12]
  for i,left in enumerate(top):
   for right in top[i+1:]:
    for combine in ("and","or"):
@@ -170,7 +175,7 @@ def ground_candidate(c,selected):
  if family not in EXECUTABLE_MECHANISM_FAMILIES:raise ValueError(f"non_executable_source_reached_grounding:{family}")
  if c.get("hypothesis_id")=="mechanism_family":
   if not isinstance(c.get("discovery_spec"),dict) or c["discovery_spec"].get("mechanism_family")!=family:raise ValueError("selected_family_mismatch")
- elif c.get("hypothesis_id")!="discovered_primitive":raise ValueError("translation_hypothesis_id_forbidden")
+ elif c.get("hypothesis_id") not in {"discovered_primitive","composite_primitive"}:raise ValueError("translation_hypothesis_id_forbidden")
  else:
   spec=c.get("discovery_spec")
   if not isinstance(spec,dict):raise ValueError("discovery_spec_required")
