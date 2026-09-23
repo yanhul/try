@@ -104,7 +104,7 @@ def prior_fingerprints():
 def deterministic_candidate(forbidden):
  profile=FAMILY_PRIMITIVES.get(selected_family)
  if not profile:raise ValueError("deterministic_translation_family_profile_missing")
- thresholds=(0.0,0.5,1.0);windows=(3,5,10,20,50,100)
+ threshold_grid={"zscore":(-2.0,-1.5,-1.0,-0.5,0.5,1.0,1.5,2.0),"rank":(0.2,0.4,0.5,0.6,0.8),"ratio":(0.95,0.98,0.99,1.0,1.01,1.02,1.05),"identity":(0.0,0.25,0.5,0.75,1.0),"rolling_mean":(0.0,0.25,0.5,1.0),"rolling_std":(0.0,0.25,0.5,1.0),"lag":(0.0,0.25,0.5,1.0),"delta":(0.0,0.25,0.5,1.0),"difference":(0.0,0.25,0.5,1.0)};windows=(3,5,10,20,50,100)
  preferred={"smc_ict":[("difference","high","low"),("delta","close",None),("lag","close",None),("difference","close","low"),("difference","high","close")],"fvg_imbalance":[("difference","high","low"),("delta","close",None),("difference","close","low"),("difference","high","close")],"wyckoff_vsa_vpa":[("ratio","volume","range_ratio"),("difference","close","open"),("difference","high","low"),("delta","volume",None)],"vwap_volume_profile":[("difference","close","vwap_distance"),("zscore","vwap_distance",None),("ratio","volume","volume_ratio")]}
  specs=[]
  for op,left,right in preferred.get(selected_family,[]):
