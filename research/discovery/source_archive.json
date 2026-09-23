@@ -2302,6 +2302,14 @@
     {
       "source": "crossref",
       "query": "A-share quantitative trading factor strategy China",
+      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
+      "url": "https://doi.org/10.2139/ssrn.2419243",
+      "description": "Crossref work type=posted-content",
+      "updated_at": "2014"
+    },
+    {
+      "source": "crossref",
+      "query": "A-share quantitative trading factor strategy China",
       "title": "Insider trading under trading ban regulation in China’s A-share market",
       "url": "https://doi.org/10.1016/j.cjar.2015.06.002",
       "description": "Crossref work type=journal-article",
@@ -6358,14 +6366,6 @@
     {
       "source": "crossref",
       "query": "systematic trading strategy repository",
-      "title": "ANANTA: A Systematic Quantitative FX Trading Strategy",
-      "url": "https://doi.org/10.2139/ssrn.2419243",
-      "description": "Crossref work type=posted-content",
-      "updated_at": "2014"
-    },
-    {
-      "source": "crossref",
-      "query": "systematic trading strategy repository",
       "title": "Bitcoin Trading",
       "url": "https://doi.org/10.24818/ida-ql/2025.186",
       "description": "Crossref work type=dataset",
@@ -9117,8 +9117,8 @@
       "title": "qusong0627/QuantMind",
       "url": "https://github.com/qusong0627/QuantMind",
       "description": " QuantMind（量化大脑）开源版是一款面向个人开发者与投研团队的 AI 原生多市场量化交易平台。深度集成微软 Qlib、RD-Agent 因子演化与 TradingAgents 多智能体投研，提供从 300+ 维因子挖掘、13 种机器学习与深度学习模型工场、Qlib 高性能回测、截面批量推理、7x24 实时舆情情绪分析，到通达信深度联动（板块推送/预警雷达/闪电下单）与实盘模拟交易的完整闭环。支持 A股、港股、美股、期货及区块链。可免费商用，系统采用 Docker Compose 一键私有化部署，数据与模型完全本地化，保障策略隐私，功能零门槛无限制。",
-      "updated_at": "2026-09-23T12:58:17Z",
-      "stars": 1554
+      "updated_at": "2026-09-23T13:21:26Z",
+      "stars": 1556
     },
     {
       "source": "github",
@@ -18267,6 +18267,22 @@
     {
       "source": "openalex",
       "query": "A股 量化 github",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
+      "description": "OpenAlex work type=conference-paper year=2025",
+      "updated_at": "2025"
+    },
+    {
+      "source": "openalex",
+      "query": "A股 量化 github",
+      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
+      "url": "https://doi.org/10.48550/arxiv.2308.09975",
+      "description": "OpenAlex work type=preprint year=2023",
+      "updated_at": "2023"
+    },
+    {
+      "source": "openalex",
+      "query": "A股 量化 github",
       "title": "Financial Knowledge Large Language Model",
       "url": "https://doi.org/10.48550/arxiv.2407.00365",
       "description": "OpenAlex work type=preprint year=2024",
@@ -21979,22 +21995,6 @@
     {
       "source": "openalex",
       "query": "加密货币 量化 github",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "url": "https://doi.org/10.18653/v1/2025.naacl-long.318",
-      "description": "OpenAlex work type=conference-paper year=2025",
-      "updated_at": "2025"
-    },
-    {
-      "source": "openalex",
-      "query": "加密货币 量化 github",
-      "title": "FinEval: A Chinese Financial Domain Knowledge Evaluation Benchmark for Large Language Models",
-      "url": "https://doi.org/10.48550/arxiv.2308.09975",
-      "description": "OpenAlex work type=preprint year=2023",
-      "updated_at": "2023"
-    },
-    {
-      "source": "openalex",
-      "query": "加密货币 量化 github",
       "title": "UCL-Bench: A Chinese User-Centric Legal Benchmark for Large Language Models",
       "url": "https://doi.org/10.18653/v1/2025.findings-naacl.444",
       "description": "OpenAlex work type=conference-paper year=2025",
@@ -23371,14 +23371,6 @@
     {
       "source": "semantic_scholar",
       "query": "MEV execution alpha crypto",
-      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
-      "url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
-      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) – an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
-      "updated_at": "2025"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "MEV execution alpha crypto",
       "title": "RegGuard: Legitimacy and Fairness Enforcement for Optimistic Rollups",
       "url": "https://www.semanticscholar.org/paper/a2c40c0424bed72ad62ffd1ee12b1551dd1c86e6",
       "description": "Optimistic rollups provide scalable smart-contract execution but remain unsuitable for regulated financial applications due to three gaps: lack of semantic legitimacy checks, vulnerability to L1-L2 state divergence, and susceptibility to MEV-driven transaction reordering. We propose RegGuard, a unified framework that adds formal legitimacy guarantees to optimistic rollups. RegGuard includes: (1) a decidable semantic validator using the RegSpec rule language to encode and enforce regulatory and business constraints; (2) a state presynchronization validator that detects inconsistent cross-layer assumptions via a high-freshness L1 cache and differential dependency tracking; and (3) a verifiable fair-ordering protocol based on threshold encryption and binding commitments, achieving $(\\alpha, \\beta)$-fair sequencing under standard cryptographic assumptions. We formalize correctness and fairness properties for each component and implement a 15k-LOC prototype integrated into an Optimism-based rollup. Experiments on a distributed testbed show that RegGuard reduces settlement failures by over $\\mathbf{9 0 \\%}$, prevents detectable ordering manipulation, and sustains more than 85% of baseline throughput, demonstrating that strong legitimacy guarantees can coexist with rollup scalability.",
@@ -24559,6 +24551,14 @@
       "url": "https://www.semanticscholar.org/paper/9ac0e1fd80972401f9443388fb238b195ba600ae",
       "description": "With the advancement of blockchain technology and growing concerns about the vulnerabilities and mistrust in centralized financial services, decentralized finance (DeFi) and decentralized exchanges (DEXs) have emerged as promising alternatives. This paper delves into the challenges and issues within DeFi, with a particular focus on Uniswap. We highlight the susceptibility to Maximal Extractable Value (MEV) attacks, providing a background on the current state of DeFi and DEXs. Our approach includes a detailed transaction analysis on Uniswap to identify and analyze MEV attack patterns, alongside a method for detecting bots. The results offer critical insights into the nature of various attacks in DEXs and the correlation between internal and external blockchain events and MEV attack patterns. This research provides valuable guidelines for enhancing DEX security and mitigating MEV risks, serving as an essential resource for stakeholders in the DeFi ecosystem.",
       "updated_at": "2024"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "decentralized exchange arbitrage MEV research",
+      "title": "METHODOLOGY FOR COMPARATIVE ANALYSIS OF MAXIMAL EXTRACTABLE VALUE (MEV) IN DECENTRALIZED EXCHANGE PROTOCOLS",
+      "url": "https://www.semanticscholar.org/paper/da67a66015dae81963943b4af7b213e353de4444",
+      "description": "The development of smart contracts in blockchain networks has enabled the creation of sophisticated decentralized finance (DeFi) protocols, encompassing decentralized exchanges, lending platforms, and algorithmic crypto-assets. Despite decentralization and transparency, blockchain networks do not guarantee a predictable transaction execution order, leading to the emergence of the phenomenon known as Maximal Extractable Value (MEV) – an additional profit extracted by certain network participants who influence transaction ordering.\n\nThis study focuses on the empirical analysis of MEV extraction across various DeFi protocols to identify critical factors influencing the frequency and extent of MEV attacks. The research introduces a comparative methodology for evaluating MEV extraction based on a modified version of the MEV Inspect Py software suite, enhanced by newly developed components: a Price Resolver for collecting and correcting cryptocurrency price data, and a Jupyter Notebook module for detailed data analysis, comparison and visualization. An evaluation of the total volume of sandwich and arbitrage-type MEV attacks was also developed, and a method for correcting cryptocurrency price data was implemented, which improved the quality of the obtained results.\n\nThe obtained results demonstrate that Uniswap V2 and Uniswap V3 are the primary targets for MEV extraction; however, their operational mechanisms create distinct conditions for attacks. A clear correlation was identified between concentrated liquidity, pricing algorithms, and the scale of MEV exploitation. Furthermore, the findings confirm that the architectural features of DeFi protocols significantly affect their vulnerability to MEV.\n\nThese results can be employed to enhance the resilience of decentralized exchange algorithms against MEV extraction and to develop mechanisms that minimize its negative impacts on both protocol efficiency and user fairness. Moreover, the insights from this research provide val",
+      "updated_at": "2025"
     },
     {
       "source": "semantic_scholar",
@@ -26395,14 +26395,6 @@
     {
       "source": "semantic_scholar",
       "query": "因子挖掘 A股 量化 交易",
-      "title": "“规例”的变化与波动溢出效应——基于中国股票市场的实证研究",
-      "url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
-      "description": "",
-      "updated_at": "2012"
-    },
-    {
-      "source": "semantic_scholar",
-      "query": "因子挖掘 A股 量化 交易",
       "title": "中国股市的日内效应、长记忆性及多重分形性：基于价-量交叉相关性视角",
       "url": "https://www.semanticscholar.org/paper/b0416809cf6c5c2abcfd8a5925043fa39b9fbc11",
       "description": "",
@@ -26487,6 +26479,14 @@
       "url": "https://www.semanticscholar.org/paper/2182d5e8b9553de91435c43255e1514cd9477cc6",
       "description": "",
       "updated_at": "2005"
+    },
+    {
+      "source": "semantic_scholar",
+      "query": "订单流 A股 高频 因子",
+      "title": "“规例”的变化与波动溢出效应——基于中国股票市场的实证研究",
+      "url": "https://www.semanticscholar.org/paper/6650638890c8929c45e3bcc48868436aa6499823",
+      "description": "",
+      "updated_at": "2012"
     },
     {
       "source": "semantic_scholar",
