@@ -217,3 +217,41 @@ def test_rpd_ledger_resets_when_api_credential_rotates(monkeypatch, tmp_path):
     state=__import__("json").loads(usage.read_text())
     assert state["calls"] == 1
     assert state["key_id"] == __import__("hashlib").sha256(b"rotated-key").hexdigest()[:16]
+
+
+def test_provider_429_is_hard_quota_stop(monkeypatch):
+    class RateLimit:
+        code = 429
+    monkeypatch.setattr(provider_router, "config", lambda: ("https://example.test/", "model", "key"))
+    monkeypatch.setattr(provider_router, "interval", lambda: 0.0)
+    monkeypatch.setattr(provider_router.urllib.request, "urlopen", lambda *args, **kwargs: (_ for _ in ()).throw(__import__("urllib").error.HTTPError("u", 429, "quota", {}, None)))
+    with pytest.raises(RuntimeError, match="provider_quota_exhausted:429:RPD:GEMINI"):
+        provider_router.call("test")
+
+
+def test_provider_rpd_guard_counts_each_actual_retry(monkeypatch, tmp_path):
+    usage = tmp_path / "provider_usage.json"
+    calls = {"reserve": 0, "http": 0}
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
+    monkeypatch.setattr(provider_router, "RPD_LIMIT", 10)
+    monkeypatch.setattr(provider_router, "config", lambda: ("https://example.test/", "model", "key"))
+    monkeypatch.setattr(provider_router, "interval", lambda: 0.0)
+    monkeypatch.setattr(provider_router, "_reserve_rpd_slot", lambda: calls.__setitem__("reserve", calls["reserve"] + 1) or calls["reserve"])
+
+    class Response:
+        def __enter__(self): return self
+        def __exit__(self, *args): return False
+        def read(self): return b'{"choices":[{"message":{"content":"{}"}}]}'
+
+    def fake_urlopen(*args, **kwargs):
+        calls["http"] += 1
+        if calls["http"] == 1:
+            raise __import__("urllib").error.HTTPError("u", 503, "temporary", {}, None)
+        return Response()
+
+    monkeypatch.setattr(provider_router.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(provider_router.random, "uniform", lambda *args: 0.0)
+    monkeypatch.setattr(provider_router.time, "sleep", lambda *args: None)
+    assert provider_router.call("test") == "{}"
+    assert calls["http"] == 2
+    assert calls["reserve"] == 2
