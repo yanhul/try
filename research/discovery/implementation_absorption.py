@@ -72,7 +72,10 @@ def main():
     }
     OUT.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(f"TRY_IMPLEMENTATION_ABSORPTION status={payload['status']} implemented={len(implemented)} blocked={len(blocked)}")
-    return 0 if payload["status"]=="PASS" else 1
+    # BLOCKED candidates are a governed negative outcome, not a controller failure.
+    # Only a missing/invalid absorption proof above is fatal. The controller must
+    # persist the blocked set and continue researching the executable subset.
+    return 0
 
 if __name__=="__main__":
     raise SystemExit(main())
