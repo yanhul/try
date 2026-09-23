@@ -128,6 +128,16 @@ def deterministic_candidate(forbidden):
  for candidate in rank_primitives(candidates, seed=bc):
   ok,reason=validate_candidate(candidate,bc,parent)
   if ok:return candidate
+ top=rank_primitives(candidates, seed=bc)[:12]
+ for i,left in enumerate(top):
+  for right in top[i+1:]:
+   for combine in ("and","or"):
+    ls,rs=left["discovery_spec"],right["discovery_spec"]
+    spec={"mechanism_family":selected_family,"combine":combine,"terms":[{k:ls[k] for k in ls if k in {"operator","left","right","window","threshold","direction"}},{k:rs[k] for k in rs if k in {"operator","left","right","window","threshold","direction"}}]}
+    candidate={"bc":bc,"parent_bc":parent,"hypothesis_id":"composite_primitive","discovery_spec":spec,"conceptual_change":f"bounded composition of two distinct {selected_family} primitives","evidence_sources":[],"rationale":"","is_testable":True,"oos_selection_used":False}
+    if fingerprint(candidate) not in forbidden:
+     ok,reason=validate_candidate(candidate,bc,parent)
+     if ok:return candidate
  raise ValueError("deterministic_translation_frontier_exhausted")
 def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
@@ -142,7 +152,7 @@ def request_candidate(prompt,forbidden):
   if not isinstance(c,dict):last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object.\n";continue
   if c.get("status")=="HOLD":return c
   normalize_structural_types(c);normalize_hypothesis_id(c);hid=c.get("hypothesis_id");spec=c.get("discovery_spec")
-  if hid not in {"discovered_primitive","mechanism_family"}:reason="translation_hypothesis_id_forbidden"
+  if hid not in {"discovered_primitive","mechanism_family","composite_primitive"}:reason="translation_hypothesis_id_forbidden"
   elif hid=="mechanism_family" and (not isinstance(spec,dict) or spec.get("mechanism_family")!=selected_family):reason="selected_family_mismatch"
   else:
    c["bc"],c["parent_bc"]=bc,parent;f=fingerprint(c)
