@@ -128,7 +128,8 @@ def regenerate(bc,parent,failure,s):
     return True
    # Provider-wide failures must not be hidden behind a different survivor.
    low=out.lower()
-   provider_wide=any(x in low for x in ('provider_not_configured','provider_rate_limited','provider_http_','provider_request_failed','gemini_api_key','401','403'))
+   provider_quota_exhausted=('provider_quota_exhausted' in low or 'provider_rpd_budget_exhausted' in low)
+   provider_wide=provider_quota_exhausted or any(x in low for x in ('provider_not_configured','provider_rate_limited','provider_http_','provider_request_failed','gemini_api_key','401','403'))
    if provider_wide:
     s['provider_failure_reason']=out.strip()[-2000:]; return False
    last_reason=out.strip()[-2000:]
@@ -358,7 +359,9 @@ def main():
    if failure is None: return hold(s,'HOLD_NO_FAILURE_ANALYSIS',parent,retryable=False)
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s):
-   if s.get('provider_failure_reason'): return hold(s,'HOLD_PROVIDER_'+s['provider_failure_reason'][-400:].replace('\n',' '),expected)
+   if s.get('provider_failure_reason'):
+    reason=s['provider_failure_reason'][-400:].replace('\n',' ')
+    return hold(s,'HOLD_PROVIDER_'+reason,expected,retryable=('provider_quota_exhausted' not in reason.lower() and 'provider_rpd_budget_exhausted' not in reason.lower()))
    if s.get('translation_frontier_exhausted'):
     # Exhausting the current structural frontier is not a terminal research state.
     # The next controller invocation already runs broad discovery before campaign resume;
