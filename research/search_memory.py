@@ -176,7 +176,12 @@ def _primitive_bin(candidate):
 
 
 def rank_primitives(candidates, seed):
-    """Quality-diversity ordering over structural mechanisms."""
+    """Quality-diversity ordering over structural mechanisms.
+
+    The frontier is emitted in deterministic round-robin order across feature
+    bins. This prevents a large family of near-identical price expressions from
+    consuming the whole bounded search budget.
+    """
     data = rebuild_from_artifacts()
     events = [e for e in data.get("events", []) if e.get("decision") in STRATEGY_DECISIONS]
     total = max(1, len(events))
@@ -190,7 +195,8 @@ def rank_primitives(candidates, seed):
         if event.get("decision") in FAILURE_DECISIONS:
             key = _primitive(event)
             stats.setdefault(key, {"tested": 0, "score_sum": 0.0, "recent_failures": 0})["recent_failures"] += 1
-    ranked = []
+
+    scored = []
     for index, candidate in enumerate(candidates):
         key = _primitive(candidate)
         item = stats.get(key, {"tested": 0, "score_sum": 0.0, "recent_failures": 0})
@@ -198,21 +204,44 @@ def rank_primitives(candidates, seed):
         mean = float(item["score_sum"]) / tested if tested else 0.5
         exploration = math.sqrt(math.log(total + 2) / (tested + 1))
         value = mean + 0.60 * exploration - 0.20 * int(item["recent_failures"])
-        ranked.append((value, index, candidate))
-
-    # Quality-diversity guard: prevent one feature-space bin from monopolising
-    # the frontier. This changes search order only, never promotion evidence.
-    bin_counts = {}
-    diversified = []
-    for value, index, candidate in sorted(ranked, key=lambda item: (-item[0], item[1])):
         feature_bin = _primitive_bin(candidate)
-        count = bin_counts.get(feature_bin, 0)
-        diversity_bonus = 0.35 / (1 + count)
         seed_jitter = ((int(seed) + index) % 997) * 1e-9
-        diversified.append((value + diversity_bonus + seed_jitter, index, candidate))
-        bin_counts[feature_bin] = count + 1
-    return [candidate for _, _, candidate in sorted(diversified, key=lambda item: (item[0], -item[1]), reverse=True)]
+        scored.append({
+            "candidate": candidate,
+            "value": value + seed_jitter,
+            "index": index,
+            "bin": feature_bin,
+        })
 
+    # Sort each structural bin independently, then interleave the bins.
+    # Empty/new bins get an exploration bonus; a bin cannot monopolise the
+    # frontier merely because it has more generated combinations.
+    bins = {}
+    for item in scored:
+        bins.setdefault(item["bin"], []).append(item)
+    for items in bins.values():
+        items.sort(key=lambda item: (-item["value"], item["index"]))
+
+    bin_order = sorted(
+        bins,
+        key=lambda feature_bin: (
+            -max(item["value"] for item in bins[feature_bin]),
+            str(feature_bin),
+        ),
+    )
+    ranked = []
+    depth = 0
+    while True:
+        emitted = False
+        for feature_bin in bin_order:
+            items = bins[feature_bin]
+            if depth < len(items):
+                ranked.append(items[depth]["candidate"])
+                emitted = True
+        if not emitted:
+            break
+        depth += 1
+    return ranked
 
 def rank_families(families, seed):
     """UCB family ranking with a deterministic escape regime after repeated failures."""
