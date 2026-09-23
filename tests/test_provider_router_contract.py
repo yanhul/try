@@ -204,19 +204,42 @@ def test_family_profile_rejects_generic_smc_zscore():
     assert reason == "family_operator_not_admissible"
 
 
-def test_rpd_ledger_resets_when_api_credential_rotates(monkeypatch, tmp_path):
+def test_rpd_ledger_does_not_reset_when_api_credential_rotates(monkeypatch, tmp_path):
     usage=tmp_path/"provider_usage.json"
     monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
     monkeypatch.setattr(provider_router, "RPD_LIMIT", 1)
+    monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
     monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "new-key"))
     assert provider_router._reserve_rpd_slot() == 1
     with pytest.raises(RuntimeError, match="provider_rpd_budget_exhausted:1/1"):
+        monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "rotated-key"))
         provider_router._reserve_rpd_slot()
-    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "rotated-key"))
+
+
+def test_rpd_ledger_is_project_and_model_scoped(monkeypatch, tmp_path):
+    usage=tmp_path/"provider_usage.json"
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
+    monkeypatch.setattr(provider_router, "RPD_LIMIT", 1)
+    monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model-a", "key"))
+    assert provider_router._reserve_rpd_slot() == 1
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model-b", "key"))
+    assert provider_router._reserve_rpd_slot() == 1
+
+
+def test_rpd_reset_uses_pacific_quota_day(monkeypatch, tmp_path):
+    usage=tmp_path/"provider_usage.json"
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
+    monkeypatch.setattr(provider_router, "RPD_LIMIT", 1)
+    monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
+    monkeypatch.setenv("RESEARCH_PROVIDER_RPD_RESET_TZ", "America/Los_Angeles")
+    monkeypatch.setattr(provider_router.datetime, "datetime", type("FakeDateTime", (), {
+        "now": staticmethod(lambda tz=None: __import__("datetime").datetime(2026, 9, 23, 0, 30, tzinfo=__import__("datetime").timezone.utc).astimezone(tz))
+    }))
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "key"))
     assert provider_router._reserve_rpd_slot() == 1
     state=__import__("json").loads(usage.read_text())
-    assert state["calls"] == 1
-    assert state["key_id"] == __import__("hashlib").sha256(b"rotated-key").hexdigest()[:16]
+    assert state["quota_day"] == "2026-09-22"
 
 
 def test_provider_429_is_hard_quota_stop(monkeypatch):
