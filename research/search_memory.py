@@ -152,6 +152,29 @@ def _primitive(candidate_or_spec):
     return "|".join("" if spec.get(key) is None else str(spec.get(key)) for key in ("operator", "left", "right", "direction"))
 
 
+def _feature_group(name):
+    name = str(name or "")
+    if name in {"open", "high", "low", "close"}:
+        return "price"
+    if name in {"volume", "volume_ratio"}:
+        return "volume"
+    if name in {"range_ratio", "close_location", "volatility"}:
+        return "range_volatility"
+    if name in {"vwap_distance", "momentum_trend", "mean_reversion", "wyckoff_vsa_vpa",
+                 "vwap_volume_profile", "regime", "seasonality", "point_figure", "gann_reference"}:
+        return "derived"
+    return "other"
+
+
+def _primitive_bin(candidate):
+    spec = candidate.get("discovery_spec") or {}
+    return (
+        _feature_group(spec.get("left")),
+        _feature_group(spec.get("right")),
+        str(spec.get("operator") or ""),
+    )
+
+
 def rank_primitives(candidates, seed):
     """Quality-diversity ordering over structural mechanisms."""
     data = rebuild_from_artifacts()
@@ -175,9 +198,20 @@ def rank_primitives(candidates, seed):
         mean = float(item["score_sum"]) / tested if tested else 0.5
         exploration = math.sqrt(math.log(total + 2) / (tested + 1))
         value = mean + 0.60 * exploration - 0.20 * int(item["recent_failures"])
-        value += ((int(seed) + index) % 997) * 1e-9
         ranked.append((value, index, candidate))
-    return [candidate for _, _, candidate in sorted(ranked, key=lambda item: (item[0], -item[1]), reverse=True)]
+
+    # Quality-diversity guard: prevent one feature-space bin from monopolising
+    # the frontier. This changes search order only, never promotion evidence.
+    bin_counts = {}
+    diversified = []
+    for value, index, candidate in sorted(ranked, key=lambda item: (-item[0], item[1])):
+        feature_bin = _primitive_bin(candidate)
+        count = bin_counts.get(feature_bin, 0)
+        diversity_bonus = 0.35 / (1 + count)
+        seed_jitter = ((int(seed) + index) % 997) * 1e-9
+        diversified.append((value + diversity_bonus + seed_jitter, index, candidate))
+        bin_counts[feature_bin] = count + 1
+    return [candidate for _, _, candidate in sorted(diversified, key=lambda item: (item[0], -item[1]), reverse=True)]
 
 
 def rank_families(families, seed):
