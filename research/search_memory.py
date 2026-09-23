@@ -146,6 +146,40 @@ def stagnant(data=None, window=8):
     return len(events) >= window and all(event.get("decision") in FAILURE_DECISIONS for event in events[-window:])
 
 
+
+def _primitive(candidate_or_spec):
+    spec = candidate_or_spec.get("discovery_spec", candidate_or_spec) if isinstance(candidate_or_spec, dict) else {}
+    return "|".join("" if spec.get(key) is None else str(spec.get(key)) for key in ("operator", "left", "right", "direction"))
+
+
+def rank_primitives(candidates, seed):
+    """Quality-diversity ordering over structural mechanisms."""
+    data = rebuild_from_artifacts()
+    events = [e for e in data.get("events", []) if e.get("decision") in STRATEGY_DECISIONS]
+    total = max(1, len(events))
+    stats = {}
+    for event in events:
+        key = _primitive(event)
+        item = stats.setdefault(key, {"tested": 0, "score_sum": 0.0, "recent_failures": 0})
+        item["tested"] += 1
+        item["score_sum"] += float(event.get("score", 0.0))
+    for event in events[-8:]:
+        if event.get("decision") in FAILURE_DECISIONS:
+            key = _primitive(event)
+            stats.setdefault(key, {"tested": 0, "score_sum": 0.0, "recent_failures": 0})["recent_failures"] += 1
+    ranked = []
+    for index, candidate in enumerate(candidates):
+        key = _primitive(candidate)
+        item = stats.get(key, {"tested": 0, "score_sum": 0.0, "recent_failures": 0})
+        tested = int(item["tested"])
+        mean = float(item["score_sum"]) / tested if tested else 0.5
+        exploration = math.sqrt(math.log(total + 2) / (tested + 1))
+        value = mean + 0.60 * exploration - 0.20 * int(item["recent_failures"])
+        value += ((int(seed) + index) % 997) * 1e-9
+        ranked.append((value, index, candidate))
+    return [candidate for _, _, candidate in sorted(ranked, key=lambda item: (item[0], -item[1]), reverse=True)]
+
+
 def rank_families(families, seed):
     """UCB family ranking with a deterministic escape regime after repeated failures."""
     data = rebuild_from_artifacts(); families = list(dict.fromkeys(str(f) for f in families if str(f).strip()))
