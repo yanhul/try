@@ -8,7 +8,7 @@ from research.autonomous_hypothesis import write_candidate,validate_candidate,ME
 from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
 from research.hypothesis_novelty import structural_key,novelty_metadata
-from research.search_memory import rank_families,note_selection
+from research.search_memory import rank_families,rank_primitives,note_selection
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
@@ -113,7 +113,7 @@ def deterministic_candidate(forbidden):
  for op in sorted(profile["ops"]):
   for left in family_cols:
    for right in (family_cols if op in {"difference","ratio"} else (None,)):specs.append((op,left,right))
- seen=set()
+ seen=set();candidates=[]
  for op,left,right in specs:
   if (op,left,right) in seen:continue
   seen.add((op,left,right));ws=windows if op in {"zscore","rolling_mean","rolling_std","lag","delta","rank"} else (None,)
@@ -124,10 +124,10 @@ def deterministic_candidate(forbidden):
      if right is not None:spec["right"]=right
      if window is not None:spec["window"]=window
      candidate={"bc":bc,"parent_bc":parent,"hypothesis_id":"discovered_primitive","discovery_spec":spec,"conceptual_change":f"BTC-compatible {selected_family} proxy using {op}({left})"+(f" with {right}" if right else "")+(f" over window {window}" if window else ""),"evidence_sources":[],"rationale":"","is_testable":True,"oos_selection_used":False}
-     if fingerprint(candidate) in forbidden:continue
-     ok,reason=validate_candidate(candidate,bc,parent)
-     if ok:return candidate
- raise ValueError("deterministic_translation_frontier_exhausted")
+     if fingerprint(candidate) not in forbidden:candidates.append(candidate)
+ for candidate in rank_primitives(candidates, seed=bc):
+  ok,reason=validate_candidate(candidate,bc,parent)
+  if ok:return candidate raise ValueError("deterministic_translation_frontier_exhausted")
 def request_candidate(prompt,forbidden):
  feedback="";last="unknown"
  for _ in range(3):
