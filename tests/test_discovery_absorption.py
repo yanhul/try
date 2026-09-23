@@ -16,18 +16,13 @@ def test_absorption_proof_schema_after_pipeline(tmp_path, monkeypatch):
             "url": "https://example.test/a",
             "family": "mean_reversion",
             "is_system": True,
-            "lineage": {"rounds": [
-                {"decision": "PASS_SOURCE"},
-                {"decision": "PASS_EXECUTABLE_DATA_LANE"},
-                {"decision": "PASS_DIVERSITY_DEDUP"},
-            ]},
         }]
     }
     queue = {"candidates": [{
         "candidate_id": "Q-1",
         "source_url": "https://example.test/a",
         "family": "mean_reversion",
-        "lineage": {"source": "SRC-1"},
+        "lineage": {"source": "SRC-1", "rounds": [{"decision": "PASS_SOURCE"}, {"decision": "PASS_EXECUTABLE_DATA_LANE"}, {"decision": "PASS_DIVERSITY_DEDUP"}]},
     }]}
     rp, qp, op = tmp_path / "registry.json", tmp_path / "queue.json", tmp_path / "proof.json"
     rp.write_text(json.dumps(registry), encoding="utf-8")
