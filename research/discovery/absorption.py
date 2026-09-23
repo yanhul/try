@@ -31,7 +31,7 @@ def main() -> int:
     queue = json.loads(QUEUE.read_text(encoding="utf-8"))
     records = registry.get("records", [])
     candidates = queue.get("candidates", []) if isinstance(queue, dict) else queue
-    by_id = {str(x.get("candidate_id")): x for x in candidates if isinstance(x, dict)}
+    by_url = {str(x.get("source_url")): x for x in candidates if isinstance(x, dict) and x.get("source_url")}
 
     absorbed = []
     blocked = []
@@ -41,7 +41,7 @@ def main() -> int:
         lineage = source.get("lineage") or {}
         rounds = lineage.get("rounds") or []
         decisions = {str(x.get("decision")) for x in rounds if isinstance(x, dict)}
-        candidate = by_id.get(sid)
+        candidate = by_url.get(str(source.get("url") or ""))
         if not source.get("is_system"):
             continue
         if not source.get("url"):
