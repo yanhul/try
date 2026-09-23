@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json,math,os,random,sys,time,datetime,urllib.error,urllib.request
+import hashlib,json,math,os,random,sys,time,datetime,urllib.error,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -182,7 +182,14 @@ def main():
  forbidden=prior_fingerprints();failure_text=compact(failure.read_text(encoding="utf-8"));payload=json.dumps([list(x) for x in sorted(forbidden,key=str)],separators=(",",":"))
  last_error=None
  for selected_family in ranked:
-  selected=next(s for s in eligible if str(s.get("family") or "").strip()==selected_family);note_selection(selected_family,bc)
+  family_survivors=[s for s in eligible if str(s.get("family") or "").strip()==selected_family]
+  # Stable source rotation prevents the first discovery record from monopolising a family.
+  family_survivors.sort(key=lambda s: (
+   int.from_bytes(hashlib.sha256(f"{bc}:{s.get('source_url','')}".encode()).digest()[:8], "big"),
+   str(s.get("source_url") or ""),
+  ))
+  selected=family_survivors[0]
+  note_selection(selected_family,bc)
   prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{json.dumps(selected,sort_keys=True,separators=(",",":"))}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
   try:
    c=request_candidate(prompt,forbidden)
