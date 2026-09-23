@@ -46,4 +46,3 @@ def test_implementation_absorption_allows_governed_partial_result(tmp_path, monk
     assert result["status"]=="PARTIAL"
     assert result["implemented_count"]==1
     assert result["blocked_count"]==1
-}
