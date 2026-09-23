@@ -37,7 +37,9 @@ def _reserve_rpd_slot():
  # Gemini RPD is project-scoped, not API-key-scoped. Never reset the durable
  # ledger merely because the credential rotated; doing so can exceed the
  # project's server-side quota.
- project_id=os.getenv("GEMINI_PROJECT_ID","").strip() or "unspecified-project"
+ project_id=os.getenv("GEMINI_PROJECT_ID","").strip()
+ if not project_id:
+  raise RuntimeError("provider_project_id_missing:GEMINI")
  scope=f"GEMINI:{project_id}:{model}"
  try: state=json.loads(USAGE_PATH.read_text(encoding="utf-8")) if USAGE_PATH.exists() else {}
  except Exception: state={}
