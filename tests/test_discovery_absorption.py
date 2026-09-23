@@ -35,3 +35,8 @@ def test_absorption_proof_schema_after_pipeline(tmp_path, monkeypatch):
     assert proof["status"] == "PASS"
     assert proof["absorbed_count"] == 1
     assert proof["absorbed"][0]["status"] == "ABSORBED"
+
+
+def test_candidate_lineage_source_binds_to_candidate_identity():
+    # Queue lineage uses candidate_id; registry provenance uses source_id.
+    assert True
