@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import hashlib,json,math,os,random,sys,time,datetime,urllib.error,urllib.request
+from zoneinfo import ZoneInfo
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
@@ -16,6 +17,7 @@ SYSTEM=f'''Translate ONLY the SELECTED BTC-COMPATIBLE SCREEN SURVIVOR. You are n
 _PROVIDER_LAST_CALL=0.0
 USAGE_PATH=ROOT/"research/provider_usage.json"
 RPD_LIMIT=max(1,int(os.getenv("RESEARCH_PROVIDER_RPD_LIMIT","450")))
+RPD_RESET_TZ=os.getenv("RESEARCH_PROVIDER_RPD_RESET_TZ","America/Los_Angeles")
 bc=parent=0;selected_family=""
 def config():
  return "https://generativelanguage.googleapis.com/v1beta/openai/",os.getenv("GEMINI_MODEL","gemini-3.5-flash-lite"),os.getenv("GEMINI_API_KEY","")
@@ -26,18 +28,26 @@ def compact(s,limit=None):
  limit=limit or max(4000,int(os.getenv("RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT","12000")));s=s or ""
  return s if len(s)<=limit else s[:limit//2]+f"\n...[compacted {len(s)-limit} chars]...\n"+s[-(limit-limit//2):]
 def _reserve_rpd_slot():
- day=datetime.datetime.now(datetime.timezone.utc).date().isoformat()
- _,_,key=config()
- # Bind the local usage ledger to the active credential. Rotating the provider
- # key must not inherit the previous credential's exhausted local RPD bucket.
- key_id=hashlib.sha256(key.encode()).hexdigest()[:16] if key else "missing"
+ try:
+  tz=ZoneInfo(RPD_RESET_TZ)
+ except Exception as e:
+  raise RuntimeError(f"provider_rpd_timezone_invalid:{RPD_RESET_TZ}") from e
+ quota_day=datetime.datetime.now(datetime.timezone.utc).astimezone(tz).date().isoformat()
+ _,model,key=config()
+ # Gemini RPD is project-scoped, not API-key-scoped. Never reset the durable
+ # ledger merely because the credential rotated; doing so can exceed the
+ # project's server-side quota.
+ project_id=os.getenv("GEMINI_PROJECT_ID","").strip() or "unspecified-project"
+ scope=f"GEMINI:{project_id}:{model}"
  try: state=json.loads(USAGE_PATH.read_text(encoding="utf-8")) if USAGE_PATH.exists() else {}
  except Exception: state={}
- if state.get("day")!=day or state.get("key_id")!=key_id:
-  state={"day":day,"key_id":key_id,"calls":0}
+ if state.get("quota_day")!=quota_day or state.get("scope")!=scope:
+  state={"quota_day":quota_day,"scope":scope,"calls":0}
  calls=int(state.get("calls",0))
  if calls>=RPD_LIMIT: raise RuntimeError(f"provider_rpd_budget_exhausted:{calls}/{RPD_LIMIT}")
- state["calls"]=calls+1; USAGE_PATH.write_text(json.dumps(state,sort_keys=True)+"\n",encoding="utf-8")
+ state["calls"]=calls+1
+ state["last_key_id"]=hashlib.sha256(key.encode()).hexdigest()[:16] if key else "missing"
+ USAGE_PATH.write_text(json.dumps(state,sort_keys=True)+"\n",encoding="utf-8")
  return state["calls"]
 def call(prompt):
  global _PROVIDER_LAST_CALL
