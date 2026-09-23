@@ -1,0 +1,27 @@
+{
+  "bc": 477,
+  "candidate_hash": "ff2378a618fff0c6e1c3292fde997a1eb1c05a692eeca410df652af9fe1e1d68",
+  "conceptual_change": "Translate the selected smc_ict screen survivor by assessing the compression of the high-low bar range relative to a baseline threshold, indicating an institutional consolidation or liquidity build-up phase prior to expansion.",
+  "discovery_spec": {
+    "direction": "below",
+    "left": "high",
+    "mechanism_family": "smc_ict",
+    "operator": "difference",
+    "right": "low",
+    "threshold": 0.0
+  },
+  "evidence_sources": [
+    "https://github.com/3yther/quant-bot"
+  ],
+  "hypothesis_id": "discovered_primitive",
+  "is_testable": true,
+  "novelty_key": "smc_ict|difference|high|low|below",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 476,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

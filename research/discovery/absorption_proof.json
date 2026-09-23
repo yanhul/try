@@ -1,269 +1,653 @@
 {
   "schema_version": 1,
   "proof_type": "TRY_DISCOVERY_ABSORPTION_PROOF",
-  "status": "BLOCKED",
-  "source_registry_digest": "bbcb85a80a1271105b53aed5503c37233a10ad22e3c690493bac75591dde6363",
+  "status": "PASS",
+  "source_registry_digest": "1b7c2580598edc61cf3a8e0aa3676ca02d3576ca35ff53896bd6cb53663fddb0",
   "research_queue_digest": "5de7464cd61a5d5aa14531e98fd14dbc37ae87c1d18abe034348d31e7d1b796f",
-  "absorbed_count": 0,
-  "blocked_count": 64,
-  "absorbed": [],
-  "blocked": [
+  "absorbed_count": 64,
+  "blocked_count": 0,
+  "absorbed": [
     {
+      "source_id": "SRC-0749ee1420cd67ef",
       "candidate_id": "0749ee1420cd67ef",
-      "reason": "source_lineage_mismatch"
+      "family": "fvg_imbalance",
+      "source_url": "https://github.com/lukaszkazala/orderbook-imbalance-backtester",
+      "source_digest": "b56c4efa425e6bda13881aeadc5eec51d4a74d5af91bc148db73ea2d7063cd17",
+      "candidate_digest": "a92e2087b1e62d146707fd5fea4716cba9f0a0d62ec2d560c30aa83d17ea9581",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-fea9e4150834cf35",
       "candidate_id": "fea9e4150834cf35",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Adi-111111/Pairs-Trading",
+      "source_digest": "a959d649df8eba6c1dc7c5be16568e8e7b2e822b0049180e020038306d654a45",
+      "candidate_digest": "d74c497b37ddd55d3d54f0ab189eb88a31a170fa5a087865d2d5b6e0aab33c1b",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-458988ee49423648",
       "candidate_id": "458988ee49423648",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/Alex7020/-Animal-Prosthetics-Market-2022-by-Technology-Equipment-Product-Type-Packaging-Material-2029",
+      "source_digest": "af196f92da77b24df798737b0736289ae9a19d70340ccaa46891be0f0fb4a303",
+      "candidate_digest": "2a5fb65ebc6c39d161a94deaa62a8de977ffcf8fd38ce8531caedfed2ebc6bf2",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-a39cba1d84033150",
       "candidate_id": "a39cba1d84033150",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/3yther/quant-bot",
+      "source_digest": "070073edbf269c5727cf8ef612d7c75399dd1303d07fea1bc39df83c6783bed2",
+      "candidate_digest": "583450200d11b46ed9f2936bb89615f07aeb09bbdb7a0f8da07dd64bd7e03907",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-687a87bdfb47c947",
       "candidate_id": "687a87bdfb47c947",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/Kryptera-K/ADA-USD-Volatility-Stochastic-Convergence-Strategy-VSCS-",
+      "source_digest": "0593c9c24d3533180f0b2b1f17dcc3f1c85377d2fea0869d4bfc88beaddb8945",
+      "candidate_digest": "6790dd867fddc92d7340c5c55d3e3cef7b902045b265423f21691ee3d0ffc1fe",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-8d44c9f052cd3e8a",
       "candidate_id": "8d44c9f052cd3e8a",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Aditya-kumar-13/market-neutral-statistical-arbitrage",
+      "source_digest": "0ccd5b25c5549f25501209b6ba95224a081ef15ef645acbda9fd25e4221e8b16",
+      "candidate_digest": "8321bf0498ef37ae58ff989eeef10504a775b575ff2f7ff085cf440b1b1ddbdc",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-345ec1330a0be9c9",
       "candidate_id": "345ec1330a0be9c9",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/ChirayuSinha21/Dynamic-portfolio-optimizer",
+      "source_digest": "9fe3e9b9af60a5241fac7a116c3cf142332072588df4fe0ff75a933043b1a3b0",
+      "candidate_digest": "eb644449d83ab05052eb2d2d6f4561769df66f4d73d26af4b5114c3a1d0713fb",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-7e9dac52e35ffae2",
       "candidate_id": "7e9dac52e35ffae2",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/Chidu2000/CryptoPriceFetch_Agents",
+      "source_digest": "e356c02bf0c53d1873aa432307c3a4366b846465ea8503894dbd2957946a9398",
+      "candidate_digest": "9d7e02ce71f2272085d44c1f19306699d0aac1fd50cf5e521f1c491773ed6177",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-aa7d0e185862888c",
       "candidate_id": "aa7d0e185862888c",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/LLMTEST717/MT_TRADING_SYSTEM",
+      "source_digest": "b93732db2182edb72f484bc221ec3f23d42699e011e5c5872e03fcc0769c4e2e",
+      "candidate_digest": "34f769fa9519da59730cf142c5f8d40ec69a793edd9812fa9a416a34908cd147",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-fbadfff17dfcd877",
       "candidate_id": "fbadfff17dfcd877",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/BhavyaSatija54/Statistical-Arbitrage-Strategy",
+      "source_digest": "97262720e5af0d7b2033fa59590a9a18e1818f0298c385f59af10cc11dc5f6f6",
+      "candidate_digest": "936a4a71a58fc8a36b555e6886c68a85b5ec451bef1c85cee7a05408c0ee605f",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-f2450405b952aeed",
       "candidate_id": "f2450405b952aeed",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/Dr-EEEEE/FuturesBacktestingEngine",
+      "source_digest": "0c5ef3133d2164676f9717772b4cf58e9b0ea0f53527e3219790e0c2fe3a1442",
+      "candidate_digest": "5904a59ffd8f3a4dcf21a833f3668cb3162f3d49cdc7ae336807f22dcf9ce308",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-8fc33fa8e45109c1",
       "candidate_id": "8fc33fa8e45109c1",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/Dixit-529/Order-Book-Dynamics-Price-Movement-Prediction-Simple-Strategy-Backtest",
+      "source_digest": "14e2c18c944af4794bf5ab77d3e342c7ff03bfe9b16e31f0556b265d5737115b",
+      "candidate_digest": "9d2df9fd8f3084fca3f73637a12e76f12149a52c41d0dc398db22e78963ec617",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-15cb6fe63630fa54",
       "candidate_id": "15cb6fe63630fa54",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/Zzzx4Young/okx-quant-trader",
+      "source_digest": "417328ab62fa8777947a261479198a825a6d4d9e9817991acf3c13e74e97e0b2",
+      "candidate_digest": "0e0ecf55e079f625365642c5f6e39bc654a697c46e0532250f2071d8261cf1b7",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-b04bb57eea4ffe9e",
       "candidate_id": "b04bb57eea4ffe9e",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/CttQuantLab/Kalman-Filter-Based-Statistical-Arbitrage-A-Dynamic-Pairs-Trading-Strategy",
+      "source_digest": "5c6da66d99b8c352d0e9372254efd8451b6ad926c1c51be10bead01ae19824a7",
+      "candidate_digest": "4667a186eecacd6dc1d8a1cfd7c5f28d1bff4603760979a31e7cd1110ddf0071",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-94522c451cebbc62",
       "candidate_id": "94522c451cebbc62",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/HasanAyaz-Analyst/codexMarketing_analysis_excel",
+      "source_digest": "57736816f6630939df326ce91f0c44c483a4f380069d87852dd12004391aa7f6",
+      "candidate_digest": "fcfa2cc89c375ad76f4713374c49d8a1466d9d13b55220f3e3a787a33535a06d",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-4c7da66cf141df29",
       "candidate_id": "4c7da66cf141df29",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/Ifegwu/MLRobotrade-v3",
+      "source_digest": "dc0ea474a904249789e15861d956dc0de898dc22e73f4f08a7b19498fe1d2ba2",
+      "candidate_digest": "449491404054e670a0111943ec5b93fd38ce23f1e55258916813a766f9d7c535",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-aab36bf14f018ec1",
       "candidate_id": "aab36bf14f018ec1",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/chanhyeong28/TradingAlgorithmForDeribit",
+      "source_digest": "0dc9b30468f35c09fdf0d1b5865e7e0af61e58370bd1297fb5e56e2e355954d7",
+      "candidate_digest": "e1d69b024d63e6112fb0c589f01f3ad92e50a8a24c6386b7c1f1cf010522b3f1",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-0e974b9c64da1901",
       "candidate_id": "0e974b9c64da1901",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-",
+      "source_digest": "ffb0e72da58e49ca23ea5cfb190069cc103907f1b26a45fa1b76b7fdd0e0f4c0",
+      "candidate_digest": "891cdc1bccace7e2d9b065e3335be975bdfcd0030bcaa8e067912e46b4844fcd",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-bb14d01145235a7d",
       "candidate_id": "bb14d01145235a7d",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/Jack-Close/commodities-trend-following-research",
+      "source_digest": "49d15ed9b85569903e643e4e97be810fe959b41bde86021b0ab8f67aab489ed4",
+      "candidate_digest": "2dbe3de6a1f9f3ff3e15386a2d2a24ed6bc10f13aec2f285b0cce8f755b53b2a",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-5e280656c1faabb7",
       "candidate_id": "5e280656c1faabb7",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/Kevvu-2009/Kevin",
+      "source_digest": "260c9853b255ee9c4076ae51e711fc23144cf67b9d2e7d5e5c372f5d92e3b0bd",
+      "candidate_digest": "818a19a8ae8604fd828efdedef96edcf69467cf1d24303056ac413a470ec4318",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-4aed5d69bf418325",
       "candidate_id": "4aed5d69bf418325",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/hrtang512/IMC-Prosperity4",
+      "source_digest": "843ccd423c56c148deea0f0ce0f3ec20315954d153550049dc231ac359073016",
+      "candidate_digest": "e2ea8accb9418dcb7ba582c8d713b1ce463a44a8a92e758aba52b8a95cd89ecb",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-59f3f8c77de1f36b",
       "candidate_id": "59f3f8c77de1f36b",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/IanaSh02/Quant-portfolio",
+      "source_digest": "579e97af41ab10c6b17432bea0ae4842958b2a311f86175e0ba3751871ec6d5c",
+      "candidate_digest": "da3532c33b4ecbf1c7d65c56d801991c8e3d0bfc323dc839f37ba76f77f33581",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-ee62cfafb95c84d5",
       "candidate_id": "ee62cfafb95c84d5",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/andreasalexandrou21/trendlab",
+      "source_digest": "e1bbe4a0cca0b6edf6cf3d3b030238fb0f6d8231b55887bd2daaa0ddec912c79",
+      "candidate_digest": "720250457a804ad6f7bcd7105576fed0a6fd17f0018ff4fb5fa6637b360b09d8",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-d2a13daf8d7f8d0b",
       "candidate_id": "d2a13daf8d7f8d0b",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/batster4/auto-research-prediction-markets",
+      "source_digest": "c91a525efbb4ca06774f747c9dd568243d571e6fb87aabc17f184486a1c76625",
+      "candidate_digest": "c2a6f68f4d7cb0bf82a3c8ea7af8453f6abda1da79a22a8448dd764efdecc2fe",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-9cb4cf2b0b7ca9c8",
       "candidate_id": "9cb4cf2b0b7ca9c8",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/joonhsong/AutoTradeCrypto",
+      "source_digest": "02b611481fb6e00d8f137523676194fdb17d564cae50c9fe3037c85abf5aa8a3",
+      "candidate_digest": "1158064791d915a611c446996bf08cb36e9013f6254dee9070e6e71145cbd5f8",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-c5290bb15b21b27d",
       "candidate_id": "c5290bb15b21b27d",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/JISOC-2511/AlgorithmicTrading",
+      "source_digest": "0587322d24b5f89005e2a7f379477bf1d215ff72049a8abf60ef63028538419c",
+      "candidate_digest": "878c85865dc8a61df46fa32d9d54161bb8a3ae8aa4bc91f6d32c06405d4bc89c",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-9221e70410f97fc9",
       "candidate_id": "9221e70410f97fc9",
-      "reason": "source_lineage_mismatch"
+      "family": "momentum_trend",
+      "source_url": "https://github.com/nirajneupane17/Futures-Trend-Following-Risk-Management-CTA-Style-",
+      "source_digest": "3f53d24764397feadf4f367335ad74eb92e098d05ea9678d0f5f5ee15b955619",
+      "candidate_digest": "c9bd23d9bc30ba11b3bad68301cd6c07b32d36485fafdd2bfb931c782a4fd6bd",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-2d81756ed90dbb60",
       "candidate_id": "2d81756ed90dbb60",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/kunnaaalll/ApeXQuanT-ShowCase",
+      "source_digest": "ae8b8c208f7ee84bc0ab6b1a9c487350b5197c6bc1160a642d7c5e481a51a353",
+      "candidate_digest": "3c9cc231f6e0f8ae585baeeb0e3e1fa9e7e7bc768bef91531dfe6abac92347d6",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-153d553a2fc74030",
       "candidate_id": "153d553a2fc74030",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/kukuhtw/dma_bot_rust",
+      "source_digest": "3a95135890c3bdeaf6e56269f3b35b252527d67a649e790e63060becf8226877",
+      "candidate_digest": "948e70e907a78c4421384b730afd6eeb7f65e73e83f4d304d76322cf654edf49",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-9bf4fe323577bdf9",
       "candidate_id": "9bf4fe323577bdf9",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/KASHAPP10/statistical-arbitrage-crypto",
+      "source_digest": "222feb49ae5ab55e59dd858193b914e90741acd906fb0e68fc77680b4478359b",
+      "candidate_digest": "71d299ab873e7d0e65e9a6c7909f115d15fd8c083bb561616faf16191b410ad1",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-c2772f18b1cd4394",
       "candidate_id": "c2772f18b1cd4394",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/kunnaaalll/ApeXQuant",
+      "source_digest": "99b99353cc7f1ca7d3a9aee8acf5b1dd3693ffdf32a8ecb0d433115505840c6b",
+      "candidate_digest": "848157e1343ec01252a05d8976e6f7ebc50899dd53c637e88bfb1b03b0a3efb2",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-b0803c05b49065c5",
       "candidate_id": "b0803c05b49065c5",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/oureffort/Rks-coin_exchange",
+      "source_digest": "731c058f8ac65809e347b0e2356333f271a713b5fe8f61c2143d39198821caa7",
+      "candidate_digest": "eddaf7f5372190ed28af090ee24bb16f11a335399b46dfae4ba3070cec58af0b",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-2caf3d41d70b00bd",
       "candidate_id": "2caf3d41d70b00bd",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Leomaloigne/Statistical-arbitrage-pairs-trading-strategy-",
+      "source_digest": "ff6a1381ae7b9bc2191f7f99fb78fd8850751f48613691e9fb45d319ad8df2f9",
+      "candidate_digest": "a2ac08d40fa4994480910ec497d94fdbbe90279dfde481dbc70911646945d101",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-690ddef3d62a9c4a",
       "candidate_id": "690ddef3d62a9c4a",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/sarvesh4321/ai-alpha-pipeline",
+      "source_digest": "d7396050808ad0278d7b0e589fce56c1624cd93182e100cf3de5c991ad540fde",
+      "candidate_digest": "0911a6ee802d94a26cdb074a7884834d25564d283592d7ba6487c3a175107d22",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-0fe1d9de30247924",
       "candidate_id": "0fe1d9de30247924",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/procyon-yim/crypto-exchanger",
+      "source_digest": "0f1eb11d660ffed521ba4b090ed1bd7e31a1dd5b607789dc0ee0a213596f5f95",
+      "candidate_digest": "36eaf2ca9fcfef5260590597bd3e1f298243b5da911a3d5e3b994544695d50e0",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-31b246ae5f9b21b8",
       "candidate_id": "31b246ae5f9b21b8",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/MackenzieCampbelAndross/StatARB",
+      "source_digest": "3edcf625f7ac34107355d7e079a5fb0a4b6690b38eb0400af5a93b2fad4f8683",
+      "candidate_digest": "5cdbcfe1025ae1974ca27471b8164604e4a073ab30f5918e6a6777680f070314",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-1a3809b88494a50e",
       "candidate_id": "1a3809b88494a50e",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
+      "source_digest": "32e5a14b867242271ecf880a9a6e210eceec6803bf58b0494ce5d3b324c14642",
+      "candidate_digest": "a852ad2f421afbc0d3d70c6db2bc7994ce3c1d7dff3542f28ad956a2c15f9411",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-9fc5003ecd83b993",
       "candidate_id": "9fc5003ecd83b993",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/sohan-shingade/flintstrats",
+      "source_digest": "a22c6f4eca95c075017b00f11074d880f538680fa3a264c7dc04f8bad9d552b7",
+      "candidate_digest": "d4d11336aa493b9c08733de19e07bac96673927ff41091870e8a6c23259263d5",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-a4829c41963e2ea4",
       "candidate_id": "a4829c41963e2ea4",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Manan-Rawat/Crypto_pairs",
+      "source_digest": "ff7dc7c08025297072e9b5ad9ef4bdc1dad81b991878430d3c8b1165a6fd976e",
+      "candidate_digest": "5cd423fe44403943557071aea62c11125e6ac9be4d3a8456ef32519c1cd25066",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-1ba654ca09346db9",
       "candidate_id": "1ba654ca09346db9",
-      "reason": "source_lineage_mismatch"
+      "family": "smc_ict",
+      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "source_digest": "c88a37a2da36eb2a7fb3c784ec018fcc814d0cf442b439d6f1d7c86cd13d314e",
+      "candidate_digest": "bb92fa0a4d7c781599d9314257c402795cd7b4f62918d7fc1e2e6b4de423522b",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-68568d883f9110e0",
       "candidate_id": "68568d883f9110e0",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/whiteblackparang/crypto-vbo-statistical-eval",
+      "source_digest": "b27873e795665bd30568b791c1aa2ab31e62654511adc3e32e8adb1ea52e724b",
+      "candidate_digest": "70c515e55c15228fadea8389bad0e23ab5b4dd7f38966591b3a5f85b954ce10d",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-57153ba98d52110f",
       "candidate_id": "57153ba98d52110f",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Manashwy/Crypto_Arbitrage",
+      "source_digest": "cf4f57606e01bb76a3ac41b664e7aaed629a02684b7a0a1e6e60e30c892f56fe",
+      "candidate_digest": "cc99391897d3271ab7881e88fcef18bb959b56e0478677afbfc156e655ba6d53",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-287d617df76f30b8",
       "candidate_id": "287d617df76f30b8",
-      "reason": "source_lineage_mismatch"
+      "family": "volatility",
+      "source_url": "https://github.com/whiteblackparang/crypto-volatility-breakout",
+      "source_digest": "6bc4771bd51e37707d30ac606447c1cb2a6a7b116fe491bf0c199d06f9a09d1c",
+      "candidate_digest": "82b43acaa141689e1873d28b7541f10a3caa6b04c89981993b9f8fa4efecfc96",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-5b62d4d05b56a2bc",
       "candidate_id": "5b62d4d05b56a2bc",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/NIU1751879/Trading_Strategies",
+      "source_digest": "7016f99552256287db5d48312f15aa041a1dc96763e615c2957c15783c6322fe",
+      "candidate_digest": "c4b895e548733935321dd311e400862a3848f70ae661ecf43470de2ad4743e2a",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-7d412ac2683513ba",
       "candidate_id": "7d412ac2683513ba",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/Nithyadodda07/pairs-trading-strategy",
+      "source_digest": "d7e5ef751de12ba4c6a3ddc211d165b7f66357ca2fa77d1c95a4b74603fd48d7",
+      "candidate_digest": "2135bdfbff49490af3a8f08a4445d719fb0169f0aae1888eb3c4d0e81c1ab9e9",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-3b9ef2e79da1df07",
       "candidate_id": "3b9ef2e79da1df07",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/PG2362/Statistical_arbitrage",
+      "source_digest": "212e62875fe1c6ed7a0b1d3f1a9011a35608a6d78250ef60fd6ff10399896d0e",
+      "candidate_digest": "0bdd4b666e30438fa5ae6f70c9d2020ef06beb1d1b28915095a240124cbe1b42",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-03a82185c3402c00",
       "candidate_id": "03a82185c3402c00",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/aakash-ramesh/crypto-stat-arb",
+      "source_digest": "e77c26f53cb878a904134d363d472ae5d20c36dd6d6f32cf35d251d455706e28",
+      "candidate_digest": "e2300a84ae9e88714715058184d273e424a7332d5cf0b24e61f9f10726aaef05",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-d34b0dd2a8e58c3a",
       "candidate_id": "d34b0dd2a8e58c3a",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/brennoln/project1-pairs-trading-statarb",
+      "source_digest": "b1dad1edd19ed2cf40fa769c851e93a4b64cbcec2d2e7d618aa1959b016cda05",
+      "candidate_digest": "3d52a0e30f529d13e87c1eea0bba022c7a8dfd7be87e374e64d963f2c1c510e0",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-d5a53cb2eec3ba6d",
       "candidate_id": "d5a53cb2eec3ba6d",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/devikajonjale/Statistical-Arbitrage-on-Indian-Banking-Equities-Pair-Trading-",
+      "source_digest": "0fb86e7aacd4b0ef3a02551601eb493167629ee5552fd7c03b218ffb00ff13df",
+      "candidate_digest": "3002ac5391397ebcce7c4558a2def4274269056b805f33ac629b7011a8d4d6a0",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-5a3cf1545ea8cb46",
       "candidate_id": "5a3cf1545ea8cb46",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/hk2978/pairs-trading",
+      "source_digest": "40abb4ba007c57a8d46394464700162b2b18e5c6a4c49ef9f5826c202878adc6",
+      "candidate_digest": "7ebe8d7413ee393cd2a960334b6e5173976374c470120ea572ae7b51741b64bb",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-416c15633d97ea44",
       "candidate_id": "416c15633d97ea44",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/hkbuttar/pairtrade-lab",
+      "source_digest": "780825720780e4851399296cdc3104df242832165ecd34d5823fc8ab3fd01732",
+      "candidate_digest": "810d60248ab63c5eca6653f72fa72ad228a5fb8a93ffb9a341bab8e0e1f47340",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-a391f680590b8977",
       "candidate_id": "a391f680590b8977",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/jorgedurbaan/ibex35-statistical-arbitrage",
+      "source_digest": "2c3b83d452f52f5f60e3690d6c20c64ec47168939c70f4caebc71b3d1f276e45",
+      "candidate_digest": "b59db87f3b697844e1b2f1a5eeedf2004b5fd40811ded5fc216582db2f33195b",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-0351e2c13cf483fa",
       "candidate_id": "0351e2c13cf483fa",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/kshitijbhandari/Statistical-Arbitrage-Market-Neutral-Spread-Trading-on-S-P-500-Cointegrated-Equities",
+      "source_digest": "16577cd533161bf5a7ba804e57f33f6f5652d49c2b0eecf4f771c77fb4725ad7",
+      "candidate_digest": "f2eec69b4960b2238ef646743f1f60177589e46438b835d3952f4f482464b055",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-5e7ba63f08629bc2",
       "candidate_id": "5e7ba63f08629bc2",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/kshoop28/crypto-statistical-arbitrage",
+      "source_digest": "1b84b9e7b1f3adb9e0f299640155fc7eda8867b38242909ae1d18ed9ce9be472",
+      "candidate_digest": "7134ca2bcf2522b3649e5dc106148543d816dca708ddadcea615725191d5b315",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-a94085f447c12add",
       "candidate_id": "a94085f447c12add",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/mengrenman/dynamic-hedge-pairs-trading",
+      "source_digest": "1fc5090a31a544ab2754732eca4c880400b50132a7243862f8c345d30234692d",
+      "candidate_digest": "dacec28441b7731b0888d1e20ad7636b38779fc4c7fb40a18c4eaec05c2531be",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-336ffc3f37c6125b",
       "candidate_id": "336ffc3f37c6125b",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/mng08/IMC_trade_scripts",
+      "source_digest": "7d1f51e168af81c031798b1e9705ab40e5f121c9499e1cfdd117e019d38151ec",
+      "candidate_digest": "99ecf4d74dc5f4e21905134c71f711950db0bafc3be4ee164732910507a8fc0e",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-0e953b3e5a6bdbcd",
       "candidate_id": "0e953b3e5a6bdbcd",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/pranay123-stack/crypto-trading-strategies",
+      "source_digest": "bf6c3d4f2942a929763eaadcfe3f148fb3c28d600253d88188c15e379b64c3ef",
+      "candidate_digest": "dd57a528a1e2ecad02b15c929d5055305d46aaddb6a8b26c2fbac8d6ab11c69d",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-3e9c6f131ee4109f",
       "candidate_id": "3e9c6f131ee4109f",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/r-t-culbreath/stat-arb-pairs-research",
+      "source_digest": "4e14f751d7581f55d2e1a77d3b62ca4713e8fd67d23205cfb7f768b5271924ee",
+      "candidate_digest": "43a5e71f359a557f415e0336ffa81b6a7bd1c6f47c999eac5b02846edcde4c39",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-f45174e57f0c9795",
       "candidate_id": "f45174e57f0c9795",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/saaachis/statistical-arbitrage-indian-bank-equities",
+      "source_digest": "a0372957794016be792809d6efc4a15cebb05ea2a398238a16b3dace5dc81364",
+      "candidate_digest": "9e65851974df3d50730204e7d29ab2713ac7e09767148d56ff71a3f8777c2016",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-bb8ea9997698f54c",
       "candidate_id": "bb8ea9997698f54c",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/saeedmohseni97/statarb-research",
+      "source_digest": "f2c5dcea92d787b517ef4d1c68de8aadc35abb1019dadb4fc25a231a8a79a8a0",
+      "candidate_digest": "2c75e7cd9f5807d79cd5cb279ddcdf30508e56e52bbac3d16655b6e46533d309",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-cd27cff8421ec31c",
       "candidate_id": "cd27cff8421ec31c",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/sahilchauhxn/pair-trading",
+      "source_digest": "f58efd04c7e0750df1e245f3e5f71c586bcc703c8480ce76aa3c238e4319c044",
+      "candidate_digest": "08a7f8070ead6ab7a232d28870de84a53954eeffaa23b464bd408175f831af85",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-8ab2eabb2b797f59",
       "candidate_id": "8ab2eabb2b797f59",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/samspeir14/statistical_arbitrage_system",
+      "source_digest": "bcf95c3ff8e263457ddacfc3c49d9bfc4d0955ddf5c5129dc1ac88c16a4e4b12",
+      "candidate_digest": "6185ef1666b8f3551b76e19919aade8964aa655e1e4a29b39340d6c838d332ab",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-74ccb2cbd543bf16",
       "candidate_id": "74ccb2cbd543bf16",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/sujith-kamme/statistical-arbitrage-crypto",
+      "source_digest": "8212eaf007d0270bb24c3de83a68a7860ef61e7ecabd7fe9e311591367b25ad1",
+      "candidate_digest": "d27d5cb5f7e611b11812387c25d3e0b12d6af730d4efa2296069c4cb830aa538",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     },
     {
+      "source_id": "SRC-e6a6653bbab0d0fd",
       "candidate_id": "e6a6653bbab0d0fd",
-      "reason": "source_lineage_mismatch"
+      "family": "mean_reversion",
+      "source_url": "https://github.com/tanwiraasif/statistical-arbitrage-research",
+      "source_digest": "2e2de78f0981f5c6bf791d40fa528f731dc57dfb069d78446c1effc049ca8207",
+      "candidate_digest": "94e765e6b378634b7060097248d4c0953dc5a3f6a8fa33833322af6b56e1dfce",
+      "status": "ABSORBED",
+      "meaning": "persisted_discovery_frontier_eligible"
     }
   ],
+  "blocked": [],
   "negative_claim": "ABSORBED does not mean validated strategy, OOS pass, or promotion."
 }
