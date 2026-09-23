@@ -58,7 +58,13 @@ def main() -> int:
         if not source:
             blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "source_registry_match_missing"})
             continue
-        if sid and str(source.get("source_id") or "") != sid:
+        candidate_id = str(candidate.get("candidate_id") or "")
+        source_id = str(source.get("source_id") or "")
+        # Queue lineage currently records the durable candidate identity, while
+        # the registry records the provenance source identity. Accept the
+        # candidate-id binding and require the registry URL/source-id pair to
+        # remain internally consistent; never equate unrelated sources.
+        if sid and sid not in {candidate_id, source_id}:
             blocked.append({"candidate_id": candidate.get("candidate_id"), "reason": "source_lineage_mismatch"})
             continue
         if not source.get("is_system"):
