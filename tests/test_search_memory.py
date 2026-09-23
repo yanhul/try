@@ -64,3 +64,21 @@ def test_rebuild_from_durable_oos_artifacts_records_learning(monkeypatch, tmp_pa
     data = search_memory.rebuild_from_artifacts()
     assert data["families"]["family_c"]["fail"] == 1
     assert len(data["events"]) == 1
+
+
+def test_unseen_primitive_gets_exploration_priority(monkeypatch, tmp_path):
+    _isolated(monkeypatch, tmp_path)
+    seen = _candidate(1, "family_a", operator="difference")
+    search_memory.record(seen, _result(False), "OOS_FAIL")
+    candidates = [
+        _candidate(2, "family_a", operator="difference"),
+        _candidate(3, "family_a", operator="ratio"),
+    ]
+    ranked = search_memory.rank_primitives(candidates, seed=11)
+    assert ranked[0]["discovery_spec"]["operator"] == "ratio"
+
+
+def test_primitive_ranking_is_deterministic(monkeypatch, tmp_path):
+    _isolated(monkeypatch, tmp_path)
+    candidates = [_candidate(1, "family_a", operator="difference"), _candidate(2, "family_a", operator="ratio")]
+    assert search_memory.rank_primitives(candidates, seed=5) == search_memory.rank_primitives(candidates, seed=5)
