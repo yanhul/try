@@ -164,7 +164,7 @@ def main() -> int:
         predicate = mechanism_predicate(spec); family = spec.get("mechanism_family"); candidate_universe = "reference_event_ledger" if family in EVENT_MECHANISMS else "all_bars"; candidate_family = family
     elif hid == "composite_primitive":
         if not isinstance(spec, dict): raise SystemExit("UNEXECUTABLE_COMPOSITE_SPEC")
-        predicate, candidate_universe, candidate_family = composite_predicate(spec), "all_bars", "composite_primitive"
+        predicate, candidate_universe, candidate_family = composite_predicate(spec), "all_bars", spec.get("mechanism_family")
     elif hid in HYPOTHESES:
         predicate, candidate_universe, candidate_family = HYPOTHESES[hid], "reference_event_ledger", None
     else: raise SystemExit(f"UNEXECUTABLE_HYPOTHESIS_ID:{hid}")
