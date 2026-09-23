@@ -32,11 +32,14 @@ jobs:
       - name: Set TRY provider secrets
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_PROJECT_ID: ${{ secrets.GEMINI_PROJECT_ID }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
         run: |
           test -n "$GEMINI_API_KEY"
+          test -n "$GEMINI_PROJECT_ID"
           test -n "$TRY_PROVIDER_TOKEN"
           printf '%s' "$GEMINI_API_KEY" | uv run pywrangler secret put GEMINI_API_KEY
+          printf '%s' "$GEMINI_PROJECT_ID" | uv run pywrangler secret put GEMINI_PROJECT_ID
           printf '%s' "$TRY_PROVIDER_TOKEN" | uv run pywrangler secret put TRY_PROVIDER_TOKEN
       - name: Smoke test
         env:
