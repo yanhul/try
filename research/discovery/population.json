@@ -1945,22 +1945,6 @@
       }
     },
     {
-      "candidate_id": "0792bbd87d87bee0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3386/w21286",
-      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
-      "description": "Crossref work type=report",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "0792bbd87d87bee0",
-        "family": "china_a_share",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c46d8cf558932aa3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.6535019",
@@ -2985,22 +2969,6 @@
       }
     },
     {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e8812fec27a0c7c3",
       "source": "crossref",
       "source_url": "https://doi.org/10.2172/4042824",
@@ -3476,6 +3444,22 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "45a74f3b646f8b18",
+        "family": "vwap_volume_profile",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "vwap_volume_profile",
         "rounds": []
       }
@@ -7049,6 +7033,22 @@
       }
     },
     {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3420d8e9736819f7",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7496818",
@@ -7780,6 +7780,22 @@
       "source_timestamp": "2007",
       "lineage": {
         "source": "5f4cbf122b4b1906",
+        "family": "order_flow",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "0792bbd87d87bee0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3386/w21286",
+      "title": "Dark Trading at the Midpoint: Pricing Rules, Order Flow, and High Frequency Liquidity Provision",
+      "description": "Crossref work type=report",
+      "family": "order_flow",
+      "market": null,
+      "query": "order flow trading research code",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "0792bbd87d87bee0",
         "family": "order_flow",
         "rounds": []
       }
@@ -9093,22 +9109,6 @@
       "lineage": {
         "source": "36542d8ca86c70a6",
         "family": "unknown",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
         "rounds": []
       }
     },
@@ -34839,22 +34839,6 @@
       }
     },
     {
-      "candidate_id": "1efebf2229628e4c",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1145/3576915.3616590",
-      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
-      "description": "OpenAlex work type=conference-paper year=2023",
-      "family": "execution_mev",
-      "market": null,
-      "query": "MEV execution alpha crypto",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "1efebf2229628e4c",
-        "family": "execution_mev",
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "fd390048c8c61598",
       "source": "openalex",
       "source_url": "https://doi.org/10.48550/arxiv.2309.02391",
@@ -36023,6 +36007,22 @@
       }
     },
     {
+      "candidate_id": "2f5f3d7c80b0f360",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1111/fire.12290",
+      "title": "Bitcoin intraday time series momentum",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "cross sectional crypto factors momentum reversal",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "2f5f3d7c80b0f360",
+        "family": "momentum_trend",
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7e303348512cb293",
       "source": "openalex",
       "source_url": "https://doi.org/10.3386/w31284",
@@ -36258,22 +36258,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "4644c1866a0237b0",
-        "family": "momentum_trend",
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f5f3d7c80b0f360",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.1111/fire.12290",
-      "title": "Bitcoin intraday time series momentum",
-      "description": "OpenAlex work type=article year=2021",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "2f5f3d7c80b0f360",
         "family": "momentum_trend",
         "rounds": []
       }
@@ -37058,6 +37042,22 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "59c13afe068bee62",
+        "family": "execution_mev",
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "1efebf2229628e4c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1145/3576915.3616590",
+      "title": "Demystifying DeFi MEV Activities in Flashbots Bundle",
+      "description": "OpenAlex work type=conference-paper year=2023",
+      "family": "execution_mev",
+      "market": null,
+      "query": "decentralized exchange arbitrage MEV research",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "1efebf2229628e4c",
         "family": "execution_mev",
         "rounds": []
       }
