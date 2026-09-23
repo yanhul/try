@@ -27,9 +27,14 @@ def compact(s,limit=None):
  return s if len(s)<=limit else s[:limit//2]+f"\n...[compacted {len(s)-limit} chars]...\n"+s[-(limit-limit//2):]
 def _reserve_rpd_slot():
  day=datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+ _,_,key=config()
+ # Bind the local usage ledger to the active credential. Rotating the provider
+ # key must not inherit the previous credential's exhausted local RPD bucket.
+ key_id=hashlib.sha256(key.encode()).hexdigest()[:16] if key else "missing"
  try: state=json.loads(USAGE_PATH.read_text(encoding="utf-8")) if USAGE_PATH.exists() else {}
  except Exception: state={}
- if state.get("day")!=day: state={"day":day,"calls":0}
+ if state.get("day")!=day or state.get("key_id")!=key_id:
+  state={"day":day,"key_id":key_id,"calls":0}
  calls=int(state.get("calls",0))
  if calls>=RPD_LIMIT: raise RuntimeError(f"provider_rpd_budget_exhausted:{calls}/{RPD_LIMIT}")
  state["calls"]=calls+1; USAGE_PATH.write_text(json.dumps(state,sort_keys=True)+"\n",encoding="utf-8")
