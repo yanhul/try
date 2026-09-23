@@ -82,3 +82,17 @@ def test_primitive_ranking_is_deterministic(monkeypatch, tmp_path):
     _isolated(monkeypatch, tmp_path)
     candidates = [_candidate(1, "family_a", operator="difference"), _candidate(2, "family_a", operator="ratio")]
     assert search_memory.rank_primitives(candidates, seed=5) == search_memory.rank_primitives(candidates, seed=5)
+
+
+def test_primitive_ranking_prefers_unseen_feature_space_bin(monkeypatch, tmp_path):
+    _isolated(monkeypatch, tmp_path)
+    seen = _candidate(1, "family_a", operator="difference")
+    search_memory.record(seen, _result(False), "OOS_FAIL")
+    same_bin = _candidate(2, "family_a", operator="difference")
+    same_bin["discovery_spec"]["left"] = "high"
+    same_bin["discovery_spec"]["right"] = "low"
+    new_bin = _candidate(3, "family_a", operator="ratio")
+    new_bin["discovery_spec"]["left"] = "volume"
+    new_bin["discovery_spec"]["right"] = "close"
+    ranked = search_memory.rank_primitives([same_bin, new_bin], seed=13)
+    assert ranked[0]["discovery_spec"]["left"] == "volume"
