@@ -204,6 +204,15 @@ def test_family_profile_rejects_generic_smc_zscore():
     assert reason == "family_operator_not_admissible"
 
 
+def test_rpd_ledger_requires_explicit_project_id(monkeypatch, tmp_path):
+    usage=tmp_path/"provider_usage.json"
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
+    monkeypatch.delenv("GEMINI_PROJECT_ID", raising=False)
+    monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "key"))
+    with pytest.raises(RuntimeError, match="provider_project_id_missing:GEMINI"):
+        provider_router._reserve_rpd_slot()
+
+
 def test_rpd_ledger_does_not_reset_when_api_credential_rotates(monkeypatch, tmp_path):
     usage=tmp_path/"provider_usage.json"
     monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
