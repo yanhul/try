@@ -119,7 +119,7 @@ def deterministic_candidate(forbidden):
   seen.add((op,left,right));ws=windows if op in {"zscore","rolling_mean","rolling_std","lag","delta","rank"} else (None,)
   for window in ws:
    for direction in ("above","below"):
-    for threshold in thresholds:
+    for threshold in threshold_grid.get(op,(0.0,0.5,1.0)):
      spec={"mechanism_family":selected_family,"operator":op,"left":left,"direction":direction,"threshold":threshold}
      if right is not None:spec["right"]=right
      if window is not None:spec["window"]=window
