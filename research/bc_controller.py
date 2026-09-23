@@ -359,7 +359,13 @@ def main():
   checkpoint(s,'DECIDE',expected)
   if not regenerate(expected,parent,failure,s):
    if s.get('provider_failure_reason'): return hold(s,'HOLD_PROVIDER_'+s['provider_failure_reason'][-400:].replace('\n',' '),expected)
-   if s.get('translation_frontier_exhausted'): return hold(s,'HOLD_TRANSLATION_FRONTIER_EXHAUSTED',expected,retryable=False)
+   if s.get('translation_frontier_exhausted'):
+    # Exhausting the current structural frontier is not a terminal research state.
+    # The next controller invocation already runs broad discovery before campaign resume;
+    # keep the same BC/lineage and request a fresh discovery frontier rather than freezing.
+    s['discovery_refresh_required']=True
+    print(f'CONTROLLER_DISCOVERY_REFRESH_REQUIRED BC{expected}')
+    return hold(s,'HOLD_TRANSLATION_FRONTIER_EXHAUSTED',expected,retryable=True)
    return hold(s,'HOLD_PROVIDER_ROUTER',expected)
   candidate=json.loads((CANDIDATE_DIR/f'BC{expected}.json').read_text(encoding='utf-8')); write_queue([candidate]); checkpoint(s,'PERSISTED',expected); print(f'CONTROLLER_CANDIDATE_QUEUED BC{expected}'); return 0
  q=normalize_queue(s)
