@@ -58,6 +58,8 @@ class WorkerValidationTests(unittest.TestCase):
         for path in (
             ".aios/policy.py",
             ".github/workflows/x.yml",
+            ".github/evil.yml",
+            ".git/config",
             "secrets/key.txt",
             "tests/test_x.py",
             ".env",
@@ -74,6 +76,8 @@ class WorkerValidationTests(unittest.TestCase):
             entry._normalize_source_snapshot({".env": "secret"})
         with self.assertRaisesRegex(ValueError, "protected_source_path"):
             entry._normalize_source_snapshot({".aios/policy.py": "policy"})
+        with self.assertRaisesRegex(ValueError, "protected_source_path"):
+            entry._normalize_source_snapshot({".git/config": "metadata"})
 
     def test_source_snapshot_is_fail_closed(self):
         with self.assertRaisesRegex(ValueError, "duplicate_source_path"):
