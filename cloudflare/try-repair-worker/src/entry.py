@@ -258,7 +258,12 @@ class Default(WorkerEntrypoint):
             )
 
         try:
-            body = await request.json()
+            raw_body = await request.text()
+            if len(raw_body.encode("utf-8")) > MAX_BODY:
+                return Response.json(
+                    {"status": "HOLD", "reason": "body_too_large"}, status=200
+                )
+            body = json.loads(raw_body)
             response = await _propose(body, self.env)
             return Response.json(response, status=200)
         except RuntimeError as exc:
