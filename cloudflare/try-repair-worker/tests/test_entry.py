@@ -75,6 +75,17 @@ class WorkerValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "protected_source_path"):
             entry._normalize_source_snapshot({".aios/policy.py": "policy"})
 
+    def test_source_snapshot_is_fail_closed(self):
+        with self.assertRaisesRegex(ValueError, "duplicate_source_path"):
+            entry._normalize_source_snapshot({
+                "src\\repair.py": "a",
+                "src/repair.py": "b",
+            })
+        with self.assertRaisesRegex(ValueError, "source_file_too_large"):
+            entry._normalize_source_snapshot({
+                "src/large.py": "x" * (entry.MAX_FILE_BYTES + 1),
+            })
+
     def test_request_identity_is_fail_closed(self):
         base = {
             "request_id": "req-1",
@@ -89,6 +100,9 @@ class WorkerValidationTests(unittest.TestCase):
             ("repository", ""),
             ("sha", "bad"),
             ("attempt", 0),
+            ("attempt", True),
+            ("request_id", "   "),
+            ("repository", "   "),
         ):
             case = dict(base)
             case[key] = value
