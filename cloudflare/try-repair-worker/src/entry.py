@@ -37,6 +37,32 @@ Rules:
 """
 
 
+def _normalize_source_snapshot(source: dict) -> dict:
+    if not isinstance(source, dict):
+        raise ValueError("source_snapshot_invalid")
+    if len(source) > MAX_SOURCE_FILES:
+        raise ValueError("source_snapshot_too_large")
+    bounded = {}
+    for path, content in source.items():
+        if not isinstance(path, str) or not isinstance(content, str):
+            raise ValueError("source_snapshot_invalid")
+        norm = path.replace("\\", "/")
+        if not norm or "\x00" in norm:
+            raise ValueError(f"invalid_source_path:{path}")
+        parts = norm.split("/")
+        protected = (
+            norm.startswith("/")
+            or ".." in parts
+            or any(norm == p.rstrip("/") or norm.startswith(p) for p in DENIED_PREFIXES)
+            or norm in DENIED_NAMES
+            or norm.startswith("tests/")
+        )
+        if protected:
+            raise ValueError(f"protected_source_path:{path}")
+        bounded[norm] = content[:MAX_FILE_BYTES]
+    return bounded
+
+
 def _validate(proposal: dict) -> dict:
     if proposal.get("status") == "HOLD":
         return {
@@ -142,16 +168,24 @@ async def _propose(request: dict, env) -> dict:
 
     source = request.get("source_snapshot")
     failure = request.get("failure")
-    if not isinstance(source, dict) or not isinstance(failure, dict):
-        raise ValueError("request_missing_evidence")
-    if len(source) > MAX_SOURCE_FILES:
-        raise ValueError("source_snapshot_too_large")
-
-    bounded_source = {
-        str(k): str(v)[:MAX_FILE_BYTES]
-        for k, v in source.items()
-        if isinstance(k, str) and isinstance(v, str)
-    }
+    request_id = request.get("request_id")
+    repository = request.get("repository")
+    sha = request.get("sha")
+    try:
+        attempt = int(request.get("attempt", 0))
+    except (TypeError, ValueError):
+        raise ValueError("request_attempt_invalid")
+    if not isinstance(request_id, str) or not request_id:
+        raise ValueError("request_id_missing")
+    if not isinstance(repository, str) or not repository:
+        raise ValueError("repository_missing")
+    if not isinstance(sha, str) or len(sha) != 40 or any(c not in "0123456789abcdefABCDEF" for c in sha):
+        raise ValueError("sha_invalid")
+    if attempt < 1:
+        raise ValueError("request_attempt_invalid")
+    if not isinstance(failure, dict):
+        raise ValueError("failure_missing")
+    bounded_source = _normalize_source_snapshot(source)
     bounded_failure = dict(failure)
     if isinstance(bounded_failure.get("ci_failure_log_tail"), str):
         bounded_failure["ci_failure_log_tail"] = (
