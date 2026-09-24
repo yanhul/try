@@ -72,6 +72,18 @@ class WorkerValidationTests(unittest.TestCase):
     def test_rejects_oversized_patch(self):
         self.assertRejects("src/large.py", "x" * (entry.MAX_FILE_BYTES + 1))
 
+    def test_rejects_ambiguous_paths(self):
+        for path in ("", "src/with\x00nul.py"):
+            self.assertRejects(path)
+        with self.assertRaisesRegex(ValueError, "duplicate_patch_path"):
+            entry._validate({
+                "schema": 2,
+                "files": [
+                    {"path": "src/repair.py", "content": "a"},
+                    {"path": r"src\repair.py", "content": "b"},
+                ],
+            })
+
     def test_accepts_normal_source_patch(self):
         payload = entry._validate({
             "schema": 2,
