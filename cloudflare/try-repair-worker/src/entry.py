@@ -155,9 +155,17 @@ async def _call_gemini(prompt: str, env) -> dict:
             body=json.dumps(body),
         )
         if response.ok:
-            payload = await response.json()
-            content = payload["choices"][0]["message"]["content"]
-            return json.loads(content)
+            try:
+                payload = await response.json()
+                content = payload["choices"][0]["message"]["content"]
+                parsed = json.loads(content)
+            except (KeyError, IndexError, TypeError, ValueError) as exc:
+                raise RuntimeError(
+                    f"gemini_protocol_error:{type(exc).__name__}:{str(exc)[:300]}"
+                ) from exc
+            if not isinstance(parsed, dict):
+                raise RuntimeError("gemini_protocol_error:response_not_object")
+            return parsed
 
         last_status = response.status
         detail = await response.text()
@@ -284,6 +292,28 @@ class Default(WorkerEntrypoint):
                     status=429,
                     headers={"Retry-After": "60"},
                 )
+            if message.startswith("gemini_protocol_error:"):
+                return Response.json(
+                    {
+                        "status": "RETRYABLE_PROVIDER_FAILURE",
+                        "provider": "gemini",
+                        "http_status": 502,
+                        "reason": message[:2000],
+                    },
+                    status=502,
+                    headers={"Retry-After": "2"},
+                )
+            if message.startswith("provider_not_configured:"):
+                return Response.json(
+                    {
+                        "status": "PROVIDER_NOT_READY",
+                        "provider": "gemini",
+                        "http_status": 503,
+                        "reason": message[:2000],
+                    },
+                    status=503,
+                    headers={"Retry-After": "30"},
+                )
             if message.startswith("gemini_http_"):
                 try:
                     status = int(message.split(":", 1)[0].rsplit("_", 1)[1])
@@ -306,6 +336,12 @@ class Default(WorkerEntrypoint):
             )
         except Exception as exc:
             return Response.json(
-                {"status": "HOLD", "reason": f"{type(exc).__name__}:{exc}"},
-                status=200,
+                {
+                    "status": "PROVIDER_INTERNAL_ERROR",
+                    "provider": "gemini",
+                    "http_status": 500,
+                    "reason": f"{type(exc).__name__}:{exc}",
+                },
+                status=500,
+                headers={"Retry-After": "2"},
             )
