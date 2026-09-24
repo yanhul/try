@@ -171,6 +171,16 @@ async def _call_gemini(prompt: str, env) -> dict:
     raise RuntimeError(f"gemini_http_{last_status}:{last_detail}")
 
 
+async def _read_bounded_json(request) -> dict:
+    raw_body = await request.text()
+    if len(raw_body.encode("utf-8")) > MAX_BODY:
+        raise ValueError("body_too_large")
+    payload = json.loads(raw_body)
+    if not isinstance(payload, dict):
+        raise ValueError("request_not_object")
+    return payload
+
+
 async def _propose(request: dict, env) -> dict:
     if not isinstance(request, dict):
         raise ValueError("request_not_object")
@@ -258,12 +268,7 @@ class Default(WorkerEntrypoint):
             )
 
         try:
-            raw_body = await request.text()
-            if len(raw_body.encode("utf-8")) > MAX_BODY:
-                return Response.json(
-                    {"status": "HOLD", "reason": "body_too_large"}, status=200
-                )
-            body = json.loads(raw_body)
+            body = await _read_bounded_json(request)
             response = await _propose(body, self.env)
             return Response.json(response, status=200)
         except RuntimeError as exc:
