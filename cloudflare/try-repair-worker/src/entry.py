@@ -54,6 +54,8 @@ def _normalize_source_snapshot(source: dict) -> dict:
         if len(content.encode("utf-8")) > MAX_FILE_BYTES:
             raise ValueError(f"source_file_too_large:{path}")
         parts = norm.split("/")
+        if any(part in {"", "."} for part in parts) or norm.endswith("/"):
+            raise ValueError(f"ambiguous_source_path:{path}")
         protected = (
             norm.startswith("/")
             or ".." in parts
@@ -96,6 +98,8 @@ def _validate(proposal: dict) -> dict:
             raise ValueError(f"duplicate_patch_path:{norm}")
         seen_paths.add(norm)
         parts = norm.split("/")
+        if any(part in {"", "."} for part in parts) or norm.endswith("/"):
+            raise ValueError(f"ambiguous_patch_path:{path}")
         protected = (
             norm.startswith("/")
             or ".." in parts
