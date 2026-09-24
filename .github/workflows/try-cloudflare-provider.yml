@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "cloudflare/try-repair-worker/**"
+      - ".github/workflows/try-cloudflare-provider.yml"
 
 permissions:
   contents: read
@@ -32,7 +33,7 @@ jobs:
       - name: Set TRY provider secrets
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_PROJECT_ID: ${{ secrets.GEMINI_PROJECT_ID }}
+          GEMINI_PROJECT_ID: ${{ vars.GEMINI_PROJECT_ID }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
         run: |
           test -n "$GEMINI_API_KEY"
