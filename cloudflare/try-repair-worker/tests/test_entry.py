@@ -69,6 +69,32 @@ class WorkerValidationTests(unittest.TestCase):
         ):
             self.assertRejects(path)
 
+    def test_rejects_protected_source_snapshot(self):
+        with self.assertRaisesRegex(ValueError, "protected_source_path"):
+            entry._normalize_source_snapshot({".env": "secret"})
+        with self.assertRaisesRegex(ValueError, "protected_source_path"):
+            entry._normalize_source_snapshot({".aios/policy.py": "policy"})
+
+    def test_request_identity_is_fail_closed(self):
+        base = {
+            "request_id": "req-1",
+            "repository": "yanhul/try",
+            "sha": "0" * 40,
+            "attempt": 1,
+            "failure": {"kind": "SyntaxError"},
+            "source_snapshot": {"src/repair.py": "broken"},
+        }
+        for key, value in (
+            ("request_id", ""),
+            ("repository", ""),
+            ("sha", "bad"),
+            ("attempt", 0),
+        ):
+            case = dict(base)
+            case[key] = value
+            with self.assertRaises(ValueError):
+                asyncio.run(entry._propose(case, _Env()))
+
     def test_rejects_oversized_patch(self):
         self.assertRejects("src/large.py", "x" * (entry.MAX_FILE_BYTES + 1))
 
