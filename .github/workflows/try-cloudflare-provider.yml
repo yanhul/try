@@ -95,6 +95,8 @@ jobs:
               raise SystemExit(f"E2E provider HTTP {exc.code}: {detail}") from exc
           if status != 200:
               raise SystemExit(f"E2E provider unexpected HTTP status: {status}")
+          if payload.get("status") == "HOLD":
+              raise SystemExit(f"E2E provider returned HOLD: {payload}")
           if payload.get("schema") != 2:
               raise SystemExit(f"E2E provider did not return schema=2: {payload}")
           files = payload.get("files")
