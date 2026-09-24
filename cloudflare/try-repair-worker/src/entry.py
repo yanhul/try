@@ -20,7 +20,7 @@ GEMINI_MAX_ATTEMPTS = 3
 GEMINI_BACKOFF_SECONDS = (1, 2)
 GEMINI_RETRYABLE = {500, 502, 503, 504}
 GEMINI_QUOTA_STATUS = 429
-DENIED_PREFIXES = (".github/workflows/", ".aios/", "secrets/")
+DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
 
 SYSTEM = """You are a reasoning-only software repair provider used by AIOS.
@@ -59,6 +59,7 @@ def _normalize_source_snapshot(source: dict) -> dict:
             or ".." in parts
             or any(norm == p.rstrip("/") or norm.startswith(p) for p in DENIED_PREFIXES)
             or norm in DENIED_NAMES
+            or norm in {".git", ".github", ".aios", "secrets", "tests"}
             or norm.startswith("tests/")
         )
         if protected:
