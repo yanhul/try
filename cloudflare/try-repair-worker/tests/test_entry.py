@@ -46,6 +46,24 @@ class _Env:
     GEMINI_MODEL = "gemini-test"
 
 
+
+class BoundedBodyTests(unittest.TestCase):
+    class Request:
+        def __init__(self, body):
+            self.body = body
+        async def text(self):
+            return self.body
+
+    def test_actual_body_size_is_enforced(self):
+        request = self.Request("x" * (entry.MAX_BODY + 1))
+        with self.assertRaisesRegex(ValueError, "body_too_large"):
+            asyncio.run(entry._read_bounded_json(request))
+
+    def test_bounded_body_requires_object(self):
+        request = self.Request(json.dumps(["not", "object"]))
+        with self.assertRaisesRegex(ValueError, "request_not_object"):
+            asyncio.run(entry._read_bounded_json(request))
+
 class WorkerValidationTests(unittest.TestCase):
     def assertRejects(self, path, content="x"):
         with self.assertRaises(ValueError):
