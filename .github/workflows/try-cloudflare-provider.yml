@@ -48,3 +48,64 @@ jobs:
         run: |
           test -n "$WORKER_URL"
           curl --fail --silent --show-error "$WORKER_URL/healthz"
+
+      - name: E2E provider proposal test
+        env:
+          WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+        run: |
+          test -n "$WORKER_URL"
+          test -n "$TRY_PROVIDER_TOKEN"
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          url = os.environ["WORKER_URL"].rstrip("/") + "/v1/repair/propose"
+          body = {
+              "request_id": "e2e-worker-gemini-smoke",
+              "repository": "yanhul/try",
+              "sha": "0" * 40,
+              "attempt": 1,
+              "failure": {
+                  "kind": "SyntaxError",
+                  "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax"
+              },
+              "source_snapshot": {
+                  "broken.py": "def repair_me(:\\n    return 1\\n"
+              }
+          }
+          req = urllib.request.Request(
+              url,
+              data=json.dumps(body, sort_keys=True).encode(),
+              headers={
+                  "Authorization": "Bearer " + os.environ["TRY_PROVIDER_TOKEN"],
+                  "Content-Type": "application/json",
+                  "User-Agent": "TRY-Worker-E2E/1.0",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=180) as response:
+                  status = response.status
+                  payload = json.loads(response.read().decode("utf-8"))
+          except urllib.error.HTTPError as exc:
+              detail = exc.read().decode("utf-8", errors="replace")[:2000]
+              raise SystemExit(f"E2E provider HTTP {exc.code}: {detail}") from exc
+          if status != 200:
+              raise SystemExit(f"E2E provider unexpected HTTP status: {status}")
+          if payload.get("schema") != 2:
+              raise SystemExit(f"E2E provider did not return schema=2: {payload}")
+          files = payload.get("files")
+          if not isinstance(files, list) or not files:
+              raise SystemExit(f"E2E provider returned no proposed files: {payload}")
+          if any(not isinstance(item, dict) or not isinstance(item.get("path"), str) for item in files):
+              raise SystemExit(f"E2E provider returned invalid file entries: {payload}")
+          print(json.dumps({
+              "status": "PASS",
+              "provider_response": "schema-2",
+              "file_count": len(files),
+              "paths": [item["path"] for item in files],
+          }, sort_keys=True))
+          PY
