@@ -124,7 +124,9 @@ class GeminiRetryTests(unittest.TestCase):
         original = entry.fetch
         original_sleep = entry.asyncio.sleep
         entry.fetch = fake_fetch
-        async def no_sleep(_):\n            return None\n        entry.asyncio.sleep = no_sleep
+        async def no_sleep(_):
+            return None
+        entry.asyncio.sleep = no_sleep
         try:
             payload = asyncio.run(entry._call_gemini("prompt", _Env()))
         finally:
