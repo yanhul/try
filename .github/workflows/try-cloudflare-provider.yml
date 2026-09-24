@@ -136,6 +136,11 @@ jobs:
           if status == 429:
               print({"status": "SAFE_HOLD", "reason": "provider_quota_exhausted"})
               raise SystemExit(0)
+          if status == 503:
+              if payload.get("status") != "RETRYABLE_PROVIDER_FAILURE":
+                  raise SystemExit(f"unexpected 503 response: {payload}")
+              print({"status": "SAFE_RETRYABLE", "reason": payload.get("reason", "")[:200]})
+              raise SystemExit(0)
           if payload.get("status") == "HOLD":
               print({"status": "SAFE_HOLD", "reason": payload.get("reason", "")[:200]})
               raise SystemExit(0)
