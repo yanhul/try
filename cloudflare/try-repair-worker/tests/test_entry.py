@@ -107,6 +107,15 @@ class WorkerValidationTests(unittest.TestCase):
             entry._normalize_source_snapshot({
                 "src/large.py": "x" * (entry.MAX_FILE_BYTES + 1),
             })
+        for path in (
+            "vendor/.git/config",
+            "pkg/.aios/policy.py",
+            "pkg/.github/workflows/x.yml",
+            "pkg/secrets/key.txt",
+            "pkg/tests/test_x.py",
+        ):
+            with self.assertRaisesRegex(ValueError, "protected_source_path"):
+                entry._normalize_source_snapshot({path: "x"})
 
     def test_request_identity_is_fail_closed(self):
         base = {
@@ -137,6 +146,14 @@ class WorkerValidationTests(unittest.TestCase):
     def test_rejects_ambiguous_paths(self):
         for path in ("", "src/with\x00nul.py"):
             self.assertRejects(path)
+        for path in (
+            "vendor/.git/config",
+            "pkg/.aios/policy.py",
+            "pkg/.github/workflows/x.yml",
+            "pkg/secrets/key.txt",
+            "pkg/tests/test_x.py",
+        ):
+            self.assertRejects(path)
         with self.assertRaisesRegex(ValueError, "duplicate_patch_path"):
             entry._validate({
                 "schema": 2,
@@ -154,6 +171,41 @@ class WorkerValidationTests(unittest.TestCase):
             "files": [{"path": r"src\repair.py", "content": "def repair():\n    return 1\n"}],
         })
         self.assertEqual(payload["files"][0]["path"], "src/repair.py")
+
+
+class GeminiProtocolTests(unittest.TestCase):
+    def test_malformed_success_response_is_protocol_failure(self):
+        async def fake_fetch(*args, **kwargs):
+            return _Response(200, payload={"unexpected": "shape"})
+
+        original = entry.fetch
+        entry.fetch = fake_fetch
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_protocol_error"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        finally:
+            entry.fetch = original
+
+    def test_non_object_model_json_is_protocol_failure(self):
+        async def fake_fetch(*args, **kwargs):
+            return _Response(
+                200,
+                payload={
+                    "choices": [{
+                        "message": {
+                            "content": json.dumps(["not", "object"])
+                        }
+                    }]
+                },
+            )
+
+        original = entry.fetch
+        entry.fetch = fake_fetch
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_protocol_error"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        finally:
+            entry.fetch = original
 
 
 class GeminiRetryTests(unittest.TestCase):
