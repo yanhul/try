@@ -50,6 +50,7 @@ def _validate(proposal: dict) -> dict:
         raise ValueError("proposal_files_missing")
 
     clean = []
+    seen_paths = set()
     for item in files:
         if not isinstance(item, dict):
             raise ValueError("proposal_file_not_object")
@@ -58,6 +59,11 @@ def _validate(proposal: dict) -> dict:
             raise ValueError("proposal_file_invalid")
 
         norm = path.replace("\\", "/")
+        if not norm or "\x00" in norm:
+            raise ValueError(f"invalid_patch_path:{path}")
+        if norm in seen_paths:
+            raise ValueError(f"duplicate_patch_path:{norm}")
+        seen_paths.add(norm)
         parts = norm.split("/")
         protected = (
             norm.startswith("/")
