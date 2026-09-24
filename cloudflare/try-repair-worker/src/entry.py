@@ -49,6 +49,10 @@ def _normalize_source_snapshot(source: dict) -> dict:
         norm = path.replace("\\", "/")
         if not norm or "\x00" in norm:
             raise ValueError(f"invalid_source_path:{path}")
+        if norm in bounded:
+            raise ValueError(f"duplicate_source_path:{norm}")
+        if len(content.encode("utf-8")) > MAX_FILE_BYTES:
+            raise ValueError(f"source_file_too_large:{path}")
         parts = norm.split("/")
         protected = (
             norm.startswith("/")
@@ -59,7 +63,7 @@ def _normalize_source_snapshot(source: dict) -> dict:
         )
         if protected:
             raise ValueError(f"protected_source_path:{path}")
-        bounded[norm] = content[:MAX_FILE_BYTES]
+        bounded[norm] = content
     return bounded
 
 
@@ -171,13 +175,16 @@ async def _propose(request: dict, env) -> dict:
     request_id = request.get("request_id")
     repository = request.get("repository")
     sha = request.get("sha")
+    raw_attempt = request.get("attempt", 0)
+    if isinstance(raw_attempt, bool):
+        raise ValueError("request_attempt_invalid")
     try:
-        attempt = int(request.get("attempt", 0))
+        attempt = int(raw_attempt)
     except (TypeError, ValueError):
         raise ValueError("request_attempt_invalid")
-    if not isinstance(request_id, str) or not request_id:
+    if not isinstance(request_id, str) or not request_id.strip():
         raise ValueError("request_id_missing")
-    if not isinstance(repository, str) or not repository:
+    if not isinstance(repository, str) or not repository.strip():
         raise ValueError("repository_missing")
     if not isinstance(sha, str) or len(sha) != 40 or any(c not in "0123456789abcdefABCDEF" for c in sha):
         raise ValueError("sha_invalid")
