@@ -1,4 +1,5 @@
 import math
+import datetime as stdlib_datetime
 
 import pytest
 
@@ -243,7 +244,7 @@ def test_rpd_reset_uses_pacific_quota_day(monkeypatch, tmp_path):
     monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
     monkeypatch.setenv("RESEARCH_PROVIDER_RPD_RESET_TZ", "America/Los_Angeles")
     monkeypatch.setattr(provider_router.datetime, "datetime", type("FakeDateTime", (), {
-        "now": staticmethod(lambda tz=None: __import__("datetime").datetime(2026, 9, 23, 0, 30, tzinfo=__import__("datetime").timezone.utc).astimezone(tz))
+        "now": staticmethod(lambda tz=None: stdlib_datetime.datetime(2026, 9, 23, 0, 30, tzinfo=stdlib_datetime.timezone.utc).astimezone(tz))
     }))
     monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "key"))
     assert provider_router._reserve_rpd_slot() == 1
