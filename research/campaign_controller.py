@@ -205,12 +205,23 @@ def retry_resume_allowed(state):
 
 def continuation_allowed(*, new_screened: int, phase: str | None,
                          last_error: object, terminal_state: bool) -> bool:
+    # Continuation authority must use the same fail-closed retry predicate as
+    # the durable controller path. A generic WAIT_RETRY + error signal is not
+    # sufficient authority for dispatch.
+    retry_state = {
+        'campaign_terminal': terminal_state,
+        'terminal': terminal_state,
+        'phase': phase,
+        'last_error': str(last_error or ''),
+        'retry_count': 0,
+    }
+    retry_allowed = retry_resume_allowed(retry_state)
     return lifecycle_transition(
         terminal_state=terminal_state,
         terminal_outcome_valid=True,
         budget_exhausted=False,
         durable_queue=False,
-        retry_allowed=phase == 'WAIT_RETRY' and bool(last_error),
+        retry_allowed=retry_allowed,
         blocked=phase == 'HOLD',
         progress_event=new_screened > 0,
     ) is LifecycleAction.CONTINUE_PROGRESS
@@ -436,7 +447,7 @@ def main():
         save(state)
         reason = state.get('last_error') or state.get('phase')
         if action is LifecycleAction.CONTINUE_RETRY:
-            print(f'CAMPAIGN_CONTINUE_RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
+            print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
         else:
             print(f'CAMPAIGN_HOLD reason={reason} screened={after}/{budget}')
         return 0
@@ -475,10 +486,10 @@ def main():
         # may produce HOLD.
         state['campaign_frontier_transition_required'] = True
         save(state)
-        print(f'CAMPAIGN_CONTINUE reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
+        print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
         return 0
     save(state)
-    print(f'CAMPAIGN_CONTINUE screened={after}/{budget}')
+    print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS screened={after}/{budget}')
     return 0
 
 
