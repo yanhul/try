@@ -72,7 +72,13 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
     validation = payload.get("validation") or {}
     oos = payload.get("oos")
     if not validation.get("passed") or oos is None:
+        vm = (validation.get("result") or {}).get("metrics", {})
+        om = (oos or {}).get("metrics", {})
         return {"status": "BLOCKED", "reason": "validation gate did not pass or OOS missing",
+                "validation_passed": bool(validation.get("passed")),
+                "validation_metrics": {k: vm.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
+                "oos_present": oos is not None,
+                "oos_metrics": {k: om.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
                 "artifact_refs": (str(RESULT),),
                 "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
                 "verification_refs": ("IS", "validation_gate", "OOS"), "provenance": PROVENANCE}
