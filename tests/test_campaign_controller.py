@@ -25,6 +25,12 @@ def test_missing_provider_project_id_cannot_auto_resume():
 
 def test_provider_hold_cannot_resume_even_if_new_progress_exists():
     assert continuation_allowed(new_screened=1, phase="WAIT_RETRY", last_error="HOLD_PROVIDER_ROUTER", terminal_state=False) is False
+\ndef test_missing_provider_project_id_blocks_continuation_authority():
+    assert continuation_allowed(new_screened=0, phase="WAIT_RETRY",
+                                last_error="provider_project_id_missing:GEMINI",
+                                terminal_state=False) is False
+
+
 
 
 def test_hold_cannot_resume_with_stale_progress():
