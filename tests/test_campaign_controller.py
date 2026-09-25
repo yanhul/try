@@ -11,6 +11,18 @@ def test_old_screened_count_cannot_resume_without_new_progress():
     assert continuation_allowed(new_screened=0, phase="ACT", last_error=None, terminal_state=False) is False
 
 
+
+
+def test_missing_provider_project_id_cannot_auto_resume():
+    state = {
+        "campaign_terminal": False,
+        "terminal": False,
+        "phase": "WAIT_RETRY",
+        "retry_count": 0,
+        "last_error": "provider_project_id_missing:GEMINI",
+    }
+    assert campaign_controller.retry_resume_allowed(state) is False
+
 def test_provider_hold_cannot_resume_even_if_new_progress_exists():
     assert continuation_allowed(new_screened=1, phase="WAIT_RETRY", last_error="HOLD_PROVIDER_ROUTER", terminal_state=False) is False
 
