@@ -41,7 +41,7 @@ jobs:
       RESEARCH_PROVIDER_CONTEXT_CHAR_LIMIT: 12000
       RESEARCH_PROVIDER_MAX_FORBIDDEN_FINGERPRINTS: 80
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GEMINI_PROJECT_ID: ${{ secrets.GEMINI_PROJECT_ID }}
+      GEMINI_PROJECT_ID: ${{ vars.GEMINI_PROJECT_ID }}
       GEMINI_MODEL: gemini-3.5-flash-lite
       GITHUB_TOKEN: ${{ github.token }}
       AIOS_SOURCE: ${{ github.workspace }}/aios-authority
@@ -69,6 +69,12 @@ jobs:
           python-version: '3.12'
       - name: Install test runner
         run: python -m pip install --upgrade pytest
+      - name: Verify public Gemini project configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${GEMINI_PROJECT_ID}" || { echo "GEMINI_PROJECT_ID is required (public project ID; configure it as a repository variable)" >&2; exit 1; }
+          echo "GEMINI_PROJECT_ID configured"
       - name: Run research feature and harness tests
         run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_campaign_controller.py tests/test_provider_router_contract.py tests/test_provider_router_translation_normalization.py tests/test_system_ingestion.py tests/test_hypothesis_novelty.py tests/test_campaign_terminal_contract.py tests/test_oos_lifecycle_target.py tests/test_repair_research.py tests/test_discovery_absorption.py tests/test_implementation_absorption.py tests/test_composite_evaluator.py
       - name: Run AIOS static conformance
@@ -91,7 +97,7 @@ jobs:
           phase=state.get('phase'); error=str(state.get('last_error') or '')
           retry=int(state.get('retry_count',0)); current_bc=state.get('current_bc')
           required=[Path('research/bc_queue.json'),Path('research/autonomous_candidates'),Path('research/failure_analysis'),Path('research/discovery')]
-          retryable_error=error.startswith(('PROVIDER_FAIL ','HOLD_PROVIDER_ROUTER','HOLD_PROVIDER_REPAIR','HOLD_EVALUATOR','PROVIDER_CALIBRATION_FAIL ','HOLD_OOS_EXECUTOR_OR_AUTHORITY'))
+          retryable_error=(not error.startswith(('provider_project_id_missing:GEMINI','provider_not_configured:GEMINI')) and error.startswith(('PROVIDER_FAIL ','HOLD_PROVIDER_ROUTER','HOLD_PROVIDER_REPAIR','HOLD_EVALUATOR','PROVIDER_CALIBRATION_FAIL ','HOLD_OOS_EXECUTOR_OR_AUTHORITY')))
           eligible=(not state.get('campaign_terminal') and not state.get('discovery_refresh_required') and phase=='WAIT_RETRY' and retryable_error and 0<=retry<10 and isinstance(current_bc,int) and all(p.exists() for p in required))
           with Path(os.environ['GITHUB_OUTPUT_PATH']).open('a') as out: out.write(f"fast={'true' if eligible else 'false'}\n")
           print(f"FAST_RESUME_{'ELIGIBLE' if eligible else 'INELIGIBLE'} bc={current_bc} retry={retry} error={error}")
