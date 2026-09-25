@@ -188,10 +188,19 @@ def reconcile_campaign_state(state, budget):
 
 
 def retry_resume_allowed(state):
+    error = str(state.get('last_error') or '')
+    # Provider configuration failures are fail-closed.  They cannot be made
+    # valid by retrying the same campaign state.
+    non_retryable = (
+        'provider_project_id_missing:GEMINI',
+        'provider_not_configured:GEMINI',
+    )
+    if error.startswith(non_retryable):
+        return False
     return (not state.get('campaign_terminal') and not state.get('terminal')
             and state.get('phase') == 'WAIT_RETRY'
             and int(state.get('retry_count', 0)) < int(os.environ.get('RESEARCH_MAX_RESUME_RETRIES', '3'))
-            and bool(state.get('last_error')))
+            and bool(error))
 
 
 def continuation_allowed(*, new_screened: int, phase: str | None,
