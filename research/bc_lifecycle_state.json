@@ -13,7 +13,7 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 13737,
+  "checkpoint_seq": 13740,
   "current_bc": 477,
   "history": [
     {
@@ -3671,7 +3671,7 @@
   ],
   "iterations": 1399,
   "last_bc": 476,
-  "last_error": "HOLD_PROVIDER_TION_FAMILY_EXHAUSTED family=mean_reversion PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited PROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend PROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
+  "last_error": "HOLD_PROVIDER_PROVIDER_FAIL GEMINI: provider_quota_exhausted:429:RPD:GEMINI",
   "legacy_terminal_reason": "OOS_FAIL",
   "next_bc": 477,
   "oos_consumed": [
@@ -3738,8 +3738,8 @@
   "parameter_optimization_active": true,
   "parameter_optimization_exhausted_for_parent": false,
   "parameter_optimization_parent_bc": 476,
-  "phase": "WAIT_RETRY",
-  "provider_failure_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
+  "phase": "HOLD",
+  "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_quota_exhausted:429:RPD:GEMINI",
   "retry_count": 1,
   "state_migrations": [
     {
@@ -3754,5 +3754,5 @@
   "terminal_reason": "OOS_FAIL",
   "translation_frontier_exhausted": true,
   "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
-  "updated_at": "2026-09-25T05:44:36.151456+00:00"
+  "updated_at": "2026-09-25T05:47:31.550887+00:00"
 }
