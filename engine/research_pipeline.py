@@ -37,6 +37,28 @@ def _validate_config(config: dict) -> tuple[float, float]:
     return stop, rr
 
 
+def _passes_validation_gate(metrics: dict, min_profit_factor: float, min_total_return: float) -> bool:
+    """Apply PF/return thresholds without mistaking an all-winning sample for no evidence.
+
+    PF is undefined when gross loss is zero. For a non-empty trade sample with
+    at least one win and zero losses, PF is mathematically +infinity for a
+    threshold comparison. A zero-trade sample always fails closed.
+    """
+    trade_count = int(metrics.get("trade_count") or 0)
+    if trade_count <= 0:
+        return False
+    loss_count = int(metrics.get("loss_count") or 0)
+    win_count = int(metrics.get("win_count") or 0)
+    profit_factor = metrics.get("profit_factor")
+    pf_ok = (
+        profit_factor is not None and float(profit_factor) >= min_profit_factor
+    ) or (
+        profit_factor is None and loss_count == 0 and win_count > 0 and min_profit_factor <= float("inf")
+    )
+    total_return = metrics.get("total_return")
+    return pf_ok and total_return is not None and float(total_return) >= min_total_return
+
+
 def run_is_validation_oos(
     csv_path: str | Path,
     output_path: str | Path,
@@ -99,10 +121,8 @@ def run_is_validation_oos(
         research_context=research_context,
     )
     vm = validation["metrics"]
-    validation_pass = (
-        (vm.get("profit_factor") is not None)
-        and vm["profit_factor"] >= validation_min_profit_factor
-        and vm["total_return"] >= validation_min_total_return
+    validation_pass = _passes_validation_gate(
+        vm, validation_min_profit_factor, validation_min_total_return
     )
 
     oos = None
@@ -116,11 +136,7 @@ def run_is_validation_oos(
         om = oos["metrics"]
         min_pf = validation_min_profit_factor if oos_min_profit_factor is None else oos_min_profit_factor
         min_return = validation_min_total_return if oos_min_total_return is None else oos_min_total_return
-        oos_pass = (
-            (om.get("profit_factor") is not None)
-            and om["profit_factor"] >= min_pf
-            and om["total_return"] >= min_return
-        )
+        oos_pass = _passes_validation_gate(om, min_pf, min_return)
 
     result = {
         "schema_version": 3,
