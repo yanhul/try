@@ -163,9 +163,9 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          if grep -Eq 'CONTROLLER_CANDIDATE_QUEUED|CONTROLLER_NEXT BC|CONTROLLER_NEXT_AFTER_OOS_FAIL|CONTROLLER_AUTO_RESUME|CAMPAIGN_CONTINUE_DURABLE_QUEUE|CAMPAIGN_CONTINUE_RETRY|CAMPAIGN_CONTINUE ' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD'; then
-            echo "continue=true" >> "$GITHUB_OUTPUT"
-          elif grep -Eq 'CAMPAIGN_CONTINUE_RETRY|CONTROLLER_AUTO_RESUME' controller.log && ! grep -Eq 'CONTROLLER_MANUAL_HOLD|CAMPAIGN_HOLD|CONTROLLER_DECISION HOLD_|AIOS_AUTHORITY_HOLD' controller.log; then
+          # Dispatch authority comes only from an explicit controller authorization
+          # event. Never promote generic log/progress/HOLD strings into authority.
+          if grep -Eq '^CONTROLLER_CONTINUE_AUTHORIZED kind=(RETRY|PROGRESS) ' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
