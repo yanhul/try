@@ -78,6 +78,7 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
                 "validation_passed": bool(validation.get("passed")),
                 "validation_metrics": {k: vm.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
                 "oos_present": oos is not None,
+                "diagnostic_schema_version": 1,
                 "oos_metrics": {k: om.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
                 "artifact_refs": (str(RESULT),),
                 "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
