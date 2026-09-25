@@ -1,0 +1,31 @@
+name: Final Research Diagnostic
+on:
+  pull_request:
+    paths:
+      - 'aios/**'
+      - 'engine/**'
+      - 'run_research_pipeline.py'
+      - 'research/final_candidates.json'
+      - '.github/workflows/final-research-diagnostic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run final research pipeline
+        run: |
+          set -o pipefail
+          python run_research_pipeline.py --data data/BTCUSDT_1h.csv --candidates research/final_candidates.json --out /tmp/final.json --objective profit_factor --validation-min-pf 1.0 --validation-min-return 0.0 2>&1 | tee /tmp/final.log
+      - name: Publish diagnostic
+        if: always()
+        run: |
+          echo "=== FINAL LOG ==="
+          cat /tmp/final.log 2>/dev/null || true
+          echo "=== RESULT ==="
+          cat /tmp/final.json 2>/dev/null || true
