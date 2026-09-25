@@ -77,3 +77,29 @@ def test_split_cache_preserves_causal_event_warmup(tmp_path):
         research_context=context,
     )
     assert cached == uncached
+
+def test_all_winning_validation_sample_has_finite_evidence_and_passes_pf_gate():
+    from engine.research_pipeline import _passes_validation_gate
+
+    metrics = {
+        "trade_count": 3,
+        "win_count": 3,
+        "loss_count": 0,
+        "profit_factor": None,
+        "total_return": 0.045,
+    }
+    assert _passes_validation_gate(metrics, 1.0, 0.0) is True
+
+
+def test_zero_trade_validation_sample_fails_closed():
+    from engine.research_pipeline import _passes_validation_gate
+
+    metrics = {
+        "trade_count": 0,
+        "win_count": 0,
+        "loss_count": 0,
+        "profit_factor": None,
+        "total_return": 0.0,
+    }
+    assert _passes_validation_gate(metrics, 1.0, 0.0) is False
+
