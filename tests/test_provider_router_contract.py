@@ -244,16 +244,25 @@ def test_rpd_reset_uses_pacific_quota_day(monkeypatch, tmp_path):
     monkeypatch.setattr(provider_router, "RPD_LIMIT", 1)
     monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
     monkeypatch.setenv("RESEARCH_PROVIDER_RPD_RESET_TZ", "America/Los_Angeles")
-    monkeypatch.setattr(provider_router.datetime, "datetime", type("FakeDateTime", (), {
-        "now": staticmethod(lambda tz=None: real_datetime(2026, 9, 23, 0, 30, tzinfo=stdlib_datetime.timezone.utc).astimezone(tz))
-    }))
+
+    class FakeDateTime(real_datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return real_datetime(
+                2026, 9, 23, 0, 30,
+                tzinfo=stdlib_datetime.timezone.utc,
+            ).astimezone(tz)
+
+    monkeypatch.setattr(provider_router.datetime, "datetime", FakeDateTime)
     monkeypatch.setattr(provider_router, "config", lambda: ("base", "model", "key"))
     assert provider_router._reserve_rpd_slot() == 1
     state=__import__("json").loads(usage.read_text())
     assert state["quota_day"] == "2026-09-22"
 
 
-def test_provider_429_is_hard_quota_stop(monkeypatch):
+def test_provider_429_is_hard_quota_stop(monkeypatch, tmp_path):
+    usage=tmp_path/"provider_usage.json"
+    monkeypatch.setattr(provider_router, "USAGE_PATH", usage)
     monkeypatch.setenv("GEMINI_PROJECT_ID", "project-1")
     class RateLimit:
         code = 429
