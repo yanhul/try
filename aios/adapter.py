@@ -76,7 +76,7 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
         om = (oos or {}).get("metrics", {})
         return {"status": "BLOCKED", "reason": "validation gate did not pass or OOS missing",
                 "validation_passed": bool(validation.get("passed")),
-                "validation_metrics": {k: vm.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
+                "validation_metrics": {k: vm.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trade_count", "win_count", "loss_count")},
                 "oos_present": oos is not None,
                 "diagnostic_schema_version": 1,
                 "oos_metrics": {k: om.get(k) for k in ("total_return", "profit_factor", "max_drawdown", "win_rate", "trades")},
