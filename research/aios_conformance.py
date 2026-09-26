@@ -234,18 +234,16 @@ def main() -> int:
             ):
                 forged = dict(record)
                 mutate(forged)
-                try:
-                    if name == "altered_evidence":
-                        if evidence.verify_evidence(forged):
-                            raise AssertionError(f"{name} verified")
-                    else:
-                        verify_sealed(forged)
-                except AssertionError:
-                    raise
-                except Exception:
-                    pass
+                if name == "altered_evidence":
+                    if evidence.verify_evidence(forged):
+                        raise AssertionError(f"{name} was not rejected")
                 else:
-                    raise AssertionError(f"{name} was not rejected")
+                    try:
+                        verify_sealed(forged)
+                    except Exception:
+                        pass
+                    else:
+                        raise AssertionError(f"{name} was not rejected")
 
             chain = {
                 "schema_version": 2,
