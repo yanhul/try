@@ -171,8 +171,12 @@ def request_candidate(prompt,forbidden):
   try:c=json.loads(call(prompt+feedback))
   except RuntimeError as e:
    last=str(e)
-   if "provider_rate_limited" in last:
-    print("PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited");return deterministic_candidate(forbidden)
+   if any(token in last for token in (
+    "provider_rate_limited",
+    "provider_quota_exhausted:429:RPD:GEMINI",
+    "provider_rpd_budget_exhausted:",
+   )):
+    print(f"PROVIDER_FALLBACK_DETERMINISTIC reason={last}");return deterministic_candidate(forbidden)
    raise
   except json.JSONDecodeError:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object matching the required schema.\n";continue
   if not isinstance(c,dict):last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object.\n";continue
@@ -227,7 +231,8 @@ def main():
   ))
   selected=family_survivors[0]
   note_selection(selected_family,bc)
-  prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{json.dumps(selected,sort_keys=True,separators=(",",":"))}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
+  selected_json=json.dumps(selected,sort_keys=True,separators=(",",":"))
+  prompt=f"Parent BC: {parent}\nNext BC: {bc}\nTARGET_MARKET: BTCUSDT\nTARGET_TIMEFRAME: 1H\nSELECTED_SURVIVOR_FAMILY: {json.dumps(selected_family)}\nFORBIDDEN_STRUCTURAL_MECHANISMS_COMPLETE: {payload}\nFAILURE ANALYSIS (repair context only):\n{failure_text}\nSELECTED SCREEN SURVIVOR (authoritative):\n{selected_json}\nTranslate faithfully; if no genuinely different OHLCV expression is supported, return HOLD."
   try:
    c=request_candidate(prompt,forbidden)
    if c.get("status")=="HOLD":

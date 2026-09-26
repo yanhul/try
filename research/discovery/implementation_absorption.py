@@ -17,6 +17,7 @@ OUT=ROOT/"research/discovery/implementation_absorption_proof.json"
 SUPPORTED_FAMILIES={
     "momentum_trend","mean_reversion","smc_ict","fvg_imbalance",
     "wyckoff_vsa_vpa","vwap_volume_profile","regime","point_figure","gann_reference",
+    "volatility",
 }
 SUPPORTED_OPERATORS={
     "identity","difference","ratio","zscore","rolling_mean",
