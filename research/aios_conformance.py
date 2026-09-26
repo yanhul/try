@@ -297,7 +297,7 @@ def main() -> int:
     evidence_artifact = ROOT / "research" / "aios_conformance_evidence.json"
     evidence_value = chain.get("evidence")
     if isinstance(evidence_value, dict):
-        evidence_artifact.write_text(json.dumps(evidence_value, indent=2, sort_keys=True) + "\\n", encoding="utf-8")
+        evidence_artifact.write_text(json.dumps(evidence_value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     persisted = out.read_text(encoding="utf-8")
     if persisted != payload:
         failures.append("durable artifact read-back mismatch")
