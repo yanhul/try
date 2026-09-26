@@ -81,6 +81,16 @@ jobs:
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
         run: python -m research.adversarial_conformance
+      - name: Upload AIOS full conformance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aios-full-conformance-${{ github.run_id }}
+          path: |
+            research/aios_conformance_receipt.json
+            research/aios_conformance_evidence.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
       - name: Check strict fast-resume eligibility
