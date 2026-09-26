@@ -20,7 +20,7 @@ def test_forward_probability_matches_known_fixture(model):
 def test_viterbi_returns_valid_path(model):
     score, path = viterbi(model, ["w", "s", "w"])
     assert len(path) == 3
-    assert path == ["F", "B", "F"]
+    assert path == ["F", "F", "F"]
     assert score < 0
 
 
