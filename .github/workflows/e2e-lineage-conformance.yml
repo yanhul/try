@@ -1,0 +1,53 @@
+name: E2E Lineage Conformance
+
+on:
+  push:
+    branches: ["fix/**"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  exact-head-lineage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Assert exact tested HEAD
+        run: |
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          echo "HEAD=${GITHUB_SHA}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test runner
+        run: python -m pip install --upgrade pip pytest
+      - name: Run canonical lineage conformance
+        run: python -m pytest -q tests/test_e2e_lineage_conformance.py tests/test_oos_lifecycle_semantics.py tests/test_oos_controller_adversarial.py
+      - name: Emit conformance receipt
+        run: |
+          python - <<'PY'
+          import hashlib, json, subprocess
+          head=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+          tree=subprocess.check_output(["git","rev-parse","HEAD^{tree}"],text=True).strip()
+          receipt={
+            "schema_version":1,
+            "receipt_type":"E2E_LINEAGE_CONFORMANCE_RECEIPT",
+            "commit_sha":head,
+            "tree_sha":tree,
+            "lineage":["OOS_PENDING","OOS_AUTHORIZED","OOS_DISPATCHED","OOS_EXECUTED","OOS_RECEIPT","OOS_EVALUATED"],
+            "invariants":[
+              "receipt_id_canonical",
+              "candidate_hash_bound",
+              "dataset_sha256_bound",
+              "protocol_sha256_bound",
+              "result_sha256_bound",
+              "UNKNOWN_retry_reenters_authorized_path",
+              "verdict_requires_evaluation_event"
+            ],
+            "tests":"PASS"
+          }
+          receipt["receipt_id"]=hashlib.sha256(json.dumps(receipt,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+          print(json.dumps(receipt,sort_keys=True))
+          PY
