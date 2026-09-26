@@ -200,7 +200,7 @@ def main() -> int:
             )
             assert observed["state"] == "OBSERVED_SUCCESS"
 
-            from research.trajectory_evidence import StepEvidence, validate_step
+            from trajectory_evidence import StepEvidence, validate_step
             step = StepEvidence(
                 trajectory_id="traj-" + effect_id,
                 step_id="step-" + attempt_id,
