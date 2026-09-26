@@ -108,6 +108,8 @@ def backward(model: HMM, sequence: Sequence[Observation]) -> dict[State, list[fl
     if not sequence:
         raise ValueError("observation_sequence_required")
     states = model.states
+    if any(obs not in model.observations for obs in sequence):
+        raise ValueError("unknown_observation")
     beta = {s: 0.0 for s in states}
     rows = [None] * len(sequence)
     rows[-1] = beta
@@ -123,6 +125,8 @@ def posterior(model: HMM, sequence: Sequence[Observation]) -> tuple[dict[State, 
     if not sequence:
         raise ValueError("observation_sequence_required")
     states = model.states
+    if any(obs not in model.observations for obs in sequence):
+        raise ValueError("unknown_observation")
     # Recompute alpha in log space so posterior() has one deterministic contract.
     alpha_rows = []
     alpha = {s: log(model.initial[s]) + model.emission_log(s, sequence[0]) if model.initial[s] > 0 and model.emission[s][sequence[0]] > 0 else _NEG_INF for s in states}
