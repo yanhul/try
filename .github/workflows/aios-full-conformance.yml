@@ -9,7 +9,9 @@ on:
       - '.github/workflows/aios-full-conformance.yml'
   push:
     branches:
+      - main
       - absorb/verl-strict-outcomes
+  workflow_dispatch:
     paths:
       - 'research/aios_conformance.py'
       - 'research/execution_outcome.py'
@@ -20,7 +22,7 @@ permissions:
   contents: read
 
 env:
-  AIOS_AUTHORITY_SHA: 3ebdedf0b1aa51084e2d7cefc1b6c5eb211dd00e
+  AIOS_AUTHORITY_SHA: 441e4be1f5871a7db819a494880f3d60a1ff8063
 
 jobs:
   full-lineage:
