@@ -102,7 +102,7 @@ def main() -> int:
             contract_id = contract.contract_identity(sample)
             stored_contract = authority.persist_contract(str(effect_dir), sample)
             permit = authority.persist_permit(str(effect_dir), stored_contract, "aios-conformance")
-            contract.verify_permit(stored_contract, permit)
+            contract.verify_permit(sample, permit)
             permit_id = permit["permit_id"]
 
             created = effect.create_effect(
