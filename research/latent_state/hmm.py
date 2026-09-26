@@ -150,6 +150,7 @@ def causal_viterbi(model: HMM, sequence: Sequence[Observation]) -> list[State]:
     if not sequence:
         raise ValueError("observation_sequence_required")
     labels = []
+    # Recompute each prefix deliberately: the output at t must not depend on future observations.
     for end in range(1, len(sequence) + 1):
         _, path = viterbi(model, sequence[:end])
         labels.append(path[-1])
