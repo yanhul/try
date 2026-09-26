@@ -65,6 +65,8 @@ def forward(model: HMM, sequence: Sequence[Observation], *, log_space: bool = Tr
     if not sequence:
         raise ValueError("observation_sequence_required")
     states = model.states
+    if sequence[0] not in model.observations:
+        raise ValueError("unknown_observation")
     alpha = {s: log(model.initial[s]) + model.emission_log(s, sequence[0]) if model.initial[s] > 0 and model.emission[s][sequence[0]] > 0 else _NEG_INF for s in states}
     for obs in sequence[1:]:
         nxt = {}
@@ -80,6 +82,8 @@ def viterbi(model: HMM, sequence: Sequence[Observation]) -> tuple[float, list[St
     if not sequence:
         raise ValueError("observation_sequence_required")
     states = model.states
+    if sequence[0] not in model.observations:
+        raise ValueError("unknown_observation")
     score = {s: log(model.initial[s]) + model.emission_log(s, sequence[0]) if model.initial[s] > 0 and model.emission[s][sequence[0]] > 0 else _NEG_INF for s in states}
     back = []
     for obs in sequence[1:]:
