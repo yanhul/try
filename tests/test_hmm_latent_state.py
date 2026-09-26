@@ -55,3 +55,21 @@ def test_zero_probability_model_is_rejected():
             states=("F",), observations=("w",), initial={"F": 0.0},
             transition={"F": {"F": 1.0}}, emission={"F": {"w": 1.0}},
         )
+
+
+def test_forward_long_sequence_remains_finite_in_log_space(model):
+    score = forward(model, ["w", "s"] * 1000)
+    assert score != float("-inf")
+    assert score < 0
+
+
+def test_causal_viterbi_prefix_invariance(model):
+    prefix = ["w", "s", "w"]
+    extended = prefix + ["s", "s"]
+    assert causal_viterbi(model, prefix) == causal_viterbi(model, extended)[:len(prefix)]
+
+
+def test_posterior_and_backward_require_nonempty_sequence(model):
+    for fn in (backward, posterior):
+        with pytest.raises(ValueError, match="observation_sequence_required"):
+            fn(model, [])
