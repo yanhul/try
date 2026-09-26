@@ -299,3 +299,10 @@ def test_provider_rpd_guard_counts_each_actual_retry(monkeypatch, tmp_path):
     assert provider_router.call("test") == "{}"
     assert calls["http"] == 2
     assert calls["reserve"] == 2
+
+
+def test_request_candidate_falls_back_on_gemini_rpd_exhaustion(monkeypatch):
+    monkeypatch.setattr(provider_router, "call", lambda prompt: (_ for _ in ()).throw(RuntimeError("provider_quota_exhausted:429:RPD:GEMINI")))
+    expected = {"hypothesis_id": "discovered_primitive", "discovery_spec": {"operator": "delta", "left": "close", "window": 3, "threshold": 0, "direction": "above"}}
+    monkeypatch.setattr(provider_router, "deterministic_candidate", lambda forbidden: expected)
+    assert request_candidate("test", set()) == expected
