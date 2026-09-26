@@ -46,7 +46,7 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}
       AIOS_SOURCE: ${{ github.workspace }}/aios-authority
       AIOS_AUTHORITY_SECRET: ${{ secrets.AIOS_AUTHORITY_SECRET }}
-      AIOS_AUTHORITY_SHA: 151f386683934edd6e124d1ae69bd95a68b3ecbf
+      AIOS_AUTHORITY_SHA: a69eafa3ecf717c92ac11f36d7c511fdecac6769
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: 151f386683934edd6e124d1ae69bd95a68b3ecbf
+          ref: absorb/verl-strict-lineage
           path: aios-authority
       - name: Set up Python
         uses: actions/setup-python@v5
