@@ -1,18 +1,95 @@
 {
-  "aios_source": "/home/runner/work/try/try/aios-authority",
-  "aios_source_sha": "151f386683934edd6e124d1ae69bd95a68b3ecbf",
+  "attempt_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2",
+  "authority": {
+    "aios_source": "/home/runner/work/try/try/aios-authority",
+    "aios_source_sha": "3ebdedf0b1aa51084e2d7cefc1b6c5eb211dd00e",
+    "contract_id": "CT-100f093e1acf8b2a1de9c60a8059828b7572b0194aca17cc6c577707e8e4d2e5",
+    "permit_id": "PT-378d2588f25ffc4a9c31e1f64c4475bd3195301c2f4bae83a7960b8eb7000964"
+  },
+  "chain_digest": "3bd7e9fd0050961e5d37002cc0c9de5728685fb3aa70f1427ed86fdde014b822",
   "checks": [
-    "contract_validation",
-    "permit_binding",
-    "effect_create_dispatch",
-    "unknown_fail_closed",
-    "retry_attempt_fence",
-    "observed_terminal_effect",
-    "evidence_digest",
-    "evidence_tamper_rejection"
+    "actual_retry_dispatch_boundary",
+    "missing_attempt_rejected",
+    "stale_attempt_rejected",
+    "skipped_attempt_rejected",
+    "mismatched_effect_rejected",
+    "effect_attempt_binding",
+    "attempt_receipt_binding",
+    "receipt_evidence_binding",
+    "evidence_evaluation_binding",
+    "evaluation_promotion_binding",
+    "trajectory_step_attempt_binding",
+    "raw_output_normalization_separation",
+    "diagnostic_intervention_recorded",
+    "forged_receipt_rejected",
+    "altered_evidence_rejected",
+    "altered_evaluation_rejected",
+    "altered_promotion_rejected"
   ],
+  "effect_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc",
+  "evaluation": {
+    "evaluation_id": "EVAL-de841fcd51c379d8c8f165d4af69186b7d78c9937506f39d8b844d932bc1aa3a",
+    "evidence_digest": "a1031f62d61f7fe22c38accd290d2bb413a5bf19c35732f87cd46321d80d7d69",
+    "evidence_id": "EV-0c16a3539bbc8cdc91d89e83eef132f7aa8ab9ed8a61f8a6a23f595b8f16d688",
+    "receipt_id": "8ad28a079e67eb3c46cc04e61c9b7168a5178bab749f1838d6bdc65f8a513cce",
+    "record_digest": "e5bba25f55e41664ecf03a36960dd5f38a753fabd8c896184a1f4823ea4cde0b",
+    "record_type": "EVALUATION",
+    "trajectory_evidence_digest": "c8ff99268225f47e28651481aa56f0188759fb73c991640816543f4b09f4ccfc",
+    "trajectory_id": "traj-EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc",
+    "verdict": "TASK_SUCCESS"
+  },
+  "evidence": {
+    "artifact_ref": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2",
+    "claim": "AIOS external-effect lifecycle conformance",
+    "digest": "a1031f62d61f7fe22c38accd290d2bb413a5bf19c35732f87cd46321d80d7d69",
+    "evidence_id": "EV-0c16a3539bbc8cdc91d89e83eef132f7aa8ab9ed8a61f8a6a23f595b8f16d688",
+    "level": "OBSERVED",
+    "parent_evidence_id": null,
+    "provider": "conformance-provider",
+    "run_id": "conformance-run",
+    "source_ref": "receipt:8ad28a079e67eb3c46cc04e61c9b7168a5178bab749f1838d6bdc65f8a513cce"
+  },
   "failures": [],
-  "proof_type": "AIOS_CONFORMANCE_PROOF",
-  "schema_version": 1,
-  "status": "PASS"
+  "promotion": {
+    "authority": "try-conformance",
+    "decision": "PROMOTE_TO_FUTURE_OOS_TEST",
+    "evaluation_digest": "e5bba25f55e41664ecf03a36960dd5f38a753fabd8c896184a1f4823ea4cde0b",
+    "evaluation_id": "EVAL-de841fcd51c379d8c8f165d4af69186b7d78c9937506f39d8b844d932bc1aa3a",
+    "promotion_id": "PROM-c4b8d8ba41cda8bb333bb312e8765f74a1d27567a054c02968adf2929b71072c",
+    "record_digest": "254ac9c8aa066ccc028e8a803d49047763950dd1de195e9b0b495f1454b8e494",
+    "record_type": "PROMOTION"
+  },
+  "proof_type": "AIOS_FULL_LINEAGE_CONFORMANCE",
+  "receipt": {
+    "attempt_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2",
+    "effect_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc",
+    "outcome": "OBSERVED_SUCCESS",
+    "provider": "conformance-provider",
+    "receipt_type": "AIOS_EXECUTION_RECEIPT",
+    "record_digest": "8ad28a079e67eb3c46cc04e61c9b7168a5178bab749f1838d6bdc65f8a513cce",
+    "record_type": "RECEIPT",
+    "run_id": "conformance-run",
+    "schema_version": 1
+  },
+  "schema_version": 2,
+  "status": "PASS",
+  "trajectory_step": {
+    "attempt_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2",
+    "evidence_digest": "c8ff99268225f47e28651481aa56f0188759fb73c991640816543f4b09f4ccfc",
+    "intervention_id": "int:conformance-retry-fence",
+    "normalized_digest": "a026d9dac049cd677c75024aed991e1a30780f5fb322d26c00e5d71f4e3ae029",
+    "normalized_tool_calls": [
+      {
+        "args": {
+          "attempt_id": "EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2"
+        },
+        "name": "research-op"
+      }
+    ],
+    "outcome_class": "TASK_SUCCESS",
+    "raw_output": "{\"provider\":\"conformance-provider\",\"result\":\"ok\"}",
+    "raw_output_digest": "9382c49ad43e662148fd7c874c67e4c52a3ac1b10219e486f83951b9d4366e26",
+    "step_id": "step-EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc:attempt:2",
+    "trajectory_id": "traj-EF-85127ba512b54a3e6872200c559159f41c1a8052cc072c6ea4ecaf0c8bef18cc"
+  }
 }
