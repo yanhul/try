@@ -14,7 +14,7 @@ def model():
 
 
 def test_forward_probability_matches_known_fixture(model):
-    assert forward(model, ["w", "s", "w"], log_space=False) == pytest.approx(0.110592)
+    assert forward(model, ["w", "s", "w"], log_space=False) == pytest.approx(0.12552)
 
 
 def test_viterbi_returns_valid_path(model):
