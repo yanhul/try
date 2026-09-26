@@ -29,7 +29,7 @@ permissions:
   contents: read
 
 env:
-  AIOS_REF: 06af9d5cddc1fc4cbb8fb89e82e8d4c46c359cab
+  AIOS_REF: 3ebdedf0b1aa51084e2d7cefc1b6c5eb211dd00e
 
 jobs:
   central-workload:
@@ -56,7 +56,7 @@ jobs:
         env:
           AIOS_ROOT: ${{ github.workspace }}/.aios-core
           PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/.aios-core
-        run: python -m unittest tests.test_aios_evolution_adapter -v
+        run: python -m unittest discover -s tests -p 'test_aios_evolution_adapter.py' -v
 
       - name: Run research workload through central AIOS runner
         env:
