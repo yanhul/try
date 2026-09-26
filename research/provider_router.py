@@ -171,8 +171,12 @@ def request_candidate(prompt,forbidden):
   try:c=json.loads(call(prompt+feedback))
   except RuntimeError as e:
    last=str(e)
-   if "provider_rate_limited" in last:
-    print("PROVIDER_FALLBACK_DETERMINISTIC reason=provider_rate_limited");return deterministic_candidate(forbidden)
+   if any(token in last for token in (
+    "provider_rate_limited",
+    "provider_quota_exhausted:429:RPD:GEMINI",
+    "provider_rpd_budget_exhausted:",
+   )):
+    print(f"PROVIDER_FALLBACK_DETERMINISTIC reason={last}");return deterministic_candidate(forbidden)
    raise
   except json.JSONDecodeError:last="invalid_json";feedback="\nVALIDATOR_FEEDBACK: invalid JSON; return one JSON object matching the required schema.\n";continue
   if not isinstance(c,dict):last="invalid_json_shape";feedback="\nVALIDATOR_FEEDBACK: top-level JSON must be exactly one object.\n";continue
