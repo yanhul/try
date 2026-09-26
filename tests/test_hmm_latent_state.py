@@ -73,3 +73,9 @@ def test_posterior_and_backward_require_nonempty_sequence(model):
     for fn in (backward, posterior):
         with pytest.raises(ValueError, match="observation_sequence_required"):
             fn(model, [])
+
+
+def test_unknown_observation_is_rejected(model):
+    for fn in (forward, viterbi, backward, posterior, causal_viterbi):
+        with pytest.raises(ValueError, match="unknown_observation"):
+            fn(model, ["unknown"])
