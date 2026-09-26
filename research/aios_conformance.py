@@ -26,8 +26,8 @@ def load_aios_package():
         raise RuntimeError(f"AIOS_SOURCE missing: {AIOS}")
     import sys
     sys.path.insert(0, str(AIOS))
-    from core import contract, effect_authority, evidence
-    return contract, effect_authority, evidence
+    from core import authority, capabilities, contract, effect_authority, evidence, policy_registry
+    return authority, capabilities, contract, effect_authority, evidence, policy_registry
 
 
 def canonical(value):
@@ -57,7 +57,7 @@ def verify_sealed(record):
 
 
 def main() -> int:
-    contract, effect, evidence = load_aios_package()
+    authority, capabilities, contract, effect, evidence, policy_registry = load_aios_package()
     failures: list[str] = []
     chain: dict[str, object] = {
         "schema_version": 2,
@@ -66,27 +66,45 @@ def main() -> int:
     }
 
     try:
-        sample = {
-            "contract_type": "EXECUTION_CONTRACT",
-            "task_id": "try-conformance",
-            "scope": "research",
-            "actor": "try-conformance",
-            "capabilities": [],
-            "input_digest": "input-sha",
-            "allowed_effects": ["research"],
-            "evidence_required": ["receipt"],
-            "max_attempts": 3,
-            "terminal_states": ["PASS", "BLOCKED", "INCONCLUSIVE"],
-            "policy_digest": "policy-sha",
-        }
-        contract.validate_contract(sample)
-        contract_id = contract.contract_identity(sample)
-        permit = contract.issue_permit(sample, "aios-conformance")
-        contract.verify_permit(sample, permit)
-        permit_id = permit["permit_id"]
-
         with tempfile.TemporaryDirectory() as td:
             effect_dir = Path(td)
+            policy = {
+                "policy_type": "GOVERNING_POLICY",
+                "policy_id": "try-conformance-policy",
+                "scope": "research",
+                "rules": {"max_attempts": 3, "evidence_required": ["receipt"]},
+            }
+            policy_digest = policy_registry.persist_policy(str(effect_dir), policy)
+            registry = capabilities.CapabilityRegistry()
+            registry.register(capabilities.Capability(
+                capability_id="research.execution",
+                version="1",
+                owner="aios-conformance",
+                kind="execution",
+                status="ACTIVE",
+            ))
+            registry.persist(str(effect_dir), "aios-conformance")
+
+            sample = {
+                "contract_type": "EXECUTION_CONTRACT",
+                "task_id": "try-conformance",
+                "scope": "research",
+                "actor": "try-conformance",
+                "capabilities": ["research.execution@1"],
+                "input_digest": "input-sha",
+                "allowed_effects": ["research"],
+                "evidence_required": ["receipt"],
+                "max_attempts": 3,
+                "terminal_states": ["PASS", "BLOCKED", "INCONCLUSIVE"],
+                "policy_digest": policy_digest,
+            }
+            contract.validate_contract(sample)
+            contract_id = contract.contract_identity(sample)
+            stored_contract = authority.persist_contract(str(effect_dir), sample)
+            permit = authority.persist_permit(str(effect_dir), stored_contract, "aios-conformance")
+            contract.verify_permit(stored_contract, permit)
+            permit_id = permit["permit_id"]
+
             created = effect.create_effect(
                 str(effect_dir),
                 contract_id,
@@ -95,6 +113,7 @@ def main() -> int:
                 permit_id,
                 "research",
             )
+
             effect_id = created["effect_id"]
 
             # Actual initial dispatch primitive.
