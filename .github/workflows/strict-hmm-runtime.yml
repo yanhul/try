@@ -1,0 +1,32 @@
+name: Strict HMM Runtime
+
+on:
+  push:
+    branches:
+      - main
+      - 'fix/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  hmm-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install --upgrade pytest
+      - name: HMM strict regression
+        run: python -m pytest -q tests/test_hmm_latent_state.py
+      - name: Provider router contract
+        run: python -m pytest -q tests/test_provider_router_contract.py
+      - name: Implementation absorption contract
+        run: python -m pytest -q tests/test_implementation_absorption.py
+      - name: Compile strict runtime modules
+        run: python -m py_compile research/latent_state/hmm.py research/provider_router.py research/discovery/implementation_absorption.py
