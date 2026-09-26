@@ -1,0 +1,85 @@
+name: AIOS Full Lineage Conformance
+
+on:
+  pull_request:
+    paths:
+      - 'research/aios_conformance.py'
+      - 'research/execution_outcome.py'
+      - 'tests/test_execution_outcome.py'
+      - '.github/workflows/aios-full-conformance.yml'
+  push:
+    branches:
+      - absorb/verl-strict-outcomes
+    paths:
+      - 'research/aios_conformance.py'
+      - 'research/execution_outcome.py'
+      - 'tests/test_execution_outcome.py'
+      - '.github/workflows/aios-full-conformance.yml'
+
+permissions:
+  contents: read
+
+env:
+  AIOS_AUTHORITY_SHA: a69eafa3ecf717c92ac11f36d7c511fdecac6769
+
+jobs:
+  full-lineage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout TRY
+        uses: actions/checkout@v4
+
+      - name: Checkout exact AIOS authority
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          ref: ${{ env.AIOS_AUTHORITY_SHA }}
+          path: aios-authority
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run strict outcome tests
+        run: python -m pytest -q tests/test_execution_outcome.py
+
+      - name: Run full AIOS lineage proof
+        env:
+          AIOS_SOURCE: ${{ github.workspace }}/aios-authority
+        run: python research/aios_conformance.py
+
+      - name: Verify durable artifact hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s research/aios_conformance_receipt.json
+          test -s research/aios_conformance_evidence.json
+          receipt_sha="$(sha256sum research/aios_conformance_receipt.json | awk '{print $1}')"
+          evidence_sha="$(sha256sum research/aios_conformance_evidence.json | awk '{print $1}')"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt=json.loads(Path('research/aios_conformance_receipt.json').read_text())
+          evidence=json.loads(Path('research/aios_conformance_evidence.json').read_text())
+          assert receipt['status'] == 'PASS'
+          assert receipt['proof_type'] == 'AIOS_FULL_LINEAGE_CONFORMANCE'
+          assert receipt['evidence']['evidence_id'] == evidence['evidence_id']
+          assert receipt['evidence']['digest'] == evidence['digest']
+          print('DURABLE_ARTIFACT_BINDING: PASS')
+          PY
+          echo "RECEIPT_SHA256=$receipt_sha"
+          echo "EVIDENCE_SHA256=$evidence_sha"
+
+      - name: Upload durable conformance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aios-full-lineage-${{ github.sha }}
+          path: |
+            research/aios_conformance_receipt.json
+            research/aios_conformance_evidence.json
+          if-no-files-found: error
+          retention-days: 14
