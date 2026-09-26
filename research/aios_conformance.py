@@ -200,6 +200,21 @@ def main() -> int:
             )
             assert observed["state"] == "OBSERVED_SUCCESS"
 
+            from research.trajectory_evidence import StepEvidence, validate_step
+            step = StepEvidence(
+                trajectory_id="traj-" + effect_id,
+                step_id="step-" + attempt_id,
+                attempt_id=attempt_id,
+                raw_output='{"provider":"conformance-provider","result":"ok"}',
+                normalized_tool_calls=({"name":"research-op","args":{"attempt_id":attempt_id}},),
+                outcome_class="TASK_SUCCESS",
+                intervention_id="int:conformance-retry-fence",
+            )
+            step_record = step.as_record()
+            assert validate_step(step_record).evidence_digest == step_record["evidence_digest"]
+            if step_record["attempt_id"] != attempt_id:
+                raise AssertionError("trajectory step is not attempt-bound")
+
             evaluation = sealed_record("EVALUATION", {
                 "evaluation_id": "EVAL-" + digest({
                     "evidence_id": ev["evidence_id"],
@@ -207,6 +222,8 @@ def main() -> int:
                 }),
                 "evidence_id": ev["evidence_id"],
                 "evidence_digest": ev["digest"],
+                "trajectory_evidence_digest": step_record["evidence_digest"],
+                "trajectory_id": step_record["trajectory_id"],
                 "receipt_id": receipt_id,
                 "verdict": "TASK_SUCCESS",
             })
@@ -259,6 +276,7 @@ def main() -> int:
                 "attempt_id": attempt_id,
                 "receipt": receipt,
                 "evidence": ev,
+                "trajectory_step": step_record,
                 "evaluation": evaluation,
                 "promotion": promotion,
                 "checks": [
@@ -272,6 +290,9 @@ def main() -> int:
                     "receipt_evidence_binding",
                     "evidence_evaluation_binding",
                     "evaluation_promotion_binding",
+                    "trajectory_step_attempt_binding",
+                    "raw_output_normalization_separation",
+                    "diagnostic_intervention_recorded",
                     "forged_receipt_rejected",
                     "altered_evidence_rejected",
                     "altered_evaluation_rejected",
