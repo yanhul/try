@@ -46,7 +46,7 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}
       AIOS_SOURCE: ${{ github.workspace }}/aios-authority
       AIOS_AUTHORITY_SECRET: ${{ secrets.AIOS_AUTHORITY_SECRET }}
-      AIOS_AUTHORITY_SHA: 151f386683934edd6e124d1ae69bd95a68b3ecbf
+      AIOS_AUTHORITY_SHA: 3ebdedf0b1aa51084e2d7cefc1b6c5eb211dd00e
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: 151f386683934edd6e124d1ae69bd95a68b3ecbf
+          ref: absorb/verl-strict-lineage
           path: aios-authority
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -76,11 +76,21 @@ jobs:
           test -n "${GEMINI_PROJECT_ID}" || { echo "GEMINI_PROJECT_ID is required (public project ID; configure it as a repository variable)" >&2; exit 1; }
           echo "GEMINI_PROJECT_ID configured"
       - name: Run research feature and harness tests
-        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_campaign_controller.py tests/test_provider_router_contract.py tests/test_provider_router_translation_normalization.py tests/test_system_ingestion.py tests/test_hypothesis_novelty.py tests/test_campaign_terminal_contract.py tests/test_oos_lifecycle_target.py tests/test_repair_research.py tests/test_discovery_absorption.py tests/test_implementation_absorption.py tests/test_composite_evaluator.py
+        run: python -m pytest -q tests/test_feature_library.py tests/test_harness_contracts.py tests/test_autonomous_hypothesis.py tests/test_evidence_calibration.py tests/test_campaign_controller.py tests/test_provider_router_contract.py tests/test_provider_router_translation_normalization.py tests/test_system_ingestion.py tests/test_hypothesis_novelty.py tests/test_campaign_terminal_contract.py tests/test_oos_lifecycle_target.py tests/test_repair_research.py tests/test_discovery_absorption.py tests/test_implementation_absorption.py tests/test_composite_evaluator.py tests/test_execution_outcome.py tests/test_trajectory_evidence.py
       - name: Run AIOS static conformance
         run: python research/aios_conformance.py
       - name: Run AIOS runtime adversarial conformance
         run: python -m research.adversarial_conformance
+      - name: Upload AIOS full conformance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aios-full-conformance-${{ github.run_id }}
+          path: |
+            research/aios_conformance_receipt.json
+            research/aios_conformance_evidence.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Bootstrap strict research lifecycle
         run: python research/bootstrap_lifecycle.py
       - name: Check strict fast-resume eligibility
