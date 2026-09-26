@@ -68,4 +68,4 @@ jobs:
             --cwd . \
             --problem "Evaluate the bounded research harness contract and expose its governed result." \
             --timeout-seconds 300 \
-            -- bash ./aios/adapter.sh
+            -- python ./aios/adapter.py
