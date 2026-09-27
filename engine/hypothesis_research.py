@@ -30,6 +30,7 @@ from .trading_features import momentum_trend, mean_reversion_zscore, volume_spre
 from .events import Direction
 from research.cost_model import CostModel, DEFAULT_COST_MODEL
 from research.validation_policy import validation_gate
+from research.family_registry import direction_for_row, require_executable
 
 
 @dataclass(frozen=True)
@@ -89,21 +90,8 @@ def _feature_rows(history, pnf_box_fraction):
 
 
 def _direction_for_row(row, family):
-    if family == "momentum_trend":
-        value = row.get("momentum_trend"); return Direction.BULLISH if value is not None and value > 0 else Direction.BEARISH if value is not None and value < 0 else None
-    if family == "mean_reversion":
-        value = row.get("mean_reversion"); return Direction.BULLISH if value is not None and value < 0 else Direction.BEARISH if value is not None and value > 0 else None
-    if family == "vwap_volume_profile":
-        value = row.get("vwap_volume_profile"); return Direction.BULLISH if value is not None and value > 0 else Direction.BEARISH if value is not None and value < 0 else None
-    if family == "regime": return Direction.BULLISH if row.get("mtf_fast_bullish") is True else Direction.BEARISH if row.get("mtf_fast_bullish") is False else None
-    if family == "point_figure":
-        return Direction.BULLISH if row.get("point_figure") == "X" else Direction.BEARISH if row.get("point_figure") == "O" else None
-    if family == "gann_reference":
-        value = row.get("gann_reference"); return Direction.BULLISH if value is not None and value > 0 else Direction.BEARISH if value is not None and value < 0 else None
-    if family == "wyckoff_vsa_vpa":
-        value = row.get("close_location"); return Direction.BULLISH if value is not None and value > 0.5 else Direction.BEARISH if value is not None and value < 0.5 else None
-    if family in {"volatility", "seasonality"}: raise ValueError(f"non_directional_candidate_family:{family}")
-    raise ValueError(f"unsupported_candidate_family:{family}")
+    value = direction_for_row(row, family)
+    return Direction.BULLISH if value == "bullish" else Direction.BEARISH if value == "bearish" else None
 
 
 def _event_context(rows, trade):
@@ -122,9 +110,17 @@ def prepare_split(bars, start, end, *, pnf_box_fraction=0.01, candidate_universe
     if pnf_box_fraction <= 0: raise ValueError("pnf_box_fraction must be positive")
     if candidate_universe == "all_bars":
         family = str(candidate_family or "")
-        if family != "discovered_primitive" and family not in {"momentum_trend", "mean_reversion", "wyckoff_vsa_vpa", "vwap_volume_profile", "regime", "point_figure", "gann_reference"}:
-            raise ValueError(f"unsupported_all_bars_family:{family}")
-    elif candidate_universe != "reference_event_ledger": raise ValueError(f"unsupported_candidate_universe:{candidate_universe}")
+        if family != "discovered_primitive":
+            spec = require_executable(family)
+            if spec.candidate_universe != "all_bars":
+                raise ValueError(f"family_requires_event_ledger:{family}")
+    elif candidate_universe == "reference_event_ledger":
+        if candidate_family and candidate_family != "discovered_primitive":
+            spec = require_executable(str(candidate_family))
+            if spec.candidate_universe != "reference_event_ledger":
+                raise ValueError(f"family_requires_all_bars:{candidate_family}")
+    else:
+        raise ValueError(f"unsupported_candidate_universe:{candidate_universe}")
     history = bars[:end]; rows = _feature_rows(history, pnf_box_fraction)
     if candidate_universe == "all_bars":
         ledger, contexts = [], []
