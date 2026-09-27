@@ -31,9 +31,9 @@ def test_continuation_is_event_driven_and_durable():
 
 def test_controller_has_fast_dispatch_with_durable_receipt():
     assert 'Fast event-driven continuation dispatch' in CONTROLLER
-    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTROLLER
-    assert "intent['status']='DISPATCHED'" in CONTROLLER
-    assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTROLLER
+    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTINUATION
+    assert "intent['status']='PENDING'" in CONTROLLER
+    assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
 
 
 def test_continuation_ignores_completed_controller_runs():
