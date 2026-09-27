@@ -36,6 +36,11 @@ jobs:
           test -f research/continuation_intent.json
           intent=$(cat research/continuation_intent.json)
           status=$(jq -r '.status // "ABSENT"' <<<"$intent")
+          dispatch_id=$(jq -r '.dispatch_run_id // empty' <<<"$intent")
+          if [ "$status" = "DISPATCHED" ] && [ -n "$dispatch_id" ]; then
+            run_state=$(gh run view "$dispatch_id" --json status,conclusion)
+            test "$(printf "%s" "$run_state" | jq -r '.status != "completed" or .conclusion == "success"')" = "true" || status="STALE"
+          fi
           source_run_id=$(jq -r '.created_by_run_id // 0' <<<"$intent")
           test "$source_run_id" != "0"
           state=$(cat research/bc_lifecycle_state.json)
@@ -43,7 +48,16 @@ jobs:
           if [ "$terminal" = "true" ]; then echo "CONTINUATION_TERMINAL"; exit 0; fi
           active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')
           if [ "$active" -gt 0 ]; then echo "CONTINUATION_ACTIVE_CONTROLLER count=$active"; exit 0; fi
-          if [ "$status" = "DISPATCHED" ]; then echo "CONTINUATION_RECEIPT_STALE source_run_id=$source_run_id"; else echo "CONTINUATION_RECEIPT_PENDING source_run_id=$source_run_id"; fi
+          if [ "$status" = "STALE" ]; then
+            echo "CONTINUATION_RECEIPT_STALE source_run_id=$source_run_id"
+            i_status=$(gh run view "$dispatch_id" --json status,conclusion)
+            echo "$i_status"
+          elif [ "$status" = "DISPATCHED" ]; then
+            echo "CONTINUATION_RECEIPT_ACTIVE source_run_id=$source_run_id"
+            exit 0
+          else
+            echo "CONTINUATION_RECEIPT_PENDING source_run_id=$source_run_id"
+          fi
           gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id"
           echo "CONTINUATION_RECEIPT_PERSISTED"
