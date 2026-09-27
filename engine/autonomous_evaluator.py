@@ -15,14 +15,12 @@ from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 from research.cost_model import DEFAULT_COST_MODEL
 from research.validation_policy import EVALUATION_SPEC, validation_gate
+from research.family_registry import EXECUTABLE_FAMILIES, EVENT_FAMILIES, require_executable
 
 WINDOWS = {3, 5, 10, 20, 50, 100}
-MECHANISMS = {
-    "momentum_trend", "mean_reversion", "volatility", "smc_ict", "fvg_imbalance",
-    "wyckoff_vsa_vpa", "vwap_volume_profile", "regime", "seasonality",
-    "point_figure", "gann_reference",
-}
-EVENT_MECHANISMS = {"smc_ict", "fvg_imbalance"}
+MECHANISMS = set(EXECUTABLE_FAMILIES)
+EVENT_MECHANISMS = set(EVENT_FAMILIES)
+
 
 
 def sha256(path: Path) -> str:
@@ -110,8 +108,7 @@ def _event_value(ctx, key, field):
 
 def mechanism_predicate(spec):
     family = spec["mechanism_family"]; threshold = float(spec.get("threshold", 0.0)); comparison = spec.get("direction", "above")
-    if family not in MECHANISMS: raise ValueError("invalid_mechanism_family")
-    if family in {"volatility", "seasonality"}: raise ValueError(f"non_directional_mechanism_family:{family}")
+    require_executable(family)
     def pred(ctx, trade_direction):
         if family == "smc_ict":
             sweep, mss, fvg = _event(ctx, "sweep"), _event(ctx, "mss"), _event(ctx, "fvg")
