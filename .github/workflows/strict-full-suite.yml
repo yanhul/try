@@ -22,8 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Checkout AIOS authority
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          ref: absorb/verl-strict-lineage
+          path: aios-authority
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --upgrade pytest
-      - run: python -m pytest -q
+      - name: Run full suite with external AIOS authority
+        env:
+          AIOS_ROOT: ${{ github.workspace }}/aios-authority
+          AIOS_SOURCE: ${{ github.workspace }}/aios-authority
+        run: python -m pytest -q
