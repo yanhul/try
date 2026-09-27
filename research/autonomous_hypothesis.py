@@ -1,14 +1,15 @@
 """Strict validation for hypotheses produced by the research agent."""
 from __future__ import annotations
 import hashlib,json,math
+from research.family_registry import EXECUTABLE_FAMILIES, registry_metadata, taxonomy_for_family
 from pathlib import Path
 REQUIRED={"bc","parent_bc","hypothesis_id","conceptual_change","evidence_sources","rationale","is_testable","oos_selection_used"}
 OPS={"identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"}
 COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance","momentum_trend","mean_reversion","volatility","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
-MECHANISM_FAMILIES={"momentum_trend","mean_reversion","volatility","smc_ict","fvg_imbalance","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
+MECHANISM_FAMILIES=set(EXECUTABLE_FAMILIES) | {"volatility","seasonality"}
 # Families listed in the source taxonomy but not executable as directional predicates.
 NON_DIRECTIONAL_MECHANISM_FAMILIES={"volatility","seasonality"}
-EXECUTABLE_MECHANISM_FAMILIES=MECHANISM_FAMILIES-NON_DIRECTIONAL_MECHANISM_FAMILIES
+EXECUTABLE_MECHANISM_FAMILIES=set(EXECUTABLE_FAMILIES)
 # Family-specific executable vocabulary. This is a search-quality guard, not a performance claim.
 # A source family may translate to a BTC-compatible proxy, but only through primitives
 # whose observable inputs/operators are explicitly admissible for that family.
@@ -24,6 +25,15 @@ FAMILY_PRIMITIVES={
  "gann_reference":{"ops":{"difference","delta","lag","rolling_mean"},"cols":{"open","high","low","close"}},
 }
 WINDOW_REQUIRED={"zscore","rolling_mean","rolling_std","lag","delta","rank"}
+def discovery_fingerprint(candidate:dict)->str:
+    spec=candidate.get("discovery_spec") or {}
+    return hashlib.sha256(json.dumps(spec,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+
+def _bind_taxonomy(candidate:dict)->None:
+    spec=candidate.get("discovery_spec") or {}
+    family=spec.get("mechanism_family") if isinstance(spec,dict) else None
+    candidate["taxonomy"]=taxonomy_for_family(str(family)) if family else registry_metadata()
+
 def canonical_hash(candidate:dict)->str:
  payload={k:candidate[k] for k in sorted(candidate) if k!="candidate_hash"}
  return hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
