@@ -1,0 +1,49 @@
+name: BC Research Continuation
+
+on:
+  workflow_run:
+    workflows:
+      - BC Research Controller
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: try-bc-research-continuation-main
+  cancel-in-progress: false
+
+jobs:
+  continuation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout durable state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Recover durable continuation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f research/continuation_intent.json
+          intent=$(cat research/continuation_intent.json)
+          status=$(jq -r '.status // "ABSENT"' <<<"$intent")
+          source_run_id=$(jq -r '.created_by_run_id // 0' <<<"$intent")
+          test "$source_run_id" != "0"
+          state=$(cat research/bc_lifecycle_state.json)
+          terminal=$(jq -r '.campaign_terminal // .terminal // false' <<<"$state")
+          if [ "$terminal" = "true" ]; then echo "CONTINUATION_TERMINAL"; exit 0; fi
+          active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')
+          if [ "$active" -gt 0 ]; then echo "CONTINUATION_ACTIVE_CONTROLLER count=$active"; exit 0; fi
+          if [ "$status" = "DISPATCHED" ]; then echo "CONTINUATION_RECEIPT_STALE source_run_id=$source_run_id"; else echo "CONTINUATION_RECEIPT_PENDING source_run_id=$source_run_id"; fi
+          gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
+          echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id"
+          echo "CONTINUATION_RECEIPT_PERSISTED"
