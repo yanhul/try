@@ -99,6 +99,7 @@ class ReferenceStrategy:
                 i >= 2
                 and self._mss is not None
                 and self._mss.bar_index < i
+                and self._fvg is None
             ):
                 left = bars[i - 2]
 
