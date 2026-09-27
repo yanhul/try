@@ -291,6 +291,16 @@ jobs:
 
           run_url="$(gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main)"
           test -n "$run_url"
+          dispatch_id="$(printf '%s' "$run_url" | sed -n 's#.*/runs/\\([0-9][0-9]*\\).*#\\1#p')"
+          test -n "$dispatch_id"
+          run_state="$(gh run view "$dispatch_id" --json status,conclusion)"
+          if ! printf '%s' "$run_state" | jq -e '.status != "completed" or .conclusion == "success"' >/dev/null; then
+            echo "CONTINUATION_RECEIPT_STALE dispatch_id=$dispatch_id"
+            jq '.status="PENDING" | .dispatch_run_id=null' "$intent_path" > "$intent_path.tmp"
+            mv "$intent_path.tmp" "$intent_path"
+            echo 'i["status"]="PENDING"'
+            exit 1
+          fi
           echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id url=$run_url"
 
           target_sha="$(git rev-parse HEAD)"
