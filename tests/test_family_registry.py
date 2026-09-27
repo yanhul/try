@@ -74,6 +74,20 @@ def test_executable_families_have_evaluator_dispatch_closure():
         assert callable(predicate)
 
 
+def test_evaluator_only_primitives_are_not_executable():
+    for family in ("point_figure", "gann_reference"):
+        with pytest.raises(ValueError, match="unexecutable_family"):
+            require_executable(family)
+
+
+def test_executable_data_lane_is_closed():
+    for family in EXECUTABLE_FAMILIES:
+        spec = FAMILIES[family]
+        assert spec.data_requirement
+        assert spec.data_adapter
+        assert spec.evaluator_kind
+
+
 def test_registry_contains_no_legacy_ml_rl_or_duplicate_execution_authority():
     assert "ml_rl" not in FAMILIES
     assert all(
