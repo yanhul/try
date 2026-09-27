@@ -67,6 +67,29 @@ def require_executable(family_id: str) -> FamilySpec:
     return spec
 
 
+def direction_for_row(row: dict, family_id: str) -> str | None:
+    spec = require_executable(family_id)
+    if not spec.directional:
+        raise ValueError(f"non_directional_family:{family_id}")
+    if family_id == "mean_reversion":
+        value = row.get("mean_reversion")
+        return "bullish" if value is not None and value < 0 else "bearish" if value is not None and value > 0 else None
+    if family_id == "regime":
+        value = row.get("mtf_fast_bullish")
+        return "bullish" if value is True else "bearish" if value is False else None
+    if family_id == "point_figure":
+        value = row.get("point_figure")
+        return "bullish" if value == "X" else "bearish" if value == "O" else None
+    key = {
+        "momentum_trend": "momentum_trend",
+        "wyckoff_vsa_vpa": "wyckoff_vsa_vpa",
+        "vwap_volume_profile": "vwap_volume_profile",
+        "gann_reference": "gann_reference",
+    }.get(family_id)
+    value = row.get(key) if key else None
+    return "bullish" if value is not None and value > 0 else "bearish" if value is not None and value < 0 else None
+
+
 def validate_registry() -> None:
     if len(FAMILIES) != len(_FAMILY_DATA):
         raise AssertionError("duplicate_family_id")
