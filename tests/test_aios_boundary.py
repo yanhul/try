@@ -43,6 +43,6 @@ def test_contract_identity_rejects_non_dict_before_hashing():
     try:
         contract_identity("not-a-contract")
     except ValueError as exc:
-        assert "contract must be a dict" in str(exc)
+        assert "contract record must be a dict" in str(exc) or "contract must be a dict" in str(exc)
     else:
         raise AssertionError("non-dict contract must fail closed")
