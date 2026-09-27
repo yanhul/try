@@ -6,9 +6,9 @@ from pathlib import Path
 REQUIRED={"bc","parent_bc","hypothesis_id","conceptual_change","evidence_sources","rationale","is_testable","oos_selection_used"}
 OPS={"identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"}
 COLS={"open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance","momentum_trend","mean_reversion","volatility","wyckoff_vsa_vpa","vwap_volume_profile","regime","seasonality","point_figure","gann_reference"}
-MECHANISM_FAMILIES=set(EXECUTABLE_FAMILIES) | {"volatility","seasonality"}
+MECHANISM_FAMILIES=set(EXECUTABLE_FAMILIES)
 # Families listed in the source taxonomy but not executable as directional predicates.
-NON_DIRECTIONAL_MECHANISM_FAMILIES={"volatility","seasonality"}
+NON_DIRECTIONAL_MECHANISM_FAMILIES=set()
 EXECUTABLE_MECHANISM_FAMILIES=set(EXECUTABLE_FAMILIES)
 # Family-specific executable vocabulary. This is a search-quality guard, not a performance claim.
 # A source family may translate to a BTC-compatible proxy, but only through primitives
