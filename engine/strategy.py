@@ -60,6 +60,7 @@ class ReferenceStrategy:
             if (
                 self._sweep is not None
                 and self._sweep.bar_index < i
+                and self._mss is None
                 and i >= 1
             ):
                 prev = bars[i - 1]
