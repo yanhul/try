@@ -133,7 +133,9 @@ def require_executable(family_id: str) -> FamilySpec:
     return spec
 
 def direction_for_row(row: dict, family_id: str) -> str | None:
-    spec = require_executable(family_id)
+    spec = get_family(family_id)
+    if family_id not in EVALUATOR_FAMILIES:
+        raise ValueError(f"unevaluable_family:{family_id}")
     if not spec.directional:
         raise ValueError(f"non_directional_family:{family_id}")
     if family_id == "mean_reversion":
