@@ -18,7 +18,7 @@ def test_china_a_share_classification_is_first_class():
     assert normalized["market"] == "CN_A_SHARE"
 
 
-def test_china_a_share_is_executable_but_market_constraints_are_not_synthetic_data():
+def test_china_a_share_is_discovery_only_until_market_adapter_exists():
     item = normalize({
         "source": "github",
         "url": "https://github.com/example/a-share",
@@ -27,9 +27,9 @@ def test_china_a_share_is_executable_but_market_constraints_are_not_synthetic_da
         "query": "A-share factor research",
     })
     executable, deferred = round2_feasibility([item])
-    assert len(executable) == 1
-    assert not deferred
-    assert executable[0]["family"] == "china_a_share"
+    assert not executable
+    assert len(deferred) == 1
+    assert deferred[0]["family"] == "china_a_share"
 
 
 def test_seed_contains_multiple_distinct_china_systems():
