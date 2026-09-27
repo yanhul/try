@@ -38,7 +38,10 @@ def round1_source_quality(items):
   key=item.get('source_url') or re.sub(r'\s+',' ',str(item.get('title','')).lower()).strip()
   if not key or key in seen: continue
   seen.add(key)
-  if item.get('source') in {'github','arxiv'}: item['lineage']['rounds'].append({'round':1,'decision':'PASS_SOURCE'}); out.append(item)
+  if item.get('source') in {'github','arxiv'}:
+   # Round 2 consumes a canonical family; repair test/manual inputs at the boundary.
+   item['family']=item.get('family') or classify(item)
+   item['lineage']['rounds'].append({'round':1,'decision':'PASS_SOURCE'}); out.append(item)
  return out
 def round2_feasibility(items):
  executable=[]; deferred=[]
