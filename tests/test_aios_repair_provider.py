@@ -38,8 +38,8 @@ def test_propose_passes_only_bounded_evidence(monkeypatch):
         "failure": {"ci_failure_log_tail": "z" * 100000},
         "source_snapshot": {"core/x.py": "a" * 200000},
     })
-    assert len(seen["failure"]["ci_failure_log_tail"]) == 80000
-    assert len(seen["source_snapshot"]["core/x.py"]) == 120000
+    assert len(seen["prompt"]["failure"]["ci_failure_log_tail"]) == 80000
+    assert len(seen["prompt"]["source_snapshot"]["core/x.py"]) == 120000
     assert out["schema"] == 2
 
 
