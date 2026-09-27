@@ -5,6 +5,7 @@ name: BC Research Controller
 # strategy-research-resume: strict RPD datetime test isolation
 
 # Durable bounded campaign: fixed policy + durable controller resume.
+# Fast event-driven continuation dispatch is owned by bc-research-continuation.yml.
 # G4B autonomous launch lane.
 # Agent cannot modify policy, evidence, promotion, budget, or terminal rules.
 # Each invocation executes at most one BC and persists before the next dispatch.
