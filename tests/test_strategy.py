@@ -143,7 +143,7 @@ def test_new_sweep_invalidates_stale_fvg():
         bar(3, 103, 110, 107, 109),
         # This bearish sweep overlaps the old bullish FVG. It must invalidate
         # the old zone instead of emitting a stale bullish retest.
-        bar(4, 108, 109, 101, 104),
+        bar(4, 108, 112, 101, 104),
     ]
 
     events = ReferenceStrategy().process(bars)
