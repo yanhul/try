@@ -7,10 +7,10 @@ from typing import Any
 ROOT=Path(__file__).resolve().parents[2]; DISCOVERY=ROOT/'research'/'discovery'
 LANES=DISCOVERY/'source_lanes.json'; LATEST=DISCOVERY/'latest.json'; ARCHIVE=DISCOVERY/'source_archive.json'; SEEDS=DISCOVERY/'china_a_share_sources.json'
 POPULATION=DISCOVERY/'population.json'; SURVIVORS=DISCOVERY/'survivors.json'; QUEUE=DISCOVERY/'research_queue.json'; CACHE_META=DISCOVERY/'population_cache.json'
-FAMILY_TERMS={
-'momentum_trend':('momentum','trend','breakout','moving average'),'mean_reversion':('mean reversion','mean-reversion','reversion','statistical arbitrage'),'volatility':('volatility','variance','volatility breakout'),'smc_ict':('smart money','smc','ict','liquidity sweep','market structure','order block'),'fvg_imbalance':('fair value gap','fvg','imbalance'),'wyckoff_vsa_vpa':('wyckoff','vsa','volume spread','volume price analysis'),'vwap_volume_profile':('vwap','volume profile','anchored vwap'),'funding_basis_carry':('funding','basis','carry','perpetual'),'order_flow':('order flow','orderflow','order book','lob imbalance','microprice'),'cross_sectional':('cross-sectional','factor','rankic','icir','cross sectional'),'regime':('regime','hidden markov','hmm','state switching'),'seasonality':('seasonality','seasonal','day of week','calendar effect'),'onchain':('on-chain','onchain','wallet','blockchain','solana'),'options':('options','implied volatility','skew','gamma'),'prediction_market':('prediction market','polymarket','kalshi','clob'),'execution_mev':('execution','adverse selection','maker','taker','mev','slippage'),
-'china_a_share':('china a-share','a-share','ashare','a share','chinese stock','chinese stocks','limit-up','limit up','连板','涨停','t+1','qlib','eastmoney','akshare','alpha158','factor mining','a股')}
-EXECUTABLE_FAMILIES={'momentum_trend','mean_reversion','volatility','smc_ict','fvg_imbalance','wyckoff_vsa_vpa','vwap_volume_profile','regime','seasonality','cross_sectional','china_a_share'}
+from research.family_registry import DISCOVERY_FAMILIES, EXECUTABLE_FAMILIES, FAMILIES, taxonomy_for_family
+
+# Compatibility views: the registry remains the only source of family semantics.
+FAMILY_TERMS={family_id: spec.terms for family_id, spec in FAMILIES.items() if spec.discovery_enabled}
 def _text(item): return ' '.join(str(item.get(k,'')) for k in ('title','description','raw','query')).lower()
 def classify(item):
  text=_text(item)
@@ -31,14 +31,17 @@ def expand_source(item):
  except ET.ParseError: return []
 def normalize(raw):
  family=classify(raw); market='CN_A_SHARE' if family=='china_a_share' else raw.get('market')
- return {'candidate_id':source_id(raw),'source':raw.get('source','unknown'),'source_url':raw.get('url'),'title':raw.get('title') or raw.get('query'),'description':raw.get('description'),'family':family,'market':market,'query':raw.get('query'),'source_timestamp':raw.get('updated_at'),'lineage':{'source':source_id(raw),'family':family,'rounds':[]}}
+ return {'candidate_id':source_id(raw),'source':raw.get('source','unknown'),'source_url':raw.get('url'),'title':raw.get('title') or raw.get('query'),'description':raw.get('description'),'family':family,'market':market,'query':raw.get('query'),'source_timestamp':raw.get('updated_at'),'lineage':{'source':source_id(raw),'family':family,'taxonomy':taxonomy_for_family(family) if family in FAMILIES else None,'rounds':[]}}
 def round1_source_quality(items):
  out=[]; seen=set()
  for item in items:
   key=item.get('source_url') or re.sub(r'\s+',' ',str(item.get('title','')).lower()).strip()
   if not key or key in seen: continue
   seen.add(key)
-  if item.get('source') in {'github','arxiv'}: item['lineage']['rounds'].append({'round':1,'decision':'PASS_SOURCE'}); out.append(item)
+  if item.get('source') in {'github','arxiv'}:
+   # Round 2 consumes a canonical family; repair test/manual inputs at the boundary.
+   item['family']=item.get('family') or classify(item)
+   item['lineage']['rounds'].append({'round':1,'decision':'PASS_SOURCE'}); out.append(item)
  return out
 def round2_feasibility(items):
  executable=[]; deferred=[]

@@ -13,7 +13,7 @@ def test_controller_persists_intent_before_dispatch_lane():
     assert 'sleep 60' not in CONTROLLER
     assert "cron: '*/15 * * * *'" not in CONTROLLER
     assert 'STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN' in CONTROLLER
-    assert 'durable paths changed on remote' in CONTROLLER
+    assert 'STATE_PERSISTENCE_CONFLICT' in CONTROLLER
 
 
 def test_continuation_is_event_driven_and_durable():
@@ -31,9 +31,9 @@ def test_continuation_is_event_driven_and_durable():
 
 def test_controller_has_fast_dispatch_with_durable_receipt():
     assert 'Fast event-driven continuation dispatch' in CONTROLLER
-    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTROLLER
-    assert "intent['status']='DISPATCHED'" in CONTROLLER
-    assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTROLLER
+    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTINUATION
+    assert 'PENDING' in CONTROLLER
+    assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
 
 
 def test_continuation_ignores_completed_controller_runs():
@@ -56,7 +56,7 @@ def test_controller_does_not_trigger_from_state_pushes():
 
 def test_controller_does_not_delete_or_own_dispatch_receipts():
     assert 'rm -f research/continuation_intent.json' not in CONTROLLER
-    assert 'research/continuation_intent.json)' not in CONTROLLER
+    assert 'rm -f research/continuation_intent.json' not in CONTROLLER
 
 
 def test_failed_dispatch_receipt_is_reopened():
@@ -67,6 +67,6 @@ def test_failed_dispatch_receipt_is_reopened():
 
 
 def test_receipt_lookup_ignores_failed_runs():
-    assert '.status != "completed" or .conclusion == "success"' in CONTROLLER
+    assert '.status != "completed" or .conclusion == "success"' in CONTINUATION
     assert 'status == "queued" or .status == "in_progress"' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION

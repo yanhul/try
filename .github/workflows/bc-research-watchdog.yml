@@ -47,6 +47,7 @@ jobs:
 
           intent="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/continuation_intent.json --jq '.content' 2>/dev/null | base64 -d || true)"
           intent_status="$(jq -r '.status // "ABSENT"' <<<"$intent" 2>/dev/null || echo ABSENT)"
+          echo "CONTINUATION_RECEIPT_PRESENT status=$intent_status"
           if [ "$intent_status" = "DISPATCHED" ]; then
             dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
             dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"

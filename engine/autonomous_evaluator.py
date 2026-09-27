@@ -15,14 +15,12 @@ from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 from research.cost_model import DEFAULT_COST_MODEL
 from research.validation_policy import EVALUATION_SPEC, validation_gate
+from research.family_registry import EXECUTABLE_FAMILIES, EVENT_FAMILIES, require_executable, taxonomy_for_family, registry_metadata
 
 WINDOWS = {3, 5, 10, 20, 50, 100}
-MECHANISMS = {
-    "momentum_trend", "mean_reversion", "volatility", "smc_ict", "fvg_imbalance",
-    "wyckoff_vsa_vpa", "vwap_volume_profile", "regime", "seasonality",
-    "point_figure", "gann_reference",
-}
-EVENT_MECHANISMS = {"smc_ict", "fvg_imbalance"}
+MECHANISMS = set(EXECUTABLE_FAMILIES)
+EVENT_MECHANISMS = set(EVENT_FAMILIES)
+
 
 
 def sha256(path: Path) -> str:
@@ -110,8 +108,7 @@ def _event_value(ctx, key, field):
 
 def mechanism_predicate(spec):
     family = spec["mechanism_family"]; threshold = float(spec.get("threshold", 0.0)); comparison = spec.get("direction", "above")
-    if family not in MECHANISMS: raise ValueError("invalid_mechanism_family")
-    if family in {"volatility", "seasonality"}: raise ValueError(f"non_directional_mechanism_family:{family}")
+    require_executable(family)
     def pred(ctx, trade_direction):
         if family == "smc_ict":
             sweep, mss, fvg = _event(ctx, "sweep"), _event(ctx, "mss"), _event(ctx, "fvg")
@@ -175,7 +172,7 @@ def main() -> int:
     validation_passed, gate_reasons = validation_gate(val_result["metrics"])
     cost_available = EVALUATION_SPEC.get("cost_model_status") == "AVAILABLE"
     net_gate = "PASS" if cost_available and validation_passed else ("COST_MODEL_REQUIRED" if not cost_available else "VALIDATION_QUALITY_FAILED")
-    result = {"schema_version": 10, "bc": candidate["bc"], "parent_bc": candidate["parent_bc"], "hypothesis_id": hid, "candidate_hash": candidate["candidate_hash"], "discovery_spec": candidate.get("discovery_spec"), "oos_selection_used": False, "oos_executed": False, "dataset": {"path": str(data), "sha256": sha256(data), "bars": len(bars)}, "evaluation_spec": dict(EVALUATION_SPEC), "candidate_universe": candidate_universe, "cost_model": cost_model.metadata(), "IS": is_result, "VALIDATION": val_result, "gross_validation_passed": validation_passed, "validation_gate_reasons": gate_reasons, "net_validation_gate": net_gate, "validation_passed": bool(cost_available and validation_passed), "validation_basis": "NET_REQUIRED_FOR_PROMOTION"}
+    result = {"schema_version": 10, "bc": candidate["bc"], "parent_bc": candidate["parent_bc"], "hypothesis_id": hid, "candidate_hash": candidate["candidate_hash"], "discovery_spec": candidate.get("discovery_spec"), "oos_selection_used": False, "oos_executed": False, "dataset": {"path": str(data), "sha256": sha256(data), "bars": len(bars)}, "evaluation_spec": dict(EVALUATION_SPEC), "candidate_universe": candidate_universe, "taxonomy": taxonomy_for_family(candidate.get("discovery_spec",{}).get("mechanism_family")) if candidate.get("discovery_spec",{}).get("mechanism_family") in EXECUTABLE_FAMILIES else registry_metadata(), "cost_model": cost_model.metadata(), "IS": is_result, "VALIDATION": val_result, "gross_validation_passed": validation_passed, "validation_gate_reasons": gate_reasons, "net_validation_gate": net_gate, "validation_passed": bool(cost_available and validation_passed), "validation_basis": "NET_REQUIRED_FOR_PROMOTION"}
     out = root / a.out; out.parent.mkdir(parents=True, exist_ok=True)
     cache_dir = root / "research" / "evaluation_cache"
     cache_dir.mkdir(parents=True, exist_ok=True)

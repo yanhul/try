@@ -10,6 +10,9 @@ from research.evidence_calibration import verify_with_openai_compatible
 from research.btc_translation_policy import eligible_survivors
 from research.hypothesis_novelty import structural_key,novelty_metadata
 from research.search_memory import rank_families,rank_primitives,note_selection
+
+def discovery_fingerprint(candidate):
+    return hashlib.sha256(json.dumps(candidate.get("discovery_spec") or {},sort_keys=True,separators=(",",":")).encode()).hexdigest()
 OPERATORS=["identity","difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank"]
 COLUMNS=["open","high","low","close","volume","volume_ratio","range_ratio","close_location","vwap_distance"]
 WINDOWS=[3,5,10,20,50,100]
