@@ -65,6 +65,22 @@ def test_non_family_reference_primitives_are_not_discoverable():
     assert FAMILIES["point_figure"].evaluator_kind == "reference_primitive"
 
 
+def test_executable_families_have_evaluator_dispatch_closure():
+    from engine.autonomous_evaluator import mechanism_predicate
+
+    for family in EXECUTABLE_FAMILIES:
+        predicate = mechanism_predicate({"mechanism_family": family})
+        assert callable(predicate)
+
+
+def test_registry_contains_no_legacy_ml_rl_or_duplicate_execution_authority():
+    assert "ml_rl" not in FAMILIES
+    assert all(
+        spec.status in {"EXECUTABLE", "DISCOVERY_ONLY", "EVALUATOR_ONLY"}
+        for spec in FAMILIES.values()
+    )
+
+
 def test_unknown_family_fails_closed():
     with pytest.raises(ValueError, match="unknown_family"):
         require_executable("invented_strategy_family")
