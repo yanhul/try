@@ -15,6 +15,7 @@ permissions:
   actions: write
 
 # CREATED_BY_RUN_ID is the durable source-run identity; never synthesize it.
+# Event dispatch contract: gh workflow run bc-research-controller.yml --ref main
 
 concurrency:
   group: try-bc-research-continuation-main
