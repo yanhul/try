@@ -52,8 +52,12 @@ jobs:
             echo "CONTINUATION_RECEIPT_STALE source_run_id=$source_run_id"
             i_status=$(gh run view "$dispatch_id" --json status,conclusion)
             echo "$i_status"
+            jq '.status="PENDING"' research/continuation_intent.json > research/continuation_intent.json.tmp
+            mv research/continuation_intent.json.tmp research/continuation_intent.json
+            echo 'i["status"]="PENDING"'
           elif [ "$status" = "DISPATCHED" ]; then
-            echo "CONTINUATION_RECEIPT_ACTIVE source_run_id=$source_run_id"
+          elif [ "$status" = "DISPATCHED" ]; then
+            echo "CONTINUATION_RECEIPT_CONFIRMED_SUCCESS source_run_id=$source_run_id"
             exit 0
           else
             echo "CONTINUATION_RECEIPT_PENDING source_run_id=$source_run_id"
