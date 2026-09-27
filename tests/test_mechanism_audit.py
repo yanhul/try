@@ -4,19 +4,23 @@ from research.discovery.mechanism_audit import audit
 def test_trading_mechanism_registry_is_fail_closed():
     result = audit()
     assert result["fail_closed"] is True
-    assert result["total_families"] == 20
+    assert result["authority"] == "research.family_registry"
+    assert result["total_families"] == 19
     assert result["counts"] == {
-        "EXECUTABLE_FEATURES": 9,
-        "EXECUTABLE_EVENTS": 2,
-        "DATA_LANE_REQUIRED": 8,
-        "RESEARCH_ONLY": 1,
+        "EXECUTABLE": 7,
+        "DISCOVERY_ONLY": 10,
+        "EVALUATOR_ONLY": 2,
     }
     assert "smc_ict" in result["executable_families"]
     assert "fvg_imbalance" in result["executable_families"]
-    assert "funding_basis_carry" in result["data_lane_required"]
-    assert "order_flow" in result["data_lane_required"]
-    assert "onchain" in result["data_lane_required"]
-    assert "options" in result["data_lane_required"]
-    assert "prediction_market" in result["data_lane_required"]
-    assert "execution_mev" in result["data_lane_required"]
-    assert "ml_rl" in result["research_only"]
+    assert "funding_basis_carry" in result["discovery_only"]
+    assert "order_flow" in result["discovery_only"]
+    assert "onchain" in result["discovery_only"]
+    assert "options" in result["discovery_only"]
+    assert "prediction_market" in result["discovery_only"]
+    assert "execution_mev" in result["discovery_only"]
+    assert "point_figure" in result["evaluator_only"]
+    assert "gann_reference" in result["evaluator_only"]
+    assert "ml_rl" not in result["executable_families"]
+    assert "ml_rl" not in result["discovery_only"]
+    assert "ml_rl" not in result["evaluator_only"]
