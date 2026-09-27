@@ -165,8 +165,8 @@ def validate_registry() -> None:
             raise AssertionError(f"primitive_cannot_be_discovery_family:{spec.family_id}")
         if spec.evaluator_enabled and not spec.evaluator_kind:
             raise AssertionError(f"evaluator_kind_missing:{spec.family_id}")
-        if spec.evaluator_enabled and spec.directional and spec.family_id not in EXECUTABLE_FAMILIES:
-            raise AssertionError(f"directional_family_not_executable:{spec.family_id}")
+        if spec.status == "EXECUTABLE" and (not spec.evaluator_enabled or not spec.directional or spec.family_id not in EXECUTABLE_FAMILIES):
+            raise AssertionError(f"executable_family_closure:{spec.family_id}")
         if spec.status in {"EXECUTABLE", "EVALUATOR_ONLY"} and (not spec.data_requirement or not spec.data_adapter):
             raise AssertionError(f"data_lane_incomplete:{spec.family_id}")
         if spec.candidate_universe not in {"all_bars","reference_event_ledger"}:
