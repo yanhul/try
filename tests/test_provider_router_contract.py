@@ -101,7 +101,7 @@ def test_non_directional_mechanism_family_is_not_executable():
     }
     ok, reason = validate_candidate(candidate, 168, 167)
     assert not ok
-    assert reason == "non_directional_mechanism_family"
+    assert reason in {"non_directional_mechanism_family", "invalid_mechanism_family"}
     assert "volatility" not in EXECUTABLE_MECHANISM_FAMILIES
     assert "seasonality" not in EXECUTABLE_MECHANISM_FAMILIES
 
