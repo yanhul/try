@@ -63,5 +63,37 @@ class RepairCheckpointClientTests(unittest.TestCase):
                 )
 
 
+
+    def test_reads_existing_checkpoint_with_auth(self):
+        seen = {}
+        record = {"request_id": "try-ci-repair:42", "repository": "yanhul/try",
+                  "sha": "a" * 40, "attempt": 1, "phase": "VERIFY",
+                  "state": "BLOCKED", "version": 5}
+        def fake_urlopen(request, timeout):
+            seen["url"] = request.full_url
+            seen["authorization"] = request.get_header("Authorization")
+            seen["timeout"] = timeout
+            return _Response(record)
+        with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
+            result = repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
+        self.assertEqual(result, record)
+        self.assertEqual(seen["url"], "https://try.example.workers.dev/v1/repair/checkpoint/try-ci-repair:42")
+        self.assertEqual(seen["authorization"], "Bearer secret-test-token")
+
+    def test_missing_checkpoint_returns_none(self):
+        def fake_urlopen(request, timeout):
+            raise repair_checkpoint.urllib.error.HTTPError(
+                request.full_url, 404, "not found", {}, None
+            )
+        with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
+            self.assertIsNone(repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42"))
+
+    def test_checkpoint_read_rejects_identity_mismatch(self):
+        def fake_urlopen(request, timeout):
+            return _Response({"request_id": "different-request"})
+        with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
+            with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "identity_mismatch"):
+                repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
+
 if __name__ == "__main__":
     unittest.main()
