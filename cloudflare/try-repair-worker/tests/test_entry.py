@@ -375,7 +375,7 @@ class DurableCheckpointTests(unittest.TestCase):
 
     def test_retry_requires_blocked_then_resume(self):
         self.assertTrue(self.write()["persisted"])
-        blocked = self.write(phase="BLOCKED", state="BLOCKED", reason="test failed")
+        blocked = self.write(phase="OBSERVE", state="BLOCKED", reason="test failed")
         self.assertTrue(blocked["persisted"])
         resumed = self.write(attempt=2, phase="RESUME", state="WORKING")
         self.assertTrue(resumed["persisted"])
