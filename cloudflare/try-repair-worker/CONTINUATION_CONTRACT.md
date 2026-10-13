@@ -4,9 +4,13 @@ Status: implementation gate; the checkpoint API is bookkeeping, not authority.
 
 ## Event-driven loop
 
+Target flow (not yet proven end-to-end):
+
 `CI failure event → observe immutable SHA/log tail → request proposal → AIOS gate → apply only under permit → run tests → persist evidence → resume or block`
 
-`research/autonomous_repair.py` now records OBSERVE → DECIDE → PROPOSE → VERIFY → PERSIST; failed attempts are BLOCKED and a bounded retry resumes through RESUME. The client fails closed if the Worker checkpoint API is unavailable. The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
+**Current integration boundary:** `.github/workflows/ci-event-receiver.yml` only validates and persists a notification envelope. It does not invoke `research/autonomous_repair.py`, the proposal relay, or the Cloudflare Worker. `.github/workflows/aios-repair-propose.yml` is manually dispatched. Therefore, the full event-to-repair chain is **NOT VERIFIED / BLOCKED**, even when unit and conformance CI are green.
+
+`research/autonomous_repair.py` records checkpoint phases and fails closed when the Worker API is unavailable. It can retry only from a matching `BLOCKED` checkpoint; a `WORKING` checkpoint after process death is deliberately rejected because the proposal, working-tree mutation and AIOS receipt are not yet durably restored/reconciled. This is safe-stop behavior, not complete crash recovery. The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
 
 ## Durable checkpoint API
 
