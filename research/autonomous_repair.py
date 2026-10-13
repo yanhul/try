@@ -86,9 +86,38 @@ def main():
     results=[]
     checkpoint_id=f"try-ci-repair:{run_id}"
     prior=get_checkpoint(request_id=checkpoint_id)
-    start_attempt=select_resume_attempt(
-        prior, repository="yanhul/try", sha=base, max_attempts=MAX_ATTEMPTS
-    )
+    try:
+        start_attempt=select_resume_attempt(
+            prior, repository="yanhul/try", sha=base, max_attempts=MAX_ATTEMPTS
+        )
+    except RepairCheckpointError as exc:
+        # A runner may disappear after a mutation but before recording its receipt.
+        # Convert the durable WORKING marker into an explicit UNKNOWN/BLOCKED state;
+        # never infer success or automatically replay an uncertain mutation.
+        if (
+            isinstance(prior, dict)
+            and prior.get("state") == "WORKING"
+            and prior.get("repository") == "yanhul/try"
+            and prior.get("sha") == base.lower()
+            and isinstance(prior.get("attempt"), int)
+            and not isinstance(prior.get("attempt"), bool)
+            and prior.get("phase") in {"OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME"}
+        ):
+            reason = "interrupted_attempt_outcome_unknown; reconciliation_required"
+            persist_checkpoint(
+                request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                attempt=prior["attempt"], phase=prior["phase"], state="BLOCKED", reason=reason,
+            )
+            unknown = {
+                "status": "UNKNOWN", "attempt": prior["attempt"], "phase": prior["phase"],
+                "reason": reason, "reconciliation_required": True,
+            }
+            Path("repair-result.json").write_text(
+                json.dumps(unknown, indent=2, sort_keys=True), encoding="utf-8"
+            )
+            print(json.dumps(unknown, sort_keys=True))
+            return 2
+        raise
     with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
         aios=Path(td)/"aios"; aios.mkdir()
         cid,pid=authority(aios,run_id)
