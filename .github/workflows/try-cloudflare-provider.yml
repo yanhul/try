@@ -98,7 +98,22 @@ jobs:
             -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
             --data-binary @/tmp/checkpoint-decide.json > /tmp/checkpoint-replay.out
           python -c 'import json; x=json.load(open("/tmp/checkpoint-replay.out")); assert x.get("idempotent_replay") and x.get("version")==2, x'
-          # A phase skip and terminal completion without evidence must be rejected.
+          # Skipping PROPOSE/VERIFY and terminal completion without evidence must fail closed.
+          python - <<'PY' > /tmp/checkpoint-invalid-phase.json
+          import json, os
+          print(json.dumps({
+              "request_id": os.environ["request_id"],
+              "repository": "yanhul/try",
+              "sha": os.environ["CHECKPOINT_SHA"],
+              "attempt": 1, "phase": "PERSIST", "state": "WORKING",
+          }))
+          PY
+          status=$(curl --silent --show-error -o /tmp/checkpoint-invalid-phase.out -w "%{http_code}" \
+            -X POST "$WORKER_URL/v1/repair/checkpoint" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
+            --data-binary @/tmp/checkpoint-invalid-phase.json)
+          test "$status" = "409"
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-invalid-phase.out")); assert x.get("error")=="invalid_phase_transition", x'
           python - <<'PY' > /tmp/checkpoint-invalid.json
           import json, os
           print(json.dumps({
