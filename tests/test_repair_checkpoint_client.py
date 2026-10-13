@@ -35,7 +35,12 @@ class RepairCheckpointClientTests(unittest.TestCase):
             seen["authorization"] = request.get_header("Authorization")
             seen["payload"] = json.loads(request.data.decode("utf-8"))
             seen["timeout"] = timeout
-            return _Response({"persisted": True, "version": 1})
+            return _Response({
+                "persisted": True, "version": 1,
+                "request_id": "try-ci-repair:42", "repository": "yanhul/try",
+                "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
+                "state": "WORKING", "evidence_digest": None, "reason": None,
+            })
         with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
             result = repair_checkpoint.persist_checkpoint(
                 request_id="try-ci-repair:42", repository="yanhul/try", sha="a" * 40,
@@ -45,6 +50,32 @@ class RepairCheckpointClientTests(unittest.TestCase):
         self.assertEqual(seen["url"], "https://try.example.workers.dev/v1/repair/checkpoint")
         self.assertEqual(seen["authorization"], "Bearer secret-test-token")
         self.assertEqual(seen["payload"]["sha"], "a" * 40)
+
+    def test_checkpoint_ack_must_match_requested_transition(self):
+        def fake_urlopen(request, timeout):
+            return _Response({
+                "persisted": True, "version": 1,
+                "request_id": "different-request", "repository": "yanhul/try",
+                "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
+                "state": "WORKING", "evidence_digest": None, "reason": None,
+            })
+        with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
+            with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "ack_mismatch:request_id"):
+                repair_checkpoint.persist_checkpoint(
+                    request_id="try-ci-repair:42", repository="yanhul/try", sha="a" * 40,
+                    attempt=1, phase="OBSERVE", state="WORKING",
+                )
+
+    def test_invalid_request_id_rejected_before_network(self):
+        for request_id in ("", "contains/slash", "x" * 161, "has space"):
+            with self.subTest(request_id=request_id):
+                with patch.object(repair_checkpoint.urllib.request, "urlopen") as call:
+                    with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "request_id_invalid"):
+                        repair_checkpoint.persist_checkpoint(
+                            request_id=request_id, repository="yanhul/try", sha="a" * 40,
+                            attempt=1, phase="OBSERVE", state="WORKING",
+                        )
+                call.assert_not_called()
 
     def test_done_without_digest_fails_before_network(self):
         with patch.object(repair_checkpoint.urllib.request, "urlopen") as call:
