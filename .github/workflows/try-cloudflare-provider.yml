@@ -52,6 +52,70 @@ jobs:
           test -n "$WORKER_URL"
           curl --fail --silent --show-error "$WORKER_URL/healthz"
 
+      - name: Durable checkpoint persistence and fail-closed smoke
+        env:
+          WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          CHECKPOINT_SHA: ${{ github.sha }}
+          CHECKPOINT_RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          test -n "$WORKER_URL"
+          test -n "$TRY_PROVIDER_TOKEN"
+          request_id="deploy-smoke-$CHECKPOINT_RUN_ID"
+          export request_id
+          python - <<'PY' > /tmp/checkpoint-observe.json
+          import json, os
+          print(json.dumps({
+              "request_id": os.environ["request_id"],
+              "repository": "yanhul/try",
+              "sha": os.environ["CHECKPOINT_SHA"],
+              "attempt": 1, "phase": "OBSERVE", "state": "WORKING",
+          }))
+          PY
+          curl --fail --silent --show-error -X POST "$WORKER_URL/v1/repair/checkpoint" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
+            --data-binary @/tmp/checkpoint-observe.json > /tmp/checkpoint-observe.out
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-observe.out")); assert x.get("persisted") and x.get("phase")=="OBSERVE", x'
+          python - <<'PY' > /tmp/checkpoint-decide.json
+          import json, os
+          print(json.dumps({
+              "request_id": os.environ["request_id"],
+              "repository": "yanhul/try",
+              "sha": os.environ["CHECKPOINT_SHA"],
+              "attempt": 1, "phase": "DECIDE", "state": "WORKING",
+          }))
+          PY
+          curl --fail --silent --show-error -X POST "$WORKER_URL/v1/repair/checkpoint" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
+            --data-binary @/tmp/checkpoint-decide.json > /tmp/checkpoint-decide.out
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-decide.out")); assert x.get("persisted") and x.get("phase")=="DECIDE" and x.get("version")==2, x'
+          curl --fail --silent --show-error "$WORKER_URL/v1/repair/checkpoint/$request_id" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" > /tmp/checkpoint-read.out
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-read.out")); assert x.get("phase")=="DECIDE" and x.get("version")==2 and x.get("sha"), x'
+          # Replaying the same transition is idempotent and must not increment version.
+          curl --fail --silent --show-error -X POST "$WORKER_URL/v1/repair/checkpoint" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
+            --data-binary @/tmp/checkpoint-decide.json > /tmp/checkpoint-replay.out
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-replay.out")); assert x.get("idempotent_replay") and x.get("version")==2, x'
+          # A phase skip and terminal completion without evidence must be rejected.
+          python - <<'PY' > /tmp/checkpoint-invalid.json
+          import json, os
+          print(json.dumps({
+              "request_id": os.environ["request_id"],
+              "repository": "yanhul/try",
+              "sha": os.environ["CHECKPOINT_SHA"],
+              "attempt": 1, "phase": "PERSIST", "state": "DONE",
+          }))
+          PY
+          status=$(curl --silent --show-error -o /tmp/checkpoint-invalid.out -w "%{http_code}" \
+            -X POST "$WORKER_URL/v1/repair/checkpoint" \
+            -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" \
+            --data-binary @/tmp/checkpoint-invalid.json)
+          test "$status" = "409"
+          python -c 'import json; x=json.load(open("/tmp/checkpoint-invalid.out")); assert x.get("error")=="done_requires_persisted_evidence_digest", x'
+          echo "DURABLE_CHECKPOINT_PASS persisted=true read_after_write=true idempotent=true fail_closed=true"
+
       - name: E2E AIOS provider client -> Worker -> Gemini
         env:
           TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
