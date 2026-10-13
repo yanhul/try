@@ -32,6 +32,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
         seen = {}
         def fake_urlopen(request, timeout):
             seen.setdefault("requests", []).append((request.get_method(), request.full_url))
+            seen["url"] = request.full_url
             seen["authorization"] = request.get_header("Authorization")
             seen["timeout"] = timeout
             if request.get_method() == "POST":
