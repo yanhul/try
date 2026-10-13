@@ -96,6 +96,26 @@ class RepairCheckpointClientTests(unittest.TestCase):
             with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "identity_mismatch"):
                 repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
 
+    def test_checkpoint_read_rejects_incomplete_or_invalid_record(self):
+        invalid_records = [
+            {"request_id": "try-ci-repair:42"},
+            {"request_id": "try-ci-repair:42", "repository": "yanhul/try", "sha": "bad",
+             "attempt": 1, "phase": "VERIFY", "state": "BLOCKED", "version": 1,
+             "reason": "failed"},
+            {"request_id": "try-ci-repair:42", "repository": "yanhul/try", "sha": "a" * 40,
+             "attempt": True, "phase": "VERIFY", "state": "BLOCKED", "version": 1,
+             "reason": "failed"},
+            {"request_id": "try-ci-repair:42", "repository": "yanhul/try", "sha": "a" * 40,
+             "attempt": 1, "phase": "PERSIST", "state": "DONE", "version": 1},
+            {"request_id": "try-ci-repair:42", "repository": "yanhul/try", "sha": "a" * 40,
+             "attempt": 1, "phase": "VERIFY", "state": "BLOCKED", "version": 1},
+        ]
+        for record in invalid_records:
+            with self.subTest(record=record):
+                with patch.object(repair_checkpoint.urllib.request, "urlopen", lambda request, timeout: _Response(record)):
+                    with self.assertRaises(repair_checkpoint.RepairCheckpointError):
+                        repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
+
 
     def test_resume_starts_at_one_without_checkpoint(self):
         self.assertEqual(select_resume_attempt(None, repository="yanhul/try", sha="a" * 40), 1)
