@@ -69,7 +69,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
         seen = {}
         record = {"request_id": "try-ci-repair:42", "repository": "yanhul/try",
                   "sha": "a" * 40, "attempt": 1, "phase": "VERIFY",
-                  "state": "BLOCKED", "version": 5}
+                  "state": "BLOCKED", "version": 5, "reason": "test-blocked"}
         def fake_urlopen(request, timeout):
             seen["url"] = request.full_url
             seen["authorization"] = request.get_header("Authorization")
