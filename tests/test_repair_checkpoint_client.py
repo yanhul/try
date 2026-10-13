@@ -31,12 +31,19 @@ class RepairCheckpointClientTests(unittest.TestCase):
     def test_persists_checkpoint_with_identity_and_auth(self):
         seen = {}
         def fake_urlopen(request, timeout):
-            seen["url"] = request.full_url
+            seen.setdefault("requests", []).append((request.get_method(), request.full_url))
             seen["authorization"] = request.get_header("Authorization")
-            seen["payload"] = json.loads(request.data.decode("utf-8"))
             seen["timeout"] = timeout
+            if request.get_method() == "POST":
+                seen["payload"] = json.loads(request.data.decode("utf-8"))
+                return _Response({
+                    "persisted": True, "version": 1,
+                    "request_id": "try-ci-repair:42", "repository": "yanhul/try",
+                    "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
+                    "state": "WORKING", "evidence_digest": None, "reason": None,
+                })
             return _Response({
-                "persisted": True, "version": 1,
+                "schema": 1, "version": 1,
                 "request_id": "try-ci-repair:42", "repository": "yanhul/try",
                 "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
                 "state": "WORKING", "evidence_digest": None, "reason": None,
@@ -50,6 +57,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
         self.assertEqual(seen["url"], "https://try.example.workers.dev/v1/repair/checkpoint")
         self.assertEqual(seen["authorization"], "Bearer secret-test-token")
         self.assertEqual(seen["payload"]["sha"], "a" * 40)
+        self.assertEqual([method for method, _ in seen["requests"]], ["POST", "GET"])
 
     def test_checkpoint_ack_must_match_requested_transition(self):
         def fake_urlopen(request, timeout):
