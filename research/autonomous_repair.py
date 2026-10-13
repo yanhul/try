@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, tempfile
 from pathlib import Path
 from research.repair_research import run as research_run
-from research.repair_checkpoint import persist_checkpoint
+from research.repair_checkpoint import get_checkpoint, persist_checkpoint, RepairCheckpointError
 
 MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
@@ -66,15 +66,29 @@ def main():
     from core.try_repair_provider import propose,TryRepairProviderError
     results=[]
     checkpoint_id=f"try-ci-repair:{run_id}"
+    prior=get_checkpoint(request_id=checkpoint_id)
+    if prior is None:
+        start_attempt=1
+    else:
+        if prior.get("repository") != "yanhul/try" or prior.get("sha") != base.lower():
+            raise RepairCheckpointError("checkpoint_identity_conflict_for_resume")
+        if prior.get("state") != "BLOCKED":
+            raise RepairCheckpointError(
+                f"checkpoint_not_resumable:{prior.get('state')}:{prior.get('phase')}"
+            )
+        start_attempt=prior.get("attempt", 0)+1
+        if isinstance(start_attempt, bool) or not isinstance(start_attempt, int) or start_attempt > MAX_ATTEMPTS:
+            raise RepairCheckpointError("checkpoint_attempt_budget_exhausted")
     with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
         aios=Path(td)/"aios"; aios.mkdir()
         cid,pid=authority(aios,run_id)
         worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
                                  timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
         owned=frozenset()
-        persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                           attempt=1, phase="OBSERVE", state="WORKING")
-        for attempt in range(1,MAX_ATTEMPTS+1):
+        if start_attempt == 1:
+            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                               attempt=1, phase="OBSERVE", state="WORKING")
+        for attempt in range(start_attempt,MAX_ATTEMPTS+1):
             failure["attempt"]=attempt
             if attempt > 1:
                 persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
