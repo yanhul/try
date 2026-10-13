@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, os, subprocess, tempfile
+import hashlib, json, os, subprocess, tempfile
 from pathlib import Path
 from research.repair_research import run as research_run
+from research.repair_checkpoint import persist_checkpoint
 
 MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
@@ -64,6 +65,9 @@ def main():
     from core.agent_repair_worker import AgentRepairWorker,ProposedFile
     from core.try_repair_provider import propose,TryRepairProviderError
     results=[]
+    checkpoint_id=f"try-ci-repair:{run_id}"
+    persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                       attempt=1, phase="OBSERVE", state="WORKING")
     with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
         aios=Path(td)/"aios"; aios.mkdir()
         cid,pid=authority(aios,run_id)
@@ -73,12 +77,21 @@ def main():
         for attempt in range(1,MAX_ATTEMPTS+1):
             failure["attempt"]=attempt
             if attempt > 1:
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="RESUME", state="WORKING")
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="OBSERVE", state="WORKING")
                 evidence=research_run(failure)
                 failure["repair_research_evidence"]=evidence
                 if evidence.get("status") not in {"EVIDENCE_COLLECTED","NO_EVIDENCE"}:
-                    results.append({"attempt":attempt,"status":"HOLD","reason":evidence.get("reason","research_hold")})
+                    reason=str(evidence.get("reason","research_hold"))
+                    persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                       attempt=attempt, phase="OBSERVE", state="BLOCKED", reason=reason)
+                    results.append({"attempt":attempt,"status":"HOLD","reason":reason})
                     break
             req_id=f"try-ci-repair:{run_id}:{attempt}"
+            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                               attempt=attempt, phase="DECIDE", state="WORKING")
             try:
                 proposal=propose(request_id=req_id,repository="yanhul/try",sha=base,attempt=attempt,
                                   failure=failure,source=source_snapshot(base,log,owned))
@@ -86,22 +99,55 @@ def main():
                 proposal={"status":"HOLD","reason":str(exc)}
             Path(f"repair-proposal-{attempt}.json").write_text(json.dumps(proposal,indent=2,sort_keys=True),encoding="utf-8")
             if proposal.get("status")=="HOLD":
-                results.append({"attempt":attempt,"status":"HOLD","reason":proposal.get("reason")})
+                reason=str(proposal.get("reason") or "provider_hold")
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="DECIDE", state="BLOCKED", reason=reason)
+                results.append({"attempt":attempt,"status":"HOLD","reason":reason})
                 break
+            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                               attempt=attempt, phase="PROPOSE", state="WORKING")
             files=tuple(ProposedFile(x["path"],x["content"]) for x in proposal["files"])
-            applied=worker.apply_via_aios(base_sha=base,files=files,
-                logical_operation_id=req_id,allowed_dirty_paths=owned)
-            owned=frozenset(set(owned)|{x.path for x in files})
-            tested=worker.test()
+            current_phase="PROPOSE"
+            try:
+                applied=worker.apply_via_aios(base_sha=base,files=files,
+                    logical_operation_id=req_id,allowed_dirty_paths=owned)
+                owned=frozenset(set(owned)|{x.path for x in files})
+                current_phase="VERIFY"
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="VERIFY", state="WORKING")
+                tested=worker.test()
+            except Exception as exc:
+                reason=f"{type(exc).__name__}:{exc}"[:1000]
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase=current_phase, state="BLOCKED", reason=reason)
+                results.append({"attempt":attempt,"status":"BLOCKED","reason":reason})
+                if attempt == MAX_ATTEMPTS:
+                    break
+                continue
+            if tested.status=="PASS" and not tested.evidence_refs:
+                reason="test_pass_without_evidence_refs"
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="VERIFY", state="BLOCKED", reason=reason)
+                results.append({"attempt":attempt,"status":"HOLD","reason":reason})
+                break
             result={"attempt":attempt,"status":tested.status,"proposal":proposal,"apply":dict(applied),
                     "test":{"status":tested.status,"evidence_refs":list(tested.evidence_refs),"details":dict(tested.details)},
                     "research_evidence_digest":evidence.get("evidence_digest")}
             results.append(result)
             Path(f"repair-result-{attempt}.json").write_text(json.dumps(result,indent=2,sort_keys=True),encoding="utf-8")
             if tested.status=="PASS":
-                Path("repair-result.json").write_text(json.dumps(result,indent=2,sort_keys=True),encoding="utf-8")
-                print(json.dumps({"status":"PASS","attempt":attempt}))
+                result_path=Path("repair-result.json")
+                result_path.write_text(json.dumps(result,indent=2,sort_keys=True),encoding="utf-8")
+                digest=hashlib.sha256(result_path.read_bytes()).hexdigest()
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="PERSIST", state="WORKING")
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="PERSIST", state="DONE", evidence_digest=digest)
+                print(json.dumps({"status":"PASS","attempt":attempt,"evidence_digest":digest}))
                 return 0
+            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                               attempt=attempt, phase="VERIFY", state="BLOCKED",
+                               reason=f"verification_{tested.status}")
             details=tested.details.get("results",[]) if tested.details else []
             log=(details[-1].get("stderr_tail","") if details else "")[-80000:]
             failure["ci_failure_log_tail"]=log
