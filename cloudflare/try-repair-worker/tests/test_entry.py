@@ -354,6 +354,8 @@ class DurableCheckpointTests(unittest.TestCase):
         replay = self.write()
         self.assertTrue(replay["idempotent_replay"])
         self.assertEqual(replay["version"], 1)
+        changed_same_phase = self.write(evidence_digest="d" * 64)
+        self.assertEqual(changed_same_phase["error"], "checkpoint_replay_conflict")
         self.assertEqual(asyncio.run(self.checkpoint.read_checkpoint())["version"], 1)
         conflict = self.write(sha="b" * 40, phase="DECIDE")
         self.assertEqual(conflict["error"], "checkpoint_identity_conflict")
