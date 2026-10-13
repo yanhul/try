@@ -4,6 +4,7 @@ import unittest
 from unittest.mock import patch
 
 from research import repair_checkpoint
+from research.autonomous_repair import select_resume_attempt
 
 
 class _Response:
@@ -94,6 +95,30 @@ class RepairCheckpointClientTests(unittest.TestCase):
         with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
             with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "identity_mismatch"):
                 repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
+
+
+    def test_resume_starts_at_one_without_checkpoint(self):
+        self.assertEqual(select_resume_attempt(None, repository="yanhul/try", sha="a" * 40), 1)
+
+    def test_resume_advances_only_from_matching_blocked_checkpoint(self):
+        prior = {"repository": "yanhul/try", "sha": "a" * 40,
+                 "attempt": 1, "phase": "VERIFY", "state": "BLOCKED"}
+        self.assertEqual(select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40), 2)
+
+    def test_resume_rejects_working_checkpoint_after_interruption(self):
+        prior = {"repository": "yanhul/try", "sha": "a" * 40,
+                 "attempt": 1, "phase": "VERIFY", "state": "WORKING"}
+        with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "checkpoint_not_resumable"):
+            select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
+
+    def test_resume_rejects_identity_change_and_exhausted_budget(self):
+        prior = {"repository": "yanhul/try", "sha": "a" * 40,
+                 "attempt": 1, "phase": "VERIFY", "state": "BLOCKED"}
+        with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "identity_conflict"):
+            select_resume_attempt(prior, repository="yanhul/try", sha="b" * 40)
+        prior["attempt"] = 3
+        with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "budget_exhausted"):
+            select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
 
 if __name__ == "__main__":
     unittest.main()
