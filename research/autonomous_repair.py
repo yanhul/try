@@ -97,6 +97,8 @@ def main():
                                   failure=failure,source=source_snapshot(base,log,owned))
             except TryRepairProviderError as exc:
                 proposal={"status":"HOLD","reason":str(exc)}
+            except Exception as exc:
+                proposal={"status":"HOLD","reason":f"proposal_stage_error:{type(exc).__name__}:{exc}"[:1000]}
             Path(f"repair-proposal-{attempt}.json").write_text(json.dumps(proposal,indent=2,sort_keys=True),encoding="utf-8")
             if proposal.get("status")=="HOLD":
                 reason=str(proposal.get("reason") or "provider_hold")
