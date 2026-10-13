@@ -20,6 +20,39 @@ class RepairCheckpointError(RuntimeError):
     pass
 
 
+def get_checkpoint(*, request_id: str) -> dict[str, Any] | None:
+    """Read the durable checkpoint for a request; 404 means a new request."""
+    base_url = os.environ.get("TRY_REPAIR_PROVIDER_URL", "").strip().rstrip("/")
+    token = os.environ.get("TRY_REPAIR_PROVIDER_TOKEN", "").strip()
+    if not base_url or not token:
+        raise RepairCheckpointError("checkpoint_provider_not_configured")
+    if not base_url.startswith("https://"):
+        raise RepairCheckpointError("checkpoint_provider_must_use_https")
+    if not isinstance(request_id, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,160}", request_id):
+        raise RepairCheckpointError("checkpoint_request_id_invalid")
+    request = urllib.request.Request(
+        base_url + "/v1/repair/checkpoint/" + request_id,
+        headers={"Authorization": "Bearer " + token, "Accept": "application/json"},
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            result = json.loads(response.read().decode("utf-8"))
+            status = response.status
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return None
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        raise RepairCheckpointError(f"checkpoint_read_http_{exc.code}:{detail}") from exc
+    except (OSError, TimeoutError, ValueError) as exc:
+        raise RepairCheckpointError(f"checkpoint_read_transport_or_protocol:{type(exc).__name__}:{exc}") from exc
+    if status != 200 or not isinstance(result, dict):
+        raise RepairCheckpointError(f"checkpoint_read_invalid_response:{status}")
+    if result.get("request_id") != request_id:
+        raise RepairCheckpointError("checkpoint_read_identity_mismatch")
+    return result
+
+
 def persist_checkpoint(
     *, request_id: str, repository: str, sha: str, attempt: int,
     phase: str, state: str, evidence_digest: str | None = None,
