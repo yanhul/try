@@ -148,6 +148,17 @@ def persist_checkpoint(
             version = result.get("version")
             if isinstance(version, bool) or not isinstance(version, int) or version < 1:
                 raise RepairCheckpointError("checkpoint_ack_version_invalid")
+            # A response body is not proof that the Durable Object can read the
+            # transition back. Verify the stored record before allowing execution
+            # to proceed; transport/readback failures remain fail-closed.
+            stored = get_checkpoint(request_id=request_id)
+            if stored is None:
+                raise RepairCheckpointError("checkpoint_readback_missing")
+            for key, value in expected.items():
+                if stored.get(key) != value:
+                    raise RepairCheckpointError(f"checkpoint_readback_mismatch:{key}")
+            if stored.get("version") != version:
+                raise RepairCheckpointError("checkpoint_readback_version_mismatch")
             return result
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")[:500]
