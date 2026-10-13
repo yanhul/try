@@ -66,14 +66,14 @@ def main():
     from core.try_repair_provider import propose,TryRepairProviderError
     results=[]
     checkpoint_id=f"try-ci-repair:{run_id}"
-    persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                       attempt=1, phase="OBSERVE", state="WORKING")
     with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
         aios=Path(td)/"aios"; aios.mkdir()
         cid,pid=authority(aios,run_id)
         worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
                                  timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
         owned=frozenset()
+        persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                           attempt=1, phase="OBSERVE", state="WORKING")
         for attempt in range(1,MAX_ATTEMPTS+1):
             failure["attempt"]=attempt
             if attempt > 1:
