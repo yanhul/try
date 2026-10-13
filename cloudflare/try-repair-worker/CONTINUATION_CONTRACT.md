@@ -6,7 +6,7 @@ Status: implementation gate; the checkpoint API is bookkeeping, not authority.
 
 `CI failure event → observe immutable SHA/log tail → request proposal → AIOS gate → apply only under permit → run tests → persist evidence → resume or block`
 
-The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
+`research/autonomous_repair.py` now records OBSERVE → DECIDE → PROPOSE → VERIFY → PERSIST; failed attempts are BLOCKED and a bounded retry resumes through RESUME. The client fails closed if the Worker checkpoint API is unavailable. The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
 
 ## Durable checkpoint API
 
@@ -19,7 +19,7 @@ The Worker only reasons and records a bounded checkpoint. It never commits patch
 - Phase transitions are validated; terminal DONE requires PERSIST plus a SHA-256 evidence digest.
 - Identity conflict, invalid transition, stale attempt or missing terminal evidence fails closed.
 
-The record does not prove the referenced evidence is authentic. AIOS must independently resolve and verify the evidence reference before any terminal decision. Never treat a Worker checkpoint as permission to mutate, a CI result, or a PASS receipt.
+The current terminal digest binds the serialized `repair-result.json` artifact; it is not itself an AIOS receipt. The record does not prove the referenced evidence is authentic. A follow-up AIOS evidence resolver must bind this artifact digest to the actual persisted receipt and independently verify it before any terminal decision. Until that resolver is proven, `DONE` is checkpoint bookkeeping only—not PASS or authorization. Never treat a Worker checkpoint as permission to mutate, a CI result, or a PASS receipt.
 
 ## Required deployment configuration
 
