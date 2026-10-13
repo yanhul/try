@@ -287,6 +287,13 @@ class RepairCheckpoint(DurableObject):
         else:
             if prior.get("request_id") != request_id or prior.get("repository") != repository or prior.get("sha") != sha.lower():
                 return {"_http_status": 409, "error": "checkpoint_identity_conflict"}
+            normalized_digest = digest.lower() if isinstance(digest, str) else None
+            normalized_reason = reason[:1000] if state == "BLOCKED" and isinstance(reason, str) else None
+            if all(prior.get(key) == value for key, value in (
+                ("attempt", attempt), ("phase", phase), ("state", state),
+                ("evidence_digest", normalized_digest), ("reason", normalized_reason),
+            )):
+                return {"_http_status": 200, **prior, "persisted": True, "idempotent_replay": True}
             if prior.get("state") == "DONE":
                 return {"_http_status": 409, "error": "checkpoint_terminal"}
             old_attempt = prior.get("attempt", 0)
