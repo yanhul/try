@@ -34,7 +34,7 @@ def git(*args):
 def source_snapshot(sha, log, owned=frozenset()):
     paths=git("ls-tree","-r","--name-only",sha).splitlines()
     mentioned={line.strip().split()[0].rstrip(":") for line in log.splitlines() if "/" in line}
-    paths=[p for p in paths if p.endswith(".py") and not p.startswith(("tests/","\.github/","\.aios/","secrets/"))]
+    paths=[p for p in paths if p.endswith(".py") and not p.startswith(("tests/",".github/",".aios/","secrets/"))]
     paths.sort(key=lambda p:(0 if any(p in x for x in mentioned) else 1,p))
     out={}; used=0
     for p in paths:
