@@ -50,6 +50,8 @@ def get_checkpoint(*, request_id: str) -> dict[str, Any] | None:
         raise RepairCheckpointError(f"checkpoint_read_invalid_response:{status}")
     if result.get("request_id") != request_id:
         raise RepairCheckpointError("checkpoint_read_identity_mismatch")
+    if result.get("schema") != 1:
+        raise RepairCheckpointError("checkpoint_read_schema_invalid")
     repository = result.get("repository")
     sha = result.get("sha")
     attempt = result.get("attempt")
