@@ -50,6 +50,32 @@ def get_checkpoint(*, request_id: str) -> dict[str, Any] | None:
         raise RepairCheckpointError(f"checkpoint_read_invalid_response:{status}")
     if result.get("request_id") != request_id:
         raise RepairCheckpointError("checkpoint_read_identity_mismatch")
+    repository = result.get("repository")
+    sha = result.get("sha")
+    attempt = result.get("attempt")
+    phase = result.get("phase")
+    state = result.get("state")
+    version = result.get("version")
+    if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+        raise RepairCheckpointError("checkpoint_read_repository_invalid")
+    if not isinstance(sha, str) or not _SHA.fullmatch(sha):
+        raise RepairCheckpointError("checkpoint_read_sha_invalid")
+    if isinstance(attempt, bool) or not isinstance(attempt, int) or not 1 <= attempt <= 20:
+        raise RepairCheckpointError("checkpoint_read_attempt_invalid")
+    if phase not in {"OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME"}:
+        raise RepairCheckpointError("checkpoint_read_phase_invalid")
+    if state not in {"WORKING", "BLOCKED", "DONE"}:
+        raise RepairCheckpointError("checkpoint_read_state_invalid")
+    if isinstance(version, bool) or not isinstance(version, int) or version < 1:
+        raise RepairCheckpointError("checkpoint_read_version_invalid")
+    digest = result.get("evidence_digest")
+    if digest is not None and (not isinstance(digest, str) or not _DIGEST.fullmatch(digest)):
+        raise RepairCheckpointError("checkpoint_read_evidence_digest_invalid")
+    if state == "DONE" and (phase != "PERSIST" or not digest):
+        raise RepairCheckpointError("checkpoint_read_done_without_evidence_digest")
+    if state == "BLOCKED" and (not isinstance(result.get("reason"), str) or not result["reason"].strip()):
+        raise RepairCheckpointError("checkpoint_read_blocked_without_reason")
+    result["sha"] = sha.lower()
     return result
 
 
