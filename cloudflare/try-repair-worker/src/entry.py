@@ -242,9 +242,9 @@ CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
 _CHECKPOINT_SHA = __import__("re").compile(r"^[0-9a-fA-F]{40}$")
 _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
-    "OBSERVE": ("DECIDE", "BLOCKED"), "DECIDE": ("PROPOSE", "BLOCKED"),
-    "PROPOSE": ("VERIFY", "BLOCKED"), "VERIFY": ("PERSIST", "BLOCKED"),
-    "PERSIST": ("RESUME", "BLOCKED", "DONE"), "RESUME": ("OBSERVE", "BLOCKED"),
+    "OBSERVE": ("DECIDE",), "DECIDE": ("PROPOSE",),
+    "PROPOSE": ("VERIFY",), "VERIFY": ("PERSIST",),
+    "PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
 }
 
 
