@@ -28,6 +28,20 @@ def select_resume_attempt(prior, *, repository, sha, max_attempts=MAX_ATTEMPTS):
     return next_attempt
 
 
+def is_interrupted_working_checkpoint(prior, *, repository, sha):
+    """Identify only a structurally valid, identity-matched WORKING record."""
+    return (
+        isinstance(prior, dict)
+        and prior.get("state") == "WORKING"
+        and prior.get("repository") == repository
+        and prior.get("sha") == sha.lower()
+        and isinstance(prior.get("attempt"), int)
+        and not isinstance(prior.get("attempt"), bool)
+        and prior.get("attempt") >= 1
+        and prior.get("phase") in {"OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME"}
+    )
+
+
 def git(*args):
     return subprocess.run(["git", *args], cwd=".", text=True, capture_output=True, check=True).stdout.strip()
 
@@ -94,14 +108,8 @@ def main():
         # A runner may disappear after a mutation but before recording its receipt.
         # Convert the durable WORKING marker into an explicit UNKNOWN/BLOCKED state;
         # never infer success or automatically replay an uncertain mutation.
-        if (
-            isinstance(prior, dict)
-            and prior.get("state") == "WORKING"
-            and prior.get("repository") == "yanhul/try"
-            and prior.get("sha") == base.lower()
-            and isinstance(prior.get("attempt"), int)
-            and not isinstance(prior.get("attempt"), bool)
-            and prior.get("phase") in {"OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME"}
+        if is_interrupted_working_checkpoint(
+            prior, repository="yanhul/try", sha=base
         ):
             reason = "interrupted_attempt_outcome_unknown; reconciliation_required"
             persist_checkpoint(
