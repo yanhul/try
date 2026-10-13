@@ -93,7 +93,7 @@ def persist_checkpoint(
         raise RepairCheckpointError("checkpoint_provider_not_configured")
     if not base_url.startswith("https://"):
         raise RepairCheckpointError("checkpoint_provider_must_use_https")
-    if not isinstance(request_id, str) or not request_id.strip():
+    if not isinstance(request_id, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,160}", request_id):
         raise RepairCheckpointError("checkpoint_request_id_invalid")
     if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise RepairCheckpointError("checkpoint_repository_invalid")
@@ -128,8 +128,26 @@ def persist_checkpoint(
             with urllib.request.urlopen(request, timeout=20) as response:
                 result = json.loads(response.read().decode("utf-8"))
                 status = response.status
-            if status != 200 or not isinstance(result, dict) or not result.get("persisted"):
+            if status != 200 or not isinstance(result, dict) or result.get("persisted") is not True:
                 raise RepairCheckpointError(f"checkpoint_rejected:{status}:{str(result)[:500]}")
+            # A 200/persisted flag alone is not an acknowledgement of this transition.
+            # Bind the response to the exact requested identity and state before proceeding.
+            expected = {
+                "request_id": request_id,
+                "repository": repository,
+                "sha": sha.lower(),
+                "attempt": attempt,
+                "phase": phase,
+                "state": state,
+                "evidence_digest": evidence_digest.lower() if evidence_digest else None,
+                "reason": reason[:1000] if state == "BLOCKED" and isinstance(reason, str) else None,
+            }
+            for key, value in expected.items():
+                if result.get(key) != value:
+                    raise RepairCheckpointError(f"checkpoint_ack_mismatch:{key}")
+            version = result.get("version")
+            if isinstance(version, bool) or not isinstance(version, int) or version < 1:
+                raise RepairCheckpointError("checkpoint_ack_version_invalid")
             return result
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")[:500]
