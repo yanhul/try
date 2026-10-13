@@ -351,6 +351,9 @@ class DurableCheckpointTests(unittest.TestCase):
     def test_checkpoint_is_persisted_and_identity_bound(self):
         first = self.write()
         self.assertTrue(first["persisted"])
+        replay = self.write()
+        self.assertTrue(replay["idempotent_replay"])
+        self.assertEqual(replay["version"], 1)
         self.assertEqual(asyncio.run(self.checkpoint.read_checkpoint())["version"], 1)
         conflict = self.write(sha="b" * 40, phase="DECIDE")
         self.assertEqual(conflict["error"], "checkpoint_identity_conflict")
