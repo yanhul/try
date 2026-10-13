@@ -294,6 +294,8 @@ class RepairCheckpoint(DurableObject):
                 ("evidence_digest", normalized_digest), ("reason", normalized_reason),
             )):
                 return {"_http_status": 200, **prior, "persisted": True, "idempotent_replay": True}
+            if attempt == prior.get("attempt") and phase == prior.get("phase") and state == prior.get("state"):
+                return {"_http_status": 409, "error": "checkpoint_replay_conflict"}
             if prior.get("state") == "DONE":
                 return {"_http_status": 409, "error": "checkpoint_terminal"}
             old_attempt = prior.get("attempt", 0)
