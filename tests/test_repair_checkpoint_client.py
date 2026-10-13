@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 
 from research import repair_checkpoint
-from research.autonomous_repair import select_resume_attempt
+from research.autonomous_repair import select_resume_attempt, is_interrupted_working_checkpoint
 
 
 class _Response:
@@ -147,6 +147,24 @@ class RepairCheckpointClientTests(unittest.TestCase):
                     with self.assertRaises(repair_checkpoint.RepairCheckpointError):
                         repair_checkpoint.get_checkpoint(request_id="try-ci-repair:42")
 
+
+    def test_interrupted_working_checkpoint_is_classified_only_for_matching_identity(self):
+        prior = {
+            "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 2, "phase": "VERIFY", "state": "WORKING",
+        }
+        self.assertTrue(is_interrupted_working_checkpoint(
+            prior, repository="yanhul/try", sha="a" * 40
+        ))
+        self.assertFalse(is_interrupted_working_checkpoint(
+            prior, repository="yanhul/try", sha="b" * 40
+        ))
+        self.assertFalse(is_interrupted_working_checkpoint(
+            {**prior, "attempt": True}, repository="yanhul/try", sha="a" * 40
+        ))
+        self.assertFalse(is_interrupted_working_checkpoint(
+            {**prior, "phase": "UNKNOWN"}, repository="yanhul/try", sha="a" * 40
+        ))
 
     def test_resume_starts_at_one_without_checkpoint(self):
         self.assertEqual(select_resume_attempt(None, repository="yanhul/try", sha="a" * 40), 1)
