@@ -9,6 +9,25 @@ MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
 MAX_SOURCE_BYTES=90000
 
+def select_resume_attempt(prior, *, repository, sha, max_attempts=MAX_ATTEMPTS):
+    """Resume only after a persisted BLOCKED checkpoint with matching identity."""
+    if prior is None:
+        return 1
+    if prior.get("repository") != repository or prior.get("sha") != sha.lower():
+        raise RepairCheckpointError("checkpoint_identity_conflict_for_resume")
+    if prior.get("state") != "BLOCKED":
+        raise RepairCheckpointError(
+            f"checkpoint_not_resumable:{prior.get('state')}:{prior.get('phase')}"
+        )
+    previous_attempt = prior.get("attempt")
+    if isinstance(previous_attempt, bool) or not isinstance(previous_attempt, int) or previous_attempt < 1:
+        raise RepairCheckpointError("checkpoint_attempt_invalid_for_resume")
+    next_attempt = previous_attempt + 1
+    if next_attempt > max_attempts:
+        raise RepairCheckpointError("checkpoint_attempt_budget_exhausted")
+    return next_attempt
+
+
 def git(*args):
     return subprocess.run(["git", *args], cwd=".", text=True, capture_output=True, check=True).stdout.strip()
 
@@ -67,18 +86,9 @@ def main():
     results=[]
     checkpoint_id=f"try-ci-repair:{run_id}"
     prior=get_checkpoint(request_id=checkpoint_id)
-    if prior is None:
-        start_attempt=1
-    else:
-        if prior.get("repository") != "yanhul/try" or prior.get("sha") != base.lower():
-            raise RepairCheckpointError("checkpoint_identity_conflict_for_resume")
-        if prior.get("state") != "BLOCKED":
-            raise RepairCheckpointError(
-                f"checkpoint_not_resumable:{prior.get('state')}:{prior.get('phase')}"
-            )
-        start_attempt=prior.get("attempt", 0)+1
-        if isinstance(start_attempt, bool) or not isinstance(start_attempt, int) or start_attempt > MAX_ATTEMPTS:
-            raise RepairCheckpointError("checkpoint_attempt_budget_exhausted")
+    start_attempt=select_resume_attempt(
+        prior, repository="yanhul/try", sha=base, max_attempts=MAX_ATTEMPTS
+    )
     with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
         aios=Path(td)/"aios"; aios.mkdir()
         cid,pid=authority(aios,run_id)
