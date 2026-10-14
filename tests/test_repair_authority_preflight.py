@@ -2,6 +2,7 @@ import hashlib
 import json
 import sys
 import types
+import shutil
 
 from pathlib import Path
 import pytest
@@ -78,8 +79,12 @@ def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None):
     monkeypatch.setitem(sys.modules, "core.attestation", att)
 
 
-def _configure_preflight(monkeypatch, tmp_path):
-    root = tmp_path / "durable-aios"
+def _configure_preflight(monkeypatch, tmp_path, request):
+    # The production gate intentionally rejects authority roots under /tmp;
+    # keep the fixture inside the checked-out workspace and clean it afterward.
+    root = Path.cwd() / f".test-durable-aios-{tmp_path.name}"
+    shutil.rmtree(root, ignore_errors=True)
+    request.addfinalizer(lambda: shutil.rmtree(root, ignore_errors=True))
     for kind, name in (
         ("contracts", "contract-1"),
         ("permits", "permit-1"),
@@ -100,9 +105,9 @@ def _configure_preflight(monkeypatch, tmp_path):
     return root, runner_temp
 
 
-def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_path):
+def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch)
-    root, runner_temp = _configure_preflight(monkeypatch, tmp_path)
+    root, runner_temp = _configure_preflight(monkeypatch, tmp_path, request)
     receipt_path = verify_and_write_receipt()
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     assert receipt["verified"] is True
@@ -114,14 +119,14 @@ def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_p
     assert receipt_path.parent == runner_temp.resolve()
 
 
-def test_preflight_rejects_invalid_attestation(monkeypatch, tmp_path):
+def test_preflight_rejects_invalid_attestation(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch, attestation_ok=False)
     _configure_preflight(monkeypatch, tmp_path)
     with pytest.raises(RuntimeError, match="authority_attestation_rejected"):
         verify_and_write_receipt()
 
 
-def test_preflight_rejects_contract_bound_to_another_run(monkeypatch, tmp_path):
+def test_preflight_rejects_contract_bound_to_another_run(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch, contract={
         "task_id": "try-ci-repair-99999",
         "actor": "try-autonomous-repair",
@@ -135,7 +140,7 @@ def test_preflight_rejects_contract_bound_to_another_run(monkeypatch, tmp_path):
         verify_and_write_receipt()
 
 
-def test_preflight_rejects_receipt_outside_runner_temp(monkeypatch, tmp_path):
+def test_preflight_rejects_receipt_outside_runner_temp(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch)
     _configure_preflight(monkeypatch, tmp_path)
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(tmp_path / "receipt.json"))
@@ -143,7 +148,7 @@ def test_preflight_rejects_receipt_outside_runner_temp(monkeypatch, tmp_path):
         verify_and_write_receipt()
 
 
-def test_preflight_rejects_attempt_budget_above_runner_limit(monkeypatch, tmp_path):
+def test_preflight_rejects_attempt_budget_above_runner_limit(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch, contract={
         "task_id": "try-ci-repair-12345",
         "actor": "try-autonomous-repair",
