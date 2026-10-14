@@ -14,7 +14,7 @@ The TRY repair workflow is intentionally unable to create or renew its own autho
 | `AIOS_REPAIR_ATTESTATION_SECRET` | HMAC verification secret | Protected secret; available only to the isolated verifier step |
 | `TRY_REPAIR_PROVIDER_URL` | HTTPS checkpoint provider URL | Must be HTTPS |
 | `TRY_REPAIR_PROVIDER_TOKEN` | Provider bearer token | Protected secret; only for checkpoint API |
-| `TRY_REPAIR_PROVIDER_URL` and `TRY_REPAIR_PROVIDER_TOKEN` are required for durable checkpoint read/write. | | |
+| Checkpoint configuration | Both `TRY_REPAIR_PROVIDER_URL` and `TRY_REPAIR_PROVIDER_TOKEN` are required for durable checkpoint read/write. | HTTPS endpoint plus protected bearer token |
 
 The workflow must not put secret values into repository files, artifacts, logs, model prompts, test subprocesses, or the repair proposal. Configure secrets with least privilege and restrict which actors may run `workflow_dispatch`.
 
