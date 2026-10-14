@@ -22,6 +22,7 @@ def test_attestation_secret_is_removed_before_any_child_process_can_inherit_it(m
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "contract-external")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "permit-external")
     monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "must-not-leak-to-test-child")
+    monkeypatch.setattr(Path, "is_dir", lambda self: False)
 
     with pytest.raises(RuntimeError, match="authority_directory_missing"):
         authority(Path("."), 12345)
