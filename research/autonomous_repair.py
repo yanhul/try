@@ -87,9 +87,16 @@ def authority(root, run_id):
         raise RuntimeError("authority_directory_missing")
     if any(part in {"tmp", "temp", "temporary"} for part in durable_root.parts):
         raise RuntimeError("authority_directory_must_not_be_temporary")
-    # Do not synthesize policy, contract, permit, or capability records here.
-    # The downstream AIOS worker remains responsible for resolving and validating
-    # these externally issued IDs against the persisted authority store.
+    # Resolve and validate the exact persisted records BEFORE proposal generation.
+    # This checks contract identity, capability registry, governing policy, and
+    # permit-to-contract binding. Missing/corrupt/forged records fail closed.
+    try:
+        from core.authority import authorize
+        authorize(str(durable_root), contract_id, permit_id)
+    except Exception as exc:
+        raise RuntimeError(
+            f"authority_records_rejected:{type(exc).__name__}:{exc}"
+        ) from exc
     return contract_id, permit_id, durable_root
 
 def main():
