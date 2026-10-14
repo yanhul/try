@@ -49,4 +49,4 @@ def test_provider_token_is_only_temporarily_exposed_for_proposal_calls():
     assert 'provider_token = os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", "")' in source
     assert 'os.environ["TRY_REPAIR_PROVIDER_TOKEN"] = provider_token' in source
     assert 'os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)' in source
-    assert source.index('os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)') < source.index("tested=worker.test()")
+    assert source.rindex('os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)') < source.index("tested=worker.test()")
