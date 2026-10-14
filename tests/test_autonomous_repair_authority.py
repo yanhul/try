@@ -199,7 +199,7 @@ def test_terminal_evidence_requires_resolved_verified_run_and_sha_lineage(tmp_pa
     sha = "a" * 40
     effect_id = "EF-" + "b" * 64
     effect_evidence = evidence("EV-effect", "OBSERVED", "aios://effect", "patch application observed",
-                               123, "aios-worker")
+                               effect_id + ":attempt:1", "aios-worker")
     effect = {
         "effect_id": effect_id, "state": "OBSERVED_SUCCESS",
         "contract_id": "CT-test", "permit_id": "PT-test",
