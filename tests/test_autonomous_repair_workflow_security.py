@@ -18,3 +18,14 @@ def test_privileged_repair_never_uses_target_as_first_python_import_root():
     line = next(line for line in workflow.splitlines() if "PYTHONPATH:" in line)
     assert "trusted-try" in line.split(":", 1)[1].split(":", 1)[0]
     assert line.index("trusted-try") < line.index("trusted-aios") < line.index("/target")
+
+
+def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    assert "contents: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "ci_repair_publish.py" not in workflow
+    assert "git push" not in workflow
+    assert "gh pr create" not in workflow
+    assert "no independently authorized AIOS COMMIT adapter is configured" in workflow
+    assert "exit 2" in workflow
