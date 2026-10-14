@@ -228,6 +228,20 @@ def main():
                                attempt=attempt, phase="VERIFY", state="BLOCKED", reason=reason)
             results.append({"attempt":attempt,"status":"HOLD","reason":reason})
             break
+        if tested.status=="PASS" and any(
+            not isinstance(ref, str) or not ref.startswith("EV-")
+            for ref in tested.evidence_refs
+        ):
+            # Worker test labels (for example test:0:0) are execution summaries,
+            # not AIOS-owned durable evidence. Never promote them to terminal PASS.
+            reason="terminal_evidence_blocked:test_refs_are_not_aios_evidence_ids"
+            blocked={"status":"BLOCKED","attempt":attempt,"reason":reason,
+                     "test_status":"PASS","test_evidence_refs":list(tested.evidence_refs)}
+            Path("repair-result.json").write_text(json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8")
+            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                               attempt=attempt, phase="PERSIST", state="BLOCKED", reason=reason)
+            print(json.dumps({"status":"BLOCKED","attempt":attempt,"reason":reason},sort_keys=True))
+            return 2
         result={"attempt":attempt,"status":tested.status,"proposal":proposal,"apply":dict(applied),
                 "test":{"status":tested.status,"evidence_refs":list(tested.evidence_refs),"details":dict(tested.details)},
                 "research_evidence_digest":evidence.get("evidence_digest")}
