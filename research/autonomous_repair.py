@@ -107,7 +107,7 @@ def authority(root, run_id):
         attempt_budget = contract.get("max_attempts")
         if (isinstance(attempt_budget, bool) or not isinstance(attempt_budget, int)
                 or not 1 <= attempt_budget <= MAX_ATTEMPTS):
-            raise ValueError("contract_attempt_budget_invalid_or_exceeds_runner_limit")
+            raise ValueError("contract_attempt_budget_exceeds_runner_limit")
     except Exception as exc:
         raise RuntimeError(
             f"authority_records_rejected:{type(exc).__name__}:{exc}"
