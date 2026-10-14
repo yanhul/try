@@ -131,3 +131,18 @@ def test_rejects_persisted_effect_symlink_escape(monkeypatch, tmp_path):
     }), encoding="utf-8")
     effect_path.symlink_to(outside)
     assert "persisted_effect_path_escape" in _resolve(root, ["EV-good"])
+
+def test_rejects_evidence_directory_symlink_escape(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    evidence_dir = root / "evidence"
+    evidence_dir.rename(tmp_path / "evidence-real")
+    evidence_dir.symlink_to(tmp_path / "evidence-real", target_is_directory=True)
+    assert "evidence_directory_escape" in _resolve(root, ["EV-good"])
+
+
+def test_rejects_effects_directory_symlink_escape(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    effects_dir = root / "effects"
+    effects_dir.rename(tmp_path / "effects-real")
+    effects_dir.symlink_to(tmp_path / "effects-real", target_is_directory=True)
+    assert "persisted_effect_directory_escape" in _resolve(root, ["EV-good"])
