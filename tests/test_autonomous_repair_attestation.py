@@ -65,6 +65,7 @@ def test_preflight_receipt_binds_exact_persisted_record_bytes(tmp_path, monkeypa
 
     permit_path = root / "authority" / "permits" / "PT-test.json"
     permit_path.write_text('{"record":"tampered"}', encoding="utf-8")
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(receipt_path))
     with pytest.raises(RuntimeError, match="authority_preflight_record_digest_mismatch:permits"):
         runner._verify_preflight_receipt(root.resolve(), "CT-test", "PT-test", 77)
 
