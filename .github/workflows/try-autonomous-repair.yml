@@ -67,6 +67,37 @@ jobs:
           clean: true
           persist-credentials: false
 
+      - name: Validate exact failed controller run identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" \
+            --json databaseId,workflowName,conclusion,headSha,headBranch,headRepository \
+            > "$RUNNER_TEMP/target-run.json"
+          python - <<'PY'
+          import json, os, re
+          from pathlib import Path
+
+          run = json.loads(Path(os.environ["RUNNER_TEMP"] + "/target-run.json").read_text())
+          repo = run.get("headRepository") or {}
+          expected = {
+              "databaseId": int(os.environ["RUN_ID"]),
+              "workflowName": "BC Research Controller",
+              "conclusion": "failure",
+              "headSha": os.environ["BASE_SHA"],
+              "headBranch": os.environ["SOURCE_BRANCH"],
+          }
+          for key, value in expected.items():
+              if run.get(key) != value:
+                  raise SystemExit(f"repair_target_run_mismatch:{key}")
+          if not re.fullmatch(r"[0-9a-fA-F]{40}", str(run.get("headSha", ""))):
+              raise SystemExit("repair_target_sha_invalid")
+          if repo.get("nameWithOwner") != os.environ["GITHUB_REPOSITORY"]:
+              raise SystemExit("repair_target_repository_mismatch")
+          print("verified exact failed controller run, repository, branch and SHA")
+          PY
+
       - name: Capture failed controller evidence
         env:
           GH_TOKEN: ${{ github.token }}
