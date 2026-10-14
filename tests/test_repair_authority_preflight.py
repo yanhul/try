@@ -121,7 +121,7 @@ def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_p
 
 def test_preflight_rejects_invalid_attestation(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch, attestation_ok=False)
-    _configure_preflight(monkeypatch, tmp_path)
+    _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match="authority_attestation_rejected"):
         verify_and_write_receipt()
 
@@ -135,14 +135,14 @@ def test_preflight_rejects_contract_bound_to_another_run(monkeypatch, tmp_path, 
         "allowed_effects": ["external_effect"],
         "max_attempts": 2,
     })
-    _configure_preflight(monkeypatch, tmp_path)
+    _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match="contract_task_id_mismatch"):
         verify_and_write_receipt()
 
 
 def test_preflight_rejects_receipt_outside_runner_temp(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch)
-    _configure_preflight(monkeypatch, tmp_path)
+    _configure_preflight(monkeypatch, tmp_path, request)
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(tmp_path / "receipt.json"))
     with pytest.raises(RuntimeError, match="receipt_must_be_in_runner_temp"):
         verify_and_write_receipt()
@@ -157,6 +157,6 @@ def test_preflight_rejects_attempt_budget_above_runner_limit(monkeypatch, tmp_pa
         "allowed_effects": ["external_effect"],
         "max_attempts": 4,
     })
-    _configure_preflight(monkeypatch, tmp_path)
+    _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match="contract_attempt_budget_exceeds_runner_limit"):
         verify_and_write_receipt()
