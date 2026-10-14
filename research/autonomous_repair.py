@@ -112,6 +112,67 @@ def authority(root, run_id):
         ) from exc
     return contract_id, permit_id, durable_root
 
+def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, applied, contract_id, permit_id):
+    """Resolve independent AIOS receipts and test evidence before terminal promotion.
+
+    Evidence files are expected under the persistent AIOS root's evidence/ directory.
+    Missing records, invalid digests, identity/lineage mismatches, or an absent
+    persisted successful effect all fail closed.
+    """
+    import re
+    from core.evidence import verify_evidence
+
+    if not isinstance(applied, dict):
+        return "terminal_receipt_blocked:apply_result_not_mapping"
+    effect_id = applied.get("effect_id")
+    if not isinstance(effect_id, str) or not re.fullmatch(r"EF-[0-9a-f]{64}", effect_id):
+        return "terminal_receipt_blocked:missing_or_invalid_effect_id"
+    effect_path = Path(aios_root) / "effects" / (effect_id + ".json")
+    try:
+        effect = json.loads(effect_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        return f"terminal_receipt_blocked:persisted_effect_unavailable:{type(exc).__name__}"
+    if effect.get("effect_id") != effect_id or effect.get("state") != "OBSERVED_SUCCESS":
+        return "terminal_receipt_blocked:effect_not_persisted_observed_success"
+    if (effect.get("contract_id") != contract_id or effect.get("permit_id") != permit_id
+            or effect.get("actor") != "try-autonomous-repair"):
+        return "terminal_receipt_blocked:effect_authority_identity_mismatch"
+    observation = effect.get("provider_observation")
+    if not isinstance(observation, dict):
+        return "terminal_receipt_blocked:provider_observation_missing"
+    if observation.get("attempt_id") != effect.get("attempt_id") or observation.get("provider") != effect.get("provider"):
+        return "terminal_receipt_blocked:provider_observation_lineage_mismatch"
+    effect_evidence = observation.get("evidence")
+    if not isinstance(effect_evidence, dict) or not verify_evidence(effect_evidence):
+        return "terminal_receipt_blocked:effect_evidence_digest_invalid"
+    if effect_evidence.get("run_id") != str(run_id):
+        return "terminal_receipt_blocked:effect_evidence_run_mismatch"
+    if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
+        return "terminal_evidence_blocked:no_test_evidence_refs"
+    evidence_dir = Path(aios_root) / "evidence"
+    for ref in evidence_refs:
+        if not isinstance(ref, str) or not re.fullmatch(r"EV-[A-Za-z0-9_-]{1,120}", ref):
+            return "terminal_evidence_blocked:invalid_evidence_id"
+        path = evidence_dir / (ref + ".json")
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            return f"terminal_evidence_blocked:record_unavailable:{ref}:{type(exc).__name__}"
+        if record.get("evidence_id") != ref or not verify_evidence(record):
+            return f"terminal_evidence_blocked:record_digest_or_identity_invalid:{ref}"
+        if record.get("run_id") != str(run_id):
+            return f"terminal_evidence_blocked:run_identity_mismatch:{ref}"
+        if record.get("level") not in {"VERIFIED_DIGITAL", "PROMOTED"}:
+            return f"terminal_evidence_blocked:verification_level_insufficient:{ref}"
+        lineage = " ".join(str(record.get(key) or "") for key in ("source_ref", "artifact_ref"))
+        if base_sha.lower() not in lineage.lower():
+            return f"terminal_evidence_blocked:base_sha_lineage_missing:{ref}"
+        claim = str(record.get("claim") or "").lower()
+        if not any(token in claim for token in ("test", "pytest", "verification")):
+            return f"terminal_evidence_blocked:claim_not_test_verification:{ref}"
+    return None
+
+
 def main():
     base=os.environ["AIOS_REPAIR_SHA"]; run_id=int(os.environ["AIOS_REPAIR_RUN_ID"])
     log_path=Path(os.environ["AIOS_REPAIR_LOG"])
@@ -228,20 +289,19 @@ def main():
                                attempt=attempt, phase="VERIFY", state="BLOCKED", reason=reason)
             results.append({"attempt":attempt,"status":"HOLD","reason":reason})
             break
-        if tested.status=="PASS" and any(
-            not isinstance(ref, str) or not ref.startswith("EV-")
-            for ref in tested.evidence_refs
-        ):
-            # Worker test labels (for example test:0:0) are execution summaries,
-            # not AIOS-owned durable evidence. Never promote them to terminal PASS.
-            reason="terminal_evidence_blocked:test_refs_are_not_aios_evidence_ids"
-            blocked={"status":"BLOCKED","attempt":attempt,"reason":reason,
-                     "test_status":"PASS","test_evidence_refs":list(tested.evidence_refs)}
-            Path("repair-result.json").write_text(json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8")
-            persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                               attempt=attempt, phase="PERSIST", state="BLOCKED", reason=reason)
-            print(json.dumps({"status":"BLOCKED","attempt":attempt,"reason":reason},sort_keys=True))
-            return 2
+        if tested.status=="PASS":
+            reason = resolve_terminal_evidence(
+                aios, tested.evidence_refs, run_id=run_id, base_sha=base,
+                applied=applied, contract_id=cid, permit_id=pid,
+            )
+            if reason:
+                blocked={"status":"BLOCKED","attempt":attempt,"reason":reason,
+                         "test_status":"PASS","test_evidence_refs":list(tested.evidence_refs)}
+                Path("repair-result.json").write_text(json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8")
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="PERSIST", state="BLOCKED", reason=reason)
+                print(json.dumps({"status":"BLOCKED","attempt":attempt,"reason":reason},sort_keys=True))
+                return 2
         result={"attempt":attempt,"status":tested.status,"proposal":proposal,"apply":dict(applied),
                 "test":{"status":tested.status,"evidence_refs":list(tested.evidence_refs),"details":dict(tested.details)},
                 "research_evidence_digest":evidence.get("evidence_digest")}
