@@ -9,6 +9,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     assert trusted_checkout < runner
     assert target_checkout < runner
     assert "ref: 490e199f013e9bd407e52f93e8f1a10319dc9f15" in workflow
+    assert "ref: cb38387f2dd0785136fcc6434a49e43233bad648" in workflow
     assert "PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios:${{ github.workspace }}/target" in workflow
     assert 'run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"' in workflow
 
