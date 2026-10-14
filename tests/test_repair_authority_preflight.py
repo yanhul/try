@@ -161,3 +161,20 @@ def test_preflight_rejects_attempt_budget_above_runner_limit(monkeypatch, tmp_pa
     _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match="contract_attempt_budget_exceeds_runner_limit"):
         verify_and_write_receipt()
+
+
+@pytest.mark.parametrize(
+    ("variable", "value", "message"),
+    [
+        ("AIOS_REPAIR_CONTRACT_ID", "../contract", "authority_contract_id_invalid"),
+        ("AIOS_REPAIR_PERMIT_ID", "nested/permit", "authority_permit_id_invalid"),
+    ],
+)
+def test_preflight_rejects_path_like_authority_ids_before_aios_load(
+    monkeypatch, tmp_path, request, variable, value, message
+):
+    _install_fake_aios(monkeypatch)
+    _configure_preflight(monkeypatch, tmp_path, request)
+    monkeypatch.setenv(variable, value)
+    with pytest.raises(RuntimeError, match=message):
+        verify_and_write_receipt()
