@@ -121,12 +121,21 @@ def _verify_preflight_receipt(root, contract_id, permit_id, run_id):
         or receipt.get("permit_id") != permit_id
     ):
         raise RuntimeError("authority_preflight_receipt_identity_mismatch")
+    authority_root = (root / "authority").resolve()
+    try:
+        authority_root.relative_to(root)
+    except ValueError as exc:
+        raise RuntimeError("authority_directory_path_escape") from exc
     for kind, record_id, field in (
         ("contracts", contract_id, "contract_sha256"),
         ("permits", permit_id, "permit_sha256"),
         ("attestations", permit_id, "attestation_sha256"),
     ):
-        directory = (root / "authority" / kind).resolve()
+        directory = (authority_root / kind).resolve()
+        try:
+            directory.relative_to(authority_root)
+        except ValueError as exc:
+            raise RuntimeError("authority_record_directory_escape") from exc
         record_path = (directory / (record_id + ".json")).resolve()
         try:
             record_path.relative_to(directory)
