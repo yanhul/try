@@ -45,7 +45,58 @@ class _Env:
     GEMINI_API_KEY = "test-key"
     GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
+    TRY_PROVIDER_TOKEN = "test-token"
+    REPAIR_CHECKPOINTS = object()
 
+
+
+
+class HealthCheckTests(unittest.TestCase):
+    class Request:
+        method = "GET"
+        url = "https://worker.example/healthz"
+        headers = {}
+
+    def test_health_not_ready_without_provider_token(self):
+        env = _Env()
+        del env.TRY_PROVIDER_TOKEN
+        result = asyncio.run(entry.Default().fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["provider_token_configured"])
+
+    def test_health_not_ready_without_checkpoint_binding(self):
+        env = _Env()
+        env.REPAIR_CHECKPOINTS = None
+        original = entry.Default.fetch
+
+        async def fetch_with_env(instance, request):
+            instance.env = env
+            return await original(instance, request)
+
+        entry.Default.fetch = fetch_with_env
+        try:
+            result = asyncio.run(entry.Default().fetch(self.Request()))
+        finally:
+            entry.Default.fetch = original
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["checkpoint_store_bound"])
+
+    def test_health_ready_only_when_required_bindings_exist(self):
+        env = _Env()
+        original = entry.Default.fetch
+
+        async def fetch_with_env(instance, request):
+            instance.env = env
+            return await original(instance, request)
+
+        entry.Default.fetch = fetch_with_env
+        try:
+            result = asyncio.run(entry.Default().fetch(self.Request()))
+        finally:
+            entry.Default.fetch = original
+        self.assertEqual(result["status"], "READY")
+        self.assertTrue(result["provider_token_configured"])
+        self.assertTrue(result["checkpoint_store_bound"])
 
 
 class BoundedBodyTests(unittest.TestCase):
