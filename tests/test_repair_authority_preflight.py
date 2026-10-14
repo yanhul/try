@@ -1,0 +1,157 @@
+import hashlib
+import json
+import sys
+import types
+
+from pathlib import Path
+import pytest
+
+from research.verify_repair_authority import _record_digest, verify_and_write_receipt
+
+
+def test_record_digest_hashes_exact_record_bytes(tmp_path):
+    root = tmp_path / "aios"
+    record_dir = root / "authority" / "contracts"
+    record_dir.mkdir(parents=True)
+    record = record_dir / "contract-1.json"
+    record.write_bytes(b'{"contract_id":"contract-1"}')
+    assert _record_digest(root, "contracts", "contract-1") == hashlib.sha256(record.read_bytes()).hexdigest()
+
+
+def test_record_digest_rejects_authority_root_symlink_escape(tmp_path):
+    root = tmp_path / "aios"
+    root.mkdir()
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "contracts").mkdir()
+    (root / "authority").symlink_to(outside, target_is_directory=True)
+    with pytest.raises(RuntimeError, match="authority_directory_path_escape"):
+        _record_digest(root, "contracts", "contract-1")
+
+
+def test_record_digest_rejects_record_directory_symlink_escape(tmp_path):
+    root = tmp_path / "aios"
+    authority = root / "authority"
+    authority.mkdir(parents=True)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "contract-1.json").write_text("{}", encoding="utf-8")
+    (authority / "contracts").symlink_to(outside, target_is_directory=True)
+    with pytest.raises(RuntimeError, match="authority_record_directory_escape"):
+        _record_digest(root, "contracts", "contract-1")
+
+
+@pytest.mark.parametrize("record_id", ["../outside", "nested/contract", "", ".", "x" * 129])
+def test_record_digest_rejects_path_like_or_overlong_ids(tmp_path, record_id):
+    with pytest.raises(RuntimeError, match="authority_record_id_invalid"):
+        _record_digest(tmp_path, "contracts", record_id)
+
+
+def test_record_digest_rejects_unknown_record_kind(tmp_path):
+    with pytest.raises(RuntimeError, match="authority_record_kind_invalid"):
+        _record_digest(tmp_path, "secrets", "contract-1")
+
+
+def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None):
+    contract = contract or {
+        "task_id": "try-ci-repair-12345",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 2,
+    }
+    permit = {"permit_id": "permit-1"}
+    attestation = {"permit_id": "permit-1"}
+    core = types.ModuleType("core")
+    authority = types.ModuleType("core.authority")
+    authority.authorize = lambda *args: True
+    authority.load_contract = lambda *args: contract
+    authority.load_permit = lambda *args: permit
+    authority.load_attestation = lambda *args: attestation
+    att = types.ModuleType("core.attestation")
+    att.verify_attestation = lambda *args: attestation_ok
+    core.authority = authority
+    core.attestation = att
+    monkeypatch.setitem(sys.modules, "core", core)
+    monkeypatch.setitem(sys.modules, "core.authority", authority)
+    monkeypatch.setitem(sys.modules, "core.attestation", att)
+
+
+def _configure_preflight(monkeypatch, tmp_path):
+    root = tmp_path / "durable-aios"
+    for kind, name in (
+        ("contracts", "contract-1"),
+        ("permits", "permit-1"),
+        ("attestations", "permit-1"),
+    ):
+        path = root / "authority" / kind / f"{name}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"id": name}), encoding="utf-8")
+    runner_temp = tmp_path / "runner-temp"
+    runner_temp.mkdir()
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", str(root))
+    monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "contract-1")
+    monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "permit-1")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "test-only-secret")
+    monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "12345")
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(runner_temp / "receipt.json"))
+    monkeypatch.setenv("RUNNER_TEMP", str(runner_temp))
+    return root, runner_temp
+
+
+def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_path):
+    _install_fake_aios(monkeypatch)
+    root, runner_temp = _configure_preflight(monkeypatch, tmp_path)
+    receipt_path = verify_and_write_receipt()
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    assert receipt["verified"] is True
+    assert receipt["run_id"] == "12345"
+    assert receipt["authority_root"] == str(root.resolve())
+    assert receipt["contract_sha256"] == hashlib.sha256(
+        (root / "authority/contracts/contract-1.json").read_bytes()
+    ).hexdigest()
+    assert receipt_path.parent == runner_temp.resolve()
+
+
+def test_preflight_rejects_invalid_attestation(monkeypatch, tmp_path):
+    _install_fake_aios(monkeypatch, attestation_ok=False)
+    _configure_preflight(monkeypatch, tmp_path)
+    with pytest.raises(RuntimeError, match="authority_attestation_rejected"):
+        verify_and_write_receipt()
+
+
+def test_preflight_rejects_contract_bound_to_another_run(monkeypatch, tmp_path):
+    _install_fake_aios(monkeypatch, contract={
+        "task_id": "try-ci-repair-99999",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 2,
+    })
+    _configure_preflight(monkeypatch, tmp_path)
+    with pytest.raises(RuntimeError, match="contract_task_id_mismatch"):
+        verify_and_write_receipt()
+
+
+def test_preflight_rejects_receipt_outside_runner_temp(monkeypatch, tmp_path):
+    _install_fake_aios(monkeypatch)
+    _configure_preflight(monkeypatch, tmp_path)
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(tmp_path / "receipt.json"))
+    with pytest.raises(RuntimeError, match="receipt_must_be_in_runner_temp"):
+        verify_and_write_receipt()
+
+
+def test_preflight_rejects_attempt_budget_above_runner_limit(monkeypatch, tmp_path):
+    _install_fake_aios(monkeypatch, contract={
+        "task_id": "try-ci-repair-12345",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 4,
+    })
+    _configure_preflight(monkeypatch, tmp_path)
+    with pytest.raises(RuntimeError, match="contract_attempt_budget_exceeds_runner_limit"):
+        verify_and_write_receipt()
