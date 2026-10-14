@@ -225,6 +225,11 @@ def test_terminal_evidence_requires_resolved_verified_run_and_sha_lineage(tmp_pa
     ) is None
 
     test_evidence["run_id"] = "999"
+    unsigned = dict(test_evidence)
+    unsigned.pop("digest")
+    test_evidence["digest"] = hashlib.sha256(
+        json.dumps(unsigned, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
     (root / "evidence" / "EV-test.json").write_text(json.dumps(test_evidence), encoding="utf-8")
     assert "run_identity_mismatch" in resolve_terminal_evidence(
         root, ["EV-test"], run_id=123, base_sha=sha, applied={"effect_id": effect_id},
