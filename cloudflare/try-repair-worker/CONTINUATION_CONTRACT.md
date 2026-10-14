@@ -15,7 +15,7 @@ Target flow (not yet proven end-to-end):
 
 ## Privileged workflow and commit-authority boundary
 
-The privileged `.github/workflows/try-autonomous-repair.yml` now checks out the failed source only as a mutation workspace and executes the repair controller from a pinned trusted TRY commit, with trusted AIOS code ahead of the target in `PYTHONPATH`. This prevents the failed revision from supplying the privileged repair controller. The workflow's GitHub permissions are read-only for repository contents and it must not execute a target-controlled publisher.
+The privileged `.github/workflows/try-autonomous-repair.yml` now checks out the failed source only as a mutation workspace and executes the repair controller from immutable TRY commit `490e199f013e9bd407e52f93e8f1a10319dc9f15`, which includes the reconciliation-required retry lock, with trusted AIOS code ahead of the target in `PYTHONPATH`. This prevents the failed revision from supplying the privileged repair controller. The workflow's GitHub permissions are read-only for repository contents and it must not execute a target-controlled publisher.
 
 A successful test run is not enough to authorize Git commit or PR creation. The prior publisher path re-issued temporary AIOS authority and replayed the patch in a separate directory; that is not the same receipt as the mutation verified by the repair loop. That publisher path is disabled. Until a separately governed AIOS COMMIT adapter consumes a persisted commit decision/permit and the matching mutation + verification lineage, the workflow fails closed after exporting the candidate patch as an artifact. This is intentionally not an auto-PR claim.
 
