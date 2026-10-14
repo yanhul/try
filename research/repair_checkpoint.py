@@ -23,7 +23,7 @@ class RepairCheckpointError(RuntimeError):
 def get_checkpoint(*, request_id: str) -> dict[str, Any] | None:
     """Read the durable checkpoint for a request; 404 means a new request."""
     base_url = os.environ.get("TRY_REPAIR_PROVIDER_URL", "").strip().rstrip("/")
-    token = os.environ.get("TRY_REPAIR_PROVIDER_TOKEN", "").strip()
+    token = os.environ.get("TRY_REPAIR_CHECKPOINT_TOKEN", "").strip()
     if not base_url or not token:
         raise RepairCheckpointError("checkpoint_provider_not_configured")
     if not base_url.startswith("https://"):
@@ -88,7 +88,7 @@ def persist_checkpoint(
 ) -> dict[str, Any]:
     """Persist one idempotent state transition or fail closed."""
     base_url = os.environ.get("TRY_REPAIR_PROVIDER_URL", "").strip().rstrip("/")
-    token = os.environ.get("TRY_REPAIR_PROVIDER_TOKEN", "").strip()
+    token = os.environ.get("TRY_REPAIR_CHECKPOINT_TOKEN", "").strip()
     if not base_url or not token:
         raise RepairCheckpointError("checkpoint_provider_not_configured")
     if not base_url.startswith("https://"):
