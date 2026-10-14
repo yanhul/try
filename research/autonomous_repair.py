@@ -149,8 +149,8 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_receipt_blocked:effect_evidence_digest_invalid"
     if effect_evidence.get("provider") != effect.get("provider"):
         return "terminal_receipt_blocked:effect_evidence_provider_mismatch"
-    if effect_evidence.get("run_id") != str(run_id):
-        return "terminal_receipt_blocked:effect_evidence_run_mismatch"
+    if effect_evidence.get("run_id") != effect.get("attempt_id"):
+        return "terminal_receipt_blocked:effect_evidence_attempt_mismatch"
     if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
         return "terminal_evidence_blocked:no_test_evidence_refs"
     evidence_dir = Path(aios_root) / "evidence"
