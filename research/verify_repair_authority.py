@@ -49,6 +49,11 @@ def verify_and_write_receipt() -> Path:
     runner_temp = os.environ.get("RUNNER_TEMP", "").strip()
     if not all((authority_dir, contract_id, permit_id, secret, run_id, receipt_raw, runner_temp)):
         raise RuntimeError("external_authority_gate_configuration_missing")
+    import re
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", contract_id):
+        raise RuntimeError("authority_contract_id_invalid")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", permit_id):
+        raise RuntimeError("authority_permit_id_invalid")
     if not run_id.isdecimal():
         raise RuntimeError("external_authority_gate_run_id_invalid")
 
