@@ -179,11 +179,18 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
     effect_id = applied.get("effect_id")
     if not isinstance(effect_id, str) or not re.fullmatch(r"EF-[0-9a-f]{64}", effect_id):
         return "terminal_receipt_blocked:missing_or_invalid_effect_id"
-    effect_path = Path(aios_root) / "effects" / (effect_id + ".json")
+    effects_dir = (Path(aios_root) / "effects").resolve()
+    effect_path = (effects_dir / (effect_id + ".json")).resolve()
+    try:
+        effect_path.relative_to(effects_dir)
+    except ValueError:
+        return "terminal_receipt_blocked:persisted_effect_path_escape"
     try:
         effect = json.loads(effect_path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         return f"terminal_receipt_blocked:persisted_effect_unavailable:{type(exc).__name__}"
+    if not isinstance(effect, dict):
+        return "terminal_receipt_blocked:persisted_effect_not_mapping"
     if effect.get("effect_id") != effect_id or effect.get("state") != "OBSERVED_SUCCESS":
         return "terminal_receipt_blocked:effect_not_persisted_observed_success"
     if (effect.get("contract_id") != contract_id or effect.get("permit_id") != permit_id
