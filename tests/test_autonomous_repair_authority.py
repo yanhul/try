@@ -235,3 +235,39 @@ def test_terminal_evidence_requires_resolved_verified_run_and_sha_lineage(tmp_pa
         root, ["EV-test"], run_id=123, base_sha=sha, applied={"effect_id": effect_id},
         contract_id="CT-test", permit_id="PT-test",
     )
+
+
+
+def test_reconciliation_required_checkpoint_cannot_be_resumed():
+    from research.autonomous_repair import select_resume_attempt
+    from research.repair_checkpoint import RepairCheckpointError
+
+    prior = {
+        "repository": "yanhul/try",
+        "sha": "a" * 40,
+        "attempt": 1,
+        "phase": "VERIFY",
+        "state": "BLOCKED",
+        "reason": "interrupted_attempt_outcome_unknown; reconciliation_required",
+    }
+    with pytest.raises(RepairCheckpointError, match="checkpoint_reconciliation_required"):
+        select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
+
+
+def test_reconciliation_checkpoint_is_recognized_as_terminal_safe_stop():
+    from research.autonomous_repair import is_reconciliation_blocked_checkpoint
+
+    prior = {
+        "repository": "yanhul/try",
+        "sha": "a" * 40,
+        "attempt": 1,
+        "phase": "VERIFY",
+        "state": "BLOCKED",
+        "reason": "interrupted_attempt_outcome_unknown; reconciliation_required",
+    }
+    assert is_reconciliation_blocked_checkpoint(
+        prior, repository="yanhul/try", sha="a" * 40
+    )
+    assert not is_reconciliation_blocked_checkpoint(
+        prior, repository="yanhul/try", sha="b" * 40
+    )
