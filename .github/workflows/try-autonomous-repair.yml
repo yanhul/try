@@ -43,7 +43,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout trusted AIOS repair authority
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/AIOS
           ref: cb38387f2dd0785136fcc6434a49e43233bad648
@@ -51,7 +51,7 @@ jobs:
           persist-credentials: false
 
       - name: Checkout exact failed TRY revision
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ env.BASE_SHA }}
           path: target
@@ -59,7 +59,7 @@ jobs:
           persist-credentials: false
 
       - name: Checkout trusted repair controller
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/try
           ref: 490e199f013e9bd407e52f93e8f1a10319dc9f15
@@ -114,7 +114,7 @@ jobs:
 
       - name: Upload autonomous repair evidence
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: try-autonomous-repair-$RUN_ID
           path: |
