@@ -203,27 +203,65 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_receipt_blocked:effect_evidence_attempt_mismatch"
     if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
         return "terminal_evidence_blocked:no_test_evidence_refs"
-    evidence_dir = Path(aios_root) / "evidence"
-    for ref in evidence_refs:
+    if len(set(evidence_refs)) != len(evidence_refs):
+        return "terminal_evidence_blocked:duplicate_evidence_refs"
+    evidence_dir = (Path(aios_root) / "evidence").resolve()
+    # A syntactically safe EV-* ID is not enough: reject symlink/path redirection
+    # so the resolver cannot accidentally validate a record outside the AIOS store.
+    def load_evidence(ref):
         if not isinstance(ref, str) or not re.fullmatch(r"EV-[A-Za-z0-9_-]{1,120}", ref):
-            return "terminal_evidence_blocked:invalid_evidence_id"
-        path = evidence_dir / (ref + ".json")
+            raise ValueError("invalid_evidence_id")
+        path = (evidence_dir / (ref + ".json")).resolve()
         try:
-            record = json.loads(path.read_text(encoding="utf-8"))
+            path.relative_to(evidence_dir)
+        except ValueError as exc:
+            raise ValueError("evidence_record_path_escape") from exc
+        record = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(record, dict) or record.get("evidence_id") != ref or not verify_evidence(record):
+            raise ValueError("record_digest_or_identity_invalid")
+        return record
+
+    seen = set()
+    for ref in evidence_refs:
+        try:
+            record = load_evidence(ref)
         except (OSError, ValueError) as exc:
-            return f"terminal_evidence_blocked:record_unavailable:{ref}:{type(exc).__name__}"
-        if record.get("evidence_id") != ref or not verify_evidence(record):
-            return f"terminal_evidence_blocked:record_digest_or_identity_invalid:{ref}"
+            return f"terminal_evidence_blocked:record_unavailable_or_invalid:{ref}:{type(exc).__name__}:{exc}"
+        if ref in seen:
+            return "terminal_evidence_blocked:duplicate_evidence_refs"
+        seen.add(ref)
         if record.get("run_id") != str(run_id):
             return f"terminal_evidence_blocked:run_identity_mismatch:{ref}"
         if record.get("level") not in {"VERIFIED_DIGITAL", "PROMOTED"}:
             return f"terminal_evidence_blocked:verification_level_insufficient:{ref}"
-        lineage = " ".join(str(record.get(key) or "") for key in ("source_ref", "artifact_ref"))
-        if base_sha.lower() not in lineage.lower():
+        source_ref = record.get("source_ref")
+        artifact_ref = record.get("artifact_ref")
+        lineage = " ".join(value for value in (source_ref, artifact_ref) if isinstance(value, str))
+        # Match the complete 40-hex SHA token, not a substring of a longer or
+        # otherwise malformed identifier. The evidence digest authenticates the
+        # record, while this independently checks that it names this exact base.
+        if not re.search(r"(?<![0-9a-f])" + re.escape(base_sha.lower()) + r"(?![0-9a-f])", lineage.lower()):
             return f"terminal_evidence_blocked:base_sha_lineage_missing:{ref}"
         claim = str(record.get("claim") or "").lower()
         if not any(token in claim for token in ("test", "pytest", "verification")):
             return f"terminal_evidence_blocked:claim_not_test_verification:{ref}"
+        parent_id = record.get("parent_evidence_id")
+        if parent_id is not None:
+            try:
+                parent = load_evidence(parent_id)
+            except (OSError, ValueError, TypeError) as exc:
+                return f"terminal_evidence_blocked:parent_evidence_invalid:{ref}:{type(exc).__name__}:{exc}"
+            if parent_id == ref or parent.get("run_id") != str(run_id):
+                return f"terminal_evidence_blocked:parent_evidence_lineage_mismatch:{ref}"
+            parent_lineage = " ".join(
+                value for value in (parent.get("source_ref"), parent.get("artifact_ref"))
+                if isinstance(value, str)
+            )
+            if not re.search(
+                r"(?<![0-9a-f])" + re.escape(base_sha.lower()) + r"(?![0-9a-f])",
+                parent_lineage.lower(),
+            ):
+                return f"terminal_evidence_blocked:parent_base_sha_lineage_missing:{ref}"
     return None
 
 
