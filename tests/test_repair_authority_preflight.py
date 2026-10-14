@@ -65,6 +65,7 @@ def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None):
     permit = {"permit_id": "permit-1"}
     attestation = {"permit_id": "permit-1"}
     core = types.ModuleType("core")
+    core.__path__ = []
     authority = types.ModuleType("core.authority")
     authority.authorize = lambda *args: True
     authority.load_contract = lambda *args: contract
