@@ -21,7 +21,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
 
 def test_privileged_repair_never_uses_target_as_first_python_import_root():
     workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
-    line = next(line for line in workflow.splitlines() if "PYTHONPATH:" in line)
+    line = next(line for line in workflow.splitlines() if "PYTHONPATH:" in line and "/target" in line)
     assert "trusted-try" in line.split(":", 1)[1].split(":", 1)[0]
     assert line.index("trusted-try") < line.index("trusted-aios") < line.index("/target")
 
