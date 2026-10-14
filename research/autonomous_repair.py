@@ -133,10 +133,9 @@ def main():
             print(json.dumps(unknown, sort_keys=True))
             return 2
         raise
-    try:
-        cid, pid, aios = authority(Path("."), run_id)
-        worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
-                                 timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
+    cid, pid, aios = authority(Path("."), run_id)
+    worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
+                             timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
     owned=frozenset()
     if start_attempt == 1:
         persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
@@ -221,9 +220,9 @@ def main():
         log=(details[-1].get("stderr_tail","") if details else "")[-80000:]
         failure["ci_failure_log_tail"]=log
         failure["previous_repair_result"]=result
-Path("repair-result.json").write_text(json.dumps({"status":"FAIL","attempts":results},indent=2,sort_keys=True),encoding="utf-8")
-print(json.dumps({"status":"FAIL","attempts":len(results)}))
-return 2
+    Path("repair-result.json").write_text(json.dumps({"status":"FAIL","attempts":results},indent=2,sort_keys=True),encoding="utf-8")
+    print(json.dumps({"status":"FAIL","attempts":len(results)}))
+    return 2
 
 if __name__=="__main__":
     raise SystemExit(main())
