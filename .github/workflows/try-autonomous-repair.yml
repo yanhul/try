@@ -62,7 +62,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/try
-          ref: d778c8b840e97047f2e103e71afae8f3353517bd
+          ref: 85c35152af7b47bb9d1c293a243a858c219b0c06
           path: trusted-try
           clean: true
           persist-credentials: false
@@ -86,6 +86,19 @@ jobs:
             cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
           fi
 
+      - name: Verify external AIOS authority in isolated process
+        working-directory: .
+        env:
+          PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios
+          AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
+          AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}
+          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
+          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}
+          AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
+          RUNNER_TEMP: ${{ runner.temp }}
+        run: python "${{ github.workspace }}/trusted-try/research/verify_repair_authority.py"
+
       - name: Run bounded research-aware repair loop
         working-directory: target
         env:
@@ -96,11 +109,10 @@ jobs:
           AIOS_REPAIR_EVIDENCE: ${{ runner.temp }}/research/latest.json
           TRY_REPAIR_PROVIDER_URL: ${{ secrets.TRY_REPAIR_PROVIDER_URL }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_REPAIR_PROVIDER_TOKEN }}
-          # The issuer provisions the matching durable records separately; never mint them in this workflow.
           AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}
           AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
           AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
-          AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}
+          AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
         run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
       - name: Refuse ungoverned publication and export candidate patch
