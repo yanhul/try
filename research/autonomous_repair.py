@@ -104,8 +104,10 @@ def authority(root, run_id):
             raise ValueError("contract_patch_capability_missing")
         if "external_effect" not in contract.get("allowed_effects", []):
             raise ValueError("contract_patch_effect_not_allowed")
-        if contract.get("max_attempts", 0) > MAX_ATTEMPTS:
-            raise ValueError("contract_attempt_budget_exceeds_runner_limit")
+        attempt_budget = contract.get("max_attempts")
+        if (isinstance(attempt_budget, bool) or not isinstance(attempt_budget, int)
+                or not 1 <= attempt_budget <= MAX_ATTEMPTS):
+            raise ValueError("contract_attempt_budget_invalid_or_exceeds_runner_limit")
     except Exception as exc:
         raise RuntimeError(
             f"authority_records_rejected:{type(exc).__name__}:{exc}"
@@ -145,6 +147,8 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
     effect_evidence = observation.get("evidence")
     if not isinstance(effect_evidence, dict) or not verify_evidence(effect_evidence):
         return "terminal_receipt_blocked:effect_evidence_digest_invalid"
+    if effect_evidence.get("provider") != effect.get("provider"):
+        return "terminal_receipt_blocked:effect_evidence_provider_mismatch"
     if effect_evidence.get("run_id") != str(run_id):
         return "terminal_receipt_blocked:effect_evidence_run_mismatch"
     if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
