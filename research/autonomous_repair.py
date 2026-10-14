@@ -133,7 +133,17 @@ def main():
             print(json.dumps(unknown, sort_keys=True))
             return 2
         raise
-    cid, pid, aios = authority(Path("."), run_id)
+    try:
+        cid, pid, aios = authority(Path("."), run_id)
+    except Exception as exc:
+        reason=f"authority_gate_blocked:{type(exc).__name__}:{exc}"[:1000]
+        persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                           attempt=max(1, int((prior or {}).get("attempt", 1))),
+                           phase="DECIDE", state="BLOCKED", reason=reason)
+        blocked={"status":"BLOCKED","reason":reason,"authority_required":True}
+        Path("repair-result.json").write_text(json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8")
+        print(json.dumps(blocked,sort_keys=True))
+        return 2
     worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
                              timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
     owned=frozenset()
