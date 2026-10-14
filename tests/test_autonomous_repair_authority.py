@@ -271,3 +271,41 @@ def test_reconciliation_checkpoint_is_recognized_as_terminal_safe_stop():
     assert not is_reconciliation_blocked_checkpoint(
         prior, repository="yanhul/try", sha="b" * 40
     )
+
+
+
+def test_main_keeps_reconciliation_required_checkpoint_unknown(monkeypatch, tmp_path):
+    import json
+    import research.autonomous_repair as runner
+
+    monkeypatch.chdir(tmp_path)
+    log = tmp_path / "ci.log"
+    log.write_text("synthetic interrupted repair", encoding="utf-8")
+    monkeypatch.setenv("AIOS_REPAIR_SHA", "a" * 40)
+    monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "123")
+    monkeypatch.setenv("AIOS_REPAIR_LOG", str(log))
+    prior = {
+        "repository": "yanhul/try", "sha": "a" * 40, "attempt": 1,
+        "phase": "VERIFY", "state": "BLOCKED",
+        "reason": "interrupted_attempt_outcome_unknown; reconciliation_required",
+    }
+    monkeypatch.setattr(runner, "get_checkpoint", lambda **kwargs: prior)
+    checkpoint_writes = []
+    monkeypatch.setattr(runner, "persist_checkpoint", lambda **kwargs: checkpoint_writes.append(kwargs))
+
+    worker_module = types.ModuleType("core.agent_repair_worker")
+    worker_module.AgentRepairWorker = type("AgentRepairWorker", (), {})
+    worker_module.ProposedFile = type("ProposedFile", (), {})
+    provider_module = types.ModuleType("core.try_repair_provider")
+    proposals = []
+    provider_module.propose = lambda **kwargs: proposals.append(kwargs)
+    provider_module.TryRepairProviderError = type("TryRepairProviderError", (Exception,), {})
+    monkeypatch.setitem(sys.modules, "core.agent_repair_worker", worker_module)
+    monkeypatch.setitem(sys.modules, "core.try_repair_provider", provider_module)
+
+    assert runner.main() == 2
+    result = json.loads((tmp_path / "repair-result.json").read_text(encoding="utf-8"))
+    assert result["status"] == "UNKNOWN"
+    assert result["reconciliation_required"] is True
+    assert proposals == []
+    assert checkpoint_writes == []
