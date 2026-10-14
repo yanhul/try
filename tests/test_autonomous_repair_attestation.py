@@ -51,3 +51,42 @@ def test_provider_token_is_only_temporarily_exposed_for_proposal_calls():
     assert 'os.environ["TRY_REPAIR_PROVIDER_TOKEN"] = provider_token' in source
     assert 'os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)' in source
     assert source.rindex('os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)') < source.index("tested=worker.test()")
+
+
+def test_forged_persisted_attestation_is_rejected(monkeypatch):
+    import sys
+    import types
+
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios-authority")
+    monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "CT-test-contract")
+    monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "PT-test-permit")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "real-secret")
+    monkeypatch.setattr(Path, "is_dir", lambda self: True)
+
+    contract = {
+        "task_id": "try-ci-repair-12345",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 3,
+    }
+    authority_module = types.ModuleType("core.authority")
+    authority_module.authorize = lambda *args: True
+    authority_module.load_contract = lambda *args: contract
+    authority_module.load_permit = lambda *args: {
+        "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "external"
+    }
+    authority_module.load_attestation = lambda *args: {"signature": "forged"}
+    attestation_module = types.ModuleType("core.attestation")
+
+    def reject_forged(*args):
+        raise ValueError("attestation signature mismatch")
+
+    attestation_module.verify_attestation = reject_forged
+    monkeypatch.setitem(sys.modules, "core.authority", authority_module)
+    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
+
+    with pytest.raises(RuntimeError, match="authority_records_rejected") as exc:
+        authority(Path("."), 12345)
+    assert "attestation signature mismatch" in str(exc.value)
