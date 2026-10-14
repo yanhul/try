@@ -90,10 +90,16 @@ def authority(root, run_id):
     authority_dir = os.environ.get("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
     contract_id = os.environ.get("AIOS_REPAIR_CONTRACT_ID", "").strip()
     permit_id = os.environ.get("AIOS_REPAIR_PERMIT_ID", "").strip()
+    attestation_secret = os.environ.get("AIOS_REPAIR_ATTESTATION_SECRET", "")
     if not authority_dir or not contract_id or not permit_id:
         raise RuntimeError(
             "authority_not_provisioned: require durable AIOS_REPAIR_AUTHORITY_DIR, "
             "AIOS_REPAIR_CONTRACT_ID and AIOS_REPAIR_PERMIT_ID; self-issued authority forbidden"
+        )
+    if not attestation_secret:
+        raise RuntimeError(
+            "authority_attestation_missing: AIOS_REPAIR_ATTESTATION_SECRET is required; "
+            "unsigned or self-issued permit records are not accepted"
         )
     durable_root = Path(authority_dir).expanduser().resolve()
     if not durable_root.is_dir():
@@ -104,9 +110,15 @@ def authority(root, run_id):
     # This checks contract identity, capability registry, governing policy, and
     # permit-to-contract binding. Missing/corrupt/forged records fail closed.
     try:
-        from core.authority import authorize, load_contract
+        from core.authority import authorize, load_attestation, load_contract, load_permit
+        from core.attestation import verify_attestation
+
         authorize(str(durable_root), contract_id, permit_id)
         contract = load_contract(str(durable_root), contract_id)
+        permit = load_permit(str(durable_root), permit_id)
+        attestation = load_attestation(str(durable_root), permit_id)
+        if not verify_attestation(contract, permit, attestation, attestation_secret):
+            raise ValueError("authority_attestation_rejected")
         if contract.get("task_id") != f"try-ci-repair-{run_id}":
             raise ValueError("contract_task_id_mismatch")
         if contract.get("actor") != "try-autonomous-repair":
