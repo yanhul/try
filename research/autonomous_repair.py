@@ -69,21 +69,28 @@ def source_snapshot(sha, log, owned=frozenset()):
     return out
 
 def authority(root, run_id):
-    from core.authority import persist_contract,persist_permit
-    from core.capabilities import Capability,CapabilityRegistry
-    from core.contract import CONTRACT_TYPE
-    from core.policy_registry import persist_policy
-    reg=CapabilityRegistry()
-    reg.register(Capability("repo_patch","1","AIOS","external_effect",inputs=("patch",),outputs=("observation",),status="ACTIVE"))
-    reg.persist(root,actor="try-autonomous-repair")
-    pd=persist_policy(root,{"policy_type":"GOVERNING_POLICY","task":"try-ci-repair","allowed_effects":["external_effect"]})
-    contract={"contract_type":CONTRACT_TYPE,"task_id":f"try-ci-repair-{run_id}","scope":"repository",
-              "actor":"try-autonomous-repair","capabilities":["repo_patch@1"],"input_digest":"sha256:ci-failure",
-              "allowed_effects":["external_effect"],"evidence_required":["OBSERVED"],"max_attempts":3,
-              "terminal_states":["OBSERVED_SUCCESS","OBSERVED_FAILURE"],"policy_digest":pd}
-    stored=persist_contract(root,contract)
-    permit=persist_permit(root,stored,issuer="try-ci-repair-authority")
-    return stored["contract_id"],permit["permit_id"]
+    """Load externally issued, durable AIOS authority; never mint authority here.
+
+    The authority directory must be persistent and pre-provisioned by AIOS.
+    This workload may consume a contract/permit, but cannot create its own.
+    """
+    authority_dir = os.environ.get("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
+    contract_id = os.environ.get("AIOS_REPAIR_CONTRACT_ID", "").strip()
+    permit_id = os.environ.get("AIOS_REPAIR_PERMIT_ID", "").strip()
+    if not authority_dir or not contract_id or not permit_id:
+        raise RuntimeError(
+            "authority_not_provisioned: require durable AIOS_REPAIR_AUTHORITY_DIR, "
+            "AIOS_REPAIR_CONTRACT_ID and AIOS_REPAIR_PERMIT_ID; self-issued authority forbidden"
+        )
+    durable_root = Path(authority_dir).expanduser().resolve()
+    if not durable_root.is_dir():
+        raise RuntimeError("authority_directory_missing")
+    if any(part in {"tmp", "temp", "temporary"} for part in durable_root.parts):
+        raise RuntimeError("authority_directory_must_not_be_temporary")
+    # Do not synthesize policy, contract, permit, or capability records here.
+    # The downstream AIOS worker remains responsible for resolving and validating
+    # these externally issued IDs against the persisted authority store.
+    return contract_id, permit_id, durable_root
 
 def main():
     base=os.environ["AIOS_REPAIR_SHA"]; run_id=int(os.environ["AIOS_REPAIR_RUN_ID"])
@@ -126,9 +133,8 @@ def main():
             print(json.dumps(unknown, sort_keys=True))
             return 2
         raise
-    with tempfile.TemporaryDirectory(prefix="try-aios-authority-") as td:
-        aios=Path(td)/"aios"; aios.mkdir()
-        cid,pid=authority(aios,run_id)
+    try:
+        cid, pid, aios = authority(Path("."), run_id)
         worker=AgentRepairWorker(Path("."),object(),allowed_test_commands=(("python","-m","pytest","-q"),),
                                  timeout_seconds=900,aios_dir=aios,contract_id=cid,permit_id=pid,actor="try-autonomous-repair")
         owned=frozenset()
