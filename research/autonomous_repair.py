@@ -87,9 +87,10 @@ def authority(root, run_id):
     The authority directory must be persistent and pre-provisioned by AIOS.
     This workload may consume a contract/permit, but cannot create its own.
     """
-    authority_dir = os.environ.get("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
-    contract_id = os.environ.get("AIOS_REPAIR_CONTRACT_ID", "").strip()
-    permit_id = os.environ.get("AIOS_REPAIR_PERMIT_ID", "").strip()
+    # Consume authority inputs too: child test processes must not inherit issuer details.
+    authority_dir = os.environ.pop("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
+    contract_id = os.environ.pop("AIOS_REPAIR_CONTRACT_ID", "").strip()
+    permit_id = os.environ.pop("AIOS_REPAIR_PERMIT_ID", "").strip()
     # Consume the secret so child test processes cannot inherit it from the environment.
     attestation_secret = os.environ.pop("AIOS_REPAIR_ATTESTATION_SECRET", "")
     if not authority_dir or not contract_id or not permit_id:
@@ -204,6 +205,8 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
 
 
 def main():
+    # Keep the provider credential in controller memory; expose it only during a proposal call.
+    provider_token = os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", "")
     base=os.environ["AIOS_REPAIR_SHA"]; run_id=int(os.environ["AIOS_REPAIR_RUN_ID"])
     log_path=Path(os.environ["AIOS_REPAIR_LOG"])
     log=log_path.read_text(encoding="utf-8",errors="replace")[-80000:]
@@ -293,12 +296,17 @@ def main():
         persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
                            attempt=attempt, phase="DECIDE", state="WORKING")
         try:
+            if provider_token:
+                os.environ["TRY_REPAIR_PROVIDER_TOKEN"] = provider_token
             proposal=propose(request_id=req_id,repository="yanhul/try",sha=base,attempt=attempt,
                               failure=failure,source=source_snapshot(base,log,owned))
         except TryRepairProviderError as exc:
             proposal={"status":"HOLD","reason":str(exc)}
         except Exception as exc:
             proposal={"status":"HOLD","reason":f"proposal_stage_error:{type(exc).__name__}:{exc}"[:1000]}
+        finally:
+            # The verification subprocess runs later and must never inherit this credential.
+            os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)
         Path(f"repair-proposal-{attempt}.json").write_text(json.dumps(proposal,indent=2,sort_keys=True),encoding="utf-8")
         if proposal.get("status")=="HOLD":
             reason=str(proposal.get("reason") or "provider_hold")
