@@ -75,6 +75,33 @@ class RepairCheckpointClientTests(unittest.TestCase):
                     attempt=1, phase="OBSERVE", state="WORKING",
                 )
 
+    def test_readback_mismatch_fails_closed_after_successful_write_ack(self):
+        calls = []
+        def fake_urlopen(request, timeout):
+            calls.append(request.get_method())
+            if request.get_method() == "POST":
+                return _Response({
+                    "persisted": True, "version": 7,
+                    "request_id": "try-ci-repair:42", "repository": "yanhul/try",
+                    "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
+                    "state": "WORKING", "evidence_digest": None, "reason": None,
+                })
+            return _Response({
+                "schema": 1, "version": 6,
+                "request_id": "try-ci-repair:42", "repository": "yanhul/try",
+                "sha": "a" * 40, "attempt": 1, "phase": "OBSERVE",
+                "state": "WORKING", "evidence_digest": None, "reason": None,
+            })
+        with patch.object(repair_checkpoint.urllib.request, "urlopen", fake_urlopen):
+            with self.assertRaisesRegex(
+                repair_checkpoint.RepairCheckpointError, "readback_version_mismatch"
+            ):
+                repair_checkpoint.persist_checkpoint(
+                    request_id="try-ci-repair:42", repository="yanhul/try", sha="a" * 40,
+                    attempt=1, phase="OBSERVE", state="WORKING",
+                )
+        self.assertEqual(calls, ["POST", "GET"])
+
     def test_invalid_request_id_rejected_before_network(self):
         for request_id in ("", "contains/slash", "x" * 161, "has space"):
             with self.subTest(request_id=request_id):
