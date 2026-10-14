@@ -56,6 +56,14 @@ def test_authority_resolves_exact_contract_and_permit_before_return(monkeypatch)
     module.authorize = lambda directory, contract_id, permit_id: calls.append(
         (directory, contract_id, permit_id)
     )
+    module.load_contract = lambda directory, contract_id: {
+        "task_id": "try-ci-repair-123",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 3,
+    }
     monkeypatch.setitem(sys.modules, "core.authority", module)
 
     contract_id, permit_id, directory = authority(None, 123)
@@ -73,6 +81,7 @@ def test_rejected_persisted_authority_fails_closed(monkeypatch):
     def reject(*args):
         raise ValueError("permit is not bound to this contract")
     module.authorize = reject
+    module.load_contract = lambda *args: (_ for _ in ()).throw(AssertionError("must not load rejected contract"))
     monkeypatch.setitem(sys.modules, "core.authority", module)
 
     with pytest.raises(RuntimeError, match="authority_records_rejected"):
