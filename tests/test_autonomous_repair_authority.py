@@ -66,13 +66,13 @@ def test_authority_resolves_exact_contract_and_permit_before_return(monkeypatch)
         "allowed_effects": ["external_effect"],
         "max_attempts": 3,
     }
-        module.load_permit = lambda *args: {
-            "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
-        }
-        module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
-        attestation_module = types.ModuleType("core.attestation")
-        attestation_module.verify_attestation = lambda *args: True
-        monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
+    module.load_permit = lambda *args: {
+        "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
+    }
+    module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
+    attestation_module = types.ModuleType("core.attestation")
+    attestation_module.verify_attestation = lambda *args: True
+    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
     monkeypatch.setitem(sys.modules, "core.authority", module)
 
     contract_id, permit_id, directory = authority(None, 123)
@@ -91,13 +91,13 @@ def test_rejected_persisted_authority_fails_closed(monkeypatch):
         raise ValueError("permit is not bound to this contract")
     module.authorize = reject
     module.load_contract = lambda *args: (_ for _ in ()).throw(AssertionError("must not load rejected contract"))
-        module.load_permit = lambda *args: {
-            "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
-        }
-        module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
-        attestation_module = types.ModuleType("core.attestation")
-        attestation_module.verify_attestation = lambda *args: True
-        monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
+    module.load_permit = lambda *args: {
+        "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
+    }
+    module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
+    attestation_module = types.ModuleType("core.attestation")
+    attestation_module.verify_attestation = lambda *args: True
+    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
     monkeypatch.setitem(sys.modules, "core.authority", module)
 
     with pytest.raises(RuntimeError, match="authority_records_rejected"):
@@ -129,13 +129,13 @@ def test_authority_rejects_scope_or_identity_mismatch(monkeypatch, field, value,
     module = types.ModuleType("core.authority")
     module.authorize = lambda *args: True
     module.load_contract = lambda *args: contract
-        module.load_permit = lambda *args: {
-            "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
-        }
-        module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
-        attestation_module = types.ModuleType("core.attestation")
-        attestation_module.verify_attestation = lambda *args: True
-        monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
+    module.load_permit = lambda *args: {
+        "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "test-issuer"
+    }
+    module.load_attestation = lambda *args: {"attestation_type": "EXECUTION_PERMIT_ATTESTATION"}
+    attestation_module = types.ModuleType("core.attestation")
+    attestation_module.verify_attestation = lambda *args: True
+    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
     monkeypatch.setitem(sys.modules, "core.authority", module)
 
     with pytest.raises(RuntimeError, match="authority_records_rejected") as exc:
