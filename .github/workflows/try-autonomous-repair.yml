@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/try
-          ref: fix/authority-and-durable-recovery
+          ref: 308fd9fe7c1b3b52f9d9b0d4d301fcfcfa680dbe
           path: trusted-try
           clean: true
           persist-credentials: false
