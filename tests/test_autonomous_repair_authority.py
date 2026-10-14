@@ -9,6 +9,7 @@ import types
 
 import pytest
 
+import research.autonomous_repair as runner
 from research.autonomous_repair import authority, resolve_terminal_evidence
 
 
@@ -17,6 +18,7 @@ def _set_authority_env(monkeypatch, directory="/var/lib/aios-authority"):
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "CT-test-contract")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "PT-test-permit")
     monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "test-external-attestation-secret")
+    monkeypatch.setattr(runner, "_verify_preflight_receipt", lambda *args: None)
 
 
 def test_authority_missing_configuration_fails_closed(monkeypatch):
