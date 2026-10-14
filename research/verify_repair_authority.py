@@ -14,7 +14,23 @@ from pathlib import Path
 
 
 def _record_digest(root: Path, kind: str, record_id: str) -> str:
-    directory = (root / "authority" / kind).resolve()
+    # IDs are filenames, never caller-controlled path fragments.
+    import re
+    if kind not in {"contracts", "permits", "attestations"}:
+        raise RuntimeError("authority_record_kind_invalid")
+    if not isinstance(record_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", record_id):
+        raise RuntimeError("authority_record_id_invalid")
+    root = root.resolve()
+    authority_root = (root / "authority").resolve()
+    try:
+        authority_root.relative_to(root)
+    except ValueError as exc:
+        raise RuntimeError("authority_directory_path_escape") from exc
+    directory = (authority_root / kind).resolve()
+    try:
+        directory.relative_to(authority_root)
+    except ValueError as exc:
+        raise RuntimeError(f"authority_record_directory_escape:{kind}") from exc
     path = (directory / f"{record_id}.json").resolve()
     try:
         path.relative_to(directory)
