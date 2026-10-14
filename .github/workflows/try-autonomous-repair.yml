@@ -59,6 +59,15 @@ jobs:
           clean: true
           persist-credentials: false
 
+      - name: Checkout trusted repair controller
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/try
+          ref: fix/authority-and-durable-recovery
+          path: trusted-try
+          clean: true
+          persist-credentials: false
+
       - name: Capture failed controller evidence
         env:
           GH_TOKEN: ${{ github.token }}
@@ -81,7 +90,7 @@ jobs:
       - name: Run bounded research-aware repair loop
         working-directory: target
         env:
-          PYTHONPATH: ${{ github.workspace }}/trusted-aios
+          PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios:${{ github.workspace }}/target
           AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
           AIOS_REPAIR_LOG: ${{ runner.temp }}/ci-failure.log
