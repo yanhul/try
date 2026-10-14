@@ -8,7 +8,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     runner = workflow.index("name: Run bounded research-aware repair loop")
     assert trusted_checkout < runner
     assert target_checkout < runner
-    assert "ref: 6c4f3bea9e6b45a136693afbb8819e1664d2dfb7" in workflow
+    assert "ref: 12fcabcf350655c61fdf6c9c88a63991679f5b5d" in workflow
     assert "ref: cb38387f2dd0785136fcc6434a49e43233bad648" in workflow
     assert "uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" in workflow
     assert "uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02" in workflow
