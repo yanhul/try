@@ -91,8 +91,21 @@ def authority(root, run_id):
     # This checks contract identity, capability registry, governing policy, and
     # permit-to-contract binding. Missing/corrupt/forged records fail closed.
     try:
-        from core.authority import authorize
+        from core.authority import authorize, load_contract
         authorize(str(durable_root), contract_id, permit_id)
+        contract = load_contract(str(durable_root), contract_id)
+        if contract.get("task_id") != f"try-ci-repair-{run_id}":
+            raise ValueError("contract_task_id_mismatch")
+        if contract.get("actor") != "try-autonomous-repair":
+            raise ValueError("contract_actor_mismatch")
+        if contract.get("scope") != "repository":
+            raise ValueError("contract_scope_mismatch")
+        if "repo_patch@1" not in contract.get("capabilities", []):
+            raise ValueError("contract_patch_capability_missing")
+        if "external_effect" not in contract.get("allowed_effects", []):
+            raise ValueError("contract_patch_effect_not_allowed")
+        if contract.get("max_attempts", 0) > MAX_ATTEMPTS:
+            raise ValueError("contract_attempt_budget_exceeds_runner_limit")
     except Exception as exc:
         raise RuntimeError(
             f"authority_records_rejected:{type(exc).__name__}:{exc}"
