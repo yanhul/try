@@ -8,7 +8,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     runner = workflow.index("name: Run bounded research-aware repair loop")
     assert trusted_checkout < runner
     assert target_checkout < runner
-    assert "ref: 490e199f013e9bd407e52f93e8f1a10319dc9f15" in workflow
+    assert "ref: 6c4f3bea9e6b45a136693afbb8819e1664d2dfb7" in workflow
     assert "ref: cb38387f2dd0785136fcc6434a49e43233bad648" in workflow
     assert "uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" in workflow
     assert "uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02" in workflow
@@ -33,4 +33,8 @@ def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     assert "git push" not in workflow
     assert "gh pr create" not in workflow
     assert "no independently authorized AIOS COMMIT adapter is configured" in workflow
+    assert "AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}" in workflow
+    assert "AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}" in workflow
+    assert "AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}" in workflow
+    assert "AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}" in workflow
     assert "exit 2" in workflow
