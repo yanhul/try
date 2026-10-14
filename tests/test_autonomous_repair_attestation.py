@@ -9,11 +9,23 @@ def test_missing_external_attestation_secret_blocks_before_authority_io(monkeypa
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios")
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "contract-external")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "permit-external")
-    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "must-not-leak-to-test-child")
+    monkeypatch.delenv("AIOS_REPAIR_ATTESTATION_SECRET", raising=False)
 
     with pytest.raises(RuntimeError, match="authority_attestation_missing"):
         authority(Path("."), 12345)
-    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in __import__("os").environ
+
+
+def test_attestation_secret_is_removed_before_any_child_process_can_inherit_it(monkeypatch):
+    import os
+
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios")
+    monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "contract-external")
+    monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "permit-external")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "must-not-leak-to-test-child")
+
+    with pytest.raises(RuntimeError, match="authority_directory_missing"):
+        authority(Path("."), 12345)
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in os.environ
 
 
 def test_authority_gate_loads_and_verifies_persisted_attestation():
