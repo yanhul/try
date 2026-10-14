@@ -16,7 +16,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     assert '"name": "BC Research Controller"' in workflow
     assert '"conclusion": "failure"' in workflow
     assert 'head_repository.get("full_name") != os.environ["GITHUB_REPOSITORY"]' in workflow
-    assert 'repo.get("nameWithOwner") != os.environ["GITHUB_REPOSITORY"]' in workflow
+    assert 'head_repository.get("full_name") != os.environ["GITHUB_REPOSITORY"]' in workflow
     assert workflow.index("name: Validate exact failed controller run identity") < workflow.index("name: Capture failed controller evidence")
     assert "uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" in workflow
     assert "uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02" in workflow
