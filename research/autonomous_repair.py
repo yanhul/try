@@ -179,7 +179,12 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
     effect_id = applied.get("effect_id")
     if not isinstance(effect_id, str) or not re.fullmatch(r"EF-[0-9a-f]{64}", effect_id):
         return "terminal_receipt_blocked:missing_or_invalid_effect_id"
-    effects_dir = (Path(aios_root) / "effects").resolve()
+    aios_root = Path(aios_root).resolve()
+    effects_dir = (aios_root / "effects").resolve()
+    try:
+        effects_dir.relative_to(aios_root)
+    except ValueError:
+        return "terminal_receipt_blocked:persisted_effect_directory_escape"
     effect_path = (effects_dir / (effect_id + ".json")).resolve()
     try:
         effect_path.relative_to(effects_dir)
@@ -215,7 +220,11 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_evidence_blocked:invalid_evidence_id"
     if len(set(evidence_refs)) != len(evidence_refs):
         return "terminal_evidence_blocked:duplicate_evidence_refs"
-    evidence_dir = (Path(aios_root) / "evidence").resolve()
+    evidence_dir = (aios_root / "evidence").resolve()
+    try:
+        evidence_dir.relative_to(aios_root)
+    except ValueError:
+        return "terminal_evidence_blocked:evidence_directory_escape"
     # A syntactically safe EV-* ID is not enough: reject symlink/path redirection
     # so the resolver cannot accidentally validate a record outside the AIOS store.
     def load_evidence(ref):
