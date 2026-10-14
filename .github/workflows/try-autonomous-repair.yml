@@ -97,7 +97,7 @@ jobs:
           AIOS_REPAIR_EVIDENCE: ${{ runner.temp }}/research/latest.json
           TRY_REPAIR_PROVIDER_URL: ${{ secrets.TRY_REPAIR_PROVIDER_URL }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_REPAIR_PROVIDER_TOKEN }}
-        run: python -m research.autonomous_repair
+        run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
       - name: Publish verified repair branch
         working-directory: target
