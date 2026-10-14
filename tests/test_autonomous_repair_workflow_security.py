@@ -8,7 +8,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     runner = workflow.index("name: Run bounded research-aware repair loop")
     assert trusted_checkout < runner
     assert target_checkout < runner
-    assert "ref: fix/authority-and-durable-recovery" in workflow
+    assert "ref: 308fd9fe7c1b3b52f9d9b0d4d301fcfcfa680dbe" in workflow
     assert "PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios:${{ github.workspace }}/target" in workflow
     assert "run: python -m research.autonomous_repair" in workflow
 
