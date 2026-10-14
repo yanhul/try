@@ -111,3 +111,50 @@ def test_provider_token_is_only_temporarily_exposed_for_proposal_calls():
     assert 'os.environ["TRY_REPAIR_PROVIDER_TOKEN"] = provider_token' in source
     assert 'os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)' in source
     assert source.rindex('os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)') < source.index("tested=worker.test()")
+
+
+def test_isolated_verifier_writes_run_bound_receipt_only_after_valid_hmac(monkeypatch, tmp_path):
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios-authority")
+    monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "CT-test-contract")
+    monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "PT-test-permit")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "real-secret")
+    monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "12345")
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(tmp_path / "gate.json"))
+    monkeypatch.setenv("RUNNER_TEMP", str(tmp_path))
+    monkeypatch.setattr(Path, "is_dir", lambda self: True)
+    monkeypatch.setattr(
+        "research.verify_repair_authority._record_digest",
+        lambda root, kind, record_id: kind + "-digest",
+    )
+
+    contract = {
+        "task_id": "try-ci-repair-12345", "actor": "try-autonomous-repair",
+        "scope": "repository", "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"], "max_attempts": 3,
+    }
+    authority_module = types.ModuleType("core.authority")
+    authority_module.authorize = lambda *args: True
+    authority_module.load_contract = lambda *args: contract
+    authority_module.load_permit = lambda *args: {
+        "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "external"
+    }
+    authority_module.load_attestation = lambda *args: {"signature": "valid"}
+    attestation_module = types.ModuleType("core.attestation")
+
+    def verify(*args):
+        assert args[-1] == "real-secret"
+        return True
+
+    attestation_module.verify_attestation = verify
+    monkeypatch.setitem(sys.modules, "core.authority", authority_module)
+    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
+
+    receipt_path = verify_and_write_receipt()
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    assert receipt["verified"] is True
+    assert receipt["run_id"] == "12345"
+    assert receipt["contract_id"] == "CT-test-contract"
+    assert receipt["permit_id"] == "PT-test-permit"
+    assert receipt["contract_sha256"] == "contracts-digest"
+    assert receipt["permit_sha256"] == "permits-digest"
+    assert receipt["attestation_sha256"] == "attestations-digest"
