@@ -90,7 +90,8 @@ def authority(root, run_id):
     authority_dir = os.environ.get("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
     contract_id = os.environ.get("AIOS_REPAIR_CONTRACT_ID", "").strip()
     permit_id = os.environ.get("AIOS_REPAIR_PERMIT_ID", "").strip()
-    attestation_secret = os.environ.get("AIOS_REPAIR_ATTESTATION_SECRET", "")
+    # Consume the secret so child test processes cannot inherit it from the environment.
+    attestation_secret = os.environ.pop("AIOS_REPAIR_ATTESTATION_SECRET", "")
     if not authority_dir or not contract_id or not permit_id:
         raise RuntimeError(
             "authority_not_provisioned: require durable AIOS_REPAIR_AUTHORITY_DIR, "
