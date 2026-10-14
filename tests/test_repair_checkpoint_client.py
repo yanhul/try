@@ -55,7 +55,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
                 attempt=1, phase="OBSERVE", state="WORKING",
             )
         self.assertTrue(result["persisted"])
-        self.assertEqual(seen["url"], "https://try.example.workers.dev/v1/repair/checkpoint")
+        self.assertEqual(seen["url"], "https://try.example.workers.dev/v1/repair/checkpoint/try-ci-repair:42")
         self.assertEqual(seen["authorization"], "Bearer secret-test-token")
         self.assertEqual(seen["payload"]["sha"], "a" * 40)
         self.assertEqual([method for method, _ in seen["requests"]], ["POST", "GET"])
