@@ -81,46 +81,69 @@ def source_snapshot(sha, log, owned=frozenset()):
         out[p]=raw
     return out
 
-def authority(root, run_id):
-    """Load externally issued, durable AIOS authority; never mint authority here.
+def _verify_preflight_receipt(root, contract_id, permit_id, run_id):
+    """Bind the isolated HMAC verifier's receipt to the exact persisted records."""
+    receipt_path = os.environ.pop("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", "").strip()
+    if not receipt_path:
+        raise RuntimeError("authority_preflight_receipt_missing")
+    try:
+        receipt = json.loads(Path(receipt_path).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise RuntimeError("authority_preflight_receipt_unavailable") from exc
+    if (
+        receipt.get("schema") != 1
+        or receipt.get("verified") is not True
+        or receipt.get("run_id") != str(run_id)
+        or receipt.get("authority_root") != str(root)
+        or receipt.get("contract_id") != contract_id
+        or receipt.get("permit_id") != permit_id
+    ):
+        raise RuntimeError("authority_preflight_receipt_identity_mismatch")
+    for kind, record_id, field in (
+        ("contracts", contract_id, "contract_sha256"),
+        ("permits", permit_id, "permit_sha256"),
+        ("attestations", permit_id, "attestation_sha256"),
+    ):
+        directory = (root / "authority" / kind).resolve()
+        record_path = (directory / (record_id + ".json")).resolve()
+        try:
+            record_path.relative_to(directory)
+        except ValueError as exc:
+            raise RuntimeError("authority_record_path_escape") from exc
+        try:
+            digest = hashlib.sha256(record_path.read_bytes()).hexdigest()
+        except OSError as exc:
+            raise RuntimeError(f"authority_record_unavailable:{kind}") from exc
+        if receipt.get(field) != digest:
+            raise RuntimeError(f"authority_preflight_record_digest_mismatch:{kind}")
 
-    The authority directory must be persistent and pre-provisioned by AIOS.
-    This workload may consume a contract/permit, but cannot create its own.
+
+def authority(root, run_id):
+    """Load preflight-verified durable AIOS authority; never mint authority here.
+
+    HMAC verification runs in a separate workflow step/process so its secret is
+    never present in the controller process that later launches untrusted tests.
     """
-    # Consume authority inputs too: child test processes must not inherit issuer details.
     authority_dir = os.environ.pop("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
     contract_id = os.environ.pop("AIOS_REPAIR_CONTRACT_ID", "").strip()
     permit_id = os.environ.pop("AIOS_REPAIR_PERMIT_ID", "").strip()
-    # Consume the secret so child test processes cannot inherit it from the environment.
-    attestation_secret = os.environ.pop("AIOS_REPAIR_ATTESTATION_SECRET", "")
     if not authority_dir or not contract_id or not permit_id:
         raise RuntimeError(
             "authority_not_provisioned: require durable AIOS_REPAIR_AUTHORITY_DIR, "
             "AIOS_REPAIR_CONTRACT_ID and AIOS_REPAIR_PERMIT_ID; self-issued authority forbidden"
         )
-    if not attestation_secret:
-        raise RuntimeError(
-            "authority_attestation_missing: AIOS_REPAIR_ATTESTATION_SECRET is required; "
-            "unsigned or self-issued permit records are not accepted"
-        )
     durable_root = Path(authority_dir).expanduser().resolve()
     if not durable_root.is_dir():
         raise RuntimeError("authority_directory_missing")
-    if any(part in {"tmp", "temp", "temporary"} for part in durable_root.parts):
+    if any(part.lower() in {"tmp", "temp", "temporary"} for part in durable_root.parts):
         raise RuntimeError("authority_directory_must_not_be_temporary")
-    # Resolve and validate the exact persisted records BEFORE proposal generation.
-    # This checks contract identity, capability registry, governing policy, and
-    # permit-to-contract binding. Missing/corrupt/forged records fail closed.
     try:
-        from core.authority import authorize, load_attestation, load_contract, load_permit
-        from core.attestation import verify_attestation
+        _verify_preflight_receipt(durable_root, contract_id, permit_id, run_id)
+        from core.authority import authorize, load_contract, load_permit
 
         authorize(str(durable_root), contract_id, permit_id)
         contract = load_contract(str(durable_root), contract_id)
-        permit = load_permit(str(durable_root), permit_id)
-        attestation = load_attestation(str(durable_root), permit_id)
-        if not verify_attestation(contract, permit, attestation, attestation_secret):
-            raise ValueError("authority_attestation_rejected")
+        load_permit(str(durable_root), permit_id)
         if contract.get("task_id") != f"try-ci-repair-{run_id}":
             raise ValueError("contract_task_id_mismatch")
         if contract.get("actor") != "try-autonomous-repair":
