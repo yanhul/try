@@ -9,7 +9,7 @@ import types
 
 import pytest
 
-from research.autonomous_repair import authority
+from research.autonomous_repair import authority, resolve_terminal_evidence
 
 
 def _set_authority_env(monkeypatch, directory="/var/lib/aios-authority"):
@@ -157,3 +157,76 @@ def test_main_blocks_before_proposal_when_authority_is_missing(monkeypatch, tmp_
     assert result["authority_required"] is True
     assert proposals == []
     assert checkpoint_writes[-1]["state"] == "BLOCKED"
+
+
+
+def test_terminal_evidence_blocks_when_effect_receipt_is_not_persisted(tmp_path, monkeypatch):
+    monkeypatch.setitem(sys.modules, "core.evidence", types.SimpleNamespace(
+        verify_evidence=lambda record: True
+    ))
+    reason = resolve_terminal_evidence(
+        tmp_path, ["EV-test"], run_id=123, base_sha="a" * 40,
+        applied={"effect_id": "EF-" + "b" * 64},
+        contract_id="CT-test", permit_id="PT-test",
+    )
+    assert reason == "terminal_receipt_blocked:persisted_effect_unavailable:FileNotFoundError"
+
+
+def test_terminal_evidence_requires_resolved_verified_run_and_sha_lineage(tmp_path, monkeypatch):
+    import hashlib
+    import json
+
+    def evidence(evidence_id, level, source_ref, claim, run_id, provider, artifact_ref=None):
+        record = {
+            "evidence_id": evidence_id, "level": level, "source_ref": source_ref,
+            "claim": claim, "run_id": str(run_id), "provider": provider,
+            "artifact_ref": artifact_ref, "parent_evidence_id": None,
+        }
+        canonical = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
+        record["digest"] = hashlib.sha256(canonical).hexdigest()
+        return record
+
+    def verify(record):
+        candidate = dict(record)
+        digest = candidate.pop("digest", None)
+        canonical = json.dumps(candidate, sort_keys=True, separators=(",", ":")).encode()
+        return digest == hashlib.sha256(canonical).hexdigest()
+
+    monkeypatch.setitem(sys.modules, "core.evidence", types.SimpleNamespace(verify_evidence=verify))
+    root = tmp_path
+    (root / "effects").mkdir()
+    (root / "evidence").mkdir()
+    sha = "a" * 40
+    effect_id = "EF-" + "b" * 64
+    effect_evidence = evidence("EV-effect", "OBSERVED", "aios://effect", "patch application observed",
+                               123, "aios-worker")
+    effect = {
+        "effect_id": effect_id, "state": "OBSERVED_SUCCESS",
+        "contract_id": "CT-test", "permit_id": "PT-test",
+        "actor": "try-autonomous-repair", "attempt_id": effect_id + ":attempt:1",
+        "provider": "aios-worker",
+        "provider_observation": {
+            "attempt_id": effect_id + ":attempt:1", "provider": "aios-worker",
+            "evidence": effect_evidence,
+        },
+    }
+    (root / "effects" / (effect_id + ".json")).write_text(json.dumps(effect), encoding="utf-8")
+    test_evidence = evidence(
+        "EV-test", "VERIFIED_DIGITAL",
+        f"github-actions://yanhul/try/commit/{sha}",
+        "pytest test verification passed", 123, "github-actions",
+        artifact_ref=f"artifact://runs/123/{sha}/pytest.xml",
+    )
+    (root / "evidence" / "EV-test.json").write_text(json.dumps(test_evidence), encoding="utf-8")
+
+    assert resolve_terminal_evidence(
+        root, ["EV-test"], run_id=123, base_sha=sha, applied={"effect_id": effect_id},
+        contract_id="CT-test", permit_id="PT-test",
+    ) is None
+
+    test_evidence["run_id"] = "999"
+    (root / "evidence" / "EV-test.json").write_text(json.dumps(test_evidence), encoding="utf-8")
+    assert "run_identity_mismatch" in resolve_terminal_evidence(
+        root, ["EV-test"], run_id=123, base_sha=sha, applied={"effect_id": effect_id},
+        contract_id="CT-test", permit_id="PT-test",
+    )
