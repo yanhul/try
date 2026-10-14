@@ -19,6 +19,8 @@ def select_resume_attempt(prior, *, repository, sha, max_attempts=MAX_ATTEMPTS):
         raise RepairCheckpointError(
             f"checkpoint_not_resumable:{prior.get('state')}:{prior.get('phase')}"
         )
+    if is_reconciliation_blocked_checkpoint(prior, repository=repository, sha=sha):
+        raise RepairCheckpointError("checkpoint_reconciliation_required")
     previous_attempt = prior.get("attempt")
     if isinstance(previous_attempt, bool) or not isinstance(previous_attempt, int) or previous_attempt < 1:
         raise RepairCheckpointError("checkpoint_attempt_invalid_for_resume")
@@ -39,6 +41,17 @@ def is_interrupted_working_checkpoint(prior, *, repository, sha):
         and not isinstance(prior.get("attempt"), bool)
         and prior.get("attempt") >= 1
         and prior.get("phase") in {"OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME"}
+    )
+
+
+def is_reconciliation_blocked_checkpoint(prior, *, repository, sha):
+    """Never retry an interrupted mutation until an independent reconciler clears it."""
+    return (
+        isinstance(prior, dict)
+        and prior.get("state") == "BLOCKED"
+        and prior.get("repository") == repository
+        and prior.get("sha") == sha.lower()
+        and "reconciliation_required" in str(prior.get("reason", ""))
     )
 
 
@@ -211,6 +224,19 @@ def main():
             unknown = {
                 "status": "UNKNOWN", "attempt": prior["attempt"], "phase": prior["phase"],
                 "reason": reason, "reconciliation_required": True,
+            }
+            Path("repair-result.json").write_text(
+                json.dumps(unknown, indent=2, sort_keys=True), encoding="utf-8"
+            )
+            print(json.dumps(unknown, sort_keys=True))
+            return 2
+        if is_reconciliation_blocked_checkpoint(
+            prior, repository="yanhul/try", sha=base
+        ):
+            unknown = {
+                "status": "UNKNOWN", "attempt": prior["attempt"], "phase": prior.get("phase"),
+                "reason": "interrupted_attempt_outcome_unknown; reconciliation_required",
+                "reconciliation_required": True,
             }
             Path("repair-result.json").write_text(
                 json.dumps(unknown, indent=2, sort_keys=True), encoding="utf-8"
