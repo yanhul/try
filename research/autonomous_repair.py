@@ -203,6 +203,9 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_receipt_blocked:effect_evidence_attempt_mismatch"
     if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
         return "terminal_evidence_blocked:no_test_evidence_refs"
+    if any(not isinstance(ref, str) or not re.fullmatch(r"EV-[A-Za-z0-9_-]{1,120}", ref)
+           for ref in evidence_refs):
+        return "terminal_evidence_blocked:invalid_evidence_id"
     if len(set(evidence_refs)) != len(evidence_refs):
         return "terminal_evidence_blocked:duplicate_evidence_refs"
     evidence_dir = (Path(aios_root) / "evidence").resolve()
@@ -246,12 +249,18 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         if not any(token in claim for token in ("test", "pytest", "verification")):
             return f"terminal_evidence_blocked:claim_not_test_verification:{ref}"
         parent_id = record.get("parent_evidence_id")
-        if parent_id is not None:
+        ancestors = {ref}
+        while parent_id is not None:
+            if not isinstance(parent_id, str) or not re.fullmatch(r"EV-[A-Za-z0-9_-]{1,120}", parent_id):
+                return f"terminal_evidence_blocked:parent_evidence_invalid:{ref}:invalid_evidence_id"
+            if parent_id in ancestors:
+                return f"terminal_evidence_blocked:parent_evidence_cycle:{ref}"
+            ancestors.add(parent_id)
             try:
                 parent = load_evidence(parent_id)
             except (OSError, ValueError, TypeError) as exc:
                 return f"terminal_evidence_blocked:parent_evidence_invalid:{ref}:{type(exc).__name__}:{exc}"
-            if parent_id == ref or parent.get("run_id") != str(run_id):
+            if parent.get("run_id") != str(run_id):
                 return f"terminal_evidence_blocked:parent_evidence_lineage_mismatch:{ref}"
             parent_lineage = " ".join(
                 value for value in (parent.get("source_ref"), parent.get("artifact_ref"))
@@ -262,6 +271,7 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
                 parent_lineage.lower(),
             ):
                 return f"terminal_evidence_blocked:parent_base_sha_lineage_missing:{ref}"
+            parent_id = parent.get("parent_evidence_id")
     return None
 
 
