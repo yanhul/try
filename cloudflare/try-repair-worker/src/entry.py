@@ -328,15 +328,18 @@ class Default(WorkerEntrypoint):
         if request.method == "GET" and path == "/healthz":
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
+            provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
             if (
                 not getattr(self.env, "GEMINI_API_KEY", "")
                 or not getattr(self.env, "GEMINI_PROJECT_ID", "")
                 or not checkpoint_bound
+                or not provider_token_configured
             ):
                 return Response.json(
                     {
                         "status": "NOT_READY", "provider": "gemini",
                         "checkpoint_store_bound": checkpoint_bound,
+                        "provider_token_configured": provider_token_configured,
                     },
                     status=503,
                 )
@@ -347,6 +350,7 @@ class Default(WorkerEntrypoint):
                     "model": model,
                     "project_bound": True,
                     "checkpoint_store_bound": True,
+                    "provider_token_configured": True,
                 }
             )
 
