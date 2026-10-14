@@ -96,6 +96,11 @@ jobs:
           AIOS_REPAIR_EVIDENCE: ${{ runner.temp }}/research/latest.json
           TRY_REPAIR_PROVIDER_URL: ${{ secrets.TRY_REPAIR_PROVIDER_URL }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_REPAIR_PROVIDER_TOKEN }}
+          # The issuer provisions the matching durable records separately; never mint them in this workflow.
+          AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}
+          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
+          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}
         run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
       - name: Refuse ungoverned publication and export candidate patch
