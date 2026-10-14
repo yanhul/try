@@ -118,3 +118,42 @@ def test_authority_rejects_scope_or_identity_mismatch(monkeypatch, field, value,
     with pytest.raises(RuntimeError, match="authority_records_rejected") as exc:
         authority(None, 123)
     assert message in str(exc.value)
+
+def test_main_blocks_before_proposal_when_authority_is_missing(monkeypatch, tmp_path):
+    import json
+    import research.autonomous_repair as runner
+
+    monkeypatch.chdir(tmp_path)
+    log = tmp_path / "ci.log"
+    log.write_text("synthetic CI failure for authority-gate regression", encoding="utf-8")
+    monkeypatch.setenv("AIOS_REPAIR_SHA", "a" * 40)
+    monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "123")
+    monkeypatch.setenv("AIOS_REPAIR_LOG", str(log))
+    monkeypatch.delenv("AIOS_REPAIR_EVIDENCE", raising=False)
+    for key in (
+        "AIOS_REPAIR_AUTHORITY_DIR",
+        "AIOS_REPAIR_CONTRACT_ID",
+        "AIOS_REPAIR_PERMIT_ID",
+    ):
+        monkeypatch.delenv(key, raising=False)
+
+    monkeypatch.setattr(runner, "get_checkpoint", lambda **kwargs: None)
+    checkpoint_writes = []
+    monkeypatch.setattr(runner, "persist_checkpoint", lambda **kwargs: checkpoint_writes.append(kwargs))
+
+    worker_module = types.ModuleType("core.agent_repair_worker")
+    worker_module.AgentRepairWorker = type("AgentRepairWorker", (), {})
+    worker_module.ProposedFile = type("ProposedFile", (), {})
+    provider_module = types.ModuleType("core.try_repair_provider")
+    proposals = []
+    provider_module.propose = lambda **kwargs: proposals.append(kwargs)
+    provider_module.TryRepairProviderError = type("TryRepairProviderError", (Exception,), {})
+    monkeypatch.setitem(sys.modules, "core.agent_repair_worker", worker_module)
+    monkeypatch.setitem(sys.modules, "core.try_repair_provider", provider_module)
+
+    assert runner.main() == 2
+    result = json.loads((tmp_path / "repair-result.json").read_text(encoding="utf-8"))
+    assert result["status"] == "BLOCKED"
+    assert result["authority_required"] is True
+    assert proposals == []
+    assert checkpoint_writes[-1]["state"] == "BLOCKED"
