@@ -86,3 +86,35 @@ def test_rejected_persisted_authority_fails_closed(monkeypatch):
 
     with pytest.raises(RuntimeError, match="authority_records_rejected"):
         authority(None, 123)
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("task_id", "try-ci-repair-other-run", "contract_task_id_mismatch"),
+        ("actor", "untrusted-actor", "contract_actor_mismatch"),
+        ("scope", "global", "contract_scope_mismatch"),
+        ("capabilities", [], "contract_patch_capability_missing"),
+        ("allowed_effects", [], "contract_patch_effect_not_allowed"),
+        ("max_attempts", 4, "contract_attempt_budget_exceeds_runner_limit"),
+    ],
+)
+def test_authority_rejects_scope_or_identity_mismatch(monkeypatch, field, value, message):
+    _set_authority_env(monkeypatch)
+    monkeypatch.setattr("pathlib.Path.is_dir", lambda self: True)
+    contract = {
+        "task_id": "try-ci-repair-123",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 3,
+    }
+    contract[field] = value
+    module = types.ModuleType("core.authority")
+    module.authorize = lambda *args: True
+    module.load_contract = lambda *args: contract
+    monkeypatch.setitem(sys.modules, "core.authority", module)
+
+    with pytest.raises(RuntimeError, match="authority_records_rejected") as exc:
+        authority(None, 123)
+    assert message in str(exc.value)
