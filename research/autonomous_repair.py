@@ -3,11 +3,33 @@ from __future__ import annotations
 import hashlib, json, os, subprocess, tempfile
 from pathlib import Path
 from research.repair_research import run as research_run
-from research.repair_checkpoint import get_checkpoint, persist_checkpoint, RepairCheckpointError
+from research.repair_checkpoint import get_checkpoint as _get_checkpoint, persist_checkpoint as _persist_checkpoint, RepairCheckpointError
 
 MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
 MAX_SOURCE_BYTES=90000
+
+# The checkpoint bearer token is kept out of the process environment except
+# for the short synchronous HTTP call. In particular, worker tests must not
+# inherit it as an environment variable.
+_CHECKPOINT_TOKEN = ""
+
+def _checkpoint_call(fn, *args, **kwargs):
+    token = _CHECKPOINT_TOKEN
+    if not token:
+        raise RepairCheckpointError("checkpoint_provider_not_configured")
+    os.environ.pop("TRY_REPAIR_CHECKPOINT_TOKEN", None)
+    os.environ["TRY_REPAIR_CHECKPOINT_TOKEN"] = token
+    try:
+        return fn(*args, **kwargs)
+    finally:
+        os.environ.pop("TRY_REPAIR_CHECKPOINT_TOKEN", None)
+
+def get_checkpoint(*args, **kwargs):
+    return _checkpoint_call(_get_checkpoint, *args, **kwargs)
+
+def persist_checkpoint(*args, **kwargs):
+    return _checkpoint_call(_persist_checkpoint, *args, **kwargs)
 
 def select_resume_attempt(prior, *, repository, sha, max_attempts=MAX_ATTEMPTS):
     """Resume only after a persisted BLOCKED checkpoint with matching identity."""
@@ -292,7 +314,11 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
 
 
 def main():
-    # Keep the provider credential in controller memory; expose it only during a proposal call.
+    global _CHECKPOINT_TOKEN
+    # Keep both credentials out of inherited subprocess environments. The
+    # checkpoint token is exposed only inside a checkpoint HTTP call; the
+    # proposal token only around the provider request.
+    _CHECKPOINT_TOKEN = os.environ.pop("TRY_REPAIR_CHECKPOINT_TOKEN", "").strip()
     provider_token = os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", "")
     base=os.environ["AIOS_REPAIR_SHA"]; run_id=int(os.environ["AIOS_REPAIR_RUN_ID"])
     log_path=Path(os.environ["AIOS_REPAIR_LOG"])
