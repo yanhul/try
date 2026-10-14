@@ -113,3 +113,21 @@ def test_rejects_parent_evidence_cycle(monkeypatch, tmp_path):
     parent = _record("EV-parent", parent_evidence_id="EV-child")
     root = _setup(monkeypatch, tmp_path, {"EV-child": child, "EV-parent": parent})
     assert "parent_evidence_cycle" in _resolve(root, ["EV-child"])
+
+def test_rejects_persisted_effect_symlink_escape(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    effect_path = root / "effects" / f"{EFFECT_ID}.json"
+    effect_path.unlink()
+    outside = tmp_path / "outside-effect.json"
+    outside.write_text(json.dumps({
+        "effect_id": EFFECT_ID, "state": "OBSERVED_SUCCESS",
+        "contract_id": "contract-1", "permit_id": "permit-1",
+        "actor": "try-autonomous-repair", "attempt_id": "attempt-7",
+        "provider": "github-actions",
+        "provider_observation": {
+            "attempt_id": "attempt-7", "provider": "github-actions",
+            "evidence": {"provider": "github-actions", "run_id": "attempt-7", "digest": "ok"},
+        },
+    }), encoding="utf-8")
+    effect_path.symlink_to(outside)
+    assert "persisted_effect_path_escape" in _resolve(root, ["EV-good"])
