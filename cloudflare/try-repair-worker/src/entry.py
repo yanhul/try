@@ -254,7 +254,7 @@ class Default(WorkerEntrypoint):
                     "status": "READY",
                     "provider": "gemini",
                     "model": model,
-                    "project_bound": True,
+                    "project_id_configured": True,
                 }
             )
 
