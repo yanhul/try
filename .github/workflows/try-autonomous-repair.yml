@@ -59,6 +59,15 @@ jobs:
           clean: true
           persist-credentials: false
 
+
+      - name: Checkout trusted TRY repair controller
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/try
+          ref: main
+          path: trusted-try
+          persist-credentials: false
+
       - name: Capture failed controller evidence
         env:
           GH_TOKEN: ${{ github.token }}
@@ -81,7 +90,8 @@ jobs:
       - name: Run bounded research-aware repair loop
         working-directory: target
         env:
-          PYTHONPATH: ${{ github.workspace }}/trusted-aios
+          PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios
+          GITHUB_TOKEN: ${{ github.token }}
           AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
           AIOS_REPAIR_LOG: ${{ runner.temp }}/ci-failure.log
@@ -90,7 +100,7 @@ jobs:
           TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
-        run: python -m research.autonomous_repair
+        run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
       - name: Publish verified repair branch
         working-directory: target
