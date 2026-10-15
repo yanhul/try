@@ -146,3 +146,9 @@ def test_rejects_effects_directory_symlink_escape(monkeypatch, tmp_path):
     effects_dir.rename(tmp_path / "effects-real")
     effects_dir.symlink_to(tmp_path / "effects-real", target_is_directory=True)
     assert "persisted_effect_directory_escape" in _resolve(root, ["EV-good"])
+
+
+def test_rejects_claim_that_only_contains_test_as_substring(monkeypatch, tmp_path):
+    record = _record("EV-contest", claim="contest completed successfully")
+    root = _setup(monkeypatch, tmp_path, {"EV-contest": record})
+    assert "claim_not_test_verification" in _resolve(root, ["EV-contest"])
