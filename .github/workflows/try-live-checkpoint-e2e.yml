@@ -23,6 +23,6 @@ jobs:
           python-version: "3.13"
       - name: Verify live Durable Object write, readback, and process restart
         env:
-          WORKER_URL: ${{ secrets.TRY_REPAIR_WORKER_URL }}
+          WORKER_URL: https://try-aios-repair-provider.simplehu.workers.dev
           WORKER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
         run: python scripts/live_checkpoint_e2e.py
