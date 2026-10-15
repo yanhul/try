@@ -77,6 +77,23 @@ def is_reconciliation_blocked_checkpoint(prior, *, repository, sha):
     )
 
 
+def record_unknown_apply_outcome(*, checkpoint_id, repository, sha, attempt, phase, reason):
+    """Persist an uncertain apply as UNKNOWN and require reconciliation before retry."""
+    blocked_reason = f"apply_outcome_unknown; reconciliation_required; {reason}"[:1000]
+    result = {
+        "status": "UNKNOWN", "attempt": attempt, "phase": phase,
+        "reason": blocked_reason, "reconciliation_required": True,
+    }
+    Path("repair-result.json").write_text(
+        json.dumps(result, indent=2, sort_keys=True), encoding="utf-8"
+    )
+    persist_checkpoint(
+        request_id=checkpoint_id, repository=repository, sha=sha,
+        attempt=attempt, phase=phase, state="BLOCKED", reason=blocked_reason,
+    )
+    return result
+
+
 def git(*args):
     return subprocess.run(["git", *args], cwd=".", text=True, capture_output=True, check=True).stdout.strip()
 
@@ -454,17 +471,9 @@ def main():
                 # apply_via_aios may have mutated the working tree before raising.
                 # Do not classify an uncertain side effect as an ordinary retryable
                 # failure: require an independent reconciler before any next attempt.
-                blocked_reason = f"apply_outcome_unknown; reconciliation_required; {reason}"[:1000]
-                unknown = {
-                    "status": "UNKNOWN", "attempt": attempt, "phase": current_phase,
-                    "reason": blocked_reason, "reconciliation_required": True,
-                }
-                Path("repair-result.json").write_text(
-                    json.dumps(unknown, indent=2, sort_keys=True), encoding="utf-8"
-                )
-                persist_checkpoint(
-                    request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                    attempt=attempt, phase=current_phase, state="BLOCKED", reason=blocked_reason,
+                unknown = record_unknown_apply_outcome(
+                    checkpoint_id=checkpoint_id, repository="yanhul/try", sha=base,
+                    attempt=attempt, phase=current_phase, reason=reason,
                 )
                 print(json.dumps(unknown, sort_keys=True))
                 return 2
