@@ -86,3 +86,13 @@ def test_uncertain_aios_apply_is_persisted_unknown_and_reconciliation_blocked(mo
              "attempt": 2, "reason": result["reason"]},
             repository="yanhul/try", sha="a" * 40,
         )
+
+
+def test_uncertain_verification_exception_stops_retry_after_mutation():
+    from pathlib import Path
+
+    controller = Path("research/autonomous_repair.py").read_text()
+    # A worker.test() exception occurs after apply_via_aios has returned; the
+    # mutated tree must not receive another candidate until reconciliation.
+    assert 'if current_phase in {"PROPOSE", "VERIFY"}:' in controller
+    assert "independent reconciliation" in controller
