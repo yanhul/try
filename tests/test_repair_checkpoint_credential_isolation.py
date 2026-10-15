@@ -48,3 +48,41 @@ def test_checkpoint_and_proposal_credentials_are_distinct_in_workflow():
     assert 'os.environ.pop("TRY_REPAIR_CHECKPOINT_TOKEN", "").strip()' in controller
     assert 'os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", "")' in controller
     assert 'os.environ.get("TRY_REPAIR_PROVIDER_TOKEN", "")' not in client
+
+
+def test_uncertain_aios_apply_is_persisted_unknown_and_reconciliation_blocked(monkeypatch, tmp_path):
+    import json
+    from research import autonomous_repair as controller
+
+    monkeypatch.chdir(tmp_path)
+    persisted = []
+    monkeypatch.setattr(controller, "persist_checkpoint", lambda **kwargs: persisted.append(kwargs))
+    result = controller.record_unknown_apply_outcome(
+        checkpoint_id="try-ci-repair:123",
+        repository="yanhul/try",
+        sha="a" * 40,
+        attempt=2,
+        phase="PROPOSE",
+        reason="worker died after partial write",
+    )
+
+    on_disk = json.loads((tmp_path / "repair-result.json").read_text(encoding="utf-8"))
+    assert result == on_disk
+    assert result["status"] == "UNKNOWN"
+    assert result["reconciliation_required"] is True
+    assert "reconciliation_required" in result["reason"]
+    assert persisted == [{
+        "request_id": "try-ci-repair:123",
+        "repository": "yanhul/try",
+        "sha": "a" * 40,
+        "attempt": 2,
+        "phase": "PROPOSE",
+        "state": "BLOCKED",
+        "reason": result["reason"],
+    }]
+    with __import__("pytest").raises(controller.RepairCheckpointError, match="reconciliation_required"):
+        controller.select_resume_attempt(
+            {"repository": "yanhul/try", "sha": "a" * 40, "state": "BLOCKED",
+             "attempt": 2, "reason": result["reason"]},
+            repository="yanhul/try", sha="a" * 40,
+        )
