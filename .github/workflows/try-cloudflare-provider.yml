@@ -2,6 +2,10 @@ name: TRY Cloudflare Repair Provider
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "cloudflare/try-repair-worker/**"
+      - ".github/workflows/try-cloudflare-provider.yml"
   push:
     branches: [main]
     paths:
@@ -12,7 +16,20 @@ permissions:
   contents: read
 
 jobs:
+  worker-tests:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cloudflare/try-repair-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Worker conformance tests
+        run: uv run python -m unittest discover -s tests -v
+
   deploy:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
