@@ -484,23 +484,36 @@ def main():
                 break
             continue
         if tested.status=="PASS" and not tested.evidence_refs:
-            reason="test_pass_without_evidence_refs"
+            # A mutation has happened, but there is no independent evidence to
+            # establish its terminal outcome. Do not resume by layering another
+            # proposal onto this tree until an independent reconciler resolves it.
+            reason="test_pass_without_evidence_refs; reconciliation_required"
+            blocked={"status":"BLOCKED","attempt":attempt,"reason":reason,
+                     "test_status":"PASS","reconciliation_required":True}
+            Path("repair-result.json").write_text(
+                json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8"
+            )
             persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                               attempt=attempt, phase="VERIFY", state="BLOCKED", reason=reason)
-            results.append({"attempt":attempt,"status":"HOLD","reason":reason})
-            break
+                               attempt=attempt, phase="PERSIST", state="BLOCKED", reason=reason)
+            print(json.dumps(blocked,sort_keys=True))
+            return 2
         if tested.status=="PASS":
             reason = resolve_terminal_evidence(
                 aios, tested.evidence_refs, run_id=run_id, base_sha=base,
                 applied=applied, contract_id=cid, permit_id=pid,
             )
             if reason:
-                blocked={"status":"BLOCKED","attempt":attempt,"reason":reason,
-                         "test_status":"PASS","test_evidence_refs":list(tested.evidence_refs)}
+                # The patch was applied, but its effect/evidence chain did not
+                # validate. This is a reconciliation stop, not a fresh retry.
+                blocked_reason=f"{reason}; reconciliation_required"
+                blocked={"status":"BLOCKED","attempt":attempt,"reason":blocked_reason,
+                         "test_status":"PASS","test_evidence_refs":list(tested.evidence_refs),
+                         "reconciliation_required":True}
                 Path("repair-result.json").write_text(json.dumps(blocked,indent=2,sort_keys=True),encoding="utf-8")
                 persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
-                                   attempt=attempt, phase="PERSIST", state="BLOCKED", reason=reason)
-                print(json.dumps({"status":"BLOCKED","attempt":attempt,"reason":reason},sort_keys=True))
+                                   attempt=attempt, phase="PERSIST", state="BLOCKED", reason=blocked_reason)
+                print(json.dumps({"status":"BLOCKED","attempt":attempt,"reason":blocked_reason,
+                                  "reconciliation_required":True},sort_keys=True))
                 return 2
         result={"attempt":attempt,"status":tested.status,"proposal":proposal,"apply":dict(applied),
                 "test":{"status":tested.status,"evidence_refs":list(tested.evidence_refs),"details":dict(tested.details)},
