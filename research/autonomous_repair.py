@@ -467,10 +467,10 @@ def main():
             tested=worker.test()
         except Exception as exc:
             reason=f"{type(exc).__name__}:{exc}"[:1000]
-            if current_phase == "PROPOSE":
-                # apply_via_aios may have mutated the working tree before raising.
-                # Do not classify an uncertain side effect as an ordinary retryable
-                # failure: require an independent reconciler before any next attempt.
+            if current_phase in {"PROPOSE", "VERIFY"}:
+                # apply_via_aios may mutate before raising, and worker.test() may
+                # fail after a successful mutation while its outcome is uncertain.
+                # Never layer another patch on that tree until independent reconciliation.
                 unknown = record_unknown_apply_outcome(
                     checkpoint_id=checkpoint_id, repository="yanhul/try", sha=base,
                     attempt=attempt, phase=current_phase, reason=reason,
