@@ -1,4 +1,7 @@
-"""Live Worker integration test: durable write, read-after-write, and process restart."""
+"""Live Worker integration test: durable write, read-after-write, and process restart.
+
+The HTTP client uses an explicit User-Agent to make the request identity stable.
+"""
 from __future__ import annotations
 
 import argparse
