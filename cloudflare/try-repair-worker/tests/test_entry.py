@@ -32,6 +32,7 @@ class _FakeResponse:
 
 sys.modules["workers"] = types.SimpleNamespace(
     WorkerEntrypoint=_FakeEntrypoint,
+    DurableObject=_FakeEntrypoint,
     Response=_FakeResponse,
     fetch=None,
 )
@@ -44,7 +45,44 @@ class _Env:
     GEMINI_API_KEY = "test-key"
     GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
+    TRY_PROVIDER_TOKEN = "test-token"
+    REPAIR_CHECKPOINTS = object()
 
+
+
+
+class HealthCheckTests(unittest.TestCase):
+    class Request:
+        method = "GET"
+        url = "https://worker.example/healthz"
+        headers = {}
+
+    def test_health_not_ready_without_provider_token(self):
+        env = _Env()
+        env.TRY_PROVIDER_TOKEN = ""
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["provider_token_configured"])
+
+    def test_health_not_ready_without_checkpoint_binding(self):
+        env = _Env()
+        env.REPAIR_CHECKPOINTS = None
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["checkpoint_store_bound"])
+
+    def test_health_ready_only_when_required_bindings_exist(self):
+        env = _Env()
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "READY")
+        self.assertTrue(result["provider_token_configured"])
+        self.assertTrue(result["checkpoint_store_bound"])
 
 
 class BoundedBodyTests(unittest.TestCase):
@@ -317,3 +355,70 @@ class GeminiRetryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class _FakeStorage:
+    def __init__(self):
+        self.data = {}
+    async def get(self, key):
+        return self.data.get(key)
+    async def put(self, key, value):
+        self.data[key] = value
+
+
+class _FakeContext:
+    def __init__(self):
+        self.storage = _FakeStorage()
+
+
+class DurableCheckpointTests(unittest.TestCase):
+    def setUp(self):
+        self.ctx = _FakeContext()
+        self.checkpoint = entry.RepairCheckpoint(self.ctx, _Env())
+        self.base = {
+            "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "phase": "OBSERVE", "state": "WORKING",
+        }
+
+    def write(self, **changes):
+        payload = dict(self.base)
+        payload.update(changes)
+        return asyncio.run(self.checkpoint.write_checkpoint(payload))
+
+    def test_checkpoint_is_persisted_and_identity_bound(self):
+        first = self.write()
+        self.assertTrue(first["persisted"])
+        replay = self.write()
+        self.assertTrue(replay["idempotent_replay"])
+        self.assertEqual(replay["version"], 1)
+        changed_same_phase = self.write(evidence_digest="d" * 64)
+        self.assertEqual(changed_same_phase["error"], "checkpoint_replay_conflict")
+        self.assertEqual(asyncio.run(self.checkpoint.read_checkpoint())["version"], 1)
+        conflict = self.write(sha="b" * 40, phase="DECIDE")
+        self.assertEqual(conflict["error"], "checkpoint_identity_conflict")
+
+    def test_invalid_phase_skip_fails_closed(self):
+        result = self.write(phase="PROPOSE")
+        self.assertEqual(result["_http_status"], 409)
+        self.assertEqual(result["error"], "initial_checkpoint_must_start_at_observe_attempt_1")
+
+    def test_done_requires_persisted_evidence_digest(self):
+        self.assertTrue(self.write()["persisted"])
+        self.assertTrue(self.write(phase="DECIDE")["persisted"])
+        self.assertTrue(self.write(phase="PROPOSE")["persisted"])
+        self.assertTrue(self.write(phase="VERIFY")["persisted"])
+        self.assertTrue(self.write(phase="PERSIST")["persisted"])
+        denied = self.write(phase="PERSIST", state="DONE")
+        self.assertEqual(denied["error"], "done_requires_persisted_evidence_digest")
+        done = self.write(phase="PERSIST", state="DONE", evidence_digest="c" * 64)
+        self.assertTrue(done["persisted"])
+        terminal = self.write(state="BLOCKED", reason="late mutation")
+        self.assertEqual(terminal["error"], "checkpoint_terminal")
+
+    def test_retry_requires_blocked_then_resume(self):
+        self.assertTrue(self.write()["persisted"])
+        blocked = self.write(phase="OBSERVE", state="BLOCKED", reason="test failed")
+        self.assertTrue(blocked["persisted"])
+        resumed = self.write(attempt=2, phase="RESUME", state="WORKING")
+        self.assertTrue(resumed["persisted"])
+        self.assertEqual(resumed["version"], 3)

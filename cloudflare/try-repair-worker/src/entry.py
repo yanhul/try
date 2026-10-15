@@ -10,7 +10,7 @@ import asyncio
 import json
 from urllib.parse import urlparse
 
-from workers import WorkerEntrypoint, Response, fetch
+from workers import DurableObject, WorkerEntrypoint, Response, fetch
 
 MAX_BODY = 1_000_000
 MAX_SOURCE_FILES = 120
@@ -236,17 +236,111 @@ async def _propose(request: dict, env) -> dict:
     return _validate(await _call_gemini(prompt, env))
 
 
+
+CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
+CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
+_CHECKPOINT_SHA = __import__("re").compile(r"^[0-9a-fA-F]{40}$")
+_CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
+_CHECKPOINT_NEXT = {
+    "OBSERVE": ("DECIDE",), "DECIDE": ("PROPOSE",),
+    "PROPOSE": ("VERIFY",), "VERIFY": ("PERSIST",),
+    "PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
+}
+
+
+class RepairCheckpoint(DurableObject):
+    """Durable per-request state; checkpoint data never grants mutation authority."""
+    def __init__(self, ctx, env):
+        self.ctx = ctx
+        self.env = env
+
+    async def read_checkpoint(self):
+        return await self.ctx.storage.get("record")
+
+    async def write_checkpoint(self, item):
+        import re
+        if not isinstance(item, dict):
+            return {"_http_status": 400, "error": "invalid_record"}
+        request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
+        attempt, phase, state = item.get("attempt"), item.get("phase"), item.get("state")
+        digest, reason = item.get("evidence_digest"), item.get("reason")
+        if not isinstance(request_id, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,160}", request_id):
+            return {"_http_status": 400, "error": "request_id_invalid"}
+        if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+            return {"_http_status": 400, "error": "repository_invalid"}
+        if not isinstance(sha, str) or not _CHECKPOINT_SHA.fullmatch(sha):
+            return {"_http_status": 400, "error": "sha_invalid"}
+        if isinstance(attempt, bool) or not isinstance(attempt, int) or not 1 <= attempt <= 20:
+            return {"_http_status": 400, "error": "attempt_invalid"}
+        if phase not in CHECKPOINT_PHASES or state not in CHECKPOINT_STATES:
+            return {"_http_status": 400, "error": "phase_or_state_invalid"}
+        if digest is not None and (not isinstance(digest, str) or not _CHECKPOINT_DIGEST.fullmatch(digest)):
+            return {"_http_status": 400, "error": "evidence_digest_invalid"}
+        if state == "DONE" and (phase != "PERSIST" or not digest):
+            return {"_http_status": 409, "error": "done_requires_persisted_evidence_digest"}
+        if state == "BLOCKED" and (not isinstance(reason, str) or not reason.strip()):
+            return {"_http_status": 400, "error": "blocked_requires_reason"}
+        prior = await self.ctx.storage.get("record")
+        if not prior:
+            if attempt != 1 or phase != "OBSERVE" or state != "WORKING":
+                return {"_http_status": 409, "error": "initial_checkpoint_must_start_at_observe_attempt_1"}
+        else:
+            if prior.get("request_id") != request_id or prior.get("repository") != repository or prior.get("sha") != sha.lower():
+                return {"_http_status": 409, "error": "checkpoint_identity_conflict"}
+            normalized_digest = digest.lower() if isinstance(digest, str) else None
+            normalized_reason = reason[:1000] if state == "BLOCKED" and isinstance(reason, str) else None
+            if all(prior.get(key) == value for key, value in (
+                ("attempt", attempt), ("phase", phase), ("state", state),
+                ("evidence_digest", normalized_digest), ("reason", normalized_reason),
+            )):
+                return {"_http_status": 200, **prior, "persisted": True, "idempotent_replay": True}
+            if attempt == prior.get("attempt") and phase == prior.get("phase") and state == prior.get("state"):
+                return {"_http_status": 409, "error": "checkpoint_replay_conflict"}
+            if prior.get("state") == "DONE":
+                return {"_http_status": 409, "error": "checkpoint_terminal"}
+            old_attempt = prior.get("attempt", 0)
+            if attempt < old_attempt or attempt > old_attempt + 1:
+                return {"_http_status": 409, "error": "attempt_not_monotonic"}
+            if attempt == old_attempt + 1 and not (prior.get("state") == "BLOCKED" and phase == "RESUME" and state == "WORKING"):
+                return {"_http_status": 409, "error": "retry_requires_blocked_prior_and_resume_phase"}
+            if attempt == old_attempt:
+                if phase != prior.get("phase") and phase not in _CHECKPOINT_NEXT.get(prior.get("phase"), ()):
+                    return {"_http_status": 409, "error": "invalid_phase_transition"}
+                if prior.get("state") == "BLOCKED" and not (phase == "RESUME" and state == "WORKING"):
+                    return {"_http_status": 409, "error": "blocked_checkpoint_requires_resume"}
+                if state == "DONE" and prior.get("phase") != "PERSIST" and phase != "PERSIST":
+                    return {"_http_status": 409, "error": "done_requires_persist_phase"}
+        record = {
+            "schema": 1, "request_id": request_id, "repository": repository, "sha": sha.lower(),
+            "attempt": attempt, "phase": phase, "state": state,
+            "evidence_digest": digest.lower() if isinstance(digest, str) else None,
+            "reason": reason[:1000] if state == "BLOCKED" else None,
+            "version": (prior.get("version", 0) if prior else 0) + 1,
+        }
+        await self.ctx.storage.put("record", record)
+        return {"_http_status": 200, **record, "persisted": True}
+
+
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         path = urlparse(request.url).path
 
         if request.method == "GET" and path == "/healthz":
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-            if not getattr(self.env, "GEMINI_API_KEY", "") or not getattr(
-                self.env, "GEMINI_PROJECT_ID", ""
+            checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
+            provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
+            if (
+                not getattr(self.env, "GEMINI_API_KEY", "")
+                or not getattr(self.env, "GEMINI_PROJECT_ID", "")
+                or not checkpoint_bound
+                or not provider_token_configured
             ):
                 return Response.json(
-                    {"status": "NOT_READY", "provider": "gemini"},
+                    {
+                        "status": "NOT_READY", "provider": "gemini",
+                        "checkpoint_store_bound": checkpoint_bound,
+                        "provider_token_configured": provider_token_configured,
+                    },
                     status=503,
                 )
             return Response.json(
@@ -254,17 +348,52 @@ class Default(WorkerEntrypoint):
                     "status": "READY",
                     "provider": "gemini",
                     "model": model,
-                    "project_id_configured": True,
+                    "project_bound": True,
+                    "checkpoint_store_bound": True,
+                    "provider_token_configured": True,
                 }
             )
-
-        if request.method != "POST" or path != "/v1/repair/propose":
-            return Response.json({"error": "not_found"}, status=404)
 
         expected = getattr(self.env, "TRY_PROVIDER_TOKEN", "")
         supplied = request.headers.get("Authorization", "")
         if not expected or supplied != f"Bearer {expected}":
             return Response.json({"error": "unauthorized"}, status=401)
+
+        if path == "/v1/repair/checkpoint" and request.method == "POST":
+            try:
+                body = await _read_bounded_json(request)
+                request_id = body.get("request_id")
+                if not isinstance(request_id, str) or not request_id.strip():
+                    return Response.json({"error": "request_id_missing"}, status=400)
+                namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
+                if namespace is None:
+                    return Response.json({"error": "checkpoint_store_not_configured"}, status=503)
+                stub = namespace.get(namespace.idFromName(request_id))
+                result = await stub.write_checkpoint(body)
+                status = int(result.pop("_http_status", 500))
+                return Response.json(result, status=status)
+            except Exception as exc:
+                return Response.json({"error": "checkpoint_write_failed", "reason": str(exc)[:500]}, status=503)
+
+        prefix = "/v1/repair/checkpoint/"
+        if request.method == "GET" and path.startswith(prefix):
+            request_id = path[len(prefix):]
+            if not request_id or "/" in request_id:
+                return Response.json({"error": "request_id_invalid"}, status=400)
+            namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
+            if namespace is None:
+                return Response.json({"error": "checkpoint_store_not_configured"}, status=503)
+            try:
+                stub = namespace.get(namespace.idFromName(request_id))
+                record = await stub.read_checkpoint()
+                if record is None:
+                    return Response.json({"error": "checkpoint_not_found"}, status=404)
+                return Response.json(record, status=200)
+            except Exception as exc:
+                return Response.json({"error": "checkpoint_read_failed", "reason": str(exc)[:500]}, status=503)
+
+        if request.method != "POST" or path != "/v1/repair/propose":
+            return Response.json({"error": "not_found"}, status=404)
 
         try:
             length = int(request.headers.get("Content-Length", "0"))
