@@ -3,9 +3,12 @@ from __future__ import annotations
 
 import argparse
 import os
+import pathlib
 import subprocess
 import sys
 import uuid
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 
 from research.repair_checkpoint import get_checkpoint, persist_checkpoint
 
