@@ -450,6 +450,24 @@ def main():
             tested=worker.test()
         except Exception as exc:
             reason=f"{type(exc).__name__}:{exc}"[:1000]
+            if current_phase == "PROPOSE":
+                # apply_via_aios may have mutated the working tree before raising.
+                # Do not classify an uncertain side effect as an ordinary retryable
+                # failure: require an independent reconciler before any next attempt.
+                blocked_reason = f"apply_outcome_unknown; reconciliation_required; {reason}"[:1000]
+                unknown = {
+                    "status": "UNKNOWN", "attempt": attempt, "phase": current_phase,
+                    "reason": blocked_reason, "reconciliation_required": True,
+                }
+                Path("repair-result.json").write_text(
+                    json.dumps(unknown, indent=2, sort_keys=True), encoding="utf-8"
+                )
+                persist_checkpoint(
+                    request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                    attempt=attempt, phase=current_phase, state="BLOCKED", reason=blocked_reason,
+                )
+                print(json.dumps(unknown, sort_keys=True))
+                return 2
             persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
                                attempt=attempt, phase=current_phase, state="BLOCKED", reason=reason)
             results.append({"attempt":attempt,"status":"BLOCKED","reason":reason})
