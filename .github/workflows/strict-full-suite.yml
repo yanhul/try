@@ -6,9 +6,11 @@ on:
     paths:
       - 'engine/**'
       - 'research/**'
+      - 'scripts/**'
       - 'tests/**'
       - '.github/workflows/strict-full-suite.yml'
       - 'pyproject.toml'
+      - 'scripts/**'
   pull_request:
     paths:
       - 'engine/**'
