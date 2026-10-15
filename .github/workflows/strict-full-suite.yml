@@ -8,7 +8,7 @@ on:
       - 'research/**'
       - 'scripts/**'
       - 'tests/**'
-      - '.github/workflows/strict-full-suite.yml'
+      - '.github/workflows/**'
       - 'pyproject.toml'
   pull_request:
     paths:
@@ -16,7 +16,7 @@ on:
       - 'research/**'
       - 'scripts/**'
       - 'tests/**'
-      - '.github/workflows/strict-full-suite.yml'
+      - '.github/workflows/**'
       - 'pyproject.toml'
 
 jobs:
