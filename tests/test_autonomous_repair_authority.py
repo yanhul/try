@@ -335,3 +335,27 @@ def test_main_keeps_reconciliation_required_checkpoint_unknown(monkeypatch, tmp_
     assert result["reconciliation_required"] is True
     assert proposals == []
     assert checkpoint_writes == []
+
+
+@pytest.mark.parametrize(
+    "reason",
+    [
+        "test_pass_without_evidence_refs; reconciliation_required",
+        "terminal_evidence_blocked:persisted_effect_unavailable; reconciliation_required",
+        "terminal_receipt_blocked:effect_not_persisted_observed_success; reconciliation_required",
+    ],
+)
+def test_terminal_evidence_failure_cannot_resume_and_layer_another_patch(reason):
+    from research.autonomous_repair import select_resume_attempt
+    from research.repair_checkpoint import RepairCheckpointError
+
+    prior = {
+        "repository": "yanhul/try",
+        "sha": "a" * 40,
+        "attempt": 1,
+        "phase": "PERSIST",
+        "state": "BLOCKED",
+        "reason": reason,
+    }
+    with pytest.raises(RepairCheckpointError, match="checkpoint_reconciliation_required"):
+        select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
