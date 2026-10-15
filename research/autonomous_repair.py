@@ -9,6 +9,15 @@ MAX_ATTEMPTS=3
 MAX_SOURCE_FILES=80
 MAX_SOURCE_BYTES=90000
 
+def terminal_status(results):
+    """Preserve a provider quota/hold outcome instead of misreporting it as repair failure."""
+    statuses = [item.get("status") for item in results if isinstance(item, dict)]
+    if "BLOCKED" in statuses:
+        return "BLOCKED"
+    if "HOLD" in statuses:
+        return "HOLD"
+    return "FAIL"
+
 # The checkpoint bearer token is kept out of the process environment except
 # for the short synchronous HTTP call. In particular, worker tests must not
 # inherit it as an environment variable.
@@ -537,8 +546,10 @@ def main():
         log=(details[-1].get("stderr_tail","") if details else "")[-80000:]
         failure["ci_failure_log_tail"]=log
         failure["previous_repair_result"]=result
-    Path("repair-result.json").write_text(json.dumps({"status":"FAIL","attempts":results},indent=2,sort_keys=True),encoding="utf-8")
-    print(json.dumps({"status":"FAIL","attempts":len(results)}))
+    status = terminal_status(results)
+    final = {"status": status, "attempts": results}
+    Path("repair-result.json").write_text(json.dumps(final,indent=2,sort_keys=True),encoding="utf-8")
+    print(json.dumps({"status":status,"attempts":len(results)}))
     return 2
 
 if __name__=="__main__":
