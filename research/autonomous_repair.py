@@ -310,7 +310,7 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         if not re.search(r"(?<![0-9a-f])" + re.escape(base_sha.lower()) + r"(?![0-9a-f])", lineage.lower()):
             return f"terminal_evidence_blocked:base_sha_lineage_missing:{ref}"
         claim = str(record.get("claim") or "").lower()
-        if not any(token in claim for token in ("test", "pytest", "verification")):
+        if not re.search(r"\b(?:test|tests|testing|pytest|verification|verify|verified)\b", claim):
             return f"terminal_evidence_blocked:claim_not_test_verification:{ref}"
         parent_id = record.get("parent_evidence_id")
         ancestors = {ref}
