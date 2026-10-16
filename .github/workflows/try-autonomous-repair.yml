@@ -23,7 +23,7 @@ permissions: {}
 
 concurrency:
   group: try-autorepair-${{ github.event.workflow_run.id || inputs.run_id }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   RUN_ID: ${{ github.event.workflow_run.id || inputs.run_id }}
