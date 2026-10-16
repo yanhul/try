@@ -13,7 +13,7 @@ from research.autonomous_repair import resolve_terminal_evidence
 
 BASE_SHA = "a" * 40
 RUN_ID = 123456
-EFFECT_ID = "EF-" + "b" * 64
+EFFECT_ID = "EF-19a9d8fd83e2d963fc2f1861079aab816d18dcf1357759b1467455dab21c5295"
 
 
 def _record(evidence_id, *, run_id=str(RUN_ID), source_ref=None,
@@ -36,27 +36,43 @@ def _setup(monkeypatch, tmp_path, evidence_records):
     core = types.ModuleType("core")
     evidence_module = types.ModuleType("core.evidence")
     evidence_module.verify_evidence = lambda record: record.get("digest") == "ok"
+    effect_authority = types.ModuleType("core.effect_authority")
+    def validate_persisted_effect(_root, effect):
+        if (effect.get("record_type") != "EXTERNAL_EFFECT"
+                or effect.get("policy_digest") != "policy-digest"
+                or effect.get("max_attempts") != 3
+                or effect.get("attempt") > effect.get("max_attempts")):
+            raise ValueError("persisted effect invalid")
+    effect_authority._validate_persisted_effect = validate_persisted_effect
     core.evidence = evidence_module
     monkeypatch.setitem(sys.modules, "core", core)
     monkeypatch.setitem(sys.modules, "core.evidence", evidence_module)
+    monkeypatch.setitem(sys.modules, "core.effect_authority", effect_authority)
 
     root = tmp_path / "aios"
     (root / "effects").mkdir(parents=True)
     (root / "evidence").mkdir()
+    attempt_id = f"{EFFECT_ID}:attempt:1"
     effect = {
+        "record_type": "EXTERNAL_EFFECT",
         "effect_id": EFFECT_ID,
+        "logical_operation_id": "try-ci-repair:123456:1",
         "state": "OBSERVED_SUCCESS",
         "contract_id": "contract-1",
         "permit_id": "permit-1",
         "actor": "try-autonomous-repair",
-        "attempt_id": "attempt-7",
+        "effect_type": "external_effect",
+        "policy_digest": "policy-digest",
+        "max_attempts": 3,
+        "attempt": 1,
+        "attempt_id": attempt_id,
         "provider": "github-actions",
         "provider_observation": {
-            "attempt_id": "attempt-7",
+            "attempt_id": attempt_id,
             "provider": "github-actions",
             "evidence": {
                 "provider": "github-actions",
-                "run_id": "attempt-7",
+                "run_id": attempt_id,
                 "digest": "ok",
             },
         },
@@ -81,6 +97,37 @@ def _resolve(root, refs):
 def test_accepts_digest_verified_evidence_bound_to_exact_run_and_base(monkeypatch, tmp_path):
     root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
     assert _resolve(root, ["EV-good"]) is None
+
+
+
+def test_rejects_effect_record_with_tampered_logical_identity(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    path = root / "effects" / f"{EFFECT_ID}.json"
+    effect = json.loads(path.read_text(encoding="utf-8"))
+    effect["logical_operation_id"] = "attacker-substituted-operation"
+    path.write_text(json.dumps(effect), encoding="utf-8")
+    assert "effect_identity_digest_mismatch" in _resolve(root, ["EV-good"])
+
+
+def test_rejects_effect_with_noncanonical_attempt_id(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    path = root / "effects" / f"{EFFECT_ID}.json"
+    effect = json.loads(path.read_text(encoding="utf-8"))
+    effect["attempt_id"] = "attempt-7"
+    effect["provider_observation"]["attempt_id"] = "attempt-7"
+    effect["provider_observation"]["evidence"]["run_id"] = "attempt-7"
+    path.write_text(json.dumps(effect), encoding="utf-8")
+    assert "effect_attempt_identity_mismatch" in _resolve(root, ["EV-good"])
+
+
+def test_rejects_effect_attempt_budget_tampering(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    path = root / "effects" / f"{EFFECT_ID}.json"
+    effect = json.loads(path.read_text(encoding="utf-8"))
+    effect["max_attempts"] = True
+    path.write_text(json.dumps(effect), encoding="utf-8")
+    assert "effect_attempt_budget_invalid" in _resolve(root, ["EV-good"])
+
 
 
 def test_rejects_base_sha_embedded_inside_longer_hex_token(monkeypatch, tmp_path):
