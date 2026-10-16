@@ -155,7 +155,20 @@ jobs:
           expected = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
           if not isinstance(digest, str) or digest != expected:
               raise SystemExit("repair_research_evidence_digest_invalid")
-          print("verified immutable research evidence digest and untrusted-evidence boundary")
+          import os, re
+          expected_run = os.environ["RUN_ID"]
+          expected_repo = os.environ["GITHUB_REPOSITORY"]
+          expected_sha = os.environ["BASE_SHA"].lower()
+          if str(evidence.get("source_run_id", "")) != expected_run:
+              raise SystemExit("repair_research_source_run_mismatch")
+          if evidence.get("source_repository") != expected_repo:
+              raise SystemExit("repair_research_source_repository_mismatch")
+          source_sha = evidence.get("source_sha")
+          if not isinstance(source_sha, str) or not re.fullmatch(r"[0-9a-f]{40}", source_sha):
+              raise SystemExit("repair_research_source_sha_invalid")
+          if source_sha != expected_sha:
+              raise SystemExit("repair_research_source_sha_mismatch")
+          print("verified research evidence digest, source run/repository/SHA and untrusted-evidence boundary")
           PY
           cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
 
