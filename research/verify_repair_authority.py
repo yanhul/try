@@ -84,9 +84,17 @@ def verify_and_write_receipt() -> Path:
         raise RuntimeError("contract_actor_mismatch")
     if contract.get("scope") != "repository":
         raise RuntimeError("contract_scope_mismatch")
-    if "repo_patch@1" not in contract.get("capabilities", []):
+    if not isinstance(contract, dict):
+        raise RuntimeError("contract_record_type_invalid")
+    capabilities = contract.get("capabilities")
+    if not isinstance(capabilities, list) or any(not isinstance(item, str) for item in capabilities):
+        raise RuntimeError("contract_capabilities_type_invalid")
+    if "repo_patch@1" not in capabilities:
         raise RuntimeError("contract_patch_capability_missing")
-    if "external_effect" not in contract.get("allowed_effects", []):
+    allowed_effects = contract.get("allowed_effects")
+    if not isinstance(allowed_effects, list) or any(not isinstance(item, str) for item in allowed_effects):
+        raise RuntimeError("contract_allowed_effects_type_invalid")
+    if "external_effect" not in allowed_effects:
         raise RuntimeError("contract_patch_effect_not_allowed")
     budget = contract.get("max_attempts")
     if isinstance(budget, bool) or not isinstance(budget, int) or not 1 <= budget <= 3:
