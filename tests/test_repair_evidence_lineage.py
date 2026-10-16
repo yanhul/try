@@ -89,7 +89,7 @@ def _setup(monkeypatch, tmp_path, evidence_records):
 
 def _resolve(root, refs):
     return resolve_terminal_evidence(
-        root, refs, run_id=RUN_ID, base_sha=BASE_SHA, applied={"effect_id": EFFECT_ID},
+        root, refs, run_id=RUN_ID, base_sha=BASE_SHA, applied={"effect_id": EFFECT_ID, "attempt_id": f"{EFFECT_ID}:attempt:1", "provider": "github-actions", "outcome": "OBSERVED_SUCCESS"},
         contract_id="contract-1", permit_id="permit-1",
     )
 
