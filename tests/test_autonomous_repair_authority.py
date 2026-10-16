@@ -359,3 +359,39 @@ def test_terminal_evidence_failure_cannot_resume_and_layer_another_patch(reason)
     }
     with pytest.raises(RepairCheckpointError, match="checkpoint_reconciliation_required"):
         select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
+
+
+def test_privileged_repair_workflow_is_read_only_and_never_publishes():
+    from pathlib import Path
+
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text()
+    repair_job = workflow.split("  repair:", 1)[1]
+    assert "contents: read" in repair_job
+    assert "contents: write" not in repair_job
+    assert "pull-requests: write" not in repair_job
+    assert "Refuse ungoverned publication and export candidate patch" in repair_job
+    assert "no independently authorized AIOS COMMIT adapter is configured" in repair_job
+    assert "git push" not in repair_job
+    assert "gh pr create" not in repair_job
+
+
+def test_privileged_controller_is_pinned_to_immutable_trusted_revision():
+    from pathlib import Path
+    import re
+
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text()
+    match = re.search(
+        r"Checkout trusted repair controller.*?repository: yanhul/try\\s+ref: ([0-9a-f]{40})",
+        workflow,
+        re.S,
+    )
+    assert match, "trusted repair controller must use an immutable 40-character SHA"
+    assert match.group(1) == "84731076edad60968042fe003612b2f04cf70a9e"
+
+
+def test_terminal_claim_matching_uses_word_boundaries():
+    from pathlib import Path
+
+    controller = Path("research/autonomous_repair.py").read_text()
+    assert r"\\b(?:test|tests|testing|pytest|verification|verify|verified)\\b" in controller
+    assert "any(token in claim" not in controller
