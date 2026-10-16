@@ -5,6 +5,11 @@ on:
     paths:
       - "cloudflare/try-repair-worker/**"
       - ".github/workflows/try-checkpoint-conformance.yml"
+      - "research/autonomous_repair.py"
+      - "research/repair_checkpoint.py"
+      - "research/verify_repair_authority.py"
+      - "tests/test_repair_checkpoint_client.py"
+      - "tests/test_repair_authority_preflight.py"
   push:
     branches:
       - main
