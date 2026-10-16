@@ -32,7 +32,8 @@ def get_checkpoint(*, request_id: str) -> dict[str, Any] | None:
         raise RepairCheckpointError("checkpoint_request_id_invalid")
     request = urllib.request.Request(
         base_url + "/v1/repair/checkpoint/" + request_id,
-        headers={"Authorization": "Bearer " + token, "Accept": "application/json"},
+        headers={"Authorization": "Bearer " + token, "Accept": "application/json",
+                 "User-Agent": "TRY-AIOS-RepairCheckpoint/1.0"},
         method="GET",
     )
     try:
@@ -119,7 +120,8 @@ def persist_checkpoint(
     request = urllib.request.Request(
         base_url + "/v1/repair/checkpoint",
         data=json.dumps(payload, sort_keys=True).encode("utf-8"),
-        headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"},
+        headers={"Authorization": "Bearer " + token, "Content-Type": "application/json",
+                 "User-Agent": "TRY-AIOS-RepairCheckpoint/1.0"},
         method="POST",
     )
     last_error: Exception | None = None
