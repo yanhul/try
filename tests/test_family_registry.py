@@ -3,6 +3,7 @@ import pytest
 from research.family_registry import (
     DISCOVERY_FAMILIES,
     EXECUTABLE_FAMILIES,
+    EVALUATOR_FAMILIES,
     EVENT_FAMILIES,
     FAMILIES,
     direction_for_row,
@@ -20,9 +21,9 @@ def test_executable_family_is_directional_and_evaluator_backed():
     assert EXECUTABLE_FAMILIES == {
         "momentum_trend", "mean_reversion", "smc_ict", "fvg_imbalance",
         "wyckoff_vsa_vpa", "vwap_volume_profile", "regime",
-        "point_figure", "gann_reference",
     }
-    assert all(FAMILIES[x].evaluator_enabled and FAMILIES[x].directional for x in EXECUTABLE_FAMILIES)
+    assert {"point_figure", "gann_reference"} <= EVALUATOR_FAMILIES
+    assert all(FAMILIES[x].status == "EXECUTABLE" and FAMILIES[x].evaluator_enabled for x in EXECUTABLE_FAMILIES)
 
 
 def test_unsupported_discovery_families_fail_closed():
@@ -71,6 +72,20 @@ def test_executable_families_have_evaluator_dispatch_closure():
     for family in EXECUTABLE_FAMILIES:
         predicate = mechanism_predicate({"mechanism_family": family})
         assert callable(predicate)
+
+
+def test_evaluator_only_primitives_are_not_executable():
+    for family in ("point_figure", "gann_reference"):
+        with pytest.raises(ValueError, match="unexecutable_family"):
+            require_executable(family)
+
+
+def test_executable_data_lane_is_closed():
+    for family in EXECUTABLE_FAMILIES:
+        spec = FAMILIES[family]
+        assert spec.data_requirement
+        assert spec.data_adapter
+        assert spec.evaluator_kind
 
 
 def test_registry_contains_no_legacy_ml_rl_or_duplicate_execution_authority():

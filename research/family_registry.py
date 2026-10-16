@@ -28,6 +28,8 @@ class FamilySpec:
     domain_id: str
     layer: str = "family"
     terms: tuple[str, ...] = ()
+    data_requirement: str | None = None
+    data_adapter: str | None = None
     discovery_enabled: bool = False
     evaluator_enabled: bool = False
     directional: bool = True
@@ -52,17 +54,17 @@ DOMAINS: Final[dict[str, DomainSpec]] = {
 }
 
 _FAMILY_DATA: Final[tuple[FamilySpec, ...]] = (
-    FamilySpec("momentum_trend", "price_action", terms=("momentum","trend","breakout","moving average"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", status="EXECUTABLE"),
-    FamilySpec("mean_reversion", "statistical", terms=("mean reversion","mean-reversion","reversion","statistical arbitrage"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", status="EXECUTABLE"),
+    FamilySpec("momentum_trend", "price_action", terms=("momentum","trend","breakout","moving average"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EXECUTABLE"),
+    FamilySpec("mean_reversion", "statistical", terms=("mean reversion","mean-reversion","reversion","statistical arbitrage"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EXECUTABLE"),
     FamilySpec("volatility", "statistical", terms=("volatility","variance","volatility breakout"), discovery_enabled=True, directional=False, evaluator_kind="mechanism"),
-    FamilySpec("smc_ict", "market_structure", terms=("smart money","smc","ict","liquidity sweep","market structure","order block"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", candidate_universe="reference_event_ledger", status="EXECUTABLE"),
-    FamilySpec("fvg_imbalance", "market_structure", terms=("fair value gap","fvg","imbalance"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", candidate_universe="reference_event_ledger", status="EXECUTABLE"),
-    FamilySpec("wyckoff_vsa_vpa", "volume", terms=("wyckoff","vsa","volume spread","volume price analysis"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", status="EXECUTABLE"),
-    FamilySpec("vwap_volume_profile", "volume", terms=("vwap","volume profile","anchored vwap"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", status="EXECUTABLE"),
+    FamilySpec("smc_ict", "market_structure", terms=("smart money","smc","ict","liquidity sweep","market structure","order block"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", candidate_universe="reference_event_ledger", data_requirement="reference_event_ledger", data_adapter="reference_strategy", status="EXECUTABLE"),
+    FamilySpec("fvg_imbalance", "market_structure", terms=("fair value gap","fvg","imbalance"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", candidate_universe="reference_event_ledger", data_requirement="reference_event_ledger", data_adapter="reference_strategy", status="EXECUTABLE"),
+    FamilySpec("wyckoff_vsa_vpa", "volume", terms=("wyckoff","vsa","volume spread","volume price analysis"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EXECUTABLE"),
+    FamilySpec("vwap_volume_profile", "volume", terms=("vwap","volume profile","anchored vwap"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EXECUTABLE"),
     FamilySpec("funding_basis_carry", "derivatives", terms=("funding","basis","carry","perpetual"), discovery_enabled=True),
     FamilySpec("order_flow", "microstructure", terms=("order flow","orderflow","order book","lob imbalance","microprice"), discovery_enabled=True),
     FamilySpec("cross_sectional", "cross_sectional", terms=("cross-sectional","factor","rankic","icir","cross sectional"), discovery_enabled=True),
-    FamilySpec("regime", "regime", terms=("regime","hidden markov","hmm","state switching"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", status="EXECUTABLE"),
+    FamilySpec("regime", "regime", terms=("regime","hidden markov","hmm","state switching"), discovery_enabled=True, evaluator_enabled=True, evaluator_kind="mechanism", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EXECUTABLE"),
     FamilySpec("seasonality", "calendar", terms=("seasonality","seasonal","day of week","calendar effect"), discovery_enabled=True, directional=False, evaluator_kind="mechanism"),
     FamilySpec("onchain", "onchain", terms=("on-chain","onchain","wallet","blockchain","solana"), discovery_enabled=True),
     FamilySpec("options", "options", terms=("options","implied volatility","skew","gamma"), discovery_enabled=True),
@@ -71,13 +73,14 @@ _FAMILY_DATA: Final[tuple[FamilySpec, ...]] = (
     FamilySpec("china_a_share", "regional", terms=("china a-share","a-share","ashare","a share","chinese stock","chinese stocks","limit-up","limit up","连板","涨停","t+1","qlib","eastmoney","akshare","alpha158","factor mining","a股"), discovery_enabled=True),
     # These IDs are retained for evaluator compatibility but are explicitly primitives,
     # not discovery families. This prevents family/primitive layer confusion.
-    FamilySpec("point_figure", "price_action", layer="primitive_reference", evaluator_enabled=True, evaluator_kind="reference_primitive", status="EVALUATOR_ONLY"),
-    FamilySpec("gann_reference", "price_action", layer="primitive_reference", evaluator_enabled=True, evaluator_kind="reference_primitive", status="EVALUATOR_ONLY"),
+    FamilySpec("point_figure", "price_action", layer="primitive_reference", evaluator_enabled=True, evaluator_kind="reference_primitive", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EVALUATOR_ONLY"),
+    FamilySpec("gann_reference", "price_action", layer="primitive_reference", evaluator_enabled=True, evaluator_kind="reference_primitive", data_requirement="ohlcv_bars", data_adapter="binance_ohlcv_csv", status="EVALUATOR_ONLY"),
 )
 
 FAMILIES: Final[dict[str, FamilySpec]] = {x.family_id: x for x in _FAMILY_DATA}
 DISCOVERY_FAMILIES: Final[frozenset[str]] = frozenset(x.family_id for x in _FAMILY_DATA if x.discovery_enabled)
-EXECUTABLE_FAMILIES: Final[frozenset[str]] = frozenset(x.family_id for x in _FAMILY_DATA if x.evaluator_enabled and x.directional and x.evaluator_kind)
+EXECUTABLE_FAMILIES: Final[frozenset[str]] = frozenset(x.family_id for x in _FAMILY_DATA if x.status == "EXECUTABLE" and x.evaluator_enabled and x.directional and x.evaluator_kind)
+EVALUATOR_FAMILIES: Final[frozenset[str]] = frozenset(x.family_id for x in _FAMILY_DATA if x.evaluator_enabled and x.evaluator_kind)
 EVENT_FAMILIES: Final[frozenset[str]] = frozenset(x.family_id for x in _FAMILY_DATA if x.candidate_universe == "reference_event_ledger")
 
 def _canonical_registry_payload() -> list[dict]:
@@ -87,6 +90,7 @@ def _canonical_registry_payload() -> list[dict]:
             "terms": list(x.terms), "discovery_enabled": x.discovery_enabled,
             "evaluator_enabled": x.evaluator_enabled, "directional": x.directional,
             "evaluator_kind": x.evaluator_kind, "candidate_universe": x.candidate_universe,
+            "data_requirement": x.data_requirement, "data_adapter": x.data_adapter,
             "status": x.status,
         }
         for x in _FAMILY_DATA
@@ -116,6 +120,12 @@ def get_family(family_id: str) -> FamilySpec:
     except KeyError as exc:
         raise ValueError(f"unknown_family:{family_id}") from exc
 
+def require_evaluator(family_id: str) -> FamilySpec:
+    spec = get_family(family_id)
+    if family_id not in EVALUATOR_FAMILIES:
+        raise ValueError(f"unevaluable_family:{family_id}")
+    return spec
+
 def require_executable(family_id: str) -> FamilySpec:
     spec = get_family(family_id)
     if family_id not in EXECUTABLE_FAMILIES:
@@ -123,7 +133,9 @@ def require_executable(family_id: str) -> FamilySpec:
     return spec
 
 def direction_for_row(row: dict, family_id: str) -> str | None:
-    spec = require_executable(family_id)
+    spec = get_family(family_id)
+    if family_id not in EVALUATOR_FAMILIES:
+        raise ValueError(f"unevaluable_family:{family_id}")
     if not spec.directional:
         raise ValueError(f"non_directional_family:{family_id}")
     if family_id == "mean_reversion":
@@ -153,8 +165,10 @@ def validate_registry() -> None:
             raise AssertionError(f"primitive_cannot_be_discovery_family:{spec.family_id}")
         if spec.evaluator_enabled and not spec.evaluator_kind:
             raise AssertionError(f"evaluator_kind_missing:{spec.family_id}")
-        if spec.evaluator_enabled and spec.directional and spec.family_id not in EXECUTABLE_FAMILIES:
-            raise AssertionError(f"directional_family_not_executable:{spec.family_id}")
+        if spec.status == "EXECUTABLE" and (not spec.evaluator_enabled or not spec.directional or spec.family_id not in EXECUTABLE_FAMILIES):
+            raise AssertionError(f"executable_family_closure:{spec.family_id}")
+        if spec.status in {"EXECUTABLE", "EVALUATOR_ONLY"} and (not spec.data_requirement or not spec.data_adapter):
+            raise AssertionError(f"data_lane_incomplete:{spec.family_id}")
         if spec.candidate_universe not in {"all_bars","reference_event_ledger"}:
             raise AssertionError(f"invalid_candidate_universe:{spec.family_id}")
         if spec.status == "EXECUTABLE" and spec.family_id not in EXECUTABLE_FAMILIES:

@@ -15,7 +15,7 @@ from .hypothesis_research import evaluate_split
 from .hypotheses import HYPOTHESES
 from research.cost_model import DEFAULT_COST_MODEL
 from research.validation_policy import EVALUATION_SPEC, validation_gate
-from research.family_registry import EXECUTABLE_FAMILIES, EVENT_FAMILIES, require_executable, taxonomy_for_family, registry_metadata
+from research.family_registry import EXECUTABLE_FAMILIES, EVENT_FAMILIES, require_evaluator, require_executable, taxonomy_for_family, registry_metadata
 
 WINDOWS = {3, 5, 10, 20, 50, 100}
 MECHANISMS = set(EXECUTABLE_FAMILIES)
@@ -108,7 +108,7 @@ def _event_value(ctx, key, field):
 
 def mechanism_predicate(spec):
     family = spec["mechanism_family"]; threshold = float(spec.get("threshold", 0.0)); comparison = spec.get("direction", "above")
-    require_executable(family)
+    require_evaluator(family)
     def pred(ctx, trade_direction):
         if family == "smc_ict":
             sweep, mss, fvg = _event(ctx, "sweep"), _event(ctx, "mss"), _event(ctx, "fvg")
