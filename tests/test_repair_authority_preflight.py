@@ -178,3 +178,30 @@ def test_preflight_rejects_path_like_authority_ids_before_aios_load(
     monkeypatch.setenv(variable, value)
     with pytest.raises(RuntimeError, match=message):
         verify_and_write_receipt()
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("capabilities", "repo_patch@1", "contract_capabilities_type_invalid"),
+        ("capabilities", ["repo_patch@1", 7], "contract_capabilities_type_invalid"),
+        ("allowed_effects", "external_effect", "contract_allowed_effects_type_invalid"),
+        ("allowed_effects", ["external_effect", False], "contract_allowed_effects_type_invalid"),
+    ],
+)
+def test_preflight_rejects_malformed_contract_authority_lists(
+    monkeypatch, tmp_path, request, field, value, message
+):
+    contract = {
+        "task_id": "try-ci-repair-12345",
+        "actor": "try-autonomous-repair",
+        "scope": "repository",
+        "capabilities": ["repo_patch@1"],
+        "allowed_effects": ["external_effect"],
+        "max_attempts": 2,
+    }
+    contract[field] = value
+    _install_fake_aios(monkeypatch, contract=contract)
+    _configure_preflight(monkeypatch, tmp_path, request)
+    with pytest.raises(RuntimeError, match=message):
+        verify_and_write_receipt()
