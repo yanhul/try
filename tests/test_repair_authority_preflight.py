@@ -53,8 +53,8 @@ def test_record_digest_rejects_unknown_record_kind(tmp_path):
         _record_digest(tmp_path, "secrets", "contract-1")
 
 
-def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None):
-    contract = contract or {
+def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None, permit=None, attestation=None):
+    contract = contract if contract is not None else {
         "task_id": "try-ci-repair-12345",
         "actor": "try-autonomous-repair",
         "scope": "repository",
@@ -62,8 +62,8 @@ def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None):
         "allowed_effects": ["external_effect"],
         "max_attempts": 2,
     }
-    permit = {"permit_id": "permit-1"}
-    attestation = {"permit_id": "permit-1"}
+    permit = {"permit_id": "permit-1"} if permit is None else permit
+    attestation = {"permit_id": "permit-1"} if attestation is None else attestation
     core = types.ModuleType("core")
     core.__path__ = []
     authority = types.ModuleType("core.authority")
@@ -202,6 +202,25 @@ def test_preflight_rejects_malformed_contract_authority_lists(
     }
     contract[field] = value
     _install_fake_aios(monkeypatch, contract=contract)
+    _configure_preflight(monkeypatch, tmp_path, request)
+    with pytest.raises(RuntimeError, match=message):
+        verify_and_write_receipt()
+
+
+
+@pytest.mark.parametrize(
+    ("record_name", "record_value", "message"),
+    [
+        ("contract", None, "contract_record_type_invalid"),
+        ("permit", [], "permit_record_type_invalid"),
+        ("attestation", "not-a-record", "attestation_record_type_invalid"),
+    ],
+)
+def test_preflight_rejects_non_mapping_authority_records_before_verification(
+    monkeypatch, tmp_path, request, record_name, record_value, message
+):
+    kwargs = {record_name: record_value}
+    _install_fake_aios(monkeypatch, **kwargs)
     _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match=message):
         verify_and_write_receipt()
