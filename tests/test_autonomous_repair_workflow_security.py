@@ -9,7 +9,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     runner = workflow.index("name: Run bounded research-aware repair loop")
     assert trusted_checkout < verifier < runner
     assert target_checkout < runner
-    assert "ref: 54d96c59547ea3790eda3dfbf2a15291f5cb5dc7" in workflow
+    assert "ref: 0bf6b55b1a0027fc98601b6024d59bb1754c9064" in workflow
     assert "ref: cb38387f2dd0785136fcc6434a49e43233bad648" in workflow
     assert "name: Validate exact failed controller run identity" in workflow
     assert 'gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"' in workflow
