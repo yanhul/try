@@ -25,6 +25,7 @@ def configure() -> None:
         raise SystemExit("BLOCKED: live Worker URL must use HTTPS")
     os.environ["TRY_REPAIR_PROVIDER_URL"] = url
     os.environ["TRY_REPAIR_PROVIDER_TOKEN"] = token
+    os.environ["TRY_REPAIR_CHECKPOINT_TOKEN"] = token
     os.environ["TRY_REPAIR_WORKER_URL"] = url
     os.environ["TRY_PROVIDER_TOKEN"] = token
 
