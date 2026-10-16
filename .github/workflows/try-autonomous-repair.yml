@@ -125,8 +125,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/ci-failure.log" || true
-          test -s "$RUNNER_TEMP/ci-failure.log" || printf '%s\n' "controller_failed" > "$RUNNER_TEMP/ci-failure.log"
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/ci-failure.log"
+          test -s "$RUNNER_TEMP/ci-failure.log"
 
       - name: Recover immutable repair-research evidence
         env:
@@ -134,10 +134,30 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/research"
-          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" -n "repair-research-$RUN_ID" -D "$RUNNER_TEMP/research" || true
-          if [ -f "$RUNNER_TEMP/research/latest.json" ]; then
-            cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
-          fi
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" -n "repair-research-$RUN_ID" -D "$RUNNER_TEMP/research"
+          test -s "$RUNNER_TEMP/research/latest.json"
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path(__import__("os").environ["RUNNER_TEMP"]) / "research" / "latest.json"
+          evidence = json.loads(path.read_text(encoding="utf-8"))
+          if not isinstance(evidence, dict):
+              raise SystemExit("repair_research_evidence_not_mapping")
+          if evidence.get("schema_version") != 1 or evidence.get("research_only") is not True:
+              raise SystemExit("repair_research_evidence_schema_invalid")
+          if evidence.get("candidate_status") != "UNTRUSTED_EVIDENCE":
+              raise SystemExit("repair_research_evidence_trust_boundary_invalid")
+          digest = evidence.get("evidence_digest")
+          unsigned = dict(evidence)
+          unsigned.pop("evidence_digest", None)
+          canonical = json.dumps(unsigned, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+          expected = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+          if not isinstance(digest, str) or digest != expected:
+              raise SystemExit("repair_research_evidence_digest_invalid")
+          print("verified immutable research evidence digest and untrusted-evidence boundary")
+          PY
+          cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
 
       - name: Verify external AIOS authority in isolated process
         working-directory: .
