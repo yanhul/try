@@ -56,3 +56,17 @@ def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     assert "AIOS_REPAIR_ATTESTATION_SECRET" not in runner_block
     assert "research/verify_repair_authority.py" in verifier_block
     assert "exit 2" in workflow
+
+
+def test_privileged_repair_fails_closed_on_missing_or_tampered_evidence():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    capture = workflow[workflow.index("name: Capture failed controller evidence"):workflow.index("name: Recover immutable repair-research evidence")]
+    research = workflow[workflow.index("name: Recover immutable repair-research evidence"):workflow.index("name: Verify external AIOS authority in isolated process")]
+    assert 'gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/ci-failure.log"' in capture
+    assert "test -s \"$RUNNER_TEMP/ci-failure.log\"" in capture
+    assert "|| true" not in capture
+    assert 'gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" -n "repair-research-$RUN_ID"' in research
+    assert "test -s \"$RUNNER_TEMP/research/latest.json\"" in research
+    assert "repair_research_evidence_digest_invalid" in research
+    assert "repair_research_evidence_trust_boundary_invalid" in research
+    assert "|| true" not in research
