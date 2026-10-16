@@ -75,6 +75,12 @@ def verify_and_write_receipt() -> Path:
     contract = load_contract(str(root), contract_id)
     permit = load_permit(str(root), permit_id)
     attestation = load_attestation(str(root), permit_id)
+    if not isinstance(contract, dict):
+        raise RuntimeError("contract_record_type_invalid")
+    if not isinstance(permit, dict):
+        raise RuntimeError("permit_record_type_invalid")
+    if not isinstance(attestation, dict):
+        raise RuntimeError("attestation_record_type_invalid")
     if not verify_attestation(contract, permit, attestation, secret):
         raise RuntimeError("authority_attestation_rejected")
 
@@ -84,8 +90,6 @@ def verify_and_write_receipt() -> Path:
         raise RuntimeError("contract_actor_mismatch")
     if contract.get("scope") != "repository":
         raise RuntimeError("contract_scope_mismatch")
-    if not isinstance(contract, dict):
-        raise RuntimeError("contract_record_type_invalid")
     capabilities = contract.get("capabilities")
     if not isinstance(capabilities, list) or any(not isinstance(item, str) for item in capabilities):
         raise RuntimeError("contract_capabilities_type_invalid")
