@@ -260,6 +260,15 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_receipt_blocked:persisted_effect_not_mapping"
     if effect.get("effect_id") != effect_id or effect.get("state") != "OBSERVED_SUCCESS":
         return "terminal_receipt_blocked:effect_not_persisted_observed_success"
+    # Bind the caller's provider receipt to this exact persisted effect attempt.
+    # A valid effect record alone must not authorize a different/stale receipt.
+    applied_attempt_id = applied.get("attempt_id")
+    if not isinstance(applied_attempt_id, str) or applied_attempt_id != effect.get("attempt_id"):
+        return "terminal_receipt_blocked:applied_attempt_identity_mismatch"
+    if applied.get("provider") != effect.get("provider"):
+        return "terminal_receipt_blocked:applied_provider_identity_mismatch"
+    if applied.get("outcome") != "OBSERVED_SUCCESS":
+        return "terminal_receipt_blocked:applied_outcome_not_observed_success"
     if (effect.get("record_type") != "EXTERNAL_EFFECT"
             or effect.get("contract_id") != contract_id
             or effect.get("permit_id") != permit_id
