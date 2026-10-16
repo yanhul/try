@@ -35,6 +35,8 @@ def test_privileged_repair_never_uses_target_as_first_python_import_root():
 
 def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    assert "cancel-in-progress: false" in workflow
+    assert "cancel-in-progress: true" not in workflow
     assert "contents: write" not in workflow
     assert "pull-requests: write" not in workflow
     assert "ci_repair_publish.py" not in workflow
