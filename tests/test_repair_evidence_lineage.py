@@ -117,7 +117,11 @@ def test_rejects_effect_with_noncanonical_attempt_id(monkeypatch, tmp_path):
     effect["provider_observation"]["attempt_id"] = "attempt-7"
     effect["provider_observation"]["evidence"]["run_id"] = "attempt-7"
     path.write_text(json.dumps(effect), encoding="utf-8")
-    assert "effect_attempt_identity_mismatch" in _resolve(root, ["EV-good"])
+    assert "effect_attempt_identity_mismatch" in resolve_terminal_evidence(
+        root, ["EV-good"], run_id=RUN_ID, base_sha=BASE_SHA,
+        applied={"effect_id": EFFECT_ID, "attempt_id": "attempt-7", "provider": "github-actions", "outcome": "OBSERVED_SUCCESS"},
+        contract_id="contract-1", permit_id="permit-1",
+    )
 
 
 def test_rejects_effect_attempt_budget_tampering(monkeypatch, tmp_path):
