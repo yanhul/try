@@ -260,9 +260,44 @@ def resolve_terminal_evidence(aios_root, evidence_refs, *, run_id, base_sha, app
         return "terminal_receipt_blocked:persisted_effect_not_mapping"
     if effect.get("effect_id") != effect_id or effect.get("state") != "OBSERVED_SUCCESS":
         return "terminal_receipt_blocked:effect_not_persisted_observed_success"
-    if (effect.get("contract_id") != contract_id or effect.get("permit_id") != permit_id
-            or effect.get("actor") != "try-autonomous-repair"):
+    if (effect.get("record_type") != "EXTERNAL_EFFECT"
+            or effect.get("contract_id") != contract_id
+            or effect.get("permit_id") != permit_id
+            or effect.get("actor") != "try-autonomous-repair"
+            or effect.get("effect_type") != "external_effect"):
         return "terminal_receipt_blocked:effect_authority_identity_mismatch"
+
+    # The filename and claimed effect_id are not proof of effect identity.
+    # Recompute AIOS's canonical ID from the immutable identity tuple so a
+    # forged/tampered JSON record cannot pass merely by reusing an EF-* name.
+    logical_operation_id = effect.get("logical_operation_id")
+    if not isinstance(logical_operation_id, str) or not logical_operation_id.strip():
+        return "terminal_receipt_blocked:effect_logical_operation_id_invalid"
+    canonical_identity = json.dumps(
+        {"contract_id": contract_id, "logical_operation_id": logical_operation_id,
+         "actor": "try-autonomous-repair"},
+        sort_keys=True, separators=(",", ":"), ensure_ascii=True,
+    )
+    expected_effect_id = "EF-" + hashlib.sha256(canonical_identity.encode("utf-8")).hexdigest()
+    if effect_id != expected_effect_id:
+        return "terminal_receipt_blocked:effect_identity_digest_mismatch"
+
+    attempt = effect.get("attempt")
+    max_attempts = effect.get("max_attempts")
+    if (not isinstance(attempt, int) or isinstance(attempt, bool) or attempt < 1
+            or not isinstance(max_attempts, int) or isinstance(max_attempts, bool)
+            or max_attempts < 1 or attempt > max_attempts):
+        return "terminal_receipt_blocked:effect_attempt_budget_invalid"
+    expected_attempt_id = f"{effect_id}:attempt:{attempt}"
+    if effect.get("attempt_id") != expected_attempt_id:
+        return "terminal_receipt_blocked:effect_attempt_identity_mismatch"
+    try:
+        # Use AIOS's own persisted-effect validator for policy digest, attempt
+        # budget and contract/permit checks; fail closed on schema/API drift.
+        from core.effect_authority import _validate_persisted_effect
+        _validate_persisted_effect(str(aios_root), effect)
+    except Exception as exc:
+        return f"terminal_receipt_blocked:effect_authority_validation_failed:{type(exc).__name__}"
     observation = effect.get("provider_observation")
     if not isinstance(observation, dict):
         return "terminal_receipt_blocked:provider_observation_missing"
