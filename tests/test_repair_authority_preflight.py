@@ -211,7 +211,7 @@ def test_preflight_rejects_malformed_contract_authority_lists(
 @pytest.mark.parametrize(
     ("record_name", "record_value", "message"),
     [
-        ("contract", None, "contract_record_type_invalid"),
+        ("contract", [], "contract_record_type_invalid"),
         ("permit", [], "permit_record_type_invalid"),
         ("attestation", "not-a-record", "attestation_record_type_invalid"),
     ],
