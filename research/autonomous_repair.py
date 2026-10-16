@@ -42,6 +42,23 @@ def is_interrupted_working_checkpoint(prior, *, repository, sha):
     )
 
 
+def terminal_promotion_block_reason(tested_status, evidence_refs, applied):
+    """Fail closed until independent persisted-effect/evidence resolution is wired.
+
+    Local pytest PASS plus a list of evidence IDs is not an independently
+    verified AIOS terminal receipt. This guard deliberately blocks promotion;
+    it must be replaced only by a resolver that verifies persisted effect,
+    attempt/provider identity, digest, authority lineage and durable evidence.
+    """
+    if tested_status != "PASS":
+        return None
+    if not isinstance(applied, dict):
+        return "terminal_promotion_blocked:apply_result_not_mapping"
+    if not isinstance(evidence_refs, (list, tuple)) or not evidence_refs:
+        return "terminal_promotion_blocked:test_evidence_refs_missing"
+    return "terminal_promotion_blocked:independent_aios_effect_and_evidence_resolver_not_integrated"
+
+
 def git(*args):
     return subprocess.run(["git", *args], cwd=".", text=True, capture_output=True, check=True).stdout.strip()
 
@@ -193,6 +210,25 @@ def main():
                                    attempt=attempt, phase="VERIFY", state="BLOCKED", reason=reason)
                 results.append({"attempt":attempt,"status":"HOLD","reason":reason})
                 break
+            promotion_block = terminal_promotion_block_reason(
+                tested.status, tested.evidence_refs, applied
+            )
+            if promotion_block:
+                persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
+                                   attempt=attempt, phase="PERSIST", state="BLOCKED",
+                                   reason=promotion_block)
+                blocked = {
+                    "status": "BLOCKED", "attempt": attempt, "reason": promotion_block,
+                    "apply": dict(applied),
+                    "test": {"status": tested.status,
+                             "evidence_refs": list(tested.evidence_refs),
+                             "details": dict(tested.details)},
+                }
+                Path("repair-result.json").write_text(
+                    json.dumps(blocked, indent=2, sort_keys=True), encoding="utf-8"
+                )
+                print(json.dumps(blocked, sort_keys=True))
+                return 2
             result={"attempt":attempt,"status":tested.status,"proposal":proposal,"apply":dict(applied),
                     "test":{"status":tested.status,"evidence_refs":list(tested.evidence_refs),"details":dict(tested.details)},
                     "research_evidence_digest":evidence.get("evidence_digest")}
