@@ -67,6 +67,27 @@ jobs:
           clean: true
           persist-credentials: false
 
+      - name: Verify trusted controller contains strict persisted-effect guards
+        working-directory: trusted-try
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          source = Path("research/autonomous_repair.py").read_text(encoding="utf-8")
+          required = (
+              "applied_attempt_identity_mismatch",
+              "applied_provider_identity_mismatch",
+              "effect_identity_digest_mismatch",
+              "effect_attempt_identity_mismatch",
+              "_validate_persisted_effect",
+          )
+          missing = [marker for marker in required if marker not in source]
+          if missing:
+              raise SystemExit("trusted_controller_security_guard_missing:" + ",".join(missing))
+          print("trusted controller strict persisted-effect guards verified")
+          PY
+
       - name: Validate exact failed controller run identity
         env:
           GH_TOKEN: ${{ github.token }}
