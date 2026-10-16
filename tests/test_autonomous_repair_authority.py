@@ -381,7 +381,7 @@ def test_privileged_controller_is_pinned_to_immutable_trusted_revision():
 
     workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text()
     match = re.search(
-        r"Checkout trusted repair controller.*?repository: yanhul/try\\s+ref: ([0-9a-f]{40})",
+        r"Checkout trusted repair controller.*?repository: yanhul/try\s+ref: ([0-9a-f]{40})",
         workflow,
         re.S,
     )
@@ -393,5 +393,5 @@ def test_terminal_claim_matching_uses_word_boundaries():
     from pathlib import Path
 
     controller = Path("research/autonomous_repair.py").read_text()
-    assert r"\\b(?:test|tests|testing|pytest|verification|verify|verified)\\b" in controller
+    assert r"\b(?:test|tests|testing|pytest|verification|verify|verified)\b" in controller
     assert "any(token in claim" not in controller
