@@ -139,11 +139,16 @@ def _verify_preflight_receipt(root, contract_id, permit_id, run_id):
     except (OSError, ValueError) as exc:
         raise RuntimeError("authority_preflight_receipt_unavailable") from exc
     if (
-        receipt.get("schema") != 1
+        type(receipt.get("schema")) is not int
+        or receipt.get("schema") != 1
         or receipt.get("verified") is not True
+        or not isinstance(receipt.get("run_id"), str)
         or receipt.get("run_id") != str(run_id)
+        or not isinstance(receipt.get("authority_root"), str)
         or receipt.get("authority_root") != str(root)
+        or not isinstance(receipt.get("contract_id"), str)
         or receipt.get("contract_id") != contract_id
+        or not isinstance(receipt.get("permit_id"), str)
         or receipt.get("permit_id") != permit_id
     ):
         raise RuntimeError("authority_preflight_receipt_identity_mismatch")
