@@ -219,20 +219,30 @@ def test_terminal_evidence_requires_resolved_verified_run_and_sha_lineage(tmp_pa
         return digest == hashlib.sha256(canonical).hexdigest()
 
     monkeypatch.setitem(sys.modules, "core.evidence", types.SimpleNamespace(verify_evidence=verify))
+    effect_authority = types.SimpleNamespace(_validate_persisted_effect=lambda *_args: None)
+    monkeypatch.setitem(sys.modules, "core.effect_authority", effect_authority)
     root = tmp_path
     (root / "effects").mkdir()
     (root / "evidence").mkdir()
     sha = "a" * 40
-    effect_id = "EF-" + "b" * 64
+    logical_operation_id = "try-ci-repair:123:1"
+    identity = json.dumps({
+        "contract_id": "CT-test", "logical_operation_id": logical_operation_id,
+        "actor": "try-autonomous-repair",
+    }, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
+    effect_id = "EF-" + hashlib.sha256(identity).hexdigest()
+    attempt_id = effect_id + ":attempt:1"
     effect_evidence = evidence("EV-effect", "OBSERVED", "aios://effect", "patch application observed",
-                               effect_id + ":attempt:1", "aios-worker")
+                               attempt_id, "aios-worker")
     effect = {
-        "effect_id": effect_id, "state": "OBSERVED_SUCCESS",
+        "record_type": "EXTERNAL_EFFECT", "effect_id": effect_id,
+        "logical_operation_id": logical_operation_id, "state": "OBSERVED_SUCCESS",
         "contract_id": "CT-test", "permit_id": "PT-test",
-        "actor": "try-autonomous-repair", "attempt_id": effect_id + ":attempt:1",
-        "provider": "aios-worker",
+        "actor": "try-autonomous-repair", "effect_type": "external_effect",
+        "policy_digest": "policy-digest", "max_attempts": 3, "attempt": 1,
+        "attempt_id": attempt_id, "provider": "aios-worker",
         "provider_observation": {
-            "attempt_id": effect_id + ":attempt:1", "provider": "aios-worker",
+            "attempt_id": attempt_id, "provider": "aios-worker",
             "evidence": effect_evidence,
         },
     }
