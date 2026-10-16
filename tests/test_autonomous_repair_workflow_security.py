@@ -69,4 +69,7 @@ def test_privileged_repair_fails_closed_on_missing_or_tampered_evidence():
     assert "test -s \"$RUNNER_TEMP/research/latest.json\"" in research
     assert "repair_research_evidence_digest_invalid" in research
     assert "repair_research_evidence_trust_boundary_invalid" in research
+    assert "repair_research_source_run_mismatch" in research
+    assert "repair_research_source_repository_mismatch" in research
+    assert "repair_research_source_sha_mismatch" in research
     assert "|| true" not in research
