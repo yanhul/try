@@ -59,7 +59,13 @@ def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     runner = workflow.index("name: Run bounded research-aware repair loop")
     verifier_block = workflow[verifier:runner]
     runner_block = workflow[runner:workflow.index("      - name:", runner + 1)]
-    assert "AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}" in verifier_block
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in workflow
+    assert "AIOS_REPAIR_ATTESTATION_VERIFIED: ${{ steps.authority.outputs.attestation_verified }}" in verifier_block
+    assert "AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA: ${{ steps.authority.outputs.authority_store_commit_sha }}" in verifier_block
+    verifier_script = Path("research/verify_repair_authority.py").read_text(encoding="utf-8")
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in verifier_script
+    assert "verify_attestation" not in verifier_script
+    assert "attestation_verified_by" in verifier_script
     assert "AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json" in verifier_block
     assert "AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json" in runner_block
     assert "AIOS_REPAIR_ATTESTATION_SECRET" not in runner_block
