@@ -202,20 +202,58 @@ jobs:
           AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
         run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
-      - name: Refuse ungoverned publication and export candidate patch
+      - name: Verify candidate and submit only through independent COMMIT adapter
         working-directory: target
         if: ${{ success() }}
         env:
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
+          AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
+          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
+          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
+          AIOS_COMMIT_ADAPTER_URL: ${{ secrets.AIOS_COMMIT_ADAPTER_URL }}
+          AIOS_COMMIT_ADAPTER_TOKEN: ${{ secrets.AIOS_COMMIT_ADAPTER_TOKEN }}
         run: |
           set -euo pipefail
+          test -n "$AIOS_REPAIR_RUN_ID" && test -n "$AIOS_REPAIR_SHA"
           status="$(python -c 'import json; print(json.load(open("repair-result.json"))["status"])')"
-          test "$status" = PASS
-          git diff --binary > "$RUNNER_TEMP/aios-repair-$AIOS_REPAIR_RUN_ID.patch"
-          test -s "$RUNNER_TEMP/aios-repair-$AIOS_REPAIR_RUN_ID.patch"
-          echo "::error::BLOCKED: candidate passed local gates, but no independently authorized AIOS COMMIT adapter is configured. Patch is artifact-only; no branch or PR was published."
-          exit 2
-
+          if [ "$status" != PASS ]; then
+            echo "::error::BLOCKED: repair result is not PASS; no candidate submission"
+            exit 2
+          fi
+          patch="$RUNNER_TEMP/aios-repair-$AIOS_REPAIR_RUN_ID.patch"
+          git diff --binary > "$patch"
+          test -s "$patch"
+          python - "$AIOS_REPAIR_RUN_ID" "$GITHUB_REPOSITORY" "$AIOS_REPAIR_SHA" "$patch" <<'PY'
+          import hashlib, json, sys
+          from pathlib import Path
+          run_id, repository, base_sha, patch_path = sys.argv[1:]
+          result_path = Path("repair-result.json")
+          result = json.loads(result_path.read_text(encoding="utf-8"))
+          if not isinstance(result, dict) or result.get("status") != "PASS":
+              raise SystemExit("repair_result_not_pass")
+          result.update({
+              "run_id": run_id,
+              "repository": repository,
+              "base_sha": base_sha,
+              "patch_sha256": hashlib.sha256(Path(patch_path).read_bytes()).hexdigest(),
+          })
+          result_path.write_text(json.dumps(result, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
+          print("candidate evidence manifest bound to exact run/repository/base SHA and patch digest")
+          PY
+          if [ -z "$AIOS_COMMIT_ADAPTER_URL" ] || [ -z "$AIOS_COMMIT_ADAPTER_TOKEN" ]; then
+            echo "::error::BLOCKED: independent COMMIT adapter is not configured; candidate remains artifact-only"
+            exit 2
+          fi
+          python "$GITHUB_WORKSPACE/trusted-try/research/repair_external_integrations.py" submit-commit \
+            --run-id "$AIOS_REPAIR_RUN_ID" \
+            --repository "$GITHUB_REPOSITORY" \
+            --base-sha "$AIOS_REPAIR_SHA" \
+            --contract-id "$AIOS_REPAIR_CONTRACT_ID" \
+            --permit-id "$AIOS_REPAIR_PERMIT_ID" \
+            --patch "$patch" \
+            --repair-result "repair-result.json" \
+            --authority-receipt "$AIOS_REPAIR_AUTHORITY_GATE_RECEIPT"
       - name: Upload autonomous repair evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
