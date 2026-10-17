@@ -148,3 +148,41 @@ def test_fetch_authority_snapshot_rejects_symlinked_authority_root(monkeypatch, 
             run_id="123", repository="yanhul/try", base_sha="a" * 40,
             destination=destination,
         )
+
+
+def test_commit_candidate_forwards_bounded_evidence_bytes(monkeypatch, tmp_path):
+    import base64
+    monkeypatch.setenv("AIOS_COMMIT_ADAPTER_URL", "https://commit.example")
+    monkeypatch.setenv("AIOS_COMMIT_ADAPTER_TOKEN", "test-token")
+    patch_bytes = b"diff --git a/a.py b/a.py\\n"
+    patch = tmp_path / "candidate.patch"
+    patch.write_bytes(patch_bytes)
+    result_bytes = b'{"status":"PASS"}'
+    result = tmp_path / "repair-result.json"
+    result.write_bytes(result_bytes)
+    receipt_bytes = json.dumps({
+        "verified": True, "run_id": "123", "contract_id": "contract-123",
+        "permit_id": "permit-123",
+    }, sort_keys=True).encode()
+    receipt = tmp_path / "authority-receipt.json"
+    receipt.write_bytes(receipt_bytes)
+    seen = {}
+
+    def fake_request(url, **kwargs):
+        seen.update(kwargs["payload"])
+        return {
+            "status": "CREATED", "repository": "yanhul/try", "base_sha": "a" * 40,
+            "patch_sha256": hashlib.sha256(patch_bytes).hexdigest(),
+            "head_sha": "b" * 40, "pull_request_url": "https://github.com/yanhul/try/pull/123",
+            "draft": True, "merged": False,
+        }
+
+    monkeypatch.setattr(ext, "_request_json", fake_request)
+    response = ext.submit_commit_candidate(
+        run_id="123", repository="yanhul/try", base_sha="a" * 40,
+        contract_id="contract-123", permit_id="permit-123",
+        patch_path=patch, repair_result_path=result, authority_receipt_path=receipt,
+    )
+    assert response["status"] == "CREATED"
+    assert base64.b64decode(seen["repair_result_b64"]) == result_bytes
+    assert base64.b64decode(seen["authority_receipt_b64"]) == receipt_bytes
