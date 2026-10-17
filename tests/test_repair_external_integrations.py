@@ -189,3 +189,15 @@ def test_commit_candidate_forwards_bounded_evidence_bytes(monkeypatch, tmp_path)
     assert response["status"] == "CREATED"
     assert base64.b64decode(seen["repair_result_b64"]) == result_bytes
     assert base64.b64decode(seen["authority_receipt_b64"]) == receipt_bytes
+
+def test_fetch_authority_snapshot_rejects_unverified_hmac_claim(monkeypatch, tmp_path):
+    monkeypatch.setenv("AIOS_REPAIR_ISSUER_URL", "https://issuer.example")
+    monkeypatch.setenv("AIOS_REPAIR_ISSUER_READ_TOKEN", "test-token")
+    envelope = _envelope()
+    envelope["attestation_verified"] = False
+    monkeypatch.setattr(ext, "_request_json", lambda *a, **k: envelope)
+    with pytest.raises(ext.ExternalIntegrationError, match="authority_verifier_did_not_confirm_attestation"):
+        ext.fetch_authority_snapshot(
+            run_id="123", repository="yanhul/try", base_sha="a" * 40,
+            destination=tmp_path / "snapshot",
+        )
