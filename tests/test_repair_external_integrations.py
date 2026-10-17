@@ -24,6 +24,9 @@ def _envelope(run_id="123", repository="yanhul/try", base_sha="a" * 40):
         "base_sha": base_sha,
         "contract_id": "contract-123",
         "permit_id": "permit-123",
+        "verified": True,
+        "attestation_verified": True,
+        "store_commit_sha": "e" * 40,
         "records": {
             kind: {
                 "content_b64": base64.b64encode(raw).decode("ascii"),
