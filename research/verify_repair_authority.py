@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Verify externally provisioned AIOS repair authority in an isolated process.
 
-This step is intentionally separate from the repair controller: it receives the
-HMAC secret, verifies persisted authority, writes a digest-bound receipt, and exits
-before any proposed repository code is applied or tested.
+This step is intentionally separate from the repair controller. The independent
+Git-backed verifier validates the issuer HMAC; this step checks the persisted AIOS
+records and local authorization without ever receiving the issuer's HMAC secret.
 """
 from __future__ import annotations
 
@@ -43,12 +43,15 @@ def verify_and_write_receipt() -> Path:
     authority_dir = os.environ.get("AIOS_REPAIR_AUTHORITY_DIR", "").strip()
     contract_id = os.environ.get("AIOS_REPAIR_CONTRACT_ID", "").strip()
     permit_id = os.environ.get("AIOS_REPAIR_PERMIT_ID", "").strip()
-    secret = os.environ.get("AIOS_REPAIR_ATTESTATION_SECRET", "")
+    attestation_verified = os.environ.get("AIOS_REPAIR_ATTESTATION_VERIFIED", "").strip()
+    store_commit_sha = os.environ.get("AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA", "").strip()
     run_id = os.environ.get("AIOS_REPAIR_RUN_ID", "").strip()
     receipt_raw = os.environ.get("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", "").strip()
     runner_temp = os.environ.get("RUNNER_TEMP", "").strip()
-    if not all((authority_dir, contract_id, permit_id, secret, run_id, receipt_raw, runner_temp)):
+    if not all((authority_dir, contract_id, permit_id, run_id, receipt_raw, runner_temp)) or attestation_verified != "true":
         raise RuntimeError("external_authority_gate_configuration_missing")
+    if not re.fullmatch(r"[0-9a-f]{40}", store_commit_sha):
+        raise RuntimeError("authority_store_commit_sha_invalid")
     import re
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", contract_id):
         raise RuntimeError("authority_contract_id_invalid")
@@ -69,7 +72,6 @@ def verify_and_write_receipt() -> Path:
         raise RuntimeError("authority_gate_receipt_must_be_in_runner_temp")
 
     from core.authority import authorize, load_attestation, load_contract, load_permit
-    from core.attestation import verify_attestation
 
     authorize(str(root), contract_id, permit_id)
     contract = load_contract(str(root), contract_id)
@@ -81,8 +83,12 @@ def verify_and_write_receipt() -> Path:
         raise RuntimeError("permit_record_type_invalid")
     if not isinstance(attestation, dict):
         raise RuntimeError("attestation_record_type_invalid")
-    if not verify_attestation(contract, permit, attestation, secret):
-        raise RuntimeError("authority_attestation_rejected")
+    if (attestation.get("attestation_type") != "EXECUTION_PERMIT_ATTESTATION"
+            or attestation.get("algorithm") != "HMAC-SHA256"
+            or attestation.get("contract_id") != contract_id
+            or attestation.get("permit_id") != permit_id
+            or attestation.get("issuer") != "yanhul/aios-authority-store"):
+        raise RuntimeError("authority_attestation_identity_invalid")
 
     if contract.get("task_id") != f"try-ci-repair-{run_id}":
         raise RuntimeError("contract_task_id_mismatch")
@@ -114,6 +120,8 @@ def verify_and_write_receipt() -> Path:
         "contract_sha256": _record_digest(root, "contracts", contract_id),
         "permit_sha256": _record_digest(root, "permits", permit_id),
         "attestation_sha256": _record_digest(root, "attestations", permit_id),
+        "attestation_verified_by": "independent-git-authority-verifier",
+        "authority_store_commit_sha": store_commit_sha,
     }
     receipt_path.write_text(json.dumps(receipt, sort_keys=True), encoding="utf-8")
     return receipt_path
