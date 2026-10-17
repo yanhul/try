@@ -62,7 +62,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/try
-          ref: 54d96c59547ea3790eda3dfbf2a15291f5cb5dc7
+          ref: 5e19d250db3219831d7c1e0c9416a2861c7801b9
           path: trusted-try
           clean: true
           persist-credentials: false
@@ -172,14 +172,30 @@ jobs:
           PY
           cat "$RUNNER_TEMP/research/latest.json" >> "$RUNNER_TEMP/ci-failure.log"
 
+      - name: Fetch exact authority records from independent issuer
+        id: authority
+        env:
+          AIOS_REPAIR_ISSUER_URL: ${{ secrets.AIOS_REPAIR_ISSUER_URL }}
+          AIOS_REPAIR_ISSUER_READ_TOKEN: ${{ secrets.AIOS_REPAIR_ISSUER_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          python "$GITHUB_WORKSPACE/trusted-try/research/repair_external_integrations.py" fetch-authority \
+            --run-id "$RUN_ID" \
+            --repository "$GITHUB_REPOSITORY" \
+            --base-sha "$BASE_SHA" \
+            --destination "$GITHUB_WORKSPACE/.aios-authority-snapshot"
+          test -s "$GITHUB_WORKSPACE/.aios-authority-snapshot/authority/contracts/${{ steps.authority.outputs.contract_id }}.json"
+          test -s "$GITHUB_WORKSPACE/.aios-authority-snapshot/authority/permits/${{ steps.authority.outputs.permit_id }}.json"
+          test -s "$GITHUB_WORKSPACE/.aios-authority-snapshot/authority/attestations/${{ steps.authority.outputs.permit_id }}.json"
+
       - name: Verify external AIOS authority in isolated process
         working-directory: .
         env:
           PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
-          AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}
-          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
-          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_AUTHORITY_DIR: ${{ github.workspace }}/.aios-authority-snapshot
+          AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}
+          AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}
           AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}
           AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
           RUNNER_TEMP: ${{ runner.temp }}
@@ -196,9 +212,9 @@ jobs:
           TRY_REPAIR_PROVIDER_URL: ${{ secrets.TRY_REPAIR_PROVIDER_URL }}
           TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_REPAIR_PROVIDER_TOKEN }}
           TRY_REPAIR_CHECKPOINT_TOKEN: ${{ secrets.TRY_REPAIR_CHECKPOINT_TOKEN }}
-          AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}
-          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
-          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_AUTHORITY_DIR: ${{ github.workspace }}/.aios-authority-snapshot
+          AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}
+          AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}
           AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
         run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"
 
