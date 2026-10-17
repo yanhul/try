@@ -87,10 +87,12 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
     """Fetch issuer-signed records for one exact run and materialize read-only files.
 
     Expected issuer envelope:
-      {schema:1, run_id, repository, base_sha, contract_id, permit_id,
+      {schema:1, verified:true, attestation_verified:true, store_commit_sha,
+       run_id, repository, base_sha, contract_id, permit_id,
        records:{contracts:{content_b64,sha256}, permits:{...}, attestations:{...}}}
-    The independent issuer must enforce caller authorization and run binding.
-    This function verifies byte digests and writes only the three expected files.
+    The independent Git-backed verifier checks the issuer HMAC at one pinned Git
+    commit. This function verifies the returned proof fields and exact byte digests,
+    then writes only the three expected files. TRY never receives the HMAC secret.
     """
     endpoint = _https_url(os.environ.get("AIOS_REPAIR_ISSUER_URL", "").strip(),
                           "authority_issuer_url")
