@@ -10,13 +10,12 @@ The TRY repair workflow is intentionally unable to create or renew its own autho
 |---|---|---|
 | `AIOS_REPAIR_ISSUER_URL` | HTTPS base URL for the deployed authority-verifier Worker | Must be HTTPS; do not use a GitHub URL directly |
 | `AIOS_REPAIR_ISSUER_READ_TOKEN` | Bearer token for `GET /v1/authority/runs/{run_id}` | Read-only issuer API token; no Git write permission |
-| `AIOS_REPAIR_ATTESTATION_SECRET` | HMAC verification secret | Protected secret; available only to the isolated verifier step |
 | `TRY_REPAIR_PROVIDER_URL` | HTTPS checkpoint provider URL | Must be HTTPS |
 | `TRY_REPAIR_PROVIDER_TOKEN` | Repair proposal provider bearer token | Protected secret; exposed only around the proposal request |
 | `TRY_REPAIR_CHECKPOINT_TOKEN` | Durable checkpoint API bearer token | Separate protected secret; exposed only during checkpoint HTTP calls, never to proposal code or candidate tests |
 | Checkpoint configuration | Both `TRY_REPAIR_PROVIDER_URL` and `TRY_REPAIR_CHECKPOINT_TOKEN` are required for durable checkpoint read/write. | HTTPS endpoint plus protected bearer token |
 
-The workflow must not put secret values into repository files, artifacts, logs, model prompts, test subprocesses, or the repair proposal. Configure secrets with least privilege and restrict which actors may run `workflow_dispatch`. The verifier Worker needs a separate fine-grained GitHub token with Contents: read only on the private `yanhul/aios-authority-store` repo (`GITHUB_READ_TOKEN`); the TRY issuer-read token is not that GitHub token.
+The workflow must not put secret values into repository files, artifacts, logs, model prompts, test subprocesses, or the repair proposal. Configure secrets with least privilege and restrict which actors may run `workflow_dispatch`. The verifier Worker needs a separate fine-grained GitHub token with Contents: read only on the private `yanhul/aios-authority-store` repo (`GITHUB_READ_TOKEN`); the TRY issuer-read token is not that GitHub token. `AIOS_REPAIR_ATTESTATION_SECRET` exists only in the issuer and verifier Worker, never in TRY Actions secrets.
 
 ## Issuer-side record requirements
 
@@ -25,7 +24,7 @@ Use the pinned AIOS authority implementation and its supported schemas/APIs; do 
 1. Persist a contract and permit through the independent issuer/governance process in the durable AIOS root.
 2. Bind the contract to the exact GitHub Actions run ID: `task_id = try-ci-repair-<run_id>`.
 3. Bind `actor = try-autonomous-repair`, `scope = repository`, capability `repo_patch@1`, allowed effect `external_effect`, and integer `max_attempts` from 1 through 3 (booleans are invalid).
-4. Have the issuer create and persist the attestation using the AIOS authority mechanism and issuer-controlled HMAC secret. TRY must only load and verify it; TRY must never call `persist_attestation` or issue replacement authority.
+4. Have the issuer create and persist the attestation using the AIOS authority mechanism and issuer-controlled HMAC secret. The independent Git-backed verifier checks HMAC; TRY must never receive that secret, call `persist_attestation`, or issue replacement authority.
 5. Store contract, permit, and attestation in the private Git-backed authority repository under the immutable run/base-SHA prefix `records/<run_id>/<base_sha>/`;
    - `authority/contracts/<contract_id>.json`
    - `authority/permits/<permit_id>.json`
