@@ -2,7 +2,7 @@
 
 Status: **workflow wired to independent Git-backed issuer read API; live service/configuration NOT VERIFIED**.
 
-The TRY repair workflow is intentionally unable to create or renew its own authority. Before enabling the privileged workflow, an independently governed issuer must provision the records below in a the private Git-backed `yanhul/aios-authority-store` repository and deliver the read-only service URL/token through protected GitHub Actions secrets. The repository does not contain real credentials, and a green CI run does not prove provisioning has occurred.
+The TRY repair workflow is intentionally unable to create or renew its own authority. Before enabling the privileged workflow, an independently governed issuer must provision the records below in the private Git-backed `yanhul/aios-authority-store` repository and deliver the read-only service URL/token through protected GitHub Actions secrets. The repository does not contain real credentials, and a green CI run does not prove provisioning has occurred.
 
 ## Required GitHub secret configuration
 
@@ -51,4 +51,4 @@ Evidence references must resolve within the persistent AIOS evidence directory; 
 
 ## Current acceptance status
 
-The authority store is Git-backed; no R2 bucket is required. This file specifies the provisioning boundary. It does **not** provision GitHub secrets, create authority records, deploy the Worker, or prove live issuer integration. Until a real issuer-backed run produces verifiable persisted effect and evidence records, live authority provisioning and end-to-end evidence promotion remain **NOT VERIFIED**. The workflow remains artifact-only because no independently authorized AIOS COMMIT adapter is configured.
+The authority store is Git-backed; no R2 bucket is required. The COMMIT adapter source is implemented in the companion draft PR, but neither Worker is deployed or live-configured. CI does **not** prove authority issuance, Git API readback, GitHub App authorization, candidate creation, or adversarial E2E. Until those checks have real logs and readback receipts, authority provisioning and end-to-end evidence promotion remain **NOT VERIFIED**; TRY stays artifact-only.
