@@ -28,8 +28,13 @@ def test_research_source_uses_immutable_commit_and_run_id(monkeypatch, tmp_path)
     monkeypatch.setattr(rr, "repository_head", lambda full, ref: "a"*40)
     monkeypatch.setattr(rr, "readme", lambda full, ref: "repair evidence")
     monkeypatch.setenv("GITHUB_RUN_ID", "12345")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "yanhul/try")
+    monkeypatch.setenv("GITHUB_SHA", "b"*40)
     result=run({"error":"provider_router malformed_candidate","step":"controller","ci_failure_log_tail":"x"})
     assert result["status"]=="EVIDENCE_COLLECTED"
+    assert result["source_run_id"]=="12345"
+    assert result["source_repository"]=="yanhul/try"
+    assert result["source_sha"]=="b"*40
     assert result["sources"][0]["source_sha"]=="a"*40
     assert result["sources"][0]["source_immutable"] is True
     assert result["research_attempt_id"].endswith("-12345")

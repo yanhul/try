@@ -1,0 +1,90 @@
+from pathlib import Path
+
+
+def test_privileged_repair_runs_trusted_controller_not_failed_revision():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    trusted_checkout = workflow.index("name: Checkout trusted repair controller")
+    target_checkout = workflow.index("name: Checkout exact failed TRY revision")
+    verifier = workflow.index("name: Verify external AIOS authority in isolated process")
+    runner = workflow.index("name: Run bounded research-aware repair loop")
+    assert trusted_checkout < verifier < runner
+    assert target_checkout < runner
+    assert "ref: 5e19d250db3219831d7c1e0c9416a2861c7801b9" in workflow
+    assert "ref: cb38387f2dd0785136fcc6434a49e43233bad648" in workflow
+    assert "name: Validate exact failed controller run identity" in workflow
+    assert 'gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"' in workflow
+    assert '"name": "BC Research Controller"' in workflow
+    assert '"conclusion": "failure"' in workflow
+    assert 'head_repository.get("full_name") != os.environ["GITHUB_REPOSITORY"]' in workflow
+    assert 'head_repository.get("full_name") != os.environ["GITHUB_REPOSITORY"]' in workflow
+    assert workflow.index("name: Validate exact failed controller run identity") < workflow.index("name: Capture failed controller evidence")
+    assert "uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" in workflow
+    assert "uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02" in workflow
+    assert "uses: actions/checkout@v4" not in workflow
+    assert "uses: actions/upload-artifact@v4" not in workflow
+    assert "PYTHONPATH: ${{ github.workspace }}/trusted-try:${{ github.workspace }}/trusted-aios:${{ github.workspace }}/target" in workflow
+    assert 'run: python "${{ github.workspace }}/trusted-try/research/autonomous_repair.py"' in workflow
+
+
+def test_privileged_repair_never_uses_target_as_first_python_import_root():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    line = next(line for line in workflow.splitlines() if "PYTHONPATH:" in line and "/target" in line)
+    assert "trusted-try" in line.split(":", 1)[1].split(":", 1)[0]
+    assert line.index("trusted-try") < line.index("trusted-aios") < line.index("/target")
+
+
+def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    assert "cancel-in-progress: false" in workflow
+    assert "cancel-in-progress: true" not in workflow
+    assert "contents: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "ci_repair_publish.py" not in workflow
+    assert "git push" not in workflow
+    assert "gh pr create" not in workflow
+    assert "AIOS_COMMIT_ADAPTER_URL: ${{ secrets.AIOS_COMMIT_ADAPTER_URL }}" in workflow
+    assert "AIOS_COMMIT_ADAPTER_TOKEN: ${{ secrets.AIOS_COMMIT_ADAPTER_TOKEN }}" in workflow
+    assert "candidate remains artifact-only" in workflow
+    assert "AIOS_REPAIR_AUTHORITY_DIR: ${{ github.workspace }}/.aios-authority-snapshot" in workflow
+    assert "AIOS_REPAIR_ISSUER_URL: ${{ secrets.AIOS_REPAIR_ISSUER_URL }}" in workflow
+    assert "AIOS_REPAIR_ISSUER_READ_TOKEN: ${{ secrets.AIOS_REPAIR_ISSUER_READ_TOKEN }}" in workflow
+    assert "fetch-authority" in workflow
+    assert "secrets.AIOS_REPAIR_AUTHORITY_DIR" not in workflow
+    assert "AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}" in workflow
+    assert "AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}" in workflow
+    assert "secrets.AIOS_REPAIR_CONTRACT_ID" not in workflow
+    assert "secrets.AIOS_REPAIR_PERMIT_ID" not in workflow
+    
+    verifier = workflow.index("name: Verify external AIOS authority in isolated process")
+    runner = workflow.index("name: Run bounded research-aware repair loop")
+    verifier_block = workflow[verifier:runner]
+    runner_block = workflow[runner:workflow.index("      - name:", runner + 1)]
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in workflow
+    assert "AIOS_REPAIR_ATTESTATION_VERIFIED: ${{ steps.authority.outputs.attestation_verified }}" in verifier_block
+    assert "AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA: ${{ steps.authority.outputs.authority_store_commit_sha }}" in verifier_block
+    verifier_script = Path("research/verify_repair_authority.py").read_text(encoding="utf-8")
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in verifier_script
+    assert "verify_attestation" not in verifier_script
+    assert "attestation_verified_by" in verifier_script
+    assert "AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json" in verifier_block
+    assert "AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json" in runner_block
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in runner_block
+    assert "research/verify_repair_authority.py" in verifier_block
+    assert "exit 2" in workflow
+
+
+def test_privileged_repair_fails_closed_on_missing_or_tampered_evidence():
+    workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text(encoding="utf-8")
+    capture = workflow[workflow.index("name: Capture failed controller evidence"):workflow.index("name: Recover immutable repair-research evidence")]
+    research = workflow[workflow.index("name: Recover immutable repair-research evidence"):workflow.index("name: Verify external AIOS authority in isolated process")]
+    assert 'gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/ci-failure.log"' in capture
+    assert "test -s \"$RUNNER_TEMP/ci-failure.log\"" in capture
+    assert "|| true" not in capture
+    assert 'gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" -n "repair-research-$RUN_ID"' in research
+    assert "test -s \"$RUNNER_TEMP/research/latest.json\"" in research
+    assert "repair_research_evidence_digest_invalid" in research
+    assert "repair_research_evidence_trust_boundary_invalid" in research
+    assert "repair_research_source_run_mismatch" in research
+    assert "repair_research_source_repository_mismatch" in research
+    assert "repair_research_source_sha_mismatch" in research
+    assert "|| true" not in research

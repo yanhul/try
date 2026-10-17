@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - integration/strict-repair-mainline
     paths:
       - "scripts/live_checkpoint_e2e.py"
       - ".github/workflows/try-live-checkpoint-e2e.yml"

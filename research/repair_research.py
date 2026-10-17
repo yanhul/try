@@ -144,6 +144,11 @@ def run(failure: dict) -> dict:
     evidence = {
         "schema_version":1,
         "research_attempt_id":attempt_id,
+        # Bind this artifact to the workflow run that produced it; consumers
+        # must match all three fields to the failed run they are repairing.
+        "source_run_id":run_id,
+        "source_repository":os.getenv("GITHUB_REPOSITORY") or "",
+        "source_sha":(os.getenv("GITHUB_SHA") or "").lower(),
         "failure_signature":sig,
         "query":query,
         "query_digest":qdigest,
