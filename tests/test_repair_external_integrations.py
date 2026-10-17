@@ -46,7 +46,9 @@ def test_fetch_authority_snapshot_writes_expected_records(monkeypatch, tmp_path)
     assert (root / "contracts" / "contract-123.json").is_file()
     assert (root / "permits" / "permit-123.json").is_file()
     assert (root / "attestations" / "permit-123.json").is_file()
-    assert set(digests) == {"contracts", "permits", "attestations"}
+    assert digests["contract_id"] == "contract-123"
+    assert digests["permit_id"] == "permit-123"
+    assert all(digests[kind + "_sha256"] for kind in ("contracts", "permits", "attestations"))
 
 
 @pytest.mark.parametrize("field,value", [
