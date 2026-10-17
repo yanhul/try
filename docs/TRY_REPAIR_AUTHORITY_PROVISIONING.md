@@ -10,7 +10,6 @@ The TRY repair workflow is intentionally unable to create or renew its own autho
 |---|---|---|
 | `AIOS_REPAIR_ISSUER_URL` | HTTPS base URL for the deployed authority-verifier Worker | Must be HTTPS; do not use a GitHub URL directly |
 | `AIOS_REPAIR_ISSUER_READ_TOKEN` | Bearer token for `GET /v1/authority/runs/{run_id}` | Read-only issuer API token; no Git write permission |
-
 | `AIOS_REPAIR_ATTESTATION_SECRET` | HMAC verification secret | Protected secret; available only to the isolated verifier step |
 | `TRY_REPAIR_PROVIDER_URL` | HTTPS checkpoint provider URL | Must be HTTPS |
 | `TRY_REPAIR_PROVIDER_TOKEN` | Repair proposal provider bearer token | Protected secret; exposed only around the proposal request |
