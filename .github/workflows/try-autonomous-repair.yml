@@ -224,8 +224,8 @@ jobs:
         env:
           AIOS_REPAIR_RUN_ID: ${{ env.RUN_ID }}
           AIOS_REPAIR_SHA: ${{ env.BASE_SHA }}
-          AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}
-          AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}
+          AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}
+          AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}
           AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
           AIOS_COMMIT_ADAPTER_URL: ${{ secrets.AIOS_COMMIT_ADAPTER_URL }}
           AIOS_COMMIT_ADAPTER_TOKEN: ${{ secrets.AIOS_COMMIT_ADAPTER_TOKEN }}
