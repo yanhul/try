@@ -131,3 +131,20 @@ def test_commit_candidate_requires_adapter_confirmation(monkeypatch, tmp_path):
             contract_id="contract-123", permit_id="permit-123",
             patch_path=patch, repair_result_path=result, authority_receipt_path=receipt,
         )
+
+
+
+def test_fetch_authority_snapshot_rejects_symlinked_authority_root(monkeypatch, tmp_path):
+    monkeypatch.setenv("AIOS_REPAIR_ISSUER_URL", "https://issuer.example")
+    monkeypatch.setenv("AIOS_REPAIR_ISSUER_READ_TOKEN", "test-token")
+    monkeypatch.setattr(ext, "_request_json", lambda *a, **k: _envelope())
+    destination = tmp_path / "snapshot"
+    destination.mkdir()
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (destination / "authority").symlink_to(outside, target_is_directory=True)
+    with pytest.raises(ext.ExternalIntegrationError, match="authority_destination_path_escape"):
+        ext.fetch_authority_snapshot(
+            run_id="123", repository="yanhul/try", base_sha="a" * 40,
+            destination=destination,
+        )
