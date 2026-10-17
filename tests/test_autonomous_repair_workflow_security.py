@@ -50,8 +50,11 @@ def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     assert "AIOS_REPAIR_ISSUER_READ_TOKEN: ${{ secrets.AIOS_REPAIR_ISSUER_READ_TOKEN }}" in workflow
     assert "fetch-authority" in workflow
     assert "secrets.AIOS_REPAIR_AUTHORITY_DIR" not in workflow
-    assert "AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}" in workflow
-    assert "AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}" in workflow
+    assert "AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}" in workflow
+    assert "AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}" in workflow
+    assert "secrets.AIOS_REPAIR_CONTRACT_ID" not in workflow
+    assert "secrets.AIOS_REPAIR_PERMIT_ID" not in workflow
+    
     verifier = workflow.index("name: Verify external AIOS authority in isolated process")
     runner = workflow.index("name: Run bounded research-aware repair loop")
     verifier_block = workflow[verifier:runner]
