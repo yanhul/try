@@ -221,8 +221,15 @@ jobs:
             echo "::error::BLOCKED: repair result is not PASS; no candidate submission"
             exit 2
           fi
+          # Include newly created source files without staging candidate contents for commit.
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              repair-result*.json|repair-proposal-*.json|.aios/*) continue ;;
+            esac
+            git add -N -- "$path"
+          done < <(git ls-files --others --exclude-standard -z)
           patch="$RUNNER_TEMP/aios-repair-$AIOS_REPAIR_RUN_ID.patch"
-          git diff --binary > "$patch"
+          git diff --binary --no-ext-diff -- . ':(exclude)repair-result*.json' ':(exclude)repair-proposal-*.json' > "$patch"
           test -s "$patch"
           python - "$AIOS_REPAIR_RUN_ID" "$GITHUB_REPOSITORY" "$AIOS_REPAIR_SHA" "$patch" <<'PY'
           import hashlib, json, sys
