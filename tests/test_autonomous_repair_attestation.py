@@ -11,10 +11,11 @@ import research.autonomous_repair as runner
 from research.verify_repair_authority import verify_and_write_receipt
 
 
-def test_hmac_secret_is_used_only_by_isolated_verifier():
+def test_issuer_hmac_secret_never_enters_try_processes():
     verifier = Path("research/verify_repair_authority.py").read_text(encoding="utf-8")
     controller = Path("research/autonomous_repair.py").read_text(encoding="utf-8")
-    assert "verify_attestation(contract, permit, attestation, secret)" in verifier
+    assert "AIOS_REPAIR_ATTESTATION_SECRET" not in verifier
+    assert "verify_attestation" not in verifier
     assert "persist_attestation" not in verifier
     assert "AIOS_REPAIR_ATTESTATION_SECRET" not in controller
     assert "_verify_preflight_receipt(durable_root, contract_id, permit_id, run_id)" in controller
@@ -70,11 +71,12 @@ def test_preflight_receipt_binds_exact_persisted_record_bytes(tmp_path, monkeypa
         runner._verify_preflight_receipt(root.resolve(), "CT-test", "PT-test", 77)
 
 
-def test_isolated_verifier_rejects_forged_persisted_attestation(monkeypatch, tmp_path):
+def test_isolated_verifier_rejects_invalid_attestation_identity(monkeypatch, tmp_path):
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios-authority")
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "CT-test-contract")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "PT-test-permit")
-    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "real-secret")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_VERIFIED", "true")
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA", "a" * 40)
     monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "12345")
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(tmp_path / "gate.json"))
     monkeypatch.setenv("RUNNER_TEMP", str(tmp_path))
@@ -91,17 +93,10 @@ def test_isolated_verifier_rejects_forged_persisted_attestation(monkeypatch, tmp
     authority_module.load_permit = lambda *args: {
         "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "external"
     }
-    authority_module.load_attestation = lambda *args: {"signature": "forged"}
-    attestation_module = types.ModuleType("core.attestation")
-
-    def reject_forged(*args):
-        raise ValueError("attestation signature mismatch")
-
-    attestation_module.verify_attestation = reject_forged
+    authority_module.load_attestation = lambda *args: {"signature": "forged", "attestation_type": "INVALID"}
     monkeypatch.setitem(sys.modules, "core.authority", authority_module)
-    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
 
-    with pytest.raises(ValueError, match="attestation signature mismatch"):
+    with pytest.raises(RuntimeError, match="authority_attestation_identity_invalid"):
         verify_and_write_receipt()
 
 
@@ -113,7 +108,7 @@ def test_provider_token_is_only_temporarily_exposed_for_proposal_calls():
     assert source.rindex('os.environ.pop("TRY_REPAIR_PROVIDER_TOKEN", None)') < source.index("tested=worker.test()")
 
 
-def test_isolated_verifier_writes_run_bound_receipt_only_after_valid_hmac(monkeypatch, tmp_path):
+def test_isolated_verifier_writes_receipt_only_after_independent_hmac_proof(monkeypatch, tmp_path):
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", "/var/lib/aios-authority")
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "CT-test-contract")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "PT-test-permit")
@@ -138,16 +133,15 @@ def test_isolated_verifier_writes_run_bound_receipt_only_after_valid_hmac(monkey
     authority_module.load_permit = lambda *args: {
         "contract_id": "CT-test-contract", "permit_id": "PT-test-permit", "issuer": "external"
     }
-    authority_module.load_attestation = lambda *args: {"signature": "valid"}
-    attestation_module = types.ModuleType("core.attestation")
-
-    def verify(*args):
-        assert args[-1] == "real-secret"
-        return True
-
-    attestation_module.verify_attestation = verify
+    authority_module.load_attestation = lambda *args: {
+        "signature": "validated-by-independent-verifier",
+        "attestation_type": "EXECUTION_PERMIT_ATTESTATION",
+        "algorithm": "HMAC-SHA256",
+        "contract_id": "CT-test-contract",
+        "permit_id": "PT-test-permit",
+        "issuer": "yanhul/aios-authority-store",
+    }
     monkeypatch.setitem(sys.modules, "core.authority", authority_module)
-    monkeypatch.setitem(sys.modules, "core.attestation", attestation_module)
 
     receipt_path = verify_and_write_receipt()
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -158,3 +152,5 @@ def test_isolated_verifier_writes_run_bound_receipt_only_after_valid_hmac(monkey
     assert receipt["contract_sha256"] == "contracts-digest"
     assert receipt["permit_sha256"] == "permits-digest"
     assert receipt["attestation_sha256"] == "attestations-digest"
+    assert receipt["attestation_verified_by"] == "independent-git-authority-verifier"
+    assert receipt["authority_store_commit_sha"] == "a" * 40
