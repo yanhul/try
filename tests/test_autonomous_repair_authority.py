@@ -382,7 +382,7 @@ def test_terminal_evidence_failure_cannot_resume_and_layer_another_patch(reason)
         select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
 
 
-def test_privileged_repair_workflow_is_read_only_and_never_publishes():
+def test_privileged_repair_workflow_submits_only_via_external_adapter():
     from pathlib import Path
 
     workflow = Path(".github/workflows/try-autonomous-repair.yml").read_text()
@@ -390,8 +390,11 @@ def test_privileged_repair_workflow_is_read_only_and_never_publishes():
     assert "contents: read" in repair_job
     assert "contents: write" not in repair_job
     assert "pull-requests: write" not in repair_job
-    assert "Refuse ungoverned publication and export candidate patch" in repair_job
-    assert "no independently authorized AIOS COMMIT adapter is configured" in repair_job
+    assert "Verify candidate and submit only through independent COMMIT adapter" in repair_job
+    assert "AIOS_COMMIT_ADAPTER_URL: ${{ secrets.AIOS_COMMIT_ADAPTER_URL }}" in repair_job
+    assert "AIOS_COMMIT_ADAPTER_TOKEN: ${{ secrets.AIOS_COMMIT_ADAPTER_TOKEN }}" in repair_job
+    assert "research/repair_external_integrations.py\\" submit-commit" in repair_job
+    assert "candidate remains artifact-only" in repair_job
     assert "git push" not in repair_job
     assert "gh pr create" not in repair_job
 
