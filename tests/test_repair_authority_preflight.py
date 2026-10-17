@@ -53,7 +53,7 @@ def test_record_digest_rejects_unknown_record_kind(tmp_path):
         _record_digest(tmp_path, "secrets", "contract-1")
 
 
-def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None, permit=None, attestation=None):
+def _install_fake_aios(monkeypatch, *, contract=None, permit=None, attestation=None):
     contract = contract if contract is not None else {
         "task_id": "try-ci-repair-12345",
         "actor": "try-autonomous-repair",
@@ -63,7 +63,13 @@ def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None, permi
         "max_attempts": 2,
     }
     permit = {"permit_id": "permit-1"} if permit is None else permit
-    attestation = {"permit_id": "permit-1"} if attestation is None else attestation
+    attestation = {
+        "attestation_type": "EXECUTION_PERMIT_ATTESTATION",
+        "algorithm": "HMAC-SHA256",
+        "contract_id": "contract-1",
+        "permit_id": "permit-1",
+        "issuer": "yanhul/aios-authority-store",
+    } if attestation is None else attestation
     core = types.ModuleType("core")
     core.__path__ = []
     authority = types.ModuleType("core.authority")
@@ -71,13 +77,9 @@ def _install_fake_aios(monkeypatch, *, attestation_ok=True, contract=None, permi
     authority.load_contract = lambda *args: contract
     authority.load_permit = lambda *args: permit
     authority.load_attestation = lambda *args: attestation
-    att = types.ModuleType("core.attestation")
-    att.verify_attestation = lambda *args: attestation_ok
     core.authority = authority
-    core.attestation = att
     monkeypatch.setitem(sys.modules, "core", core)
     monkeypatch.setitem(sys.modules, "core.authority", authority)
-    monkeypatch.setitem(sys.modules, "core.attestation", att)
 
 
 def _configure_preflight(monkeypatch, tmp_path, request):
@@ -99,7 +101,8 @@ def _configure_preflight(monkeypatch, tmp_path, request):
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_DIR", str(root))
     monkeypatch.setenv("AIOS_REPAIR_CONTRACT_ID", "contract-1")
     monkeypatch.setenv("AIOS_REPAIR_PERMIT_ID", "permit-1")
-    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_SECRET", "test-only-secret")
+    monkeypatch.setenv("AIOS_REPAIR_ATTESTATION_VERIFIED", "true")
+    monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA", "a" * 40)
     monkeypatch.setenv("AIOS_REPAIR_RUN_ID", "12345")
     monkeypatch.setenv("AIOS_REPAIR_AUTHORITY_GATE_RECEIPT", str(runner_temp / "receipt.json"))
     monkeypatch.setenv("RUNNER_TEMP", str(runner_temp))
@@ -120,8 +123,8 @@ def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_p
     assert receipt_path.parent == runner_temp.resolve()
 
 
-def test_preflight_rejects_invalid_attestation(monkeypatch, tmp_path, request):
-    _install_fake_aios(monkeypatch, attestation_ok=False)
+def test_preflight_rejects_invalid_attestation_identity(monkeypatch, tmp_path, request):
+    _install_fake_aios(monkeypatch, attestation={"attestation_type": "INVALID", "algorithm": "HMAC-SHA256", "contract_id": "contract-1", "permit_id": "permit-1", "issuer": "yanhul/aios-authority-store"})
     _configure_preflight(monkeypatch, tmp_path, request)
     with pytest.raises(RuntimeError, match="authority_attestation_rejected"):
         verify_and_write_receipt()
