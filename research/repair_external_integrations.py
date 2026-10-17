@@ -178,13 +178,6 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
             raise ExternalIntegrationError("authority_temporary_path_symlink_rejected")
         temporary.write_bytes(decoded[kind])
         os.replace(temporary, path)
-    output = os.environ.get("GITHUB_OUTPUT", "")
-    if output:
-        with open(output, "a", encoding="utf-8") as stream:
-            stream.write(f"contract_id={contract_id}\\n")
-            stream.write(f"permit_id={permit_id}\\n")
-            stream.write("attestation_verified=true\\n")
-            stream.write(f"authority_store_commit_sha={store_commit_sha}\\n")
     return {
         "contract_id": contract_id,
         "permit_id": permit_id,
@@ -313,6 +306,8 @@ def main() -> int:
                 with open(output, "a", encoding="utf-8") as stream:
                     stream.write(f"contract_id={result['contract_id']}\n")
                     stream.write(f"permit_id={result['permit_id']}\n")
+                    stream.write(f"attestation_verified={result['attestation_verified']}\n")
+                    stream.write(f"authority_store_commit_sha={result['authority_store_commit_sha']}\n")
             print(json.dumps({"status": "FETCHED_AND_DIGEST_VERIFIED", **result}, sort_keys=True))
         else:
             result = submit_commit_candidate(
