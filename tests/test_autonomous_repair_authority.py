@@ -411,7 +411,7 @@ def test_privileged_controller_is_pinned_to_immutable_trusted_revision():
         re.S,
     )
     assert match, "trusted repair controller must use an immutable 40-character SHA"
-    assert match.group(1) == "54d96c59547ea3790eda3dfbf2a15291f5cb5dc7"
+    assert match.group(1) == "5e19d250db3219831d7c1e0c9416a2861c7801b9"
 
 
 def test_terminal_claim_matching_uses_word_boundaries():
