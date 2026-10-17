@@ -79,7 +79,7 @@ Required adapter secrets/configuration:
 ## 4. Acceptance gate
 
 Do not call either blocker PASS until the following evidence exists:
-- issuer deployment/version and private R2 policy verified;
+- issuer/verifier deployment and read-only GitHub Contents token verified;
 - a real run-bound authority fetch with record digests, AIOS `authorize()`, HMAC verification and negative tampering tests;
 - a real adapter request using the dedicated GitHub App, draft PR creation on the exact base SHA, and readback of the resulting head commit;
 - retry/timeout reconciliation test proving no duplicate PR and no merge;
