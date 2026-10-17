@@ -237,6 +237,8 @@ def submit_commit_candidate(*, run_id: str, repository: str, base_sha: str,
             "patch_b64": base64.b64encode(patch).decode("ascii"),
             "patch_sha256": patch_digest, "repair_result_sha256": result_digest,
             "authority_receipt_sha256": receipt_digest,
+            "repair_result_b64": base64.b64encode(result_raw).decode("ascii"),
+            "authority_receipt_b64": base64.b64encode(receipt_raw).decode("ascii"),
             "idempotency_key": idempotency_key,
         },
     )
