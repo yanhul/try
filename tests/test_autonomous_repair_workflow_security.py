@@ -42,7 +42,9 @@ def test_privileged_repair_cannot_self_issue_commit_authority_or_push():
     assert "ci_repair_publish.py" not in workflow
     assert "git push" not in workflow
     assert "gh pr create" not in workflow
-    assert "no independently authorized AIOS COMMIT adapter is configured" in workflow
+    assert "AIOS_COMMIT_ADAPTER_URL: ${{ secrets.AIOS_COMMIT_ADAPTER_URL }}" in workflow
+    assert "AIOS_COMMIT_ADAPTER_TOKEN: ${{ secrets.AIOS_COMMIT_ADAPTER_TOKEN }}" in workflow
+    assert "candidate remains artifact-only" in workflow
     assert "AIOS_REPAIR_AUTHORITY_DIR: ${{ secrets.AIOS_REPAIR_AUTHORITY_DIR }}" in workflow
     assert "AIOS_REPAIR_CONTRACT_ID: ${{ secrets.AIOS_REPAIR_CONTRACT_ID }}" in workflow
     assert "AIOS_REPAIR_PERMIT_ID: ${{ secrets.AIOS_REPAIR_PERMIT_ID }}" in workflow
