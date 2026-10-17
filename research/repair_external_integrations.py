@@ -154,10 +154,23 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
     }
     for path in paths.values():
         path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            path.parent.resolve().relative_to(root)
+        except ValueError as exc:
+            raise ExternalIntegrationError("authority_destination_path_escape") from exc
         if path.is_symlink() or path.parent.is_symlink():
             raise ExternalIntegrationError("authority_destination_symlink_rejected")
+        if path.exists() and not path.is_file():
+            raise ExternalIntegrationError("authority_destination_not_regular_file")
     for kind, path in paths.items():
+        # Reject symlinked ancestors as well as a symlink at the leaf.
+        try:
+            path.resolve(strict=False).relative_to(root)
+        except ValueError as exc:
+            raise ExternalIntegrationError("authority_destination_path_escape") from exc
         temporary = path.with_name(path.name + ".new")
+        if temporary.is_symlink():
+            raise ExternalIntegrationError("authority_temporary_path_symlink_rejected")
         temporary.write_bytes(decoded[kind])
         os.replace(temporary, path)
     return {
