@@ -50,9 +50,9 @@ def verify_and_write_receipt() -> Path:
     runner_temp = os.environ.get("RUNNER_TEMP", "").strip()
     if not all((authority_dir, contract_id, permit_id, run_id, receipt_raw, runner_temp)) or attestation_verified != "true":
         raise RuntimeError("external_authority_gate_configuration_missing")
+    import re
     if not re.fullmatch(r"[0-9a-f]{40}", store_commit_sha):
         raise RuntimeError("authority_store_commit_sha_invalid")
-    import re
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", contract_id):
         raise RuntimeError("authority_contract_id_invalid")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", permit_id):
