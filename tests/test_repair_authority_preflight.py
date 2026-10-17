@@ -126,7 +126,7 @@ def test_preflight_receipt_binds_run_and_exact_record_digests(monkeypatch, tmp_p
 def test_preflight_rejects_invalid_attestation_identity(monkeypatch, tmp_path, request):
     _install_fake_aios(monkeypatch, attestation={"attestation_type": "INVALID", "algorithm": "HMAC-SHA256", "contract_id": "contract-1", "permit_id": "permit-1", "issuer": "yanhul/aios-authority-store"})
     _configure_preflight(monkeypatch, tmp_path, request)
-    with pytest.raises(RuntimeError, match="authority_attestation_rejected"):
+    with pytest.raises(RuntimeError, match="authority_attestation_identity_invalid"):
         verify_and_write_receipt()
 
 
