@@ -160,7 +160,11 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
         temporary = path.with_name(path.name + ".new")
         temporary.write_bytes(decoded[kind])
         os.replace(temporary, path)
-    return {kind: hashlib.sha256(decoded[kind]).hexdigest() for kind in _RECORD_KINDS}
+    return {
+        "contract_id": contract_id,
+        "permit_id": permit_id,
+        **{kind + "_sha256": hashlib.sha256(decoded[kind]).hexdigest() for kind in _RECORD_KINDS},
+    }
 
 
 def submit_commit_candidate(*, run_id: str, repository: str, base_sha: str,
@@ -245,3 +249,55 @@ def submit_commit_candidate(*, run_id: str, repository: str, base_sha: str,
         "head_sha": head_sha, "pull_request_url": pr_url,
         "patch_sha256": patch_digest, "idempotency_key": idempotency_key,
     }
+
+
+
+def main() -> int:
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+    fetch = sub.add_parser("fetch-authority")
+    fetch.add_argument("--run-id", required=True)
+    fetch.add_argument("--repository", required=True)
+    fetch.add_argument("--base-sha", required=True)
+    fetch.add_argument("--destination", required=True)
+    commit = sub.add_parser("submit-commit")
+    commit.add_argument("--run-id", required=True)
+    commit.add_argument("--repository", required=True)
+    commit.add_argument("--base-sha", required=True)
+    commit.add_argument("--contract-id", required=True)
+    commit.add_argument("--permit-id", required=True)
+    commit.add_argument("--patch", required=True)
+    commit.add_argument("--repair-result", required=True)
+    commit.add_argument("--authority-receipt", required=True)
+    args = parser.parse_args()
+    try:
+        if args.command == "fetch-authority":
+            result = fetch_authority_snapshot(
+                run_id=args.run_id, repository=args.repository, base_sha=args.base_sha,
+                destination=args.destination,
+            )
+            output = os.environ.get("GITHUB_OUTPUT", "")
+            if output:
+                with open(output, "a", encoding="utf-8") as stream:
+                    stream.write(f"contract_id={result['contract_id']}\n")
+                    stream.write(f"permit_id={result['permit_id']}\n")
+            print(json.dumps({"status": "FETCHED_AND_DIGEST_VERIFIED", **result}, sort_keys=True))
+        else:
+            result = submit_commit_candidate(
+                run_id=args.run_id, repository=args.repository, base_sha=args.base_sha,
+                contract_id=args.contract_id, permit_id=args.permit_id,
+                patch_path=args.patch, repair_result_path=args.repair_result,
+                authority_receipt_path=args.authority_receipt,
+            )
+            print(json.dumps(result, sort_keys=True))
+    except ExternalIntegrationError as exc:
+        print(json.dumps({"status": "BLOCKED", "reason": str(exc)}, sort_keys=True))
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
