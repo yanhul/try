@@ -110,6 +110,11 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
     for key, value in expected.items():
         if type(envelope.get(key)) is not type(value) or envelope.get(key) != value:
             raise ExternalIntegrationError(f"authority_envelope_identity_mismatch:{key}")
+    if envelope.get("verified") is not True or envelope.get("attestation_verified") is not True:
+        raise ExternalIntegrationError("authority_verifier_did_not_confirm_attestation")
+    store_commit_sha = envelope.get("store_commit_sha")
+    if not isinstance(store_commit_sha, str) or not _SHA.fullmatch(store_commit_sha):
+        raise ExternalIntegrationError("authority_store_commit_sha_invalid")
     contract_id, permit_id = envelope.get("contract_id"), envelope.get("permit_id")
     if not isinstance(contract_id, str) or not _ID.fullmatch(contract_id):
         raise ExternalIntegrationError("authority_contract_id_invalid")
@@ -173,9 +178,18 @@ def fetch_authority_snapshot(*, run_id: str, repository: str, base_sha: str,
             raise ExternalIntegrationError("authority_temporary_path_symlink_rejected")
         temporary.write_bytes(decoded[kind])
         os.replace(temporary, path)
+    output = os.environ.get("GITHUB_OUTPUT", "")
+    if output:
+        with open(output, "a", encoding="utf-8") as stream:
+            stream.write(f"contract_id={contract_id}\\n")
+            stream.write(f"permit_id={permit_id}\\n")
+            stream.write("attestation_verified=true\\n")
+            stream.write(f"authority_store_commit_sha={store_commit_sha}\\n")
     return {
         "contract_id": contract_id,
         "permit_id": permit_id,
+        "attestation_verified": "true",
+        "authority_store_commit_sha": store_commit_sha,
         **{kind + "_sha256": hashlib.sha256(decoded[kind]).hexdigest() for kind in _RECORD_KINDS},
     }
 
