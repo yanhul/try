@@ -193,7 +193,8 @@ jobs:
           AIOS_REPAIR_AUTHORITY_DIR: ${{ github.workspace }}/.aios-authority-snapshot
           AIOS_REPAIR_CONTRACT_ID: ${{ steps.authority.outputs.contract_id }}
           AIOS_REPAIR_PERMIT_ID: ${{ steps.authority.outputs.permit_id }}
-          AIOS_REPAIR_ATTESTATION_SECRET: ${{ secrets.AIOS_REPAIR_ATTESTATION_SECRET }}
+          AIOS_REPAIR_ATTESTATION_VERIFIED: ${{ steps.authority.outputs.attestation_verified }}
+          AIOS_REPAIR_AUTHORITY_STORE_COMMIT_SHA: ${{ steps.authority.outputs.authority_store_commit_sha }}
           AIOS_REPAIR_AUTHORITY_GATE_RECEIPT: ${{ runner.temp }}/aios-authority-gate.json
           RUNNER_TEMP: ${{ runner.temp }}
         run: python "${{ github.workspace }}/trusted-try/research/verify_repair_authority.py"
