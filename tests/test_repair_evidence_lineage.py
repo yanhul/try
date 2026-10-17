@@ -203,3 +203,48 @@ def test_rejects_claim_that_only_contains_test_as_substring(monkeypatch, tmp_pat
     record = _record("EV-contest", claim="contest completed successfully")
     root = _setup(monkeypatch, tmp_path, {"EV-contest": record})
     assert "claim_not_test_verification" in _resolve(root, ["EV-contest"])
+
+
+def test_rejects_applied_receipt_from_different_attempt(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    applied = {
+        "effect_id": EFFECT_ID,
+        "attempt_id": f"{EFFECT_ID}:attempt:2",
+        "provider": "github-actions",
+        "outcome": "OBSERVED_SUCCESS",
+    }
+    reason = resolve_terminal_evidence(
+        root, ["EV-good"], run_id=RUN_ID, base_sha=BASE_SHA, applied=applied,
+        contract_id="contract-1", permit_id="permit-1",
+    )
+    assert reason == "terminal_receipt_blocked:applied_attempt_identity_mismatch"
+
+
+def test_rejects_applied_receipt_from_different_provider(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    applied = {
+        "effect_id": EFFECT_ID,
+        "attempt_id": f"{EFFECT_ID}:attempt:1",
+        "provider": "untrusted-provider",
+        "outcome": "OBSERVED_SUCCESS",
+    }
+    reason = resolve_terminal_evidence(
+        root, ["EV-good"], run_id=RUN_ID, base_sha=BASE_SHA, applied=applied,
+        contract_id="contract-1", permit_id="permit-1",
+    )
+    assert reason == "terminal_receipt_blocked:applied_provider_identity_mismatch"
+
+
+def test_rejects_applied_receipt_without_observed_success(monkeypatch, tmp_path):
+    root = _setup(monkeypatch, tmp_path, {"EV-good": _record("EV-good")})
+    applied = {
+        "effect_id": EFFECT_ID,
+        "attempt_id": f"{EFFECT_ID}:attempt:1",
+        "provider": "github-actions",
+        "outcome": "UNKNOWN",
+    }
+    reason = resolve_terminal_evidence(
+        root, ["EV-good"], run_id=RUN_ID, base_sha=BASE_SHA, applied=applied,
+        contract_id="contract-1", permit_id="permit-1",
+    )
+    assert reason == "terminal_receipt_blocked:applied_outcome_not_observed_success"
