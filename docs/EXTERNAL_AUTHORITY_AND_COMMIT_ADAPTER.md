@@ -4,7 +4,7 @@ Status: **client and protocol tests only; external services NOT DEPLOYED**.
 
 This design intentionally separates three authorities:
 - AIOS issuer: creates contracts, permits and HMAC attestations through the supported AIOS authority APIs. It is not part of the TRY repair controller.
-- R2: durable private storage for issuer-produced records. R2 stores records; it does not grant authority.
+- Git-backed authority store: private `yanhul/aios-authority-store` stores exact record bytes as Git objects. The verifier pins each read to one immutable commit SHA; Git storage does not itself grant authority.
 - COMMIT adapter: independently verifies authority/evidence and uses a dedicated GitHub App installation to create a draft PR. It never merges.
 
 The current branch adds `research/repair_external_integrations.py` as a fail-closed client. It does not create either service, configure secrets, deploy Workers, create a GitHub App, or prove live integration. Do not mark blockers closed based on unit tests.
@@ -25,6 +25,9 @@ Authenticated with a dedicated read-only bearer token. The issuer must authorize
   "base_sha": "<40 lowercase hex SHA>",
   "contract_id": "<AIOS contract ID>",
   "permit_id": "<AIOS permit ID>",
+  "verified": true,
+  "attestation_verified": true,
+  "store_commit_sha": "<40 lowercase hex Git commit SHA>",
   "records": {
     "contracts": {"content_b64": "<base64 exact bytes>", "sha256": "<sha256>"},
     "permits": {"content_b64": "<base64 exact bytes>", "sha256": "<sha256>"},
@@ -40,12 +43,12 @@ The issuer must generate records through the pinned AIOS `core.authority` and `c
 - attempt budget 1–3, exact repository and base SHA in issuer-side metadata
 - issuer identity, permit identity, and issuer-controlled HMAC attestation.
 
-Records are persisted to R2 only after the AIOS API has validated them. The signing/attestation secret is issuer-only; the workflow gets only the verification secret in the isolated verifier step. R2 must be private, with no public object access. The reader token must be read-only and scoped to the one object prefix. Do not use an R2 access key as the AIOS attestation secret.
+Records are committed to the private Git repository only after AIOS APIs validate them. The issuer and independent verifier hold the HMAC secret; TRY never receives it. The verifier resolves `main` to one commit SHA, reads the tree and fetches the three record blobs at that pinned commit. Its read-only GitHub token is scoped to Contents: read on the store repository.
 
 Required workflow secrets after the issuer exists:
 - `AIOS_REPAIR_ISSUER_URL`: HTTPS endpoint for the issuer read API.
 - `AIOS_REPAIR_ISSUER_READ_TOKEN`: scoped read-only token.
-- `AIOS_REPAIR_ATTESTATION_SECRET`: verifier-only HMAC verification secret.
+The HMAC secret is configured only in the issuer and verifier Worker; it is not a TRY Actions secret. The TRY client requires the verifier's `verified`, `attestation_verified`, and immutable `store_commit_sha` fields before materializing records.
 
 The issuer should expose an operator-approved issuance operation separately from the read API. No unauthenticated, caller-selected contract/permit minting endpoint is acceptable. An issuer deployment is not accepted until positive and negative live tests verify exact run binding, wrong-repository denial, wrong-SHA denial, revoked/expired permit denial, record digest integrity and HMAC rejection.
 
@@ -59,8 +62,8 @@ Authenticated with a token separate from the issuer token. Request includes the 
 
 The adapter must independently:
 1. Authenticate the caller and restrict repository to `yanhul/try`.
-2. Fetch/verify the authority records and evidence from the independent AIOS issuer/store; never trust a caller-provided `verified: true` field by itself.
-3. Verify permit capability, allowed effect, run/repository/base-SHA lineage, patch digest, evidence digests and revocation/expiry state.
+2. Fetch/verify the authority records and evidence from the independent Git-backed AIOS authority verifier; never trust a caller-provided `verified: true` field by itself.
+3. Verify permit capability, allowed effect, run/repository/base-SHA lineage, patch digest, evidence digests and any supported revocation/expiry state. Expiry/revocation is not implemented by the current draft and must not be claimed.
 4. Parse and apply the patch only against the exact expected base commit; reject path traversal, symlinks, binary or oversized changes outside policy, and base drift.
 5. Use a dedicated GitHub App installed only on `yanhul/try`, with minimum repository permissions needed to create a branch and pull request. The App private key and installation ID are adapter-only secrets.
 6. Make requests idempotent. If a timeout leaves creation uncertain, return `UNKNOWN`; reconcile the branch/PR via GitHub before any retry.
