@@ -29,16 +29,16 @@ permissions:
   contents: read
 
 env:
-  AIOS_REF: e7e3ba1714e5d099470b8ab746fafd9ea0be726c
+  AIOS_REF: 1979e828ee2b16dbd0601e2404abdc4a560dab49
 
 jobs:
   central-workload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Checkout pinned AIOS core
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/AIOS
           ref: ${{ env.AIOS_REF }}
