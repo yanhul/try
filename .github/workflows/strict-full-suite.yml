@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: absorb/verl-strict-lineage
+          ref: e7e3ba1714e5d099470b8ab746fafd9ea0be726c
           path: aios-authority
       - uses: actions/setup-python@v5
         with:
