@@ -23,12 +23,12 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Checkout AIOS authority
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: yanhul/AIOS
-          ref: e7e3ba1714e5d099470b8ab746fafd9ea0be726c
+          ref: 6db3de5f6a26e3bb85245a7c5cb95fe3405b90a7
           path: aios-authority
       - uses: actions/setup-python@v5
         with:
