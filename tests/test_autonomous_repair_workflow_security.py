@@ -10,7 +10,7 @@ def test_privileged_repair_runs_trusted_controller_not_failed_revision():
     assert trusted_checkout < verifier < runner
     assert target_checkout < runner
     assert "ref: 5e19d250db3219831d7c1e0c9416a2861c7801b9" in workflow
-    assert "ref: 6db3de5f6a26e3bb85245a7c5cb95fe3405b90a7" in workflow
+    assert "ref: 1979e828ee2b16dbd0601e2404abdc4a560dab49" in workflow
     assert "name: Validate exact failed controller run identity" in workflow
     assert 'gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"' in workflow
     assert '"name": "BC Research Controller"' in workflow
