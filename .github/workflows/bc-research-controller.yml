@@ -28,6 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      PYTHONPATH: ${{ github.workspace }}
       RESEARCH_MAX_ITERATIONS: 1
       RESEARCH_MAX_RESUME_RETRIES: 10
       RESEARCH_AGENT_COMMAND: python research/provider_router.py
