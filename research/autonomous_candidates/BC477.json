@@ -1,0 +1,24 @@
+{
+  "bc": 477,
+  "candidate_hash": "428ca7eccf1fa5d067af16a59a2d5f6583015865032d6cab56be0a92b6b11b1f",
+  "conceptual_change": "Translate the selected vwap_volume_profile survivor family into a baseline strategy targeting volume-weighted average price dynamics on BTCUSDT 1H.",
+  "discovery_spec": {
+    "direction": "above",
+    "mechanism_family": "vwap_volume_profile",
+    "threshold": 0.0
+  },
+  "evidence_sources": [
+    "https://github.com/kkzee92/aixtech-crypto-intel-v09"
+  ],
+  "hypothesis_id": "mechanism_family",
+  "is_testable": true,
+  "novelty_key": "vwap_volume_profile||||above",
+  "novelty_type": "structural_mechanism",
+  "oos_selection_used": false,
+  "parameterization": {
+    "threshold": 0.0,
+    "window": null
+  },
+  "parent_bc": 476,
+  "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+}

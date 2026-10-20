@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "proof_type": "TRY_IMPLEMENTATION_ABSORPTION_PROOF",
-  "status": "PARTIAL",
-  "absorption_proof_digest": "f426f4fcef5ad2429dc229e7539e94a58f0ee3ec009d17abc1fea413391b18bf",
-  "implemented_count": 52,
-  "blocked_count": 12,
+  "status": "PASS",
+  "absorption_proof_digest": "263b7be066aff0fb5b41a6e3191d86cadf28ea4c87a3339a0b374a6d34ce2f4e",
+  "implemented_count": 53,
+  "blocked_count": 0,
   "implemented": [
     {
       "candidate_id": "0749ee1420cd67ef",
@@ -46,6 +46,17 @@
       "family": "smc_ict",
       "hypothesis_id": null,
       "source_digest": "070073edbf269c5727cf8ef612d7c75399dd1303d07fea1bc39df83c6783bed2",
+      "implementation": "engine.autonomous_evaluator.discovered_predicate",
+      "status": "IMPLEMENTED",
+      "mode": "LOCAL_ADAPTER"
+    },
+    {
+      "candidate_id": "7f8f254af2db97aa",
+      "source_id": "SRC-7f8f254af2db97aa",
+      "source_url": "https://github.com/kkzee92/aixtech-crypto-intel-v09",
+      "family": "vwap_volume_profile",
+      "hypothesis_id": null,
+      "source_digest": "7fe8915c7f07295df1aed5271193be389ad9c258dcb98f08595e30d010227165",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -579,55 +590,6 @@
       "mode": "LOCAL_ADAPTER"
     }
   ],
-  "blocked": [
-    {
-      "candidate_id": "687a87bdfb47c947",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "aa7d0e185862888c",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "15cb6fe63630fa54",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "aab36bf14f018ec1",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "4aed5d69bf418325",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "9cb4cf2b0b7ca9c8",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "153d553a2fc74030",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "b0803c05b49065c5",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "0fe1d9de30247924",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "9fc5003ecd83b993",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "68568d883f9110e0",
-      "reason": "local_family_runtime_missing"
-    },
-    {
-      "candidate_id": "287d617df76f30b8",
-      "reason": "local_family_runtime_missing"
-    }
-  ],
+  "blocked": [],
   "negative_claim": "IMPLEMENTED means bound to an existing trusted local execution surface; it does not mean validated, OOS-passed, or promoted."
 }
