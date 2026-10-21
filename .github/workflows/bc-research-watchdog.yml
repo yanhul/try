@@ -62,18 +62,25 @@ jobs:
               dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
               dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
             fi
-            if [ -n "$dispatch_id" ]; then
-              run_state="$(gh run view "$dispatch_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion)"
-              run_status="$(jq -r '.status' <<<"$run_state")"
-              run_conclusion="$(jq -r '.conclusion // empty' <<<"$run_state")"
-              if [ "$run_status" != "completed" ]; then
-                echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id status=$run_status; no duplicate dispatch."
-                exit 0
-              fi
-              echo "CONTINUATION_RECEIPT_COMPLETED outcome=$run_conclusion; durable authorization remains subject to controller gates."
-            else
-              echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID"
+            if [ -z "$dispatch_id" ]; then
+              echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID; fail closed to avoid replay."
+              exit 0
             fi
+            run_state="$(gh run view "$dispatch_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion)"
+            run_status="$(jq -r '.status' <<<"$run_state")"
+            run_conclusion="$(jq -r '.conclusion // empty' <<<"$run_state")"
+            if [ "$run_status" != "completed" ]; then
+              echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id status=$run_status; no duplicate dispatch."
+            elif [ "$run_conclusion" = "success" ]; then
+              echo "CONTINUATION_RECEIPT_COMPLETED_SUCCESS dispatch_run_id=$dispatch_id; waiting for a new durable PENDING intent."
+            else
+              echo "CONTINUATION_RECEIPT_STALE dispatch_run_id=$dispatch_id conclusion=$run_conclusion; waiting for controller reconciliation."
+            fi
+            exit 0
+          fi
+          if [ "$intent_status" != "PENDING" ]; then
+            echo "WATCHDOG_BLOCKED_NO_PENDING_AUTHORIZATION status=$intent_status"
+            exit 0
           fi
 
           active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')"
