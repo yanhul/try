@@ -88,7 +88,7 @@ jobs:
           gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
           dispatch_id=""
           for attempt in $(seq 1 10); do
-            dispatch_id=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --event workflow_dispatch --branch main --limit 20 --json databaseId,headSha,createdAt,status --jq --arg sha "$head_sha" --arg before "$before" '[.[] | select(.headSha == $sha and .createdAt >= $before)] | sort_by(.createdAt) | last | .databaseId // empty')
+            dispatch_id=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --event workflow_dispatch --branch main --limit 20 --json databaseId,headSha,createdAt,status --jq '[.[] | select(.headSha == "'"$head_sha"'" and .createdAt >= "'"$before"'")] | sort_by(.createdAt) | last | .databaseId // empty')
             [ -n "$dispatch_id" ] && break
             sleep 2
           done
