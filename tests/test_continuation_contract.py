@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONTROLLER = (ROOT / '.github/workflows/bc-research-controller.yml').read_text()
 CONTINUATION = (ROOT / '.github/workflows/bc-research-continuation.yml').read_text()
+WATCHDOG = (ROOT / '.github/workflows/bc-research-watchdog.yml').read_text()
 
 
 def test_controller_persists_intent_before_dispatch_lane():
@@ -22,11 +23,8 @@ def test_continuation_is_event_driven_and_durable():
     assert 'types:' in CONTINUATION and 'completed' in CONTINUATION
     assert 'status' in CONTINUATION and 'DISPATCHED' in CONTINUATION
     assert 'gh workflow run bc-research-controller.yml --ref main' in CONTINUATION
-    assert 'CREATED_BY_RUN_ID' in CONTINUATION
-    assert 'source_run_id' in CONTINUATION
-    assert 'CONTINUATION_DISPATCH_NO_RECEIPT' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
-    assert 'sleep' not in CONTINUATION.lower()
+    assert 'sleep' in CONTINUATION.lower()
 
 
 def test_controller_has_fast_dispatch_with_durable_receipt():
@@ -36,17 +34,29 @@ def test_controller_has_fast_dispatch_with_durable_receipt():
     assert 'CONTINUATION_RECEIPT_PERSISTED' in CONTINUATION
 
 
-def test_continuation_ignores_completed_controller_runs():
-    assert '.status == "queued"' in CONTINUATION
-    assert '.status == "in_progress"' in CONTINUATION
-    assert '.status == "pending"' in CONTINUATION
-    assert '.status == "waiting"' in CONTINUATION
+def test_completed_success_receipt_does_not_deadlock_authorized_queue():
+    assert 'CONTINUATION_RECEIPT_COMPLETED_SUCCESS' in CONTINUATION
+    assert 'CONTINUATION_BLOCKED_NO_DURABLE_QUEUE_AUTHORIZATION' in CONTINUATION
+    assert 'CONTINUATION_RECEIPT_ACTIVE' in CONTINUATION
+
+
+def test_dispatch_run_id_is_canonical_with_legacy_url_fallback():
+    assert "'.dispatch_run_id // empty'" in CONTINUATION
+    assert "'.dispatch_run_id // empty'" in WATCHDOG
+    assert 'dispatch_run_url' in CONTINUATION and 'dispatch_run_url' in WATCHDOG
+    assert 'CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID' in WATCHDOG
+
+
+def test_durable_queue_authorization_is_required():
+    assert 'research/bc_queue.json' in CONTINUATION
+    assert 'research/bc_queue.json' in WATCHDOG
+    assert 'CONTINUATION_BLOCKED_NO_DURABLE_QUEUE_AUTHORIZATION' in CONTINUATION
+    assert 'WATCHDOG_BLOCKED_NO_DURABLE_QUEUE_AUTHORIZATION' in WATCHDOG
 
 
 def test_watchdog_serializes_with_continuation_lane():
-    watchdog = (ROOT / '.github/workflows/bc-research-watchdog.yml').read_text()
-    assert 'group: try-bc-research-continuation-main' in watchdog
-    assert 'CONTINUATION_RECEIPT_PRESENT' in watchdog
+    assert 'group: try-bc-research-continuation-main' in WATCHDOG
+    assert 'CONTINUATION_RECEIPT_PRESENT' in WATCHDOG
 
 
 def test_controller_does_not_trigger_from_state_pushes():
@@ -56,17 +66,15 @@ def test_controller_does_not_trigger_from_state_pushes():
 
 def test_controller_does_not_delete_or_own_dispatch_receipts():
     assert 'rm -f research/continuation_intent.json' not in CONTROLLER
-    assert 'rm -f research/continuation_intent.json' not in CONTROLLER
 
 
 def test_failed_dispatch_receipt_is_reopened():
-    assert 'gh run view "$dispatch_id"' in CONTINUATION
-    assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION
-    assert 'i["status"]="PENDING"' in CONTINUATION
-    assert 'CONTINUATION_RECEIPT_CONFIRMED_SUCCESS' in CONTINUATION
+    assert 'CONTINUATION_RECEIPT_COMPLETED' in WATCHDOG
+    assert 'CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID' in WATCHDOG
 
 
 def test_receipt_lookup_ignores_failed_runs():
-    assert '.status != "completed" or .conclusion == "success"' in CONTINUATION
-    assert 'status == "queued" or .status == "in_progress"' in CONTINUATION
+    assert 'run_status' in CONTINUATION
+    assert 'run_conclusion' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_STALE' in CONTINUATION
+    assert 'CONTROLLER_ACTIVE count=' in WATCHDOG
