@@ -263,41 +263,6 @@ class GeminiProtocolTests(unittest.TestCase):
             entry.fetch = original
 
 
-class GeminiProtocolTests(unittest.TestCase):
-    def test_malformed_success_response_is_protocol_failure(self):
-        async def fake_fetch(*args, **kwargs):
-            return _Response(200, payload={"unexpected": "shape"})
-
-        original = entry.fetch
-        entry.fetch = fake_fetch
-        try:
-            with self.assertRaisesRegex(RuntimeError, "gemini_protocol_error"):
-                asyncio.run(entry._call_gemini("prompt", _Env()))
-        finally:
-            entry.fetch = original
-
-    def test_non_object_model_json_is_protocol_failure(self):
-        async def fake_fetch(*args, **kwargs):
-            return _Response(
-                200,
-                payload={
-                    "choices": [{
-                        "message": {
-                            "content": json.dumps(["not", "object"])
-                        }
-                    }]
-                },
-            )
-
-        original = entry.fetch
-        entry.fetch = fake_fetch
-        try:
-            with self.assertRaisesRegex(RuntimeError, "gemini_protocol_error"):
-                asyncio.run(entry._call_gemini("prompt", _Env()))
-        finally:
-            entry.fetch = original
-
-
 class GeminiRetryTests(unittest.TestCase):
     def test_429_is_not_retried(self):
         calls = []
@@ -351,10 +316,6 @@ class GeminiRetryTests(unittest.TestCase):
 
         self.assertEqual(len(calls), 3)
         self.assertEqual(payload["schema"], 2)
-
-
-if __name__ == "__main__":
-    unittest.main()
 
 
 class _FakeStorage:
@@ -422,3 +383,7 @@ class DurableCheckpointTests(unittest.TestCase):
         resumed = self.write(attempt=2, phase="RESUME", state="WORKING")
         self.assertTrue(resumed["persisted"])
         self.assertEqual(resumed["version"], 3)
+
+
+if __name__ == "__main__":
+    unittest.main()

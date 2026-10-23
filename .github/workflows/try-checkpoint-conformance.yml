@@ -33,6 +33,8 @@ jobs:
         run: uv run python -m py_compile src/entry.py tests/test_entry.py tests/test_checkpoint_contract.py
       - name: Run Worker conformance tests
         run: uv run python -m unittest discover -s tests -v
+      - name: Verify direct unittest entrypoint discovers checkpoint tests
+        run: uv run python tests/test_entry.py -v
       - name: Compile and test autonomous repair checkpoint client
         working-directory: .
         run: |
