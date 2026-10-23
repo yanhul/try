@@ -1,7 +1,6 @@
 name: BC Research Durable Watchdog
 
-# Liveness safety net only. The canonical controller is the sole durable
-# state/evidence mutator. This workflow only dispatches it.
+# Liveness safety net only. Durable queue authorization is required before dispatch.
 on:
   workflow_dispatch:
   workflow_run:
@@ -31,38 +30,57 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Dispatch canonical controller when idle and non-terminal
+      - name: Dispatch canonical controller only with durable authorization
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
           state="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/bc_lifecycle_state.json --jq '.content' | base64 -d)"
-          terminal="$(jq -r '.campaign_terminal // false' <<<"$state")"
-          durable_terminal="$(jq -r '.terminal // false' <<<"$state")"
-          if [ "$terminal" = "true" ] || [ "$durable_terminal" = "true" ]; then
+          terminal="$(jq -r '(.campaign_terminal // false) or (.terminal // false)' <<<"$state")"
+          if [ "$terminal" = "true" ]; then
             echo "CAMPAIGN_TERMINAL=true; no dispatch."
             exit 0
           fi
 
           intent="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/continuation_intent.json --jq '.content' 2>/dev/null | base64 -d || true)"
+          queue="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/bc_queue.json --jq '.content' 2>/dev/null | base64 -d || true)"
           intent_status="$(jq -r '.status // "ABSENT"' <<<"$intent" 2>/dev/null || echo ABSENT)"
+          next_bc="$(jq -r '.next_bc // empty' <<<"$intent" 2>/dev/null || true)"
+          current_bc="$(jq -r '.current_bc // empty' <<<"$state")"
+          queue_matches="$(jq -r --argjson bc "${next_bc:-null}" '[.[] | select(.bc == $bc)] | length' <<<"$queue" 2>/dev/null || echo 0)"
           echo "CONTINUATION_RECEIPT_PRESENT status=$intent_status"
+
+          if [ -z "$next_bc" ] || [ "$next_bc" != "$current_bc" ] || [ "${queue_matches:-0}" -lt 1 ]; then
+            echo "WATCHDOG_BLOCKED_NO_DURABLE_QUEUE_AUTHORIZATION next_bc=$next_bc current_bc=$current_bc queue_matches=${queue_matches:-0}"
+            exit 0
+          fi
+
           if [ "$intent_status" = "DISPATCHED" ]; then
-            dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
-            dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
-            if [ -n "$dispatch_id" ]; then
-              run_state="$(gh run view "$dispatch_id" --json status,conclusion)"
-              run_status="$(printf '%s' "$run_state" | jq -r '.status')"
-              run_conclusion="$(printf '%s' "$run_state" | jq -r '.conclusion // empty')"
-              if [ "$run_status" != "completed" ] || [ "$run_conclusion" = "success" ]; then
-                echo "CONTINUATION_RECEIPT_ACTIVE status=$run_status conclusion=$run_conclusion; no duplicate dispatch."
-                exit 0
-              fi
-              echo "CONTINUATION_RECEIPT_STALE outcome=$run_conclusion; watchdog will recover."
-            else
-              echo "CONTINUATION_RECEIPT_INVALID; watchdog will recover."
+            dispatch_id="$(jq -r '.dispatch_run_id // empty' <<<"$intent")"
+            if [ -z "$dispatch_id" ]; then
+              dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
+              dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
             fi
+            if [ -z "$dispatch_id" ]; then
+              echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID; fail closed to avoid replay."
+              exit 0
+            fi
+            run_state="$(gh run view "$dispatch_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion)"
+            run_status="$(jq -r '.status' <<<"$run_state")"
+            run_conclusion="$(jq -r '.conclusion // empty' <<<"$run_state")"
+            if [ "$run_status" != "completed" ]; then
+              echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id status=$run_status; no duplicate dispatch."
+            elif [ "$run_conclusion" = "success" ]; then
+              echo "CONTINUATION_RECEIPT_COMPLETED_SUCCESS dispatch_run_id=$dispatch_id; waiting for a new durable PENDING intent."
+            else
+              echo "CONTINUATION_RECEIPT_STALE dispatch_run_id=$dispatch_id conclusion=$run_conclusion; waiting for controller reconciliation."
+            fi
+            exit 0
+          fi
+          if [ "$intent_status" != "PENDING" ]; then
+            echo "WATCHDOG_BLOCKED_NO_PENDING_AUTHORIZATION status=$intent_status"
+            exit 0
           fi
 
           active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')"
@@ -71,6 +89,8 @@ jobs:
             exit 0
           fi
 
-          echo "CONTROLLER_IDLE_NONTERMINAL intent=$intent_status; dispatching canonical main controller."
+          # The watchdog is not an authority source. It may only wake the
+          # canonical controller when a durable intent and matching queue item exist.
+          echo "CONTROLLER_IDLE_NONTERMINAL durable_queue_authorized=true; dispatching canonical main controller."
           gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "BC_CONTROLLER_DISPATCHED=true"
