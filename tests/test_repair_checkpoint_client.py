@@ -23,7 +23,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
     def setUp(self):
         self.env = patch.dict(os.environ, {
             "TRY_REPAIR_PROVIDER_URL": "https://try.example.workers.dev",
-            "TRY_REPAIR_PROVIDER_TOKEN": "secret-test-token",
+            "TRY_REPAIR_CHECKPOINT_TOKEN": "secret-test-token",
         })
         self.env.start()
         self.addCleanup(self.env.stop)
@@ -123,7 +123,7 @@ class RepairCheckpointClientTests(unittest.TestCase):
         call.assert_not_called()
 
     def test_missing_provider_credentials_fail_closed(self):
-        with patch.dict(os.environ, {"TRY_REPAIR_PROVIDER_URL": "", "TRY_REPAIR_PROVIDER_TOKEN": ""}):
+        with patch.dict(os.environ, {"TRY_REPAIR_PROVIDER_URL": "", "TRY_REPAIR_CHECKPOINT_TOKEN": ""}):
             with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "not_configured"):
                 repair_checkpoint.persist_checkpoint(
                     request_id="try-ci-repair:42", repository="yanhul/try", sha="a" * 40,

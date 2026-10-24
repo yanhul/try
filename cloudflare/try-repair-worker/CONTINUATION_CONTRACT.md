@@ -1,10 +1,10 @@
 # TRY cloud continuation contract
 
-Status: implementation gate; the checkpoint API is bookkeeping, not authority.
+Status: checkpoint persistence/restart is live-verified; full repair authority and mutation recovery remain blocked. The checkpoint API is bookkeeping, not authority.
 
 ## Event-driven loop
 
-Target flow (not yet proven end-to-end):
+Target flow (full chain not yet proven end-to-end):
 
 `CI failure event → observe immutable SHA/log tail → request proposal → AIOS gate → apply only under permit → run tests → persist evidence → resume or block`
 
@@ -29,10 +29,18 @@ The current terminal digest binds the serialized `repair-result.json` artifact; 
 
 The Worker deployment needs a Durable Object binding named `REPAIR_CHECKPOINTS` and class migration `RepairCheckpoint`. The Gemini and bearer-token secrets remain Cloudflare secrets. Do not add credentials to repository files.
 
+## Observed live checkpoint validation
+
+- Run: https://github.com/yanhul/try/actions/runs/38883554143
+- Tested commit: `1418b944b79bb9e121199a51be6d7ec4ef6ef1f9`
+- Result: `LIVE_DURABLE_CHECKPOINT_E2E` — PASS.
+- The live Worker accepted OBSERVE, a separate Python process read it back after process restart, DECIDE advanced monotonically to version 2, and another fresh process read version 2 back.
+- This proves live Durable Object checkpoint persistence/readback/restart only. It does **not** prove AIOS authority issuance, patch mutation, terminal evidence promotion, or crash recovery of a partially applied mutation.
+
 ## Acceptance gates
 
-1. Unit tests and Worker conformance tests pass.
-2. Deploy workflow reports the Durable Object migration and binding are live.
-3. Integration test persists a checkpoint, reads it after a separate request, rejects identity changes, invalid transitions and terminal completion without evidence digest.
-4. AIOS bridge resolves the evidence digest to an actual persisted receipt; digest shape alone is not proof.
-5. No merge/deploy claim until the cloud integration run is observed successful.
+1. Unit tests and Worker conformance tests pass — PASS on the tested integration head.
+2. Live Durable Object binding/persistence is operational — PASS by the live read/write/restart run above; this is functional evidence, not a deployment log.
+3. Integration test persists a checkpoint and reads it after fresh processes — PASS. Identity conflicts, invalid transitions and terminal completion without evidence digest remain covered by conformance tests.
+4. AIOS bridge resolves the evidence digest to an actual persisted receipt; digest shape alone is not proof — **BLOCKED / NOT VERIFIED**.
+5. Full event-to-repair and authority → mutation → persisted effect → independent evidence → process-crash recovery — **BLOCKED / NOT VERIFIED**. Do not claim full cloud integration or autonomous repair success.
