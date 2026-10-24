@@ -38,43 +38,114 @@ jobs:
           set -euo pipefail
           test -f research/continuation_intent.json
           intent=$(cat research/continuation_intent.json)
+          source_run_id=$(jq -r '.created_by_run_id // 0' <<<"$intent")
+          [[ "$source_run_id" =~ ^[0-9]+$ ]] && test "$source_run_id" != "0"
+          test "$(jq -r '.target_ref // ""' <<<"$intent")" = "main"
+          test "$(jq -r '.campaign_id // ""' <<<"$intent")" != ""
+          test "$(jq -r '.checkpoint_seq // -1' <<<"$intent")" -ge 0
+          controller_workflow_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/bc-research-controller.yml" --jq '.id')"
+          source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$source_run_id")"
+          test "$(jq -r '.workflow_id' <<<"$source_run")" = "$controller_workflow_id"
+          test "$(jq -r '.status' <<<"$source_run")" = "completed"
+          test "$(jq -r '.conclusion' <<<"$source_run")" = "success"
+          test "$(jq -r '.head_branch' <<<"$source_run")" = "main"
+          test "$(jq -r '.repository.full_name' <<<"$source_run")" = "$GITHUB_REPOSITORY"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_run" ]; then
+            event_source_run_id="$(jq -r '.workflow_run.id // 0' "$GITHUB_EVENT_PATH")"
+            test "$event_source_run_id" = "$source_run_id"
+            test "$(jq -r '.workflow_run.conclusion // ""' "$GITHUB_EVENT_PATH")" = "success"
+          fi
           status=$(jq -r '.status // "ABSENT"' <<<"$intent")
           dispatch_id=$(jq -r '.dispatch_run_id // empty' <<<"$intent")
-          if [ "$status" = "DISPATCHED" ] && [ -n "$dispatch_id" ]; then
-            run_state=$(gh run view "$dispatch_id" --json status,conclusion)
-            test "$(printf "%s" "$run_state" | jq -r '.status != "completed" or .conclusion == "success"')" = "true" || status="STALE"
+          if [ "$status" = "DISPATCHED" ] && ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+            dispatch_id="$(jq -r '.dispatch_run_url // empty' <<<"$intent" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
           fi
-          source_run_id=$(jq -r '.created_by_run_id // 0' <<<"$intent")
-          test "$source_run_id" != "0"
+          if [ "$status" = "DISPATCHED" ]; then
+            if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+              status="STALE"
+            else
+              run_state="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
+              run_workflow_id="$(jq -r '.workflow_id // 0' <<<"$run_state")"
+              run_repo="$(jq -r '.repository.full_name // ""' <<<"$run_state")"
+              run_branch="$(jq -r '.head_branch // ""' <<<"$run_state")"
+              run_sha="$(jq -r '.head_sha // ""' <<<"$run_state")"
+              expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
+              run_status="$(jq -r '.status // ""' <<<"$run_state")"
+              run_conclusion="$(jq -r '.conclusion // ""' <<<"$run_state")"
+              if [ "$run_workflow_id" != "$controller_workflow_id" ] || [ "$run_repo" != "$GITHUB_REPOSITORY" ] || [ "$run_branch" != "main" ] || { [ -n "$expected_sha" ] && [ "$run_sha" != "$expected_sha" ]; }; then
+                echo "CONTINUATION_RECEIPT_INVALID dispatch_run_id=$dispatch_id" >&2
+                exit 1
+              elif [ "$run_status" != "completed" ]; then
+                echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id status=$run_status"
+                exit 0
+              elif [ "$run_conclusion" = "success" ]; then
+                echo "CONTINUATION_RECEIPT_CONFIRMED_SUCCESS source_run_id=$source_run_id dispatch_run_id=$dispatch_id"
+                exit 0
+              else
+                status="STALE"
+              fi
+            fi
+          fi
           state=$(cat research/bc_lifecycle_state.json)
+          test "$(jq -r '.campaign_id // ""' <<<"$state")" = "$(jq -r '.campaign_id' <<<"$intent")"
+          test "$(jq -r '.checkpoint_seq // -1' <<<"$state")" -eq "$(jq -r '.checkpoint_seq' <<<"$intent")"
+          test "$(jq -r '.current_bc // -1' <<<"$state")" -eq "$(jq -r '.current_bc // -1' <<<"$intent")"
+          test "$(jq -r '.next_bc // -1' <<<"$state")" -eq "$(jq -r '.next_bc // -1' <<<"$intent")"
           terminal=$(jq -r '.campaign_terminal // .terminal // false' <<<"$state")
           if [ "$terminal" = "true" ]; then echo "CONTINUATION_TERMINAL"; exit 0; fi
           active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')
           if [ "$active" -gt 0 ]; then echo "CONTINUATION_ACTIVE_CONTROLLER count=$active"; exit 0; fi
           if [ "$status" = "STALE" ]; then
             echo "CONTINUATION_RECEIPT_STALE source_run_id=$source_run_id"
-            i_status=$(gh run view "$dispatch_id" --json status,conclusion)
-            echo "$i_status"
             jq '.status="PENDING"' research/continuation_intent.json > research/continuation_intent.json.tmp
             mv research/continuation_intent.json.tmp research/continuation_intent.json
-            echo 'i["status"]="PENDING"'
           elif [ "$status" = "DISPATCHED" ]; then
             echo "CONTINUATION_RECEIPT_CONFIRMED_SUCCESS source_run_id=$source_run_id"
             exit 0
           else
             echo "CONTINUATION_RECEIPT_PENDING source_run_id=$source_run_id"
           fi
-          # CONTINUATION_DISPATCH_NO_RECEIPT is a terminally unsafe state.
-          run_url="$(gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main)"
-          test -n "$run_url"
-          dispatch_id="$(printf '%s' "$run_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
-          test -n "$dispatch_id"
-          jq --arg url "$run_url" --arg id "$dispatch_id" '.status="DISPATCHED" | .dispatch_run_url=$url | .dispatch_run_id=($id|tonumber)' research/continuation_intent.json > research/continuation_intent.json.tmp
+          # gh workflow run emits no guaranteed run URL. Dispatch, then reconcile
+          # exactly one run by workflow/event/branch/SHA/time; ambiguity fails closed.
+          dispatch_started_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          target_sha="$(git ls-remote origin refs/heads/main | cut -f1)"
+          test -n "$target_sha"
+          gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
+          controller_workflow_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/bc-research-controller.yml" --jq '.id')"
+          dispatch_id=""
+          for attempt in $(seq 1 15); do
+            matches="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$controller_workflow_id" --branch main --event workflow_dispatch --limit 50 --json databaseId,createdAt,headSha --jq --arg since "$dispatch_started_at" --arg sha "$target_sha" '[.[] | select(.headSha == $sha and .createdAt >= $since)] | map(.databaseId)')"
+            count="$(jq 'length' <<<"$matches")"
+            if [ "$count" -eq 1 ]; then
+              dispatch_id="$(jq -r '.[0]' <<<"$matches")"
+              break
+            elif [ "$count" -gt 1 ]; then
+              echo "CONTINUATION_DISPATCH_AMBIGUOUS count=$count; refusing to guess run ID" >&2
+              exit 1
+            fi
+            sleep 2
+          done
+          if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+            echo "CONTINUATION_DISPATCH_NO_RECEIPT source_run_id=$source_run_id" >&2
+            exit 1
+          fi
+          run_url="https://github.com/$GITHUB_REPOSITORY/actions/runs/$dispatch_id"
+          jq --arg url "$run_url" --arg id "$dispatch_id" --arg sha "$target_sha" --arg source "$source_run_id" '.status="DISPATCHED" | .dispatch_run_url=$url | .dispatch_run_id=($id|tonumber) | .dispatch_head_sha=$sha | .dispatch_source_run_id=($source|tonumber)' research/continuation_intent.json > research/continuation_intent.json.tmp
           mv research/continuation_intent.json.tmp research/continuation_intent.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/continuation_intent.json
           git commit -m "research: persist continuation dispatch receipt [skip ci]"
-          git push origin HEAD:main
-          echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id"
+          if ! git push origin HEAD:main; then
+            git fetch origin main
+            remote_intent="$(git show origin/main:research/continuation_intent.json 2>/dev/null || echo '{}')"
+            remote_source="$(jq -r '.created_by_run_id // 0' <<<"$remote_intent")"
+            if [ "$remote_source" != "$source_run_id" ]; then
+              echo "CONTINUATION_RECEIPT_SUPERSEDED remote_source_run_id=$remote_source; refusing overwrite" >&2
+              exit 1
+            fi
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+          echo "CONTINUATION_DISPATCHED source_run_id=$source_run_id dispatch_run_id=$dispatch_id"
           echo "CONTINUATION_RECEIPT_PERSISTED"
