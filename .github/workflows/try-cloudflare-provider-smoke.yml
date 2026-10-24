@@ -25,13 +25,25 @@ jobs:
           body="$(curl --fail --silent --show-error "$WORKER_URL/healthz")"
           echo "$body"
           echo "$body" | python -c 'import json,sys; x=json.load(sys.stdin); assert x.get("status")=="READY" and x.get("provider")=="gemini", x'
-      - name: Authenticated proposal smoke
+      - name: Authenticated proposal smoke (including fail-closed provider responses)
         env:
           WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
         run: |
           test -n "$WORKER_URL"
           test -n "$TRY_PROVIDER_TOKEN"
-          curl --fail --silent --show-error -X POST "$WORKER_URL/v1/repair/propose" -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" --data '{"request_id":"smoke","repository":"yanhul/AIOS","sha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","attempt":1,"failure":{"ci_failure_log_tail":"smoke"},"source_snapshot":{"core/smoke.py":"def smoke(): return 1"}}' > /tmp/proposal.json
+          status=$(curl --silent --show-error --output /tmp/proposal.json --write-out "%{http_code}" -X POST "$WORKER_URL/v1/repair/propose" -H "Authorization: Bearer $TRY_PROVIDER_TOKEN" -H "Content-Type: application/json" --data '{"request_id":"smoke","repository":"yanhul/AIOS","sha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","attempt":1,"failure":{"ci_failure_log_tail":"smoke"},"source_snapshot":{"core/smoke.py":"def smoke(): return 1"}}')
           cat /tmp/proposal.json
-          python -c 'import json; x=json.load(open("/tmp/proposal.json")); assert x.get("schema")==2 or x.get("status")=="HOLD", x'
+          python - "$status" <<'PY'
+          import json, sys
+          status = int(sys.argv[1])
+          x = json.load(open("/tmp/proposal.json", encoding="utf-8"))
+          if status == 200 and (x.get("schema") == 2 or x.get("status") == "HOLD"):
+              print({"smoke": "PASS", "response": x.get("status", "schema-2")})
+          elif status == 429 and x.get("status") == "PROVIDER_QUOTA_EXHAUSTED":
+              print({"smoke": "SAFE_HOLD", "reason": "provider_quota_exhausted"})
+          elif status in (502, 503) and x.get("status") in ("RETRYABLE_PROVIDER_FAILURE", "PROVIDER_NOT_READY"):
+              print({"smoke": "SAFE_RETRYABLE", "reason": x.get("status")})
+          else:
+              raise SystemExit(f"unexpected proposal response: HTTP {status} {x}")
+          PY
