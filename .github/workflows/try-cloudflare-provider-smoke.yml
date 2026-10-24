@@ -25,6 +25,44 @@ jobs:
           body="$(curl --fail --silent --show-error "$WORKER_URL/healthz")"
           echo "$body"
           echo "$body" | python -c 'import json,sys; x=json.load(sys.stdin); assert x.get("status")=="READY" and x.get("provider")=="gemini", x'
+
+      - name: AIOS provider client -> Worker -> Gemini E2E
+        env:
+          TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_PROVIDER_TIMEOUT: "180"
+          E2E_REPOSITORY: yanhul/try
+          E2E_SHA: ${{ github.sha }}
+        run: |
+          test -n "$TRY_REPAIR_PROVIDER_URL"
+          test -n "$TRY_REPAIR_PROVIDER_TOKEN"
+          git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
+          PYTHONPATH=../aios python - <<'PY'
+          import json
+          import os
+          from core.try_repair_provider import health, propose
+
+          ready = health()
+          if ready.get("status") != "READY":
+              raise SystemExit(f"AIOS provider health not READY: {ready}")
+          request_id = f"try-smoke-e2e-{os.environ.get('GITHUB_RUN_ID', 'local')}"
+          result = propose(
+              request_id=request_id,
+              repository=os.environ["E2E_REPOSITORY"],
+              sha=os.environ["E2E_SHA"],
+              attempt=1,
+              failure={"kind": "SyntaxError", "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax"},
+              source={"broken.py": "def repair_me(:\\n    return 1\\n"},
+          )
+          if result.get("status") == "HOLD" or result.get("schema") != 2:
+              raise SystemExit(f"AIOS provider returned non-proposal: {result}")
+          files = result.get("files")
+          if not isinstance(files, list) or not files:
+              raise SystemExit(f"AIOS provider returned no file proposal: {result}")
+          if result.get("request_id") != request_id or result.get("base_sha") != os.environ["E2E_SHA"] or result.get("attempt") != 1:
+              raise SystemExit(f"AIOS provider lost request/effect lineage: {result}")
+          print(json.dumps({"status":"PASS","path":"AIOS client -> Cloudflare Worker -> Gemini","request_id":request_id,"base_sha_bound":True,"attempt_bound":True,"proposed_files":[x.get("path") for x in files]},sort_keys=True))
+          PY
       - name: Authenticated proposal smoke (including fail-closed provider responses)
         env:
           WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
