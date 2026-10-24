@@ -28,14 +28,14 @@ jobs:
 
       - name: AIOS provider client -> Worker -> Gemini E2E
         env:
-          TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
-          TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
           TRY_REPAIR_PROVIDER_TIMEOUT: "180"
           E2E_REPOSITORY: yanhul/try
           E2E_SHA: ${{ github.sha }}
         run: |
-          test -n "$TRY_REPAIR_PROVIDER_URL"
-          test -n "$TRY_REPAIR_PROVIDER_TOKEN"
+          test -n "$TRY_REPAIR_WORKER_URL"
+          test -n "$TRY_PROVIDER_TOKEN"
           git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
           PYTHONPATH=../aios python - <<'PY'
           import json
