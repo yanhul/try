@@ -128,18 +128,22 @@ jobs:
           python -m research.register_candidate_lineage
           git fetch origin main
           if ! git diff --quiet origin/main -- research/lineage.jsonl; then
+            candidate_bc="$(jq -r '.next_bc' research/bc_lifecycle_state.json)"
+            candidate_hash="$(jq -r '.candidate_hash' "research/autonomous_candidates/BC${candidate_bc}.json")"
+            registration_id="BC${candidate_bc}:REGISTRATION:${candidate_hash}"
             git add research/lineage.jsonl
             git commit -m "research: persist validated candidate registration lineage [skip ci]"
             if ! git push origin HEAD:main; then
               git fetch origin main
               remote_lineage="$(git show origin/main:research/lineage.jsonl 2>/dev/null || true)"
-              if ! grep -Fq 'CANDIDATE_REGISTRATION_LINEAGE_CREATED' <<<"$remote_lineage"; then
+              if ! grep -Fq "$registration_id" <<<"$remote_lineage"; then
                 echo "REGISTRATION_LINEAGE_PERSISTENCE_CONFLICT; refusing authorization" >&2
                 exit 1
               fi
             fi
           fi
           git fetch origin main
+          git reset --hard origin/main
           # Do not use a stale intent checkpoint to overwrite current state. A
           # checkpoint mismatch is recoverable only from the current durable queue
           # plus candidate, parent failure, selected-family/evidence gates and lineage.
@@ -199,7 +203,7 @@ jobs:
           # are present on main. Keep old receipts as history, never treat them as active.
           if [ "$status" != "PENDING" ] || [ "$intent_checkpoint" != "$state_checkpoint" ] || [ "$intent_current" != "$state_current" ] || [ "$intent_next" != "$state_next" ] || [ "$(jq -r '.created_by_run_id' <<<"$intent")" != "$source_run_id" ]; then
             history="$receipt_history"
-            python - <<'PY'
+            RECEIPT_HISTORY="$history" SOURCE_RUN_ID="$source_run_id" python - <<'PY'
           import json, os, subprocess
           from pathlib import Path
           def remote(path):
