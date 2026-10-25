@@ -401,6 +401,12 @@ def status(root: Path = ROOT) -> str:
     try:
         bundle = validate_queued_candidate(root, require_registration=False)
     except Exception as queue_error:
+        research = root / "research"
+        state = _read(research / "bc_lifecycle_state.json", {})
+        error = str(state.get("last_error") or "").lower()
+        if state.get("phase") == "WAIT_RETRY" and not any(marker in error for marker in HARD_PROVIDER_ERRORS):
+            if not state.get("campaign_terminal") and not state.get("terminal") and int(state.get("retry_count", 0)) < 10:
+                return "RETRY_READY"
         try:
             validate_discovery_frontier(root)
             return "DISCOVERY_READY"
