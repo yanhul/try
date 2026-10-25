@@ -210,6 +210,57 @@ def validate_queued_candidate(root: Path = ROOT, require_registration: bool = Fa
     }
 
 
+def validate_discovery_frontier(root: Path = ROOT) -> dict:
+    research = root / "research"
+    state = _read(research / "bc_lifecycle_state.json", {})
+    policy = _read(research / "campaign_policy.json", {})
+    queue = _read(research / "bc_queue.json", [])
+    if state.get("campaign_id") != policy.get("campaign_id"):
+        raise ValueError("CONTINUATION_DISCOVERY_CAMPAIGN_MISMATCH")
+    if state.get("campaign_terminal") or state.get("terminal"):
+        raise ValueError("CONTINUATION_DISCOVERY_CAMPAIGN_TERMINAL")
+    error = str(state.get("last_error") or "").lower()
+    if state.get("phase") in {"HOLD", "WAIT_RETRY"} or any(marker in error for marker in HARD_PROVIDER_ERRORS):
+        raise ValueError("CONTINUATION_DISCOVERY_HARD_BLOCKER")
+    if not isinstance(queue, list) or queue:
+        raise ValueError("CONTINUATION_DISCOVERY_QUEUE_ALREADY_PRESENT")
+    last_bc = state.get("last_bc")
+    if not isinstance(last_bc, int) or isinstance(last_bc, bool) or state.get("next_bc") != last_bc + 1:
+        raise ValueError("CONTINUATION_DISCOVERY_FRONTIER_INVALID")
+    if not isinstance(state.get("checkpoint_seq"), int) or state["checkpoint_seq"] < 0:
+        raise ValueError("CONTINUATION_DISCOVERY_CHECKPOINT_INVALID")
+    candidate = _read(_candidate_paths(root) / f"BC{last_bc}.json", {})
+    failure = _read(research / "failure_analysis" / f"BC{last_bc}.json", {})
+    validation = _read(research / f"bc{last_bc}_validation_result.json", {})
+    if not candidate or not failure or not validation:
+        raise ValueError("CONTINUATION_DISCOVERY_FAILURE_EVIDENCE_MISSING")
+    candidate_hash = candidate.get("candidate_hash")
+    if failure.get("decision") not in REJECTED or failure.get("bc") != last_bc:
+        raise ValueError("CONTINUATION_DISCOVERY_FAILURE_DECISION_INVALID")
+    if failure.get("candidate_hash") != candidate_hash or validation.get("candidate_hash") != candidate_hash:
+        raise ValueError("CONTINUATION_DISCOVERY_CANDIDATE_BINDING_INVALID")
+    if failure.get("oos_selection_used") is True or validation.get("oos_selection_used") is not False:
+        raise ValueError("CONTINUATION_DISCOVERY_OOS_SELECTION_FORBIDDEN")
+    if (_candidate_paths(root) / f"BC{last_bc + 1}.json").exists():
+        raise ValueError("CONTINUATION_DISCOVERY_NEXT_CANDIDATE_ALREADY_EXISTS")
+    if not any(
+        isinstance(item, dict)
+        and item.get("experiment_id") == f"BC{last_bc}:{candidate_hash}"
+        and item.get("config_hash") == candidate_hash
+        for item in lineage_engine.read_lineage()
+    ):
+        raise ValueError("CONTINUATION_DISCOVERY_LINEAGE_NOT_PERSISTED")
+    return {
+        "bc": last_bc,
+        "next_bc": last_bc + 1,
+        "checkpoint_seq": state["checkpoint_seq"],
+        "campaign_id": state["campaign_id"],
+        "candidate_hash": candidate_hash,
+        "state": state,
+        "failure": failure,
+    }
+
+
 def register_candidate_lineage(root: Path = ROOT) -> str:
     bundle = validate_queued_candidate(root, require_registration=False)
     if bundle["registered"]:
@@ -304,45 +355,20 @@ def authorize_pending(root: Path = ROOT, source_run_id: int = 0, kind: str = "PR
             "novelty_key": bundle["novelty_key"],
         }
     elif kind == "DISCOVERY":
-        research = root / "research"
-        state = _read(research / "bc_lifecycle_state.json", {})
-        queue = _read(research / "bc_queue.json", [])
-        last_bc = state.get("last_bc")
-        next_bc = state.get("next_bc")
-        error = str(state.get("last_error") or "").lower()
-        if state.get("campaign_terminal") or state.get("terminal"):
-            raise ValueError("CONTINUATION_DISCOVERY_CAMPAIGN_TERMINAL")
-        if state.get("phase") in {"HOLD", "WAIT_RETRY"} or any(marker in error for marker in HARD_PROVIDER_ERRORS):
-            raise ValueError("CONTINUATION_DISCOVERY_HARD_BLOCKER")
-        if not isinstance(last_bc, int) or next_bc != last_bc + 1:
-            raise ValueError("CONTINUATION_DISCOVERY_FRONTIER_INVALID")
-        if isinstance(queue, list) and queue:
-            raise ValueError("CONTINUATION_DISCOVERY_QUEUE_ALREADY_PRESENT")
-        candidate = _read(_candidate_paths(root) / f"BC{last_bc}.json", {})
-        failure = _read(research / "failure_analysis" / f"BC{last_bc}.json", {})
-        if not candidate or not failure or failure.get("decision") not in REJECTED:
-            raise ValueError("CONTINUATION_DISCOVERY_FAILURE_EVIDENCE_MISSING")
-        if candidate.get("candidate_hash") != failure.get("candidate_hash") or failure.get("oos_selection_used") is True:
-            raise ValueError("CONTINUATION_DISCOVERY_FAILURE_BINDING_INVALID")
-        if not any(
-            isinstance(item, dict)
-            and item.get("experiment_id") == f"BC{last_bc}:{candidate.get('candidate_hash')}"
-            and item.get("config_hash") == candidate.get("candidate_hash")
-            for item in lineage_engine.read_lineage()
-        ):
-            raise ValueError("CONTINUATION_DISCOVERY_LINEAGE_NOT_PERSISTED")
+        bundle = validate_discovery_frontier(root)
+        state = bundle["state"]
         intent = {
             "schema_version": 1,
             "status": "PENDING",
             "authorization_kind": "DISCOVERY",
-            "campaign_id": state.get("campaign_id"),
-            "next_bc": next_bc,
+            "campaign_id": bundle["campaign_id"],
+            "next_bc": bundle["next_bc"],
             "current_bc": state.get("current_bc"),
-            "checkpoint_seq": state.get("checkpoint_seq"),
+            "checkpoint_seq": bundle["checkpoint_seq"],
             "created_by_run_id": source_run_id,
             "target_ref": "main",
-            "parent_failure_bc": last_bc,
-            "parent_candidate_hash": candidate.get("candidate_hash"),
+            "parent_failure_bc": bundle["bc"],
+            "parent_candidate_hash": bundle["candidate_hash"],
         }
     elif kind == "RETRY":
         state = _read(root / "research" / "bc_lifecycle_state.json", {})
@@ -374,14 +400,18 @@ def authorize_pending(root: Path = ROOT, source_run_id: int = 0, kind: str = "PR
 def status(root: Path = ROOT) -> str:
     try:
         bundle = validate_queued_candidate(root, require_registration=False)
-    except Exception as exc:
-        return f"BLOCKED:{exc}"
+    except Exception as queue_error:
+        try:
+            validate_discovery_frontier(root)
+            return "DISCOVERY_READY"
+        except Exception:
+            return f"BLOCKED:{queue_error}"
     return "READY" if bundle["registered"] else "REGISTRATION_REQUIRED"
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("status", "register", "validate", "authorize"))
+    parser.add_argument("command", choices=("status", "register", "validate", "validate-discovery", "authorize"))
     parser.add_argument("--source-run-id", type=int, default=0)
     parser.add_argument("--kind", choices=("PROGRESS", "DISCOVERY", "RETRY"), default="PROGRESS")
     args = parser.parse_args()
@@ -396,6 +426,10 @@ def main() -> int:
         if args.command == "validate":
             bundle = validate_queued_candidate(require_registration=True)
             print(f"DURABLE_QUEUE_AUTHORIZED BC{bundle['bc']} checkpoint={bundle['checkpoint_seq']} candidate_hash={bundle['candidate_hash']}")
+            return 0
+        if args.command == "validate-discovery":
+            bundle = validate_discovery_frontier()
+            print(f"DISCOVERY_FRONTIER_AUTHORIZED parent_BC{bundle['bc']} next_BC{bundle['next_bc']} checkpoint={bundle['checkpoint_seq']}")
             return 0
         intent = authorize_pending(source_run_id=args.source_run_id, kind=args.kind)
         print(f"CONTINUATION_INTENT_PENDING kind={args.kind} BC{intent.get('next_bc')} checkpoint={intent.get('checkpoint_seq')}")
