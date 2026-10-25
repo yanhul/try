@@ -5,6 +5,7 @@ changes candidate, failure, queue, checkpoint, or strategy evidence artifacts.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -212,7 +213,7 @@ def validate_queued_candidate():
     }
 
 
-def register():
+def register(*, validate_only: bool = False):
     validated = validate_queued_candidate()
     if validated is None:
         print("CANDIDATE_REGISTRATION_NO_ACTIVE_QUEUE")
@@ -222,6 +223,10 @@ def register():
         print(f"CANDIDATE_REGISTRATION_LINEAGE_EXISTS experiment_id={validated['experiment_id']}")
         emit_outputs(ready=True, queued=True, created=False, bc=validated["bc"])
         return 0
+    if validate_only:
+        print(f"CANDIDATE_REGISTRATION_LINEAGE_NOT_PERSISTED experiment_id={validated['experiment_id']}")
+        emit_outputs(ready=False, queued=True, created=False, bc=validated["bc"])
+        return 3
 
     candidate = validated["candidate"]
     failure = validated["failure"]
@@ -280,8 +285,11 @@ def register():
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--validate-only", action="store_true")
+    args = parser.parse_args()
     try:
-        return register()
+        return register(validate_only=args.validate_only)
     except (RegistrationBlocked, OSError, json.JSONDecodeError, TypeError) as exc:
         print(f"CANDIDATE_REGISTRATION_BLOCKED reason={exc}")
         emit_outputs(ready=False, queued=False, created=False)
