@@ -33,7 +33,7 @@ def test_completed_success_receipt_is_not_treated_as_active():
     assert 'CONTINUATION_RECEIPT_COMPLETED dispatch_run_id=' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_INVALID dispatch_run_id=' in CONTINUATION
-    assert 'run_status != \"completed\"' in CONTINUATION
+    assert 'run_status\" != \"completed\"' in CONTINUATION
     assert 'CONTINUATION_RECEIPT_CONFIRMED_SUCCESS' not in CONTINUATION
 
 
