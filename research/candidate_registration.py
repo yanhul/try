@@ -105,7 +105,7 @@ def validate_queued_candidate(root: Path = ROOT, require_registration: bool = Fa
     history = [item for item in state.get("history", []) if isinstance(item, dict) and item.get("bc") == parent]
     if not any(item.get("decision") in REJECTED and item.get("candidate_hash") == parent_candidate.get("candidate_hash") for item in history):
         raise ValueError("DURABLE_QUEUE_PARENT_HISTORY_MISMATCH")
-    if failure.get("oos_selection_used") is True:
+    if failure.get("oos_selection_used") is not False:
         raise ValueError("DURABLE_QUEUE_PARENT_OOS_SELECTION_FORBIDDEN")
 
     spec = candidate.get("discovery_spec") or {}
@@ -129,6 +129,9 @@ def validate_queued_candidate(root: Path = ROOT, require_registration: bool = Fa
     if len(matching_survivors) != 1:
         raise ValueError("DURABLE_QUEUE_SELECTED_SURVIVOR_MISMATCH")
     survivor = matching_survivors[0]
+    taxonomy = (survivor.get("lineage") or {}).get("taxonomy") or {}
+    if taxonomy.get("status") != "EXECUTABLE" or taxonomy.get("canonical_family") != family:
+        raise ValueError("DURABLE_QUEUE_SELECTED_SURVIVOR_NOT_EXECUTABLE")
 
     novelty = novelty_metadata(candidate)
     novelty_key = novelty.get("novelty_key")
@@ -239,7 +242,7 @@ def validate_discovery_frontier(root: Path = ROOT) -> dict:
         raise ValueError("CONTINUATION_DISCOVERY_FAILURE_DECISION_INVALID")
     if failure.get("candidate_hash") != candidate_hash or validation.get("candidate_hash") != candidate_hash:
         raise ValueError("CONTINUATION_DISCOVERY_CANDIDATE_BINDING_INVALID")
-    if failure.get("oos_selection_used") is True or validation.get("oos_selection_used") is not False:
+    if failure.get("oos_selection_used") is not False or validation.get("oos_selection_used") is not False or validation.get("oos_executed") is not False:
         raise ValueError("CONTINUATION_DISCOVERY_OOS_SELECTION_FORBIDDEN")
     if (_candidate_paths(root) / f"BC{last_bc + 1}.json").exists():
         raise ValueError("CONTINUATION_DISCOVERY_NEXT_CANDIDATE_ALREADY_EXISTS")
