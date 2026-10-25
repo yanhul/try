@@ -172,10 +172,13 @@ jobs:
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          # Dispatch authority comes only from an explicit controller authorization
-          # event. Never promote generic log/progress/HOLD strings into authority.
-          if grep -Eq '^CONTROLLER_CONTINUE_AUTHORIZED kind=(RETRY|PROGRESS) ' controller.log; then
+          # Controller output is only a request. Authorization is emitted by the
+          # post-persistence step after the durable state/lineage push succeeds.
+          kind="$(sed -n 's/^CONTROLLER_CONTINUE_REQUESTED kind=\(PROGRESS\|DISCOVERY\|RETRY\) .*/\1/p' controller.log | tail -n 1)"
+          if [ -n "$kind" ]; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
+            echo "continue_kind=$kind" >> "$GITHUB_OUTPUT"
+            echo "CONTINUATION_REQUEST_RECORDED kind=$kind"
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
           fi
@@ -216,6 +219,7 @@ jobs:
         if: always()
         run: python -m research.persist_lineage
       - name: Persist autonomous research state
+        id: persist_state
         if: always()
         env:
           CONTINUE: ${{ steps.controller.outputs.continue }}
@@ -224,34 +228,17 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/discovery/absorption_proof.json research/discovery/implementation_absorption_proof.json research/repair_research research/provider_usage.json research/.aios_authority research/aios_conformance_receipt.json research/continuation_intent.json)
+          durable_paths=(research/bc_lifecycle_state.json research/bc_queue.json research/autonomous_candidates research/failure_analysis research/frozen_candidates research/oos research/lineage.jsonl research/discovery research/discovery/absorption_proof.json research/discovery/implementation_absorption_proof.json research/repair_research research/provider_usage.json research/.aios_authority research/aios_conformance_receipt.json)
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
-          if [ "$CONTINUE" = "true" ]; then
-            python - <<'PY'
-          import json
-          from pathlib import Path
-          state=json.loads(Path('research/bc_lifecycle_state.json').read_text())
-          intent={
-              'schema_version': 1,
-              'status': 'PENDING',
-              'campaign_id': state.get('campaign_id'),
-              'next_bc': state.get('next_bc'),
-              'current_bc': state.get('current_bc'),
-              'checkpoint_seq': state.get('checkpoint_seq'),
-              'created_by_run_id': int('${{ github.run_id }}'),
-              'target_ref': 'main',
-          }
-          Path('research/continuation_intent.json').write_text(json.dumps(intent,indent=2,sort_keys=True)+'\n')
-          PY
-          fi
           if [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}" 2>/dev/null)" ]; then
             for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
             if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
             if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
           else
             echo "No autonomous research state changes to persist."
+            echo "persisted=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           if ! git push origin HEAD:main; then
@@ -275,6 +262,75 @@ jobs:
             echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
           fi
           echo "STATE_PERSISTED"
+          echo "persisted=true" >> "$GITHUB_OUTPUT"
+      - name: Authorize continuation after durable main persistence
+        if: ${{ steps.controller.outputs.continue == 'true' && steps.persist_state.outputs.persisted == 'true' && success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CONTINUE_KIND: ${{ steps.controller.outputs.continue_kind }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || {
+            echo "CONTINUATION_AUTHORIZATION_MAIN_PERSISTENCE_UNPROVEN" >&2
+            exit 1
+          }
+
+          controller_workflow_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/bc-research-controller.yml" --jq '.id')"
+          active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$controller_workflow_id" --branch main --limit 50 --json databaseId,status --jq --arg current "$GITHUB_RUN_ID" '[.[] | select((.databaseId|tostring) != $current and (.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting"))] | length')"
+          if [ "${active:-0}" -gt 0 ]; then
+            echo "CONTINUATION_AUTHORIZATION_BLOCKED other_controller_active=$active"
+            exit 0
+          fi
+
+          intent_path=research/continuation_intent.json
+          if [ -f "$intent_path" ]; then
+            intent="$(cat "$intent_path")"
+            old_status="$(jq -r '.status // "ABSENT"' <<<"$intent")"
+            if [ "$old_status" = "DISPATCHED" ]; then
+              dispatch_id="$(jq -r '.dispatch_run_id // empty' <<<"$intent")"
+              if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+                dispatch_url="$(jq -r '.dispatch_run_url // empty' <<<"$intent")"
+                dispatch_id="$(printf '%s' "$dispatch_url" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
+              fi
+              if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+                echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID" >&2
+                exit 1
+              fi
+              old_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
+              test "$(jq -r '.workflow_id // 0' <<<"$old_run")" = "$controller_workflow_id"
+              test "$(jq -r '.repository.full_name // ""' <<<"$old_run")" = "$GITHUB_REPOSITORY"
+              test "$(jq -r '.head_branch // ""' <<<"$old_run")" = "main"
+              expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
+              actual_sha="$(jq -r '.head_sha // ""' <<<"$old_run")"
+              test -z "$expected_sha" || test "$actual_sha" = "$expected_sha"
+              test "$(jq -r '.status // ""' <<<"$old_run")" = "completed" || {
+                echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id"
+                exit 1
+              }
+              echo "CONTINUATION_RECEIPT_COMPLETED dispatch_run_id=$dispatch_id conclusion=$(jq -r '.conclusion // ""' <<<"$old_run")"
+            elif [ "$old_status" = "PENDING" ] || [ "$old_status" = "STALE" ]; then
+              source_id="$(jq -r '.created_by_run_id // 0' <<<"$intent")"
+              if [[ "$source_id" =~ ^[0-9]+$ ]] && [ "$source_id" -gt 0 ]; then
+                source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$source_id")"
+                test "$(jq -r '.workflow_id // 0' <<<"$source_run")" = "$controller_workflow_id"
+                test "$(jq -r '.repository.full_name // ""' <<<"$source_run")" = "$GITHUB_REPOSITORY"
+                test "$(jq -r '.head_branch // ""' <<<"$source_run")" = "main"
+                test "$(jq -r '.status // ""' <<<"$source_run")" = "completed"
+                test "$(jq -r '.conclusion // ""' <<<"$source_run")" = "success"
+              fi
+            fi
+          fi
+
+          python -m research.candidate_registration authorize --source-run-id "$GITHUB_RUN_ID" --kind "$CONTINUE_KIND"
+          git add research/continuation_intent.json
+          git commit -m "research: authorize continuation after durable persistence [skip ci]"
+          git push origin HEAD:main
+          checkpoint="$(jq -r '.checkpoint_seq' research/continuation_intent.json)"
+          bc="$(jq -r '.next_bc' research/continuation_intent.json)"
+          echo "CONTROLLER_CONTINUE_AUTHORIZED kind=$CONTINUE_KIND BC=$bc checkpoint=$checkpoint source_run_id=$GITHUB_RUN_ID"
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
