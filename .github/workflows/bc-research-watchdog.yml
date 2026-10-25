@@ -62,9 +62,10 @@ jobs:
           intent_current="$(jq -r '.current_bc // -2' <<<"$intent")"
           state_next="$(jq -r '.next_bc // -1' <<<"$state")"
           intent_next="$(jq -r '.next_bc // -2' <<<"$intent")"
+          checkpoint_mismatch=false
           if [ "$state_campaign" != "$intent_campaign" ] || [ "$state_checkpoint" != "$intent_checkpoint" ] || [ "$state_current" != "$intent_current" ] || [ "$state_next" != "$intent_next" ]; then
-            echo "DURABLE_QUEUE_CHECKPOINT_MISMATCH; watchdog will not dispatch."
-            exit 0
+            checkpoint_mismatch=true
+            echo "DURABLE_QUEUE_CHECKPOINT_MISMATCH; reconcile only from current main artifacts."
           fi
           controller_workflow_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/bc-research-controller.yml" --jq '.id')"
           source_run="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${source_id}")"
@@ -91,18 +92,24 @@ jobs:
               expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
               run_status="$(jq -r '.status // ""' <<<"$run_state")"
               run_conclusion="$(jq -r '.conclusion // ""' <<<"$run_state")"
-              if [ "$run_workflow_id" = "$controller_workflow_id" ] && [ "$run_repo" = "$GITHUB_REPOSITORY" ] && [ "$run_branch" = "main" ] && { [ -z "$expected_sha" ] || [ "$run_sha" = "$expected_sha" ]; }; then
-                if [ "$run_status" != "completed" ] || [ "$run_conclusion" = "success" ]; then
-                  echo "CONTINUATION_RECEIPT_ACTIVE_OR_SUCCESS id=$dispatch_id status=$run_status conclusion=$run_conclusion; no duplicate."
+              run_event="$(jq -r '.event // ""' <<<"$run_state")"
+              if [ "$run_workflow_id" = "$controller_workflow_id" ] && [ "$run_repo" = "$GITHUB_REPOSITORY" ] && [ "$run_branch" = "main" ] && [ "$run_event" = "workflow_dispatch" ] && { [ -z "$expected_sha" ] || [ "$run_sha" = "$expected_sha" ]; }; then
+                if [ "$run_status" != "completed" ]; then
+                  echo "CONTINUATION_RECEIPT_ACTIVE id=$dispatch_id status=$run_status; no duplicate."
                   exit 0
                 fi
-                echo "CONTINUATION_RECEIPT_STALE id=$dispatch_id conclusion=$run_conclusion; recover through continuation lane."
+                if [ "$run_conclusion" = "success" ]; then
+                  echo "CONTINUATION_RECEIPT_COMPLETED_SUCCESS id=$dispatch_id; not active, reconciling current durable frontier."
+                else
+                  echo "CONTINUATION_RECEIPT_STALE id=$dispatch_id conclusion=$run_conclusion; recover through continuation lane."
+                fi
               else
                 echo "CONTINUATION_RECEIPT_INVALID id=$dispatch_id; fail closed."
                 exit 0
               fi
             else
-              echo "CONTINUATION_RECEIPT_MISSING_ID; recover through continuation lane."
+              echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID; fail closed."
+              exit 0
             fi
           fi
 
@@ -112,6 +119,29 @@ jobs:
             exit 0
           fi
 
-          echo "DURABLE_QUEUE_AUTHORIZED source_run_id=$source_id status=$intent_status; dispatching continuation reconciler."
+          git fetch origin main
+          git reset --hard origin/main
+          reg_status="$(python -m research.candidate_registration status 2>&1 || true)"
+          case "$reg_status" in
+            REGISTRATION_REQUIRED)
+              echo "DURABLE_QUEUE_VALID_REGISTRATION_REQUIRED; dispatching registration-only controller pass."
+              gh workflow run bc-research-controller.yml --repo "$GITHUB_REPOSITORY" --ref main
+              echo "BC_CONTROLLER_REGISTRATION_ONLY_DISPATCHED=true"
+              exit 0
+              ;;
+            READY|DISCOVERY_READY|RETRY_READY)
+              echo "DURABLE_FRONTIER_VALID status=$reg_status checkpoint_mismatch=$checkpoint_mismatch"
+              ;;
+            BLOCKED:*)
+              echo "WATCHDOG_BLOCKED_DURABLE_EVIDENCE $reg_status"
+              exit 0
+              ;;
+            *)
+              echo "WATCHDOG_BLOCKED_UNKNOWN_REGISTRATION_STATUS $reg_status"
+              exit 0
+              ;;
+          esac
+
+          echo "DURABLE_FRONTIER_AUTHORIZED source_run_id=$source_id status=$intent_status; dispatching continuation reconciler."
           gh workflow run bc-research-continuation.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "BC_CONTINUATION_RECONCILER_DISPATCHED=true"
