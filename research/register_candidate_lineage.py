@@ -174,6 +174,20 @@ def validate_queued_candidate():
     ):
         raise RegistrationBlocked("implementation_absorption_evidence_missing")
 
+    # A queue is not permission to replay work that has already started or
+    # reached a terminal candidate artifact, even when registration lineage exists.
+    evaluated_paths = [
+        ROOT / f"research/bc{bc}_is_result.json",
+        ROOT / f"research/bc{bc}_validation_result.json",
+        ROOT / f"research/frozen_candidates/BC{bc}.json",
+        ROOT / f"research/oos/BC{bc}_oos_result.json",
+        ROOT / f"research/oos/BC{bc}_oos_result_receipt.json",
+    ]
+    if (FAILURES / f"BC{bc}.json").exists():
+        raise RegistrationBlocked("queued_candidate_has_terminal_failure_artifact")
+    if any(path.exists() for path in evaluated_paths):
+        raise RegistrationBlocked("queued_candidate_has_evaluation_artifacts")
+
     experiment_id = f"BC{bc}:REGISTRATION:{candidate_hash}"
     lineage = read_lineage()
     existing = next((entry for entry in lineage if entry.get("experiment_id") == experiment_id), None)
@@ -190,16 +204,6 @@ def validate_queued_candidate():
             "experiment_id": experiment_id, "created": False,
             "candidate_hash": candidate_hash, "checkpoint_seq": state["checkpoint_seq"],
         }
-
-    evaluated_paths = [
-        ROOT / f"research/bc{bc}_is_result.json",
-        ROOT / f"research/bc{bc}_validation_result.json",
-        ROOT / f"research/frozen_candidates/BC{bc}.json",
-        ROOT / f"research/oos/BC{bc}_oos_result.json",
-        ROOT / f"research/oos/BC{bc}_oos_result_receipt.json",
-    ]
-    if any(path.exists() for path in evaluated_paths):
-        raise RegistrationBlocked("evaluation_artifact_exists_without_registration_lineage")
 
     data_hash = hashlib.sha256(DATA.read_bytes()).hexdigest() if DATA.exists() else parent_validation.get("dataset", {}).get("sha256")
     if not data_hash:
