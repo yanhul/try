@@ -303,6 +303,47 @@ def authorize_pending(root: Path = ROOT, source_run_id: int = 0, kind: str = "PR
             "candidate_hash": bundle["candidate_hash"],
             "novelty_key": bundle["novelty_key"],
         }
+    elif kind == "DISCOVERY":
+        research = root / "research"
+        state = _read(research / "bc_lifecycle_state.json", {})
+        queue = _read(research / "bc_queue.json", [])
+        last_bc = state.get("last_bc")
+        next_bc = state.get("next_bc")
+        error = str(state.get("last_error") or "").lower()
+        if state.get("campaign_terminal") or state.get("terminal"):
+            raise ValueError("CONTINUATION_DISCOVERY_CAMPAIGN_TERMINAL")
+        if state.get("phase") in {"HOLD", "WAIT_RETRY"} or any(marker in error for marker in HARD_PROVIDER_ERRORS):
+            raise ValueError("CONTINUATION_DISCOVERY_HARD_BLOCKER")
+        if not isinstance(last_bc, int) or next_bc != last_bc + 1:
+            raise ValueError("CONTINUATION_DISCOVERY_FRONTIER_INVALID")
+        if isinstance(queue, list) and queue:
+            raise ValueError("CONTINUATION_DISCOVERY_QUEUE_ALREADY_PRESENT")
+        candidate = _read(_candidate_paths(root) / f"BC{last_bc}.json", {})
+        failure = _read(research / "failure_analysis" / f"BC{last_bc}.json", {})
+        if not candidate or not failure or failure.get("decision") not in REJECTED:
+            raise ValueError("CONTINUATION_DISCOVERY_FAILURE_EVIDENCE_MISSING")
+        if candidate.get("candidate_hash") != failure.get("candidate_hash") or failure.get("oos_selection_used") is True:
+            raise ValueError("CONTINUATION_DISCOVERY_FAILURE_BINDING_INVALID")
+        if not any(
+            isinstance(item, dict)
+            and item.get("experiment_id") == f"BC{last_bc}:{candidate.get('candidate_hash')}"
+            and item.get("config_hash") == candidate.get("candidate_hash")
+            for item in lineage_engine.read_lineage()
+        ):
+            raise ValueError("CONTINUATION_DISCOVERY_LINEAGE_NOT_PERSISTED")
+        intent = {
+            "schema_version": 1,
+            "status": "PENDING",
+            "authorization_kind": "DISCOVERY",
+            "campaign_id": state.get("campaign_id"),
+            "next_bc": next_bc,
+            "current_bc": state.get("current_bc"),
+            "checkpoint_seq": state.get("checkpoint_seq"),
+            "created_by_run_id": source_run_id,
+            "target_ref": "main",
+            "parent_failure_bc": last_bc,
+            "parent_candidate_hash": candidate.get("candidate_hash"),
+        }
     elif kind == "RETRY":
         state = _read(root / "research" / "bc_lifecycle_state.json", {})
         error = str(state.get("last_error") or "").lower()
@@ -342,7 +383,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=("status", "register", "validate", "authorize"))
     parser.add_argument("--source-run-id", type=int, default=0)
-    parser.add_argument("--kind", choices=("PROGRESS", "RETRY"), default="PROGRESS")
+    parser.add_argument("--kind", choices=("PROGRESS", "DISCOVERY", "RETRY"), default="PROGRESS")
     args = parser.parse_args()
     try:
         if args.command == "status":
