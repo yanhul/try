@@ -194,6 +194,9 @@ def retry_resume_allowed(state):
     non_retryable = (
         'provider_project_id_missing:GEMINI',
         'provider_not_configured:GEMINI',
+        'provider_quota_exhausted',
+        'provider_rpd_budget_exhausted',
+        'gemini_api_key',
     )
     if error.startswith(non_retryable):
         return False
