@@ -395,6 +395,21 @@ def main():
     _, start, screened = reconcile_campaign_state(state, budget)
     # Epoch recovery is performed only from durable contiguous artifacts in reconcile_campaign_state.
     queued = durable_queued_candidate(state, start)
+    if queued is not None:
+        try:
+            from research.candidate_registration import register_candidate_lineage
+            registration = register_candidate_lineage()
+        except Exception as exc:
+            state.update(phase='HOLD', last_error=f'CANDIDATE_REGISTRATION_BLOCKED:{exc}')
+            save(state)
+            print(f'CAMPAIGN_BLOCKED candidate_registration={exc}')
+            return 5
+        if registration == 'REGISTERED':
+            state.update(phase='PERSISTED', last_error=None, retry_count=0,
+                         campaign_budget=budget, campaign_id=policy['campaign_id'])
+            save(state)
+            print(f'CONTROLLER_CONTINUE_REQUESTED kind=PROGRESS reason=CANDIDATE_REGISTRATION_PENDING_MAIN_PERSIST BC{queued["bc"]}')
+            return 0
     if state.get('campaign_terminal') and queued is None:
         outcome = state.get('campaign_outcome')
         if outcome not in outcomes:
@@ -422,16 +437,28 @@ def main():
     _, start, after = reconcile_campaign_state(state, budget)
     queued_after = durable_queued_candidate(state, start)
     if queued_after is not None and not state.get('terminal'):
+        if state.get('phase') in {'HOLD', 'WAIT_RETRY'} or state.get('last_error'):
+            reason = state.get('last_error') or state.get('phase')
+            print(f'CAMPAIGN_HOLD queued_candidate_preserved reason={reason}')
+            return 0
         action = lifecycle_transition(terminal_state=False, terminal_outcome_valid=True,
                                       budget_exhausted=False, durable_queue=True,
                                       retry_allowed=False, blocked=False, progress_event=False)
         if action is not LifecycleAction.CONTINUE_DURABLE_QUEUE:
             return 4
+        try:
+            from research.candidate_registration import register_candidate_lineage
+            register_candidate_lineage()
+        except Exception as exc:
+            state.update(phase='HOLD', last_error=f'CANDIDATE_REGISTRATION_BLOCKED:{exc}')
+            save(state)
+            print(f'CAMPAIGN_BLOCKED candidate_registration={exc}')
+            return 5
         state.update(campaign_budget=budget, campaign_id=policy['campaign_id'],
                      campaign_terminal=False, campaign_outcome=None, phase='PERSISTED',
                      last_error=None, retry_count=0)
         save(state)
-        print(f'CAMPAIGN_CONTINUE_DURABLE_QUEUE BC{queued_after["bc"]} screened={after}/{budget}')
+        print(f'CONTROLLER_CONTINUE_REQUESTED kind=PROGRESS reason=DURABLE_QUEUE_PERSISTED BC{queued_after["bc"]} screened={after}/{budget}')
         return 0
     retry_allowed = retry_resume_allowed(state)
     blocked = state.get('phase') == 'HOLD'
@@ -447,7 +474,7 @@ def main():
         save(state)
         reason = state.get('last_error') or state.get('phase')
         if action is LifecycleAction.CONTINUE_RETRY:
-            print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
+            print(f'CONTROLLER_CONTINUE_REQUESTED kind=RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
         else:
             print(f'CAMPAIGN_HOLD reason={reason} screened={after}/{budget}')
         return 0
@@ -486,10 +513,10 @@ def main():
         # may produce HOLD.
         state['campaign_frontier_transition_required'] = True
         save(state)
-        print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
+        print(f'CONTROLLER_CONTINUE_REQUESTED kind=DISCOVERY reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
         return 0
     save(state)
-    print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS screened={after}/{budget}')
+    print(f'CONTROLLER_CONTINUE_REQUESTED kind=DISCOVERY screened={after}/{budget}')
     return 0
 
 
