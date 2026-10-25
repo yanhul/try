@@ -286,6 +286,7 @@ jobs:
             echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
           fi
           git fetch origin main
+          git reset --hard origin/main
           python - <<'PY'
           import json, subprocess
           from pathlib import Path
