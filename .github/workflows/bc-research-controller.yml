@@ -303,6 +303,7 @@ jobs:
               test "$(jq -r '.workflow_id // 0' <<<"$old_run")" = "$controller_workflow_id"
               test "$(jq -r '.repository.full_name // ""' <<<"$old_run")" = "$GITHUB_REPOSITORY"
               test "$(jq -r '.head_branch // ""' <<<"$old_run")" = "main"
+              test "$(jq -r '.event // ""' <<<"$old_run")" = "workflow_dispatch"
               expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
               actual_sha="$(jq -r '.head_sha // ""' <<<"$old_run")"
               test -z "$expected_sha" || test "$actual_sha" = "$expected_sha"
@@ -313,14 +314,16 @@ jobs:
               echo "CONTINUATION_RECEIPT_COMPLETED dispatch_run_id=$dispatch_id conclusion=$(jq -r '.conclusion // ""' <<<"$old_run")"
             elif [ "$old_status" = "PENDING" ] || [ "$old_status" = "STALE" ]; then
               source_id="$(jq -r '.created_by_run_id // 0' <<<"$intent")"
-              if [[ "$source_id" =~ ^[0-9]+$ ]] && [ "$source_id" -gt 0 ]; then
-                source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$source_id")"
-                test "$(jq -r '.workflow_id // 0' <<<"$source_run")" = "$controller_workflow_id"
-                test "$(jq -r '.repository.full_name // ""' <<<"$source_run")" = "$GITHUB_REPOSITORY"
-                test "$(jq -r '.head_branch // ""' <<<"$source_run")" = "main"
-                test "$(jq -r '.status // ""' <<<"$source_run")" = "completed"
-                test "$(jq -r '.conclusion // ""' <<<"$source_run")" = "success"
+              if ! [[ "$source_id" =~ ^[0-9]+$ ]] || [ "$source_id" -le 0 ]; then
+                echo "CONTINUATION_SOURCE_RUN_ID_INVALID" >&2
+                exit 1
               fi
+              source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$source_id")"
+              test "$(jq -r '.workflow_id // 0' <<<"$source_run")" = "$controller_workflow_id"
+              test "$(jq -r '.repository.full_name // ""' <<<"$source_run")" = "$GITHUB_REPOSITORY"
+              test "$(jq -r '.head_branch // ""' <<<"$source_run")" = "main"
+              test "$(jq -r '.status // ""' <<<"$source_run")" = "completed"
+              test "$(jq -r '.conclusion // ""' <<<"$source_run")" = "success"
             fi
           fi
 
