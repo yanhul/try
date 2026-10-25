@@ -193,3 +193,10 @@ def test_queue_candidate_hash_mismatch_fails_closed(queued_candidate):
 
     with pytest.raises(registration.RegistrationBlocked, match="queue_candidate_hash_mismatch"):
         registration.validate_queued_candidate()
+
+
+def test_preflight_only_validates_without_appending_registration_lineage(queued_candidate):
+    _, _, research = queued_candidate
+
+    assert registration.register(preflight_only=True) == 0
+    assert not (research / "lineage.jsonl").exists()
