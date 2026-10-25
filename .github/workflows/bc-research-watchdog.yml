@@ -127,7 +127,7 @@ jobs:
               echo "BC_CONTROLLER_REGISTRATION_ONLY_DISPATCHED=true"
               exit 0
               ;;
-            READY|DISCOVERY_READY)
+            READY|DISCOVERY_READY|RETRY_READY)
               echo "DURABLE_FRONTIER_VALID status=$reg_status checkpoint_mismatch=$checkpoint_mismatch"
               ;;
             BLOCKED:*)
