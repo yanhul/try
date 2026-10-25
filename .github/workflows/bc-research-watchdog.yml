@@ -92,7 +92,8 @@ jobs:
               expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
               run_status="$(jq -r '.status // ""' <<<"$run_state")"
               run_conclusion="$(jq -r '.conclusion // ""' <<<"$run_state")"
-              if [ "$run_workflow_id" = "$controller_workflow_id" ] && [ "$run_repo" = "$GITHUB_REPOSITORY" ] && [ "$run_branch" = "main" ] && { [ -z "$expected_sha" ] || [ "$run_sha" = "$expected_sha" ]; }; then
+              run_event="$(jq -r '.event // ""' <<<"$run_state")"
+              if [ "$run_workflow_id" = "$controller_workflow_id" ] && [ "$run_repo" = "$GITHUB_REPOSITORY" ] && [ "$run_branch" = "main" ] && [ "$run_event" = "workflow_dispatch" ] && { [ -z "$expected_sha" ] || [ "$run_sha" = "$expected_sha" ]; }; then
                 if [ "$run_status" != "completed" ]; then
                   echo "CONTINUATION_RECEIPT_ACTIVE id=$dispatch_id status=$run_status; no duplicate."
                   exit 0
