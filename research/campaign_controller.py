@@ -447,7 +447,7 @@ def main():
         save(state)
         reason = state.get('last_error') or state.get('phase')
         if action is LifecycleAction.CONTINUE_RETRY:
-            print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
+            print(f'CONTROLLER_CONTINUE_REQUEST kind=RETRY retry={state.get("retry_count", 0)}/{os.environ.get("RESEARCH_MAX_RESUME_RETRIES", "3")} reason={reason} screened={after}/{budget}')
         else:
             print(f'CAMPAIGN_HOLD reason={reason} screened={after}/{budget}')
         return 0
@@ -486,10 +486,10 @@ def main():
         # may produce HOLD.
         state['campaign_frontier_transition_required'] = True
         save(state)
-        print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
+        print(f'CONTROLLER_CONTINUE_REQUEST kind=PROGRESS reason=FRONTIER_NO_NEW_SCREENED_BC screened={after}/{budget}')
         return 0
     save(state)
-    print(f'CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS screened={after}/{budget}')
+    print(f'CONTROLLER_CONTINUE_REQUEST kind=PROGRESS screened={after}/{budget}')
     return 0
 
 
