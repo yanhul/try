@@ -164,22 +164,48 @@ jobs:
           set -euo pipefail
           python research/repair_oos_evidence.py
           echo "repair_ok=true" >> "$GITHUB_OUTPUT"
+      - name: Validate and register queued candidate lineage before evaluation
+        id: queued_registration_preflight
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' && steps.oos_repair.outputs.repair_ok == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.register_candidate_lineage
+
       - name: Run bounded autonomous research campaign
         id: controller
-        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' && steps.oos_repair.outputs.repair_ok == 'true' }}
+        if: ${{ steps.resume_gate.outputs.fast != 'true' && steps.budget_gate.outputs.exhausted != 'true' && steps.oos_repair.outputs.repair_ok == 'true' && steps.queued_registration_preflight.outputs.ready == 'true' && steps.queued_registration_preflight.outputs.created != 'true' }}
         shell: bash
         run: |
           set -o pipefail
           python research/campaign_controller.py 2>&1 | tee controller.log
           rc=${PIPESTATUS[0]}
-          # Dispatch authority comes only from an explicit controller authorization
-          # event. Never promote generic log/progress/HOLD strings into authority.
-          if grep -Eq '^CONTROLLER_CONTINUE_AUTHORIZED kind=(RETRY|PROGRESS) ' controller.log; then
+          if grep -Eq '^CONTROLLER_CONTINUE_REQUEST kind=(RETRY|PROGRESS) ' controller.log; then
             echo "continue=true" >> "$GITHUB_OUTPUT"
+            if grep -Eq '^CONTROLLER_CONTINUE_REQUEST kind=RETRY ' controller.log; then
+              echo "continue_kind=RETRY" >> "$GITHUB_OUTPUT"
+            else
+              echo "continue_kind=PROGRESS" >> "$GITHUB_OUTPUT"
+            fi
           else
             echo "continue=false" >> "$GITHUB_OUTPUT"
+            echo "continue_kind=PROGRESS" >> "$GITHUB_OUTPUT"
+          fi
+          if grep -Eq '^CAMPAIGN_CONTINUE_DURABLE_QUEUE BC[0-9]+' controller.log; then
+            echo "queue_pending=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "queue_pending=false" >> "$GITHUB_OUTPUT"
           fi
           exit "$rc"
+
+      - name: Register queued candidate lineage after controller queue creation
+        id: queued_registration_after_controller
+        if: ${{ steps.controller.outcome == 'success' && steps.controller.outputs.queue_pending == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.register_candidate_lineage
+
       - name: External repair research escalation
         id: repair_research
         if: ${{ failure() }}
@@ -219,6 +245,8 @@ jobs:
         if: always()
         env:
           CONTINUE: ${{ steps.controller.outputs.continue }}
+          CONTINUE_KIND: ${{ steps.controller.outputs.continue_kind }}
+          QUEUE_PENDING: ${{ steps.controller.outputs.queue_pending == 'true' || steps.queued_registration_preflight.outputs.created == 'true' || steps.queued_registration_after_controller.outputs.created == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -228,43 +256,26 @@ jobs:
           shopt -s nullglob
           validation_files=(research/bc*_validation_result.json)
           status_args=("${durable_paths[@]}" "${validation_files[@]}")
-          if [ "$CONTINUE" = "true" ]; then
-            python - <<'PY'
-          import json
-          from pathlib import Path
-          state=json.loads(Path('research/bc_lifecycle_state.json').read_text())
-          intent={
-              'schema_version': 1,
-              'status': 'PENDING',
-              'campaign_id': state.get('campaign_id'),
-              'next_bc': state.get('next_bc'),
-              'current_bc': state.get('current_bc'),
-              'checkpoint_seq': state.get('checkpoint_seq'),
-              'created_by_run_id': int('${{ github.run_id }}'),
-              'target_ref': 'main',
-          }
-          Path('research/continuation_intent.json').write_text(json.dumps(intent,indent=2,sort_keys=True)+'\n')
-          PY
-          fi
+          state_changed=false
           if [ -n "$(git status --porcelain --untracked-files=all -- "${status_args[@]}" 2>/dev/null)" ]; then
             for path in "${status_args[@]}"; do if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then git add -A -- "$path"; fi; done
             if git diff --cached --quiet; then echo "STATE_PERSISTENCE_LOST unable to stage controller changes" >&2; exit 1; fi
-            if [ "$CONTINUE" = "true" ]; then git commit -m "research: continue autonomous lifecycle [skip ci]"; else git commit -m "research: persist autonomous research state [skip ci]"; fi
+            if [ "$CONTINUE" = "true" ] || [ "$QUEUE_PENDING" = "true" ]; then
+              git commit -m "research: persist authorized continuation prerequisites [skip ci]"
+            else
+              git commit -m "research: persist autonomous research state [skip ci]"
+            fi
+            state_changed=true
           else
             echo "No autonomous research state changes to persist."
-            exit 0
           fi
-          if ! git push origin HEAD:main; then
+          if [ "$state_changed" = "true" ] && ! git push origin HEAD:main; then
             git fetch origin main
-            # Compare remote changes against the commit this job started from.
-            # Do NOT compare HEAD..origin/main: HEAD contains this job's new durable
-            # state, so that direction falsely reports every local durable change as
-            # a remote conflict.
             base_sha="$(git rev-parse HEAD^)"
             remote_overlap="$(git diff --name-only "$base_sha..origin/main" -- "${durable_paths[@]}" "${validation_files[@]}" 2>/dev/null || true)"
             if [ -n "$remote_overlap" ]; then
               echo "STATE_PERSISTENCE_CONFLICT remote durable paths changed since base; refusing merge" >&2
-              printf '%s\\n' "$remote_overlap" >&2
+              printf '%s\n' "$remote_overlap" >&2
               exit 1
             fi
             git rebase origin/main
@@ -274,7 +285,95 @@ jobs:
             fi
             echo "STATE_PERSISTENCE_REBASED_ON_LATEST_MAIN"
           fi
+          git fetch origin main
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          def remote(path):
+              return subprocess.check_output(["git", "show", "origin/main:" + path], text=True)
+          local_state=json.loads(Path("research/bc_lifecycle_state.json").read_text())
+          remote_state=json.loads(remote("research/bc_lifecycle_state.json"))
+          for key in ("campaign_id", "checkpoint_seq", "current_bc", "next_bc"):
+              if local_state.get(key) != remote_state.get(key):
+                  raise SystemExit("STATE_PERSISTENCE_REMOTE_MISMATCH " + key)
+          PY
           echo "STATE_PERSISTED"
+          if [ "$CONTINUE" = "true" ] || [ "$QUEUE_PENDING" = "true" ]; then
+            if [ "$QUEUE_PENDING" = "true" ]; then
+              python -m research.register_candidate_lineage --validate-only
+              python - <<'PY'
+          import json, subprocess
+          def remote(path):
+              return subprocess.check_output(["git", "show", "origin/main:" + path], text=True)
+          state=json.loads(remote("research/bc_lifecycle_state.json"))
+          queue=json.loads(remote("research/bc_queue.json"))
+          bc=int(state["next_bc"])
+          candidate=json.loads(remote(f"research/autonomous_candidates/BC{bc}.json"))
+          failure=json.loads(remote(f"research/failure_analysis/BC{bc-1}.json"))
+          lineage=[json.loads(line) for line in remote("research/lineage.jsonl").splitlines() if line.strip()]
+          experiment_id=f"BC{bc}:REGISTRATION:{candidate['candidate_hash']}"
+          record=next((entry for entry in lineage if entry.get("experiment_id")==experiment_id),None)
+          if state.get("current_bc") != bc or not any(isinstance(x,dict) and x.get("bc")==bc and x.get("candidate_hash")==candidate.get("candidate_hash") for x in queue):
+              raise SystemExit("DURABLE_QUEUE_AUTHORIZATION_CHECKPOINT_OR_HASH_MISMATCH")
+          if failure.get("bc") != bc-1 or failure.get("decision") not in {"REJECT","REJECT_BC"}:
+              raise SystemExit("DURABLE_QUEUE_AUTHORIZATION_PARENT_FAILURE_INVALID")
+          if not record or record.get("verdict") != "REGISTERED" or (record.get("result") or {}).get("candidate_hash") != candidate.get("candidate_hash"):
+              raise SystemExit("DURABLE_QUEUE_AUTHORIZATION_LINEAGE_NOT_PERSISTED")
+          print(f"DURABLE_QUEUE_AUTHORIZATION_VERIFIED bc={bc} candidate_hash={candidate['candidate_hash']} checkpoint_seq={state['checkpoint_seq']}")
+          PY
+            fi
+            python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          def remote(path):
+              return subprocess.check_output(["git", "show", "origin/main:" + path], text=True)
+          state=json.loads(remote("research/bc_lifecycle_state.json"))
+          old={}
+          try: old=json.loads(remote("research/continuation_intent.json"))
+          except Exception: pass
+          history=list(old.get("receipt_history", []))
+          if old.get("status") == "DISPATCHED":
+              history.append({k:old.get(k) for k in ("status","created_by_run_id","dispatch_run_id","dispatch_run_url","dispatch_head_sha","checkpoint_seq")})
+          intent={
+              "schema_version":1,"status":"PENDING","campaign_id":state.get("campaign_id"),
+              "next_bc":state.get("next_bc"),"current_bc":state.get("current_bc"),
+              "checkpoint_seq":state.get("checkpoint_seq"),"created_by_run_id":int(os.environ["GITHUB_RUN_ID"]),
+              "target_ref":"main","receipt_history":history,
+          }
+          if os.environ.get("QUEUE_PENDING") == "true":
+              bc=int(state["next_bc"])
+              candidate=json.loads(remote(f"research/autonomous_candidates/BC{bc}.json"))
+              intent["authorization_type"]="DURABLE_QUEUE"
+              intent["authorized_candidate_hash"]=candidate["candidate_hash"]
+          Path("research/continuation_intent.json").write_text(json.dumps(intent,indent=2,sort_keys=True)+"\n")
+          PY
+            git add research/continuation_intent.json
+            git commit -m "research: persist continuation authorization after durable state [skip ci]"
+            if ! git push origin HEAD:main; then
+              git fetch origin main
+              remote_intent="$(git show origin/main:research/continuation_intent.json 2>/dev/null || echo '{}')"
+              remote_source="$(jq -r '.created_by_run_id // 0' <<<"$remote_intent")"
+              remote_status="$(jq -r '.status // ""' <<<"$remote_intent")"
+              if [ "$remote_source" != "$GITHUB_RUN_ID" ] || [ "$remote_status" != "PENDING" ]; then
+                echo "CONTINUATION_INTENT_PERSISTENCE_CONFLICT; refusing overwrite" >&2
+                exit 1
+              fi
+            fi
+            git fetch origin main
+            remote_intent="$(git show origin/main:research/continuation_intent.json)"
+            test "$(jq -r '.status' <<<"$remote_intent")" = "PENDING"
+            test "$(jq -r '.created_by_run_id' <<<"$remote_intent")" = "$GITHUB_RUN_ID"
+            test "$(jq -r '.checkpoint_seq' <<<"$remote_intent")" = "$(jq -r '.checkpoint_seq' <(git show origin/main:research/bc_lifecycle_state.json))"
+            if [ "$QUEUE_PENDING" = "true" ]; then
+              auth_bc="$(jq -r '.next_bc' <<<"$remote_intent")"
+              auth_hash="$(jq -r '.authorized_candidate_hash' <<<"$remote_intent")"
+              echo "CONTROLLER_CONTINUE_AUTHORIZED kind=PROGRESS reason=DURABLE_QUEUE bc=$auth_bc candidate_hash=$auth_hash checkpoint_seq=$(jq -r '.checkpoint_seq' <<<"$remote_intent")"
+            else
+              auth_kind="$CONTINUE_KIND"
+              if [ "$auth_kind" != "RETRY" ]; then auth_kind="PROGRESS"; fi
+              echo "CONTROLLER_CONTINUE_AUTHORIZED kind=$auth_kind reason=POST_PERSISTENCE checkpoint_seq=$(jq -r '.checkpoint_seq' <<<"$remote_intent")"
+            fi
+          fi
 # G4B autonomous continuation trigger: durable state remains authoritative.
 # Family-specific primitive frontier hardening: preserve durable state and continue.
 # Syntax repair validation trigger.
