@@ -107,7 +107,8 @@ jobs:
                 exit 0
               fi
             else
-              echo "CONTINUATION_RECEIPT_MISSING_ID; recover through continuation lane."
+              echo "CONTINUATION_RECEIPT_INVALID_MISSING_RUN_ID; fail closed."
+              exit 0
             fi
           fi
 
