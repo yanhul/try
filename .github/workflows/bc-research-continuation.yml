@@ -81,7 +81,8 @@ jobs:
             expected_sha=$(jq -r '.dispatch_head_sha // empty' <<<"$intent")
             run_status=$(jq -r '.status // ""' <<<"$run_state")
             dispatch_conclusion=$(jq -r '.conclusion // ""' <<<"$run_state")
-            if [ "$run_workflow_id" != "$controller_workflow_id" ] || [ "$run_repo" != "$GITHUB_REPOSITORY" ] || [ "$run_branch" != "main" ] || { [ -n "$expected_sha" ] && [ "$run_sha" != "$expected_sha" ]; }; then
+            run_event=$(jq -r '.event // ""' <<<"$run_state")
+            if [ "$run_workflow_id" != "$controller_workflow_id" ] || [ "$run_repo" != "$GITHUB_REPOSITORY" ] || [ "$run_branch" != "main" ] || [ "$run_event" != "workflow_dispatch" ] || { [ -n "$expected_sha" ] && [ "$run_sha" != "$expected_sha" ]; }; then
               echo "CONTINUATION_RECEIPT_INVALID dispatch_run_id=$dispatch_id" >&2
               exit 1
             fi
@@ -171,6 +172,12 @@ jobs:
             echo "CONTINUATION_DISPATCH_NO_RECEIPT source_run_id=$source_run_id" >&2
             exit 1
           fi
+          dispatched_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
+          test "$(jq -r '.workflow_id // 0' <<<"$dispatched_run")" = "$controller_workflow_id"
+          test "$(jq -r '.repository.full_name // ""' <<<"$dispatched_run")" = "$GITHUB_REPOSITORY"
+          test "$(jq -r '.head_branch // ""' <<<"$dispatched_run")" = "main"
+          test "$(jq -r '.head_sha // ""' <<<"$dispatched_run")" = "$target_sha"
+          test "$(jq -r '.event // ""' <<<"$dispatched_run")" = "workflow_dispatch"
           run_url="https://github.com/$GITHUB_REPOSITORY/actions/runs/$dispatch_id"
           jq --arg url "$run_url" --arg id "$dispatch_id" --arg sha "$target_sha" --arg source "$source_run_id" '.status="DISPATCHED" | .dispatch_run_url=$url | .dispatch_run_id=($id|tonumber) | .dispatch_head_sha=$sha | .dispatch_source_run_id=($source|tonumber)' research/continuation_intent.json > research/continuation_intent.json.tmp
           mv research/continuation_intent.json.tmp research/continuation_intent.json
