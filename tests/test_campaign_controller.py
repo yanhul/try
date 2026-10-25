@@ -23,6 +23,22 @@ def test_missing_provider_project_id_cannot_auto_resume():
     }
     assert campaign_controller.retry_resume_allowed(state) is False
 
+def test_gemini_quota_exhaustion_is_a_hard_non_retryable_blocker():
+    for error in (
+        "provider_quota_exhausted:429:RPD:GEMINI",
+        "provider_rpd_budget_exhausted",
+        "HOLD_PROVIDER_GEMINI_API_KEY_MISSING",
+    ):
+        state = {
+            "campaign_terminal": False,
+            "terminal": False,
+            "phase": "WAIT_RETRY",
+            "retry_count": 0,
+            "last_error": error,
+        }
+        assert campaign_controller.retry_resume_allowed(state) is False
+
+
 def test_provider_hold_cannot_resume_even_if_new_progress_exists():
     assert continuation_allowed(new_screened=1, phase="WAIT_RETRY", last_error="HOLD_PROVIDER_ROUTER", terminal_state=False) is False
 
