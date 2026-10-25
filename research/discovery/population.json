@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 4272,
-    "expanded": 3618,
-    "normalized": 3618,
+    "raw": 4304,
+    "expanded": 3628,
+    "normalized": 3628,
     "round1": 255,
     "deferred": 202,
     "survivors": 53,
@@ -2686,30 +2686,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "cfed84d97a733725",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "006a3953ebc01064",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5806502",
-      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
-      "description": "Crossref work type=posted-content",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share order flow high frequency factors",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "006a3953ebc01064",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -6975,6 +6951,30 @@
       }
     },
     {
+      "candidate_id": "006a3953ebc01064",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5806502",
+      "title": "A Novel Weighted Microprice Momentum for High-Frequency Trading: Integrating Order Book Dynamics with Execution Flow",
+      "description": "Crossref work type=posted-content",
+      "family": "order_flow",
+      "market": null,
+      "query": "crypto order flow order book imbalance microprice",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "006a3953ebc01064",
+        "family": "order_flow",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "microstructure",
+          "layer": "family",
+          "canonical_family": "order_flow",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0c85e9f244eab585",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5355126",
@@ -7544,23 +7544,6 @@
       }
     },
     {
-      "candidate_id": "3acf9767223c2698",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
-      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "3acf9767223c2698",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "0bc7fc89046bdb2c",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7350238",
@@ -7581,132 +7564,6 @@
           "canonical_family": "cross_sectional",
           "status": "DISCOVERY_ONLY"
         },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8c54030abf4d8adf",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6683818",
-      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "8c54030abf4d8adf",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "64945363d7786137",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4601806",
-      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
-      "description": "Crossref work type=posted-content",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "64945363d7786137",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b44eea7dc4f191af",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
-      "title": "Trading Lore",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "b44eea7dc4f191af",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7209f55550543461",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
-      "title": "Trading System Elements: Entries",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "7209f55550543461",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "843e692c94d2bbd0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.6876580",
-      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
-      "description": "Crossref work type=posted-content",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "843e692c94d2bbd0",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "caa2c40734dd2d0d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
-      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "caa2c40734dd2d0d",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "86b502fbd0881e1d",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
-      "title": "What Is a Tradeable Strategy?",
-      "description": "Crossref work type=other",
-      "family": "unknown",
-      "market": null,
-      "query": "crypto trading bot strategy backtest",
-      "source_timestamp": "2013",
-      "lineage": {
-        "source": "86b502fbd0881e1d",
-        "family": "unknown",
-        "taxonomy": null,
         "rounds": []
       }
     },
@@ -12045,6 +11902,149 @@
       }
     },
     {
+      "candidate_id": "3acf9767223c2698",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch2",
+      "title": "Developing a Strategy So it Trades Like it Back\u2010Tests",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "3acf9767223c2698",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8c54030abf4d8adf",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6683818",
+      "title": "Multi-Timeframe Signal Confirmation in Algorithmic Cryptocurrency Trading: A Backtest Study on ETH/USDT",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8c54030abf4d8adf",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "64945363d7786137",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4601806",
+      "title": "Pairs Trading Strategy Design and Backtest for Oil Futures",
+      "description": "Crossref work type=posted-content",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "64945363d7786137",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b44eea7dc4f191af",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch10",
+      "title": "Trading Lore",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "b44eea7dc4f191af",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7209f55550543461",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch4",
+      "title": "Trading System Elements: Entries",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "7209f55550543461",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "843e692c94d2bbd0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.6876580",
+      "title": "Trading the Volatility Risk Premium on Nifty 50: Strategy Backtest with Realistic Frictions",
+      "description": "Crossref work type=posted-content",
+      "family": "volatility",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "843e692c94d2bbd0",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "caa2c40734dd2d0d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch13",
+      "title": "Traditional Money Management Techniques for Small Accounts: Stock Strategy",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "caa2c40734dd2d0d",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "86b502fbd0881e1d",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1002/9781118656617.ch1",
+      "title": "What Is a Tradeable Strategy?",
+      "description": "Crossref work type=other",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2013",
+      "lineage": {
+        "source": "86b502fbd0881e1d",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dd835d2cc63269a4",
       "source": "crossref",
       "source_url": "https://doi.org/10.21203/rs.3.rs-3910354/v1",
@@ -13442,30 +13442,6 @@
       }
     },
     {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "356134320a245ee6",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2012.21002",
@@ -13517,40 +13493,6 @@
       }
     },
     {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "5267b52c5a5f160e",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/zfg5x_v1",
@@ -13592,30 +13534,6 @@
       }
     },
     {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -13627,30 +13545,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "6ae6c4fa15c9d4b1",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -13784,30 +13678,6 @@
       }
     },
     {
-      "candidate_id": "49001aab7ce1f1f4",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
-      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "49001aab7ce1f1f4",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "e2d49632f3207c81",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/sa.2021.103054",
@@ -13883,19 +13753,26 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
+      "candidate_id": "34a93299afa6db61",
       "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
       "description": "Crossref work type=journal-article",
-      "family": "unknown",
+      "family": "cross_sectional",
       "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2023",
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
       "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "taxonomy": null,
+        "source": "34a93299afa6db61",
+        "family": "cross_sectional",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "cross_sectional",
+          "layer": "family",
+          "canonical_family": "cross_sectional",
+          "status": "DISCOVERY_ONLY"
+        },
         "rounds": []
       }
     },
@@ -13928,6 +13805,23 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "0d43019b3403244c",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8cdd8cefab46dde7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8cdd8cefab46dde7",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -13985,6 +13879,23 @@
       }
     },
     {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c18863b050721775",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.26.07.084",
@@ -14013,30 +13924,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "fdc75585f2a46736",
-        "family": "wyckoff_vsa_vpa",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "volume",
-          "layer": "family",
-          "canonical_family": "wyckoff_vsa_vpa",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "8cdd8cefab46dde7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "8cdd8cefab46dde7",
         "family": "wyckoff_vsa_vpa",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -14823,6 +14710,30 @@
       }
     },
     {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "46b924c064416884",
       "source": "crossref",
       "source_url": "https://doi.org/10.61369/se.2025030021",
@@ -14851,6 +14762,23 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "ab7a95c62ac5f17d",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -14993,6 +14921,40 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0238ec767d096d15",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/aam.2020.98155",
@@ -15045,6 +15007,23 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "a6cf61700f8ffbea",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "49001aab7ce1f1f4",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5170-0607-73",
+      "title": "\u8bc1\u5238\u4ea4\u6613\u5e73\u53f0\u9ad8\u9891\u4ea4\u6613\u7b97\u6cd5\u7684\u6027\u80fd\u4f18\u5316\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "49001aab7ce1f1f4",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -20195,7 +20174,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:37:24Z",
+      "source_timestamp": "2026-10-25T23:27:09Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -20365,7 +20344,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:34:14Z",
+      "source_timestamp": "2026-10-25T23:23:48Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -20535,7 +20514,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:38:47Z",
+      "source_timestamp": "2026-10-25T23:28:21Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -20569,7 +20548,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:28:37Z",
+      "source_timestamp": "2026-10-25T23:18:13Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",
@@ -24333,7 +24312,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-20T21:45:36.925Z",
+      "source_timestamp": "2026-10-25T23:12:11.909Z",
       "lineage": {
         "source": "09c2c11f13abcb7a",
         "family": "china_a_share",
@@ -24597,7 +24576,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T21:03:11.859Z",
+      "source_timestamp": "2026-10-25T23:23:44.294Z",
       "lineage": {
         "source": "6e52da898f7445e9",
         "family": "china_a_share",
@@ -25152,6 +25131,30 @@
       "source_timestamp": "2026-09-25T04:13:59.123Z",
       "lineage": {
         "source": "e1770f19cc46eede",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9d4b0f3109692082",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/SnoutFirst/nonforcefulgithub2gitlabmirror",
+      "title": "SnoutFirst/nonforcefulgithub2gitlabmirror",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:27:46.190Z",
+      "lineage": {
+        "source": "9d4b0f3109692082",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -30573,7 +30576,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-22T06:57:30.817Z",
+      "source_timestamp": "2026-10-25T23:35:42.292Z",
       "lineage": {
         "source": "aaa4e09f9bf47528",
         "family": "china_a_share",
@@ -32325,7 +32328,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T07:14:40.295Z",
+      "source_timestamp": "2026-10-25T23:20:14.169Z",
       "lineage": {
         "source": "38431c4ff1623a72",
         "family": "china_a_share",
@@ -32461,6 +32464,30 @@
       }
     },
     {
+      "candidate_id": "24094ef21645d544",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/asciidoctor/asciidoctor",
+      "title": "freedesktop-sdk/mirrors/github/asciidoctor/asciidoctor",
+      "description": "github.com: asciidoctor/asciidoctor.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:21:29.570Z",
+      "lineage": {
+        "source": "24094ef21645d544",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "077a862e592c6872",
       "source": "gitlab",
       "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/astral-sh/ruff",
@@ -32469,7 +32496,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T07:16:33.061Z",
+      "source_timestamp": "2026-10-25T23:22:04.246Z",
       "lineage": {
         "source": "077a862e592c6872",
         "family": "china_a_share",
@@ -32493,7 +32520,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-22T07:15:55.370Z",
+      "source_timestamp": "2026-10-25T23:22:23.372Z",
       "lineage": {
         "source": "ba56579e69dcabab",
         "family": "china_a_share",
@@ -32544,6 +32571,30 @@
       "source_timestamp": "2026-09-23T07:50:35.315Z",
       "lineage": {
         "source": "65afdcd3fa42925c",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "eb1778658540ad30",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/freedesktop-sdk/mirrors/github/benhoyt/inih",
+      "title": "freedesktop-sdk/mirrors/github/benhoyt/inih",
+      "description": "github.com: benhoyt/inih.git",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:22:28.851Z",
+      "lineage": {
+        "source": "eb1778658540ad30",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -32685,7 +32736,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-21T07:11:37.703Z",
+      "source_timestamp": "2026-10-25T23:25:06.266Z",
       "lineage": {
         "source": "fd4b101339ed0dea",
         "family": "china_a_share",
@@ -32757,7 +32808,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-09-22T22:28:24.129Z",
+      "source_timestamp": "2026-10-25T23:26:04.913Z",
       "lineage": {
         "source": "b3a36164914237b9",
         "family": "china_a_share",
@@ -32949,7 +33000,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T11:25:05.257Z",
+      "source_timestamp": "2026-10-25T23:28:07.761Z",
       "lineage": {
         "source": "e9476b2814b5cd6c",
         "family": "china_a_share",
@@ -35773,6 +35824,30 @@
       }
     },
     {
+      "candidate_id": "a61495d346b84d58",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/gms-squared/modules/gridlab.gmss.openiddict",
+      "title": "gms-squared/modules/gridlab.gmss.openiddict",
+      "description": "OpenIddict module provides an integration with the [OpenIddict](https://github.com/openiddict/openiddict-core) which provides advanced authentication features like single sign-on, single log-out, and API access control. This module persists applications, scopes, and other OpenIddict-related objects to the database.\r\n",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:11:12.082Z",
+      "lineage": {
+        "source": "a61495d346b84d58",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "26405c0595a657cf",
       "source": "gitlab",
       "source_url": "https://gitlab.com/gms-squared/support/gitlab-ci-templates/releases",
@@ -37005,7 +37080,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T15:50:44.035Z",
+      "source_timestamp": "2026-10-25T23:08:00.110Z",
       "lineage": {
         "source": "31e05c5760068d8c",
         "family": "china_a_share",
@@ -37717,6 +37792,30 @@
       }
     },
     {
+      "candidate_id": "4e3362f3608ae151",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/kiwifs/kiwifs",
+      "title": "kiwifs/kiwifs",
+      "description": "Read-only mirror of https://github.com/kiwifs/kiwifs. Develop, file issues, and open PRs on GitHub.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:30:22.732Z",
+      "lineage": {
+        "source": "4e3362f3608ae151",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9e7568316d711f85",
       "source": "gitlab",
       "source_url": "https://gitlab.com/kl222/RabbitRemoteControl",
@@ -37824,6 +37923,30 @@
       "source_timestamp": "2026-09-25T05:21:34.864Z",
       "lineage": {
         "source": "15f23be13c6fb2ad",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "30b5f7b4893d2838",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/krakenanalytics2/service-whatsapp",
+      "title": "krakenanalytics2/service-whatsapp",
+      "description": "Gateway WhatsApp multi-cuenta (whatsapp-web.js) (mirror GitHub kraken-labss)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:21:21.808Z",
+      "lineage": {
+        "source": "30b5f7b4893d2838",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -42949,6 +43072,30 @@
       }
     },
     {
+      "candidate_id": "d6505b28d58c31b4",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/rachel.green.r/ecoscan-33246695-deletion_scheduled-88082935",
+      "title": "rachel.green.r/ecoscan-33246695-deletion_scheduled-88082935",
+      "description": "If you want to integrate with Home-Assistant please see: [hydroqc-ha](https://github.com/hydroqc/hydroqc-ha)\r\n\r\nMQTT daemon that sends your Hydro-Quebec account information to your MQTT server\r\nDocs: [https://hydroqc.ca](https://hydroqc.ca)",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:23:48.106Z",
+      "lineage": {
+        "source": "d6505b28d58c31b4",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "4c0ff191b62545fe",
       "source": "gitlab",
       "source_url": "https://gitlab.com/rachel.green.r/ecoscan-36230498",
@@ -44133,7 +44280,7 @@
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2026-10-25T21:04:09.234Z",
+      "source_timestamp": "2026-10-25T23:23:42.714Z",
       "lineage": {
         "source": "eb8fe1a9ce89b3a3",
         "family": "china_a_share",
@@ -46320,6 +46467,54 @@
       "source_timestamp": "2026-09-25T03:44:37.837Z",
       "lineage": {
         "source": "0645d31b0825a310",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f10cf3e1079cf0c1",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/terraform-child-modules-48151/terraform-github-repository",
+      "title": "terraform-child-modules-48151/terraform-github-repository",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:24:33.596Z",
+      "lineage": {
+        "source": "f10cf3e1079cf0c1",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f6ad80a5aad128e8",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/terraform-root-modules-48151/terraform-github-dhoppe",
+      "title": "terraform-root-modules-48151/terraform-github-dhoppe",
+      "description": null,
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2026-10-25T23:23:47.555Z",
+      "lineage": {
+        "source": "f6ad80a5aad128e8",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -48639,7 +48834,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-25T18:39:39.197Z",
+      "source_timestamp": "2026-10-25T22:03:21.736Z",
       "lineage": {
         "source": "55105a845a55a87c",
         "family": "unknown",
@@ -74222,6 +74417,30 @@
       }
     },
     {
+      "candidate_id": "8f5f8a7c6a74d095",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/65150d7e960870a3dc40943e4eede54b263e1a50",
+      "title": "AlphaPilot: Multi-Turn Tool-Using LLM Agents for Adaptive Alpha Mining with Reinforcement Learning",
+      "description": "Formulaic alpha mining seeks interpretable expressions that rank assets by future returns. The task is challenging because it demands simultaneous processing of unstructured market descriptions, historical data, and quantitative evaluation of candidate factors, yet most existing methods exploit only a subset of these signals. We introduce AlphaPilot, a reinforcement-learning framework that trains multi-turn tool-using LLM agents for adaptive alpha mining. The agent conditions on market descriptions, proposes factor expressions, queries real-data evaluator feedback, and updates a retained factor pool across turns. This design jointly leverages market text, LLM financial knowledge, real data, and evaluation feedback. At inference time, AlphaPilot performs day-by-day search and pool updates to adapt to shifting market regimes. Across three independent runs in out-of-sample rolling backtests on CSI300 and CSI500, AlphaPilot achieves mean total returns of 42.93% and 54.19%, with mean Sharpe ratios of 2.46 and 2.86, respectively. It attains the highest mean total return, Sharpe, and RankIC among the evaluated methods on both universes.",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "8f5f8a7c6a74d095",
+        "family": "cross_sectional",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "cross_sectional",
+          "layer": "family",
+          "canonical_family": "cross_sectional",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b90d9c9fd22bf4aa",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/3fc0a6e4c3fd9366973ff353b03302d5acc268f4",
@@ -74241,6 +74460,54 @@
           "layer": "family",
           "canonical_family": "china_a_share",
           "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "47da219ff47fa1df",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d392598fbffaae986b15695b24611205be2e6ec3",
+      "title": "Chain-of-Alpha: Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading",
+      "description": "Alpha factor mining is a fundamental task in quantitative trading, aimed at discovering interpretable signals that can predict asset returns beyond systematic market risk. While traditional methods rely on manual formula design or heuristic search with machine learning, recent advances have leveraged Large Language Models (LLMs) for automated factor discovery. However, existing LLM-based alpha mining approaches remain limited in terms of automation, generality, and efficiency. In this paper, we propose Chain-of-Alpha, a novel, simple, yet effective and efficient LLM-based framework for fully automated formulaic alpha mining. Our method features a dual-chain architecture, consisting of a Factor Generation Chain and a Factor Optimization Chain, which iteratively generate, evaluate, and refine candidate alpha factors using only market data, while leveraging backtest feedback and prior optimization knowledge. The two chains work synergistically to enable high-quality alpha discovery without human intervention and offer strong scalability. Extensive experiments on real-world A-share benchmarks demonstrate that Chain-of-Alpha outperforms existing baselines across multiple metrics, presenting a promising direction for LLM-driven quantitative research.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "47da219ff47fa1df",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "832937213c945052",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
+      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
+      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
+      "family": "smc_ict",
+      "market": null,
+      "query": "LLM alpha mining quantitative trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "832937213c945052",
+        "family": "smc_ict",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "smc_ict",
+          "status": "EXECUTABLE"
         },
         "rounds": []
       }
@@ -74863,6 +75130,30 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "VWAP volume profile crypto trading strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "vwap_volume_profile",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -75438,30 +75729,6 @@
           "domain_id": "price_action",
           "layer": "family",
           "canonical_family": "momentum_trend",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "volume",
-          "layer": "family",
-          "canonical_family": "vwap_volume_profile",
           "status": "EXECUTABLE"
         },
         "rounds": []
@@ -78637,30 +78904,6 @@
           "layer": "family",
           "canonical_family": "execution_mev",
           "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "832937213c945052",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d3cc99f0143c24012b376c5250c7bc88c1f011a5",
-      "title": "Multi-Agent LLM Framework for Formulaic Alpha Generation and Selection in Quantitative Trading",
-      "description": "This study proposes a multi-agent Large Language Model (LLM) framework for formulaic alpha generation and selection in quantitative finance. In this context, an alpha refers to a predictive trading signal or mathematical expression designed to capture excess returns beyond market benchmarks. While a single LLM can generate candidate alphas, relying on one model often results in redundancy, limited diversity, and suboptimal signal quality. To address this, we adopt a multi-agent approach where DeepSeek is responsible for generating a broad pool of formulaic alphas, and Gemini serves as an evaluator that selects the top ten most important alphas from this pool based on criteria such as predictive strength and diversity of signals. To assess the effectiveness of the framework, we compare two experimental setups: (1) an equal-weighted portfolio constructed from the top ten alphas selected by Gemini, and (2) an equal-weighted portfolio of all 50 alphas generated by DeepSeek. Empirical results demonstrate that the multi-agent framework can achieve better portfolio performance, delivering higher cumulative returns, improved risk-adjusted measures, and lower maximum drawdown relative to the full alpha pool. These findings highlight the potential of multi-agent LLM collaboration in enhancing alpha discovery and systematic trading strategies.",
-      "family": "smc_ict",
-      "market": null,
-      "query": "evolutionary alpha discovery trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "832937213c945052",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
         },
         "rounds": []
       }
@@ -82816,30 +83059,6 @@
           "layer": "family",
           "canonical_family": "smc_ict",
           "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "47da219ff47fa1df",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/d392598fbffaae986b15695b24611205be2e6ec3",
-      "title": "Chain-of-Alpha: Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading",
-      "description": "Alpha factor mining is a fundamental task in quantitative trading, aimed at discovering interpretable signals that can predict asset returns beyond systematic market risk. While traditional methods rely on manual formula design or heuristic search with machine learning, recent advances have leveraged Large Language Models (LLMs) for automated factor discovery. However, existing LLM-based alpha mining approaches remain limited in terms of automation, generality, and efficiency. In this paper, we propose Chain-of-Alpha, a novel, simple, yet effective and efficient LLM-based framework for fully automated formulaic alpha mining. Our method features a dual-chain architecture, consisting of a Factor Generation Chain and a Factor Optimization Chain, which iteratively generate, evaluate, and refine candidate alpha factors using only market data, while leveraging backtest feedback and prior optimization knowledge. The two chains work synergistically to enable high-quality alpha discovery without human intervention and offer strong scalability. Extensive experiments on real-world A-share benchmarks demonstrate that Chain-of-Alpha outperforms existing baselines across multiple metrics, presenting a promising direction for LLM-driven quantitative research.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "47da219ff47fa1df",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
         },
         "rounds": []
       }
@@ -88722,7 +88941,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:37:24Z",
+      "source_timestamp": "2026-10-25T23:27:09Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -88892,7 +89111,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:34:14Z",
+      "source_timestamp": "2026-10-25T23:23:48Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -89062,7 +89281,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:38:47Z",
+      "source_timestamp": "2026-10-25T23:28:21Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -89096,7 +89315,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-25T21:28:37Z",
+      "source_timestamp": "2026-10-25T23:18:13Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",

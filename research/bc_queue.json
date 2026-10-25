@@ -1,23 +1,26 @@
 [
   {
     "bc": 477,
-    "candidate_hash": "cfe0f774a583b1b7c7357bf5d269e060249873c1932176a86f036ea27d809908",
-    "conceptual_change": "Translate the selected vwap_volume_profile mechanism family into a valid executable form on BTCUSDT 1H OHLCV using default vwap-based volume profile parameters.",
+    "candidate_hash": "dfebafc675ae8bc016eb7e9e7286bcfe9161334208f10f7e39c5abebdf9dd2b7",
+    "conceptual_change": "Translate the selected mean reversion mechanism using ratio operator on close over close to evaluate baseline price stability on BTCUSDT 1H.",
     "discovery_spec": {
       "direction": "above",
-      "mechanism_family": "vwap_volume_profile",
-      "threshold": 0.0
+      "left": "close",
+      "mechanism_family": "mean_reversion",
+      "operator": "ratio",
+      "right": "close",
+      "threshold": 1.0
     },
     "evidence_sources": [
-      "https://github.com/kkzee92/aixtech-crypto-intel-v09"
+      "https://github.com/Dhruv-Tummalapalli/Quant-Trading-Algorithms-"
     ],
-    "hypothesis_id": "mechanism_family",
+    "hypothesis_id": "discovered_primitive",
     "is_testable": true,
-    "novelty_key": "vwap_volume_profile||||above",
+    "novelty_key": "mean_reversion|ratio|close|close|above",
     "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
     "parameterization": {
-      "threshold": 0.0,
+      "threshold": 1.0,
       "window": null
     },
     "parent_bc": 476,
