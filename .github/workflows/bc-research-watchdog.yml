@@ -1,7 +1,7 @@
 name: BC Research Durable Watchdog
 
-# Liveness safety net only. The canonical controller is the sole durable
-# state/evidence mutator. This workflow only dispatches it.
+# Liveness safety net only. It dispatches the continuation reconciler, never
+# the research controller directly. The reconciler validates and persists authority.
 on:
   workflow_dispatch:
   workflow_run:
@@ -31,79 +31,110 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Dispatch canonical controller when idle and non-terminal
+      - name: Wake reconciler only for verified durable work
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          state="$(gh api repos/${GITHUB_REPOSITORY}/contents/research/bc_lifecycle_state.json --jq '.content' | base64 -d)"
-          terminal="$(jq -r '.campaign_terminal // false' <<<"$state")"
-          durable_terminal="$(jq -r '.terminal // false' <<<"$state")"
-          if [ "$terminal" = "true" ] || [ "$durable_terminal" = "true" ]; then
+          test -f research/bc_lifecycle_state.json
+          test -f research/continuation_intent.json
+          test -f research/bc_queue.json
+          state="$(cat research/bc_lifecycle_state.json)"
+          intent="$(cat research/continuation_intent.json)"
+          terminal="$(jq -r '(.campaign_terminal // false) or (.terminal // false)' <<<"$state")"
+          if [ "$terminal" = "true" ]; then
             echo "CAMPAIGN_TERMINAL=true; no dispatch."
             exit 0
           fi
 
-          intent="$(gh api "repos/${GITHUB_REPOSITORY}/contents/research/continuation_intent.json" --jq '.content' 2>/dev/null | base64 -d || true)"
-          intent_status="$(jq -r '.status // "ABSENT"' <<<"$intent" 2>/dev/null || echo ABSENT)"
-          echo "CONTINUATION_RECEIPT_PRESENT status=$intent_status"
-          if ! jq -e '(.schema_version == 1) and (.target_ref == "main") and ((.created_by_run_id | type) == "number") and (.created_by_run_id > 0) and ((.campaign_id // "") != "") and ((.checkpoint_seq | type) == "number") and (.checkpoint_seq >= 0) and (.status == "PENDING" or .status == "DISPATCHED" or .status == "STALE")' >/dev/null <<<"$intent"; then
-            echo "DURABLE_QUEUE_UNAUTHORIZED; watchdog will not dispatch."
+          controller_workflow_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/bc-research-controller.yml" --jq '.id')"
+          source_id="$(jq -r '.created_by_run_id // 0' <<<"$intent")"
+          status="$(jq -r '.status // "ABSENT"' <<<"$intent")"
+          [[ "$source_id" =~ ^[0-9]+$ ]] && test "$source_id" != "0"
+          source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$source_id")"
+          if [ "$(jq -r '.workflow_id // 0' <<<"$source_run")" != "$controller_workflow_id" ] || \
+             [ "$(jq -r '.repository.full_name // ""' <<<"$source_run")" != "$GITHUB_REPOSITORY" ] || \
+             [ "$(jq -r '.head_branch // ""' <<<"$source_run")" != "main" ] || \
+             [ "$(jq -r '.status // ""' <<<"$source_run")" != "completed" ] || \
+             [ "$(jq -r '.conclusion // ""' <<<"$source_run")" != "success" ]; then
+            echo "DURABLE_QUEUE_SOURCE_INVALID source_run_id=$source_id; no dispatch."
             exit 0
           fi
 
-          source_id="$(jq -r '.created_by_run_id' <<<"$intent")"
-          state_campaign="$(jq -r '.campaign_id // ""' <<<"$state")"
-          intent_campaign="$(jq -r '.campaign_id // ""' <<<"$intent")"
-          state_checkpoint="$(jq -r '.checkpoint_seq // -1' <<<"$state")"
-          intent_checkpoint="$(jq -r '.checkpoint_seq // -2' <<<"$intent")"
-          state_current="$(jq -r '.current_bc // -1' <<<"$state")"
-          intent_current="$(jq -r '.current_bc // -2' <<<"$intent")"
-          state_next="$(jq -r '.next_bc // -1' <<<"$state")"
-          intent_next="$(jq -r '.next_bc // -2' <<<"$intent")"
-          if [ "$state_campaign" != "$intent_campaign" ] || [ "$state_checkpoint" != "$intent_checkpoint" ] || [ "$state_current" != "$intent_current" ] || [ "$state_next" != "$intent_next" ]; then
-            echo "DURABLE_QUEUE_CHECKPOINT_MISMATCH; watchdog will not dispatch."
-            exit 0
+          dispatch_id="$(jq -r '.dispatch_run_id // empty' <<<"$intent")"
+          if [ "$status" = "DISPATCHED" ] && ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
+            dispatch_id="$(jq -r '.dispatch_run_url // empty' <<<"$intent" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
           fi
-          controller_workflow_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/bc-research-controller.yml" --jq '.id')"
-          source_run="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${source_id}")"
-          if [ "$(jq -r '.workflow_id' <<<"$source_run")" != "$controller_workflow_id" ] || \
-             [ "$(jq -r '.repository.full_name' <<<"$source_run")" != "$GITHUB_REPOSITORY" ] || \
-             [ "$(jq -r '.head_branch' <<<"$source_run")" != "main" ] || \
-             [ "$(jq -r '.status' <<<"$source_run")" != "completed" ] || \
-             [ "$(jq -r '.conclusion' <<<"$source_run")" != "success" ]; then
-            echo "DURABLE_QUEUE_SOURCE_INVALID source_run_id=$source_id; watchdog will not dispatch."
-            exit 0
-          fi
-
-          if [ "$intent_status" = "DISPATCHED" ]; then
-            dispatch_id="$(jq -r '.dispatch_run_id // empty' <<<"$intent")"
+          if [ "$status" = "DISPATCHED" ]; then
             if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
-              dispatch_id="$(jq -r '.dispatch_run_url // empty' <<<"$intent" | sed -n 's#.*/runs/\([0-9][0-9]*\).*#\1#p')"
-            fi
-            if [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
-              run_state="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${dispatch_id}")"
+              echo "CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID; reconciler must recover from durable state."
+            else
+              run_state="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
               run_workflow_id="$(jq -r '.workflow_id // 0' <<<"$run_state")"
               run_repo="$(jq -r '.repository.full_name // ""' <<<"$run_state")"
               run_branch="$(jq -r '.head_branch // ""' <<<"$run_state")"
               run_sha="$(jq -r '.head_sha // ""' <<<"$run_state")"
               expected_sha="$(jq -r '.dispatch_head_sha // empty' <<<"$intent")"
+              run_event="$(jq -r '.event // ""' <<<"$run_state")"
               run_status="$(jq -r '.status // ""' <<<"$run_state")"
               run_conclusion="$(jq -r '.conclusion // ""' <<<"$run_state")"
-              if [ "$run_workflow_id" = "$controller_workflow_id" ] && [ "$run_repo" = "$GITHUB_REPOSITORY" ] && [ "$run_branch" = "main" ] && { [ -z "$expected_sha" ] || [ "$run_sha" = "$expected_sha" ]; }; then
-                if [ "$run_status" != "completed" ] || [ "$run_conclusion" = "success" ]; then
-                  echo "CONTINUATION_RECEIPT_ACTIVE_OR_SUCCESS id=$dispatch_id status=$run_status conclusion=$run_conclusion; no duplicate."
-                  exit 0
-                fi
-                echo "CONTINUATION_RECEIPT_STALE id=$dispatch_id conclusion=$run_conclusion; recover through continuation lane."
-              else
-                echo "CONTINUATION_RECEIPT_INVALID id=$dispatch_id; fail closed."
+              if [ "$run_workflow_id" != "$controller_workflow_id" ] || [ "$run_repo" != "$GITHUB_REPOSITORY" ] || [ "$run_branch" != "main" ] || [ "$run_event" != "workflow_dispatch" ] || { [ -n "$expected_sha" ] && [ "$run_sha" != "$expected_sha" ]; }; then
+                echo "CONTINUATION_RECEIPT_INVALID dispatch_run_id=$dispatch_id; no dispatch."
                 exit 0
               fi
-            else
-              echo "CONTINUATION_RECEIPT_MISSING_ID; recover through continuation lane."
+              if [ "$run_status" != "completed" ]; then
+                echo "CONTINUATION_RECEIPT_ACTIVE dispatch_run_id=$dispatch_id status=$run_status; no duplicate."
+                exit 0
+              fi
+              if [ "$run_conclusion" != "success" ]; then
+                echo "CONTINUATION_CONTROLLER_FAILED dispatch_run_id=$dispatch_id conclusion=$run_conclusion; refusing replay."
+                exit 0
+              fi
+              echo "CONTINUATION_RECEIPT_COMPLETED_SUCCESS dispatch_run_id=$dispatch_id; invoking reconciler, not controller."
             fi
+          fi
+
+          state_checkpoint="$(jq -r '.checkpoint_seq // -1' <<<"$state")"
+          intent_checkpoint="$(jq -r '.checkpoint_seq // -2' <<<"$intent")"
+          state_current="$(jq -r '.current_bc // -1' <<<"$state")"
+          state_next="$(jq -r '.next_bc // -1' <<<"$state")"
+          queue="$(cat research/bc_queue.json)"
+          queue_authorized=false
+          if [ "$(jq 'length' <<<"$queue")" -gt 0 ]; then
+            queue_item="$(jq -c --argjson bc "$state_next" '[.[] | select(.bc == $bc)] | first // empty' <<<"$queue")"
+            if [ -z "$queue_item" ] || [ "$state_current" != "$state_next" ]; then
+              echo "DURABLE_QUEUE_CHECKPOINT_MISMATCH; no dispatch."
+              exit 0
+            fi
+            candidate_hash="$(jq -r '.candidate_hash // empty' <<<"$queue_item")"
+            candidate_path="research/autonomous_candidates/BC${state_next}.json"
+            failure_path="research/failure_analysis/BC$((state_next - 1)).json"
+            parent_path="research/autonomous_candidates/BC$((state_next - 1)).json"
+            test -f "$candidate_path" && test -f "$failure_path" && test -f "$parent_path"
+            candidate="$(cat "$candidate_path")"
+            failure="$(cat "$failure_path")"
+            parent="$(cat "$parent_path")"
+            if [ -z "$candidate_hash" ] || [ "$(jq -r '.candidate_hash // empty' <<<"$candidate")" != "$candidate_hash" ] || \
+               [ "$(jq -r '.parent_bc // -1' <<<"$candidate")" -ne "$((state_next - 1))" ] || \
+               [ "$(jq -r '.candidate_hash // empty' <<<"$failure")" != "$(jq -r '.candidate_hash // empty' <<<"$parent")" ] || \
+               [ "$(jq -r '.decision // ""' <<<"$failure")" != "REJECT" -a "$(jq -r '.decision // ""' <<<"$failure")" != "REJECT_BC" ]; then
+              echo "DURABLE_QUEUE_CANDIDATE_OR_PARENT_FAILURE_INVALID; no dispatch."
+              exit 0
+            fi
+            python -m research.register_candidate_lineage --preflight-only
+            queue_authorized=true
+          fi
+
+          if [ "$state_checkpoint" != "$intent_checkpoint" ]; then
+            if [ "$queue_authorized" != "true" ]; then
+              echo "DURABLE_QUEUE_CHECKPOINT_MISMATCH intent=$intent_checkpoint state=$state_checkpoint; no dispatch."
+              exit 0
+            fi
+            echo "DURABLE_QUEUE_CHECKPOINT_RECONCILIATION_REQUIRED intent=$intent_checkpoint state=$state_checkpoint"
+          elif [ "$status" != "PENDING" ] && [ "$queue_authorized" != "true" ]; then
+            echo "DURABLE_QUEUE_UNAUTHORIZED status=$status; no dispatch."
+            exit 0
           fi
 
           active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow bc-research-controller.yml --limit 20 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "pending" or .status == "waiting")] | length')"
@@ -112,6 +143,6 @@ jobs:
             exit 0
           fi
 
-          echo "DURABLE_QUEUE_AUTHORIZED source_run_id=$source_id status=$intent_status; dispatching continuation reconciler."
+          echo "DURABLE_WORK_REQUIRES_RECONCILIATION queue_authorized=$queue_authorized status=$status"
           gh workflow run bc-research-continuation.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "BC_CONTINUATION_RECONCILER_DISPATCHED=true"
