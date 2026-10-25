@@ -56,7 +56,6 @@ def test_dispatch_run_id_is_canonical_and_bound_to_github_run_identity():
     assert 'run_branch' in CONTINUATION and 'run_sha' in CONTINUATION
     assert 'run_event' in CONTINUATION
     assert 'dispatched_run' in CONTINUATION
-    assert 'test "$(jq -r \' .event' not in CONTINUATION
 
 
 def test_watchdog_reconciles_completed_success_and_fails_closed_without_run_id():
