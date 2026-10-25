@@ -172,7 +172,7 @@ def test_rejects_evaluation_without_registration_lineage(queued_candidate):
     _, _, research = queued_candidate
     write(research / "bc477_validation_result.json", {"bc": 477})
 
-    with pytest.raises(registration.RegistrationBlocked, match="evaluation_artifact_exists_without_registration_lineage"):
+    with pytest.raises(registration.RegistrationBlocked, match="queued_candidate_has_evaluation_artifacts"):
         registration.validate_queued_candidate()
 
 
