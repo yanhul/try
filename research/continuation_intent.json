@@ -1,13 +1,20 @@
 {
+  "authorization_type": "DURABLE_QUEUE",
+  "authorized_candidate_hash": "52b38d10706b5fe302d372acb99001d6f62f8ee97e02ee366b6b92a6706f9107",
   "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
-  "checkpoint_seq": 13737,
-  "created_by_run_id": 36099471205,
+  "checkpoint_seq": 13767,
+  "created_by_run_id": 36099840461,
   "current_bc": 477,
   "next_bc": 477,
+  "receipt_history": [
+    {
+      "conclusion": "success",
+      "dispatch_head_sha": "ee76c49ffc9f779641a825294d2beba1745ce4bf",
+      "dispatch_run_id": 36099840461,
+      "status": "DISPATCHED"
+    }
+  ],
   "schema_version": 1,
-  "status": "DISPATCHED",
-  "target_ref": "main",
-  "dispatch_run_url": "https://github.com/yanhul/try/actions/runs/36099840461",
-  "dispatch_head_sha": "ee76c49ffc9f779641a825294d2beba1745ce4bf",
-  "dispatch_source_run_id": 36099471205
+  "status": "PENDING",
+  "target_ref": "main"
 }
