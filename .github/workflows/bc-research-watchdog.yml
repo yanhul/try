@@ -119,7 +119,6 @@ jobs:
 
           git fetch origin main
           git reset --hard origin/main
-          python -m pip install --quiet pytest >/dev/null 2>&1 || true
           reg_status="$(python -m research.candidate_registration status 2>&1 || true)"
           case "$reg_status" in
             REGISTRATION_REQUIRED)
