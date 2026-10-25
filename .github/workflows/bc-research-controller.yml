@@ -16,7 +16,7 @@ on:
     - cron: '0 2 * * *'
 
 concurrency:
-  group: try-bc-research-controller-main
+  group: try-bc-research-continuation-main
   cancel-in-progress: false
 
 permissions:
