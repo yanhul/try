@@ -82,7 +82,8 @@ def durable_case(monkeypatch, tmp_path):
     })
     _write(research / "discovery" / "survivors.json", {
         "schema_version": 4,
-        "survivors": [{"candidate_id": "survivor-1", "family": "vwap_volume_profile", "source_url": SOURCE}],
+        "survivors": [{"candidate_id": "survivor-1", "family": "vwap_volume_profile", "source_url": SOURCE,
+                       "lineage": {"taxonomy": {"status": "EXECUTABLE", "canonical_family": "vwap_volume_profile"}}}],
     })
     return tmp_path, candidate, parent_hash, lineage_path
 
