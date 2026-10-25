@@ -396,6 +396,14 @@ def main():
     # Epoch recovery is performed only from durable contiguous artifacts in reconcile_campaign_state.
     queued = durable_queued_candidate(state, start)
     if queued is not None:
+        last_error = str(state.get('last_error') or '').lower()
+        hard_provider_blocker = any(marker in last_error for marker in (
+            'provider_quota_exhausted', 'provider_rpd_budget_exhausted',
+            'provider_project_id_missing', 'provider_not_configured', 'gemini_api_key',
+        ))
+        if hard_provider_blocker and state.get('phase') in {'HOLD', 'WAIT_RETRY'}:
+            print(f'CAMPAIGN_HOLD queued_candidate_preserved hard_provider_blocker={state.get("last_error")}')
+            return 0
         try:
             from research.candidate_registration import register_candidate_lineage
             registration = register_candidate_lineage()
