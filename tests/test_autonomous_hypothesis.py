@@ -91,3 +91,20 @@ def test_discovered_primitive_accepts_valid_spec():
     ok, digest = validate_candidate(c, 6, 5)
     assert ok
     assert c["candidate_hash"] == digest
+
+
+
+def test_rejects_constant_self_comparison_ratio():
+    c = base()
+    c["hypothesis_id"] = "discovered_primitive"
+    c["discovery_spec"] = {
+        "mechanism_family": "mean_reversion",
+        "operator": "ratio",
+        "left": "close",
+        "right": "close",
+        "direction": "above",
+        "threshold": 1.0,
+    }
+    ok, reason = validate_candidate(c, 6, 5)
+    assert not ok
+    assert reason == "self_comparison_is_constant"
