@@ -82,6 +82,8 @@ def validate_candidate(candidate:dict,expected_bc:int,expected_parent:int)->tupl
   if spec.get("left") not in COLS:return False,"invalid_discovery_left_column"
   op=spec["operator"]
   if op in {"difference","ratio"} and spec.get("right") not in COLS:return False,"invalid_discovery_right_column"
+  if op in {"difference","ratio"} and spec.get("left") == spec.get("right"):
+   return False,"self_comparison_is_constant"
   if op in WINDOW_REQUIRED:
    if not isinstance(spec.get("window"),int) or isinstance(spec.get("window"),bool) or spec["window"] not in {3,5,10,20,50,100}:return False,"invalid_discovery_window"
   if op in {"difference","ratio","zscore","rolling_mean","rolling_std","lag","delta","rank","identity"}:
