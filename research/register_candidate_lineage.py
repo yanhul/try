@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 
 from research.family_registry import require_executable
+from research.autonomous_hypothesis import validate_candidate
 from research.hypothesis_novelty import novelty_metadata
 from research.lineage_engine import append_experiment, read_lineage
 
@@ -101,6 +102,9 @@ def validate_queued_candidate():
         require_executable(family)
     except ValueError as exc:
         raise RegistrationBlocked(str(exc)) from exc
+    semantic_ok, semantic_reason = validate_candidate(candidate, bc, bc - 1)
+    if not semantic_ok:
+        raise RegistrationBlocked(f"candidate_semantic_validation_failed:{semantic_reason}")
 
     parent_bc = bc - 1
     failure_path = FAILURES / f"BC{parent_bc}.json"
@@ -136,6 +140,13 @@ def validate_queued_candidate():
         raise RegistrationBlocked("prior_candidate_registry_missing")
     if novelty in registry:
         raise RegistrationBlocked("candidate_novelty_already_registered")
+    lineage = read_lineage()
+    for entry in lineage:
+        result = entry.get("result") or {}
+        if (entry.get("verdict") == "REGISTERED"
+                and result.get("novelty_key") == novelty
+                and result.get("candidate_hash") != candidate_hash):
+            raise RegistrationBlocked("candidate_novelty_already_registered_in_lineage")
 
     sources = candidate.get("evidence_sources")
     if not isinstance(sources, list) or not sources:
@@ -189,7 +200,6 @@ def validate_queued_candidate():
         raise RegistrationBlocked("queued_candidate_has_evaluation_artifacts")
 
     experiment_id = f"BC{bc}:REGISTRATION:{candidate_hash}"
-    lineage = read_lineage()
     existing = next((entry for entry in lineage if entry.get("experiment_id") == experiment_id), None)
     if existing is not None:
         result = existing.get("result") or {}

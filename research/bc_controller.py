@@ -31,6 +31,22 @@ def gate(bc):
  p=ROOT/f'audit_bc{bc}_fast_gate.py'; return p if p.exists() else None
 def write_queue(q): QUEUE.write_text(json.dumps(q,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 def used_ids(s): return sorted({str(x['hypothesis_id']) for x in s.get('history',[]) if x.get('hypothesis_id')})
+
+def candidate_matches_frontier(candidate, family, ordered):
+ """Bind provider output to the exact executable discovery family being tried."""
+ spec = candidate.get('discovery_spec') if isinstance(candidate, dict) else None
+ if not isinstance(spec, dict) or spec.get('mechanism_family') != family:
+  return False, 'candidate_family_mismatch'
+ sources = candidate.get('evidence_sources')
+ if not isinstance(sources, list) or not any(
+  isinstance(item, dict)
+  and item.get('family') == family
+  and item.get('source_url') in sources
+  for item in ordered
+ ):
+  return False, 'candidate_source_not_bound_to_frontier_family'
+ return True, ''
+
 def regenerate(bc,parent,failure,s):
  """Generate from a durable discovery frontier, not one disposable survivor.
 
@@ -124,6 +140,12 @@ def regenerate(bc,parent,failure,s):
    env=os.environ.copy(); env.update(RESEARCH_PARENT_BC=str(parent),RESEARCH_FAILURE_ANALYSIS=str(failure),RESEARCH_NEXT_BC=str(bc),RESEARCH_CANDIDATE_OUTPUT=str(output),RESEARCH_USED_HYPOTHESIS_IDS=used,RESEARCH_PRIOR_HYPOTHESES=used)
    rc,out=run([sys.executable,'research/provider_router.py'],env=env)
    if rc==0 and output.exists() and 'PROVIDER_SELECTED' in out:
+    generated=load(output,{})
+    matches, mismatch=candidate_matches_frontier(generated,family,ordered)
+    if not matches:
+     last_reason=mismatch
+     print(f'CONTROLLER_TRANSLATION_REJECTED BC{bc} family={family} offset={offset} reason={mismatch}')
+     continue
     print(f'CONTROLLER_TRANSLATION_FRONTIER_SELECTED BC{bc} family={family} offset={offset}')
     return True
    # Provider-wide failures must not be hidden behind a different survivor.
