@@ -30,6 +30,7 @@ def queued_candidate(monkeypatch, tmp_path):
         "candidate_hash": candidate_hash,
         "hypothesis_id": "mechanism_family",
         "conceptual_change": "Use the selected VWAP/volume-profile family as one testable structural change.",
+        "rationale": "Pre-OOS hypothesis grounded in the parent's durable validation failure.",
         "discovery_spec": {
             "mechanism_family": "vwap_volume_profile",
             "direction": "above",
