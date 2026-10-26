@@ -247,7 +247,7 @@ def test_rejects_novelty_already_registered_under_a_different_hash(queued_candid
             "family": "vwap_volume_profile",
         },
     }
-    write(research / "lineage.jsonl", json.dumps(prior) + "\\n")
+    write(research / "lineage.jsonl", json.dumps(prior) + "\n")
 
     with pytest.raises(
         registration.RegistrationBlocked,
