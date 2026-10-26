@@ -5,6 +5,7 @@ import pytest
 
 from research import lineage_engine
 from research import register_candidate_lineage as registration
+from research.autonomous_hypothesis import canonical_hash
 
 
 def write(path: Path, value):
@@ -41,6 +42,8 @@ def queued_candidate(monkeypatch, tmp_path):
         "is_testable": True,
         "oos_selection_used": False,
     }
+    candidate["candidate_hash"] = canonical_hash(candidate)
+    candidate_hash = candidate["candidate_hash"]
     state = {
         "campaign_id": "BTCUSDT-1H-AUTONOMOUS-002",
         "current_bc": 477,
@@ -200,3 +203,53 @@ def test_preflight_only_validates_without_appending_registration_lineage(queued_
 
     assert registration.register(preflight_only=True) == 0
     assert not (research / "lineage.jsonl").exists()
+
+
+
+def test_rejects_constant_self_comparison_before_registration(queued_candidate):
+    candidate, _, research = queued_candidate
+    candidate["hypothesis_id"] = "discovered_primitive"
+    candidate["conceptual_change"] = "Test a mean-reversion ratio predicate."
+    candidate["discovery_spec"] = {
+        "mechanism_family": "mean_reversion",
+        "operator": "ratio",
+        "left": "close",
+        "right": "close",
+        "direction": "above",
+        "threshold": 1.0,
+    }
+    candidate["novelty_key"] = "mean_reversion|ratio|close|close|above"
+    candidate["novelty_type"] = "structural_mechanism"
+    candidate["parameterization"] = {"window": None, "threshold": 1.0}
+    candidate["candidate_hash"] = canonical_hash(candidate)
+    write(research / "autonomous_candidates/BC477.json", candidate)
+    queue = json.loads((research / "bc_queue.json").read_text(encoding="utf-8"))
+    for key in ("candidate_hash", "discovery_spec", "novelty_key", "hypothesis_id", "evidence_sources"):
+        queue[0][key] = candidate[key]
+    write(research / "bc_queue.json", queue)
+
+    with pytest.raises(
+        registration.RegistrationBlocked,
+        match="candidate_semantic_validation_failed:self_comparison_is_constant",
+    ):
+        registration.validate_queued_candidate()
+
+
+def test_rejects_novelty_already_registered_under_a_different_hash(queued_candidate):
+    candidate, _, research = queued_candidate
+    prior = {
+        "experiment_id": "BC477:REGISTRATION:older-hash",
+        "verdict": "REGISTERED",
+        "result": {
+            "candidate_hash": "older-hash",
+            "novelty_key": candidate["novelty_key"],
+            "family": "vwap_volume_profile",
+        },
+    }
+    write(research / "lineage.jsonl", json.dumps(prior) + "\\n")
+
+    with pytest.raises(
+        registration.RegistrationBlocked,
+        match="candidate_novelty_already_registered_in_lineage",
+    ):
+        registration.validate_queued_candidate()
