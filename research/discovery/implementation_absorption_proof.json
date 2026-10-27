@@ -2,8 +2,8 @@
   "schema_version": 1,
   "proof_type": "TRY_IMPLEMENTATION_ABSORPTION_PROOF",
   "status": "PASS",
-  "absorption_proof_digest": "3e9fa2e0050cadc9dc762a643660bd0d9cc55df76e50f65b0de9f03780fe62a2",
-  "implemented_count": 53,
+  "absorption_proof_digest": "f21306dee24f6f6b46f243a63ead78279e7540e6ee61004ae75a904640691894",
+  "implemented_count": 54,
   "blocked_count": 0,
   "implemented": [
     {
@@ -315,12 +315,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "1a3809b88494a50e",
-      "source_id": "SRC-1a3809b88494a50e",
-      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
+      "candidate_id": "0367e221e6804388",
+      "source_id": "SRC-0367e221e6804388",
+      "source_url": "https://github.com/sergeyvorobey13/Probalytics.io",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "32e5a14b867242271ecf880a9a6e210eceec6803bf58b0494ce5d3b324c14642",
+      "source_digest": "a15ab593dbf944a81a0e0ce51df576066602a13a6783cce7732b2995931a0ca9",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -337,12 +337,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "1ba654ca09346db9",
-      "source_id": "SRC-1ba654ca09346db9",
-      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "candidate_id": "1a3809b88494a50e",
+      "source_id": "SRC-1a3809b88494a50e",
+      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "c88a37a2da36eb2a7fb3c784ec018fcc814d0cf442b439d6f1d7c86cd13d314e",
+      "source_digest": "32e5a14b867242271ecf880a9a6e210eceec6803bf58b0494ce5d3b324c14642",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -354,6 +354,17 @@
       "family": "mean_reversion",
       "hypothesis_id": null,
       "source_digest": "cf4f57606e01bb76a3ac41b664e7aaed629a02684b7a0a1e6e60e30c892f56fe",
+      "implementation": "engine.autonomous_evaluator.discovered_predicate",
+      "status": "IMPLEMENTED",
+      "mode": "LOCAL_ADAPTER"
+    },
+    {
+      "candidate_id": "1ba654ca09346db9",
+      "source_id": "SRC-1ba654ca09346db9",
+      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "family": "smc_ict",
+      "hypothesis_id": null,
+      "source_digest": "c88a37a2da36eb2a7fb3c784ec018fcc814d0cf442b439d6f1d7c86cd13d314e",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"

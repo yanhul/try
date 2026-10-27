@@ -4,12 +4,12 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 4367,
-    "expanded": 3644,
-    "normalized": 3644,
-    "round1": 255,
+    "raw": 4393,
+    "expanded": 3647,
+    "normalized": 3647,
+    "round1": 256,
     "deferred": 202,
-    "survivors": 53,
+    "survivors": 54,
     "china_a_share_survivors": 0
   },
   "population": [
@@ -1846,30 +1846,6 @@
       "source_timestamp": "2020",
       "lineage": {
         "source": "2eab78c2566eb075",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A\u80a1 \u91cf\u5316 github",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -4315,6 +4291,30 @@
       "source_timestamp": "1978",
       "lineage": {
         "source": "519731fd846961a5",
+        "family": "execution_mev",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "microstructure",
+          "layer": "family",
+          "canonical_family": "execution_mev",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "95d6f8218461b500",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.5150912",
+      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
+      "description": "Crossref work type=posted-content",
+      "family": "execution_mev",
+      "market": null,
+      "query": "MEV execution alpha crypto",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -6975,30 +6975,6 @@
       }
     },
     {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
-        "family": "options",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "options",
-          "layer": "family",
-          "canonical_family": "options",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "21e9eca29ecdf96a",
       "source": "crossref",
       "source_url": "https://doi.org/10.1002/9781118524046.ch2",
@@ -9266,6 +9242,54 @@
       }
     },
     {
+      "candidate_id": "5fab4d1eb2151412",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4405361",
+      "title": "Crypto-Trading Platforms as Exchanges",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5fab4d1eb2151412",
+        "family": "fvg_imbalance",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "fvg_imbalance",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "fvg_imbalance",
+      "market": null,
+      "query": "fair value gap imbalance FVG crypto trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
+        "family": "fvg_imbalance",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "fvg_imbalance",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "d8496c508b119468",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.709342",
@@ -9541,30 +9565,6 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "ae77fdd5eab0622d",
-        "family": "funding_basis_carry",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "derivatives",
-          "layer": "family",
-          "canonical_family": "funding_basis_carry",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5fab4d1eb2151412",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4405361",
-      "title": "Crypto-Trading Platforms as Exchanges",
-      "description": "Crossref work type=posted-content",
-      "family": "funding_basis_carry",
-      "market": null,
-      "query": "funding rate basis carry crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5fab4d1eb2151412",
         "family": "funding_basis_carry",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -10253,30 +10253,6 @@
       "source_timestamp": "2001",
       "lineage": {
         "source": "38ea89ed190e7995",
-        "family": "execution_mev",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "microstructure",
-          "layer": "family",
-          "canonical_family": "execution_mev",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "95d6f8218461b500",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.5150912",
-      "title": "Deep Learning for VWAP Execution in Crypto Markets: Beyond the Volume Curve",
-      "description": "Crossref work type=posted-content",
-      "family": "execution_mev",
-      "market": null,
-      "query": "maker adverse selection execution crypto",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "95d6f8218461b500",
         "family": "execution_mev",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -13764,6 +13740,30 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "cross_sectional",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "cross_sectional",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "cross_sectional",
+          "layer": "family",
+          "canonical_family": "cross_sectional",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0e50ab58257dcd9d",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/ecl.2024.133898",
@@ -13781,6 +13781,23 @@
       }
     },
     {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "0d43019b3403244c",
       "source": "crossref",
       "source_url": "https://doi.org/10.64216/3080-1486.26.02.026",
@@ -13792,6 +13809,23 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "0d43019b3403244c",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -13826,6 +13860,40 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "edfa6ffeb17a599b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
+      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "edfa6ffeb17a599b",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "26b59f7794cb279a",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
+      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "26b59f7794cb279a",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -13986,23 +14054,6 @@
       }
     },
     {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -14054,23 +14105,6 @@
       }
     },
     {
-      "candidate_id": "edfa6ffeb17a599b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ems.v8i3.18713",
-      "title": "\u5e7f\u4e1c\u7535\u529b\u73b0\u8d27\u5e02\u573a\u4e3b\u4f53\u4ea4\u6613\u7b56\u7565\u4e0e\u535a\u5f08\u884c\u4e3a\u5206\u6790",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "edfa6ffeb17a599b",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "634c42888d8e48ae",
       "source": "crossref",
       "source_url": "https://doi.org/10.70693/cjst.v2i2.1935",
@@ -14099,23 +14133,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "044a1342910e3a12",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "26b59f7794cb279a",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.37155/2717-5197-0714-13",
-      "title": "\u706b\u7535\u5382\u5728\u7535\u529b\u73b0\u8d27\u4ea4\u6613\u4e2d\u7684\u7ade\u4ef7\u7b56\u7565\u4e0e\u4f18\u5316",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "26b59f7794cb279a",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -14814,23 +14831,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "ab7a95c62ac5f17d",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -20209,7 +20209,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:39:36Z",
+      "source_timestamp": "2026-10-27T07:25:02Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -20379,7 +20379,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:36:13Z",
+      "source_timestamp": "2026-10-27T07:21:14Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -20549,7 +20549,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:13:47Z",
+      "source_timestamp": "2026-10-27T07:26:21Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -20583,7 +20583,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:30:32Z",
+      "source_timestamp": "2026-10-27T07:15:33Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",
@@ -20604,6 +20604,44 @@
             "round": 2,
             "decision": "DEFER_DATA_LANE",
             "family": "prediction_market"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "0367e221e6804388",
+      "source": "github",
+      "source_url": "https://github.com/sergeyvorobey13/Probalytics.io",
+      "title": "sergeyvorobey13/Probalytics.io",
+      "description": "Prediction market strategies tested on Probalytics order book and trade history dataset",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction market order book trading strategy",
+      "source_timestamp": "2026-10-26T19:47:22Z",
+      "lineage": {
+        "source": "0367e221e6804388",
+        "family": "smc_ict",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "smc_ict",
+          "status": "EXECUTABLE"
+        },
+        "rounds": [
+          {
+            "round": 1,
+            "decision": "PASS_SOURCE"
+          },
+          {
+            "round": 2,
+            "decision": "PASS_EXECUTABLE_DATA_LANE"
+          },
+          {
+            "round": 3,
+            "decision": "PASS_DIVERSITY_DEDUP",
+            "family_order": "round_robin"
           }
         ]
       }
@@ -48967,7 +49005,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-25T17:05:54.244Z",
+      "source_timestamp": "2026-10-26T20:57:51.813Z",
       "lineage": {
         "source": "4bd85769dbc17561",
         "family": "unknown",
@@ -48984,7 +49022,7 @@
       "family": "momentum_trend",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-21T02:55:38.435Z",
+      "source_timestamp": "2026-10-27T00:29:20.427Z",
       "lineage": {
         "source": "3d18005b891a009d",
         "family": "momentum_trend",
@@ -49136,6 +49174,23 @@
       }
     },
     {
+      "candidate_id": "fb90d0805c759152",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/PavelSafronov/alphabeticals",
+      "title": "PavelSafronov/alphabeticals",
+      "description": null,
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-27T03:43:42.810Z",
+      "lineage": {
+        "source": "fb90d0805c759152",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "03e93c071d0999f9",
       "source": "gitlab",
       "source_url": "https://gitlab.com/RCD-1/varskinplus/skindose",
@@ -49212,7 +49267,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-23T15:54:06.436Z",
+      "source_timestamp": "2026-10-26T13:40:58.102Z",
       "lineage": {
         "source": "535325b60fcee35f",
         "family": "unknown",
@@ -49321,7 +49376,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-24T14:31:39.576Z",
+      "source_timestamp": "2026-10-27T06:16:27.659Z",
       "lineage": {
         "source": "ca215def03f3839b",
         "family": "unknown",
@@ -49406,7 +49461,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-20T07:35:21.797Z",
+      "source_timestamp": "2026-10-27T07:30:22.494Z",
       "lineage": {
         "source": "3fcddaa2c2065ba3",
         "family": "unknown",
@@ -49542,7 +49597,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-26T02:39:49.168Z",
+      "source_timestamp": "2026-10-26T19:03:56.333Z",
       "lineage": {
         "source": "7ab85d8188a113ba",
         "family": "unknown",
@@ -49576,7 +49631,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-26T07:08:55.900Z",
+      "source_timestamp": "2026-10-27T03:55:48.968Z",
       "lineage": {
         "source": "b40bef5ca3683aa7",
         "family": "unknown",
@@ -49593,7 +49648,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-26T07:05:32.511Z",
+      "source_timestamp": "2026-10-27T04:51:01.032Z",
       "lineage": {
         "source": "b563cae39ad6ad0c",
         "family": "unknown",
@@ -49610,7 +49665,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-25T07:21:14.300Z",
+      "source_timestamp": "2026-10-27T04:04:40.537Z",
       "lineage": {
         "source": "6ec00dea47cfa42d",
         "family": "unknown",
@@ -49627,7 +49682,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-19T19:09:18.656Z",
+      "source_timestamp": "2026-10-26T20:58:45.806Z",
       "lineage": {
         "source": "5b9d0f962d99d627",
         "family": "unknown",
@@ -50015,7 +50070,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-25T17:10:06.359Z",
+      "source_timestamp": "2026-10-26T17:10:24.171Z",
       "lineage": {
         "source": "c5725335fc74fb0d",
         "family": "unknown",
@@ -50311,7 +50366,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-22T07:20:49.179Z",
+      "source_timestamp": "2026-10-27T01:08:34.530Z",
       "lineage": {
         "source": "7a8efaa719a399bf",
         "family": "unknown",
@@ -50464,7 +50519,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-24T06:42:12.058Z",
+      "source_timestamp": "2026-10-26T20:12:34.466Z",
       "lineage": {
         "source": "6cb32eb5803252e4",
         "family": "unknown",
@@ -59067,30 +59122,6 @@
       }
     },
     {
-      "candidate_id": "3aec505d81d15214",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
-      "title": "Crypto Price Analysis: An AI Perspective",
-      "description": "OpenAlex work type=article year=2026",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "3aec505d81d15214",
-        "family": "options",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "options",
-          "layer": "family",
-          "canonical_family": "options",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "71d4dd1aed9a17d1",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/mafi.12410",
@@ -60297,6 +60328,30 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "b83160bb5bad442f",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3aec505d81d15214",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
+      "title": "Crypto Price Analysis: An AI Perspective",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "3aec505d81d15214",
         "family": "volatility",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -69620,7 +69675,7 @@
       "source": "openalex",
       "source_url": "https://doi.org/10.37155/2717-557x-0703-13",
       "title": "\u4e2d\u56fd\u5185\u5730\u5efa\u8bbe\u6e2f\u4eba\u793e\u533a\u53d1\u5c55\u7b56\u7565\u7814\u7a76",
-      "description": "OpenAlex work type=book-chapter year=2026",
+      "description": "OpenAlex work type=article year=2026",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
@@ -70346,7 +70401,7 @@
       "source": "openalex",
       "source_url": "https://doi.org/10.37155/2717-5197-0702-15",
       "title": "\u6570\u636e\u6316\u6398\u5728\u79bb\u6563\u5236\u9020\u4e1a\u4e2d\u7684\u5e94\u7528\u7814\u7a76",
-      "description": "OpenAlex work type=article year=2025",
+      "description": "OpenAlex work type=book-chapter year=2025",
       "family": "china_a_share",
       "market": "CN_A_SHARE",
       "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
@@ -75782,6 +75837,30 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "ab53ec766109f762",
+        "family": "execution_mev",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "microstructure",
+          "layer": "family",
+          "canonical_family": "execution_mev",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e2835b04936f8d3a",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/3d2fc49529a254cb3ecd262233368a78254b856a",
+      "title": "Performance Optimization in High-Frequency Trading and Financial Platforms",
+      "description": "High-frequency trading (HFT) has revolutionized financial markets by enabling rapid trade execution and high transactionvolumes.This transformation is driven by the need to respond quickly to market fluctuations and execute trades within microseconds. However, the performance of HFT systems is heavily influenced by computational efficiency, network latency, and algorithmic optimization. Ensuring optimal performance minimizes delays, maximizes throughput, and maintains system reliability. This research paper explores the primary performance bottlenecks that obstruct HFT efficiency and explores various optimization strategies. Key focus areas include hardware acceleration techniques such as FPGA and GPU integration, software enhancements for improved code execution speed, and network solutions like direct market access and colocation. The paper also investigates machine learning applications that can predict market movements and refine trading strategies. The paper looks at a lot of existing research and points out the significant technological steps and the hurdles that still need to be tackled to improve high-frequency trading systems. The impact of these improvements is substantial, managing greater efficiency in financial trading platforms and fostering market stability. This study offers valuable information for banks, investors, and tech companies looking to improve their trading results and stay ahead in today's fastpaced markets.",
+      "family": "execution_mev",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "e2835b04936f8d3a",
         "family": "execution_mev",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -83904,6 +83983,30 @@
       }
     },
     {
+      "candidate_id": "42f9b0f95acb24cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
+      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2016",
+      "lineage": {
+        "source": "42f9b0f95acb24cb",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "88540d2cf47c1934",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/055ca300b2e339b634501b7b19c7a0f1cbc88ab2",
@@ -83963,6 +84066,30 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "36699a08be9e0d39",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "46b53c5818c665b5",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
+      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
+      "description": "",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u4e2d\u56fd A\u80a1 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565 \u56e0\u5b50",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "46b53c5818c665b5",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -84052,30 +84179,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "bc9f40bdd0593fd8",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "85412db3f2f10d5b",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
-      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
-      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "85412db3f2f10d5b",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -84185,50 +84288,19 @@
       }
     },
     {
-      "candidate_id": "42f9b0f95acb24cb",
+      "candidate_id": "85412db3f2f10d5b",
       "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/9573797c827e0643a14892f74c29a1832e042647",
-      "title": "\u7f8e\u56fd\u6295\u8d44\u94f6\u884cFICC\u4e1a\u52a1\uff1a\u53d1\u5c55\u5386\u7a0b\u3001\u7b56\u7565\u53ca\u542f\u793a",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2016",
+      "source_url": "https://www.semanticscholar.org/paper/0990f785ad57151390a1a77644f7614e66d8e45c",
+      "title": "\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u5e94\u7528\u4e0e\u98ce\u9669\u63a7\u5236",
+      "description": "\u968f\u7740\u5927\u6570\u636e\u3001\u4e91\u8ba1\u7b97\u548c\u673a\u5668\u5b66\u4e60\u6280\u672f\u7684\u5feb\u901f\u53d1\u5c55,\u4eba\u5de5\u667a\u80fd(AI)\u5728\u91cf\u5316\u6295\u8d44\u9886\u57df\u7684\u5e94\u7528\u65e5\u76ca\u6df1\u5165,\u663e\u8457\u63d0\u5347\u4e86\u6295\u8d44\u51b3\u7b56\u7684\u6548\u7387\u548c\u7cbe\u5ea6\u3002\u672c\u6587\u7cfb\u7edf\u68b3\u7406\u4e86\u4eba\u5de5\u667a\u80fd\u5728\u91cf\u5316\u6295\u8d44\u4e2d\u7684\u4e3b\u8981\u5e94\u7528\u573a\u666f,\u5305\u62ec\u56e0\u5b50\u6316\u6398\u3001\u7b56\u7565\u6784\u5efa\u3001\u4ea4\u6613\u6267\u884c\u548c\u7ec4\u5408\u4f18\u5316\u7b49\u73af\u8282,\u91cd\u70b9\u5206\u6790\u4e86AI\u6280\u672f\u5e26\u6765\u7684\u98ce\u9669\u7279\u5f81\u53ca\u76f8\u5e94\u7684\u63a7\u5236\u6846\u67b6\u3002\u7814\u7a76\u8868\u660e,AI\u6a21\u578b\u867d\u7136\u80fd\u591f\u6355\u6349\u975e\u7ebf\u6027\u5173\u7cfb\u548c\u590d\u6742\u5e02\u573a\u7279\u5f81,\u4f46\u4e5f\u9762\u4e34\u8fc7\u62df\u5408\u3001\u9ed1\u7bb1\u95ee\u9898\u3001\u5e02\u573a\u73af\u5883\u7a81\u53d8\u7b49\u7cfb\u7edf\u6027\u98ce\u9669\u3002\u672c\u6587\u4ece\u6570\u636e\u8d28\u91cf\u3001\u6a21\u578b\u53ef\u89e3\u91ca\u6027\u3001\u538b\u529b\u6d4b\u8bd5\u548c\u52a8\u6001\u76d1\u63a7\u56db\u4e2a\u7ef4\u5ea6\u6784\u5efa\u4e86\u98ce\u9669\u63a7\u5236\u4f53\u7cfb,\u4e3a\u91d1\u878d\u673a\u6784\u5728AI\u91cf\u5316\u6295\u8d44\u5b9e\u8df5\u4e2d\u63d0\u4f9b\u7406\u8bba\u53c2\u8003\u548c\u5b9e\u8df5\u6307\u5bfc\u3002",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
       "lineage": {
-        "source": "42f9b0f95acb24cb",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "46b53c5818c665b5",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/b1d67174541026ff07c0d9a002847c3458e23419",
-      "title": "\u904b\u7528Google Trends\u60c5\u7dd2\u8403\u53d6\u5efa\u69cb\u4eba\u5de5\u667a\u6167\u91cf\u5316\u4ea4\u6613\u7b56\u7565\uff1a\u4ee5\u53f0\u7063\u52a0\u6b0a\u6307\u6578\u671f\u8ca8\u70ba\u4f8b",
-      "description": "",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "46b53c5818c665b5",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
+        "source": "85412db3f2f10d5b",
+        "family": "unknown",
+        "taxonomy": null,
         "rounds": []
       }
     },
@@ -89353,7 +89425,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:39:36Z",
+      "source_timestamp": "2026-10-27T07:25:02Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -89523,7 +89595,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:36:13Z",
+      "source_timestamp": "2026-10-27T07:21:14Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -89693,7 +89765,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:13:47Z",
+      "source_timestamp": "2026-10-27T07:26:21Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -89727,7 +89799,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-26T07:30:32Z",
+      "source_timestamp": "2026-10-27T07:15:33Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",
