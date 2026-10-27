@@ -248,7 +248,7 @@ def test_rejects_same_bc_registered_under_a_different_candidate_hash(queued_cand
             "family": "vwap_volume_profile",
         },
     }
-    write(research / "lineage.jsonl", json.dumps(prior) + "\\n")
+    write(research / "lineage.jsonl", json.dumps(prior) + "\n")
 
     with pytest.raises(
         registration.RegistrationBlocked,
