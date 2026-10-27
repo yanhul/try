@@ -141,9 +141,6 @@ def validate_queued_candidate():
     if novelty in registry:
         raise RegistrationBlocked("candidate_novelty_already_registered")
     lineage = read_lineage()
-    # A BC identifier is immutable once any candidate registration is durable.
-    # Never let a later provider response silently replace the candidate under
-    # the same BC, even if it changes the novelty key or checkpoint.
     for entry in lineage:
         result = entry.get("result") or {}
         if entry.get("verdict") != "REGISTERED":
@@ -163,6 +160,10 @@ def validate_queued_candidate():
                 and result.get("novelty_key") == novelty
                 and result.get("candidate_hash") != candidate_hash):
             raise RegistrationBlocked("candidate_novelty_already_registered_in_lineage")
+
+    # A BC identifier is immutable once any candidate registration is durable.
+    # Never let a later provider response silently replace the candidate under
+    # the same BC, even if it changes the novelty key or checkpoint.
 
     sources = candidate.get("evidence_sources")
     if not isinstance(sources, list) or not sources:
