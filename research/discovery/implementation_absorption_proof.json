@@ -2,8 +2,8 @@
   "schema_version": 1,
   "proof_type": "TRY_IMPLEMENTATION_ABSORPTION_PROOF",
   "status": "PASS",
-  "absorption_proof_digest": "f21306dee24f6f6b46f243a63ead78279e7540e6ee61004ae75a904640691894",
-  "implemented_count": 54,
+  "absorption_proof_digest": "875fe07a63bde30ed945eb6f5144948840fd6ea7a07c4ab812c656076ced6dad",
+  "implemented_count": 55,
   "blocked_count": 0,
   "implemented": [
     {
@@ -293,12 +293,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "690ddef3d62a9c4a",
-      "source_id": "SRC-690ddef3d62a9c4a",
-      "source_url": "https://github.com/sarvesh4321/ai-alpha-pipeline",
+      "candidate_id": "edc3f219c9994daa",
+      "source_id": "SRC-edc3f219c9994daa",
+      "source_url": "https://github.com/pricelenoir/pmx",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "d7396050808ad0278d7b0e589fce56c1624cd93182e100cf3de5c991ad540fde",
+      "source_digest": "1114508eeba0c3c5626b9496c48464d9d9efeae847547d48aaedad88167e0e08",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -315,12 +315,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "0367e221e6804388",
-      "source_id": "SRC-0367e221e6804388",
-      "source_url": "https://github.com/sergeyvorobey13/Probalytics.io",
+      "candidate_id": "690ddef3d62a9c4a",
+      "source_id": "SRC-690ddef3d62a9c4a",
+      "source_url": "https://github.com/sarvesh4321/ai-alpha-pipeline",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "a15ab593dbf944a81a0e0ce51df576066602a13a6783cce7732b2995931a0ca9",
+      "source_digest": "d7396050808ad0278d7b0e589fce56c1624cd93182e100cf3de5c991ad540fde",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -337,12 +337,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "1a3809b88494a50e",
-      "source_id": "SRC-1a3809b88494a50e",
-      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
+      "candidate_id": "0367e221e6804388",
+      "source_id": "SRC-0367e221e6804388",
+      "source_url": "https://github.com/sergeyvorobey13/Probalytics.io",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "32e5a14b867242271ecf880a9a6e210eceec6803bf58b0494ce5d3b324c14642",
+      "source_digest": "a15ab593dbf944a81a0e0ce51df576066602a13a6783cce7732b2995931a0ca9",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -359,12 +359,12 @@
       "mode": "LOCAL_ADAPTER"
     },
     {
-      "candidate_id": "1ba654ca09346db9",
-      "source_id": "SRC-1ba654ca09346db9",
-      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "candidate_id": "1a3809b88494a50e",
+      "source_id": "SRC-1a3809b88494a50e",
+      "source_url": "https://github.com/vcorp-dev/depthfeed-strategy-builder",
       "family": "smc_ict",
       "hypothesis_id": null,
-      "source_digest": "c88a37a2da36eb2a7fb3c784ec018fcc814d0cf442b439d6f1d7c86cd13d314e",
+      "source_digest": "32e5a14b867242271ecf880a9a6e210eceec6803bf58b0494ce5d3b324c14642",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
@@ -376,6 +376,17 @@
       "family": "mean_reversion",
       "hypothesis_id": null,
       "source_digest": "7016f99552256287db5d48312f15aa041a1dc96763e615c2957c15783c6322fe",
+      "implementation": "engine.autonomous_evaluator.discovered_predicate",
+      "status": "IMPLEMENTED",
+      "mode": "LOCAL_ADAPTER"
+    },
+    {
+      "candidate_id": "1ba654ca09346db9",
+      "source_id": "SRC-1ba654ca09346db9",
+      "source_url": "https://github.com/yourairdrop/driftscout-live",
+      "family": "smc_ict",
+      "hypothesis_id": null,
+      "source_digest": "c88a37a2da36eb2a7fb3c784ec018fcc814d0cf442b439d6f1d7c86cd13d314e",
       "implementation": "engine.autonomous_evaluator.discovered_predicate",
       "status": "IMPLEMENTED",
       "mode": "LOCAL_ADAPTER"
