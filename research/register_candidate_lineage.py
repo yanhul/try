@@ -148,6 +148,23 @@ def validate_queued_candidate():
                 and result.get("candidate_hash") != candidate_hash):
             raise RegistrationBlocked("candidate_novelty_already_registered_in_lineage")
 
+    # A BC identifier is immutable once any candidate registration is durable.
+    # Never let a later provider response silently replace the candidate under
+    # the same BC, even if it changes the novelty key or checkpoint.
+    for entry in lineage:
+        result = entry.get("result") or {}
+        if entry.get("verdict") != "REGISTERED":
+            continue
+        experiment_id = str(entry.get("experiment_id") or "")
+        registered_bc = entry.get("generation")
+        if registered_bc is None and experiment_id.startswith("BC") and ":REGISTRATION:" in experiment_id:
+            try:
+                registered_bc = int(experiment_id.split(":", 1)[0][2:])
+            except ValueError:
+                registered_bc = None
+        if registered_bc == bc and result.get("candidate_hash") != candidate_hash:
+            raise RegistrationBlocked("bc_candidate_already_registered_under_different_hash")
+
     sources = candidate.get("evidence_sources")
     if not isinstance(sources, list) or not sources:
         raise RegistrationBlocked("pre_oos_evidence_source_missing")

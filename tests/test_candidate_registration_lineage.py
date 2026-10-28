@@ -236,6 +236,27 @@ def test_rejects_constant_self_comparison_before_registration(queued_candidate):
         registration.validate_queued_candidate()
 
 
+def test_rejects_same_bc_registered_under_a_different_candidate_hash(queued_candidate):
+    candidate, _, research = queued_candidate
+    prior = {
+        "experiment_id": "BC477:REGISTRATION:older-hash",
+        "generation": 477,
+        "verdict": "REGISTERED",
+        "result": {
+            "candidate_hash": "older-hash",
+            "novelty_key": "different-novelty-key",
+            "family": "vwap_volume_profile",
+        },
+    }
+    write(research / "lineage.jsonl", json.dumps(prior) + "\n")
+
+    with pytest.raises(
+        registration.RegistrationBlocked,
+        match="bc_candidate_already_registered_under_different_hash",
+    ):
+        registration.validate_queued_candidate()
+
+
 def test_rejects_novelty_already_registered_under_a_different_hash(queued_candidate):
     candidate, _, research = queued_candidate
     prior = {
