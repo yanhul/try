@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 4408,
-    "expanded": 3662,
-    "normalized": 3662,
+    "raw": 4451,
+    "expanded": 3684,
+    "normalized": 3684,
     "round1": 257,
     "deferred": 202,
     "survivors": 55,
@@ -4424,78 +4424,6 @@
       }
     },
     {
-      "candidate_id": "e2d49632f3207c81",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/sa.2021.103054",
-      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "e2d49632f3207c81",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b917583fb1e919c8",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/fin.2021.113022",
-      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "b917583fb1e919c8",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "7b7cb607398a2acb",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ds.2023.96381",
-      "title": "Risks and Governance of Cryptographic Digital Currency",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "SMC ICT \u6d41\u52a8\u6027 \u626b\u635f \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "7b7cb607398a2acb",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "c1a1adbbb4a75fdf",
       "source": "crossref",
       "source_url": "https://doi.org/10.31235/osf.io/mfpu4_v3",
@@ -5926,6 +5854,30 @@
       }
     },
     {
+      "candidate_id": "a9c1b3a81274e963",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
+      "title": "Bitcoin Trading",
+      "description": "Crossref work type=dataset",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "a9c1b3a81274e963",
+        "family": "seasonality",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "calendar",
+          "layer": "family",
+          "canonical_family": "seasonality",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c448dcae5f23b10a",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.5281675",
@@ -6057,6 +6009,30 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
+        "family": "seasonality",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "calendar",
+          "layer": "family",
+          "canonical_family": "seasonality",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "seasonality",
+      "market": null,
+      "query": "bitcoin seasonality calendar effect trading",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -6742,30 +6718,6 @@
       }
     },
     {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "momentum_trend",
-      "market": null,
-      "query": "crypto momentum trend following strategy bitcoin",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
-        "family": "momentum_trend",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "price_action",
-          "layer": "family",
-          "canonical_family": "momentum_trend",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "b3f9e35cacf20d6e",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.2556747",
@@ -6897,6 +6849,30 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "5bcbec7510800163",
+        "family": "options",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "options",
+          "layer": "family",
+          "canonical_family": "options",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "5d9351fd8accc17f",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
+      "title": "Distribution based Trading Strategies  for Crypto Options",
+      "description": "Crossref work type=posted-content",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "5d9351fd8accc17f",
         "family": "options",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -9331,30 +9307,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "5fab4d1eb2151412",
-        "family": "fvg_imbalance",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "fvg_imbalance",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "5d9351fd8accc17f",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-cl/2023.128",
-      "title": "Distribution based Trading Strategies  for Crypto Options",
-      "description": "Crossref work type=posted-content",
-      "family": "fvg_imbalance",
-      "market": null,
-      "query": "fair value gap imbalance FVG crypto trading",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "5d9351fd8accc17f",
         "family": "fvg_imbalance",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -13197,23 +13149,6 @@
       }
     },
     {
-      "candidate_id": "a9c1b3a81274e963",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.24818/ida-ql/2025.186",
-      "title": "Bitcoin Trading",
-      "description": "Crossref work type=dataset",
-      "family": "unknown",
-      "market": null,
-      "query": "systematic trading strategy repository",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "a9c1b3a81274e963",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4ebc9a4b188cc6c6",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/j.esr.2025.101825",
@@ -13477,23 +13412,6 @@
       }
     },
     {
-      "candidate_id": "100a54218862e1f9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
-      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2008",
-      "lineage": {
-        "source": "100a54218862e1f9",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "356134320a245ee6",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2012.21002",
@@ -13511,23 +13429,6 @@
       }
     },
     {
-      "candidate_id": "e98ef9709ad0d2f0",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
-      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "e98ef9709ad0d2f0",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bf4a623110ac6de2",
       "source": "crossref",
       "source_url": "https://doi.org/10.52926/jpmjpr1761",
@@ -13539,30 +13440,6 @@
       "source_timestamp": "",
       "lineage": {
         "source": "bf4a623110ac6de2",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -13696,6 +13573,23 @@
       }
     },
     {
+      "candidate_id": "e2d49632f3207c81",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/sa.2021.103054",
+      "title": "A Reanalysis of Causality between Yield Fluctuations of Several Major Cryptocurrencies",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "e2d49632f3207c81",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "8e734bb4e77ed879",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2023.135115",
@@ -13720,6 +13614,23 @@
       }
     },
     {
+      "candidate_id": "100a54218862e1f9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.3788/lop20084507.0008c",
+      "title": "IPG\u589e\u52a0LD\u5b58\u8d27\u91cf",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2008",
+      "lineage": {
+        "source": "100a54218862e1f9",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1ef8b8bf05802f06",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2025.141013",
@@ -13737,6 +13648,23 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "bcb5ccbcca7e1462",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2021.101001",
@@ -13748,6 +13676,40 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "bcb5ccbcca7e1462",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "f56eb7abd5076ed7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2023.124175",
+      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "f56eb7abd5076ed7",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "af5eda9b0df688b6",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
+      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "af5eda9b0df688b6",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -13812,23 +13774,6 @@
       }
     },
     {
-      "candidate_id": "8cdd8cefab46dde7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
-      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "8cdd8cefab46dde7",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "4d447b63c1b957f9",
       "source": "crossref",
       "source_url": "https://doi.org/10.69979/3029-2700.25.03.078",
@@ -13840,23 +13785,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "4d447b63c1b957f9",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "af5eda9b0df688b6",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.63887/fem.2025.1.9.2",
-      "title": "\u7a7a\u95f4\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u5546\u4e1a\u5730\u4ea7\u5b58\u91cf\u6539\u9020\u7684\u793e\u4ea4\u5316\u8d4b\u80fd\u8def\u5f84\u7814\u7a76",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "af5eda9b0df688b6",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -13880,6 +13808,78 @@
       }
     },
     {
+      "candidate_id": "b917583fb1e919c8",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/fin.2021.113022",
+      "title": "Research on the linkage between the Cryptocurrency Market and the U.S. Stock Market",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "b917583fb1e919c8",
+        "family": "wyckoff_vsa_vpa",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "wyckoff_vsa_vpa",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7b7cb607398a2acb",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ds.2023.96381",
+      "title": "Risks and Governance of Cryptographic Digital Currency",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "7b7cb607398a2acb",
+        "family": "wyckoff_vsa_vpa",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "wyckoff_vsa_vpa",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -13891,6 +13891,78 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "fdc75585f2a46736",
+        "family": "wyckoff_vsa_vpa",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "wyckoff_vsa_vpa",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "e98ef9709ad0d2f0",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.32629/ej.v9i4.3403",
+      "title": "\u4e3b\u6743\u4fe1\u7528\u8d28\u91cf\u8fb9\u9645\u6076\u5316\u4e0e\u503a\u52a1\u8d27\u5e01\u5316\u89c6\u89d2\u4e0b\u7684\u9ec4\u91d1\u5b9a\u4ef7\u673a\u5236\u7814\u7a76",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "e98ef9709ad0d2f0",
+        "family": "wyckoff_vsa_vpa",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "wyckoff_vsa_vpa",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
+        "family": "wyckoff_vsa_vpa",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "wyckoff_vsa_vpa",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8cdd8cefab46dde7",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.33142/mem.v5i2.11783",
+      "title": "\u56e0\u52bf\u201c\u5229\u201d\u5bfc\u2014\u2014\u4e2d\u56fd\u8d27\u5e01\u653f\u7b56\u4f20\u5bfc\u673a\u5236\u4ece\u6570\u91cf\u578b\u5411\u4ef7\u683c\u578b\u8f6c\u578b",
+      "description": "Crossref work type=journal-article",
+      "family": "wyckoff_vsa_vpa",
+      "market": null,
+      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "8cdd8cefab46dde7",
         "family": "wyckoff_vsa_vpa",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -14020,23 +14092,6 @@
           "canonical_family": "smc_ict",
           "status": "EXECUTABLE"
         },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "f56eb7abd5076ed7",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2023.124175",
-      "title": "The Application of the PBO Algorithm in Quantitative Trading\u2014Taking Gold and Bitcoin Trading Strategies as Examples",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2023",
-      "lineage": {
-        "source": "f56eb7abd5076ed7",
-        "family": "unknown",
-        "taxonomy": null,
         "rounds": []
       }
     },
@@ -14824,30 +14879,6 @@
       }
     },
     {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "1cc9696a5e100ff3",
       "source": "crossref",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.07",
@@ -14893,23 +14924,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "ab7a95c62ac5f17d",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -49012,6 +49026,47 @@
       }
     },
     {
+      "candidate_id": "96150e38a8d3e572",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/1Funso/AlphaFold2",
+      "title": "1Funso/AlphaFold2",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-28T14:18:20.983Z",
+      "lineage": {
+        "source": "96150e38a8d3e572",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "ea0c6e8db146b45c",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/1Funso/Alphafold2structureprediction",
+      "title": "1Funso/Alphafold2structureprediction",
+      "description": "",
+      "family": "smc_ict",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-28T14:18:44.165Z",
+      "lineage": {
+        "source": "ea0c6e8db146b45c",
+        "family": "smc_ict",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "smc_ict",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "7b7ae435288527b7",
       "source": "gitlab",
       "source_url": "https://gitlab.com/7F9A2KQ4/alphascaled.com-website",
@@ -49105,7 +49160,7 @@
       "family": "momentum_trend",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-27T21:24:54.332Z",
+      "source_timestamp": "2026-10-29T01:40:50.189Z",
       "lineage": {
         "source": "3d18005b891a009d",
         "family": "momentum_trend",
@@ -49291,6 +49346,23 @@
       }
     },
     {
+      "candidate_id": "45a02c455b3a25ca",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/SaddleDove/alphalab",
+      "title": "SaddleDove/alphalab",
+      "description": "Agent-based market simulator, auction theory lab, and sports models",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-28T14:10:17.090Z",
+      "lineage": {
+        "source": "45a02c455b3a25ca",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "b1de8ab464e01f1d",
       "source": "gitlab",
       "source_url": "https://gitlab.com/Stetson.o/test-project",
@@ -49468,6 +49540,23 @@
       }
     },
     {
+      "candidate_id": "1ea9e8be401ef98c",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/alphadroid-project/packages_apps_AlphaVisuals",
+      "title": "alphadroid-project/packages_apps_AlphaVisuals",
+      "description": "",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-28T13:33:56.887Z",
+      "lineage": {
+        "source": "1ea9e8be401ef98c",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ca215def03f3839b",
       "source": "gitlab",
       "source_url": "https://gitlab.com/alphashape/alphashape",
@@ -49476,7 +49565,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-27T12:35:57.976Z",
+      "source_timestamp": "2026-10-29T07:52:40.059Z",
       "lineage": {
         "source": "ca215def03f3839b",
         "family": "unknown",
@@ -49659,11 +49748,11 @@
       "source": "gitlab",
       "source_url": "https://gitlab.com/duron27/alpha3",
       "title": "duron27/alpha3",
-      "description": null,
+      "description": "Multi game launcher for iOS and Android.",
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-09-22T17:28:12.006Z",
+      "source_timestamp": "2026-10-29T06:55:57.924Z",
       "lineage": {
         "source": "c7e0cc91a02b5ca4",
         "family": "unknown",
@@ -49731,7 +49820,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-28T07:42:17.760Z",
+      "source_timestamp": "2026-10-29T05:34:18.404Z",
       "lineage": {
         "source": "b40bef5ca3683aa7",
         "family": "unknown",
@@ -49748,7 +49837,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-28T07:45:02.848Z",
+      "source_timestamp": "2026-10-29T05:34:20.195Z",
       "lineage": {
         "source": "b563cae39ad6ad0c",
         "family": "unknown",
@@ -49765,7 +49854,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-28T07:47:46.737Z",
+      "source_timestamp": "2026-10-29T05:34:19.026Z",
       "lineage": {
         "source": "6ec00dea47cfa42d",
         "family": "unknown",
@@ -50187,7 +50276,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-27T17:10:25.904Z",
+      "source_timestamp": "2026-10-28T17:09:59.712Z",
       "lineage": {
         "source": "c5725335fc74fb0d",
         "family": "unknown",
@@ -50279,7 +50368,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-24T01:08:35.983Z",
+      "source_timestamp": "2026-10-28T19:37:42.157Z",
       "lineage": {
         "source": "1b9063b08cd36743",
         "family": "unknown",
@@ -50881,6 +50970,30 @@
       }
     },
     {
+      "candidate_id": "a39c0509e3b52d7f",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.68471/fbai.2026.003",
+      "title": "LLaMA-Driven News Sentiment and Multi-Factor Trading in China\u2019s A-Share Market",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A-share quantitative trading factor strategy China",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "a39c0509e3b52d7f",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c2409707c121e14",
       "source": "openalex",
       "source_url": "https://doi.org/10.54691/bcpbm.v49i.5388",
@@ -51289,6 +51402,30 @@
       }
     },
     {
+      "candidate_id": "ca58aa2f1754ddde",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5846/stxb202012133169",
+      "title": "Variations of soil properties effect on microbial community structure and functional structure under land uses",
+      "description": "OpenAlex work type=article year=2021",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "A\u80a1 \u91cf\u5316 github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "ca58aa2f1754ddde",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ff726229c781f1e2",
       "source": "openalex",
       "source_url": "https://doi.org/10.11834/jig.240038",
@@ -51444,30 +51581,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "ceec9d4bc493fad2",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "9d520ed19750c296",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.54254/2754-1169/2026.32361",
-      "title": "A Comparative Study and Backtesting of Machine Learning\u2013Based Quantitative Stock Selection Models in China's A-Share Market",
-      "description": "OpenAlex work type=article year=2026",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "China A-share T+1 transaction cost backtest",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "9d520ed19750c296",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -51793,6 +51906,30 @@
       }
     },
     {
+      "candidate_id": "b1935619de41b612",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.61173/048hky58",
+      "title": "Testing Momentum and Reversal Strategies in the Volatile New Energy Sector of China\u2019s A-Share Market",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share T+1 transaction cost backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "b1935619de41b612",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "c64634c5e50ac351",
       "source": "openalex",
       "source_url": "https://doi.org/10.25300/misq/2016/40:4.03",
@@ -51948,6 +52085,30 @@
       "source_timestamp": "2011",
       "lineage": {
         "source": "ef40b4307a439522",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "50ca40d33c3feac9",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.70267/fer.v3n4.8496",
+      "title": "Cross-Sectional Return Prediction in China\u2019s A-Share Market Based on Lasso and XGBoost: A Comparison with the Fama\u2013MacBeth Multi-Factor Model",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share cross-sectional factor mining",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "50ca40d33c3feac9",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -52284,6 +52445,30 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "785b16a9057b05b1",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9d520ed19750c296",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.54254/2754-1169/2026.32361",
+      "title": "A Comparative Study and Backtesting of Machine Learning\u2013Based Quantitative Stock Selection Models in China's A-Share Market",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share machine learning alpha",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "9d520ed19750c296",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -52836,6 +53021,30 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "f5c811d686ee8cb7",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c3a61356a0a319b7",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781451841619.001",
+      "title": "China's Trade Flows",
+      "description": "OpenAlex work type=article year=1999",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share order flow high frequency factors",
+      "source_timestamp": "1999",
+      "lineage": {
+        "source": "c3a61356a0a319b7",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -53521,6 +53730,30 @@
       }
     },
     {
+      "candidate_id": "f0de9a55c4deb38f",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/978-3-031-84782-0_16",
+      "title": "Statistical Arbitrage: An Approach from Econophysics",
+      "description": "OpenAlex work type=book-chapter year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share pairs statistical arbitrage",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "f0de9a55c4deb38f",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9cae927298876816",
       "source": "openalex",
       "source_url": "https://openalex.org/W2468969490",
@@ -53724,6 +53957,30 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "a43f4b894899aa01",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "a85677a6d1f615ff",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.63075/ad9hac55",
+      "title": "China's Belt and Road Initiative: Opportunities and Challenges for Renewable Energy Cooperation",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China A-share point-in-time survivorship backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "a85677a6d1f615ff",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -54250,6 +54507,23 @@
       }
     },
     {
+      "candidate_id": "fd8b179d7ab49531",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1016/j.procs.2022.04.001",
+      "title": "Measuring investor sentiment of China\u2019s growth enterprises market with ERNIE",
+      "description": "OpenAlex work type=conference-paper year=2022",
+      "family": "unknown",
+      "market": null,
+      "query": "China quant trading github",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "fd8b179d7ab49531",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "dd865e492c6fbc0a",
       "source": "openalex",
       "source_url": "https://doi.org/10.2991/978-94-6463-010-7_59",
@@ -54285,23 +54559,6 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "e3c92cc550e512d4",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "956d9983e0cbe89c",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2609.19705",
-      "title": "SoK: Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
-      "description": "OpenAlex work type=preprint year=2026",
-      "family": "unknown",
-      "market": null,
-      "query": "China quant trading github",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "956d9983e0cbe89c",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -54370,6 +54627,23 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "6636ae97a91e134d",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "956d9983e0cbe89c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2609.19705",
+      "title": "Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
+      "description": "OpenAlex work type=preprint year=2026",
+      "family": "unknown",
+      "market": null,
+      "query": "China quant trading github",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "956d9983e0cbe89c",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -54544,6 +54818,30 @@
       }
     },
     {
+      "candidate_id": "5f2124e72a6ca1c9",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5267/j.ac.2025.1.002",
+      "title": "Corporate financial strategies and performance: Insights from China\u2019s Shanghai Stock Exchange",
+      "description": "OpenAlex work type=article year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "5f2124e72a6ca1c9",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "a6f8559ab0b4135a",
       "source": "openalex",
       "source_url": "https://doi.org/10.2991/978-94-6463-270-5_48",
@@ -54579,6 +54877,30 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "05d00363485b1b4a",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c5798dab841b556d",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.2991/978-94-6463-748-9_109",
+      "title": "Momentum Strategy Based on Stock Returns: Past Returns and Future Performance in the Chinese Stock Market",
+      "description": "OpenAlex work type=book-chapter year=2025",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "c5798dab841b556d",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -54651,6 +54973,30 @@
       "source_timestamp": "2019",
       "lineage": {
         "source": "7d39569328e17176",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7e69ac2cc611380c",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.5089/9781451862645.001",
+      "title": "Seasonalities in China's Stock Markets",
+      "description": "OpenAlex work type=article year=2006",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "China stock limit-up quantitative strategy",
+      "source_timestamp": "2006",
+      "lineage": {
+        "source": "7e69ac2cc611380c",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -55750,6 +56096,30 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "239db05b5cbb1f85",
+        "family": "onchain",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "onchain",
+          "layer": "family",
+          "canonical_family": "onchain",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "63dc6eaea39926f9",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.3389/fbloc.2026.1817622",
+      "title": "Ethereum tokenomics and token value: a quantitative analysis of on-chain fundamentals (2021\u20132025)",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "onchain",
+      "market": null,
+      "query": "Solana on chain alpha liquidity trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "63dc6eaea39926f9",
         "family": "onchain",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -57608,23 +57978,6 @@
       }
     },
     {
-      "candidate_id": "d6db91e7c1e06cd3",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.48550/arxiv.2101.07217",
-      "title": "Is it a great Autonomous FX Trading Strategy or you are just fooling yourself",
-      "description": "OpenAlex work type=preprint year=2021",
-      "family": "unknown",
-      "market": null,
-      "query": "autonomous trading strategy research backtest",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "d6db91e7c1e06cd3",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "2f4c0857cf7697fc",
       "source": "openalex",
       "source_url": "https://doi.org/10.1145/3490354.3494403",
@@ -57677,6 +58030,23 @@
       "source_timestamp": "2016",
       "lineage": {
         "source": "aa7ac120f367b339",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "7ae915718ca6bb71",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.6084/m9.figshare.34781538",
+      "title": "Requirements for an Autonomous Retail Order Engine Running Unattended for a Decade",
+      "description": "OpenAlex work type=preprint year=2026",
+      "family": "unknown",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "7ae915718ca6bb71",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -58594,17 +58964,17 @@
       }
     },
     {
-      "candidate_id": "56b706e86aa2deb6",
+      "candidate_id": "bd97e7b1f57ae7f3",
       "source": "openalex",
-      "source_url": "https://openalex.org/W7112325746",
-      "title": "Bitcoin trading performance evaluation: A comparative study of momentum and mean reversion strategies from 2020 to 2025",
-      "description": "OpenAlex work type=dissertation year=2025",
+      "source_url": "https://doi.org/10.2991/978-94-6463-866-0_8",
+      "title": "Arbitrage Detection in Crypto Markets Using Graph Neural Networks",
+      "description": "OpenAlex work type=book-chapter year=2025",
       "family": "mean_reversion",
       "market": null,
       "query": "crypto mean reversion statistical arbitrage strategy",
       "source_timestamp": "2025",
       "lineage": {
-        "source": "56b706e86aa2deb6",
+        "source": "bd97e7b1f57ae7f3",
         "family": "mean_reversion",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -58917,6 +59287,30 @@
       "source_timestamp": "2021",
       "lineage": {
         "source": "2f5f3d7c80b0f360",
+        "family": "momentum_trend",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "price_action",
+          "layer": "family",
+          "canonical_family": "momentum_trend",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "56b706e86aa2deb6",
+      "source": "openalex",
+      "source_url": "https://openalex.org/W7112325746",
+      "title": "Bitcoin trading performance evaluation: A comparative study of momentum and mean reversion strategies from 2020 to 2025",
+      "description": "OpenAlex work type=dissertation year=2025",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "56b706e86aa2deb6",
         "family": "momentum_trend",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -59325,30 +59719,6 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "328518735a079e04",
-        "family": "options",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "options",
-          "layer": "family",
-          "canonical_family": "options",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3aec505d81d15214",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
-      "title": "Crypto Price Analysis: An AI Perspective",
-      "description": "OpenAlex work type=article year=2026",
-      "family": "options",
-      "market": null,
-      "query": "crypto options volatility skew gamma trading",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "3aec505d81d15214",
         "family": "options",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -60592,6 +60962,30 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "b83160bb5bad442f",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "3aec505d81d15214",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
+      "title": "Crypto Price Analysis: An AI Perspective",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "volatility",
+      "market": null,
+      "query": "crypto volatility breakout strategy",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "3aec505d81d15214",
         "family": "volatility",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -63216,6 +63610,30 @@
       }
     },
     {
+      "candidate_id": "5f79b5dec08e6035",
+      "source": "openalex",
+      "source_url": "https://openalex.org/W2304218861",
+      "title": "Carry and trend-following strategies",
+      "description": "OpenAlex work type=dissertation year=2016",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "futures trend following systematic strategy",
+      "source_timestamp": "2016",
+      "lineage": {
+        "source": "5f79b5dec08e6035",
+        "family": "momentum_trend",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "price_action",
+          "layer": "family",
+          "canonical_family": "momentum_trend",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6de496ea246c1434",
       "source": "openalex",
       "source_url": "https://doi.org/10.1007/978-3",
@@ -64614,6 +65032,23 @@
       }
     },
     {
+      "candidate_id": "15494189ec0ed019",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1287/orsc.1100.0531",
+      "title": "Strategy and PowerPoint: An Inquiry into the Epistemic Culture and Machinery of Strategy Making",
+      "description": "OpenAlex work type=article year=2010",
+      "family": "unknown",
+      "market": null,
+      "query": "market making strategy code",
+      "source_timestamp": "2010",
+      "lineage": {
+        "source": "15494189ec0ed019",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6d654f467038404d",
       "source": "openalex",
       "source_url": "https://doi.org/10.1287/orsc.1120.0792",
@@ -65135,6 +65570,30 @@
       "source_timestamp": "2013",
       "lineage": {
         "source": "bbab21bb45942a2e",
+        "family": "order_flow",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "microstructure",
+          "layer": "family",
+          "canonical_family": "order_flow",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b6cb85eac2777ecf",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.1007/978-3-319-07470-2_11",
+      "title": "The Simplicity of Optimal Trading in Order Book Markets",
+      "description": "OpenAlex work type=book-chapter year=2014",
+      "family": "order_flow",
+      "market": null,
+      "query": "market microstructure order book strategy",
+      "source_timestamp": "2014",
+      "lineage": {
+        "source": "b6cb85eac2777ecf",
         "family": "order_flow",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -68073,6 +68532,23 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "d82adc407c096b50",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d6db91e7c1e06cd3",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.48550/arxiv.2101.07217",
+      "title": "Is it a great Autonomous FX Trading Strategy or you are just fooling yourself",
+      "description": "OpenAlex work type=preprint year=2021",
+      "family": "unknown",
+      "market": null,
+      "query": "quantitative trading strategy backtest github",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "d6db91e7c1e06cd3",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -75974,30 +76450,6 @@
       }
     },
     {
-      "candidate_id": "4f8772d5edebb1cb",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
-      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
-      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
-      "family": "vwap_volume_profile",
-      "market": null,
-      "query": "VWAP volume profile crypto trading strategy",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "4f8772d5edebb1cb",
-        "family": "vwap_volume_profile",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "volume",
-          "layer": "family",
-          "canonical_family": "vwap_volume_profile",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "64d277ab5393e350",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/5f991b2c723ae107ee7089c4dbe322a5acc7cff8",
@@ -76603,6 +77055,30 @@
       }
     },
     {
+      "candidate_id": "4f8772d5edebb1cb",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/eb0be719700ad547ba6b32a0f13441f89179a574",
+      "title": "Development of an Automated Trading Strategy Based on VWAP and RVI Indicators for USD/JPY Using MetaTrader 5 on Deriv Broker",
+      "description": "This study aims to develop and evaluate an automated trading strategy based on an Expert Advisor (EA) integrating the Volume Weighted Average Price (VWAP) and Relative Vigor Index (RVI) indicators for the USD/JPY currency pair. The EA was developed using the MQL5 programming language on the MetaTrader 5 platform and tested through a Research and Development (R&D) approach with a prototyping model. Testing was conducted under two timeframe scenarios (H1 and H4), including backtesting using historical data from 2021 to 2024, and real-time testing from April 22 to May 22, 2025. The backtesting results indicated positive performance with a favorable profit factor, Sharpe ratio, and win ratio, reflecting system stability and profit potential. However, real-time testing revealed decreased profitability due to higher market volatility and unpredictability. An independent t-test showed a significant difference in the balance variable, while profit and total deal trades were statistically insignificant. The findings suggest that combining VWAP and RVI has potential for automated trading systems, but further parameter optimization and the integration of technical filters are required to enhance robustness under real market conditions.",
+      "family": "vwap_volume_profile",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "4f8772d5edebb1cb",
+        "family": "vwap_volume_profile",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "volume",
+          "layer": "family",
+          "canonical_family": "vwap_volume_profile",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2e5f5b4821040351",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/1eff7f49ddc96186069e5fb48e60b577579d0c6d",
@@ -76751,6 +77227,30 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "1c82a4041c11b16c",
+        "family": "momentum_trend",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "price_action",
+          "layer": "family",
+          "canonical_family": "momentum_trend",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "9d08689079fce6fd",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/5df14ba18b469fc065f1d0334d3676982e491c54",
+      "title": "Retraction Retracted: Research on the Performance of the Trend Following Trading Strategy in the Chinese Commodity Market",
+      "description": "",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "autonomous trading strategy research backtest",
+      "source_timestamp": "2023",
+      "lineage": {
+        "source": "9d08689079fce6fd",
         "family": "momentum_trend",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
