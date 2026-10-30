@@ -4,16 +4,6 @@ name: BC Research Durable Watchdog
 # the research controller directly. The reconciler validates and persists authority.
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - BC Research Controller
-    types:
-      - completed
-    branches:
-      - main
-  schedule:
-    - cron: '*/2 * * * *'
-
 permissions:
   contents: read
   actions: write
