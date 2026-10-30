@@ -3,9 +3,6 @@ name: Research Watchdog
 # Independent operational monitor. It does not dispatch or mutate the research controller.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/15 * * * *'
-
 permissions:
   contents: read
   issues: write
