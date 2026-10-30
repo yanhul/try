@@ -1,15 +1,7 @@
 name: TRY Cloudflare Repair Provider Smoke
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/try-cloudflare-provider-smoke.yml"
-      - "cloudflare/try-repair-worker/**"
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 * * * *"
-
 permissions:
   contents: read
 
