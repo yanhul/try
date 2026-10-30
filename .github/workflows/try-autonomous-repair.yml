@@ -1,24 +1,7 @@
 name: TRY Autonomous Repair
 
 on:
-  workflow_run:
-    workflows: ["BC Research Controller"]
-    types: [completed]
   workflow_dispatch:
-    inputs:
-      run_id:
-        description: "Failed BC Research Controller run ID"
-        required: true
-        type: string
-      base_sha:
-        description: "Exact failed head SHA"
-        required: true
-        type: string
-      source_branch:
-        description: "Exact failed source branch"
-        required: true
-        type: string
-
 permissions: {}
 
 concurrency:
