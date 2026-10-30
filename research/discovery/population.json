@@ -4,9 +4,9 @@
   "source_store": "archive+china_seed",
   "policy_authority": "research/campaign_policy.json",
   "counts": {
-    "raw": 4451,
-    "expanded": 3684,
-    "normalized": 3684,
+    "raw": 4478,
+    "expanded": 3688,
+    "normalized": 3688,
     "round1": 257,
     "deferred": 202,
     "survivors": 55,
@@ -1606,30 +1606,6 @@
       "source_timestamp": "2014",
       "lineage": {
         "source": "408b437740429b8b",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "2f7484b60fe4b409",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1787/888933433273",
-      "title": "Figure 2.4. Algorithmic trading as share of total trading",
-      "description": "Crossref work type=component",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "",
-      "lineage": {
-        "source": "2f7484b60fe4b409",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -5558,6 +5534,23 @@
       }
     },
     {
+      "candidate_id": "2f7484b60fe4b409",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1787/888933433273",
+      "title": "Figure 2.4. Algorithmic trading as share of total trading",
+      "description": "Crossref work type=component",
+      "family": "unknown",
+      "market": null,
+      "query": "algorithmic trading research code",
+      "source_timestamp": "",
+      "lineage": {
+        "source": "2f7484b60fe4b409",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9edc9d991e8e4d31",
       "source": "crossref",
       "source_url": "https://doi.org/10.1016/b978-012372491-5.50003-3",
@@ -6009,30 +6002,6 @@
       "source_timestamp": "2012",
       "lineage": {
         "source": "e187090ab910ce24",
-        "family": "seasonality",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "calendar",
-          "layer": "family",
-          "canonical_family": "seasonality",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "61e33b263216ed3c",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.2139/ssrn.4081000",
-      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
-      "description": "Crossref work type=posted-content",
-      "family": "seasonality",
-      "market": null,
-      "query": "bitcoin seasonality calendar effect trading",
-      "source_timestamp": "2022",
-      "lineage": {
-        "source": "61e33b263216ed3c",
         "family": "seasonality",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -6705,6 +6674,30 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "08a9e78e4f697e49",
+        "family": "momentum_trend",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "price_action",
+          "layer": "family",
+          "canonical_family": "momentum_trend",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "61e33b263216ed3c",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.2139/ssrn.4081000",
+      "title": "Seasonality, Trend-following, and Mean reversion in Bitcoin",
+      "description": "Crossref work type=posted-content",
+      "family": "momentum_trend",
+      "market": null,
+      "query": "crypto momentum trend following strategy bitcoin",
+      "source_timestamp": "2022",
+      "lineage": {
+        "source": "61e33b263216ed3c",
         "family": "momentum_trend",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -10128,6 +10121,30 @@
       }
     },
     {
+      "candidate_id": "b9f21c4cf98e37e9",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
+      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
+      "description": "Crossref work type=book-chapter",
+      "family": "volatility",
+      "market": null,
+      "query": "genetic programming symbolic regression trading alpha",
+      "source_timestamp": "2015",
+      "lineage": {
+        "source": "b9f21c4cf98e37e9",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3420d8e9736819f7",
       "source": "crossref",
       "source_url": "https://doi.org/10.2139/ssrn.7496818",
@@ -12767,6 +12784,23 @@
       }
     },
     {
+      "candidate_id": "384753126b034198",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.18653/2026.findings-emnlp.506",
+      "title": "Chain-of-Alpha: Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading",
+      "description": "Crossref work type=proceedings-article",
+      "family": "unknown",
+      "market": null,
+      "query": "symbolic regression alpha mining trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "384753126b034198",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "9ca5faf3525a8884",
       "source": "crossref",
       "source_url": "https://doi.org/10.3390/mining5040083",
@@ -12930,30 +12964,6 @@
         "source": "36542d8ca86c70a6",
         "family": "unknown",
         "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "b9f21c4cf98e37e9",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.1007/978-3-319-20883-1_21",
-      "title": "Trading Volatility Using Highly Accurate Symbolic Regression",
-      "description": "Crossref work type=book-chapter",
-      "family": "volatility",
-      "market": null,
-      "query": "symbolic regression alpha mining trading",
-      "source_timestamp": "2015",
-      "lineage": {
-        "source": "b9f21c4cf98e37e9",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
         "rounds": []
       }
     },
@@ -13453,6 +13463,30 @@
       }
     },
     {
+      "candidate_id": "bd6914979df8243b",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2024.146534",
+      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u56e0\u5b50\u6316\u6398 A\u80a1 \u91cf\u5316 \u4ea4\u6613",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "bd6914979df8243b",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "04682721e80adf6f",
       "source": "crossref",
       "source_url": "https://doi.org/10.37155/2717-5316-0508-27",
@@ -13648,23 +13682,6 @@
       }
     },
     {
-      "candidate_id": "bd6914979df8243b",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2024.146534",
-      "title": "Research on Selecting Quantitative Trading Indicators Based on Data Mining",
-      "description": "Crossref work type=journal-article",
-      "family": "unknown",
-      "market": null,
-      "query": "\u56e0\u5b50\u6316\u6398 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "bd6914979df8243b",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "bcb5ccbcca7e1462",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/wer.2021.101001",
@@ -13712,30 +13729,6 @@
         "source": "af5eda9b0df688b6",
         "family": "unknown",
         "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "34a93299afa6db61",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
-      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
-      "description": "Crossref work type=journal-article",
-      "family": "cross_sectional",
-      "market": null,
-      "query": "\u591a\u56e0\u5b50 \u52a0\u5bc6\u8d27\u5e01 \u91cf\u5316 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "34a93299afa6db61",
-        "family": "cross_sectional",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "cross_sectional",
-          "layer": "family",
-          "canonical_family": "cross_sectional",
-          "status": "DISCOVERY_ONLY"
-        },
         "rounds": []
       }
     },
@@ -13856,30 +13849,6 @@
       }
     },
     {
-      "candidate_id": "77db76e6a2140296",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/orf.2021.114043",
-      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
-      "description": "Crossref work type=journal-article",
-      "family": "volatility",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "77db76e6a2140296",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "fdc75585f2a46736",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/etw.2012.23012",
@@ -13915,30 +13884,6 @@
       "source_timestamp": "2026",
       "lineage": {
         "source": "e98ef9709ad0d2f0",
-        "family": "wyckoff_vsa_vpa",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "volume",
-          "layer": "family",
-          "canonical_family": "wyckoff_vsa_vpa",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "71ca1bc267b5f552",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
-      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
-      "description": "Crossref work type=journal-article",
-      "family": "wyckoff_vsa_vpa",
-      "market": null,
-      "query": "\u5a01\u79d1\u592b VSA VPA \u91cf\u4ef7 \u52a0\u5bc6\u8d27\u5e01",
-      "source_timestamp": "2021",
-      "lineage": {
-        "source": "71ca1bc267b5f552",
         "family": "wyckoff_vsa_vpa",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -14072,30 +14017,6 @@
       }
     },
     {
-      "candidate_id": "c14abd6d48892212",
-      "source": "crossref",
-      "source_url": "https://doi.org/10.12677/aam.2024.136273",
-      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
-      "description": "Crossref work type=journal-article",
-      "family": "smc_ict",
-      "market": null,
-      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "c14abd6d48892212",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "741fe7d415cc1ed9",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/mos.2024.131014",
@@ -14215,6 +14136,30 @@
       }
     },
     {
+      "candidate_id": "34a93299afa6db61",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/ecl.2024.1331054",
+      "title": "Multi Factor Quantitative Stock Selection Strategy Based on Support Vector Machine Model",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "34a93299afa6db61",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "6ae6c4fa15c9d4b1",
       "source": "crossref",
       "source_url": "https://doi.org/10.12677/fin.2024.143090",
@@ -14250,6 +14195,30 @@
       "source_timestamp": "2022",
       "lineage": {
         "source": "6aca210ab0bd2e2f",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "c14abd6d48892212",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/aam.2024.136273",
+      "title": "Stock Price Prediction and Quantitative Trading Strategy Based on Deep Learning",
+      "description": "Crossref work type=journal-article",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "\u6da8\u505c \u8fde\u677f A\u80a1 \u91cf\u5316 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "c14abd6d48892212",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -14879,6 +14848,30 @@
       }
     },
     {
+      "candidate_id": "77db76e6a2140296",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.12677/orf.2021.114043",
+      "title": "Study of Cryptocurrency Market Volatility Based on the ARIMA-GARCH Model",
+      "description": "Crossref work type=journal-article",
+      "family": "volatility",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "77db76e6a2140296",
+        "family": "volatility",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "statistical",
+          "layer": "family",
+          "canonical_family": "volatility",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "1cc9696a5e100ff3",
       "source": "crossref",
       "source_url": "https://doi.org/10.52288/jbi.26636204.2022.10.07",
@@ -14924,6 +14917,23 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "ab7a95c62ac5f17d",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "71ca1bc267b5f552",
+      "source": "crossref",
+      "source_url": "https://doi.org/10.26549/fm.v5i2.6546",
+      "title": "\u52a0\u5bc6\u8d27\u5e01\u7684\u53d1\u5c55\u548c\u5bf9\u4e2d\u56fd\u592e\u884c\u6570\u5b57\u8d27\u5e01\u53d1\u884c\u7684\u63a8\u52a8\u4f5c\u7528",
+      "description": "Crossref work type=journal-article",
+      "family": "unknown",
+      "market": null,
+      "query": "\u8d44\u91d1\u8d39\u7387 \u57fa\u5dee \u5957\u5229 \u52a0\u5bc6\u8d27\u5e01",
+      "source_timestamp": "2021",
+      "lineage": {
+        "source": "71ca1bc267b5f552",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -20268,7 +20278,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:58:51Z",
+      "source_timestamp": "2026-10-30T02:50:05Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -20438,7 +20448,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:55:38Z",
+      "source_timestamp": "2026-10-30T03:12:55Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -20646,7 +20656,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T21:00:12Z",
+      "source_timestamp": "2026-10-30T02:51:24Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -20680,7 +20690,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:49:49Z",
+      "source_timestamp": "2026-10-30T03:07:16Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",
@@ -49092,7 +49102,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-25T11:44:54.229Z",
+      "source_timestamp": "2026-10-29T14:17:04.752Z",
       "lineage": {
         "source": "1079c2ee1f761f8f",
         "family": "unknown",
@@ -49548,7 +49558,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-28T13:33:56.887Z",
+      "source_timestamp": "2026-10-30T01:43:25.193Z",
       "lineage": {
         "source": "1ea9e8be401ef98c",
         "family": "unknown",
@@ -49565,7 +49575,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-29T07:52:40.059Z",
+      "source_timestamp": "2026-10-30T06:40:36.291Z",
       "lineage": {
         "source": "ca215def03f3839b",
         "family": "unknown",
@@ -49684,7 +49694,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-20T16:27:57.344Z",
+      "source_timestamp": "2026-10-29T17:59:09.941Z",
       "lineage": {
         "source": "2b0444170a081b42",
         "family": "unknown",
@@ -49704,6 +49714,23 @@
       "source_timestamp": "2026-09-24T12:45:19.037Z",
       "lineage": {
         "source": "0ca9c6d5591b3819",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "b595afbad990f34a",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/corbet-nix/nixarch-corbet-ch",
+      "title": "corbet-nix/nixarch-corbet-ch",
+      "description": "Declarative Arch/CachyOS workstations, managed the Nix way \u2014 Arch's AUR breadth with Nix's declarative config. Pre-alpha scaffold.",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-29T14:37:27.777Z",
+      "lineage": {
+        "source": "b595afbad990f34a",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -49752,7 +49779,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-29T06:55:57.924Z",
+      "source_timestamp": "2026-10-30T08:04:52.318Z",
       "lineage": {
         "source": "c7e0cc91a02b5ca4",
         "family": "unknown",
@@ -49799,11 +49826,11 @@
       "source": "gitlab",
       "source_url": "https://gitlab.com/emanchez1997/alpha",
       "title": "emanchez1997/alpha",
-      "description": null,
+      "description": "beigeboxOS: a retro desktop OS simulator in Go and Ebitengine (work in progress). Windows, taskbar, and draggable UI, hand-written as a learning project.",
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-24T16:37:46.396Z",
+      "source_timestamp": "2026-10-29T18:46:04.674Z",
       "lineage": {
         "source": "8175988c5f69d20b",
         "family": "unknown",
@@ -49820,7 +49847,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-29T05:34:18.404Z",
+      "source_timestamp": "2026-10-30T08:23:35.132Z",
       "lineage": {
         "source": "b40bef5ca3683aa7",
         "family": "unknown",
@@ -49854,7 +49881,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-29T05:34:19.026Z",
+      "source_timestamp": "2026-10-30T08:26:16.871Z",
       "lineage": {
         "source": "6ec00dea47cfa42d",
         "family": "unknown",
@@ -50235,7 +50262,7 @@
       "family": "execution_mev",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-24T18:30:24.744Z",
+      "source_timestamp": "2026-10-29T19:28:10.987Z",
       "lineage": {
         "source": "ef4690bfd6d40e56",
         "family": "execution_mev",
@@ -50371,6 +50398,23 @@
       "source_timestamp": "2026-10-28T19:37:42.157Z",
       "lineage": {
         "source": "1b9063b08cd36743",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "75463d3d4f5390ae",
+      "source": "gitlab",
+      "source_url": "https://gitlab.com/mctighecw/go-finance-bot",
+      "title": "mctighecw/go-finance-bot",
+      "description": "A Telegram bot that returns current financial data, using the Alpha Vantage API.",
+      "family": "unknown",
+      "market": null,
+      "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
+      "source_timestamp": "2026-10-29T16:25:26.557Z",
+      "lineage": {
+        "source": "75463d3d4f5390ae",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -50657,7 +50701,7 @@
       "family": "unknown",
       "market": null,
       "query": "\u91cf\u5316 \u4ea4\u6613 alpha \u6316\u6398 \u9057\u4f20 \u7b97\u6cd5",
-      "source_timestamp": "2026-10-24T19:54:06.108Z",
+      "source_timestamp": "2026-10-29T20:39:34.124Z",
       "lineage": {
         "source": "1da75d716bdfcea4",
         "family": "unknown",
@@ -59732,6 +59776,30 @@
       }
     },
     {
+      "candidate_id": "3aec505d81d15214",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
+      "title": "Crypto Price Analysis: An AI Perspective",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "options",
+      "market": null,
+      "query": "crypto options volatility skew gamma trading",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "3aec505d81d15214",
+        "family": "options",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "options",
+          "layer": "family",
+          "canonical_family": "options",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "71d4dd1aed9a17d1",
       "source": "openalex",
       "source_url": "https://doi.org/10.1111/mafi.12410",
@@ -60962,30 +61030,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "b83160bb5bad442f",
-        "family": "volatility",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "statistical",
-          "layer": "family",
-          "canonical_family": "volatility",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "3aec505d81d15214",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.32520/stmsi.v15i7.6574",
-      "title": "Crypto Price Analysis: An AI Perspective",
-      "description": "OpenAlex work type=article year=2026",
-      "family": "volatility",
-      "market": null,
-      "query": "crypto volatility breakout strategy",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "3aec505d81d15214",
         "family": "volatility",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -65026,6 +65070,23 @@
       "source_timestamp": "1998",
       "lineage": {
         "source": "4fb5abced4760f84",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "8806f7e64f707ba8",
+      "source": "openalex",
+      "source_url": "https://openalex.org/W1577032985",
+      "title": "Public market development strategy : making the improbable possible",
+      "description": "OpenAlex work type=dissertation year=2009",
+      "family": "unknown",
+      "market": null,
+      "query": "market making strategy code",
+      "source_timestamp": "2009",
+      "lineage": {
+        "source": "8806f7e64f707ba8",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -71877,6 +71938,23 @@
       }
     },
     {
+      "candidate_id": "52d3af6a062f0f74",
+      "source": "openalex",
+      "source_url": "https://doi.org/10.37155/2811-0633-0508-6",
+      "title": "\u57fa\u4e8e\u9884\u9632\u6027\u517b\u62a4\u7684\u4ea4\u901a\u5de5\u7a0b\u7ba1\u7406\u7b56\u7565",
+      "description": "OpenAlex work type=article year=2026",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "52d3af6a062f0f74",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "2fd2f3cafffb566e",
       "source": "openalex",
       "source_url": "https://doi.org/10.63887/jerp.2025.1.4.43",
@@ -71905,6 +71983,23 @@
       "source_timestamp": "2024",
       "lineage": {
         "source": "7aa3b5beb5bde24a",
+        "family": "unknown",
+        "taxonomy": null,
+        "rounds": []
+      }
+    },
+    {
+      "candidate_id": "d7ed54b773d8a96d",
+      "source": "openalex",
+      "source_url": "https://openalex.org/W7145053809",
+      "title": "\u660e\u671d\u7981\u94b1\u653f\u7b56\u3001\u94dc\u94b1\u5371\u673a\u5bf915\u4e16\u7eaa\u7409\u7403\u8d27\u5e01\u7684\u5f71\u54cd",
+      "description": "OpenAlex work type=article year=2024",
+      "family": "unknown",
+      "market": null,
+      "query": "\u5f3a\u5316\u5b66\u4e60 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
+      "source_timestamp": "2024",
+      "lineage": {
+        "source": "d7ed54b773d8a96d",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -72763,23 +72858,6 @@
       }
     },
     {
-      "candidate_id": "52d3af6a062f0f74",
-      "source": "openalex",
-      "source_url": "https://doi.org/10.37155/2811-0633-0508-6",
-      "title": "\u57fa\u4e8e\u9884\u9632\u6027\u517b\u62a4\u7684\u4ea4\u901a\u5de5\u7a0b\u7ba1\u7406\u7b56\u7565",
-      "description": "OpenAlex work type=article year=2026",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "52d3af6a062f0f74",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
       "candidate_id": "87383390925f37bf",
       "source": "openalex",
       "source_url": "https://doi.org/10.70693/cjmsr.v1i3.1720",
@@ -72791,23 +72869,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "87383390925f37bf",
-        "family": "unknown",
-        "taxonomy": null,
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "d7ed54b773d8a96d",
-      "source": "openalex",
-      "source_url": "https://openalex.org/W7145053809",
-      "title": "\u660e\u671d\u7981\u94b1\u653f\u7b56\u3001\u94dc\u94b1\u5371\u673a\u5bf915\u4e16\u7eaa\u7409\u7403\u8d27\u5e01\u7684\u5f71\u54cd",
-      "description": "OpenAlex work type=article year=2024",
-      "family": "unknown",
-      "market": null,
-      "query": "\u8ba2\u5355\u6d41 \u52a0\u5bc6\u8d27\u5e01 \u4ea4\u6613 \u7b56\u7565",
-      "source_timestamp": "2024",
-      "lineage": {
-        "source": "d7ed54b773d8a96d",
         "family": "unknown",
         "taxonomy": null,
         "rounds": []
@@ -73650,30 +73711,6 @@
       "source_timestamp": "2023",
       "lineage": {
         "source": "d021b5bab455d25e",
-        "family": "china_a_share",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "regional",
-          "layer": "family",
-          "canonical_family": "china_a_share",
-          "status": "DISCOVERY_ONLY"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "6d7dfca0d4d93282",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/ae9b47062b1168fc4d391be13cb4d8d2e79e0040",
-      "title": "Research on A-Share Event-Driven Trading Strategy Based on Event Classification and Volatility Forecasting",
-      "description": "Aiming at the problems of insufficient characterization of event heterogeneity, limited volatility forecasting accuracy and weak strategy adaptability in A-share event-driven investment, this paper constructs a full-process quantitative investment framework including event identification, quantitative classification, volatility forecasting and dynamic arbitrage. Eleven core event features are extracted from six dimensions, and the Gaussian Mixture Model (GMM) is adopted for unsupervised clustering to divide A-share market events into four categories: long-term policy-driven (lasting impact), high-linkage policy events (general impact), fundamental corporate events (moderate volatility) and sudden shock events (rapid impact). An exponential decay model is built to depict the temporal evolution law of event impacts. Based on the heterogeneity of different event types, differentiated multi-factor volatility forecasting models such as HAR-RV are constructed. Finally, with the goal of maximizing the Sharpe ratio, a mean-variance optimization strategy integrating transaction costs, position constraints and Conditional Value at Risk (CVaR) tail risk control is established, and four core innovative mechanisms are designed. The empirical results from December 2024 to September 2025 show that the strategy achieves an annualized return of 18.2%, a Sharpe ratio of 1.25 and a maximum drawdown of 6.8%. Its performance in return acquisition and risk control is significantly superior to the CSI 300 market benchmark, providing a feasible solution for A-share event-driven quantitative investment.",
-      "family": "china_a_share",
-      "market": "CN_A_SHARE",
-      "query": "A-share quantitative trading factor strategy China",
-      "source_timestamp": "2026",
-      "lineage": {
-        "source": "6d7dfca0d4d93282",
         "family": "china_a_share",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -80027,6 +80064,30 @@
       }
     },
     {
+      "candidate_id": "6d7dfca0d4d93282",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/ae9b47062b1168fc4d391be13cb4d8d2e79e0040",
+      "title": "Research on A-Share Event-Driven Trading Strategy Based on Event Classification and Volatility Forecasting",
+      "description": "Aiming at the problems of insufficient characterization of event heterogeneity, limited volatility forecasting accuracy and weak strategy adaptability in A-share event-driven investment, this paper constructs a full-process quantitative investment framework including event identification, quantitative classification, volatility forecasting and dynamic arbitrage. Eleven core event features are extracted from six dimensions, and the Gaussian Mixture Model (GMM) is adopted for unsupervised clustering to divide A-share market events into four categories: long-term policy-driven (lasting impact), high-linkage policy events (general impact), fundamental corporate events (moderate volatility) and sudden shock events (rapid impact). An exponential decay model is built to depict the temporal evolution law of event impacts. Based on the heterogeneity of different event types, differentiated multi-factor volatility forecasting models such as HAR-RV are constructed. Finally, with the goal of maximizing the Sharpe ratio, a mean-variance optimization strategy integrating transaction costs, position constraints and Conditional Value at Risk (CVaR) tail risk control is established, and four core innovative mechanisms are designed. The empirical results from December 2024 to September 2025 show that the strategy achieves an annualized return of 18.2%, a Sharpe ratio of 1.25 and a maximum drawdown of 6.8%. Its performance in return acquisition and risk control is significantly superior to the CSI 300 market benchmark, providing a feasible solution for A-share event-driven quantitative investment.",
+      "family": "china_a_share",
+      "market": "CN_A_SHARE",
+      "query": "event driven quantitative trading earnings news",
+      "source_timestamp": "2026",
+      "lineage": {
+        "source": "6d7dfca0d4d93282",
+        "family": "china_a_share",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "regional",
+          "layer": "family",
+          "canonical_family": "china_a_share",
+          "status": "DISCOVERY_ONLY"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "ee061558b1076aef",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/316aedb124cac1465e6e0ccf644bf2f7b78c2b2a",
@@ -83425,6 +83486,30 @@
       }
     },
     {
+      "candidate_id": "642e162e9febaa54",
+      "source": "semantic_scholar",
+      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
+      "title": "Crypto Trading Using AI",
+      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
+      "family": "smc_ict",
+      "market": null,
+      "query": "prediction markets automated trading research",
+      "source_timestamp": "2025",
+      "lineage": {
+        "source": "642e162e9febaa54",
+        "family": "smc_ict",
+        "taxonomy": {
+          "taxonomy_version": "2.0.0",
+          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
+          "domain_id": "market_structure",
+          "layer": "family",
+          "canonical_family": "smc_ict",
+          "status": "EXECUTABLE"
+        },
+        "rounds": []
+      }
+    },
+    {
       "candidate_id": "3c40ac717ed8cb63",
       "source": "semantic_scholar",
       "source_url": "https://www.semanticscholar.org/paper/152a40b1cf4f4b8a16e48d3b41be223842ef02e2",
@@ -84378,30 +84463,6 @@
       "source_timestamp": "2025",
       "lineage": {
         "source": "7f625a1607704e06",
-        "family": "smc_ict",
-        "taxonomy": {
-          "taxonomy_version": "2.0.0",
-          "taxonomy_digest": "1490a1b5e8c9cc767fbc9038116a7e65f9b426d489b7d03e0ece050eadb3a1fb",
-          "domain_id": "market_structure",
-          "layer": "family",
-          "canonical_family": "smc_ict",
-          "status": "EXECUTABLE"
-        },
-        "rounds": []
-      }
-    },
-    {
-      "candidate_id": "642e162e9febaa54",
-      "source": "semantic_scholar",
-      "source_url": "https://www.semanticscholar.org/paper/00e6e3e39b6ad36e64131b1d63ab68c455217a65",
-      "title": "Crypto Trading Using AI",
-      "description": "The rapid growth of crypto currency markets has led to increased interest in automated trading systems that can adapt to their high volatility and unpredictability. Traditional trading methods often rely on manual decision-making or static rule-based algorithms, which can be inefficient in reacting to real-time market fluctuations. This paper proposes an intelligent crypto trading system utilizing Artificial Intelligence (AI) techniques to enhance prediction accuracy and optimize decision-making in cryptocurrency trading. By leveraging machine learning models and real-time data analysis, the system aims to forecast price movements, perform risk assessments, and execute trades dynamically based on predefined objectives. The AI model is trained on historical crypto datasets, incorporating technical indicators and sentiment analysis to improve the robustness of predictions. Experimental results demonstrate improved performance over conventional strategies in terms of profit maximization and risk minimization. This research emphasizes the potential of AI-driven trading system store volutionize financial markets, particularly in decentralized and highly volatile domains like cryptocurrency. With its growing influence, cryptocurrency is increasingly playing an essential role in the reformation of the financial system popular appeal and merchant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, and the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments. It is a matter to try and understand the factors that influence the value. In the present work, advanced artificial intelligence frameworks of fully connected Artificial Neural Network-ANN and Long Short-Term Memory-LSTM to analyse the price dynamics of Bitcoin, Ethereum etc. We observe that ANN is more inclined to depend on longer-term history, whereas LSTM relies more on the short-term dynamics, that illustrate the e",
-      "family": "smc_ict",
-      "market": null,
-      "query": "systematic crypto trading machine learning alpha",
-      "source_timestamp": "2025",
-      "lineage": {
-        "source": "642e162e9febaa54",
         "family": "smc_ict",
         "taxonomy": {
           "taxonomy_version": "2.0.0",
@@ -90278,7 +90339,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:58:51Z",
+      "source_timestamp": "2026-10-30T02:50:05Z",
       "lineage": {
         "source": "b0e644290596a8b4",
         "family": "prediction_market",
@@ -90448,7 +90509,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:55:38Z",
+      "source_timestamp": "2026-10-30T03:12:55Z",
       "lineage": {
         "source": "81137c1e779f5cae",
         "family": "prediction_market",
@@ -90618,7 +90679,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T21:00:12Z",
+      "source_timestamp": "2026-10-30T02:51:24Z",
       "lineage": {
         "source": "0137aef75ebd5347",
         "family": "prediction_market",
@@ -90652,7 +90713,7 @@
       "family": "prediction_market",
       "market": null,
       "query": "prediction market order book trading strategy",
-      "source_timestamp": "2026-10-27T20:49:49Z",
+      "source_timestamp": "2026-10-30T03:07:16Z",
       "lineage": {
         "source": "9369cf44bf4d2ecf",
         "family": "prediction_market",
