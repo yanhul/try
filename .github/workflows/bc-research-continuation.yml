@@ -1,15 +1,7 @@
 name: BC Research Continuation
 
 on:
-  workflow_run:
-    workflows:
-      - BC Research Controller
-    types:
-      - completed
-    branches:
-      - main
   workflow_dispatch:
-
 permissions:
   contents: write
   actions: write
