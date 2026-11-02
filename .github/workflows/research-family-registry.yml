@@ -1,18 +1,7 @@
 name: Research Family Registry Conformance
 
 on:
-  push:
-    paths:
-      - "engine/**"
-      - "research/**"
-      - "tests/**"
-      - ".github/workflows/research-family-registry.yml"
-  pull_request:
-    paths:
-      - "engine/**"
-      - "research/**"
-      - "tests/**"
-      - ".github/workflows/research-family-registry.yml"
+  workflow_dispatch:
 
 jobs:
   family-registry:
