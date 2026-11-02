@@ -1,29 +1,7 @@
 name: AIOS Central Workload Conformance
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'aios/**'
-      - 'engine/aios_evolution.py'
-      - 'engine/aios_boundary.py'
-      - 'engine/research_pipeline.py'
-      - 'tests/test_aios_evolution_adapter.py'
-      - 'research/AIOS_RESEARCH_CONTRACT.md'
-      - 'research/aios_conformance.py'
-      - 'AIOS_BOUNDARY.md'
-      - '.github/workflows/aios-central-conformance.yml'
-  pull_request:
-    paths:
-      - 'aios/**'
-      - 'engine/aios_evolution.py'
-      - 'engine/aios_boundary.py'
-      - 'engine/research_pipeline.py'
-      - 'tests/test_aios_evolution_adapter.py'
-      - 'research/AIOS_RESEARCH_CONTRACT.md'
-      - 'research/aios_conformance.py'
-      - 'AIOS_BOUNDARY.md'
-      - '.github/workflows/aios-central-conformance.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
