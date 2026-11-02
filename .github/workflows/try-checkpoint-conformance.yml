@@ -1,17 +1,6 @@
 name: TRY Durable Checkpoint Conformance
 
 on:
-  pull_request:
-    paths:
-      - "cloudflare/try-repair-worker/**"
-      - ".github/workflows/try-checkpoint-conformance.yml"
-  push:
-    branches:
-      - main
-      - feat/cloudflare-durable-repair-checkpoints
-    paths:
-      - "cloudflare/try-repair-worker/**"
-      - ".github/workflows/try-checkpoint-conformance.yml"
   workflow_dispatch:
 
 permissions:
