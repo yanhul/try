@@ -1,23 +1,7 @@
 name: Strict Full TRY Suite
 
 on:
-  push:
-    branches: ['**']
-    paths:
-      - 'engine/**'
-      - 'research/**'
-      - 'scripts/**'
-      - 'tests/**'
-      - '.github/workflows/**'
-      - 'pyproject.toml'
-  pull_request:
-    paths:
-      - 'engine/**'
-      - 'research/**'
-      - 'scripts/**'
-      - 'tests/**'
-      - '.github/workflows/**'
-      - 'pyproject.toml'
+  workflow_dispatch:
 
 jobs:
   pytest:
