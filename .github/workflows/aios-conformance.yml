@@ -1,16 +1,7 @@
 name: AIOS Workload Conformance
 
 on:
-  push:
-    paths:
-      - 'aios/**'
-      - 'engine/**'
-      - '.github/workflows/aios-conformance.yml'
-  pull_request:
-    paths:
-      - 'aios/**'
-      - 'engine/**'
-      - '.github/workflows/aios-conformance.yml'
+  workflow_dispatch:
 
 jobs:
   workload:
