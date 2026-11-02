@@ -2,12 +2,6 @@ name: TRY Live Durable Checkpoint E2E
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "scripts/live_checkpoint_e2e.py"
-      - ".github/workflows/try-live-checkpoint-e2e.yml"
 
 permissions:
   contents: read
