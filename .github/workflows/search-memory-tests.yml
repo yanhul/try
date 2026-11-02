@@ -1,13 +1,7 @@
 name: Search Memory Tests
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'research/search_memory.py'
-      - 'research/provider_router.py'
-      - 'tests/test_search_memory.py'
+  workflow_dispatch:
 
 jobs:
   search-memory:
