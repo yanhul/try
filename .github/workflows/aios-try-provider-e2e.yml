@@ -1,13 +1,6 @@
 name: AIOS TRY Provider Real E2E
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "research/aios_repair_provider.py"
-      - "tests/test_aios_repair_provider.py"
-      - "AIOS_BOUNDARY.md"
-      - ".github/workflows/aios-try-provider-e2e.yml"
   workflow_dispatch:
 
 permissions:
