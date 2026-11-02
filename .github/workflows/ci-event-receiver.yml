@@ -3,8 +3,6 @@ name: CI Event Receiver
 # Event-driven notification ingress. This workflow does not decide or repair
 # workloads; it records a durable, idempotent notification envelope for the user.
 on:
-  repository_dispatch:
-    types: [ci_failure]
   workflow_dispatch:
 
 permissions:
