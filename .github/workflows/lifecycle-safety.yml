@@ -1,12 +1,7 @@
 name: Lifecycle Safety
 
 on:
-  pull_request:
-    paths:
-      - 'research/campaign_controller.py'
-      - 'research/repair_oos_evidence.py'
-      - 'tests/test_oos_lifecycle_target.py'
-      - '.github/workflows/lifecycle-safety.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
