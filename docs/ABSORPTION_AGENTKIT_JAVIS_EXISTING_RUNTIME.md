@@ -27,7 +27,7 @@ Existing integration evidence:
 
 Adapt durable execution, idempotency, checkpoint/resume, lease ownership and ambiguous-outcome handling at the runtime boundary. Do not duplicate AIOS effect authority in a second TRY state machine.
 
-The proposed SQLite queue in the earlier draft PR #62 is a standalone queue with a callback-shaped verifier. It is not wired into TRY's research pipeline or AIOS's authoritative effect/attempt lifecycle. Therefore it is **not promoted as the canonical runtime** and must not be mistaken for completed absorption.
+The proposed SQLite queue in the earlier draft PR #62 was a standalone queue with a callback-shaped verifier. It was not wired into TRY's research pipeline or AIOS's authoritative effect/attempt lifecycle. PR #62 has therefore been closed unmerged and superseded; its branch is retained for reference. It must not be mistaken for completed absorption.
 
 Required production adapter contract:
 1. Receive an AIOS-authorized effect and exact attempt identity.
@@ -37,23 +37,25 @@ Required production adapter contract:
 5. On timeout/ambiguous side effect, preserve UNKNOWN; do not auto-requeue or invent a new attempt.
 6. Retry only after AIOS has recorded explicit authorization and the contract's attempt budget allows it.
 
-## 4. Existing workflow boundary and limitation
+## 4. Cross-repository integration verification
+
+TRY PR #63 adds `tests/test_aios_durable_runtime_integration.py` and `.github/workflows/aios-durable-runtime-integration.yml`. The workflow checks out AIOS at the explicit pin `e7e3ba1714e5d099470b8ab746fafd9ea0be726c` and runs two tests against real AIOS contract, permit, effect and runtime APIs:
+- a successful fixture submission is bound to the exact AIOS effect and attempt;
+- an ambiguous provider failure remains UNKNOWN, never PASS.
+
+Run `42710343912` completed successfully; its log records 2 tests run and OK. This is verified boundary integration with a fake provider/runtime, not a live provider test or proof of production scheduling/reconciliation.
+
+## 5. Existing workflow boundary
 
 `.github/workflows/aios-central-conformance.yml` checks out a pinned AIOS revision and exercises the TRY-to-AIOS evolution adapter, then runs the research workload through the central runner. This is useful integration coverage, but it does not by itself prove that every provider effect is bound to a durable runtime receipt.
 
-The exact AIOS pin is defined in that workflow. Any runtime adapter integration must update the pin deliberately and run against that exact revision; do not silently use whichever AIOS checkout happens to be on `main`.
+The exact AIOS pin is defined in each workflow. Any runtime adapter integration must update the pin deliberately and run against that exact revision; do not silently use whichever AIOS checkout happens to be on `main`.
 
-## 5. Verification
+## 6. Three-repository decision
 
-Relevant existing tests:
-- `tests/test_aios_boundary.py`
-- `tests/test_aios_evolution_adapter.py`
-- `tests/test_execution.py`
-- `tests/test_research_pipeline.py`
-- `tests/test_candidate_registration_lineage.py`
+The audited set was **AgentKit, Javis OS, and AIOS**:
+- AgentKit supplies orchestration patterns, adapted through AIOS's existing orchestrator/delegation boundary.
+- Javis OS supplies task-runtime/lifecycle patterns, adapted at the TRY execution boundary while AIOS retains effect authority.
+- AIOS is the destination authority/evidence/verification/promotion control plane, not a third-party library to vendor into TRY.
 
-The prior PR #62 queue tests validate its isolated SQLite class and mocked verifier. They do not establish end-to-end integration with AIOS effect authority, the pinned AIOS revision, a real provider, or reconciliation. Keep the PR unmerged until a real adapter contract and cross-repository integration tests exist.
-
-## 6. Source inventory limitation
-
-The recoverable audit record names AgentKit and Javis OS as upstream pattern sources. It does not preserve the identity/URL of a third independent upstream repository; no third source is guessed or claimed as absorbed. No third-party source is copied into TRY.
+Google AI Pro automation was explicitly excluded from this three-repository adaptation set.
