@@ -1,3 +1,4 @@
+import sqlite3
 import pytest
 from engine.aios_worker_runtime import WorkerJobStore, WorkerQueueError
 
