@@ -5,6 +5,7 @@ monotonic checkpoint and durable observation. Expired ambiguous work becomes
 UNKNOWN and is never silently requeued. No automatic retry or authority grant.
 """
 from __future__ import annotations
+from contextlib import contextmanager
 import json
 import sqlite3
 import time
@@ -28,12 +29,16 @@ class WorkerJobStore:
                 block_reason TEXT NOT NULL DEFAULT '', created_at REAL NOT NULL, updated_at REAL NOT NULL
             )""")
 
+    @contextmanager
     def _connect(self):
         db = sqlite3.connect(self.path, timeout=10, isolation_level=None)
         db.row_factory = sqlite3.Row
         db.execute("PRAGMA journal_mode=WAL")
         db.execute("PRAGMA busy_timeout=10000")
-        return db
+        try:
+            yield db
+        finally:
+            db.close()
 
     def _authorize(self, contract_id, permit_id):
         result = self.authority_verifier(contract_id, permit_id)
