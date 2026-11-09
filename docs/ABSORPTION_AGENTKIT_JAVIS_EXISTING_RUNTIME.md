@@ -1,61 +1,62 @@
-# Absorption ledger: AgentKit and Javis OS patterns in TRY
+# Absorption ledger: Coinbase AgentKit and Javis OS in TRY
 
-Status: **ADAPT through existing AIOS boundaries and TRY adapters; do not add a second worker authority.**
+Status: **selective ADAPT through existing AIOS authority and TRY provider boundaries; no parallel authority queue.**
 
-TRY owns research and provider/runtime execution semantics. AIOS owns contracts, permits, effect authorization, evidence verification and promotion.
+TRY owns research/provider execution. AIOS owns contracts, permits, effect authorization, evidence verification and promotion.
 
-## 1. Existing canonical integration
+## 1. Coinbase AgentKit — correct source classification
+
+Upstream: https://github.com/coinbase/agentkit
+
+Coinbase AgentKit is a wallet/on-chain action toolkit, not a general-purpose orchestration framework. Its Python source provides `ActionProvider`, typed `Action` metadata, Pydantic argument schemas, decorator registration and wallet/network compatibility checks.
+
+**Potentially reusable design:** typed action declarations, explicit input schemas and provider capability/compatibility metadata at a future TRY provider adapter boundary.
+
+**Rejected for this TRY scope:** Coinbase wallet/signing/on-chain transaction implementations, wallet credentials and the earlier claim that AgentKit supplied generic plan/delegation/orchestration patterns. No generic orchestration engine was established by the audited source. No AgentKit code is vendored by this PR.
+
+TRY's current provider/research code remains authoritative for its own domain; AIOS capability registry and permit remain the authority gate.
+
+## 2. Javis OS — task/runtime patterns
+
+Upstream: https://github.com/blogminhquy/javis-os
+
+Relevant audited source includes `server/task_store.py` (SQLite task queue, transactional/CAS state transitions, idempotency keys, claim expiry and heartbeat), `server/agent_jobs.py` (role-aware job aggregation) and `server/loop_watch.py` (event-loop watchdog and stale-process diagnostics).
+
+**Accept as design references:** durable task identity, atomic claim/state changes, lease/heartbeat expiry, explicit worker roles and observable stale-worker conditions.
+
+**Not yet absorbed into production TRY runtime:** the current TRY code has research/evolution adapters and pipeline components, but this PR does not add a production scheduler, queue, lease manager or recovery worker. Do not claim Javis's worker lifecycle is integrated merely because AIOS has durable effect primitives.
+
+Boundary:
+- TRY may own scheduling, worker leases, provider execution and runtime persistence when implemented.
+- AIOS remains authoritative for effect authorization, immutable effect/attempt identity, receipt/evidence verification, UNKNOWN reconciliation and promotion.
+- A worker lease timeout does not prove the provider did nothing. Ambiguous external effects remain UNKNOWN; no silent retry or invented attempt is allowed.
+
+The standalone SQLite queue from the superseded PR #62 remains closed/unmerged and is not treated as absorbed production code.
+
+## 3. Existing TRY ↔ AIOS integration
 
 | Concern | Existing implementation | Owner |
 |---|---|---|
-| Contract/permit/attestation validation | `engine/aios_boundary.py` delegates to AIOS core | AIOS authority; TRY adapter |
+| Contract/permit/attestation boundary | `engine/aios_boundary.py` delegates to AIOS core | AIOS authority; TRY adapter |
 | Candidate/evaluation/admission lifecycle | `engine/aios_evolution.py` delegates to `core.evolution` | AIOS admission; TRY research |
 | Research execution | `aios/adapter.py`, `engine/research_pipeline.py` | TRY |
-| Strategy provenance and canonical identity | `engine/strategy_spec.py` | TRY |
-| Governed execution state/effect/attempt | AIOS `core.orchestrator`, `core.durable_loop`, `core.effect_authority`, `core.durable_runtime` | AIOS |
+| Strategy identity/provenance | `engine/strategy_spec.py` | TRY |
+| Governed effect/attempt | AIOS `core.effect_authority`, `core.durable_runtime` and `core.execution_lineage` | AIOS |
 
-## 2. AgentKit patterns
+## 4. Cross-repository fixture verification
 
-Adapt explicit task plans, role boundaries, scoped capability requests, handoff records and separate review/evidence roles through AIOS contracts/delegation. TRY may submit a research workload or candidate, but must not issue its own authority, widen a permit, or self-promote an evaluation.
+This PR adds `tests/test_aios_durable_runtime_integration.py` and `.github/workflows/aios-durable-runtime-integration.yml`. The workflow checks out AIOS at `e7e3ba1714e5d099470b8ab746fafd9ea0be726c` and exercises the actual AIOS contract, permit, effect and runtime APIs with a **fake provider and fake durable runtime**.
 
-Existing integration evidence:
-- `tests/test_aios_evolution_adapter.py`
-- `tests/test_aios_boundary.py`
-- `.github/workflows/aios-central-conformance.yml`
+Run `42710343912` completed successfully. Its job log confirms:
+- the pinned AIOS commit was checked out;
+- 2 tests ran and passed;
+- fixture provider submission was bound to the same `effect_id` and `attempt_id`;
+- ambiguous provider timeout remained `UNKNOWN`, not `PASS`.
 
-## 3. Javis OS patterns
+This is verified fixture-level boundary integration. It is not a live provider test, production scheduler/lease test, crash-recovery test or end-to-end reconciliation proof.
 
-Adapt durable execution, idempotency, checkpoint/resume, lease ownership and ambiguous-outcome handling at the runtime boundary. Do not duplicate AIOS effect authority in a second TRY state machine.
+## 5. Decision and remaining production gap
 
-The proposed SQLite queue in the earlier draft PR #62 was a standalone queue with a callback-shaped verifier. It was not wired into TRY's research pipeline or AIOS's authoritative effect/attempt lifecycle. PR #62 has therefore been closed unmerged and superseded; its branch is retained for reference. It must not be mistaken for completed absorption.
+The three-repository decision is **Coinbase AgentKit + Javis OS + AIOS**. AIOS is the destination control plane, not a third-party package to vendor into TRY. Google AI Pro automation is excluded.
 
-Required production adapter contract:
-1. Receive an AIOS-authorized effect and exact attempt identity.
-2. Submit to the selected TRY-owned runtime/provider.
-3. Return a submission bound to the same `effect_id`, `attempt_id`, and provider.
-4. Persist provider receipt/evidence references; never convert a worker observation directly into AIOS PASS.
-5. On timeout/ambiguous side effect, preserve UNKNOWN; do not auto-requeue or invent a new attempt.
-6. Retry only after AIOS has recorded explicit authorization and the contract's attempt budget allows it.
-
-## 4. Cross-repository integration verification
-
-TRY PR #63 adds `tests/test_aios_durable_runtime_integration.py` and `.github/workflows/aios-durable-runtime-integration.yml`. The workflow checks out AIOS at the explicit pin `e7e3ba1714e5d099470b8ab746fafd9ea0be726c` and runs two tests against real AIOS contract, permit, effect and runtime APIs:
-- a successful fixture submission is bound to the exact AIOS effect and attempt;
-- an ambiguous provider failure remains UNKNOWN, never PASS.
-
-Run `42710343912` completed successfully; its log records 2 tests run and OK. This is verified boundary integration with a fake provider/runtime, not a live provider test or proof of production scheduling/reconciliation.
-
-## 5. Existing workflow boundary
-
-`.github/workflows/aios-central-conformance.yml` checks out a pinned AIOS revision and exercises the TRY-to-AIOS evolution adapter, then runs the research workload through the central runner. This is useful integration coverage, but it does not by itself prove that every provider effect is bound to a durable runtime receipt.
-
-The exact AIOS pin is defined in each workflow. Any runtime adapter integration must update the pin deliberately and run against that exact revision; do not silently use whichever AIOS checkout happens to be on `main`.
-
-## 6. Three-repository decision
-
-The audited set was **AgentKit, Javis OS, and AIOS**:
-- AgentKit supplies orchestration patterns, adapted through AIOS's existing orchestrator/delegation boundary.
-- Javis OS supplies task-runtime/lifecycle patterns, adapted at the TRY execution boundary while AIOS retains effect authority.
-- AIOS is the destination authority/evidence/verification/promotion control plane, not a third-party library to vendor into TRY.
-
-Google AI Pro automation was explicitly excluded from this three-repository adaptation set.
+The production gap remains: implement and test a TRY-owned runtime adapter that submits an AIOS-authorized effect, preserves exact effect/attempt/provider identity, persists provider receipt/evidence, and routes ambiguous outcomes into explicit AIOS reconciliation. No production scheduler or live external side effect is claimed here.
