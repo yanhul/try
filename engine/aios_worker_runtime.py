@@ -99,35 +99,61 @@ class WorkerJobStore:
             raise ValueError("lease_seconds must be positive")
         now = time.time()
         with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
             self._owned_row(db,task_id,worker_id)
-            db.execute("""UPDATE worker_jobs SET status='RUNNING',heartbeat_at=?,lease_until=?,updated_at=?
-                WHERE task_id=? AND worker_id=?""", (now,now+lease_seconds,now,task_id,worker_id))
+            changed = db.execute("""UPDATE worker_jobs SET status='RUNNING',heartbeat_at=?,lease_until=?,updated_at=?
+                WHERE task_id=? AND worker_id=? AND status IN ('CLAIMED','RUNNING') AND lease_until>?""",
+                (now,now+lease_seconds,now,task_id,worker_id,now)).rowcount
+            if changed != 1:
+                db.rollback()
+                raise WorkerQueueError("worker lease expired during heartbeat")
+            db.commit()
 
     def checkpoint(self, *, task_id, worker_id, checkpoint):
         if not isinstance(checkpoint,int) or isinstance(checkpoint,bool) or checkpoint < 0:
             raise ValueError("checkpoint must be a non-negative integer")
         with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
             row = self._owned_row(db,task_id,worker_id)
             if checkpoint < row["checkpoint"]:
+                db.rollback()
                 raise WorkerQueueError("checkpoint must be monotonic")
-            db.execute("UPDATE worker_jobs SET checkpoint=?,updated_at=? WHERE task_id=?",
-                       (checkpoint,time.time(),task_id))
+            changed = db.execute("""UPDATE worker_jobs SET checkpoint=?,updated_at=?
+                WHERE task_id=? AND worker_id=? AND status IN ('CLAIMED','RUNNING')
+                  AND lease_until>? AND checkpoint<=?""",
+                (checkpoint,time.time(),task_id,worker_id,time.time(),checkpoint)).rowcount
+            if changed != 1:
+                db.rollback()
+                raise WorkerQueueError("checkpoint update lost its live lease")
+            db.commit()
 
     def observe(self, *, task_id, worker_id, evidence_ref):
         if not isinstance(evidence_ref,str) or not evidence_ref.strip():
             raise ValueError("OBSERVED requires an evidence reference")
         with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
             self._owned_row(db,task_id,worker_id)
-            db.execute("UPDATE worker_jobs SET status='OBSERVED',evidence_ref=?,updated_at=? WHERE task_id=?",
-                       (evidence_ref,time.time(),task_id))
+            changed = db.execute("""UPDATE worker_jobs SET status='OBSERVED',evidence_ref=?,updated_at=?
+                WHERE task_id=? AND worker_id=? AND status IN ('CLAIMED','RUNNING') AND lease_until>?""",
+                (evidence_ref,time.time(),task_id,worker_id,time.time())).rowcount
+            if changed != 1:
+                db.rollback()
+                raise WorkerQueueError("worker lease expired before observation")
+            db.commit()
 
     def mark_unknown(self, *, task_id, worker_id, reason):
         if not isinstance(reason,str) or not reason.strip():
             raise ValueError("UNKNOWN requires a reason")
         with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
             self._owned_row(db,task_id,worker_id)
-            db.execute("UPDATE worker_jobs SET status='UNKNOWN',block_reason=?,updated_at=? WHERE task_id=?",
-                       (reason,time.time(),task_id))
+            changed = db.execute("""UPDATE worker_jobs SET status='UNKNOWN',block_reason=?,updated_at=?
+                WHERE task_id=? AND worker_id=? AND status IN ('CLAIMED','RUNNING')""",
+                (reason,time.time(),task_id,worker_id)).rowcount
+            if changed != 1:
+                db.rollback()
+                raise WorkerQueueError("worker no longer owns the active job")
+            db.commit()
 
     def get(self, task_id):
         with self._connect() as db:
