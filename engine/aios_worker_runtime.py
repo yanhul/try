@@ -23,7 +23,7 @@ def _reject_secret_material(value):
         for key, child in value.items():
             normalized = str(key).strip().lower().replace("-", "_")
             parts = set(normalized.split("_"))
-            if not normalized.endswith("_ref") and (parts & _SECRET_KEYS):
+            if not normalized.endswith("_ref") and (normalized in _SECRET_KEYS or (parts & _SECRET_KEYS)):
                 raise ValueError("worker payload must reference secrets, never store secret material")
             _reject_secret_material(child)
     elif isinstance(value, (list, tuple)):
