@@ -15,6 +15,21 @@ from typing import Callable, Mapping
 class WorkerQueueError(RuntimeError):
     pass
 
+_SECRET_KEYS = frozenset({"secret", "password", "token", "api_key", "authorization",
+                          "credential", "private_key", "client_secret"})
+
+def _reject_secret_material(value):
+    if isinstance(value, Mapping):
+        for key, child in value.items():
+            normalized = str(key).strip().lower().replace("-", "_")
+            parts = set(normalized.split("_"))
+            if not normalized.endswith("_ref") and (parts & _SECRET_KEYS):
+                raise ValueError("worker payload must reference secrets, never store secret material")
+            _reject_secret_material(child)
+    elif isinstance(value, (list, tuple)):
+        for child in value:
+            _reject_secret_material(child)
+
 class WorkerJobStore:
     def __init__(self, path: str | Path, authority_verifier: Callable[[str, str], object]):
         self.path = str(path)
@@ -50,6 +65,7 @@ class WorkerJobStore:
             raise ValueError("task and authority identities are required")
         if not isinstance(payload, Mapping):
             raise ValueError("payload must be a mapping")
+        _reject_secret_material(payload)
         self._authorize(contract_id, permit_id)
         now = time.time()
         with self._connect() as db:
