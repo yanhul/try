@@ -16,20 +16,26 @@ Coinbase AgentKit is a wallet/on-chain action toolkit, not a general-purpose orc
 
 TRY's current provider/research code remains authoritative for its own domain; AIOS capability registry and permit remain the authority gate.
 
-## 2. Javis OS — source identity unresolved; prior attribution withdrawn
+## 2. Javis OS — Nguyễn Minh Quý fork, pinned snapshot audit
 
-**Status: UNKNOWN.** The previously cited upstream URL `https://github.com/blogminhquy/javis-os` is not the Javis OS repository the project owner intended. All source-specific paths and implementation claims previously attributed to that URL are withdrawn.
+**Source identity verified:** https://github.com/minhhoan1007/javis-os  
+**Audited fork HEAD:** `8a38217d9f6e9c54e83898fb3242a6fd5c4ca6d5` (2026-09-07).  
+**Repository metadata:** description `Nguyễn Minh Quý`; fork of `blogminhquy/javis-os`. This fork is a historical snapshot, not a separate upstream; its recorded HEAD is 967 commits behind upstream main observed on 2026-11-09. The findings below are pinned to the fork commit, not current upstream.
 
-GitHub search also surfaced `dodungvanphong/javis-os`, but its README points back to `blogminhquy/javis-os`; it is not accepted as the intended source. The correct repository and audited commit remain unidentified.
+### Verified implementation
+- `server/task_store.py`: SQLite/WAL queue, `BEGIN IMMEDIATE`, status-guarded claim, per-brain unique enqueue idempotency key, task/run/event rows.
+- `server/tasks.py`: asyncio dispatcher and workers; 90-second lease, 20-second heartbeat, 5-second dispatcher interval; bounded worker pool and stale-worker housekeeping.
+- `reclaim_stale` requeues expired tasks as `ready` and marks the old run `stale`.
+- `tests/python/test_tasks_autonomous.py` tests legacy migration/snapshot, compare-and-set claim, dependency promotion and dispatcher lifecycle. Its claim test is sequential against one TaskStore; it does not establish multiprocess race safety or external-effect crash safety.
 
-**Absorb decision: BLOCKED pending source identity.** Do not claim that Javis OS task-store, atomic-claim, lease/heartbeat, once-only ledger, checkpoint, MCP or memory patterns have been verified or absorbed into TRY.
+### Not established
+The pinned fork contains no tracked `once_ledger.py`, independent workflow-run store or checkpoint subsystem. No exactly-once guarantee, provider receipt reconciliation or crash-safe external-effect retry is established.
 
-The TRY/AIOS ownership boundary below remains valid independently of Javis OS:
-- TRY owns research/provider execution and any future worker scheduler.
-- AIOS owns effect authorization, immutable effect/attempt identity, receipt/evidence verification, UNKNOWN reconciliation and promotion.
-- A worker lease timeout does not prove the provider did nothing. Ambiguous external effects remain UNKNOWN; no silent retry or invented attempt is allowed.
-
-The standalone SQLite queue from superseded PR #62 remains closed/unmerged and is not treated as absorbed production code.
+### Adapt / reject
+- **Adapt as scheduler mechanics only:** bounded dispatcher, transactional claim, run/event history, heartbeat and dependency promotion.
+- **Reject as authority semantics:** stale lease recovery automatically requeues a task. A worker may have completed an external action before dying; requeue can duplicate that action. Lease expiry alone is not proof of non-execution.
+- Enqueue idempotency is not provider-effect idempotency. The per-brain key deduplicates task creation; title coalescing is only queue behavior.
+- TRY may own scheduling and provider execution, but every external side effect must retain AIOS-issued effect/attempt identity and receipt lineage. Ambiguous outcomes remain UNKNOWN and require explicit reconciliation; no silent retry.
 
 ## 3. Existing TRY ↔ AIOS integration
 
