@@ -1,0 +1,36 @@
+name: TRY AIOS Durable Runtime Integration
+
+on:
+  pull_request:
+    paths:
+      - "engine/**"
+      - "aios/**"
+      - "tests/test_aios_durable_runtime_integration.py"
+      - ".github/workflows/aios-durable-runtime-integration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  AIOS_REF: e7e3ba1714e5d099470b8ab746fafd9ea0be726c
+
+jobs:
+  durable-runtime-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout pinned AIOS authority implementation
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          ref: ${{ env.AIOS_REF }}
+          path: .aios-core
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exercise real AIOS contract, permit, effect and runtime APIs
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.aios-core
+        run: python -m unittest discover -s tests -p "test_aios_durable_runtime_integration.py" -v
