@@ -64,3 +64,27 @@ This is verified fixture-level boundary integration. It is not a live provider t
 The three-repository decision is **Coinbase AgentKit + Javis OS + AIOS**. AIOS is the destination control plane, not a third-party package to vendor into TRY. Google AI Pro automation is excluded.
 
 The production gap remains: implement and test a TRY-owned runtime adapter that submits an AIOS-authorized effect, preserves exact effect/attempt/provider identity, persists provider receipt/evidence, and routes ambiguous outcomes into explicit AIOS reconciliation. No production scheduler or live external side effect is claimed here.
+
+
+## 6. Corrected upstream audit (distinct from the Minh Quý fork)
+
+The fork-only findings in section 2 remain scoped to the pinned fork. This section records a separate direct audit of upstream:
+
+- Upstream: https://github.com/blogminhquy/javis-os
+- Pinned upstream ref: `f1bc4c3e52b4bda71d229e780da3b23a3ededa60` (main, observed 2026-11-10).
+
+Directly inspected upstream modules:
+- `server/once_ledger.py`: per-job/tool/normalized-arguments fingerprint ledger with STARTED, SUCCEEDED, FAILED and UNKNOWN. Prior success is reused; ambiguous timeout/connection loss and interrupted prior-process calls become UNKNOWN rather than silently re-running. This is a local application guard, not provider-enforced exactly-once.
+- `server/workflow_runs.py`: separate SQLite WAL workflow-run history store, not the Kanban task queue.
+- `server/workflow_runtime.py`: workflow graph with checkpoint/resume, completed-node preservation, user approval for write nodes, and pinned nested-workflow revisions. Policy defaults are off/zero allocation/writes disabled; code presence is not proof of rollout.
+- `server/context_runtime.py`: capability lease, invocation, evidence, checkpoint and resource-lock tables; stale RUNNING writes become UNKNOWN after restart and keep their resource lock until reconciliation.
+- `server/capability_executor.py`: schema/scope validation, capability revision pinning, one-use lease claim and evidence persistence.
+- `server/incident_desk.py` and `server/sentinel.py`: bounded incident retry gate and read-only grouped health scan.
+
+### Updated integration decision
+- AIOS already supplies the authority/effect boundary: `core/effect_authority.py`, `core/runtime.py` and `core/durable_runtime.py` bind contract/permit, effect, attempt and provider identity; ambiguous provider outcomes remain UNKNOWN; retry requires explicit authorization and contract budget.
+- TRY should consume AIOS's `DurableRuntime` protocol for scheduler handoff. Javis queue claim/worker/heartbeat/run-history/dependency patterns may inform a future TRY scheduler adapter. Do not copy Javis once-ledger or write ledger as a second authority store.
+- Javis checkpoint state may resume workflow computation, but it must never independently promote an external effect to success. The authoritative effect/attempt/receipt remains in AIOS.
+- No Javis queue is vendored or deployed by this PR. Current evidence is fixture-level AIOS runtime integration, not production scheduler wiring or live provider execution.
+
+This is source-code inspection at the pinned upstream ref; the Javis upstream test suite was not run.
