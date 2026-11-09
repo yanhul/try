@@ -16,22 +16,20 @@ Coinbase AgentKit is a wallet/on-chain action toolkit, not a general-purpose orc
 
 TRY's current provider/research code remains authoritative for its own domain; AIOS capability registry and permit remain the authority gate.
 
-## 2. Javis OS — task/runtime patterns
+## 2. Javis OS — source identity unresolved; prior attribution withdrawn
 
-Upstream: https://github.com/blogminhquy/javis-os
+**Status: UNKNOWN.** The previously cited upstream URL `https://github.com/blogminhquy/javis-os` is not the Javis OS repository the project owner intended. All source-specific paths and implementation claims previously attributed to that URL are withdrawn.
 
-Relevant audited source includes `server/task_store.py` (SQLite task queue, transactional/CAS state transitions, idempotency keys, claim expiry and heartbeat), `server/agent_jobs.py` (role-aware job aggregation) and `server/loop_watch.py` (event-loop watchdog and stale-process diagnostics).
+GitHub search also surfaced `dodungvanphong/javis-os`, but its README points back to `blogminhquy/javis-os`; it is not accepted as the intended source. The correct repository and audited commit remain unidentified.
 
-**Accept as design references:** durable task identity, atomic claim/state changes, lease/heartbeat expiry, explicit worker roles and observable stale-worker conditions.
+**Absorb decision: BLOCKED pending source identity.** Do not claim that Javis OS task-store, atomic-claim, lease/heartbeat, once-only ledger, checkpoint, MCP or memory patterns have been verified or absorbed into TRY.
 
-**Not yet absorbed into production TRY runtime:** the current TRY code has research/evolution adapters and pipeline components, but this PR does not add a production scheduler, queue, lease manager or recovery worker. Do not claim Javis's worker lifecycle is integrated merely because AIOS has durable effect primitives.
-
-Boundary:
-- TRY may own scheduling, worker leases, provider execution and runtime persistence when implemented.
-- AIOS remains authoritative for effect authorization, immutable effect/attempt identity, receipt/evidence verification, UNKNOWN reconciliation and promotion.
+The TRY/AIOS ownership boundary below remains valid independently of Javis OS:
+- TRY owns research/provider execution and any future worker scheduler.
+- AIOS owns effect authorization, immutable effect/attempt identity, receipt/evidence verification, UNKNOWN reconciliation and promotion.
 - A worker lease timeout does not prove the provider did nothing. Ambiguous external effects remain UNKNOWN; no silent retry or invented attempt is allowed.
 
-The standalone SQLite queue from the superseded PR #62 remains closed/unmerged and is not treated as absorbed production code.
+The standalone SQLite queue from superseded PR #62 remains closed/unmerged and is not treated as absorbed production code.
 
 ## 3. Existing TRY ↔ AIOS integration
 
