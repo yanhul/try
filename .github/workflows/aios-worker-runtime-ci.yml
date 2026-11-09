@@ -27,7 +27,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Checkout AIOS authority implementation
+        uses: actions/checkout@v4
+        with:
+          repository: yanhul/AIOS
+          path: aios
       - name: Install test dependency
         run: python -m pip install pytest
       - name: Test worker lifecycle and authority boundary
+        env:
+          AIOS_ROOT: ${{ github.workspace }}/aios
         run: python -m pytest -q tests/test_aios_worker_runtime.py tests/test_aios_boundary.py
