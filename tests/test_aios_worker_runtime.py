@@ -58,3 +58,14 @@ def test_expired_lease_becomes_unknown_and_is_not_reclaimed(tmp_path, monkeypatc
     job=store.get("task-1")
     assert job["status"]=="UNKNOWN"
     assert job["block_reason"]=="lease_expired_ambiguous"
+
+def test_worker_payload_rejects_plaintext_secrets_but_allows_references(tmp_path):
+    store,_=store_for(tmp_path)
+    with pytest.raises(ValueError, match="must reference secrets"):
+        store.enqueue(task_id="t-secret",idempotency_key="i-secret",
+                      contract_id="contract-1",permit_id="permit-1",
+                      payload={"provider":{"api_key":"plaintext"}})
+    store.enqueue(task_id="t-ref",idempotency_key="i-ref",
+                  contract_id="contract-1",permit_id="permit-1",
+                  payload={"provider":{"api_key_ref":"secret-manager://gemini"}})
+    assert store.get("t-ref")["status"]=="QUEUED"
