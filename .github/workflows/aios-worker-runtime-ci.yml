@@ -1,0 +1,33 @@
+name: AIOS Worker Runtime Adaptation CI
+
+on:
+  pull_request:
+    paths:
+      - "engine/aios_worker_runtime.py"
+      - "tests/test_aios_worker_runtime.py"
+      - "docs/AIOS_WORKER_RUNTIME_ABSORPTION.md"
+      - ".github/workflows/aios-worker-runtime-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "engine/aios_worker_runtime.py"
+      - "tests/test_aios_worker_runtime.py"
+      - "docs/AIOS_WORKER_RUNTIME_ABSORPTION.md"
+      - ".github/workflows/aios-worker-runtime-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  worker-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Test worker lifecycle and authority boundary
+        run: python -m pytest -q tests/test_aios_worker_runtime.py tests/test_aios_boundary.py
