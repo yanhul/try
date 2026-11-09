@@ -46,3 +46,15 @@ def test_observed_requires_evidence_and_live_owner(tmp_path):
         store.observe(task_id="task-1",worker_id="worker-a",evidence_ref="")
     with pytest.raises(WorkerQueueError):
         store.observe(task_id="task-1",worker_id="worker-b",evidence_ref="artifact://x")
+
+def test_expired_lease_becomes_unknown_and_is_not_reclaimed(tmp_path, monkeypatch):
+    import engine.aios_worker_runtime as runtime
+    clock = [1000.0]
+    monkeypatch.setattr(runtime.time, "time", lambda: clock[0])
+    store,_=store_for(tmp_path); enqueue(store)
+    assert store.claim(worker_id="worker-a",lease_seconds=10)["status"]=="CLAIMED"
+    clock[0] = 1011.0
+    assert store.claim(worker_id="worker-b",lease_seconds=10) is None
+    job=store.get("task-1")
+    assert job["status"]=="UNKNOWN"
+    assert job["block_reason"]=="lease_expired_ambiguous"
