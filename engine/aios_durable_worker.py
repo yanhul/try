@@ -36,6 +36,7 @@ import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.authority import authorize, load_contract, load_permit
 from core.durable_runtime import validate_submission
 from core.effect_authority import ExecutionClaimRejected, create_effect, dispatch, retry_dispatch
+from core.mutation import recover_pending
 from core.external_effect import load_effects
 from core.runtime import execute_attempt
 
@@ -144,6 +145,12 @@ def reconcile_handoffs(aios_dir, runtime: TrySQLiteDurableRuntime):
     ``present`` | ``adopted`` | ``deferred: ...`` | ``claimed: ...``.
     """
     aios_dir = pin_authority_root(aios_dir)
+    # Reconciliation is itself a recovery entry point. Roll forward any AIOS
+    # write-ahead journal before reading the effect directory; otherwise a
+    # crash between journal fsync and atomic rename can hide a DISPATCHED
+    # handoff and leave SQLite permanently unaware of it. Recovery errors
+    # intentionally propagate (fail closed; do not inspect partial state).
+    recover_pending(aios_dir)
     report = {}
     for effect_id, rec in sorted(load_effects(aios_dir).items()):
         if rec.get("handoff_runtime") != runtime.name or rec.get("state") != "DISPATCHED":
