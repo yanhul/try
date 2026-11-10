@@ -25,7 +25,7 @@ except ImportError:  # unittest discover -s tests (CI)
     from test_aios_durable_runtime_worker import (ACTOR, PROVIDER, REPO_ROOT, AIOS_ROOT, Env,
                                                   LedgerProvider, side_effects)
 import core.effect_authority as _ea
-from core.effect_authority import create_effect, unknown
+from core.effect_authority import create_effect, dispatch, unknown
 from core.mutation import canonical_json, _digest_bytes, _write_staged
 from core.runtime import execute_attempt
 from core.authority import load_contract
@@ -244,41 +244,23 @@ class RetryRaces(unittest.TestCase):
 
 class JournalRecoveryBeforeReconcile(unittest.TestCase):
     def test_reconcile_rolls_forward_aios_dispatch_journal_before_scanning(self):
-        """A crash after journal fsync but before effect rename must be recoverable."""
+        """A crash before the first rename must be recovered before effect scan."""
         with TemporaryDirectory() as tmp:
             env = Env(tmp)
             planned = create_effect(str(env.aios), env.contract_id, "op-journal", ACTOR,
                                     env.permit_id, "external_effect")
             eid = planned["effect_id"]
             attempt_id = f"{eid}:attempt:1"
-            dispatched = dict(planned, state="DISPATCHED", attempt=1,
-                              attempt_id=attempt_id, provider=PROVIDER,
-                              handoff_runtime=env.runtime.name)
-            event = {"kind": "external_effect", "action": "dispatch", "effect_id": eid,
-                     "from_state": "PLANNED", "to_state": "DISPATCHED", "actor": ACTOR,
-                     "attempt": 1, "attempt_id": attempt_id, "provider": PROVIDER,
-                     "handoff_runtime": env.runtime.name}
 
-            # Recreate the exact staged write-ahead journal left by commit_batch
-            # after the journal is fsynced but before either atomic rename.
-            staging = os.path.join(str(env.aios), ".staging", "batch-crash-before-rename")
-            os.makedirs(staging, exist_ok=True)
-            ops = []
-            payloads = [
-                (os.path.join("effects", eid + ".json"), dispatched),
-                (os.path.join("events", f"effect-{eid}-DISPATCHED-attempt-1.json"), event),
-            ]
-            for index, (relative, payload) in enumerate(payloads):
-                data = canonical_json(payload).encode("utf-8") + bytes([10])
-                temporary = os.path.join(staging, f"{index}.tmp")
-                destination = os.path.join(str(env.aios), relative)
-                _write_staged(temporary, data)
-                ops.append({"tmp": temporary, "dest": destination, "digest": _digest_bytes(data)})
-            journal = {"batch_id": "batch-crash-before-rename", "ops": ops}
-            _write_staged(os.path.join(staging, "journal.json"),
-                          canonical_json(journal).encode("utf-8"))
+            # Inject a crash at the first atomic rename. AIOS has already
+            # fsynced its journal, while the existing effect file is still
+            # PLANNED and the event file has not yet been created.
+            with mock.patch("core.mutation._replace",
+                            side_effect=RuntimeError("crash before first rename")):
+                with self.assertRaises(RuntimeError):
+                    dispatch(str(env.aios), eid, ACTOR, attempt_id, PROVIDER,
+                             handoff_runtime=env.runtime.name)
 
-            # The on-disk effect is still PLANNED and there is no SQLite row.
             self.assertEqual(env.aios_effect(eid)["state"], "PLANNED")
             self.assertEqual(rows(env), [])
             out = reconcile_handoffs(env.aios, env.runtime)
