@@ -88,3 +88,26 @@ Directly inspected upstream modules:
 - No Javis queue is vendored or deployed by this PR. Current evidence is fixture-level AIOS runtime integration, not production scheduler wiring or live provider execution.
 
 This is source-code inspection at the pinned upstream ref; the Javis upstream test suite was not run.
+
+
+## 7. Initial TRY scheduler adapter implementation (2026-11-10)
+
+The branch now includes `engine/aios_durable_runtime.py`, a TRY-owned SQLite/WAL handoff adapter implementing the AIOS `DurableRuntime` protocol:
+- idempotent submit bound to the exact AIOS effect, attempt and provider;
+- transactional worker claim using `BEGIN IMMEDIATE`;
+- worker-owned lease heartbeat;
+- expired leases transition to scheduler `UNKNOWN`, never automatic requeue;
+- resume is rejected after claim/ambiguity; retry requires a new AIOS attempt identity;
+- scheduler terminal mirroring accepts only AIOS observed terminal states and creates no evidence itself.
+
+Tests are in `tests/test_try_durable_runtime_adapter.py`. Workflow `TRY AIOS Durable Runtime Integration` run **42729176618** completed successfully on commit `9f86e955fe142de2ffd117d052992c0480b609aa`. The job log records **10 tests passed**: 2 AIOS boundary fixtures and 8 adapter tests, including concurrent worker claim and expired-lease UNKNOWN behavior.
+
+### Explicit limits
+
+This is an implemented scheduler persistence/lease primitive, not a fully deployed worker runtime:
+- no long-running worker loop or service wiring yet;
+- no automatic bridge from scheduler lease expiry into AIOS `effect_authority.unknown`; orchestration must reconcile the returned effect/attempt pair against AIOS before any retry;
+- no real-provider crash-window test (provider acted, process died before receipt persistence);
+- no live provider action or production filesystem/multiprocess deployment validation.
+
+Therefore CI PASS proves these 10 fixture/unit tests only. It does not prove production readiness, exactly-once external effects, or completed end-to-end reconciliation.
