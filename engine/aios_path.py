@@ -26,6 +26,12 @@ def ensure_aios_importable() -> Path:
         raise ImportError(f"'core' resolved to {location}, not the pinned AIOS_ROOT")
     if not (location / "core" / "effect_authority.py").is_file():
         raise ImportError(f"'core' at {location} is not an AIOS authority checkout")
+    authority = importlib.import_module("core.effect_authority")
+    for required in ("claim_execution", "ExecutionClaimRejected", "mutation_lock"):
+        if not hasattr(authority, required):
+            raise ImportError(
+                f"pinned AIOS at {location} lacks core.effect_authority.{required}; "
+                "the atomic execution-claim boundary is required (fail closed)")
     return location
 
 

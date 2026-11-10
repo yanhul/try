@@ -6,13 +6,26 @@ Order of operations for one handoff (``run_once``):
 2. ``authoritative_dispatch()`` — reload the AIOS effect-of-record, contract and
    permit via AIOS public APIs; require exact binding and state == DISPATCHED.
 3. ``heartbeat()`` — the lease must still be owned by this worker.
-4. ``core.runtime.execute_attempt`` — the AIOS boundary calls the provider and
-   persists the observation (or UNKNOWN) in AIOS.
+4. ``core.runtime.execute_attempt`` — AIOS atomically *claims* execution
+   against the persisted effect (``claim_execution``, CAS under the AIOS
+   mutation lock, single-use per attempt). Only if the claim succeeds is the
+   provider called. Steps 2-3 are advisory pre-checks; the claim is the
+   authorization. A rejected claim means the provider was not called.
 5. ``mirror_verified_terminal()`` — mirror only an AIOS-verified receipt; on any
    doubt the row becomes / stays UNKNOWN. Nothing is ever requeued.
 
 The enqueue/retry helpers create and dispatch AIOS effects through AIOS public
 APIs *without* calling the provider, so execution happens only in the worker.
+
+Handoff protocol (AIOS is the write-ahead record):
+  AIOS dispatch persists ``handoff_runtime`` + ``(effect_id, attempt_id,
+  provider)`` *before* the SQLite enqueue. If the process crashes or SQLite
+  fails after the AIOS commit, ``reconcile_handoffs`` re-derives the missing
+  SQLite row from AIOS. It only adopts attempts that are DISPATCHED for this
+  runtime/provider and have no AIOS execution claim, and routes retries
+  through the same scheduler gate. An adopted row is only a scheduling hint:
+  execution still requires a successful AIOS ``claim_execution``, which is
+  single-use per attempt, so recovery cannot authorize a duplicate call.
 """
 from __future__ import annotations
 
@@ -22,7 +35,8 @@ from typing import Any
 import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.authority import authorize, load_contract, load_permit
 from core.durable_runtime import validate_submission
-from core.effect_authority import create_effect, dispatch, retry_dispatch
+from core.effect_authority import ExecutionClaimRejected, create_effect, dispatch, retry_dispatch
+from core.external_effect import load_effects
 from core.runtime import execute_attempt
 
 from engine.aios_authority_reader import (
@@ -73,10 +87,25 @@ def enqueue_dispatched(aios_dir, contract_id, permit_id, logical_operation_id, a
     if effect["state"] != "PLANNED":
         raise RuntimeError("logical operation already has a non-planned effect")
     attempt_id = f"{effect['effect_id']}:attempt:1"
-    effect = dispatch(aios_dir, effect["effect_id"], actor, attempt_id, provider)
-    submission = runtime.submit(effect=effect, attempt_id=attempt_id)
-    validate_submission(effect, submission, attempt_id, provider)
+    effect = dispatch(aios_dir, effect["effect_id"], actor, attempt_id, provider,
+                      handoff_runtime=runtime.name)
+    # Crash/failure after this line is recovered by reconcile_handoffs().
+    _handoff(runtime.submit, effect, attempt_id, provider)
     return effect
+
+
+class HandoffPending(DurableQueueError):
+    """AIOS dispatch is durable but the SQLite handoff failed; reconcile_handoffs recovers it."""
+
+
+def _handoff(submit, effect, attempt_id, provider, **kwargs):
+    try:
+        submission = submit(effect=effect, attempt_id=attempt_id, **kwargs)
+        validate_submission(effect, submission, attempt_id, provider)
+    except Exception as exc:
+        raise HandoffPending(
+            f"AIOS dispatched {attempt_id} but scheduler handoff failed "
+            f"({type(exc).__name__}: {exc}); run reconcile_handoffs") from exc
 
 
 def enqueue_retry(aios_dir, contract_id, permit_id, effect_id, actor, attempt,
@@ -98,10 +127,59 @@ def enqueue_retry(aios_dir, contract_id, permit_id, effect_id, actor, attempt,
     if not runtime.can_retry(effect_id=effect_id, attempt=attempt):
         raise DurableQueueError("retry gated by scheduler state")
     attempt_id = f"{effect_id}:attempt:{attempt}"
-    dispatched = retry_dispatch(aios_dir, effect_id, actor, attempt_id, provider, attempt)
-    submission = runtime.retry(effect=dispatched, attempt_id=attempt_id, attempt=attempt)
-    validate_submission(dispatched, submission, attempt_id, provider)
+    # AIOS CAS: of concurrent retries for the same attempt exactly one wins.
+    dispatched = retry_dispatch(aios_dir, effect_id, actor, attempt_id, provider, attempt,
+                                handoff_runtime=runtime.name)
+    # If the scheduler gate now rejects (concurrent state change) the AIOS
+    # attempt is not lost: reconcile_handoffs adopts it once the gate opens.
+    _handoff(runtime.retry, dispatched, attempt_id, provider, attempt=attempt)
     return dispatched
+
+
+def reconcile_handoffs(aios_dir, runtime: TrySQLiteDurableRuntime):
+    """Re-derive missing SQLite handoffs from AIOS. Idempotent; never executes.
+
+    Returns ``{(effect_id, attempt_id): outcome}`` for every AIOS effect that
+    names this runtime as its handoff target, where outcome is one of
+    ``present`` | ``adopted`` | ``deferred: ...`` | ``claimed: ...``.
+    """
+    aios_dir = pin_authority_root(aios_dir)
+    report = {}
+    for effect_id, rec in sorted(load_effects(aios_dir).items()):
+        if rec.get("handoff_runtime") != runtime.name or rec.get("state") != "DISPATCHED":
+            continue
+        attempt_id, attempt = rec.get("attempt_id"), rec.get("attempt")
+        key = (effect_id, attempt_id)
+        if rec.get("provider") != runtime.provider_name:
+            report[key] = "deferred: provider is not this runtime's provider"
+            continue
+        if not isinstance(attempt, int) or isinstance(attempt, bool) or \
+                attempt_id != f"{effect_id}:attempt:{attempt}":
+            report[key] = "deferred: malformed AIOS attempt identity"
+            continue
+        if runtime.get_handoff(effect_id=effect_id, attempt_id=attempt_id) is not None:
+            report[key] = "present"
+            continue
+        claim = rec.get("execution_claim")
+        if isinstance(claim, dict) and claim.get("attempt_id") == attempt_id:
+            # Execution was already authorized elsewhere; the provider may have
+            # acted. Never re-schedule it: AIOS must reconcile it to UNKNOWN /
+            # observed out-of-band.
+            report[key] = f"claimed: execution already claimed by {claim.get('holder')!r}"
+            continue
+        try:
+            if attempt == 1:
+                runtime.submit(effect=rec, attempt_id=attempt_id)
+            elif runtime.can_retry(effect_id=effect_id, attempt=attempt):
+                runtime.retry(effect=rec, attempt_id=attempt_id, attempt=attempt)
+            else:
+                report[key] = "deferred: scheduler retry gate closed (previous attempt not UNKNOWN)"
+                continue
+        except DurableQueueError as exc:
+            report[key] = f"deferred: {exc}"
+            continue
+        report[key] = "adopted"
+    return report
 
 
 class AiosDurableWorker:
@@ -167,7 +245,11 @@ class AiosDurableWorker:
 
         try:
             execute_attempt(self.aios_dir, contract, effect, self.actor, self.adapter,
-                            claim["attempt_id"])
+                            claim["attempt_id"],
+                            holder=f"try-worker:{self.worker_id}:{claim['attempt_id']}")
+        except ExecutionClaimRejected as exc:
+            # AIOS refused at the atomic claim: provider was NOT called.
+            return self._mirror_or_unknown(claim, False, f"AIOS execution claim rejected: {exc}")
         except Exception as exc:
             # The provider may or may not have acted (e.g. AIOS observe persistence
             # failed after the provider returned). Ambiguous => UNKNOWN.
@@ -184,4 +266,5 @@ class AiosDurableWorker:
         return self._unknown(claim, f"AIOS recorded non-terminal state {state!r}", True)
 
 
-__all__ = ["AiosDurableWorker", "WorkerResult", "enqueue_dispatched", "enqueue_retry"]
+__all__ = ["AiosDurableWorker", "HandoffPending", "WorkerResult", "enqueue_dispatched",
+           "enqueue_retry", "reconcile_handoffs"]

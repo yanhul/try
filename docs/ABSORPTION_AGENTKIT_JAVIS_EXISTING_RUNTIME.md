@@ -49,7 +49,7 @@ The pinned fork contains no tracked `once_ledger.py`, independent workflow-run s
 
 ## 4. Cross-repository fixture verification
 
-This PR adds `tests/test_aios_durable_runtime_integration.py` and `.github/workflows/aios-durable-runtime-integration.yml`. The workflow checks out AIOS at `e7e3ba1714e5d099470b8ab746fafd9ea0be726c` and exercises the actual AIOS contract, permit, effect and runtime APIs with a **fake provider and fake durable runtime**.
+This PR adds `tests/test_aios_durable_runtime_integration.py` and `.github/workflows/aios-durable-runtime-integration.yml`. The workflow checks out AIOS at `9b296a51498dfaf6c0e098dffa5b27d39da12be5` and exercises the actual AIOS contract, permit, effect and runtime APIs with a **fake provider and fake durable runtime**.
 
 Run `42710343912` completed successfully. Its job log confirms:
 - the pinned AIOS commit was checked out;
@@ -146,3 +146,10 @@ Implements the handoff in PR #63 comment 6763326374.
 - Multiprocess: one real child-process crash test only; no proof on the deployment filesystem, no concurrent multi-host workers, no NFS.
 - No service loop, deployment config, or automated reconciliation for rows/effects left UNKNOWN or DISPATCHED after a crash; that requires an operator/AIOS decision.
 - `load_effects` scans the whole effects directory per read (O(n)); acceptable for this slice, not for large stores.
+
+## Execution claim and handoff recovery (PR #63 blockers)
+
+- **AIOS pin:** `yanhul/AIOS@9b296a51498dfaf6c0e098dffa5b27d39da12be5` (branch `fix/effect-cas-execution-claim`, based on the previous pin `e7e3ba1`). `engine/aios_path.py` fails closed if the pinned AIOS lacks `claim_execution`.
+- **TOCTOU:** every AIOS effect transition is now a compare-and-set under the AIOS state-tree `flock`. `core.runtime.execute_attempt` calls `claim_execution` immediately before the provider: it re-reads the persisted effect under the lock, re-validates contract/permit, requires DISPATCHED for the exact effect/attempt/provider/actor (and snapshot identity) and records a single-use claim. Rejection ⇒ provider not called. The worker's earlier `authoritative_dispatch` read is now only an advisory pre-check.
+- **Handoff:** AIOS `dispatch`/`retry_dispatch` persist `handoff_runtime`; the AIOS record is the write-ahead intent. `reconcile_handoffs(aios_dir, runtime)` re-derives a missing SQLite row only for unclaimed DISPATCHED attempts of this runtime/provider, routes retries through the scheduler gate (else `deferred`), and never re-schedules an attempt that AIOS shows as already claimed. It never executes; execution still needs a fresh AIOS claim.
+- **Limits:** at-most-one AIOS-authorized provider invocation per attempt, not exactly-once provider effects. `flock` guarantees hold on local POSIX filesystems, not NFS. A claimed attempt whose executor died stays DISPATCHED+claimed until an operator/AIOS marks it UNKNOWN; reconciliation reports it as `claimed` and does not touch it. Reconciliation must be invoked by the operator/worker loop (no daemon added).
