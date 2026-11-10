@@ -102,6 +102,15 @@ class TryDurableRuntimeTests(unittest.TestCase):
                 effect["attempt_id"],
             )
 
+    def test_resume_refuses_claimed_handoff_to_prevent_ambiguous_reexecution(self):
+        with TemporaryDirectory() as root:
+            runtime = self.make_runtime(root)
+            effect = dispatched()
+            runtime.submit(effect=effect, attempt_id=effect["attempt_id"])
+            runtime.claim(worker_id="worker-a")
+            with self.assertRaises(DurableQueueError):
+                runtime.resume(effect=effect, attempt_id=effect["attempt_id"])
+
     def test_retry_requires_new_aios_attempt_identity(self):
         with TemporaryDirectory() as root:
             runtime = self.make_runtime(root)
