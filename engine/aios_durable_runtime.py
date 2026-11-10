@@ -16,6 +16,8 @@ from typing import Any, Mapping
 
 from core.durable_runtime import DurableRuntime, RuntimeSubmission
 
+from engine.aios_authority_reader import verified_terminal
+
 
 class DurableQueueError(RuntimeError):
     pass
@@ -64,9 +66,15 @@ class TrySQLiteDurableRuntime(DurableRuntime):
                     lease_expires_at REAL,
                     created_at REAL NOT NULL,
                     updated_at REAL NOT NULL,
+                    unknown_reason TEXT,
+                    aios_receipt_json TEXT,
                     PRIMARY KEY(effect_id, attempt_id)
                 )
             """)
+            cols = {r["name"] for r in conn.execute("PRAGMA table_info(runtime_handoffs)")}
+            for col in ("unknown_reason", "aios_receipt_json"):
+                if col not in cols:  # forward-migrate databases from the previous slice
+                    conn.execute(f"ALTER TABLE runtime_handoffs ADD COLUMN {col} TEXT")
             conn.execute("""
                 CREATE INDEX IF NOT EXISTS idx_runtime_handoffs_claim
                 ON runtime_handoffs(status, created_at)
@@ -98,6 +106,8 @@ class TrySQLiteDurableRuntime(DurableRuntime):
         now = self._clock()
         with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
+            if expected_attempt is not None:
+                self._retry_gate(conn, effect_id, attempt_id, expected_attempt)
             row = conn.execute(
                 "SELECT * FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
                 (effect_id, attempt_id),
@@ -113,6 +123,47 @@ class TrySQLiteDurableRuntime(DurableRuntime):
                 raise DurableQueueError("handoff identity collision with different payload")
             conn.commit()
         return RuntimeSubmission(effect_id, attempt_id, self.provider_name)
+
+    @staticmethod
+    def _retry_gate(conn, effect_id, attempt_id, attempt):
+        """A retry row is accepted only after the previous attempt is UNKNOWN here.
+
+        AIOS authorizes the retry (UNKNOWN + bounded attempt budget); this gate
+        additionally refuses to schedule attempt N while attempt N-1 is still
+        scheduled, claimed by a live worker, or already terminal.
+        """
+        if attempt_id != f"{effect_id}:attempt:{attempt}":
+            raise DurableQueueError("retry attempt_id is not bound to attempt number")
+        existing = conn.execute(
+            "SELECT status FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
+            (effect_id, attempt_id),
+        ).fetchone()
+        if existing is not None:
+            return  # idempotent replay; payload equality is checked by caller
+        prev = conn.execute(
+            "SELECT status FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
+            (effect_id, f"{effect_id}:attempt:{attempt - 1}"),
+        ).fetchone()
+        if prev is None or prev["status"] != "UNKNOWN":
+            raise DurableQueueError(
+                "retry gated: previous attempt must exist and be UNKNOWN in the scheduler "
+                f"(got {None if prev is None else prev['status']})"
+            )
+        others = conn.execute(
+            "SELECT COUNT(*) FROM runtime_handoffs WHERE effect_id=? AND status IN "
+            "('SUBMITTED','CLAIMED','OBSERVED_SUCCESS','OBSERVED_FAILURE')",
+            (effect_id,),
+        ).fetchone()[0]
+        if others:
+            raise DurableQueueError("retry gated: effect has a live or terminal attempt")
+
+    def can_retry(self, *, effect_id: str, attempt: int) -> bool:
+        with closing(self._connect()) as conn:
+            try:
+                self._retry_gate(conn, effect_id, f"{effect_id}:attempt:{attempt}", attempt)
+            except DurableQueueError:
+                return False
+        return True
 
     def submit(self, *, effect: Mapping[str, Any], attempt_id: str) -> RuntimeSubmission:
         return self._submit(effect, attempt_id)
@@ -203,20 +254,70 @@ class TrySQLiteDurableRuntime(DurableRuntime):
             conn.commit()
         return [(r["effect_id"], r["attempt_id"]) for r in rows]
 
-    def mark_aios_terminal(self, *, effect_id: str, attempt_id: str, state: str):
-        """Mirror an AIOS terminal state only after AIOS has durably recorded it."""
-        if state not in ("OBSERVED_SUCCESS", "OBSERVED_FAILURE"):
-            raise ValueError("state must be an AIOS observed terminal state")
+    # ------------------------------------------------------------------
+    # Readback / reconciliation helpers
+    # ------------------------------------------------------------------
+    def get_handoff(self, *, effect_id: str, attempt_id: str):
+        with closing(self._connect()) as conn:
+            row = conn.execute(
+                "SELECT * FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
+                (effect_id, attempt_id),
+            ).fetchone()
+        if row is None:
+            return None
+        out = dict(row)
+        out["effect"] = json.loads(out.pop("payload_json"))
+        return out
+
+    def mark_unknown(self, *, effect_id: str, attempt_id: str, worker_id: str, reason: str):
+        """Owner-bound CLAIMED -> UNKNOWN. Never requeues; AIOS must reconcile."""
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("reason must be non-empty")
         now = self._clock()
         with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             changed = conn.execute(
-                """UPDATE runtime_handoffs SET status=?,worker_id=NULL,
-                   lease_expires_at=NULL,updated_at=?
-                   WHERE effect_id=? AND attempt_id=? AND status IN ('CLAIMED','UNKNOWN')""",
-                (state, now, effect_id, attempt_id),
+                """UPDATE runtime_handoffs SET status='UNKNOWN',worker_id=NULL,
+                   lease_expires_at=NULL,unknown_reason=?,updated_at=?
+                   WHERE effect_id=? AND attempt_id=? AND status='CLAIMED' AND worker_id=?""",
+                (reason[:2000], now, effect_id, attempt_id, worker_id),
+            ).rowcount
+            conn.commit()
+        return changed == 1
+
+    def mirror_verified_terminal(self, *, aios_dir: str, effect_id: str, attempt_id: str,
+                                 worker_id: str | None = None):
+        """Mirror an AIOS terminal outcome only after verifying the AIOS receipt.
+
+        There is deliberately no way to pass a state string: the outcome is read
+        from the AIOS effect-of-record and its evidence digest is verified. If
+        verification fails the row is left untouched (non-terminal) and
+        ``AuthorityRejected`` propagates.
+        """
+        row = self.get_handoff(effect_id=effect_id, attempt_id=attempt_id)
+        if row is None:
+            raise DurableQueueError("terminal mirror rejected: unknown handoff")
+        snapshot = row["effect"]
+        verified = verified_terminal(
+            aios_dir, effect_id=effect_id, attempt_id=attempt_id, provider=row["provider"],
+            expected={k: snapshot[k] for k in ("attempt", "actor", "contract_id", "permit_id",
+                                              "effect_type") if k in snapshot},
+        )
+        now = self._clock()
+        with closing(self._connect()) as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            if worker_id is None:
+                where, args = "status='UNKNOWN'", ()
+            else:
+                where, args = "(status='UNKNOWN' OR (status='CLAIMED' AND worker_id=?))", (worker_id,)
+            changed = conn.execute(
+                f"""UPDATE runtime_handoffs SET status=?,worker_id=NULL,lease_expires_at=NULL,
+                    aios_receipt_json=?,updated_at=?
+                    WHERE effect_id=? AND attempt_id=? AND provider=? AND {where}""",
+                (verified["state"], json.dumps(verified, sort_keys=True), now,
+                 effect_id, attempt_id, row["provider"], *args),
             ).rowcount
             conn.commit()
         if changed != 1:
-            raise DurableQueueError("terminal mirror rejected: handoff not claimable")
-        return state
+            raise DurableQueueError("terminal mirror rejected: handoff not in a mirrorable state")
+        return verified

@@ -111,3 +111,38 @@ This is an implemented scheduler persistence/lease primitive, not a fully deploy
 - no live provider action or production filesystem/multiprocess deployment validation.
 
 Therefore CI PASS proves these 10 fixture/unit tests only. It does not prove production readiness, exactly-once external effects, or completed end-to-end reconciliation.
+
+## 8. Durable-runtime integration blockers closed (2026-11-10)
+
+Implements the handoff in PR #63 comment 6763326374.
+
+### Worker execution path (`engine/aios_durable_worker.py`)
+`AiosDurableWorker.run_once()` is the only TRY code path that reaches a provider:
+1. `claim()` — SQLite scheduling snapshot only.
+2. `authoritative_dispatch()` (`engine/aios_authority_reader.py`) — reloads the effect-of-record via AIOS public APIs (`core.mutation.recover_pending`, `core.external_effect.load_effects`, `core.authority.authorize/load_contract/load_permit`) and requires state `DISPATCHED` with exact effect_id / attempt_id / attempt / provider / actor / contract_id / permit_id / effect_type binding, a live contract+permit, provider capability and attempt budget. Missing, unreadable, stale, terminal, UNKNOWN or mismatched authority fails closed to queue `UNKNOWN` without calling the provider.
+3. `heartbeat()` — lease must still be owned; otherwise the provider is not called.
+4. `core.runtime.execute_attempt()` — AIOS calls the provider and persists the observation or UNKNOWN.
+5. `mirror_verified_terminal()` — re-reads AIOS; never trusts the return value.
+
+`enqueue_dispatched()` / `enqueue_retry()` create/dispatch through AIOS (`create_effect`, `dispatch`, `retry_dispatch`) without calling the provider. Retry requires AIOS `UNKNOWN`, the AIOS attempt budget, and the scheduler gate (previous attempt row `UNKNOWN`, no live/terminal row); the gate is checked before `retry_dispatch` so a refused retry does not consume an AIOS attempt.
+
+### Receipt-backed terminal mirroring
+`mark_aios_terminal(state=...)` was removed. `mirror_verified_terminal()` takes no state: it requires an AIOS `OBSERVED_*` effect whose `provider_observation` binds effect/attempt/provider, has a `provider_operation_id`, and carries a digest-valid AIOS `EvidenceRecord` with matching provider and `run_id == attempt_id`. The verified digest is stored in `aios_receipt_json`. On failure the row is left non-terminal. A CLAIMED row can be mirrored only by its owning worker.
+
+### Proven by tests (`tests/test_aios_durable_runtime_worker.py`, real SQLite adapter + real AIOS file store)
+- AIOS `execute()` with `TrySQLiteDurableRuntime`: persisted handoff identity/readback; a later worker claim does not re-execute and mirrors the verified receipt.
+- Worker path: success, observed failure, provider ambiguity, AIOS persistence failure after provider call → UNKNOWN.
+- Pre-execution rejection without provider call: AIOS UNKNOWN, superseded attempt (AIOS DISPATCHED for attempt 2, row attempt 1), deleted effect, corrupt effect JSON, revoked permit, tampered attempt/contract/permit/actor/provider, worker actor mismatch.
+- Forged terminal: AIOS non-terminal, bad evidence digest, evidence bound to another attempt, other worker mirroring a claimed row.
+- Lease: expired lease → UNKNOWN, no requeue, retry refused while AIOS still DISPATCHED; lease lost between authority read and provider call → provider skipped.
+- Retry: explicit bounded retry succeeds; retry beyond `max_attempts` refused; scheduler gate refuses without consuming an AIOS attempt.
+- Crash window: a real child process `os._exit(137)` after a fsync'd local side effect, before the AIOS receipt. Result: AIOS stays DISPATCHED, no terminal mirror, no automatic re-execution, retry refused until an explicit AIOS `unknown()` decision.
+- Mutation check (local): disabling the DISPATCHED check, evidence digest check, worker authority read, or lease→UNKNOWN each makes tests fail.
+
+### Not proven — remaining limitations
+- **Not exactly-once.** The crash test shows an explicitly authorized retry after a crash duplicates a non-idempotent side effect (asserted). Real providers need idempotency keyed on effect_id/attempt_id.
+- TOCTOU: AIOS has no compare-and-set on `execute_attempt`; between the authority read and the provider call another AIOS writer could change the effect. The window is minimized, not closed.
+- The provider fixture is a local ledger file, not a live external provider.
+- Multiprocess: one real child-process crash test only; no proof on the deployment filesystem, no concurrent multi-host workers, no NFS.
+- No service loop, deployment config, or automated reconciliation for rows/effects left UNKNOWN or DISPATCHED after a crash; that requires an operator/AIOS decision.
+- `load_effects` scans the whole effects directory per read (O(n)); acceptable for this slice, not for large stores.

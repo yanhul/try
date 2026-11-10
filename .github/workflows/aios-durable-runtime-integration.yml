@@ -7,6 +7,7 @@ on:
       - "aios/**"
       - "tests/test_aios_durable_runtime_integration.py"
       - "tests/test_try_durable_runtime_adapter.py"
+      - "tests/test_aios_durable_runtime_worker.py"
       - "docs/ABSORPTION_AGENTKIT_JAVIS_EXISTING_RUNTIME.md"
       - ".github/workflows/aios-durable-runtime-integration.yml"
   workflow_dispatch:
