@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from contextlib import closing
 import time
 from pathlib import Path
 from typing import Any, Mapping
@@ -50,7 +51,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
         return conn
 
     def _initialize(self):
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS runtime_handoffs (
                     effect_id TEXT NOT NULL,
@@ -95,7 +96,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
             raise DurableQueueError("effect provider does not match configured provider")
         payload = json.dumps(dict(effect), sort_keys=True, separators=(",", ":"))
         now = self._clock()
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             row = conn.execute(
                 "SELECT * FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
@@ -118,7 +119,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
 
     def resume(self, *, effect: Mapping[str, Any], attempt_id: str) -> RuntimeSubmission:
         effect_id, attempt_id = self._identity(effect, attempt_id)
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             row = conn.execute(
                 "SELECT * FROM runtime_handoffs WHERE effect_id=? AND attempt_id=?",
                 (effect_id, attempt_id),
@@ -129,8 +130,10 @@ class TrySQLiteDurableRuntime(DurableRuntime):
             dict(effect), sort_keys=True, separators=(",", ":")
         ):
             raise DurableQueueError("resume identity/payload mismatch")
-        if row["status"] in ("OBSERVED_SUCCESS", "OBSERVED_FAILURE"):
-            raise DurableQueueError("cannot resume an observed terminal handoff")
+        if row["status"] != "SUBMITTED":
+            raise DurableQueueError(
+                "resume blocked: claimed/unknown/terminal handoff requires worker or AIOS reconciliation"
+            )
         return RuntimeSubmission(effect_id, attempt_id, self.provider_name)
 
     def retry(self, *, effect: Mapping[str, Any], attempt_id: str,
@@ -143,7 +146,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
         if not isinstance(worker_id, str) or not worker_id.strip():
             raise ValueError("worker_id must be non-empty")
         now = self._clock()
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             row = conn.execute(
                 "SELECT * FROM runtime_handoffs WHERE status='SUBMITTED' "
@@ -170,7 +173,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
 
     def heartbeat(self, *, effect_id: str, attempt_id: str, worker_id: str):
         now = self._clock()
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             changed = conn.execute(
                 """UPDATE runtime_handoffs SET lease_expires_at=?,updated_at=?
@@ -186,7 +189,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
     def recover_expired_leases(self):
         """Fail closed: an expired worker lease is UNKNOWN, never automatically requeued."""
         now = self._clock()
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             rows = conn.execute(
                 """SELECT effect_id,attempt_id FROM runtime_handoffs
@@ -205,7 +208,7 @@ class TrySQLiteDurableRuntime(DurableRuntime):
         if state not in ("OBSERVED_SUCCESS", "OBSERVED_FAILURE"):
             raise ValueError("state must be an AIOS observed terminal state")
         now = self._clock()
-        with self._connect() as conn:
+        with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
             changed = conn.execute(
                 """UPDATE runtime_handoffs SET status=?,worker_id=NULL,
