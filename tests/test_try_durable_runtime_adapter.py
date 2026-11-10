@@ -4,6 +4,7 @@ from tempfile import TemporaryDirectory
 from pathlib import Path
 import unittest
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from engine.aios_durable_runtime import DurableQueueError, TrySQLiteDurableRuntime
 
 

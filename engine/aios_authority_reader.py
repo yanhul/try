@@ -21,6 +21,7 @@ import os
 from pathlib import Path
 from typing import Any, Mapping
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.authority import authorize, load_contract, load_permit
 from core.evidence import verify_evidence
 from core.external_effect import load_effects

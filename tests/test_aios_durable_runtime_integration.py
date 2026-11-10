@@ -8,6 +8,7 @@ from __future__ import annotations
 import unittest
 from tempfile import TemporaryDirectory
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.authority import persist_contract, persist_permit
 from core.capabilities import Capability, CapabilityRegistry
 from core.contract import contract_identity

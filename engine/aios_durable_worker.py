@@ -19,6 +19,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.authority import authorize, load_contract, load_permit
 from core.durable_runtime import validate_submission
 from core.effect_authority import create_effect, dispatch, retry_dispatch

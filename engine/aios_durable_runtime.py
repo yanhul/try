@@ -14,6 +14,7 @@ import time
 from pathlib import Path
 from typing import Any, Mapping
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 from core.durable_runtime import DurableRuntime, RuntimeSubmission
 
 from engine.aios_authority_reader import verified_terminal

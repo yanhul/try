@@ -18,6 +18,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import mock
 
+import engine.aios_path  # noqa: F401  (pins AIOS as `core`)
 import core
 from core.authority import persist_contract, persist_permit
 from core.capabilities import Capability, CapabilityRegistry
