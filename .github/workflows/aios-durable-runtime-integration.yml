@@ -6,6 +6,7 @@ on:
       - "engine/**"
       - "aios/**"
       - "tests/test_aios_durable_runtime_integration.py"
+      - "tests/test_try_durable_runtime_adapter.py"
       - "docs/ABSORPTION_AGENTKIT_JAVIS_EXISTING_RUNTIME.md"
       - ".github/workflows/aios-durable-runtime-integration.yml"
   workflow_dispatch:
@@ -31,7 +32,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Exercise real AIOS contract, permit, effect and runtime APIs
+      - name: Exercise AIOS authority boundary and TRY durable scheduler adapter
         env:
           PYTHONPATH: ${{ github.workspace }}/.aios-core
-        run: python -m unittest discover -s tests -p "test_aios_durable_runtime_integration.py" -v
+        run: python -m unittest discover -s tests -p "test_*durable_runtime*.py" -v
