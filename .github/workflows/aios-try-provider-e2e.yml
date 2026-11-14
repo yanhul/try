@@ -2,6 +2,9 @@ name: AIOS TRY Provider Real E2E
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/aios-try-provider-e2e.yml
 
 permissions:
   contents: read
