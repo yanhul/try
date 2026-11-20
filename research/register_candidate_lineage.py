@@ -44,6 +44,31 @@ def digest(value: object) -> str:
     ).hexdigest()
 
 
+def parent_integrity_retirement_is_valid(failure: dict, parent_validation: dict, parent_candidate: dict) -> bool:
+    """Accept a documented pre-evaluation integrity retirement without calling it a strategy failure."""
+    report = failure.get("evidence_report")
+    if not report:
+        reports = [
+            item for item in (failure.get("evidence_sources") or [])
+            if isinstance(item, str) and item.startswith("research/audits/")
+        ]
+        report = reports[0] if len(reports) == 1 else None
+    return (
+        failure.get("decision") in {"REJECT", "REJECT_BC"}
+        and failure.get("reason") == "LINEAGE_CONFLICT_PRE_EVALUATION"
+        and failure.get("candidate_hash") == parent_candidate.get("candidate_hash")
+        and parent_validation.get("candidate_hash") == parent_candidate.get("candidate_hash")
+        and parent_validation.get("status") == "BLOCKED_LINEAGE_INTEGRITY"
+        and parent_validation.get("reason") == "LINEAGE_CONFLICT_PRE_EVALUATION"
+        and parent_validation.get("validation_executed") is False
+        and parent_validation.get("validation_passed") is None
+        and parent_validation.get("oos_executed") is False
+        and isinstance(report, str) and bool(report)
+        and parent_validation.get("evidence_report") == report
+        and report in (parent_validation.get("evidence") or [])
+    )
+
+
 def emit_outputs(**values) -> None:
     output = os.environ.get("GITHUB_OUTPUT")
     if not output:
@@ -121,7 +146,10 @@ def validate_queued_candidate():
         raise RegistrationBlocked("parent_failure_candidate_hash_mismatch")
     if not isinstance(parent_validation, dict) or parent_validation.get("candidate_hash") != parent_candidate.get("candidate_hash"):
         raise RegistrationBlocked("parent_validation_evidence_missing_or_mismatched")
-    if parent_validation.get("validation_passed") is not False or parent_validation.get("oos_executed") is not False:
+    if failure.get("reason") == "LINEAGE_CONFLICT_PRE_EVALUATION":
+        if not parent_integrity_retirement_is_valid(failure, parent_validation, parent_candidate):
+            raise RegistrationBlocked("parent_integrity_retirement_evidence_invalid")
+    elif parent_validation.get("validation_passed") is not False or parent_validation.get("oos_executed") is not False:
         raise RegistrationBlocked("parent_validation_is_not_a_pre_oos_rejection")
 
     memory = load(SEARCH_MEMORY)

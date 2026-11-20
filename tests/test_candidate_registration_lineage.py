@@ -6,6 +6,7 @@ import pytest
 from research import lineage_engine
 from research import register_candidate_lineage as registration
 from research.autonomous_hypothesis import canonical_hash
+from research.hypothesis_novelty import novelty_metadata
 
 
 def write(path: Path, value):
@@ -275,3 +276,99 @@ def test_rejects_novelty_already_registered_under_a_different_hash(queued_candid
         match="candidate_novelty_already_registered_in_lineage",
     ):
         registration.validate_queued_candidate()
+
+
+def test_registers_new_bc_after_explicit_pre_oos_lineage_integrity_retirement(queued_candidate):
+    candidate, memory, research = queued_candidate
+    source_url = "https://example.invalid/selected-vwap-source"
+    candidate.update({
+        "bc": 478,
+        "parent_bc": 477,
+        "hypothesis_id": "discovered_primitive",
+        "conceptual_change": "Test a 20-bar z-score of relative close-to-VWAP distance.",
+        "rationale": "Dimensionless pre-OOS VWAP dislocation hypothesis; no efficacy claim.",
+        "discovery_spec": {
+            "mechanism_family": "vwap_volume_profile",
+            "operator": "zscore",
+            "left": "vwap_distance",
+            "window": 20,
+            "direction": "below",
+            "threshold": -1.5,
+        },
+        "evidence_sources": [source_url],
+        "is_testable": True,
+        "oos_selection_used": False,
+    })
+    candidate.pop("candidate_hash", None)
+    candidate.update(novelty_metadata(candidate))
+    candidate["candidate_hash"] = canonical_hash(candidate)
+
+    state = json.loads((research / "bc_lifecycle_state.json").read_text(encoding="utf-8"))
+    state.update({"current_bc": 478, "next_bc": 478, "checkpoint_seq": 13810})
+    write(research / "bc_lifecycle_state.json", state)
+    memory["last_selection_bc"] = 478
+    memory["last_selected_family"] = "vwap_volume_profile"
+    write(registration.SEARCH_MEMORY, memory)
+
+    parent_candidate = {
+        "bc": 477,
+        "candidate_hash": "parent-bc477-hash",
+        "hypothesis_id": "mechanism_family",
+    }
+    failure = {
+        "bc": 477,
+        "decision": "REJECT",
+        "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+        "candidate_hash": "parent-bc477-hash",
+        "evidence_sources": ["research/audits/BC477_lineage_reconciliation.json"],
+    }
+    parent_validation = {
+        "bc": 477,
+        "candidate_hash": "parent-bc477-hash",
+        "status": "BLOCKED_LINEAGE_INTEGRITY",
+        "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+        "validation_executed": False,
+        "validation_passed": None,
+        "oos_executed": False,
+        "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+        "evidence": ["research/audits/BC477_lineage_reconciliation.json"],
+    }
+    write(research / "autonomous_candidates/BC477.json", parent_candidate)
+    write(research / "failure_analysis/BC477.json", failure)
+    write(research / "bc477_validation_result.json", parent_validation)
+    write(research / "autonomous_candidates/BC478.json", candidate)
+    queue_item = {key: candidate.get(key) for key in (
+        "bc", "parent_bc", "candidate_hash", "discovery_spec", "novelty_key",
+        "evidence_sources", "hypothesis_id",
+    )}
+    write(research / "bc_queue.json", [queue_item])
+
+    validated = registration.validate_queued_candidate()
+    assert validated["created"] is True
+    assert validated["candidate_hash"] == candidate["candidate_hash"]
+    assert validated["checkpoint_seq"] == 13810
+    assert validated["novelty_key"] == "vwap_volume_profile|zscore|vwap_distance||below"
+
+
+def test_integrity_retirement_rejects_missing_audit_evidence(queued_candidate):
+    _, _, _ = queued_candidate
+    failure = {
+        "decision": "REJECT",
+        "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+        "candidate_hash": "same-hash",
+        "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+    }
+    parent_validation = {
+        "candidate_hash": "same-hash",
+        "status": "BLOCKED_LINEAGE_INTEGRITY",
+        "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+        "validation_executed": False,
+        "validation_passed": None,
+        "oos_executed": False,
+        "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+        "evidence": [],
+    }
+    parent_candidate = {"candidate_hash": "same-hash"}
+    assert not registration.parent_integrity_retirement_is_valid(
+        failure, parent_validation, parent_candidate
+    )

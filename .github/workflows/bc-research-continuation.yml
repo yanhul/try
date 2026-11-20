@@ -68,8 +68,8 @@ jobs:
           receipt_history="$(jq -c '.receipt_history // []' <<<"$intent")"
           if [ "$status" = "DISPATCHED" ]; then
             if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
-              echo "CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID"
-              status="STALE"
+              echo "CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID; refusing automatic re-authorization" >&2
+              exit 1
             else
               dispatch_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
               run_workflow_id="$(jq -r '.workflow_id // 0' <<<"$dispatch_run")"
@@ -140,6 +140,8 @@ jobs:
           # checkpoint mismatch is recoverable only from the current durable queue
           # plus candidate, parent failure, selected-family/evidence gates and lineage.
           python -m research.register_candidate_lineage --validate-only
+          # Never mint a fresh continuation authorization from queue state alone.
+          python -m research.continuation_reconciliation --status "$status"
           queue_authorized=false
           queue="$(git show origin/main:research/bc_queue.json)"
           if [ "$(jq 'length' <<<"$queue")" -gt 0 ]; then

@@ -1,0 +1,46 @@
+name: BC Continuation Reconciliation Guard
+
+on:
+  pull_request:
+    paths:
+      - "research/continuation_reconciliation.py"
+      - "research/register_candidate_lineage.py"
+      - "research/bc_lifecycle_state.json"
+      - "research/continuation_intent.json"
+      - "research/bc_queue.json"
+      - "research/lineage.jsonl"
+      - "research/autonomous_candidates/BC478.json"
+      - "research/failure_analysis/BC477.json"
+      - "research/bc477_validation_result.json"
+      - "tests/test_candidate_registration_lineage.py"
+      - "tests/test_continuation_reconciliation.py"
+      - "tests/test_continuation_contract.py"
+      - ".github/workflows/bc-research-continuation.yml"
+      - ".github/workflows/bc-research-watchdog.yml"
+      - ".github/workflows/bc-continuation-reconciliation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconciliation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run continuation reconciliation regression tests
+        run: python -m pytest -q tests/test_continuation_reconciliation.py tests/test_continuation_contract.py
+      - name: Run candidate registration lineage regression tests
+        run: python -m pytest -q tests/test_candidate_registration_lineage.py
+      - name: Verify BC478 registration preflight
+        run: python -m research.register_candidate_lineage --preflight-only
+      - name: Verify stale intent is fail-closed against the new registered candidate
+        run: python -m research.continuation_reconciliation --status STALE
+      - name: Compile reconciliation gates
+        run: python -m py_compile research/continuation_reconciliation.py research/register_candidate_lineage.py

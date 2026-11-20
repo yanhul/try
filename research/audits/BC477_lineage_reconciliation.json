@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "report_type": "BC477_EVIDENCE_BASED_LINEAGE_RECONCILIATION",
+  "disposition": "BC477_RETIRED_PRE_EVALUATION_BC478_REGISTERED_NOT_EVALUATED",
+  "repository": "yanhul/try",
+  "base_ref": "main",
+  "source_artifacts": {
+    "research/lineage.jsonl": "1c2dfb264a7a8b77028251df0e0fde58cdbf1036",
+    "research/bc_lifecycle_state.json": "3bef7df46ca7fb648ae73313509b4e381f2d2f01",
+    "research/continuation_intent.json": "91c3d56bc26c039fefb8c029e39f64ded2464379",
+    "research/bc_queue.json": "fa52b8b362edc7122fedb8e8fdcc81669c9ae4e8",
+    "research/autonomous_candidates/BC477.json": "6e8fd719b490765b00944d7ef64e67c49cab3cc4"
+  },
+  "observed_before_reconciliation": {
+    "checkpoint_seq": 13809,
+    "current_bc": 477,
+    "last_bc": 476,
+    "next_bc": 477,
+    "intent_checkpoint_seq": 13794,
+    "intent_status": "PENDING",
+    "authorized_candidate_hash": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+    "queue_and_candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+    "registered_bc477_count": 10,
+    "distinct_registered_hash_count": 10,
+    "registrations": [
+      {
+        "record_hash": "3084eeeee4dd31d43e0bbbeccb4bbc1ea13aac6b0771effd1d9c3df0b801037b",
+        "checkpoint_seq": 13767,
+        "candidate_hash": "52b38d10706b5fe302d372acb99001d6f62f8ee97e02ee366b6b92a6706f9107",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "4fe80a0486b57763430ff591add1416e25398a5d726008d72c0d045d613a0d8b",
+        "checkpoint_seq": 13770,
+        "candidate_hash": "f573311af64912dbfaf1c46af8e378949b28e783f6be9e7083330d3a370a6d1b",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "e2ec2b6bac869588981fb0fa053006a8f1e60f4748eca09ce6425af0e5985688",
+        "checkpoint_seq": 13773,
+        "candidate_hash": "c7245a0f41d564a44624cca3ad21e538c11aba859aa0b3ae9664a6c37b23dee0",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "350ccad0206cea3c6c6f9631f6f3d28969a8a80a3bd3b0dfcddfc8f5785ffa10",
+        "checkpoint_seq": 13776,
+        "candidate_hash": "a80be51c5214df32313d27b8a43b61cbeff152db9ea80f17db8cf0e2c27e9c0c",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "5fbd6c17439a6eff13683cbacde3dd8a055fccdbd595260f6d889e9b2b2d0324",
+        "checkpoint_seq": 13779,
+        "candidate_hash": "1ac4bb2f27472d228c3d95a2c5faeec2b836755ec8f3dcf2952821bab642225c",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "7caa6f1befaf962ac05768133a1b648907dff3a1c14c9d13e01510c717a7cda7",
+        "checkpoint_seq": 13782,
+        "candidate_hash": "b0d0a8b758abe61eb6ed1ae1c18588be78d1410c3615b6a8d6afa96bbba9380e",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "ebff39d01c8747a04dccdc9fb6a9816f4571422a08d82d9165c132281d53311c",
+        "checkpoint_seq": 13785,
+        "candidate_hash": "9db74e26e411e0620bfaa47070d372b8919fab82e4d0636563e2d20baf9e5e96",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "b88033dcb0df02c9083b8ac937dedf07202913bf39e16efe90d5e4aa05b3812d",
+        "checkpoint_seq": 13788,
+        "candidate_hash": "cfe0f774a583b1b7c7357bf5d269e060249873c1932176a86f036ea27d809908",
+        "family": "vwap_volume_profile",
+        "novelty_key": "vwap_volume_profile||||above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "acf65ba027d0112ce01e31a6ccec686180a459332dc45f5648e66e4b5dca5b0c",
+        "checkpoint_seq": 13791,
+        "candidate_hash": "dfebafc675ae8bc016eb7e9e7286bcfe9161334208f10f7e39c5abebdf9dd2b7",
+        "family": "mean_reversion",
+        "novelty_key": "mean_reversion|ratio|close|close|above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      },
+      {
+        "record_hash": "686b631b9d1828d03cbc6f5161b4e408006adff5a3c714a13506afcede9b4787",
+        "checkpoint_seq": 13794,
+        "candidate_hash": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+        "family": "mean_reversion",
+        "novelty_key": "mean_reversion|ratio|close|close|above",
+        "status": "REGISTERED_NOT_EVALUATED"
+      }
+    ]
+  },
+  "checkpoint_trace": "research/audits/BC477_checkpoint_trace.json",
+  "checkpoint_trace_status": "COMMIT_TRACE_COMPLETE_EVENT_TRACE_INCOMPLETE",
+  "findings": [
+    "Ten BC477 REGISTERED lineage entries have ten distinct candidate hashes at checkpoints 13767 through 13794.",
+    "The durable PENDING intent authorized 9fbb394f... at checkpoint 13794; that candidate is ratio(close,close), which the semantic validator rejects as constant.",
+    "The 13794→13803 checkpoint interval is traced to commits 6a73a54, 3f11e3e, and 1637f20; each changes candidate/queue without matching BC477 registration.",
+    "Commit b6887e6 restored the old 13794-authorized hash at checkpoint 13803; b3828b8 and 0d13dd5 then replaced it again without matching registrations.",
+    "BC477 current candidate 561ac855... is not among the ten registrations. It is retired before evaluation; all ten prior registration records remain unchanged.",
+    "BC478 candidate 55c46d26... has a new hash and novelty key, and is registered at checkpoint 13810 as REGISTERED_NOT_EVALUATED."
+  ],
+  "root_cause": "BC477 accumulated ten distinct durable candidate registrations. The 13794 authorization bound a semantically constant ratio(close,close) candidate; later commits repeatedly replaced candidate and queue without matching registration records, while lifecycle checkpoint advanced independently.",
+  "safe_disposition": "Retire BC477 as a pre-evaluation lineage-integrity conflict without deleting or rewriting its ten registration records. Mark the old continuation intent STALE. Register a fresh BC478 candidate at a new checkpoint. Do not dispatch BC478 until a separate durable authorization is issued.",
+  "limitations": [
+    "Git commit history accounts for checkpoint file changes and candidate hashes, but no per-step receipts explain why each checkpoint increments by exactly three.",
+    "BC478 is registered only; no IS, validation, or OOS result is claimed.",
+    "The continuation intent is STALE; no controller dispatch or strategy execution is authorized."
+  ],
+  "resolution": {
+    "bc477": {
+      "decision": "REJECT_BC",
+      "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+      "candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+      "validation_executed": false,
+      "oos_executed": false,
+      "registrations_preserved": 10
+    },
+    "continuation_intent": {
+      "status": "STALE",
+      "original_checkpoint_seq": 13794,
+      "original_authorized_candidate_hash": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4"
+    },
+    "bc478": {
+      "candidate_hash": "55c46d26ded498ea7ea89037b65f42ecae59a3b60d898b53ca8de36a542b31c0",
+      "novelty_key": "vwap_volume_profile|zscore|vwap_distance||below",
+      "checkpoint_seq": 13810,
+      "registration_status": "REGISTERED_NOT_EVALUATED",
+      "lineage_record_hash": "a7567bf81941237d8aa1bab0dc5a6cdb20e88c98af356a7b699ff61645c7414b",
+      "dispatch_authorized": false
+    }
+  }
+}

@@ -15,6 +15,10 @@
     }
   ],
   "schema_version": 1,
-  "status": "PENDING",
-  "target_ref": "main"
+  "status": "STALE",
+  "target_ref": "main",
+  "stale_reason": "BC477 retired due immutable lineage conflict; this intent authorizes only the old BC477 candidate and cannot authorize BC478.",
+  "stale_at_checkpoint_seq": 13810,
+  "stale_candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+  "stale_evidence_report": "research/audits/BC477_lineage_reconciliation.json"
 }
