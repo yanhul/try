@@ -320,7 +320,7 @@ def test_registers_new_bc_after_explicit_pre_oos_lineage_integrity_retirement(qu
         "decision": "REJECT",
         "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
         "candidate_hash": "parent-bc477-hash",
-        "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+        "evidence_sources": ["research/audits/BC477_lineage_reconciliation.json"],
     }
     parent_validation = {
         "bc": 477,

@@ -47,6 +47,12 @@ def digest(value: object) -> str:
 def parent_integrity_retirement_is_valid(failure: dict, parent_validation: dict, parent_candidate: dict) -> bool:
     """Accept a documented pre-evaluation integrity retirement without calling it a strategy failure."""
     report = failure.get("evidence_report")
+    if not report:
+        reports = [
+            item for item in (failure.get("evidence_sources") or [])
+            if isinstance(item, str) and item.startswith("research/audits/")
+        ]
+        report = reports[0] if len(reports) == 1 else None
     return (
         failure.get("decision") in {"REJECT", "REJECT_BC"}
         and failure.get("reason") == "LINEAGE_CONFLICT_PRE_EVALUATION"
