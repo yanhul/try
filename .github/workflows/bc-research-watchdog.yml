@@ -58,7 +58,8 @@ jobs:
           fi
           if [ "$status" = "DISPATCHED" ]; then
             if ! [[ "$dispatch_id" =~ ^[0-9]+$ ]]; then
-              echo "CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID; reconciler must recover from durable state."
+              echo "CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID; no reconciler dispatch." >&2
+              exit 0
             else
               run_state="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$dispatch_id")"
               run_workflow_id="$(jq -r '.workflow_id // 0' <<<"$run_state")"
@@ -113,6 +114,9 @@ jobs:
               exit 0
             fi
             python -m research.register_candidate_lineage --preflight-only
+            if [ "$status" = "PENDING" ]; then
+              python -m research.continuation_reconciliation --status PENDING
+            fi
             queue_authorized=true
           fi
 

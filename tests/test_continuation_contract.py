@@ -77,3 +77,21 @@ def test_controller_continuation_and_watchdog_share_one_concurrency_lane():
 def test_controller_does_not_trigger_from_state_pushes_or_delete_receipts():
     assert "  push:" not in CONTROLLER
     assert "rm -f research/continuation_intent.json" not in CONTROLLER
+
+
+def test_continuation_reconciliation_gate_precedes_any_new_authorization():
+    gate = CONTINUATION.index("research.continuation_reconciliation --status")
+    authorize = CONTINUATION.index("research: reconcile continuation intent from durable state")
+    dispatch = CONTINUATION.index("gh workflow run bc-research-controller.yml")
+    assert gate < authorize < dispatch
+    assert "research.continuation_reconciliation --status PENDING" in WATCHDOG
+    assert "Never mint a fresh continuation authorization from queue state alone." in CONTINUATION
+
+
+def test_unverifiable_dispatch_receipt_never_becomes_stale_authorization():
+    missing = CONTINUATION.index("CONTINUATION_RECEIPT_MISSING_VERIFIABLE_RUN_ID")
+    success = CONTINUATION.index("CONTINUATION_RECEIPT_COMPLETED_SUCCESS")
+    stale = CONTINUATION.index('status="STALE"')
+    assert CONTINUATION.index("exit 1", missing) < CONTINUATION.index("else", missing)
+    assert success < stale
+    assert "no reconciler dispatch." in WATCHDOG
