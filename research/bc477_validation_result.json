@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "bc": 477,
+  "parent_bc": 476,
+  "candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+  "status": "BLOCKED_LINEAGE_INTEGRITY",
+  "validation_executed": false,
+  "validation_passed": null,
+  "oos_executed": false,
+  "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+  "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+  "evidence": [
+    "research/audits/BC477_lineage_reconciliation.json",
+    "research/lineage.jsonl",
+    "research/continuation_intent.json",
+    "research/bc_queue.json",
+    "research/autonomous_candidates/BC477.json"
+  ],
+  "note": "No IS, validation, or OOS strategy evaluation was run for this integrity disposition."
+}

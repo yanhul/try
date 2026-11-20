@@ -13,8 +13,8 @@
     "research"
   ],
   "capability_repaired_from_campaign_policy": true,
-  "checkpoint_seq": 13809,
-  "current_bc": 477,
+  "checkpoint_seq": 13810,
+  "current_bc": 478,
   "history": [
     {
       "bc": 1,
@@ -3667,13 +3667,21 @@
       "decision": "REJECT_BC",
       "hypothesis_id": "mechanism_family",
       "next": "AGENT_HYPOTHESIS"
+    },
+    {
+      "bc": 477,
+      "candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+      "decision": "REJECT_BC",
+      "hypothesis_id": "lineage_integrity_reconciliation",
+      "next": "AGENT_HYPOTHESIS",
+      "reason": "LINEAGE_CONFLICT_PRE_EVALUATION"
     }
   ],
   "iterations": 1399,
-  "last_bc": 476,
+  "last_bc": 477,
   "last_error": null,
   "legacy_terminal_reason": "OOS_FAIL",
-  "next_bc": 477,
+  "next_bc": 478,
   "oos_consumed": [
     "cf0ffb12ff0667e5d3573bba0d682be7c481b98852d81f407c7ea861feaef56a",
     "9f4251e76cc876019661caf162a58234a21abba8af465aec24a14044e018cee3",
@@ -3735,8 +3743,8 @@
     "receipt_schema_version": 1,
     "receipt_type": "OOS_EXECUTION_RECEIPT"
   },
-  "parameter_optimization_active": true,
-  "parameter_optimization_exhausted_for_parent": false,
+  "parameter_optimization_active": false,
+  "parameter_optimization_exhausted_for_parent": true,
   "parameter_optimization_parent_bc": 476,
   "phase": "PERSISTED",
   "provider_failure_reason": "PROVIDER_FAIL GEMINI: provider_quota_exhausted:429:RPD:GEMINI",
@@ -3752,7 +3760,21 @@
   "state_schema_version": 2,
   "terminal": false,
   "terminal_reason": "OOS_FAIL",
-  "translation_frontier_exhausted": true,
-  "translation_frontier_last_reason": "PROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=mean_reversion\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=smc_ict\nPROVIDER_FALLBACK_DETERMINISTIC reason=provider_candidate_contract_failed:duplicate_structural_mechanism\nPROVIDER_TRANSLATION_FAMILY_EXHAUSTED family=momentum_trend\nPROVIDER_ROUTER_HOLD translation_frontier_exhausted_all_survivors last_error=deterministic_translation_frontier_exhausted",
-  "updated_at": "2026-10-30T08:29:01.772219+00:00"
+  "translation_frontier_exhausted": false,
+  "translation_frontier_last_reason": null,
+  "updated_at": "2026-11-20T01:51:06.418855+00:00",
+  "reconciliation_events": [
+    {
+      "event_id": "BC477-LINEAGE-RECONCILIATION-13810",
+      "event_type": "BC_RETIREMENT_AND_BC478_REGISTRATION",
+      "checkpoint_seq": 13810,
+      "retired_bc": 477,
+      "retired_candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+      "new_bc": 478,
+      "new_candidate_hash": "55c46d26ded498ea7ea89037b65f42ecae59a3b60d898b53ca8de36a542b31c0",
+      "new_lineage_record_hash": "a7567bf81941237d8aa1bab0dc5a6cdb20e88c98af356a7b699ff61645c7414b",
+      "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+      "checkpoint_trace": "research/audits/BC477_checkpoint_trace.json"
+    }
+  ]
 }

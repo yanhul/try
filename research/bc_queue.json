@@ -1,26 +1,29 @@
 [
   {
-    "bc": 477,
-    "candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
-    "conceptual_change": "Translate the selected vwap_volume_profile survivor family into a baseline executable VWAP volume profile strategy operating on BTCUSDT 1H OHLCV data.",
+    "bc": 478,
+    "parent_bc": 477,
+    "hypothesis_id": "discovered_primitive",
+    "conceptual_change": "Test whether an unusually negative 20-bar z-score of BTCUSDT 1H close-to-VWAP distance identifies a VWAP/volume-profile dislocation.",
     "discovery_spec": {
-      "direction": "above",
       "mechanism_family": "vwap_volume_profile",
-      "threshold": 0.0
+      "operator": "zscore",
+      "left": "vwap_distance",
+      "window": 20,
+      "direction": "below",
+      "threshold": -1.5
     },
     "evidence_sources": [
       "https://github.com/kkzee92/aixtech-crypto-intel-v09"
     ],
-    "hypothesis_id": "mechanism_family",
+    "rationale": "The selected BTC-compatible discovery survivor explicitly describes VWAP/volume-profile proxies. The evaluator defines vwap_distance as the relative close-to-VWAP deviation; a 20-bar z-score is a dimensionless test of an unusually negative deviation. This is a pre-OOS test hypothesis only; it makes no performance or efficacy claim.",
     "is_testable": true,
-    "novelty_key": "vwap_volume_profile||||above",
-    "novelty_type": "structural_mechanism",
     "oos_selection_used": false,
+    "novelty_key": "vwap_volume_profile|zscore|vwap_distance||below",
+    "novelty_type": "structural_mechanism",
     "parameterization": {
-      "threshold": 0.0,
-      "window": null
+      "window": 20,
+      "threshold": -1.5
     },
-    "parent_bc": 476,
-    "rationale": "This candidate is a proposed executable test derived from the selected screen survivor. It does not assert efficacy, causality, market behavior, or any performance result."
+    "candidate_hash": "55c46d26ded498ea7ea89037b65f42ecae59a3b60d898b53ca8de36a542b31c0"
   }
 ]

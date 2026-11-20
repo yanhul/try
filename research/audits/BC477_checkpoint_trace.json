@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "report_type": "BC477_CHECKPOINT_COMMIT_TRACE",
+  "repository": "yanhul/try",
+  "base_ref": "main",
+  "status": "COMMIT_TRACE_COMPLETE_EVENT_TRACE_INCOMPLETE",
+  "range": {
+    "from_checkpoint": 13794,
+    "to_checkpoint": 13809
+  },
+  "transitions": [
+    {
+      "checkpoint_before": 13791,
+      "checkpoint_after": 13794,
+      "commit": "86099e559e8f74cdfb9bb287bbd5464b3fb3d7ef",
+      "committed_at": "2026-10-26T01:44:49Z",
+      "candidate_before": "dfebafc675ae8bc016eb7e9e7286bcfe9161334208f10f7e39c5abebdf9dd2b7",
+      "candidate_after": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+      "lineage_registration": "MATCHES_BC477_REGISTRATION_AT_13794"
+    },
+    {
+      "checkpoint_before": 13794,
+      "checkpoint_after": 13797,
+      "commit": "6a73a5401f1eca0cd29d54018cb4a80fec756fff",
+      "committed_at": "2026-10-26T07:43:49Z",
+      "candidate_before": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+      "candidate_after": "baefdef594330f029b7c14989c88d86250211316b4b2202790eabeadc098015b",
+      "lineage_registration": "NONE"
+    },
+    {
+      "checkpoint_before": 13797,
+      "checkpoint_after": 13800,
+      "commit": "3f11e3e8934d44a644097caec46dc84902f53da7",
+      "committed_at": "2026-10-27T07:38:34Z",
+      "candidate_before": "baefdef594330f029b7c14989c88d86250211316b4b2202790eabeadc098015b",
+      "candidate_after": "3e6697a89fff6dfb98e50ebf2c436da90cc487dfed61c826cd2cbbe6e358ecab",
+      "lineage_registration": "NONE"
+    },
+    {
+      "checkpoint_before": 13800,
+      "checkpoint_after": 13803,
+      "commit": "1637f20f34051e85fb802f770dc0e837e7f79d44",
+      "committed_at": "2026-10-28T08:15:16Z",
+      "candidate_before": "3e6697a89fff6dfb98e50ebf2c436da90cc487dfed61c826cd2cbbe6e358ecab",
+      "candidate_after": "bf2b552b4556548f0beb96ab36c0ed5e38ed16fcdaa410519c9d61555d01a03a",
+      "lineage_registration": "NONE"
+    },
+    {
+      "checkpoint_before": 13803,
+      "checkpoint_after": 13803,
+      "commit": "b6887e6164b62c6050dc0f2e93a4c18d3bf54d66",
+      "committed_at": "2026-10-28T13:38:05Z",
+      "candidate_before": "bf2b552b4556548f0beb96ab36c0ed5e38ed16fcdaa410519c9d61555d01a03a",
+      "candidate_after": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+      "lineage_registration": "REUSED_EXISTING_REGISTRATION_AT_13794_NOT_A_NEW_13803_REGISTRATION"
+    },
+    {
+      "checkpoint_before": 13803,
+      "checkpoint_after": 13806,
+      "commit": "b3828b849610038caa97194b251c893c0f399e7e",
+      "committed_at": "2026-10-29T08:23:59Z",
+      "candidate_before": "9fbb394f3b47eb6cda1c8f6d6759b69249dc6ee4e1783febaf7dc738898af8e4",
+      "candidate_after": "0e665b2fd61e85f8424b593c5f3b7e4c9001c55e093a5e50300cb78f97854a3c",
+      "lineage_registration": "NONE"
+    },
+    {
+      "checkpoint_before": 13806,
+      "checkpoint_after": 13809,
+      "commit": "0d13dd578703bd9de39dc7ab3a180829aeb4a760",
+      "committed_at": "2026-10-30T08:29:05Z",
+      "candidate_before": "0e665b2fd61e85f8424b593c5f3b7e4c9001c55e093a5e50300cb78f97854a3c",
+      "candidate_after": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+      "lineage_registration": "NONE"
+    }
+  ],
+  "findings": [
+    "The previously untraced 13794→13803 interval is covered by three consecutive commits: 6a73a54 (13794→13797), 3f11e3e (13797→13800), and 1637f20 (13800→13803).",
+    "Each of those commits changes the BC477 candidate and queue but does not append a matching BC477 REGISTERED lineage entry.",
+    "At checkpoint 13803, b6887e6 restores the 13794-authorized hash without creating a registration at checkpoint 13803.",
+    "The later 13803→13809 interval is likewise explained by b3828b8 and 0d13dd5, each changing candidate/queue without matching registration.",
+    "Git commit history accounts for durable file states and candidate hash changes; it does not provide per-step workflow receipts explaining why each checkpoint advances by exactly three."
+  ],
+  "limitation": "Do not infer three hidden sub-events per checkpoint increment; no per-event receipt was found in the persisted artifacts inspected."
+}

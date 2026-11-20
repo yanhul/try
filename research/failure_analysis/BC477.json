@@ -1,0 +1,25 @@
+{
+  "bc": 477,
+  "parent_bc": 476,
+  "decision": "REJECT",
+  "reason": "LINEAGE_CONFLICT_PRE_EVALUATION",
+  "hypothesis_id": "mechanism_family",
+  "candidate_hash": "561ac855ee207ba91e8e5697f071c4779890925054ea1573b4596a527aae73d0",
+  "conceptual_change": "Retire the current BC477 candidate because the durable authorization, current queue/candidate, and immutable registration history do not identify one canonical candidate.",
+  "evidence_report": "research/audits/BC477_lineage_reconciliation.json",
+  "evidence_sources": [
+    "research/audits/BC477_lineage_reconciliation.json",
+    "https://github.com/yanhul/try/commit/6a73a5401f1eca0cd29d54018cb4a80fec756fff",
+    "https://github.com/yanhul/try/commit/3f11e3e8934d44a644097caec46dc84902f53da7",
+    "https://github.com/yanhul/try/commit/1637f20f34051e85fb802f770dc0e837e7f79d44",
+    "https://github.com/yanhul/try/commit/b3828b849610038caa97194b251c893c0f399e7e",
+    "https://github.com/yanhul/try/commit/0d13dd578703bd9de39dc7ab3a180829aeb4a760"
+  ],
+  "validation_summary": {
+    "status": "BLOCKED_LINEAGE_INTEGRITY",
+    "validation_executed": false,
+    "validation_passed": null,
+    "oos_executed": false
+  },
+  "action": "Retire BC477 before strategy evaluation; preserve all prior registration records unchanged. This is an integrity disposition, not a strategy-performance rejection."
+}
