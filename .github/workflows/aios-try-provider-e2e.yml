@@ -67,7 +67,7 @@ jobs:
           out=propose(
               request_id="real-e2e-"+os.environ["GITHUB_RUN_ID"],
               repository="yanhul/AIOS",
-              sha="c4a40ceaca06b6dc47c578ba625be384c986932b",
+              sha="839f24af126f82c9875811a3163ee95666caad1b",
               attempt=1,
               failure={
                   "ci_failure_log_tail":
@@ -81,6 +81,7 @@ jobs:
           if out.get("status") == "HOLD":
               raise SystemExit("REAL_E2E_PROVIDER_HOLD: "+str(out))
           assert out["schema"] == 2
+          assert out["base_sha"] == "839f24af126f82c9875811a3163ee95666caad1b"
           assert out["files"]
           for item in out["files"]:
               assert isinstance(item["path"], str)
