@@ -1,6 +1,10 @@
 name: TRY Cloudflare Repair Provider
 
 on:
+  pull_request:
+    paths:
+      - cloudflare/try-repair-worker/**
+      - .github/workflows/try-cloudflare-provider.yml
   workflow_dispatch:
 
 permissions:
