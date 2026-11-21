@@ -4,7 +4,9 @@ import importlib
 import json
 import sys
 import types
+import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 class _FakeEntrypoint:
@@ -48,7 +50,7 @@ class _Response:
                         "schema": 2,
                         "root_cause": "fixture",
                         "proposed_fix": "repair",
-                        "files": [{"path": "src/fix.py", "content": "fixed = True\n"}],
+                        "files": [{"path": "src/fix.py", "content": "fixed = True\\n"}],
                     })
                 }
             }]
@@ -58,74 +60,71 @@ class _Response:
         return ""
 
 
-def test_gemini_openai_compat_request_contract(monkeypatch):
-    seen = {}
+class GeminiFreeTierContractTests(unittest.TestCase):
+    def test_gemini_openai_compat_request_contract(self):
+        seen = {}
 
-    async def fake_fetch(url, **kwargs):
-        seen["url"] = url
-        seen.update(kwargs)
-        return _Response()
+        async def fake_fetch(url, **kwargs):
+            seen["url"] = url
+            seen.update(kwargs)
+            return _Response()
 
-    monkeypatch.setattr(entry, "fetch", fake_fetch)
-    result = asyncio.run(entry._call_gemini("bounded prompt", _Env()))
+        with patch.object(entry, "fetch", fake_fetch):
+            result = asyncio.run(entry._call_gemini("bounded prompt", _Env()))
 
-    assert result["schema"] == 2
-    assert seen["url"] == (
-        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
-    )
-    assert seen["method"] == "POST"
-    assert seen["headers"] == {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer test-gemini-key",
-    }
-    body = json.loads(seen["body"])
-    assert body["model"] == "gemini-test"
-    assert body["temperature"] == 0
-    assert body["max_tokens"] == 6000
-    assert body["response_format"] == {"type": "json_object"}
-    assert body["messages"][0]["role"] == "system"
-    assert body["messages"][1] == {"role": "user", "content": "bounded prompt"}
+        self.assertEqual(result["schema"], 2)
+        self.assertEqual(
+            seen["url"],
+            "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        )
+        self.assertEqual(seen["method"], "POST")
+        self.assertEqual(seen["headers"], {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer test-gemini-key",
+        })
+        body = json.loads(seen["body"])
+        self.assertEqual(body["model"], "gemini-test")
+        self.assertEqual(body["temperature"], 0)
+        self.assertEqual(body["max_tokens"], 6000)
+        self.assertEqual(body["response_format"], {"type": "json_object"})
+        self.assertEqual(body["messages"][0]["role"], "system")
+        self.assertEqual(body["messages"][1], {"role": "user", "content": "bounded prompt"})
 
+    def test_gemini_missing_key_or_project_fails_before_network(self):
+        calls = []
 
-def test_gemini_missing_key_or_project_fails_before_network(monkeypatch):
-    calls = []
+        async def fake_fetch(*args, **kwargs):
+            calls.append((args, kwargs))
+            return _Response()
 
-    async def fake_fetch(*args, **kwargs):
-        calls.append((args, kwargs))
-        return _Response()
+        with patch.object(entry, "fetch", fake_fetch):
+            for attribute, value in (
+                ("GEMINI_API_KEY", ""),
+                ("GEMINI_API_KEY", "   "),
+                ("GEMINI_PROJECT_ID", ""),
+                ("GEMINI_PROJECT_ID", "   "),
+            ):
+                env = _Env()
+                setattr(env, attribute, value)
+                with self.subTest(attribute=attribute, value=repr(value)):
+                    with self.assertRaisesRegex(RuntimeError, "provider_not_configured:GEMINI"):
+                        asyncio.run(entry._call_gemini("prompt", env))
+        self.assertEqual(calls, [])
 
-    monkeypatch.setattr(entry, "fetch", fake_fetch)
-    for attribute, value in (
-        ("GEMINI_API_KEY", ""),
-        ("GEMINI_API_KEY", "   "),
-        ("GEMINI_PROJECT_ID", ""),
-        ("GEMINI_PROJECT_ID", "   "),
-    ):
+    def test_gemini_blank_model_fails_closed_without_fallback(self):
+        calls = []
+
+        async def fake_fetch(*args, **kwargs):
+            calls.append((args, kwargs))
+            return _Response()
+
         env = _Env()
-        setattr(env, attribute, value)
-        try:
-            asyncio.run(entry._call_gemini("prompt", env))
-        except RuntimeError as exc:
-            assert "provider_not_configured:GEMINI" in str(exc)
-        else:
-            raise AssertionError("missing Gemini configuration was accepted")
-    assert calls == []
+        env.GEMINI_MODEL = "   "
+        with patch.object(entry, "fetch", fake_fetch):
+            with self.assertRaisesRegex(RuntimeError, "provider_model_not_configured:GEMINI"):
+                asyncio.run(entry._call_gemini("prompt", env))
+        self.assertEqual(calls, [])
 
 
-def test_gemini_blank_model_fails_closed_without_fallback(monkeypatch):
-    calls = []
-
-    async def fake_fetch(*args, **kwargs):
-        calls.append((args, kwargs))
-        return _Response()
-
-    monkeypatch.setattr(entry, "fetch", fake_fetch)
-    env = _Env()
-    env.GEMINI_MODEL = "   "
-    try:
-        asyncio.run(entry._call_gemini("prompt", env))
-    except RuntimeError as exc:
-        assert "provider_model_not_configured:GEMINI" in str(exc)
-    else:
-        raise AssertionError("blank model unexpectedly selected an implicit fallback")
-    assert calls == []
+if __name__ == "__main__":
+    unittest.main()
