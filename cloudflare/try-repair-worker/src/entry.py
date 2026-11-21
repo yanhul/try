@@ -125,11 +125,16 @@ def _validate(proposal: dict) -> dict:
 
 
 async def _call_gemini(prompt: str, env) -> dict:
-    key = getattr(env, "GEMINI_API_KEY", "")
-    project_id = getattr(env, "GEMINI_PROJECT_ID", "")
-    model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-    if not key or not project_id:
+    raw_key = getattr(env, "GEMINI_API_KEY", "")
+    raw_project_id = getattr(env, "GEMINI_PROJECT_ID", "")
+    raw_model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
+    if (not isinstance(raw_key, str) or not raw_key.strip()
+            or not isinstance(raw_project_id, str) or not raw_project_id.strip()):
         raise RuntimeError("provider_not_configured:GEMINI")
+    if not isinstance(raw_model, str) or not raw_model.strip():
+        raise RuntimeError("provider_model_not_configured:GEMINI")
+    key = raw_key.strip()
+    model = raw_model.strip()
 
     body = {
         "model": model,
@@ -177,7 +182,6 @@ async def _call_gemini(prompt: str, env) -> dict:
         await asyncio.sleep(GEMINI_BACKOFF_SECONDS[attempt - 1])
 
     raise RuntimeError(f"gemini_http_{last_status}:{last_detail}")
-
 
 async def _read_bounded_json(request) -> dict:
     raw_body = await request.text()
