@@ -95,20 +95,48 @@ class HealthCheckTests(unittest.TestCase):
 
 class BoundedBodyTests(unittest.TestCase):
     class Request:
-        def __init__(self, body):
+        def __init__(self, body, content_length=None):
             self.body = body
+            self.headers = {}
+            if content_length is not None:
+                self.headers["Content-Length"] = str(content_length)
         async def text(self):
             return self.body
 
+    def read(self, body, content_length):
+        return asyncio.run(entry._read_bounded_json(self.Request(body, content_length)))
+
     def test_actual_body_size_is_enforced(self):
-        request = self.Request("x" * (entry.MAX_BODY + 1))
+        body = "x" * (entry.MAX_BODY + 1)
+        with self.assertRaisesRegex(ValueError, "body_too_large"):
+            self.read(body, len(body.encode("utf-8")))
+
+    def test_bounded_body_requires_object(self):
+        body = json.dumps(["not", "object"])
+        with self.assertRaisesRegex(ValueError, "request_not_object"):
+            self.read(body, len(body.encode("utf-8")))
+
+    def test_content_length_is_required_before_read(self):
+        request = self.Request("{}")
+        with self.assertRaisesRegex(ValueError, "content_length_required"):
+            asyncio.run(entry._read_bounded_json(request))
+
+    def test_declared_oversize_is_rejected_before_read(self):
+        class UnreadableRequest(self.Request):
+            async def text(self):
+                raise AssertionError("body must not be read")
+        request = UnreadableRequest("{}", entry.MAX_BODY + 1)
         with self.assertRaisesRegex(ValueError, "body_too_large"):
             asyncio.run(entry._read_bounded_json(request))
 
-    def test_bounded_body_requires_object(self):
-        request = self.Request(json.dumps(["not", "object"]))
-        with self.assertRaisesRegex(ValueError, "request_not_object"):
-            asyncio.run(entry._read_bounded_json(request))
+    def test_declared_and_actual_lengths_must_match(self):
+        with self.assertRaisesRegex(ValueError, "body_size_mismatch"):
+            self.read('{"x":1}', 2)
+
+    def test_utf8_byte_length_is_used(self):
+        body = json.dumps({"value": "á"})
+        payload = self.read(body, len(body.encode("utf-8")))
+        self.assertEqual(payload["value"], "á")
 
 class WorkerValidationTests(unittest.TestCase):
     def assertRejects(self, path, content="x"):
