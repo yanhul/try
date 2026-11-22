@@ -215,7 +215,10 @@ async def _read_bounded_json(request) -> dict:
                     pass
                 raise ValueError("body_too_large")
             if chunk_length:
-                raw_body.extend(bytes(chunk.to_py()))
+                chunk_bytes = bytes(chunk.to_py())
+                if len(chunk_bytes) != chunk_length:
+                    raise ValueError("body_stream_invalid")
+                raw_body.extend(chunk_bytes)
                 if len(raw_body) > MAX_BODY:
                     try:
                         await reader.cancel("body_too_large")
