@@ -442,13 +442,13 @@ class Default(WorkerEntrypoint):
                     status=502,
                     headers={"Retry-After": "2"},
                 )
-            if message.startswith("provider_not_configured:"):
+            if message.startswith(("provider_not_configured:", "provider_model_not_configured:")):
                 return Response.json(
                     {
                         "status": "PROVIDER_NOT_READY",
                         "provider": "gemini",
                         "http_status": 503,
-                        "reason": message[:2000],
+                        "reason": message.split(":", 1)[0],
                     },
                     status=503,
                     headers={"Retry-After": "30"},
