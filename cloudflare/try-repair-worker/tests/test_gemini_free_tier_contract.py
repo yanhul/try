@@ -34,7 +34,6 @@ entry = importlib.import_module("entry")
 
 class _Env:
     GEMINI_API_KEY = "  test-gemini-key  "
-    GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
 
 
@@ -90,7 +89,7 @@ class GeminiFreeTierContractTests(unittest.TestCase):
         self.assertEqual(body["messages"][0]["role"], "system")
         self.assertEqual(body["messages"][1], {"role": "user", "content": "bounded prompt"})
 
-    def test_gemini_missing_key_or_project_fails_before_network(self):
+    def test_gemini_missing_key_fails_before_network(self):
         calls = []
 
         async def fake_fetch(*args, **kwargs):
@@ -101,8 +100,6 @@ class GeminiFreeTierContractTests(unittest.TestCase):
             for attribute, value in (
                 ("GEMINI_API_KEY", ""),
                 ("GEMINI_API_KEY", "   "),
-                ("GEMINI_PROJECT_ID", ""),
-                ("GEMINI_PROJECT_ID", "   "),
             ):
                 env = _Env()
                 setattr(env, attribute, value)
