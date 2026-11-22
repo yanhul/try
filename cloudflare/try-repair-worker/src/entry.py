@@ -294,6 +294,7 @@ async def _propose(request: dict, env) -> dict:
 
 CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
 CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
+_CHECKPOINT_REQUEST_ID = __import__("re").compile(r"^[A-Za-z0-9._:-]{1,160}$")
 _CHECKPOINT_SHA = __import__("re").compile(r"^[0-9a-fA-F]{40}$")
 _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
@@ -319,7 +320,7 @@ class RepairCheckpoint(DurableObject):
         request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
         attempt, phase, state = item.get("attempt"), item.get("phase"), item.get("state")
         digest, reason = item.get("evidence_digest"), item.get("reason")
-        if not isinstance(request_id, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,160}", request_id):
+        if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
             return {"_http_status": 400, "error": "request_id_invalid"}
         if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
             return {"_http_status": 400, "error": "repository_invalid"}
@@ -419,8 +420,8 @@ class Default(WorkerEntrypoint):
             try:
                 body = await _read_bounded_json(request)
                 request_id = body.get("request_id")
-                if not isinstance(request_id, str) or not request_id.strip():
-                    return Response.json({"error": "request_id_missing"}, status=400)
+                if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
+                    return Response.json({"error": "request_id_invalid"}, status=400)
                 namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
                 if namespace is None:
                     return Response.json({"error": "checkpoint_store_not_configured"}, status=503)
@@ -438,7 +439,7 @@ class Default(WorkerEntrypoint):
         prefix = "/v1/repair/checkpoint/"
         if request.method == "GET" and path.startswith(prefix):
             request_id = path[len(prefix):]
-            if not request_id or "/" in request_id:
+            if not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
                 return Response.json({"error": "request_id_invalid"}, status=400)
             namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
             if namespace is None:
@@ -450,7 +451,7 @@ class Default(WorkerEntrypoint):
                     return Response.json({"error": "checkpoint_not_found"}, status=404)
                 return Response.json(record, status=200)
             except Exception as exc:
-                return Response.json({"error": "checkpoint_read_failed", "reason": str(exc)[:500]}, status=503)
+                return Response.json({"error": "checkpoint_read_failed", "reason": type(exc).__name__}, status=503)
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
