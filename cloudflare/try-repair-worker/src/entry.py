@@ -510,14 +510,28 @@ class Default(WorkerEntrypoint):
                             "status": "RETRYABLE_PROVIDER_FAILURE",
                             "provider": "gemini",
                             "http_status": status,
-                            "reason": message[:2000],
+                            "reason": f"gemini_http_{status}",
                         },
                         status=503,
                         headers={"Retry-After": "2"},
                     )
+                return Response.json(
+                    {
+                        "status": "PROVIDER_UPSTREAM_REJECTED",
+                        "provider": "gemini",
+                        "http_status": 502,
+                        "reason": f"gemini_http_{status}",
+                    },
+                    status=502,
+                )
             return Response.json(
-                {"status": "HOLD", "reason": f"{type(exc).__name__}:{exc}"},
-                status=200,
+                {
+                    "status": "PROVIDER_INTERNAL_ERROR",
+                    "provider": "gemini",
+                    "http_status": 500,
+                    "reason": type(exc).__name__,
+                },
+                status=500,
             )
         except Exception as exc:
             return Response.json(
