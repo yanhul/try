@@ -324,7 +324,7 @@ class WorkerValidationTests(unittest.TestCase):
     def test_accepts_patch_path_present_in_source_snapshot(self):
         payload = entry._validate({
             "schema": 2,
-            "files": [{"path": r"src\\allowed.py", "content": "x"}],
+            "files": [{"path": r"src\allowed.py", "content": "x"}],
         }, allowed_paths={"src/allowed.py"})
         self.assertEqual(payload["files"][0]["path"], "src/allowed.py")
 
