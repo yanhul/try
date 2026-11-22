@@ -181,9 +181,18 @@ async def _call_gemini(prompt: str, env) -> dict:
     raise RuntimeError(f"gemini_http_{last_status}")
 
 async def _read_bounded_json(request) -> dict:
-    raw_body = await request.text()
-    if len(raw_body.encode("utf-8")) > MAX_BODY:
+    # Require an admission-size header on every JSON POST, including checkpoint writes.
+    # The actual byte count is checked again after decoding to reject mismatches.
+    raw_length = request.headers.get("Content-Length")
+    if not isinstance(raw_length, str) or not raw_length.isdigit():
+        raise ValueError("content_length_required")
+    declared_length = int(raw_length)
+    if declared_length <= 0 or declared_length > MAX_BODY:
         raise ValueError("body_too_large")
+    raw_body = await request.text()
+    actual_length = len(raw_body.encode("utf-8"))
+    if actual_length > MAX_BODY or actual_length != declared_length:
+        raise ValueError("body_size_mismatch")
     payload = json.loads(raw_body)
     if not isinstance(payload, dict):
         raise ValueError("request_not_object")
@@ -374,8 +383,12 @@ class Default(WorkerEntrypoint):
                 result = await stub.write_checkpoint(body)
                 status = int(result.pop("_http_status", 500))
                 return Response.json(result, status=status)
+            except ValueError as exc:
+                reason = str(exc)
+                status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
+                return Response.json({"error": reason}, status=status)
             except Exception as exc:
-                return Response.json({"error": "checkpoint_write_failed", "reason": str(exc)[:500]}, status=503)
+                return Response.json({"error": "checkpoint_write_failed", "reason": type(exc).__name__}, status=503)
 
         prefix = "/v1/repair/checkpoint/"
         if request.method == "GET" and path.startswith(prefix):
@@ -396,15 +409,6 @@ class Default(WorkerEntrypoint):
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
-
-        try:
-            length = int(request.headers.get("Content-Length", "0"))
-        except ValueError:
-            length = 0
-        if length <= 0 or length > MAX_BODY:
-            return Response.json(
-                {"status": "HOLD", "reason": "invalid_body_size"}, status=200
-            )
 
         try:
             body = await _read_bounded_json(request)
