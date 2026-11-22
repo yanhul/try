@@ -105,7 +105,7 @@ def main():
     print(json.dumps({
         "runtime": "cloudflare-python-workers-local",
         "chunked_without_content_length": "accepted_and_persisted",
-        "oversized_stream": "413_and_cancelled_before_storage",
+        "oversized_stream": "413_and_checkpoint_absent",
         "oversized_checkpoint_absent": True,
     }, sort_keys=True))
 
