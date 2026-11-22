@@ -587,3 +587,29 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(namespace.write_count, 0)
         self.assertTrue(request.body.reader.cancelled)
 
+
+class ProviderReadinessErrorMappingTests(unittest.TestCase):
+    def test_missing_model_maps_to_provider_not_ready_503(self):
+        class StatusResponse:
+            @staticmethod
+            def json(payload, status=200, headers=None):
+                return {"_status": status, **payload}
+        worker = entry.Default()
+        worker.env = _Env()
+        request = EndpointAdmissionTests.Request(
+            "/v1/repair/propose", '{"request_id":"req-1"}'
+        )
+        original_response = entry.Response
+        original_propose = entry._propose
+        async def fail_model(*args):
+            raise RuntimeError("provider_model_not_configured:GEMINI")
+        entry.Response = StatusResponse
+        entry._propose = fail_model
+        try:
+            result = asyncio.run(worker.fetch(request))
+        finally:
+            entry.Response = original_response
+            entry._propose = original_propose
+        self.assertEqual(result["_status"], 503)
+        self.assertEqual(result["status"], "PROVIDER_NOT_READY")
+        self.assertEqual(result["reason"], "provider_model_not_configured")
