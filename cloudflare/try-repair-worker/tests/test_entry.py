@@ -508,7 +508,8 @@ class DurableCheckpointTests(unittest.TestCase):
 class EndpointAdmissionTests(unittest.TestCase):
     class Request:
         method = "POST"
-        def __init__(self, path, body="{}", content_length=None, chunk_size=65536):
+        def __init__(self, path, body="{}", content_length=None, chunk_size=65536, method="POST"):
+            self.method = method
             self.url = "https://worker.example" + path
             self.headers = {"Authorization": "Bearer test-token"}
             if content_length is not None:
@@ -588,6 +589,27 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertTrue(request.body.reader.cancelled)
 
 
+
+    def test_checkpoint_invalid_request_id_rejected_before_namespace_lookup(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        body = json.dumps({"request_id": "x" * 161})
+        request = self.Request("/v1/repair/checkpoint", body)
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "request_id_invalid")
+        self.assertEqual(namespace.lookup_count, 0)
+        self.assertEqual(namespace.write_count, 0)
+
+    def test_checkpoint_get_invalid_request_id_rejected_before_namespace_lookup(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request(
+            "/v1/repair/checkpoint/" + ("x" * 161),
+            method="GET",
+        )
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "request_id_invalid")
+        self.assertEqual(namespace.lookup_count, 0)
 class ProviderReadinessErrorMappingTests(unittest.TestCase):
     def test_missing_model_maps_to_provider_not_ready_503(self):
         class StatusResponse:
