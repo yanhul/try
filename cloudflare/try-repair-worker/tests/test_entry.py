@@ -75,6 +75,14 @@ class HealthCheckTests(unittest.TestCase):
         self.assertEqual(result["status"], "NOT_READY")
         self.assertFalse(result["checkpoint_store_bound"])
 
+    def test_health_not_ready_for_whitespace_provider_configuration(self):
+        env = _Env()
+        env.GEMINI_API_KEY = "   "
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+
     def test_health_ready_only_when_required_bindings_exist(self):
         env = _Env()
         instance = entry.Default()
