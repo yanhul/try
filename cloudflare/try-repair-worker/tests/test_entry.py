@@ -710,3 +710,62 @@ class ProviderReadinessErrorMappingTests(unittest.TestCase):
         self.assertEqual(result["_status"], 503)
         self.assertEqual(result["status"], "PROVIDER_NOT_READY")
         self.assertEqual(result["reason"], "provider_model_not_configured")
+
+
+class ProposalSourceScopeTests(unittest.TestCase):
+    def _run_propose(self, model_proposal):
+        request = {
+            "request_id": "req-1",
+            "repository": "yanhul/AIOS",
+            "sha": "a" * 40,
+            "attempt": 1,
+            "failure": {"ci_failure_log_tail": "FAILED tests/test_ci_supervisor.py"},
+            "source_snapshot": {"core/ci_supervisor.py": "def run(): return False"},
+        }
+        original = entry._call_gemini
+        prompts = []
+        async def fake_call(prompt, env):
+            prompts.append(prompt)
+            return model_proposal
+        entry._call_gemini = fake_call
+        try:
+            result = asyncio.run(entry._propose(request, _Env()))
+        finally:
+            entry._call_gemini = original
+        return result, prompts
+
+    def test_prompt_marks_log_paths_as_diagnostic_and_source_paths_as_only_allowlist(self):
+        result, prompts = self._run_propose({
+            "schema": 2,
+            "root_cause": "implementation bug",
+            "proposed_fix": "fix implementation",
+            "files": [{"path": "core/ci_supervisor.py", "content": "def run(): return True"}],
+        })
+        prompt = prompts[0]
+        self.assertIn('"allowed_patch_paths": ["core/ci_supervisor.py"]', prompt)
+        self.assertIn("Paths mentioned in CI logs are diagnostic evidence only", prompt)
+        self.assertEqual(result["files"][0]["path"], "core/ci_supervisor.py")
+
+    def test_test_file_proposal_returns_hold_not_http_400(self):
+        result, _ = self._run_propose({
+            "schema": 2,
+            "root_cause": "test mismatch",
+            "proposed_fix": "change test",
+            "files": [{"path": "tests/test_ci_supervisor.py", "content": "changed"}],
+        })
+        self.assertEqual(result, {
+            "status": "HOLD",
+            "reason": "proposal_outside_allowed_patch_scope",
+        })
+
+    def test_new_or_unsupplied_path_returns_hold(self):
+        result, _ = self._run_propose({
+            "schema": 2,
+            "root_cause": "missing helper",
+            "proposed_fix": "add helper",
+            "files": [{"path": "core/new_helper.py", "content": "def helper(): pass"}],
+        })
+        self.assertEqual(result, {
+            "status": "HOLD",
+            "reason": "proposal_path_not_in_source_snapshot",
+        })
