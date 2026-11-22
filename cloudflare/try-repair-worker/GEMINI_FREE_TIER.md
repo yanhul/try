@@ -12,7 +12,6 @@
 Configure these values in the Cloudflare Worker environment:
 
 - `GEMINI_API_KEY`: secret created for the Gemini Developer API; store only as a Worker secret.
-- `GEMINI_PROJECT_ID`: non-secret Google Cloud project identifier used to make provider configuration explicit.
 - `GEMINI_MODEL`: optional model selection; the current default is `gemini-3.1-flash-lite`.
 - `TRY_PROVIDER_TOKEN`: separate secret authenticating AIOS-to-TRY requests.
 
@@ -20,7 +19,7 @@ Do not put credentials in Git, Worker plaintext variables, AIOS state, request p
 
 ## Free-tier behavior
 
-- The Worker uses the Gemini OpenAI-compatible chat-completions endpoint and its Bearer-key authentication format. Do not copy that header format to Gemini's native `:generateContent` endpoint.
+- The Worker uses the Gemini OpenAI-compatible chat-completions endpoint and its Bearer-key authentication format. The API key is already associated with a Google AI Studio project; this request does not need a separate project ID. Do not copy that header format to Gemini's native `:generateContent` endpoint.
 - Google applies quota by project/model and may change limits or eligibility. This repository deliberately does not hard-code a claimed requests-per-day or tokens-per-minute allowance.
 - HTTP 429 is a hard quota stop: no automatic retry and no provider substitution.
 - Only transient HTTP 500/502/503/504 responses are retried, with the bounded retry policy in the Worker.
