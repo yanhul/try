@@ -123,5 +123,52 @@ class GeminiFreeTierContractTests(unittest.TestCase):
         self.assertEqual(calls, [])
 
 
+    def test_gemini_quota_429_is_terminal_without_retry(self):
+        calls = []
+
+        class QuotaResponse:
+            status = 429
+            ok = False
+
+            async def text(self):
+                return "quota exhausted"
+
+        async def fake_fetch(url, **kwargs):
+            calls.append(url)
+            return QuotaResponse()
+
+        async def no_sleep(_seconds):
+            raise AssertionError("quota response must not sleep or retry")
+
+        with patch.object(entry, "fetch", fake_fetch), patch.object(entry.asyncio, "sleep", no_sleep):
+            with self.assertRaisesRegex(RuntimeError, "gemini_quota_exhausted:429"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        self.assertEqual(len(calls), 1)
+
+    def test_gemini_transient_503_retries_are_bounded(self):
+        calls = []
+        sleeps = []
+
+        class TransientResponse:
+            status = 503
+            ok = False
+
+            async def text(self):
+                return "temporarily unavailable"
+
+        async def fake_fetch(url, **kwargs):
+            calls.append(url)
+            return TransientResponse()
+
+        async def fake_sleep(seconds):
+            sleeps.append(seconds)
+
+        with patch.object(entry, "fetch", fake_fetch), patch.object(entry.asyncio, "sleep", fake_sleep):
+            with self.assertRaisesRegex(RuntimeError, "gemini_http_503"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        self.assertEqual(len(calls), entry.GEMINI_MAX_ATTEMPTS)
+        self.assertEqual(sleeps, list(entry.GEMINI_BACKOFF_SECONDS))
+
+
 if __name__ == "__main__":
     unittest.main()
