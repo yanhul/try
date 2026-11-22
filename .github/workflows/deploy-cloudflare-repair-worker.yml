@@ -132,6 +132,28 @@ jobs:
               "checkpoint_store_bound": health.get("checkpoint_store_bound"),
           }, sort_keys=True))
 
+          probe = {
+              "request_id": f"gemini-probe-{run_id}-{attempt}",
+              "repository": "yanhul/try",
+              "sha": sha,
+              "attempt": 1,
+              "failure": {
+                  "summary": "Production deployment smoke probe; no source repair requested.",
+                  "ci_failure_log_tail": "Cloudflare Worker production Gemini connectivity check.",
+              },
+              "source_snapshot": {
+                  "README.md": "This file is included only as a bounded connectivity probe. Do not propose a repair."
+              },
+          }
+          status, proposal = request("POST", "/v1/repair/propose", probe)
+          assert status == 200, f"gemini_provider_probe_http_{status}"
+          proposal_status = "HOLD" if proposal.get("status") == "HOLD" else proposal.get("schema")
+          assert proposal_status == "HOLD" or proposal_status == 2, "gemini_provider_probe_invalid_response"
+          print(json.dumps({
+              "gemini_api_probe": "RESPONDED",
+              "proposal_schema_or_status": proposal_status,
+          }, sort_keys=True))
+
           initial = {
               "request_id": request_id,
               "repository": "yanhul/try",
