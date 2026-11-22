@@ -181,23 +181,65 @@ async def _call_gemini(prompt: str, env) -> dict:
     raise RuntimeError(f"gemini_http_{last_status}")
 
 async def _read_bounded_json(request) -> dict:
-    # Require an admission-size header on every JSON POST, including checkpoint writes.
-    # The actual byte count is checked again after decoding to reject mismatches.
+    # Content-Length is an optional early-rejection hint, never the size authority.
+    # Enforce the actual limit while consuming the Request.body ReadableStream.
     raw_length = request.headers.get("Content-Length")
-    if not isinstance(raw_length, str) or not raw_length.isdigit():
-        raise ValueError("content_length_required")
-    declared_length = int(raw_length)
-    if declared_length <= 0 or declared_length > MAX_BODY:
-        raise ValueError("body_too_large")
-    raw_body = await request.text()
-    actual_length = len(raw_body.encode("utf-8"))
-    if actual_length > MAX_BODY or actual_length != declared_length:
-        raise ValueError("body_size_mismatch")
-    payload = json.loads(raw_body)
+    declared_length = None
+    if raw_length is not None:
+        if not isinstance(raw_length, str) or not raw_length.isascii() or not raw_length.isdigit():
+            raise ValueError("content_length_invalid")
+        declared_length = int(raw_length)
+        if declared_length <= 0:
+            raise ValueError("request_body_empty")
+        if declared_length > MAX_BODY:
+            raise ValueError("body_too_large")
+
+    body = getattr(request, "body", None)
+    if body is None:
+        raise ValueError("request_body_missing")
+    reader = body.getReader()
+    raw_body = bytearray()
+    try:
+        while True:
+            result = await reader.read()
+            if result.done:
+                break
+            chunk = result.value
+            chunk_length = int(chunk.byteLength)
+            if chunk_length < 0:
+                raise ValueError("body_stream_invalid")
+            if len(raw_body) + chunk_length > MAX_BODY:
+                try:
+                    await reader.cancel("body_too_large")
+                except Exception:
+                    pass
+                raise ValueError("body_too_large")
+            if chunk_length:
+                raw_body.extend(bytes(chunk.to_py()))
+                if len(raw_body) > MAX_BODY:
+                    try:
+                        await reader.cancel("body_too_large")
+                    except Exception:
+                        pass
+                    raise ValueError("body_too_large")
+        if declared_length is not None and len(raw_body) != declared_length:
+            raise ValueError("body_size_mismatch")
+    except ValueError:
+        raise
+    except Exception as exc:
+        raise ValueError("body_read_failed") from exc
+    finally:
+        try:
+            reader.releaseLock()
+        except Exception:
+            pass
+    try:
+        payload = json.loads(bytes(raw_body))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        raise ValueError("invalid_json")
     if not isinstance(payload, dict):
         raise ValueError("request_not_object")
     return payload
-
 
 async def _propose(request: dict, env) -> dict:
     if not isinstance(request, dict):
