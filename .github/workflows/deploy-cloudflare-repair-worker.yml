@@ -60,13 +60,6 @@ jobs:
       - name: Install Worker runtime tooling
         run: uv sync --group dev --no-install-project
 
-      - name: Set Cloudflare Worker secrets
-        shell: bash
-        run: |
-          set +x
-          printf '%s' "$GEMINI_API_KEY" | uv run --no-sync pywrangler secret put GEMINI_API_KEY
-          printf '%s' "$TRY_PROVIDER_TOKEN" | uv run --no-sync pywrangler secret put TRY_PROVIDER_TOKEN
-
       - name: Deploy Worker and Durable Object migration
         shell: bash
         run: |
@@ -80,6 +73,14 @@ jobs:
           fi
           echo "WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
           echo "Deployed Worker URL: $WORKER_URL"
+
+      - name: Install TRY-owned secrets on the Worker
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +x
+          python -c 'import json, os; print(json.dumps({"GEMINI_API_KEY": os.environ["GEMINI_API_KEY"], "TRY_PROVIDER_TOKEN": os.environ["TRY_PROVIDER_TOKEN"]}))' |
+            uv run --no-sync pywrangler secret bulk
 
       - name: Verify health and Durable Object checkpoint persistence
         shell: bash
