@@ -1,0 +1,175 @@
+name: Deploy TRY Repair Worker (Cloudflare)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_production:
+        description: "Type DEPLOY to deploy the production Worker"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-repair-worker-production
+  cancel-in-progress: false
+
+jobs:
+  deploy-and-smoke:
+    if: ${{ inputs.confirm_production == 'DEPLOY' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: cloudflare/try-repair-worker
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.1-flash-lite' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fail closed on missing deployment credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID GEMINI_API_KEY TRY_PROVIDER_TOKEN; do
+            if [[ -z "${!name:-}" ]]; then
+              echo "::error::Required GitHub Actions secret is missing: $name"
+              exit 1
+            fi
+          done
+          if [[ -z "${GEMINI_MODEL//[[:space:]]/}" ]]; then
+            echo "::error::GEMINI_MODEL is empty"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: cloudflare/try-repair-worker/pyproject.toml
+
+      - name: Install Worker runtime tooling
+        run: uv sync --group dev --no-install-project
+
+      - name: Set Cloudflare Worker secrets
+        shell: bash
+        run: |
+          set +x
+          printf '%s' "$GEMINI_API_KEY" | uv run --no-sync pywrangler secret put GEMINI_API_KEY
+          printf '%s' "$TRY_PROVIDER_TOKEN" | uv run --no-sync pywrangler secret put TRY_PROVIDER_TOKEN
+
+      - name: Deploy Worker and Durable Object migration
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +x
+          uv run --no-sync pywrangler deploy 2>&1 | tee deploy.log
+          WORKER_URL="$(grep -Eo 'https://[A-Za-z0-9.-]+\.workers\.dev' deploy.log | tail -n 1 || true)"
+          if [[ -z "$WORKER_URL" ]]; then
+            echo "::error::Could not extract the deployed workers.dev URL; refusing to claim deployment verification."
+            exit 1
+          fi
+          echo "WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
+          echo "Deployed Worker URL: $WORKER_URL"
+
+      - name: Verify health and Durable Object checkpoint persistence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          base = os.environ["WORKER_URL"].rstrip("/")
+          token = os.environ["TRY_PROVIDER_TOKEN"]
+          run_id = os.environ["GITHUB_RUN_ID"]
+          attempt = os.environ["GITHUB_RUN_ATTEMPT"]
+          sha = os.environ["GITHUB_SHA"]
+          request_id = f"deploy-{run_id}-{attempt}"
+
+          def request(method, path, body=None, authenticated=True):
+              headers = {"Accept": "application/json"}
+              if authenticated:
+                  headers["Authorization"] = f"Bearer {token}"
+              data = None
+              if body is not None:
+                  headers["Content-Type"] = "application/json"
+                  data = json.dumps(body, separators=(",", ":")).encode()
+              req = urllib.request.Request(base + path, data=data, headers=headers, method=method)
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      return response.status, json.loads(response.read())
+              except urllib.error.HTTPError as exc:
+                  raw = exc.read()
+                  try:
+                      payload = json.loads(raw)
+                  except Exception:
+                      payload = {}
+                  return exc.code, payload
+
+          status, health = request("GET", "/healthz", authenticated=False)
+          assert status == 200, f"health_http_{status}"
+          assert health.get("status") == "READY", "worker_not_ready"
+          assert health.get("provider") == "gemini", "unexpected_provider"
+          assert health.get("checkpoint_store_bound") is True, "durable_object_binding_missing"
+          assert health.get("provider_token_configured") is True, "provider_token_missing"
+          print(json.dumps({
+              "health": "READY",
+              "provider": health.get("provider"),
+              "model": health.get("model"),
+              "checkpoint_store_bound": health.get("checkpoint_store_bound"),
+          }, sort_keys=True))
+
+          initial = {
+              "request_id": request_id,
+              "repository": "yanhul/try",
+              "sha": sha,
+              "attempt": 1,
+              "phase": "OBSERVE",
+              "state": "WORKING",
+          }
+          status, created = request("POST", "/v1/repair/checkpoint", initial)
+          assert status == 200 and created.get("persisted") is True, "checkpoint_write_failed"
+
+          status, stored = request("GET", f"/v1/repair/checkpoint/{request_id}")
+          assert status == 200, "checkpoint_read_after_write_failed"
+          for key in ("request_id", "repository", "sha", "attempt", "phase", "state", "version"):
+              assert stored.get(key) == created.get(key), f"checkpoint_roundtrip_mismatch:{key}"
+
+          conflict = dict(initial, repository="yanhul/AIOS")
+          status, _ = request("POST", "/v1/repair/checkpoint", conflict)
+          assert status == 409, f"identity_conflict_not_rejected:{status}"
+
+          invalid_transition = dict(initial, phase="PERSIST")
+          status, _ = request("POST", "/v1/repair/checkpoint", invalid_transition)
+          assert status == 409, f"invalid_transition_not_rejected:{status}"
+
+          terminal_without_digest = dict(initial, phase="PERSIST", state="DONE")
+          status, _ = request("POST", "/v1/repair/checkpoint", terminal_without_digest)
+          assert status == 409, f"terminal_without_digest_not_rejected:{status}"
+
+          status, final_record = request("GET", f"/v1/repair/checkpoint/{request_id}")
+          assert status == 200 and final_record.get("version") == 1, "rejected_writes_mutated_checkpoint"
+
+          print(json.dumps({
+              "checkpoint_write_read": "PASS",
+              "identity_conflict_rejected": True,
+              "invalid_transition_rejected": True,
+              "terminal_without_digest_rejected": True,
+              "rejected_writes_preserved_record": True,
+              "request_id": request_id,
+          }, sort_keys=True))
+          PY
