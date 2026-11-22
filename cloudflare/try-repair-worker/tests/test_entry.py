@@ -269,6 +269,14 @@ class WorkerValidationTests(unittest.TestCase):
             ("attempt", True),
             ("request_id", "   "),
             ("repository", "   "),
+            ("request_id", "x" * 161),
+            ("request_id", "bad/id"),
+            ("repository", "../foo"),
+            ("repository", "foo/.."),
+            ("repository", "-owner/repo"),
+            ("attempt", 1.9),
+            ("attempt", "1"),
+            ("attempt", 21),
         ):
             case = dict(base)
             case[key] = value
@@ -328,6 +336,12 @@ class GeminiProtocolTests(unittest.TestCase):
                 asyncio.run(entry._call_gemini("prompt", _Env()))
         finally:
             entry.fetch = original
+
+    def test_protocol_error_mapping_is_terminal_not_retryable(self):
+        result = ProviderFailureMappingTests()._fetch(RuntimeError("gemini_protocol_error:KeyError"))
+        self.assertEqual(result["_status"], 502)
+        self.assertEqual(result["status"], "PROVIDER_PROTOCOL_ERROR")
+        self.assertNotIn("Retry-After", result)
 
     def test_non_object_model_json_is_protocol_failure(self):
         async def fake_fetch(*args, **kwargs):
@@ -485,6 +499,11 @@ class DurableCheckpointTests(unittest.TestCase):
         payload = dict(self.base)
         payload.update(changes)
         return asyncio.run(self.checkpoint.write_checkpoint(payload))
+
+    def test_checkpoint_rejects_traversal_like_repository_names(self):
+        for repository in ("../foo", "foo/..", "-owner/repo", "owner/-repo"):
+            result = self.write(repository=repository)
+            self.assertEqual(result["error"], "repository_invalid", repository)
 
     def test_checkpoint_is_persisted_and_identity_bound(self):
         first = self.write()
