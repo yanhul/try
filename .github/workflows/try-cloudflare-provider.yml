@@ -24,7 +24,8 @@ jobs:
         run: uv run python -m unittest discover -s tests -v
 
   deploy:
-    if: github.event_name != 'pull_request'
+    # Manual deployment is restricted to the protected default branch.
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
