@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from urllib.parse import urlparse
 
 from workers import DurableObject, WorkerEntrypoint, Response, fetch
@@ -20,6 +21,8 @@ GEMINI_MAX_ATTEMPTS = 3
 GEMINI_BACKOFF_SECONDS = (1, 2)
 GEMINI_RETRYABLE = {500, 502, 503, 504}
 GEMINI_QUOTA_STATUS = 429
+REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9._:-]{1,160}$")
+GITHUB_REPOSITORY_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?/[A-Za-z0-9](?:[A-Za-z0-9._-]{0,98}[A-Za-z0-9])?$")
 DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
 DENIED_COMPONENTS = {".git", ".github", ".aios", "secrets", "tests"}
@@ -254,16 +257,13 @@ async def _propose(request: dict, env) -> dict:
     repository = request.get("repository")
     sha = request.get("sha")
     raw_attempt = request.get("attempt", 0)
-    if isinstance(raw_attempt, bool):
+    if isinstance(raw_attempt, bool) or not isinstance(raw_attempt, int) or not 1 <= raw_attempt <= 20:
         raise ValueError("request_attempt_invalid")
-    try:
-        attempt = int(raw_attempt)
-    except (TypeError, ValueError):
-        raise ValueError("request_attempt_invalid")
-    if not isinstance(request_id, str) or not request_id.strip():
-        raise ValueError("request_id_missing")
-    if not isinstance(repository, str) or not repository.strip():
-        raise ValueError("repository_missing")
+    attempt = raw_attempt
+    if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
+        raise ValueError("request_id_invalid")
+    if not isinstance(repository, str) or not GITHUB_REPOSITORY_RE.fullmatch(repository):
+        raise ValueError("repository_invalid")
     if not isinstance(sha, str) or len(sha) != 40 or any(c not in "0123456789abcdefABCDEF" for c in sha):
         raise ValueError("sha_invalid")
     if attempt < 1:
@@ -282,7 +282,7 @@ async def _propose(request: dict, env) -> dict:
             "request_id": str(request.get("request_id") or ""),
             "repository": str(request.get("repository") or ""),
             "sha": str(request.get("sha") or ""),
-            "attempt": int(request.get("attempt", 1)),
+            "attempt": attempt,
             "failure": bounded_failure,
             "source_snapshot": bounded_source,
         },
@@ -294,7 +294,7 @@ async def _propose(request: dict, env) -> dict:
 
 CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
 CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
-_CHECKPOINT_REQUEST_ID = __import__("re").compile(r"^[A-Za-z0-9._:-]{1,160}$")
+_CHECKPOINT_REQUEST_ID = REQUEST_ID_RE
 _CHECKPOINT_SHA = __import__("re").compile(r"^[0-9a-fA-F]{40}$")
 _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
@@ -314,7 +314,6 @@ class RepairCheckpoint(DurableObject):
         return await self.ctx.storage.get("record")
 
     async def write_checkpoint(self, item):
-        import re
         if not isinstance(item, dict):
             return {"_http_status": 400, "error": "invalid_record"}
         request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
@@ -322,7 +321,7 @@ class RepairCheckpoint(DurableObject):
         digest, reason = item.get("evidence_digest"), item.get("reason")
         if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
             return {"_http_status": 400, "error": "request_id_invalid"}
-        if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+        if not isinstance(repository, str) or not GITHUB_REPOSITORY_RE.fullmatch(repository):
             return {"_http_status": 400, "error": "repository_invalid"}
         if not isinstance(sha, str) or not _CHECKPOINT_SHA.fullmatch(sha):
             return {"_http_status": 400, "error": "sha_invalid"}
@@ -480,13 +479,12 @@ class Default(WorkerEntrypoint):
             if message.startswith("gemini_protocol_error:"):
                 return Response.json(
                     {
-                        "status": "RETRYABLE_PROVIDER_FAILURE",
+                        "status": "PROVIDER_PROTOCOL_ERROR",
                         "provider": "gemini",
                         "http_status": 502,
                         "reason": message[:2000],
                     },
                     status=502,
-                    headers={"Retry-After": "2"},
                 )
             if message.startswith(("provider_not_configured:", "provider_model_not_configured:")):
                 return Response.json(
