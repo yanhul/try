@@ -145,7 +145,6 @@ async def _call_gemini(prompt: str, env) -> dict:
         "response_format": {"type": "json_object"},
     }
 
-    last_detail = ""
     last_status = 0
     for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
         response = await fetch(
@@ -163,23 +162,23 @@ async def _call_gemini(prompt: str, env) -> dict:
                 content = payload["choices"][0]["message"]["content"]
                 parsed = json.loads(content)
             except (KeyError, IndexError, TypeError, ValueError) as exc:
+                # Do not echo provider payload fragments or parser details to callers.
                 raise RuntimeError(
-                    f"gemini_protocol_error:{type(exc).__name__}:{str(exc)[:300]}"
+                    f"gemini_protocol_error:{type(exc).__name__}"
                 ) from exc
             if not isinstance(parsed, dict):
                 raise RuntimeError("gemini_protocol_error:response_not_object")
             return parsed
 
         last_status = response.status
-        detail = await response.text()
-        last_detail = detail[:1000]
+        # Provider error bodies may contain request metadata; never relay them.
         if response.status == GEMINI_QUOTA_STATUS:
-            raise RuntimeError(f"gemini_quota_exhausted:{last_status}:{last_detail}")
+            raise RuntimeError(f"gemini_quota_exhausted:{last_status}")
         if response.status not in GEMINI_RETRYABLE or attempt == GEMINI_MAX_ATTEMPTS:
             break
         await asyncio.sleep(GEMINI_BACKOFF_SECONDS[attempt - 1])
 
-    raise RuntimeError(f"gemini_http_{last_status}:{last_detail}")
+    raise RuntimeError(f"gemini_http_{last_status}")
 
 async def _read_bounded_json(request) -> dict:
     raw_body = await request.text()
@@ -331,8 +330,11 @@ class Default(WorkerEntrypoint):
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
+            raw_key = getattr(self.env, "GEMINI_API_KEY", "")
+            raw_model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             if (
-                not getattr(self.env, "GEMINI_API_KEY", "")
+                not isinstance(raw_key, str) or not raw_key.strip()
+                or not isinstance(raw_model, str) or not raw_model.strip()
                 or not checkpoint_bound
                 or not provider_token_configured
             ):
@@ -348,7 +350,7 @@ class Default(WorkerEntrypoint):
                 {
                     "status": "READY",
                     "provider": "gemini",
-                    "model": model,
+                    "model": raw_model.strip(),
                     "checkpoint_store_bound": True,
                     "provider_token_configured": True,
                 }
@@ -469,7 +471,7 @@ class Default(WorkerEntrypoint):
                     "status": "PROVIDER_INTERNAL_ERROR",
                     "provider": "gemini",
                     "http_status": 500,
-                    "reason": f"{type(exc).__name__}:{exc}",
+                    "reason": type(exc).__name__,
                 },
                 status=500,
                 headers={"Retry-After": "2"},
