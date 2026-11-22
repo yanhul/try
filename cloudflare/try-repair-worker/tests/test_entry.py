@@ -458,3 +458,91 @@ class DurableCheckpointTests(unittest.TestCase):
         resumed = self.write(attempt=2, phase="RESUME", state="WORKING")
         self.assertTrue(resumed["persisted"])
         self.assertEqual(resumed["version"], 3)
+
+
+class EndpointAdmissionTests(unittest.TestCase):
+    class Request:
+        method = "POST"
+        headers = {"Authorization": "Bearer test-token"}
+        def __init__(self, path, body="{}", content_length=None):
+            self.url = "https://worker.example" + path
+            self._body = body
+            self.headers = dict(type(self).headers)
+            if content_length is not None:
+                self.headers["Content-Length"] = str(content_length)
+            self.read_count = 0
+        async def text(self):
+            self.read_count += 1
+            return self._body
+
+    class Namespace:
+        def __init__(self):
+            self.lookup_count = 0
+            self.write_count = 0
+        def idFromName(self, request_id):
+            self.lookup_count += 1
+            return request_id
+        def get(self, object_id):
+            namespace = self
+            class Stub:
+                async def write_checkpoint(self, body):
+                    namespace.write_count += 1
+                    return {"_http_status": 200, "persisted": True}
+            return Stub()
+
+    def setUp(self):
+        self.env = _Env()
+        self.worker = entry.Default()
+        self.worker.env = self.env
+
+    def test_propose_missing_content_length_stops_before_provider(self):
+        request = self.Request("/v1/repair/propose")
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["error"], "content_length_required")
+        self.assertEqual(calls, [])
+        self.assertEqual(request.read_count, 0)
+
+    def test_propose_declared_oversize_stops_before_provider(self):
+        request = self.Request("/v1/repair/propose", "{}", entry.MAX_BODY + 1)
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["error"], "body_too_large")
+        self.assertEqual(calls, [])
+        self.assertEqual(request.read_count, 0)
+
+    def test_checkpoint_missing_content_length_stops_before_storage(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/checkpoint")
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "content_length_required")
+        self.assertEqual(namespace.lookup_count, 0)
+        self.assertEqual(namespace.write_count, 0)
+        self.assertEqual(request.read_count, 0)
+
+    def test_checkpoint_declared_oversize_stops_before_storage(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/checkpoint", "{}", entry.MAX_BODY + 1)
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "body_too_large")
+        self.assertEqual(namespace.lookup_count, 0)
+        self.assertEqual(namespace.write_count, 0)
+        self.assertEqual(request.read_count, 0)
