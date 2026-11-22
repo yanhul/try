@@ -743,7 +743,7 @@ class ProposalSourceScopeTests(unittest.TestCase):
         })
         prompt = prompts[0]
         self.assertIn('"allowed_patch_paths": ["core/ci_supervisor.py"]', prompt)
-        self.assertIn("paths mentioned in CI logs are diagnostic evidence only", prompt)
+        self.assertIn("paths mentioned in CI logs are diagnostic evidence only", entry.SYSTEM)
         self.assertEqual(result["files"][0]["path"], "core/ci_supervisor.py")
 
     def test_test_file_proposal_returns_hold_not_http_400(self):
