@@ -404,6 +404,19 @@ class GeminiRetryTests(unittest.TestCase):
 
         self.assertEqual(len(calls), 1)
 
+    def test_nonretryable_400_is_terminal_without_retry(self):
+        calls = []
+        async def fake_fetch(*args, **kwargs):
+            calls.append(1)
+            return _Response(400, detail="bad request")
+        original = entry.fetch
+        entry.fetch = fake_fetch
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_http_400"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        finally:
+            entry.fetch = original
+        self.assertEqual(len(calls), 1)
     def test_transient_503_retries_then_succeeds(self):
         calls = []
 
@@ -617,6 +630,42 @@ class EndpointAdmissionTests(unittest.TestCase):
         result = asyncio.run(self.worker.fetch(request))
         self.assertEqual(result["error"], "request_id_invalid")
         self.assertEqual(namespace.lookup_count, 0)
+
+class ProviderFailureMappingTests(unittest.TestCase):
+    class StatusResponse:
+        @staticmethod
+        def json(payload, status=200, headers=None):
+            return {"_status": status, **payload}
+
+    def _fetch(self, error):
+        worker = entry.Default()
+        worker.env = _Env()
+        request = EndpointAdmissionTests.Request(
+            "/v1/repair/propose", '{"request_id":"req-1"}'
+        )
+        original_response = entry.Response
+        original_propose = entry._propose
+        async def fail(*args):
+            raise error
+        entry.Response = self.StatusResponse
+        entry._propose = fail
+        try:
+            return asyncio.run(worker.fetch(request))
+        finally:
+            entry.Response = original_response
+            entry._propose = original_propose
+
+    def test_nonretryable_gemini_400_is_upstream_failure_not_hold(self):
+        result = self._fetch(RuntimeError("gemini_http_400"))
+        self.assertEqual(result["_status"], 502)
+        self.assertEqual(result["status"], "PROVIDER_UPSTREAM_REJECTED")
+        self.assertEqual(result["reason"], "gemini_http_400")
+
+    def test_unexpected_runtime_error_is_internal_error_not_hold(self):
+        result = self._fetch(RuntimeError("internal details must not escape"))
+        self.assertEqual(result["_status"], 500)
+        self.assertEqual(result["status"], "PROVIDER_INTERNAL_ERROR")
+        self.assertEqual(result["reason"], "RuntimeError")
 class ProviderReadinessErrorMappingTests(unittest.TestCase):
     def test_missing_model_maps_to_provider_not_ready_503(self):
         class StatusResponse:
