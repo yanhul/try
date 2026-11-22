@@ -1,0 +1,72 @@
+name: Diagnose Cloudflare Repair Worker Access
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/diagnose-cloudflare-repair-worker.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Capture edge response without exposing credentials
+        shell: bash
+        env:
+          WORKER_URL: https://try-aios-repair-provider.simplehu.workers.dev
+        run: |
+          set -u
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          base = os.environ["WORKER_URL"].rstrip("/")
+          for path in ("/healthz", "/cdn-cgi/trace"):
+              req = urllib.request.Request(
+                  base + path,
+                  headers={
+                      "Accept": "application/json,text/plain,*/*",
+                      "User-Agent": "try-cloudflare-access-diagnostic/1.0",
+                  },
+                  method="GET",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      status = response.status
+                      headers = response.headers
+                      body = response.read(4096)
+              except urllib.error.HTTPError as exc:
+                  status = exc.code
+                  headers = exc.headers
+                  body = exc.read(4096)
+              except Exception as exc:
+                  print(json.dumps({
+                      "path": path,
+                      "transport_error": type(exc).__name__,
+                  }, sort_keys=True))
+                  continue
+
+              safe_headers = {}
+              for key in (
+                  "content-type", "server", "cf-ray", "cf-cache-status",
+                  "location", "www-authenticate", "retry-after",
+              ):
+                  value = headers.get(key)
+                  if value:
+                      safe_headers[key] = value[:500]
+
+              text = body.decode("utf-8", errors="replace")
+              print(json.dumps({
+                  "path": path,
+                  "http_status": status,
+                  "headers": safe_headers,
+                  "body_excerpt": text[:3000],
+              }, sort_keys=True))
+          PY
