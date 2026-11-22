@@ -33,9 +33,11 @@ jobs:
 
       - name: Fail closed on missing deployment credentials
         shell: bash
+        env:
+          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
         run: |
           set -euo pipefail
-          if [[ "${{ inputs.confirm_production }}" != "DEPLOY" ]]; then
+          if [[ "$CONFIRM_PRODUCTION" != "DEPLOY" ]]; then
             echo "::error::Production deployment requires the exact confirmation DEPLOY"
             exit 1
           fi
@@ -119,9 +121,68 @@ jobs:
                       payload = {}
                   return exc.code, payload
 
-          status, health = request("GET", "/healthz", authenticated=False)
-          assert status == 200, f"health_http_{status}"
-          assert health.get("status") == "READY", "worker_not_ready"
+          # Cloudflare edge may briefly return a transient denial/not-ready response
+          # immediately after deployment. Poll with a hard deadline; never treat a
+          # persistent 403/503 as success.
+          import time
+          health = None
+          last_health = {}
+          health_deadline = time.monotonic() + 120
+          health_attempt = 0
+          while time.monotonic() < health_deadline and health_attempt < 24:
+              health_attempt += 1
+              remaining = max(1, health_deadline - time.monotonic())
+              health_req = urllib.request.Request(
+                  base + "/healthz",
+                  headers={"Accept": "application/json", "User-Agent": "try-deploy-smoke/1.0"},
+                  method="GET",
+              )
+              try:
+                  with urllib.request.urlopen(health_req, timeout=min(10, remaining)) as response:
+                      health_status = response.status
+                      health_headers = response.headers
+                      health_raw = response.read(4096)
+              except urllib.error.HTTPError as exc:
+                  health_status = exc.code
+                  health_headers = exc.headers
+                  health_raw = exc.read(4096)
+              except Exception as exc:
+                  health_status = 0
+                  health_headers = {}
+                  health_raw = type(exc).__name__.encode()
+              safe_headers = {
+                  key: health_headers.get(key)
+                  for key in ("content-type", "server", "cf-ray", "cf-cache-status")
+                  if health_headers.get(key)
+              }
+              try:
+                  health_payload = json.loads(health_raw) if health_raw else {}
+              except Exception:
+                  health_payload = {}
+              last_health = {
+                  "http_status": health_status,
+                  "headers": safe_headers,
+                  "body_excerpt": health_raw.decode("utf-8", errors="replace")[:2000],
+              }
+              print(json.dumps({
+                  "health_attempt": health_attempt,
+                  "http_status": health_status,
+                  "cf_ray": safe_headers.get("cf-ray"),
+                  "worker_status": health_payload.get("status"),
+              }, sort_keys=True))
+              if health_status == 200 and health_payload.get("status") == "READY":
+                  health = health_payload
+                  break
+              # Retry only transient edge/upstream/not-ready outcomes. Other 4xx
+              # responses are contract failures and should fail immediately.
+              if health_status not in (0, 403, 429, 500, 502, 503, 504):
+                  break
+              remaining = health_deadline - time.monotonic()
+              if remaining > 0 and health_attempt < 24:
+                  time.sleep(min(5, remaining))
+          if health is None:
+              print("HEALTH_DIAGNOSTIC=" + json.dumps(last_health, sort_keys=True))
+              raise AssertionError("worker_health_not_ready_after_120_seconds")
           assert health.get("provider") == "gemini", "unexpected_provider"
           assert health.get("checkpoint_store_bound") is True, "durable_object_binding_missing"
           assert health.get("provider_token_configured") is True, "provider_token_missing"
