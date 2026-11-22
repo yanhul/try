@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from urllib.parse import urlparse
 
 from workers import DurableObject, WorkerEntrypoint, Response, fetch
@@ -20,6 +21,8 @@ GEMINI_MAX_ATTEMPTS = 3
 GEMINI_BACKOFF_SECONDS = (1, 2)
 GEMINI_RETRYABLE = {500, 502, 503, 504}
 GEMINI_QUOTA_STATUS = 429
+REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9._:-]{1,160}$")
+GITHUB_REPOSITORY_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?/[A-Za-z0-9](?:[A-Za-z0-9._-]{0,98}[A-Za-z0-9])?$")
 DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
 DENIED_COMPONENTS = {".git", ".github", ".aios", "secrets", "tests"}
@@ -125,11 +128,14 @@ def _validate(proposal: dict) -> dict:
 
 
 async def _call_gemini(prompt: str, env) -> dict:
-    key = getattr(env, "GEMINI_API_KEY", "")
-    project_id = getattr(env, "GEMINI_PROJECT_ID", "")
-    model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-    if not key or not project_id:
+    raw_key = getattr(env, "GEMINI_API_KEY", "")
+    raw_model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
+    if not isinstance(raw_key, str) or not raw_key.strip():
         raise RuntimeError("provider_not_configured:GEMINI")
+    if not isinstance(raw_model, str) or not raw_model.strip():
+        raise RuntimeError("provider_model_not_configured:GEMINI")
+    key = raw_key.strip()
+    model = raw_model.strip()
 
     body = {
         "model": model,
@@ -142,7 +148,6 @@ async def _call_gemini(prompt: str, env) -> dict:
         "response_format": {"type": "json_object"},
     }
 
-    last_detail = ""
     last_status = 0
     for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
         response = await fetch(
@@ -160,34 +165,87 @@ async def _call_gemini(prompt: str, env) -> dict:
                 content = payload["choices"][0]["message"]["content"]
                 parsed = json.loads(content)
             except (KeyError, IndexError, TypeError, ValueError) as exc:
+                # Do not echo provider payload fragments or parser details to callers.
                 raise RuntimeError(
-                    f"gemini_protocol_error:{type(exc).__name__}:{str(exc)[:300]}"
+                    f"gemini_protocol_error:{type(exc).__name__}"
                 ) from exc
             if not isinstance(parsed, dict):
                 raise RuntimeError("gemini_protocol_error:response_not_object")
             return parsed
 
         last_status = response.status
-        detail = await response.text()
-        last_detail = detail[:1000]
+        # Provider error bodies may contain request metadata; never relay them.
         if response.status == GEMINI_QUOTA_STATUS:
-            raise RuntimeError(f"gemini_quota_exhausted:{last_status}:{last_detail}")
+            raise RuntimeError(f"gemini_quota_exhausted:{last_status}")
         if response.status not in GEMINI_RETRYABLE or attempt == GEMINI_MAX_ATTEMPTS:
             break
         await asyncio.sleep(GEMINI_BACKOFF_SECONDS[attempt - 1])
 
-    raise RuntimeError(f"gemini_http_{last_status}:{last_detail}")
-
+    raise RuntimeError(f"gemini_http_{last_status}")
 
 async def _read_bounded_json(request) -> dict:
-    raw_body = await request.text()
-    if len(raw_body.encode("utf-8")) > MAX_BODY:
-        raise ValueError("body_too_large")
-    payload = json.loads(raw_body)
+    # Content-Length is an optional early-rejection hint, never the size authority.
+    # Enforce the actual limit while consuming the Request.body ReadableStream.
+    raw_length = request.headers.get("Content-Length")
+    declared_length = None
+    if raw_length is not None:
+        if not isinstance(raw_length, str) or not raw_length.isascii() or not raw_length.isdigit():
+            raise ValueError("content_length_invalid")
+        declared_length = int(raw_length)
+        if declared_length <= 0:
+            raise ValueError("request_body_empty")
+        if declared_length > MAX_BODY:
+            raise ValueError("body_too_large")
+
+    body = getattr(request, "body", None)
+    if body is None:
+        raise ValueError("request_body_missing")
+    reader = body.getReader()
+    raw_body = bytearray()
+    try:
+        while True:
+            result = await reader.read()
+            if result.done:
+                break
+            chunk = result.value
+            chunk_length = int(chunk.byteLength)
+            if chunk_length < 0:
+                raise ValueError("body_stream_invalid")
+            if len(raw_body) + chunk_length > MAX_BODY:
+                try:
+                    await reader.cancel("body_too_large")
+                except Exception:
+                    pass
+                raise ValueError("body_too_large")
+            if chunk_length:
+                chunk_bytes = bytes(chunk.to_py())
+                if len(chunk_bytes) != chunk_length:
+                    raise ValueError("body_stream_invalid")
+                raw_body.extend(chunk_bytes)
+                if len(raw_body) > MAX_BODY:
+                    try:
+                        await reader.cancel("body_too_large")
+                    except Exception:
+                        pass
+                    raise ValueError("body_too_large")
+        if declared_length is not None and len(raw_body) != declared_length:
+            raise ValueError("body_size_mismatch")
+    except ValueError:
+        raise
+    except Exception as exc:
+        raise ValueError("body_read_failed") from exc
+    finally:
+        try:
+            reader.releaseLock()
+        except Exception:
+            pass
+    try:
+        payload = json.loads(raw_body)
+    except (UnicodeDecodeError, json.JSONDecodeError, RecursionError):
+        raise ValueError("invalid_json")
     if not isinstance(payload, dict):
         raise ValueError("request_not_object")
     return payload
-
 
 async def _propose(request: dict, env) -> dict:
     if not isinstance(request, dict):
@@ -199,16 +257,13 @@ async def _propose(request: dict, env) -> dict:
     repository = request.get("repository")
     sha = request.get("sha")
     raw_attempt = request.get("attempt", 0)
-    if isinstance(raw_attempt, bool):
+    if isinstance(raw_attempt, bool) or not isinstance(raw_attempt, int) or not 1 <= raw_attempt <= 20:
         raise ValueError("request_attempt_invalid")
-    try:
-        attempt = int(raw_attempt)
-    except (TypeError, ValueError):
-        raise ValueError("request_attempt_invalid")
-    if not isinstance(request_id, str) or not request_id.strip():
-        raise ValueError("request_id_missing")
-    if not isinstance(repository, str) or not repository.strip():
-        raise ValueError("repository_missing")
+    attempt = raw_attempt
+    if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
+        raise ValueError("request_id_invalid")
+    if not isinstance(repository, str) or not GITHUB_REPOSITORY_RE.fullmatch(repository):
+        raise ValueError("repository_invalid")
     if not isinstance(sha, str) or len(sha) != 40 or any(c not in "0123456789abcdefABCDEF" for c in sha):
         raise ValueError("sha_invalid")
     if attempt < 1:
@@ -227,7 +282,7 @@ async def _propose(request: dict, env) -> dict:
             "request_id": str(request.get("request_id") or ""),
             "repository": str(request.get("repository") or ""),
             "sha": str(request.get("sha") or ""),
-            "attempt": int(request.get("attempt", 1)),
+            "attempt": attempt,
             "failure": bounded_failure,
             "source_snapshot": bounded_source,
         },
@@ -239,6 +294,7 @@ async def _propose(request: dict, env) -> dict:
 
 CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
 CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
+_CHECKPOINT_REQUEST_ID = REQUEST_ID_RE
 _CHECKPOINT_SHA = __import__("re").compile(r"^[0-9a-fA-F]{40}$")
 _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
@@ -258,15 +314,14 @@ class RepairCheckpoint(DurableObject):
         return await self.ctx.storage.get("record")
 
     async def write_checkpoint(self, item):
-        import re
         if not isinstance(item, dict):
             return {"_http_status": 400, "error": "invalid_record"}
         request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
         attempt, phase, state = item.get("attempt"), item.get("phase"), item.get("state")
         digest, reason = item.get("evidence_digest"), item.get("reason")
-        if not isinstance(request_id, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,160}", request_id):
+        if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
             return {"_http_status": 400, "error": "request_id_invalid"}
-        if not isinstance(repository, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+        if not isinstance(repository, str) or not GITHUB_REPOSITORY_RE.fullmatch(repository):
             return {"_http_status": 400, "error": "repository_invalid"}
         if not isinstance(sha, str) or not _CHECKPOINT_SHA.fullmatch(sha):
             return {"_http_status": 400, "error": "sha_invalid"}
@@ -329,9 +384,11 @@ class Default(WorkerEntrypoint):
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
+            raw_key = getattr(self.env, "GEMINI_API_KEY", "")
+            raw_model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             if (
-                not getattr(self.env, "GEMINI_API_KEY", "")
-                or not getattr(self.env, "GEMINI_PROJECT_ID", "")
+                not isinstance(raw_key, str) or not raw_key.strip()
+                or not isinstance(raw_model, str) or not raw_model.strip()
                 or not checkpoint_bound
                 or not provider_token_configured
             ):
@@ -347,8 +404,7 @@ class Default(WorkerEntrypoint):
                 {
                     "status": "READY",
                     "provider": "gemini",
-                    "model": model,
-                    "project_bound": True,
+                    "model": raw_model.strip(),
                     "checkpoint_store_bound": True,
                     "provider_token_configured": True,
                 }
@@ -363,8 +419,8 @@ class Default(WorkerEntrypoint):
             try:
                 body = await _read_bounded_json(request)
                 request_id = body.get("request_id")
-                if not isinstance(request_id, str) or not request_id.strip():
-                    return Response.json({"error": "request_id_missing"}, status=400)
+                if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
+                    return Response.json({"error": "request_id_invalid"}, status=400)
                 namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
                 if namespace is None:
                     return Response.json({"error": "checkpoint_store_not_configured"}, status=503)
@@ -372,13 +428,17 @@ class Default(WorkerEntrypoint):
                 result = await stub.write_checkpoint(body)
                 status = int(result.pop("_http_status", 500))
                 return Response.json(result, status=status)
+            except ValueError as exc:
+                reason = str(exc)
+                status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
+                return Response.json({"error": reason}, status=status)
             except Exception as exc:
-                return Response.json({"error": "checkpoint_write_failed", "reason": str(exc)[:500]}, status=503)
+                return Response.json({"error": "checkpoint_write_failed", "reason": type(exc).__name__}, status=503)
 
         prefix = "/v1/repair/checkpoint/"
         if request.method == "GET" and path.startswith(prefix):
             request_id = path[len(prefix):]
-            if not request_id or "/" in request_id:
+            if not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
                 return Response.json({"error": "request_id_invalid"}, status=400)
             namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
             if namespace is None:
@@ -390,24 +450,19 @@ class Default(WorkerEntrypoint):
                     return Response.json({"error": "checkpoint_not_found"}, status=404)
                 return Response.json(record, status=200)
             except Exception as exc:
-                return Response.json({"error": "checkpoint_read_failed", "reason": str(exc)[:500]}, status=503)
+                return Response.json({"error": "checkpoint_read_failed", "reason": type(exc).__name__}, status=503)
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
 
         try:
-            length = int(request.headers.get("Content-Length", "0"))
-        except ValueError:
-            length = 0
-        if length <= 0 or length > MAX_BODY:
-            return Response.json(
-                {"status": "HOLD", "reason": "invalid_body_size"}, status=200
-            )
-
-        try:
             body = await _read_bounded_json(request)
             response = await _propose(body, self.env)
             return Response.json(response, status=200)
+        except ValueError as exc:
+            reason = str(exc)
+            status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
+            return Response.json({"error": reason}, status=status)
         except RuntimeError as exc:
             message = str(exc)
             if message.startswith("gemini_quota_exhausted:"):
@@ -424,21 +479,20 @@ class Default(WorkerEntrypoint):
             if message.startswith("gemini_protocol_error:"):
                 return Response.json(
                     {
-                        "status": "RETRYABLE_PROVIDER_FAILURE",
+                        "status": "PROVIDER_PROTOCOL_ERROR",
                         "provider": "gemini",
                         "http_status": 502,
                         "reason": message[:2000],
                     },
                     status=502,
-                    headers={"Retry-After": "2"},
                 )
-            if message.startswith("provider_not_configured:"):
+            if message.startswith(("provider_not_configured:", "provider_model_not_configured:")):
                 return Response.json(
                     {
                         "status": "PROVIDER_NOT_READY",
                         "provider": "gemini",
                         "http_status": 503,
-                        "reason": message[:2000],
+                        "reason": message.split(":", 1)[0],
                     },
                     status=503,
                     headers={"Retry-After": "30"},
@@ -454,14 +508,28 @@ class Default(WorkerEntrypoint):
                             "status": "RETRYABLE_PROVIDER_FAILURE",
                             "provider": "gemini",
                             "http_status": status,
-                            "reason": message[:2000],
+                            "reason": f"gemini_http_{status}",
                         },
                         status=503,
                         headers={"Retry-After": "2"},
                     )
+                return Response.json(
+                    {
+                        "status": "PROVIDER_UPSTREAM_REJECTED",
+                        "provider": "gemini",
+                        "http_status": 502,
+                        "reason": f"gemini_http_{status}",
+                    },
+                    status=502,
+                )
             return Response.json(
-                {"status": "HOLD", "reason": f"{type(exc).__name__}:{exc}"},
-                status=200,
+                {
+                    "status": "PROVIDER_INTERNAL_ERROR",
+                    "provider": "gemini",
+                    "http_status": 500,
+                    "reason": type(exc).__name__,
+                },
+                status=500,
             )
         except Exception as exc:
             return Response.json(
@@ -469,7 +537,7 @@ class Default(WorkerEntrypoint):
                     "status": "PROVIDER_INTERNAL_ERROR",
                     "provider": "gemini",
                     "http_status": 500,
-                    "reason": f"{type(exc).__name__}:{exc}",
+                    "reason": type(exc).__name__,
                 },
                 status=500,
                 headers={"Retry-After": "2"},

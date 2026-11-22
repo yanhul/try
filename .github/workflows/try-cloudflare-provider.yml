@@ -1,6 +1,10 @@
 name: TRY Cloudflare Repair Provider
 
 on:
+  pull_request:
+    paths:
+      - cloudflare/try-repair-worker/**
+      - .github/workflows/try-cloudflare-provider.yml
   workflow_dispatch:
 
 permissions:
@@ -19,8 +23,32 @@ jobs:
       - name: Worker conformance tests
         run: uv run python -m unittest discover -s tests -v
 
+  worker-runtime-streaming:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: cloudflare/try-repair-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Start local Python Workers runtime
+        run: |
+          printf 'TRY_PROVIDER_TOKEN=runtime-test-token\n' > .dev.vars
+          uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
+          echo $! > /tmp/try-worker-runtime.pid
+      - name: Verify bounded streaming against workerd + Pyodide
+        env:
+          TRY_PROVIDER_TOKEN: runtime-test-token
+        run: |
+          trap 'kill $(cat /tmp/try-worker-runtime.pid) 2>/dev/null || true; rm -f .dev.vars' EXIT
+          uv run python tests/runtime_streaming_smoke.py
+      - name: Show runtime log on failure
+        if: failure()
+        run: cat /tmp/try-worker-runtime.log
   deploy:
-    if: github.event_name != 'pull_request'
+    # Manual deployment is restricted to the protected default branch.
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -41,14 +69,11 @@ jobs:
       - name: Set TRY provider secrets
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_PROJECT_ID: ${{ vars.GEMINI_PROJECT_ID }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
         run: |
           test -n "$GEMINI_API_KEY"
-          test -n "$GEMINI_PROJECT_ID"
           test -n "$TRY_PROVIDER_TOKEN"
           printf '%s' "$GEMINI_API_KEY" | uv run pywrangler secret put GEMINI_API_KEY
-          printf '%s' "$GEMINI_PROJECT_ID" | uv run pywrangler secret put GEMINI_PROJECT_ID
           printf '%s' "$TRY_PROVIDER_TOKEN" | uv run pywrangler secret put TRY_PROVIDER_TOKEN
       - name: Worker conformance tests
         run: uv run python -m unittest discover -s tests -v

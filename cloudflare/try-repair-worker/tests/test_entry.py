@@ -6,6 +6,41 @@ import types
 import unittest
 
 
+class _FakeChunk:
+    def __init__(self, data):
+        self._data = bytes(data)
+        self.byteLength = len(self._data)
+    def to_py(self):
+        return memoryview(self._data)
+
+class _FakeReadResult:
+    def __init__(self, done, value=None):
+        self.done = done
+        self.value = value
+
+class _FakeReader:
+    def __init__(self, chunks):
+        self._chunks = list(chunks)
+        self.read_count = 0
+        self.cancelled = False
+        self.released = False
+    async def read(self):
+        self.read_count += 1
+        if not self._chunks:
+            return _FakeReadResult(True)
+        return _FakeReadResult(False, _FakeChunk(self._chunks.pop(0)))
+    async def cancel(self, reason=None):
+        self.cancelled = True
+        self._chunks.clear()
+    def releaseLock(self):
+        self.released = True
+
+class _FakeStream:
+    def __init__(self, chunks):
+        self.reader = _FakeReader(chunks)
+    def getReader(self):
+        return self.reader
+
 class _Response:
     def __init__(self, status, payload=None, detail=""):
         self.status = status
@@ -75,6 +110,14 @@ class HealthCheckTests(unittest.TestCase):
         self.assertEqual(result["status"], "NOT_READY")
         self.assertFalse(result["checkpoint_store_bound"])
 
+    def test_health_not_ready_for_whitespace_provider_configuration(self):
+        env = _Env()
+        env.GEMINI_API_KEY = "   "
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+
     def test_health_ready_only_when_required_bindings_exist(self):
         env = _Env()
         instance = entry.Default()
@@ -87,20 +130,65 @@ class HealthCheckTests(unittest.TestCase):
 
 class BoundedBodyTests(unittest.TestCase):
     class Request:
-        def __init__(self, body):
-            self.body = body
-        async def text(self):
-            return self.body
+        def __init__(self, body, content_length=None, chunk_size=65536):
+            encoded = body.encode("utf-8") if isinstance(body, str) else bytes(body)
+            self.headers = {}
+            if content_length is not None:
+                self.headers["Content-Length"] = str(content_length)
+            chunks = [encoded[i:i + chunk_size] for i in range(0, len(encoded), chunk_size)]
+            self.body = _FakeStream(chunks)
 
-    def test_actual_body_size_is_enforced(self):
-        request = self.Request("x" * (entry.MAX_BODY + 1))
+    def read(self, body, content_length=None, chunk_size=65536):
+        request = self.Request(body, content_length, chunk_size)
+        return asyncio.run(entry._read_bounded_json(request))
+
+    def test_content_length_is_optional_for_streamed_body(self):
+        self.assertEqual(self.read('{"ok":true}'), {"ok": True})
+
+    def test_declared_oversize_is_rejected_before_stream_read(self):
+        request = self.Request("{}", entry.MAX_BODY + 1)
         with self.assertRaisesRegex(ValueError, "body_too_large"):
             asyncio.run(entry._read_bounded_json(request))
+        self.assertEqual(request.body.reader.read_count, 0)
+
+    def test_exact_max_body_size_is_accepted(self):
+        prefix = b'{"padding":"'
+        suffix = b'"}'
+        body = prefix + (b"x" * (entry.MAX_BODY - len(prefix) - len(suffix))) + suffix
+        self.assertEqual(len(body), entry.MAX_BODY)
+        payload = asyncio.run(entry._read_bounded_json(self.Request(body, entry.MAX_BODY)))
+        self.assertEqual(len(payload["padding"]), entry.MAX_BODY - len(prefix) - len(suffix))
+    def test_actual_stream_size_is_enforced_without_content_length(self):
+        stream = _FakeStream([b"a" * 600000, b"b" * 400001, b"not-read"])
+        request = type("Request", (), {"headers": {}, "body": stream})()
+        with self.assertRaisesRegex(ValueError, "body_too_large"):
+            asyncio.run(entry._read_bounded_json(request))
+        self.assertTrue(stream.reader.cancelled)
+        self.assertEqual(stream.reader.read_count, 2)
+        self.assertTrue(stream.reader.released)
+
+    def test_declared_and_actual_lengths_must_match(self):
+        with self.assertRaisesRegex(ValueError, "body_size_mismatch"):
+            self.read('{"x":1}', 2)
+
+    def test_utf8_byte_length_is_used_across_chunks(self):
+        body = json.dumps({"value": "á"})
+        payload = self.read(body, len(body.encode("utf-8")), chunk_size=2)
+        self.assertEqual(payload["value"], "á")
+
+    def test_malformed_json_is_redacted(self):
+        with self.assertRaisesRegex(ValueError, "invalid_json"):
+            self.read("{broken}")
 
     def test_bounded_body_requires_object(self):
-        request = self.Request(json.dumps(["not", "object"]))
         with self.assertRaisesRegex(ValueError, "request_not_object"):
+            self.read(json.dumps(["not", "object"]))
+
+    def test_invalid_content_length_is_rejected_before_read(self):
+        request = self.Request("{}", "1.5")
+        with self.assertRaisesRegex(ValueError, "content_length_invalid"):
             asyncio.run(entry._read_bounded_json(request))
+        self.assertEqual(request.body.reader.read_count, 0)
 
 class WorkerValidationTests(unittest.TestCase):
     def assertRejects(self, path, content="x"):
@@ -181,6 +269,14 @@ class WorkerValidationTests(unittest.TestCase):
             ("attempt", True),
             ("request_id", "   "),
             ("repository", "   "),
+            ("request_id", "x" * 161),
+            ("request_id", "bad/id"),
+            ("repository", "../foo"),
+            ("repository", "foo/.."),
+            ("repository", "-owner/repo"),
+            ("attempt", 1.9),
+            ("attempt", "1"),
+            ("attempt", 21),
         ):
             case = dict(base)
             case[key] = value
@@ -240,6 +336,12 @@ class GeminiProtocolTests(unittest.TestCase):
                 asyncio.run(entry._call_gemini("prompt", _Env()))
         finally:
             entry.fetch = original
+
+    def test_protocol_error_mapping_is_terminal_not_retryable(self):
+        result = ProviderFailureMappingTests()._fetch(RuntimeError("gemini_protocol_error:KeyError"))
+        self.assertEqual(result["_status"], 502)
+        self.assertEqual(result["status"], "PROVIDER_PROTOCOL_ERROR")
+        self.assertNotIn("Retry-After", result)
 
     def test_non_object_model_json_is_protocol_failure(self):
         async def fake_fetch(*args, **kwargs):
@@ -316,6 +418,19 @@ class GeminiRetryTests(unittest.TestCase):
 
         self.assertEqual(len(calls), 1)
 
+    def test_nonretryable_400_is_terminal_without_retry(self):
+        calls = []
+        async def fake_fetch(*args, **kwargs):
+            calls.append(1)
+            return _Response(400, detail="bad request")
+        original = entry.fetch
+        entry.fetch = fake_fetch
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_http_400"):
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        finally:
+            entry.fetch = original
+        self.assertEqual(len(calls), 1)
     def test_transient_503_retries_then_succeeds(self):
         calls = []
 
@@ -385,6 +500,11 @@ class DurableCheckpointTests(unittest.TestCase):
         payload.update(changes)
         return asyncio.run(self.checkpoint.write_checkpoint(payload))
 
+    def test_checkpoint_rejects_traversal_like_repository_names(self):
+        for repository in ("../foo", "foo/..", "-owner/repo", "owner/-repo"):
+            result = self.write(repository=repository)
+            self.assertEqual(result["error"], "repository_invalid", repository)
+
     def test_checkpoint_is_persisted_and_identity_bound(self):
         first = self.write()
         self.assertTrue(first["persisted"])
@@ -422,3 +542,171 @@ class DurableCheckpointTests(unittest.TestCase):
         resumed = self.write(attempt=2, phase="RESUME", state="WORKING")
         self.assertTrue(resumed["persisted"])
         self.assertEqual(resumed["version"], 3)
+
+
+class EndpointAdmissionTests(unittest.TestCase):
+    class Request:
+        method = "POST"
+        def __init__(self, path, body="{}", content_length=None, chunk_size=65536, method="POST"):
+            self.method = method
+            self.url = "https://worker.example" + path
+            self.headers = {"Authorization": "Bearer test-token"}
+            if content_length is not None:
+                self.headers["Content-Length"] = str(content_length)
+            encoded = body.encode("utf-8")
+            chunks = [encoded[i:i + chunk_size] for i in range(0, len(encoded), chunk_size)]
+            self.body = _FakeStream(chunks)
+
+    class Namespace:
+        def __init__(self):
+            self.lookup_count = 0
+            self.write_count = 0
+        def idFromName(self, request_id):
+            self.lookup_count += 1
+            return request_id
+        def get(self, object_id):
+            namespace = self
+            class Stub:
+                async def write_checkpoint(self, body):
+                    namespace.write_count += 1
+                    return {"_http_status": 200, "persisted": True}
+            return Stub()
+
+    def setUp(self):
+        self.env = _Env()
+        self.worker = entry.Default()
+        self.worker.env = self.env
+
+    def test_propose_chunked_body_without_content_length_reaches_provider(self):
+        request = self.Request("/v1/repair/propose", '{"request_id":"req-1"}')
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["schema"], 2)
+        self.assertEqual(calls, [1])
+
+    def test_propose_oversized_chunked_body_stops_before_provider(self):
+        request = self.Request("/v1/repair/propose", "x" * (entry.MAX_BODY + 1))
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["error"], "body_too_large")
+        self.assertEqual(calls, [])
+        self.assertTrue(request.body.reader.cancelled)
+
+    def test_checkpoint_chunked_body_without_content_length_persists(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/checkpoint", '{"request_id":"req-1"}')
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertTrue(result["persisted"])
+        self.assertEqual(namespace.lookup_count, 1)
+        self.assertEqual(namespace.write_count, 1)
+
+    def test_checkpoint_oversized_chunked_body_stops_before_storage(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/checkpoint", "x" * (entry.MAX_BODY + 1))
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "body_too_large")
+        self.assertEqual(namespace.lookup_count, 0)
+        self.assertEqual(namespace.write_count, 0)
+        self.assertTrue(request.body.reader.cancelled)
+
+
+
+    def test_checkpoint_invalid_request_id_rejected_before_namespace_lookup(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        body = json.dumps({"request_id": "x" * 161})
+        request = self.Request("/v1/repair/checkpoint", body)
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "request_id_invalid")
+        self.assertEqual(namespace.lookup_count, 0)
+        self.assertEqual(namespace.write_count, 0)
+
+    def test_checkpoint_get_invalid_request_id_rejected_before_namespace_lookup(self):
+        namespace = self.Namespace()
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request(
+            "/v1/repair/checkpoint/" + ("x" * 161),
+            method="GET",
+        )
+        result = asyncio.run(self.worker.fetch(request))
+        self.assertEqual(result["error"], "request_id_invalid")
+        self.assertEqual(namespace.lookup_count, 0)
+
+class ProviderFailureMappingTests(unittest.TestCase):
+    class StatusResponse:
+        @staticmethod
+        def json(payload, status=200, headers=None):
+            return {"_status": status, **payload}
+
+    def _fetch(self, error):
+        worker = entry.Default()
+        worker.env = _Env()
+        request = EndpointAdmissionTests.Request(
+            "/v1/repair/propose", '{"request_id":"req-1"}'
+        )
+        original_response = entry.Response
+        original_propose = entry._propose
+        async def fail(*args):
+            raise error
+        entry.Response = self.StatusResponse
+        entry._propose = fail
+        try:
+            return asyncio.run(worker.fetch(request))
+        finally:
+            entry.Response = original_response
+            entry._propose = original_propose
+
+    def test_nonretryable_gemini_400_is_upstream_failure_not_hold(self):
+        result = self._fetch(RuntimeError("gemini_http_400"))
+        self.assertEqual(result["_status"], 502)
+        self.assertEqual(result["status"], "PROVIDER_UPSTREAM_REJECTED")
+        self.assertEqual(result["reason"], "gemini_http_400")
+
+    def test_unexpected_runtime_error_is_internal_error_not_hold(self):
+        result = self._fetch(RuntimeError("internal details must not escape"))
+        self.assertEqual(result["_status"], 500)
+        self.assertEqual(result["status"], "PROVIDER_INTERNAL_ERROR")
+        self.assertEqual(result["reason"], "RuntimeError")
+class ProviderReadinessErrorMappingTests(unittest.TestCase):
+    def test_missing_model_maps_to_provider_not_ready_503(self):
+        class StatusResponse:
+            @staticmethod
+            def json(payload, status=200, headers=None):
+                return {"_status": status, **payload}
+        worker = entry.Default()
+        worker.env = _Env()
+        request = EndpointAdmissionTests.Request(
+            "/v1/repair/propose", '{"request_id":"req-1"}'
+        )
+        original_response = entry.Response
+        original_propose = entry._propose
+        async def fail_model(*args):
+            raise RuntimeError("provider_model_not_configured:GEMINI")
+        entry.Response = StatusResponse
+        entry._propose = fail_model
+        try:
+            result = asyncio.run(worker.fetch(request))
+        finally:
+            entry.Response = original_response
+            entry._propose = original_propose
+        self.assertEqual(result["_status"], 503)
+        self.assertEqual(result["status"], "PROVIDER_NOT_READY")
+        self.assertEqual(result["reason"], "provider_model_not_configured")
