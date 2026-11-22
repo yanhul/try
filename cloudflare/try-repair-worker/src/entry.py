@@ -33,11 +33,13 @@ Return exactly one JSON object:
 {"schema":2,"root_cause":"...","proposed_fix":"...","files":[{"path":"...","content":"..."}]}
 Rules:
 - diagnose from the supplied failure evidence and immutable source snapshot;
-- propose the smallest source-only repair;
-- never modify tests, workflows, secrets, .aios, or control-plane policy;
+- the ONLY patch paths you may return are exact keys listed in source_snapshot; do not invent paths or create new files;
+- paths mentioned in CI logs are diagnostic evidence only, NOT permission to edit those paths;
+- propose the smallest source-only repair to an implementation file present in source_snapshot;
+- never modify tests, workflows, secrets, .aios, test configuration, or control-plane policy;
 - never return shell commands;
 - never claim PASS;
-- if no safe source-only repair is justified, return {"status":"HOLD","reason":"..."}.
+- if no listed implementation file can safely fix the failure, return {"status":"HOLD","reason":"..."}.
 """
 
 
@@ -284,11 +286,23 @@ async def _propose(request: dict, env) -> dict:
             "sha": str(request.get("sha") or ""),
             "attempt": attempt,
             "failure": bounded_failure,
+            "allowed_patch_paths": sorted(bounded_source),
             "source_snapshot": bounded_source,
         },
         sort_keys=True,
     )
-    return _validate(await _call_gemini(prompt, env))
+    model_proposal = await _call_gemini(prompt, env)
+    try:
+        validated = _validate(model_proposal)
+    except ValueError as exc:
+        # A scope violation is a provider HOLD, not a transport/server failure.
+        if str(exc).startswith("protected_patch_path:"):
+            return {"status": "HOLD", "reason": "proposal_outside_allowed_patch_scope"}
+        raise
+    allowed_paths = set(bounded_source)
+    if any(item["path"] not in allowed_paths for item in validated["files"]):
+        return {"status": "HOLD", "reason": "proposal_path_not_in_source_snapshot"}
+    return validated
 
 
 
