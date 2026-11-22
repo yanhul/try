@@ -237,8 +237,8 @@ async def _read_bounded_json(request) -> dict:
         except Exception:
             pass
     try:
-        payload = json.loads(bytes(raw_body))
-    except (UnicodeDecodeError, json.JSONDecodeError):
+        payload = json.loads(raw_body)
+    except (UnicodeDecodeError, json.JSONDecodeError, RecursionError):
         raise ValueError("invalid_json")
     if not isinstance(payload, dict):
         raise ValueError("request_not_object")
