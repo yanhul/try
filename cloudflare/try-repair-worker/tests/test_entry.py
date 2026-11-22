@@ -151,6 +151,13 @@ class BoundedBodyTests(unittest.TestCase):
             asyncio.run(entry._read_bounded_json(request))
         self.assertEqual(request.body.reader.read_count, 0)
 
+    def test_exact_max_body_size_is_accepted(self):
+        prefix = b'{"padding":"'
+        suffix = b'"}'
+        body = prefix + (b"x" * (entry.MAX_BODY - len(prefix) - len(suffix))) + suffix
+        self.assertEqual(len(body), entry.MAX_BODY)
+        payload = asyncio.run(entry._read_bounded_json(self.Request(body, entry.MAX_BODY)))
+        self.assertEqual(len(payload["padding"]), entry.MAX_BODY - len(prefix) - len(suffix))
     def test_actual_stream_size_is_enforced_without_content_length(self):
         stream = _FakeStream([b"a" * 600000, b"b" * 400001, b"not-read"])
         request = type("Request", (), {"headers": {}, "body": stream})()
