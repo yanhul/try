@@ -126,10 +126,8 @@ def _validate(proposal: dict) -> dict:
 
 async def _call_gemini(prompt: str, env) -> dict:
     raw_key = getattr(env, "GEMINI_API_KEY", "")
-    raw_project_id = getattr(env, "GEMINI_PROJECT_ID", "")
     raw_model = getattr(env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
-    if (not isinstance(raw_key, str) or not raw_key.strip()
-            or not isinstance(raw_project_id, str) or not raw_project_id.strip()):
+    if not isinstance(raw_key, str) or not raw_key.strip():
         raise RuntimeError("provider_not_configured:GEMINI")
     if not isinstance(raw_model, str) or not raw_model.strip():
         raise RuntimeError("provider_model_not_configured:GEMINI")
@@ -335,7 +333,6 @@ class Default(WorkerEntrypoint):
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
             if (
                 not getattr(self.env, "GEMINI_API_KEY", "")
-                or not getattr(self.env, "GEMINI_PROJECT_ID", "")
                 or not checkpoint_bound
                 or not provider_token_configured
             ):
@@ -352,7 +349,6 @@ class Default(WorkerEntrypoint):
                     "status": "READY",
                     "provider": "gemini",
                     "model": model,
-                    "project_bound": True,
                     "checkpoint_store_bound": True,
                     "provider_token_configured": True,
                 }
