@@ -23,6 +23,29 @@ jobs:
       - name: Worker conformance tests
         run: uv run python -m unittest discover -s tests -v
 
+  worker-runtime-streaming:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: cloudflare/try-repair-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Start local Python Workers runtime
+        run: |
+          printf 'TRY_PROVIDER_TOKEN=runtime-test-token\\n' > .dev.vars
+          uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
+          echo $! > /tmp/try-worker-runtime.pid
+      - name: Verify bounded streaming against workerd + Pyodide
+        env:
+          TRY_PROVIDER_TOKEN: runtime-test-token
+        run: |
+          trap 'kill $(cat /tmp/try-worker-runtime.pid) 2>/dev/null || true; rm -f .dev.vars' EXIT
+          uv run python tests/runtime_streaming_smoke.py
+      - name: Show runtime log on failure
+        if: failure()
+        run: cat /tmp/try-worker-runtime.log
   deploy:
     # Manual deployment is restricted to the protected default branch.
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
