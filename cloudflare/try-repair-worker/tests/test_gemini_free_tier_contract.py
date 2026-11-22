@@ -145,6 +145,23 @@ class GeminiFreeTierContractTests(unittest.TestCase):
                 asyncio.run(entry._call_gemini("prompt", _Env()))
         self.assertEqual(len(calls), 1)
 
+
+    def test_gemini_provider_error_body_is_not_relayed(self):
+        class QuotaResponse:
+            status = 429
+            ok = False
+
+            async def text(self):
+                return "sensitive-provider-detail"
+
+        async def fake_fetch(url, **kwargs):
+            return QuotaResponse()
+
+        with patch.object(entry, "fetch", fake_fetch):
+            with self.assertRaisesRegex(RuntimeError, "gemini_quota_exhausted:429") as caught:
+                asyncio.run(entry._call_gemini("prompt", _Env()))
+        self.assertNotIn("sensitive-provider-detail", str(caught.exception))
+
     def test_gemini_transient_503_retries_are_bounded(self):
         calls = []
         sleeps = []
