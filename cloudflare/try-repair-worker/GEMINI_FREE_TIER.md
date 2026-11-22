@@ -30,7 +30,7 @@ Do not put credentials in Git, Worker plaintext variables, AIOS state, request p
 
 1. Unit tests with a fake transport verify endpoint, authentication header, model selection, request schema, configuration validation, and quota handling. They do not call Google.
 2. Worker smoke tests verify the deployed endpoint and AIOS-to-TRY bridge. They do not prove a live Gemini request unless the proposal path actually reaches Gemini.
-3. Real E2E requires a valid TRY-owned `GEMINI_API_KEY`, project configuration, deployed Worker, bridge token, and an actual model response. Missing credentials must be reported as BLOCKED, not PASS.
+3. Real E2E requires a valid TRY-owned `GEMINI_API_KEY`, deployed Worker, bridge token, and an actual model response. Missing credentials must be reported as BLOCKED, not PASS.
 
 ## References
 
