@@ -314,6 +314,20 @@ class WorkerValidationTests(unittest.TestCase):
                 ],
             })
 
+    def test_rejects_patch_paths_not_in_source_snapshot(self):
+        with self.assertRaisesRegex(ValueError, "patch_path_not_in_source_snapshot"):
+            entry._validate({
+                "schema": 2,
+                "files": [{"path": "src/not_supplied.py", "content": "x"}],
+            }, allowed_paths={"src/allowed.py"})
+
+    def test_accepts_patch_path_present_in_source_snapshot(self):
+        payload = entry._validate({
+            "schema": 2,
+            "files": [{"path": r"src\allowed.py", "content": "x"}],
+        }, allowed_paths={"src/allowed.py"})
+        self.assertEqual(payload["files"][0]["path"], "src/allowed.py")
+
     def test_accepts_normal_source_patch(self):
         payload = entry._validate({
             "schema": 2,

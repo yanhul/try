@@ -34,6 +34,7 @@ Return exactly one JSON object:
 Rules:
 - diagnose from the supplied failure evidence and immutable source snapshot;
 - propose the smallest source-only repair;
+- only propose files whose exact normalized paths appear in the supplied allowed_patch_paths list;
 - never modify tests, workflows, secrets, .aios, or control-plane policy;
 - never return shell commands;
 - never claim PASS;
@@ -73,7 +74,7 @@ def _normalize_source_snapshot(source: dict) -> dict:
     return bounded
 
 
-def _validate(proposal: dict) -> dict:
+def _validate(proposal: dict, allowed_paths: set[str] | None = None) -> dict:
     if proposal.get("status") == "HOLD":
         return {
             "status": "HOLD",
@@ -112,6 +113,8 @@ def _validate(proposal: dict) -> dict:
         )
         if protected:
             raise ValueError(f"protected_patch_path:{path}")
+        if allowed_paths is not None and norm not in allowed_paths:
+            raise ValueError(f"patch_path_not_in_source_snapshot:{path}")
         if len(content.encode("utf-8")) > MAX_FILE_BYTES:
             raise ValueError(f"patch_too_large:{path}")
         clean.append({"path": norm, "content": content})
@@ -284,11 +287,13 @@ async def _propose(request: dict, env) -> dict:
             "sha": str(request.get("sha") or ""),
             "attempt": attempt,
             "failure": bounded_failure,
+            "allowed_patch_paths": sorted(bounded_source),
             "source_snapshot": bounded_source,
         },
         sort_keys=True,
     )
-    return _validate(await _call_gemini(prompt, env))
+    proposal = await _call_gemini(prompt, env)
+    return _validate(proposal, allowed_paths=set(bounded_source))
 
 
 
