@@ -124,16 +124,21 @@ jobs:
           # Cloudflare edge may briefly return a transient denial/not-ready response
           # immediately after deployment. Poll with a hard deadline; never treat a
           # persistent 403/503 as success.
+          import time
           health = None
           last_health = {}
-          for health_attempt in range(1, 25):
+          health_deadline = time.monotonic() + 120
+          health_attempt = 0
+          while time.monotonic() < health_deadline and health_attempt < 24:
+              health_attempt += 1
+              remaining = max(1, health_deadline - time.monotonic())
               health_req = urllib.request.Request(
                   base + "/healthz",
                   headers={"Accept": "application/json", "User-Agent": "try-deploy-smoke/1.0"},
                   method="GET",
               )
               try:
-                  with urllib.request.urlopen(health_req, timeout=20) as response:
+                  with urllib.request.urlopen(health_req, timeout=min(10, remaining)) as response:
                       health_status = response.status
                       health_headers = response.headers
                       health_raw = response.read(4096)
@@ -172,9 +177,9 @@ jobs:
               # responses are contract failures and should fail immediately.
               if health_status not in (0, 403, 429, 500, 502, 503, 504):
                   break
-              if health_attempt < 24:
-                  import time
-                  time.sleep(5)
+              remaining = health_deadline - time.monotonic()
+              if remaining > 0 and health_attempt < 24:
+                  time.sleep(min(5, remaining))
           if health is None:
               print("HEALTH_DIAGNOSTIC=" + json.dumps(last_health, sort_keys=True))
               raise AssertionError("worker_health_not_ready_after_120_seconds")
