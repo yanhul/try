@@ -65,6 +65,23 @@ def main():
     assert status == 200, (status, payload)
     assert payload.get("persisted") is True, payload
 
+    max_payload = {
+        "request_id": "runtime-stream-max",
+        "repository": "yanhul/try",
+        "sha": "b" * 40,
+        "attempt": 1,
+        "phase": "OBSERVE",
+        "state": "WORKING",
+        "padding": "",
+    }
+    max_base = json.dumps(max_payload, separators=(",", ":")).encode("utf-8")
+    max_payload["padding"] = "x" * (MAX_BODY - len(max_base))
+    exact_body = json.dumps(max_payload, separators=(",", ":")).encode("utf-8")
+    assert len(exact_body) == MAX_BODY, len(exact_body)
+    chunks = [exact_body[i:i + 16384] for i in range(0, len(exact_body), 16384)]
+    status, payload = request_chunked("/v1/repair/checkpoint", chunks)
+    assert status == 200, (status, payload)
+    assert payload.get("persisted") is True, payload
     oversized_id = "runtime-stream-oversized"
     oversized_prefix = (
         '{"request_id":"' + oversized_id + '","repository":"yanhul/try",'
