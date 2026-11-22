@@ -414,6 +414,10 @@ class Default(WorkerEntrypoint):
             body = await _read_bounded_json(request)
             response = await _propose(body, self.env)
             return Response.json(response, status=200)
+        except ValueError as exc:
+            reason = str(exc)
+            status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
+            return Response.json({"error": reason}, status=status)
         except RuntimeError as exc:
             message = str(exc)
             if message.startswith("gemini_quota_exhausted:"):
