@@ -102,7 +102,7 @@ jobs:
           request_id = f"deploy-{run_id}-{attempt}"
 
           def request(method, path, body=None, authenticated=True):
-              headers = {"Accept": "application/json"}
+              headers = {"Accept": "application/json", "User-Agent": "try-deploy-smoke/1.0"}
               if authenticated:
                   headers["Authorization"] = f"Bearer {token}"
               data = None
