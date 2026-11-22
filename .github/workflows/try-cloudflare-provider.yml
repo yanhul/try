@@ -34,7 +34,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - name: Start local Python Workers runtime
         run: |
-          printf 'TRY_PROVIDER_TOKEN=runtime-test-token\\n' > .dev.vars
+          printf 'TRY_PROVIDER_TOKEN=runtime-test-token\n' > .dev.vars
           uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
           echo $! > /tmp/try-worker-runtime.pid
       - name: Verify bounded streaming against workerd + Pyodide
