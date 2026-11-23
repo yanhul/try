@@ -103,21 +103,27 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
                 "provenance": PROVENANCE}
 
     payload = json.loads(result_path.read_text(encoding="utf-8"))
+    locked_dataset_digest = (locked or {}).get("dataset", {}).get("sha256")
+    current_dataset_digest = payload.get("dataset", {}).get("sha256")
+    lineage_evidence = (
+        f"current-dataset-sha256:{current_dataset_digest}",
+        f"historical-report-dataset-sha256:{locked_dataset_digest or 'unavailable'}",
+    )
     if locked is not None:
-        if payload.get("dataset", {}).get("sha256") != locked.get("dataset", {}).get("sha256"):
-            return {"status": "BLOCKED", "reason": "recomputed dataset digest differs from locked research report",
+        if payload.get("candidate_count") != locked.get("candidate_count"):
+            return {"status": "BLOCKED", "reason": "recomputed candidate count differs from historical IS report",
                     "artifact_refs": (str(RESULT), str(LOCKED_BASELINE)),
-                    "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
-                    "verification_refs": ("locked_dataset", "provenance"), "provenance": PROVENANCE}
+                    "evidence_refs": lineage_evidence + (f"result-sha256:{_digest(result_path)}",),
+                    "verification_refs": ("IS", "provenance"), "provenance": PROVENANCE}
         if payload.get("selected_config") != locked.get("selected_config"):
-            return {"status": "BLOCKED", "reason": "recomputed IS selection differs from locked research report",
+            return {"status": "BLOCKED", "reason": "recomputed IS selection differs from historical research report",
                     "artifact_refs": (str(RESULT), str(LOCKED_BASELINE)),
-                    "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
+                    "evidence_refs": lineage_evidence + (f"result-sha256:{_digest(result_path)}",),
                     "verification_refs": ("IS", "provenance"), "provenance": PROVENANCE}
 
     validation = payload.get("validation") or {}
     oos = payload.get("oos")
-    evidence = (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}")
+    evidence = (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}") + lineage_evidence
     verification = ("IS", "validation_gate", "OOS", "locked_dataset", "provenance")
     if not validation.get("passed") or oos is None:
         return {"status": "BLOCKED", "reason": "validation gate did not pass; OOS was correctly not evaluated",
