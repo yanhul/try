@@ -77,7 +77,7 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
         diagnostic = _record_failure(root, "candidate_resolution", str(exc))
         return {"status": "BLOCKED", "reason": str(exc), "artifact_refs": (diagnostic,),
                 "evidence_refs": (f"dataset-sha256:{_digest(data)}",),
-                "verification_refs": ("locked_dataset", "IS_candidate_lineage"), "provenance": PROVENANCE}
+                "verification_refs": ("locked_dataset", "IS"), "provenance": PROVENANCE}
 
     locked = None
     locked_path = root / LOCKED_BASELINE
@@ -108,12 +108,12 @@ def execute(*, problem: str, workdir: str | Path = ".") -> dict[str, Any]:
             return {"status": "BLOCKED", "reason": "recomputed dataset digest differs from locked research report",
                     "artifact_refs": (str(RESULT), str(LOCKED_BASELINE)),
                     "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
-                    "verification_refs": ("locked_dataset", "artifact_lineage"), "provenance": PROVENANCE}
+                    "verification_refs": ("locked_dataset", "provenance"), "provenance": PROVENANCE}
         if payload.get("selected_config") != locked.get("selected_config"):
             return {"status": "BLOCKED", "reason": "recomputed IS selection differs from locked research report",
                     "artifact_refs": (str(RESULT), str(LOCKED_BASELINE)),
                     "evidence_refs": (f"dataset-sha256:{_digest(data)}", f"result-sha256:{_digest(result_path)}"),
-                    "verification_refs": ("IS_selection", "artifact_lineage"), "provenance": PROVENANCE}
+                    "verification_refs": ("IS", "provenance"), "provenance": PROVENANCE}
 
     validation = payload.get("validation") or {}
     oos = payload.get("oos")
