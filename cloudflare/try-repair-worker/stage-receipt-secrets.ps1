@@ -52,14 +52,12 @@ $payload = @{
     TRY_OPERATION_RECEIPT_KEY_ID = $keyId
 } | ConvertTo-Json -Compress
 
-$tempPath = Join-Path ([IO.Path]::GetTempPath()) ("try-receipt-secrets-" + [Guid]::NewGuid().ToString("N") + ".json")
+$tempDirectory = Join-Path ([IO.Path]::GetTempPath()) ("try-receipt-secrets-" + [Guid]::NewGuid().ToString("N"))
+$tempPath = Join-Path $tempDirectory "secrets.json"
 
-try {
-    [IO.File]::WriteAllText($tempPath, $payload, (New-Object System.Text.UTF8Encoding($false)))
-
-    # Restrict the temporary plaintext secret file to the current Windows identity.
+function Set-CurrentUserOnlyAcl([string]$Path) {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent().Name
-    $acl = Get-Acl -LiteralPath $tempPath
+    $acl = Get-Acl -LiteralPath $Path
     $acl.SetAccessRuleProtection($true, $false)
     $rule = New-Object Security.AccessControl.FileSystemAccessRule(
         $identity,
@@ -67,7 +65,18 @@ try {
         [Security.AccessControl.AccessControlType]::Allow
     )
     $acl.SetAccessRule($rule)
-    Set-Acl -LiteralPath $tempPath -AclObject $acl
+    Set-Acl -LiteralPath $Path -AclObject $acl
+}
+
+try {
+    # Create and lock the directory before any plaintext secret file exists.
+    New-Item -ItemType Directory -Path $tempDirectory -ErrorAction Stop | Out-Null
+    Set-CurrentUserOnlyAcl -Path $tempDirectory
+
+    # Create an empty file, lock its ACL, and only then write secret material.
+    New-Item -ItemType File -Path $tempPath -ErrorAction Stop | Out-Null
+    Set-CurrentUserOnlyAcl -Path $tempPath
+    [IO.File]::WriteAllText($tempPath, $payload, (New-Object System.Text.UTF8Encoding($false)))
 
     Write-Host "Staging TRY receipt signing secrets for Worker '$WorkerName'..."
     Write-Host "The secret values are not placed in command-line arguments."
@@ -80,8 +89,8 @@ try {
     Write-Host "Review the returned version ID. Do not deploy until all required secrets and runtime checks pass."
 }
 finally {
-    if (Test-Path -LiteralPath $tempPath) {
-        Remove-Item -LiteralPath $tempPath -Force
+    if (Test-Path -LiteralPath $tempDirectory) {
+        Remove-Item -LiteralPath $tempDirectory -Recurse -Force
     }
     $payload = $null
     $privateKeyB64 = $null
