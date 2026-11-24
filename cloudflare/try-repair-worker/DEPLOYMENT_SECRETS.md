@@ -20,19 +20,22 @@ paste them into GitHub issues/PRs, or place them in Wrangler `vars`.
 ## Stage the receipt secrets without deploying
 
 From `cloudflare/try-repair-worker`, after authenticating Wrangler to the intended
-Cloudflare account, run these commands separately:
+Cloudflare account, use the local staging helper:
 
 ```powershell
-npx wrangler versions secret put TRY_OPERATION_RECEIPT_PRIVATE_KEY --name try-aios-repair-provider
-npx wrangler versions secret put TRY_OPERATION_RECEIPT_KEY_ID --name try-aios-repair-provider
+.\stage-receipt-secrets.ps1 -Stage
 ```
 
-Wrangler prompts for each value. Enter the locally generated base64 PKCS#8 DER
-private-key value only into the private-key prompt, and the matching key ID into
-the second prompt. Do not put either value on the command line.
+It reads the private key and matching key ID from
+`%USERPROFILE%\\.aios-secure-keys`, validates their encodings, writes a short-lived
+temporary JSON file restricted to the current Windows identity, invokes
+`wrangler versions secret bulk`, and deletes the temporary file in a `finally`
+block. Secret values are not placed in process arguments or printed by the script.
+The helper requires an authenticated Wrangler session and the locally installed
+Wrangler version to support `versions secret bulk`.
 
-These commands stage Worker versions; they do not activate them. Record the returned
-version IDs privately. Do not run `wrangler versions deploy` until all four required
+The command stages a Worker version; it does not activate it. Record the returned
+version ID privately. Do not run `wrangler versions deploy` until all four required
 secrets have been confirmed present and the staged version has been reviewed.
 
 If your installed Wrangler does not support `versions secret put`, stop and inspect
