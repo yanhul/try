@@ -27,7 +27,7 @@ Cloudflare account, use the local staging helper:
 ```
 
 It reads the private key and matching key ID from
-`%USERPROFILE%\\.aios-secure-keys`, validates their encodings, writes a short-lived
+`%USERPROFILE%\.aios-secure-keys`, validates their encodings, writes a short-lived
 temporary JSON file restricted to the current Windows identity, invokes
 `wrangler versions secret bulk`, and deletes the temporary file in a `finally`
 block. Secret values are not placed in process arguments or printed by the script.
