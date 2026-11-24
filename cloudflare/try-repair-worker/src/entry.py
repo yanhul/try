@@ -578,11 +578,26 @@ class Default(WorkerEntrypoint):
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
-            operation_receipt_signing_configured = (
-                isinstance(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""), str)
-                and _valid_operation_receipt_private_key(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""))
-                and bool(getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", ""))
-            )
+            receipt_private_key = getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", "")
+            receipt_key_id = getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
+            operation_receipt_signing_configured = False
+            if (
+                isinstance(receipt_private_key, str)
+                and _valid_operation_receipt_private_key(receipt_private_key)
+                and isinstance(receipt_key_id, str)
+                and bool(receipt_key_id.strip())
+            ):
+                try:
+                    # Readiness must exercise the same platform crypto import and
+                    # signing path used by receipts, not merely inspect Base64 length.
+                    probe = await _ed25519_sign(
+                        receipt_private_key, b"TRY_OPERATION_RECEIPT_READINESS_PROBE_V1"
+                    )
+                    operation_receipt_signing_configured = (
+                        len(base64.b64decode(probe, validate=True)) == 64
+                    )
+                except Exception:
+                    operation_receipt_signing_configured = False
             raw_key = getattr(self.env, "GEMINI_API_KEY", "")
             raw_model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             if (
