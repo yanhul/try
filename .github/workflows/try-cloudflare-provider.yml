@@ -45,6 +45,7 @@ jobs:
               f.write('TRY_PROVIDER_TOKEN=runtime-test-token\n')
               f.write('GEMINI_API_KEY=\n')
               f.write('GEMINI_MODEL=gemini-3.1-flash-lite\n')
+              f.write('TRY_DEBUG_ERRORS=1\n')
               f.write('TRY_OPERATION_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
               f.write('TRY_OPERATION_RECEIPT_KEY_ID=runtime-ed25519-test-v1\n')
           with open('/tmp/try-operation-receipt-public-key.b64', 'w', encoding='ascii') as f:
