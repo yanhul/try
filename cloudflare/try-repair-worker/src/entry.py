@@ -7,8 +7,9 @@ an untrusted schema-2 proposal.
 from __future__ import annotations
 
 import asyncio
+import base64
+import binascii
 import hashlib
-import hmac
 import json
 import re
 import time
@@ -39,11 +40,52 @@ def _canonical_json(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False)
 
 
-def _operation_receipt(record, env):
+def _valid_operation_receipt_private_key(value):
+    if not isinstance(value, str) or not value:
+        return False
+    try:
+        return len(base64.b64decode(value, validate=True)) >= 48
+    except (ValueError, binascii.Error):
+        return False
+
+
+async def _ed25519_sign(private_key_b64, message):
+    """Sign with the Worker platform's WebCrypto Ed25519 implementation.
+
+    The CPython fallback exists only for deterministic unit tests; deployed
+    Workers always use WebCrypto and never load a Python private-key library.
+    The secret is a base64-encoded PKCS#8 Ed25519 private key.
+    """
+    try:
+        from js import crypto, Uint8Array
+    except ImportError:  # CPython test runner only
+        from cryptography.hazmat.primitives import serialization
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+        raw = base64.b64decode(private_key_b64, validate=True)
+        key = serialization.load_der_private_key(raw, password=None)
+        if not isinstance(key, Ed25519PrivateKey):
+            raise RuntimeError("operation_receipt_private_key_not_ed25519")
+        return base64.b64encode(key.sign(message)).decode("ascii")
+
+    raw = base64.b64decode(private_key_b64, validate=True)
+    key = await crypto.subtle.importKey(
+        "pkcs8", Uint8Array.new(list(raw)), {"name": "Ed25519"}, False, ["sign"]
+    )
+    signature = await crypto.subtle.sign(
+        {"name": "Ed25519"}, key, Uint8Array.new(list(message))
+    )
+    return base64.b64encode(bytes(int(value) for value in signature)).decode("ascii")
+
+
+async def _operation_receipt(record, env):
     """Sign the durable operation state; bearer transport auth is not receipt trust."""
-    secret = getattr(env, "TRY_OPERATION_RECEIPT_SECRET", "")
+    private_key = getattr(env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", "")
     key_id = getattr(env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
-    if not isinstance(secret, str) or len(secret) < 32 or not isinstance(key_id, str) or not key_id.strip():
+    try:
+        decoded_key = base64.b64decode(private_key, validate=True) if isinstance(private_key, str) else b""
+    except (ValueError, binascii.Error):
+        decoded_key = b""
+    if len(decoded_key) < 48 or not isinstance(key_id, str) or not key_id.strip():
         raise RuntimeError("operation_receipt_signing_not_configured")
     state = record.get("state")
     if state == "COMPLETED":
@@ -56,7 +98,7 @@ def _operation_receipt(record, env):
     body = {
         "type": OPERATION_RECEIPT_TYPE, "issuer": OPERATION_RECEIPT_ISSUER,
         "key_id": key_id.strip(),
-        "receipt_id": "TR-" + hashlib.sha256(
+"receipt_id": "TR-" + hashlib.sha256(
             f"{record['request_id']}:{record['request_digest']}:{state}:{issued_at}".encode("utf-8")
         ).hexdigest()[:32],
         "request_id": record["request_id"], "request_digest": record["request_digest"],
@@ -66,11 +108,13 @@ def _operation_receipt(record, env):
         "proposal_digest": hashlib.sha256(_canonical_json(record["proposal"]).encode("utf-8")).hexdigest()
             if status == "COMPLETED" else None,
         "issued_at": float(issued_at), "expires_at": float(issued_at) + OPERATION_RECEIPT_TTL_SECONDS,
-        "algorithm": "HMAC-SHA256",
+        "algorithm": "Ed25519",
     }
     signed = {key: body[key] for key in OPERATION_RECEIPT_SIGNED_FIELDS}
-    body["signature"] = hmac.new(secret.encode("utf-8"), _canonical_json(signed).encode("utf-8"), hashlib.sha256).hexdigest()
+    message = _canonical_json(signed).encode("utf-8")
+    body["signature"] = await _ed25519_sign(private_key, message)
     return body
+
 GITHUB_REPOSITORY_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?/[A-Za-z0-9](?:[A-Za-z0-9._-]{0,98}[A-Za-z0-9])?$")
 DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
@@ -154,7 +198,7 @@ def _validate(proposal: dict, allowed_paths: set[str] | None = None) -> dict:
         if any(part in {"", "."} for part in parts) or norm.endswith("/"):
             raise ValueError(f"ambiguous_patch_path:{path}")
         protected = (
-            norm.startswith("/")
+norm.startswith("/")
             or ".." in parts
             or any(norm == p.rstrip("/") or norm.startswith(p) for p in DENIED_PREFIXES)
             or norm in DENIED_NAMES
@@ -254,7 +298,7 @@ async def _read_bounded_json(request) -> dict:
         raise ValueError("request_body_missing")
     reader = body.getReader()
     raw_body = bytearray()
-    try:
+try:
         while True:
             result = await reader.read()
             if result.done:
@@ -354,7 +398,7 @@ _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
     "OBSERVE": ("DECIDE",), "DECIDE": ("PROPOSE",),
     "PROPOSE": ("VERIFY",), "VERIFY": ("PERSIST",),
-    "PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
+"PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
 }
 
 
@@ -454,7 +498,7 @@ class RepairCheckpoint(DurableObject):
     async def write_checkpoint(self, item):
         if not isinstance(item, dict):
             return {"_http_status": 400, "error": "invalid_record"}
-        request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
+request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
         attempt, phase, state = item.get("attempt"), item.get("phase"), item.get("state")
         digest, reason = item.get("evidence_digest"), item.get("reason")
         if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
@@ -523,8 +567,8 @@ class Default(WorkerEntrypoint):
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
             operation_receipt_signing_configured = (
-                isinstance(getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", ""), str)
-                and len(getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", "")) >= 32
+                isinstance(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""), str)
+                and _valid_operation_receipt_private_key(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""))
                 and bool(getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", ""))
             )
             raw_key = getattr(self.env, "GEMINI_API_KEY", "")
@@ -554,7 +598,7 @@ class Default(WorkerEntrypoint):
                     "provider_token_configured": True,
                     "operation_receipt_signing_configured": True,
                 }
-            )
+)
 
         expected = getattr(self.env, "TRY_PROVIDER_TOKEN", "")
         supplied = request.headers.get("Authorization", "")
@@ -611,7 +655,7 @@ class Default(WorkerEntrypoint):
                 record = await stub.read_proposal(request_id)
                 if record is None:
                     return Response.json({"error": "proposal_operation_not_found"}, status=404)
-                receipt = _operation_receipt(record, self.env)
+                receipt = await _operation_receipt(record, self.env)
                 if receipt["status"] == "COMPLETED":
                     return Response.json({"status": "COMPLETED", "request_id": request_id,
                                           "request_digest": record.get("request_digest"),
@@ -634,9 +678,9 @@ class Default(WorkerEntrypoint):
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
 
-        receipt_secret = getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", "")
+        receipt_private_key = getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", "")
         receipt_key_id = getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
-        if not isinstance(receipt_secret, str) or len(receipt_secret) < 32 or not isinstance(receipt_key_id, str) or not receipt_key_id.strip():
+        if not _valid_operation_receipt_private_key(receipt_private_key) or not isinstance(receipt_key_id, str) or not receipt_key_id.strip():
             return Response.json({"error": "operation_receipt_signing_not_configured"}, status=503)
 
         try:
@@ -654,7 +698,7 @@ class Default(WorkerEntrypoint):
                 # Preserve the established schema-2 proposal response for old
                 # AIOS clients. The operation ledger remains independently
                 # readable through GET /v1/repair/proposal/{request_id}.
-                return Response.json(result["proposal"], status=200, headers={
+return Response.json(result["proposal"], status=200, headers={
                     "X-TRY-Operation-Status": "COMPLETED",
                     "X-TRY-Request-Digest": result["request_digest"],
                     "X-TRY-Idempotent-Replay": str(bool(result.get("idempotent_replay"))).lower(),
