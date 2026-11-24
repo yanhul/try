@@ -52,6 +52,15 @@ def wait_for_worker():
 
 def main():
     wait_for_worker()
+    import urllib.error
+    import urllib.request
+    try:
+        with urllib.request.urlopen(f"http://{HOST}:{PORT}/healthz", timeout=5) as response:
+            health_payload = json.loads(response.read())
+    except urllib.error.HTTPError as exc:
+        health_payload = json.loads(exc.read())
+    assert health_payload.get("operation_receipt_signing_configured") is True, health_payload
+
     valid = {
         "request_id": "runtime-stream-valid",
         "repository": "yanhul/try",
@@ -133,16 +142,8 @@ def main():
     assert receipt.get("algorithm") == "Ed25519", receipt
     assert receipt.get("status") == "FAILED", receipt
     assert receipt.get("execution_state") == "NOT_SUBMITTED", receipt
-    signed_fields = (
-        "type", "issuer", "key_id", "receipt_id", "request_id", "request_digest",
-        "repository", "sha", "attempt", "status", "execution_state", "failure_code",
-        "proposal_digest", "issued_at", "expires_at", "algorithm",
-    )
-    signed = {key: receipt[key] for key in signed_fields}
-    canonical = json.dumps(signed, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode("utf-8")
     with open("/tmp/try-operation-receipt-public-key.b64", encoding="ascii") as f:
         public_key_b64 = f.read().strip()
-    public_key = base64.b64decode(public_key_b64, validate=True)
     signature = base64.b64decode(receipt["signature"], validate=True)
     assert len(signature) == 64, len(signature)
 
