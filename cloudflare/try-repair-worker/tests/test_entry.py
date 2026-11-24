@@ -137,6 +137,16 @@ class HealthCheckTests(unittest.TestCase):
         self.assertEqual(result["status"], "NOT_READY")
         self.assertFalse(result["operation_receipt_signing_configured"])
 
+    def test_health_not_ready_when_receipt_key_cannot_be_imported(self):
+        env = _Env()
+        # Valid Base64 and sufficient length, but not a DER Ed25519 private key.
+        env.TRY_OPERATION_RECEIPT_PRIVATE_KEY = base64.b64encode(b"x" * 48).decode("ascii")
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["operation_receipt_signing_configured"])
+
     def test_health_ready_only_when_required_bindings_exist(self):
         env = _Env()
         instance = entry.Default()
@@ -145,6 +155,7 @@ class HealthCheckTests(unittest.TestCase):
         self.assertEqual(result["status"], "READY")
         self.assertTrue(result["provider_token_configured"])
         self.assertTrue(result["checkpoint_store_bound"])
+        self.assertTrue(result["operation_receipt_signing_configured"])
 
 
 class BoundedBodyTests(unittest.TestCase):
