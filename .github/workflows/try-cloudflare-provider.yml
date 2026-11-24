@@ -20,6 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
+      - name: Worker conformance tests
+        run: uv run python -m unittest discover -s tests -v
   worker-runtime-streaming:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -98,9 +100,6 @@ jobs:
           printf '%s' "$TRY_OPERATION_RECEIPT_KEY_ID" | uv run pywrangler secret put TRY_OPERATION_RECEIPT_KEY_ID
       - name: Deploy Worker
         run: uv run pywrangler deploy
-      - name: Worker conformance tests
-        run: uv run python -m unittest discover -s tests -v
-
       - name: Smoke test
         env:
           WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
