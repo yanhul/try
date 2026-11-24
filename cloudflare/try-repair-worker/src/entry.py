@@ -7,6 +7,7 @@ an untrusted schema-2 proposal.
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import re
 from urllib.parse import urlparse
@@ -147,7 +148,7 @@ async def _call_gemini(prompt: str, env) -> dict:
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": prompt},
         ],
-        "max_tokens": 6000,
+"max_tokens": 6000,
         "response_format": {"type": "json_object"},
     }
 
@@ -294,9 +295,6 @@ async def _propose(request: dict, env) -> dict:
     )
     proposal = await _call_gemini(prompt, env)
     return _validate(proposal, allowed_paths=set(bounded_source))
-
-
-
 CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
 CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
 _CHECKPOINT_REQUEST_ID = REQUEST_ID_RE
@@ -314,9 +312,90 @@ class RepairCheckpoint(DurableObject):
     def __init__(self, ctx, env):
         self.ctx = ctx
         self.env = env
+        self._proposal_lock = asyncio.Lock()
 
     async def read_checkpoint(self):
         return await self.ctx.storage.get("record")
+
+    async def read_proposal(self, request_id):
+        return await self.ctx.storage.get("proposal:" + request_id)
+
+    async def run_proposal(self, request):
+        """Execute one Gemini proposal per immutable request identity.
+
+        The IN_PROGRESS record is committed before the provider call. A replay
+        returns the cached terminal result or UNKNOWN; it never starts a second
+        Gemini call for the same request_id. A crash between provider response
+        and result persistence deliberately remains UNKNOWN.
+        """
+        if not isinstance(request, dict):
+            return {"_http_status": 400, "error": "request_not_object"}
+        request_id = request.get("request_id")
+        repository = request.get("repository")
+        sha = request.get("sha")
+        attempt = request.get("attempt")
+        if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
+            return {"_http_status": 400, "error": "request_id_invalid"}
+        if not isinstance(repository, str) or not GITHUB_REPOSITORY_RE.fullmatch(repository):
+            return {"_http_status": 400, "error": "repository_invalid"}
+        if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+            return {"_http_status": 400, "error": "sha_invalid"}
+        if isinstance(attempt, bool) or not isinstance(attempt, int) or not 1 <= attempt <= 20:
+            return {"_http_status": 400, "error": "request_attempt_invalid"}
+        if not isinstance(request.get("failure"), dict):
+            return {"_http_status": 400, "error": "failure_missing"}
+        try:
+            _normalize_source_snapshot(request.get("source_snapshot"))
+            encoded = json.dumps(request, sort_keys=True, separators=(",", ":"), allow_nan=False)
+        except (TypeError, ValueError) as exc:
+            return {"_http_status": 400, "error": str(exc) or "request_invalid"}
+        request_digest = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+        key = "proposal:" + request_id
+
+        async with self._proposal_lock:
+            prior = await self.ctx.storage.get(key)
+            if prior is not None:
+                identity = (prior.get("repository"), prior.get("sha"), prior.get("attempt"), prior.get("request_digest"))
+                expected = (repository, sha.lower(), attempt, request_digest)
+                if identity != expected:
+                    return {"_http_status": 409, "error": "proposal_request_identity_conflict"}
+                if prior.get("state") == "COMPLETED":
+                    return {"_http_status": 200, "status": "COMPLETED", "request_id": request_id,
+                            "request_digest": request_digest, "proposal": prior["proposal"], "idempotent_replay": True}
+                if prior.get("state") == "FAILED":
+                    return {"_http_status": 200, "status": "FAILED", "request_id": request_id,
+                            "request_digest": request_digest, "failure_code": prior.get("failure_code"),
+                            "retry_allowed": False, "idempotent_replay": True}
+                return {"_http_status": 202, "status": "UNKNOWN", "execution_state": "IN_PROGRESS",
+                        "request_id": request_id, "request_digest": request_digest,
+                        "retry_allowed": False, "reason": "original_provider_call_has_no_terminal_record"}
+
+            record = {"schema": 1, "request_id": request_id, "repository": repository,
+                      "sha": sha.lower(), "attempt": attempt, "request_digest": request_digest,
+                      "state": "IN_PROGRESS"}
+            await self.ctx.storage.put(key, record)
+            try:
+                proposal = await _propose(request, self.env)
+                # Keep the durable result bounded so it fits one DO storage value.
+                result_json = json.dumps(proposal, sort_keys=True, separators=(",", ":"), allow_nan=False)
+                if len(result_json.encode("utf-8")) > MAX_BODY:
+                    raise RuntimeError("proposal_result_too_large")
+                completed = {**record, "state": "COMPLETED", "proposal": proposal}
+                await self.ctx.storage.put(key, completed)
+                return {"_http_status": 200, "status": "COMPLETED", "request_id": request_id,
+                        "request_digest": request_digest, "proposal": proposal, "idempotent_replay": False}
+            except Exception as exc:
+                message = str(exc)
+                # Only explicit provider-side rejection/protocol termination is
+                # terminal. Transport errors and upstream 5xx stay IN_PROGRESS
+                # because the provider may have processed the request.
+                terminal = (message.startswith(("gemini_quota_exhausted:", "gemini_protocol_error:",
+                                                 "provider_not_configured:", "provider_model_not_configured:"))
+                            or re.match(r"^gemini_http_4[0-9]{2}$", message) is not None)
+                if terminal:
+                    failed = {**record, "state": "FAILED", "failure_code": message.split(":", 1)[0]}
+                    await self.ctx.storage.put(key, failed)
+                raise
 
     async def write_checkpoint(self, item):
         if not isinstance(item, dict):
@@ -366,7 +445,7 @@ class RepairCheckpoint(DurableObject):
             if attempt == old_attempt:
                 if phase != prior.get("phase") and phase not in _CHECKPOINT_NEXT.get(prior.get("phase"), ()):
                     return {"_http_status": 409, "error": "invalid_phase_transition"}
-                if prior.get("state") == "BLOCKED" and not (phase == "RESUME" and state == "WORKING"):
+if prior.get("state") == "BLOCKED" and not (phase == "RESUME" and state == "WORKING"):
                     return {"_http_status": 409, "error": "blocked_checkpoint_requires_resume"}
                 if state == "DONE" and prior.get("phase") != "PERSIST" and phase != "PERSIST":
                     return {"_http_status": 409, "error": "done_requires_persist_phase"}
@@ -457,17 +536,66 @@ class Default(WorkerEntrypoint):
             except Exception as exc:
                 return Response.json({"error": "checkpoint_read_failed", "reason": type(exc).__name__}, status=503)
 
+        proposal_prefix = "/v1/repair/proposal/"
+        if request.method == "GET" and path.startswith(proposal_prefix):
+            request_id = path[len(proposal_prefix):]
+            if not REQUEST_ID_RE.fullmatch(request_id):
+                return Response.json({"error": "request_id_invalid"}, status=400)
+            namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
+            if namespace is None:
+                return Response.json({"error": "operation_store_not_configured"}, status=503)
+            try:
+                stub = namespace.get(namespace.idFromName(request_id))
+                record = await stub.read_proposal(request_id)
+                if record is None:
+                    return Response.json({"error": "proposal_operation_not_found"}, status=404)
+                if record.get("state") == "COMPLETED":
+                    return Response.json({"status": "COMPLETED", "request_id": request_id,
+                                          "request_digest": record.get("request_digest"),
+                                          "proposal": record.get("proposal")}, status=200)
+                if record.get("state") == "FAILED":
+                    return Response.json({"status": "FAILED", "request_id": request_id,
+                                          "request_digest": record.get("request_digest"),
+                                          "failure_code": record.get("failure_code"),
+                                          "retry_allowed": False}, status=200)
+                return Response.json({"status": "UNKNOWN", "execution_state": "IN_PROGRESS",
+                                      "request_id": request_id,
+                                      "request_digest": record.get("request_digest"),
+                                      "retry_allowed": False}, status=202)
+            except Exception as exc:
+                return Response.json({"error": "proposal_operation_read_failed",
+                                      "reason": type(exc).__name__}, status=503)
+
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
 
         try:
             body = await _read_bounded_json(request)
-            response = await _propose(body, self.env)
-            return Response.json(response, status=200)
+            request_id = body.get("request_id")
+            if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
+                return Response.json({"error": "request_id_invalid"}, status=400)
+            namespace = getattr(self.env, "REPAIR_CHECKPOINTS", None)
+            if namespace is None:
+                return Response.json({"error": "operation_store_not_configured"}, status=503)
+            stub = namespace.get(namespace.idFromName(request_id))
+            result = await stub.run_proposal(body)
+            status = int(result.pop("_http_status", 500))
+            if status == 200 and result.get("status") == "COMPLETED":
+                # Preserve the established schema-2 proposal response for old
+                # AIOS clients. The operation ledger remains independently
+                # readable through GET /v1/repair/proposal/{request_id}.
+                return Response.json(result["proposal"], status=200, headers={
+                    "X-TRY-Operation-Status": "COMPLETED",
+                    "X-TRY-Request-Digest": result["request_digest"],
+                    "X-TRY-Idempotent-Replay": str(bool(result.get("idempotent_replay"))).lower(),
+                })
+            if status == 200 and result.get("status") == "FAILED":
+                return Response.json(result, status=409)
+            return Response.json(result, status=status)
         except ValueError as exc:
             reason = str(exc)
             status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
-            return Response.json({"error": reason}, status=status)
+return Response.json({"error": reason}, status=status)
         except RuntimeError as exc:
             message = str(exc)
             if message.startswith("gemini_quota_exhausted:"):
@@ -535,15 +663,4 @@ class Default(WorkerEntrypoint):
                     "reason": type(exc).__name__,
                 },
                 status=500,
-            )
-        except Exception as exc:
-            return Response.json(
-                {
-                    "status": "PROVIDER_INTERNAL_ERROR",
-                    "provider": "gemini",
-                    "http_status": 500,
-                    "reason": type(exc).__name__,
-                },
-                status=500,
-                headers={"Retry-After": "2"},
             )

@@ -148,7 +148,7 @@ class BoundedBodyTests(unittest.TestCase):
     def test_declared_oversize_is_rejected_before_stream_read(self):
         request = self.Request("{}", entry.MAX_BODY + 1)
         with self.assertRaisesRegex(ValueError, "body_too_large"):
-            asyncio.run(entry._read_bounded_json(request))
+asyncio.run(entry._read_bounded_json(request))
         self.assertEqual(request.body.reader.read_count, 0)
 
     def test_exact_max_body_size_is_accepted(self):
@@ -298,7 +298,7 @@ class WorkerValidationTests(unittest.TestCase):
         ):
             self.assertRejects(path)
         for path in (
-            "vendor/.git/config",
+"vendor/.git/config",
             "pkg/.aios/policy.py",
             "pkg/.github/workflows/x.yml",
             "pkg/secrets/key.txt",
@@ -447,8 +447,7 @@ class GeminiRetryTests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
     def test_transient_503_retries_then_succeeds(self):
         calls = []
-
-        async def fake_fetch(*args, **kwargs):
+async def fake_fetch(*args, **kwargs):
             calls.append(1)
             if len(calls) < 3:
                 return _Response(503, detail="temporary")
@@ -558,6 +557,108 @@ class DurableCheckpointTests(unittest.TestCase):
         self.assertEqual(resumed["version"], 3)
 
 
+class DurableProposalOperationTests(unittest.TestCase):
+    def setUp(self):
+        self.ctx = _FakeContext()
+        self.operation = entry.RepairCheckpoint(self.ctx, _Env())
+        self.request = {
+            "request_id": "proposal-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {"ci_failure_log_tail": "failed"},
+            "source_snapshot": {"core/example.py": "def value(): return 1"},
+        }
+
+    def test_completed_proposal_is_cached_and_replay_never_calls_provider_twice(self):
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2, "files": [{"path": "core/example.py", "content": "fixed"}]}
+        entry._propose = fake_propose
+        try:
+            first = asyncio.run(self.operation.run_proposal(self.request))
+            second = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(first["status"], "COMPLETED")
+        self.assertFalse(first["idempotent_replay"])
+        self.assertTrue(second["idempotent_replay"])
+        self.assertEqual(first["proposal"], second["proposal"])
+        self.assertEqual(calls, [1])
+
+    def test_in_progress_operation_is_unknown_and_never_reissued(self):
+        digest = __import__("hashlib").sha256(
+            __import__("json").dumps(self.request, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
+        asyncio.run(self.ctx.storage.put("proposal:proposal-1", {
+            "schema": 1, "request_id": "proposal-1", "repository": "yanhul/try",
+            "sha": "a" * 40, "attempt": 1, "request_digest": digest, "state": "IN_PROGRESS",
+        }))
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["_http_status"], 202)
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(calls, [])
+
+    def test_request_id_cannot_be_reused_for_different_payload(self):
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            asyncio.run(self.operation.run_proposal(self.request))
+            changed = dict(self.request, sha="b" * 40)
+            result = asyncio.run(self.operation.run_proposal(changed))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["_http_status"], 409)
+        self.assertEqual(result["error"], "proposal_request_identity_conflict")
+        self.assertEqual(calls, [1])
+
+    def test_transport_error_remains_unknown_and_cannot_be_replayed(self):
+        calls = []
+        original = entry._propose
+        async def fail(*args):
+            calls.append(1)
+            raise OSError("connection lost after request")
+        entry._propose = fail
+        try:
+            with self.assertRaises(OSError):
+                asyncio.run(self.operation.run_proposal(self.request))
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertEqual(calls, [1])
+
+    def test_explicit_provider_rejection_is_terminal_but_not_auto_retried(self):
+        calls = []
+        original = entry._propose
+        async def fail(*args):
+            calls.append(1)
+            raise RuntimeError("gemini_quota_exhausted:429")
+        entry._propose = fail
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_quota_exhausted"):
+                asyncio.run(self.operation.run_proposal(self.request))
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["status"], "FAILED")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(calls, [1])
+
+
 class EndpointAdmissionTests(unittest.TestCase):
     class Request:
         method = "POST"
@@ -584,6 +685,13 @@ class EndpointAdmissionTests(unittest.TestCase):
                 async def write_checkpoint(self, body):
                     namespace.write_count += 1
                     return {"_http_status": 200, "persisted": True}
+                async def run_proposal(self, body):
+                    namespace.proposal_count = getattr(namespace, "proposal_count", 0) + 1
+                    proposal = await entry._propose(body, namespace.env)
+                    return {"_http_status": 200, "status": "COMPLETED", "request_digest": "a" * 64,
+                            "idempotent_replay": False, "proposal": proposal}
+                async def read_proposal(self, request_id):
+                    return getattr(namespace, "proposal_record", None)
             return Stub()
 
     def setUp(self):
@@ -592,7 +700,13 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.worker.env = self.env
 
     def test_propose_chunked_body_without_content_length_reaches_provider(self):
-        request = self.Request("/v1/repair/propose", '{"request_id":"req-1"}')
+        namespace = self.Namespace()
+        namespace.env = self.env
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/propose", json.dumps({
+            "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }))
         calls = []
         original = entry._propose
         async def fake_propose(*args):
@@ -605,6 +719,7 @@ class EndpointAdmissionTests(unittest.TestCase):
             entry._propose = original
         self.assertEqual(result["schema"], 2)
         self.assertEqual(calls, [1])
+        self.assertEqual(namespace.proposal_count, 1)
 
     def test_propose_oversized_chunked_body_stops_before_provider(self):
         request = self.Request("/v1/repair/propose", "x" * (entry.MAX_BODY + 1))
@@ -621,6 +736,43 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(result["error"], "body_too_large")
         self.assertEqual(calls, [])
         self.assertTrue(request.body.reader.cancelled)
+
+    def test_proposal_lookup_returns_cached_completed_result(self):
+        namespace = self.Namespace()
+        namespace.proposal_record = {
+            "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
+            "state": "COMPLETED", "proposal": {"schema": 2, "files": [{"path": "core/a.py", "content": "x"}]},
+        }
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/proposal/req-1", method="GET")
+        original_response = entry.Response
+        entry.Response = ProviderFailureMappingTests.StatusResponse
+try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry.Response = original_response
+        self.assertEqual(result["_status"], 200)
+        self.assertEqual(result["status"], "COMPLETED")
+        self.assertEqual(result["proposal"]["schema"], 2)
+
+    def test_proposal_lookup_returns_unknown_for_durable_in_progress_record(self):
+        namespace = self.Namespace()
+        namespace.proposal_record = {
+            "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
+            "state": "IN_PROGRESS",
+        }
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/proposal/req-1", method="GET")
+        original_response = entry.Response
+        entry.Response = ProviderFailureMappingTests.StatusResponse
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry.Response = original_response
+        self.assertEqual(result["_status"], 202)
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(namespace.lookup_count, 1)
 
     def test_checkpoint_chunked_body_without_content_length_persists(self):
         namespace = self.Namespace()
@@ -673,8 +825,14 @@ class ProviderFailureMappingTests(unittest.TestCase):
     def _fetch(self, error):
         worker = entry.Default()
         worker.env = _Env()
+        namespace = EndpointAdmissionTests.Namespace()
+        namespace.env = worker.env
+        worker.env.REPAIR_CHECKPOINTS = namespace
         request = EndpointAdmissionTests.Request(
-            "/v1/repair/propose", '{"request_id":"req-1"}'
+            "/v1/repair/propose", json.dumps({
+                "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+                "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+            })
         )
         original_response = entry.Response
         original_propose = entry._propose
@@ -707,20 +865,8 @@ class ProviderReadinessErrorMappingTests(unittest.TestCase):
                 return {"_status": status, **payload}
         worker = entry.Default()
         worker.env = _Env()
+        namespace = EndpointAdmissionTests.Namespace()
+        namespace.env = worker.env
+        worker.env.REPAIR_CHECKPOINTS = namespace
         request = EndpointAdmissionTests.Request(
-            "/v1/repair/propose", '{"request_id":"req-1"}'
-        )
-        original_response = entry.Response
-        original_propose = entry._propose
-        async def fail_model(*args):
-            raise RuntimeError("provider_model_not_configured:GEMINI")
-        entry.Response = StatusResponse
-        entry._propose = fail_model
-        try:
-            result = asyncio.run(worker.fetch(request))
-        finally:
-            entry.Response = original_response
-            entry._propose = original_propose
-        self.assertEqual(result["_status"], 503)
-        self.assertEqual(result["status"], "PROVIDER_NOT_READY")
-        self.assertEqual(result["reason"], "provider_model_not_configured")
+            "/v1/repair/propose", json.dumps({

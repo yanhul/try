@@ -12,7 +12,8 @@ The Worker never mutates an AIOS repository and never declares PASS.
 ## Endpoints
 
 - GET /healthz
-- POST /v1/repair/propose
+- POST /v1/repair/propose — idempotent by `request_id`; persists operation claim before calling Gemini
+- GET /v1/repair/proposal/{request_id} — inspect the durable Gemini proposal operation/result
 - POST /v1/repair/checkpoint — persist a validated, SHA-bound lifecycle checkpoint
 - GET /v1/repair/checkpoint/{request_id} — resume by reading the durable checkpoint
 
@@ -49,3 +50,20 @@ independently verify it before making any terminal decision.
 This provides durable state across Worker invocations; it does not run an infinite process.
 Progress continues on external events (CI completion, webhook, or explicit dispatch), with
 AIOS retaining authority over patch application and verification.
+
+## Gemini proposal operation ledger
+
+`POST /v1/repair/propose` is now claimed in the same Durable Object namespace before the
+Gemini request starts. The claim binds `request_id` to the exact request digest, repository,
+commit SHA, and attempt. Reusing a request ID with different input is rejected.
+
+- `COMPLETED`: the validated proposal is durably cached; replay returns the same proposal
+  without another Gemini call.
+- `FAILED`: an explicit provider rejection/protocol termination was recorded. This is not
+  an automatic retry authorization.
+- `UNKNOWN` / `IN_PROGRESS`: the provider call may have been accepted but no terminal result
+  was durably recorded. Replay and lookup do not call Gemini again; `retry_allowed` is false.
+
+A crash after Gemini responds but before the result is persisted remains `UNKNOWN` by design.
+The endpoint is an operation-status source, not by itself an AIOS-authenticated provider
+receipt or a retry permit. AIOS must independently bind and authorize any reconciliation.
