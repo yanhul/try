@@ -59,13 +59,33 @@ function Set-CurrentUserOnlyAcl([string]$Path) {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent().Name
     $acl = Get-Acl -LiteralPath $Path
     $acl.SetAccessRuleProtection($true, $false)
+
+    # A newly created Windows file can carry explicit SYSTEM/logon-session ACEs.
+    # Remove every existing ACE; SetAccessRule alone does not guarantee this.
+    foreach ($existingRule in @($acl.Access)) {
+        [void]$acl.RemoveAccessRuleSpecific($existingRule)
+    }
+
     $rule = New-Object Security.AccessControl.FileSystemAccessRule(
         $identity,
         [Security.AccessControl.FileSystemRights]::FullControl,
         [Security.AccessControl.AccessControlType]::Allow
     )
-    $acl.SetAccessRule($rule)
+    $acl.AddAccessRule($rule)
     Set-Acl -LiteralPath $Path -AclObject $acl
+
+    # Read back the persisted descriptor and fail closed unless it is exact.
+    $verified = Get-Acl -LiteralPath $Path
+    $entries = @($verified.Access)
+    if (-not $verified.AreAccessRulesProtected -or
+        $verified.Owner -ne $identity -or
+        $entries.Count -ne 1 -or
+        $entries[0].IdentityReference.Value -ne $identity -or
+        $entries[0].AccessControlType -ne [Security.AccessControl.AccessControlType]::Allow -or
+        $entries[0].FileSystemRights -ne [Security.AccessControl.FileSystemRights]::FullControl -or
+        $entries[0].IsInherited) {
+        throw "ACL verification failed for '$Path'; refusing to write or stage secrets."
+    }
 }
 
 try {
