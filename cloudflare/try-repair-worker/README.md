@@ -67,3 +67,10 @@ commit SHA, and attempt. Reusing a request ID with different input is rejected.
 A crash after Gemini responds but before the result is persisted remains `UNKNOWN` by design.
 The endpoint is an operation-status source, not by itself an AIOS-authenticated provider
 receipt or a retry permit. AIOS must independently bind and authorize any reconciliation.
+
+
+### Trusted operation receipts
+
+Set Cloudflare secrets `TRY_OPERATION_RECEIPT_SECRET` (at least 32 random characters) and `TRY_OPERATION_RECEIPT_KEY_ID`. The authenticated operation lookup endpoint returns an HMAC-SHA256 receipt binding issuer, key ID, request ID/digest, repository, target SHA, attempt, state, execution classification, proposal digest, and validity window. AIOS must pin the same secret under the `try.repair` provider entry with scope `provider.receipt.sign`; the bearer token alone is not receipt authority. Rotate by adding a new key ID/key to the verifier before switching the Worker, then revoke the old key.
+
+Only local configuration failures that occur before the Gemini request is sent are classified `FAILED / NOT_SUBMITTED`. Provider HTTP errors, malformed responses, timeouts, and crashes after submission remain `UNKNOWN`; they do not authorize retry. This is intentionally conservative because the Gemini chat-completions request has no independent operation lookup proving non-execution.

@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import hmac
 import json
 import re
+import time
 from urllib.parse import urlparse
 
 from workers import DurableObject, WorkerEntrypoint, Response, fetch
@@ -23,6 +25,52 @@ GEMINI_BACKOFF_SECONDS = (1, 2)
 GEMINI_RETRYABLE = {500, 502, 503, 504}
 GEMINI_QUOTA_STATUS = 429
 REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9._:-]{1,160}$")
+OPERATION_RECEIPT_TYPE = "TRY_PROPOSAL_OPERATION_RECEIPT_V1"
+OPERATION_RECEIPT_ISSUER = "try.repair"
+OPERATION_RECEIPT_TTL_SECONDS = 900
+OPERATION_RECEIPT_SIGNED_FIELDS = (
+    "type", "issuer", "key_id", "receipt_id", "request_id", "request_digest",
+    "repository", "sha", "attempt", "status", "execution_state", "failure_code",
+    "proposal_digest", "issued_at", "expires_at", "algorithm",
+)
+
+
+def _canonical_json(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False)
+
+
+def _operation_receipt(record, env):
+    """Sign the durable operation state; bearer transport auth is not receipt trust."""
+    secret = getattr(env, "TRY_OPERATION_RECEIPT_SECRET", "")
+    key_id = getattr(env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
+    if not isinstance(secret, str) or len(secret) < 32 or not isinstance(key_id, str) or not key_id.strip():
+        raise RuntimeError("operation_receipt_signing_not_configured")
+    state = record.get("state")
+    if state == "COMPLETED":
+        status, execution_state = "COMPLETED", "COMPLETED"
+    elif state == "FAILED" and record.get("execution_state") == "NOT_SUBMITTED":
+        status, execution_state = "FAILED", "NOT_SUBMITTED"
+    else:
+        status, execution_state = "UNKNOWN", "IN_PROGRESS_OR_AMBIGUOUS"
+    issued_at = time.time()
+    body = {
+        "type": OPERATION_RECEIPT_TYPE, "issuer": OPERATION_RECEIPT_ISSUER,
+        "key_id": key_id.strip(),
+        "receipt_id": "TR-" + hashlib.sha256(
+            f"{record['request_id']}:{record['request_digest']}:{state}:{issued_at}".encode("utf-8")
+        ).hexdigest()[:32],
+        "request_id": record["request_id"], "request_digest": record["request_digest"],
+        "repository": record["repository"], "sha": record["sha"], "attempt": record["attempt"],
+        "status": status, "execution_state": execution_state,
+        "failure_code": record.get("failure_code") if status == "FAILED" else None,
+        "proposal_digest": hashlib.sha256(_canonical_json(record["proposal"]).encode("utf-8")).hexdigest()
+            if status == "COMPLETED" else None,
+        "issued_at": float(issued_at), "expires_at": float(issued_at) + OPERATION_RECEIPT_TTL_SECONDS,
+        "algorithm": "HMAC-SHA256",
+    }
+    signed = {key: body[key] for key in OPERATION_RECEIPT_SIGNED_FIELDS}
+    body["signature"] = hmac.new(secret.encode("utf-8"), _canonical_json(signed).encode("utf-8"), hashlib.sha256).hexdigest()
+    return body
 GITHUB_REPOSITORY_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?/[A-Za-z0-9](?:[A-Za-z0-9._-]{0,98}[A-Za-z0-9])?$")
 DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
@@ -368,6 +416,7 @@ class RepairCheckpoint(DurableObject):
                 if prior.get("state") == "FAILED":
                     return {"_http_status": 200, "status": "FAILED", "request_id": request_id,
                             "request_digest": request_digest, "failure_code": prior.get("failure_code"),
+                            "execution_state": prior.get("execution_state"),
                             "retry_allowed": False, "idempotent_replay": True}
                 return {"_http_status": 202, "status": "UNKNOWN", "execution_state": "IN_PROGRESS",
                         "request_id": request_id, "request_digest": request_digest,
@@ -375,7 +424,7 @@ class RepairCheckpoint(DurableObject):
 
             record = {"schema": 1, "request_id": request_id, "repository": repository,
                       "sha": sha.lower(), "attempt": attempt, "request_digest": request_digest,
-                      "state": "IN_PROGRESS"}
+                      "state": "IN_PROGRESS", "created_at": time.time()}
             await self.ctx.storage.put(key, record)
             try:
                 proposal = await _propose(request, self.env)
@@ -383,7 +432,7 @@ class RepairCheckpoint(DurableObject):
                 result_json = json.dumps(proposal, sort_keys=True, separators=(",", ":"), allow_nan=False)
                 if len(result_json.encode("utf-8")) > MAX_BODY:
                     raise RuntimeError("proposal_result_too_large")
-                completed = {**record, "state": "COMPLETED", "proposal": proposal}
+                completed = {**record, "state": "COMPLETED", "proposal": proposal, "completed_at": time.time()}
                 await self.ctx.storage.put(key, completed)
                 return {"_http_status": 200, "status": "COMPLETED", "request_id": request_id,
                         "request_digest": request_digest, "proposal": proposal, "idempotent_replay": False}
@@ -392,11 +441,13 @@ class RepairCheckpoint(DurableObject):
                 # Only explicit provider-side rejection/protocol termination is
                 # terminal. Transport errors and upstream 5xx stay IN_PROGRESS
                 # because the provider may have processed the request.
-                terminal = (message.startswith(("gemini_quota_exhausted:", "gemini_protocol_error:",
-                                                 "provider_not_configured:", "provider_model_not_configured:"))
-                            or re.match(r"^gemini_http_4[0-9]{2}$", message) is not None)
-                if terminal:
-                    failed = {**record, "state": "FAILED", "failure_code": message.split(":", 1)[0]}
+                # Only local preflight failures prove Gemini was never called.
+                # Any exception after entering the provider call path stays UNKNOWN,
+                # including 4xx/429, malformed 200 responses and result-persistence gaps.
+                not_submitted = message.startswith(("provider_not_configured:", "provider_model_not_configured:"))
+                if not_submitted:
+                    failed = {**record, "state": "FAILED", "execution_state": "NOT_SUBMITTED",
+                              "failure_code": message.split(":", 1)[0], "completed_at": time.time()}
                     await self.ctx.storage.put(key, failed)
                 raise
 
@@ -471,6 +522,11 @@ class Default(WorkerEntrypoint):
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
+            operation_receipt_signing_configured = (
+                isinstance(getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", ""), str)
+                and len(getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", "")) >= 32
+                and bool(getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", ""))
+            )
             raw_key = getattr(self.env, "GEMINI_API_KEY", "")
             raw_model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             if (
@@ -478,12 +534,14 @@ class Default(WorkerEntrypoint):
                 or not isinstance(raw_model, str) or not raw_model.strip()
                 or not checkpoint_bound
                 or not provider_token_configured
+                or not operation_receipt_signing_configured
             ):
                 return Response.json(
                     {
                         "status": "NOT_READY", "provider": "gemini",
                         "checkpoint_store_bound": checkpoint_bound,
                         "provider_token_configured": provider_token_configured,
+                        "operation_receipt_signing_configured": operation_receipt_signing_configured,
                     },
                     status=503,
                 )
@@ -494,6 +552,7 @@ class Default(WorkerEntrypoint):
                     "model": raw_model.strip(),
                     "checkpoint_store_bound": True,
                     "provider_token_configured": True,
+                    "operation_receipt_signing_configured": True,
                 }
             )
 
@@ -552,25 +611,33 @@ class Default(WorkerEntrypoint):
                 record = await stub.read_proposal(request_id)
                 if record is None:
                     return Response.json({"error": "proposal_operation_not_found"}, status=404)
-                if record.get("state") == "COMPLETED":
+                receipt = _operation_receipt(record, self.env)
+                if receipt["status"] == "COMPLETED":
                     return Response.json({"status": "COMPLETED", "request_id": request_id,
                                           "request_digest": record.get("request_digest"),
-                                          "proposal": record.get("proposal")}, status=200)
-                if record.get("state") == "FAILED":
+                                          "proposal": record.get("proposal"),
+                                          "operation_receipt": receipt}, status=200)
+                if receipt["status"] == "FAILED":
                     return Response.json({"status": "FAILED", "request_id": request_id,
                                           "request_digest": record.get("request_digest"),
                                           "failure_code": record.get("failure_code"),
-                                          "retry_allowed": False}, status=200)
-                return Response.json({"status": "UNKNOWN", "execution_state": "IN_PROGRESS",
+                                          "execution_state": "NOT_SUBMITTED", "retry_allowed": False,
+                                          "operation_receipt": receipt}, status=200)
+                return Response.json({"status": "UNKNOWN", "execution_state": "IN_PROGRESS_OR_AMBIGUOUS",
                                       "request_id": request_id,
                                       "request_digest": record.get("request_digest"),
-                                      "retry_allowed": False}, status=202)
+                                      "retry_allowed": False, "operation_receipt": receipt}, status=202)
             except Exception as exc:
                 return Response.json({"error": "proposal_operation_read_failed",
                                       "reason": type(exc).__name__}, status=503)
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
+
+        receipt_secret = getattr(self.env, "TRY_OPERATION_RECEIPT_SECRET", "")
+        receipt_key_id = getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
+        if not isinstance(receipt_secret, str) or len(receipt_secret) < 32 or not isinstance(receipt_key_id, str) or not receipt_key_id.strip():
+            return Response.json({"error": "operation_receipt_signing_not_configured"}, status=503)
 
         try:
             body = await _read_bounded_json(request)

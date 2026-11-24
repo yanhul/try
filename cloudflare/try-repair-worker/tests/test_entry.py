@@ -1,4 +1,6 @@
 import asyncio
+import hashlib
+import hmac
 import importlib
 import json
 import sys
@@ -81,6 +83,8 @@ class _Env:
     GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
     TRY_PROVIDER_TOKEN = "test-token"
+    TRY_OPERATION_RECEIPT_SECRET = "test-operation-receipt-secret-0123456789"
+    TRY_OPERATION_RECEIPT_KEY_ID = "try-op-test-v1"
     REPAIR_CHECKPOINTS = object()
 
 
@@ -117,6 +121,15 @@ class HealthCheckTests(unittest.TestCase):
         instance.env = env
         result = asyncio.run(instance.fetch(self.Request()))
         self.assertEqual(result["status"], "NOT_READY")
+
+    def test_health_not_ready_without_operation_receipt_signing_key(self):
+        env = _Env()
+        env.TRY_OPERATION_RECEIPT_SECRET = ""
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["operation_receipt_signing_configured"])
 
     def test_health_ready_only_when_required_bindings_exist(self):
         env = _Env()
@@ -655,9 +668,56 @@ class DurableProposalOperationTests(unittest.TestCase):
             result = asyncio.run(self.operation.run_proposal(self.request))
         finally:
             entry._propose = original
-        self.assertEqual(result["status"], "FAILED")
+        self.assertEqual(result["status"], "UNKNOWN")
         self.assertFalse(result["retry_allowed"])
         self.assertEqual(calls, [1])
+
+
+class OperationReceiptClassificationTests(unittest.TestCase):
+    def test_only_local_preflight_failure_is_marked_not_submitted(self):
+        ctx = _FakeContext()
+        operation = entry.RepairCheckpoint(ctx, _Env())
+        request = {
+            "request_id": "preflight-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }
+        original = entry._propose
+        async def fail(*args):
+            raise RuntimeError("provider_not_configured:GEMINI")
+        entry._propose = fail
+        try:
+            with self.assertRaisesRegex(RuntimeError, "provider_not_configured"):
+                asyncio.run(operation.run_proposal(request))
+        finally:
+            entry._propose = original
+        record = asyncio.run(ctx.storage.get("proposal:preflight-1"))
+        self.assertEqual(record["state"], "FAILED")
+        self.assertEqual(record["execution_state"], "NOT_SUBMITTED")
+        receipt = entry._operation_receipt(record, _Env())
+        self.assertEqual(receipt["status"], "FAILED")
+        self.assertEqual(receipt["execution_state"], "NOT_SUBMITTED")
+
+    def test_provider_http_error_remains_unknown_not_retryable(self):
+        ctx = _FakeContext()
+        operation = entry.RepairCheckpoint(ctx, _Env())
+        request = {
+            "request_id": "ambiguous-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }
+        original = entry._propose
+        async def fail(*args):
+            raise RuntimeError("gemini_http_503")
+        entry._propose = fail
+        try:
+            with self.assertRaisesRegex(RuntimeError, "gemini_http_503"):
+                asyncio.run(operation.run_proposal(request))
+        finally:
+            entry._propose = original
+        record = asyncio.run(ctx.storage.get("proposal:ambiguous-1"))
+        self.assertEqual(record["state"], "IN_PROGRESS")
+        receipt = entry._operation_receipt(record, _Env())
+        self.assertEqual(receipt["status"], "UNKNOWN")
+        self.assertEqual(receipt["execution_state"], "IN_PROGRESS_OR_AMBIGUOUS")
 
 
 class EndpointAdmissionTests(unittest.TestCase):
@@ -742,7 +802,9 @@ class EndpointAdmissionTests(unittest.TestCase):
         namespace = self.Namespace()
         namespace.proposal_record = {
             "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
-            "state": "COMPLETED", "proposal": {"schema": 2, "files": [{"path": "core/a.py", "content": "x"}]},
+            "repository": "yanhul/try", "sha": "a" * 40, "attempt": 1,
+            "state": "COMPLETED", "created_at": 1000.0, "completed_at": 1001.0,
+            "proposal": {"schema": 2, "files": [{"path": "core/a.py", "content": "x"}]},
         }
         self.env.REPAIR_CHECKPOINTS = namespace
         request = self.Request("/v1/repair/proposal/req-1", method="GET")
@@ -755,12 +817,22 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(result["_status"], 200)
         self.assertEqual(result["status"], "COMPLETED")
         self.assertEqual(result["proposal"]["schema"], 2)
+        receipt = result["operation_receipt"]
+        self.assertEqual(receipt["issuer"], "try.repair")
+        self.assertEqual(receipt["request_digest"], "a" * 64)
+        signed = {key: receipt[key] for key in entry.OPERATION_RECEIPT_SIGNED_FIELDS}
+        expected = hmac.new(
+            self.env.TRY_OPERATION_RECEIPT_SECRET.encode(),
+            entry._canonical_json(signed).encode(), hashlib.sha256,
+        ).hexdigest()
+        self.assertTrue(hmac.compare_digest(receipt["signature"], expected))
 
     def test_proposal_lookup_returns_unknown_for_durable_in_progress_record(self):
         namespace = self.Namespace()
         namespace.proposal_record = {
             "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
-            "state": "IN_PROGRESS",
+            "repository": "yanhul/try", "sha": "a" * 40, "attempt": 1,
+            "state": "IN_PROGRESS", "created_at": 1000.0,
         }
         self.env.REPAIR_CHECKPOINTS = namespace
         request = self.Request("/v1/repair/proposal/req-1", method="GET")
@@ -773,6 +845,7 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(result["_status"], 202)
         self.assertEqual(result["status"], "UNKNOWN")
         self.assertFalse(result["retry_allowed"])
+        self.assertEqual(result["operation_receipt"]["execution_state"], "IN_PROGRESS_OR_AMBIGUOUS")
         self.assertEqual(namespace.lookup_count, 1)
 
     def test_checkpoint_chunked_body_without_content_length_persists(self):
