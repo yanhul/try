@@ -682,8 +682,10 @@ class Default(WorkerEntrypoint):
                                       "request_digest": record.get("request_digest"),
                                       "retry_allowed": False, "operation_receipt": receipt}, status=202)
             except Exception as exc:
-                return Response.json({"error": "proposal_operation_read_failed",
-                                      "reason": type(exc).__name__}, status=503)
+                payload = {"error": "proposal_operation_read_failed", "reason": type(exc).__name__}
+                if getattr(self.env, "TRY_DEBUG_ERRORS", "") == "1":
+                    payload["debug_reason"] = str(exc)[:2000]
+                return Response.json(payload, status=503)
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
