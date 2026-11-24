@@ -7,6 +7,14 @@
     "python_workers"
   ],
   "workers_dev": true,
+  "secrets": {
+    "required": [
+      "GEMINI_API_KEY",
+      "TRY_PROVIDER_TOKEN",
+      "TRY_OPERATION_RECEIPT_PRIVATE_KEY",
+      "TRY_OPERATION_RECEIPT_KEY_ID"
+    ]
+  },
   "durable_objects": {
     "bindings": [
       {
