@@ -34,7 +34,20 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - name: Start local Python Workers runtime
         run: |
-          printf 'TRY_PROVIDER_TOKEN=runtime-test-token\n' > .dev.vars
+          uv run python - <<'PY'
+          import base64
+          from cryptography.hazmat.primitives import serialization
+          from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+          key = Ed25519PrivateKey.generate()
+          private = key.private_bytes(serialization.Encoding.DER, serialization.PrivateFormat.PKCS8, serialization.NoEncryption())
+          public = key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
+          with open('.dev.vars', 'w', encoding='utf-8') as f:
+              f.write('TRY_PROVIDER_TOKEN=runtime-test-token\n')
+              f.write('TRY_OPERATION_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
+              f.write('TRY_OPERATION_RECEIPT_KEY_ID=runtime-ed25519-test-v1\n')
+          with open('/tmp/try-operation-receipt-public-key.b64', 'w', encoding='ascii') as f:
+              f.write(base64.b64encode(public).decode())
+          PY
           uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
           echo $! > /tmp/try-worker-runtime.pid
       - name: Verify bounded streaming against workerd + Pyodide
@@ -70,11 +83,17 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_OPERATION_RECEIPT_PRIVATE_KEY: ${{ secrets.TRY_OPERATION_RECEIPT_PRIVATE_KEY }}
+          TRY_OPERATION_RECEIPT_KEY_ID: ${{ vars.TRY_OPERATION_RECEIPT_KEY_ID }}
         run: |
           test -n "$GEMINI_API_KEY"
           test -n "$TRY_PROVIDER_TOKEN"
+          test -n "$TRY_OPERATION_RECEIPT_PRIVATE_KEY"
+          test -n "$TRY_OPERATION_RECEIPT_KEY_ID"
           printf '%s' "$GEMINI_API_KEY" | uv run pywrangler secret put GEMINI_API_KEY
           printf '%s' "$TRY_PROVIDER_TOKEN" | uv run pywrangler secret put TRY_PROVIDER_TOKEN
+          printf '%s' "$TRY_OPERATION_RECEIPT_PRIVATE_KEY" | uv run pywrangler secret put TRY_OPERATION_RECEIPT_PRIVATE_KEY
+          printf '%s' "$TRY_OPERATION_RECEIPT_KEY_ID" | uv run pywrangler secret put TRY_OPERATION_RECEIPT_KEY_ID
       - name: Worker conformance tests
         run: uv run python -m unittest discover -s tests -v
 
@@ -98,8 +117,7 @@ jobs:
         run: |
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
-          git clone --depth 1 https://github.com/yanhul/aios.git ../aios
-          PYTHONPATH=../aios python - <<'PY'
+          git clone --depth 1 https://github.com/yanhul/aios.git ../aiosPYTHONPATH=../aios python - <<'PY'
           import json
           import os
           from core.try_repair_provider import health, propose
