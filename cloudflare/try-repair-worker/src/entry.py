@@ -148,7 +148,7 @@ async def _call_gemini(prompt: str, env) -> dict:
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": prompt},
         ],
-"max_tokens": 6000,
+        "max_tokens": 6000,
         "response_format": {"type": "json_object"},
     }
 
@@ -295,6 +295,9 @@ async def _propose(request: dict, env) -> dict:
     )
     proposal = await _call_gemini(prompt, env)
     return _validate(proposal, allowed_paths=set(bounded_source))
+
+
+
 CHECKPOINT_PHASES = ("OBSERVE", "DECIDE", "PROPOSE", "VERIFY", "PERSIST", "RESUME")
 CHECKPOINT_STATES = ("WORKING", "BLOCKED", "DONE")
 _CHECKPOINT_REQUEST_ID = REQUEST_ID_RE
@@ -445,7 +448,7 @@ class RepairCheckpoint(DurableObject):
             if attempt == old_attempt:
                 if phase != prior.get("phase") and phase not in _CHECKPOINT_NEXT.get(prior.get("phase"), ()):
                     return {"_http_status": 409, "error": "invalid_phase_transition"}
-if prior.get("state") == "BLOCKED" and not (phase == "RESUME" and state == "WORKING"):
+                if prior.get("state") == "BLOCKED" and not (phase == "RESUME" and state == "WORKING"):
                     return {"_http_status": 409, "error": "blocked_checkpoint_requires_resume"}
                 if state == "DONE" and prior.get("phase") != "PERSIST" and phase != "PERSIST":
                     return {"_http_status": 409, "error": "done_requires_persist_phase"}
@@ -595,7 +598,7 @@ class Default(WorkerEntrypoint):
         except ValueError as exc:
             reason = str(exc)
             status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
-return Response.json({"error": reason}, status=status)
+            return Response.json({"error": reason}, status=status)
         except RuntimeError as exc:
             message = str(exc)
             if message.startswith("gemini_quota_exhausted:"):
@@ -663,4 +666,15 @@ return Response.json({"error": reason}, status=status)
                     "reason": type(exc).__name__,
                 },
                 status=500,
+            )
+        except Exception as exc:
+            return Response.json(
+                {
+                    "status": "PROVIDER_INTERNAL_ERROR",
+                    "provider": "gemini",
+                    "http_status": 500,
+                    "reason": type(exc).__name__,
+                },
+                status=500,
+                headers={"Retry-After": "2"},
             )

@@ -148,7 +148,7 @@ class BoundedBodyTests(unittest.TestCase):
     def test_declared_oversize_is_rejected_before_stream_read(self):
         request = self.Request("{}", entry.MAX_BODY + 1)
         with self.assertRaisesRegex(ValueError, "body_too_large"):
-asyncio.run(entry._read_bounded_json(request))
+            asyncio.run(entry._read_bounded_json(request))
         self.assertEqual(request.body.reader.read_count, 0)
 
     def test_exact_max_body_size_is_accepted(self):
@@ -298,7 +298,7 @@ class WorkerValidationTests(unittest.TestCase):
         ):
             self.assertRejects(path)
         for path in (
-"vendor/.git/config",
+            "vendor/.git/config",
             "pkg/.aios/policy.py",
             "pkg/.github/workflows/x.yml",
             "pkg/secrets/key.txt",
@@ -447,7 +447,8 @@ class GeminiRetryTests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
     def test_transient_503_retries_then_succeeds(self):
         calls = []
-async def fake_fetch(*args, **kwargs):
+
+        async def fake_fetch(*args, **kwargs):
             calls.append(1)
             if len(calls) < 3:
                 return _Response(503, detail="temporary")
@@ -597,7 +598,7 @@ class DurableProposalOperationTests(unittest.TestCase):
         original = entry._propose
         async def fake_propose(*args):
             calls.append(1)
-return {"schema": 2}
+            return {"schema": 2}
         entry._propose = fake_propose
         try:
             result = asyncio.run(self.operation.run_proposal(self.request))
@@ -747,7 +748,7 @@ class EndpointAdmissionTests(unittest.TestCase):
         request = self.Request("/v1/repair/proposal/req-1", method="GET")
         original_response = entry.Response
         entry.Response = ProviderFailureMappingTests.StatusResponse
-try:
+        try:
             result = asyncio.run(self.worker.fetch(request))
         finally:
             entry.Response = original_response
@@ -870,3 +871,21 @@ class ProviderReadinessErrorMappingTests(unittest.TestCase):
         worker.env.REPAIR_CHECKPOINTS = namespace
         request = EndpointAdmissionTests.Request(
             "/v1/repair/propose", json.dumps({
+                "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+                "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+            })
+        )
+        original_response = entry.Response
+        original_propose = entry._propose
+        async def fail_model(*args):
+            raise RuntimeError("provider_model_not_configured:GEMINI")
+        entry.Response = StatusResponse
+        entry._propose = fail_model
+        try:
+            result = asyncio.run(worker.fetch(request))
+        finally:
+            entry.Response = original_response
+            entry._propose = original_propose
+        self.assertEqual(result["_status"], 503)
+        self.assertEqual(result["status"], "PROVIDER_NOT_READY")
+        self.assertEqual(result["reason"], "provider_model_not_configured")
