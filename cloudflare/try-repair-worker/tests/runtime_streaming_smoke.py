@@ -1,4 +1,5 @@
 import base64
+import hashlib
 import http.client
 import json
 import os
@@ -52,6 +53,18 @@ def wait_for_worker():
 
 def main():
     wait_for_worker()
+
+    # /healthz must prove that the actual Workers/Pyodide WebCrypto bridge can
+    # import the configured PKCS#8 key and produce a 64-byte Ed25519 signature.
+    health = http.client.HTTPConnection(HOST, PORT, timeout=15)
+    health.request("GET", "/healthz")
+    health_response = health.getresponse()
+    health_payload = json.loads(health_response.read())
+    health.close()
+    assert health_response.status == 503, (health_response.status, health_payload)
+    assert health_payload.get("status") == "NOT_READY", health_payload
+    assert health_payload.get("operation_receipt_signing_configured") is True, health_payload
+
     valid = {
         "request_id": "runtime-stream-valid",
         "repository": "yanhul/try",
@@ -146,9 +159,60 @@ def main():
     signature = base64.b64decode(receipt["signature"], validate=True)
     Ed25519PublicKey.from_public_bytes(public_key).verify(signature, canonical)
 
+    # Verify the very same Worker-generated receipt through AIOS's production
+    # keyring/verifier, not only a standalone cryptography public-key check.
+    from core.try_operation_receipt import (
+        TryOperationReceiptKeyring,
+        TryOperationReceiptError,
+        verify_try_operation_receipt,
+    )
+    public_key_b64 = base64.b64encode(public_key).decode("ascii")
+    keyring = TryOperationReceiptKeyring({
+        "try.repair": {
+            "public_key": public_key_b64,
+            "key_id": "runtime-ed25519-test-v1",
+            "scopes": ["try.operation.receipt.verify"],
+            "revoked": False,
+        }
+    })
+    request_digest = hashlib.sha256(json.dumps(
+        operation, sort_keys=True, separators=(",", ":"), allow_nan=False
+    ).encode("utf-8")).hexdigest()
+    verified = verify_try_operation_receipt(
+        receipt,
+        request_id=request_id,
+        request_digest=request_digest,
+        repository=operation["repository"],
+        sha=operation["sha"],
+        attempt=operation["attempt"],
+        keyring=keyring,
+    )
+    assert verified["status"] == "FAILED", verified
+    assert verified["execution_state"] == "NOT_SUBMITTED", verified
+    assert verified["proven_not_submitted"] is True, verified
+
+    tampered = dict(receipt)
+    tampered["signature"] = base64.b64encode(bytes(64)).decode("ascii")
+    try:
+        verify_try_operation_receipt(
+            tampered,
+            request_id=request_id,
+            request_digest=request_digest,
+            repository=operation["repository"],
+            sha=operation["sha"],
+            attempt=operation["attempt"],
+            keyring=keyring,
+        )
+    except TryOperationReceiptError:
+        pass
+    else:
+        raise AssertionError("AIOS verifier accepted a tampered Worker receipt")
+
     print(json.dumps({
         "runtime": "cloudflare-python-workers-local",
-        "operation_receipt": "WebCrypto Ed25519 signature verified",
+        "readiness": "WebCrypto import+sign passed",
+        "operation_receipt": "Worker WebCrypto -> AIOS verifier passed",
+        "tamper_rejection": True,
         "chunked_without_content_length": "accepted_and_persisted",
         "oversized_stream": "413_and_checkpoint_absent",
         "oversized_checkpoint_absent": True,
