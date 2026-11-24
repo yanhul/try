@@ -32,6 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
+      - name: Checkout AIOS receipt verifier
+        run: git clone --depth 1 https://github.com/yanhul/aios.git ../aios
       - name: Start local Python Workers runtime
         run: |
           uv run python - <<'PY'
@@ -52,9 +54,10 @@ jobs:
           PY
           uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
           echo $! > /tmp/try-worker-runtime.pid
-      - name: Verify bounded streaming against workerd + Pyodide
+      - name: Verify bounded streaming and AIOS receipt verification against workerd + Pyodide
         env:
           TRY_PROVIDER_TOKEN: runtime-test-token
+          PYTHONPATH: ../aios
         run: |
           trap 'kill $(cat /tmp/try-worker-runtime.pid) 2>/dev/null || true; rm -f .dev.vars' EXIT
           uv run python tests/runtime_streaming_smoke.py
@@ -79,8 +82,6 @@ jobs:
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Missing repository secret CLOUDFLARE_API_TOKEN"; exit 1; fi
           if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then echo "::error::Missing repository variable CLOUDFLARE_ACCOUNT_ID (legacy secret fallback also empty)"; exit 1; fi
-      - name: Deploy Worker
-        run: uv run pywrangler deploy
       - name: Set TRY provider secrets
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -96,6 +97,8 @@ jobs:
           printf '%s' "$TRY_PROVIDER_TOKEN" | uv run pywrangler secret put TRY_PROVIDER_TOKEN
           printf '%s' "$TRY_OPERATION_RECEIPT_PRIVATE_KEY" | uv run pywrangler secret put TRY_OPERATION_RECEIPT_PRIVATE_KEY
           printf '%s' "$TRY_OPERATION_RECEIPT_KEY_ID" | uv run pywrangler secret put TRY_OPERATION_RECEIPT_KEY_ID
+      - name: Deploy Worker
+        run: uv run pywrangler deploy
       - name: Worker conformance tests
         run: uv run python -m unittest discover -s tests -v
 
