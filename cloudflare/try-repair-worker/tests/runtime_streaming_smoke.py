@@ -140,18 +140,45 @@ def main():
     )
     signed = {key: receipt[key] for key in signed_fields}
     canonical = json.dumps(signed, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode("utf-8")
-    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
     with open("/tmp/try-operation-receipt-public-key.b64", encoding="ascii") as f:
-        public_key = base64.b64decode(f.read().strip(), validate=True)
+        public_key_b64 = f.read().strip()
+    public_key = base64.b64decode(public_key_b64, validate=True)
     signature = base64.b64decode(receipt["signature"], validate=True)
-    Ed25519PublicKey.from_public_bytes(public_key).verify(signature, canonical)
+    assert len(signature) == 64, len(signature)
+
+    # Verify the actual Worker-generated receipt with AIOS's production verifier,
+    # not a test-only duplicate implementation of the receipt contract.
+    from core.try_operation_receipt import (
+        TryOperationReceiptKeyring, verify_try_operation_receipt,
+    )
+    keyring = TryOperationReceiptKeyring({
+        "try.repair": {
+            "public_key": public_key_b64,
+            "key_id": receipt["key_id"],
+            "scopes": ["try.operation.receipt.verify"],
+            "revoked": False,
+        }
+    })
+    verified = verify_try_operation_receipt(
+        receipt,
+        request_id=request_id,
+        request_digest=receipt_payload["request_digest"],
+        repository=operation["repository"],
+        sha=operation["sha"],
+        attempt=operation["attempt"],
+        keyring=keyring,
+    )
+    assert verified["status"] == "FAILED", verified
+    assert verified["proven_not_submitted"] is True, verified
 
     print(json.dumps({
         "runtime": "cloudflare-python-workers-local",
-        "operation_receipt": "WebCrypto Ed25519 signature verified",
+        "operation_receipt": "Worker WebCrypto signature accepted by AIOS verifier",
         "chunked_without_content_length": "accepted_and_persisted",
         "oversized_stream": "413_and_checkpoint_absent",
         "oversized_checkpoint_absent": True,
+        "aios_verifier": "PASS",
+        "failed_not_submitted": "verified",
     }, sort_keys=True))
 
 if __name__ == "__main__":
