@@ -30,6 +30,8 @@ if ([string]::IsNullOrWhiteSpace($privateKeyB64) -or
     throw "Key metadata or private key is incomplete."
 }
 
+$decoded = $null
+$publicDecoded = $null
 try {
     $decoded = [Convert]::FromBase64String($privateKeyB64)
     $publicDecoded = [Convert]::FromBase64String($publicKeyB64)
