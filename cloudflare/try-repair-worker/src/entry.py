@@ -786,5 +786,5 @@ class Default(WorkerEntrypoint):
                 "reason": type(exc).__name__,
             }
             if getattr(self.env, "TRY_DEBUG_ERRORS", "") == "1":
-                payload["debug_reason"] = str(exc)[:256]
+                payload["debug_reason"] = str(exc)[:2000]
             return Response.json(payload, status=500, headers={"Retry-After": "2"})
