@@ -58,6 +58,7 @@ async def _ed25519_sign(private_key_b64, message):
     """
     try:
         from js import crypto, Uint8Array
+        from pyodide.ffi import to_js
     except ImportError:  # CPython test runner only
         from cryptography.hazmat.primitives import serialization
         from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -69,12 +70,13 @@ async def _ed25519_sign(private_key_b64, message):
 
     raw = base64.b64decode(private_key_b64, validate=True)
     key = await crypto.subtle.importKey(
-        "pkcs8", Uint8Array.new(list(raw)), {"name": "Ed25519"}, False, ["sign"]
+        "pkcs8", Uint8Array.new(list(raw)), to_js({"name": "Ed25519"}), False, to_js(["sign"])
     )
     signature = await crypto.subtle.sign(
-        {"name": "Ed25519"}, key, Uint8Array.new(list(message))
+        to_js({"name": "Ed25519"}), key, Uint8Array.new(list(message))
     )
-    return base64.b64encode(bytes(int(value) for value in signature)).decode("ascii")
+    signature_bytes = Uint8Array.new(signature)
+    return base64.b64encode(bytes(int(value) for value in signature_bytes)).decode("ascii")
 
 
 async def _operation_receipt(record, env):
@@ -682,10 +684,8 @@ class Default(WorkerEntrypoint):
                                       "request_digest": record.get("request_digest"),
                                       "retry_allowed": False, "operation_receipt": receipt}, status=202)
             except Exception as exc:
-                payload = {"error": "proposal_operation_read_failed", "reason": type(exc).__name__}
-                if getattr(self.env, "TRY_DEBUG_ERRORS", "") == "1":
-                    payload["debug_reason"] = str(exc)[:2000]
-                return Response.json(payload, status=503)
+                return Response.json({"error": "proposal_operation_read_failed",
+                                      "reason": type(exc).__name__}, status=503)
 
         if request.method != "POST" or path != "/v1/repair/propose":
             return Response.json({"error": "not_found"}, status=404)
