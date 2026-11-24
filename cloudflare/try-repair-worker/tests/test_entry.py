@@ -1,9 +1,14 @@
 import asyncio
+import base64
+import hashlib
 import importlib
 import json
 import sys
 import types
 import unittest
+
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 
 class _FakeChunk:
@@ -77,10 +82,15 @@ entry = importlib.import_module("entry")
 
 
 class _Env:
+    _private_key = Ed25519PrivateKey.from_private_bytes(bytes.fromhex("11" * 32))
+    TRY_OPERATION_RECEIPT_PRIVATE_KEY = base64.b64encode(_private_key.private_bytes(
+        serialization.Encoding.DER, serialization.PrivateFormat.PKCS8, serialization.NoEncryption()
+    )).decode("ascii")
     GEMINI_API_KEY = "test-key"
     GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
     TRY_PROVIDER_TOKEN = "test-token"
+    TRY_OPERATION_RECEIPT_KEY_ID = "try-op-test-v1"
     REPAIR_CHECKPOINTS = object()
 
 
@@ -117,6 +127,15 @@ class HealthCheckTests(unittest.TestCase):
         instance.env = env
         result = asyncio.run(instance.fetch(self.Request()))
         self.assertEqual(result["status"], "NOT_READY")
+
+    def test_health_not_ready_without_operation_receipt_signing_key(self):
+        env = _Env()
+        env.TRY_OPERATION_RECEIPT_PRIVATE_KEY = ""
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["operation_receipt_signing_configured"])
 
     def test_health_ready_only_when_required_bindings_exist(self):
         env = _Env()
@@ -558,6 +577,157 @@ class DurableCheckpointTests(unittest.TestCase):
         self.assertEqual(resumed["version"], 3)
 
 
+class DurableProposalOperationTests(unittest.TestCase):
+    def setUp(self):
+        self.ctx = _FakeContext()
+        self.operation = entry.RepairCheckpoint(self.ctx, _Env())
+        self.request = {
+            "request_id": "proposal-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {"ci_failure_log_tail": "failed"},
+            "source_snapshot": {"core/example.py": "def value(): return 1"},
+        }
+
+    def test_completed_proposal_is_cached_and_replay_never_calls_provider_twice(self):
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2, "files": [{"path": "core/example.py", "content": "fixed"}]}
+        entry._propose = fake_propose
+        try:
+            first = asyncio.run(self.operation.run_proposal(self.request))
+            second = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(first["status"], "COMPLETED")
+        self.assertFalse(first["idempotent_replay"])
+        self.assertTrue(second["idempotent_replay"])
+        self.assertEqual(first["proposal"], second["proposal"])
+        self.assertEqual(calls, [1])
+
+    def test_in_progress_operation_is_unknown_and_never_reissued(self):
+        digest = __import__("hashlib").sha256(
+            __import__("json").dumps(self.request, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
+        asyncio.run(self.ctx.storage.put("proposal:proposal-1", {
+            "schema": 1, "request_id": "proposal-1", "repository": "yanhul/try",
+            "sha": "a" * 40, "attempt": 1, "request_digest": digest, "state": "IN_PROGRESS",
+        }))
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["_http_status"], 202)
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(calls, [])
+
+    def test_request_id_cannot_be_reused_for_different_payload(self):
+        calls = []
+        original = entry._propose
+        async def fake_propose(*args):
+            calls.append(1)
+            return {"schema": 2}
+        entry._propose = fake_propose
+        try:
+            asyncio.run(self.operation.run_proposal(self.request))
+            changed = dict(self.request, sha="b" * 40)
+            result = asyncio.run(self.operation.run_proposal(changed))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["_http_status"], 409)
+        self.assertEqual(result["error"], "proposal_request_identity_conflict")
+        self.assertEqual(calls, [1])
+
+    def test_transport_error_remains_unknown_and_cannot_be_replayed(self):
+        calls = []
+        original = entry._propose
+        async def fail(*args):
+            calls.append(1)
+            raise OSError("connection lost after request")
+        entry._propose = fail
+        try:
+            first = asyncio.run(self.operation.run_proposal(self.request))
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(first["status"], "UNKNOWN")
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertEqual(calls, [1])
+
+    def test_explicit_provider_rejection_is_terminal_but_not_auto_retried(self):
+        calls = []
+        original = entry._propose
+        async def fail(*args):
+            calls.append(1)
+            raise RuntimeError("gemini_quota_exhausted:429")
+        entry._propose = fail
+        try:
+            first = asyncio.run(self.operation.run_proposal(self.request))
+            result = asyncio.run(self.operation.run_proposal(self.request))
+        finally:
+            entry._propose = original
+        self.assertEqual(first["status"], "UNKNOWN")
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(calls, [1])
+
+
+class OperationReceiptClassificationTests(unittest.TestCase):
+    def test_only_local_preflight_failure_is_marked_not_submitted(self):
+        ctx = _FakeContext()
+        operation = entry.RepairCheckpoint(ctx, _Env())
+        request = {
+            "request_id": "preflight-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }
+        original = entry._propose
+        async def fail(*args):
+            raise RuntimeError("provider_not_configured:GEMINI")
+        entry._propose = fail
+        try:
+            result = asyncio.run(operation.run_proposal(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["status"], "FAILED")
+        self.assertEqual(result["execution_state"], "NOT_SUBMITTED")
+        record = asyncio.run(ctx.storage.get("proposal:preflight-1"))
+        self.assertEqual(record["state"], "FAILED")
+        self.assertEqual(record["execution_state"], "NOT_SUBMITTED")
+        receipt = asyncio.run(entry._operation_receipt(record, _Env()))
+        self.assertEqual(receipt["status"], "FAILED")
+        self.assertEqual(receipt["execution_state"], "NOT_SUBMITTED")
+
+    def test_provider_http_error_remains_unknown_not_retryable(self):
+        ctx = _FakeContext()
+        operation = entry.RepairCheckpoint(ctx, _Env())
+        request = {
+            "request_id": "ambiguous-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }
+        original = entry._propose
+        async def fail(*args):
+            raise RuntimeError("gemini_http_503")
+        entry._propose = fail
+        try:
+            result = asyncio.run(operation.run_proposal(request))
+        finally:
+            entry._propose = original
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        record = asyncio.run(ctx.storage.get("proposal:ambiguous-1"))
+        self.assertEqual(record["state"], "IN_PROGRESS")
+        receipt = asyncio.run(entry._operation_receipt(record, _Env()))
+        self.assertEqual(receipt["status"], "UNKNOWN")
+        self.assertEqual(receipt["execution_state"], "IN_PROGRESS_OR_AMBIGUOUS")
+
+
 class EndpointAdmissionTests(unittest.TestCase):
     class Request:
         method = "POST"
@@ -584,6 +754,13 @@ class EndpointAdmissionTests(unittest.TestCase):
                 async def write_checkpoint(self, body):
                     namespace.write_count += 1
                     return {"_http_status": 200, "persisted": True}
+                async def run_proposal(self, body):
+                    namespace.proposal_count = getattr(namespace, "proposal_count", 0) + 1
+                    proposal = await entry._propose(body, namespace.env)
+                    return {"_http_status": 200, "status": "COMPLETED", "request_digest": "a" * 64,
+                            "idempotent_replay": False, "proposal": proposal}
+                async def read_proposal(self, request_id):
+                    return getattr(namespace, "proposal_record", None)
             return Stub()
 
     def setUp(self):
@@ -592,7 +769,13 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.worker.env = self.env
 
     def test_propose_chunked_body_without_content_length_reaches_provider(self):
-        request = self.Request("/v1/repair/propose", '{"request_id":"req-1"}')
+        namespace = self.Namespace()
+        namespace.env = self.env
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/propose", json.dumps({
+            "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+            "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+        }))
         calls = []
         original = entry._propose
         async def fake_propose(*args):
@@ -605,6 +788,7 @@ class EndpointAdmissionTests(unittest.TestCase):
             entry._propose = original
         self.assertEqual(result["schema"], 2)
         self.assertEqual(calls, [1])
+        self.assertEqual(namespace.proposal_count, 1)
 
     def test_propose_oversized_chunked_body_stops_before_provider(self):
         request = self.Request("/v1/repair/propose", "x" * (entry.MAX_BODY + 1))
@@ -621,6 +805,56 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(result["error"], "body_too_large")
         self.assertEqual(calls, [])
         self.assertTrue(request.body.reader.cancelled)
+
+    def test_proposal_lookup_returns_cached_completed_result(self):
+        namespace = self.Namespace()
+        namespace.proposal_record = {
+            "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
+            "repository": "yanhul/try", "sha": "a" * 40, "attempt": 1,
+            "state": "COMPLETED", "created_at": 1000.0, "completed_at": 1001.0,
+            "proposal": {"schema": 2, "files": [{"path": "core/a.py", "content": "x"}]},
+        }
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/proposal/req-1", method="GET")
+        original_response = entry.Response
+        entry.Response = ProviderFailureMappingTests.StatusResponse
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry.Response = original_response
+        self.assertEqual(result["_status"], 200)
+        self.assertEqual(result["status"], "COMPLETED")
+        self.assertEqual(result["proposal"]["schema"], 2)
+        receipt = result["operation_receipt"]
+        self.assertEqual(receipt["issuer"], "try.repair")
+        self.assertEqual(receipt["request_digest"], "a" * 64)
+        signed = {key: receipt[key] for key in entry.OPERATION_RECEIPT_SIGNED_FIELDS}
+        self.assertEqual(receipt["algorithm"], "Ed25519")
+        signature = base64.b64decode(receipt["signature"], validate=True)
+        self.env._private_key.public_key().verify(
+            signature, entry._canonical_json(signed).encode("utf-8")
+        )
+
+    def test_proposal_lookup_returns_unknown_for_durable_in_progress_record(self):
+        namespace = self.Namespace()
+        namespace.proposal_record = {
+            "schema": 1, "request_id": "req-1", "request_digest": "a" * 64,
+            "repository": "yanhul/try", "sha": "a" * 40, "attempt": 1,
+            "state": "IN_PROGRESS", "created_at": 1000.0,
+        }
+        self.env.REPAIR_CHECKPOINTS = namespace
+        request = self.Request("/v1/repair/proposal/req-1", method="GET")
+        original_response = entry.Response
+        entry.Response = ProviderFailureMappingTests.StatusResponse
+        try:
+            result = asyncio.run(self.worker.fetch(request))
+        finally:
+            entry.Response = original_response
+        self.assertEqual(result["_status"], 202)
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
+        self.assertEqual(result["operation_receipt"]["execution_state"], "IN_PROGRESS_OR_AMBIGUOUS")
+        self.assertEqual(namespace.lookup_count, 1)
 
     def test_checkpoint_chunked_body_without_content_length_persists(self):
         namespace = self.Namespace()
@@ -673,8 +907,14 @@ class ProviderFailureMappingTests(unittest.TestCase):
     def _fetch(self, error):
         worker = entry.Default()
         worker.env = _Env()
+        namespace = EndpointAdmissionTests.Namespace()
+        namespace.env = worker.env
+        worker.env.REPAIR_CHECKPOINTS = namespace
         request = EndpointAdmissionTests.Request(
-            "/v1/repair/propose", '{"request_id":"req-1"}'
+            "/v1/repair/propose", json.dumps({
+                "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+                "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+            })
         )
         original_response = entry.Response
         original_propose = entry._propose
@@ -707,8 +947,14 @@ class ProviderReadinessErrorMappingTests(unittest.TestCase):
                 return {"_status": status, **payload}
         worker = entry.Default()
         worker.env = _Env()
+        namespace = EndpointAdmissionTests.Namespace()
+        namespace.env = worker.env
+        worker.env.REPAIR_CHECKPOINTS = namespace
         request = EndpointAdmissionTests.Request(
-            "/v1/repair/propose", '{"request_id":"req-1"}'
+            "/v1/repair/propose", json.dumps({
+                "request_id": "req-1", "repository": "yanhul/try", "sha": "a" * 40,
+                "attempt": 1, "failure": {}, "source_snapshot": {"core/a.py": "x"},
+            })
         )
         original_response = entry.Response
         original_propose = entry._propose
