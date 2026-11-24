@@ -653,11 +653,11 @@ class DurableProposalOperationTests(unittest.TestCase):
             raise OSError("connection lost after request")
         entry._propose = fail
         try:
-            with self.assertRaises(OSError):
-                asyncio.run(self.operation.run_proposal(self.request))
+            first = asyncio.run(self.operation.run_proposal(self.request))
             result = asyncio.run(self.operation.run_proposal(self.request))
         finally:
             entry._propose = original
+        self.assertEqual(first["status"], "UNKNOWN")
         self.assertEqual(result["status"], "UNKNOWN")
         self.assertEqual(calls, [1])
 
@@ -669,11 +669,11 @@ class DurableProposalOperationTests(unittest.TestCase):
             raise RuntimeError("gemini_quota_exhausted:429")
         entry._propose = fail
         try:
-            with self.assertRaisesRegex(RuntimeError, "gemini_quota_exhausted"):
-                asyncio.run(self.operation.run_proposal(self.request))
+            first = asyncio.run(self.operation.run_proposal(self.request))
             result = asyncio.run(self.operation.run_proposal(self.request))
         finally:
             entry._propose = original
+        self.assertEqual(first["status"], "UNKNOWN")
         self.assertEqual(result["status"], "UNKNOWN")
         self.assertFalse(result["retry_allowed"])
         self.assertEqual(calls, [1])
@@ -692,10 +692,11 @@ class OperationReceiptClassificationTests(unittest.TestCase):
             raise RuntimeError("provider_not_configured:GEMINI")
         entry._propose = fail
         try:
-            with self.assertRaisesRegex(RuntimeError, "provider_not_configured"):
-                asyncio.run(operation.run_proposal(request))
+            result = asyncio.run(operation.run_proposal(request))
         finally:
             entry._propose = original
+        self.assertEqual(result["status"], "FAILED")
+        self.assertEqual(result["execution_state"], "NOT_SUBMITTED")
         record = asyncio.run(ctx.storage.get("proposal:preflight-1"))
         self.assertEqual(record["state"], "FAILED")
         self.assertEqual(record["execution_state"], "NOT_SUBMITTED")
@@ -715,10 +716,11 @@ class OperationReceiptClassificationTests(unittest.TestCase):
             raise RuntimeError("gemini_http_503")
         entry._propose = fail
         try:
-            with self.assertRaisesRegex(RuntimeError, "gemini_http_503"):
-                asyncio.run(operation.run_proposal(request))
+            result = asyncio.run(operation.run_proposal(request))
         finally:
             entry._propose = original
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertFalse(result["retry_allowed"])
         record = asyncio.run(ctx.storage.get("proposal:ambiguous-1"))
         self.assertEqual(record["state"], "IN_PROGRESS")
         receipt = asyncio.run(entry._operation_receipt(record, _Env()))

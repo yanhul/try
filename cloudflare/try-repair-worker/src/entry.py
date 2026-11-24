@@ -493,7 +493,17 @@ class RepairCheckpoint(DurableObject):
                     failed = {**record, "state": "FAILED", "execution_state": "NOT_SUBMITTED",
                               "failure_code": message.split(":", 1)[0], "completed_at": time.time()}
                     await self.ctx.storage.put(key, failed)
-                raise
+                    return {"_http_status": 200, "status": "FAILED", "request_id": request_id,
+                            "request_digest": request_digest, "failure_code": failed["failure_code"],
+                            "execution_state": "NOT_SUBMITTED", "retry_allowed": False,
+                            "idempotent_replay": False}
+                # The provider may have accepted the request. Return a durable
+                # UNKNOWN result instead of raising across the Durable Object RPC
+                # boundary (which wraps Python exceptions as JsException).
+                return {"_http_status": 202, "status": "UNKNOWN",
+                        "execution_state": "IN_PROGRESS_OR_AMBIGUOUS", "request_id": request_id,
+                        "request_digest": request_digest, "retry_allowed": False,
+                        "reason": "provider_outcome_ambiguous"}
 
     async def write_checkpoint(self, item):
         if not isinstance(item, dict):
@@ -779,12 +789,8 @@ class Default(WorkerEntrypoint):
                 status=500,
             )
         except Exception as exc:
-            payload = {
-                "status": "PROVIDER_INTERNAL_ERROR",
-                "provider": "gemini",
-                "http_status": 500,
-                "reason": type(exc).__name__,
-            }
-            if getattr(self.env, "TRY_DEBUG_ERRORS", "") == "1":
-                payload["debug_reason"] = str(exc)[:2000]
-            return Response.json(payload, status=500, headers={"Retry-After": "2"})
+            return Response.json(
+                {"status": "PROVIDER_INTERNAL_ERROR", "provider": "gemini",
+                 "http_status": 500, "reason": type(exc).__name__},
+                status=500, headers={"Retry-After": "2"},
+            )
