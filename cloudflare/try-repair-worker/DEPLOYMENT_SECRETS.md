@@ -38,8 +38,8 @@ The command stages a Worker version; it does not activate it. Record the returne
 version ID privately. Do not run `wrangler versions deploy` until all four required
 secrets have been confirmed present and the staged version has been reviewed.
 
-If your installed Wrangler does not support `versions secret put`, stop and inspect
-`npx wrangler versions secret put --help`; do not fall back to `wrangler secret put`
+If your installed Wrangler does not support `versions secret bulk`, stop and inspect
+`npx wrangler versions secret bulk --help`; do not fall back to `wrangler secret put`
 because that command deploys immediately.
 
 ## AIOS and Gateway configuration boundaries
