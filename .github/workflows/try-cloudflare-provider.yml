@@ -117,7 +117,8 @@ jobs:
         run: |
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
-          git clone --depth 1 https://github.com/yanhul/aios.git ../aiosPYTHONPATH=../aios python - <<'PY'
+          git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+          PYTHONPATH=../aios python - <<'PY'
           import json
           import os
           from core.try_repair_provider import health, propose
