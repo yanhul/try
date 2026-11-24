@@ -779,13 +779,12 @@ class Default(WorkerEntrypoint):
                 status=500,
             )
         except Exception as exc:
-            return Response.json(
-                {
-                    "status": "PROVIDER_INTERNAL_ERROR",
-                    "provider": "gemini",
-                    "http_status": 500,
-                    "reason": type(exc).__name__,
-                },
-                status=500,
-                headers={"Retry-After": "2"},
-            )
+            payload = {
+                "status": "PROVIDER_INTERNAL_ERROR",
+                "provider": "gemini",
+                "http_status": 500,
+                "reason": type(exc).__name__,
+            }
+            if getattr(self.env, "TRY_DEBUG_ERRORS", "") == "1":
+                payload["debug_reason"] = str(exc)[:256]
+            return Response.json(payload, status=500, headers={"Retry-After": "2"})
