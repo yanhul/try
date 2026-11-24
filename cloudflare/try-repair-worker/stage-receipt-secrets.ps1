@@ -52,22 +52,51 @@ $payload = @{
     TRY_OPERATION_RECEIPT_KEY_ID = $keyId
 } | ConvertTo-Json -Compress
 
-$tempPath = Join-Path ([IO.Path]::GetTempPath()) ("try-receipt-secrets-" + [Guid]::NewGuid().ToString("N") + ".json")
+$tempDirectory = Join-Path ([IO.Path]::GetTempPath()) ("try-receipt-secrets-" + [Guid]::NewGuid().ToString("N"))
+$tempPath = Join-Path $tempDirectory "secrets.json"
 
-try {
-    [IO.File]::WriteAllText($tempPath, $payload, (New-Object System.Text.UTF8Encoding($false)))
-
-    # Restrict the temporary plaintext secret file to the current Windows identity.
+function Set-CurrentUserOnlyAcl([string]$Path) {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent().Name
-    $acl = Get-Acl -LiteralPath $tempPath
+    $acl = Get-Acl -LiteralPath $Path
     $acl.SetAccessRuleProtection($true, $false)
+
+    # A newly created Windows file can carry explicit SYSTEM/logon-session ACEs.
+    # Remove every existing ACE; SetAccessRule alone does not guarantee this.
+    foreach ($existingRule in @($acl.Access)) {
+        [void]$acl.RemoveAccessRuleSpecific($existingRule)
+    }
+
     $rule = New-Object Security.AccessControl.FileSystemAccessRule(
         $identity,
         [Security.AccessControl.FileSystemRights]::FullControl,
         [Security.AccessControl.AccessControlType]::Allow
     )
-    $acl.SetAccessRule($rule)
-    Set-Acl -LiteralPath $tempPath -AclObject $acl
+    $acl.AddAccessRule($rule)
+    Set-Acl -LiteralPath $Path -AclObject $acl
+
+    # Read back the persisted descriptor and fail closed unless it is exact.
+    $verified = Get-Acl -LiteralPath $Path
+    $entries = @($verified.Access)
+    if (-not $verified.AreAccessRulesProtected -or
+        $verified.Owner -ne $identity -or
+        $entries.Count -ne 1 -or
+        $entries[0].IdentityReference.Value -ne $identity -or
+        $entries[0].AccessControlType -ne [Security.AccessControl.AccessControlType]::Allow -or
+        $entries[0].FileSystemRights -ne [Security.AccessControl.FileSystemRights]::FullControl -or
+        $entries[0].IsInherited) {
+        throw "ACL verification failed for '$Path'; refusing to write or stage secrets."
+    }
+}
+
+try {
+    # Create and lock the directory before any plaintext secret file exists.
+    New-Item -ItemType Directory -Path $tempDirectory -ErrorAction Stop | Out-Null
+    Set-CurrentUserOnlyAcl -Path $tempDirectory
+
+    # Create an empty file, lock its ACL, and only then write secret material.
+    New-Item -ItemType File -Path $tempPath -ErrorAction Stop | Out-Null
+    Set-CurrentUserOnlyAcl -Path $tempPath
+    [IO.File]::WriteAllText($tempPath, $payload, (New-Object System.Text.UTF8Encoding($false)))
 
     Write-Host "Staging TRY receipt signing secrets for Worker '$WorkerName'..."
     Write-Host "The secret values are not placed in command-line arguments."
@@ -80,8 +109,8 @@ try {
     Write-Host "Review the returned version ID. Do not deploy until all required secrets and runtime checks pass."
 }
 finally {
-    if (Test-Path -LiteralPath $tempPath) {
-        Remove-Item -LiteralPath $tempPath -Force
+    if (Test-Path -LiteralPath $tempDirectory) {
+        Remove-Item -LiteralPath $tempDirectory -Recurse -Force
     }
     $payload = $null
     $privateKeyB64 = $null
