@@ -98,7 +98,7 @@ async def _operation_receipt(record, env):
     body = {
         "type": OPERATION_RECEIPT_TYPE, "issuer": OPERATION_RECEIPT_ISSUER,
         "key_id": key_id.strip(),
-"receipt_id": "TR-" + hashlib.sha256(
+        "receipt_id": "TR-" + hashlib.sha256(
             f"{record['request_id']}:{record['request_digest']}:{state}:{issued_at}".encode("utf-8")
         ).hexdigest()[:32],
         "request_id": record["request_id"], "request_digest": record["request_digest"],
@@ -198,7 +198,7 @@ def _validate(proposal: dict, allowed_paths: set[str] | None = None) -> dict:
         if any(part in {"", "."} for part in parts) or norm.endswith("/"):
             raise ValueError(f"ambiguous_patch_path:{path}")
         protected = (
-norm.startswith("/")
+            norm.startswith("/")
             or ".." in parts
             or any(norm == p.rstrip("/") or norm.startswith(p) for p in DENIED_PREFIXES)
             or norm in DENIED_NAMES
@@ -298,7 +298,7 @@ async def _read_bounded_json(request) -> dict:
         raise ValueError("request_body_missing")
     reader = body.getReader()
     raw_body = bytearray()
-try:
+    try:
         while True:
             result = await reader.read()
             if result.done:
@@ -398,7 +398,7 @@ _CHECKPOINT_DIGEST = __import__("re").compile(r"^[0-9a-fA-F]{64}$")
 _CHECKPOINT_NEXT = {
     "OBSERVE": ("DECIDE",), "DECIDE": ("PROPOSE",),
     "PROPOSE": ("VERIFY",), "VERIFY": ("PERSIST",),
-"PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
+    "PERSIST": ("RESUME", "DONE"), "RESUME": ("OBSERVE",),
 }
 
 
@@ -498,7 +498,7 @@ class RepairCheckpoint(DurableObject):
     async def write_checkpoint(self, item):
         if not isinstance(item, dict):
             return {"_http_status": 400, "error": "invalid_record"}
-request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
+        request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
         attempt, phase, state = item.get("attempt"), item.get("phase"), item.get("state")
         digest, reason = item.get("evidence_digest"), item.get("reason")
         if not isinstance(request_id, str) or not _CHECKPOINT_REQUEST_ID.fullmatch(request_id):
@@ -598,7 +598,7 @@ class Default(WorkerEntrypoint):
                     "provider_token_configured": True,
                     "operation_receipt_signing_configured": True,
                 }
-)
+            )
 
         expected = getattr(self.env, "TRY_PROVIDER_TOKEN", "")
         supplied = request.headers.get("Authorization", "")
@@ -698,7 +698,7 @@ class Default(WorkerEntrypoint):
                 # Preserve the established schema-2 proposal response for old
                 # AIOS clients. The operation ledger remains independently
                 # readable through GET /v1/repair/proposal/{request_id}.
-return Response.json(result["proposal"], status=200, headers={
+                return Response.json(result["proposal"], status=200, headers={
                     "X-TRY-Operation-Status": "COMPLETED",
                     "X-TRY-Request-Digest": result["request_digest"],
                     "X-TRY-Idempotent-Replay": str(bool(result.get("idempotent_replay"))).lower(),

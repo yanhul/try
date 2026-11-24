@@ -1,11 +1,14 @@
 import asyncio
+import base64
 import hashlib
-import hmac
 import importlib
 import json
 import sys
 import types
 import unittest
+
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 
 class _FakeChunk:
@@ -79,11 +82,14 @@ entry = importlib.import_module("entry")
 
 
 class _Env:
+    _private_key = Ed25519PrivateKey.from_private_bytes(bytes.fromhex("11" * 32))
+    TRY_OPERATION_RECEIPT_PRIVATE_KEY = base64.b64encode(_private_key.private_bytes(
+        serialization.Encoding.DER, serialization.PrivateFormat.PKCS8, serialization.NoEncryption()
+    )).decode("ascii")
     GEMINI_API_KEY = "test-key"
     GEMINI_PROJECT_ID = "test-project"
     GEMINI_MODEL = "gemini-test"
     TRY_PROVIDER_TOKEN = "test-token"
-    TRY_OPERATION_RECEIPT_SECRET = "test-operation-receipt-secret-0123456789"
     TRY_OPERATION_RECEIPT_KEY_ID = "try-op-test-v1"
     REPAIR_CHECKPOINTS = object()
 
@@ -124,7 +130,7 @@ class HealthCheckTests(unittest.TestCase):
 
     def test_health_not_ready_without_operation_receipt_signing_key(self):
         env = _Env()
-        env.TRY_OPERATION_RECEIPT_SECRET = ""
+        env.TRY_OPERATION_RECEIPT_PRIVATE_KEY = ""
         instance = entry.Default()
         instance.env = env
         result = asyncio.run(instance.fetch(self.Request()))
@@ -693,7 +699,7 @@ class OperationReceiptClassificationTests(unittest.TestCase):
         record = asyncio.run(ctx.storage.get("proposal:preflight-1"))
         self.assertEqual(record["state"], "FAILED")
         self.assertEqual(record["execution_state"], "NOT_SUBMITTED")
-        receipt = entry._operation_receipt(record, _Env())
+        receipt = asyncio.run(entry._operation_receipt(record, _Env()))
         self.assertEqual(receipt["status"], "FAILED")
         self.assertEqual(receipt["execution_state"], "NOT_SUBMITTED")
 
@@ -715,7 +721,7 @@ class OperationReceiptClassificationTests(unittest.TestCase):
             entry._propose = original
         record = asyncio.run(ctx.storage.get("proposal:ambiguous-1"))
         self.assertEqual(record["state"], "IN_PROGRESS")
-        receipt = entry._operation_receipt(record, _Env())
+        receipt = asyncio.run(entry._operation_receipt(record, _Env()))
         self.assertEqual(receipt["status"], "UNKNOWN")
         self.assertEqual(receipt["execution_state"], "IN_PROGRESS_OR_AMBIGUOUS")
 
@@ -821,11 +827,11 @@ class EndpointAdmissionTests(unittest.TestCase):
         self.assertEqual(receipt["issuer"], "try.repair")
         self.assertEqual(receipt["request_digest"], "a" * 64)
         signed = {key: receipt[key] for key in entry.OPERATION_RECEIPT_SIGNED_FIELDS}
-        expected = hmac.new(
-            self.env.TRY_OPERATION_RECEIPT_SECRET.encode(),
-            entry._canonical_json(signed).encode(), hashlib.sha256,
-        ).hexdigest()
-        self.assertTrue(hmac.compare_digest(receipt["signature"], expected))
+        self.assertEqual(receipt["algorithm"], "Ed25519")
+        signature = base64.b64decode(receipt["signature"], validate=True)
+        self.env._private_key.public_key().verify(
+            signature, entry._canonical_json(signed).encode("utf-8")
+        )
 
     def test_proposal_lookup_returns_unknown_for_durable_in_progress_record(self):
         namespace = self.Namespace()
