@@ -91,6 +91,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
           python - <<'PY'
           import json
           import os
@@ -123,9 +124,6 @@ jobs:
                   except Exception:
                       payload = {}
                   return exc.code, payload
-
-          # AIOS receipt verifier is public code; the pinned public key is a trust anchor.
-          git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
 
           # Cloudflare edge may briefly return a transient denial/not-ready response
           # immediately after deployment. Poll with a hard deadline; never treat a
