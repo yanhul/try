@@ -11,7 +11,7 @@ from engine.algorithm_compiler import (
 
 def test_compiles_and_verifies_shortest_path():
     grid = ["S..", ".#.", "..G"]
-    receipt = execute_and_verify({"operation": "maze.shortest_path"}, grid, executor_revision="a".repeat(40))
+    receipt = execute_and_verify({"operation": "maze.shortest_path"}, grid, executor_revision="a" * 40)
     assert receipt["decision"] == "VERIFIED"
     assert receipt["verification"]["oracle_distance"] == 4
     assert receipt["promotion"] == "NOT_REQUESTED"
@@ -20,14 +20,14 @@ def test_compiles_and_verifies_shortest_path():
 
 def test_scales_to_100_by_100_without_retraining_or_parameter_growth():
     grid = ["S" + "." * 99] + ["." * 100 for _ in range(98)] + ["." * 99 + "G"]
-    receipt = execute_and_verify({"operation": "maze.shortest_path", "max_expansions": 10_000}, grid, executor_revision="a".repeat(40))
+    receipt = execute_and_verify({"operation": "maze.shortest_path", "max_expansions": 10_000}, grid, executor_revision="a" * 40)
     assert receipt["decision"] == "VERIFIED"
     assert receipt["verification"]["oracle_distance"] == 198
     assert receipt["candidate"]["expansions"] <= 10_000
 
 
 def test_confirms_unreachable_maze():
-    receipt = execute_and_verify({"operation": "maze.shortest_path"}, ["S#G"], executor_revision="a".repeat(40))
+    receipt = execute_and_verify({"operation": "maze.shortest_path"}, ["S#G"], executor_revision="a" * 40)
     assert receipt["decision"] == "VERIFIED"
     assert receipt["candidate"]["path"] is None
     assert receipt["verification"]["reason"] == "no_path_confirmed"
@@ -68,8 +68,8 @@ def test_rejects_invalid_direct_dataclass_construction():
 def test_receipt_hash_is_deterministic_for_same_program_and_input():
     spec = {"operation": "maze.shortest_path"}
     grid = ["S..", ".#.", "..G"]
-    first = execute_and_verify(spec, grid, executor_revision="a".repeat(40))
-    second = execute_and_verify(spec, grid, executor_revision="a".repeat(40))
+    first = execute_and_verify(spec, grid, executor_revision="a" * 40)
+    second = execute_and_verify(spec, grid, executor_revision="a" * 40)
     assert first["receipt_sha256"] == second["receipt_sha256"]
 
 
