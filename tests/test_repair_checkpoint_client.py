@@ -216,6 +216,24 @@ class RepairCheckpointClientTests(unittest.TestCase):
         with self.assertRaisesRegex(repair_checkpoint.RepairCheckpointError, "checkpoint_not_resumable"):
             select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
 
+    def test_resume_rejects_ambiguous_effect_even_when_checkpoint_is_blocked(self):
+        prior = {"repository": "yanhul/try", "sha": "a" * 40,
+                 "attempt": 1, "phase": "VERIFY", "state": "BLOCKED",
+                 "reason": "external_effect_outcome_unknown; reconciliation_required"}
+        with self.assertRaisesRegex(
+            repair_checkpoint.RepairCheckpointError, "reconciliation_required_before_resume"
+        ):
+            select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
+
+    def test_resume_rejects_interrupted_working_checkpoint_after_blocking_marker(self):
+        prior = {"repository": "yanhul/try", "sha": "a" * 40,
+                 "attempt": 1, "phase": "PROPOSE", "state": "BLOCKED",
+                 "reason": "interrupted_attempt_outcome_unknown; reconciliation_required"}
+        with self.assertRaisesRegex(
+            repair_checkpoint.RepairCheckpointError, "reconciliation_required_before_resume"
+        ):
+            select_resume_attempt(prior, repository="yanhul/try", sha="a" * 40)
+
     def test_resume_rejects_identity_change_and_exhausted_budget(self):
         prior = {"repository": "yanhul/try", "sha": "a" * 40,
                  "attempt": 1, "phase": "VERIFY", "state": "BLOCKED"}
