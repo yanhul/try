@@ -10,7 +10,7 @@ Target flow (not yet proven end-to-end):
 
 **Current integration boundary:** `.github/workflows/ci-event-receiver.yml` only validates and persists a notification envelope. It does not invoke `research/autonomous_repair.py`, the proposal relay, or the Cloudflare Worker. `.github/workflows/aios-repair-propose.yml` is manually dispatched. Therefore, the full event-to-repair chain is **NOT VERIFIED / BLOCKED**, even when unit and conformance CI are green.
 
-`research/autonomous_repair.py` records checkpoint phases and fails closed when the Worker API is unavailable. It can retry only from a matching `BLOCKED` checkpoint; a `WORKING` checkpoint after process death is deliberately rejected because the proposal, working-tree mutation and AIOS receipt are not yet durably restored/reconciled. This is safe-stop behavior, not complete crash recovery. The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
+`research/autonomous_repair.py` records checkpoint phases and fails closed when the Worker API is unavailable. A `BLOCKED` checkpoint is resumable only when it does not carry the `reconciliation_required` marker. Exceptions during `apply_via_aios` or verification after apply are treated as an ambiguous external-effect outcome: the runner records `BLOCKED` with `reconciliation_required`, emits `UNKNOWN`, and exits without allocating another operation ID. A subsequent invocation must stop for reconciliation rather than advance the attempt. A `WORKING` checkpoint after process death is likewise rejected and marked for reconciliation. This is safe-stop behavior, not complete crash recovery. The Worker only reasons and records a bounded checkpoint. It never commits patches, dispatches arbitrary shell commands, declares a verification PASS, or grants AIOS authority.
 
 ## Durable checkpoint API
 
@@ -19,7 +19,7 @@ Target flow (not yet proven end-to-end):
 - Records are stored in a Cloudflare Durable Object, serialized per request.
 - Identity is bound to request ID, repository and 40-character commit SHA.
 - Attempts are bounded to 1–20 and must advance monotonically.
-- A retry is accepted only after a BLOCKED record and an explicit RESUME phase.
+- A retry is accepted only after a BLOCKED record and an explicit RESUME phase, and only when the reason does not require reconciliation.
 - Phase transitions are validated; terminal DONE requires PERSIST plus a SHA-256 evidence digest.
 - Identity conflict, invalid transition, stale attempt or missing terminal evidence fails closed.
 
