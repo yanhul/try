@@ -87,3 +87,39 @@ def verify_authority(contract_path, permit_path, attestation_path=None, secret=N
 
 
 __all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority"]
+
+
+def verify_algorithm_receipt(
+    receipt,
+    *,
+    grid,
+    spec,
+    expected_executor_revision,
+    expected_executor_sha256,
+    aios_root=None,
+):
+    """Delegate algorithm-result verification to the pinned AIOS authority source.
+
+    This checks result correctness against contract-supplied pins; it does not
+    authenticate worker execution or authorize promotion.
+    """
+    configured = aios_root or os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        raise FileNotFoundError("AIOS_ROOT/AIOS_SOURCE is not configured")
+    root = Path(configured).expanduser().resolve()
+    if not (root / "core" / "algorithm_execution_receipt.py").is_file():
+        raise FileNotFoundError(f"AIOS algorithm receipt verifier not found under {root}")
+    root_s = str(root)
+    if root_s not in sys.path:
+        sys.path.insert(0, root_s)
+    verifier = importlib.import_module("core.algorithm_execution_receipt")
+    return verifier.verify_algorithm_execution_receipt(
+        receipt,
+        grid=grid,
+        spec=spec,
+        expected_executor_revision=expected_executor_revision,
+        expected_executor_sha256=expected_executor_sha256,
+    )
+
+
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt"]
