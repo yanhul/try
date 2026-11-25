@@ -198,4 +198,4 @@ def verify_algorithm_worker_receipt(receipt, *, expected, keyring=None, now=None
     )
 
 
-__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt"]
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt", "verify_algorithm_worker_receipt"]
