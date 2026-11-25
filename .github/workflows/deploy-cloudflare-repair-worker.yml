@@ -1,6 +1,13 @@
 name: Deploy TRY Repair Worker (Cloudflare)
 
 on:
+  # One-shot deployment trigger: only a dedicated marker commit with the
+  # exact [DEPLOY TRY WORKER] message can invoke production deployment.
+  push:
+    branches:
+      - main
+    paths:
+      - .github/deploy-production/try-worker
   workflow_dispatch:
     inputs:
       confirm_production:
@@ -37,7 +44,7 @@ jobs:
       - name: Fail closed on missing deployment credentials
         shell: bash
         env:
-          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+          CONFIRM_PRODUCTION: ${{ inputs.confirm_production || (startsWith(github.event.head_commit.message, '[DEPLOY TRY WORKER]') && 'DEPLOY') }}
         run: |
           set -euo pipefail
           if [[ "$CONFIRM_PRODUCTION" != "DEPLOY" ]]; then
