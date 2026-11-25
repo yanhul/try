@@ -63,6 +63,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install AIOS receipt verification dependency
+        run: python -m pip install cryptography
+
       - name: Set up uv
         uses: astral-sh/setup-uv@v6
         with:
