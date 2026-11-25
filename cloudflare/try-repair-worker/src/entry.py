@@ -136,6 +136,87 @@ async def _operation_receipt(record, env):
     body["signature"] = await _ed25519_sign(private_key, message)
     return body
 
+ALGORITHM_RECEIPT_TYPE = "TRY_ALGORITHM_EXECUTION_RECEIPT_V1"
+ALGORITHM_RECEIPT_ISSUER = "try.algorithm_executor"
+ALGORITHM_RECEIPT_TTL_SECONDS = 900
+ALGORITHM_RECEIPT_SIGNED_FIELDS = (
+    "type", "issuer", "key_id", "receipt_id", "contract_id", "permit_id",
+    "execution_id", "effect_id", "dispatch_id", "dispatch_digest", "attempt_id", "attempt_number", "worker_id",
+    "worker_build_sha256", "executor_revision", "executor_sha256",
+    "spec_sha256", "input_sha256", "artifact_sha256", "output_sha256",
+    "status", "execution_state", "issued_at", "expires_at", "algorithm",
+)
+
+
+async def _algorithm_execution_receipt(record, env):
+    """Sign a completed/ambiguous algorithm attempt with the worker-only key."""
+    private_key = getattr(env, "TRY_ALGORITHM_RECEIPT_PRIVATE_KEY", "")
+    key_id = getattr(env, "TRY_ALGORITHM_RECEIPT_KEY_ID", "")
+    worker_id = getattr(env, "TRY_ALGORITHM_WORKER_ID", "")
+    worker_build = getattr(env, "TRY_ALGORITHM_WORKER_BUILD_SHA256", "")
+    if not _valid_operation_receipt_private_key(private_key):
+        raise RuntimeError("algorithm_receipt_signing_not_configured")
+    if not all(isinstance(v, str) and v.strip() for v in (key_id, worker_id)):
+        raise RuntimeError("algorithm_receipt_worker_identity_not_configured")
+    if not isinstance(worker_build, str) or not re.fullmatch(r"[0-9a-f]{64}", worker_build):
+        raise RuntimeError("algorithm_receipt_worker_build_not_configured")
+    if not isinstance(record, dict):
+        raise ValueError("algorithm_receipt_record_invalid")
+    required = (
+        "contract_id", "permit_id", "execution_id", "effect_id", "dispatch_id", "dispatch_digest", "attempt_id", "attempt_number",
+        "executor_revision", "executor_sha256", "spec_sha256", "input_sha256",
+        "status", "execution_state",
+    )
+    if any(field not in record for field in required):
+        raise ValueError("algorithm_receipt_binding_missing")
+    if isinstance(record["attempt_number"], bool) or not isinstance(record["attempt_number"], int) or record["attempt_number"] < 1:
+        raise ValueError("algorithm_receipt_attempt_invalid")
+    if not isinstance(record["executor_revision"], str) or not re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", record["executor_revision"]):
+        raise ValueError("algorithm_receipt_executor_revision_invalid")
+    for field in ("executor_sha256", "spec_sha256", "input_sha256"):
+        if not isinstance(record[field], str) or not re.fullmatch(r"[0-9a-f]{64}", record[field]):
+            raise ValueError(f"algorithm_receipt_{field}_invalid")
+    status, execution_state = record["status"], record["execution_state"]
+    artifact = record.get("artifact_sha256")
+    output = record.get("output_sha256")
+    if status == "COMPLETED":
+        if execution_state != "COMPLETED" or not all(
+            isinstance(v, str) and re.fullmatch(r"[0-9a-f]{64}", v)
+            for v in (artifact, output)
+        ):
+            raise ValueError("algorithm_receipt_completed_output_invalid")
+    elif status == "UNKNOWN":
+        if execution_state != "IN_PROGRESS_OR_AMBIGUOUS" or artifact is not None or output is not None:
+            raise ValueError("algorithm_receipt_unknown_state_invalid")
+    else:
+        raise ValueError("algorithm_receipt_status_invalid")
+    issued_at = float(time.time())
+    body = {
+        "type": ALGORITHM_RECEIPT_TYPE, "issuer": ALGORITHM_RECEIPT_ISSUER,
+        "key_id": key_id.strip(),
+        "receipt_id": "TA-" + hashlib.sha256(
+            f"{record['execution_id']}:{record['attempt_id']}:{issued_at}".encode("utf-8")
+        ).hexdigest()[:32],
+        "contract_id": record["contract_id"], "permit_id": record["permit_id"],
+        "execution_id": record["execution_id"], "effect_id": record["effect_id"],
+        "dispatch_id": record["dispatch_id"], "dispatch_digest": record["dispatch_digest"],
+        "attempt_id": record["attempt_id"],
+        "attempt_number": record["attempt_number"], "worker_id": worker_id.strip(),
+        "worker_build_sha256": worker_build,
+        "executor_revision": record["executor_revision"],
+        "executor_sha256": record["executor_sha256"], "spec_sha256": record["spec_sha256"],
+        "input_sha256": record["input_sha256"], "artifact_sha256": artifact,
+        "output_sha256": output, "status": status, "execution_state": execution_state,
+        "issued_at": issued_at, "expires_at": issued_at + ALGORITHM_RECEIPT_TTL_SECONDS,
+        "algorithm": "Ed25519",
+    }
+    signed = {key: body[key] for key in ALGORITHM_RECEIPT_SIGNED_FIELDS}
+    body["signature"] = await _ed25519_sign(
+        private_key, _canonical_json(signed).encode("utf-8")
+    )
+    return body
+
+
 GITHUB_REPOSITORY_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?/[A-Za-z0-9](?:[A-Za-z0-9._-]{0,98}[A-Za-z0-9])?$")
 DENIED_PREFIXES = (".github/", ".aios/", "secrets/", ".git/")
 DENIED_NAMES = {".env", ".env.local", ".env.production", "credentials.json"}
