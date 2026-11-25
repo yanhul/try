@@ -24,6 +24,7 @@ _CONTRACT_FIELDS = (
     "max_attempts",
     "terminal_states",
     "policy_digest",
+    "acceptance_predicates",
 )
 
 
@@ -131,17 +132,20 @@ def verify_authorized_algorithm_receipt(
     spec,
     expected_executor_revision,
     expected_executor_sha256,
+    attestation,
+    attestation_secret,
     aios_root=None,
 ):
-    """Verify a read-only algorithm execution under an AIOS contract/permit.
+    """Verify a read-only algorithm execution under an AIOS contract/permit/attestation.
 
     The contract must explicitly grant algorithm_execute and compute_algorithm.
     Its input_digest must bind the supplied grid. Result verification remains
     delegated to AIOS; this function never promotes a capability.
     """
-    contract_mod, _ = _aios_modules(aios_root)
+    contract_mod, attestation_mod = _aios_modules(aios_root)
     canonical = _canonical_contract(contract)
     contract_mod.verify_permit(canonical, permit)
+    attestation_mod.verify_attestation(canonical, permit, attestation, attestation_secret)
     if "algorithm_execute" not in canonical["capabilities"]:
         raise PermissionError("AIOS contract does not grant algorithm_execute")
     if "compute_algorithm" not in canonical["allowed_effects"]:
@@ -156,6 +160,19 @@ def verify_authorized_algorithm_receipt(
     )
     if canonical["input_digest"] != "sha256:" + result["input_sha256"]:
         raise ValueError("AIOS contract input_digest does not bind algorithm input")
+    predicates = canonical.get("acceptance_predicates", [])
+    required_pins = {
+        "algorithm-executor-revision": ("receipt.executor_revision", expected_executor_revision),
+        "algorithm-executor-source": ("receipt.executor_sha256", expected_executor_sha256),
+        "algorithm-specification": ("receipt.spec_sha256", result["spec_sha256"]),
+    }
+    by_id = {item.get("predicate_id"): item for item in predicates if isinstance(item, dict)}
+    for predicate_id, (path, expected) in required_pins.items():
+        predicate = by_id.get(predicate_id)
+        if not isinstance(predicate, dict) or (
+            predicate.get("path"), predicate.get("operator"), predicate.get("expected")
+        ) != (path, "eq", expected):
+            raise PermissionError(f"AIOS contract does not pin {predicate_id}")
     return {
         **result,
         "contract_id": contract_mod.contract_identity(canonical),
