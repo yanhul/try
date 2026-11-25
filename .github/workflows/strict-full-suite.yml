@@ -17,6 +17,7 @@ on:
       - "cloudflare/try-repair-worker/tests/test_algorithm_runtime.py"
       - "cloudflare/try-repair-worker/tests/test_algorithm_durable_lifecycle.py"
       - "tests/test_algorithm_worker_provenance.py"
+      - "tests/test_algorithm_worker_artifact_boundary.py"
       - ".github/workflows/strict-full-suite.yml"
   workflow_dispatch:
 
@@ -29,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: 21ed3966e8a8bab0ae9c63516316dccbfb76655f
+          ref: a4dc44b4caaf1e68c2ece84cba5d39e861003934
           path: aios-authority
       - uses: actions/setup-python@v5
         with:
