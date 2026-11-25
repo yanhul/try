@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: c73203750bcc82213eb8bdd437ec373d3a2f5fbf
+          ref: 21ed3966e8a8bab0ae9c63516316dccbfb76655f
           path: aios-authority
       - uses: actions/setup-python@v5
         with:
