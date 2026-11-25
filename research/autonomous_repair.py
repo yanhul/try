@@ -19,6 +19,9 @@ def select_resume_attempt(prior, *, repository, sha, max_attempts=MAX_ATTEMPTS):
         raise RepairCheckpointError(
             f"checkpoint_not_resumable:{prior.get('state')}:{prior.get('phase')}"
         )
+    reason = prior.get("reason")
+    if isinstance(reason, str) and "reconciliation_required" in reason:
+        raise RepairCheckpointError("checkpoint_reconciliation_required_before_resume")
     previous_attempt = prior.get("attempt")
     if isinstance(previous_attempt, bool) or not isinstance(previous_attempt, int) or previous_attempt < 1:
         raise RepairCheckpointError("checkpoint_attempt_invalid_for_resume")
@@ -180,13 +183,20 @@ def main():
                                    attempt=attempt, phase="VERIFY", state="WORKING")
                 tested=worker.test()
             except Exception as exc:
-                reason=f"{type(exc).__name__}:{exc}"[:1000]
+                detail=f"{type(exc).__name__}:{exc}"[:700]
+                reason=f"external_effect_outcome_unknown; reconciliation_required; {detail}"
+                # apply_via_aios may have performed its effect before raising, and
+                # worker.test may fail after a successful apply. Never allocate a
+                # new logical_operation_id until the original effect is reconciled.
                 persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
                                    attempt=attempt, phase=current_phase, state="BLOCKED", reason=reason)
-                results.append({"attempt":attempt,"status":"BLOCKED","reason":reason})
-                if attempt == MAX_ATTEMPTS:
-                    break
-                continue
+                unknown={"status":"UNKNOWN","attempt":attempt,"phase":current_phase,
+                         "operation_id":req_id,"reason":reason,"reconciliation_required":True}
+                Path("repair-result.json").write_text(
+                    json.dumps(unknown,indent=2,sort_keys=True),encoding="utf-8"
+                )
+                print(json.dumps(unknown,sort_keys=True))
+                return 2
             if tested.status=="PASS" and not tested.evidence_refs:
                 reason="test_pass_without_evidence_refs"
                 persist_checkpoint(request_id=checkpoint_id, repository="yanhul/try", sha=base,
