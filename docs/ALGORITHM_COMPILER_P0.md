@@ -6,9 +6,10 @@ This is an isolated proof-of-concept in TRY. It demonstrates the engineering
 pattern suggested by Looped Weight-Space Programming: a designer emits a small,
 declarative algorithm specification; a bounded compiler maps a registered
 operation to a deterministic executor; an independent verifier checks the
-result; and a content-addressed receipt records the exact specification/input/output
-and verification decision. The receipt checksum is an unkeyed SHA-256 content
-hash, not a signature or proof of origin.
+result; and a content-addressed receipt records the exact specification/input/output,
+executor Git revision, executor source digest, and verification decision. The
+receipt checksum is an unkeyed SHA-256 content hash, not a signature or proof
+that a worker actually executed the source.
 
 ## Trust boundaries
 
@@ -20,14 +21,18 @@ hash, not a signature or proof of origin.
 - The executor's BFS and verifier's Dijkstra implementation are separate
   algorithms. The verifier checks endpoints, bounds, walls, adjacency and
   optimal path length, including the no-path case.
-- A `VERIFIED` receipt applies only to the exact content-addressed input and
-  specification. The receipt does not include a source-code digest or Git commit;
-  consumers must bind those separately before treating it as durable lineage.
-  It does not authorize side effects, registry promotion, or an
-  `ABSORBED` capability state.
-- AIOS remains the authority/evidence plane. This P0 does not call AIOS or write
-  its capability registry; integration requires a separate contract, permit,
-  immutable artifact lineage, conformance tests and explicit promotion gate.
+- A `VERIFIED` receipt includes an executor source digest and full Git revision.
+  The caller must compare both against pins supplied by the governing contract
+  or deployment policy; values copied from the receipt are not trusted.
+- AIOS independently checks the receipt with its own Dijkstra implementation
+  and verifies the contract/permit capability and effect allowlists. TRY's
+  nested verification claim is informational only.
+- AIOS returns `INDEPENDENTLY_VERIFIED`; promotion remains
+  `NOT_AUTHORIZED`. No side effect, registry promotion, or `ABSORBED`
+  capability state is authorized by this P0.
+- AIOS remains the authority/evidence plane. The adapter delegates to the
+  pinned AIOS checkout, verifies the execution contract/permit, and checks the
+  exact input digest. It does not write the AIOS capability registry.
 
 ## Run
 
@@ -40,7 +45,8 @@ python -m pytest -q tests/test_algorithm_compiler.py
 - Deterministic registered operation and strict spec validation.
 - Bounded execution and explicit budget failure.
 - Independent shortest-path oracle.
-- Content-addressed receipt with `VERIFIED` / `BLOCKED` and no implicit promotion.
+- Content-addressed receipt bound to executor revision/source digest.
+- AIOS contract/permit integration and independent verification; no implicit promotion.
 - Tests cover normal, unreachable, 100x100, malformed, budget-exhaustion,
   non-optimal candidate and deterministic receipt cases.
 
