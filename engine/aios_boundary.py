@@ -180,4 +180,22 @@ def verify_authorized_algorithm_receipt(
     }
 
 
+
+def verify_algorithm_worker_receipt(receipt, *, expected, keyring=None, now=None, aios_root=None):
+    """Delegate signed worker provenance verification to the pinned AIOS authority."""
+    configured = aios_root or os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        raise FileNotFoundError("AIOS_ROOT/AIOS_SOURCE is not configured")
+    root = Path(configured).expanduser().resolve()
+    if not (root / "core" / "algorithm_worker_receipt.py").is_file():
+        raise FileNotFoundError(f"AIOS algorithm worker receipt verifier not found under {root}")
+    root_s = str(root)
+    if root_s not in sys.path:
+        sys.path.insert(0, root_s)
+    verifier = importlib.import_module("core.algorithm_worker_receipt")
+    return verifier.verify_algorithm_worker_receipt(
+        receipt, expected=expected, keyring=keyring, now=now
+    )
+
+
 __all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt"]
