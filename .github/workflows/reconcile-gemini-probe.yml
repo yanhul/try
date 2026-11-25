@@ -1,0 +1,65 @@
+name: Reconcile TRY Gemini Probe (Read Only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: try-gemini-probe-reconciliation
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TRY_REPAIR_WORKER_URL: https://try-aios-repair-provider.simplehu.workers.dev
+      TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+      AIOS_TRY_OPERATION_KEYRING: '{"try.repair":{"key_id":"try-operation-ed25519-prod-v1","public_key":"y+8C1Ph7x929L+oAuzgWIiHA/MOLgoFhGxqzdligo3M=","scopes":["try.operation.receipt.verify"],"revoked":false}}'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install verifier dependency
+        run: python -m pip install cryptography
+
+      - name: Fetch AIOS verifier
+        run: git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
+
+      - name: Read-only reconciliation of the timed-out operation
+        env:
+          PYTHONPATH: ../aios
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          sys.path.insert(0, "../aios")
+          from core.try_repair_provider import lookup_proposal
+
+          result = lookup_proposal(
+              request_id="gemini-probe-45624611923-1",
+              expected_request_digest="ed8ae1cfb8a1cd85a58d1007f890e38943e51cb8b6907a49b3bed36c4ad756ef",
+              expected_repository="yanhul/try",
+              expected_sha="2c43bc9d2cd86843f29b06671a691d0e2f33ed86",
+              expected_attempt=1,
+          )
+          if result is None:
+              print(json.dumps({"reconciliation": "NOT_FOUND", "retry_authorized": False}))
+              sys.exit(2)
+          status = result.get("status")
+          receipt = result.get("operation_receipt", {})
+          print(json.dumps({
+              "reconciliation": status,
+              "request_id": result.get("request_id"),
+              "request_digest_verified": True,
+              "receipt_key_id": receipt.get("key_id"),
+              "operation_receipt_digest": result.get("operation_receipt_digest"),
+              "proposal_digest_verified": status == "COMPLETED",
+              "retry_authorized": False,
+          }, sort_keys=True))
+          if status != "COMPLETED":
+              sys.exit(3)
+          PY
