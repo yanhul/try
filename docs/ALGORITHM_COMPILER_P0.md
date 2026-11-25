@@ -24,9 +24,10 @@ that a worker actually executed the source.
 - A `VERIFIED` receipt includes an executor source digest and full Git revision.
   The caller must compare both against pins supplied by the governing contract
   or deployment policy; values copied from the receipt are not trusted.
-- AIOS independently checks the receipt with its own Dijkstra implementation
-  and verifies the contract/permit capability and effect allowlists. TRY's
-  nested verification claim is informational only.
+- AIOS independently checks the receipt with its own Dijkstra implementation.
+  The contract, permit and HMAC attestation must verify; the contract must pin
+  executor revision, source digest and specification digest, and explicitly
+  allow the capability/effect. TRY's nested verification claim is informational only.
 - AIOS returns `INDEPENDENTLY_VERIFIED`; promotion remains
   `NOT_AUTHORIZED`. No side effect, registry promotion, or `ABSORBED`
   capability state is authorized by this P0.
