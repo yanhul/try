@@ -243,7 +243,7 @@ def execute_and_verify(
     receipt = {
         "schema": "try.algorithm-execution-receipt.v1",
         "program": normalized.canonical(),
-        "program_sha256": _digest(normalized.canonical()),
+        "spec_sha256": _digest(normalized.canonical()),
         "input_sha256": _digest(canonical_grid),
         "candidate": candidate,
         "candidate_sha256": _digest(candidate),
