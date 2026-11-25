@@ -208,11 +208,108 @@ def main():
     else:
         raise AssertionError("AIOS verifier accepted a tampered Worker receipt")
 
+    # Exercise the algorithm Durable Object through the real local Worker.
+    grid = ["S..", ".#.", "..G"]
+    spec = {"operation": "maze.shortest_path", "version": 1, "max_expansions": 100}
+    algorithm_input = {"grid": grid}
+    execution = {
+        "contract_id": "CT-ALG-RUNTIME", "permit_id": "PM-ALG-RUNTIME",
+        "execution_id": "EX-ALG-RUNTIME", "effect_id": "EF-ALG-RUNTIME",
+        "dispatch_id": "DP-ALG-RUNTIME", "dispatch_digest": "c" * 64,
+        "attempt_id": "EX-ALG-RUNTIME:attempt:1", "attempt_number": 1,
+        "spec": spec, "input": algorithm_input,
+    }
+    connection = http.client.HTTPConnection(HOST, PORT, timeout=30)
+    connection.request("POST", "/v1/algorithm/execute", body=json.dumps(execution), headers={
+        "Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
+    })
+    response = connection.getresponse()
+    algorithm_payload = json.loads(response.read())
+    connection.close()
+    assert response.status == 200, (response.status, algorithm_payload)
+    assert algorithm_payload.get("status") == "COMPLETED", algorithm_payload
+    artifact_bytes = base64.b64decode(algorithm_payload["artifact_b64"], validate=True)
+    assert hashlib.sha256(artifact_bytes).hexdigest() == algorithm_payload["artifact_sha256"]
+    artifact = json.loads(artifact_bytes)
+    assert artifact["schema"] == "try.algorithm-artifact.v1"
+    assert artifact["path"][0] == [0, 0] and artifact["path"][-1] == [2, 2]
+    assert len(artifact["path"]) - 1 == 4
+
+    # Verify the signed worker receipt with the AIOS P1 verifier and a test-only
+    # deployment-pinned keyring; separately hash the exact persisted artifact.
+    from core.algorithm_worker_receipt import (
+        AlgorithmWorkerKeyring, verify_algorithm_worker_receipt,
+    )
+    with open("/tmp/try-algorithm-receipt-public-key.b64", encoding="ascii") as f:
+        algorithm_public_key = base64.b64decode(f.read().strip(), validate=True)
+    algorithm_keyring = AlgorithmWorkerKeyring({
+        "try.algorithm_executor": {
+            "public_key": base64.b64encode(algorithm_public_key).decode("ascii"),
+            "key_id": "runtime-algorithm-test-v1",
+            "scopes": ["try.algorithm.execution.receipt.verify"],
+            "revoked": False,
+        }
+    })
+    executor_sha = hashlib.sha256(open("src/algorithm_runtime.py", "rb").read()).hexdigest()
+    canonical = lambda value: json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    expected = {
+        "contract_id": execution["contract_id"], "permit_id": execution["permit_id"],
+        "execution_id": execution["execution_id"], "effect_id": execution["effect_id"],
+        "dispatch_id": execution["dispatch_id"], "dispatch_digest": execution["dispatch_digest"],
+        "attempt_id": execution["attempt_id"], "attempt_number": 1,
+        "worker_id": "try-worker-runtime-test", "worker_build_sha256": "a" * 64,
+        "executor_revision": "b" * 40, "executor_sha256": executor_sha,
+        "spec_sha256": hashlib.sha256(canonical(spec)).hexdigest(),
+        "input_sha256": hashlib.sha256(canonical(algorithm_input)).hexdigest(),
+    }
+    algorithm_receipt = algorithm_payload["operation_receipt"]
+    verified_algorithm = verify_algorithm_worker_receipt(
+        algorithm_receipt, expected=expected, keyring=algorithm_keyring
+    )
+    assert verified_algorithm["status"] == "INDEPENDENTLY_AUTHENTICATED", verified_algorithm
+    assert verified_algorithm["retry_authorized"] is False
+    assert verified_algorithm["promotion"] == "NOT_AUTHORIZED"
+
+    # Replay must return the same persisted artifact and receipt, not execute again.
+    connection = http.client.HTTPConnection(HOST, PORT, timeout=30)
+    connection.request("POST", "/v1/algorithm/execute", body=json.dumps(execution), headers={
+        "Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
+    })
+    response = connection.getresponse()
+    replay = json.loads(response.read())
+    connection.close()
+    assert response.status == 200 and replay["idempotent_replay"] is True, replay
+    assert replay["artifact_b64"] == algorithm_payload["artifact_b64"]
+    assert replay["operation_receipt"] == algorithm_receipt
+
+    # A changed payload under the same execution identity must conflict.
+    changed = dict(execution, dispatch_digest="d" * 64)
+    connection = http.client.HTTPConnection(HOST, PORT, timeout=30)
+    connection.request("POST", "/v1/algorithm/execute", body=json.dumps(changed), headers={
+        "Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
+    })
+    response = connection.getresponse()
+    conflict = json.loads(response.read())
+    connection.close()
+    assert response.status == 409, (response.status, conflict)
+
+    algorithm_execution_result = {
+        "status": verified_algorithm["status"],
+        "artifact_sha256_verified": True,
+        "durable_replay_same_receipt": True,
+        "identity_conflict_rejected": True,
+        "retry_authorized": False,
+        "promotion": "NOT_AUTHORIZED",
+    }
+
     print(json.dumps({
         "runtime": "cloudflare-python-workers-local",
         "readiness": "WebCrypto import+sign passed",
         "operation_receipt": "Worker WebCrypto -> AIOS verifier passed",
         "tamper_rejection": True,
+        "algorithm_execution": algorithm_execution_result,
         "chunked_without_content_length": "accepted_and_persisted",
         "oversized_stream": "413_and_checkpoint_absent",
         "oversized_checkpoint_absent": True,
