@@ -5,6 +5,7 @@ on:
     paths:
       - cloudflare/try-repair-worker/**
       - .github/workflows/try-cloudflare-provider.yml
+      - .github/workflows/deploy-cloudflare-repair-worker.yml
   workflow_dispatch:
 
 permissions:
@@ -109,15 +110,15 @@ jobs:
 
       - name: E2E AIOS provider client -> Worker -> Gemini
         env:
-          TRY_REPAIR_WORKER_URL: \${{ vars.TRY_REPAIR_WORKER_URL }}
-          TRY_PROVIDER_TOKEN: \${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
           # Temporary compatibility for AIOS main until PR #102 merges.
-          TRY_REPAIR_PROVIDER_URL: \${{ vars.TRY_REPAIR_WORKER_URL }}
-          TRY_REPAIR_PROVIDER_TOKEN: \${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
           TRY_REPAIR_PROVIDER_TIMEOUT: "180"
           AIOS_TRY_OPERATION_KEYRING: '{"try.repair":{"key_id":"try-operation-ed25519-prod-v1","public_key":"y+8C1Ph7x929L+oAuzgWIiHA/MOLgoFhGxqzdligo3M=","scopes":["try.operation.receipt.verify"],"revoked":false}}'
-          E2E_REPOSITORY: \${{ github.repository }}
-          E2E_SHA: \${{ github.sha }}
+          E2E_REPOSITORY: ${{ github.repository }}
+          E2E_SHA: ${{ github.sha }}
         run: |
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
