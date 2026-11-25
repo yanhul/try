@@ -1,0 +1,129 @@
+name: Verify TRY Production Checkpoint Persistence
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: try-production-checkpoint-persistence-smoke
+  cancel-in-progress: false
+
+jobs:
+  checkpoint-persistence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      WORKER_URL: https://try-aios-repair-provider.simplehu.workers.dev
+      TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+    steps:
+      - name: Verify production health (read only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          url = os.environ["WORKER_URL"].rstrip("/") + "/healthz"
+          req = urllib.request.Request(url, headers={"Accept": "application/json"}, method="GET")
+          with urllib.request.urlopen(req, timeout=20) as response:
+              payload = json.loads(response.read())
+              assert response.status == 200
+          assert payload.get("status") == "READY", "worker_not_ready"
+          assert payload.get("checkpoint_store_bound") is True, "checkpoint_binding_missing"
+          print(json.dumps({
+              "health": "READY",
+              "provider": payload.get("provider"),
+              "model": payload.get("model"),
+              "checkpoint_store_bound": payload.get("checkpoint_store_bound"),
+              "operation_receipt_signing_configured": payload.get("operation_receipt_signing_configured"),
+          }, sort_keys=True))
+          PY
+
+      - name: Write one isolated checkpoint and read it back (no proposal calls)
+        shell: bash
+        env:
+          REPOSITORY: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          base = os.environ["WORKER_URL"].rstrip("/")
+          token = os.environ["TRY_PROVIDER_TOKEN"]
+          request_id = f"checkpoint-smoke-{os.environ['RUN_ID']}-{os.environ['RUN_ATTEMPT']}"
+          initial = {
+              "request_id": request_id,
+              "repository": os.environ["REPOSITORY"],
+              "sha": os.environ["COMMIT_SHA"],
+              "attempt": 1,
+              "phase": "OBSERVE",
+              "state": "WORKING",
+          }
+
+          def request(method, path, body=None):
+              headers = {
+                  "Accept": "application/json",
+                  "Authorization": f"Bearer {token}",
+                  "User-Agent": "try-checkpoint-persistence-smoke/1.0",
+              }
+              data = None
+              if body is not None:
+                  headers["Content-Type"] = "application/json"
+                  data = json.dumps(body, separators=(",", ":")).encode()
+              req = urllib.request.Request(base + path, data=data, headers=headers, method=method)
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      return response.status, json.loads(response.read())
+              except urllib.error.HTTPError as exc:
+                  raw = exc.read()
+                  try:
+                      payload = json.loads(raw)
+                  except Exception:
+                      payload = {"body_excerpt": raw.decode("utf-8", "replace")[:500]}
+                  return exc.code, payload
+
+          if not token:
+              raise RuntimeError("TRY_PROVIDER_TOKEN_missing")
+
+          status, created = request("POST", "/v1/repair/checkpoint", initial)
+          assert status == 200, f"checkpoint_write_http_{status}:{created}"
+          assert created.get("persisted") is True, "checkpoint_write_not_persisted"
+
+          # Two independent GETs verify that the record remains readable after the write.
+          status1, read1 = request("GET", f"/v1/repair/checkpoint/{request_id}")
+          status2, read2 = request("GET", f"/v1/repair/checkpoint/{request_id}")
+          assert status1 == 200 and status2 == 200, "checkpoint_read_after_write_failed"
+          expected = {
+              "request_id": initial["request_id"],
+              "repository": initial["repository"],
+              "sha": initial["sha"].lower(),
+              "attempt": initial["attempt"],
+              "phase": initial["phase"],
+              "state": initial["state"],
+              "version": 1,
+          }
+          for key, value in expected.items():
+              assert read1.get(key) == value, f"checkpoint_readback_mismatch:{key}"
+              assert read2.get(key) == value, f"checkpoint_second_read_mismatch:{key}"
+          assert read1 == read2, "checkpoint_reads_not_stable"
+
+          print(json.dumps({
+              "checkpoint_write": "PERSISTED",
+              "checkpoint_readback": "VERIFIED",
+              "second_read_stable": True,
+              "request_id": request_id,
+              "version": read1["version"],
+              "proposal_endpoint_called": False,
+              "gemini_called": False,
+          }, sort_keys=True))
+          PY
