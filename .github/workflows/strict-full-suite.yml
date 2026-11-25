@@ -31,4 +31,4 @@ jobs:
         env:
           AIOS_ROOT: ${{ github.workspace }}/aios-authority
           AIOS_SOURCE: ${{ github.workspace }}/aios-authority
-        run: python -m pytest -q
+        run: python -m pytest -o addopts='' -q
