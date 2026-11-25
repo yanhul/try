@@ -187,11 +187,24 @@ class Default(RepairDefault):
                 status = 413 if reason in {"body_too_large", "body_size_mismatch"} else 400
                 return Response.json({"error": reason}, status=status)
             except Exception as exc:
-                # Dispatch may already be durable. Never imply safe retry.
+                # A post-dispatch failure must be reconciled from Durable Object
+                # state. Return a signed UNKNOWN when the durable record exists.
+                try:
+                    if "stub" in locals():
+                        record, _artifact_b64 = await stub.read_execution()
+                        if record is not None:
+                            receipt = await _algorithm_execution_receipt(record, self.env)
+                            return Response.json({
+                                "status": "UNKNOWN", "retry_allowed": False,
+                                "operation_receipt": receipt,
+                            }, status=202)
+                except Exception:
+                    pass
+                # If storage itself is unavailable, do not fabricate a receipt.
                 return Response.json({
                     "status": "UNKNOWN", "retry_allowed": False,
-                    "reason": type(exc).__name__,
-                }, status=202)
+                    "receipt_unavailable": True, "reason": type(exc).__name__,
+                }, status=503)
 
         prefix = "/v1/algorithm/execution/"
         if request.method == "GET" and path.startswith(prefix):
