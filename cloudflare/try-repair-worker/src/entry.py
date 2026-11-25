@@ -141,7 +141,7 @@ ALGORITHM_RECEIPT_ISSUER = "try.algorithm_executor"
 ALGORITHM_RECEIPT_TTL_SECONDS = 900
 ALGORITHM_RECEIPT_SIGNED_FIELDS = (
     "type", "issuer", "key_id", "receipt_id", "contract_id", "permit_id",
-    "execution_id", "attempt_id", "attempt_number", "worker_id",
+    "execution_id", "effect_id", "dispatch_id", "dispatch_digest", "attempt_id", "attempt_number", "worker_id",
     "worker_build_sha256", "executor_revision", "executor_sha256",
     "spec_sha256", "input_sha256", "artifact_sha256", "output_sha256",
     "status", "execution_state", "issued_at", "expires_at", "algorithm",
@@ -163,7 +163,7 @@ async def _algorithm_execution_receipt(record, env):
     if not isinstance(record, dict):
         raise ValueError("algorithm_receipt_record_invalid")
     required = (
-        "contract_id", "permit_id", "execution_id", "attempt_id", "attempt_number",
+        "contract_id", "permit_id", "execution_id", "effect_id", "dispatch_id", "dispatch_digest", "attempt_id", "attempt_number",
         "executor_revision", "executor_sha256", "spec_sha256", "input_sha256",
         "status", "execution_state",
     )
@@ -198,7 +198,9 @@ async def _algorithm_execution_receipt(record, env):
             f"{record['execution_id']}:{record['attempt_id']}:{issued_at}".encode("utf-8")
         ).hexdigest()[:32],
         "contract_id": record["contract_id"], "permit_id": record["permit_id"],
-        "execution_id": record["execution_id"], "attempt_id": record["attempt_id"],
+        "execution_id": record["execution_id"], "effect_id": record["effect_id"],
+        "dispatch_id": record["dispatch_id"], "dispatch_digest": record["dispatch_digest"],
+        "attempt_id": record["attempt_id"],
         "attempt_number": record["attempt_number"], "worker_id": worker_id.strip(),
         "worker_build_sha256": worker_build,
         "executor_revision": record["executor_revision"],
