@@ -33,7 +33,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - name: Fetch AIOS receipt verifier
-        run: git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+        run: |
+          git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+          git -C ../aios fetch --depth 1 origin 21ed3966e8a8bab0ae9c63516316dccbfb76655f
+          git -C ../aios checkout --detach 21ed3966e8a8bab0ae9c63516316dccbfb76655f
       - name: Start local Python Workers runtime
         run: |
           uv run python - <<'PY'
