@@ -39,7 +39,9 @@ def provenance(aios_root):
     }})
     expected = {
         "contract_id": "CT-ALGORITHM-1", "permit_id": "PM-ALGORITHM-1",
-        "execution_id": "EX-ALGORITHM-1", "attempt_id": "EX-ALGORITHM-1:attempt:1",
+        "execution_id": "EX-ALGORITHM-1", "effect_id": "EF-ALGORITHM-1",
+        "dispatch_id": "DP-ALGORITHM-1", "dispatch_digest": "8" * 64,
+        "attempt_id": "EX-ALGORITHM-1:attempt:1",
         "attempt_number": 1, "worker_id": "try-algorithm-worker-ci",
         "worker_build_sha256": "a" * 64, "executor_revision": "b" * 40,
         "executor_sha256": "c" * 64, "spec_sha256": "d" * 64,
