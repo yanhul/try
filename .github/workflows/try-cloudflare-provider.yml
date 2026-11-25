@@ -109,37 +109,44 @@ jobs:
 
       - name: E2E AIOS provider client -> Worker -> Gemini
         env:
-          TRY_REPAIR_WORKER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
-          TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_WORKER_URL: \${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_PROVIDER_TOKEN: \${{ secrets.TRY_PROVIDER_TOKEN }}
           # Temporary compatibility for AIOS main until PR #102 merges.
-          TRY_REPAIR_PROVIDER_URL: ${{ vars.TRY_REPAIR_WORKER_URL }}
-          TRY_REPAIR_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+          TRY_REPAIR_PROVIDER_URL: \${{ vars.TRY_REPAIR_WORKER_URL }}
+          TRY_REPAIR_PROVIDER_TOKEN: \${{ secrets.TRY_PROVIDER_TOKEN }}
           TRY_REPAIR_PROVIDER_TIMEOUT: "180"
-          E2E_REPOSITORY: ${{ github.repository }}
-          E2E_SHA: ${{ github.sha }}
+          AIOS_TRY_OPERATION_KEYRING: '{"try.repair":{"key_id":"try-operation-ed25519-prod-v1","public_key":"y+8C1Ph7x929L+oAuzgWIiHA/MOLgoFhGxqzdligo3M=","scopes":["try.operation.receipt.verify"],"revoked":false}}'
+          E2E_REPOSITORY: \${{ github.repository }}
+          E2E_SHA: \${{ github.sha }}
         run: |
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
           git clone --depth 1 https://github.com/yanhul/aios.git ../aios
           PYTHONPATH=../aios python - <<'PY'
+          import hashlib
           import json
           import os
-          from core.try_repair_provider import health, propose
+          from core.try_repair_provider import health, lookup_proposal, propose
 
           ready = health()
           if ready.get("status") != "READY":
               raise SystemExit(f"AIOS provider health not READY: {ready}")
+          if ready.get("operation_receipt_signing_configured") is not True:
+              raise SystemExit(f"Worker receipt signer is not runtime-ready: {ready}")
 
+          request_id = f"e2e-worker-gemini-{os.environ.get('GITHUB_RUN_ID', 'local')}"
+          failure = {
+              "kind": "SyntaxError",
+              "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax",
+          }
+          source = {"broken.py": "def repair_me(:\\n    return 1\\n"}
           payload = propose(
-              request_id=f"e2e-worker-gemini-{os.environ.get('GITHUB_RUN_ID', 'local')}",
+              request_id=request_id,
               repository=os.environ["E2E_REPOSITORY"],
               sha=os.environ["E2E_SHA"],
               attempt=1,
-              failure={
-                  "kind": "SyntaxError",
-                  "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax",
-              },
-              source={"broken.py": "def repair_me(:\\n    return 1\\n"},
+              failure=failure,
+              source=source,
           )
           if payload.get("status") == "HOLD":
               raise SystemExit(f"AIOS provider client returned HOLD: {payload}")
@@ -148,12 +155,40 @@ jobs:
           files = payload.get("files")
           if not isinstance(files, list) or not files:
               raise SystemExit(f"AIOS provider client returned no files: {payload}")
-          if payload.get("request_id") != f"e2e-worker-gemini-{os.environ.get('GITHUB_RUN_ID', 'local')}":
+          if payload.get("request_id") != request_id:
               raise SystemExit(f"AIOS provider client lost request identity: {payload}")
           if payload.get("base_sha") != os.environ["E2E_SHA"]:
               raise SystemExit(f"AIOS provider client lost base SHA: {payload}")
           if payload.get("attempt") != 1:
               raise SystemExit(f"AIOS provider client lost attempt identity: {payload}")
+
+          # Re-read the durable operation and independently verify the Worker's
+          # Ed25519 receipt with AIOS's deployment-pinned public key.
+          operation_body = {
+              "request_id": request_id,
+              "repository": os.environ["E2E_REPOSITORY"],
+              "sha": os.environ["E2E_SHA"],
+              "attempt": 1,
+              "failure": failure,
+              "source_snapshot": source,
+          }
+          request_digest = hashlib.sha256(json.dumps(
+              operation_body, sort_keys=True, separators=(",", ":"), allow_nan=False
+          ).encode("utf-8")).hexdigest()
+          verified = lookup_proposal(
+              request_id=request_id,
+              expected_request_digest=request_digest,
+              expected_repository=os.environ["E2E_REPOSITORY"],
+              expected_sha=os.environ["E2E_SHA"],
+              expected_attempt=1,
+          )
+          if not verified or verified.get("status") != "COMPLETED":
+              raise SystemExit(f"AIOS did not verify a completed signed receipt: {verified}")
+          if verified.get("operation_receipt", {}).get("key_id") != "try-operation-ed25519-prod-v1":
+              raise SystemExit("AIOS verified an unexpected TRY receipt key id")
+          if len(verified.get("operation_receipt_digest", "")) != 64:
+              raise SystemExit("AIOS receipt digest missing or malformed")
+
           print(json.dumps({
               "status": "PASS",
               "client": "yanhul/aios:core.try_repair_provider",
@@ -162,6 +197,10 @@ jobs:
               "paths": [item["path"] for item in files],
               "base_sha_verified": True,
               "attempt_verified": True,
+              "worker_signed_receipt": "VERIFIED_BY_AIOS",
+              "receipt_key_id": verified["operation_receipt"]["key_id"],
+              "request_digest_verified": True,
+              "proposal_digest_verified": True,
           }, sort_keys=True))
           PY
 
