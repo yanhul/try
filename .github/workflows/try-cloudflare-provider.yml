@@ -89,7 +89,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
           TRY_OPERATION_RECEIPT_PRIVATE_KEY: ${{ secrets.TRY_OPERATION_RECEIPT_PRIVATE_KEY }}
-          TRY_OPERATION_RECEIPT_KEY_ID: ${{ vars.TRY_OPERATION_RECEIPT_KEY_ID }}
+          TRY_OPERATION_RECEIPT_KEY_ID: try-operation-ed25519-prod-v1
         run: |
           test -n "$GEMINI_API_KEY"
           test -n "$TRY_PROVIDER_TOKEN"
