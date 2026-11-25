@@ -11,7 +11,11 @@ on:
       - "docs/ALGORITHM_COMPILER_P0.md"
       - "docs/ALGORITHM_WORKER_PROVENANCE_P1.md"
       - "cloudflare/try-repair-worker/src/entry.py"
+      - "cloudflare/try-repair-worker/src/algorithm_runtime.py"
+      - "cloudflare/try-repair-worker/src/algorithm_entry.py"
       - "cloudflare/try-repair-worker/tests/test_entry.py"
+      - "cloudflare/try-repair-worker/tests/test_algorithm_runtime.py"
+      - "cloudflare/try-repair-worker/tests/test_algorithm_durable_lifecycle.py"
       - "tests/test_algorithm_worker_provenance.py"
       - ".github/workflows/strict-full-suite.yml"
   workflow_dispatch:
