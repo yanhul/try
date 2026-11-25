@@ -35,7 +35,7 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
       TRY_OPERATION_RECEIPT_PRIVATE_KEY: ${{ secrets.TRY_OPERATION_RECEIPT_PRIVATE_KEY }}
-      TRY_OPERATION_RECEIPT_KEY_ID: ${{ vars.TRY_OPERATION_RECEIPT_KEY_ID }}
+      TRY_OPERATION_RECEIPT_KEY_ID: try-operation-ed25519-prod-v1
       AIOS_TRY_OPERATION_KEYRING: '{"try.repair":{"key_id":"try-operation-ed25519-prod-v1","public_key":"y+8C1Ph7x929L+oAuzgWIiHA/MOLgoFhGxqzdligo3M=","scopes":["try.operation.receipt.verify"],"revoked":false}}'
     steps:
       - name: Checkout
