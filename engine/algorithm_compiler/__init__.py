@@ -6,6 +6,7 @@ from .program import (
     ExecutionBudgetExceeded,
     compile_program,
     execute_and_verify,
+    executor_source_sha256,
     verify_candidate,
 )
 
@@ -15,5 +16,6 @@ __all__ = [
     "ExecutionBudgetExceeded",
     "compile_program",
     "execute_and_verify",
+    "executor_source_sha256",
     "verify_candidate",
 ]
