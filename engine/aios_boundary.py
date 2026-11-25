@@ -122,4 +122,47 @@ def verify_algorithm_receipt(
     )
 
 
-__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt"]
+def verify_authorized_algorithm_receipt(
+    contract,
+    permit,
+    receipt,
+    *,
+    grid,
+    spec,
+    expected_executor_revision,
+    expected_executor_sha256,
+    aios_root=None,
+):
+    """Verify a read-only algorithm execution under an AIOS contract/permit.
+
+    The contract must explicitly grant algorithm_execute and compute_algorithm.
+    Its input_digest must bind the supplied grid. Result verification remains
+    delegated to AIOS; this function never promotes a capability.
+    """
+    contract_mod, _ = _aios_modules(aios_root)
+    canonical = _canonical_contract(contract)
+    contract_mod.verify_permit(canonical, permit)
+    if "algorithm_execute" not in canonical["capabilities"]:
+        raise PermissionError("AIOS contract does not grant algorithm_execute")
+    if "compute_algorithm" not in canonical["allowed_effects"]:
+        raise PermissionError("AIOS contract does not allow compute_algorithm")
+    result = verify_algorithm_receipt(
+        receipt,
+        grid=grid,
+        spec=spec,
+        expected_executor_revision=expected_executor_revision,
+        expected_executor_sha256=expected_executor_sha256,
+        aios_root=aios_root,
+    )
+    if canonical["input_digest"] != "sha256:" + result["input_sha256"]:
+        raise ValueError("AIOS contract input_digest does not bind algorithm input")
+    return {
+        **result,
+        "contract_id": contract_mod.contract_identity(canonical),
+        "permit_id": permit["permit_id"],
+        "authority": "AIOS.core.contract+core.algorithm_execution_receipt",
+        "promotion": "NOT_AUTHORIZED",
+    }
+
+
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt"]
