@@ -98,6 +98,8 @@ def _parse_maze(grid: Iterable[str]) -> _Maze:
 
 # Stable tie-breaking is part of operation version 1.
 _NEIGHBORS = ((-1, 0), (0, 1), (1, 0), (0, -1))
+# The oracle intentionally defines its own traversal order to reduce shared code.
+_ORACLE_NEIGHBORS = ((0, 1), (1, 0), (0, -1), (-1, 0))
 
 
 def _bfs_shortest_path(maze: _Maze, max_expansions: int) -> dict[str, Any]:
@@ -143,7 +145,7 @@ def _oracle_shortest_distance(maze: _Maze) -> int | None:
             continue
         if point == maze.goal:
             return distance
-        for dr, dc in _NEIGHBORS:
+        for dr, dc in _ORACLE_NEIGHBORS:
             nxt = (row + dr, col + dc)
             if (
                 0 <= nxt[0] < maze.height
@@ -249,5 +251,6 @@ def execute_and_verify(
         "decision": "VERIFIED" if verification["verified"] else "BLOCKED",
         "promotion": "NOT_REQUESTED",
     }
+    # Hash the canonical receipt before adding this checksum field.
     receipt["receipt_sha256"] = _digest(receipt)
     return receipt
