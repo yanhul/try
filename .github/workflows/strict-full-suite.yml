@@ -1,6 +1,15 @@
 name: Strict Full TRY Suite
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "engine/algorithm_compiler/**"
+      - "engine/aios_boundary.py"
+      - "tests/test_algorithm_compiler.py"
+      - "tests/test_algorithm_aios_integration.py"
+      - "docs/ALGORITHM_COMPILER_P0.md"
+      - ".github/workflows/strict-full-suite.yml"
   workflow_dispatch:
 
 jobs:
@@ -12,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yanhul/AIOS
-          ref: absorb/verl-strict-lineage
+          ref: 665e73a1c4a9a8c283d28becd0a15adc6efd0f17
           path: aios-authority
       - uses: actions/setup-python@v5
         with:
@@ -22,4 +31,4 @@ jobs:
         env:
           AIOS_ROOT: ${{ github.workspace }}/aios-authority
           AIOS_SOURCE: ${{ github.workspace }}/aios-authority
-        run: python -m pytest -q
+        run: python -m pytest -o addopts='' -q

@@ -24,6 +24,7 @@ _CONTRACT_FIELDS = (
     "max_attempts",
     "terminal_states",
     "policy_digest",
+    "acceptance_predicates",
 )
 
 
@@ -86,4 +87,97 @@ def verify_authority(contract_path, permit_path, attestation_path=None, secret=N
     }
 
 
-__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority"]
+
+def verify_algorithm_receipt(
+    receipt,
+    *,
+    grid,
+    spec,
+    expected_executor_revision,
+    expected_executor_sha256,
+    aios_root=None,
+):
+    """Delegate algorithm-result verification to the pinned AIOS authority source.
+
+    This checks result correctness against contract-supplied pins; it does not
+    authenticate worker execution or authorize promotion.
+    """
+    configured = aios_root or os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        raise FileNotFoundError("AIOS_ROOT/AIOS_SOURCE is not configured")
+    root = Path(configured).expanduser().resolve()
+    if not (root / "core" / "algorithm_execution_receipt.py").is_file():
+        raise FileNotFoundError(f"AIOS algorithm receipt verifier not found under {root}")
+    root_s = str(root)
+    if root_s not in sys.path:
+        sys.path.insert(0, root_s)
+    verifier = importlib.import_module("core.algorithm_execution_receipt")
+    return verifier.verify_algorithm_execution_receipt(
+        receipt,
+        grid=grid,
+        spec=spec,
+        expected_executor_revision=expected_executor_revision,
+        expected_executor_sha256=expected_executor_sha256,
+    )
+
+
+def verify_authorized_algorithm_receipt(
+    contract,
+    permit,
+    receipt,
+    *,
+    grid,
+    spec,
+    expected_executor_revision,
+    expected_executor_sha256,
+    attestation,
+    attestation_secret,
+    aios_root=None,
+):
+    """Verify a read-only algorithm execution under an AIOS contract/permit/attestation.
+
+    The contract must explicitly grant algorithm_execute and compute_algorithm.
+    Its input_digest must bind the supplied grid. Result verification remains
+    delegated to AIOS; this function never promotes a capability.
+    """
+    contract_mod, attestation_mod = _aios_modules(aios_root)
+    canonical = _canonical_contract(contract)
+    contract_mod.verify_permit(canonical, permit)
+    attestation_mod.verify_attestation(canonical, permit, attestation, attestation_secret)
+    if "algorithm_execute" not in canonical["capabilities"]:
+        raise PermissionError("AIOS contract does not grant algorithm_execute")
+    if "compute_algorithm" not in canonical["allowed_effects"]:
+        raise PermissionError("AIOS contract does not allow compute_algorithm")
+    result = verify_algorithm_receipt(
+        receipt,
+        grid=grid,
+        spec=spec,
+        expected_executor_revision=expected_executor_revision,
+        expected_executor_sha256=expected_executor_sha256,
+        aios_root=aios_root,
+    )
+    if canonical["input_digest"] != "sha256:" + result["input_sha256"]:
+        raise ValueError("AIOS contract input_digest does not bind algorithm input")
+    predicates = canonical.get("acceptance_predicates", [])
+    required_pins = {
+        "algorithm-executor-revision": ("receipt.executor_revision", expected_executor_revision),
+        "algorithm-executor-source": ("receipt.executor_sha256", expected_executor_sha256),
+        "algorithm-specification": ("receipt.spec_sha256", result["spec_sha256"]),
+    }
+    by_id = {item.get("predicate_id"): item for item in predicates if isinstance(item, dict)}
+    for predicate_id, (path, expected) in required_pins.items():
+        predicate = by_id.get(predicate_id)
+        if not isinstance(predicate, dict) or (
+            predicate.get("path"), predicate.get("operator"), predicate.get("expected")
+        ) != (path, "eq", expected):
+            raise PermissionError(f"AIOS contract does not pin {predicate_id}")
+    return {
+        **result,
+        "contract_id": contract_mod.contract_identity(canonical),
+        "permit_id": permit["permit_id"],
+        "authority": "AIOS.core.contract+core.algorithm_execution_receipt",
+        "promotion": "NOT_AUTHORIZED",
+    }
+
+
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt"]

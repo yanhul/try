@@ -20,6 +20,7 @@ This repository is an execution/research substrate, not the governing control pl
 | Immutable candidate/OOS evidence boundary | IMPLEMENTED |
 | Explicit generalized permit/capability object | AIOS-BACKED |
 | General contract/permit/attestation verifier | AIOS-BACKED — `engine/aios_boundary.py` delegates to `AIOS.core.contract` + `AIOS.core.attestation` |
+| Algorithm execution result verification | AIOS-BACKED — attested contract/permit-gated adapter delegates to `AIOS.core.algorithm_execution_receipt`; independent result verification only, no worker authentication or promotion |
 | External-effect receipt/reconciliation layer | AIOS-BACKED at the central runner; TRY domain effects remain governed by TRY controller |
 | Evolution candidate/evaluation/admission/promotion | AIOS-BACKED — `engine/aios_evolution.py` delegates to `AIOS.core.evolution` |
 
