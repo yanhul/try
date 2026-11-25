@@ -114,7 +114,11 @@ def main():
         if is_interrupted_working_checkpoint(
             prior, repository="yanhul/try", sha=base
         ):
-            reason = "interrupted_attempt_outcome_unknown; reconciliation_required"
+            interrupted_operation_id = f"try-ci-repair:{run_id}:{prior['attempt']}"
+            reason = (
+                "interrupted_attempt_outcome_unknown; reconciliation_required; "
+                f"operation_id={interrupted_operation_id}"
+            )
             persist_checkpoint(
                 request_id=checkpoint_id, repository="yanhul/try", sha=base,
                 attempt=prior["attempt"], phase=prior["phase"], state="BLOCKED", reason=reason,
@@ -184,7 +188,7 @@ def main():
                 tested=worker.test()
             except Exception as exc:
                 detail=f"{type(exc).__name__}:{exc}"[:700]
-                reason=f"external_effect_outcome_unknown; reconciliation_required; {detail}"
+                reason=f"external_effect_outcome_unknown; reconciliation_required; operation_id={req_id}; {detail}"
                 # apply_via_aios may have performed its effect before raising, and
                 # worker.test may fail after a successful apply. Never allocate a
                 # new logical_operation_id until the original effect is reconciled.
