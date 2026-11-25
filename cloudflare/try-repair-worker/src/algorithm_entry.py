@@ -16,6 +16,7 @@ from workers import DurableObject, Response
 
 from entry import (
     Default as RepairDefault,
+    RepairCheckpoint as RepairCheckpoint,
     _algorithm_execution_receipt,
     _canonical_json,
     _read_bounded_json,
