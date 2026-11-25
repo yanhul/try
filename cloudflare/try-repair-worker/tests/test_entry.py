@@ -993,7 +993,8 @@ class AlgorithmReceiptSignerTests(unittest.TestCase):
     def record(self, status="COMPLETED"):
         return {
             "contract_id": "CT-1", "permit_id": "PM-1",
-            "execution_id": "EX-1", "attempt_id": "EX-1:attempt:1",
+            "execution_id": "EX-1", "effect_id": "EF-1", "dispatch_id": "DP-1",
+            "dispatch_digest": "8" * 64, "attempt_id": "EX-1:attempt:1",
             "attempt_number": 1, "executor_revision": "b" * 40,
             "executor_sha256": "c" * 64, "spec_sha256": "d" * 64,
             "input_sha256": "e" * 64,
