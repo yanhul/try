@@ -50,12 +50,12 @@ jobs:
               f.write('GEMINI_MODEL=gemini-3.1-flash-lite\n')
               f.write('TRY_OPERATION_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
               f.write('TRY_OPERATION_RECEIPT_KEY_ID=runtime-ed25519-test-v1\n')
-              f.write('TRY_ALGORITHM_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\\n')
-              f.write('TRY_ALGORITHM_RECEIPT_KEY_ID=runtime-algorithm-test-v1\\n')
-              f.write('TRY_ALGORITHM_WORKER_ID=try-worker-runtime-test\\n')
-              f.write('TRY_ALGORITHM_WORKER_BUILD_SHA256=' + 'a' * 64 + '\\n')
-              f.write('TRY_ALGORITHM_EXECUTOR_REVISION=' + 'b' * 40 + '\\n')
-              f.write('TRY_ALGORITHM_EXECUTOR_SHA256=' + executor_sha + '\\n')
+              f.write('TRY_ALGORITHM_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
+              f.write('TRY_ALGORITHM_RECEIPT_KEY_ID=runtime-algorithm-test-v1\n')
+              f.write('TRY_ALGORITHM_WORKER_ID=try-worker-runtime-test\n')
+              f.write('TRY_ALGORITHM_WORKER_BUILD_SHA256=' + 'a' * 64 + '\n')
+              f.write('TRY_ALGORITHM_EXECUTOR_REVISION=' + 'b' * 40 + '\n')
+              f.write('TRY_ALGORITHM_EXECUTOR_SHA256=' + executor_sha + '\n')
           with open('/tmp/try-operation-receipt-public-key.b64', 'w', encoding='ascii') as f:
               f.write(base64.b64encode(public).decode())
           PY
@@ -147,7 +147,7 @@ jobs:
               "kind": "SyntaxError",
               "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax",
           }
-          source = {"broken.py": "def repair_me(:\\n    return 1\\n"}
+          source = {"broken.py": "def repair_me(:\n    return 1\n"}
           payload = propose(
               request_id=request_id,
               repository=os.environ["E2E_REPOSITORY"],
