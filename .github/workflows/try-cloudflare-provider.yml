@@ -35,8 +35,8 @@ jobs:
       - name: Fetch AIOS receipt verifier
         run: |
           git clone --depth 1 https://github.com/yanhul/aios.git ../aios
-          git -C ../aios fetch --depth 1 origin 21ed3966e8a8bab0ae9c63516316dccbfb76655f
-          git -C ../aios checkout --detach 21ed3966e8a8bab0ae9c63516316dccbfb76655f
+          git -C ../aios fetch --depth 1 origin a4dc44b4caaf1e68c2ece84cba5d39e861003934
+          git -C ../aios checkout --detach a4dc44b4caaf1e68c2ece84cba5d39e861003934
       - name: Start local Python Workers runtime
         run: |
           uv run python - <<'PY'
@@ -135,8 +135,8 @@ jobs:
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
           git clone --depth 1 https://github.com/yanhul/aios.git ../aios
-          git -C ../aios fetch --depth 1 origin 21ed3966e8a8bab0ae9c63516316dccbfb76655f
-          git -C ../aios checkout --detach 21ed3966e8a8bab0ae9c63516316dccbfb76655f
+          git -C ../aios fetch --depth 1 origin a4dc44b4caaf1e68c2ece84cba5d39e861003934
+          git -C ../aios checkout --detach a4dc44b4caaf1e68c2ece84cba5d39e861003934
           PYTHONPATH=../aios python - <<'PY'
           import hashlib
           import json
