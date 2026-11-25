@@ -87,8 +87,6 @@ def verify_authority(contract_path, permit_path, attestation_path=None, secret=N
     }
 
 
-__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority"]
-
 
 def verify_algorithm_receipt(
     receipt,
