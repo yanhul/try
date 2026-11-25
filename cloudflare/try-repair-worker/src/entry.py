@@ -429,6 +429,7 @@ class RepairCheckpoint(DurableObject):
         self.ctx = ctx
         self.env = env
         self._proposal_lock = asyncio.Lock()
+        self._checkpoint_lock = asyncio.Lock()
 
     async def read_checkpoint(self):
         return await self.ctx.storage.get("record")
@@ -527,6 +528,12 @@ class RepairCheckpoint(DurableObject):
                         "reason": "provider_outcome_ambiguous"}
 
     async def write_checkpoint(self, item):
+        # Durable Object methods can interleave at await points. Serialize the
+        # complete read/validate/version/write transaction for this object.
+        async with self._checkpoint_lock:
+            return await self._write_checkpoint_unlocked(item)
+
+    async def _write_checkpoint_unlocked(self, item):
         if not isinstance(item, dict):
             return {"_http_status": 400, "error": "invalid_record"}
         request_id, repository, sha = item.get("request_id"), item.get("repository"), item.get("sha")
