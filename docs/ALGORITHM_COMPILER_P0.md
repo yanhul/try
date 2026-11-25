@@ -38,7 +38,7 @@ that a worker actually executed the source.
 ## Run
 
 ```bash
-python -m pytest -q tests/test_algorithm_compiler.py
+AIOS_ROOT=/path/to/pinned/AIOS python -m pytest -q tests/test_algorithm_compiler.py tests/test_algorithm_aios_integration.py
 ```
 
 ## P0 exit criteria
@@ -47,7 +47,7 @@ python -m pytest -q tests/test_algorithm_compiler.py
 - Bounded execution and explicit budget failure.
 - Independent shortest-path oracle.
 - Content-addressed receipt bound to executor revision/source digest.
-- AIOS contract/permit integration and independent verification; no implicit promotion.
+- AIOS attested contract/permit integration and independent verification; no implicit promotion.
 - Tests cover normal, unreachable, 100x100, malformed, budget-exhaustion,
   non-optimal candidate and deterministic receipt cases.
 
