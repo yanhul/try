@@ -12,6 +12,8 @@ from dataclasses import dataclass
 import hashlib
 import heapq
 import json
+from pathlib import Path
+import re
 from typing import Any, Callable, Iterable
 
 
@@ -71,6 +73,11 @@ def _canonical_json(value: Any) -> bytes:
 
 def _digest(value: Any) -> str:
     return hashlib.sha256(_canonical_json(value)).hexdigest()
+
+
+def executor_source_sha256() -> str:
+    """Digest the exact executor source file loaded by this Python process."""
+    return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
 def _parse_maze(grid: Iterable[str]) -> _Maze:
@@ -223,7 +230,10 @@ def verify_candidate(grid: Iterable[str], candidate: dict[str, Any]) -> dict[str
 
 
 def execute_and_verify(
-    spec: AlgorithmSpec | dict[str, Any], grid: Iterable[str]
+    spec: AlgorithmSpec | dict[str, Any],
+    grid: Iterable[str],
+    *,
+    executor_revision: str,
 ) -> dict[str, Any]:
     """Execute, independently verify, and emit a content-addressed evidence receipt.
 
@@ -236,15 +246,19 @@ def execute_and_verify(
         normalized = AlgorithmSpec.from_dict(spec.canonical())
     else:
         raise AlgorithmSpecError("spec must be AlgorithmSpec or a plain object")
+    if not isinstance(executor_revision, str) or not re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", executor_revision):
+        raise ValueError("executor_revision must be a full lowercase Git commit SHA")
     maze = _parse_maze(grid)
     canonical_grid = list(maze.rows)
     candidate = compile_program(normalized)(canonical_grid)
     verification = verify_candidate(canonical_grid, candidate)
     receipt = {
         "schema": "try.algorithm-execution-receipt.v1",
-        "program": normalized.canonical(),
+        "spec": normalized.canonical(),
         "spec_sha256": _digest(normalized.canonical()),
         "input_sha256": _digest(canonical_grid),
+        "executor_revision": executor_revision,
+        "executor_sha256": executor_source_sha256(),
         "candidate": candidate,
         "candidate_sha256": _digest(candidate),
         "verification": verification,
