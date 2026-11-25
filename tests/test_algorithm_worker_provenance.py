@@ -1,10 +1,26 @@
 import base64
 import time
+import os
+import sys
+from pathlib import Path
 import pytest
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 from engine.aios_boundary import verify_algorithm_worker_receipt
+
+
+@pytest.fixture
+def aios_root():
+    configured = os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        pytest.skip("AIOS_ROOT/AIOS_SOURCE is required for cross-repository conformance")
+    root = Path(configured).resolve()
+    if not (root / "core" / "algorithm_worker_receipt.py").is_file():
+        pytest.fail(f"configured AIOS root lacks P1 verifier: {root}")
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+    return root
 
 
 @pytest.fixture
