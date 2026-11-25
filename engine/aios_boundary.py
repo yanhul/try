@@ -198,4 +198,45 @@ def verify_algorithm_worker_receipt(receipt, *, expected, keyring=None, now=None
     )
 
 
-__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt", "verify_algorithm_worker_receipt"]
+def verify_algorithm_worker_artifact(
+    receipt,
+    artifact_bytes,
+    *,
+    expected,
+    grid,
+    spec,
+    expected_executor_revision,
+    expected_executor_sha256,
+    keyring=None,
+    now=None,
+    aios_root=None,
+):
+    """Delegate exact-byte and independent algorithm verification to AIOS.
+
+    The expected binding map must be reconstructed from AIOS-owned contract,
+    permit, effect, dispatch and attempt records; never copy it from TRY output.
+    """
+    configured = aios_root or os.environ.get("AIOS_ROOT") or os.environ.get("AIOS_SOURCE")
+    if not configured:
+        raise FileNotFoundError("AIOS_ROOT/AIOS_SOURCE is not configured")
+    root = Path(configured).expanduser().resolve()
+    if not (root / "core" / "algorithm_worker_artifact.py").is_file():
+        raise FileNotFoundError(f"AIOS algorithm worker artifact verifier not found under {root}")
+    root_s = str(root)
+    if root_s not in sys.path:
+        sys.path.insert(0, root_s)
+    verifier = importlib.import_module("core.algorithm_worker_artifact")
+    return verifier.verify_algorithm_worker_artifact(
+        receipt,
+        artifact_bytes,
+        expected=expected,
+        grid=grid,
+        spec=spec,
+        expected_executor_revision=expected_executor_revision,
+        expected_executor_sha256=expected_executor_sha256,
+        keyring=keyring,
+        now=now,
+    )
+
+
+__all__ = ["contract_identity", "verify_permit", "verify_attestation", "verify_authority", "verify_algorithm_receipt", "verify_authorized_algorithm_receipt", "verify_algorithm_worker_receipt", "verify_algorithm_worker_artifact"]
