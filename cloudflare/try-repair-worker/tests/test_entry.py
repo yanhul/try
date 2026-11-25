@@ -530,6 +530,15 @@ class _FakeContext:
         self.storage = _FakeStorage()
 
 
+class _InterleavingStorage(_FakeStorage):
+    async def get(self, key):
+        await asyncio.sleep(0)
+        return await super().get(key)
+    async def put(self, key, value):
+        await asyncio.sleep(0)
+        await super().put(key, value)
+
+
 class DurableCheckpointTests(unittest.TestCase):
     def setUp(self):
         self.ctx = _FakeContext()
@@ -578,6 +587,27 @@ class DurableCheckpointTests(unittest.TestCase):
         self.assertTrue(done["persisted"])
         terminal = self.write(state="BLOCKED", reason="late mutation")
         self.assertEqual(terminal["error"], "checkpoint_terminal")
+
+    def test_concurrent_conflicting_writers_are_serialized(self):
+        async def scenario():
+            ctx = _FakeContext()
+            ctx.storage = _InterleavingStorage()
+            checkpoint = entry.RepairCheckpoint(ctx, _Env())
+            initial = dict(self.base)
+            first = await checkpoint.write_checkpoint(initial)
+            self.assertTrue(first["persisted"])
+            working = dict(self.base, phase="DECIDE", state="WORKING")
+            blocked = dict(self.base, phase="DECIDE", state="BLOCKED", reason="competing transition")
+            results = await asyncio.gather(
+                checkpoint.write_checkpoint(working),
+                checkpoint.write_checkpoint(blocked),
+            )
+            statuses = sorted(result.get("_http_status", 200) for result in results)
+            self.assertEqual(statuses, [200, 409])
+            stored = await checkpoint.read_checkpoint()
+            self.assertEqual(stored["version"], 2)
+            self.assertEqual(stored["phase"], "DECIDE")
+        asyncio.run(scenario())
 
     def test_retry_requires_blocked_then_resume(self):
         self.assertTrue(self.write()["persisted"])
