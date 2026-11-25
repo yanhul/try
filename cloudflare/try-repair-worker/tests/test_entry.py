@@ -603,9 +603,11 @@ class DurableCheckpointTests(unittest.TestCase):
                 checkpoint.write_checkpoint(blocked),
             )
             statuses = sorted(result.get("_http_status", 200) for result in results)
-            self.assertEqual(statuses, [200, 409])
+            self.assertEqual(statuses, [200, 200])
+            versions = sorted(result["version"] for result in results)
+            self.assertEqual(versions, [2, 3])
             stored = await checkpoint.read_checkpoint()
-            self.assertEqual(stored["version"], 2)
+            self.assertEqual(stored["version"], 3)
             self.assertEqual(stored["phase"], "DECIDE")
         asyncio.run(scenario())
 
