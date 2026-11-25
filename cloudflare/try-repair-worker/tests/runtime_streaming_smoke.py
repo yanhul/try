@@ -240,6 +240,7 @@ def main():
     from core.algorithm_worker_receipt import (
         AlgorithmWorkerKeyring, verify_algorithm_worker_receipt,
     )
+    from core.algorithm_worker_artifact import verify_algorithm_worker_artifact
     with open("/tmp/try-algorithm-receipt-public-key.b64", encoding="ascii") as f:
         algorithm_public_key = base64.b64decode(f.read().strip(), validate=True)
     algorithm_keyring = AlgorithmWorkerKeyring({
@@ -271,6 +272,13 @@ def main():
     assert verified_algorithm["status"] == "INDEPENDENTLY_AUTHENTICATED", verified_algorithm
     assert verified_algorithm["retry_authorized"] is False
     assert verified_algorithm["promotion"] == "NOT_AUTHORIZED"
+    independently_verified_artifact = verify_algorithm_worker_artifact(
+        algorithm_receipt, artifact_bytes, expected=expected, grid=grid, spec=spec,
+        expected_executor_revision="b" * 40, expected_executor_sha256=executor_sha,
+        keyring=algorithm_keyring,
+    )
+    assert independently_verified_artifact["status"] == "INDEPENDENTLY_VERIFIED"
+    assert independently_verified_artifact["oracle_distance"] == 4
 
     # Replay must return the same persisted artifact and receipt, not execute again.
     connection = http.client.HTTPConnection(HOST, PORT, timeout=30)
@@ -296,7 +304,7 @@ def main():
     assert response.status == 409, (response.status, conflict)
 
     algorithm_execution_result = {
-        "status": verified_algorithm["status"],
+        "status": independently_verified_artifact["status"],
         "artifact_sha256_verified": True,
         "durable_replay_same_receipt": True,
         "identity_conflict_rejected": True,
