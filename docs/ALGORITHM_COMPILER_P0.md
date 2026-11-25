@@ -21,7 +21,9 @@ hash, not a signature or proof of origin.
   algorithms. The verifier checks endpoints, bounds, walls, adjacency and
   optimal path length, including the no-path case.
 - A `VERIFIED` receipt applies only to the exact content-addressed input and
-  specification. The receipt does not include a source-code digest or Git commit;\n  consumers must bind those separately before treating it as durable lineage. It does not authorize side effects, registry promotion, or an
+  specification. The receipt does not include a source-code digest or Git commit;
+  consumers must bind those separately before treating it as durable lineage.
+  It does not authorize side effects, registry promotion, or an
   `ABSORBED` capability state.
 - AIOS remains the authority/evidence plane. This P0 does not call AIOS or write
   its capability registry; integration requires a separate contract, permit,
