@@ -6,7 +6,7 @@ This is an isolated proof-of-concept in TRY. It demonstrates the engineering
 pattern suggested by Looped Weight-Space Programming: a designer emits a small,
 declarative algorithm specification; a bounded compiler maps a registered
 operation to a deterministic executor; an independent verifier checks the
-result; and a content-addressed receipt records the exact program/input/output
+result; and a content-addressed receipt records the exact specification/input/output
 and verification decision. The receipt checksum is an unkeyed SHA-256 content
 hash, not a signature or proof of origin.
 
@@ -21,7 +21,7 @@ hash, not a signature or proof of origin.
   algorithms. The verifier checks endpoints, bounds, walls, adjacency and
   optimal path length, including the no-path case.
 - A `VERIFIED` receipt applies only to the exact content-addressed input and
-  program. It does not authorize side effects, registry promotion, or an
+  specification. The receipt does not include a source-code digest or Git commit;\n  consumers must bind those separately before treating it as durable lineage. It does not authorize side effects, registry promotion, or an
   `ABSORBED` capability state.
 - AIOS remains the authority/evidence plane. This P0 does not call AIOS or write
   its capability registry; integration requires a separate contract, permit,
