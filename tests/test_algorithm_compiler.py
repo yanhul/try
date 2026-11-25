@@ -60,6 +60,11 @@ def test_independent_verifier_rejects_non_shortest_candidate():
     assert report["reason"] == "path_not_optimal_or_unreachable"
 
 
+def test_rejects_invalid_direct_dataclass_construction():
+    with pytest.raises(ValueError, match="max_expansions"):
+        compile_program(AlgorithmSpec("maze.shortest_path", max_expansions=0))
+
+
 def test_receipt_hash_is_deterministic_for_same_program_and_input():
     spec = {"operation": "maze.shortest_path"}
     grid = ["S..", ".#.", "..G"]
