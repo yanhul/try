@@ -27,6 +27,9 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       TRY_PROVIDER_TOKEN: ${{ secrets.TRY_PROVIDER_TOKEN }}
+      TRY_OPERATION_RECEIPT_PRIVATE_KEY: ${{ secrets.TRY_OPERATION_RECEIPT_PRIVATE_KEY }}
+      TRY_OPERATION_RECEIPT_KEY_ID: ${{ vars.TRY_OPERATION_RECEIPT_KEY_ID }}
+      AIOS_TRY_OPERATION_KEYRING: '{"try.repair":{"key_id":"try-operation-ed25519-prod-v1","public_key":"y+8C1Ph7x929L+oAuzgWIiHA/MOLgoFhGxqzdligo3M=","scopes":["try.operation.receipt.verify"],"revoked":false}}'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +44,7 @@ jobs:
             echo "::error::Production deployment requires the exact confirmation DEPLOY"
             exit 1
           fi
-          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID GEMINI_API_KEY TRY_PROVIDER_TOKEN; do
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID GEMINI_API_KEY TRY_PROVIDER_TOKEN TRY_OPERATION_RECEIPT_PRIVATE_KEY TRY_OPERATION_RECEIPT_KEY_ID; do
             if [[ -z "${!name:-}" ]]; then
               echo "::error::Required GitHub Actions secret is missing: $name"
               exit 1
@@ -81,13 +84,14 @@ jobs:
         run: |
           set -euo pipefail
           set +x
-          python -c 'import json, os; print(json.dumps({"GEMINI_API_KEY": os.environ["GEMINI_API_KEY"], "TRY_PROVIDER_TOKEN": os.environ["TRY_PROVIDER_TOKEN"]}))' |
+          python -c 'import json, os; print(json.dumps({"GEMINI_API_KEY": os.environ["GEMINI_API_KEY"], "TRY_PROVIDER_TOKEN": os.environ["TRY_PROVIDER_TOKEN"], "TRY_OPERATION_RECEIPT_PRIVATE_KEY": os.environ["TRY_OPERATION_RECEIPT_PRIVATE_KEY"], "TRY_OPERATION_RECEIPT_KEY_ID": os.environ["TRY_OPERATION_RECEIPT_KEY_ID"]}))' |
             uv run --no-sync pywrangler secret bulk
 
       - name: Verify health and Durable Object checkpoint persistence
         shell: bash
         run: |
           set -euo pipefail
+          git clone --depth 1 https://github.com/yanhul/AIOS.git ../aios
           python - <<'PY'
           import json
           import os
@@ -186,6 +190,7 @@ jobs:
           assert health.get("provider") == "gemini", "unexpected_provider"
           assert health.get("checkpoint_store_bound") is True, "durable_object_binding_missing"
           assert health.get("provider_token_configured") is True, "provider_token_missing"
+          assert health.get("operation_receipt_signing_configured") is True, "operation_receipt_signer_not_ready"
           print(json.dumps({
               "health": "READY",
               "provider": health.get("provider"),
@@ -213,6 +218,30 @@ jobs:
           print(json.dumps({
               "gemini_api_probe": "RESPONDED",
               "proposal_schema_or_status": proposal_status,
+          }, sort_keys=True))
+
+          # Verify the durable operation receipt with AIOS's pinned Ed25519 key.
+          import hashlib
+          import sys
+          sys.path.insert(0, "../aios")
+          from core.try_repair_provider import lookup_proposal
+          request_digest = hashlib.sha256(json.dumps(
+              probe, sort_keys=True, separators=(",", ":"), allow_nan=False
+          ).encode("utf-8")).hexdigest()
+          verified = lookup_proposal(
+              request_id=probe["request_id"],
+              expected_request_digest=request_digest,
+              expected_repository=probe["repository"],
+              expected_sha=probe["sha"],
+              expected_attempt=probe["attempt"],
+          )
+          assert verified and verified.get("status") == "COMPLETED", "AIOS_signed_receipt_verification_failed"
+          assert verified["operation_receipt"].get("key_id") == "try-operation-ed25519-prod-v1", "unexpected_receipt_key_id"
+          print(json.dumps({
+              "signed_receipt": "VERIFIED_BY_AIOS",
+              "receipt_key_id": verified["operation_receipt"]["key_id"],
+              "request_digest_verified": True,
+              "proposal_digest_verified": True,
           }, sort_keys=True))
 
           initial = {

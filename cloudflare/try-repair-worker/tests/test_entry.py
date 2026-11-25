@@ -145,6 +145,17 @@ class HealthCheckTests(unittest.TestCase):
         self.assertEqual(result["status"], "READY")
         self.assertTrue(result["provider_token_configured"])
         self.assertTrue(result["checkpoint_store_bound"])
+        self.assertTrue(result["operation_receipt_signing_configured"])
+
+    def test_health_not_ready_when_private_key_cannot_be_imported(self):
+        env = _Env()
+        # Syntactically valid base64 and long enough, but not a valid PKCS#8 key.
+        env.TRY_OPERATION_RECEIPT_PRIVATE_KEY = base64.b64encode(b"\\x00" * 48).decode("ascii")
+        instance = entry.Default()
+        instance.env = env
+        result = asyncio.run(instance.fetch(self.Request()))
+        self.assertEqual(result["status"], "NOT_READY")
+        self.assertFalse(result["operation_receipt_signing_configured"])
 
 
 class BoundedBodyTests(unittest.TestCase):

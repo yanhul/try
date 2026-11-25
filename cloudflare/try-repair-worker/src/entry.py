@@ -49,6 +49,25 @@ def _valid_operation_receipt_private_key(value):
         return False
 
 
+async def _operation_receipt_signer_ready(env):
+    """Prove the configured PKCS#8 key can be imported and used for Ed25519 signing."""
+    private_key = getattr(env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", "")
+    key_id = getattr(env, "TRY_OPERATION_RECEIPT_KEY_ID", "")
+    if not _valid_operation_receipt_private_key(private_key):
+        return False
+    if not isinstance(key_id, str) or not key_id.strip():
+        return False
+    try:
+        signature = await _ed25519_sign(
+            private_key, b"TRY_OPERATION_RECEIPT_READINESS_V1"
+        )
+        decoded = base64.b64decode(signature, validate=True)
+        return len(decoded) == 64
+    except Exception:
+        # Readiness must fail closed and must not disclose key material or runtime details.
+        return False
+
+
 async def _ed25519_sign(private_key_b64, message):
     """Sign with the Worker platform's WebCrypto Ed25519 implementation.
 
@@ -578,11 +597,7 @@ class Default(WorkerEntrypoint):
             model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             checkpoint_bound = getattr(self.env, "REPAIR_CHECKPOINTS", None) is not None
             provider_token_configured = bool(getattr(self.env, "TRY_PROVIDER_TOKEN", ""))
-            operation_receipt_signing_configured = (
-                isinstance(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""), str)
-                and _valid_operation_receipt_private_key(getattr(self.env, "TRY_OPERATION_RECEIPT_PRIVATE_KEY", ""))
-                and bool(getattr(self.env, "TRY_OPERATION_RECEIPT_KEY_ID", ""))
-            )
+            operation_receipt_signing_configured = await _operation_receipt_signer_ready(self.env)
             raw_key = getattr(self.env, "GEMINI_API_KEY", "")
             raw_model = getattr(self.env, "GEMINI_MODEL", "gemini-3.1-flash-lite")
             if (
