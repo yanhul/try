@@ -981,3 +981,57 @@ class ProviderReadinessErrorMappingTests(unittest.TestCase):
         self.assertEqual(result["_status"], 503)
         self.assertEqual(result["status"], "PROVIDER_NOT_READY")
         self.assertEqual(result["reason"], "provider_model_not_configured")
+
+
+class AlgorithmReceiptSignerTests(unittest.TestCase):
+    class AlgorithmEnv(_Env):
+        TRY_ALGORITHM_RECEIPT_PRIVATE_KEY = _Env.TRY_OPERATION_RECEIPT_PRIVATE_KEY
+        TRY_ALGORITHM_RECEIPT_KEY_ID = "try-algorithm-worker-test-v1"
+        TRY_ALGORITHM_WORKER_ID = "try-worker-test"
+        TRY_ALGORITHM_WORKER_BUILD_SHA256 = "a" * 64
+
+    def record(self, status="COMPLETED"):
+        return {
+            "contract_id": "CT-1", "permit_id": "PM-1",
+            "execution_id": "EX-1", "attempt_id": "EX-1:attempt:1",
+            "attempt_number": 1, "executor_revision": "b" * 40,
+            "executor_sha256": "c" * 64, "spec_sha256": "d" * 64,
+            "input_sha256": "e" * 64,
+            "artifact_sha256": "f" * 64 if status == "COMPLETED" else None,
+            "output_sha256": "9" * 64 if status == "COMPLETED" else None,
+            "status": status,
+            "execution_state": "COMPLETED" if status == "COMPLETED" else "IN_PROGRESS_OR_AMBIGUOUS",
+        }
+
+    def test_completed_receipt_is_signed_by_worker_key_and_binds_worker_identity(self):
+        receipt = asyncio.run(entry._algorithm_execution_receipt(self.record(), self.AlgorithmEnv()))
+        self.assertEqual(receipt["type"], entry.ALGORITHM_RECEIPT_TYPE)
+        self.assertEqual(receipt["worker_id"], "try-worker-test")
+        self.assertEqual(receipt["worker_build_sha256"], "a" * 64)
+        public = self.AlgorithmEnv._private_key.public_key()
+        public.verify(
+            base64.b64decode(receipt["signature"]),
+            entry._canonical_json({
+                key: receipt[key] for key in entry.ALGORITHM_RECEIPT_SIGNED_FIELDS
+            }).encode("utf-8"),
+        )
+
+    def test_unknown_receipt_is_signed_but_has_no_artifact_and_no_retry_authority(self):
+        receipt = asyncio.run(
+            entry._algorithm_execution_receipt(self.record("UNKNOWN"), self.AlgorithmEnv())
+        )
+        self.assertEqual(receipt["status"], "UNKNOWN")
+        self.assertIsNone(receipt["artifact_sha256"])
+        self.assertIsNone(receipt["output_sha256"])
+
+    def test_receipt_signing_fails_closed_without_worker_build_identity(self):
+        env = self.AlgorithmEnv()
+        env.TRY_ALGORITHM_WORKER_BUILD_SHA256 = "not-a-digest"
+        with self.assertRaisesRegex(RuntimeError, "worker_build_not_configured"):
+            asyncio.run(entry._algorithm_execution_receipt(self.record(), env))
+
+    def test_unknown_cannot_claim_artifact_output(self):
+        record = self.record("UNKNOWN")
+        record["output_sha256"] = "9" * 64
+        with self.assertRaisesRegex(ValueError, "unknown_state_invalid"):
+            asyncio.run(entry._algorithm_execution_receipt(record, self.AlgorithmEnv()))
