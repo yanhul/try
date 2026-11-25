@@ -33,7 +33,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - name: Fetch AIOS receipt verifier
-        run: git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+        run: |
+          git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+          git -C ../aios fetch --depth 1 origin a4dc44b4caaf1e68c2ece84cba5d39e861003934
+          git -C ../aios checkout --detach a4dc44b4caaf1e68c2ece84cba5d39e861003934
       - name: Start local Python Workers runtime
         run: |
           uv run python - <<'PY'
@@ -43,13 +46,22 @@ jobs:
           key = Ed25519PrivateKey.generate()
           private = key.private_bytes(serialization.Encoding.DER, serialization.PrivateFormat.PKCS8, serialization.NoEncryption())
           public = key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
+          executor_sha = __import__('hashlib').sha256(open('src/algorithm_runtime.py', 'rb').read()).hexdigest()
           with open('.dev.vars', 'w', encoding='utf-8') as f:
               f.write('TRY_PROVIDER_TOKEN=runtime-test-token\n')
               f.write('GEMINI_API_KEY=\n')
               f.write('GEMINI_MODEL=gemini-3.1-flash-lite\n')
               f.write('TRY_OPERATION_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
               f.write('TRY_OPERATION_RECEIPT_KEY_ID=runtime-ed25519-test-v1\n')
+              f.write('TRY_ALGORITHM_RECEIPT_PRIVATE_KEY=' + base64.b64encode(private).decode() + '\n')
+              f.write('TRY_ALGORITHM_RECEIPT_KEY_ID=runtime-algorithm-test-v1\n')
+              f.write('TRY_ALGORITHM_WORKER_ID=try-worker-runtime-test\n')
+              f.write('TRY_ALGORITHM_WORKER_BUILD_SHA256=' + 'a' * 64 + '\n')
+              f.write('TRY_ALGORITHM_EXECUTOR_REVISION=' + 'b' * 40 + '\n')
+              f.write('TRY_ALGORITHM_EXECUTOR_SHA256=' + executor_sha + '\n')
           with open('/tmp/try-operation-receipt-public-key.b64', 'w', encoding='ascii') as f:
+              f.write(base64.b64encode(public).decode())
+          with open('/tmp/try-algorithm-receipt-public-key.b64', 'w', encoding='ascii') as f:
               f.write(base64.b64encode(public).decode())
           PY
           uv run pywrangler dev --local --ip 127.0.0.1 --port 8787 --log-level warn > /tmp/try-worker-runtime.log 2>&1 &
@@ -123,6 +135,8 @@ jobs:
           test -n "$TRY_REPAIR_PROVIDER_URL"
           test -n "$TRY_REPAIR_PROVIDER_TOKEN"
           git clone --depth 1 https://github.com/yanhul/aios.git ../aios
+          git -C ../aios fetch --depth 1 origin a4dc44b4caaf1e68c2ece84cba5d39e861003934
+          git -C ../aios checkout --detach a4dc44b4caaf1e68c2ece84cba5d39e861003934
           PYTHONPATH=../aios python - <<'PY'
           import hashlib
           import json
@@ -140,7 +154,7 @@ jobs:
               "kind": "SyntaxError",
               "ci_failure_log_tail": "broken.py:1: SyntaxError: invalid syntax",
           }
-          source = {"broken.py": "def repair_me(:\\n    return 1\\n"}
+          source = {"broken.py": "def repair_me(:\n    return 1\n"}
           payload = propose(
               request_id=request_id,
               repository=os.environ["E2E_REPOSITORY"],

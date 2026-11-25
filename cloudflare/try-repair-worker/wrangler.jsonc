@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "try-aios-repair-provider",
-  "main": "src/entry.py",
+  "main": "src/algorithm_entry.py",
   "compatibility_date": "2026-09-19",
   "compatibility_flags": [
     "python_workers"
@@ -12,7 +12,13 @@
       "GEMINI_API_KEY",
       "TRY_PROVIDER_TOKEN",
       "TRY_OPERATION_RECEIPT_PRIVATE_KEY",
-      "TRY_OPERATION_RECEIPT_KEY_ID"
+      "TRY_OPERATION_RECEIPT_KEY_ID",
+      "TRY_ALGORITHM_RECEIPT_PRIVATE_KEY",
+      "TRY_ALGORITHM_RECEIPT_KEY_ID",
+      "TRY_ALGORITHM_WORKER_ID",
+      "TRY_ALGORITHM_WORKER_BUILD_SHA256",
+      "TRY_ALGORITHM_EXECUTOR_REVISION",
+      "TRY_ALGORITHM_EXECUTOR_SHA256"
     ]
   },
   "durable_objects": {
@@ -20,6 +26,10 @@
       {
         "name": "REPAIR_CHECKPOINTS",
         "class_name": "RepairCheckpoint"
+      },
+      {
+        "name": "ALGORITHM_EXECUTIONS",
+        "class_name": "AlgorithmExecutionStore"
       }
     ]
   },
@@ -28,6 +38,12 @@
       "tag": "v1",
       "new_sqlite_classes": [
         "RepairCheckpoint"
+      ]
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": [
+        "AlgorithmExecutionStore"
       ]
     }
   ]
